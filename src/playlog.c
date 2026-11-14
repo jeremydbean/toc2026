@@ -569,7 +569,19 @@ static bool play_hidden( CHAR_DATA *ch )
 }
 
 /* One record: the common columns, then `fields` (already tab-joined). */
+static void journal_write_at( const char *kind, CHAR_DATA *ch, const char *fields,
+                              bool unplaced );
+
 static void journal_write( const char *kind, CHAR_DATA *ch, const char *fields )
+{
+    journal_write_at( kind, ch, fields, false );
+}
+
+/* `unplaced`: the row is about somewhere the actor's room would give
+   away (encounter.c's rows about a room the dealer stands in, written
+   once the player has left it), so the room and area columns are "-". */
+static void journal_write_at( const char *kind, CHAR_DATA *ch, const char *fields,
+                              bool unplaced )
 {
     /* The common columns are at most about 170 bytes and every writer's
        fields fit PLAY_LINE; a row that would not fit is refused whole by
@@ -580,7 +592,13 @@ static void journal_write( const char *kind, CHAR_DATA *ch, const char *fields )
     if ( journal_busy || play_hidden( ch ) )
         return;
     journal_busy = true;
-    play_room( ch, room, sizeof(room), area, sizeof(area) );
+    if ( unplaced )
+    {
+        snprintf( room, sizeof(room), "-" );
+        snprintf( area, sizeof(area), "-" );
+    }
+    else
+        play_room( ch, room, sizeof(room), area, sizeof(area) );
     play_clean( name, sizeof(name), ch != NULL ? ch->name : "-" );
     n = snprintf( row, sizeof(row), "%ld\t%s\t%s\t%d\t%s\t%s\t%s\n", (long) current_time,
                   kind, name, ch != NULL ? ch->level : 0, room, area, fields );
@@ -595,6 +613,19 @@ static void journal_write( const char *kind, CHAR_DATA *ch, const char *fields )
 void playlog_row( const char *kind, CHAR_DATA *ch, const char *fields )
 {
     journal_write( kind, ch, fields );
+}
+
+void playlog_row_unplaced( const char *kind, CHAR_DATA *ch, const char *fields )
+{
+    journal_write_at( kind, ch, fields, true );
+}
+
+/* True while a wizinvis player's command runs: a row about something else
+   that the command caused (an object cleared off the floor) is theirs too,
+   and wizinvis staff leave no trace in the journal. */
+bool playlog_hidden_command( void )
+{
+    return current_set && current_hidden;
 }
 
 void playlog_clean( char *dest, size_t size, const char *src )

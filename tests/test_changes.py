@@ -27,7 +27,34 @@ ENTRIES = re.findall(r"(?m)^@ (\w+) (\d{4}-\d\d-\d\d)\n(.+)$", DATA)
 STAFF = re.findall(r"(?m)^@ (\w+) (\d{4}-\d\d-\d\d) staff\n(.+)$", DATA)
 
 
+def _later_paragraphs() -> list[str]:
+    """The first words of every paragraph after an entry's first, in the
+    public entries."""
+    found, entry, gap = [], None, False
+    for line in DATA.splitlines():
+        if line.startswith("#"):
+            continue
+        if line.startswith("@"):
+            entry, gap = ("staff" not in line.split()[3:4]), False
+            continue
+        if entry is None:
+            continue
+        if not line.strip():
+            gap = True
+            continue
+        if gap and entry:
+            found.append(" ".join(line.split()[:6]))
+        gap = False
+    return found
+
+
+LATER_PARAGRAPHS = _later_paragraphs()
+
+
 class SourceTests(unittest.TestCase):
+    def test_some_entry_has_a_second_paragraph(self) -> None:
+        self.assertTrue(LATER_PARAGRAPHS, "the live check below would test nothing")
+
     def test_ids_are_unique_and_dated(self) -> None:
         ids = [entry_id for entry_id, _date, _first in ENTRIES + STAFF]
         self.assertGreater(len(ids), 20)
@@ -67,6 +94,11 @@ class LiveTests(unittest.TestCase):
                 everything = client.command("changes all", settle=3.0)
                 for _id, _date, first in ENTRIES[:3] + ENTRIES[-3:]:
                     self.assertIn(first.strip(), everything)
+                # An entry's later paragraphs too, as the website shows them
+                # (review, 2026-11-13: the game dropped everything after an
+                # entry's first blank line).
+                for later in LATER_PARAGRAPHS:
+                    self.assertIn(later, " ".join(everything.split()))
                 first = client.command("changes", settle=3.0)
                 shown = first_lines_shown(first)
                 client.command("changes", settle=3.0)

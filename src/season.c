@@ -108,6 +108,29 @@ static const char *seasonal_variant( SEASON_TYPE season, const char *area_file )
     return area_file;
 }
 
+/*
+ * The base file a seasonal copy stands in for -- "dresden.are" for
+ * "dresden_halloween.are" -- or the name itself (review, 2026-11-13).
+ * Anything that keeps an area's identity across boots (achievement_area_id,
+ * the map's always-known areas) asks this: the copy is loaded under its
+ * own file name, so in season Dresden and Limbo were no longer always
+ * known on the map, and a map or a visit learned out of season was not
+ * honoured in it, or one learned in season was lost when it ended.
+ */
+const char *season_base_area( const char *area_file )
+{
+    static const char *const bases[] = { "dresden.are", "limbo.are", "midennir.are", NULL };
+    int i;
+
+    if ( area_file == NULL )
+        return area_file;
+    for ( i = 0; bases[i] != NULL; i++ )
+        if ( !str_cmp( area_file, seasonal_variant( SEASON_HALLOWEEN, bases[i] ) )
+        ||   !str_cmp( area_file, seasonal_variant( SEASON_CHRISTMAS, bases[i] ) ) )
+            return bases[i];
+    return area_file;
+}
+
 const char *get_seasonal_area( const char *area_file )
 {
     SEASON_TYPE season;

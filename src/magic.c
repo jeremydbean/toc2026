@@ -949,6 +949,17 @@ void do_cast( CHAR_DATA *ch, char *argument )
 	}
     }
 
+    /* Nor a charm on a mobile somebody is in (a switched immortal, a
+       projection): refused before the mana and the provocation, or the
+       refused cast still started a fight with them (review, 2026-11-13). */
+    if ( victim != NULL && victim != ch && IS_NPC(victim) && victim->desc != NULL
+    &&   skill_table[sn].spell_fun == spell_charm_person )
+    {
+	act( "$N's mind is already occupied; your charm finds no hold on it.",
+	     ch, NULL, victim, TO_CHAR );
+	return;
+    }
+
     if ( !IS_NPC(ch) && ch->mana < mana )
     {
 	send_to_char( "You don't have enough mana.\n\r", ch );
@@ -1802,6 +1813,16 @@ void spell_charm_person( int sn, int level, CHAR_DATA *ch, void *vo )
 	return;
     }
 
+    /* Somebody is in it -- a switched immortal, a projection -- and a
+       charm handed its master ORDERs run at their trust (review,
+       2026-11-13). Said, not failed. */
+    if ( victim->desc != NULL )
+    {
+	act( "$N's mind is already occupied; your charm finds no hold on it.",
+	     ch, NULL, victim, TO_CHAR );
+	return;
+    }
+
     if ( IS_AFFECTED(victim, AFF_CHARM)
     ||   IS_AFFECTED(ch, AFF_CHARM)
     ||   ch->level < victim->level
@@ -1835,9 +1856,10 @@ void spell_charm_person( int sn, int level, CHAR_DATA *ch, void *vo )
     af.bitvector2 = 0;
     affect_to_char( victim, &af );
     act( "Isn't $n just so nice?", ch, NULL, victim, TO_VICT );
+    /* A player's short_descr is "", never NULL: the line named nobody. */
     snprintf(buf, sizeof(buf), "%s has charmed %s. [Room: %d]",
-         (ch->short_descr == NULL ? ch->name : ch->short_descr),
-         (victim->short_descr == NULL ? victim->name : victim->short_descr),
+         (!IS_NPC(ch) || ch->short_descr == NULL ? ch->name : ch->short_descr),
+         (!IS_NPC(victim) || victim->short_descr == NULL ? victim->name : victim->short_descr),
           victim->in_room->vnum);
     log_string( buf );
       wizinfo(buf, 68);

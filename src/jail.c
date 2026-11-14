@@ -225,6 +225,9 @@ typedef struct
     char by[16];
     char *title;            /* a copy, when the release replaced it */
     bool title_custom;
+    bool placed;            /* an offline copy's room was set (below) */
+    ROOM_INDEX_DATA *in_room;
+    ROOM_INDEX_DATA *was_in_room;
 } JAIL_UNDO;
 
 static void jail_undo_take( CHAR_DATA *ch, JAIL_UNDO *u )
@@ -237,6 +240,9 @@ static void jail_undo_take( CHAR_DATA *ch, JAIL_UNDO *u )
     toc_strlcpy( u->by, ch->pcdata->jail_by, sizeof(u->by) );
     u->title = NULL;
     u->title_custom = ch->pcdata->title_custom;
+    u->placed = false;
+    u->in_room = ch->in_room;
+    u->was_in_room = ch->was_in_room;
 }
 
 static void jail_undo_put( CHAR_DATA *ch, JAIL_UNDO *u )
@@ -254,6 +260,12 @@ static void jail_undo_put( CHAR_DATA *ch, JAIL_UNDO *u )
         u->title = NULL;
         ch->pcdata->title_custom = u->title_custom;
     }
+    if ( u->placed )
+    {
+        ch->in_room = u->in_room;
+        ch->was_in_room = u->was_in_room;
+        u->placed = false;
+    }
 }
 
 static void jail_undo_forget( JAIL_UNDO *u )
@@ -263,6 +275,26 @@ static void jail_undo_forget( JAIL_UNDO *u )
         free_string( u->title );
         u->title = NULL;
     }
+}
+
+/*
+ * Where an offline copy's file will say it stands (review, 2026-11-13).
+ * A copy from offline_player_load is in no room's list of people: in_room
+ * is only the room its file named, which the save writes back. A sentence
+ * and a release of somebody away are recorded by that save alone, so the
+ * room goes with them -- the cell for a sentence, the Temple for a
+ * release -- or a player jailed and released while away logged in where
+ * they stood before the sentence. Only the pointer moves: char_to_room
+ * would add the copy to the room and its area's player count. The undo
+ * puts it back if the save does not land.
+ */
+static void jail_offline_place( CHAR_DATA *ch, ROOM_INDEX_DATA *room, JAIL_UNDO *u )
+{
+    if ( room == NULL )
+        return;
+    u->placed      = true;
+    ch->in_room    = room;
+    ch->was_in_room = NULL;
 }
 
 /* The save that records a jail or a release. "jail-write-<Name>" fails
@@ -388,6 +420,38 @@ static void jail_release_move( CHAR_DATA *victim )
 }
 
 /*
+ * The released player's own corpses in the cell go to the Temple with
+ * them (review, 2026-11-13). Nothing else reaches the cell -- no exit,
+ * no recall, no travel spell, and TELEKINESIS leaves what lies in a cell
+ * to the sentence -- so a prisoner who died there and was then released
+ * lost everything in the corpse to all but staff. Moved through
+ * obj_to_room, which the corpse registry follows; an ownerless corpse (a
+ * WANTED player's) stays.
+ */
+static void jail_release_corpses( CHAR_DATA *victim )
+{
+    ROOM_INDEX_DATA *cell = get_room_index( ROOM_VNUM_JAIL );
+    ROOM_INDEX_DATA *temple = get_room_index( ROOM_VNUM_TEMPLE );
+    OBJ_DATA *obj, *obj_next;
+    char buf[MAX_STRING_LENGTH];
+
+    if ( cell == NULL || temple == NULL || cell == temple )
+        return;
+    for ( obj = cell->contents; obj != NULL; obj = obj_next )
+    {
+        obj_next = obj->next_content;
+        if ( obj->item_type != ITEM_CORPSE_PC || obj->owner == NULL
+        ||   str_cmp( obj->owner, victim->name ) )
+            continue;
+        obj_from_room( obj );
+        obj_to_room( obj, temple );
+        snprintf( buf, sizeof(buf), "JAIL: %s's corpse goes out of the cell with them.",
+                  victim->name );
+        log_string( buf );
+    }
+}
+
+/*
  * Release: the sentence and what it imposed, nothing else. Saved before
  * anything moves; a definite failure puts everything back (still jailed,
  * still in the cell) and says so. An unconfirmed save keeps the release:
@@ -418,6 +482,8 @@ static int jail_release( CHAR_DATA *victim, bool offline )
     pc->jail_added = 0;
     pc->jail_by[0] = '\0';
     pc->jail_retry_at = 0;
+    if ( offline )
+        jail_offline_place( victim, get_room_index( ROOM_VNUM_TEMPLE ), &undo );
 
     status = jail_write( victim );
     if ( status == DURABLE_FAILED )
@@ -426,6 +492,7 @@ static int jail_release( CHAR_DATA *victim, bool offline )
         return status;
     }
     jail_undo_forget( &undo );
+    jail_release_corpses( victim );
     if ( !offline )
     {
         send_to_char( "You have been released from jail.\n\r", victim );
@@ -648,6 +715,12 @@ void do_jail( CHAR_DATA *ch, char *argument )
     const char *why;
     int status;
 
+    /* A switched immortal acts as themselves, never as the mobile they
+       wear (review, 2026-11-13): its keywords went into JailInfo, the log
+       and the notices. */
+    CHAR_DATA *actor = ch->desc != NULL && ch->desc->original != NULL
+                     ? ch->desc->original : ch;
+
     argument = one_argument( argument, arg );
     argument = one_argument( argument, arg2 );
 
@@ -706,7 +779,7 @@ void do_jail( CHAR_DATA *ch, char *argument )
         offline = true;
     }
 
-    if ( victim != ch && rank_protects( ch, victim ) )
+    if ( victim != actor && rank_protects( actor, victim ) )
     {
         send_to_char( "You failed.\n\r", ch );
         if ( offline )
@@ -748,10 +821,10 @@ void do_jail( CHAR_DATA *ch, char *argument )
                       victim->name, where, jail_status_word( status ) );
             send_to_char( buf, ch );
         }
-        snprintf( buf, sizeof(buf), "JAIL: %s released %s (%s): %s.", ch->name,
+        snprintf( buf, sizeof(buf), "JAIL: %s released %s (%s): %s.", actor->name,
                   victim->name, where, status == DURABLE_FAILED
                   ? "NOT saved, still jailed" : jail_status_word( status ) );
-        jail_note( ch, victim, buf );
+        jail_note( actor, victim, buf );
         if ( offline )
             extract_char( victim, true );
         return;
@@ -782,10 +855,12 @@ void do_jail( CHAR_DATA *ch, char *argument )
             SET_BIT( victim->act, PLR_JAILED );
         }
         pc->jw_timer = deadline;
-        toc_strlcpy( pc->jail_by, ch->name, sizeof(pc->jail_by) );
+        toc_strlcpy( pc->jail_by, actor->name, sizeof(pc->jail_by) );
         pc->jail_retry_at = 0;
         /* A deletion asked for before the sentence does not finish in it. */
         pc->confirm_delete = false;
+        if ( offline )
+            jail_offline_place( victim, get_room_index( ROOM_VNUM_JAIL ), &undo );
 
         status = jail_write( victim );
         if ( indefinite )
@@ -805,9 +880,9 @@ void do_jail( CHAR_DATA *ch, char *argument )
                       victim->name );
             send_to_char( buf, ch );
             snprintf( buf, sizeof(buf), "JAIL: %s %s %s (%s) %s: NOT saved, nothing "
-                      "applied.", ch->name, was ? "re-sentenced" : "jailed",
+                      "applied.", actor->name, was ? "re-sentenced" : "jailed",
                       victim->name, where, when );
-            jail_note( ch, victim, buf );
+            jail_note( actor, victim, buf );
             if ( offline )
                 extract_char( victim, true );
             return;
@@ -818,10 +893,10 @@ void do_jail( CHAR_DATA *ch, char *argument )
                   was ? "now jailed, the old term replaced," : "now in jail",
                   when, where, jail_status_word( status ) );
         send_to_char( buf, ch );
-        snprintf( buf, sizeof(buf), "JAIL: %s %s %s (%s) %s: %s.", ch->name,
+        snprintf( buf, sizeof(buf), "JAIL: %s %s %s (%s) %s: %s.", actor->name,
                   was ? "re-sentenced" : "jailed", victim->name, where, when,
                   jail_status_word( status ) );
-        jail_note( ch, victim, buf );
+        jail_note( actor, victim, buf );
 
         if ( !was )
         {

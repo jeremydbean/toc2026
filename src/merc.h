@@ -1104,6 +1104,8 @@ void  tutorial_level         args( ( CHAR_DATA *ch, bool guild_given ) );
 void  tutorial_update        args( ( void ) );
 /* playlog.c, for encounter.c */
 void  playlog_row            args( ( const char *kind, CHAR_DATA *ch, const char *fields ) );
+void  playlog_row_unplaced   args( ( const char *kind, CHAR_DATA *ch, const char *fields ) );
+bool  playlog_hidden_command  args( ( void ) );
 void  playlog_clean          args( ( char *dest, size_t size, const char *src ) );
 bool  playlog_own_command    args( ( CHAR_DATA *ch ) );
 const char *playlog_actor    args( ( void ) );
@@ -4253,6 +4255,7 @@ bool    is_hyrule_bystander ( CHAR_DATA *victim );
 bool    is_hyrule_guardian ( const CHAR_DATA *mob );     /* special.c */
 double  guardian_special_expected_per_round ( CHAR_DATA *mob, CHAR_DATA *target ); /* special.c */
 void    hyrule_note_striker ( CHAR_DATA *ch, CHAR_DATA *guardian ); /* hyrule.c */
+bool    hyrule_struck_by ( const CHAR_DATA *guardian, CHAR_DATA *ch );
 void    spellup_boot_check  ( void );       /* act_wiz.c: Hermie after a restart */
 void    spellup_boot_update ( void );
 void    game_reboot_close   ( void );       /* act_wiz.c: REBOOT's ending */
@@ -4314,6 +4317,7 @@ bool    hyrule_shoot           ( CHAR_DATA *ch, OBJ_DATA *weapon, char *argument
 void    hyrule_burn_creature   ( CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *candle );
 bool    hyrule_blow_turned_aside ( CHAR_DATA *ch, CHAR_DATA *victim );
 int     hyrule_patra_eyes_left ( CHAR_DATA *mob );
+bool    hyrule_is_digdogger ( const CHAR_DATA *victim );
 bool    hyrule_enemy_is_invincible ( CHAR_DATA *victim );
 bool    hyrule_foe             ( CHAR_DATA *victim );
 bool    hyrule_native          ( CHAR_DATA *victim );
@@ -4594,6 +4598,7 @@ bool    jail_refuses_staff_move ( CHAR_DATA *ch, CHAR_DATA *victim,
                                   ROOM_INDEX_DATA *to );
 ROOM_INDEX_DATA *jail_hold_room ( CHAR_DATA *ch, ROOM_INDEX_DATA *to );
 void    jail_load_fixup  ( CHAR_DATA *ch );
+void    tutorial_load_fixup ( CHAR_DATA *ch );
 void    jail_login_place ( CHAR_DATA *ch );
 void    jail_login       ( CHAR_DATA *ch );
 void    jail_update      ( void );
@@ -4632,6 +4637,7 @@ void    update_wizlist  ( CHAR_DATA *ch, int level );
 /* season.c */
 const char *get_season_name  ( void );
 const char *get_seasonal_area( const char *area_file );
+const char *season_base_area( const char *area_file );
 bool        verify_event_boss       ( void );
 void        event_boss_forget       ( CHAR_DATA *ch );
 const char *season_loaded_name      ( void );

@@ -5,6 +5,33 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261113reviewfixes 2026-11-13
+Fixes: a late striker who earns a Hyrule guardian's key now earns its
+achievement too, and anyone who claims from a guardian's chest with their
+key earns the chest's, not only whoever opened it. CONSIDER no longer
+promises an easy win against a creature nothing can harm yet, such as
+Digdogger before the Recorder. Playing the Recorder in Digdogger's den no
+longer counts as draining the lake. The tutorial no longer reacts to
+rooms you only peek into, and says what it is before its first hint.
+In season, Dresden and Limbo stay on your map and maps you hold still
+count. The Mudlet package (1.5.16) keeps the room you stand in on the
+map and keeps portals and climbs when rooms leave and come back. The
+CHANGES list now shows each entry whole.
+
+@ 20261114switch 2026-11-14 staff
+SWITCH fixes: no mortal can CHARM a mobile you are in, or ORDER one you
+have switched into -- a charmed, possessed mobile ran its master's ORDERs
+at your trust. SAVE while switched saves you, QUIT returns you to your
+body first, and a body forced to quit while you are switched takes you
+with it instead of leaving you stranded in the mobile.
+
+@ 20261113jailrename 2026-11-13 staff
+JAIL and RELEASE of an offline player now move their saved room to the
+cell or the Temple. JAIL typed while switched credits you, not the mob,
+and no longer leaves the prisoner's file unreadable. A full PRESTORE
+keeps a sentence as it stands. A released prisoner's corpse comes out of
+the cell with them. RENAME saves the new name before the old file goes.
+
 @ 20261113schoolwalk 2026-11-13
 The tutorial now walks new players through Mud School, room by room, to
 its last room, where the educated goblin holds the Mud School diploma.

@@ -175,7 +175,8 @@ static const struct
       "When you are done, go DOWN.\n\r" },
     { 3717,
       "Hungry?  The store is SOUTH: LIST, BUY bread or water, then EAT and\n\r"
-      "DRINK.  Buy a lantern too if you have lost yours.  Then go EAST.\n\r" },
+      "DRINK.  Buy a lantern too if you have lost yours.  Then OPEN EAST and\n\r"
+      "go EAST.\n\r" },
     { 3719,
       "The way EAST is locked.  NORTH is a dark room where a monster carries\n\r"
       "the key: kill it, GET ALL CORPSE, come back, then UNLOCK EAST, OPEN EAST\n\r"
@@ -187,6 +188,11 @@ static const struct
 };
 
 #define SCHOOL_STATIONS  ( (int) ( sizeof(school_route) / sizeof(school_route[0]) ) )
+
+/* TutSchool is a bit a station in an int, and the stations are numbered
+   by their place in the route as shown ("step N of M"): a new one goes at
+   the end of the walk, or every bit after it means another room. */
+typedef char tutorial_school_fits[ SCHOOL_STATIONS <= 31 ? 1 : -1 ];
 
 static int school_station( int vnum )
 {
@@ -324,6 +330,27 @@ static const int tut_priority[] =
 
 typedef char tut_priority_names_every_step[
     ( sizeof(tut_priority) / sizeof(tut_priority[0]) == TUT_MAX ) ? 1 : -1 ];
+/* The steps are bits 0..TUT_MAX-1 of Tutorial's done field and of
+   TutPending, below TUT_FINISHED_BIT (bit 30). */
+typedef char tut_steps_fit_below_finished[ TUT_MAX <= 30 ? 1 : -1 ];
+
+/*
+ * After a player file is read (found files only): bits no step or station
+ * of this build names are dropped (review, 2026-11-13). A damaged file, a
+ * file from a newer build after a rollback, or a step since removed left a
+ * pending bit nothing clears, and STATUS said a hint was waiting for ever.
+ */
+void tutorial_load_fixup( CHAR_DATA *ch )
+{
+    PC_DATA *pc;
+
+    if ( ch == NULL || IS_NPC(ch) || ( pc = ch->pcdata ) == NULL )
+        return;
+    pc->tutorial_done    &= ( ( 1 << TUT_MAX ) - 1 ) | TUT_FINISHED_BIT;
+    pc->tutorial_pending &= ( 1 << TUT_MAX ) - 1;
+    pc->tutorial_school  &= (int) ( ( 1u << SCHOOL_STATIONS ) - 1u );
+    pc->tutorial_pending &= ~pc->tutorial_done;
+}
 
 static void tut_unqueue( CHAR_DATA *ch, int step )
 {
@@ -622,6 +649,13 @@ void tutorial_room_seen( CHAR_DATA *ch, bool arrived )
 
     if ( !tut_counted( ch ) || !ch->pcdata->tutorial_on || ch->in_room == NULL )
         return;
+    /* Only the room they stand in: CLAIRVOYANCE and LOOK IN a portal point
+       in_room at another room for the look (review, 2026-11-13: a peek at
+       a friend in Mud School marked its first station seen). */
+    for ( rch = ch->in_room->people; rch != NULL && rch != ch; rch = rch->next_in_room )
+        ;
+    if ( rch == NULL )
+        return;
     if ( arrived )
         tut_event( ch, TUT_MOVE );
     /* A Mud School station speaks the moment its room is shown, when it
@@ -857,7 +891,12 @@ static bool school_now( CHAR_DATA *ch )
 {
     int station;
 
+    /* tutorial_last is 0 until tutorial_login has run this sitting: the
+       login's own room view comes before the banner that says what the
+       hints are and how to stop them (review, 2026-11-13), and
+       tutorial_update says the station a moment later. */
     if ( ch->in_room == NULL || !ch->pcdata->tutorial_on || !tut_safe( ch )
+    ||   ch->pcdata->tutorial_last == 0
     ||   ( station = school_station( ch->in_room->vnum ) ) < 0
     ||   ( ch->pcdata->tutorial_school & ( 1 << station ) ) )
         return false;
@@ -1025,8 +1064,18 @@ void do_tutorial( CHAR_DATA *ch, char *argument )
                     break;
         if ( step < 0 || step >= TUT_MAX )
         {
-            send_to_char( "You have seen every hint there is for you now.  More come at level 3\n\r"
-                          "and level 15; HELP BEGINNERS is a short guide.\n\r", ch );
+            /* Only what is still to come for this character: the guild
+               steps are a guildless mage, cleric, thief or warrior's below
+               level 6, PKILL is at 15 (review, 2026-11-13). */
+            bool guild = ch->class >= CLASS_MAGE && ch->class <= CLASS_WARRIOR
+                       && ch->pcdata->guild == GUILD_NONE && ch->level < 3;
+            bool pk = ch->level < 15 && ch->pcdata->pk_state != 1;
+
+            send_to_char( "You have seen every hint there is for you now.  ", ch );
+            send_to_char( guild && pk ? "More come at level 3 and level 15; "
+                        : guild ? "More come at level 3; "
+                        : pk ? "More come at level 15; " : "", ch );
+            send_to_char( "HELP BEGINNERS\n\ris a short guide.\n\r", ch );
             return;
         }
         if ( !tut_counted( ch ) )

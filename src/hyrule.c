@@ -1440,7 +1440,7 @@ static bool hyrule_kind_is( const CHAR_DATA *victim, int kind )
 
 /* A digdogger: Level 5's guardian (its catalog record is the kind) and the
    ones that roll through Level 7. */
-static bool hyrule_is_digdogger( const CHAR_DATA *victim )
+bool hyrule_is_digdogger( const CHAR_DATA *victim )
 {
     return victim != NULL && IS_NPC(victim) && victim->pIndexData != NULL
         && ( victim->pIndexData->vnum == HYRULE_KIND_DIGDOGGER
@@ -2581,7 +2581,7 @@ void hyrule_note_striker( CHAR_DATA *ch, CHAR_DATA *guardian )
     guardian->hyrule_struck[guardian->hyrule_struck_n++] = serial;
 }
 
-static bool hyrule_struck_by( const CHAR_DATA *guardian, CHAR_DATA *ch )
+bool hyrule_struck_by( const CHAR_DATA *guardian, CHAR_DATA *ch )
 {
     int i, serial;
 
@@ -2777,6 +2777,10 @@ bool hyrule_chest_claim( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
     obj_to_char( copy, ch );
     act( "You get $p from $P.", ch, copy, container, TO_CHAR );
     act( "$n gets $p from $P.", ch, copy, container, TO_ROOM );
+    /* The chest's achievement for every keyholder who claims from it, not
+       only whoever OPENed it closed (review, 2026-11-13: a chest left open
+       credited nobody after the first). The key proves the guardian. */
+    achievement_record_hyrule_chest( ch, level - 1 );
 
     /* The claim is made: the key is spent -- for Ganon's chest once both
        of its prizes are held, whichever was taken first. */

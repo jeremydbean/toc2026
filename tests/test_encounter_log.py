@@ -190,5 +190,60 @@ class EncounterLiveTests(unittest.TestCase):
         self.assertEqual(1, s["kinds"]["herb"]["passed"])
 
 
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class EncounterPrivacyTests(unittest.TestCase):
+    """The journal is published every five minutes (review, 2026-11-13)."""
+
+    def test_wizinvis_staff_clearing_the_floor_writes_no_row(self) -> None:
+        """A wizinvis immortal's GET and SACRIFICE of a herb were written as
+        `cleared` rows naming the room and "staff"."""
+        with LiveMud(fixtures=True) as mud:
+            make(mud, "Zencinvis", Levl=70, Room=TEMPLE)
+            started = int(time.time()) - 1
+            with mud.connect(timeout=120) as staff:
+                login(staff, "Zencinvis", PW)
+                staff.sync("scroll 0")
+                staff.must("wizinvis", "")
+                staff.must(f"goto {ALTAR}", "")
+                staff.must(f"load obj {AMARANTH}", "You create")
+                staff.must("drop amaranth", "You drop")
+                staff.must("get amaranth", "You get")
+                staff.must("drop amaranth", "You drop")
+                staff.must("sacrifice amaranth", "")
+                staff.send("quit")
+                staff.wait_closed()
+            mine = [r for r in rows(mud) if r[0].isdigit() and int(r[0]) >= started]
+            self.assertEqual([], [r for r in mine if r[1] == "cleared"], mine)
+
+    def test_leaving_the_dealer_names_no_room(self) -> None:
+        """Rows about what was passed by in a room the dealer stands in are
+        written after the player has left it: they carried the room walked
+        into, one exit from him."""
+        with LiveMud(extra_env={"TOC_BLACK_MARKET_STILL": "1"}) as mud:
+            make(mud, "Zencfixer", Levl=70, Room=TEMPLE)
+            make(mud, "Zencwalker", Levl=20, Room=ALTAR)
+            started = int(time.time()) - 1
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as hero:
+                login(staff, "Zencfixer", PW)
+                login(hero, "Zencwalker", PW)
+                for client in (staff, hero):
+                    client.sync("scroll 0")
+                staff.must("blackmarket here", f"in room {TEMPLE}")
+                staff.must(f"transfer zencwalker {TEMPLE}", "")
+                hero.sync("look")
+                staff.must(f"transfer zencwalker {ALTAR}", "")
+                hero.sync("look")
+                hero.send("quit")
+                self.assertTrue(hero.wait_closed())
+            mine = [r for r in rows(mud) if r[0].isdigit() and int(r[0]) >= started
+                    and r[2] == "Zencwalker"]
+        seen = [r for r in mine if r[1] == "rare-seen" and r[6] == "dealer"]
+        passed = [r for r in mine if r[1] == "rare-passed" and r[6] == "dealer"]
+        self.assertEqual(1, len(seen), mine)
+        self.assertEqual(1, len(passed), mine)
+        self.assertEqual(("-", "-"), (seen[0][4], seen[0][5]), seen)
+        self.assertEqual(("-", "-"), (passed[0][4], passed[0][5]), passed)
+
+
 if __name__ == "__main__":
     unittest.main()

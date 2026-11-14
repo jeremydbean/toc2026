@@ -1229,6 +1229,21 @@ static long saved_last_logout( CHAR_DATA *ch )
 /*
  * Write the char.
  */
+/* JailInfo's last field is read back with fread_word: one word, letters
+   only, or "-" (review, 2026-11-13: a switched immortal's mobile name,
+   "lieutenant comm", made the file unreadable). */
+static const char *jail_by_word( const char *by )
+{
+    const char *p;
+
+    if ( by == NULL || by[0] == '\0' )
+        return "-";
+    for ( p = by; *p != '\0'; p++ )
+        if ( !isalpha( (unsigned char) *p ) )
+            return "-";
+    return by;
+}
+
 void fwrite_char( CHAR_DATA *ch, FILE *fp )
 {
     AFFECT_DATA *paf;
@@ -1413,8 +1428,7 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
       {
 	 fprintf( fp, "Jw_Timer %ld\n", ch->pcdata->jw_timer );
 	 fprintf( fp, "JailInfo %ld %d %s\n", ch->pcdata->jail_since,
-		  ch->pcdata->jail_added,
-		  ch->pcdata->jail_by[0] != '\0' ? ch->pcdata->jail_by : "-" );
+		  ch->pcdata->jail_added, jail_by_word( ch->pcdata->jail_by ) );
       }
       else
 	 fprintf(fp,"Jw_Timer %d\n", 0);
@@ -3256,6 +3270,9 @@ read_done:
     /* A sentence from before JailInfo, or none (jail.c). */
     if ( found )
         jail_load_fixup( ch );
+    /* And tutorial bits this build has no step or station for. */
+    if ( found )
+        tutorial_load_fixup( ch );
 
     /* Nobody comes back riding. A mount is written with its saddle
        (fwrite_pet) but never as ridden, so the rider enters dismounted
@@ -4743,6 +4760,11 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 		int added = fread_number( fp );
 		char *by = fread_word( fp );
 
+		/* One line, three fields. A writer before 2026-11-13 could put
+		   a switched immortal's mobile keywords here, several words,
+		   which were then read as keys -- "comm" as Comm -- and the
+		   file refused: the rest of the line is not the record's. */
+		fread_to_eol( fp );
 		ch->pcdata->jail_since = since;
 		ch->pcdata->jail_added = added & JAIL_ADDED_KNOWN;
 		toc_strlcpy( ch->pcdata->jail_by, strcmp( by, "-" ) ? by : "",

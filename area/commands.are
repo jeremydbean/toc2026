@@ -3572,7 +3572,8 @@ Syntax: order <character> <command>
 Syntax: order all <command>
 
 ORDER orders one or all of your charmed followers (including pets) to
-perform any command.  The command may have arguments.  You are responsible
+perform any command.  The command may have arguments.  A follower that
+somebody else is controlling answers only to them.  You are responsible
 for the actions of your followers, and others who attack your followers
 will incur the same penalty as if they attacked you directly.
 
@@ -5411,8 +5412,10 @@ Restrictions:
     another immortal is already controlling).
   - You cannot switch into link-dead PCs.
 
-Use RETURN to exit the mob and return to your immortal body.
-If the mob is killed while you are switched, you are ejected safely.
+Use RETURN to exit the mob and return to your immortal body; QUIT
+also brings you back first.  SAVE saves your own character.  If the mob
+is killed, or your connection drops, you are put back in your body.
+Nobody can CHARM or ORDER a mob while you are in it.
 
 See also: RETURN, FORCE, AT
 ~
@@ -5422,7 +5425,8 @@ Syntax: return
 
 RETURN exits a mobile body and returns your immortal character to normal
 control.  Use this after SWITCH to come back to yourself.  If you are
-not currently switched into a mobile, RETURN has no effect.
+not currently switched into a mobile, RETURN has no effect.  QUIT, typed
+while switched, returns you too.
 
 See also: SWITCH
 ~
@@ -5808,7 +5812,8 @@ has _02 after its stamp.
 
 SHOW lists what the snapshot wore, carried and stashed.  The whole form puts
 the character back as they were (an online player is saved and
-disconnected first).  GEAR puts back only what they wore and carried, into
+disconnected first), keeping their password, rank and any jail sentence
+as they stand now.  GEAR puts back only what they wore and carried, into
 their inventory; STASH only the stash.  Both work online or offline and
 change nothing else.  GEAR waits while the player's own corpse still holds
 things -- they can fetch it -- unless you add FORCE.
@@ -6041,11 +6046,12 @@ works on players online, link-dead or offline, and saves at once: if the
 save fails, nothing changes and you are told.
 
 A timed sentence runs from now, at most 30 days, and replaces any term
-already being served.  When it runs out they are released to the Temple,
-online or at their next login.  A pet standing with them in the cell
-goes with them, and a mount they are riding stays under them.  INDEFINITE
-lasts until staff release them.  STATUS shows the release time, what is
-left, who set it and what it imposed.
+already being served.  When it runs out, or staff release them, they
+go to the Temple: at once if online, and at their next login if not.
+A pet standing with them in the cell goes with them, and a mount they
+are riding stays under them.  INDEFINITE lasts until staff release them.
+STATUS shows the release time, what is left, who set it and what it
+imposed.
 
 Nothing else ends a sentence: death, recall, portals, spells, items, the
 Oracle, remort, DELETE, quitting, link loss and reboots all leave them in

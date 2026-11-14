@@ -4129,8 +4129,44 @@ void do_quit( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* Switched (SWITCH, a projection): QUIT did nothing and said nothing,
+       and a switched character whose trust had been lowered could not
+       RETURN either. Back to their own body first (review, 2026-11-13). */
+    if ( IS_NPC(ch) && IS_SWITCHED(ch) )
+    {
+	send_to_char( "You return to your own body first; QUIT again to leave.\n\r", ch );
+	do_return( ch, "" );
+	return;
+    }
+
+    /* A connection left in a mobile with no body to go back to (the body
+       was extracted under a switch: extract_char clears the original).
+       RETURN is beyond the mobile's own trust, so QUIT lets the
+       connection go; the character was saved when its body left. */
+    if ( IS_NPC(ch) && ch->desc != NULL && ch->desc->original == NULL )
+    {
+	send_to_char( "You have no body to return to. Goodbye.\n\r", ch );
+	close_socket( ch->desc );
+	return;
+    }
+
     if ( IS_NPC(ch) )
 	return;
+
+    /* A body whose player is switched out of it, made to quit (FORCE,
+       DENY): the player goes back into it first and quits with it, rather
+       than being left in the mobile with no body to return to. */
+    if ( ch->desc == NULL )
+    {
+	DESCRIPTOR_DATA *dsw;
+
+	for ( dsw = descriptor_list; dsw != NULL; dsw = dsw->next )
+	    if ( dsw->original == ch && dsw->character != NULL )
+	    {
+		do_return( dsw->character, "" );
+		break;
+	    }
+    }
 
     if ( ch->position == POS_FIGHTING )
     {
@@ -4257,6 +4293,16 @@ void do_quit( CHAR_DATA *ch, char *argument )
 void do_save( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
+
+    /* Switched, SAVE saves the player behind the mobile: it did nothing
+       and said nothing (review, 2026-11-13). */
+    if ( IS_NPC(ch) && IS_SWITCHED(ch) && !IS_NPC(ch->desc->original) )
+    {
+        save_char_obj( ch->desc->original );
+        send_to_char( "Your own character is saved.\n\r", ch );
+        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+        return;
+    }
 
     if ( IS_NPC(ch) )
         return;
@@ -4456,6 +4502,15 @@ void do_order( CHAR_DATA *ch, char *argument )
 	    send_to_char( "Do it yourself!\n\r", ch );
 	    return;
 	}
+	/* Somebody is in it -- a switched immortal, a projection: an order
+	   ran at their trust, not the mobile's (get_trust follows the
+	   descriptor), and a mortal ADVANCEd themselves through a charmed
+	   guard an immortal had switched into (review, 2026-11-13). */
+	if ( victim->desc != NULL )
+	{
+	    act( "$N answers to the one inside $M, not to you.", ch, NULL, victim, TO_CHAR );
+	    return;
+	}
     }
 
     found = FALSE;
@@ -4465,6 +4520,7 @@ void do_order( CHAR_DATA *ch, char *argument )
 
 	if ( IS_AFFECTED(och, AFF_CHARM)
 	&&   och->master == ch
+	&&   och->desc == NULL
 	&& ( fAll || och == victim ) )
 	{
 	    found = TRUE;

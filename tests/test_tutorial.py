@@ -32,6 +32,7 @@ from live_mud import (
     login,
     patch_player_file,
     place_sparring_guard,
+    room_of,
     skip_reason,
 )
 
@@ -645,6 +646,85 @@ class TutorialReviewLiveTests(unittest.TestCase):
                 hero.wait_closed()
                 staff.send("quit")
                 staff.wait_closed()
+
+
+ALL_STEPS = (1 << 21) - 1
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class TutorialSecondReviewLiveTests(unittest.TestCase):
+    """The second review of 2026-11-13."""
+
+    def test_a_peek_is_not_a_visit(self) -> None:
+        """CLAIRVOYANCE points in_room at the far room for its LOOK: that
+        room's Mud School station and the altar's stash hint were shown to,
+        and marked seen for, somebody who never went there."""
+        with LiveMud(extra_env={**TUTORIAL_ON, "TOC_TUTORIAL_GAP": "0"}) as mud:
+            make(mud, "Zrevgod", Levl=70, Room=TEMPLE)
+            make(mud, "Zrevpeek", Room=TEMPLE, Levl=20,
+                 Tutorial=f"1 {ALL_STEPS & ~mask('stash')}", TutSchool=0, TutPending=0)
+            make(mud, "Zrevfriend", Room=3757, Tutorial="0 0")
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as peek, \
+                    mud.connect(timeout=120) as friend:
+                login(staff, "Zrevgod", PW)
+                login(friend, "Zrevfriend", PW)
+                login(peek, "Zrevpeek", PW)
+                peek.drain(2)
+                staff.must("set skill zrevpeek clairvoyance 100", "")
+                for room in (3700, 4208):
+                    staff.must("restore zrevpeek", "")
+                    staff.must(f"transfer zrevfriend {room}", "")
+                    mark = len(peek.transcript)
+                    for _ in range(4):
+                        if "image of" in peek.sync("clairvoyance zrevfriend"):
+                            break
+                    seen = wait_for(peek, "never", 3, mark=mark)
+                    self.assertIn("image of", seen)
+                    self.assertNotIn("Mud School, step", seen)
+                    self.assertNotIn("Temple altar", seen)
+                self.assertIn("Mud School: 0 of 11", peek.sync("tutorial status"))
+                self.assertEqual(TEMPLE, room_of(staff, "Zrevpeek"))
+
+    def test_only_an_unknown_word_asks_for_help(self) -> None:
+        with LiveMud(extra_env={**TUTORIAL_ON, "TOC_TUTORIAL_GAP": "0"}) as mud:
+            make(mud, "Zrevsleep", Room=TEMPLE, Tutorial=f"1 {ALL_STEPS & ~mask('help')}",
+                 TutSchool=ALL_SCHOOL, TutPending=0)
+            with mud.connect(timeout=120) as hero:
+                login(hero, "Zrevsleep", PW)
+                hero.drain(2)
+                hero.must("sleep", "sleep")
+                said = hero.sync("north", barrier="time") + hero.sync("north", barrier="time")
+                self.assertIn("In your dreams", said)
+                hero.sync("wake")
+                self.assertNotIn("When a word does not work", wait_for(hero, "never", 4))
+                mark = len(hero.transcript)
+                hero.sync("zqxwv")
+                hero.sync("zqxwv")
+                self.assertIn("When a word does not work",
+                              wait_for(hero, "When a word does not work", 10, mark=mark))
+
+    def test_bits_no_step_names_are_dropped_at_load(self) -> None:
+        with LiveMud(extra_env=QUIET) as mud:
+            make(mud, "Zrevbits", Room=TEMPLE, Tutorial=f"1 {ALL_STEPS | (1 << 25)}",
+                 TutSchool=ALL_SCHOOL | (1 << 20), TutPending=(1 << 25) | (1 << 28))
+            with mud.connect(timeout=120) as hero:
+                login(hero, "Zrevbits", PW)
+                self.assertNotIn("a hint is waiting", hero.sync("tutorial status"))
+                hero.send("quit")
+                self.assertTrue(hero.wait_closed())
+            self.assertIsNone(file_line(mud, "Zrevbits", "TutPending"))
+            self.assertEqual(f"TutSchool {ALL_SCHOOL}", file_line(mud, "Zrevbits", "TutSchool"))
+            done = int(file_line(mud, "Zrevbits", "Tutorial").split()[2])
+            self.assertFalse(done & (1 << 25), done)
+
+    def test_a_new_character_hears_what_the_hints_are_first(self) -> None:
+        with LiveMud(extra_env={**TUTORIAL_ON, "TOC_TUTORIAL_GAP": "0"}) as mud:
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Zrevfresh", PW)
+                said = wait_for(client, "Mud School, step 1", 10, mark=0)
+                self.assertIn("The tutorial is ON", said)
+                self.assertIn("Mud School, step 1", said)
+                self.assertLess(said.index("The tutorial is ON"), said.index("Mud School, step 1"))
 
 
 if __name__ == "__main__":

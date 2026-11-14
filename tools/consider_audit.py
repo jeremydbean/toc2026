@@ -92,6 +92,7 @@ VERDICT_BAND = {
     "narrow": "1-1.5 (win, not by much)", "even": "0.67-1 (either way)",
     "lose": "0.25-0.67 (probably lose)", "die": "< 0.25 (almost certainly die)",
     "scratch": "barely scratched (win easily)",
+    "untouchable": "cannot be harmed yet (no win)",
 }
 
 
@@ -225,7 +226,7 @@ def encounter_pairs(progress: str) -> List[dict]:
         if e["verdict"] == "-" or enc not in ends:
             continue
         edge = (e["their_rounds"] / e["your_rounds"]
-                if e["verdict"] != "scratch" and e["your_rounds"] > 0 else None)
+                if e["verdict"] not in ("scratch", "untouchable") and e["your_rounds"] > 0 else None)
         out.append(dict(e, outcome=ends[enc], edge=edge,
                         band=VERDICT_BAND.get(e["verdict"], edge_band(edge))))
     return out

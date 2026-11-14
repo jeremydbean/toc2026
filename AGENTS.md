@@ -681,7 +681,12 @@ Commands added or revived in September 2026, and where they live:
   an id -- the counts are kept by id. A change only staff can use is
   headed `@ <id> <date> staff` and shown to staff alone, marked "(staff
   only)" (owner, 2026-10-23: immortal changes stay out of the players'
-  list); never put the creator rank in either.
+  list); never put the creator rank in either. **A blank line inside an
+  entry is a paragraph break**, in game and on the website alike, and a
+  `#` line is a comment anywhere (review, 2026-11-13: the game dropped an
+  entry's later paragraphs, which `/api/changes` showed); the website's
+  header is read as `sscanf` reads it -- any spacing, `staff` in any case
+  (`webadmin/changes_index.py`, `tests/test_web_changes.py`).
 - `alias` / `unalias` live in `src/act_comm.c`; expansion is in
   `src/interp.c` and must not leave a trailing space, or commands that read
   their whole argument (`goto`) fail on it. An alias may hold up to
@@ -1230,7 +1235,11 @@ Since the audit of 2026-11-10 the test is `hyrule_native()` in
 asked by DESPAIR, FISTS OF FURY, STEAL and CHARM PERSON. Ask it, not
 `hyrule_foe()`, which stops counting a charmed mobile. Instant death is
 defied by the guardians of Levels 6 to 9 (`hyrule_defies_instant_death`;
-owner: none on the last three dungeons).
+owner: none on the last three dungeons), **and by anything nothing can harm
+just now** (`hyrule_shrugs_off`: an unshrunk digdogger, a ringed patra, a
+bubble or blade trap; review, 2026-11-13), which takes not even the hard
+blow -- a backstab fatality or Farslay killed what the poison tick was
+already refused.
 
 **Hyrule's order holds however a character arrives** (audit,
 2026-11-10). `hyrule_gate_check` asks for a dungeon's entry piece on any
@@ -1348,6 +1357,13 @@ guardian's own attack** (`guardian_special_expected_per_round` in
 `special.c`, from `gear_consider_fight`): the volley the fight would throw
 now, three quarters of a pulse's a round, through `blow_landed_expected`,
 shared by the members of the fight (`tests/test_consider_guardian.py`).
+**A creature nothing can harm yet is no win** (review, 2026-11-13: an
+unshrunk Digdogger was "You should win easily"): `consider_predict` asks
+`hyrule_shrugs_off` first and answers `untouchable`, and CONSIDER says why
+(too big, the ring of eyes, nothing harms it); `tools/consider_audit.py`
+knows the verdict (`tests/test_hyrule_review_nov13.py`). "Play It Again"
+(drain the lake) is the lake's puzzle only (`value[1]` names the room it
+opens), never the den's.
 
 **The dungeons are done in order, and the chain is data in three places
 that must agree.** Each guardian drops its dungeon's key (Ganon's is the
@@ -1389,7 +1405,14 @@ in hyrule.c: the boomerangs, raft, stepladder, bow, recorder, red candle,
 Magical Key, Silver Arrow) is NODROP, and GET of one lying in Hyrule hands
 each player a copy (`hyrule_tool_claim`), one each. Bombs, the shop's
 candle and small keys stay tradeable: bought or spent, they carry nobody
-past a gate. A key goes at a quit like every key, and the guardian must be
+past a gate. **The achievements follow the key** (review, 2026-11-13):
+a guardian's boss row is unlocked for every mortal in the room it struck,
+grouped or not, as well as the killer's group, and with no player credit
+at all (its own poison tick) for its strikers
+(`achievement_record_boss_strikers`); a claim from the chest
+(`hyrule_chest_claim`) records the chest's row for its claimer, not only
+OPEN of a closed chest -- a late striker went without both, and every
+keyholder after the first opener without the chest's. A key goes at a quit like every key, and the guardian must be
 beaten again. `tests/test_hyrule_guardian_keys.py`.
 
 **A dungeon's own things crumble once it is left** (owner, 2026-11-12:
@@ -1450,6 +1473,11 @@ character carries, wears or stashes, at any depth, to their serial when the
 tag is their own Id and the token names them or nobody; one tagged for
 another Id is left nobody's. A serial-bound token follows a RENAME
 (`tests/test_quest_token_serial.py`).
+**RENAME saves the new name before it removes the old file** (review,
+2026-11-13): it unlinked the old file first and never checked the save, so
+a failed save or a crash between them left no file at all. A save that
+fails puts the name, the serial and the diary back and says so
+(`tests/test_rename_durable.py`).
 
 **Ganon's finishing phase is his own marker** (review, 2026-11-10,
 confirmed live). It was `AFF2_NO_RECOVER`, which NERVE DAMAGE and
@@ -1991,6 +2019,15 @@ it. Rules this leaves:
   room's exits and flags to the base. Players look at what a description
   names (`look pump`, `look coffins` in the October 2026 logs), so a
   decorated room's nouns should each have one.
+- **A seasonal copy is the area it stands in for** (review, 2026-11-13).
+  The copy loads under its own file name, so anything that keeps an
+  area's identity across boots asks `season_base_area()` (season.c):
+  `achievement_area_id` (visits, maps learned, explored areas) and the
+  map's always-known areas and GRANTMAP words. In season, Dresden and
+  Limbo had stopped being always known on the map, and a map learned out
+  of season was not honoured in it (`tests/test_maps_seasonal.py`).
+  Visits and maps recorded during Hallows End 2026 under the copies' ids
+  are not migrated.
 - **The Python tools do not know the seasons.** `area_lint.py`,
   `scripts/check_exits.py` and the shop price test read `area.lst`, so they
   check the base files only; the generator is what keeps the copies
@@ -2864,7 +2901,14 @@ parent); STASH TAKE's
   the current file, never the snapshot, `Pass`, `Tru`, `Creator`,
   `Fixes` (with its own mark added), `HyruleSecrets` and `BlackMarket`,
   so a rollback restores play, never an old password, rank, a login
-  fix to run twice or a one-time claim to pay twice. **A deleted
+  fix to run twice or a one-time claim to pay twice. **And the jail
+  sentence** (review, 2026-11-13: a snapshot from before it freed the
+  prisoner with no JAIL RELEASE, one taken during a sentence since released
+  jailed them again): `Jw_Timer` and `JailInfo` are kept from the current
+  file, `PLR_JAILED` in `Act` is the current file's, and `Comm` loses what
+  the snapshot's sentence imposed and gains what the current one did
+  (`prestore_jail_scan`, `prestore_jail_line`;
+  `tests/test_jail_review_nov13.py`). **A deleted
   character can be restored** (review, 2026-10-26): with no file there is
   no copy to undo with, so absence -- proved by `stat`'s ENOENT, never
   inferred from a failed open -- is recorded in the receipt as the undo
@@ -3913,7 +3957,13 @@ log says what a player typed; the journal says what happened, in columns
   level and wizinvis players are never counted. The report's `==
   encounters` section reads it all (`tests/test_encounter_log.py`). A new
   scatterer calls `encounter_laid` after its `obj_to_room`; a new way off
-  the ground goes through one of the three hooks.
+  the ground goes through one of the three hooks. **Privacy** (review,
+  2026-11-13): a `cleared` row is not written while a wizinvis player's
+  command runs (`playlog_hidden_command`) -- it named the room and "staff"
+  -- and the `passed`/`rare-passed` rows about a room the dealer or the
+  goblin stands in, written once the player has walked on, carry no room
+  either (`playlog_row_unplaced`): the room walked into is one exit from
+  him (`EncounterPrivacyTests`).
 
 - **`log/hyrule.tsv`** (`src/hyrulelog.c`, owner 2026-11-10: Hyrule
   logged heavily for balance and trends). Columns: epoch, kind, name,
@@ -4980,6 +5030,17 @@ expiry of a timer staff set). `wiki/operator-guide.md` has the command.
   code wrote for a sentence with no deadline, is indefinite, never one
   that expired in 1970. A legacy " . (JAILED)" title goes back to the
   class title at release.
+- **Who jailed them is the immortal, never the body** (review,
+  2026-11-13): a switched immortal's JAIL wrote the mobile's keywords
+  ("lieutenant comm") into `JailInfo`, whose last field `fread_word` reads,
+  and "comm" was then read as the Comm key and the file refused for good.
+  `do_jail` acts as `desc->original`; the writer puts a word of letters or
+  `-` there (`jail_by_word`), and the reader discards the rest of the
+  line, so a file written that way loads.
+- **A released prisoner's corpse leaves the cell with them**
+  (`jail_release_corpses`, every release, online or not): nothing else
+  reaches the cell, and TELEKINESIS leaves what lies there to the
+  sentence. An ownerless (WANTED) corpse stays.
 - **Saved at once, reported as it landed.** JAIL and RELEASE change
   memory, save (`jail_write`; fault point `jail-write-<Name>` -- no
   "save" in it), and on `DURABLE_FAILED` put everything back and say
@@ -4987,6 +5048,16 @@ expiry of a timer staff set). `wiki/operator-guide.md` has the command.
   not confirmed. Only then does an online prisoner move (forced back from
   a switch or projection, out of a fight and a walk, off a mount). A file
   saved free but in room 3 logs in at the Temple (`jail_login_place`).
+  **An offline sentence and an offline release move the saved room**
+  (review, 2026-11-13): the copy `offline_player_load` makes is in no
+  room's people, so the save wrote the room the file already named, and a
+  player jailed and released while away logged in where they had stood
+  before the sentence. `jail_offline_place` points the copy at the cell
+  (a sentence) or the Temple (a release) before `jail_write`, by pointer
+  only -- never `char_to_room`, which would raise an area's player count
+  -- and the undo puts it back if the save fails
+  (`tests/test_jail_offline_room.py`). A file released offline before
+  this still names its old room; nothing records that it was jailed.
   **The pet beside them moves with them both ways** (review, 2026-11-12):
   `save_char_obj` writes a pet only from its owner's room, so one left in
   the cell at a release was dropped by the next save. `jail_take_in` leads
@@ -5377,6 +5448,9 @@ always). The game decides and the package only draws:
   never trust: owner, 2026-11-12, a mortal trusted to build explores like
   anyone) knows everything; an area in
   `map_always_known_files` (dresden, school, limbo, dummy -- the one table);
+  the room the character stands in (a built area's never reaches the
+  achievements' set, and Map.Known left out the room Room.Info had just
+  named, so the package fogged it; review, 2026-11-13);
   a room in the achievements' `rooms` set (walked into); or the room's
   **region** held. A region is an area (`achievement_area_id`), except that
   each Hyrule dungeon (its `hyrule_dungeon_gate` range) is its own
@@ -5395,6 +5469,14 @@ always). The game decides and the package only draws:
   a Hyrule map bit is new). A room walked into needs no message: the package
   reads `Room.Info`. A new way to learn a map goes through
   `map_grant_region`.
+- **The package's fog** (1.5.12, corrected in 1.5.13 and 1.5.16): the room
+  the player stands in (`tocMudlet.lastRoom`) is never fogged; a fogged
+  room's special exits and those into it are kept in its record and put
+  back with it, and the published links (`tocMudlet.links`, from
+  `directions.json`) are laid again after every pass (`tocMudlet.relink`);
+  the record is saved on `sysExitEvent` (`tocMudlet.flushFog`), not only
+  five seconds after a pass. Played against the fake mapper only, not in
+  real Mudlet (review, 2026-11-13).
 - **The package's fog** (1.5.12, corrected in 1.5.13): unknown rooms are
   deleted from the profile's map and kept, with coordinates, area, name,
   terrain, mark, doors and both ends of every exit (with the door on the
@@ -5962,6 +6044,48 @@ deliberate -- everything above it, `dam_message` included, still runs, so
 the default reading of a blow is the ordinary one and only the loss is
 skipped. Nothing displays the flag: not `score`, not the room. That is a
 deliberate difference from WIZINVIS and CLOAK.
+
+## Switched Characters
+
+SWITCH (`do_switch` in `act_wiz.c`) hands an immortal's descriptor to a
+mobile; PROJECT's stand-in (`psionic_switch_into`) does the same for one
+command. `d->original` is the player's own body, left where it stood with
+no descriptor, and **`get_trust()` reads a switched mobile's trust from
+`desc->original`** -- so anything that makes a mobile run a command for
+somebody else runs it at the immortal's trust. Rules (review, 2026-11-13;
+`tests/test_switch_review.py`):
+
+- **Nobody else commands a mobile somebody is in.** A level 40 mortal
+  charmed the guard an immortal was in and ORDERed it to ADVANCE them to
+  45, live. CHARM PERSON refuses a mobile with a descriptor -- in `do_cast`
+  before the mana and the provocation, and in the spell for scrolls and
+  wands -- and ORDER skips any follower with one, `order all` included. A
+  new way of making a mobile run a typed command asks `victim->desc`
+  first. FORCE already compares rank with the borrowed trust.
+- **QUIT returns, SAVE saves the player.** Both did nothing and said
+  nothing for a mobile. A switched QUIT returns to the body (RETURN needs
+  immortal trust, which a demoted immortal no longer has), and SAVE saves
+  `desc->original`. Autosave already followed the descriptor.
+- **A body made to quit takes its player with it.** FORCE or DENY quitting
+  a body whose player was switched extracted it under them; `extract_char`
+  cleared `d->original`, and the player was left in the mobile with no
+  RETURN and a silent QUIT until their link dropped. `do_quit` returns that
+  descriptor to the body first, and a connection still left in a mobile
+  with no original is let go by QUIT.
+- **Handled already, and to keep**: `extract_char` of a switched mobile
+  (killed, purged, bottled) returns first; `close_socket` returns before
+  marking anyone link-dead; "connect anyway" finds a switched session by
+  `d->original`'s name and closes it (which returns it) before
+  reconnecting; the idle purge skips a switched body
+  (`body_is_switched_from`); every GMCP feed guards an NPC character;
+  SWITCH stops a walk the body was on (`walkto_clear`).
+- **Not changed, for the owner to decide**: SWITCH is gated by trust, so a
+  mortal given immortal trust can switch into any mobile and act through
+  it (kills credited to the mobile, PK rules bypassed); `victim->comm` is
+  copied from the immortal at SWITCH and nothing is copied back at RETURN;
+  the lycanthrope branches of SWITCH and RETURN (`LYCANTHROPY_ENABLED` 0)
+  would, if enabled, call `char_to_room` with a NULL room and extract the
+  beast twice from `extract_char`.
 
 ## The GMCP Feeds
 
@@ -6937,6 +7061,16 @@ whole word** (`do_look`): "look w" looks west, never at "walls".
 you know from existing players"). Hints tied to events, one at a time,
 never a timed stream or a quest. TUTORIAL ON|OFF|STATUS|NEXT, last in the
 command table (the staff NEWBIE command is another thing).
+
+- **Only the room stood in** (second review, 2026-11-13): CLAIRVOYANCE and
+  LOOK IN a portal point `in_room` elsewhere for their look, and a peek
+  into Mud School marked its station seen -- and could award Schooled.
+  `tutorial_room_seen` asks the room's people. **Only an unknown word**
+  counts toward the HELP hint, never a command refused for the position.
+  **The banner comes first**: no station is said while `tutorial_last` is
+  0 (before `tutorial_login` ran this sitting). **Bits no step or station
+  names are dropped at load** (`tutorial_load_fixup`), and compile-time
+  checks hold the steps below `TUT_FINISHED_BIT` and the stations to 31.
 
 - **Who has it.** `tutorial_new_character` (nanny, after the outfit) turns
   it on for every character made; `Tutorial <on> <done>` is written for

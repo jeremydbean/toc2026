@@ -86,6 +86,19 @@ the room is on the map: the atlas's area and square stand (a seasonal copy
 renames its area), and only a room it creates, or one `Room.Info` places
 with `map`, takes the game's.
 
+Package 1.5.16 (review, 2026-11-13; played in `tests/mudlet_fog_spec.lua`
+against its fake mapper, not in real Mudlet):
+
+- **The room you stand in is never fogged**, whatever a `Map.Known` says
+  (the game now always lists it too: a room in a built area was left out,
+  and the package took it off the map under the player).
+- **Special exits come back with their rooms.** A room the fog takes away
+  takes its special exits -- portals, climbs, a player's own -- and those
+  into it; they are kept in the fog record and put back when it returns,
+  and the published links are laid again after every fog pass.
+- **The fog record is saved when Mudlet closes** (`sysExitEvent`), not only
+  five seconds after a fog pass, so the rooms it holds are not lost.
+
 Package 1.5.15 (owner, 2026-11-12; review findings reproduced in
 `tests/mudlet_ui_spec.lua` and `tests/mudlet_fog_spec.lua`):
 

@@ -3304,6 +3304,17 @@ const char *consider_predict( CHAR_DATA *ch, CHAR_DATA *victim, double *yours,
     double edge;
 
     gear_consider_fight( ch, victim, yours, theirs, caster );
+    /* A Hyrule creature nothing can harm just now -- a bubble or blade
+       trap, a patra inside its ring, a digdogger the Recorder has not
+       shrunk -- is no win at any odds (review, 2026-11-13: an unshrunk
+       Digdogger was "You should win easily", and every blow bounced). */
+    if ( hyrule_shrugs_off( victim ) )
+    {
+        *yours = 0;
+        *your_rounds = 0;
+        *their_rounds = *theirs >= 0.5 ? UMAX( 1, ch->hit ) / *theirs : 0;
+        return "untouchable";
+    }
     *your_rounds = UMAX( 1, victim->hit ) / UMAX( 0.1, *yours );
     if ( *theirs < 0.5 )
     {
@@ -3366,6 +3377,36 @@ static void consider_fight( CHAR_DATA *ch, CHAR_DATA *victim )
 
     verdict = consider_predict( ch, victim, &yours, &theirs, &your_rounds, &their_rounds,
                                 &caster );
+    if ( !strcmp( verdict, "untouchable" ) )
+    {
+        if ( hyrule_patra_eyes_left( victim ) > 0 )
+            msg = "$N's great eye is out of reach while its ring of eyes orbits it: "
+                  "each blow cuts down one of the ring first.";
+        else if ( hyrule_is_digdogger( victim ) )
+            msg = "$N is far too big to hurt as it is: something must make it smaller first.";
+        else
+            msg = "Nothing you have can harm $N: go round it.";
+        act( msg, ch, NULL, victim, TO_CHAR );
+        progress_consider( ch, victim, yours, theirs, your_rounds, their_rounds, verdict,
+                           caster );
+        /* What it does to you meanwhile, as for any guardian. */
+        if ( their_rounds > 0 )
+        {
+            consider_rounds( their_rounds, theirs_text, sizeof(theirs_text) );
+            snprintf( buf, sizeof(buf), "Meanwhile $E would need %s to bring you down.",
+                      theirs_text );
+            act( buf, ch, NULL, victim, TO_CHAR );
+        }
+        if ( is_hyrule_guardian( victim )
+        &&   ( special = guardian_special_expected_per_round( victim, ch ) ) >= 0.5 )
+        {
+            snprintf( buf, sizeof(buf),
+                "That counts $S own attack too: about %ld a round of it lands on you.",
+                (long) ( special + 0.5 ) );
+            act( buf, ch, NULL, victim, TO_CHAR );
+        }
+        return;
+    }
     if ( !strcmp( verdict, "scratch" ) )
     {
         consider_rounds( your_rounds, yours_text, sizeof(yours_text) );

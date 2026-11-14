@@ -68,7 +68,9 @@ class PlaylogSourceTests(unittest.TestCase):
 
     def test_wizinvis_staff_are_never_written(self) -> None:
         code = source("playlog.c")
-        write = code[code.index("static void journal_write("):]
+        # journal_write is journal_write_at with the actor's room
+        # (2026-11-13): the test is in the one writer both go through.
+        write = code[code.index("static void journal_write_at( const char *kind, CHAR_DATA *ch, const char *fields,\n                              bool unplaced )\n{"):]
         write = write[:write.index("\n}\n")]
         self.assertIn("play_hidden( ch )", write)
         self.assertNotIn("PLR_WIZINVIS ) ? NULL", code, "no anonymous rows: none at all")

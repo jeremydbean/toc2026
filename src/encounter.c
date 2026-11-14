@@ -282,6 +282,10 @@ static void write_cleared( OBJ_DATA *obj, const char *kind, const char *why )
     char fields[ENC_FIELDS], name[80], room[16], area[64], actor[96];
     int vnum = obj->in_room != NULL ? obj->in_room->vnum : 0;
 
+    /* A wizinvis immortal's GET, SACRIFICE or PURGE: no trace, room or
+       otherwise (review, 2026-11-13: the row named the room and "staff"). */
+    if ( playlog_hidden_command() )
+        return;
     enc_count.cleared++;
     obj_name( obj, name, sizeof(name) );
     room_text( vnum, room, sizeof(room), area, sizeof(area) );
@@ -317,7 +321,8 @@ void encounter_obj_held( OBJ_DATA *obj, CHAR_DATA *ch )
                           ch->pIndexData != NULL ? ch->pIndexData->vnum : 0 );
             else
                 snprintf( why, sizeof(why), "%s", is_staff( ch ) ? "staff" : "player-not-playing" );
-            write_cleared( obj, kind, why );
+            if ( IS_NPC(ch) || !IS_SET(ch->act, PLR_WIZINVIS) )
+                write_cleared( obj, kind, why );
         }
         obj->enc_floor = false;
         return;
@@ -456,12 +461,17 @@ static void passed_check( CHAR_DATA *ch, ENCOUNTER_STATE *st, bool anyway, const
     OBJ_DATA *obj;
     CHAR_DATA *rch;
     char fields[ENC_FIELDS], name[80], rtext[16], area[64];
+    bool hidden;
 
     if ( st->room <= 0 || ( room = get_room_index( st->room ) ) == NULL )
         return;
     if ( !anyway && room == ch->in_room )
         return;
     room_text( room->vnum, rtext, sizeof(rtext), area, sizeof(area) );
+    /* Left a room the dealer or the goblin stands in: the rows about it
+       must not carry the room walked into either, one exit away, or the
+       journal maps him (review, 2026-11-13). */
+    hidden = room_hides_from_log( room );
 
     for ( obj = room->contents; obj != NULL; obj = obj->next_content )
     {
@@ -481,7 +491,10 @@ static void passed_check( CHAR_DATA *ch, ENCOUNTER_STATE *st, bool anyway, const
                   at != NULL ? (long) ( current_time - *at ) : -1L,
                   obj->enc_seers, obj->enc_source != NULL ? obj->enc_source : "-",
                   rtext, how );
-        playlog_row( "passed", ch, fields );
+        if ( hidden )
+            playlog_row_unplaced( "passed", ch, fields );
+        else
+            playlog_row( "passed", ch, fields );
     }
     for ( rch = room->people; rch != NULL; rch = rch->next_in_room )
     {
@@ -497,7 +510,10 @@ static void passed_check( CHAR_DATA *ch, ENCOUNTER_STATE *st, bool anyway, const
         snprintf( fields, sizeof(fields), "%s\t%d\t%ld\t%ld\t%s",
                   kind, rch->pIndexData->vnum, rch->enc_id,
                   at != NULL ? (long) ( current_time - *at ) : -1L, how );
-        playlog_row( "rare-passed", ch, fields );
+        if ( hidden )
+            playlog_row_unplaced( "rare-passed", ch, fields );
+        else
+            playlog_row( "rare-passed", ch, fields );
     }
 }
 

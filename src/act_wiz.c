@@ -2949,6 +2949,9 @@ void do_switch( CHAR_DATA *ch, char *argument )
        char_to_room(ch,get_room_index(9) );
        victim->were_shape = ch->were_shape;
      }
+    /* A walk the body was on stops: walkto_update follows the descriptor,
+       so it went on walking the body after the RETURN. */
+    walkto_clear( ch );
     SET_CHAR_REF( ch->desc, character, victim );
     SET_CHAR_REF( ch->desc, original, ch );
     SET_DESC_REF( victim, desc, ch->desc );
@@ -9802,17 +9805,34 @@ void do_rename( CHAR_DATA *ch, char *argument )
     /* Record old save path before changing the name */
     snprintf( old_file, sizeof(old_file), "%s%s", PLAYER_DIR, capitalize(victim->name) );
 
-    /* Delete old player file -- new one created by save_char_obj below */
-    unlink( old_file );
-
     /* Capitalize and apply new name */
     arg2[0] = (char)UPPER( (unsigned char)arg2[0] );
-    player_serial_rename( victim->name, arg2 );     /* the serial goes with them */
-    diary_rename( victim->name, arg2 );             /* and the diary (diary.c) */
-    free_string( victim->name );
-    victim->name = str_dup( arg2 );
+    {
+        char old_name[MAX_INPUT_LENGTH];
 
-    save_char_obj( victim );
+        toc_strlcpy( old_name, victim->name, sizeof(old_name) );
+        player_serial_rename( victim->name, arg2 );     /* the serial goes with them */
+        diary_rename( victim->name, arg2 );             /* and the diary (diary.c) */
+        free_string( victim->name );
+        victim->name = str_dup( arg2 );
+
+        /* The new file first, and the old one goes only once it is there
+           (review, 2026-11-13: the old file was unlinked before an
+           unchecked save, so a failed save or a crash between them left the
+           character with no file at all). */
+        save_char_obj( victim );
+        if ( save_char_obj_status() == DURABLE_FAILED )
+        {
+            player_serial_rename( victim->name, old_name );
+            diary_rename( victim->name, old_name );
+            free_string( victim->name );
+            victim->name = str_dup( old_name );
+            send_to_char( "The new name's file could not be saved, so nothing was "
+                          "changed; their old file stands.\n\r", ch );
+            return;
+        }
+        unlink( old_file );
+    }
 
     snprintf( buf, sizeof(buf), "%s has been renamed to %s.\n\r", arg1, arg2 );
     send_to_char( buf, ch );
@@ -11583,6 +11603,93 @@ static bool prestore_snapshot_identity( const char *path, char *name, size_t siz
     return name[0] != '\0';
 }
 
+/*
+ * A full PRESTORE keeps the jail sentence as it stands now (review,
+ * 2026-11-13: a snapshot from before the sentence ended it with no JAIL
+ * RELEASE, and one taken during a sentence since released brought it
+ * back). What each file says about it, read from the player section.
+ */
+typedef struct
+{
+    bool read;          /* the file was read */
+    long act;
+    bool info;          /* a JailInfo line: what the sentence imposed is known */
+    int  added;
+} PRESTORE_JAIL;
+
+static void prestore_jail_scan( const char *path, PRESTORE_JAIL *j )
+{
+    FILE *fp;
+    char *line;
+
+    memset( j, 0, sizeof(*j) );
+    if ( path == NULL || ( fp = fopen( path, "rb" ) ) == NULL )
+        return;
+    j->read = true;
+    while ( ( line = read_whole_line( fp ) ) != NULL )
+    {
+        long since;
+        int added;
+
+        if ( !strcmp( line, "End\n" ) || !strcmp( line, "End\r\n" ) )
+        {
+            free( line );
+            break;
+        }
+        if ( !strncmp( line, "Act ", 4 ) )
+            j->act = strtol( line + 4, NULL, 10 );
+        else if ( !strncmp( line, "JailInfo ", 9 )
+             &&   sscanf( line + 9, "%ld %d", &since, &added ) == 2 )
+        {
+            j->info  = true;
+            j->added = added & JAIL_ADDED_KNOWN;
+        }
+        free( line );
+    }
+    fclose( fp );
+}
+
+/* The snapshot's Act or Comm line, rewritten for the sentence now; true
+   when it was written here and the caller writes nothing. */
+static bool prestore_jail_line( const char *line, const PRESTORE_JAIL *cur,
+                                const PRESTORE_JAIL *snap, FILE *out )
+{
+    long value;
+
+    if ( !cur->read )
+        return false;
+    if ( !strncmp( line, "Act ", 4 ) )
+    {
+        value = strtol( line + 4, NULL, 10 );
+        value = ( value & ~PLR_JAILED ) | ( cur->act & PLR_JAILED );
+        fprintf( out, "Act  %ld\n", value );
+        return true;
+    }
+    if ( !strncmp( line, "Comm ", 5 ) )
+    {
+        value = strtol( line + 5, NULL, 10 );
+        /* What the snapshot's sentence imposed goes with it ... */
+        if ( ( snap->act & PLR_JAILED ) && snap->info && !( snap->added & JAIL_LEGACY ) )
+        {
+            if ( snap->added & JAIL_ADDED_NOCHANNELS )
+                value &= ~COMM_NOCHANNELS;
+            if ( snap->added & JAIL_ADDED_NOTITLE )
+                value &= ~COMM_NOTITLE;
+        }
+        /* ... and what the sentence now imposed is put back. */
+        if ( ( cur->act & PLR_JAILED ) && cur->info )
+        {
+            if ( cur->added & JAIL_ADDED_NOCHANNELS )
+                value |= COMM_NOCHANNELS;
+            if ( cur->added & JAIL_ADDED_NOTITLE )
+                value |= COMM_NOTITLE;
+        }
+        fprintf( out, "Comm %ld\n", value );
+        return true;
+    }
+    return false;
+}
+
 static void prestore_command( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
@@ -12105,16 +12212,24 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
          * market's purchases -- so nothing is paid twice.
          */
         {
+            /* And the jail sentence (review, 2026-11-13): only staff
+               release or a term's expiry ends one, so a restore keeps the
+               sentence as it stands now -- Jw_Timer and JailInfo from the
+               current file, PLR_JAILED in Act and the restrictions the
+               sentence imposed in Comm (prestore_jail_bits) -- neither
+               ending one nor bringing an old one back. */
             static const char *const keep_keys[] =
-                { "Pass ", "Tru ", "Creator ", "Fixes ", "HyruleSecrets ", "BlackMarket ", NULL };
+                { "Pass ", "Tru ", "Creator ", "Fixes ", "HyruleSecrets ", "BlackMarket ",
+                  "Jw_Timer ", "JailInfo ", NULL };
             /* Whole lines, however long: a Fixes list past 4096 bytes was
                split by fgets, its first piece kept and the rest written
                after the inserted '~' as garbage keys (review, 2026-10-27). */
-            char *kept[8];
+            char *kept[12];
             int nkept = 0, k;
             bool have_current = false, have_fixes = false;
             FILE *fcur = fopen( dstpath, "rb" );
             char *line;
+            PRESTORE_JAIL cur_jail, snap_jail;
 
             snprintf( op, sizeof(op), "full:%ld", recovery_sequence() + 1 );
             if ( fcur == NULL && !absent )
@@ -12125,7 +12240,7 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
             if ( fcur != NULL )
             {
                 have_current = true;
-                while ( nkept < 8 && ( line = read_whole_line( fcur ) ) != NULL )
+                while ( nkept < 12 && ( line = read_whole_line( fcur ) ) != NULL )
                 {
                     if ( !strcmp( line, "End\n" ) || !strcmp( line, "End\r\n" ) )
                     {
@@ -12158,7 +12273,7 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
                 }
                 fclose( fcur );
             }
-            if ( !have_fixes && nkept < 8 )
+            if ( !have_fixes && nkept < 12 )
             {
                 size_t need = strlen( op ) + 24;
 
@@ -12166,6 +12281,8 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
                     snprintf( kept[nkept++], need, "Fixes restore:%s~\n", op );
             }
 
+            prestore_jail_scan( have_current ? dstpath : NULL, &cur_jail );
+            prestore_jail_scan( srcpath, &snap_jail );
             fsrc = fopen( srcpath, "rb" );
             if ( fsrc == NULL )
             {
@@ -12217,6 +12334,9 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
                             }
                         }
                     }
+                    if ( !skip && in_player && have_current
+                    &&   prestore_jail_line( line, &cur_jail, &snap_jail, fdst ) )
+                        skip = true;
                     if ( !skip && fputs( line, fdst ) == EOF )
                         copy_failed = true;
                     free( line );

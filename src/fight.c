@@ -421,7 +421,12 @@ bool hyrule_defies_instant_death( CHAR_DATA *victim )
         && ( is_hyrule_ganon(victim)
           || victim->pIndexData->vnum == HYRULE_GOHMA_VNUM
           || victim->pIndexData->vnum == HYRULE_ANCIENT_AQUAMENTUS_VNUM
-          || victim->pIndexData->vnum == HYRULE_ASHEN_GLEEOK_VNUM );
+          || victim->pIndexData->vnum == HYRULE_ASHEN_GLEEOK_VNUM
+          /* And whatever nothing can harm just now -- an unshrunk
+             digdogger, a patra inside its ring, a bubble or blade trap
+             (review, 2026-11-13): a backstab fatality or Farslay killed
+             one the poison tick was already refused (audit, 2026-11-10). */
+          || hyrule_shrugs_off(victim) );
 }
 
 static bool hyrule_instant_kill_resisted( CHAR_DATA *ch, CHAR_DATA *victim )
@@ -430,6 +435,13 @@ static bool hyrule_instant_kill_resisted( CHAR_DATA *ch, CHAR_DATA *victim )
 
     if ( !hyrule_defies_instant_death(victim) )
         return false;
+
+    /* Not even the hard blow: nothing harms it yet. */
+    if ( hyrule_shrugs_off(victim) )
+    {
+        act( "$n is untouched: nothing can harm $m as $e is.", victim, NULL, NULL, TO_ROOM );
+        return true;
+    }
 
     share = UMAX( 1, victim->max_hit / HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR );
     if ( is_hyrule_ganon(victim) )

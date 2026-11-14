@@ -1,7 +1,7 @@
 """The game's CHANGES list, read for the website (2026-11-12).
 
 area/changes.dat is what src/changes.c reads: comment lines starting with
-'#' before the first entry, then entries headed `@ <id> <yyyy-mm-dd>` and
+'#' (anywhere), then entries headed `@ <id> <yyyy-mm-dd>` and
 optionally ` staff`, each followed by its text and a blank line, newest
 first. A staff entry is shown in game to staff alone, so the website shows
 it only to an authenticated request.
@@ -15,7 +15,9 @@ import re
 from pathlib import Path
 from typing import Any, Dict, List
 
-HEADER = re.compile(r"^@ (\S+) (\d{4}-\d\d-\d\d)( staff)?\s*$")
+# As src/changes.c reads a header with sscanf: words split on any
+# whitespace, the third word "staff" in any case.
+HEADER = re.compile(r"^@\s*(\S+)\s+(\S+)(?:\s+(\S+))?")
 
 
 def parse_changes(text: str) -> List[Dict[str, Any]]:
@@ -32,13 +34,13 @@ def parse_changes(text: str) -> List[Dict[str, Any]]:
 
     for raw in text.splitlines():
         line = raw.rstrip()
-        if current is None and line.startswith("#"):
+        if line.startswith("#"):
             continue
         found = HEADER.match(line)
         if found:
             close_paragraph()
             current = {"id": found.group(1), "date": found.group(2),
-                       "staff": bool(found.group(3)), "paragraphs": []}
+                       "staff": (found.group(3) or "").lower() == "staff", "paragraphs": []}
             entries.append(current)
             continue
         if current is None:

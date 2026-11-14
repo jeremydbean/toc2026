@@ -64,7 +64,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.5.15"
+tocMudlet.version = "1.5.16"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -575,6 +575,8 @@ function tocMudlet.onRoutes(text)
   -- Trainers and guild halls, where the list carries them: walk mage,
   -- walk necro guild and the like find them the same way as an area.
   tocMudlet.trainers = type(data.trainers) == "table" and data.trainers or {}
+  -- Kept: rooms the fog brings back are linked again (tocMudlet.relink).
+  tocMudlet.links = type(data.links) == "table" and data.links or nil
   local added = installLinks(data.links)
 
   if not tocMudlet.routesQuiet then
@@ -2015,6 +2017,10 @@ function tocMudlet.install()
   register("sysUninstallPackage", function(_, packageName)
     if packageName == "TimesOfChaos" then tocMudlet.teardown() end
   end)
+  -- Mudlet closing within the five seconds saveFogSoon waits: the rooms a
+  -- fog pass took off the map must be on the disk with them (review,
+  -- 2026-11-13), or they were gone from the profile for good.
+  register("sysExitEvent", function() tocMudlet.flushFog() end)
   if isConnected and isConnected() then tocMudlet.subscribe() end
   tempTimer(0.1, tocMudlet.refresh)
   -- After the load, never inside it: uninstalling a package while
@@ -2176,11 +2182,33 @@ local function stubWithDoor(roomId, direction, state)
   end
 end
 
+-- A room's special exits as Mudlet keeps them: {["enter portal"] = 30239}.
+local function specialExits(roomId)
+  local result = {}
+  if not getSpecialExitsSwap then return result end
+  local ok, exits = pcall(getSpecialExitsSwap, roomId)
+  if not ok or type(exits) ~= "table" then return result end
+  for command, target in pairs(exits) do
+    if type(command) == "string" and tonumber(target) then result[command] = tonumber(target) end
+  end
+  return result
+end
+
+-- The published special exits (portals, climbs) again, between whatever
+-- rooms are on the map now: a room the fog takes away takes its special
+-- exits with it, and those into it (review, 2026-11-13).
+function tocMudlet.relink()
+  if tocMudlet.links then installLinks(tocMudlet.links) end
+end
+
 -- What a room is, read before it goes: deleting a room also takes the
 -- doors off its neighbours' exits into it (Mudlet's removeExitExtras), so
 -- every record of a pass is read before any room of it is deleted.
-local function fogRecord(roomId, incoming)
+local function fogRecord(roomId, incoming, specialIn)
   local rec = { exits = shortExits(roomId), incoming = incoming or {} }
+  local special = specialExits(roomId)
+  if next(special) then rec.special = special end
+  if specialIn and #specialIn > 0 then rec.specialIn = specialIn end
   if getRoomCoordinates then
     local ok, x, y, z = pcall(getRoomCoordinates, roomId)
     if ok then rec.x, rec.y, rec.z = number(x), number(y), number(z) end
@@ -2260,6 +2288,28 @@ function tocMudlet.unfog(roomId)
       pcall(setDoor, roomId, direction, state)
     end
   end
+  -- Its own special exits, and those into it, as they were: a player's
+  -- own and the published ones alike.
+  for command, target in pairs(rec.special or {}) do
+    target = tonumber(target)
+    if target and roomExistsSafe(target) and addSpecialExit then
+      pcall(addSpecialExit, roomId, target, command)
+    elseif target and tocMudlet.fog[target] then
+      local other = tocMudlet.fog[target]
+      other.specialIn = other.specialIn or {}
+      table.insert(other.specialIn, {roomId, command})
+    end
+  end
+  for _, link in ipairs(rec.specialIn or {}) do
+    local source, command = tonumber(link[1]), link[2]
+    if source and roomExistsSafe(source) and addSpecialExit then
+      pcall(addSpecialExit, source, roomId, command)
+    elseif source and tocMudlet.fog[source] then
+      local other = tocMudlet.fog[source]
+      other.special = other.special or {}
+      other.special[command] = roomId
+    end
+  end
   return true
 end
 
@@ -2286,11 +2336,12 @@ function tocMudlet.applyFog()
         id = tonumber(id)
         if id then
           ids[#ids + 1] = id
-          if not tocMudlet.isKnown(id) then hide[id] = true end
+          -- Never the room the player stands in, whatever the list says.
+          if not tocMudlet.isKnown(id) and id ~= tocMudlet.lastRoom then hide[id] = true end
         end
       end
       if next(hide) then
-        local incoming = {}
+        local incoming, specialIn = {}, {}
         for _, id in ipairs(ids) do
           local doors = nil
           for direction, target in pairs(shortExits(id)) do
@@ -2300,11 +2351,19 @@ function tocMudlet.applyFog()
               table.insert(incoming[target], {id, direction, doors[doorKey(direction)]})
             end
           end
+          if not hide[id] then
+            for command, target in pairs(specialExits(id)) do
+              if hide[target] then
+                specialIn[target] = specialIn[target] or {}
+                table.insert(specialIn[target], {id, command})
+              end
+            end
+          end
         end
         -- Read everything first, then delete: a deletion takes the doors
-        -- off the exits into the room it removes.
+        -- off the exits into the room it removes, and the special exits.
         local records = {}
-        for id in pairs(hide) do records[id] = fogRecord(id, incoming[id]) end
+        for id in pairs(hide) do records[id] = fogRecord(id, incoming[id], specialIn[id]) end
         for id, rec in pairs(records) do
           tocMudlet.fog[id] = rec
           pcall(deleteRoom, id)
@@ -2321,6 +2380,7 @@ function tocMudlet.applyFog()
     end
   end
   if changed then
+    tocMudlet.relink()
     tocMudlet.saveFogSoon()
     if updateMap then pcall(updateMap) end
   end
@@ -2732,11 +2792,15 @@ function tocMudlet.mapCheck()
   cecho("\n" .. table.concat(out, "\n") .. "\n")
 end
 
-function tocMudlet.teardown()
+function tocMudlet.flushFog()
   if tocMudlet.fogSaveTimer then
     if killTimer then pcall(killTimer, tocMudlet.fogSaveTimer) end
     tocMudlet.saveFog()
   end
+end
+
+function tocMudlet.teardown()
+  tocMudlet.flushFog()
   for _, handler in ipairs(tocMudlet.handlers or {}) do
     if killAnonymousEventHandler then pcall(killAnonymousEventHandler, handler) end
   end

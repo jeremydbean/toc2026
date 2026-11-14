@@ -167,6 +167,35 @@ function getDoors(id)
   for key, state in pairs(rooms[id] and rooms[id].doors or {}) do out[key] = state end
   return out
 end
+-- Special exits, as Mudlet keeps them (TRoom::mSpecialExits, command ->
+-- room); deleteRoom drops those into the deleted room too
+-- (TRoomDB::__removeRoom -> removeAllSpecialExitsToRoom).
+function addSpecialExit(from, to, command)
+  from, to = tonumber(from), tonumber(to)
+  if not rooms[from] or not rooms[to] then return false end
+  rooms[from].special = rooms[from].special or {}
+  rooms[from].special[command] = to
+  return true
+end
+function getSpecialExitsSwap(id)
+  local out = {}
+  for command, to in pairs(rooms[tonumber(id)] and rooms[tonumber(id)].special or {}) do
+    out[command] = to
+  end
+  return out
+end
+do
+  local plainDelete = deleteRoom
+  function deleteRoom(id)
+    local ok, why = plainDelete(id)
+    for _, room in pairs(rooms) do
+      for command, to in pairs(room.special or {}) do
+        if to == tonumber(id) then room.special[command] = nil end
+      end
+    end
+    return ok, why
+  end
+end
 function updateMap() end
 function centerview() end
 function tempTimer(_, fn) timers[#timers + 1] = fn return #timers end
@@ -237,6 +266,7 @@ local function atlas()
   setRoomChar(6, "$")
   tocMudlet.fog = {}
   tocMudlet.known, tocMudlet.knownAll, tocMudlet.walked = nil, false, {}
+  tocMudlet.lastRoom = nil
 end
 
 local function known(parts)
@@ -308,7 +338,9 @@ for id, room in pairs(rooms) do if next(room.stubs) then stubbed = id end end
 check("no stub is left where a room came back", stubbed == nil, stubbed)
 check("nothing is left aside", next(tocMudlet.fog) == nil)
 
--- Fogged in two passes, revealed in the other order: still linked.
+-- Fogged in two passes, revealed in the other order: still linked. The
+-- player has walked back to room 1 (the room stood in is never fogged).
+tocMudlet.lastRoom = 1
 known({ { rooms = { {1, 2} } } })
 check("a second fog", absent(3, 4, 5, 6, 10))
 gmcp.Room = { Info = { num = 5, name = "Room 5", area = "Area A", environment = "field", exits = {} } }
@@ -620,6 +652,58 @@ tocMudlet.onMapReplaced()
 tocMudlet.noteAtlasLayout()
 check("the new atlas is not", told == 0 and userData.tocAtlasLayout == tocMudlet.ATLAS_LAYOUT)
 cecho = function() end
+
+-- The review of 2026-11-13.
+local function special(from, command)
+  return rooms[from] and rooms[from].special and rooms[from].special[command]
+end
+
+-- The room the player stands in stays, even when a Map.Known leaves it out
+-- (a built area's room, before the game listed the current room).
+atlas()
+timers = {}
+tocMudlet.fogSaveTimer = nil
+tocMudlet.lastRoom = 5
+known({ { rooms = { {1, 3} } } })
+check("the room stood in is never fogged", rooms[5] ~= nil)
+check("the rest still is", rooms[6] == nil and rooms[4] == nil)
+tocMudlet.lastRoom = nil
+
+-- Special exits go with a fogged room and come back with it, both ways.
+atlas()
+timers = {}
+tocMudlet.fogSaveTimer = nil
+assert(addSpecialExit(1, 6, "enter portal"))
+assert(addSpecialExit(6, 1, "climb rope"))
+known({ { rooms = { {1, 2} } } })
+check("a fogged room's special exits are gone from the map", special(1, "enter portal") == nil)
+known({ { rooms = { {1, 6}, {10, 10} } } })
+check("a special exit into it comes back", special(1, "enter portal") == 6)
+check("its own special exit comes back", special(6, "climb rope") == 1)
+
+-- The published links are laid again after a pass.
+atlas()
+timers = {}
+tocMudlet.fogSaveTimer = nil
+tocMudlet.links = { { from = 2, to = 10, command = "climb tower" } }
+known({ { rooms = { {1, 3} } } })
+known({ { rooms = { {1, 6}, {10, 10} } } })
+check("a published link into a room back from the fog is laid again",
+  special(2, "climb tower") == 10)
+tocMudlet.links = nil
+
+-- A fog pass's record reaches the disk when Mudlet closes, not only five
+-- seconds later.
+atlas()
+timers = {}
+tocMudlet.fogSaveTimer = nil
+saved = {}
+known({ { rooms = { {1, 2} } } })
+check("a save is waiting", tocMudlet.fogSaveTimer ~= nil)
+tocMudlet.flushFog()
+local path = tocMudlet.fogPath()
+check("the exit flush writes it", saved[path] ~= nil and saved[path][6] ~= nil)
+check("and nothing is left waiting", tocMudlet.fogSaveTimer == nil)
 
 if failures > 0 then
   print(failures .. " FAILED")

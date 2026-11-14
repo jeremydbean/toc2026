@@ -6585,7 +6585,10 @@ void do_play( CHAR_DATA *ch, char *argument )
 
     if ( trigger_puzzle_manipulation( ch, target ) )
     {
-        if ( IS_HYRULE_ROOM_VNUM( ch->in_room->vnum ) )
+        /* The lake's puzzle opens a way (value[1] names the room); the
+           den's shrinks Digdogger and opens nothing (review, 2026-11-13:
+           playing in the den earned "Drain the lake"). */
+        if ( IS_HYRULE_ROOM_VNUM( ch->in_room->vnum ) && target->value[1] != 0 )
             achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_DRAIN_LAKE, true );
         extract_obj( target );
     }

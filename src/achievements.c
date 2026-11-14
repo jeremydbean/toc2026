@@ -858,7 +858,8 @@ long achievement_area_id(const AREA_DATA *area)
 
     if (area == NULL || area->file_name == NULL)
         return -1;
-    for (p = area->file_name; *p != '\0'; p++)
+    /* A seasonal copy is the area it stands in for (season_base_area). */
+    for (p = season_base_area(area->file_name); *p != '\0'; p++)
     {
         hash ^= (unsigned char)LOWER(*p);
         hash = (hash * 16777619UL) & 0xFFFFFFFFUL;
@@ -1693,11 +1694,56 @@ bool achievement_boss_vnum(int vnum)
     return false;
 }
 
+/*
+ * The boss row a death matches, unlocked for the player credited, their
+ * group in the room, and -- for a Hyrule guardian -- every mortal in the
+ * room who struck it, grouped or not, as hyrule_guardian_slain hands them
+ * its key (owner, 2026-11-10: "joined late yes, left room no"). A late
+ * striker in another party got the key and the piece and never the boss
+ * achievement, and so never the chest's or the metas built on them
+ * (review, 2026-11-13). credit may be NULL (a guardian's own poison tick).
+ * Returns the boss row, or -1.
+ */
+static int achievement_record_boss_strikers(CHAR_DATA *credit, CHAR_DATA *victim)
+{
+    CHAR_DATA *member;
+    int boss_index = -1, index;
+    int mob_vnum = victim->pIndexData->vnum;
+
+    if (victim->in_room == NULL)
+        return -1;
+    for (index = 0; index < achievement_table_count(); index++)
+    {
+        const ACHIEVEMENT_DEFINITION *definition = &achievement_table[index];
+
+        if (definition->requirement == ACH_REQ_BOSS
+            && definition->target == mob_vnum
+            && achievement_boss_room_matches(definition, victim->in_room))
+        {
+            boss_index = index;
+            break;
+        }
+    }
+    if (boss_index < 0)
+        return -1;
+
+    for (member = victim->in_room->people; member != NULL;
+         member = member->next_in_room)
+    {
+        if (!achievement_is_player(member))
+            continue;
+        if (!(credit != NULL && (member == credit || is_same_group(member, credit)))
+            && !(victim->hyrule_struck_n > 0 && hyrule_struck_by(victim, member)))
+            continue;
+        if (achievement_unlock(member, boss_index, true))
+            achievement_check_state(member, true);
+    }
+    return boss_index;
+}
+
 void achievement_record_kill(CHAR_DATA *killer, CHAR_DATA *victim)
 {
     CHAR_DATA *credit;
-    CHAR_DATA *member;
-    int mob_vnum;
     int boss_index = -1;
     int index;
 
@@ -1706,8 +1752,14 @@ void achievement_record_kill(CHAR_DATA *killer, CHAR_DATA *victim)
 
     credit = achievement_credit(killer);
 
+    /* A guardian finished by its own poison or plague tick has no player
+       credit, but its strikers are credited below (review, 2026-11-13). */
     if (!achievement_is_player(credit))
+    {
+        if (victim->hyrule_struck_n > 0)
+            achievement_record_boss_strikers(NULL, victim);
         return;
+    }
 
     if (credit->pcdata->achievement_mob_kills < LONG_MAX)
         credit->pcdata->achievement_mob_kills++;
@@ -1728,37 +1780,9 @@ void achievement_record_kill(CHAR_DATA *killer, CHAR_DATA *victim)
         && victim->level >= credit->level - 5)
         achievement_count(credit, ACH_CTR_NARROW_WINS, 1);
 
-    mob_vnum = victim->pIndexData->vnum;
-
-    if (victim->in_room == NULL)
-        return;
-
-    for (index = 0; index < achievement_table_count(); index++)
-    {
-        const ACHIEVEMENT_DEFINITION *definition = &achievement_table[index];
-
-        if (definition->requirement == ACH_REQ_BOSS
-            && definition->target == mob_vnum
-            && achievement_boss_room_matches(definition, victim->in_room))
-        {
-            boss_index = index;
-            break;
-        }
-    }
-
+    boss_index = achievement_record_boss_strikers(credit, victim);
     if (boss_index < 0)
         return;
-
-    for (member = victim->in_room->people; member != NULL;
-         member = member->next_in_room)
-    {
-        if (!achievement_is_player(member)
-            || (member != credit && !is_same_group(member, credit)))
-            continue;
-
-        if (achievement_unlock(member, boss_index, true))
-            achievement_check_state(member, true);
-    }
 
     for (index = 0; cohort_hyrule_bosses_v1[index] != NULL; index++)
         if (!str_cmp(cohort_hyrule_bosses_v1[index],

@@ -58,6 +58,17 @@ class ParserTests(unittest.TestCase):
         self.assertEqual([e["staff"] for e in entries], [False, True, False])
         self.assertEqual(entries[0]["date"], "2026-11-12")
 
+    def test_headers_and_comments_read_as_the_game_reads_them(self) -> None:
+        """src/changes.c reads a header with sscanf -- any spacing, "staff"
+        in any case -- and skips a '#' line anywhere (review, 2026-11-13:
+        a "Staff" header was merged into the public entry above it)."""
+        text = ("@ 20261113zb 2026-11-13\nPublic.\n\n# a note between entries\n\n"
+                "@  20261112za   2026-11-12  Staff\nOnly staff.\n")
+        entries = changes_index.parse_changes(text)
+        self.assertEqual([(e["id"], e["staff"], e["paragraphs"]) for e in entries],
+                         [("20261113zb", False, ["Public."]),
+                          ("20261112za", True, ["Only staff."])])
+
     def test_staff_entries_only_for_staff(self) -> None:
         entries = changes_index.parse_changes(SAMPLE)
         self.assertEqual([e["id"] for e in changes_index.visible_changes(entries, False)],

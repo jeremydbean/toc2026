@@ -61,6 +61,7 @@ void changes_load( void )
     FILE *fp;
     char line[MAX_STRING_LENGTH];
     CHANGE_ENTRY *cur = NULL;
+    bool gap = false;
 
     if ( changes == NULL )
         changes = calloc( CHANGES_MAX, sizeof(*changes) );
@@ -78,7 +79,9 @@ void changes_load( void )
 
         while ( len > 0 && ( line[len - 1] == '\n' || line[len - 1] == '\r' ) )
             line[--len] = '\0';
-        if ( line[0] == '#' && cur == NULL )
+        /* A comment, anywhere: the website's reader (changes_index.py)
+           skips one the same way. */
+        if ( line[0] == '#' )
             continue;
         if ( line[0] == '@' )
         {
@@ -86,6 +89,7 @@ void changes_load( void )
                 break;
             cur = &changes[changes_count++];
             memset( cur, 0, sizeof(*cur) );
+            gap = false;
             {
                 char tag[16];
                 int fields = sscanf( line + 1, "%23s %15s %15s",
@@ -104,13 +108,17 @@ void changes_load( void )
         }
         if ( cur == NULL )
             continue;
+        /* A blank line inside an entry is a paragraph break, as the
+           website shows it (review, 2026-11-13: an entry's second paragraph
+           was dropped in game and shown on the website). */
         if ( line[0] == '\0' )
         {
-            cur = NULL;
+            gap = cur->text[0] != '\0';
             continue;
         }
         if ( cur->text[0] != '\0' )
-            toc_strlcat( cur->text, "\n\r", sizeof(cur->text) );
+            toc_strlcat( cur->text, gap ? "\n\r\n\r" : "\n\r", sizeof(cur->text) );
+        gap = false;
         toc_strlcat( cur->text, "  ", sizeof(cur->text) );
         toc_strlcat( cur->text, line, sizeof(cur->text) );
     }

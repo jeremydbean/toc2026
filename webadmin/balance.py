@@ -120,7 +120,10 @@ def quantile(values: List[float], q: float) -> Optional[float]:
 def read_rows(text: str, since: float = 0.0) -> Iterable[List[str]]:
     for raw in text.splitlines():
         f = raw.split("\t")
-        if len(f) < 11 or not f[0].isdigit() or int(f[0]) < since:
+        # isascii too: str.isdigit() takes Latin-1's superscript digits,
+        # which int() then refuses, and an exception mid-fold left the
+        # incremental engine half applied (review, 2026-11-13).
+        if len(f) < 11 or not (f[0].isascii() and f[0].isdigit()) or int(f[0]) < since:
             continue
         yield f
 
@@ -214,7 +217,7 @@ class _Fold:
                 if f[15] != "-":
                     for tok in f[15].split(","):
                         v, _, src = tok.partition(":")
-                        if v.isdigit():
+                        if v.isascii() and v.isdigit():
                             items.append((int(v), src or "carried"))
                 self.drops[f[11]] = {"count": _int(f[12]), "worth": _int(f[13]),
                                      "top": _int(f[14]), "items": items}
@@ -222,7 +225,7 @@ class _Fold:
             elif len(f) > 14:
                 self.legacy_drops.append(dict(mob, count=_int(f[11]), worth=_int(f[12]),
                                               items=[(int(v), "carried")
-                                                     for v in f[14].split(",") if v.isdigit()]))
+                                                     for v in f[14].split(",") if v.isascii() and v.isdigit()]))
         elif kind == "loot" and len(f) > 17:
             self.loots[f[11]] = self.loots.get(f[11], []) + [
                 {"coin": f[12] == "coin", "vnum": _int(f[13]), "worth": _int(f[14]),
@@ -812,6 +815,14 @@ def load(path: Path) -> Dict[str, Any]:
         except OSError:
             _STATES.pop(str(path), None)
             return _empty()
+        except Exception:
+            # A row nothing writes broke the fold part way: start again
+            # from the file rather than fold the same rows a second time.
+            _STATES.pop(str(path), None)
+            try:
+                return _full(path, st)
+            except Exception:
+                return _empty()
 
 
 async def load_async(path: Path) -> Dict[str, Any]:

@@ -1389,9 +1389,12 @@ void interpret( CHAR_DATA *ch, char *argument )
     playlog_end( ch, play_cmd_name, play_shown, play_secret, play_refused,
                  d->outbuf + out_before, d->outtop - out_before,
                  ms, pos, hp_pct, fighting );
+    /* Only a word the game does not know counts toward the HELP hint, not
+       a known command refused for the position (review, 2026-11-13:
+       NORTH twice while asleep said "When a word does not work..."). */
     if ( !play_refused )
         tutorial_command( ch, play_cmd_name );  /* what they already use */
-    else
+    else if ( play_cmd_name != NULL && !strcmp( play_cmd_name, "(unknown)" ) )
         tutorial_refused( ch );                 /* HELP, COMMANDS, the Oracle */
 }
 

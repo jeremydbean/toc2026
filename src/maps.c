@@ -97,7 +97,7 @@ bool map_area_always_known( const AREA_DATA *area )
     if ( area == NULL || area->file_name == NULL )
         return false;
     for ( i = 0; map_always_known_files[i] != NULL; i++ )
-        if ( !str_cmp( area->file_name, map_always_known_files[i] ) )
+        if ( !str_cmp( season_base_area( area->file_name ), map_always_known_files[i] ) )
             return true;
     return false;
 }
@@ -380,6 +380,12 @@ bool map_room_known( CHAR_DATA *ch, ROOM_INDEX_DATA *room )
     if ( map_sees_all( ch ) )
         return true;
     if ( map_area_always_known( room->area ) )
+        return true;
+    /* The room they stand in, always: the achievements' set does not count
+       built areas, custom.are, the jail and staff rooms, so Map.Known left
+       out the room Room.Info had just named, and the package fogged the
+       player's own room off the map (review, 2026-11-13). */
+    if ( room == ch->in_room )
         return true;
     if ( achievement_set_has( ch, ACH_SET_ROOMS, room->vnum ) )
         return true;
@@ -890,7 +896,7 @@ static ROOM_INDEX_DATA *map_region_named( const char *word )
     map_info_build( );
     for ( i = 0; i < map_info_count; i++ )
     {
-        const char *file = map_info[i].area->file_name;
+        const char *file = season_base_area( map_info[i].area->file_name );
         const char *dot;
 
         if ( map_info[i].count <= 0 || file == NULL )
@@ -928,7 +934,7 @@ static void map_grantmap_list( CHAR_DATA *ch )
 
         if ( !map_area_mappable( map_info[i].area ) || map_info[i].area->file_name == NULL )
             continue;
-        toc_strlcpy( stem, map_info[i].area->file_name, sizeof(stem) );
+        toc_strlcpy( stem, season_base_area( map_info[i].area->file_name ), sizeof(stem) );
         if ( ( dot = strrchr( stem, '.' ) ) != NULL )
             stem[dot - stem] = '\0';
         quest_area_name( map_info[i].area->name, title, sizeof(title) );
