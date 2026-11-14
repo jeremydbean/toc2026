@@ -28521,3 +28521,45 @@
 1794665418	cmd	Trentlin	41	1356	htower.are	standing	44	0	-	open	south	Ok.	-	-
 1794665418	cmd	Trentlin	41	1356	htower.are	standing	44	0	-	exits		Obvious exits: // East  - A hallway // South - The training room	-	+
 1794665419	cmd	Trentlin	41	1359	htower.are	standing	44	0	-	south		The training room //   You are in a large training room. It is filled with battle scared manikins // , and many other devices used in the practice of fighting.	-	+
+1794665424	coin	Trentlin	41	1359	htower.are	+5500	loot	kill	corpse of a young mage	15346944568
+1794665424	coin	Trentlin	41	1359	htower.are	+8	loot	kill	corpse of a young mage	15346944576
+1794665424	cmd	Trentlin	41	1359	htower.are	standing	44	20	-	kill	youn	Your punch ^^^ DESTROYS ^^^ a young mage! // A young mage is DEAD!! // You have almost finished your QUEST!	-	+
+1794665427	laid	-	0	0	-	1323	herb	51	a piece of kelp	6401	sea.are	scatter
+1794665428	area	Trentlin	41	4207	dresden.are	htower.are	dresden.are	179	recall
+1794665428	cmd	Trentlin	41	4207	dresden.are	standing	46	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794665429	cmd	Trentlin	41	4202	dresden.are	standing	46	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794665429	cmd	Trentlin	41	4201	dresden.are	standing	46	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794665429	cmd	Trentlin	41	2427	dresden.are	standing	46	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794665430	cmd	Trentlin	41	2427	dresden.are	standing	46	0	-	east		Alas, you cannot go that way.	-	-
+1794665430	cmd	Trentlin	41	2427	dresden.are	standing	46	0	-	east		Alas, you cannot go that way.	-	-
+1794665430	cmd	Trentlin	41	2404	dresden.are	standing	46	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794665431	cmd	Trentlin	41	2401	dresden.are	standing	46	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794665431	cmd	Trentlin	41	2410	dresden.are	standing	46	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794665431	cmd	Trentlin	41	2411	dresden.are	standing	46	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794665431	cmd	Trentlin	41	2414	dresden.are	standing	46	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1794665432	cmd	Trentlin	41	2497	dresden.are	standing	46	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794665432	cmd	Trentlin	41	2497	dresden.are	standing	46	0	-	up		Alas, you cannot go that way.	-	-
+1794665434	coin	Trentlin	41	2497	dresden.are	+5020368	quests	aquest	-	15351964944
+1794665434	outcome	Trentlin	41	2497	dresden.are	quest-complete	success	-	-	rush qp=3820->3820 offered=49 daily=18->18 coin=+5020368 kill=627546 streak=3 level=41 target=-1
+1794665434	cmd	Trentlin	41	2497	dresden.are	standing	46	24	-	aquest	complete	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Rush contract fulfilled - your double reward is well earned!'	success:-	+
+1794665437	cmd	Trentlin	41	2497	dresden.are	standing	46	6	-	aquest	gamble yes	** Fortune SMILES upon you! You WIN 98 quest points! **	-	-
+1794665438	cmd	Trentlin	41	4207	dresden.are	standing	46	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794665439	cmd	Trentlin	41	4208	dresden.are	standing	46	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794665441	got	Trentlin	41	4208	dresden.are	30415	the Magic Book	armor	48	0	stash	-
+1794665441	cmd	Trentlin	41	4208	dresden.are	standing	46	6	-	stash	get book	You take the Magic Book out of your stash.	-	-
+1794665443	cmd	Trentlin	41	4208	dresden.are	standing	46	0	-	read	book concot	You open the Magic Book, and fire crackles along its ancient pages. //          |         ~  T H E   M A G I C   B O O K  ~         | //   Fire crackles along the edges of pages older than the kingdom. Every	-	+
+1794665449	cmd	Trentlin	41	4208	dresden.are	standing	46	0	-	read	book concoct	You open the Magic Book, and fire crackles along its ancient pages. //          |         ~  T H E   M A G I C   B O O K  ~         | //   Fire crackles along the edges of pages older than the kingdom. Every	-	+
+1794665479	cmd	Trentlin	41	4208	dresden.are	standing	100	0	-	put	claw pack	You put a rakshasa's claw in a metallic pack.	-	-
+1794665484	cmd	Trentlin	41	4208	dresden.are	standing	100	0	-	look	in pack	A metallic pack contains: //      a rakshasa's claw // ( 2) a red dragon claw	-	-
+1794665488	cmd	Trentlin	41	4208	dresden.are	standing	100	0	-	aquest	info	.-[ Quest Summary ]-------------------------------------------. // | Quest Points: 3918 // | Next Quest  : 13 minutes before you may quest again	-	+
+1794665490	cmd	Trentlin	41	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794665491	cmd	Trentlin	41	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794665492	cmd	Trentlin	41	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794665493	cmd	Trentlin	41	4203	dresden.are	standing	100	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794665493	cmd	Trentlin	41	4210	dresden.are	standing	100	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794665494	cmd	Trentlin	41	4210	dresden.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794665495	cmd	Trentlin	41	4210	dresden.are	standing	100	0	-	rested		You are rested: your kills earn double experience until 2334 more is spent (101% of a level). // Quitting here would let you rest. // Each hour away banks 5% of a level, up to 150%.	-	-
+1794665496	cmd	Trentlin	41	4210	dresden.are	standing	100	0	-	sleep		You go to sleep.	-	-
+1794665497	sightings	Trentlin	41	4210	dresden.are	mob	32275:1/0/0 32105:1/1/0 30353:1/0/0 32355:1/1/0 31085:1/0/0 10:1/0/0 201:1/0/0 6102:2/0/0 6100:2/0/0 1301:1/0/0 1303:1/0/0 1304:6/0/0 1306:1/0/0 1312:1/0/0 1319:1/0/0 1318:3/0/0 1327:1/0/0 1326:3/1/0
+1794665497	sightings	Trentlin	41	4210	dresden.are	item	17:1/0 30729:1/1 30227:1/1 6106:2/0 6105:1/0
+1794665497	session	Trentlin	41	4210	dresden.are	quit	2954s	+1 levels	+2200 exp	+27681539 copper	17 kills	0 deaths	3 quests	1340 commands	7 refused	coin: loot 21p 46g 33s 11c, quests 17p 41g 82s 28c, spent 11p 20g	spent on: heal 11p 20g	exp: skilluse +38, recall -50, kills +2232, flee -20

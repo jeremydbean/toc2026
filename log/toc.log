@@ -300988,3 +300988,64 @@ Sat Nov 14 14:10:18 2026 :: Log Trentlin [1356]: open south
 Sat Nov 14 14:10:18 2026 :: Log Trentlin [1356]: ex
 Sat Nov 14 14:10:19 2026 :: Log Trentlin [1356]: s
 Sat Nov 14 14:10:19 2026 :: Log Trentlin [1359]: arrived (The training room) from 1356
+Sat Nov 14 14:10:24 2026 :: Log Trentlin [1359]: k youn
+Sat Nov 14 14:10:24 2026 :: Log Trentlin [1359]: killed a young mage
+Sat Nov 14 14:10:24 2026 :: Log Trentlin [1359]: coin +55 silver
+Sat Nov 14 14:10:24 2026 :: Log Trentlin [1359]: coin +8 copper
+Sat Nov 14 14:10:27 2026 :: Log Trentlin [1359]: affects off: levitate
+Sat Nov 14 14:10:28 2026 :: Log Trentlin [1359]: reca
+Sat Nov 14 14:10:28 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 1359
+Sat Nov 14 14:10:29 2026 :: Log Trentlin [4207]: e
+Sat Nov 14 14:10:29 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sat Nov 14 14:10:29 2026 :: Log Trentlin [4202]: e
+Sat Nov 14 14:10:29 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Nov 14 14:10:29 2026 :: Log Trentlin [4201]: e
+Sat Nov 14 14:10:29 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Sat Nov 14 14:10:30 2026 :: Log Trentlin [2427]: e
+Sat Nov 14 14:10:30 2026 :: Log Trentlin [2427]: e
+Sat Nov 14 14:10:30 2026 :: Log Trentlin [2427]: n
+Sat Nov 14 14:10:30 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Nov 14 14:10:31 2026 :: Log Trentlin [2404]: n
+Sat Nov 14 14:10:31 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sat Nov 14 14:10:31 2026 :: Log Trentlin [2401]: u
+Sat Nov 14 14:10:31 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sat Nov 14 14:10:31 2026 :: Log Trentlin [2410]: u
+Sat Nov 14 14:10:31 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Sat Nov 14 14:10:31 2026 :: Log Trentlin [2411]: u
+Sat Nov 14 14:10:31 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Sat Nov 14 14:10:32 2026 :: Log Trentlin [2414]: u
+Sat Nov 14 14:10:32 2026 :: Log Trentlin [2497]: arrived (The Questmaster's Globe, above the Oak) from 2414
+Sat Nov 14 14:10:32 2026 :: Log Trentlin [2497]: u
+Sat Nov 14 14:10:34 2026 :: Log Trentlin [2497]: aquest complete
+Sat Nov 14 14:10:34 2026 :: Log Trentlin [2497]: copper +5020368
+Sat Nov 14 14:10:34 2026 :: Log Trentlin [2497]: quest complete: 5p 2g 3s 68c, 49 quest points, rush (streak bonus 30%)
+Sat Nov 14 14:10:34 2026 :: Snapshot of Trentlin taken before quest: Trentlin.20261114_141034.quest (PRESTORE Trentlin to see it).
+Sat Nov 14 14:10:37 2026 :: Log Trentlin [2497]: aquest gamble yes
+Sat Nov 14 14:10:38 2026 :: Log Trentlin [2497]: reca
+Sat Nov 14 14:10:38 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 2497
+Sat Nov 14 14:10:39 2026 :: Log Trentlin [4207]: w
+Sat Nov 14 14:10:39 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sat Nov 14 14:10:41 2026 :: Log Trentlin [4208]: stash get book
+Sat Nov 14 14:10:41 2026 :: Log Trentlin [4208]: withdrew the Magic Book (vnum 30415) from the stash
+Sat Nov 14 14:10:43 2026 :: Log Trentlin [4208]: read book concot
+Sat Nov 14 14:10:49 2026 :: Log Trentlin [4208]: read book concoct
+Sat Nov 14 14:10:50 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 14 14:11:19 2026 :: Log Trentlin [4208]: put claw pack
+Sat Nov 14 14:11:24 2026 :: Log Trentlin [4208]: l in pack
+Sat Nov 14 14:11:28 2026 :: Log Trentlin [4208]: aquest info
+Sat Nov 14 14:11:30 2026 :: Log Trentlin [4208]: l
+Sat Nov 14 14:11:31 2026 :: Log Trentlin [4208]: e
+Sat Nov 14 14:11:31 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Sat Nov 14 14:11:32 2026 :: Log Trentlin [4207]: e
+Sat Nov 14 14:11:32 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sat Nov 14 14:11:33 2026 :: Log Trentlin [4202]: n
+Sat Nov 14 14:11:33 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Sat Nov 14 14:11:33 2026 :: Log Trentlin [4203]: n
+Sat Nov 14 14:11:33 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Sat Nov 14 14:11:34 2026 :: Log Trentlin [4210]: n
+Sat Nov 14 14:11:35 2026 :: Log Trentlin [4210]: rested
+Sat Nov 14 14:11:36 2026 :: Log Trentlin [4210]: sleep
+Sat Nov 14 14:11:37 2026 :: Log Trentlin [4210]: quit
+Sat Nov 14 14:11:37 2026 :: Trentlin has quit.
+Sat Nov 14 14:11:37 2026 :: [QUIT] Player rejoined the real world.
+Sat Nov 14 14:14:29 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).

@@ -108,3 +108,4 @@
 1794665195	leave	Trentlin	41	1	Monk 	30501	L6	to=over how=up secs=62 hp=53
 1794665195	enter	Trentlin	41	1	Monk 	30282	over	from=L6 how=up hp=53
 1794665220	leave	Trentlin	41	1	Monk 	30266	over	to=out how=recall secs=25 hp=38
+1794665441	got	Trentlin	41	1	Monk 	4208	out	obj=30415 obj_name=the_Magic_Book type=armor obj_level=48 how=stash
