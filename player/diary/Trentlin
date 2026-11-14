@@ -67,23 +67,26 @@ List item 1 0 a crystal key
 List earn 8367720 0 loot
 End
 Day 2026-11-14
-Played 412
+Played 726
 Level 40 40 0
 Exp 10 25
-Kills 0
+Kills 1
 Deaths 0
 Close 0
 Quests 1 38
 Dailies 0 0
 List skill 90 91 enhanced damage
-List area 165 0 City of Dresden
-List area 5 0 Miden'nir
+List area 412 0 City of Dresden
+List area 8 0 Miden'nir
 List area 174 0 Thalos
-List area 1 0 Continental Drift
-List area 7 0 New Thalos
+List area 2 0 Continental Drift
+List area 13 0 New Thalos
 List area 60 0 Pirate Ship
+List area 57 0 Korzath's Fortress
+List item 1 0 a crystal key
 List earn 38193215 0 interest
 List earn 6122400 0 quests
-List spend 700000 0 heal
+List earn 1020506 0 loot
+List spend 10700000 0 heal
 End
 #END

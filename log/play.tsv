@@ -26997,3 +26997,271 @@
 1794663014	cmd	Trentlin	40	4210	dresden.are	sleeping	50	0	-	help	vorpal	'WEAPON FLAGS' 'WEAPON FLAG' VORPAL SHARP FLAMING 'FROST WEAPON' 'VAMPIRIC WEAPON' 'TWO HANDED' TWO-HANDED // Some weapons carry a magic of their own.  IDENTIFY or LORE names it in // the weapon's flags.	-	+
 1794663016	cmd	Alaric	57	1113	shire.are	standing	100	0	-	west		Bywater Road //   You stand on Bywater Road, the busiest street in all of Shiredom.  The road // continues to the north.  The private residences of Shire inhabitants are to	-	+
 1794663017	cmd	Alaric	57	1112	shire.are	standing	100	0	-	north		Bywater Road //   You stand on Bywater Road, the busiest street in all of Shiredom.  The road // continues to the north and south.  To the east you spy the training grounds for	-	+
+1794663017	cmd	Alaric	57	1109	shire.are	standing	100	0	-	north		A bend in the road //   Bywater Road continues west and south.  A large, imposing building lies // to the east.  Farther to the south, you can see an Inn of some sort.	-	+
+1794663017	cmd	Alaric	57	1110	shire.are	standing	100	0	-	east		Sheriff Post of the Eastern Shire //   You are in the Sheriff Post which acts as the nucleus for the three sheriffs // of the Eastern Shire.  As you examine the sheriffs on duty, you come to realize	-	+
+1794663018	cmd	Alaric	57	1110	shire.are	standing	100	0	-	open		It's already open.	-	-
+1794663019	cmd	Alaric	57	1110	shire.are	standing	100	0	-	exits		Obvious exits: // East  - Thain's Office // West  - A bend in the road	-	-
+1794663020	cmd	Alaric	57	1109	shire.are	standing	100	0	-	west		A bend in the road //   Bywater Road continues west and south.  A large, imposing building lies // to the east.  Farther to the south, you can see an Inn of some sort.	-	+
+1794663021	cmd	Alaric	57	1110	shire.are	standing	100	0	-	east		Sheriff Post of the Eastern Shire //   You are in the Sheriff Post which acts as the nucleus for the three sheriffs // of the Eastern Shire.  As you examine the sheriffs on duty, you come to realize	-	+
+1794663022	cmd	Alaric	57	1111	shire.are	standing	100	0	-	east		Thain's Office //   You stand inside the office of the Thain, the police protectorate of the // great Shire.  The Thain has sworn to protect the Shire from all thieves and	-	+
+1794663023	cmd	Alaric	57	1110	shire.are	standing	100	0	-	west		Sheriff Post of the Eastern Shire //   You are in the Sheriff Post which acts as the nucleus for the three sheriffs // of the Eastern Shire.  As you examine the sheriffs on duty, you come to realize	-	+
+1794663023	cmd	Alaric	57	1109	shire.are	standing	100	0	-	west		A bend in the road //   Bywater Road continues west and south.  A large, imposing building lies // to the east.  Farther to the south, you can see an Inn of some sort.	-	+
+1794663024	cmd	Alaric	57	1106	shire.are	standing	100	0	-	west		Bywater Road //   You stand on Bywater Road, the busiest street in all of Shiredom.  The road // continues to the east and west.  To the north, steps lead to a friendly looking	-	+
+1794663024	cmd	Alaric	57	1104	shire.are	standing	100	0	-	west		Bywater Road //   You stand on Bywater Road, the busiest street in all of Shiredom.  The road // continues to the east and west while to the north lies the general store.	-	+
+1794663024	cmd	Alaric	57	1103	shire.are	standing	100	0	-	west		Entrance to the Shire //   You stand at the entrance to the Shire.  You see halflings, no more than // wee tall, every which way you look. Bywater Road leads east and west.	-	+
+1794663025	cmd	Alaric	57	1118	shire.are	standing	100	0	-	west		Bywater Road //   You stand on Bywater Road, the busiest street in all of Shiredom.  The road // continues to the east and west.  A large, imposing building lies to the south.	-	+
+1794663025	cmd	Alaric	57	1120	shire.are	standing	100	0	-	west		Bywater Road //   You stand on Bywater Road, the busiest street in all of Shiredom.  The road // continues to the east and west.  To the south you spy the Grocer's Delight,	-	+
+1794663026	cmd	Alaric	57	1131	shire.are	standing	100	0	-	north		Brandywine Bridge //   You stand on a solidly built bridge.  As you look down you spy gaily // colored fish swimming with the current of Brandywine River.  The cool water	-	+
+1794663026	cmd	Alaric	57	1132	shire.are	standing	100	0	-	north		Delving Lane //   Delving Lane runs north and south in this small borough of the Shire.  To // the south stands Brandywine Bridge.  The Green Dragon, the undisputed leader	-	+
+1794663027	cmd	Alaric	57	1132	shire.are	standing	100	0	-	exits		Obvious exits: // North - Delving Lane // East  - The Green Dragon	-	+
+1794663028	cmd	Alaric	57	1133	shire.are	standing	100	0	-	north		Delving Lane //   Delving Lane runs north and south in this small borough of the Shire.  A // large, imposing building lies to the east.  You hear the bray of horses from	-	+
+1794663029	cmd	Alaric	57	1133	shire.are	standing	100	0	-	scan		a sheriff                          -to the East. // a sheriff                          -to the East. // a sheriff                          -to the East.	-	+
+1794663031	cmd	Alaric	57	1138	shire.are	standing	100	0	-	west		A grassy field //   You stand upon a grassy field.  A bull stands grazing not far away and // out of the corner of your eye you can see him considering you.  The sound	-	+
+1794663032	cmd	Alaric	57	1138	shire.are	standing	100	0	-	scan		a horse                            -to the North. // a horse                            -to the North. // a horse                            -to the North.	-	+
+1794663034	cmd	Alaric	57	1142	shire.are	standing	100	0	-	north		A barn //   Animals of every sort fill the small barn.  You feel the hot breath of // horses and cows on your neck and you feel the sudden need for fresh air.	-	+
+1794663035	coin	Alaric	57	1142	shire.are	+1	loot	kill	corpse of a cow	26705950217
+1794663035	cmd	Alaric	57	1142	shire.are	standing	100	20	-	kill	co	Your punch ^^^ DESTROYS ^^^ a cow! [-111] // A cow is DEAD!! // You have almost finished your QUEST!	-	+
+1794663039	area	Alaric	57	2497	dresden.are	shire.are	dresden.are	82	recall
+1794663039	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794663039	coin	Alaric	57	2497	dresden.are	+61651656	quests	aquest	-	26767601873
+1794663039	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	ordinary qp=2210->2210 offered=19 daily=4->4 coin=+61651656 kill=15412914 streak=2 level=57 target=-1
+1794663039	cmd	Alaric	57	2497	dresden.are	standing	100	20	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Streak of 3 in a row! A +20% bonus has been added!'	success:-	+
+1794663039	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ga no	You safely collect 19 quest points.	-	-
+1794663040	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=455/983 align=922 exp=252749 coin=1943540031 bank=24824061842 qp=2229 prac=36 train=76 stash=93/350 remorts=3
+1794663040	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    297 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794663044	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794663045	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794663047	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	jump	prock	I see no prock here.	-	-
+1794663048	area	Alaric	57	1607	wyvern.are	dresden.are	wyvern.are	9	jump
+1794663048	cmd	Alaric	57	1607	wyvern.are	standing	100	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you	-	+
+1794663049	area	Alaric	57	4208	dresden.are	wyvern.are	dresden.are	1	(room_update)
+1794663049	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794663051	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // [40 Dwarf   Monk  ] Trentlin the Master Monk // Players found: 2	-	-
+1794663064	cmd	Trentlin	40	4210	dresden.are	sleeping	70	0	-	help	alignment	ALIGNMENT ALIGN GOOD EVIL NEUTRAL DEVOTE PARAGON VIRTUOUS RUTHLESS VILE FIEND // Syntax: alignment //         devote light | dark | balance        at the Temple or its altar	-	+
+1794663075	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794663084	laid	-	0	0	-	971	component	64	a manticore's spine	10285	tritia.are	scatter
+1794663119	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // [40 Dwarf   Monk  ] Trentlin the Master Monk // Players found: 2	-	-
+1794663119	cmd	Trentlin	40	4210	dresden.are	sleeping	83	0	-	help	damagenumbers	DAMAGENUMBERS // Syntax: damagenumbers // Turns on or off the exact damage figure after each blow you deal or take:	-	+
+1794663124	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1794663124	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794663128	cmd	Trentlin	40	4210	dresden.are	sleeping	83	0	-	wake		You wake and stand up.	-	-
+1794663129	cmd	Trentlin	40	4210	dresden.are	standing	83	0	-	devote		DEVOTE LIGHT, DEVOTE DARK or DEVOTE BALANCE, at the Temple; DEVOTE PREVIEW to see first. See ALIGNMENT.	-	-
+1794663129	laid	-	0	0	-	972	herb	53	a huckleberry	7582	astral.are	scatter
+1794663135	cmd	Trentlin	40	4203	dresden.are	standing	90	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794663135	cmd	Trentlin	40	4204	dresden.are	standing	90	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794663135	cmd	Trentlin	40	4204	dresden.are	standing	90	0	-	west		Alas, you cannot go that way.	-	-
+1794663135	cmd	Trentlin	40	4204	dresden.are	standing	90	0	-	west		Alas, you cannot go that way.	-	-
+1794663136	cmd	Trentlin	40	4204	dresden.are	standing	90	0	-	west		Alas, you cannot go that way.	-	-
+1794663136	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	gossip	Need any more gear?	You gossip 'Need any more gear?'	-	-
+1794663136	cmd	Trentlin	40	4207	dresden.are	standing	90	0	-	south		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794663153	refused	Trentlin	40	4207	dresden.are	standing	90	0	-	(unknown)		Huh? Did you mean NOTE?	refusal:unknown-command	-
+1794663155	refused	Trentlin	40	4207	dresden.are	standing	90	0	-	(unknown)		Huh? Did you mean NOTE?	refusal:unknown-command	-
+1794663158	cmd	Trentlin	40	4207	dresden.are	standing	90	0	-	note		(withheld)	-	-
+1794663171	cmd	Trentlin	40	4207	dresden.are	standing	90	0	-	gossip	no, all good. Killuminati CRd me and fixed it	You gossip 'no, all good. Killuminati CRd me and fixed it'	-	-
+1794663175	census	-	0	0	-	herbs=9/150 components=5/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=2	laid=14 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=112 mobs_fought=2 secs=900
+1794663178	cmd	Trentlin	40	4208	dresden.are	standing	90	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794663184	cmd	Trentlin	40	4208	dresden.are	standing	90	0	-	devote	preview	A devotion would make it (nothing is offered by looking): //   light    33 -> 133 (Balanced -> Balanced), offering 12p 24g 48s -- more than is carried. //   dark     33 -> -67 (Balanced -> Balanced), offering 12p 24g 48s -- more than is ca	-	+
+1794663193	cmd	Trentlin	40	4207	dresden.are	standing	90	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794663194	cmd	Trentlin	40	4202	dresden.are	standing	90	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794663194	cmd	Trentlin	40	4201	dresden.are	standing	90	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794663194	cmd	Trentlin	40	2427	dresden.are	standing	90	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794663194	cmd	Trentlin	40	2427	dresden.are	standing	90	0	-	east		Alas, you cannot go that way.	-	-
+1794663195	cmd	Trentlin	40	2427	dresden.are	standing	90	0	-	east		Alas, you cannot go that way.	-	-
+1794663196	cmd	Trentlin	40	2404	dresden.are	standing	90	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794663196	cmd	Trentlin	40	2401	dresden.are	standing	90	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794663200	cmd	Trentlin	40	2403	dresden.are	standing	90	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794663200	cmd	Trentlin	40	2420	dresden.are	standing	90	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794663200	cmd	Trentlin	40	2421	dresden.are	standing	90	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794663200	cmd	Trentlin	40	2422	dresden.are	standing	90	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794663201	cmd	Trentlin	40	2423	dresden.are	standing	90	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1794663201	cmd	Trentlin	40	2424	dresden.are	standing	90	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1794663201	cmd	Trentlin	40	2425	dresden.are	standing	90	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1794663201	cmd	Trentlin	40	2426	dresden.are	standing	90	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794663202	cmd	Trentlin	40	2440	dresden.are	standing	90	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794663202	area	Trentlin	40	3503	midennir.are	dresden.are	midennir.are	247	east
+1794663202	cmd	Trentlin	40	3503	midennir.are	standing	90	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1794663202	cmd	Trentlin	40	3502	midennir.are	standing	90	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1794663202	cmd	Trentlin	40	3525	midennir.are	standing	90	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  	-	+
+1794663203	cmd	Trentlin	40	3526	midennir.are	standing	90	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded	-	+
+1794663203	cmd	Trentlin	40	3527	midennir.are	standing	90	0	-	east		The Checkpoint //   You are met by a group of heavily armored knights.  They check you over // for contraband, and then allow you to pass on.  One of the knights cautions to	-	+
+1794663203	cmd	Trentlin	40	3528	midennir.are	standing	90	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road, just east of a heavily  // guarded checkpoint.  You have covered about half the distance between	-	+
+1794663204	cmd	Trentlin	40	3529	midennir.are	standing	90	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially	-	+
+1794663204	cmd	Trentlin	40	3530	midennir.are	standing	90	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste	-	+
+1794663204	cmd	Trentlin	40	3531	midennir.are	standing	90	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your	-	+
+1794663204	cmd	Trentlin	40	3532	midennir.are	standing	90	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous	-	+
+1794663205	area	Trentlin	40	42	connect.are	midennir.are	connect.are	3	east
+1794663205	cmd	Trentlin	40	42	connect.are	standing	90	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities	-	+
+1794663205	area	Trentlin	40	9669	newthalo.are	connect.are	newthalo.are	0	east
+1794663205	cmd	Trentlin	40	9669	newthalo.are	standing	90	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.	-	+
+1794663205	cmd	Trentlin	40	9523	newthalo.are	standing	90	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1794663206	cmd	Trentlin	40	9524	newthalo.are	standing	90	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1794663206	laid	-	0	0	-	973	component	83	a vial of thessalhydra venom	2237	draconia.are	scatter
+1794663206	cmd	Trentlin	40	9525	newthalo.are	standing	93	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1794663207	cmd	Trentlin	40	9526	newthalo.are	standing	93	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1794663207	cmd	Trentlin	40	9509	newthalo.are	standing	93	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1794663207	cmd	Trentlin	40	9509	newthalo.are	standing	93	0	-	who		[57 Dwarf   Emper ] Alaric. // [40 Dwarf   Monk  ] Trentlin the Master Monk // Players found: 2	-	-
+1794663207	cmd	Trentlin	40	9514	newthalo.are	standing	93	0	-	north		The Northwestern Market Square //   This corner of the market contains some of the most civilized folk in // New Thalos. To the north lies the humble store of the merchant Ahkeem, his	-	+
+1794663208	cmd	Trentlin	40	9515	newthalo.are	standing	93	0	-	east		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the	-	+
+1794663208	cmd	Trentlin	40	9518	newthalo.are	standing	93	0	-	north		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on	-	+
+1794663209	cmd	Trentlin	40	9519	newthalo.are	standing	93	0	-	north		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small	-	+
+1794663209	cmd	Trentlin	40	9520	newthalo.are	standing	93	0	-	north		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you	-	+
+1794663209	cmd	Trentlin	40	9521	newthalo.are	standing	93	0	-	north		Sultan's Walk //   The main road north from the square continues here, surrounded by the walls // of the palace and the Daemon. To the north you see the heavily guarded gate	-	+
+1794663209	cmd	Trentlin	40	9522	newthalo.are	standing	93	0	-	north		Inside the Northern Gate of New Thalos //   Two large stone towers rise up to greet you with a massive iron gate // swinging between on ornately crafted hinges and emblazened with the crest of	-	+
+1794663210	cmd	Trentlin	40	9522	newthalo.are	standing	93	0	-	open	north	Ok.	-	-
+1794663210	cmd	Trentlin	40	9667	newthalo.are	standing	93	0	-	north		Outside the Northern Gate of New Thalos //   You stand outside the gate of New Thalos. The city lies to the south, and // wilderness to the north.  The Sands of Sorrow continues to the east	-	+
+1794663211	cmd	Trentlin	40	9781	newthalo.are	standing	93	0	-	north		On the Plains //   You stand on an open expanse of grass extending in all directions. To // the south of you stand the might northern gates of New Thalos. East	-	+
+1794663211	cmd	Trentlin	40	9782	newthalo.are	standing	93	0	-	north		On the Plains //   You stand on an open field of grass. The forest to the north is // closer but still a good distance away. To the south a small dirt	-	+
+1794663211	cmd	Trentlin	40	9783	newthalo.are	standing	93	0	-	north		Edge of the forest //   You stand at the edge of a huge forest. The line of trees // continues as far as the eye can see to the east and west. A large	-	+
+1794663211	area	Trentlin	40	64	connect.are	newthalo.are	connect.are	6	north
+1794663211	cmd	Trentlin	40	64	connect.are	standing	93	0	-	north		Misty Clearing //   As you emerge from the forest, your head  slowly begins to  swim, and you // get  the  distinct  feeling  that you are very close to a highly powerful	-	+
+1794663212	area	Trentlin	40	29001	korzath1.are	connect.are	korzath1.are	1	north
+1794663212	cmd	Trentlin	40	29001	korzath1.are	standing	93	0	-	north		Entrance to the Fortress //   You stand before the entrance to Korzath's mighty fortress.  The // fortress is built into the lower side of the mountain here.  The entrance	-	+
+1794663213	cmd	Trentlin	40	29001	korzath1.are	standing	93	0	-	who		[57 Dwarf   Emper ] Alaric. // [40 Dwarf   Monk  ] Trentlin the Master Monk // Players found: 2	-	-
+1794663215	cmd	Trentlin	40	29002	korzath1.are	standing	93	0	-	north		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites	-	+
+1794663216	cmd	Trentlin	40	29003	korzath1.are	standing	93	0	-	north		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in	-	+
+1794663217	cmd	Trentlin	40	29060	korzath1.are	standing	93	0	-	ne		Corridor //   At the end of this stank corridor is a large steel door in the // eastern wall.	-	+
+1794663218	cmd	Trentlin	40	29060	korzath1.are	standing	93	0	-	kill	c	Your punch *** DEVASTATES *** Security Chief! // Your punch ^^^ DESTROYS ^^^ Security Chief!	-	-
+1794663220	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	gossip	Sweet. Got that diploma back, then	You gossip 'Sweet. Got that diploma back, then'	-	-
+1794663221	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // [40 Dwarf   Monk  ] Trentlin the Master Monk // Players found: 2	-	-
+1794663222	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1794663223	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794663225	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	where	her	an angel                     Herbie's Launch Pad	-	-
+1794663226	coin	Trentlin	40	29060	korzath1.are	+1000000	loot	(violence_update)	corpse of Security Chief	15320705805
+1794663226	coin	Trentlin	40	29060	korzath1.are	+500	loot	(violence_update)	corpse of Security Chief	15320706305
+1794663226	coin	Trentlin	40	29060	korzath1.are	+6	loot	(violence_update)	corpse of Security Chief	15320706311
+1794663226	coin	Trentlin	40	29060	korzath1.are	+20000	loot	(violence_update)	corpse of Security Chief	15320726311
+1794663227	got	Trentlin	40	29060	korzath1.are	29002	a crystal key	key	20	1000000	get	corpse of Security Chief
+1794663227	cmd	Trentlin	40	29060	korzath1.are	standing	93	0	-	get	key co	You get a crystal key from corpse of Security Chief.	-	-
+1794663229	cmd	Alaric	57	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794663229	cmd	Alaric	57	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794663229	cmd	Alaric	57	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794663229	cmd	Alaric	57	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794663229	cmd	Trentlin	40	29060	korzath1.are	standing	93	0	-	equipment		You are using: // <used as light>     (Invis) (Glowing) the Sceptre of Might // <worn on finger>    a pink ice ring	-	+
+1794663230	cmd	Alaric	57	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794663230	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794663231	cmd	Alaric	57	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794663231	cmd	Alaric	57	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794663231	cmd	Alaric	57	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1794663231	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794663232	cmd	Trentlin	40	29060	korzath1.are	standing	93	0	-	unlock	east	*Click*	-	-
+1794663233	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=606/983 align=922 exp=252749 coin=1943540031 bank=24824061842 qp=2229 prac=36 train=76 stash=93/350 remorts=3
+1794663233	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    297 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794663233	cmd	Trentlin	40	29060	korzath1.are	standing	93	0	-	open	east	Ok.	-	-
+1794663237	cmd	Trentlin	40	29060	korzath1.are	standing	93	0	-	drop	key	You drop a crystal key.	-	-
+1794663243	cmd	Trentlin	40	29060	korzath1.are	standing	93	0	-	gossip	yeah, and all my hyrule gear lol	You gossip 'yeah, and all my hyrule gear lol'	-	-
+1794663244	cmd	Trentlin	40	29061	korzath1.are	standing	93	0	-	east		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches	-	+
+1794663246	cmd	Trentlin	40	29062	korzath1.are	standing	93	0	-	south		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.	-	+
+1794663246	cmd	Trentlin	40	29063	korzath1.are	standing	93	0	-	south		Corridor //   Security guards and the Heads of Security are keeping an eye out for // anyone looking suspicious.  You notice a hole in the west wall and inside	-	+
+1794663246	cmd	Trentlin	40	29065	korzath1.are	standing	93	0	-	south		Service Hallway //   The service hallway leads east towards the main work centers of the // fortress.  You wonder what all the noises are that are coming from that	-	+
+1794663246	cmd	Trentlin	40	29065	korzath1.are	standing	93	0	-	south		Alas, you cannot go that way.	-	-
+1794663247	cmd	Trentlin	40	29065	korzath1.are	standing	93	0	-	south		Alas, you cannot go that way.	-	-
+1794663247	cmd	Trentlin	40	29065	korzath1.are	standing	93	0	-	south		Alas, you cannot go that way.	-	-
+1794663248	cmd	Trentlin	40	29066	korzath1.are	standing	93	0	-	east		Service Hallway //   The walls of this hallway are covered in sheer metal.  You marvel at // how much armor could be made with the metal used in lining the hall.	-	+
+1794663248	cmd	Trentlin	40	29067	korzath1.are	standing	93	0	-	east		Service Hallway //   The hallway continues to the east and west.  To the north is a storage // room.  The various noises of clanging metals can be heard to the east.	-	+
+1794663248	cmd	Trentlin	40	29070	korzath1.are	standing	93	0	-	east		Service Hallway //   You can now hear the distinct sounds of metal against metal as well as // the droning whine and buzz of what sounds like drill bit machinery.  You've	-	+
+1794663249	cmd	Trentlin	40	29071	korzath1.are	standing	93	0	-	east		T-Junction //   The service hallway opens up into a T-Junction here.  To the north there // isn't much sound but, to the east you can hear the sound of machinery.	-	+
+1794663253	cmd	Trentlin	40	29071	korzath1.are	standing	93	0	-	levitate		You slowly rise up off the ground.	-	-
+1794663254	cmd	Trentlin	40	29071	korzath1.are	standing	93	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794663267	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=606/983 align=922 exp=252749 coin=1943540031 bank=24824061842 qp=2229 prac=36 train=76 stash=93/350 remorts=3
+1794663267	cmd	Alaric	57	2497	dresden.are	standing	100	2	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    297 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794663269	laid	-	0	0	-	997	herb	37	a sprig of catnip	2238	draconia.are	scatter
+1794663269	laid	-	0	0	-	998	component	70	a dragon tooth	9910	valhalla.are	scatter
+1794663277	cmd	Trentlin	40	29071	korzath1.are	standing	96	0	-	look		T-Junction //   The service hallway opens up into a T-Junction here.  To the north there // isn't much sound but, to the east you can hear the sound of machinery.	-	+
+1794663278	cmd	Trentlin	40	29070	korzath1.are	standing	96	0	-	west		Service Hallway //   You can now hear the distinct sounds of metal against metal as well as // the droning whine and buzz of what sounds like drill bit machinery.  You've	-	+
+1794663279	cmd	Trentlin	40	29067	korzath1.are	standing	96	0	-	west		Service Hallway //   The hallway continues to the east and west.  To the north is a storage // room.  The various noises of clanging metals can be heard to the east.	-	+
+1794663279	cmd	Trentlin	40	29066	korzath1.are	standing	96	0	-	west		Service Hallway //   The walls of this hallway are covered in sheer metal.  You marvel at // how much armor could be made with the metal used in lining the hall.	-	+
+1794663279	cmd	Trentlin	40	29065	korzath1.are	standing	96	0	-	west		Service Hallway //   The service hallway leads east towards the main work centers of the // fortress.  You wonder what all the noises are that are coming from that	-	+
+1794663280	cmd	Trentlin	40	29063	korzath1.are	standing	96	0	-	north		Corridor //   Security guards and the Heads of Security are keeping an eye out for // anyone looking suspicious.  You notice a hole in the west wall and inside	-	+
+1794663280	cmd	Trentlin	40	29062	korzath1.are	standing	96	0	-	north		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.	-	+
+1794663281	cmd	Trentlin	40	29061	korzath1.are	standing	96	0	-	north		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches	-	+
+1794663281	cmd	Trentlin	40	29061	korzath1.are	standing	96	0	-	north		Alas, you cannot go that way.	-	-
+1794663282	cmd	Trentlin	40	29060	korzath1.are	standing	96	0	-	west		Corridor //   At the end of this stank corridor is a large steel door in the // eastern wall.	-	+
+1794663283	cmd	Trentlin	40	29003	korzath1.are	standing	96	0	-	sw		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in	-	+
+1794663284	cmd	Trentlin	40	29002	korzath1.are	standing	96	0	-	south		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites	-	+
+1794663284	cmd	Trentlin	40	29001	korzath1.are	standing	96	0	-	south		Entrance to the Fortress //   You stand before the entrance to Korzath's mighty fortress.  The // fortress is built into the lower side of the mountain here.  The entrance	-	+
+1794663284	area	Trentlin	40	64	connect.are	korzath1.are	connect.are	72	south
+1794663284	cmd	Trentlin	40	64	connect.are	standing	96	0	-	south		Misty Clearing //   As you emerge from the forest, your head  slowly begins to  swim, and you // get  the  distinct  feeling  that you are very close to a highly powerful	-	+
+1794663284	area	Trentlin	40	9783	newthalo.are	connect.are	newthalo.are	0	south
+1794663284	cmd	Trentlin	40	9783	newthalo.are	standing	96	0	-	south		Edge of the forest //   You stand at the edge of a huge forest. The line of trees // continues as far as the eye can see to the east and west. A large	-	+
+1794663285	cmd	Trentlin	40	9782	newthalo.are	standing	96	0	-	south		On the Plains //   You stand on an open field of grass. The forest to the north is // closer but still a good distance away. To the south a small dirt	-	+
+1794663285	cmd	Trentlin	40	9781	newthalo.are	standing	96	0	-	south		On the Plains //   You stand on an open expanse of grass extending in all directions. To // the south of you stand the might northern gates of New Thalos. East	-	+
+1794663286	cmd	Trentlin	40	9667	newthalo.are	standing	96	0	-	south		Outside the Northern Gate of New Thalos //   You stand outside the gate of New Thalos. The city lies to the south, and // wilderness to the north.  The Sands of Sorrow continues to the east	-	+
+1794663286	cmd	Trentlin	40	9522	newthalo.are	standing	96	0	-	south		Inside the Northern Gate of New Thalos //   Two large stone towers rise up to greet you with a massive iron gate // swinging between on ornately crafted hinges and emblazened with the crest of	-	+
+1794663287	cmd	Trentlin	40	9521	newthalo.are	standing	96	0	-	south		Sultan's Walk //   The main road north from the square continues here, surrounded by the walls // of the palace and the Daemon. To the north you see the heavily guarded gate	-	+
+1794663287	cmd	Trentlin	40	9520	newthalo.are	standing	96	0	-	south		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you	-	+
+1794663288	cmd	Trentlin	40	9519	newthalo.are	standing	96	0	-	south		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small	-	+
+1794663288	cmd	Trentlin	40	9518	newthalo.are	standing	96	0	-	south		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on	-	+
+1794663289	cmd	Trentlin	40	9515	newthalo.are	standing	96	0	-	south		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the	-	+
+1794663289	cmd	Trentlin	40	9506	newthalo.are	standing	96	0	-	south		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle	-	+
+1794663290	cmd	Trentlin	40	9517	newthalo.are	standing	96	0	-	east		The Eastern Market Square //   You stand in the market of New Thalos, the gem of the desert. The // market is the hub of the city; all trade and commerce of any significance is	-	+
+1794663290	cmd	Trentlin	40	9527	newthalo.are	standing	96	0	-	east		East Main Street //   Here on East Main, you smell the odor of freshly slaughtered meat and // hear the pounding of new metal from the armory.  The Square is to	-	+
+1794663291	cmd	Trentlin	40	9528	newthalo.are	standing	96	0	-	east		East Main Street //   You are on East Main Street.  To the North is the beginning of // Guildsman's Row.  To the South is a dark alley.  The road also	-	+
+1794663291	cmd	Trentlin	40	9529	newthalo.are	standing	96	0	-	east		East Main Street //   As you walk by the mercenary guild a cold chill causes you to shiver // uncontrollably. You see some shady looking characters lurking about the	-	+
+1794663291	cmd	Trentlin	40	9530	newthalo.are	standing	96	0	-	east		East Main Street //   The Main street through eastern New Thalos begins here and heads westward // towards the marketplace. One of the main gates can be seen to the east, and	-	+
+1794663291	cmd	Trentlin	40	9531	newthalo.are	standing	96	0	-	east		Inside the Eastern Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazened with the crest of New Thalos, swings easily on	-	+
+1794663292	cmd	Trentlin	40	9531	newthalo.are	standing	96	0	-	east		The gate is closed.	-	-
+1794663292	cmd	Trentlin	40	9531	newthalo.are	standing	96	0	-	east		The gate is closed.	-	-
+1794663292	cmd	Trentlin	40	9531	newthalo.are	standing	96	0	-	east		The gate is closed.	-	-
+1794663293	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // [40 Dwarf   Monk  ] Trentlin the Master Monk // Players found: 2	-	-
+1794663294	cmd	Trentlin	40	9531	newthalo.are	standing	96	0	-	open	east	Ok.	-	-
+1794663294	cmd	Trentlin	40	9668	newthalo.are	standing	96	0	-	east		Outside the Eastern Gate of New Thalos //   You stand outside the protective walls of the city. The massive iron gate // sits to the west and the unknown awaits you eastward.	-	+
+1794663294	cmd	Trentlin	40	9790	newthalo.are	standing	96	0	-	east		On a road //   The people of New Thalos take great pride in the services their // city may provide. One of these services is the construction crews	-	+
+1794663295	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring	-	+
+1794663295	cmd	Trentlin	40	9791	newthalo.are	standing	96	0	-	east		On a road //   You walk along a well used road with beautiful scenery. To the north // tall pine trees form a wall that goes on for miles. Between the road	-	+
+1794663295	cmd	Trentlin	40	9792	newthalo.are	standing	96	0	-	east		On a road //   The Dragon Sea can be seen to the east now spreading out to unknown // lands. The road continues east and west. To the south you hear the	-	+
+1794663296	cmd	Trentlin	40	9793	newthalo.are	standing	96	0	-	east		On a road //   This is the main land route through the land. Merchants can bring their goods // to the coastline and have them ferried onto ships for export. Travel	-	+
+1794663297	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1794663297	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794663298	cmd	Trentlin	40	9794	newthalo.are	standing	96	0	-	east		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline	-	+
+1794663300	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=663/983 align=922 exp=252749 coin=1943540031 bank=24824061842 qp=2229 prac=36 train=76 stash=93/350 remorts=3
+1794663300	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    297 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794663300	area	Trentlin	40	41	connect.are	newthalo.are	connect.are	16	north
+1794663300	cmd	Trentlin	40	41	connect.are	standing	96	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 	-	+
+1794663301	quest	Alaric	57	2497	dresden.are	ordinary	recover	25041	The Sceptre of Gravestone	59	solace.are	18
+1794663301	cmd	Alaric	57	2497	dresden.are	standing	100	14	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Alaric.' // Questor Thews tells you 'A prized artifact - The Sceptre of Gravestone - has gone missing!'	-	+
+1794663302	cmd	Trentlin	40	41	connect.are	standing	96	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794663305	area	Trentlin	40	16000	pirate.are	connect.are	pirate.are	5	north
+1794663305	cmd	Trentlin	40	16000	pirate.are	standing	96	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a	-	+
+1794663306	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794663306	cmd	Trentlin	40	16001	pirate.are	standing	96	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794663307	cmd	Alaric	57	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794663307	cmd	Alaric	57	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794663307	cmd	Trentlin	40	16002	pirate.are	standing	96	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794663307	cmd	Alaric	57	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794663307	cmd	Alaric	57	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794663308	cmd	Alaric	57	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794663308	cmd	Trentlin	40	16003	pirate.are	standing	96	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794663308	cmd	Alaric	57	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794663308	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794663308	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1794663308	cmd	Trentlin	40	16004	pirate.are	standing	96	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.	-	+
+1794663309	cmd	Alaric	57	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794663309	area	Alaric	57	6000	haon.are	dresden.are	haon.are	260	west
+1794663309	cmd	Alaric	57	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794663309	cmd	Alaric	57	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1794663309	cmd	Alaric	57	6002	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1794663310	cmd	Alaric	57	6011	haon.are	standing	100	0	-	south		A small path through the light forest //   You are on a small path leading through the forest.  The trees are tall and // slender.  Paths lead north and south.	-	+
+1794663310	cmd	Alaric	57	6008	haon.are	standing	100	0	-	south		The forest clearing //   You are in a clearing in the forest.  Lots of fresh stumps of varying sizes // protrude from the ground and heavy logs are stacked neatly in a big pile	-	+
+1794663310	cmd	Alaric	57	6009	haon.are	standing	100	0	-	east		Outside a small cabin in the forest //   You are outside a small cabin built entirely from heavy logs.  There is a // wooden door to the north and small paths lead west and south through the	-	+
+1794663310	cmd	Alaric	57	6014	haon.are	standing	100	0	-	south		An intersection in the dense forest //   You are on a small path leading through the dense forest. The forest // gradually lightens to the north.  Paths lead north, east and west.	-	+
+1794663311	cmd	Alaric	57	6015	haon.are	standing	100	0	-	east		A small path in the dense forest //   You are on a small path leading through the dense forest.  The crowns of // the old trees leave the forest in a surreal twilight illumination.	-	+
+1794663311	cmd	Alaric	57	6016	haon.are	standing	100	0	-	south		A small path in the dense forest //   You are on a small path leading through the dense forest.  The crowns of the // old trees leave the forest in an unreal twilight illumination.  To the west	-	+
+1794663311	cmd	Alaric	57	6017	haon.are	standing	100	0	-	south		A small path in the dense forest //   You are on a small path leading through the dense forest.  The forest // seems to become lighter to the west. The path continues north and west.	-	+
+1794663311	cmd	Alaric	57	6018	haon.are	standing	100	0	-	west		An intersection in the light forest //   You are on a small path leading through the forest.  A path leads north // to a small field and other paths lead east and west into the dense forest.	-	+
+1794663312	area	Alaric	57	51	connect.are	haon.are	connect.are	3	south
+1794663312	cmd	Alaric	57	51	connect.are	standing	100	0	-	south		The top of the cliff. //   You are standing on the ledge of a huge cliff on the side of a valley // with a beautiful lake and tiny village nestled in it.  It looks so	-	+
+1794663312	cmd	Trentlin	40	16004	pirate.are	fighting	89	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** The drunk pirate! // Your fists of fury *** DEVASTATES *** The drunk pirate!	-	+
+1794663312	area	Alaric	57	13001	lakes.are	connect.are	lakes.are	0	down
+1794663312	cmd	Alaric	57	13001	lakes.are	standing	100	0	-	down		Rock Outcropping //   >From this rock outcropping the valley below seems peaceful, untouched. // Dense forests of pine carpet the mountainsides, broken only by thick aspen	-	+
+1794663312	cmd	Alaric	57	13002	lakes.are	standing	100	0	-	down		Small Grove //   Suddenly, soft music begins. Its source is slim, beautiful girl. Lyre in // hand, she sits gracefully as she plays; nearby, a large plainsman raises	-	+
+1794663312	cmd	Alaric	57	13003	lakes.are	standing	100	0	-	west		Entrance to the Town of Solace //   A warm autumn breeze rustles the great vallenwood trees of Solace. The // road that wanders through the trees blazes in the bright colors of autumn.	-	+
+1794663313	area	Alaric	57	13201	solace.are	lakes.are	solace.are	1	north
+1794663313	cmd	Alaric	57	13201	solace.are	standing	100	0	-	north		Gateway to Solace //   This is the gateway to the town of Solace. It keeps the monsters out and // the people in. This is a quiet farming town on the shores of Crystalmir	-	+
+1794663314	cmd	Alaric	57	13202	solace.are	standing	100	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.	-	+
+1794663314	cmd	Alaric	57	13203	solace.are	standing	100	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.	-	+
+1794663315	cmd	Alaric	57	13204	solace.are	standing	100	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.	-	+
+1794663315	cmd	Alaric	57	13205	solace.are	standing	100	0	-	north		Intersection at Main Road. //   Here there is an intersection at the main road. // You see to the east and west, smaller houses and some more shops.	-	+
+1794663316	cmd	Alaric	57	13228	solace.are	standing	100	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.	-	+
+1794663316	cmd	Alaric	57	13229	solace.are	standing	100	0	-	north		End of the Main Road //   The main road of Solace stops here. Other smaller roadways lead off // in various directions.	-	+
+1794663316	cmd	Alaric	57	13272	solace.are	standing	100	0	-	north		Cobblestone Path //   You are walking on a cobblestone path. It leads to a large building to the // north.	-	+
+1794663317	cmd	Alaric	57	13282	solace.are	standing	100	0	-	north		Outside the Inn of the Last Home. //   The Inn of the Last Home rests within the trunk of a huge vallenwood tree. // Warm laughter tumbles from the inn. The worn steps wind around the heavy	-	+
