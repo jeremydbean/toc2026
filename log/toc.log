@@ -301112,3 +301112,4 @@ Sat Nov 14 15:37:08 2026 :: Connection guard: 5.161.117.52 closed without a word
 Sat Nov 14 15:37:08 2026 :: Connection guard: 5.161.117.52 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.117.52 lifts it.
 Sat Nov 14 15:38:40 2026 :: Connection guard: 99.62.115.159 closed without a word (timed out at the prompt; not counted).
 Sat Nov 14 15:38:46 2026 :: Treasure goblin: vanished from room 2053 (Fresh graves, catacomb.are) (too long in one area).
+Sat Nov 14 15:42:13 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 2 of 6 in 6 hours).
