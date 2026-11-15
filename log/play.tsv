@@ -32040,3 +32040,9 @@
 1794780669	laid	-	0	0	-	1302	component	77	a vial of medusa eye fluid	17037	ag.are	scatter
 1794780738	laid	-	0	0	-	1303	herb	34	an amaranth plant	10037	glitter.are	scatter
 1794780738	laid	-	0	0	-	1304	herb	51	a piece of kelp	10036	glitter.are	scatter
+1794780814	laid	-	0	0	-	1305	herb	52	an asparagus shoot	10004	glitter.are	scatter
+1794780814	laid	-	0	0	-	1306	herb	50	a head of cabbage	10071	glitter.are	scatter
+1794780882	laid	-	0	0	-	1307	herb	48	an alfalfa sprout	5717	mid_ruin.are	scatter
+1794780931	laid	-	0	0	-	1308	component	86	an inert gelatinous cube	9168	dylan.are	scatter
+1794781007	item	Alaric	57	2497	dresden.are	2359	a runed key	type=key level=26 worn=0 nested=0 timer=0 cond=100 inside=0	obj_update
+1794781007	laid	-	0	0	-	1309	component	77	a vial of medusa eye fluid	3648	dkforest.are	scatter
