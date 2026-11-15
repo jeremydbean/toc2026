@@ -32030,3 +32030,7 @@
 1794780068	laid	-	0	0	-	1293	herb	38	a foxglove flower	9954	valhalla.are	scatter
 1794780146	laid	-	0	0	-	1294	herb	36	a belladonna plant	7564	astral.are	scatter
 1794780146	laid	-	0	0	-	1295	herb	53	a huckleberry	7502	astral.are	scatter
+1794780287	laid	-	0	0	-	1296	component	67	a beholder's eye	13455	hell.are	scatter
+1794780346	census	-	0	0	-	herbs=141/150 components=77/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=20 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1794780357	laid	-	0	0	-	1297	component	60	a rakshasa's claw	25116	underdrk.are	scatter
+1794780468	laid	-	0	0	-	1298	herb	49	a pomegranate	66	connect.are	scatter
