@@ -31879,3 +31879,125 @@
 1794778848	laid	-	0	0	-	1244	herb	52	an asparagus shoot	2242	draconia.are	scatter
 1794778848	laid	-	0	0	-	1245	component	71	a goblin's finger	628	ofcol.are	scatter
 1794778889	laid	-	0	0	-	1246	herb	38	a foxglove flower	15104	campus.are	scatter
+1794779027	laid	-	0	0	-	1247	herb	46	a juniper berry	24584	abyss.are	scatter
+1794779027	laid	-	0	0	-	1248	component	63	a phoenix feather	18119	icekeep.are	scatter
+1794779074	laid	-	0	0	-	1249	component	78	a vial of demons blood	13292	solace.are	scatter
+1794779135	laid	-	0	0	-	1250	herb	52	an asparagus shoot	9668	newthalo.are	scatter
+1794779135	laid	-	0	0	-	1251	herb	41	a sprig of mistletoe	9542	newthalo.are	scatter
+1794779135	laid	-	0	0	-	1252	component	66	a strand of hair	25116	underdrk.are	scatter
+1794779180	laid	-	0	0	-	1253	herb	35	a sprig of angelica	10204	tritia.are	scatter
+1794779186	quest	Alaric	57	2497	dresden.are	ordinary	kill	15022	the FREC	19	campus.are	16
+1794779186	cmd	Alaric	57	2497	dresden.are	standing	100	12	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Alaric.' // Questor Thews tells you 'The criminal known as the FREC has escaped from prison!'	-	+
+1794779192	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794779192	cmd	Alaric	57	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794779193	cmd	Alaric	57	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794779193	cmd	Alaric	57	4201	dresden.are	standing	100	0	-	south		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794779193	cmd	Alaric	57	4202	dresden.are	standing	100	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794779193	cmd	Alaric	57	4207	dresden.are	standing	100	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794779194	area	Alaric	57	3700	school.are	dresden.are	school.are	376	up
+1794779194	cmd	Alaric	57	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794779194	cmd	Alaric	57	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794779194	cmd	Alaric	57	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794779194	area	Alaric	57	15000	campus.are	school.are	campus.are	0	enter
+1794779194	cmd	Alaric	57	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794779208	cmd	Alaric	57	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794779209	cmd	Alaric	57	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794779209	cmd	Alaric	57	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794779209	cmd	Alaric	57	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794779209	cmd	Alaric	57	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794779210	cmd	Alaric	57	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794779210	cmd	Alaric	57	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794779210	cmd	Alaric	57	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794779210	cmd	Alaric	57	15024	campus.are	standing	100	0	-	north		The Ghetto //   The area you see ahead of you is low cost student housing, which is // quite run down, almost into the ground in fact.  You can see many	-	+
+1794779211	cmd	Alaric	57	15150	campus.are	standing	100	0	-	north		The Ghetto //   This part of the ghetto seems to have survived.  There is a house to the // east.  South of you, you can see the end of the ghetto.	-	+
+1794779211	spotted	Alaric	57	15149	campus.are	1204	herb	37	a sprig of catnip	1706	1	scatter	arrive
+1794779211	cmd	Alaric	57	15149	campus.are	standing	100	0	-	north		The Ghetto //   This part of the ghetto seems to have survived.  There are houses on either // side of the road.	-	+
+1794779211	passed	Alaric	57	15148	campus.are	1204	herb	37	a sprig of catnip	1706	0	1	scatter	15149	left
+1794779211	cmd	Alaric	57	15148	campus.are	standing	100	0	-	north		The Ghetto //   This part of the ghetto seems to have survived.  To the east, you can see // the A & Z Supermarket.	-	+
+1794779211	cmd	Alaric	57	15147	campus.are	standing	100	0	-	north		The Ghetto //   This part of the ghetto seems to have survived.  To the west, you can see, // behind the rubble, the vague outlines of a house.	-	+
+1794779212	cmd	Alaric	57	15141	campus.are	standing	100	0	-	north		The Ghetto Intersection //   This intersection is the joining point of what's left of University // Avenue and Earl Road which heads off to the east.	-	+
+1794779213	cmd	Alaric	57	15142	campus.are	standing	100	0	-	east		The Ghetto //   This part of the ghetto has survived in a better condition than the // rest of the ghetto.  A house lies to the north.	-	+
+1794779214	cmd	Alaric	57	15143	campus.are	standing	100	0	-	east		The Ghetto //   Earl Road ends abruptly as there is a house built immediately to the // east.  Another stands to the south.	-	+
+1794779215	cmd	Alaric	57	15143	campus.are	standing	100	0	-	exits		Obvious exits: // East  - Gael House // South - Gael House	-	+
+1794779216	cmd	Alaric	57	15144	campus.are	standing	100	0	-	east		Gael House //   This house reminds you of home, your parent's home.  It's mind-boggling. // [Exits: west]	-	-
+1794779216	cmd	Alaric	57	15144	campus.are	standing	100	0	-	exits		Obvious exits: // West  - The Ghetto	-	-
+1794779217	cmd	Alaric	57	15143	campus.are	standing	100	0	-	west		The Ghetto //   Earl Road ends abruptly as there is a house built immediately to the // east.  Another stands to the south.	-	+
+1794779217	cmd	Alaric	57	15145	campus.are	standing	100	0	-	south		Gael House //   This house reminds you of home, your aunt's home.  Now, that's absurd. // [Exits: north]	-	+
+1794779221	cmd	Alaric	57	15143	campus.are	standing	100	0	-	north		The Ghetto //   Earl Road ends abruptly as there is a house built immediately to the // east.  Another stands to the south.	-	+
+1794779221	cmd	Alaric	57	15142	campus.are	standing	100	0	-	west		The Ghetto //   This part of the ghetto has survived in a better condition than the // rest of the ghetto.  A house lies to the north.	-	+
+1794779222	cmd	Alaric	57	15141	campus.are	standing	100	0	-	west		The Ghetto Intersection //   This intersection is the joining point of what's left of University // Avenue and Earl Road which heads off to the east.	-	+
+1794779222	cmd	Alaric	57	15147	campus.are	standing	100	0	-	south		The Ghetto //   This part of the ghetto seems to have survived.  To the west, you can see, // behind the rubble, the vague outlines of a house.	-	+
+1794779222	cmd	Alaric	57	15148	campus.are	standing	100	0	-	south		The Ghetto //   This part of the ghetto seems to have survived.  To the east, you can see // the A & Z Supermarket.	-	+
+1794779224	cmd	Alaric	57	15148	campus.are	standing	100	0	-	open		Ok.	-	-
+1794779224	cmd	Alaric	57	15151	campus.are	standing	100	0	-	east		The A & Z Supermarket //   Aisles and aisles of foodstuffs are waiting to be bought by unknowing // customers.	-	+
+1794779225	cmd	Alaric	57	15148	campus.are	standing	100	0	-	west		The Ghetto //   This part of the ghetto seems to have survived.  To the east, you can see // the A & Z Supermarket.	-	+
+1794779226	cmd	Alaric	57	15149	campus.are	standing	100	0	-	south		The Ghetto //   This part of the ghetto seems to have survived.  There are houses on either // side of the road.	-	+
+1794779226	cmd	Alaric	57	15152	campus.are	standing	100	0	-	east		Frec House //   This house reminds you of your room, only worse.  It seems to be a // post-holocaust version of it.	-	+
+1794779228	cmd	Alaric	57	15149	campus.are	standing	100	0	-	west		The Ghetto //   This part of the ghetto seems to have survived.  There are houses on either // side of the road.	-	+
+1794779229	cmd	Alaric	57	15152	campus.are	standing	100	0	-	east		Frec House //   This house reminds you of your room, only worse.  It seems to be a // post-holocaust version of it.	-	+
+1794779231	cmd	Alaric	57	15149	campus.are	standing	100	0	-	west		The Ghetto //   This part of the ghetto seems to have survived.  There are houses on either // side of the road.	-	+
+1794779233	spotted	Alaric	57	15153	campus.are	1069	herb	41	a sprig of mistletoe	3801	1	scatter	arrive
+1794779233	cmd	Alaric	57	15153	campus.are	standing	100	0	-	west		Boss House //   Papers and calculators litter the room, making an otherwise neat house, // messy.	-	+
+1794779236	passed	Alaric	57	15149	campus.are	1069	herb	41	a sprig of mistletoe	3804	3	1	scatter	15153	left
+1794779236	cmd	Alaric	57	15149	campus.are	standing	100	0	-	east		The Ghetto //   This part of the ghetto seems to have survived.  There are houses on either // side of the road.	-	+
+1794779237	cmd	Alaric	57	15150	campus.are	standing	100	0	-	south		The Ghetto //   This part of the ghetto seems to have survived.  There is a house to the // east.  South of you, you can see the end of the ghetto.	-	+
+1794779237	cmd	Alaric	57	15154	campus.are	standing	100	0	-	east		Gael House //   This house reminds you of home, your grandma's home.  It's insane. // [Exits: west]	-	-
+1794779240	cmd	Alaric	57	15150	campus.are	standing	100	0	-	west		The Ghetto //   This part of the ghetto seems to have survived.  There is a house to the // east.  South of you, you can see the end of the ghetto.	-	+
+1794779242	cmd	Alaric	57	15149	campus.are	standing	100	0	-	north		The Ghetto //   This part of the ghetto seems to have survived.  There are houses on either // side of the road.	-	+
+1794779242	cmd	Alaric	57	15148	campus.are	standing	100	0	-	north		The Ghetto //   This part of the ghetto seems to have survived.  To the east, you can see // the A & Z Supermarket.	-	+
+1794779243	cmd	Alaric	57	15147	campus.are	standing	100	0	-	north		The Ghetto //   This part of the ghetto seems to have survived.  To the west, you can see, // behind the rubble, the vague outlines of a house.	-	+
+1794779243	cmd	Alaric	57	15141	campus.are	standing	100	0	-	north		The Ghetto Intersection //   This intersection is the joining point of what's left of University // Avenue and Earl Road which heads off to the east.	-	+
+1794779243	cmd	Alaric	57	15142	campus.are	standing	100	0	-	east		The Ghetto //   This part of the ghetto has survived in a better condition than the // rest of the ghetto.  A house lies to the north.	-	+
+1794779244	cmd	Alaric	57	15146	campus.are	standing	100	0	-	north		Boss House //   Papers and calculators litter the room, making an otherwise neat house, // messy.	-	+
+1794779245	laid	-	0	0	-	1264	herb	50	a head of cabbage	5641	tarin.are	scatter
+1794779245	laid	-	0	0	-	1265	herb	36	a belladonna plant	5606	tarin.are	scatter
+1794779245	cmd	Alaric	57	15142	campus.are	standing	100	0	-	south		The Ghetto //   This part of the ghetto has survived in a better condition than the // rest of the ghetto.  A house lies to the north.	-	+
+1794779246	cmd	Alaric	57	15141	campus.are	standing	100	0	-	west		The Ghetto Intersection //   This intersection is the joining point of what's left of University // Avenue and Earl Road which heads off to the east.	-	+
+1794779246	cmd	Alaric	57	15155	campus.are	standing	100	0	-	west		Boss House //   Papers and calculators litter the room, making an otherwise neat house, // messy.	-	+
+1794779247	cmd	Alaric	57	15155	campus.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794779247	cmd	Alaric	57	15155	campus.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794779248	cmd	Alaric	57	15141	campus.are	standing	100	0	-	east		The Ghetto Intersection //   This intersection is the joining point of what's left of University // Avenue and Earl Road which heads off to the east.	-	+
+1794779249	cmd	Alaric	57	15140	campus.are	standing	100	0	-	north		The Ghetto //   The road would normally run north-south, but the way north is blocked // by a small obstacle... An overturned policemobile.  There is a house	-	+
+1794779249	cmd	Alaric	57	15139	campus.are	standing	100	0	-	west		Ghetto House //   It looks like a hellhole... // It's a mess.	-	+
+1794779250	cmd	Alaric	57	15139	campus.are	standing	100	0	-	north		The door is closed.	-	-
+1794779251	cmd	Alaric	57	15139	campus.are	standing	100	0	-	open		Ok.	-	-
+1794779251	cmd	Alaric	57	15138	campus.are	standing	100	0	-	north		Frec House //   You feel a little apprehensive as you enter this house... // It's a mess.	-	+
+1794779254	cmd	Alaric	57	15138	campus.are	standing	100	0	-	kill	fre	Your punch ^^^ DESTROYS ^^^ the FREC! [-96] // Your punch ^^^ DESTROYS ^^^ the FREC! [-103]	-	-
+1794779258	cmd	Alaric	57	15138	campus.are	standing	100	0	-	open		Ok.	-	-
+1794779259	cmd	Alaric	57	15136	campus.are	standing	100	0	-	east		The Ghetto //   The road would normally run north-south, but the way south is blocked // by a small obstacle... An overturned policemobile.  There are houses	-	+
+1794779260	cmd	Alaric	57	15023	campus.are	standing	100	0	-	north		The Ghetto //   The area you see ahead of you is low cost student housing, which is // quite run down, almost into the ground in fact.  You can see many	-	+
+1794779261	cmd	Alaric	57	15136	campus.are	standing	100	0	-	south		The Ghetto //   The road would normally run north-south, but the way south is blocked // by a small obstacle... An overturned policemobile.  There are houses	-	+
+1794779262	cmd	Alaric	57	15137	campus.are	standing	100	0	-	east		Ghetto House //   It's a mess. // [Exits: west]	-	-
+1794779264	cmd	Alaric	57	15136	campus.are	standing	100	0	-	west		The Ghetto //   The road would normally run north-south, but the way south is blocked // by a small obstacle... An overturned policemobile.  There are houses	-	+
+1794779265	cmd	Alaric	57	15138	campus.are	standing	100	0	-	west		Frec House //   You feel a little apprehensive as you enter this house... // It's a mess.	-	+
+1794779265	cmd	Alaric	57	15139	campus.are	standing	100	0	-	south		Ghetto House //   It looks like a hellhole... // It's a mess.	-	+
+1794779265	cmd	Alaric	57	15140	campus.are	standing	100	0	-	east		The Ghetto //   The road would normally run north-south, but the way north is blocked // by a small obstacle... An overturned policemobile.  There is a house	-	+
+1794779265	cmd	Alaric	57	15141	campus.are	standing	100	0	-	south		The Ghetto Intersection //   This intersection is the joining point of what's left of University // Avenue and Earl Road which heads off to the east.	-	+
+1794779266	cmd	Alaric	57	15147	campus.are	standing	100	0	-	south		The Ghetto //   This part of the ghetto seems to have survived.  To the west, you can see, // behind the rubble, the vague outlines of a house.	-	+
+1794779266	cmd	Alaric	57	15148	campus.are	standing	100	0	-	south		The Ghetto //   This part of the ghetto seems to have survived.  To the east, you can see // the A & Z Supermarket.	-	+
+1794779266	cmd	Alaric	57	15149	campus.are	standing	100	0	-	south		The Ghetto //   This part of the ghetto seems to have survived.  There are houses on either // side of the road.	-	+
+1794779266	cmd	Alaric	57	15150	campus.are	standing	100	0	-	south		The Ghetto //   This part of the ghetto seems to have survived.  There is a house to the // east.  South of you, you can see the end of the ghetto.	-	+
+1794779267	cmd	Alaric	57	15024	campus.are	standing	100	0	-	south		The Ghetto //   The area you see ahead of you is low cost student housing, which is // quite run down, almost into the ground in fact.  You can see many	-	+
+1794779267	cmd	Alaric	57	15013	campus.are	standing	100	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794779267	cmd	Alaric	57	15012	campus.are	standing	100	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794779267	cmd	Alaric	57	15011	campus.are	standing	100	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794779268	cmd	Alaric	57	15010	campus.are	standing	100	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794779268	cmd	Alaric	57	15004	campus.are	standing	100	0	-	south		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794779268	cmd	Alaric	57	15003	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794779268	cmd	Alaric	57	15002	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794779269	cmd	Alaric	57	15001	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794779269	cmd	Alaric	57	15000	campus.are	standing	100	0	-	west		The Eastern Campus Entrance //   This gateway is made of limestone, and covered in ivy.  Beyond the // entrance, the university stretches as far as the eye can see.  A sign	-	+
+1794779269	area	Alaric	57	3795	school.are	campus.are	school.are	75	enter
+1794779269	cmd	Alaric	57	3795	school.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // Strange Blending of Time	-	+
+1794779269	cmd	Alaric	57	3772	school.are	standing	100	0	-	down		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794779270	cmd	Alaric	57	3700	school.are	standing	100	0	-	down		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794779270	area	Alaric	57	4207	dresden.are	school.are	dresden.are	1	down
+1794779270	cmd	Alaric	57	4207	dresden.are	standing	100	0	-	down		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794779270	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794779270	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794779272	coin	Alaric	57	2497	dresden.are	+77064570	quests	aquest	-	28304537906
+1794779272	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	ordinary qp=2442->2442 offered=23 daily=4->4 coin=+77064570 kill=15412914 streak=1 level=57 target=-1
+1794779272	cmd	Alaric	57	2497	dresden.are	standing	100	20	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Streak of 2 in a row! A +10% bonus has been added!'	success:-	+
+1794779273	cmd	Alaric	57	2497	dresden.are	standing	100	6	-	aquest	ga no	You safely collect 23 quest points.	-	-
+1794779274	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=368/983 align=977 exp=252749 coin=3418415910 bank=24886121996 qp=2465 prac=36 train=76 stash=93/350 remorts=3
+1794779274	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    301 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
