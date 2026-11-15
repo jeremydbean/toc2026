@@ -5086,3 +5086,5 @@
 1794741594	wizinfo	60	Connection guard: last hour 12 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 2 addresses paused and 0 refused now, 14 active player addresses.
 1794743761	wizinfo	60	Cartographer: appeared in room 2155 (Khan Park, hood.are) (level 6).
 1794744946	wizinfo	60	Black market: the dealer appeared in room 2127 (Yellow Dragon Road, hood.are) with 5 items (stock 1794744946), for 22 minutes.
+1794745059	wizinfo	60	Connection guard: 35.210.103.88 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.210.103.88 lifts it.
+1794745194	wizinfo	60	Connection guard: last hour 23 closed without a word, 26 refused, 0 new characters refused, 1 newly paused; 3 addresses paused and 0 refused now, 14 active player addresses.
