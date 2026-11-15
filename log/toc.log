@@ -304176,3 +304176,7 @@ Sun Nov 15 03:33:02 2026 :: Connection guard: 178.156.189.249 closed without a w
 Sun Nov 15 03:38:07 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 5 of 6 in 6 hours).
 Sun Nov 15 03:40:02 2026 :: Treasure goblin: vanished from room 5209 (A Side Street, oldthalo.are) (too long in one area).
 Sun Nov 15 03:43:11 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 15 03:48:15 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 6 of 6 in 6 hours).
+Sun Nov 15 03:48:15 2026 :: Connection guard: 5.161.117.52 paused for 12 hours (pause 2 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.117.52 lifts it.
+Sun Nov 15 03:49:39 2026 :: Connection guard: last hour 11 closed without a word, 2 refused, 0 new characters refused, 1 newly paused; 3 addresses paused and 0 refused now, 14 active player addresses.
+Sun Nov 15 03:50:07 2026 :: Treasure goblin: vanished from room 6531 (Queen's waiting room, dwarves.are) (too long in one area).
