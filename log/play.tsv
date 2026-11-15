@@ -30987,3 +30987,12 @@
 1794772006	laid	-	0	0	-	912	component	80	a glass encased wing of a fairy	7053	sewer.are	scatter
 1794772057	laid	-	0	0	-	913	herb	50	a head of cabbage	3819	ratslair.are	scatter
 1794772057	laid	-	0	0	-	914	component	76	a vial of dragons blood	10202	tritia.are	scatter
+1794772120	laid	-	0	0	-	915	herb	46	a juniper berry	13247	solace.are	scatter
+1794772120	laid	-	0	0	-	916	component	54	eye of newt	2454	dresden.are	scatter
+1794772185	laid	-	0	0	-	917	component	81	a vial of squid ink	6350	arac.are	scatter
+1794772246	census	-	0	0	-	herbs=14/150 components=10/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=22 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=20 mobs_fought=0 secs=900
+1794772255	laid	-	0	0	-	918	herb	48	an alfalfa sprout	338	plains.are	scatter
+1794772255	laid	-	0	0	-	919	herb	40	a clove	315	plains.are	scatter
+1794772314	laid	-	0	0	-	920	herb	46	a juniper berry	17777	landoz.are	scatter
+1794772314	laid	-	0	0	-	921	herb	48	an alfalfa sprout	17771	landoz.are	scatter
+1794772314	laid	-	0	0	-	922	component	58	some pixie dust	17726	landoz.are	scatter
