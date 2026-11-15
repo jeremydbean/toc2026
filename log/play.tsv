@@ -30420,3 +30420,7 @@
 1794754572	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ga no	You safely collect 11 quest points.	-	-
 1794754574	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=125/983 align=922 exp=252749 coin=2360362437 bank=24886121996 qp=2288 prac=36 train=76 stash=93/350 remorts=3
 1794754574	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    297 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794754654	laid	-	0	0	-	880	component	87	a vial of grey ooze	17277	highland.are	scatter
+1794754855	laid	-	0	0	-	881	herb	36	a belladonna plant	1381	htower.are	scatter
+1794754926	laid	-	0	0	-	882	herb	40	a clove	3836	ratslair.are	scatter
+1794754926	laid	-	0	0	-	883	component	55	a unicorn horn	15094	campus.are	scatter
