@@ -30,10 +30,15 @@ TESTS = sorted(p for p in (ROOT / "tests").glob("test_*.py") if p.name != Path(_
 
 class FixtureHygieneTests(unittest.TestCase):
     def test_no_test_pins_a_shipped_mobile_with_set_mob(self) -> None:
+        """SET MOB refuses a prototype that came with the game, so pinning one
+        never worked. A mobile the test made itself with MCREATE can be set,
+        and is allowed (test_building_rooms_shops' trader, 2026-11-15)."""
         offenders = []
         for path in TESTS:
             text = path.read_text(encoding="utf-8")
-            for match in re.finditer(r"set mob \S+ act \+sentinel", text):
+            for match in re.finditer(r"set mob (\S+) act \+sentinel", text):
+                if f"mcreate {match.group(1)}" in text:
+                    continue
                 line = text.count("\n", 0, match.start()) + 1
                 offenders.append(f"{path.name}:{line}")
         self.assertEqual([], offenders, "use LiveMud(fixtures=True) and place_sparring_guard()")
