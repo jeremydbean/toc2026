@@ -32053,3 +32053,7 @@
 1794781593	laid	-	0	0	-	1313	component	57	a trolls fingernail	2495	dresden.are	scatter
 1794781662	laid	-	0	0	-	1314	component	84	a vial of froghemoth saliva	11017	ancala.are	scatter
 1794781788	laid	-	0	0	-	1315	component	59	a patch of lycanthrope fur	24203	crypt.are	scatter
+1794782024	laid	-	0	0	-	1316	component	85	a vial of crushed tarrasque scale	1021	uargo.are	scatter
+1794782076	laid	-	0	0	-	1317	component	69	a basilisks tongue	333	plains.are	scatter
+1794782146	census	-	0	0	-	herbs=150/150 components=89/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=8 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1794782200	laid	-	0	0	-	1318	component	63	a phoenix feather	18231	gelidia.are	scatter
