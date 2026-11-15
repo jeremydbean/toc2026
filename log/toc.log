@@ -304516,3 +304516,5 @@ Sun Nov 15 14:47:21 2026 :: Connection guard: 35.214.133.132 closed without a wo
 Sun Nov 15 14:47:21 2026 :: Connection guard: 35.214.133.132 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.214.133.132 lifts it.
 Sun Nov 15 14:47:22 2026 :: Connection guard: refused 1 connection from 35.214.133.132 (paused; 1 refused in all, pause 1 this week, 360 minutes left).
 Sun Nov 15 14:47:22 2026 :: Connection guard: 35.214.133.132 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 15 14:48:12 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 15 14:48:22 2026 :: Connection guard: refused 24 connections from 35.214.133.132 (since the last line; 25 refused in all, pause 1 this week, 359 minutes left).
