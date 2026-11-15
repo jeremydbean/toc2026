@@ -30804,3 +30804,19 @@
 1794771404	laid	-	0	0	-	878	herb	37	a sprig of catnip	20127	prison.are	scatter
 1794771404	laid	-	0	0	-	879	component	60	a rakshasa's claw	17742	landoz.are	scatter
 1794771469	laid	-	0	0	-	880	herb	52	an asparagus shoot	9633	newthalo.are	scatter
+1794771545	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	inventory		You are carrying: //      a multi-colored key ring //      (Glowing) British's amulet	-	+
+1794771548	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=633/983 align=922 exp=252749 coin=2934507570 bank=24886121996 qp=2349 prac=36 train=76 stash=93/350 remorts=3
+1794771548	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    299 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794771550	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1794771551	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794771554	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794771559	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2860/2875 mv=633/983 align=922 exp=252749 coin=2934507570 bank=24886121996 qp=2349 prac=36 train=76 stash=93/350 remorts=3
+1794771559	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    299 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794771561	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	affect		You are affected by: // Skill: 'steel fist' modifies damage roll by 16 for 6 hours.	-	-
+1794771563	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794771607	laid	-	0	0	-	881	component	69	a basilisks tongue	29543	lud.are	scatter
+1794771663	laid	-	0	0	-	882	herb	43	a sprig of hyssop	13466	hell.are	scatter
+1794771663	laid	-	0	0	-	883	herb	41	a sprig of mistletoe	13506	hell.are	scatter
+1794771724	laid	-	0	0	-	884	component	84	a vial of froghemoth saliva	29479	world.are	scatter
+1794771766	quest	Alaric	57	2497	dresden.are	ordinary	recover	25042	The Heart of Tifarah	59	campus.are	10
+1794771766	cmd	Alaric	57	2497	dresden.are	standing	100	13	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Alaric.' // Questor Thews tells you 'A prized artifact - The Heart of Tifarah - has gone missing!'	-	+
