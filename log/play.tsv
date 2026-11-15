@@ -31371,3 +31371,11 @@
 1794773865	laid	-	0	0	-	1025	herb	51	a piece of kelp	4057	moria.are	scatter
 1794773865	laid	-	0	0	-	1026	herb	43	a sprig of hyssop	4153	moria.are	scatter
 1794773865	laid	-	0	0	-	1027	component	59	a patch of lycanthrope fur	2477	dresden.are	scatter
+1794773942	laid	-	0	0	-	1028	herb	49	a pomegranate	302	plains.are	scatter
+1794773984	laid	-	0	0	-	1029	herb	53	a huckleberry	15135	campus.are	scatter
+1794773984	laid	-	0	0	-	1030	component	69	a basilisks tongue	1022	uargo.are	scatter
+1794774046	census	-	0	0	-	herbs=41/150 components=29/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=18 spotted=1 picked=0 passed=1 cleared=0 rare=0 mobs_seen=8 mobs_fought=1 secs=900
+1794774083	laid	-	0	0	-	1031	herb	52	an asparagus shoot	7439	sewer.are	scatter
+1794774083	laid	-	0	0	-	1032	herb	44	a sprig of aconite	7438	sewer.are	scatter
+1794774140	laid	-	0	0	-	1033	herb	45	a sarsaparilla vine	787	camelot.are	scatter
+1794774140	laid	-	0	0	-	1034	herb	37	a sprig of catnip	776	camelot.are	scatter
