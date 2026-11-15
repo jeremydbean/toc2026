@@ -118,26 +118,27 @@ List spend 12550920 0 devote
 List spend 162750 0 buy
 End
 Day 2026-11-15
-Played 343
+Played 518
 Level 43 44 1
-Exp 2762 0
-Kills 3
+Exp 3314 0
+Kills 5
 Deaths 0
 Close 0
 Quests 1 234
 Dailies 0 0
-List area 105 0 City of Dresden
-List area 2 0 Miden'nir
+List area 203 0 City of Dresden
+List area 5 0 Miden'nir
 List area 25 0 Thalos
 List area 2 0 Arachnos
-List area 1 0 Continental Drift
-List area 5 0 New Thalos
-List area 203 0 Pirate Ship
+List area 2 0 Continental Drift
+List area 10 0 New Thalos
+List area 271 0 Pirate Ship
 List item 1 0 a pearl bracelet
 List item 1 0 A multi-colored stone
 List earn 38288698 0 interest
 List earn 14479476 0 quests
-List earn 6153039 0 loot
-List spend 700000 0 heal
+List earn 9255232 0 loot
+List spend 1100000 0 heal
+List spend 13469280 0 devote
 End
 #END

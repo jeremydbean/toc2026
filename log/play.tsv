@@ -29979,3 +29979,186 @@
 1794707492	cmd	Trentlin	44	4204	dresden.are	standing	90	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
 1794707492	cmd	Trentlin	44	4207	dresden.are	standing	90	0	-	south		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
 1794707493	cmd	Trentlin	44	4208	dresden.are	standing	90	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794707497	cmd	Trentlin	44	4208	dresden.are	standing	90	0	-	devote	good	Devote yourself to the light, the dark or the balance.	-	-
+1794707501	coin	Trentlin	44	4208	dresden.are	-13469280	spent	devote	-	15373313700
+1794707501	cmd	Trentlin	44	4208	dresden.are	standing	90	11	-	devote	light	You lay 13p 46g 92s 80c upon the altar and pray for the light. // You are Balanced (alignment 268).	-	-
+1794707507	cmd	Trentlin	44	4208	dresden.are	standing	90	0	-	inventory		You are carrying: //      A multi-colored stone //      a purple container of tea	-	+
+1794707509	cmd	Trentlin	44	4208	dresden.are	standing	90	0	-	compare	stone	A multi-colored stone is not something you can wear.	-	-
+1794707514	cmd	Trentlin	44	4208	dresden.are	standing	90	0	-	drop	stone	You drop A multi-colored stone.	-	-
+1794707516	coin	Trentlin	44	4208	dresden.are	+84	loot	sacrifice	-	15373313784
+1794707516	cmd	Trentlin	44	4208	dresden.are	standing	90	0	-	sacrifice	stone	The Gods give you 84 copper coins for your sacrifice.	-	-
+1794707519	cmd	Trentlin	44	4208	dresden.are	standing	90	0	-	compare	star	A) Starlight (level 45) -- can't use: needs level 45 // B) the Sceptre of Might (level 25), worn // Slot: light.  Your damage comes from weapons.	-	+
+1794707522	cmd	Trentlin	44	4208	dresden.are	standing	90	0	-	compare	robes	A) some Black velvet robes (level 32) -- can't use: made for another side // B) a coat of urchin-spine mail (level 33), worn // Slot: body.  Your damage comes from weapons.	-	+
+1794707528	laid	-	0	0	-	911	component	85	a vial of crushed tarrasque scale	18213	gelidia.are	scatter
+1794707530	cmd	Trentlin	44	4208	dresden.are	standing	93	0	-	inventory		You are carrying: //      a purple container of tea // ( 6) a potion of true sight	-	+
+1794707545	coin	Trentlin	44	4208	dresden.are	-400000	spent	heal	-	15372913784
+1794707545	cmd	Trentlin	44	4208	dresden.are	standing	93	0	-	heal	refres	The healer utters the words 'candusima'. // You feel fully refreshed! (4 castings, 40 gold.)	-	-
+1794707549	cmd	Trentlin	44	4207	dresden.are	standing	93	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794707549	cmd	Trentlin	44	4202	dresden.are	standing	93	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794707550	cmd	Trentlin	44	4201	dresden.are	standing	93	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794707550	cmd	Trentlin	44	2433	dresden.are	standing	93	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794707550	cmd	Trentlin	44	2405	dresden.are	standing	93	0	-	east		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794707550	cmd	Trentlin	44	2401	dresden.are	standing	93	0	-	east		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794707551	cmd	Trentlin	44	2403	dresden.are	standing	93	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794707551	cmd	Trentlin	44	2420	dresden.are	standing	93	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794707551	cmd	Trentlin	44	2421	dresden.are	standing	93	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794707551	cmd	Trentlin	44	2422	dresden.are	standing	93	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794707552	cmd	Trentlin	44	2423	dresden.are	standing	93	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1794707552	cmd	Trentlin	44	2424	dresden.are	standing	93	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1794707552	cmd	Trentlin	44	2425	dresden.are	standing	93	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1794707552	cmd	Trentlin	44	2426	dresden.are	standing	93	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794707553	cmd	Trentlin	44	2426	dresden.are	standing	93	0	-	open	east	Ok.	-	-
+1794707553	cmd	Trentlin	44	2440	dresden.are	standing	93	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794707553	area	Trentlin	44	3503	midennir.are	dresden.are	midennir.are	98	east
+1794707553	cmd	Trentlin	44	3503	midennir.are	standing	93	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1794707553	cmd	Trentlin	44	3502	midennir.are	standing	93	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1794707554	cmd	Trentlin	44	3525	midennir.are	standing	93	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  	-	+
+1794707554	cmd	Trentlin	44	3525	midennir.are	standing	93	0	-	levitate		You slowly rise up off the ground.	-	-
+1794707554	cmd	Trentlin	44	3526	midennir.are	standing	93	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded	-	+
+1794707554	cmd	Trentlin	44	3527	midennir.are	standing	93	0	-	east		The Checkpoint //   You are met by a group of heavily armored knights.  They check you over // for contraband, and then allow you to pass on.  One of the knights cautions to	-	+
+1794707555	cmd	Trentlin	44	3528	midennir.are	standing	93	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road, just east of a heavily  // guarded checkpoint.  You have covered about half the distance between	-	+
+1794707555	cmd	Trentlin	44	3529	midennir.are	standing	93	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially	-	+
+1794707555	cmd	Trentlin	44	3530	midennir.are	standing	93	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste	-	+
+1794707555	cmd	Trentlin	44	3531	midennir.are	standing	93	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your	-	+
+1794707556	cmd	Trentlin	44	3532	midennir.are	standing	93	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous	-	+
+1794707556	area	Trentlin	44	42	connect.are	midennir.are	connect.are	3	east
+1794707556	cmd	Trentlin	44	42	connect.are	standing	93	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities	-	+
+1794707556	area	Trentlin	44	9669	newthalo.are	connect.are	newthalo.are	0	east
+1794707556	cmd	Trentlin	44	9669	newthalo.are	standing	93	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.	-	+
+1794707556	cmd	Trentlin	44	9523	newthalo.are	standing	93	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1794707557	cmd	Trentlin	44	9524	newthalo.are	standing	93	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1794707557	cmd	Trentlin	44	9525	newthalo.are	standing	93	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1794707557	cmd	Trentlin	44	9525	newthalo.are	standing	93	0	-	steel		Your hands can't get any harder.	-	-
+1794707557	cmd	Trentlin	44	9526	newthalo.are	standing	93	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1794707558	cmd	Trentlin	44	9509	newthalo.are	standing	93	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1794707558	cmd	Trentlin	44	9506	newthalo.are	standing	93	0	-	east		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle	-	+
+1794707558	cmd	Trentlin	44	9517	newthalo.are	standing	93	0	-	east		The Eastern Market Square //   You stand in the market of New Thalos, the gem of the desert. The // market is the hub of the city; all trade and commerce of any significance is	-	+
+1794707558	cmd	Trentlin	44	9527	newthalo.are	standing	93	0	-	east		East Main Street //   Here on East Main, you smell the odor of freshly slaughtered meat and // hear the pounding of new metal from the armory.  The Square is to	-	+
+1794707559	cmd	Trentlin	44	9528	newthalo.are	standing	93	0	-	east		East Main Street //   You are on East Main Street.  To the North is the beginning of // Guildsman's Row.  To the South is a dark alley.  The road also	-	+
+1794707559	cmd	Trentlin	44	9529	newthalo.are	standing	93	0	-	east		East Main Street //   As you walk by the mercenary guild a cold chill causes you to shiver // uncontrollably. You see some shady looking characters lurking about the	-	+
+1794707559	cmd	Trentlin	44	9530	newthalo.are	standing	93	0	-	east		East Main Street //   The Main street through eastern New Thalos begins here and heads westward // towards the marketplace. One of the main gates can be seen to the east, and	-	+
+1794707559	cmd	Trentlin	44	9531	newthalo.are	standing	93	0	-	east		Inside the Eastern Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazened with the crest of New Thalos, swings easily on	-	+
+1794707560	cmd	Trentlin	44	9531	newthalo.are	standing	93	0	-	open	east	Ok.	-	-
+1794707560	cmd	Trentlin	44	9668	newthalo.are	standing	93	0	-	east		Outside the Eastern Gate of New Thalos //   You stand outside the protective walls of the city. The massive iron gate // sits to the west and the unknown awaits you eastward.	-	+
+1794707560	cmd	Trentlin	44	9790	newthalo.are	standing	93	0	-	east		On a road //   The people of New Thalos take great pride in the services their // city may provide. One of these services is the construction crews	-	+
+1794707560	cmd	Trentlin	44	9791	newthalo.are	standing	93	0	-	east		On a road //   You walk along a well used road with beautiful scenery. To the north // tall pine trees form a wall that goes on for miles. Between the road	-	+
+1794707561	cmd	Trentlin	44	9792	newthalo.are	standing	93	0	-	east		On a road //   The Dragon Sea can be seen to the east now spreading out to unknown // lands. The road continues east and west. To the south you hear the	-	+
+1794707561	cmd	Trentlin	44	9793	newthalo.are	standing	93	0	-	east		On a road //   This is the main land route through the land. Merchants can bring their goods // to the coastline and have them ferried onto ships for export. Travel	-	+
+1794707561	cmd	Trentlin	44	9794	newthalo.are	standing	93	0	-	east		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline	-	+
+1794707561	area	Trentlin	44	41	connect.are	newthalo.are	connect.are	5	north
+1794707561	cmd	Trentlin	44	41	connect.are	standing	93	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 	-	+
+1794707562	area	Trentlin	44	16000	pirate.are	connect.are	pirate.are	1	north
+1794707562	cmd	Trentlin	44	16000	pirate.are	standing	93	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a	-	+
+1794707563	cmd	Trentlin	44	16000	pirate.are	standing	93	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.	-	-
+1794707570	cmd	Trentlin	44	16001	pirate.are	standing	93	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794707570	cmd	Trentlin	44	16002	pirate.are	standing	93	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794707571	cmd	Trentlin	44	16003	pirate.are	standing	93	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794707572	cmd	Trentlin	44	16004	pirate.are	standing	93	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.	-	+
+1794707574	cmd	Trentlin	44	16005	pirate.are	standing	93	0	-	east		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like	-	+
+1794707575	cmd	Trentlin	44	16021	pirate.are	standing	93	0	-	up		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not	-	+
+1794707576	cmd	Trentlin	44	16021	pirate.are	standing	93	0	-	scan		The pirate                         -to the North. // The sailor                         -to the East. // The sailor                         -to the South.	-	+
+1794707578	coin	Trentlin	44	16021	pirate.are	+96	loot	sacrifice	-	15372913880
+1794707578	cmd	Trentlin	44	16021	pirate.are	standing	93	0	-	sacrifice	co	The Gods give you 96 copper coins for your sacrifice.	-	-
+1794707578	coin	Trentlin	44	16021	pirate.are	+92	loot	sacrifice	-	15372913972
+1794707578	cmd	Trentlin	44	16021	pirate.are	standing	93	0	-	sacrifice	co	The Gods give you 92 copper coins for your sacrifice.	-	-
+1794707579	cmd	Trentlin	44	16026	pirate.are	standing	93	0	-	north		Main Deck - Port //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794707580	laid	-	0	0	-	922	herb	39	a chervil leaf	7763	ultima.are	scatter
+1794707580	laid	-	0	0	-	923	herb	44	a sprig of aconite	7776	ultima.are	scatter
+1794707580	laid	-	0	0	-	924	component	62	a nightmare's hoof clipping	24346	chess.are	scatter
+1794707583	cmd	Trentlin	44	16026	pirate.are	standing	96	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794707588	cmd	Trentlin	44	16026	pirate.are	standing	96	0	-	kill	pira	Your punch MUTILATES The pirate! // Your punch grazes The pirate.	-	-
+1794707591	cmd	Trentlin	44	16026	pirate.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims The pirate! // Your fists of fury mauls The pirate.	-	+
+1794707596	cmd	Trentlin	44	16026	pirate.are	fighting	88	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The pirate. // Your fists of fury grazes The pirate.	-	+
+1794707603	cmd	Trentlin	44	16026	pirate.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS The pirate! // Your fists of fury DISMEMBERS The pirate!	-	+
+1794707610	cmd	Trentlin	44	16026	pirate.are	fighting	34	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS The pirate! // Your fists of fury devastates The pirate!	-	+
+1794707616	cmd	Trentlin	44	16026	pirate.are	fighting	28	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The pirate. // Your fists of fury mauls The pirate.	-	+
+1794707620	coin	Trentlin	44	16026	pirate.are	+2000000	loot	(violence_update)	corpse of The pirate	15374913972
+1794707620	coin	Trentlin	44	16026	pirate.are	+1200	loot	(violence_update)	corpse of The pirate	15374915172
+1794707620	coin	Trentlin	44	16026	pirate.are	+17	loot	(violence_update)	corpse of The pirate	15374915189
+1794707620	coin	Trentlin	44	16026	pirate.are	+70000	loot	(violence_update)	corpse of The pirate	15374985189
+1794707623	laid	-	0	0	-	927	herb	35	a sprig of angelica	4423	dresden.are	scatter
+1794707623	laid	-	0	0	-	928	herb	38	a foxglove flower	4702	dresden.are	scatter
+1794707623	laid	-	0	0	-	929	component	82	a vial of purple worm stinger poison	29257	korzath2.are	scatter
+1794707624	coin	Trentlin	44	16026	pirate.are	+90	loot	sacrifice	corpse of The pirate	15374985279
+1794707624	cmd	Trentlin	44	16026	pirate.are	standing	30	0	-	sacrifice	co	The Gods give you 90 copper coins for your sacrifice.	-	-
+1794707625	area	Trentlin	44	4207	dresden.are	pirate.are	dresden.are	63	recall
+1794707625	cmd	Trentlin	44	4207	dresden.are	standing	30	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794707627	cmd	Trentlin	44	4208	dresden.are	standing	30	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794707629	cmd	Trentlin	44	4208	dresden.are	standing	30	0	-	look	in pit\	You do not see that here.	-	-
+1794707631	cmd	Trentlin	44	4208	dresden.are	standing	30	0	-	look	in pit	The donation pit contains: //      Nothing.	-	-
+1794707632	cmd	Trentlin	44	4207	dresden.are	standing	30	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794707635	cmd	Trentlin	44	4207	dresden.are	standing	30	0	-	help	donate	DONATE // Syntax: donate <object> // If you have items in your inventory that you no longer need, you may	-	+
+1794707647	cmd	Trentlin	44	4207	dresden.are	standing	30	0	-	help	junk	JUNK // Syntax: junk <object> // JUNK is another name for SACRIFICE.  It works only on an object lying on	-	+
+1794707657	cmd	Trentlin	44	4207	dresden.are	standing	30	0	-	help	sacrifice	SACRIFICE // Syntax: sacrifice <object>      (also JUNK) // Offers an object lying on the ground here to the gods, who destroy it and	-	+
+1794707667	cmd	Trentlin	44	4202	dresden.are	standing	30	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794707669	cmd	Trentlin	44	4203	dresden.are	standing	30	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794707670	cmd	Trentlin	44	4210	dresden.are	standing	30	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794707671	cmd	Trentlin	44	4210	dresden.are	standing	30	0	-	sleep		You go to sleep.	-	-
+1794707673	cmd	Trentlin	44	4210	dresden.are	sleeping	30	0	-	areas		[  0  0] Built-In  Seasonal Items      [ 5 15] PinkF   Mob Factory             // [  0  0] Built-In  Holiday Fairs       [ ALL ] Drakk   City of Dresden         // [None ] Diku    Limbo                  [ ALL ] ToC     Training Dummy Yard 	-	+
+1794707678	laid	-	0	0	-	930	herb	53	a huckleberry	4337	dresden.are	scatter
+1794707678	laid	-	0	0	-	931	herb	42	a marjoram plant	2462	dresden.are	scatter
+1794707755	cmd	Trentlin	44	4203	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794707755	cmd	Trentlin	44	4202	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794707756	cmd	Trentlin	44	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794707756	cmd	Trentlin	44	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794707757	cmd	Trentlin	44	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794707757	cmd	Trentlin	44	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794707760	cmd	Trentlin	44	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794707760	cmd	Trentlin	44	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794707760	cmd	Trentlin	44	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794707761	cmd	Trentlin	44	2422	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794707761	cmd	Trentlin	44	2423	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1794707761	cmd	Trentlin	44	2424	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1794707761	cmd	Trentlin	44	2425	dresden.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1794707762	cmd	Trentlin	44	2426	dresden.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794707762	cmd	Trentlin	44	2440	dresden.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794707762	area	Trentlin	44	3503	midennir.are	dresden.are	midennir.are	137	east
+1794707762	cmd	Trentlin	44	3503	midennir.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1794707762	cmd	Trentlin	44	3502	midennir.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1794707763	cmd	Trentlin	44	3525	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  	-	+
+1794707763	cmd	Trentlin	44	3526	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded	-	+
+1794707763	cmd	Trentlin	44	3527	midennir.are	standing	100	0	-	east		The Checkpoint //   You are met by a group of heavily armored knights.  They check you over // for contraband, and then allow you to pass on.  One of the knights cautions to	-	+
+1794707763	cmd	Trentlin	44	3528	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road, just east of a heavily  // guarded checkpoint.  You have covered about half the distance between	-	+
+1794707764	cmd	Trentlin	44	3529	midennir.are	standing	100	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially	-	+
+1794707764	cmd	Trentlin	44	3530	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste	-	+
+1794707764	cmd	Trentlin	44	3531	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your	-	+
+1794707764	cmd	Trentlin	44	3532	midennir.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous	-	+
+1794707765	area	Trentlin	44	42	connect.are	midennir.are	connect.are	3	east
+1794707765	cmd	Trentlin	44	42	connect.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities	-	+
+1794707765	area	Trentlin	44	9669	newthalo.are	connect.are	newthalo.are	0	east
+1794707765	cmd	Trentlin	44	9669	newthalo.are	standing	100	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.	-	+
+1794707765	cmd	Trentlin	44	9523	newthalo.are	standing	100	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1794707765	cmd	Trentlin	44	9524	newthalo.are	standing	100	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1794707766	cmd	Trentlin	44	9525	newthalo.are	standing	100	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1794707766	cmd	Trentlin	44	9526	newthalo.are	standing	100	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1794707766	cmd	Trentlin	44	9509	newthalo.are	standing	100	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1794707766	cmd	Trentlin	44	9506	newthalo.are	standing	100	0	-	east		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle	-	+
+1794707767	cmd	Trentlin	44	9517	newthalo.are	standing	100	0	-	east		The Eastern Market Square //   You stand in the market of New Thalos, the gem of the desert. The // market is the hub of the city; all trade and commerce of any significance is	-	+
+1794707767	cmd	Trentlin	44	9527	newthalo.are	standing	100	0	-	east		East Main Street //   Here on East Main, you smell the odor of freshly slaughtered meat and // hear the pounding of new metal from the armory.  The Square is to	-	+
+1794707767	cmd	Trentlin	44	9528	newthalo.are	standing	100	0	-	east		East Main Street //   You are on East Main Street.  To the North is the beginning of // Guildsman's Row.  To the South is a dark alley.  The road also	-	+
+1794707767	cmd	Trentlin	44	9529	newthalo.are	standing	100	0	-	east		East Main Street //   As you walk by the mercenary guild a cold chill causes you to shiver // uncontrollably. You see some shady looking characters lurking about the	-	+
+1794707768	cmd	Trentlin	44	9530	newthalo.are	standing	100	0	-	east		East Main Street //   The Main street through eastern New Thalos begins here and heads westward // towards the marketplace. One of the main gates can be seen to the east, and	-	+
+1794707768	cmd	Trentlin	44	9531	newthalo.are	standing	100	0	-	east		Inside the Eastern Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazened with the crest of New Thalos, swings easily on	-	+
+1794707768	cmd	Trentlin	44	9531	newthalo.are	standing	100	0	-	open	east	Ok.	-	-
+1794707768	cmd	Trentlin	44	9668	newthalo.are	standing	100	0	-	east		Outside the Eastern Gate of New Thalos //   You stand outside the protective walls of the city. The massive iron gate // sits to the west and the unknown awaits you eastward.	-	+
+1794707769	cmd	Trentlin	44	9790	newthalo.are	standing	100	0	-	east		On a road //   The people of New Thalos take great pride in the services their // city may provide. One of these services is the construction crews	-	+
+1794707769	cmd	Trentlin	44	9791	newthalo.are	standing	100	0	-	east		On a road //   You walk along a well used road with beautiful scenery. To the north // tall pine trees form a wall that goes on for miles. Between the road	-	+
+1794707769	cmd	Trentlin	44	9792	newthalo.are	standing	100	0	-	east		On a road //   The Dragon Sea can be seen to the east now spreading out to unknown // lands. The road continues east and west. To the south you hear the	-	+
+1794707769	cmd	Trentlin	44	9793	newthalo.are	standing	100	0	-	east		On a road //   This is the main land route through the land. Merchants can bring their goods // to the coastline and have them ferried onto ships for export. Travel	-	+
+1794707770	cmd	Trentlin	44	9794	newthalo.are	standing	100	0	-	east		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline	-	+
+1794707770	area	Trentlin	44	41	connect.are	newthalo.are	connect.are	5	north
+1794707770	cmd	Trentlin	44	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 	-	+
+1794707770	area	Trentlin	44	16000	pirate.are	connect.are	pirate.are	0	north
+1794707770	cmd	Trentlin	44	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a	-	+
+1794707771	cmd	Trentlin	44	16000	pirate.are	standing	100	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794707778	cmd	Trentlin	44	16001	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794707779	cmd	Trentlin	44	16002	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794707779	cmd	Trentlin	44	16003	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794707780	cmd	Trentlin	44	16004	pirate.are	standing	100	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.	-	+
+1794707781	cmd	Trentlin	44	16005	pirate.are	standing	100	0	-	east		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like	-	+
+1794707783	cmd	Trentlin	44	16005	pirate.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES The drunk pirate! // Your fists of fury *** DEVASTATES *** The drunk pirate!	-	+
+1794707790	cmd	Trentlin	44	16005	pirate.are	fighting	82	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MANGLES The drunk pirate! // Your fists of fury *** DEVASTATES *** The drunk pirate!	-	+
+1794707791	coin	Trentlin	44	16005	pirate.are	+1000000	loot	(violence_update)	corpse of The drunk pirate	15375985279
+1794707791	coin	Trentlin	44	16005	pirate.are	+500	loot	(violence_update)	corpse of The drunk pirate	15375985779
+1794707791	coin	Trentlin	44	16005	pirate.are	+6	loot	(violence_update)	corpse of The drunk pirate	15375985785
+1794707791	coin	Trentlin	44	16005	pirate.are	+20000	loot	(violence_update)	corpse of The drunk pirate	15376005785
