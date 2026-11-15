@@ -306640,3 +306640,81 @@ Sun Nov 15 21:24:14 2026 :: Connection guard: 5.161.215.244 closed without a wor
 Sun Nov 15 21:29:18 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 3 of 6 in 6 hours).
 Sun Nov 15 21:32:00 2026 :: Treasure goblin: vanished from room 9554 (The Casbah, newthalo.are) (too long in one area).
 Sun Nov 15 21:34:24 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 2 of 6 in 6 hours).
+Sun Nov 15 21:39:20 2026 :: Log Alaric [2497]: aq re
+Sun Nov 15 21:39:20 2026 :: Log Alaric [2497]: quest assigned: recover The Crown of Eclipse (obj 25040) in ratslair.are, 29 minutes, ordinary
+Sun Nov 15 21:39:28 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 3 of 6 in 6 hours).
+Sun Nov 15 21:39:35 2026 :: Log Alaric [2497]: en do
+Sun Nov 15 21:39:35 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sun Nov 15 21:39:47 2026 :: Log Alaric [2401]: r e 3
+Sun Nov 15 21:39:47 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Nov 15 21:39:47 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sun Nov 15 21:39:47 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sun Nov 15 21:39:47 2026 :: Log Alaric [2421]: s
+Sun Nov 15 21:39:47 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Sun Nov 15 21:39:47 2026 :: Log Alaric [2441]: e
+Sun Nov 15 21:39:47 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Sun Nov 15 21:39:48 2026 :: Log Alaric [2442]: s
+Sun Nov 15 21:39:48 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Sun Nov 15 21:39:48 2026 :: Log Alaric [2443]: r e 2
+Sun Nov 15 21:39:48 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Sun Nov 15 21:39:48 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Sun Nov 15 21:39:48 2026 :: Log Alaric [2445]: s
+Sun Nov 15 21:39:48 2026 :: Log Alaric [2446]: arrived (Docks of Dresden.) from 2445
+Sun Nov 15 21:39:48 2026 :: Log Alaric [2446]: w
+Sun Nov 15 21:39:48 2026 :: Log Alaric [2450]: arrived (Jerry's Boatshop.) from 2446
+Sun Nov 15 21:39:49 2026 :: Log Alaric [2450]: open down
+Sun Nov 15 21:39:49 2026 :: Log Alaric [2450]: r d 2
+Sun Nov 15 21:39:49 2026 :: Log Alaric [53]: arrived (Rickety Stairway) from 2450
+Sun Nov 15 21:39:49 2026 :: Log Alaric [3801]: arrived (Below a Dark Stairway) from 53
+Sun Nov 15 21:39:50 2026 :: Log Alaric [3801]: s
+Sun Nov 15 21:39:50 2026 :: Log Alaric [3802]: arrived (A Hallway) from 3801
+Sun Nov 15 21:39:52 2026 :: Log Alaric [3802]: oe
+Sun Nov 15 21:39:53 2026 :: Log Alaric [3802]: ex
+Sun Nov 15 21:39:54 2026 :: Log Alaric [3802]: e
+Sun Nov 15 21:39:54 2026 :: Log Alaric [3806]: arrived (A Small Storage Room) from 3802
+Sun Nov 15 21:39:57 2026 :: Log Alaric [3806]: w
+Sun Nov 15 21:39:57 2026 :: Log Alaric [3802]: arrived (A Hallway) from 3806
+Sun Nov 15 21:39:58 2026 :: Log Alaric [3802]: w
+Sun Nov 15 21:39:58 2026 :: Log Alaric [3805]: arrived (A Small Storage Room) from 3802
+Sun Nov 15 21:40:00 2026 :: Log Alaric [3805]: e
+Sun Nov 15 21:40:00 2026 :: Log Alaric [3802]: arrived (A Hallway) from 3805
+Sun Nov 15 21:40:00 2026 :: Log Alaric [3802]: s
+Sun Nov 15 21:40:00 2026 :: Log Alaric [3803]: arrived (A Dim Hallway) from 3802
+Sun Nov 15 21:40:02 2026 :: Log Alaric [3803]: w
+Sun Nov 15 21:40:02 2026 :: Log Alaric [3807]: arrived (A Small Storage Room) from 3803
+Sun Nov 15 21:40:03 2026 :: Log Alaric [3807]: e
+Sun Nov 15 21:40:03 2026 :: Log Alaric [3803]: arrived (A Dim Hallway) from 3807
+Sun Nov 15 21:40:03 2026 :: Log Alaric [3803]: e
+Sun Nov 15 21:40:03 2026 :: Log Alaric [3808]: arrived (A Small Storage Room) from 3803
+Sun Nov 15 21:40:04 2026 :: Log Alaric [3808]: w
+Sun Nov 15 21:40:04 2026 :: Log Alaric [3803]: arrived (A Dim Hallway) from 3808
+Sun Nov 15 21:40:04 2026 :: Log Alaric [3803]: s
+Sun Nov 15 21:40:04 2026 :: Log Alaric [3804]: arrived (A Dim Hallway Above the Stairway) from 3803
+Sun Nov 15 21:40:06 2026 :: Log Alaric [3804]: ow
+Sun Nov 15 21:40:07 2026 :: Log Alaric [3804]: w
+Sun Nov 15 21:40:07 2026 :: Log Alaric [3809]: arrived (A Small Storage Room) from 3804
+Sun Nov 15 21:40:07 2026 :: Log Alaric [3809]: e
+Sun Nov 15 21:40:07 2026 :: Log Alaric [3804]: arrived (A Dim Hallway Above the Stairway) from 3809
+Sun Nov 15 21:40:08 2026 :: Log Alaric [3804]: e
+Sun Nov 15 21:40:08 2026 :: Log Alaric [3810]: arrived (A Small Storage Room) from 3804
+Sun Nov 15 21:40:09 2026 :: Log Alaric [3810]: w
+Sun Nov 15 21:40:09 2026 :: Log Alaric [3804]: arrived (A Dim Hallway Above the Stairway) from 3810
+Sun Nov 15 21:40:09 2026 :: Log Alaric [3804]: s
+Sun Nov 15 21:40:11 2026 :: Log Alaric [3804]: d
+Sun Nov 15 21:40:11 2026 :: Log Alaric [3811]: arrived (Beneath the Old Stairway) from 3804
+Sun Nov 15 21:40:12 2026 :: Log Alaric [3811]: oe
+Sun Nov 15 21:40:13 2026 :: Log Alaric [3811]: wo
+Sun Nov 15 21:40:13 2026 :: Log Alaric [3811]: w
+Sun Nov 15 21:40:15 2026 :: Log Alaric [3811]: ow
+Sun Nov 15 21:40:15 2026 :: Log Alaric [3811]: w
+Sun Nov 15 21:40:15 2026 :: Log Alaric [3815]: arrived (A Storage Room) from 3811
+Sun Nov 15 21:40:17 2026 :: Log Alaric [3815]: get all
+Sun Nov 15 21:40:18 2026 :: Log Alaric [3815]: recal
+Sun Nov 15 21:40:18 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 3815
+Sun Nov 15 21:40:19 2026 :: Log Alaric [2497]: aq co
+Sun Nov 15 21:40:19 2026 :: Log Alaric [2497]: copper +92477484
+Sun Nov 15 21:40:19 2026 :: Log Alaric [2497]: quest complete: 92p 47g 74s 84c, 13 quest points (streak bonus 0%)
+Sun Nov 15 21:40:19 2026 :: Snapshot of Alaric taken before quest: Alaric.20261115_214019.quest (PRESTORE Alaric to see it).
+Sun Nov 15 21:40:20 2026 :: Log Alaric [2497]: aq ga no
+Sun Nov 15 21:40:25 2026 :: Log Alaric [2497]: score
+Sun Nov 15 21:42:05 2026 :: Treasure goblin: vanished from room 8026 (Throt & Gleep's Megger Store, mega1.are) (too long in one area).

@@ -31824,3 +31824,58 @@
 1794778546	census	-	0	0	-	herbs=109/150 components=66/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=21 spotted=0 picked=0 passed=0 cleared=1 rare=0 mobs_seen=0 mobs_fought=0 secs=900
 1794778613	laid	-	0	0	-	1229	herb	42	a marjoram plant	10079	glitter.are	scatter
 1794778613	laid	-	0	0	-	1230	herb	39	a chervil leaf	10023	glitter.are	scatter
+1794778693	laid	-	0	0	-	1231	component	73	a roper's tentacle	3727	school.are	scatter
+1794778760	quest	Alaric	57	2497	dresden.are	ordinary	recover	25040	The Crown of Eclipse	59	ratslair.are	29
+1794778760	cmd	Alaric	57	2497	dresden.are	standing	100	21	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Alaric!' // Questor Thews tells you 'A prized artifact - The Crown of Eclipse - has gone missing!'	-	+
+1794778770	laid	-	0	0	-	1233	component	58	some pixie dust	8303	marsh.are	scatter
+1794778775	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794778787	cmd	Alaric	57	2421	dresden.are	standing	100	0	-	run	e 3	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road	-	+
+1794778787	cmd	Alaric	57	2441	dresden.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794778787	cmd	Alaric	57	2442	dresden.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794778788	cmd	Alaric	57	2443	dresden.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794778788	cmd	Alaric	57	2445	dresden.are	standing	100	0	-	run	e 2	River Road. // [Exits: north east west] // End of River Road.	-	+
+1794778788	cmd	Alaric	57	2446	dresden.are	standing	100	0	-	south		Docks of Dresden. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not	-	+
+1794778788	cmd	Alaric	57	2450	dresden.are	standing	100	0	-	west		Jerry's Boatshop. //   You are in side a very large building.  There are all types of boats in // the many racks.  Most common are canoes.  You see a very large older man	-	+
+1794778789	cmd	Alaric	57	2450	dresden.are	standing	100	0	-	open	down	Ok.	-	-
+1794778789	area	Alaric	57	53	connect.are	dresden.are	connect.are	2065	run
+1794778789	area	Alaric	57	3801	ratslair.are	connect.are	ratslair.are	0	run
+1794778789	cmd	Alaric	57	3801	ratslair.are	standing	100	0	-	run	d 2	Rickety Stairway // [Exits: up down] // Below a Dark Stairway	-	+
+1794778790	cmd	Alaric	57	3802	ratslair.are	standing	100	0	-	south		A Hallway //   You are in a dim hallway.  Unlit torches hang from the walls, but the // little light coming from the north is enough for you to see around.  This	-	+
+1794778792	cmd	Alaric	57	3802	ratslair.are	standing	100	0	-	open		Ok.	-	-
+1794778793	cmd	Alaric	57	3802	ratslair.are	standing	100	0	-	exits		Obvious exits: // North - Below a Dark Stairway // East  - A Small Storage Room	-	+
+1794778794	cmd	Alaric	57	3806	ratslair.are	standing	100	0	-	east		A Small Storage Room //   You are in a small storage room.  A pile of rags is against the far wall. // You think you saw something move in the pile of rags!  The exit is to	-	+
+1794778797	cmd	Alaric	57	3802	ratslair.are	standing	100	0	-	west		A Hallway //   You are in a dim hallway.  Unlit torches hang from the walls, but the // little light coming from the north is enough for you to see around.  This	-	+
+1794778798	cmd	Alaric	57	3805	ratslair.are	standing	100	0	-	west		A Small Storage Room //   You are in a small storage room.  Ripped up flour sacks litter this floor, // along with some animal droppings.  The exit is to the east.	-	+
+1794778800	cmd	Alaric	57	3802	ratslair.are	standing	100	0	-	east		A Hallway //   You are in a dim hallway.  Unlit torches hang from the walls, but the // little light coming from the north is enough for you to see around.  This	-	+
+1794778800	cmd	Alaric	57	3803	ratslair.are	standing	100	0	-	south		A Dim Hallway //   You are in a dim hallway, deeper into this decrepit place.  You realize that // this place used to be a basement of some sort.  This hallway leads north and	-	+
+1794778802	cmd	Alaric	57	3807	ratslair.are	standing	100	0	-	west		A Small Storage Room //   You are in a small storage room.  A horrid stench fills this room, smelling  // like some dead animal is rotting away here.  The exit is to the east.	-	+
+1794778803	cmd	Alaric	57	3803	ratslair.are	standing	100	0	-	east		A Dim Hallway //   You are in a dim hallway, deeper into this decrepit place.  You realize that // this place used to be a basement of some sort.  This hallway leads north and	-	+
+1794778803	cmd	Alaric	57	3808	ratslair.are	standing	100	0	-	east		A Small Storage Room //   You are in a small storage room.  A pile of filthy rags is against the far // wall.  The exit is to the west.	-	+
+1794778804	cmd	Alaric	57	3803	ratslair.are	standing	100	0	-	west		A Dim Hallway //   You are in a dim hallway, deeper into this decrepit place.  You realize that // this place used to be a basement of some sort.  This hallway leads north and	-	+
+1794778804	cmd	Alaric	57	3804	ratslair.are	standing	100	0	-	south		A Dim Hallway Above the Stairway //   You are at the end of the dim hallway.  Below you are some old wooden stairs. // You can see that what's available of the light from the north can not penetrate	-	+
+1794778806	cmd	Alaric	57	3804	ratslair.are	standing	100	0	-	open		Ok.	-	-
+1794778807	cmd	Alaric	57	3809	ratslair.are	standing	100	0	-	west		A Small Storage Room //   You are in a small storage room.  A pile of filthy rags is against the far // wall.  The exit is to the east.	-	+
+1794778807	cmd	Alaric	57	3804	ratslair.are	standing	100	0	-	east		A Dim Hallway Above the Stairway //   You are at the end of the dim hallway.  Below you are some old wooden stairs. // You can see that what's available of the light from the north can not penetrate	-	+
+1794778808	cmd	Alaric	57	3810	ratslair.are	standing	100	0	-	east		A Small Storage Room //   You are in a small storage room.  Nothing of interest is here.  The exit // is to the west.	-	+
+1794778809	cmd	Alaric	57	3804	ratslair.are	standing	100	0	-	west		A Dim Hallway Above the Stairway //   You are at the end of the dim hallway.  Below you are some old wooden stairs. // You can see that what's available of the light from the north can not penetrate	-	+
+1794778809	cmd	Alaric	57	3804	ratslair.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1794778811	cmd	Alaric	57	3811	ratslair.are	standing	100	0	-	down		Beneath the Old Stairway //   You are beneath the old stairway.  It reeks of dead meat and fecal matter // here, and the combined darkness makes this place quite forbidding.  Small	-	+
+1794778812	cmd	Alaric	57	3811	ratslair.are	standing	100	0	-	open		Ok.	-	-
+1794778813	cmd	Alaric	57	3811	ratslair.are	standing	100	0	-	worth		You have 3248 platinum, 87 gold, 38 silver, 56 copper // and 252749 experience (39551 exp to level).	-	-
+1794778813	cmd	Alaric	57	3811	ratslair.are	standing	100	0	-	west		The door is closed.	-	-
+1794778815	cmd	Alaric	57	3811	ratslair.are	standing	100	0	-	open		Ok.	-	-
+1794778815	cmd	Alaric	57	3815	ratslair.are	standing	100	0	-	west		A Storage Room //   You are in a storage room.  Weapons and some armor are on the floor. // Most are broken, however, so they are useless to you.  The exit is	-	+
+1794778817	got	Alaric	57	3815	ratslair.are	25040	The Crown of Eclipse	trash	59	0	get	the floor
+1794778817	cmd	Alaric	57	3815	ratslair.are	standing	100	0	-	get	all	You get The Crown of Eclipse.	-	-
+1794778818	area	Alaric	57	2497	dresden.are	ratslair.are	dresden.are	29	recall
+1794778818	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794778819	coin	Alaric	57	2497	dresden.are	+92477484	quests	aquest	-	28227473336
+1794778819	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	ordinary qp=2429->2429 offered=13 daily=4->4 coin=+92477484 kill=15412914 streak=0 level=57 target=0
+1794778819	cmd	Alaric	57	2497	dresden.are	standing	100	20	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Crown of Eclipse to Questor Thews. // Questor Thews says 'Splendid - you've returned victorious!'	success:-	+
+1794778820	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ga no	You safely collect 13 quest points.	-	-
+1794778825	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=472/983 align=977 exp=252749 coin=3341351340 bank=24886121996 qp=2442 prac=36 train=76 stash=93/350 remorts=3
+1794778825	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    301 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
+1794778848	laid	-	0	0	-	1243	herb	49	a pomegranate	2213	draconia.are	scatter
+1794778848	laid	-	0	0	-	1244	herb	52	an asparagus shoot	2242	draconia.are	scatter
+1794778848	laid	-	0	0	-	1245	component	71	a goblin's finger	628	ofcol.are	scatter
+1794778889	laid	-	0	0	-	1246	herb	38	a foxglove flower	15104	campus.are	scatter
