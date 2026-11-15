@@ -306938,3 +306938,13 @@ Sun Nov 15 22:43:32 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe,
 Sun Nov 15 22:43:32 2026 :: Log Alaric [2497]: who
 Sun Nov 15 22:43:33 2026 :: Log Alaric [2497]: worth
 Sun Nov 15 22:45:30 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 2 of 6 in 6 hours).
+Sun Nov 15 22:49:34 2026 :: Connection guard: 20.40.232.119 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 15 22:49:34 2026 :: Sock.sinaddr:  20.40.232.119
+Sun Nov 15 22:49:34 2026 :: Connection guard: 20.40.232.119 closed before a password prompt (strike 2 of 6 in 6 hours).
+Sun Nov 15 22:50:34 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 3 of 6 in 6 hours).
+Sun Nov 15 22:50:37 2026 :: Connection guard: 47.251.13.198 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 15 22:50:37 2026 :: Connection guard: 47.251.13.198 closed without a word (strike 2 of 6 in 6 hours).
+Sun Nov 15 22:50:45 2026 :: Connection guard: last hour 16 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 1 addresses paused and 0 refused now, 14 active player addresses.
+Sun Nov 15 22:50:56 2026 :: Automated backup started.
+Sun Nov 15 22:50:57 2026 :: Automated backup complete.
+Sun Nov 15 22:52:37 2026 :: Treasure goblin: vanished from room 16079 (Out on the Mast, pirate.are) (too long in one area).

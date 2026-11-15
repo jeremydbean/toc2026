@@ -32064,3 +32064,8 @@
 1794782612	area	Alaric	57	2497	dresden.are	limbo.are	dresden.are	0	(game loop)
 1794782612	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
 1794782613	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	worth		You have 3418 platinum, 41 gold, 59 silver, 10 copper // and 252749 experience (39551 exp to level).	-	-
+1794782886	laid	-	0	0	-	1321	component	57	a trolls fingernail	10098	glitter.are	scatter
+1794782956	laid	-	0	0	-	1322	component	65	a dragon's scale	9626	newthalo.are	scatter
+1794783010	laid	-	0	0	-	1323	component	58	some pixie dust	4034	moria.are	scatter
+1794783046	census	-	0	0	-	herbs=150/150 components=94/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=6 spotted=0 picked=0 passed=0 cleared=1 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1794783056	laid	-	0	0	-	1324	component	57	a trolls fingernail	4023	moria.are	scatter
