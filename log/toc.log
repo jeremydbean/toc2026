@@ -304872,3 +304872,10 @@ Sun Nov 15 15:42:16 2026 :: Connection guard: 18.97.5.84 closed before a passwor
 Sun Nov 15 15:42:16 2026 :: Connection guard: 18.97.5.84 closed without a word (strike 3 of 6 in 6 hours).
 Sun Nov 15 15:42:16 2026 :: Connection guard: 18.97.5.84 closed without a word (strike 4 of 6 in 6 hours).
 Sun Nov 15 15:42:22 2026 :: Connection guard: 18.97.5.84 closed without a word (strike 5 of 6 in 6 hours).
+Sun Nov 15 15:44:05 2026 :: Connection guard: refused 1 connection from 5.161.117.52 (paused; 6 refused in all, pause 2 this week, 5 minutes left).
+Sun Nov 15 15:44:48 2026 :: Sock.sinaddr:  20.106.60.71
+Sun Nov 15 15:44:49 2026 :: EOF encountered on read.
+Sun Nov 15 15:44:49 2026 :: Connection guard: 20.106.60.71 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sun Nov 15 15:44:49 2026 :: Sock.sinaddr:  20.106.60.71
+Sun Nov 15 15:44:49 2026 :: Connection guard: 20.106.60.71 closed before a password prompt (strike 2 of 6 in 6 hours).
+Sun Nov 15 15:44:52 2026 :: Treasure goblin: vanished from room 2486 (Market Plaza., dresden.are) (too long in one area).
