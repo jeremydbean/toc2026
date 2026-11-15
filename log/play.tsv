@@ -30704,3 +30704,8 @@
 1794759128	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
 1794759130	outcome	Alaric	57	2497	dresden.are	quest-failed	failure	abandoned	-	ordinary target=obj:25041 level=59 alive=1 area=catacomb.are there=0 streak=3
 1794759130	cmd	Alaric	57	2497	dresden.are	standing	100	12	-	aquest	ab	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Alaric. Your quest obligation is lifted.' // Questor Thews says 'You had a streak of 3 in a row - all gone now!'	failure:abandoned	+
+1794759182	laid	-	0	0	-	1026	herb	47	a sprig of saffron	6543	dwarves.are	scatter
+1794759182	laid	-	0	0	-	1027	component	70	a dragon tooth	8790	kerofk.are	scatter
+1794759226	laid	-	0	0	-	1028	component	70	a dragon tooth	13216	solace.are	scatter
+1794759429	laid	-	0	0	-	1029	herb	40	a clove	4456	dresden.are	scatter
+1794759429	laid	-	0	0	-	1030	herb	41	a sprig of mistletoe	2482	dresden.are	scatter
