@@ -304346,3 +304346,10 @@ Sun Nov 15 10:08:14 2026 :: Treasure goblin: vanished from room 24349 (The White
 Sun Nov 15 10:08:59 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 3 of 6 in 6 hours).
 Sun Nov 15 10:10:03 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Sun Nov 15 10:14:04 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 4 refused in all, pause 2 this week, 528 minutes left).
+Sun Nov 15 10:19:09 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 5 of 6 in 6 hours).
+Sun Nov 15 10:19:54 2026 :: Connection guard: last hour 12 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 2 addresses paused and 0 refused now, 14 active player addresses.
+Sun Nov 15 10:20:19 2026 :: Sock.sinaddr:  103.203.57.26
+Sun Nov 15 10:20:19 2026 :: Connection guard: 103.203.57.26 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sun Nov 15 10:20:20 2026 :: Connection guard: 103.203.57.26 closed without a word (strike 2 of 6 in 6 hours).
+Sun Nov 15 10:20:49 2026 :: Automated backup started.
+Sun Nov 15 10:20:49 2026 :: Automated backup complete.
