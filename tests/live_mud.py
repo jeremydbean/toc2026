@@ -515,7 +515,9 @@ class LiveMud:
                 "bugs.txt.*", "typos.txt.*", "ideas.txt.*",
                 # A test world must not inherit somebody's benchmark
                 # board, for the same reason it must not inherit notes.
-                "dpsboard.txt", "dpsboard.txt.tmp"))
+                "dpsboard.txt", "dpsboard.txt.tmp",
+                # Nor a dashboard's HUNTING file: a test writes its own.
+                "hunting.txt", "hunting.txt.tmp"))
         for name in ("player", "gods", "heroes", "corpse", "backups", "log"):
             (self.root / name).mkdir()
         if self.fixtures:

@@ -215,7 +215,7 @@ void do_adventure( CHAR_DATA *ch, char *argument )
             "* Nothing in particular calls just now.  AQUEST, ACHIEVEMENTS and MAPS are\n\r"
             "  always there, and PRAY asks the Oracle anything about the game.\n\r" );
     dstring_append_cstr( &out,
-        "(Only a list: reading it changes nothing.  HELP ADVENTURE says more.)\n\r" );
+        "(Only a list: it changes nothing.  HUNTING suggests creatures to fight.)\n\r" );
     /* At most 19 lines with every section shown, so it never pages under
        the default PAGELEN (22): a paged view eats the next command. */
     page_to_char( dstring_cstr( &out ), ch );

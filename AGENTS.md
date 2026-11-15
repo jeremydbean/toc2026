@@ -7264,11 +7264,35 @@ tutorial's guild window and diploma lookup (`tutorial_guild_choice_open`,
 (`quest_ready_phrase` over `quest_request_refusal`), WALKTO's published
 areas against the achievements' entered and explored sets
 (`walkto_adventure_areas`: in range, not Hyrule, not a death trap or a
-newbie room past 10, and a name `walkto_find` resolves to that area
-alone), AchKills, and the group. It names no quest target, room or other
+newbie room past 10, a name `walkto_find` resolves to that area alone,
+and a route WALKTO's own search finds from where they stand), AchKills,
+and the group. It names no quest target, room or other
 player (company is a count). With every section shown it is 19 lines, under
 `PAGELEN`: a view that pages eats the next command, and the test fails on
 "Hit Return". A new section must fit, or another must give way.
+
+## HUNTING
+
+`src/hunting.c` and `webadmin/hunting.py` (2026-11-15): up to five
+creatures to hunt at a level, one an area, each with its WALKTO. The figures
+are the website's leveling guide's: `leveling_guide()` in
+`webadmin/server.py` is what `/api/leveling` answers and what
+`write_hunting()` writes, every mortal level, into `area/hunting.txt` beside
+the game's queue (`_hunting_loop`, at start and when the balance feed or the
+parser changes; written aside and renamed, only when it changed). The file
+is numbers only -- `level vnum M|E xp_per_hour kill_seconds risk_permille
+aggressive area_file` -- and a row measured from fewer than
+`HUNTING_MIN_CHARACTERS` (3) characters is left out, never shown as an
+estimate. `pick()` takes one creature an area among the viable (40% of the
+level's best), and always the best, the safest and the least hunted. The
+game rereads the file when its size or time changes, checks every word,
+skips shopkeepers, trainers, the yard's dummy and the rare wanderers, a
+creature no reset places outside Hyrule and safe rooms, and an area WALKTO
+cannot walk the character to now (`walkto_area_reachable`, the walk's own
+search -- ADVENTURE asks it too); with no row it estimates from the world's
+resets. `area/hunting.txt` is runtime state: in `.gitignore`, left behind by
+`tests/live_mud.py`, and kept by `toc-deploy` (its `area/*.txt` exclusion).
+A host without the dashboard gets the estimates. `tests/test_hunting.py`.
 
 ## The Players' Logs Of 2026-11-13
 

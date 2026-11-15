@@ -236,7 +236,10 @@ class AdventureSourceTests(unittest.TestCase):
         interp = (ROOT / "src" / "interp.c").read_text(encoding="utf-8")
         table = interp.split("cmd_table	[] =", 1)[1].split("/* End of list. */", 1)[0]
         names = re.findall(r'\{\s*"([^"]+)"', table)
-        self.assertEqual(names[-1], "adventure")
+        # After every command that was there before it (TUTORIAL was the
+        # last), so no abbreviation that meant something moves.
+        self.assertGreater(names.index("adventure"), names.index("tutorial"))
+        self.assertEqual(names.index("adventure"), names.index("tutorial") + 1)
         self.assertEqual(names.count("adventure"), 1)
 
 

@@ -568,6 +568,8 @@ const	struct	cmd_type	cmd_table	[] =
     { "tutorial",       do_tutorial,    POS_DEAD,        0,  LOG_NORMAL, 1 },
     /* What next: last, so no shorter word moves (2026-11-15). */
     { "adventure",      do_adventure,   POS_DEAD,        0,  LOG_NORMAL, 1 },
+    /* Creatures to hunt at a level (hunting.c): last, so nothing moves. */
+    { "hunting",        do_hunting,     POS_DEAD,        0,  LOG_NORMAL, 1 },
 /* End of list. */
     { "",		0,		POS_DEAD,	 0,  LOG_NORMAL, 0 }
 };

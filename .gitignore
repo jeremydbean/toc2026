@@ -54,6 +54,9 @@ area/notes.txt
 # The training yard's benchmark board: runtime state, synced with -f.
 area/dpsboard.txt
 area/dpsboard.txt.tmp
+# HUNTING's suggestions: the dashboard writes them on the host (webadmin/hunting.py)
+area/hunting.txt
+area/hunting.txt.tmp
 # Areas built in game with ANEW (and their list): written by the running
 # game, carried to git by toc-state-sync with -f, left alone by deploys.
 area/built/

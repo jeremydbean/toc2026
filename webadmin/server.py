@@ -344,6 +344,7 @@ try:
     from webadmin import balance
     from webadmin import gear_drops
     from webadmin import changes_index
+    from webadmin import hunting
 except ImportError:
     from area_health import build_area_health
     from area_parser import AreaParser, APPLY_LOCATIONS
@@ -356,6 +357,7 @@ except ImportError:
     import balance
     import gear_drops
     import changes_index
+    import hunting
 
 # Default paths
 QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
@@ -1747,6 +1749,40 @@ def _safe(fn, default):
         return default
 
 
+# HUNTING in game reads area/hunting.txt, which this writes from the
+# leveling guide (webadmin/hunting.py): at start, then whenever the balance
+# feed or the world parser has changed, looked at every ten minutes.
+HUNTING_POLL_SECONDS = 600
+
+
+def write_hunting() -> bool:
+    """Every mortal level's HUNTING suggestions, from one load of the feed,
+    written beside the game's queue (its working directory)."""
+    try:
+        bal = balance.load(PROGRESS_LOG)
+    except Exception:
+        bal = {"mobs": {}, "summary": None}
+    by_level = {lv: hunting.pick(leveling_guide(lv, 500, bal)["mobs"])
+                for lv in hunting.HUNTING_LEVELS}
+    return hunting.write(QUEUE_PATH.parent / hunting.HUNTING_FILE, hunting.render(by_level))
+
+
+async def _hunting_loop():
+    last = None
+    while True:
+        try:
+            stamp = "%s|%d" % (balance.version(PROGRESS_LOG), id(parser))
+            target = QUEUE_PATH.parent / hunting.HUNTING_FILE
+            if stamp != last or not target.exists():
+                await asyncio.to_thread(write_hunting)
+                last = stamp
+        except asyncio.CancelledError:
+            raise
+        except Exception:
+            pass
+        await asyncio.sleep(HUNTING_POLL_SECONDS)
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     global AREA_HEALTH_CACHE, parser, queue_writer
@@ -1759,9 +1795,15 @@ async def lifespan(app: FastAPI):
     os.environ.setdefault(
         "ORACLE_USAGE", str(QUEUE_PATH.parent.parent / "log" / "oracle_usage.tsv"))
     oracle_task = asyncio.create_task(_oracle_poll_loop())
+    hunting_task = asyncio.create_task(_hunting_loop())
     try:
         yield
     finally:
+        hunting_task.cancel()
+        try:
+            await hunting_task
+        except asyncio.CancelledError:
+            pass
         oracle_task.cancel()
         try:
             await oracle_task
@@ -5165,7 +5207,17 @@ async def get_leveling(
     if level < 1 or level > 70:
         raise HTTPException(status_code=400, detail="Level must be between 1 and 70")
     limit = max(1, min(limit, 50))
+    try:
+        bal = await balance.load_async(PROGRESS_LOG)
+    except Exception:
+        bal = {"mobs": {}, "summary": None}
+    return leveling_guide(level, limit, bal)
 
+
+def leveling_guide(level: int, limit: int, bal: Dict[str, Any]) -> Dict[str, Any]:
+    """The leveling guide for one level, from a loaded balance feed: what
+    /api/leveling answers and what the game's HUNTING reads (write_hunting,
+    below), so the two never differ."""
     # DPS a player of this level is assumed to do: the fallback model for
     # a mobile players have not killed enough to measure. Combat damage IS
     # logged (log/progress.tsv's reward and slain rows, read by
@@ -5201,11 +5253,8 @@ async def get_leveling(
     # stays fight.c's, for this level. The rest rank by the model,
     # calibrated by the measured ones (below). `seen` is the all-levels
     # figure the row reports as "observed". Loaded once, off the event loop
-    # (balance.load_async), and every mobile below is read from that load.
-    try:
-        bal = await balance.load_async(PROGRESS_LOG)
-    except Exception:
-        bal = {"mobs": {}, "summary": None}
+    # (balance.load_async, by the caller), and every mobile below is read
+    # from that load.
     seen = bal.get("mobs") or {}
 
     # Who is ordinary prey. A Hyrule guardian never is: its chamber asks
@@ -5291,6 +5340,11 @@ async def get_leveling(
             "directions": route["commands"] if route else "",
             "rooms_away": route.get("rooms_away") if route else None,
             "basis": "measured" if close else "modelled",
+            # How many characters the near-level measure is from: HUNTING
+            # in game shows a measured row only from enough of them.
+            "measured_characters": int(close["characters"]) if close else 0,
+            "risk": round(float(close["risk"]), 3) if close else None,
+            "area_file": getattr(mob, "area_file", ""),
             "needs": needs,
             "_modelled_time": modelled_time,
             "_loop": loop,

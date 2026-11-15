@@ -4684,6 +4684,9 @@ bool    walkto_trainer_place ( const char *name, char *place, size_t place_size,
 #define ADVENTURE_PLACE_LEN  48
 int     walkto_adventure_areas ( CHAR_DATA *ch, char names[][ADVENTURE_PLACE_LEN],
                                  int kind[], int max );
+bool    walkto_area_walk_name  ( AREA_DATA *area, char *out, size_t size );
+bool    walkto_area_reachable  ( CHAR_DATA *ch, AREA_DATA *area );
+bool    walkto_room_is_hyrule  ( ROOM_INDEX_DATA *room );
 
 /* update.c */
 void    advance_level   ( CHAR_DATA *ch, bool is_advance );

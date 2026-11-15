@@ -84,6 +84,7 @@ set(SRC_FILES
     src/encounter.c
     src/tutorial.c
     src/adventure.c
+    src/hunting.c
     src/abilities.c
     src/blackmarket.c
     src/fixes.c

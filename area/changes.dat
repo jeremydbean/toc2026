@@ -5,6 +5,14 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261115hunting 2026-11-15
+New: HUNTING names up to five creatures worth hunting at your level -- or
+HUNTING <level> for any level -- each in a different area with the WALKTO
+there, how long a kill takes and the experience an hour.  Where enough
+players have hunted a creature near that level the figures are theirs
+(never naming anyone); elsewhere they are estimates.  It spreads its picks
+so not everyone is sent to the same rooms.
+
 @ 20261115adventure 2026-11-15
 New: ADVENTURE lists a few things you might do next -- Mud School and its
 diploma, a first fight, practices to spend, the guild choice before level

@@ -202,6 +202,11 @@ static bool walk_is_hyrule( ROOM_INDEX_DATA *room )
     return room->vnum >= WALK_HYRULE_FIRST && room->vnum <= WALK_HYRULE_LAST;
 }
 
+bool walkto_room_is_hyrule( ROOM_INDEX_DATA *room )
+{
+    return room != NULL && walk_is_hyrule( room );
+}
+
 static TELEPORT_ROOM_DATA *walk_teleport( ROOM_INDEX_DATA *room )
 {
     TELEPORT_ROOM_DATA *t;
@@ -1383,6 +1388,62 @@ static int walkto_area_dest( AREA_DATA *area )
 }
 
 /*
+ * The name a player types to WALKTO the published area at walkto_dests[i]:
+ * its name without the builder's parenthesis ("Moria (Alfa)" is MORIA), as
+ * WALKTO AREAS shows it, when WALKTO still finds that area alone by it;
+ * else the whole name; false when neither finds it alone.
+ */
+static bool walkto_dest_walk_name( int i, char *out, size_t size )
+{
+    char shown[ADVENTURE_PLACE_LEN];
+    char *paren;
+    int also, others[3];
+
+    toc_strlcpy( shown, walkto_dests[i].name, sizeof(shown) );
+    if ( ( paren = strrchr( shown, '(' ) ) != NULL && paren > shown )
+    {
+        *paren = '\0';
+        while ( paren > shown && paren[-1] == ' ' )
+            *--paren = '\0';
+    }
+    if ( walkto_find( shown, &also, others ) != i || also != 0 )
+        toc_strlcpy( shown, walkto_dests[i].name, sizeof(shown) );
+    if ( walkto_find( shown, &also, others ) != i || also != 0 )
+        return false;
+    toc_strlcpy( out, shown, size );
+    return true;
+}
+
+/* Whether WALKTO could walk this character to the published entrance of
+   destination i from where they stand now (or they are there): the same
+   search a walk makes, so a suggestion never names a place it would then
+   answer "no way" to. */
+static bool walkto_dest_reachable( CHAR_DATA *ch, int i )
+{
+    ROOM_INDEX_DATA *target = get_room_index( walkto_dests[i].vnum );
+    WALK_MOVE move;
+
+    return target != NULL && walk_find( ch, target, &move ) >= 0;
+}
+
+/* Whether WALKTO can walk the character to an area's entrance now. */
+bool walkto_area_reachable( CHAR_DATA *ch, AREA_DATA *area )
+{
+    int i = walkto_area_dest( area );
+
+    return i >= 0 && walkto_dest_reachable( ch, i );
+}
+
+/* What to type after WALKTO to reach an area's published entrance (HUNTING,
+   hunting.c), or false when WALKTO publishes none for it. */
+bool walkto_area_walk_name( AREA_DATA *area, char *out, size_t size )
+{
+    int i = walkto_area_dest( area );
+
+    return i >= 0 && walkto_dest_walk_name( i, out, size );
+}
+
+/*
  * ADVENTURE's places at the character's level (adventure.c, 2026-11-15).
  * Only what WALKTO already publishes -- the areas HELP WALKTO lists -- so
  * nothing hidden is ever named; each name is checked to be one WALKTO
@@ -1427,9 +1488,8 @@ int walkto_adventure_areas( CHAR_DATA *ch, char names[][ADVENTURE_PLACE_LEN],
             const WALKTO_DEST *d = &walkto_dests[i];
             ROOM_INDEX_DATA *entry;
             char shown[ADVENTURE_PLACE_LEN];
-            char *paren;
             long id;
-            int low, high, also, others[3];
+            int low, high;
 
             if ( str_cmp( d->kind, "area" )
             ||   ( entry = get_room_index( d->vnum ) ) == NULL || entry->area == NULL
@@ -1444,18 +1504,8 @@ int walkto_adventure_areas( CHAR_DATA *ch, char names[][ADVENTURE_PLACE_LEN],
                 continue;
             if ( ( pass == ADVENTURE_NEW ) == achievement_set_has( ch, ACH_SET_AREAS, id ) )
                 continue;
-            /* "Moria (Alfa)": the builder's name is the help's business,
-               as WALKTO AREAS shows it -- when WALKTO still finds it. */
-            toc_strlcpy( shown, d->name, sizeof(shown) );
-            if ( ( paren = strrchr( shown, '(' ) ) != NULL && paren > shown )
-            {
-                *paren = '\0';
-                while ( paren > shown && paren[-1] == ' ' )
-                    *--paren = '\0';
-            }
-            if ( walkto_find( shown, &also, others ) != i || also != 0 )
-                toc_strlcpy( shown, d->name, sizeof(shown) );
-            if ( walkto_find( shown, &also, others ) != i || also != 0 )
+            if ( !walkto_dest_walk_name( i, shown, sizeof(shown) )
+            ||   !walkto_dest_reachable( ch, i ) )
                 continue;
             toc_strlcpy( names[n], shown, ADVENTURE_PLACE_LEN );
             kind[n] = pass;

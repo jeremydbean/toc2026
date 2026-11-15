@@ -1846,7 +1846,9 @@ Slaying the good darkens your alignment, slaying the evil brightens it.
 A named creature in its own lair is a boss, meant for a group.  CONSIDER
 tells you how a foe measures up.
 
-See also: WALKTO, AREAS, ALIGNMENT, CONSIDER
+HUNTING lists creatures for any level, from players' own kills.
+
+See also: HUNTING, WALKTO, AREAS, ALIGNMENT, CONSIDER
 ~
 
 0 AREAS WORLD CITIES~
@@ -6412,7 +6414,35 @@ or setting -- and it never appears unless you ask for it.  The TUTORIAL
 is separate and stays on or off as you set it.  Every line is plain text
 and fits an 80-column screen, so it reads the same in any client.
 
-See also: TUTORIAL, WALKTO, AQUEST, GUILDS, MUDSCHOOL, MAPS, GROUP
+See also: TUTORIAL, HUNTING, WALKTO, AQUEST, GUILDS, MUDSCHOOL, MAPS, GROUP
+~
+
+0 HUNTING~
+Syntax: hunting
+        hunting <level>
+
+HUNTING names up to five creatures worth hunting at your level, or at any
+level from 1 to 59 you name, each in a different area, with the WALKTO
+that gets you there.  It spreads its suggestions on purpose: the quickest,
+the safest and the least crowded each get a place, so not everyone at a
+level is sent to the same few rooms.
+
+Each suggestion says how long a kill takes and the experience an hour it
+comes to, counting the time between kills:
+
+  measured    timed from players' own kills near that level -- only once
+              at least three characters have been measured, and never
+              naming anyone
+  estimated   worked out from the creature itself where too few players
+              have hunted it yet
+  risky       players often fled from it or died to it
+  attacks on sight   it will not wait for you to start
+
+The figures are refreshed as players hunt.  Your own class, gear and group
+change everything, so CONSIDER a creature before you fight it.  Hyrule is
+not listed: its dungeons have their own order.
+
+See also: CONSIDER, ADVENTURE, 'HUNTING GROUNDS', WALKTO, MAPS
 ~
 
 0 $~

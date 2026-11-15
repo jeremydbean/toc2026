@@ -284,6 +284,17 @@ level. Fleeing and luck are not in it, so treat its verdict as a guide.
 Class and guild abilities appear in `skills` and `spells`; read each relevant
 help topic before spending practices.
 
+To find something to fight, `hunting` names up to five creatures worth hunting
+at your level (or `hunting <level>` for any level 1-59), each in a different
+area with the `walkto` that reaches it, and how long a kill takes and the
+experience an hour it comes to. A creature marked **measured** is timed from
+players' own kills near that level, shown only once at least three characters
+have hunted it and never naming anyone; the rest are **estimated** from the
+creature itself. It deliberately spreads its picks -- the quickest, the safest
+and the least crowded each get a place -- so a level's players are not all
+sent to the same rooms. `help 'hunting grounds'` is a hand-written guide to a
+few areas.
+
 Common combat controls:
 
 | Command | Purpose |
