@@ -304339,3 +304339,5 @@ Sun Nov 15 09:53:46 2026 :: Connection guard: 178.156.189.249 closed without a w
 Sun Nov 15 09:54:14 2026 :: Sock.sinaddr:  65.49.1.132
 Sun Nov 15 09:54:14 2026 :: EOF encountered on read.
 Sun Nov 15 09:54:14 2026 :: Connection guard: 65.49.1.132 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sun Nov 15 09:58:09 2026 :: Treasure goblin: vanished from room 15180 (A Classroom, campus.are) (too long in one area).
+Sun Nov 15 09:58:50 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 1 of 6 in 6 hours).
