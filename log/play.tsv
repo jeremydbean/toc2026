@@ -32013,3 +32013,11 @@
 1794779446	census	-	0	0	-	herbs=125/150 components=73/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=23 spotted=2 picked=0 passed=2 cleared=0 rare=0 mobs_seen=23 mobs_fought=1 secs=900
 1794779505	laid	-	0	0	-	1277	herb	44	a sprig of aconite	7875	valley.are	scatter
 1794779559	laid	-	0	0	-	1278	herb	40	a clove	17252	highland.are	scatter
+1794779636	laid	-	0	0	-	1279	herb	38	a foxglove flower	2455	dresden.are	scatter
+1794779636	laid	-	0	0	-	1280	herb	37	a sprig of catnip	4303	dresden.are	scatter
+1794779704	laid	-	0	0	-	1281	herb	44	a sprig of aconite	7426	sewer.are	scatter
+1794779704	laid	-	0	0	-	1282	herb	41	a sprig of mistletoe	7225	sewer.are	scatter
+1794779704	laid	-	0	0	-	1283	component	79	a glass container of cobwebs	4720	dresden.are	scatter
+1794779752	laid	-	0	0	-	1284	herb	40	a clove	7017	sewer.are	scatter
+1794779798	laid	-	0	0	-	1285	herb	47	a sprig of saffron	15145	campus.are	scatter
+1794779798	laid	-	0	0	-	1286	component	88	a vial of green slime	15075	campus.are	scatter
