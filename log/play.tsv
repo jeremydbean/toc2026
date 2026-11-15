@@ -30356,3 +30356,67 @@
 1794708158	sightings	Trentlin	45	4210	dresden.are	mob	58:1/0/0 201:1/0/0 2434:1/0/0 4445:1/0/0 4457:1/0/0 5201:2/0/0 5207:1/0/0 5203:1/0/0 6317:1/0/0 4202:1/0/0 4201:1/0/0 9543:2/0/0 9562:4/0/0 9542:3/0/0 9519:1/0/0 9520:2/0/0 9533:2/0/0 9592:7/0/0 9540:1/0/0 9537:1/0/0 9568:4/0/0 9544:5/0/0 16012:4/0/0 16008:3/2/2 16010:2/1/0 16011:2/0/0 16009:5/5/0 4468:1/0/0 10:1/0/0 2435:2/0/0 16006:2/1/0 2400:1/0/0 53:1/0/0 4456:1/0/0 309:1/0/0 19118:2/0/0 19117:2/0/0
 1794708158	sightings	Trentlin	45	4210	dresden.are	item	25042:1/1 16:1/0 16021:1/0 13:1/0 16020:1/0 16038:1/0 4446:1/0 4445:1/0 4444:1/0 25041:1/1
 1794708158	session	Trentlin	45	4210	dresden.are	quit	1053s	+2 levels	+4629 exp	+21543088 copper	9 kills	0 deaths	2 quests	474 commands	3 refused	coin: loot 13p 36g 76s 52c, quests 22p 74g 47s 16c, spent 14p 56g 92s 80c	spent on: heal 1p 10g, devote 13p 46g 92s 80c	exp: kills +4605, skilluse +24
+1794754530	area	Alaric	57	2497	dresden.are	-	dresden.are	-1	(game loop)
+1794754532	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794754535	quest	Alaric	57	2497	dresden.are	ordinary	kill	17715	An Emerald Citizen	10	landoz.are	23
+1794754535	cmd	Alaric	57	2497	dresden.are	standing	100	24	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Alaric.' // Questor Thews tells you 'An Emerald Citizen has been declared an outlaw!'	-	+
+1794754537	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794754538	cmd	Alaric	57	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794754538	cmd	Alaric	57	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794754538	cmd	Alaric	57	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794754538	cmd	Alaric	57	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794754539	cmd	Alaric	57	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794754539	cmd	Alaric	57	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794754539	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794754539	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1794754540	cmd	Alaric	57	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794754540	area	Alaric	57	6000	haon.are	dresden.are	haon.are	10	west
+1794754540	cmd	Alaric	57	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794754540	cmd	Alaric	57	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1794754540	cmd	Alaric	57	6002	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1794754541	cmd	Alaric	57	6003	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.	-	+
+1794754541	cmd	Alaric	57	6004	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains	-	+
+1794754541	cmd	Alaric	57	6100	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in	-	+
+1794754541	cmd	Alaric	57	6101	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,	-	+
+1794754542	cmd	Alaric	57	6102	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees that stand close on all sides.  Not a sound is to be heard.. everything	-	+
+1794754542	cmd	Alaric	57	6103	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are where the dusty trail bends, as to avoid conflict with a colossal // trunk to the west.  Not a sound is to be heard.. everything is ominously	-	+
+1794754542	cmd	Alaric	57	6108	haon.are	standing	100	0	-	south		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees standing // close on all sides.  The trail leads north and west and to the south, a frail	-	+
+1794754542	cmd	Alaric	57	6109	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees that stand close on all sides.  Not a sound is to be heard..	-	+
+1794754543	cmd	Alaric	57	6110	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees that // stand close on all sides.  The trail leads east and south.  To the north,	-	+
+1794754543	cmd	Alaric	57	6144	haon.are	standing	100	0	-	north		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient, // grey trees loom everywhere.  The tree trunks here seem to be covered in	-	+
+1794754543	cmd	Alaric	57	6130	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way westwards just below huge sticky // wires suspended like ropes between the trees. To the west the path seems	-	+
+1794754543	area	Alaric	57	66	connect.are	haon.are	connect.are	3	north
+1794754543	cmd	Alaric	57	66	connect.are	standing	100	0	-	north		A dark section of the forest //   You have reached a very dark section of the forest, the only thing you can // see is a dark tornado swirling in the air ahead of you.	-	+
+1794754544	area	Alaric	57	17700	landoz.are	connect.are	landoz.are	1	enter
+1794754544	cmd	Alaric	57	17700	landoz.are	standing	100	0	-	enter	portal	You enter The swirling tornado // Your stomach flip flops. Everything goes black for a moment. // Entrance to the Land of Oz	-	+
+1794754547	cmd	Alaric	57	17752	landoz.are	standing	100	0	-	north		Munchkin Land //   You have reached the happy little home of the munchkins. // All around you are dozens of tiny munchkins all singing and	-	+
+1794754547	cmd	Alaric	57	17753	landoz.are	standing	100	0	-	north		Beginning of the Yellow Brick Road //   You are in the center of Munchkin Land.  All around you // are tiny munchkins who seem quite pleased that you are	-	+
+1794754548	cmd	Alaric	57	17758	landoz.are	standing	100	0	-	north		The Yellow Brick Road //   You have reached the exit leading out of the land of the // munchkins.  To the north continues a road constructed out	-	+
+1794754548	cmd	Alaric	57	17762	landoz.are	standing	100	0	-	north		The Yellow Brick Road //   You make your way along the road stopping from time to time // to enjoy the beauty of the great Land of Oz.  This road leads	-	+
+1794754549	cmd	Alaric	57	17763	landoz.are	standing	100	0	-	north		The Yellow Brick Road //   As you continue along the road you stop and notice that // beside the road in a giant field of corn is a man made of 	-	+
+1794754549	cmd	Alaric	57	17764	landoz.are	standing	100	0	-	north		The Yellow Brick Road //   You continue along the road and you are filled with the warmth // of the sunshine as it shines down up you.  You feel very safe	-	+
+1794754550	cmd	Alaric	57	17765	landoz.are	standing	100	0	-	north		The Yellow Brick Road //   As you continue along the road you stop and see a very rusty // man standing next to a log cabin.  	-	+
+1794754556	cmd	Alaric	57	17767	landoz.are	standing	100	0	-	north		Yellow Brick Road //   You continue along the road and you are filled with the warmth // of the sunshine as it shines down upon you.  You feel very safe	-	+
+1794754557	cmd	Alaric	57	17768	landoz.are	standing	100	0	-	north		Yellow Brick Road //   You are quite a long way from the entrance to the Land of Oz  // now and it is starting to get dark.  Standing in the middle of	-	+
+1794754557	cmd	Alaric	57	17769	landoz.are	standing	100	0	-	north		Yellow Brick Road //   You continue along the road and are nearing the Emerald City. // [Exits: north south]	-	-
+1794754558	cmd	Alaric	57	17770	landoz.are	standing	100	0	-	north		Yellow Brick Road //   You have travelled quite a long way and you can see the entrance // to the Emerald City to the north.	-	+
+1794754559	cmd	Alaric	57	17771	landoz.are	standing	100	0	-	north		Entrance to the Emerald City //   You have reached the entrance to the famous Emerald City.  You // are astonished to see that everything in the city is actually	-	+
+1794754560	cmd	Alaric	57	17771	landoz.are	standing	100	0	-	open		Ok.	-	-
+1794754561	cmd	Alaric	57	17772	landoz.are	standing	100	0	-	north		The Emerald City //   You are inside the Emerald City.  All around you are citizens // going about their daily business and basically ignoring you.	-	+
+1794754561	coin	Alaric	57	17772	landoz.are	+62060154	bank	interest	bank	27153700709
+1794754561	laid	-	0	0	-	877	component	70	a dragon tooth	10124	glitter.are	scatter
+1794754563	coin	Alaric	57	17772	landoz.are	+6200	loot	kill	corpse of An Emerald Citizen	27153706909
+1794754563	coin	Alaric	57	17772	landoz.are	+40	loot	kill	corpse of An Emerald Citizen	27153706949
+1794754563	coin	Alaric	57	17772	landoz.are	+300000	loot	kill	corpse of An Emerald Citizen	27154006949
+1794754563	cmd	Alaric	57	17772	landoz.are	standing	100	9	-	kill	ci	Your punch <<< ERADICATES >>> An Emerald Citizen! [-184] // An Emerald Citizen is DEAD!! // You have almost finished your QUEST!	-	+
+1794754567	cmd	Alaric	57	17772	landoz.are	standing	100	0	-	recall		The Gods have forsaken you.	-	-
+1794754568	cmd	Alaric	57	17700	landoz.are	standing	100	0	-	run	s	Entrance to the Emerald City // [Exits: north south] // Yellow Brick Road	-	+
+1794754569	cmd	Alaric	57	17700	landoz.are	resting	100	0	-	wake		You stand up.	-	-
+1794754570	area	Alaric	57	2497	dresden.are	landoz.are	dresden.are	26	recall
+1794754570	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794754571	coin	Alaric	57	2497	dresden.are	+92477484	quests	aquest	-	27246484433
+1794754571	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	ordinary qp=2277->2277 offered=11 daily=4->4 coin=+92477484 kill=15412914 streak=0 level=57 target=-1
+1794754571	cmd	Alaric	57	2497	dresden.are	standing	100	19	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Here's your 92p 47g 74s 84c - well earned!'	success:-	+
+1794754572	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ga no	You safely collect 11 quest points.	-	-
+1794754574	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=125/983 align=922 exp=252749 coin=2360362437 bank=24886121996 qp=2288 prac=36 train=76 stash=93/350 remorts=3
+1794754574	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    297 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
