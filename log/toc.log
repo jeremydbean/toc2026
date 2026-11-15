@@ -303193,3 +303193,6 @@ Sun Nov 15 00:57:31 2026 :: Treasure goblin: vanished from room 13529 (Maintenan
 Sun Nov 15 00:58:55 2026 :: Connection guard: last hour 21 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 1 addresses paused and 0 refused now, 14 active player addresses.
 Sun Nov 15 01:00:46 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 6 refused in all, pause 2 this week, 340 minutes left).
 Sun Nov 15 01:05:49 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 2 of 6 in 6 hours).
+Sun Nov 15 01:07:36 2026 :: Treasure goblin: vanished from room 3811 (Beneath the Old Stairway, ratslair.are) (too long in one area).
+Sun Nov 15 01:10:08 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Sun Nov 15 01:10:55 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 2 of 6 in 6 hours).
