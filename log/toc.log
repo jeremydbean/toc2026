@@ -305076,3 +305076,8 @@ Sun Nov 15 18:50:46 2026 :: Daily backup started.
 Sun Nov 15 18:50:46 2026 :: Automated backup complete.
 Sun Nov 15 18:50:47 2026 :: Daily backup complete.
 Sun Nov 15 18:51:55 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 4 of 6 in 6 hours).
+Sun Nov 15 18:56:17 2026 :: Sock.sinaddr:  66.240.219.146
+Sun Nov 15 18:56:24 2026 :: EOF encountered on read.
+Sun Nov 15 18:56:24 2026 :: Connection guard: 66.240.219.146 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sun Nov 15 18:56:24 2026 :: Connection guard: 66.240.219.146 closed without a word (strike 2 of 6 in 6 hours).
+Sun Nov 15 18:56:59 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 2 of 6 in 6 hours).
