@@ -31220,3 +31220,11 @@
 1794772842	laid	-	0	0	-	995	component	57	a trolls fingernail	9411	mobfact.are	scatter
 1794772909	laid	-	0	0	-	996	herb	35	a sprig of angelica	5701	mid_ruin.are	scatter
 1794772909	laid	-	0	0	-	997	component	60	a rakshasa's claw	2042	catacomb.are	scatter
+1794773003	laid	-	0	0	-	998	herb	37	a sprig of catnip	24350	chess.are	scatter
+1794773003	laid	-	0	0	-	999	herb	40	a clove	24364	chess.are	scatter
+1794773072	laid	-	0	0	-	1000	herb	42	a marjoram plant	18070	icekeep.are	scatter
+1794773135	laid	-	0	0	-	1001	herb	50	a head of cabbage	8758	kerofk.are	scatter
+1794773135	laid	-	0	0	-	1002	herb	47	a sprig of saffron	8704	kerofk.are	scatter
+1794773146	census	-	0	0	-	herbs=32/150 components=20/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=28 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=51 mobs_fought=6 secs=900
+1794773187	laid	-	0	0	-	1003	herb	49	a pomegranate	7123	sewer.are	scatter
+1794773263	laid	-	0	0	-	1004	component	55	a unicorn horn	9319	galaxy.are	scatter
