@@ -325,6 +325,8 @@ DECLARE_DO_FUN( do_tutorial );
 DECLARE_DO_FUN( do_adventure );
 DECLARE_DO_FUN( do_hunting );
 DECLARE_DO_FUN( do_errand );
+DECLARE_DO_FUN( do_lfg );
+DECLARE_DO_FUN( do_helper );
 DECLARE_DO_FUN( do_grantmap );
 DECLARE_DO_FUN( do_cartographer );
 DECLARE_DO_FUN( do_disaster );

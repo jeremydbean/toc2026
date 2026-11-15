@@ -186,6 +186,8 @@ remort thresholds and class/race restrictions.
 |---|---|
 | `follow` | Follow another character or stop following self |
 | `group` | Review or change group membership |
+| `lfg`, `lfg on\|off`, `lfg list` | Mark yourself looking for a group for an hour; list who is looking near your level and the helpers on |
+| `helper`, `helper on\|off` | From level 10, mark yourself glad to help newer players (kept between logins) |
 | `gtell` | Send a group message |
 | `report` | Say your current and maximum hit points, mana and endurance, and your experience, to the room |
 | `order` | Command your charmed followers; a charmed player obeys only for what happens in the room |

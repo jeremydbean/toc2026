@@ -2980,7 +2980,7 @@ void do_who( CHAR_DATA *ch, char *argument )
 	/*
 	 * Format it up.
 	 */
-	snprintf(buf, sizeof(buf), "[%2d %s %s%s ] %s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s\n\r",
+	snprintf(buf, sizeof(buf), "[%2d %s %s%s ] %s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s\n\r",
 	    wch->level,
             (!str_cmp(wch->name,"Blackbird") ? "Bird   "
              : (!str_cmp(wch->name,"Gravestone") ? "Tomb   "
@@ -3008,6 +3008,8 @@ void do_who( CHAR_DATA *ch, char *argument )
 	    IS_SET(wch->act, PLR_CLOAKED) ? "[CLOAKED] " : "",
 	    IS_AFFECTED2(wch, AFF2_SHADOWMELD) ? "[SHADOW] " : "",
 	    IS_SET(wch->act, PLR_AFK)     ? "[*AFK*] " : "",
+	    player_lfg( wch )             ? "(LFG) " : "",       /* lfg.c */
+	    player_helper( wch )          ? "(Helper) " : "",
 	    wch->name,
 	    IS_NPC(wch) ? "" : wch->pcdata->title );
         dstring_append_cstr( &output, buf );

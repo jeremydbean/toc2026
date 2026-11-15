@@ -194,10 +194,19 @@ static void adventure_group( CHAR_DATA *ch, DString *out, int *shown )
     }
     else if ( near > 0 )
     {
-        snprintf( buf, sizeof(buf),
-            "* Company: %d other player%s near your level %s on (WHO lists them).  Ask\n\r"
-            "  on the QUESTION channel, or FOLLOW someone and ask to be GROUPed.\n\r",
-            near, near == 1 ? "" : "s", near == 1 ? "is" : "are" );
+        int looking, helpers;
+
+        lfg_counts( ch, ADVENTURE_NEAR, &looking, &helpers );
+        if ( looking > 0 || helpers > 0 )
+            snprintf( buf, sizeof(buf),
+                "* Company: %d looking for a group near your level, %d helper%s on.\n\r"
+                "  LFG LIST names them; LFG marks you as looking too.\n\r",
+                looking, helpers, helpers == 1 ? "" : "s" );
+        else
+            snprintf( buf, sizeof(buf),
+                "* Company: %d other player%s near your level %s on (WHO lists them).\n\r"
+                "  LFG marks you as looking for a group; or ask on the QUESTION channel.\n\r",
+                near, near == 1 ? "" : "s", near == 1 ? "is" : "are" );
         adventure_line( out, shown, buf );
     }
 }

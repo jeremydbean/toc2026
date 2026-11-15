@@ -6476,6 +6476,31 @@ next.  A kill counts wherever in the area it falls, grouped or alone.
 See also: ADVENTURE, HUNTING, AQUEST, WALKTO, MUDSCHOOL
 ~
 
+0 LFG HELPER HELPERS 'LOOKING FOR GROUP'~
+Syntax: lfg                 mark yourself looking for a group, or stop
+        lfg on|off
+        lfg list            who is looking, near your level, and helpers
+        helper              mark yourself a helper (level 10 and up), or stop
+        helper on|off
+
+LFG marks you as looking for a group for an hour, or until you join one.
+WHO shows (LFG) beside your name, and LFG LIST lists you to anyone within
+ten levels of you.  Turning it on tells the helpers who are on, once --
+not again for ten minutes however often you turn it off and on.
+
+HELPER is for players glad to answer questions and group with newer ones.
+It is kept between logins: WHO shows (Helper), LFG LIST lists you to
+everyone, and you hear when somebody marks themselves LFG.  HELPER OFF
+stops all of it.
+
+Both are your choice and nothing else is ever sent.  Nobody you IGNORE,
+or who ignores you, sees you in LFG LIST or hears of you, and you do not
+see them.  From a list, TELL someone to say hello, FOLLOW them and ask to
+be GROUPed.
+
+See also: GROUP, FOLLOW, WHO, IGNORE, QUESTION, ADVENTURE
+~
+
 0 $~
 
 #$

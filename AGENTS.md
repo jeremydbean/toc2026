@@ -7315,6 +7315,18 @@ then a save; staff by level take none. Saved as `Errand <done> <taken>
 gives it one line (`errand_offered`). Last in the command table.
 `tests/test_errands.py`.
 
+## LFG And HELPER
+
+`src/lfg.c` (2026-11-15), both opt-in. LFG is `pcdata->lfg_until` (memory
+only, an hour) and reads as off while the player is in a group with another
+player (`player_lfg`); HELPER is `pcdata->helper`, saved `Helper 1` under
+**case 'H'** only when set, and counts from level 10 (`player_helper`). WHO
+tags them `(LFG)` and `(Helper)`. LFG LIST and the helpers' notice show only
+whom WHO would (`online_can_list`) and never across an IGNORE either way
+(`lfg_may_meet`). Turning LFG on tells the helpers once, then not again for
+`LFG_NOTICE_GAP` (ten minutes) -- the only thing either sends unasked.
+ADVENTURE's company line counts them (`lfg_counts`). `tests/test_lfg.py`.
+
 ## The Players' Logs Of 2026-11-13
 
 A read of three weeks of logs found these; each is fixed and played by

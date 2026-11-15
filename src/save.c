@@ -1479,6 +1479,8 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     /* What was waiting to be said: said at the next login, not lost. */
     if ( ch->pcdata != NULL && ch->pcdata->tutorial_pending != 0 )
 	fprintf( fp, "TutPending %d\n", ch->pcdata->tutorial_pending );
+    if ( ch->pcdata != NULL && ch->pcdata->helper )
+	fprintf( fp, "Helper 1\n" );
     /* The starter errands and the expedition (errand.c), when any. */
     if ( ch->pcdata != NULL && ( ch->pcdata->errand_done || ch->pcdata->errand_taken ) )
 	fprintf( fp, "Errand %d %d %d %d %d\n", ch->pcdata->errand_done,
@@ -4752,6 +4754,8 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    break;
 
 	case 'H':
+	    /* lfg.c: marked as a helper (written only when set). */
+	    KEY( "Helper",	ch->pcdata->helper,	fread_number( fp ) != 0 );
 	    KEY( "Hitroll",	ch->hitroll,		fread_number( fp ) );
 	    KEY( "Hit",		ch->hitroll,		fread_number( fp ) );
 	    KEY( "HyruleSecrets", ch->pcdata->hyrule_secrets,

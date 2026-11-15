@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261115lfg 2026-11-15
+New: LFG marks you as looking for a group for an hour (WHO shows it, LFG
+LIST lists who else is, near your level), and HELPER, from level 10, marks
+you glad to help newer players; helpers hear when somebody turns LFG on.
+Both are opt-in and respect IGNORE.
+
 @ 20261115errands 2026-11-15
 New: ERRAND.  Three small jobs about town for levels 1 to 10, each paid
 once -- slay three of Mud School's creatures, carry Melancholy's letter to

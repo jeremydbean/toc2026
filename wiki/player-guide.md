@@ -680,6 +680,13 @@ Use `follow <leader>`, `group <name>`, `gtell <message>`, `report`, `rescue`,
 unwanted followers, and `noloot` decides whether players outside your group may
 loot your corpse while you are in the game (see Death And Corpses).
 
+To find company, `lfg` marks you as looking for a group for an hour (or until
+you join one); WHO shows it, and `lfg list` lists who else is looking within
+ten levels of you, and the helpers on. From level 10, `helper` marks you as
+glad to help newer players: it is kept between logins, WHO shows it, and you
+hear when someone turns LFG on (at most once every ten minutes each). Both
+are opt-in, and nobody either of you ignores is shown or told.
+
 Group before the fight, confirm who is leading, decide whether autoloot and
 autosac are appropriate, and keep enough movement to retreat. Experience,
 currency splitting, assists, rescues, and kill ownership depend on group state.

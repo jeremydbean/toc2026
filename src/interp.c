@@ -572,6 +572,9 @@ const	struct	cmd_type	cmd_table	[] =
     { "hunting",        do_hunting,     POS_DEAD,        0,  LOG_NORMAL, 1 },
     /* Starter errands and expeditions (errand.c): last, so nothing moves. */
     { "errand",         do_errand,      POS_RESTING,     0,  LOG_NORMAL, 1 },
+    /* Looking for a group, and helpers (lfg.c): last, so nothing moves. */
+    { "lfg",            do_lfg,         POS_DEAD,        0,  LOG_NORMAL, 1 },
+    { "helper",         do_helper,      POS_DEAD,        0,  LOG_NORMAL, 1 },
 /* End of list. */
     { "",		0,		POS_DEAD,	 0,  LOG_NORMAL, 0 }
 };

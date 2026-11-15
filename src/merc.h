@@ -2782,6 +2782,11 @@ struct  pc_data
     int                 expedition_got;       /* a bit each target slain */
     long                expedition_day;       /* the day one was last finished */
     long                expedition_wait;      /* no new one before this (abandoned) */
+    /* lfg.c: HELPER (saved, "Helper 1" under case 'H') and the LFG mark,
+       with when the helpers were last told of it (memory only). */
+    bool                helper;
+    time_t              lfg_until;
+    time_t              lfg_noticed;
     long                play_start_wealth;
     time_t              play_anom_last[8];    /* one line a kind a while */
     int                 play_cmds;
@@ -4707,6 +4712,10 @@ int     hunting_area_prey      ( AREA_DATA *area, int level, MOB_INDEX_DATA **ou
 void    errand_kill            ( CHAR_DATA *ch, CHAR_DATA *victim );
 void    errand_room_seen       ( CHAR_DATA *ch );
 bool    errand_offered         ( CHAR_DATA *ch );
+/* lfg.c */
+bool    player_lfg             ( CHAR_DATA *ch );
+bool    player_helper          ( CHAR_DATA *ch );
+void    lfg_counts             ( CHAR_DATA *ch, int near, int *looking, int *helpers );
 bool    walkto_room_is_hyrule  ( ROOM_INDEX_DATA *room );
 
 /* update.c */
