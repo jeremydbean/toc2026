@@ -5092,3 +5092,4 @@
 1794746644	wizinfo	60	New flash trap on A Golden Chest [object 17017] in The masters chambers [room 17039], [45 60] Graves  Assassins Guild.
 1794748741	wizinfo	60	New plague trap on the glass cabinet [object 5227] in East wing of the city hall [room 5233], [10 25] Drkside Thalos.
 1794748794	wizinfo	60	Connection guard: last hour 16 closed without a word, 29 refused, 0 new characters refused, 1 newly paused; 4 addresses paused and 0 refused now, 14 active player addresses.
+1794752058	wizinfo	60	Connection guard: 34.1.237.124 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 34.1.237.124 lifts it.
