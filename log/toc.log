@@ -304481,3 +304481,7 @@ Sun Nov 15 14:14:18 2026 :: Connection guard: 34.1.237.124 paused for 6 hours (p
 Sun Nov 15 14:14:18 2026 :: Connection guard: refused 1 connection from 34.1.237.124 (paused; 1 refused in all, pause 1 this week, 360 minutes left).
 Sun Nov 15 14:14:18 2026 :: Connection guard: 34.1.237.124 closed without a word (strike 1 of 6 in 6 hours).
 Sun Nov 15 14:15:18 2026 :: Connection guard: refused 24 connections from 34.1.237.124 (since the last line; 25 refused in all, pause 1 this week, 359 minutes left).
+Sun Nov 15 14:17:46 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 11 refused in all, pause 2 this week, 284 minutes left).
+Sun Nov 15 14:19:54 2026 :: Connection guard: last hour 16 closed without a word, 28 refused, 0 new characters refused, 1 newly paused; 5 addresses paused and 0 refused now, 14 active player addresses.
+Sun Nov 15 14:21:07 2026 :: Automated backup started.
+Sun Nov 15 14:21:07 2026 :: Automated backup complete.
