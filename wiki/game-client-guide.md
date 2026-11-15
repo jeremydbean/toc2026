@@ -51,6 +51,14 @@ private web service as the administration dashboard. It works in current
 desktop and mobile browsers and does not download third-party scripts, fonts,
 or terminal libraries.
 
+### Screen Readers And Notes
+
+`screenreader` in the game takes out colour, lines drawn only to decorate and
+box borders, keeping every word; in Mudlet, `tocgui reader on` hides the
+package's panes and map window as well. `tocgui note <text>` keeps a note of
+your own on the room you stand in; `tocgui notes` lists them, never naming a
+room your map does not show.
+
 ## Open The Client
 
 The automated installation starts the client at:

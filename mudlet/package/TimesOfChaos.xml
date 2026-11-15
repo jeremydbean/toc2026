@@ -64,7 +64,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.5.16"
+tocMudlet.version = "1.5.17"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -1448,6 +1448,12 @@ end
 
 function tocMudlet.onStatus()
   local status = gmcp and gmcp.Char and gmcp.Char.Status
+  if type(status) == "table" and status.reader == true and not tocMudlet.readerHinted
+     and not (tocMudlet.settings and tocMudlet.settings.reader ~= nil) then
+    tocMudlet.readerHinted = true
+    cecho("\n<cyan>[TOC]<reset> SCREENREADER is on.  <white>tocgui reader on<reset> " ..
+      "hides this package's side panes too.\n")
+  end
   if type(status) ~= "table" or not tocMudlet.ui.identity then return end
   tocMudlet.ui.identity:echo(string.format(
     [[<div style="color:%s;font-size:13pt"><b>%s</b></div>]] ..
@@ -1932,6 +1938,12 @@ function tocMudlet.command(action, arg)
     tocMudlet.levelsCommand(arg)
   elseif action == "mapcheck" then
     tocMudlet.mapCheck()
+  elseif action == "note" then
+    tocMudlet.noteCommand(arg)
+  elseif action == "notes" then
+    tocMudlet.noteCommand("list")
+  elseif action == "reader" then
+    tocMudlet.readerCommand(arg)
   elseif action == "on" then
     if not tocMudlet.enabled or not tocMudlet.ui.mapper then
       tocMudlet.enabled = true
@@ -1948,6 +1960,9 @@ function tocMudlet.command(action, arg)
       "  <white>tocgui levels on<reset>|<white>off<reset>|<white>toggle<reset>  " ..
       "draw the floors above and below yours\n" ..
       "  <white>tocgui mapcheck<reset>  what the map is showing here, and anything wrong with it\n" ..
+      "  <white>tocgui note <text><reset>|<white>clear<reset>  a note of your own on this room; " ..
+      "<white>tocgui notes<reset> lists them\n" ..
+      "  <white>tocgui reader on<reset>|<white>off<reset>  only the main window, for a screen reader\n" ..
       "  <white>tocgui atlas<reset>  about loading the world map (it replaces this profile's map)\n")
   end
 end
@@ -1987,9 +2002,14 @@ end
 function tocMudlet.install()
   pcall(setupEnvironmentColours)
   pcall(tocMudlet.loadFog)
+  pcall(tocMudlet.loadNotes)
   pcall(tocMudlet.loadSettings)
   pcall(tocMudlet.applyLevels)
-  pcall(tocMudlet.buildUI)
+  if tocMudlet.settings and tocMudlet.settings.reader then
+    tocMudlet.enabled = false
+  else
+    pcall(tocMudlet.buildUI)
+  end
   register("gmcp.Char.Vitals", function() tocMudlet.onVitals() end)
   register("gmcp.Char.Status", function() tocMudlet.onStatus() end)
   register("gmcp.Char.Affects", function() tocMudlet.onAffects() end)
@@ -2310,7 +2330,125 @@ function tocMudlet.unfog(roomId)
       other.special[command] = roomId
     end
   end
+  tocMudlet.applyNote(roomId)
   return true
+end
+
+-- Personal map notes (1.5.17): a line of the player's own on a room they
+-- stand in, kept in toc-notes.lua beside the fog and set on the room as
+-- its "toc-note" user data while the room is on the map. The fog is
+-- respected: a room the fog holds is not on the map, so its note is not
+-- drawn, and TOCGUI NOTES never names one -- it says only how many wait
+-- for their rooms to come back.
+tocMudlet.notes = tocMudlet.notes or {}
+local NOTE_MAX = 200
+
+function tocMudlet.notesPath()
+  return getMudletHomeDir() .. "/toc-notes.lua"
+end
+
+function tocMudlet.saveNotes()
+  if not (table.save and getMudletHomeDir) then return end
+  pcall(table.save, tocMudlet.notesPath(), tocMudlet.notes)
+end
+
+function tocMudlet.loadNotes()
+  if not (table.load and getMudletHomeDir) then return end
+  local ok, path = pcall(tocMudlet.notesPath)
+  if not ok or type(path) ~= "string" then return end
+  local handle = io.open(path, "r")
+  if not handle then return end
+  handle:close()
+  local loaded = {}
+  if pcall(table.load, path, loaded) and type(loaded) == "table" then
+    for id, text in pairs(loaded) do
+      if tonumber(id) and type(text) == "string" then tocMudlet.notes[tonumber(id)] = text end
+    end
+  end
+end
+
+function tocMudlet.applyNote(roomId)
+  roomId = tonumber(roomId)
+  if not roomId or not roomExistsSafe(roomId) or not setRoomUserData then return end
+  pcall(setRoomUserData, roomId, "toc-note", tocMudlet.notes[roomId] or "")
+end
+
+local function noteRoomOnMap(id)
+  return roomExistsSafe(id) and not tocMudlet.fog[id]
+end
+
+function tocMudlet.noteCommand(arg)
+  local room = tonumber(tocMudlet.lastRoom)
+  if arg == "list" then
+    local shown, waiting, ids = 0, 0, {}
+    for id in pairs(tocMudlet.notes) do ids[#ids + 1] = id end
+    table.sort(ids)
+    cecho("\n<cyan>Your map notes:<reset>\n")
+    for _, id in ipairs(ids) do
+      if noteRoomOnMap(id) then
+        local okName, name = pcall(getRoomName, id)
+        cecho(string.format("  <white>%s<reset>: %s\n",
+          (okName and type(name) == "string" and name ~= "") and name or ("room " .. id),
+          tocMudlet.notes[id]))
+        shown = shown + 1
+      else
+        waiting = waiting + 1
+      end
+    end
+    if shown == 0 then cecho("  none on your map\n") end
+    if waiting > 0 then
+      cecho(string.format("  (%d more on rooms not on your map just now)\n", waiting))
+    end
+    return
+  end
+  if not room then
+    cecho("\n<yellow>Walk somewhere first: a note goes on the room you stand in.<reset>\n")
+    return
+  end
+  if arg == nil then
+    local text = tocMudlet.notes[room]
+    cecho(text and ("\n<cyan>Note here:<reset> " .. text .. "\n")
+      or "\nNo note here.  <white>tocgui note <text><reset> writes one.\n")
+    return
+  end
+  if arg == "clear" then
+    tocMudlet.notes[room] = nil
+    tocMudlet.applyNote(room)
+    tocMudlet.saveNotes()
+    cecho("\n<cyan>Note removed.<reset>\n")
+    return
+  end
+  local text = tostring(arg):gsub("[%c]", " "):gsub("^%s+", ""):gsub("%s+$", "")
+  if #text > NOTE_MAX then text = text:sub(1, NOTE_MAX) end
+  if text == "" then return end
+  tocMudlet.notes[room] = text
+  tocMudlet.applyNote(room)
+  tocMudlet.saveNotes()
+  cecho("\n<cyan>Noted on this room.<reset>  <white>tocgui notes<reset> lists them.\n")
+end
+
+-- Reader mode (1.5.17): only Mudlet's main window, for a screen reader.
+-- Kept per profile; the game's SCREENREADER suggests it once a session.
+function tocMudlet.readerCommand(arg)
+  if arg == "on" then
+    tocMudlet.settings.reader = true
+    tocMudlet.saveSettings()
+    tocMudlet.enabled = false
+    tocMudlet.teardownUI()
+    cecho("\n<cyan>Reader mode on: the side panes, gauges and map window are hidden, " ..
+      "so a screen reader hears only the game.  In the game, SCREENREADER takes " ..
+      "colour and decoration out too.  <white>tocgui reader off<reset> puts them back.\n")
+  elseif arg == "off" then
+    tocMudlet.settings.reader = false
+    tocMudlet.saveSettings()
+    tocMudlet.enabled = true
+    tocMudlet.buildUI()
+    tocMudlet.refresh()
+    cecho("\n<cyan>Reader mode off: the interface is back.<reset>\n")
+  else
+    cecho(string.format("\nReader mode is %s.  <white>tocgui reader on<reset>|<white>off<reset>\n",
+      tocMudlet.settings.reader and "on" or "off"))
+  end
 end
 
 function tocMudlet.applyFog()

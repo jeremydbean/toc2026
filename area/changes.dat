@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261115screenreader 2026-11-15
+New: SCREENREADER, for reading the game aloud: no colour, no lines drawn
+only to decorate, no box borders -- every word kept.  In Mudlet, TOCGUI
+READER ON hides the side panes too, and TOCGUI NOTE <text> keeps a note of
+your own on the room you stand in (TOCGUI NOTES lists them).
+
 @ 20261115lfg 2026-11-15
 New: LFG marks you as looking for a group for an hour (WHO shows it, LFG
 LIST lists who else is, near your level), and HELPER, from level 10, marks

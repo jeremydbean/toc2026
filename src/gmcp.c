@@ -13,7 +13,7 @@
 #include "dstring.h"
 #include "telnet_proto.h"
 
-#define TOC_MUDLET_PACKAGE_VERSION "1.5.16"
+#define TOC_MUDLET_PACKAGE_VERSION "1.5.17"
 #define TOC_MUDLET_PACKAGE_URL \
     "https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/TimesOfChaos.mpackage"
 #define TOC_MUDLET_MAP_URL \
@@ -735,6 +735,11 @@ void gmcp_send_character( DESCRIPTOR_DATA *d )
            number sent alongside would go stale between tiers. */
         toc_strlcat( json, ",\"tier\":", sizeof(json) );
         gmcp_json_append_quoted( json, sizeof(json), alignment_tier_name( ch->alignment ) );
+        /* SCREENREADER (act_info.c), so a client can go quiet with it;
+           the command marks the snapshot stale when it changes. */
+        toc_strlcat( json, ",\"reader\":", sizeof(json) );
+        toc_strlcat( json, !IS_NPC(ch) && ch->pcdata != NULL && ch->pcdata->screenreader
+                           ? "true" : "false", sizeof(json) );
         toc_strlcat( json, "}", sizeof(json) );
         telnet_send_gmcp( d, "Char.Status", json );
 

@@ -900,6 +900,42 @@ void do_brief(CHAR_DATA *ch, char *argument)
     }
 }
 
+/*
+ * SCREENREADER (2026-11-15): text for reading aloud. No colour, rules and
+ * box borders taken out of what commands send (reader_simplify, color.c);
+ * COLOR's own setting is kept for when it is turned off. Saved.
+ */
+void do_screenreader( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    bool on;
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+    one_argument( argument, arg );
+    if ( arg[0] == '\0' )
+        on = !ch->pcdata->screenreader;
+    else if ( !str_cmp( arg, "on" ) )
+        on = true;
+    else if ( !str_cmp( arg, "off" ) )
+        on = false;
+    else
+    {
+        send_to_char( "Syntax: screenreader [on|off]\n\r", ch );
+        return;
+    }
+    ch->pcdata->screenreader = on;
+    if ( ch->desc != NULL )
+        ch->desc->gmcp_status_valid = false;
+    save_char_obj( ch );
+    if ( on )
+        send_to_char( "Screen reader mode is on: no colour, and lines drawn only to decorate are\n\r"
+                      "left out.  You may also want BRIEF (shorter rooms), SCROLL 0 (no paging)\n\r"
+                      "and PROMPT to make the prompt shorter.  SCREENREADER OFF puts it back.\n\r", ch );
+    else
+        send_to_char( "Screen reader mode is off; colour is back to your COLOR setting.\n\r", ch );
+}
+
 void do_compact(CHAR_DATA *ch, char *argument)
 {
     UNUSED_PARAM(argument);

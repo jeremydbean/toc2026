@@ -2785,6 +2785,7 @@ struct  pc_data
     /* lfg.c: HELPER (saved, "Helper 1" under case 'H') and the LFG mark,
        with when the helpers were last told of it (memory only). */
     bool                helper;
+    bool                screenreader;         /* SCREENREADER (ScreenReader 1, case 'S') */
     time_t              lfg_until;
     time_t              lfg_noticed;
     long                play_start_wealth;
@@ -4574,6 +4575,7 @@ void    color_truncate      ( char *str, size_t max );
 void    color_close         ( char *str, size_t size );
 void    color_append_marker ( DString *buf, const CHAR_DATA *recipient, bool allow_color, unsigned char slot );
 void    color_convert       ( const char *text, const CHAR_DATA *recipient, bool allow_color, DString *out );
+void    reader_simplify     ( DString *text );
 void    check_improve   ( CHAR_DATA *ch, int sn, bool success, int multiplier );
 int     group_lookup    (const char *name);
 void    gn_add          ( CHAR_DATA *ch, int gn);

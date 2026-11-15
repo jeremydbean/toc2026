@@ -686,5 +686,26 @@ do
     text(tocMudlet.ui.items))
 end
 
+-- Reader mode (1.5.17): only the main window, kept per profile.
+do
+  local tornDown, built = 0, 0
+  local realTeardown, realBuild, realRefresh = tocMudlet.teardownUI, tocMudlet.buildUI, tocMudlet.refresh
+  local realSave = tocMudlet.saveSettings
+  tocMudlet.teardownUI = function() tornDown = tornDown + 1 end
+  tocMudlet.buildUI = function() built = built + 1 end
+  tocMudlet.refresh = function() end
+  tocMudlet.saveSettings = function() end
+  tocMudlet.settings = tocMudlet.settings or {}
+  tocMudlet.enabled = true
+  tocMudlet.readerCommand("on")
+  check("reader on hides the interface", tornDown == 1 and tocMudlet.enabled == false)
+  check("and is kept in the settings", tocMudlet.settings.reader == true)
+  tocMudlet.readerCommand("off")
+  check("reader off builds it again", built == 1 and tocMudlet.enabled == true)
+  check("and is kept off", tocMudlet.settings.reader == false)
+  tocMudlet.teardownUI, tocMudlet.buildUI, tocMudlet.refresh = realTeardown, realBuild, realRefresh
+  tocMudlet.saveSettings = realSave
+end
+
 print(failures == 0 and "ALL PASS" or (failures .. " FAILED"))
 os.exit(failures == 0 and 0 or 1)

@@ -7327,6 +7327,22 @@ whom WHO would (`online_can_list`) and never across an IGNORE either way
 `LFG_NOTICE_GAP` (ten minutes) -- the only thing either sends unasked.
 ADVENTURE's company line counts them (`lfg_counts`). `tests/test_lfg.py`.
 
+## SCREENREADER And Map Notes
+
+`do_screenreader` (act_info.c, 2026-11-15): `pcdata->screenreader`, saved
+`ScreenReader 1` under **case 'S'**. While on, `color_is_enabled` and
+`color_code` answer no colour (the prompt's escapes come from `color_code`,
+so both must ask), and `send_to_char`/`page_to_char` pass the converted text
+through `reader_simplify` (color.c): a line only of rule characters at least
+four long is dropped, a run of four of one rule character goes, a boxed
+line loses its borders, blank runs become one -- never a word or a number
+(`tests/test_screenreader.py` reads SCORE, ACHIEVEMENTS, WHO, AUTOLIST and
+CHANNELS both ways and compares their words). GMCP `Char.Status` carries
+`"reader"`; the command marks the snapshot stale. Mudlet package 1.5.17:
+`tocgui note`/`notes` (kept in `toc-notes.lua`, applied as room user data,
+never listed while the fog holds the room, set again by `unfog`) and
+`tocgui reader on|off`; see `mudlet/README.md`.
+
 ## The Players' Logs Of 2026-11-13
 
 A read of three weeks of logs found these; each is fixed and played by

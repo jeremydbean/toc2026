@@ -133,6 +133,11 @@ Mudlet commands (local aliases; they do nothing in other clients):
                          profile's map, so TOCGUI ATLAS BACKUP saves yours
                          first and TOCGUI ATLAS CONFIRM saves it, then loads
   tocgui off | on        hide or restore the interface
+  tocgui note <text>     a note of your own on the room you stand in
+                         (TOCGUI NOTE CLEAR removes it); TOCGUI NOTES
+                         lists them, never a room the map hides from you
+  tocgui reader on|off   only Mudlet's main window, for a screen reader
+                         (HELP SCREENREADER)
   walk ...               walk to a room or place (HELP WALK)
 
 Drawing the floors above and below is Mudlet's own setting, shared by all
@@ -6499,6 +6504,27 @@ see them.  From a list, TELL someone to say hello, FOLLOW them and ask to
 be GROUPed.
 
 See also: GROUP, FOLLOW, WHO, IGNORE, QUESTION, ADVENTURE
+~
+
+0 SCREENREADER 'SCREEN READER' ACCESSIBILITY~
+Syntax: screenreader            turn it on, or off
+        screenreader on|off
+
+SCREENREADER makes what the game sends read well aloud.  While it is on:
+
+  - no colour, the prompt's included (COLOR keeps your choice for later);
+  - a line drawn only of dashes, equals signs and the like is left out, so
+    a screen reader does not spell out "dash dash dash";
+  - a box's side borders go: "| Level: 12 |" reads "Level: 12";
+  - runs of blank lines become one.
+
+Every word and number is kept, in the same order.  It is saved with your
+character.  Also worth setting: BRIEF (shorter room descriptions), SCROLL 0
+(no "Hit Return" pages), PROMPT (a shorter prompt), and SOUND OFF.  In
+Mudlet, TOCGUI READER ON hides the package's panes and map window too.  The
+browser client at timesofchaos.com labels its controls for screen readers.
+
+See also: COLOR, BRIEF, SCROLL, PROMPT, SOUND, MUDLET
 ~
 
 0 $~

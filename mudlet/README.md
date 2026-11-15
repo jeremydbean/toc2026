@@ -285,6 +285,21 @@ be revisited. Map data belongs to the Mudlet profile, not to a ToC character
 file. Release notes above this section are a dated history of the package,
 not a description of the current one.
 
+### Notes and reader mode
+
+Package 1.5.17 (2026-11-15). `tocgui note <text>` keeps a line of the
+player's own on the room they stand in, in `toc-notes.lua` beside the fog
+file, and sets it on the room as its `toc-note` user data; `tocgui note`
+shows it, `tocgui note clear` removes it, and `tocgui notes` lists them.
+The fog is respected: a room the fog holds is off the map, so its note is
+not drawn, and the list never names one -- it counts how many wait for their
+rooms; `tocMudlet.unfog` sets a room's note again when it comes back. `tocgui
+reader on|off` (saved in `toc-settings.lua` as `reader`) leaves only Mudlet's
+main window for a screen reader, and a profile in reader mode builds no
+interface at start; the game's `SCREENREADER` (GMCP `Char.Status` carries
+`"reader"`) suggests it once a session. Both are played in
+`tests/mudlet_fog_spec.lua` and `tests/mudlet_ui_spec.lua`.
+
 ### The fog
 
 What a character knows is the game's to say (`src/maps.c`): every room they

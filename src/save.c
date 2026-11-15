@@ -1481,6 +1481,8 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 	fprintf( fp, "TutPending %d\n", ch->pcdata->tutorial_pending );
     if ( ch->pcdata != NULL && ch->pcdata->helper )
 	fprintf( fp, "Helper 1\n" );
+    if ( ch->pcdata != NULL && ch->pcdata->screenreader )
+	fprintf( fp, "ScreenReader 1\n" );
     /* The starter errands and the expedition (errand.c), when any. */
     if ( ch->pcdata != NULL && ( ch->pcdata->errand_done || ch->pcdata->errand_taken ) )
 	fprintf( fp, "Errand %d %d %d %d %d\n", ch->pcdata->errand_done,
@@ -4986,6 +4988,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    break;
 
 	case 'S':
+	    KEY( "ScreenReader", ch->pcdata->screenreader, fread_number( fp ) != 0 );
 	    KEY( "SavingThrow",	ch->saving_throw,	fread_number( fp ) );
 	    KEY( "Save",	ch->saving_throw,	fread_number( fp ) );
 	    KEY( "SavedOnce",	ch->pcdata->has_saved,	fread_number( fp ) );

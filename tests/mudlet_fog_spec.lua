@@ -705,6 +705,59 @@ local path = tocMudlet.fogPath()
 check("the exit flush writes it", saved[path] ~= nil and saved[path][6] ~= nil)
 check("and nothing is left waiting", tocMudlet.fogSaveTimer == nil)
 
+-- Personal notes (1.5.17): on the room stood in, kept through the fog,
+-- never named while the fog holds their room.
+function setRoomUserData(id, key, value)
+  if not rooms[id] then return false end
+  rooms[id].data = rooms[id].data or {}
+  rooms[id].data[key] = value
+  return true
+end
+function getRoomUserData(id, key)
+  return rooms[id] and rooms[id].data and rooms[id].data[key] or nil
+end
+atlas()
+timers = {}
+tocMudlet.fogSaveTimer = nil
+tocMudlet.notes = {}
+saved = {}
+known({ { rooms = { {1, 6}, {10, 10} } } })
+tocMudlet.lastRoom = 5
+tocMudlet.noteCommand("  the lever is hidden here  ")
+check("a note is kept for the room", tocMudlet.notes[5] == "the lever is hidden here", tocMudlet.notes[5])
+check("and set on the room", getRoomUserData(5, "toc-note") == "the lever is hidden here")
+local notesSaved = saved[tocMudlet.notesPath()]
+check("and saved", notesSaved ~= nil and notesSaved[5] == "the lever is hidden here")
+local said = {}
+local realCecho = cecho
+cecho = function(text) said[#said + 1] = tostring(text) end
+-- Walked on: the room stood in is never fogged.
+tocMudlet.lastRoom = 1
+known({ { rooms = { {1, 3} } } })
+check("its room goes into the fog", not roomExists(5))
+said = {}
+tocMudlet.noteCommand("list")
+local listed = table.concat(said)
+check("a fogged room's note is not named", not listed:find("lever") and not listed:find("Room 5"), listed)
+check("only counted", listed:find("1 more on rooms not on your map") ~= nil, listed)
+known({ { rooms = { {1, 6}, {10, 10} } } })
+check("back from the fog with its note", getRoomUserData(5, "toc-note") == "the lever is hidden here")
+said = {}
+tocMudlet.noteCommand("list")
+listed = table.concat(said)
+check("and listed again", listed:find("Room 5") ~= nil and listed:find("lever") ~= nil, listed)
+tocMudlet.lastRoom = 5
+tocMudlet.noteCommand("clear")
+check("cleared", tocMudlet.notes[5] == nil and getRoomUserData(5, "toc-note") == "")
+tocMudlet.noteCommand("a\27[31mb" .. string.rep("x", 300))
+check("no control characters, and at most 200", tocMudlet.notes[5] ~= nil
+  and #tocMudlet.notes[5] <= 200 and not tocMudlet.notes[5]:find("\27"), tocMudlet.notes[5])
+tocMudlet.lastRoom = nil
+said = {}
+tocMudlet.noteCommand("somewhere")
+check("no room, no note", table.concat(said):find("Walk somewhere first") ~= nil)
+cecho = realCecho
+
 if failures > 0 then
   print(failures .. " FAILED")
   os.exit(1)

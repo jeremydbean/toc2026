@@ -117,7 +117,7 @@ class LfgSourceTests(unittest.TestCase):
         interp = (ROOT / "src" / "interp.c").read_text(encoding="utf-8")
         table = interp.split("cmd_table	[] =", 1)[1].split("/* End of list. */", 1)[0]
         names = re.findall(r'\{\s*"([^"]+)"', table)
-        self.assertEqual(names[-2:], ["lfg", "helper"])
+        self.assertEqual(names.index("helper"), names.index("lfg") + 1)
         save = (ROOT / "src" / "save.c").read_text(encoding="latin-1")
         case_h = save.split("case 'H':", 1)[1].split("case 'I':", 1)[0]
         self.assertIn('"Helper"', case_h)

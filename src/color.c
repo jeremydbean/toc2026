@@ -225,7 +225,8 @@ const char *color_code( const CHAR_DATA *ch, int slot )
         return "";
     }
 
-    if ( !ch->pcdata->color )
+    /* SCREENREADER takes colour off everywhere, the prompt's included. */
+    if ( !ch->pcdata->color || ch->pcdata->screenreader )
     {
         return "";
     }
@@ -281,7 +282,8 @@ bool color_is_enabled( const CHAR_DATA *ch )
         return false;
     }
 
-    if ( !ch->pcdata->color )
+    /* SCREENREADER: no colour while it is on; COLOR's own setting is kept. */
+    if ( !ch->pcdata->color || ch->pcdata->screenreader )
     {
         return false;
     }
@@ -458,4 +460,117 @@ void color_convert( const char *text, const CHAR_DATA *recipient, bool allow_col
         dstring_append_char( out, *str );
         ++str;
     }
+}
+
+/*
+ * SCREENREADER (2026-11-15): text read aloud, not looked at. Applied to
+ * what send_to_char and page_to_char send to a player who turned it on,
+ * after colour is taken out:
+ *
+ *  - a line drawn only of rule and border characters (-=_*~+#|:.<>) and
+ *    at least four of them long is dropped, so "=====" is not read as
+ *    "equals equals equals";
+ *  - a run of four or more of one rule character inside a line goes
+ *    ("---- Score ----" reads "Score");
+ *  - a boxed line, opening and closing with '|' or '+', loses the border;
+ *  - runs of blank lines become one.
+ *
+ * Words, numbers and spacing between them are never changed.
+ */
+static bool reader_rule_char( char c )
+{
+    return c == '-' || c == '=' || c == '_' || c == '*' || c == '~' || c == '+'
+        || c == '#' || c == '|' || c == ':' || c == '.' || c == '<' || c == '>';
+}
+
+static void reader_line( const char *line, size_t len, DString *out, bool *last_blank )
+{
+    char buf[MAX_STRING_LENGTH];
+    size_t i, n = 0, rules = 0, other = 0, start, end;
+
+    for ( i = 0; i < len; i++ )
+    {
+        if ( line[i] == ' ' || line[i] == '\t' )
+            continue;
+        if ( reader_rule_char( line[i] ) )
+            rules++;
+        else
+            other++;
+    }
+    if ( other == 0 && rules >= 4 )
+        return;                                 /* a rule: dropped */
+    /* Drop a run of four or more of one rule character. */
+    for ( i = 0; i < len && n + 1 < sizeof(buf); )
+    {
+        size_t run = 1;
+
+        while ( i + run < len && line[i + run] == line[i] )
+            run++;
+        if ( run >= 4 && reader_rule_char( line[i] ) && line[i] != '.' )
+        {
+            i += run;
+            continue;
+        }
+        while ( run-- > 0 && n + 1 < sizeof(buf) )
+            buf[n++] = line[i++];
+    }
+    buf[n] = '\0';
+    /* A boxed line: its border and the padding inside it go. */
+    for ( start = 0; start < n && buf[start] == ' '; start++ )
+        ;
+    for ( end = n; end > start && buf[end - 1] == ' '; end-- )
+        ;
+    if ( end - start >= 2 && ( buf[start] == '|' || buf[start] == '+' )
+    &&   ( buf[end - 1] == '|' || buf[end - 1] == '+' ) )
+    {
+        start++;
+        end--;
+        while ( start < end && buf[start] == ' ' )
+            start++;
+        while ( end > start && buf[end - 1] == ' ' )
+            end--;
+    }
+    else
+        start = 0;
+    if ( end <= start )
+    {
+        if ( *last_blank )
+            return;
+        *last_blank = true;
+        dstring_append_cstr( out, "\n\r" );
+        return;
+    }
+    *last_blank = false;
+    buf[end] = '\0';
+    dstring_append_cstr( out, buf + start );
+    dstring_append_cstr( out, "\n\r" );
+}
+
+void reader_simplify( DString *text )
+{
+    DString out;
+    const char *p = dstring_cstr( text ), *nl;
+    bool last_blank = false;
+
+    dstring_init( &out );
+    while ( *p != '\0' )
+    {
+        size_t len;
+
+        nl = strpbrk( p, "\n\r" );
+        if ( nl == NULL )
+        {
+            /* An unfinished last line (a prompt): kept as it is. */
+            dstring_append_cstr( &out, p );
+            break;
+        }
+        len = (size_t) ( nl - p );
+        reader_line( p, len, &out, &last_blank );
+        /* One line ending, whichever pair or single the text used. */
+        p = nl + 1;
+        if ( ( *nl == '\n' && *p == '\r' ) || ( *nl == '\r' && *p == '\n' ) )
+            p++;
+    }
+    dstring_free( text );
+    *text = out;
 }

@@ -4707,6 +4707,8 @@ void send_to_char_dstring( const DString *txt, CHAR_DATA *ch )
 
     dstring_init( &colorized );
     color_convert( dstring_cstr( txt ), ch, allow_color, &colorized );
+    if ( !IS_NPC(ch) && ch->pcdata != NULL && ch->pcdata->screenreader )
+        reader_simplify( &colorized );
     write_to_buffer_raw( dstring_cstr( &colorized ), ch );
     dstring_free( &colorized );
 }
@@ -4768,6 +4770,8 @@ void page_to_char( const char *txt, CHAR_DATA *ch )
 
     dstring_init( &colorized );
     color_convert( txt, ch, color_is_enabled( ch ), &colorized );
+    if ( !IS_NPC(ch) && ch->pcdata != NULL && ch->pcdata->screenreader )
+        reader_simplify( &colorized );
     page_text = dstring_cstr( &colorized );
 
     /*
