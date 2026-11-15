@@ -304862,3 +304862,13 @@ Sun Nov 15 15:36:07 2026 :: Log Alaric [2497]: copper +123303312
 Sun Nov 15 15:36:07 2026 :: Log Alaric [2497]: quest complete: 123p 30g 33s 12c, 22 quest points (streak bonus 20%)
 Sun Nov 15 15:36:07 2026 :: Snapshot of Alaric taken before quest: Alaric.20261115_153607.quest (PRESTORE Alaric to see it).
 Sun Nov 15 15:36:07 2026 :: Log Alaric [2497]: aq ga no
+Sun Nov 15 15:39:00 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 3 of 6 in 6 hours).
+Sun Nov 15 15:42:15 2026 :: Sock.sinaddr:  18.97.5.84
+Sun Nov 15 15:42:15 2026 :: EOF encountered on read.
+Sun Nov 15 15:42:15 2026 :: Connection guard: 18.97.5.84 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sun Nov 15 15:42:16 2026 :: Sock.sinaddr:  18.97.5.84
+Sun Nov 15 15:42:16 2026 :: EOF encountered on read.
+Sun Nov 15 15:42:16 2026 :: Connection guard: 18.97.5.84 closed before a password prompt (strike 2 of 6 in 6 hours).
+Sun Nov 15 15:42:16 2026 :: Connection guard: 18.97.5.84 closed without a word (strike 3 of 6 in 6 hours).
+Sun Nov 15 15:42:16 2026 :: Connection guard: 18.97.5.84 closed without a word (strike 4 of 6 in 6 hours).
+Sun Nov 15 15:42:22 2026 :: Connection guard: 18.97.5.84 closed without a word (strike 5 of 6 in 6 hours).
