@@ -31408,3 +31408,11 @@
 1794775058	laid	-	0	0	-	1059	herb	50	a head of cabbage	3906	dresden.are	scatter
 1794775058	laid	-	0	0	-	1060	herb	48	an alfalfa sprout	4411	dresden.are	scatter
 1794775058	laid	-	0	0	-	1061	component	72	a minotaur's ear	25249	mushroom.are	scatter
+1794775112	laid	-	0	0	-	1062	herb	40	a clove	6404	sea.are	scatter
+1794775112	laid	-	0	0	-	1063	component	77	a vial of medusa eye fluid	18144	icekeep.are	scatter
+1794775234	item	Alaric	57	2497	dresden.are	2234	a grey key	type=key level=18 worn=0 nested=0 timer=0 cond=100 inside=0	obj_update
+1794775234	laid	-	0	0	-	1064	herb	37	a sprig of catnip	17215	highland.are	scatter
+1794775308	laid	-	0	0	-	1065	herb	47	a sprig of saffron	1397	htower.are	scatter
+1794775308	laid	-	0	0	-	1066	herb	49	a pomegranate	1360	htower.are	scatter
+1794775308	laid	-	0	0	-	1067	component	88	a vial of green slime	5367	mirror.are	scatter
+1794775358	laid	-	0	0	-	1068	herb	41	a sprig of mistletoe	9202	canyon.are	scatter
