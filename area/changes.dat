@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261115keysandtypos 2026-11-15
+UNLOCK and LOCK without the key now name the key the lock takes, and say so
+when no key in the world fits.  A typo of ENTER, AFFECTS, RESCUE or a
+direction is now answered with what you meant.
+
 @ 20261115standtomove 2026-11-15
 Resting or sitting, a move stands you up and goes: a direction, ENTER,
 CROSS, CLIMB, CRAWL, JUMP, RUN, SPEEDWALK or FLEE no longer answers "Nah...

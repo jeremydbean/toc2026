@@ -125,6 +125,12 @@ class CommandGuessingLiveTests(unittest.TestCase):
                 self.assertIn("CAST 'cure light'", client.sync("cuer light"))
                 # A typo with nothing of theirs near it stays a plain Huh.
                 self.assertIn("Huh?", client.sync("zqxvw"))
+                # A command kept off the COMMANDS list is still offered
+                # (players' logs, 2026-11-15: "enetr" was a bare Huh?), but
+                # never a guard word for a dangerous one.
+                self.assertIn("ENTER", client.sync("enetr"))
+                self.assertIn("AFFECTS", client.sync("afefcts"))
+                self.assertNotRegex(client.sync("delte"), r"\bDELET\b")
 
 
 if __name__ == "__main__":

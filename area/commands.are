@@ -2847,6 +2847,8 @@ LOCK secures a closed door or container.  UNLOCK removes the lock.  Both
 require the appropriate key in your inventory.  Without a key, characters
 with the PICK LOCK skill can bypass the lock with the PICK command.
 A direction may be shortened as for OPEN: UNLOCK WE is the west door.
+Without the key, you are told which key the lock takes (never where it
+lies); a lock no key in the world fits says so.
 
 See also: OPEN, CLOSE, PICK, DOORBASH
 ~

@@ -2560,6 +2560,28 @@ static bool is_hyrule_small_key( int vnum )
         || vnum == OBJ_VNUM_HYRULE_SHOP_KEY_CHEAP;
 }
 
+/*
+ * What a lock wants, named (players' logs, 2026-11-15: UNLOCK answered "You
+ * lack the key." seventeen times in a week, and players tried every key
+ * they held). The key is named by its short description, never where it
+ * lies; a lock whose key exists nowhere in the world says so, since no
+ * search will find it.
+ */
+static void lack_key_message( CHAR_DATA *ch, int key, const char *verb )
+{
+    OBJ_INDEX_DATA *pkey = key > 0 ? get_obj_index( key ) : NULL;
+    char buf[MAX_STRING_LENGTH];
+
+    if ( pkey == NULL || pkey->short_descr == NULL || pkey->short_descr[0] == '\0' )
+    {
+        send_to_char( "No key you could find fits this lock.\n\r", ch );
+        return;
+    }
+    snprintf( buf, sizeof(buf), "You lack the key: it takes %s to %s it.\n\r",
+              pkey->short_descr, verb );
+    send_to_char( buf, ch );
+}
+
 bool has_key( CHAR_DATA *ch, int key )
 {
     OBJ_DATA *obj;
@@ -2625,7 +2647,7 @@ void do_lock( CHAR_DATA *ch, char *argument )
 	if ( obj->value[2] < 0 )
 	    { send_to_char( "It can't be locked.\n\r",     ch ); return; }
 	if ( !has_key( ch, obj->value[2] ) )
-	    { send_to_char( "You lack the key.\n\r",       ch ); return; }
+	    { lack_key_message( ch, obj->value[2], "lock" ); return; }
 	if ( IS_SET(obj->value[1], CONT_LOCKED) )
 	    { send_to_char( "It's already locked.\n\r",    ch ); return; }
 
@@ -2648,7 +2670,7 @@ void do_lock( CHAR_DATA *ch, char *argument )
 	if ( pexit->key < 0 )
 	    { send_to_char( "It can't be locked.\n\r",     ch ); return; }
 	if ( !has_key( ch, pexit->key) )
-	    { send_to_char( "You lack the key.\n\r",       ch ); return; }
+	    { lack_key_message( ch, pexit->key, "lock" ); return; }
 	if ( IS_SET(pexit->exit_info, EX_LOCKED) )
 	    { send_to_char( "It's already locked.\n\r",    ch ); return; }
 
@@ -2781,10 +2803,10 @@ void do_unlock( CHAR_DATA *ch, char *argument )
 	    { send_to_char( "It's not closed.\n\r",        ch ); return; }
 	if ( obj->value[2] < 0 )
 	    { send_to_char( "It can't be unlocked.\n\r",   ch ); return; }
-	if ( !has_key( ch, obj->value[2] ) )
-	    { send_to_char( "You lack the key.\n\r",       ch ); return; }
 	if ( !IS_SET(obj->value[1], CONT_LOCKED) )
 	    { send_to_char( "It's already unlocked.\n\r",  ch ); return; }
+	if ( !has_key( ch, obj->value[2] ) )
+	    { lack_key_message( ch, obj->value[2], "unlock" ); return; }
 	if ( IS_SET(obj->value[1], CONT_TRAPPED) )
 	    {
 	      if(number_percent () > 20)
@@ -2817,10 +2839,10 @@ void do_unlock( CHAR_DATA *ch, char *argument )
 	    { send_to_char( "It's not closed.\n\r",        ch ); return; }
 	if ( pexit->key < 0 )
 	    { send_to_char( "It can't be unlocked.\n\r",   ch ); return; }
-	if ( !has_key( ch, pexit->key) )
-	    { send_to_char( "You lack the key.\n\r",       ch ); return; }
 	if ( !IS_SET(pexit->exit_info, EX_LOCKED) )
 	    { send_to_char( "It's already unlocked.\n\r",  ch ); return; }
+	if ( !has_key( ch, pexit->key) )
+	    { lack_key_message( ch, pexit->key, "unlock" ); return; }
 	if ( IS_SET(pexit->exit_info, EX_TRAPPED) )
 	    {
 	     if(number_percent () > 20)

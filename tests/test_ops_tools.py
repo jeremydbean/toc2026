@@ -126,6 +126,33 @@ class LogReportTests(unittest.TestCase):
             "quest assigned: recover a gem (obj 3715) in haon.are, 30 minutes, daily")
         self.assertEqual(found.group(2, 4), ("haon.are", "daily"))
 
+    def test_quests_are_tallied_by_the_area_they_sent_the_questor_to(self) -> None:
+        """Abandoned quests by area (owner, 2026-11-15: keep tracking them so
+        the pool can be tuned). Each quest row pairs with that questor's next
+        outcome; a quest never closed is open, and an abandon within two
+        minutes is counted quick."""
+        from datetime import datetime, timezone
+        rows = "\n".join([
+            "1000\tquest\tZa\t30\t2497\tdresden.are\tordinary\tkill\t7000\tx\t12\tsewer.are\t20",
+            "1050\tquest\tZb\t30\t2497\tdresden.are\temergency\tkill\t1\tx\t12\tsewer.are\t5",
+            "1060\toutcome\tZa\t30\t2497\tdresden.are\tquest-failed\tfailure\tabandoned\t-\tordinary",
+            "1400\toutcome\tZb\t30\t2497\tdresden.are\tquest-failed\tfailure\ttimeout\t-\temergency",
+            "1500\tquest\tZa\t30\t2497\tdresden.are\trush\trecover\t2\tx\t20\tshire.are\t6",
+            "1600\toutcome\tZa\t30\t2497\tdresden.are\tquest-complete\tsuccess\t-\t-\trush",
+            "1700\tquest\tZa\t30\t2497\tdresden.are\tordinary\tkill\t3\tx\t20\tshire.are\t20",
+        ])
+        s = self.report.quest_area_summary(rows, datetime.fromtimestamp(0, timezone.utc))
+        sewer, shire = s["areas"]["sewer.are"], s["areas"]["shire.are"]
+        self.assertEqual((sewer["given"], sewer["abandoned"], sewer["quick"], sewer["timeout"]),
+                         (2, 1, 1, 1))
+        self.assertEqual((shire["given"], shire["done"], shire["open"]), (2, 1, 1))
+        self.assertEqual(s["contracts"]["emergency"]["timeout"], 1)
+
+    def test_a_body_part_names_nobody(self) -> None:
+        names = self.report._names("obj")
+        if names:
+            self.assertNotIn("%s", names.get("13", ""))
+
     def test_memory_lines_and_crash_backtraces(self) -> None:
         # The memory section (memguard.c's MEMORY lines, playlog.c's
         # crash.log backtrace), 2026-11-11.

@@ -454,6 +454,7 @@ def main() -> int:
     progress_report(args, since)
     hyrule_report(args, since)
     activity_report(args, since)
+    quest_area_report(args, since)
     encounter_report(args, since)
 
     print("\n== public chat")
@@ -1080,6 +1081,83 @@ def activity_report(args, since) -> None:
         f"{k}/{t} {n}" for (k, t), n in s["quests"].most_common()) or "(none)")
 
 
+# ------------------------------------------------------------ quests by area
+#
+# Each `quest` row (epoch, quest, name, level, room, area, contract, type,
+# target vnum, target name, target level, target area, minutes) is paired
+# with that questor's next quest-complete or quest-failed outcome row
+# (owner, 2026-11-15: keep tracking abandoned quests so the pool can be
+# tuned; src/quest.c quest_unwanted_areas names the areas taken out).
+QUEST_WATCH_GIVEN = 3          # an area is flagged only from this many quests
+QUEST_WATCH_LOST = 0.5         # ... when at least this share was lost
+
+
+def quest_area_summary(text: str, since: datetime) -> dict:
+    """{area: {given, done, abandoned, timeout, open, quick}} and the same
+    by contract. `quick` counts abandons within two minutes of the quest
+    being given: a quest turned down on sight, not one given up on."""
+    areas: dict = defaultdict(Counter)
+    contracts: dict = defaultdict(Counter)
+    pending: dict = {}
+    for raw in text.splitlines():
+        f = raw.split("\t")
+        if len(f) < 7 or not f[0].isdigit():
+            continue
+        when = int(f[0])
+        if datetime.fromtimestamp(when, timezone.utc) < since:
+            continue
+        who = f[2]
+        if f[1] == "quest" and len(f) >= 12:
+            if who in pending:                     # never closed: a reboot
+                area, contract, _ = pending.pop(who)
+                areas[area]["open"] += 1
+                contracts[contract]["open"] += 1
+            area, contract = f[11], f[6]
+            areas[area]["given"] += 1
+            contracts[contract]["given"] += 1
+            pending[who] = (area, contract, when)
+        elif f[1] == "outcome" and len(f) >= 9 and f[6] in ("quest-complete", "quest-failed"):
+            if who not in pending:
+                continue
+            area, contract, given = pending.pop(who)
+            if f[6] == "quest-complete":
+                key = "done"
+            else:
+                key = "timeout" if f[8] == "timeout" else "abandoned"
+                if key == "abandoned" and when - given <= 120:
+                    areas[area]["quick"] += 1
+            areas[area][key] += 1
+            contracts[contract][key] += 1
+    for area, contract, _ in pending.values():
+        areas[area]["open"] += 1
+        contracts[contract]["open"] += 1
+    return {"areas": areas, "contracts": contracts}
+
+
+def quest_area_report(args, since) -> None:
+    s = quest_area_summary(git_show(args.ref, "log/play.tsv"), since)
+    areas = s["areas"]
+    print(f"\n== quests by area ({sum(c['given'] for c in areas.values())} given; "
+          f"quest_unwanted_areas in src/quest.c takes an area out)")
+    if not areas:
+        print("  (none in the window)")
+        return
+    print("  area                  given  done  aband (quick)  timeout  open   lost")
+    order = sorted(areas.items(), key=lambda kv: (-(kv[1]["abandoned"] + kv[1]["timeout"]),
+                                                  -kv[1]["given"], kv[0]))
+    for area, c in order[:20]:
+        lost = c["abandoned"] + c["timeout"]
+        closed = c["done"] + lost
+        flag = ""
+        if c["given"] >= QUEST_WATCH_GIVEN and closed and lost / closed >= QUEST_WATCH_LOST:
+            flag = "  <- often lost"
+        print(f"  {clean(area)[:20]:<20} {c['given']:6} {c['done']:5} {c['abandoned']:6} "
+              f"({c['quick']:3})  {c['timeout']:7} {c['open']:5}  {_rate(lost, closed)}{flag}")
+    print("  by contract:", ", ".join(
+        f"{k} {c['given']} given, {c['abandoned']} abandoned, {c['timeout']} timed out"
+        for k, c in sorted(s["contracts"].items())) or "(none)")
+
+
 # --------------------------------------------------------------- encounters
 #
 # src/encounter.c's rows in log/play.tsv (after the six common columns:
@@ -1222,7 +1300,9 @@ def _names(kind: str) -> dict:
                 continue
             area = area_reader.read_area_file(path)
             for rec in (area.mobiles if kind == "mob" else area.objects):
-                out[str(rec.vnum)] = clean(rec.short_desc)[:28]
+                # A body part's name is a format the game fills at the death
+                # ("the heart of %s"); the prototype alone names nobody.
+                out[str(rec.vnum)] = clean(rec.short_desc).replace("%s", "someone")[:28]
         return out
     except Exception:                               # pragma: no cover - names are a nicety
         return {}

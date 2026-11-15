@@ -206,7 +206,9 @@ class LiveTests(unittest.TestCase):
                     said = thief.sync(line)
                     self.assertIn("It's locked.", said, (line, said))
                     self.assertNotIn("I see no", said, (line, said))
-                self.assertIn("You lack the key.", thief.sync("unlock so"))
+                # The refusal names the key (players' logs, 2026-11-15).
+                self.assertIn("You lack the key: it takes a lock room key to unlock it.",
+                              thief.sync("unlock so"))
                 self.assertIn("I see no door", thief.sync("open wes"),
                               "a direction with no exit says so")
 

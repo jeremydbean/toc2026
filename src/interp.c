@@ -1033,7 +1033,16 @@ static void command_not_found_hint( CHAR_DATA *ch, const char *word, const char 
         for ( pass = 1; pass <= limit; pass++ )
             for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
             {
-                if ( !cmd_table[cmd].show || cmd_table[cmd].level > trust
+                /* A command kept off the COMMANDS list (ENTER, the
+                   directions, AFFECTS) is still offered: "enetr" was
+                   answered a bare Huh? (players' logs, 2026-11-15). The
+                   guard words that catch half of a dangerous command
+                   (DELET, QUI, MURDE) never are. */
+                if ( ( !cmd_table[cmd].show
+                       && ( cmd_table[cmd].do_fun == do_delet
+                         || cmd_table[cmd].do_fun == do_qui
+                         || cmd_table[cmd].do_fun == do_murde ) )
+                ||   cmd_table[cmd].level > trust
                 ||   strlen( cmd_table[cmd].name ) < 3 || strchr( cmd_table[cmd].name, ' ' )
                 ||   !command_usable( ch, cmd )
                 ||   text_edit_distance( word, cmd_table[cmd].name, pass ) != pass )
