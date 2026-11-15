@@ -1674,8 +1674,9 @@ The questmaster sends you to kill a creature or recover an item.  Each
 subcommand may be cut to its first letter; AQUEST alone lists them.
 
   - Targets are creatures no higher than your level, in places you may
-    go; never in Hyrule or the training yard.  Your group in the room at
-    the kill shares the credit, and a pet's kill counts.
+    go; never in Hyrule, the training yard, Azeroth or Descent to Hell.
+    Your group in the room at the kill shares the credit, and a pet's
+    kill counts.
   - A recovery item is bound to you and vanishes when the quest ends.
   - Completed quests may be turned in to any questmaster for coin and a
     pending quest-point reward.  AQUEST GAMBLE YES then risks it on an

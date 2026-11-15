@@ -110,6 +110,16 @@ class AutomaticQuestSystemTests(unittest.TestCase):
         self.assertIn("room->area->file_name", body)
         self.assertIn("QUEST_EXCLUDED_AREA", body)
 
+        # Areas players turned quests down in (owner, 2026-11-15), each
+        # a file the game really loads.
+        self.assertIn("quest_unwanted_areas[i]", body)
+        table = self.quest.split("quest_unwanted_areas[] =")[1].split("};")[0]
+        unwanted = re.findall(r'"([a-z0-9_]+\.are)"', table)
+        self.assertEqual(["azeroth.are", "hell.are"], unwanted)
+        listed = (ROOT / "area" / "area.lst").read_text(encoding="latin-1").split()
+        for name in unwanted:
+            self.assertIn(name, listed)
+
         check = self.quest.split("automatic_quest_target_is_suitable( CHAR_DATA")[1]
         check = check.split(chr(10) + "}")[0]
         self.assertIn("quest_area_is_excluded(room)", check)

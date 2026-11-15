@@ -2053,14 +2053,39 @@ void quest_area_name( const char *raw, char *out, size_t size )
  * and its vnums are the generator's business, but the file it is
  * written to is fixed.
  */
+/*
+ * Areas players turn quests down in (owner, 2026-11-15: "remove the quests
+ * in areas players consistently abandoned"). From the logs, 2026-09-17 to
+ * 2026-11-15, 290 quests assigned and about one in seventeen abandoned:
+ * Azeroth's four abandons were all within twenty seconds of the quest
+ * being given, out of seventeen sent there -- refused on sight -- and
+ * Descent to Hell lost three of its four, two abandoned and one timed
+ * out. No other area lost more than two. Add an area here only on that
+ * kind of evidence: tools/log_report.py's quests section, and the
+ * quest-failed outcome rows, which name the area.
+ */
+static const char *const quest_unwanted_areas[] =
+{
+    "azeroth.are",
+    "hell.are",
+    NULL
+};
+
 static bool quest_area_is_excluded( const ROOM_INDEX_DATA *room )
 {
+    int i;
+
     if ( room == NULL || room->area == NULL
     ||   room->area->file_name == NULL )
         return false;
 
-    return !str_cmp( room->area->file_name, QUEST_EXCLUDED_AREA )
-        || !str_cmp( room->area->file_name, QUEST_EXCLUDED_YARD );
+    if ( !str_cmp( room->area->file_name, QUEST_EXCLUDED_AREA )
+    ||   !str_cmp( room->area->file_name, QUEST_EXCLUDED_YARD ) )
+        return true;
+    for ( i = 0; quest_unwanted_areas[i] != NULL; i++ )
+        if ( !str_cmp( room->area->file_name, quest_unwanted_areas[i] ) )
+            return true;
+    return false;
 }
 
 #define QUEST_CLOSED_ROOMS_MAX 512

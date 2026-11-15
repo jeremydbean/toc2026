@@ -4925,7 +4925,13 @@ down is a half-hour march through content the player may never have
 seen.
 
 Exclude another area by name there rather than by adding a second
-mechanism.
+mechanism. **Areas players turn down go in `quest_unwanted_areas[]`**
+beside it (owner, 2026-11-15: "remove the quests in areas players
+consistently abandoned"): Azeroth (four of seventeen quests given up,
+each within twenty seconds) and Descent to Hell (three of four lost) on
+the logs from 2026-09-17; no other area lost more than two. Add one only
+on that kind of evidence -- the quest-failed outcome rows name the area --
+and say so in HELP AQUEST (`tests/test_aquest_system.py`).
 
 **Summon immunity is not a reason** (2026-10-20): `AB` is the builders'
 default and refusing it left five areas in the pool. It had also been
