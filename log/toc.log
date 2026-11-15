@@ -304446,3 +304446,5 @@ Sun Nov 15 12:56:33 2026 :: Connection guard: 5.161.75.7 closed without a word (
 Sun Nov 15 13:01:37 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 2 of 6 in 6 hours).
 Sun Nov 15 13:03:37 2026 :: Treasure goblin: vanished from room 15166 (Hallway, campus.are) (too long in one area).
 Sun Nov 15 13:06:42 2026 :: Connection guard: refused 1 connection from 5.161.117.52 (paused; 5 refused in all, pause 2 this week, 162 minutes left).
+Sun Nov 15 13:09:56 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Sun Nov 15 13:11:47 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 5 of 6 in 6 hours).
