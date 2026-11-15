@@ -304636,3 +304636,82 @@ Sun Nov 15 14:56:11 2026 :: Snapshot of Alaric taken before quest: Alaric.202611
 Sun Nov 15 14:56:12 2026 :: Log Alaric [2497]: aq ga no
 Sun Nov 15 14:56:14 2026 :: Log Alaric [2497]: score
 Sun Nov 15 14:58:23 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 4 of 6 in 6 hours).
+Sun Nov 15 15:02:48 2026 :: Log Alaric [2497]: aq re
+Sun Nov 15 15:02:48 2026 :: Log Alaric [2497]: quest assigned: kill A githyanki hunter (mob 7505, level 11) in astral.are, 6 minutes, rush
+Sun Nov 15 15:02:52 2026 :: Log Alaric [2497]: levi
+Sun Nov 15 15:02:54 2026 :: Log Alaric [2497]: enter door
+Sun Nov 15 15:02:54 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sun Nov 15 15:02:54 2026 :: Log Alaric [2401]: west
+Sun Nov 15 15:02:54 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Nov 15 15:02:54 2026 :: Log Alaric [2405]: west
+Sun Nov 15 15:02:54 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Nov 15 15:02:55 2026 :: Log Alaric [2433]: west
+Sun Nov 15 15:02:55 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Nov 15 15:02:55 2026 :: Log Alaric [2434]: west
+Sun Nov 15 15:02:55 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Nov 15 15:02:55 2026 :: Log Alaric [2435]: west
+Sun Nov 15 15:02:55 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Nov 15 15:02:55 2026 :: Log Alaric [2436]: west
+Sun Nov 15 15:02:55 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Nov 15 15:02:56 2026 :: Log Alaric [2437]: west
+Sun Nov 15 15:02:56 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Nov 15 15:02:56 2026 :: Log Alaric [2438]: west
+Sun Nov 15 15:02:56 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Nov 15 15:02:56 2026 :: Log Alaric [2439]: north
+Sun Nov 15 15:02:56 2026 :: Log Alaric [3900]: arrived (West trail around Dresden) from 2439
+Sun Nov 15 15:02:56 2026 :: Log Alaric [3900]: north
+Sun Nov 15 15:02:56 2026 :: Log Alaric [3901]: arrived (West trail around Dresden) from 3900
+Sun Nov 15 15:02:57 2026 :: Log Alaric [3901]: north
+Sun Nov 15 15:02:57 2026 :: Log Alaric [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Sun Nov 15 15:02:57 2026 :: Log Alaric [3902]: east
+Sun Nov 15 15:02:57 2026 :: Log Alaric [3903]: arrived (Dusty trail along north wall.) from 3902
+Sun Nov 15 15:02:57 2026 :: Log Alaric [3903]: east
+Sun Nov 15 15:02:57 2026 :: Log Alaric [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Sun Nov 15 15:02:57 2026 :: Log Alaric [3904]: north
+Sun Nov 15 15:02:57 2026 :: Log Alaric [300]: arrived (Path in the plains) from 3904
+Sun Nov 15 15:02:58 2026 :: Log Alaric [300]: north
+Sun Nov 15 15:02:58 2026 :: Log Alaric [315]: arrived (Gallow hill) from 300
+Sun Nov 15 15:02:58 2026 :: Log Alaric [315]: up
+Sun Nov 15 15:02:58 2026 :: Log Alaric [61]: arrived (Before the Rainbow) from 315
+Sun Nov 15 15:02:58 2026 :: Log Alaric [61]: up
+Sun Nov 15 15:02:58 2026 :: Log Alaric [7500]: arrived (The Bottom of the Rainbow) from 61
+Sun Nov 15 15:03:05 2026 :: Log Alaric [7500]: u
+Sun Nov 15 15:03:05 2026 :: Log Alaric [7501]: arrived (On the Rainbow) from 7500
+Sun Nov 15 15:03:06 2026 :: Log Alaric [7501]: u
+Sun Nov 15 15:03:06 2026 :: Log Alaric [7502]: arrived (On the Rainbow) from 7501
+Sun Nov 15 15:03:06 2026 :: Log Alaric [7502]: u
+Sun Nov 15 15:03:06 2026 :: Log Alaric [7503]: arrived (On the Rainbow) from 7502
+Sun Nov 15 15:03:07 2026 :: Log Alaric [7503]: u
+Sun Nov 15 15:03:07 2026 :: Log Alaric [7504]: arrived (On the Rainbow) from 7503
+Sun Nov 15 15:03:07 2026 :: Log Alaric [7504]: u
+Sun Nov 15 15:03:07 2026 :: Log Alaric [7505]: arrived (The Glowing Bridge at the Rainbow's End) from 7504
+Sun Nov 15 15:03:09 2026 :: Log Alaric [7505]: ex
+Sun Nov 15 15:03:10 2026 :: Log Alaric [7505]: n
+Sun Nov 15 15:03:10 2026 :: Log Alaric [7506]: arrived (The Astral Gate) from 7505
+Sun Nov 15 15:03:10 2026 :: Log Alaric [7506]: ex
+Sun Nov 15 15:03:11 2026 :: Log Alaric [7506]: on
+Sun Nov 15 15:03:12 2026 :: Log Alaric [7506]: n
+Sun Nov 15 15:03:12 2026 :: Log Alaric [7507]: arrived (Into the Astral Plane) from 7506
+Sun Nov 15 15:03:13 2026 :: Log Alaric [7507]: ex
+Sun Nov 15 15:03:16 2026 :: Log Alaric [7507]: n
+Sun Nov 15 15:03:16 2026 :: Log Alaric [7508]: arrived (Exploring the Astral Plane) from 7507
+Sun Nov 15 15:03:16 2026 :: Log Alaric [7508]: ex
+Sun Nov 15 15:03:19 2026 :: Log Alaric [7508]: u
+Sun Nov 15 15:03:19 2026 :: Log Alaric [7513]: arrived (Roaming the Astral Plane) from 7508
+Sun Nov 15 15:03:21 2026 :: Log Alaric [7513]: ex
+Sun Nov 15 15:03:23 2026 :: Log Alaric [7513]: n
+Sun Nov 15 15:03:23 2026 :: Log Alaric [7520]: arrived (Wandering the Astral Plane) from 7513
+Sun Nov 15 15:03:26 2026 :: Log Alaric [7520]: kill gi
+Sun Nov 15 15:03:26 2026 :: Log Alaric [7520]: killed A githyanki hunter
+Sun Nov 15 15:03:26 2026 :: Log Alaric [7520]: coin +2 silver
+Sun Nov 15 15:03:26 2026 :: Log Alaric [7520]: coin +3 copper
+Sun Nov 15 15:03:26 2026 :: Log Alaric [7520]: coin +1 gold
+Sun Nov 15 15:03:27 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 3 of 6 in 6 hours).
+Sun Nov 15 15:03:30 2026 :: Log Alaric [7520]: recal
+Sun Nov 15 15:03:30 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 7520
+Sun Nov 15 15:03:31 2026 :: Log Alaric [2497]: aq co
+Sun Nov 15 15:03:31 2026 :: Log Alaric [2497]: copper +308258280
+Sun Nov 15 15:03:31 2026 :: Log Alaric [2497]: quest complete: 308p 25g 82s 80c, 22 quest points, rush (streak bonus 10%)
+Sun Nov 15 15:03:31 2026 :: Snapshot of Alaric taken before quest: Alaric.20261115_150331.quest (PRESTORE Alaric to see it).
+Sun Nov 15 15:03:31 2026 :: Log Alaric [2497]: aq ga no
+Sun Nov 15 15:04:33 2026 :: Treasure goblin: vanished from room 5933 (A marsh-like clearing, mid_ruin.are) (too long in one area).
