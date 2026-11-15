@@ -303196,3 +303196,13 @@ Sun Nov 15 01:05:49 2026 :: Connection guard: 178.156.187.238 closed without a w
 Sun Nov 15 01:07:36 2026 :: Treasure goblin: vanished from room 3811 (Beneath the Old Stairway, ratslair.are) (too long in one area).
 Sun Nov 15 01:10:08 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Sun Nov 15 01:10:55 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 2 of 6 in 6 hours).
+Sun Nov 15 01:14:47 2026 :: Sock.sinaddr:  44.220.188.137
+Sun Nov 15 01:14:47 2026 :: EOF encountered on read.
+Sun Nov 15 01:14:47 2026 :: Connection guard: 44.220.188.137 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sun Nov 15 01:14:47 2026 :: Sock.sinaddr:  44.220.188.137
+Sun Nov 15 01:14:47 2026 :: EOF encountered on read.
+Sun Nov 15 01:14:47 2026 :: Connection guard: 44.220.188.137 closed before a password prompt (strike 2 of 6 in 6 hours).
+Sun Nov 15 01:14:48 2026 :: Connection guard: 44.220.188.137 closed without a word (strike 3 of 6 in 6 hours).
+Sun Nov 15 01:14:48 2026 :: Connection guard: 44.220.188.137 closed without a word (strike 4 of 6 in 6 hours).
+Sun Nov 15 01:14:53 2026 :: Connection guard: 44.220.188.137 closed without a word (strike 5 of 6 in 6 hours).
+Sun Nov 15 01:15:59 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 1 of 6 in 6 hours).
