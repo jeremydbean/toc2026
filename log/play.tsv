@@ -30481,3 +30481,12 @@
 1794755095	census	-	0	0	-	herbs=4/150 components=5/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=9 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=33 mobs_fought=2 secs=900
 1794755185	laid	-	0	0	-	894	component	55	a unicorn horn	1344	htower.are	scatter
 1794755245	laid	-	0	0	-	895	herb	34	an amaranth plant	9309	galaxy.are	scatter
+1794755319	laid	-	0	0	-	896	herb	40	a clove	5232	oldthalo.are	scatter
+1794755319	laid	-	0	0	-	897	component	61	a mummy's wrapping	10205	tritia.are	scatter
+1794755369	laid	-	0	0	-	898	herb	39	a chervil leaf	15112	campus.are	scatter
+1794755369	laid	-	0	0	-	899	herb	39	a chervil leaf	15093	campus.are	scatter
+1794755369	laid	-	0	0	-	900	component	77	a vial of medusa eye fluid	3216	school.are	scatter
+1794755438	achieved	Alaric	57	2497	dresden.are	disaster-fire	10	2210	(disaster_update)
+1794755449	laid	-	0	0	-	901	component	65	a dragon's scale	1559	gnome.are	scatter
+1794755518	laid	-	0	0	-	902	herb	39	a chervil leaf	17168	highland.are	scatter
+1794755518	laid	-	0	0	-	903	component	55	a unicorn horn	29025	korzath1.are	scatter
