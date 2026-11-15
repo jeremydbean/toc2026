@@ -32047,3 +32047,8 @@
 1794781007	item	Alaric	57	2497	dresden.are	2359	a runed key	type=key level=26 worn=0 nested=0 timer=0 cond=100 inside=0	obj_update
 1794781007	laid	-	0	0	-	1309	component	77	a vial of medusa eye fluid	3648	dkforest.are	scatter
 1794781246	census	-	0	0	-	herbs=150/150 components=81/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=13 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1794781393	laid	-	0	0	-	1310	component	59	a patch of lycanthrope fur	5964	mid_ruin.are	scatter
+1794781444	laid	-	0	0	-	1311	component	69	a basilisks tongue	3750	school.are	scatter
+1794781514	laid	-	0	0	-	1312	component	77	a vial of medusa eye fluid	662	ofcol.are	scatter
+1794781593	laid	-	0	0	-	1313	component	57	a trolls fingernail	2495	dresden.are	scatter
+1794781662	laid	-	0	0	-	1314	component	84	a vial of froghemoth saliva	11017	ancala.are	scatter
