@@ -304881,3 +304881,5 @@ Sun Nov 15 15:44:49 2026 :: Connection guard: 20.106.60.71 closed before a passw
 Sun Nov 15 15:44:52 2026 :: Treasure goblin: vanished from room 2486 (Market Plaza., dresden.are) (too long in one area).
 Sun Nov 15 15:49:10 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 6 of 6 in 6 hours).
 Sun Nov 15 15:49:10 2026 :: Connection guard: 3.149.57.90 paused for 12 hours (pause 2 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 3.149.57.90 lifts it.
+Sun Nov 15 15:54:15 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 15 15:54:56 2026 :: Treasure goblin: vanished from room 337 (The ancient path, plains.are) (too long in one area).
