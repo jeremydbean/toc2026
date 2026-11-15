@@ -30709,3 +30709,16 @@
 1794759226	laid	-	0	0	-	1028	component	70	a dragon tooth	13216	solace.are	scatter
 1794759429	laid	-	0	0	-	1029	herb	40	a clove	4456	dresden.are	scatter
 1794759429	laid	-	0	0	-	1030	herb	41	a sprig of mistletoe	2482	dresden.are	scatter
+1794759503	laid	-	0	0	-	1031	herb	36	a belladonna plant	5018	eastern.are	scatter
+1794759503	laid	-	0	0	-	1032	component	61	a mummy's wrapping	29352	voyage.are	scatter
+1794759595	census	-	0	0	-	herbs=58/150 components=42/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=17 spotted=1 picked=0 passed=1 cleared=0 rare=0 mobs_seen=31 mobs_fought=0 secs=900
+1794759600	laid	-	0	0	-	1033	herb	42	a marjoram plant	18238	gelidia.are	scatter
+1794759600	laid	-	0	0	-	1034	herb	37	a sprig of catnip	18224	gelidia.are	scatter
+1794759660	laid	-	0	0	-	1035	component	59	a patch of lycanthrope fur	1448	htower.are	scatter
+1794759677	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794759678	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=983/983 align=922 exp=252749 coin=2795791344 bank=24886121996 qp=2332 prac=36 train=76 stash=93/350 remorts=3
+1794759678	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    299 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794759679	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	inventory		You are carrying: //      a multi-colored key ring //      (Glowing) British's amulet	-	+
+1794759683	sightings	Alaric	57	2497	dresden.are	mob	201:1/0/0 10:1/0/0 4468:1/0/0 53:1/0/0 4444:1/0/0 2435:1/0/0 4456:1/0/0 6102:2/0/0 17705:5/0/0 17704:5/0/0 17703:1/0/0 17714:1/0/0 17709:1/0/0 17710:1/0/0 17702:1/0/0 17701:1/0/0 17713:1/0/0 17715:3/1/0 7500:1/0/0 7504:2/0/0 7505:1/1/0 309:1/0/0 19118:2/0/0 19117:2/0/0 19137:1/0/0 19124:6/0/0 19133:1/0/0 19132:1/0/0 19131:1/1/0 4458:1/0/0 2434:3/0/0 4459:2/0/0 4446:1/0/0 2433:1/0/0 4450:1/0/0 4452:1/0/0 7005:2/0/0 7203:4/0/0 7201:1/0/0 7202:1/0/0 7200:1/0/0 25114:1/0/0 25100:1/0/0 25112:1/0/0 25111:5/0/0 25105:1/0/0 2005:3/0/0
+1794759683	sightings	Alaric	57	2497	dresden.are	item	4446:1/0 4445:1/0 4444:1/0 25102:1/0
+1794759683	session	Alaric	57	2497	dresden.are	quit	5153s	+0 levels	+0 exp	+528212631 copper	3 kills	0 deaths	3 quests	211 commands	0 refused	coin: loot 4p 17g 35s 55c, quests 524p 3g 90s 76c	spent on: none	exp: none
