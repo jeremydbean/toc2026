@@ -1438,6 +1438,32 @@ static const char * const order_refused_names[] =
     NULL
 };
 
+/*
+ * A command that goes somewhere stands a resting or sitting character up
+ * first (players' logs, 2026-11-15: about twenty-five moves and flees a
+ * week answered "Nah... You feel too relaxed..."). Sleeping is not
+ * covered: waking takes a WAKE, and a sleep spell keeps you down. Nor is
+ * a rider, whom STAND refuses, nor a fight, which is its own refusal.
+ */
+static bool command_stands_up( CHAR_DATA *ch, int cmd )
+{
+    DO_FUN *fun = cmd_table[cmd].do_fun;
+
+    if ( ch->position != POS_RESTING && ch->position != POS_SITTING )
+        return false;
+    if ( ch->fighting != NULL )
+        return false;
+    if ( !IS_NPC(ch) && ch->pcdata != NULL && ch->pcdata->mounted )
+        return false;
+    return fun == do_north || fun == do_east || fun == do_south
+        || fun == do_west || fun == do_up || fun == do_down
+        || fun == do_northeast || fun == do_northwest
+        || fun == do_southeast || fun == do_southwest
+        || fun == do_run || fun == do_speedwalk || fun == do_enter
+        || fun == do_climb || fun == do_crawl || fun == do_jump
+        || fun == do_flee;
+}
+
 bool order_refuses_command( int cmd, const char *argument )
 {
     static DO_FUN *refused[sizeof(order_refused_names) / sizeof(order_refused_names[0])];
@@ -1820,6 +1846,8 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
     /*
      * Character not in position for command?
      */
+    if ( ch->position < cmd_table[cmd].position && command_stands_up( ch, cmd ) )
+	do_stand( ch, "" );
     if ( ch->position < cmd_table[cmd].position )
     {
 	play_refused = true;
@@ -1856,7 +1884,7 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
 	    break;
 
 	case POS_FIGHTING:
-	    send_to_char( "No way!  You are still fighting!\n\r", ch);
+	    send_to_char( "No way!  You are still fighting!  FLEE to break away.\n\r", ch);
 	    break;
 
 	}

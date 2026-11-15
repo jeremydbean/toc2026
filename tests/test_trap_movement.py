@@ -89,7 +89,9 @@ def departure_outcome(said: str) -> str:
         # tick's gas killed it after the room check and before WEST, with
         # the death told before the barrier began (CI, 2026-11-04: the
         # reply was "Nah... You feel too relaxed..." alone).
-        if "You feel too relaxed" in said:
+        # Since 2026-11-15 a resting walker stands up to move, and the
+        # death room has no west exit.
+        if "You feel too relaxed" in said or "Alas, you cannot go that way" in said:
             return "before-move"
         return "unclear"
     if arrival >= 0:

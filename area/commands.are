@@ -3864,6 +3864,10 @@ aware of your surroundings.
 STAND or WAKE returns you to a standing position.  You can also use WAKE
 to rouse a sleeping character.
 
+Resting or sitting, you need not STAND first: a direction, ENTER, CROSS,
+CLIMB, CRAWL, JUMP, RUN, SPEEDWALK or FLEE stands you up and goes.  Asleep
+you must WAKE, and in a fight you must FLEE.
+
 See also: SLEEP, FLEE, WIMPY
 ~
 
