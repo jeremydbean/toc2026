@@ -303160,3 +303160,14 @@ Sun Nov 15 00:17:12 2026 :: Treasure goblin: vanished from room 7204 (The Lair, 
 Sun Nov 15 00:18:48 2026 :: Connection guard: 18.97.26.68 closed without a word (strike 1 of 6 in 6 hours).
 Sun Nov 15 00:20:09 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 4 of 6 in 6 hours).
 Sun Nov 15 00:25:14 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 4 of 6 in 6 hours).
+Sun Nov 15 00:27:17 2026 :: Treasure goblin: vanished from room 17254 (In a secret gangway, highland.are) (too long in one area).
+Sun Nov 15 00:30:19 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 2 of 6 in 6 hours).
+Sun Nov 15 00:30:57 2026 :: Sock.sinaddr:  44.220.185.114
+Sun Nov 15 00:30:58 2026 :: EOF encountered on read.
+Sun Nov 15 00:30:58 2026 :: Connection guard: 44.220.185.114 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sun Nov 15 00:30:58 2026 :: Sock.sinaddr:  44.220.185.114
+Sun Nov 15 00:30:58 2026 :: EOF encountered on read.
+Sun Nov 15 00:30:58 2026 :: Connection guard: 44.220.185.114 closed before a password prompt (strike 2 of 6 in 6 hours).
+Sun Nov 15 00:30:59 2026 :: Connection guard: 44.220.185.114 closed without a word (strike 3 of 6 in 6 hours).
+Sun Nov 15 00:30:59 2026 :: Connection guard: 44.220.185.114 closed without a word (strike 4 of 6 in 6 hours).
+Sun Nov 15 00:31:04 2026 :: Connection guard: 44.220.185.114 closed without a word (strike 5 of 6 in 6 hours).
