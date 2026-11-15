@@ -305081,3 +305081,6 @@ Sun Nov 15 18:56:24 2026 :: EOF encountered on read.
 Sun Nov 15 18:56:24 2026 :: Connection guard: 66.240.219.146 closed before a password prompt (strike 1 of 6 in 6 hours).
 Sun Nov 15 18:56:24 2026 :: Connection guard: 66.240.219.146 closed without a word (strike 2 of 6 in 6 hours).
 Sun Nov 15 18:56:59 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 2 of 6 in 6 hours).
+Sun Nov 15 18:57:59 2026 :: Connection guard: 44.220.185.15 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 15 19:00:50 2026 :: Treasure goblin: vanished from room 2913 (Inside the mountain, firenewt.are) (too long in one area).
+Sun Nov 15 19:02:04 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 4 of 6 in 6 hours).
