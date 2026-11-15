@@ -31429,3 +31429,10 @@
 1794775939	laid	-	0	0	-	1078	herb	45	a sarsaparilla vine	16036	pirate.are	scatter
 1794775939	laid	-	0	0	-	1079	herb	49	a pomegranate	16065	pirate.are	scatter
 1794775939	laid	-	0	0	-	1080	component	71	a goblin's finger	2403	dresden.are	scatter
+1794776019	laid	-	0	0	-	1081	herb	37	a sprig of catnip	24257	crypt.are	scatter
+1794776070	laid	-	0	0	-	1082	herb	41	a sprig of mistletoe	5957	mid_ruin.are	scatter
+1794776070	laid	-	0	0	-	1083	component	66	a strand of hair	1626	wyvern.are	scatter
+1794776115	laid	-	0	0	-	1084	herb	39	a chervil leaf	15079	campus.are	scatter
+1794776115	laid	-	0	0	-	1085	component	71	a goblin's finger	2033	catacomb.are	scatter
+1794776164	item	Alaric	57	2497	dresden.are	2232	A ruby key	type=key level=26 worn=0 nested=0 timer=0 cond=100 inside=0	obj_update
+1794776211	laid	-	0	0	-	1086	component	87	a vial of grey ooze	17226	highland.are	scatter
