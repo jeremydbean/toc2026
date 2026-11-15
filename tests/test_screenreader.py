@@ -83,7 +83,7 @@ class ScreenReaderSourceTests(unittest.TestCase):
         interp = (ROOT / "src" / "interp.c").read_text(encoding="utf-8")
         table = interp.split("cmd_table	[] =", 1)[1].split("/* End of list. */", 1)[0]
         names = re.findall(r'\{\s*"([^"]+)"', table)
-        self.assertEqual(names[-1], "screenreader")
+        self.assertEqual(names.index("screenreader"), names.index("helper") + 1)
 
 
 if __name__ == "__main__":

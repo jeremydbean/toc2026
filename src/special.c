@@ -2191,6 +2191,18 @@ bool spec_guild_clerk( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     if (cmd != do_join) return false;
  
     if (IS_NPC(ch)) return false;
+
+    /* JOIN SWITCH <guild> [CONFIRM]: one change of guild (abilities.c). */
+    {
+        char word[MAX_INPUT_LENGTH];
+        char *rest = one_argument( arg, word );
+
+        if ( word[0] != '\0' && !str_cmp( word, "switch" ) )
+        {
+            guild_switch( mob, ch, rest );
+            return true;
+        }
+    }
  
     if (ch->level < 3)
     {
@@ -2203,6 +2215,9 @@ bool spec_guild_clerk( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     {
 	act("$n tells you 'We only accept people who have never"
 		     " been in a guild before.'",mob, NULL, ch, TO_VICT);
+	if ( !ch->pcdata->guild_switched && ch->pcdata->num_remorts == 0 && ch->level <= 15 )
+	    act("$n tells you 'You may change guild once, though: JOIN SWITCH <guild>.'",
+		mob, NULL, ch, TO_VICT);
 	return true;
     }
  

@@ -5,6 +5,18 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261115souvenirs 2026-11-15
+New: SOUVENIRS.  Every area you walk end to end leaves you a keepsake of
+one of its rooms -- a sketch, a pressed flower, a pebble -- your own, and
+nothing to carry.  It counts the areas you have already explored, too.
+
+@ 20261115guildswitch 2026-11-15
+New: one change of guild.  In your first life, at level 15 or below, a
+mage, cleric, thief or warrior may ask Melancholy to JOIN SWITCH <guild>:
+what only the old guild gave goes, and every train and practice you spent
+on it comes back.  JOIN SWITCH <guild> shows exactly what first; add
+CONFIRM to do it.  Once only.
+
 @ 20261115screenreader 2026-11-15
 New: SCREENREADER, for reading the game aloud: no colour, no lines drawn
 only to decorate, no box borders -- every word kept.  In Mudlet, TOCGUI

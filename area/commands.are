@@ -3478,6 +3478,7 @@ See also: WEAR, WIELD, HOLD, EQUIPMENT
 0 JOIN~
 Syntax: join
         join <mage|cleric|thief|warrior>
+        join switch <mage|cleric|thief|warrior> [confirm]
 
 At Melancholy the guild clerk (WALKTO MELANCHOLY), joins a guild.  JOIN
 alone tells you the fee: one gold coin.
@@ -3490,6 +3491,16 @@ alone tells you the fee: one gold coin.
   - Monks and necromancers have their own guild and join no other.
   - Before you choose: HELP GUILDS, and GAINLIST PREVIEW <class> <guild>
     to see a build (GAINLIST PREVIEW WARRIOR THIEF).
+
+Changed your mind?  Once, in your first life and at level 15 or below, a
+mage, cleric, thief or warrior may change guild: JOIN SWITCH <guild> at
+Melancholy says what it means and changes nothing; JOIN SWITCH <guild>
+CONFIRM does it.  What only the old guild gave or sold goes -- its own
+spells and skills, and anything you bought from a trainer the new guild
+will not sell to you -- and everything you paid for it comes back: the
+trains GAIN took and the practices you spent.  The new guild's starting
+group is free, and everything else you know stays as it was.  It cannot
+be done twice.
 
 A castle head adds castle members with JOIN <player>: see CASTLE.
 
@@ -6525,6 +6536,22 @@ Mudlet, TOCGUI READER ON hides the package's panes and map window too.  The
 browser client at timesofchaos.com labels its controls for screen readers.
 
 See also: COLOR, BRIEF, SCROLL, PROMPT, SOUND, MUDLET
+~
+
+0 SOUVENIRS SOUVENIR~
+Syntax: souvenirs
+
+Walk every room of an area -- every room you can walk into, not counting
+death traps or guild halls -- and you keep something of it: a sketch, a
+pressed flower, a pebble, a page of notes, from one of its own rooms.
+SOUVENIRS lists them.  They are yours alone (two players exploring the same
+area keep different things), they are the same every time you look, and
+they weigh nothing: nothing to carry, sell or lose.
+
+MAPS shows how far through each area you are.  Walking an area end to end
+also counts toward the exploration achievements (ACHIEVEMENTS).
+
+See also: MAPS, ACHIEVEMENTS, ADVENTURE
 ~
 
 0 $~

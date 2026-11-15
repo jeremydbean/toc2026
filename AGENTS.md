@@ -7343,6 +7343,33 @@ CHANNELS both ways and compares their words). GMCP `Char.Status` carries
 never listed while the fog holds the room, set again by `unfog`) and
 `tocgui reader on|off`; see `mudlet/README.md`.
 
+## JOIN SWITCH
+
+`guild_switch` in `src/abilities.c` (2026-11-15), reached through the guild
+clerk's `spec_guild_clerk` (JOIN SWITCH <guild> [CONFIRM]): once a character
+(`GuildSwitched 1`, **case 'G'**), first life, level 15 or below, a mage,
+cleric, thief or warrior in one of those four guilds. What only the old
+guild gave goes: its own group, and every group or single skill a trainer
+sells to (class, old guild) and none sells to (class, new guild) -- asked of
+`guildmaster_table` with `gm_serves_build`, GAIN's own rule (`sold_to`) --
+with its rating in trains back and practices spent past 1% back at today's
+intelligence. Everything else held (creation picks, class trainers' skills,
+staff grants) keeps its percentage; the class, race and new guild's skills
+come back through `apply_class_and_guild_skills`; Heroic Grip follows
+`grant_heros_grip`. The preview runs the same change and puts every field
+back (learned, group_known, guild, train, practice), so it cannot differ
+from the result; CONFIRM takes a `guildswitch` milestone first
+(`player_milestone_required`) and saves. `tests/test_guild_switch.py`.
+
+## SOUVENIRS
+
+`do_souvenirs` in `src/maps.c` (2026-11-15): a keepsake per area walked end
+to end, read from the explored-areas set and the area's counting rooms
+(`map_info`), picked by `player_serial` -- the same each time, different
+between characters. Nothing saved, no object, no stats; it names only rooms
+of an area its owner has walked every counting room of.
+`tests/test_souvenirs.py`.
+
 ## The Players' Logs Of 2026-11-13
 
 A read of three weeks of logs found these; each is fixed and played by

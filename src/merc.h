@@ -2786,6 +2786,7 @@ struct  pc_data
        with when the helpers were last told of it (memory only). */
     bool                helper;
     bool                screenreader;         /* SCREENREADER (ScreenReader 1, case 'S') */
+    bool                guild_switched;       /* JOIN SWITCH used (GuildSwitched 1, case 'G') */
     time_t              lfg_until;
     time_t              lfg_noticed;
     long                play_start_wealth;
@@ -4718,6 +4719,8 @@ bool    errand_offered         ( CHAR_DATA *ch );
 bool    player_lfg             ( CHAR_DATA *ch );
 bool    player_helper          ( CHAR_DATA *ch );
 void    lfg_counts             ( CHAR_DATA *ch, int near, int *looking, int *helpers );
+/* abilities.c: JOIN SWITCH at the guild clerk */
+void    guild_switch           ( CHAR_DATA *clerk, CHAR_DATA *ch, char *argument );
 bool    walkto_room_is_hyrule  ( ROOM_INDEX_DATA *room );
 
 /* update.c */

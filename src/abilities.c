@@ -721,3 +721,262 @@ void do_gainlist( CHAR_DATA *ch, char *argument )
     }
     show_abilities( ch );
 }
+
+/*
+ * JOIN SWITCH <guild> CONFIRM at the guild clerk (2026-11-15): one change
+ * of guild in a first life, at level 15 or below, for a mage, cleric,
+ * thief or warrior already in one of those four guilds.
+ *
+ * Taken back is what the old guild alone gave: its own group (free), and
+ * every group or single skill held that a trainer sells to this class in
+ * the old guild and no trainer sells it in the new one -- what GAIN would
+ * not have let them buy as the new guild. Each of those is refunded in full:
+ * the trains GAIN took for it (its rating for the class) and the practices
+ * spent past 1% (at today's intelligence, rounded the player's way, as the
+ * stray-mage-groups fix refunds). Then the new guild's group is given free,
+ * everything the class, race and new guild owe is given back by the same
+ * repair a login runs (apply_class_and_guild_skills), and anything owed
+ * either way keeps the percentage it had. A warrior who leaves the
+ * warriors' guild loses Hero's Grip, which that guild alone gives.
+ *
+ * Without CONFIRM it runs exactly that on the character and puts every
+ * field it touched back, so the preview is the change. With CONFIRM it is
+ * done once a milestone snapshot is on the disk ("guildswitch"), marked
+ * (GuildSwitched, case 'G') and saved.
+ */
+#define GUILD_SWITCH_MAX_LEVEL 15
+
+static bool four_guild( int guild )
+{
+    return guild == GUILD_MAGE || guild == GUILD_CLERIC || guild == GUILD_THIEF
+        || guild == GUILD_WARRIOR;
+}
+
+/* Whether some trainer that deals with this class and guild sells the group
+   (gn) or, with gn -1, the single skill sn. */
+static bool sold_to( int cls, int guild, int gn, int sn )
+{
+    int row, i;
+
+    for ( row = 0; guildmaster_table[row].vnum != 0; row++ )
+    {
+        const struct guildmaster_type *gm = &guildmaster_table[row];
+
+        if ( !gm_serves_build( gm, cls, guild ) || get_mob_index( gm->vnum ) == NULL )
+            continue;
+        for ( i = 0; i < MAX_GAIN && gm->can_gain[i] != NULL; i++ )
+        {
+            if ( gn > 0 && group_lookup( gm->can_gain[i] ) == gn )
+                return TRUE;
+            if ( gn <= 0 && sn >= 0 && group_lookup( gm->can_gain[i] ) <= 0
+            &&   skill_lookup( gm->can_gain[i] ) == sn )
+                return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+/* The switch itself, on the character as it is. Fills the report and the
+   refunds; returns whether anything at all changed hands. */
+static void guild_switch_apply( CHAR_DATA *ch, int new_guild, DString *report,
+                                int *trains_back, int *pracs_back )
+{
+    static sh_int old[MAX_SKILL];
+    static bool kept_member[MAX_SKILL];
+    static bool removed_member[MAX_SKILL];
+    int old_guild = ch->pcdata->guild, cls = ch->class;
+    int gg_old = guild_group_name( old_guild ) != NULL
+                 ? group_lookup( guild_group_name( old_guild ) ) : -1;
+    int gn, sn, shown = 0;
+
+    *trains_back = 0;
+    *pracs_back = 0;
+    memcpy( old, ch->pcdata->learned, sizeof(old) );
+    memset( removed_member, 0, sizeof(removed_member) );
+
+    /* Groups: the old guild's own, and any sold to the old guild alone. */
+    for ( gn = 0; gn < MAX_GROUP && group_table[gn].name != NULL; gn++ )
+    {
+        if ( !ch->pcdata->group_known[gn] )
+            continue;
+        if ( gn == gg_old )
+        {
+            ch->pcdata->group_known[gn] = FALSE;
+            group_skills( gn, removed_member );
+            continue;
+        }
+        if ( sold_to( cls, old_guild, gn, -1 ) && !sold_to( cls, new_guild, gn, -1 )
+        &&   group_table[gn].rating[cls] > 0 )
+        {
+            ch->pcdata->group_known[gn] = FALSE;
+            group_skills( gn, removed_member );
+            *trains_back += group_table[gn].rating[cls];
+            dstring_printf( report, "%s%s (group, %d train%s)", shown++ ? ", " : "  ",
+                            group_table[gn].name, group_table[gn].rating[cls],
+                            group_table[gn].rating[cls] == 1 ? "" : "s" );
+        }
+    }
+
+    /* Skills of the groups still held are theirs whatever else happens. */
+    memset( kept_member, 0, sizeof(kept_member) );
+    for ( gn = 0; gn < MAX_GROUP && group_table[gn].name != NULL; gn++ )
+        if ( ch->pcdata->group_known[gn] )
+            group_skills( gn, kept_member );
+
+    /* Single skills sold to the old guild alone. */
+    for ( sn = 0; sn < MAX_SKILL; sn++ )
+    {
+        if ( old[sn] <= 0 || kept_member[sn] || skill_table[sn].name == NULL )
+            continue;
+        if ( sold_to( cls, old_guild, -1, sn ) && !sold_to( cls, new_guild, -1, sn )
+        &&   skill_table[sn].rating[cls] > 0 )
+        {
+            *trains_back += skill_table[sn].rating[cls];
+            dstring_printf( report, "%s%s (skill, %d train%s)", shown++ ? ", " : "  ",
+                            skill_table[sn].name, skill_table[sn].rating[cls],
+                            skill_table[sn].rating[cls] == 1 ? "" : "s" );
+        }
+    }
+
+    /* Everything off; the new guild in; what is owed and held, back. */
+    for ( sn = 0; sn < MAX_SKILL; sn++ )
+        ch->pcdata->learned[sn] = 0;
+    ch->pcdata->guild = (sh_int) new_guild;
+    apply_class_and_guild_skills( ch );
+    for ( gn = 0; gn < MAX_GROUP && group_table[gn].name != NULL; gn++ )
+        if ( ch->pcdata->group_known[gn] )
+            gn_add( ch, gn );
+    grant_heros_grip( ch );
+    for ( sn = 0; sn < MAX_SKILL; sn++ )
+    {
+        bool single_kept = old[sn] > 0 && !kept_member[sn] && !removed_member[sn]
+            && !( sold_to( cls, old_guild, -1, sn ) && !sold_to( cls, new_guild, -1, sn ) )
+            && sn != gsn_heros_grip;
+
+        /* Anything held some other way -- chosen at creation, bought where
+           the new guild may still buy it, given by staff -- stays as it
+           was. Only what the old guild gave or sold alone goes. */
+        if ( single_kept && ch->pcdata->learned[sn] <= 0 )
+            ch->pcdata->learned[sn] = old[sn];
+        if ( ch->pcdata->learned[sn] > 0 )
+        {
+            if ( old[sn] > ch->pcdata->learned[sn] )
+                ch->pcdata->learned[sn] = old[sn];
+            continue;
+        }
+        if ( old[sn] > 1 )
+        {
+            int gain = UMAX( 1, int_app[get_curr_stat( ch, STAT_INT )].learn
+                                / UMAX( 1, skill_table[sn].rating[cls] ) );
+
+            *pracs_back += ( old[sn] - 1 + gain - 1 ) / gain;
+        }
+    }
+    if ( shown > 0 )
+        dstring_append_cstr( report, "\n\r" );
+}
+
+void guild_switch( CHAR_DATA *clerk, CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH], confirm[MAX_INPUT_LENGTH];
+    static sh_int keep_learned[MAX_SKILL];
+    static bool keep_known[MAX_GROUP];
+    int new_guild, trains = 0, pracs = 0, keep_guild, keep_train, keep_prac;
+    DString report;
+
+    argument = one_argument( argument, arg );
+    one_argument( argument, confirm );
+    if ( ch->pcdata->guild_switched )
+    {
+        act( "$n tells you 'You have changed guild once already.  That is the only time.'",
+             clerk, NULL, ch, TO_VICT );
+        return;
+    }
+    if ( ch->pcdata->num_remorts > 0 || ch->level > GUILD_SWITCH_MAX_LEVEL
+    ||   ch->class < CLASS_MAGE || ch->class > CLASS_WARRIOR
+    ||   !four_guild( ch->pcdata->guild ) )
+    {
+        act( "$n tells you 'A change of guild is for a first life, at level 15 or below, in\n\r"
+             "the mages', clerics', thieves' or warriors' guild.'", clerk, NULL, ch, TO_VICT );
+        return;
+    }
+    new_guild = guild_lookup( arg );
+    if ( arg[0] == '\0' || !four_guild( new_guild ) || new_guild == ch->pcdata->guild )
+    {
+        act( "$n tells you 'JOIN SWITCH <mage|cleric|thief|warrior>: I will tell you what\n\r"
+             "it costs and gives back before anything changes.'", clerk, NULL, ch, TO_VICT );
+        return;
+    }
+
+    /* Run it, then put everything back unless confirmed. */
+    memcpy( keep_learned, ch->pcdata->learned, sizeof(keep_learned) );
+    memcpy( keep_known, ch->pcdata->group_known, sizeof(keep_known) );
+    keep_guild = ch->pcdata->guild;
+    keep_train = ch->train;
+    keep_prac = ch->practice;
+    dstring_init_limit( &report, DSTRING_OUTPUT_MAX );
+    guild_switch_apply( ch, new_guild, &report, &trains, &pracs );
+
+    if ( str_cmp( confirm, "confirm" ) )
+    {
+        char buf[MAX_STRING_LENGTH];
+
+        memcpy( ch->pcdata->learned, keep_learned, sizeof(keep_learned) );
+        memcpy( ch->pcdata->group_known, keep_known, sizeof(keep_known) );
+        ch->pcdata->guild = (sh_int) keep_guild;
+        ch->train = (sh_int) keep_train;
+        ch->practice = (sh_int) keep_prac;
+        snprintf( buf, sizeof(buf), "Leaving the %s guild for the %s guild, once, for good:\n\r",
+                  get_guildname( keep_guild ), get_guildname( new_guild ) );
+        send_to_char( buf, ch );
+        if ( dstring_cstr( &report )[0] != '\0' )
+        {
+            send_to_char( "  Taken back, with what you paid for it:\n\r", ch );
+            send_to_char( dstring_cstr( &report ), ch );
+        }
+        snprintf( buf, sizeof(buf), "  The %s guild's own training goes; the %s guild's comes free.\n\r"
+                  "  Returned to you: %d train%s and %d practice%s.\n\r"
+                  "JOIN SWITCH %s CONFIRM does it.  You can change guild only once.\n\r",
+                  get_guildname( keep_guild ), get_guildname( new_guild ),
+                  trains, trains == 1 ? "" : "s", pracs, pracs == 1 ? "" : "s",
+                  get_guildname( new_guild ) );
+        send_to_char( buf, ch );
+        dstring_free( &report );
+        return;
+    }
+
+    /* Confirmed: the old character is copied whole before anything holds. */
+    memcpy( ch->pcdata->learned, keep_learned, sizeof(keep_learned) );
+    memcpy( ch->pcdata->group_known, keep_known, sizeof(keep_known) );
+    ch->pcdata->guild = (sh_int) keep_guild;
+    ch->train = (sh_int) keep_train;
+    ch->practice = (sh_int) keep_prac;
+    if ( !player_milestone_required( ch, ch, "guildswitch" ) )
+    {
+        dstring_free( &report );
+        return;
+    }
+    dstring_free( &report );
+    dstring_init_limit( &report, DSTRING_OUTPUT_MAX );
+    guild_switch_apply( ch, new_guild, &report, &trains, &pracs );
+    ch->train = sh_int_clamp( (long long) ch->train + trains );
+    ch->practice = sh_int_clamp( (long long) ch->practice + pracs );
+    ch->pcdata->guild_switched = TRUE;
+    save_char_obj( ch );
+    {
+        char buf[MAX_STRING_LENGTH];
+
+        snprintf( buf, sizeof(buf), "Guild switch: %s left the %s guild for the %s guild; "
+                  "%d trains and %d practices returned.", ch->name,
+                  get_guildname( keep_guild ), get_guildname( new_guild ), trains, pracs );
+        log_string( buf );
+        act( "$n tells you 'You are now a member of the $t guild.'",
+             clerk, get_guildname( new_guild ), ch, TO_VICT );
+        snprintf( buf, sizeof(buf), "%d train%s and %d practice%s are yours again.  GAINLIST shows "
+                  "what the %s guild\n\rteaches.\n\r", trains, trains == 1 ? "" : "s",
+                  pracs, pracs == 1 ? "" : "s", get_guildname( new_guild ) );
+        send_to_char( buf, ch );
+    }
+    playlog_outcome( ch, "guild-switch", "success", get_guildname( new_guild ), NULL, NULL );
+    dstring_free( &report );
+}

@@ -577,6 +577,8 @@ const	struct	cmd_type	cmd_table	[] =
     { "helper",         do_helper,      POS_DEAD,        0,  LOG_NORMAL, 1 },
     /* Text for reading aloud (act_info.c): last, so nothing moves. */
     { "screenreader",   do_screenreader, POS_DEAD,       0,  LOG_NORMAL, 1 },
+    /* Keepsakes of explored areas (maps.c): last, so nothing moves. */
+    { "souvenirs",      do_souvenirs,   POS_DEAD,        0,  LOG_NORMAL, 1 },
 /* End of list. */
     { "",		0,		POS_DEAD,	 0,  LOG_NORMAL, 0 }
 };

@@ -238,6 +238,11 @@ Ten exploration achievements reward maps held (1, 5, 10 and 25), areas
 explored (1, 5, 10 and 25), the cartographer's defeat and all three together.
 See `help maps`.
 
+Every area walked end to end also leaves a keepsake: `souvenirs` lists one
+per area -- a sketch, a pressed flower, a pebble from one of its rooms --
+chosen for your character alone, the same each time, and weighing nothing.
+Areas explored before souvenirs existed count too.
+
 ### Recall
 
 `recall`, or `/`, prays for transport to your recall point. It halves your
@@ -403,7 +408,16 @@ Joining is possible from level 3 with Melancholy the guild clerk
 (`walkto melancholy`, then `join <guild>`, one gold), and `gainlist preview
 <class> <guild>` shows a build first. The game warns at level 5. If the
 character still has no guild upon reaching level 6, the game assigns the guild
-matching the primary class, free, with that guild's starting group, and the
+matching the primary class, free, with that guild's starting group.
+
+One change is allowed: in a first life, at level 15 or below, a mage, cleric,
+thief or warrior may `join switch <guild>` at Melancholy. Alone it lists what
+would go and what would come back and changes nothing; `join switch <guild>
+confirm` does it. What only the old guild gave or sold is taken back -- its
+own group, and anything bought from a trainer the new guild will not sell to
+you -- and every train GAIN took and every practice spent on those comes
+back; the new guild's starting group is free, and everything else stays as it
+was. A snapshot is taken first, and it cannot be done twice. After that the
 choice is over until a remort.
 
 ### Heroes, Remorts, And The Mortal Cap

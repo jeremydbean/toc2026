@@ -187,6 +187,8 @@ remort thresholds and class/race restrictions.
 | `follow` | Follow another character or stop following self |
 | `group` | Review or change group membership |
 | `lfg`, `lfg on\|off`, `lfg list` | Mark yourself looking for a group for an hour; list who is looking near your level and the helpers on |
+| `join switch <guild> [confirm]` | Once, first life, level 15 or below: change guild, with what only the old guild gave taken back and its cost refunded |
+| `souvenirs` | A keepsake of each area you have walked end to end; cosmetic, nothing carried |
 | `screenreader`, `screenreader on\|off` | Text for reading aloud: no colour, no decorative lines or box borders, every word kept; saved |
 | `helper`, `helper on\|off` | From level 10, mark yourself glad to help newer players (kept between logins) |
 | `gtell` | Send a group message |

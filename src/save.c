@@ -1483,6 +1483,8 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 	fprintf( fp, "Helper 1\n" );
     if ( ch->pcdata != NULL && ch->pcdata->screenreader )
 	fprintf( fp, "ScreenReader 1\n" );
+    if ( ch->pcdata != NULL && ch->pcdata->guild_switched )
+	fprintf( fp, "GuildSwitched 1\n" );
     /* The starter errands and the expedition (errand.c), when any. */
     if ( ch->pcdata != NULL && ( ch->pcdata->errand_done || ch->pcdata->errand_taken ) )
 	fprintf( fp, "Errand %d %d %d %d %d\n", ch->pcdata->errand_done,
@@ -4736,6 +4738,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 		break;
 	    }
 	    KEY( "Gui",		ch->pcdata->guild,	(sh_int)(fread_number( fp )) );
+	    KEY( "GuildSwitched", ch->pcdata->guild_switched, fread_number( fp ) != 0 );
             if ( !str_cmp( word, "Group" )  || !str_cmp(word,"Gr"))
             {
                 int gn;

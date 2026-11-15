@@ -1551,3 +1551,74 @@ void do_cartographer( CHAR_DATA *ch, char *argument )
     }
     send_to_char( "Syntax: cartographer [status|spawn|here|dismiss]\n\r", ch );
 }
+
+/*
+ * SOUVENIRS (2026-11-15): a keepsake of every area walked end to end.
+ * Cosmetic and kept nowhere: each is read from what is saved already --
+ * the explored-areas set (ACH_SET_EXPLORED_AREAS, the explored-*
+ * achievements' own) and the area's rooms that count (map_info) -- and
+ * picked by the character's serial, so it is the same every time for the
+ * same character and differs between characters. It names only rooms of an
+ * area its owner has walked every counting room of. No stats, no object.
+ */
+static const char *const souvenir_kinds[] = {
+    "a charcoal sketch of %s",
+    "a flower pressed in %s",
+    "a smooth pebble picked up in %s",
+    "a rubbing of the stones of %s",
+    "a page of notes written in %s",
+    "a feather found in %s",
+    "a few lines of song first heard in %s",
+    "a rough map of the way to %s"
+};
+#define SOUVENIR_KINDS ( (int)( sizeof(souvenir_kinds) / sizeof(souvenir_kinds[0]) ) )
+
+void do_souvenirs( CHAR_DATA *ch, char *argument )
+{
+    AREA_DATA *area;
+    DString out;
+    unsigned long serial;
+    int held = 0, possible = 0;
+
+    UNUSED_PARAM(argument);
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+    map_info_build( );
+    serial = (unsigned long) (unsigned int) player_serial( ch );
+    dstring_init_limit( &out, DSTRING_OUTPUT_MAX );
+    for ( area = area_first; area != NULL; area = area->next )
+    {
+        MAP_AREA_INFO *info = map_info_slot( area );
+        ROOM_INDEX_DATA *room;
+        /* A room name cut to 48, a keepsake under 100 more, an area name. */
+        char room_name[64], what[256], line[MAX_STRING_LENGTH];
+        unsigned long seed;
+
+        if ( info == NULL || info->count < MAP_EXPLORE_MIN_ROOMS || map_area_always_known( area ) )
+            continue;
+        possible++;
+        if ( !achievement_set_has( ch, ACH_SET_EXPLORED_AREAS, info->id ) )
+            continue;
+        seed = serial * 2654435761UL ^ (unsigned long) info->id;
+        if ( ( room = get_room_index( info->rooms[seed % (unsigned long) info->count] ) ) == NULL )
+            continue;
+        toc_strlcpy( room_name, room->name != NULL ? room->name : "a quiet corner", sizeof(room_name) );
+        color_truncate( room_name, 48 );
+        snprintf( what, sizeof(what), souvenir_kinds[( seed / 7 ) % SOUVENIR_KINDS], room_name );
+        snprintf( line, sizeof(line), "  %s: %s\n\r", area_shown_name( area->name ), what );
+        if ( held == 0 )
+            dstring_append_cstr( &out, "Keepsakes of the places you have walked end to end:\n\r" );
+        if ( !dstring_fits( &out, strlen( line ) + 128 ) )
+            break;
+        dstring_append_cstr( &out, line );
+        held++;
+    }
+    if ( held == 0 )
+        dstring_append_cstr( &out, "No keepsakes yet.  Walk every room of an area and you keep something\n\r"
+                                   "of it: MAPS shows how far through each area you are.\n\r" );
+    else
+        dstring_printf( &out, "%d of %d areas.  MAPS shows how far through the rest you are.\n\r",
+                        held, possible );
+    page_to_char( dstring_cstr( &out ), ch );
+    dstring_free( &out );
+}
