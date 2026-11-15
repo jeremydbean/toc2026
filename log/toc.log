@@ -306953,3 +306953,6 @@ Sun Nov 15 23:00:44 2026 :: Connection guard: 3.212.128.62 closed without a word
 Sun Nov 15 23:02:42 2026 :: Treasure goblin: vanished from room 10125 (A narrow hallway., glitter.are) (too long in one area).
 Sun Nov 15 23:05:48 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 6 of 6 in 6 hours).
 Sun Nov 15 23:05:48 2026 :: Connection guard: 3.20.63.178 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 3.20.63.178 lifts it.
+Sun Nov 15 23:10:03 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Sun Nov 15 23:10:53 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 4 of 6 in 6 hours).
+Sun Nov 15 23:12:47 2026 :: Treasure goblin: vanished from room 17152 (Path along lake, highland.are) (too long in one area).
