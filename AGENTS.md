@@ -203,10 +203,17 @@ Current October 2026 Python baseline:
 ```text
 102 listed area entries
 2,508 mobiles
-3,761 objects
+3,762 objects
 7,766 rooms
-0 critical, 12 warning, 1,690 information findings
+0 critical, 12 warning, 1,691 information findings
 ```
+
+The Signet of Killuminati (object 25043 in `mountain.are`, 2026-11-15:
+the quest tokens carry immortals' crests, and the owner asked for his)
+added one object and one `object-has-no-source` finding, as the other five
+tokens have: only a recover quest makes one. The quest token range is
+25038-25043, and `tests/test_aquest_system.py` holds the picker to it.
+The count read 3,761 and 1,690 before it.
 
 The exploration maps (2026-11-12) added one mobile and one object and
 exactly two information findings: the wandering cartographer (29942 in

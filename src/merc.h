@@ -1766,7 +1766,7 @@ typedef struct hyrule_dungeon_gate
 
 /* Player-bound automatic quest recovery tokens (mountain.are). */
 #define OBJ_VNUM_QUEST_TOKEN_FIRST 25038
-#define OBJ_VNUM_QUEST_TOKEN_LAST  25042
+#define OBJ_VNUM_QUEST_TOKEN_LAST  25043
 
 /* Seasonal event drop items (seasonal.are) */
 #define OBJ_VNUM_SEASONAL_CANDY    29900  /* Hallows End trick-or-treat candy */

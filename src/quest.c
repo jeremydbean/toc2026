@@ -57,7 +57,8 @@ DECLARE_DO_FUN( do_say );
 #define QUEST_OBJQUEST2 (OBJ_VNUM_QUEST_TOKEN_FIRST + 1)
 #define QUEST_OBJQUEST3 (OBJ_VNUM_QUEST_TOKEN_FIRST + 2)
 #define QUEST_OBJQUEST4 (OBJ_VNUM_QUEST_TOKEN_FIRST + 3)
-#define QUEST_OBJQUEST5 OBJ_VNUM_QUEST_TOKEN_LAST
+#define QUEST_OBJQUEST5 (OBJ_VNUM_QUEST_TOKEN_FIRST + 4)
+#define QUEST_OBJQUEST6 OBJ_VNUM_QUEST_TOKEN_LAST
 
 /* Local functions */
 
@@ -2332,7 +2333,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
     {
 	int objvnum = 0;
 
-	switch(number_range(0,4))
+	switch(number_range(0,5))
 	{
 	    case 0:
 	    objvnum = QUEST_OBJQUEST1;
@@ -2352,6 +2353,10 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 
 	    case 4:
 	    objvnum = QUEST_OBJQUEST5;
+	    break;
+
+	    case 5:
+	    objvnum = QUEST_OBJQUEST6;
 	    break;
 	}
 

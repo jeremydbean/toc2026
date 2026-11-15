@@ -167,6 +167,25 @@ class AutomaticQuestSystemTests(unittest.TestCase):
         self.assertIn("return -player_serial( ch );", self.quest)
         self.assertIn("str_cmp( obj->owner, ch->name )", self.quest)
 
+    def test_every_quest_token_can_be_asked_for(self) -> None:
+        """The recover quest picks one of the tokens by a switch; a token
+        added to the range must be one of its cases, and every token must
+        exist (owner, 2026-11-15: the Signet of Killuminati, 25043)."""
+        merc = (ROOT / "src" / "merc.h").read_text(encoding="latin-1")
+        first = int(re.search(r"OBJ_VNUM_QUEST_TOKEN_FIRST\s+(\d+)", merc).group(1))
+        last = int(re.search(r"OBJ_VNUM_QUEST_TOKEN_LAST\s+(\d+)", merc).group(1))
+        tokens = last - first + 1
+        self.assertEqual((first, last), (25038, 25043))
+        source = without_comments(self.quest)
+        self.assertIn(f"switch(number_range(0,{tokens - 1}))", source)
+        for n in range(1, tokens + 1):
+            self.assertIn(f"objvnum = QUEST_OBJQUEST{n};", source)
+        mountain = (ROOT / "area" / "mountain.are").read_text(encoding="latin-1")
+        objects = mountain.split("#OBJECTS", 1)[1].split("#ROOMS", 1)[0]
+        for vnum in range(first, last + 1):
+            self.assertRegex(objects, rf"(?m)^#{vnum}\n")
+        self.assertIn("The Signet of Killuminati~", objects)
+
     def test_turn_in_and_abort_work_at_any_questmaster(self) -> None:
         command = function_body(self.quest, "void do_quest", "void generate_quest")
 
