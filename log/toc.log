@@ -304231,3 +304231,23 @@ Sun Nov 15 06:10:23 2026 :: Connection guard: 3.133.226.214 closed without a wor
 Sun Nov 15 06:15:27 2026 :: Connection guard: 3.133.226.214 closed without a word (strike 5 of 6 in 6 hours).
 Sun Nov 15 06:16:41 2026 :: Black market: stock 1794723401: a wolf helm (744, level 32, 29p); (Translucent) some Indigo blue velvet robes (10060, level 43, 60p); The holy armor (17113, level 35, 168p); the skin of an elven princess (20558, level 38, 270p); lucky clover (9944, level 20, 61p).
 Sun Nov 15 06:16:41 2026 :: Black market: the dealer appeared with 5 items (stock 1794723401), for 27 minutes.
+Sun Nov 15 06:19:40 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sun Nov 15 06:19:44 2026 :: Log WebAdmin: fsave
+Sun Nov 15 06:19:50 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sun Nov 15 06:19:54 2026 :: Received signal 15; saving players and shutting down.
+Sun Nov 15 06:19:54 2026 :: Normal termination of game.
+Sun Nov 15 06:19:54 2026 ::  INIT OK 
+Sun Nov 15 06:19:54 2026 :: walkto_load: 157 destinations.
+Sun Nov 15 06:19:54 2026 :: changes_load: 342 entries.
+Sun Nov 15 06:19:54 2026 :: Hermie: the restart put no mortal off (0 playing, recorded 1 seconds before the boot; a mortal last played over ten minutes before it); she stays away.
+Sun Nov 15 06:19:54 2026 :: Serials: 962 character files read, 4 with a serial.
+Sun Nov 15 06:19:54 2026 :: Connection guard: 43 addresses remembered from before the boot, 3 paused now.
+Sun Nov 15 06:19:54 2026 :: Passwords: SHA-512 crypt self-test passed.
+Sun Nov 15 06:19:54 2026 :: Recovery ledger: 411 records (0 from before the check), 4 requests, 8 players.
+Sun Nov 15 06:19:54 2026 :: ROM is ready to rock on port 9000.
+Sun Nov 15 06:19:55 2026 :: Treasure goblin: appeared.
+Sun Nov 15 06:19:55 2026 :: Automated backup started.
+Sun Nov 15 06:19:55 2026 :: Daily backup started.
+Sun Nov 15 06:19:55 2026 :: Automated backup complete.
+Sun Nov 15 06:19:56 2026 :: Daily backup complete.
+Sun Nov 15 06:20:33 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 2 of 6 in 6 hours).
