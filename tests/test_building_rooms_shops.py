@@ -103,6 +103,11 @@ class RoomShopTests(unittest.TestCase):
                 self.assertIn("no item type called 'flibble'",
                               run(imm, f"set mob {KEEPER} shop buys flibble"))
                 self.assertIn("open 0 to 23", run(imm, f"set mob {KEEPER} shop hours 0 23"))
+                # The room has an exit north, and a mobile MCREATE makes
+                # wanders: on a slow runner the trader walked out between
+                # PLACE and LIST (CI, 2026-11-15, "You can't do that here").
+                run(imm, f"set mob {KEEPER} act +sentinel")
+                self.assertIn("sentinel", run(imm, f"mshow {KEEPER}", 1.5).lower())
                 run(imm, f"ocreate {BLADE} 3021")
                 run(imm, f"place mob {KEEPER}", 1.5)
                 run(imm, f"place obj {BLADE} on {KEEPER}", 1.5)
