@@ -30996,3 +30996,220 @@
 1794772314	laid	-	0	0	-	920	herb	46	a juniper berry	17777	landoz.are	scatter
 1794772314	laid	-	0	0	-	921	herb	48	an alfalfa sprout	17771	landoz.are	scatter
 1794772314	laid	-	0	0	-	922	component	58	some pixie dust	17726	landoz.are	scatter
+1794772374	laid	-	0	0	-	923	herb	42	a marjoram plant	4153	moria.are	scatter
+1794772374	laid	-	0	0	-	924	herb	39	a chervil leaf	4155	moria.are	scatter
+1794772374	laid	-	0	0	-	925	component	84	a vial of froghemoth saliva	7782	ultima.are	scatter
+1794772408	quest	Alaric	57	2497	dresden.are	rush	kill	2240	a Draconian zombie	9	draconia.are	7
+1794772408	cmd	Alaric	57	2497	dresden.are	standing	100	19	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Alaric.' // Questor Thews tells you 'The criminal known as a Draconian zombie has escaped from prison!'	-	+
+1794772413	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794772417	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794772417	cmd	Alaric	57	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794772417	cmd	Alaric	57	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794772418	cmd	Alaric	57	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794772418	cmd	Alaric	57	2441	dresden.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794772418	cmd	Alaric	57	2442	dresden.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794772418	cmd	Alaric	57	2443	dresden.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794772419	cmd	Alaric	57	2444	dresden.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794772419	cmd	Alaric	57	2445	dresden.are	standing	100	0	-	east		End of River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794772419	cmd	Alaric	57	2446	dresden.are	standing	100	0	-	south		Docks of Dresden. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not	-	+
+1794772419	cmd	Alaric	57	2448	dresden.are	standing	100	0	-	south		First Pier. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not	-	+
+1794772420	cmd	Alaric	57	2518	dresden.are	standing	100	0	-	south		River of Wonders. //   The river moves at a slow but steady pace to the west.  It meanders through // the southern portion of Dresden and never widens past 50 yards even at the	-	+
+1794772420	cmd	Alaric	57	2517	dresden.are	standing	100	0	-	east		River of Wonders. //   The river moves at a slow but steady pace to the west.  It meanders through // the southern portion of Dresden and never widens past 50 yards even at the	-	+
+1794772420	cmd	Alaric	57	2516	dresden.are	standing	100	0	-	east		Tunnel on the River of Wonders. //   Rowing against the current you slowly enter a long dark tunnel that takes you // under the east walls of Dresden.  You can hear the sounds of your paddling	-	+
+1794772420	cmd	Alaric	57	2515	dresden.are	standing	100	0	-	east		Tunnel on the River of Wonders. //   Rowing against the current you slowly enter a long dark tunnel that takes you // under the east walls of Dresden.  You can hear the sounds of your paddling	-	+
+1794772421	area	Alaric	57	5000	eastern.are	dresden.are	eastern.are	531	east
+1794772421	cmd	Alaric	57	5000	eastern.are	standing	100	0	-	east		A long tunnel //   You encounter some rapids as you enter this tunnel cut out of // the mountains by the river.	-	+
+1794772421	cmd	Alaric	57	5001	eastern.are	standing	100	0	-	east		A long, branched tunnel //   The tunnel continues east and it also branches to the southeast. // [Exits: east west southeast]	-	-
+1794772421	cmd	Alaric	57	5002	eastern.are	standing	100	0	-	east		A long tunnel //   The tunnel branches off north. // [Exits: north east west]	-	-
+1794772421	cmd	Alaric	57	5008	eastern.are	standing	100	0	-	north		Cave-in //   You stand at the edge of a large pile of rubble created from the last // rockslide.	-	+
+1794772422	cmd	Alaric	57	5009	eastern.are	standing	100	0	-	down		At the foot of the rubble //   You are at the bottom of a large pile of rubble. A tunnel branches // off to the north and east.	-	+
+1794772422	cmd	Alaric	57	5010	eastern.are	standing	100	0	-	north		Cave entrance //   You stand in the middle of a large and beautiful cave. A path leads // deeper into the darkness.	-	+
+1794772422	cmd	Alaric	57	5011	eastern.are	standing	100	0	-	down		Giant cave //   This cavern overwhelms you. The walls and ceiling seem miles away. // Bones of previous adventurers lie strewn on the cavern floor.	-	+
+1794772422	area	Alaric	57	25139	underdrk.are	eastern.are	underdrk.are	1	down
+1794772422	cmd	Alaric	57	25139	underdrk.are	standing	100	0	-	down		The refuse pit. //   Half-eaten bodies and bones of things long dead are scattered around the // room.  You can't see any creature, but then a leg bone falls from a hole	-	+
+1794772423	cmd	Alaric	57	25138	underdrk.are	standing	100	0	-	east		The bend in the corridor. //   The corridor makes another turn here.  The dust is still undisturbed and // the air is as still as death.  The smell of the sulfur is gone, but you	-	+
+1794772423	cmd	Alaric	57	25137	underdrk.are	standing	100	0	-	north		The straight run. //   The corridor tightens here and runs straight for as far as you can see. // Little comfort considering you can only see as far as your light will allow.	-	+
+1794772423	cmd	Alaric	57	25136	underdrk.are	standing	100	0	-	north		The bend in the corridor. //   The mud starts to turn to dust again.  The only time you smell sulfur now is // when the geyser erupts.  The walls look like they were carved by some halfling	-	+
+1794772423	cmd	Alaric	57	25135	underdrk.are	standing	100	0	-	west		The corridor past the pool. //   You start to feel cold as the sweat that rose on your body from the previous // room starts to cool.  There is some moisture in this room, and the floor is	-	+
+1794772424	cmd	Alaric	57	25133	underdrk.are	standing	100	0	-	west		The edge of the pool. //   You walk into this chamber on a stone ledge.  Before you lies a deep dark // pool.  It's been a few minutes since you've heard any roaring.  Suddenly,	-	+
+1794772424	cmd	Alaric	57	25132	underdrk.are	standing	100	0	-	north		The corridor. //   The moisture is now running off of you in beads.  The smell of the sulfur // is stronger still and the ground is covered in a thin coating of water.  The	-	+
+1794772424	cmd	Alaric	57	25131	underdrk.are	standing	100	0	-	west		The corridor. //   The moisture is now starting to gather on your weapons and armor.  The smell // of the sulfur is getting stronger, but isn't overpowering yet.  The floor	-	+
+1794772424	cmd	Alaric	57	25130	underdrk.are	standing	100	0	-	north		Into the wind. //   The wind is starting to smell of sulfur and the air is getting warmer.  You // can hear a soft roaring in the background every few minutes.  The corridor	-	+
+1794772425	cmd	Alaric	57	25129	underdrk.are	standing	100	0	-	west		Beneath the windy hole. //   The wind is strong here.  It's fed by some unseen source in the darkness to // the east.  The walls are smoother here and you can feel moisture in the wind.	-	+
+1794772425	cmd	Alaric	57	25121	underdrk.are	standing	100	0	-	up		The hole downward. //   You come into a small chamber with exits in two of the walls.  In the floor // is a large hole that the wind is apparently coming from.  You hear sounds	-	+
+1794772425	cmd	Alaric	57	25123	underdrk.are	standing	100	0	-	south		Past the hole in the ground. //   The wind isn't coming this way and the air is suffocating.  Feelings of // anxiety envelop your body and you keep having feelings of drowning in stone.	-	+
+1794772425	cmd	Alaric	57	25124	underdrk.are	standing	100	0	-	south		A curve in the passage. //   The passageway curves here and the prints are even more noticeable in the // dust.  You can hear whispers and conversations in the darkness in some	-	+
+1794772426	cmd	Alaric	57	25125	underdrk.are	standing	100	0	-	west		Light in the tunnel. //   You can see flickering torch light on the walls.  The shadows of the beings // whose conversation's you can hear are walking in front of the light.  There	-	+
+1794772426	cmd	Alaric	57	25126	underdrk.are	standing	100	0	-	south		At the top of a shaft. //   Torches line the walls in what is the only light you've seen besides your // own since you've been in these tunnels.  There is a small fire by the side	-	+
+1794772426	cmd	Alaric	57	25140	underdrk.are	standing	100	0	-	down		Down the shaft. //   The walls are jagged in this shaft and offer good hand holds.  There is litter // and refuse caught on some of the rocks.  You grab onto something soft and	-	+
+1794772426	cmd	Alaric	57	25141	underdrk.are	standing	100	0	-	down		The bottom of the shaft. //   The garbage in this room is knee high.  It all comes from the shaft above. // Rotted food, paper, and 'items' that belong better in a sewer completely cover	-	+
+1794772427	cmd	Alaric	57	25142	underdrk.are	standing	100	0	-	south		The guard post. //   A mat lies on the floor and a half-eaten meal on a small table.  The smell // from the north is almost over-powering.  The ceiling is lost in darkness,	-	+
+1794772427	cmd	Alaric	57	25143	underdrk.are	standing	100	0	-	south		The intersection. //   The floor is covered in tracks in the dust leading from the corridor to the // west to the passage to the north.  There is a shaft leading upward here.	-	+
+1794772427	cmd	Alaric	57	25186	underdrk.are	standing	100	0	-	up		The shaft upwards. //   You keep feeling like you're going to slip as you climb up this shaft and you // would rather not since it is a long fall to the bottom.  The shaft continues	-	+
+1794772427	area	Alaric	57	2235	draconia.are	underdrk.are	draconia.are	5	up
+1794772427	cmd	Alaric	57	2235	draconia.are	standing	100	0	-	up		A cave opening //   You stand at the opening of a giant cave.  There are many bones strewn across // the room.  Some human, some indistinguishable.  It smells very bad in here.	-	+
+1794772428	laid	-	0	0	-	952	component	63	a phoenix feather	4436	dresden.are	scatter
+1794772432	cmd	Alaric	57	2235	draconia.are	standing	100	0	-	scan		the Great White Dragon             -to the North.	-	-
+1794772434	cmd	Alaric	57	2220	draconia.are	standing	100	0	-	north		The Lair //   You have entered a large room dominated by a great white dragon.  It growls // at you before it attacks.	-	+
+1794772435	cmd	Alaric	57	2235	draconia.are	standing	100	0	-	south		A cave opening //   You stand at the opening of a giant cave.  There are many bones strewn across // the room.  Some human, some indistinguishable.  It smells very bad in here.	-	+
+1794772436	cmd	Alaric	57	2234	draconia.are	standing	100	0	-	south		Tunnel //   This tunnel seems to stretch for miles.  You try to distinguish the end but // your eyes soon tire from the strain.  The smell here has increased two fold.	-	+
+1794772437	cmd	Alaric	57	2236	draconia.are	standing	100	0	-	east		The End of the tunnel //   You have finally come to the end of the tunnel.  Back to the west lies // the miles of tunnels you have walked through.  You see the faint outline of	-	+
+1794772438	cmd	Alaric	57	2236	draconia.are	standing	100	0	-	scan		the dragon hatchling               -right above you.	-	-
+1794772442	cmd	Alaric	57	2237	draconia.are	standing	100	0	-	south		The Bridge //   You are walking along an old wooden bridge.  Its not that secure.  You  // might want to hurry along.  To the south, on the other side of the bridge,	-	+
+1794772443	cmd	Alaric	57	2238	draconia.are	standing	100	0	-	south		A small opening //   You are standing in a small opening.  To the north lies the old wooden // bridge.  To your south the you can see a clearing.  You can see sunlight	-	+
+1794772443	cmd	Alaric	57	2239	draconia.are	standing	100	0	-	south		Clearing //   You stand out in a clearing.  Mountains are all around you.  There is a  // well in the middle of the clearing.  Lying against the well is a sign.  A	-	+
+1794772445	cmd	Alaric	57	2244	draconia.are	standing	100	0	-	down		Well //   O //  h	-	+
+1794772447	cmd	Alaric	57	2244	draconia.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1794772448	area	Alaric	57	2497	dresden.are	draconia.are	dresden.are	21	recall
+1794772448	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794772450	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794772454	cmd	Alaric	57	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794772454	cmd	Alaric	57	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794772454	cmd	Alaric	57	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794772455	cmd	Alaric	57	2441	dresden.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794772455	cmd	Alaric	57	2442	dresden.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794772455	cmd	Alaric	57	2443	dresden.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794772455	cmd	Alaric	57	2444	dresden.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794772456	cmd	Alaric	57	2445	dresden.are	standing	100	0	-	east		End of River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1794772456	cmd	Alaric	57	2446	dresden.are	standing	100	0	-	south		Docks of Dresden. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not	-	+
+1794772456	cmd	Alaric	57	2448	dresden.are	standing	100	0	-	south		First Pier. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not	-	+
+1794772456	cmd	Alaric	57	2518	dresden.are	standing	100	0	-	south		River of Wonders. //   The river moves at a slow but steady pace to the west.  It meanders through // the southern portion of Dresden and never widens past 50 yards even at the	-	+
+1794772457	cmd	Alaric	57	2517	dresden.are	standing	100	0	-	east		River of Wonders. //   The river moves at a slow but steady pace to the west.  It meanders through // the southern portion of Dresden and never widens past 50 yards even at the	-	+
+1794772457	cmd	Alaric	57	2516	dresden.are	standing	100	0	-	east		Tunnel on the River of Wonders. //   Rowing against the current you slowly enter a long dark tunnel that takes you // under the east walls of Dresden.  You can hear the sounds of your paddling	-	+
+1794772457	cmd	Alaric	57	2515	dresden.are	standing	100	0	-	east		Tunnel on the River of Wonders. //   Rowing against the current you slowly enter a long dark tunnel that takes you // under the east walls of Dresden.  You can hear the sounds of your paddling	-	+
+1794772457	area	Alaric	57	5000	eastern.are	dresden.are	eastern.are	9	east
+1794772457	cmd	Alaric	57	5000	eastern.are	standing	100	0	-	east		A long tunnel //   You encounter some rapids as you enter this tunnel cut out of // the mountains by the river.	-	+
+1794772458	cmd	Alaric	57	5001	eastern.are	standing	100	0	-	east		A long, branched tunnel //   The tunnel continues east and it also branches to the southeast. // [Exits: east west southeast]	-	-
+1794772458	cmd	Alaric	57	5002	eastern.are	standing	100	0	-	east		A long tunnel //   The tunnel branches off north. // [Exits: north east west]	-	-
+1794772458	cmd	Alaric	57	5008	eastern.are	standing	100	0	-	north		Cave-in //   You stand at the edge of a large pile of rubble created from the last // rockslide.	-	+
+1794772458	cmd	Alaric	57	5009	eastern.are	standing	100	0	-	down		At the foot of the rubble //   You are at the bottom of a large pile of rubble. A tunnel branches // off to the north and east.	-	+
+1794772459	cmd	Alaric	57	5010	eastern.are	standing	100	0	-	north		Cave entrance //   You stand in the middle of a large and beautiful cave. A path leads // deeper into the darkness.	-	+
+1794772459	cmd	Alaric	57	5011	eastern.are	standing	100	0	-	down		Giant cave //   This cavern overwhelms you. The walls and ceiling seem miles away. // Bones of previous adventurers lie strewn on the cavern floor.	-	+
+1794772459	area	Alaric	57	25139	underdrk.are	eastern.are	underdrk.are	2	down
+1794772459	cmd	Alaric	57	25139	underdrk.are	standing	100	0	-	down		The refuse pit. //   Half-eaten bodies and bones of things long dead are scattered around the // room.  You can't see any creature, but then a leg bone falls from a hole	-	+
+1794772459	cmd	Alaric	57	25138	underdrk.are	standing	100	0	-	east		The bend in the corridor. //   The corridor makes another turn here.  The dust is still undisturbed and // the air is as still as death.  The smell of the sulfur is gone, but you	-	+
+1794772460	cmd	Alaric	57	25137	underdrk.are	standing	100	0	-	north		The straight run. //   The corridor tightens here and runs straight for as far as you can see. // Little comfort considering you can only see as far as your light will allow.	-	+
+1794772460	cmd	Alaric	57	25136	underdrk.are	standing	100	0	-	north		The bend in the corridor. //   The mud starts to turn to dust again.  The only time you smell sulfur now is // when the geyser erupts.  The walls look like they were carved by some halfling	-	+
+1794772460	cmd	Alaric	57	25135	underdrk.are	standing	100	0	-	west		The corridor past the pool. //   You start to feel cold as the sweat that rose on your body from the previous // room starts to cool.  There is some moisture in this room, and the floor is	-	+
+1794772460	cmd	Alaric	57	25133	underdrk.are	standing	100	0	-	west		The edge of the pool. //   You walk into this chamber on a stone ledge.  Before you lies a deep dark // pool.  It's been a few minutes since you've heard any roaring.  Suddenly,	-	+
+1794772461	cmd	Alaric	57	25132	underdrk.are	standing	100	0	-	north		The corridor. //   The moisture is now running off of you in beads.  The smell of the sulfur // is stronger still and the ground is covered in a thin coating of water.  The	-	+
+1794772461	cmd	Alaric	57	25131	underdrk.are	standing	100	0	-	west		The corridor. //   The moisture is now starting to gather on your weapons and armor.  The smell // of the sulfur is getting stronger, but isn't overpowering yet.  The floor	-	+
+1794772461	cmd	Alaric	57	25130	underdrk.are	standing	100	0	-	north		Into the wind. //   The wind is starting to smell of sulfur and the air is getting warmer.  You // can hear a soft roaring in the background every few minutes.  The corridor	-	+
+1794772461	cmd	Alaric	57	25129	underdrk.are	standing	100	0	-	west		Beneath the windy hole. //   The wind is strong here.  It's fed by some unseen source in the darkness to // the east.  The walls are smoother here and you can feel moisture in the wind.	-	+
+1794772462	cmd	Alaric	57	25121	underdrk.are	standing	100	0	-	up		The hole downward. //   You come into a small chamber with exits in two of the walls.  In the floor // is a large hole that the wind is apparently coming from.  You hear sounds	-	+
+1794772462	cmd	Alaric	57	25123	underdrk.are	standing	100	0	-	south		Past the hole in the ground. //   The wind isn't coming this way and the air is suffocating.  Feelings of // anxiety envelop your body and you keep having feelings of drowning in stone.	-	+
+1794772462	cmd	Alaric	57	25124	underdrk.are	standing	100	0	-	south		A curve in the passage. //   The passageway curves here and the prints are even more noticeable in the // dust.  You can hear whispers and conversations in the darkness in some	-	+
+1794772462	cmd	Alaric	57	25125	underdrk.are	standing	100	0	-	west		Light in the tunnel. //   You can see flickering torch light on the walls.  The shadows of the beings // whose conversation's you can hear are walking in front of the light.  There	-	+
+1794772463	cmd	Alaric	57	25126	underdrk.are	standing	100	0	-	south		At the top of a shaft. //   Torches line the walls in what is the only light you've seen besides your // own since you've been in these tunnels.  There is a small fire by the side	-	+
+1794772463	cmd	Alaric	57	25140	underdrk.are	standing	100	0	-	down		Down the shaft. //   The walls are jagged in this shaft and offer good hand holds.  There is litter // and refuse caught on some of the rocks.  You grab onto something soft and	-	+
+1794772463	cmd	Alaric	57	25141	underdrk.are	standing	100	0	-	down		The bottom of the shaft. //   The garbage in this room is knee high.  It all comes from the shaft above. // Rotted food, paper, and 'items' that belong better in a sewer completely cover	-	+
+1794772463	cmd	Alaric	57	25142	underdrk.are	standing	100	0	-	south		The guard post. //   A mat lies on the floor and a half-eaten meal on a small table.  The smell // from the north is almost over-powering.  The ceiling is lost in darkness,	-	+
+1794772464	cmd	Alaric	57	25143	underdrk.are	standing	100	0	-	south		The intersection. //   The floor is covered in tracks in the dust leading from the corridor to the // west to the passage to the north.  There is a shaft leading upward here.	-	+
+1794772464	cmd	Alaric	57	25186	underdrk.are	standing	100	0	-	up		The shaft upwards. //   You keep feeling like you're going to slip as you climb up this shaft and you // would rather not since it is a long fall to the bottom.  The shaft continues	-	+
+1794772464	area	Alaric	57	2235	draconia.are	underdrk.are	draconia.are	5	up
+1794772464	cmd	Alaric	57	2235	draconia.are	standing	100	0	-	up		A cave opening //   You stand at the opening of a giant cave.  There are many bones strewn across // the room.  Some human, some indistinguishable.  It smells very bad in here.	-	+
+1794772467	cmd	Alaric	57	2234	draconia.are	standing	100	0	-	south		Tunnel //   This tunnel seems to stretch for miles.  You try to distinguish the end but // your eyes soon tire from the strain.  The smell here has increased two fold.	-	+
+1794772469	cmd	Alaric	57	2236	draconia.are	standing	100	0	-	east		The End of the tunnel //   You have finally come to the end of the tunnel.  Back to the west lies // the miles of tunnels you have walked through.  You see the faint outline of	-	+
+1794772471	cmd	Alaric	57	2202	draconia.are	standing	100	0	-	up		The Foyer //   This is the entrance to the Tower.  The hallway continues to the north, // leading towards a staircase.  You notice a grim painting on the wall,  and 	-	+
+1794772472	cmd	Alaric	57	2202	draconia.are	standing	100	0	-	exits		Obvious exits: // North - Hallway // South - The Tower Gates	-	-
+1794772473	cmd	Alaric	57	2203	draconia.are	standing	100	0	-	north		Hallway //   This hallway seems to stretch on forever.  You notice a stairway in   // the distance. 	-	+
+1794772475	cmd	Alaric	57	2204	draconia.are	standing	100	0	-	north		Hallway //   You trudge down the hallway.  You notice doors to the east and west.  // [Exits: north east south west]	-	+
+1794772477	cmd	Alaric	57	2206	draconia.are	standing	100	0	-	west		Storage Room //   This room is covered with dust, it looks as if no one has been here in ages. // [Exits: east down]	-	-
+1794772477	cmd	Alaric	57	2206	draconia.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794772479	cmd	Alaric	57	2208	draconia.are	standing	100	0	-	down		Guardian's Room //   You climb down the rickety stairs and find yourself face to face with a  // gargantuan hydra.  How fast can you climb UP stairs? 	-	+
+1794772481	cmd	Alaric	57	2209	draconia.are	standing	100	0	-	south		The Treasure Room //   You have made it past the hydra into the vault.  You are astounded by  // the treasure here.  Not only are you now rich, you can probably rest here	-	+
+1794772482	cmd	Alaric	57	2209	draconia.are	standing	100	0	-	open		It's locked.	-	-
+1794772483	cmd	Alaric	57	2209	draconia.are	standing	100	0	-	west		The door is closed.	-	-
+1794772484	cmd	Alaric	57	2208	draconia.are	standing	100	0	-	north		Guardian's Room //   You climb down the rickety stairs and find yourself face to face with a  // gargantuan hydra.  How fast can you climb UP stairs? 	-	+
+1794772486	cmd	Alaric	57	2208	draconia.are	standing	100	0	-	kill	hy	Your punch === OBLITERATES === a large hydra! [-136] // Your punch <<< ERADICATES >>> a large hydra! [-158]	-	-
+1794772487	coin	Alaric	57	2208	draconia.are	+1200	loot	(violence_update)	corpse of a large hydra	27820630766
+1794772487	coin	Alaric	57	2208	draconia.are	+32	loot	(violence_update)	corpse of a large hydra	27820630798
+1794772487	coin	Alaric	57	2208	draconia.are	+550000	loot	(violence_update)	corpse of a large hydra	27821180798
+1794772491	cmd	Alaric	57	2208	draconia.are	standing	100	0	-	look	i cor	Corpse of a large hydra contains: //      a grey key //      (Glowing) a golden wand	-	+
+1794772494	got	Alaric	57	2208	draconia.are	2234	a grey key	key	18	8000000	get	corpse of a large hydra
+1794772494	cmd	Alaric	57	2208	draconia.are	standing	100	0	-	get	key cor	You get a grey key from corpse of a large hydra.	-	-
+1794772495	cmd	Alaric	57	2209	draconia.are	standing	100	0	-	south		The Treasure Room //   You have made it past the hydra into the vault.  You are astounded by  // the treasure here.  Not only are you now rich, you can probably rest here	-	+
+1794772495	laid	-	0	0	-	965	herb	42	a marjoram plant	18213	gelidia.are	scatter
+1794772496	cmd	Alaric	57	2209	draconia.are	standing	100	0	-	unlock	west	You lack the key: it takes A ruby key to unlock it.	-	-
+1794772497	cmd	Alaric	57	2209	draconia.are	standing	100	0	-	open		It's locked.	-	-
+1794772497	cmd	Alaric	57	2209	draconia.are	standing	100	0	-	west		The door is closed.	-	-
+1794772500	cmd	Alaric	57	2209	draconia.are	standing	100	0	-	look		The Treasure Room //   You have made it past the hydra into the vault.  You are astounded by  // the treasure here.  Not only are you now rich, you can probably rest here	-	+
+1794772501	cmd	Alaric	57	2208	draconia.are	standing	100	0	-	north		Guardian's Room //   You climb down the rickety stairs and find yourself face to face with a  // gargantuan hydra.  How fast can you climb UP stairs? 	-	+
+1794772502	cmd	Alaric	57	2208	draconia.are	standing	100	0	-	look	i cor	Corpse of a large hydra contains: //      (Glowing) a golden wand //      a stone club	-	+
+1794772504	cmd	Alaric	57	2208	draconia.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794772505	cmd	Alaric	57	2206	draconia.are	standing	100	0	-	up		Storage Room //   This room is covered with dust, it looks as if no one has been here in ages. // [Exits: east down]	-	-
+1794772506	cmd	Alaric	57	2204	draconia.are	standing	100	0	-	east		Hallway //   You trudge down the hallway.  You notice doors to the east and west.  // [Exits: north east south west]	-	+
+1794772507	cmd	Alaric	57	2205	draconia.are	standing	100	0	-	east		Nursery //   It looks like a tornado has been through here.  Toys are scattered everywhere, // and a small group of dragon hatchlings are fighting over a bone. 	-	+
+1794772508	cmd	Alaric	57	2223	draconia.are	standing	100	0	-	east		Entrance to the Great Hall //   You have entered a huge hall.  It has been carefully decorated with // beautiful tapestries depicting a great battle between dragons and men.  The	-	+
+1794772508	cmd	Alaric	57	2224	draconia.are	standing	100	0	-	east		The Great Hall //   You are working your way down the Hall.  To the north, you notice a smaller // passageway, while the main hall continues to the east.	-	+
+1794772509	cmd	Alaric	57	2229	draconia.are	standing	100	0	-	east		The Great Hall Ends. //   You have come to the end of the great hall.  You see before you a huge // golden door, it must be at least twenty feet tall!  It has beautiful etchings	-	+
+1794772510	cmd	Alaric	57	2229	draconia.are	standing	100	0	-	east		The door is closed.	-	-
+1794772511	cmd	Alaric	57	2229	draconia.are	standing	100	0	-	open		It's locked.	-	-
+1794772513	cmd	Alaric	57	2229	draconia.are	standing	100	0	-	unlock	east	You lack the key: it takes a tarnished gold key to unlock it.	-	-
+1794772514	cmd	Alaric	57	2224	draconia.are	standing	100	0	-	west		The Great Hall //   You are working your way down the Hall.  To the north, you notice a smaller // passageway, while the main hall continues to the east.	-	+
+1794772515	cmd	Alaric	57	2225	draconia.are	standing	100	0	-	north		A Narrow Passageway //   This Passageway branches off from the main hall and leads somewhere ... where? // [Exits: north south]	-	-
+1794772515	cmd	Alaric	57	2226	draconia.are	standing	100	0	-	north		Lair //   You have entered a large lair with bones strewn about the ground.  You // notice the source of these as you come face to face with a rather large red	-	+
+1794772518	cmd	Alaric	57	2227	draconia.are	standing	100	0	-	down		Underground Tunnel //   You have entered an underground tunnel.  It is dark and dirty, and you find // yourself wishing you were back in Midgaard.	-	+
+1794772519	cmd	Alaric	57	2228	draconia.are	standing	100	0	-	north		Underground Tunnel //   This tunnel has come to a dead end.  You feel nervous about being trapped here. // [Exits: south]	-	-
+1794772520	cmd	Alaric	57	2227	draconia.are	standing	100	0	-	south		Underground Tunnel //   You have entered an underground tunnel.  It is dark and dirty, and you find // yourself wishing you were back in Midgaard.	-	+
+1794772522	cmd	Alaric	57	2226	draconia.are	standing	100	0	-	up		Lair //   You have entered a large lair with bones strewn about the ground.  You // notice the source of these as you come face to face with a rather large red	-	+
+1794772524	cmd	Alaric	57	2226	draconia.are	standing	100	0	-	kill	dr	The Great Red Dragon dodges your attack. // Your punch ^^^ DESTROYS ^^^ the Great Red Dragon! [-109] // The Great Red Dragon parries your attack.	-	-
+1794772526	cmd	Alaric	57	2226	draconia.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls the Great Red Dragon. [-23] // Your fists of fury decimates the Great Red Dragon! [-27]	-	+
+1794772532	cmd	Alaric	57	2226	draconia.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims the Great Red Dragon! [-33] // Your fists of fury <<< ERADICATES >>> the Great Red Dragon! [-160]	-	+
+1794772538	coin	Alaric	57	2226	draconia.are	+4000000	loot	(violence_update)	corpse of the Great Red Dragon	27825180798
+1794772538	coin	Alaric	57	2226	draconia.are	+2600	loot	(violence_update)	corpse of the Great Red Dragon	27825183398
+1794772538	coin	Alaric	57	2226	draconia.are	+20	loot	(violence_update)	corpse of the Great Red Dragon	27825183418
+1794772538	coin	Alaric	57	2226	draconia.are	+130000	loot	(violence_update)	corpse of the Great Red Dragon	27825313418
+1794772540	cmd	Alaric	57	2226	draconia.are	standing	100	0	-	look	i cor	Corpse of the Great Red Dragon contains: //      a helm of dragon kind //      (Glowing) the staff of the dragon	-	+
+1794772542	cmd	Alaric	57	2225	draconia.are	standing	100	0	-	south		A Narrow Passageway //   This Passageway branches off from the main hall and leads somewhere ... where? // [Exits: north south]	-	-
+1794772544	cmd	Alaric	57	2226	draconia.are	standing	100	0	-	north		Lair //   You have entered a large lair with bones strewn about the ground.  You // notice the source of these as you come face to face with a rather large red	-	+
+1794772547	got	Alaric	57	2226	draconia.are	2299	a tarnished gold key	key	45	30000000	get	corpse of the Great Red Dragon
+1794772547	cmd	Alaric	57	2226	draconia.are	standing	100	0	-	get	key cor	You get a tarnished gold key from corpse of the Great Red Dragon.	-	-
+1794772547	cmd	Alaric	57	2225	draconia.are	standing	100	0	-	south		A Narrow Passageway //   This Passageway branches off from the main hall and leads somewhere ... where? // [Exits: north south]	-	-
+1794772549	cmd	Alaric	57	2224	draconia.are	standing	100	0	-	south		The Great Hall //   You are working your way down the Hall.  To the north, you notice a smaller // passageway, while the main hall continues to the east.	-	+
+1794772549	cmd	Alaric	57	2223	draconia.are	standing	100	0	-	west		Entrance to the Great Hall //   You have entered a huge hall.  It has been carefully decorated with // beautiful tapestries depicting a great battle between dragons and men.  The	-	+
+1794772550	cmd	Alaric	57	2205	draconia.are	standing	100	0	-	west		Nursery //   It looks like a tornado has been through here.  Toys are scattered everywhere, // and a small group of dragon hatchlings are fighting over a bone. 	-	+
+1794772550	cmd	Alaric	57	2204	draconia.are	standing	100	0	-	west		Hallway //   You trudge down the hallway.  You notice doors to the east and west.  // [Exits: north east south west]	-	+
+1794772551	cmd	Alaric	57	2207	draconia.are	standing	100	0	-	north		End of the Hallway //   You have finally reached the end of the hallway.  A huge staircase leads up. // You see a sign at the base of the staircase. 	-	+
+1794772552	cmd	Alaric	57	2210	draconia.are	standing	100	0	-	up		The Second Floor //   You have made it up to the second floor.  You hear hissing and see several // dragon men rushing you.  You wonder how long you will be staying here.	-	+
+1794772556	laid	-	0	0	-	971	herb	36	a belladonna plant	25216	mushroom.are	scatter
+1794772556	laid	-	0	0	-	972	component	66	a strand of hair	29453	world.are	scatter
+1794772556	cmd	Alaric	57	2211	draconia.are	standing	100	0	-	south		The Court //   You have entered what seems to be a large court.  The people guarding it // don't seem happy to see you ...	-	+
+1794772557	cmd	Alaric	57	2211	draconia.are	standing	100	0	-	scan		A bodyguard                        -to the North. // the Draconian                      -to the North. // a concubine                        -to the East.	-	+
+1794772560	cmd	Alaric	57	2213	draconia.are	standing	100	0	-	south		The Court //   You are continuing down the hall.  To the east and west you see ornate doors. // [Exits: north east south west]	-	+
+1794772561	cmd	Alaric	57	2216	draconia.are	standing	100	0	-	south		The Court Ends //   You have reached the end of the court.  A huge Draconian is sitting in a // chair here.  As you enter, he motions with his hand and you are rushed by three	-	+
+1794772564	cmd	Alaric	57	2216	draconia.are	standing	100	0	-	fists	king	You attack in an all consuming fury! // Your fists of fury hits the Draconian King. [-10] // Your fists of fury maims the Draconian King! [-35]	-	+
+1794772569	cmd	Alaric	57	2216	draconia.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits the Draconian King. [-12] // Your fists of fury mauls the Draconian King. [-23]	-	+
+1794772570	coin	Alaric	57	2216	draconia.are	-500	spent	(mobile_update)	-	27825312918
+1794772574	coin	Alaric	57	2216	draconia.are	+1000000	loot	(violence_update)	corpse of the Draconian King	27826312918
+1794772574	coin	Alaric	57	2216	draconia.are	+500	loot	(violence_update)	corpse of the Draconian King	27826313418
+1794772574	coin	Alaric	57	2216	draconia.are	+6	loot	(violence_update)	corpse of the Draconian King	27826313424
+1794772574	coin	Alaric	57	2216	draconia.are	+20000	loot	(violence_update)	corpse of the Draconian King	27826333424
+1794772575	cmd	Alaric	57	2216	draconia.are	fighting	99	0	fight	look	i cor	Corpse of the Draconian King contains: //      an emerald sword //      a fur cloak	-	+
+1794772578	got	Alaric	57	2216	draconia.are	2232	A ruby key	key	26	23000000	get	corpse of the Draconian King
+1794772578	cmd	Alaric	57	2216	draconia.are	fighting	99	0	fight	get	key cor	You get A ruby key from corpse of the Draconian King.	-	-
+1794772580	cmd	Alaric	57	2216	draconia.are	fighting	99	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794772581	cmd	Alaric	57	2213	draconia.are	fighting	99	0	fight	flee		The Court //   You are continuing down the hall.  To the east and west you see ornate doors. // [Exits: north east south west]	-	+
+1794772582	cmd	Alaric	57	2211	draconia.are	standing	99	0	-	north		The Court //   You have entered what seems to be a large court.  The people guarding it // don't seem happy to see you ...	-	+
+1794772582	cmd	Alaric	57	2210	draconia.are	standing	99	0	-	north		The Second Floor //   You have made it up to the second floor.  You hear hissing and see several // dragon men rushing you.  You wonder how long you will be staying here.	-	+
+1794772583	cmd	Alaric	57	2207	draconia.are	standing	99	0	-	down		End of the Hallway //   You have finally reached the end of the hallway.  A huge staircase leads up. // You see a sign at the base of the staircase. 	-	+
+1794772584	cmd	Alaric	57	2204	draconia.are	standing	99	0	-	south		Hallway //   You trudge down the hallway.  You notice doors to the east and west.  // [Exits: north east south west]	-	+
+1794772584	cmd	Alaric	57	2206	draconia.are	standing	99	0	-	west		Storage Room //   This room is covered with dust, it looks as if no one has been here in ages. // [Exits: east down]	-	-
+1794772585	cmd	Alaric	57	2208	draconia.are	standing	99	0	-	down		Guardian's Room //   You climb down the rickety stairs and find yourself face to face with a  // gargantuan hydra.  How fast can you climb UP stairs? 	-	+
+1794772586	cmd	Alaric	57	2209	draconia.are	standing	99	0	-	south		The Treasure Room //   You have made it past the hydra into the vault.  You are astounded by  // the treasure here.  Not only are you now rich, you can probably rest here	-	+
+1794772587	cmd	Alaric	57	2209	draconia.are	standing	99	0	-	unlock	west	*Click*	-	-
+1794772588	cmd	Alaric	57	2209	draconia.are	standing	99	0	-	open		Ok.	-	-
+1794772588	cmd	Alaric	57	2218	draconia.are	standing	99	0	-	west		Entrance to the Crypt //   You have entered a large room which smells heavily of reptile.  You wonder // what awaits you here.	-	+
+1794772590	coin	Alaric	57	2218	draconia.are	+5500	loot	kill	corpse of a Draconian zombie	27826338924
+1794772590	coin	Alaric	57	2218	draconia.are	+8	loot	kill	corpse of a Draconian zombie	27826338932
+1794772590	cmd	Alaric	57	2218	draconia.are	standing	99	15	-	kill	dr	Your punch >>> ANNIHILATES <<< a Draconian zombie! [-236] // A Draconian zombie is DEAD!! // You have almost finished your QUEST!	-	+
+1794772595	area	Alaric	57	2497	dresden.are	draconia.are	dresden.are	131	recall
+1794772595	cmd	Alaric	57	2497	dresden.are	standing	99	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794772595	coin	Alaric	57	2497	dresden.are	+215780796	quests	aquest	-	28042119728
+1794772595	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	rush qp=2349->2349 offered=36 daily=4->4 coin=+215780796 kill=15412914 streak=0 level=57 target=-1
+1794772595	cmd	Alaric	57	2497	dresden.are	standing	99	20	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Rush contract fulfilled - your double reward is well earned!'	success:-	+
+1794772595	cmd	Alaric	57	2497	dresden.are	standing	99	5	-	aquest	ga no	You safely collect 36 quest points.	-	-
+1794772620	laid	-	0	0	-	987	herb	39	a chervil leaf	1126	shire.are	scatter
+1794772620	laid	-	0	0	-	988	component	56	a dragons claw	10078	glitter.are	scatter
+1794772661	laid	-	0	0	-	989	herb	53	a huckleberry	706	camelot.are	scatter
+1794772661	laid	-	0	0	-	990	component	63	a phoenix feather	4527	dresden.are	scatter
