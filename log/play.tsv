@@ -31726,3 +31726,59 @@
 1794776564	cmd	Trentlin	45	16025	pirate.are	standing	52	0	-	kill	pira	The pirate dodges your attack. // The pirate dodges your attack.	-	-
 1794776567	cmd	Trentlin	45	16025	pirate.are	fighting	43	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The pirate. // Your fists of fury DISEMBOWELS The pirate!	-	+
 1794776573	cmd	Trentlin	45	16025	pirate.are	fighting	43	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEMOLISHES *** The pirate! // Your fists of fury grazes The pirate.	-	+
+1794776579	cmd	Trentlin	45	16025	pirate.are	fighting	30	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES The pirate! // Your fists of fury mauls The pirate.	-	+
+1794776587	skill	Trentlin	45	16025	pirate.are	fists of fury	84	85	success	fists
+1794776587	cmd	Trentlin	45	16025	pirate.are	fighting	30	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The pirate! // Your fists of fury DISEMBOWELS The pirate!	-	+
+1794776593	cmd	Trentlin	45	16025	pirate.are	fighting	19	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The pirate! // Your fists of fury MANGLES The pirate!	-	+
+1794776597	laid	-	0	0	-	1180	herb	41	a sprig of mistletoe	9564	newthalo.are	scatter
+1794776597	laid	-	0	0	-	1181	component	71	a goblin's finger	20590	emerald.are	scatter
+1794776602	cmd	Trentlin	45	16025	pirate.are	standing	20	0	-	scan		The pirate                         -to the West.	-	-
+1794776603	cmd	Trentlin	45	16024	pirate.are	standing	20	0	-	west		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794776605	cmd	Trentlin	45	16024	pirate.are	standing	20	0	-	fists	pirate	You attack in an all consuming fury! // Your fists of fury DISEMBOWELS The pirate! // The pirate walks off to the east.	-	+
+1794776612	cmd	Trentlin	45	16025	pirate.are	standing	20	0	-	east		Main Deck - Starboard //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794776613	cmd	Trentlin	45	16025	pirate.are	standing	20	0	-	fists	pirate	You attack in an all consuming fury! // Your fists of fury wounds The pirate. // Your fists of fury DISEMBOWELS The pirate!	-	+
+1794776620	cmd	Trentlin	45	16024	pirate.are	standing	20	0	-	west		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794776621	coin	Trentlin	45	16024	pirate.are	+2000000	loot	kill	corpse of The pirate	15436595046
+1794776621	coin	Trentlin	45	16024	pirate.are	+1200	loot	kill	corpse of The pirate	15436596246
+1794776621	coin	Trentlin	45	16024	pirate.are	+17	loot	kill	corpse of The pirate	15436596263
+1794776621	coin	Trentlin	45	16024	pirate.are	+70000	loot	kill	corpse of The pirate	15436666263
+1794776621	cmd	Trentlin	45	16024	pirate.are	standing	20	1	-	kill	pira	Your punch === OBLITERATES === The pirate! // The pirate is DEAD!! // You receive 342 experience points (171 of them rested).	-	+
+1794776624	cmd	Trentlin	45	16024	pirate.are	standing	20	0	-	fists		Who do you want to attack?	-	-
+1794776624	coin	Trentlin	45	16024	pirate.are	+90	loot	sacrifice	-	15436666353
+1794776624	cmd	Trentlin	45	16024	pirate.are	standing	20	0	-	sacrifice	co	The Gods give you 90 copper coins for your sacrifice.	-	-
+1794776624	cmd	Trentlin	45	16024	pirate.are	standing	20	0	-	sacrifice	co	You can't find it.	-	-
+1794776625	area	Trentlin	45	4207	dresden.are	pirate.are	dresden.are	138	recall
+1794776625	cmd	Trentlin	45	4207	dresden.are	standing	20	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794776627	cmd	Trentlin	45	4202	dresden.are	standing	20	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794776627	cmd	Trentlin	45	4203	dresden.are	standing	20	2	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794776628	cmd	Trentlin	45	4210	dresden.are	standing	20	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794776628	cmd	Trentlin	45	4210	dresden.are	standing	20	0	-	north		Alas, you cannot go that way.	-	-
+1794776628	cmd	Trentlin	45	4210	dresden.are	standing	20	0	-	sleep		You go to sleep.	-	-
+1794776631	cmd	Trentlin	45	4210	dresden.are	sleeping	20	0	-	rested		You are rested: your kills earn double experience until 1767 more is spent (76% of a level). // Quitting here would let you rest. // Each hour away banks 5% of a level, up to 150%.	-	-
+1794776634	sightings	Trentlin	45	4210	dresden.are	mob	4202:1/0/0 4201:1/0/0 201:1/0/0 4468:1/0/0 4458:2/0/0 4451:1/0/0 4459:4/0/0 2434:6/0/0 2433:2/0/0 4450:1/0/0 4446:1/0/0 4452:1/0/0 9402:1/0/0 9405:3/0/0 9401:1/0/0 9403:1/0/0 9404:1/0/0 2431:1/0/0 2435:1/0/0 4445:1/0/0 4457:1/0/0 9543:1/0/0 9562:4/0/0 9542:1/0/0 9519:1/0/0 9520:2/0/0 9533:2/0/0 9592:5/0/0 9540:1/0/0 9537:1/0/0 9568:2/0/0 9544:3/0/0 16012:4/0/0 16008:1/0/0 16010:1/0/0 16011:2/0/0 16009:2/0/0 16006:2/2/0
+1794776634	sightings	Trentlin	45	4210	dresden.are	item	25043:1/1 16020:1/0
+1794776634	session	Trentlin	45	4210	dresden.are	quit	235s	+0 levels	+840 exp	+11719084 copper	2 kills	0 deaths	1 quests	164 commands	0 refused	coin: loot 4p 14g 26s 14c, quests 7p 57g 64s 70c, spent 80g	spent on: heal 80g	exp: skilluse +16, kills +824
+1794776641	laid	-	0	0	-	1183	herb	41	a sprig of mistletoe	25004	mountain.are	scatter
+1794776641	laid	-	0	0	-	1184	herb	45	a sarsaparilla vine	25049	mountain.are	scatter
+1794776641	laid	-	0	0	-	1185	component	71	a goblin's finger	2121	hood.are	scatter
+1794776683	laid	-	0	0	-	1186	component	68	a gorgon's horn	3617	dkforest.are	scatter
+1794776708	cmd	Alaric	57	2393	mahntor.are	standing	100	0	-	look	i cor	An old skeleton contains: //      Nothing.	-	-
+1794776709	coin	Alaric	57	2393	mahntor.are	+4	loot	sacrifice	-	28134995848
+1794776709	cmd	Alaric	57	2393	mahntor.are	standing	100	0	-	sacrifice	cor	The Gods give you 4 copper coins for your sacrifice.	-	-
+1794776711	cmd	Alaric	57	2393	mahntor.are	standing	100	0	-	look	i cor	A very rotted corpse contains: //      Nothing.	-	-
+1794776712	coin	Alaric	57	2393	mahntor.are	+4	loot	sacrifice	-	28134995852
+1794776712	cmd	Alaric	57	2393	mahntor.are	standing	100	0	-	sacrifice	cor	The Gods give you 4 copper coins for your sacrifice.	-	-
+1794776712	cmd	Alaric	57	2393	mahntor.are	standing	100	0	-	look		The Harem Room //   This appears to be the harem room of the Keep. Huge piles of furs and beds // fill the room. The lighting is dim, but the room is very warm. You can hear	-	+
+1794776712	cmd	Alaric	57	2396	mahntor.are	standing	100	0	-	east		The Master Bedroom //   This appears to be the master bedroom. A huge bed fills the rooms. Piles of // furs and other rich furnishings adorn the room. Candles are everywhere and	-	+
+1794776713	cmd	Alaric	57	2395	mahntor.are	standing	100	0	-	north		The main living room //   This room is decorated with sturdy stone furniture that is carved and gilded. // Large candles light the room. A thick rug covers the floor. Thick furs and	-	+
+1794776715	cmd	Alaric	57	2395	mahntor.are	standing	100	0	-	fists	bu	You attack in an all consuming fury! // Your fists of fury MANGLES the Minotaur Butler! [-54] // Your fists of fury MANGLES the Minotaur Butler! [-53]	-	+
+1794776723	cmd	Alaric	57	2395	mahntor.are	standing	100	0	-	look	i cor	Corpse of the Minotaur Butler contains: //      Nothing.	-	-
+1794776724	area	Alaric	57	2497	dresden.are	mahntor.are	dresden.are	358	recall
+1794776724	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794776725	outcome	Alaric	57	2497	dresden.are	quest-failed	failure	abandoned	-	ordinary target=mob:2318 level=25 alive=1 area=mahntor.are there=0 streak=2
+1794776725	cmd	Alaric	57	2497	dresden.are	standing	100	14	-	aquest	ab	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Alaric. Your quest obligation is lifted.' // Questor Thews says 'You had a streak of 2 in a row - all gone now!'	failure:abandoned	+
+1794776727	item	Alaric	57	2497	dresden.are	2299	a tarnished gold key	type=key level=45 worn=0 nested=0 timer=0 cond=100 inside=0	obj_update
+1794776727	laid	-	0	0	-	1189	herb	40	a clove	10073	glitter.are	scatter
+1794776727	laid	-	0	0	-	1190	component	64	a manticore's spine	17003	ag.are	scatter
+1794776746	census	-	0	0	-	herbs=84/150 components=54/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=23 spotted=1 picked=0 passed=1 cleared=0 rare=0 mobs_seen=88 mobs_fought=13 secs=900
+1794776837	laid	-	0	0	-	1191	herb	43	a sprig of hyssop	325	plains.are	scatter
