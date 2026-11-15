@@ -179,6 +179,13 @@ class CatalogTests(unittest.TestCase):
         self.assertIn("**408**", guide)
         self.assertNotIn("uses 196", guide)
 
+    def test_the_player_guide_counts_the_catalog(self) -> None:
+        # It said 127 long after the catalog had grown past it (2026-11-15).
+        guide = (ROOT / "wiki" / "player-guide.md").read_text(encoding="utf-8")
+        counts = re.findall(r"(\d+)-entry catalog", guide)
+        self.assertEqual(counts, [str(len(self.rows))])
+        self.assertIn(f"{len(self.rows)}-achievement", (ROOT / "README.md").read_text(encoding="utf-8"))
+
     def test_new_points_are_cosmetic_and_in_their_bands(self) -> None:
         for row in self.new:
             with self.subTest(key=row["key"]):

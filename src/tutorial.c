@@ -233,6 +233,44 @@ static bool guild_choice_open( CHAR_DATA *ch )
         && ch->level >= 3 && ch->level < 6;
 }
 
+/* For ADVENTURE (adventure.c): the same guild window, and where the Mud
+   School diploma is -- one rule, never a second copy of it. */
+bool tutorial_guild_choice_open( CHAR_DATA *ch )
+{
+    return ch != NULL && !IS_NPC(ch) && ch->pcdata != NULL && guild_choice_open( ch );
+}
+
+static bool diploma_within( OBJ_DATA *list, bool *held )
+{
+    OBJ_DATA *obj;
+
+    for ( obj = list; obj != NULL; obj = obj->next_content )
+    {
+        if ( obj->pIndexData != NULL && obj->pIndexData->vnum == OBJ_VNUM_DIPLOMA )
+        {
+            if ( obj->wear_loc == WEAR_HOLD )
+                *held = true;
+            return true;
+        }
+        if ( obj->contains != NULL && diploma_within( obj->contains, held ) )
+            return true;
+    }
+    return false;
+}
+
+int tutorial_diploma_state( CHAR_DATA *ch )
+{
+    bool held = false;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return DIPLOMA_NONE;
+    if ( diploma_within( ch->carrying, &held ) )
+        return held ? DIPLOMA_HELD : DIPLOMA_CARRIED;
+    if ( diploma_within( ch->pcdata->stash, &held ) )
+        return DIPLOMA_STASHED;
+    return DIPLOMA_NONE;
+}
+
 /* Whether a step has anything to say to this character now. */
 static bool tut_applies( CHAR_DATA *ch, int step )
 {

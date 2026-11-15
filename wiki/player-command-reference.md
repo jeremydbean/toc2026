@@ -270,6 +270,7 @@ Telnet.
 | Commands | Use |
 |---|---|
 | `help <topic>` | Search in-game help |
+| `adventure` | A few things you might do next, each with its command or `walkto`: Mud School, first fight, training, the guild choice, a quest, areas at your level, company. Read-only; never sent unasked |
 | `tutorial`, `tutorial on`, `tutorial off`, `tutorial next` | The new-player hints: status, turn them on or off (progress is kept), or show the next one now |
 | `commands` | Show currently available commands |
 | `socials` | List social actions |

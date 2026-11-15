@@ -116,6 +116,17 @@ and `tutorial on` picks up where you left off (characters made before it
 start with it off). While you make a character, `help` at the class or
 alignment question reads about the choices without making one.
 
+At any time, `adventure` lists a few things you might do next, each with
+the command or `walkto` that gets you there, and only what applies to you:
+Mud School and its diploma (or putting on the one you have), your first
+fight, practices and trains to spend, the guild choice at levels 3-5, a
+quest (whether one is ready, or how to check on yours -- never its target),
+up to three areas made for your level that you have not entered or not yet
+walked end to end, and your group or how many players near your level are
+on (a count, never names). It is only a list: it changes nothing, is never
+sent unasked, and leaves the tutorial on or off as you set it. Every line is
+plain text within 80 columns, so it reads the same in any client.
+
 Then:
 
 1. Read room descriptions and signs. Builders often place directions and
@@ -499,10 +510,11 @@ achievements economy
 achievements hyrule
 ```
 
-The 127-entry catalog covers character levels and remorts, play time, mobile
+The 408-entry catalog covers character levels and remorts, play time, mobile
 and player kills, named world bosses, rare relics, crafting, unusual deaths,
-quest completions and streaks, exploration, banking and casino feats, and the
-full Hyrule campaign.
+close calls, quest completions and streaks, exploration and maps, banking and
+casino feats, the tutorial, and the full Hyrule campaign. The full list, with
+how each is earned, is in [the achievements guide](achievements.md).
 Hidden achievements show neither title nor requirement until earned. Credit
 for every listed boss is shared with grouped players present in the boss room,
 so healers and support characters do not need the final hit.

@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261115adventure 2026-11-15
+New: ADVENTURE lists a few things you might do next -- Mud School and its
+diploma, a first fight, practices to spend, the guild choice before level
+6, a quest, areas made for your level you have not explored, and company
+near your level -- each with the command or WALKTO to get there.  It shows
+only what applies to you, changes nothing, and appears only when you ask.
+
 @ 20261115considermelee 2026-11-15
 CONSIDER now learns how your blows really land, beside your skills and
 spells: after three fights alone it says how many times what your gear

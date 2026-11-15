@@ -7253,6 +7253,23 @@ command table (the staff NEWBIE command is another thing).
   without choosing (`creation_help`, `creation_class_menu`,
   `creation_alignment_menu` in comm.c), as the race question always did.
 
+## ADVENTURE
+
+`src/adventure.c` (2026-11-15): a read-only "what next" view a player asks
+for, last in the command table. It keeps no state and writes nothing --
+`tests/test_adventure.py` fails on a save, an award, a tutorial step or a
+quest field in the file -- and every line reads an existing predicate: the
+tutorial's guild window and diploma lookup (`tutorial_guild_choice_open`,
+`tutorial_diploma_state`), the quest master's own refusal
+(`quest_ready_phrase` over `quest_request_refusal`), WALKTO's published
+areas against the achievements' entered and explored sets
+(`walkto_adventure_areas`: in range, not Hyrule, not a death trap or a
+newbie room past 10, and a name `walkto_find` resolves to that area
+alone), AchKills, and the group. It names no quest target, room or other
+player (company is a count). With every section shown it is 19 lines, under
+`PAGELEN`: a view that pages eats the next command, and the test fails on
+"Hit Return". A new section must fit, or another must give way.
+
 ## The Players' Logs Of 2026-11-13
 
 A read of three weeks of logs found these; each is fixed and played by

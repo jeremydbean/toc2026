@@ -566,6 +566,8 @@ const	struct	cmd_type	cmd_table	[] =
     /* The new-player tutorial (tutorial.c). Last, so no shorter word that
        meant something moves (TU, TUR are still what they were). */
     { "tutorial",       do_tutorial,    POS_DEAD,        0,  LOG_NORMAL, 1 },
+    /* What next: last, so no shorter word moves (2026-11-15). */
+    { "adventure",      do_adventure,   POS_DEAD,        0,  LOG_NORMAL, 1 },
 /* End of list. */
     { "",		0,		POS_DEAD,	 0,  LOG_NORMAL, 0 }
 };

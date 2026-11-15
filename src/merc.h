@@ -1103,6 +1103,15 @@ void  tutorial_refused       args( ( CHAR_DATA *ch ) );
 void  tutorial_oracle        args( ( CHAR_DATA *ch ) );
 void  tutorial_level         args( ( CHAR_DATA *ch, bool guild_given ) );
 void  tutorial_update        args( ( void ) );
+/* ... and what ADVENTURE (adventure.c) reads of it, never a second copy */
+#define DIPLOMA_NONE     0      /* no Mud School diploma anywhere */
+#define DIPLOMA_HELD     1      /* held, as it should be */
+#define DIPLOMA_CARRIED  2      /* carried, at any depth, not held */
+#define DIPLOMA_STASHED  3      /* in the stash */
+bool  tutorial_guild_choice_open args( ( CHAR_DATA *ch ) );
+int   tutorial_diploma_state args( ( CHAR_DATA *ch ) );
+/* quest.c: the panels' phrase for whether a quest may be asked for */
+bool  quest_ready_phrase     args( ( CHAR_DATA *ch, bool daily, char *buf, size_t size ) );
 /* playlog.c, for encounter.c */
 void  playlog_row            args( ( const char *kind, CHAR_DATA *ch, const char *fields ) );
 void  playlog_row_unplaced   args( ( const char *kind, CHAR_DATA *ch, const char *fields ) );
@@ -4666,6 +4675,15 @@ bool    walkto_reached   ( ROOM_INDEX_DATA *room );
 void    walkto_interrupt ( CHAR_DATA *ch, const char *line );
 bool    walkto_trainer_place ( const char *name, char *place, size_t place_size,
                                char *walk, size_t walk_size );
+/* ADVENTURE's places: up to max published areas whose level range holds
+   the character's level, never entered first, then not walked end to end
+   (one of ADVENTURE_NEW / ADVENTURE_UNWALKED in kind[]); each name is
+   what WALKTO itself finds. */
+#define ADVENTURE_NEW        1
+#define ADVENTURE_UNWALKED   2
+#define ADVENTURE_PLACE_LEN  48
+int     walkto_adventure_areas ( CHAR_DATA *ch, char names[][ADVENTURE_PLACE_LEN],
+                                 int kind[], int max );
 
 /* update.c */
 void    advance_level   ( CHAR_DATA *ch, bool is_advance );

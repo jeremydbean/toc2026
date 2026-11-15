@@ -449,6 +449,14 @@ static void quest_refusal_text( CHAR_DATA *ch, bool daily, char *buf, size_t siz
     }
 }
 
+/* For ADVENTURE (adventure.c): the panels' phrase, and whether a quest
+   (or a daily) may be asked for now -- the same refusal, never a copy. */
+bool quest_ready_phrase( CHAR_DATA *ch, bool daily, char *buf, size_t size )
+{
+    quest_refusal_text( ch, daily, buf, size );
+    return quest_request_refusal( ch, daily ) == QREFUSE_NONE;
+}
+
 /* Work Takes Me Places: the area the quest master named, from the room
    the target stood in at assignment (questroom is never cleared). */
 static void quest_note_area( CHAR_DATA *ch )

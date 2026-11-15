@@ -1383,6 +1383,88 @@ static int walkto_area_dest( AREA_DATA *area )
 }
 
 /*
+ * ADVENTURE's places at the character's level (adventure.c, 2026-11-15).
+ * Only what WALKTO already publishes -- the areas HELP WALKTO lists -- so
+ * nothing hidden is ever named; each name is checked to be one WALKTO
+ * finds as this area again. The range is the one the area's own name
+ * opens with ("{ 5 15} Raff Gangland"); an area without one, Hyrule (its
+ * own campaign, with its own guide) and an entrance this character may
+ * not walk into (a death trap, a room they cannot see, a newbie room past
+ * level 10) are left out. What the
+ * character has done is read from the achievements' sets: entered
+ * (ACH_SET_AREAS) and walked end to end (ACH_SET_EXPLORED_AREAS).
+ */
+static bool adventure_range( const char *name, int *low, int *high )
+{
+    const char *p = name;
+    long lo, hi;
+    char *end;
+
+    if ( p == NULL || *p != '{' )
+        return false;
+    lo = strtol( p + 1, &end, 10 );
+    if ( end == p + 1 )
+        return false;
+    p = end;
+    hi = strtol( p, &end, 10 );
+    if ( end == p || *end != '}' || lo < 1 || hi < lo || hi > MAX_LEVEL )
+        return false;
+    *low = (int) lo;
+    *high = (int) hi;
+    return true;
+}
+
+int walkto_adventure_areas( CHAR_DATA *ch, char names[][ADVENTURE_PLACE_LEN],
+                            int kind[], int max )
+{
+    int pass, i, n = 0;
+
+    if ( ch == NULL || IS_NPC(ch) || max <= 0 )
+        return 0;
+    for ( pass = ADVENTURE_NEW; pass <= ADVENTURE_UNWALKED && n < max; pass++ )
+        for ( i = 0; i < walkto_count && n < max; i++ )
+        {
+            const WALKTO_DEST *d = &walkto_dests[i];
+            ROOM_INDEX_DATA *entry;
+            char shown[ADVENTURE_PLACE_LEN];
+            char *paren;
+            long id;
+            int low, high, also, others[3];
+
+            if ( str_cmp( d->kind, "area" )
+            ||   ( entry = get_room_index( d->vnum ) ) == NULL || entry->area == NULL
+            ||   walk_is_hyrule( entry )
+            ||   !adventure_range( entry->area->name, &low, &high )
+            ||   ch->level < low || ch->level > high
+            ||   IS_SET(entry->room_flags, ROOM_DT)
+            ||   !can_see_room( ch, entry ) || newbie_room_refuses( ch, entry ) )
+                continue;
+            id = achievement_area_id( entry->area );
+            if ( achievement_set_has( ch, ACH_SET_EXPLORED_AREAS, id ) )
+                continue;
+            if ( ( pass == ADVENTURE_NEW ) == achievement_set_has( ch, ACH_SET_AREAS, id ) )
+                continue;
+            /* "Moria (Alfa)": the builder's name is the help's business,
+               as WALKTO AREAS shows it -- when WALKTO still finds it. */
+            toc_strlcpy( shown, d->name, sizeof(shown) );
+            if ( ( paren = strrchr( shown, '(' ) ) != NULL && paren > shown )
+            {
+                *paren = '\0';
+                while ( paren > shown && paren[-1] == ' ' )
+                    *--paren = '\0';
+            }
+            if ( walkto_find( shown, &also, others ) != i || also != 0 )
+                toc_strlcpy( shown, d->name, sizeof(shown) );
+            if ( walkto_find( shown, &also, others ) != i || also != 0 )
+                continue;
+            toc_strlcpy( names[n], shown, ADVENTURE_PLACE_LEN );
+            kind[n] = pass;
+            n++;
+        }
+    return n;
+}
+
+/*
  * STOP, and STOP WALK: what a player types to end a walk (play journal,
  * 2026-11-08: Trentlin typed both during a walk and was told Huh?).
  * WALKTO's walk ends here; a walk a client makes, typing the steps

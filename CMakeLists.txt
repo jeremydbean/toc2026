@@ -83,6 +83,7 @@ set(SRC_FILES
     src/diary.c
     src/encounter.c
     src/tutorial.c
+    src/adventure.c
     src/abilities.c
     src/blackmarket.c
     src/fixes.c
