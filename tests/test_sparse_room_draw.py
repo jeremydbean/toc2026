@@ -151,7 +151,11 @@ class SparseDrawLiveTests(unittest.TestCase):
                         staff.sync("peace")
                         staff.must("restore zsparstaff", "")
                         reply = staff.sync("cast teleport zsparstaff", timeout=30)
-                    if "fizzles" in reply or "You failed" in reply:
+                    # The spell's own line, not the word: a teleport that
+                    # lands in Canyon reads "A small spark of electricity
+                    # fizzles here." in the room it shows (CI 43664598894
+                    # counted one as a fizzle).
+                    if "The teleport fizzles." in reply or "You failed" in reply:
                         fizzled.append(reply[:200])
 
                 temple = 0
