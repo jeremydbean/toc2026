@@ -1297,6 +1297,9 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     if ( ch->pcdata->fight_skill_fights > 0 )
 	fprintf( fp, "SkillDamage %ld %d %d\n", ch->pcdata->fight_skill_tenths,
 		 ch->pcdata->fight_skill_fights, ch->pcdata->fight_skill_level );
+    if ( ch->pcdata->fight_melee_fights > 0 )
+	fprintf( fp, "MeleeRatio %d %d\n", ch->pcdata->fight_melee_permille,
+		 ch->pcdata->fight_melee_fights );
     if ( ch->pcdata->no_oracle )
 	fprintf( fp, "NoOracle %d\n", ch->pcdata->no_oracle );
     /* Hyrule's once-per-character secrets (hyrule.c); read under 'H'. */
@@ -4795,6 +4798,17 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 
 	case 'M':
 	    KEY( "Mounted",     ch->pcdata->mounted,    (sh_int)(fread_number( fp )) );
+	    if ( !str_cmp( word, "MeleeRatio" ) )
+	    {
+		/* Read into locals before clamping: the clamps read twice. */
+		int permille = fread_number( fp );
+		int fights = fread_number( fp );
+
+		ch->pcdata->fight_melee_permille = URANGE( 0, permille, 4 * CONSIDER_MELEE_HIGH );
+		ch->pcdata->fight_melee_fights = URANGE( 0, fights, CONSIDER_LEARN_KEEP );
+		fMatch = true;
+		break;
+	    }
 	    break;
 
 	case 'N':

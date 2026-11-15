@@ -3337,6 +3337,36 @@ void consider_learn_fight( CHAR_DATA *pc, CHAR_DATA *victim, int players, int pe
         return;
     tenths = 10L * UMAX( 0L, victim->enc_by_skills ) / victim->enc_rounds;
     tenths = UMIN( tenths, (long) POOL_MAX );
+    /* The melee that landed against what the gear model said at the
+       engage (2026-11-15: a monk's blows landed 1.3x the model against
+       easy foes and up to 3.8x against hard ones). Learned beside the
+       skills, from the same fights, and started again with them. */
+    if ( victim->enc_pred_melee > 0 )
+    {
+        long melee = victim->enc_taken - victim->enc_by_skills - victim->enc_by_pets;
+        long permille = melee <= 0 ? 0
+            : 10000L * melee / ( (long) victim->enc_rounds * victim->enc_pred_melee );
+        bool fresh = p->fight_melee_fights <= 0 || p->fight_skill_fights <= 0
+            || abs( pc->level - p->fight_skill_level ) > CONSIDER_LEARN_LEVELS;
+
+        /* One odd fight -- a stun, a lucky crit -- moves it, but never
+           past twice the range it is used in. */
+        permille = URANGE( (long) CONSIDER_MELEE_LOW / 2, permille,
+                           (long) CONSIDER_MELEE_HIGH * 2 );
+        if ( fresh )
+        {
+            p->fight_melee_permille = (int) permille;
+            p->fight_melee_fights = 1;
+        }
+        else
+        {
+            span = UMIN( p->fight_melee_fights + 1, CONSIDER_LEARN_SPAN );
+            p->fight_melee_permille += (int) ( ( permille - p->fight_melee_permille ) / span );
+            p->fight_melee_fights = UMIN( p->fight_melee_fights + 1, CONSIDER_LEARN_KEEP );
+        }
+    }
+    else if ( abs( pc->level - p->fight_skill_level ) > CONSIDER_LEARN_LEVELS )
+        p->fight_melee_fights = 0;
     if ( p->fight_skill_fights <= 0
     ||   abs( pc->level - p->fight_skill_level ) > CONSIDER_LEARN_LEVELS )
     {
@@ -3355,6 +3385,18 @@ void consider_learn_fight( CHAR_DATA *pc, CHAR_DATA *victim, int players, int pe
 /* Skill and spell damage a round CONSIDER adds for this player: nothing
    until CONSIDER_LEARN_MIN fights are learned, or once the level has
    moved away from where they were. */
+double consider_learned_melee( CHAR_DATA *ch )
+{
+    PC_DATA *p;
+
+    if ( ch == NULL || IS_NPC(ch) || ( p = ch->pcdata ) == NULL
+    ||   p->fight_melee_fights < CONSIDER_LEARN_MIN
+    ||   abs( ch->level - p->fight_skill_level ) > CONSIDER_LEARN_LEVELS )
+        return 1.0;
+    return URANGE( CONSIDER_MELEE_LOW, p->fight_melee_permille, CONSIDER_MELEE_HIGH ) / 1000.0;
+}
+
+/* Skill and spell damage a round, as above. */
 double consider_learned_skills( CHAR_DATA *ch )
 {
     PC_DATA *p;
@@ -3514,6 +3556,18 @@ static void consider_fight( CHAR_DATA *ch, CHAR_DATA *victim )
     else if ( caster )
         send_to_char( "(That counts your weapons only; after a few fights alone it counts the spells\n\r"
                       "you use too.)\n\r", ch );
+    {
+        double melee = consider_learned_melee( ch );
+        int tenths = (int) ( melee * 10.0 + 0.5 );
+
+        if ( tenths != 10 )
+        {
+            snprintf( buf, sizeof(buf),
+                "Your blows have landed about %d.%d times what your gear alone suggests in\n\r"
+                "your recent fights alone, and that is counted.\n\r", tenths / 10, tenths % 10 );
+            send_to_char( buf, ch );
+        }
+    }
     if ( is_hyrule_guardian( victim )
     &&   ( special = guardian_special_expected_per_round( victim, ch ) ) >= 0.5 )
     {

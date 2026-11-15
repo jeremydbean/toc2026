@@ -3020,7 +3020,9 @@ The rounds count both sides' weapons, armour, hit chance and defences
 (dodge, parry, shield block), and sanctuary and the like.  Skills and
 spells are counted from your own fights: once you have killed three foes
 alone, CONSIDER adds the damage your skills and spells did a round in your
-recent fights, and says how much.  It learns again as you level.  Fleeing
+recent fights, and says how much.  It also learns how your blows really
+land against what your gear alone suggests (a monk's hands, say), and
+counts that too, between half and twice.  It learns again as you level.  Fleeing
 and luck are not in it, so treat it as a guide.  Shopkeepers, trainers and
 anyone nobody may fight are not rated.  It is never an attack, so it works
 anywhere.

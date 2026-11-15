@@ -44,6 +44,12 @@ def skill_damage(mud: LiveMud, name: str):
     return tuple(int(x) for x in found.groups()) if found else None
 
 
+def melee_ratio(mud: LiveMud, name: str):
+    found = re.search(r"^MeleeRatio (\d+) (\d+)$",
+                      (mud.player_dir / name).read_text(encoding="latin-1"), re.M)
+    return tuple(int(x) for x in found.groups()) if found else None
+
+
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class ConsiderLearningTests(unittest.TestCase):
     def test_a_kill_alone_is_learned_and_counted_once_three_are_in(self) -> None:
@@ -52,12 +58,12 @@ class ConsiderLearningTests(unittest.TestCase):
             make(mud, "Zkicker", "Sk 100 'kick'", Levl=20, Cla=3, Room=FLOOR,
                  HMV=BIG, HMVP="9000 500 500")
             # Learned three fights ago at this level: counted.
-            make(mud, "Zseasoned", "SkillDamage 500 3 20", Levl=20, Room=FLOOR,
+            make(mud, "Zseasoned", "SkillDamage 500 3 20\nMeleeRatio 1600 3", Levl=20, Room=FLOOR,
                  HMV=BIG, HMVP="9000 500 500")
             # Two fights, or learned at level 40: not yet, or no longer.
-            make(mud, "Zgreen", "SkillDamage 500 2 20", Levl=20, Room=FLOOR,
+            make(mud, "Zgreen", "SkillDamage 500 2 20\nMeleeRatio 1600 2", Levl=20, Room=FLOOR,
                  HMV=BIG, HMVP="9000 500 500")
-            make(mud, "Zremort", "SkillDamage 500 9 40", Levl=20, Room=FLOOR,
+            make(mud, "Zremort", "SkillDamage 500 9 40\nMeleeRatio 1600 9", Levl=20, Room=FLOOR,
                  HMV=BIG, HMVP="9000 500 500")
 
             with mud.connect(timeout=120) as ref, mud.connect(timeout=120) as kicker:
@@ -89,6 +95,10 @@ class ConsiderLearningTests(unittest.TestCase):
                 tenths, fights, level = skill_damage(mud, "Zkicker")
                 self.assertGreater(tenths, 0, "the kicks were learned")
                 self.assertEqual((fights, level), (1, 20))
+                # The melee that landed, held to the gear model's (2026-11-15).
+                permille, mfights = melee_ratio(mud, "Zkicker")
+                self.assertGreater(permille, 0)
+                self.assertEqual(mfights, 1)
 
                 place_sparring_guard(ref, "Zref", FLOOR)     # a fresh one to consider
                 for name, counted in (("Zseasoned", True), ("Zgreen", False),
@@ -99,14 +109,17 @@ class ConsiderLearningTests(unittest.TestCase):
                         with self.subTest(name=name):
                             if counted:
                                 self.assertIn(LEARNED + " 50 a round", reply)
+                                self.assertIn("about 1.6 times what your gear alone", reply)
                             else:
                                 self.assertNotIn(LEARNED, reply)
+                                self.assertNotIn("what your gear alone", reply)
                         looker.sync("save")
                         looker.send("quit")
                         looker.wait_closed()
                 # Kept as it was read, through a save.
                 self.assertEqual(skill_damage(mud, "Zseasoned"), (500, 3, 20))
                 self.assertEqual(skill_damage(mud, "Zremort"), (500, 9, 40))
+                self.assertEqual(melee_ratio(mud, "Zseasoned"), (1600, 3))
 
 
 if __name__ == "__main__":

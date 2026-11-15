@@ -1371,7 +1371,16 @@ spell damage a round (`enc_by_skills / enc_rounds`) over about the last
 side in `gear_consider_fight` once `CONSIDER_LEARN_MIN` (3) fights are in,
 while the level is within `CONSIDER_LEARN_LEVELS` (5) of where it was
 learned, and CONSIDER says how much (`tests/test_consider_learning.py`).
-The silent prediction in every engage row includes it. **CONSIDER counts a
+The silent prediction in every engage row includes it. **And how each
+player's melee lands** (2026-11-15: one monk's blows landed 1.3x the gear
+model against easy foes, up to 3.8x against hard ones): the engage keeps
+the model's unscaled melee a round on the mobile (`enc_pred_melee`,
+tenths, from `gear_consider_take_melee`), and the same kill alone feeds
+melee taken (the ledger less skills and pets, a round) over it into
+`MeleeRatio <permille> <fights>` (case 'M', sharing `fight_skill_level`);
+`consider_learned_melee` scales each player's melee by it, held to 0.5x-2x
+(`CONSIDER_MELEE_LOW`/`HIGH`), once `CONSIDER_LEARN_MIN` fights are in.
+**CONSIDER counts a
 guardian's own attack** (`guardian_special_expected_per_round` in
 `special.c`, from `gear_consider_fight`): the volley the fight would throw
 now, three quarters of a pulse's a round, through `blow_landed_expected`,
@@ -3922,7 +3931,10 @@ log says what a player typed; the journal says what happened, in columns
   compared within five-level bands: generous, poor, risky, rich, farmed
   and **gaps** (fewer than three comparable, reachable choices).
   `tools/balance_report.py` prints it with manual proposals (nothing is
-  edited); `tools/consider_audit.py` holds CONSIDER to the fights;
+  edited; 2026-11-15: a "poor" mobile whose killers' median level is more
+  than `OUTLEVELLED` (5) above it is `outlevelled` -- xp_compute's level
+  gap, no change proposed -- and a band with fewer judged mobiles than a
+  gap asks for says "too little data"); `tools/consider_audit.py` holds CONSIDER to the fights;
   `/api/leveling`, the website's leveling guide and the Oracle use the
   measured figures from players within five levels when `balance.near`
   trusts them (`MIN_KILLS` by `MIN_CHARACTERS`), and the model, calibrated
@@ -4932,7 +4944,10 @@ down is a half-hour march through content the player may never have
 seen.
 
 Exclude another area by name there rather than by adding a second
-mechanism. **Areas players turn down go in `quest_unwanted_areas[]`**
+mechanism. `tools/log_report.py`'s "quests by area" section pairs each
+`quest` row with its questor's next outcome and flags an area that loses
+half of three or more (`QUEST_WATCH_GIVEN`, `QUEST_WATCH_LOST`): read it
+before adding one. **Areas players turn down go in `quest_unwanted_areas[]`**
 beside it (owner, 2026-11-15: "remove the quests in areas players
 consistently abandoned"): Azeroth (four of seventeen quests given up,
 each within twenty seconds) and Descent to Hell (three of four lost) on

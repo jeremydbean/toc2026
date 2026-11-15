@@ -2413,6 +2413,21 @@ static double consider_side( CHAR_DATA *att, CHAR_DATA *def, bool *caster,
     return base * consider_defence_pass( att, def );
 }
 
+/* The looker's melee a round as the gear model alone has it, before any
+   learning scales it: the balance feed keeps it at the engage, and the
+   kill is held to it (consider_learn_fight). Taking it clears it, so a
+   prediction that never reached the model (an untouchable foe) leaves
+   nothing behind. */
+static double consider_last_melee;
+
+double gear_consider_take_melee( void )
+{
+    double melee = consider_last_melee;
+
+    consider_last_melee = 0.0;
+    return melee;
+}
+
 void gear_consider_fight( CHAR_DATA *ch, CHAR_DATA *victim,
                           double *yours, double *theirs, bool *caster )
 {
@@ -2421,6 +2436,11 @@ void gear_consider_fight( CHAR_DATA *ch, CHAR_DATA *victim,
     *caster = false;
     mine = consider_side( ch, victim, caster, &my_burn );
     their = consider_side( victim, ch, NULL, &their_burn );
+    consider_last_melee = mine;
+    /* How each player's blows have landed against this model in their
+       own fights (consider_learned_melee; 2026-11-15). */
+    mine *= consider_learned_melee( ch );
+    their *= consider_learned_melee( victim );
     /* A Hyrule guardian's volley or Ganon's fireballs, every mobile pulse
        beside its melee (owner, 2026-11-13: CONSIDER said twelve rounds
        for a Digdogger that killed in three). */

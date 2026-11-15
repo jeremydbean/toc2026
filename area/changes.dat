@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261115considermelee 2026-11-15
+CONSIDER now learns how your blows really land, beside your skills and
+spells: after three fights alone it says how many times what your gear
+alone suggests, and counts it.  Monks' fists, which it read far too low,
+come out right.
+
 @ 20261115herbtags 2026-11-15
 A herb or spell component lying in a room is now marked (Herb) or
 (Component), in your highlight colour, so they are easier to spot.

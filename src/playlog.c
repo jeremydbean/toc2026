@@ -1885,6 +1885,7 @@ void progress_engage( CHAR_DATA *mob, CHAR_DATA *opponent )
     mob->encounter_seq = 0;
     mob->enc_open = false;
     mob->enc_with = 0;
+    mob->enc_pred_melee = 0;
     progress_encounter_id( mob );
     if ( pc == NULL || pc->in_room == NULL || pc->in_room != mob->in_room
     ||   IS_IMMORTAL( pc ) || play_hidden( pc ) || is_unfindable_mob( mob ) )
@@ -1896,7 +1897,9 @@ void progress_engage( CHAR_DATA *mob, CHAR_DATA *opponent )
        asked): each side's damage a round, the rounds each would need,
        the verdict. The slain row's rounds and the mobile's ledger are
        what it came to. */
+    gear_consider_take_melee();
     verdict = consider_predict( pc, mob, &yours, &theirs, &your_rounds, &their_rounds, &caster );
+    mob->enc_pred_melee = (long) ( 10.0 * gear_consider_take_melee() );
     mob->enc_open = true;
     mob->enc_with = player_serial( pc );
     mob->enc_left_ms = 0;

@@ -1198,6 +1198,8 @@ void  progress_loot          args( ( CHAR_DATA *ch, OBJ_DATA *corpse, OBJ_DATA *
 long  progress_encounter_id  args( ( CHAR_DATA *mob ) );
 void  consider_learn_fight   args( ( CHAR_DATA *pc, CHAR_DATA *victim, int players, int pets ) );
 double consider_learned_skills args( ( CHAR_DATA *ch ) );
+double consider_learned_melee args( ( CHAR_DATA *ch ) );
+double gear_consider_take_melee args( ( void ) );
 const char *consider_predict args( ( CHAR_DATA *ch, CHAR_DATA *victim, double *yours,
                                      double *theirs, double *your_rounds,
                                      double *their_rounds, bool *caster ) );
@@ -2402,6 +2404,8 @@ struct  char_data
     int                 enc_swings;     /* players' melee swings at it */
     int                 enc_landed;     /* ... that took hit points */
     long                enc_by_skills;  /* hit points off it by spells and skills */
+    long                enc_pred_melee; /* CONSIDER's melee a round for its player at the
+                                           engage, unscaled, in tenths (consider_learn_fight) */
     CHAR_DATA * hunting;
     CHAR_DATA * reply;
     CHAR_DATA * pet;
@@ -2712,6 +2716,12 @@ struct  pc_data
     long                fight_skill_tenths;
     int                 fight_skill_fights;
     int                 fight_skill_level;
+    /* ... and how their melee lands against what CONSIDER's gear model
+       said: actual over predicted, in thousandths, over how many fights
+       (2026-11-15: a monk's blows landed 1.3x to 3.8x the model). Shares
+       fight_skill_level. Saved as MeleeRatio under 'M'. */
+    int                 fight_melee_permille;
+    int                 fight_melee_fights;
     long                pray_after;           /* no PRAY before this: a flee, a fight with a player (memory only) */
     int                 holiday_luck;         /* four-leaf clovers eaten, not yet spent (memory only) */
     long                rest_xp;              /* rested bonus experience left (rested.c) */
@@ -3460,6 +3470,8 @@ bool toc_path_join(char *dst, size_t size, const char *dir, const char *sep,
 #define CONSIDER_LEARN_MIN      3
 #define CONSIDER_LEARN_LEVELS   5
 #define CONSIDER_LEARN_KEEP     1000
+#define CONSIDER_MELEE_LOW      500     /* a learned melee ratio is held to 0.5x .. 2x */
+#define CONSIDER_MELEE_HIGH     2000
 /* TITANIC makes each pool this many times what it was (a boost of one
    less than this; owner, 2026-11-12: 5x, not 5x added on top). */
 #define TITANIC_MULTIPLE 5
