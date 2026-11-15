@@ -303836,3 +303836,132 @@ Sun Nov 15 01:56:31 2026 :: Log Trentlin [16005]: coin +5 silver
 Sun Nov 15 01:56:31 2026 :: Log Trentlin [16005]: coin +6 copper
 Sun Nov 15 01:56:31 2026 :: Log Trentlin [16005]: coin +2 gold
 Sun Nov 15 01:56:32 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 3 of 6 in 6 hours).
+Sun Nov 15 01:56:37 2026 :: Log Trentlin [16005]: u
+Sun Nov 15 01:56:37 2026 :: Log Trentlin [16021]: arrived (Entrance to the Royal Eagle - Main Deck) from 16005
+Sun Nov 15 01:56:38 2026 :: Log Trentlin [16021]: sca
+Sun Nov 15 01:56:39 2026 :: Log Trentlin [16021]: e
+Sun Nov 15 01:56:39 2026 :: Log Trentlin [16022]: arrived (Main Deck) from 16021
+Sun Nov 15 01:56:39 2026 :: Log Trentlin [16022]: sca
+Sun Nov 15 01:56:40 2026 :: Log Trentlin [16022]: e
+Sun Nov 15 01:56:40 2026 :: Log Trentlin [16023]: arrived (Main Deck) from 16022
+Sun Nov 15 01:56:41 2026 :: Log Trentlin [16023]: s
+Sun Nov 15 01:56:41 2026 :: Log Trentlin [16018]: arrived (Main Deck of the Royal Eagle) from 16023
+Sun Nov 15 01:56:42 2026 :: Log Trentlin [16018]: sca
+Sun Nov 15 01:56:43 2026 :: Log Trentlin [16018]: e
+Sun Nov 15 01:56:43 2026 :: Log Trentlin [16019]: arrived (Main Deck of the Royal Eagle) from 16018
+Sun Nov 15 01:56:43 2026 :: Log Trentlin [16019]: sca
+Sun Nov 15 01:56:44 2026 :: Log Trentlin [16019]: e
+Sun Nov 15 01:56:44 2026 :: Log Trentlin [16020]: arrived (Main Deck of the Royal Eagle - Starboard) from 16019
+Sun Nov 15 01:56:45 2026 :: Log Trentlin [16020]: sca
+Sun Nov 15 01:56:46 2026 :: Log Trentlin [16020]: n
+Sun Nov 15 01:56:46 2026 :: Log Trentlin [16025]: arrived (Main Deck - Starboard) from 16020
+Sun Nov 15 01:56:47 2026 :: Log Trentlin [16025]: w
+Sun Nov 15 01:56:47 2026 :: Log Trentlin [16024]: arrived (Main Deck) from 16025
+Sun Nov 15 01:56:47 2026 :: Log Trentlin [16024]: sca
+Sun Nov 15 01:56:49 2026 :: Log Trentlin [16024]: n
+Sun Nov 15 01:56:49 2026 :: Log Trentlin [16029]: arrived (Main Deck) from 16024
+Sun Nov 15 01:56:49 2026 :: Log Trentlin [16029]: sca
+Sun Nov 15 01:56:51 2026 :: Log Trentlin [16029]: w
+Sun Nov 15 01:56:51 2026 :: Log Trentlin [16028]: arrived (Main Deck) from 16029
+Sun Nov 15 01:56:51 2026 :: Log Trentlin [16028]: sca
+Sun Nov 15 01:56:52 2026 :: Log Trentlin [16028]: n
+Sun Nov 15 01:56:52 2026 :: Log Trentlin [16033]: arrived (Base of the Mast) from 16028
+Sun Nov 15 01:56:53 2026 :: Log Trentlin [16033]: sca
+Sun Nov 15 01:56:56 2026 :: Log Trentlin [16033]: u
+Sun Nov 15 01:56:56 2026 :: Log Trentlin [16078]: arrived (The Mast) from 16033
+Sun Nov 15 01:56:57 2026 :: Log Trentlin [16078]: sca
+Sun Nov 15 01:56:58 2026 :: Log Trentlin [16078]: e
+Sun Nov 15 01:56:58 2026 :: Log Trentlin [16079]: arrived (Out on the Mast) from 16078
+Sun Nov 15 01:56:59 2026 :: Log Trentlin [16079]: k swas
+Sun Nov 15 01:57:01 2026 :: Log Trentlin [16079]: fists
+Sun Nov 15 01:57:08 2026 :: Log Trentlin [16079]: fists
+Sun Nov 15 01:57:13 2026 :: Log Trentlin [16079]: fists
+Sun Nov 15 01:57:14 2026 :: Log Trentlin [16079]: affects off: levitate
+Sun Nov 15 01:57:19 2026 :: Log Trentlin [16079]: fists
+Sun Nov 15 01:57:25 2026 :: Log Trentlin [16079]: fists
+Sun Nov 15 01:57:31 2026 :: Log Trentlin [16079]: wear dip
+Sun Nov 15 01:57:31 2026 :: Log Trentlin [16079]: killed The swashbuckler
+Sun Nov 15 01:57:31 2026 :: Log Trentlin [16079]: coin +1 platinum
+Sun Nov 15 01:57:31 2026 :: Log Trentlin [16079]: coin +6 silver
+Sun Nov 15 01:57:31 2026 :: Log Trentlin [16079]: coin +8 copper
+Sun Nov 15 01:57:31 2026 :: Log Trentlin [16079]: coin +3 gold
+Sun Nov 15 01:57:35 2026 :: Log Trentlin [16079]: w
+Sun Nov 15 01:57:35 2026 :: Log Trentlin [16078]: arrived (The Mast) from 16079
+Sun Nov 15 01:57:36 2026 :: Log Trentlin [16078]: u
+Sun Nov 15 01:57:36 2026 :: Log Trentlin [16081]: arrived (The Mast) from 16078
+Sun Nov 15 01:57:37 2026 :: Log Trentlin [16081]: k sw
+Sun Nov 15 01:57:40 2026 :: Log Trentlin [16081]: fists
+Sun Nov 15 01:57:46 2026 :: Log Trentlin [16081]: fists
+Sun Nov 15 01:57:53 2026 :: Log Trentlin [16081]: fists
+Sun Nov 15 01:58:02 2026 :: Log Trentlin [16081]: fists
+Sun Nov 15 01:58:08 2026 :: Log Trentlin [16081]: fists
+Sun Nov 15 01:58:08 2026 :: Log Trentlin [16081]: killed The swashbuckler
+Sun Nov 15 01:58:08 2026 :: Log Trentlin [16081]: coin +1 platinum
+Sun Nov 15 01:58:08 2026 :: Log Trentlin [16081]: coin +6 silver
+Sun Nov 15 01:58:08 2026 :: Log Trentlin [16081]: coin +8 copper
+Sun Nov 15 01:58:08 2026 :: Log Trentlin [16081]: coin +3 gold
+Sun Nov 15 01:58:17 2026 :: Log Trentlin [16081]: sca
+Sun Nov 15 01:58:19 2026 :: Log Trentlin [16081]: w
+Sun Nov 15 01:58:19 2026 :: Log Trentlin [16080]: arrived (Out on the Mast) from 16081
+Sun Nov 15 01:58:20 2026 :: Log Trentlin [16080]: k swas
+Sun Nov 15 01:58:23 2026 :: Log Trentlin [16080]: fists
+Sun Nov 15 01:58:30 2026 :: Log Trentlin [16080]: fists
+Sun Nov 15 01:58:38 2026 :: Log Trentlin [16080]: fists
+Sun Nov 15 01:58:44 2026 :: Log Trentlin [16080]: fists
+Sun Nov 15 01:58:49 2026 :: Log Trentlin [16080]: level 44 -> 45 (earned)
+Sun Nov 15 01:58:49 2026 :: Trentlin has achieved level 45!
+Sun Nov 15 01:58:49 2026 :: Snapshot of Trentlin taken before level: Trentlin.20261115_015849.level (PRESTORE Trentlin to see it).
+Sun Nov 15 01:58:49 2026 :: Log Trentlin [16080]: killed The swashbuckler
+Sun Nov 15 01:58:49 2026 :: Log Trentlin [16080]: coin +1 platinum
+Sun Nov 15 01:58:49 2026 :: Log Trentlin [16080]: coin +6 silver
+Sun Nov 15 01:58:49 2026 :: Log Trentlin [16080]: coin +8 copper
+Sun Nov 15 01:58:49 2026 :: Log Trentlin [16080]: coin +3 gold
+Sun Nov 15 01:58:54 2026 :: Log Trentlin [16080]: reca
+Sun Nov 15 01:58:54 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 16080
+Sun Nov 15 01:58:54 2026 :: Log Trentlin [4207]: wear contain
+Sun Nov 15 01:58:55 2026 :: Log Trentlin [4207]: e
+Sun Nov 15 01:58:55 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sun Nov 15 01:58:56 2026 :: Log Trentlin [4202]: n
+Sun Nov 15 01:58:56 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Sun Nov 15 01:58:56 2026 :: Log Trentlin [4203]: n
+Sun Nov 15 01:58:56 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Nov 15 01:58:56 2026 :: Log Trentlin [4210]: n
+Sun Nov 15 01:58:57 2026 :: Log Trentlin [4210]: eq
+Sun Nov 15 01:59:00 2026 :: Log Trentlin [4210]: rem contai
+Sun Nov 15 01:59:03 2026 :: Log Trentlin [4210]: wear hear
+Sun Nov 15 01:59:04 2026 :: Log Trentlin [4210]: i
+Sun Nov 15 01:59:15 2026 :: Log Trentlin [4210]: wear diplo
+Sun Nov 15 01:59:24 2026 :: Log Trentlin [4210]: (refused) liza
+Sun Nov 15 01:59:27 2026 :: Log Trentlin [4210]: wear lizar
+Sun Nov 15 01:59:29 2026 :: Log Trentlin [4210]: eq
+Sun Nov 15 01:59:33 2026 :: Log Trentlin [4210]: eq
+Sun Nov 15 01:59:35 2026 :: Log Trentlin [4210]: sco
+Sun Nov 15 01:59:38 2026 :: Log Trentlin [4210]: aff
+Sun Nov 15 01:59:47 2026 :: Log Trentlin [4210]: l
+Sun Nov 15 01:59:47 2026 :: Log Trentlin [4210]: s
+Sun Nov 15 01:59:47 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4210
+Sun Nov 15 01:59:47 2026 :: Log Trentlin [4203]: affects off: iron skin
+Sun Nov 15 01:59:48 2026 :: Log Trentlin [4203]: s
+Sun Nov 15 01:59:48 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4203
+Sun Nov 15 01:59:48 2026 :: Log Trentlin [4202]: e
+Sun Nov 15 01:59:48 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Nov 15 01:59:49 2026 :: Log Trentlin [4201]: e
+Sun Nov 15 01:59:49 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Sun Nov 15 01:59:50 2026 :: Log Trentlin [2427]: n
+Sun Nov 15 01:59:50 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Nov 15 01:59:50 2026 :: Log Trentlin [2404]: n
+Sun Nov 15 01:59:50 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sun Nov 15 01:59:51 2026 :: Log Trentlin [2401]: d
+Sun Nov 15 01:59:51 2026 :: Log Trentlin [4649]: arrived (Entrance to the Hall of Hero's.) from 2401
+Sun Nov 15 01:59:52 2026 :: Log Trentlin [4649]: s
+Sun Nov 15 01:59:52 2026 :: Log Trentlin [2419]: arrived (The Training Yard) from 4649
+Sun Nov 15 01:59:55 2026 :: Log Trentlin [2419]: help dummy
+Sun Nov 15 02:00:01 2026 :: Log Trentlin [2419]: dummy leaderboard
+Sun Nov 15 02:00:28 2026 :: Log Trentlin [2419]: l
+Sun Nov 15 02:00:29 2026 :: Log Trentlin [2419]: n
+Sun Nov 15 02:00:29 2026 :: Log Trentlin [4649]: arrived (Entrance to the Hall of Hero's.) from 2419
+Sun Nov 15 02:00:32 2026 :: Log Trentlin [4649]: l pla
+Sun Nov 15 02:01:00 2026 :: Log Trentlin [4649]: affects off: steel fist
+Sun Nov 15 02:01:16 2026 :: Connection guard: 195.184.76.172 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 15 02:01:19 2026 :: Connection guard: 195.184.76.174 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 15 02:01:27 2026 :: Log Trentlin [4649]: l tablet
