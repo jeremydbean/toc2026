@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261115forageshift 2026-11-15
+Herbs and spell components no longer sit unfound in the same corner
+forever: one nobody has picked up in a day moves somewhere else in the
+world, and the INFO channel says how many moved and how many new ones
+were scattered. Anything you drop yourself stays where you left it.
+
 @ 20261114considerskills 2026-11-14
 CONSIDER now counts your skills and spells. Once you have killed three foes
 alone, it adds the damage your skills and spells did each round in your

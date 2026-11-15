@@ -3619,9 +3619,135 @@ static ROOM_INDEX_DATA *component_scatter_room( AREA_DATA *area )
   return NULL;
 }
 
+/*
+ * A herb or component nobody has picked up moves on (owner, 2026-11-14:
+ * "if a component isn't picked up in 24 hours they should shift
+ * locations"). Nothing rots now, so one laid in a room nobody visits held
+ * a place under the ceiling for the whole uptime -- in the first 37 hours
+ * of play logged, two components and one herb of nearly four hundred laid
+ * were ever picked up. One the world laid ("scatter", or "moved" before)
+ * that has lain FORAGE_MOVE_SECS where it is goes to a room of another
+ * area chosen as the scatterer chooses one; one a player dropped stays
+ * theirs to come back for, and none moves from under a player standing
+ * with it. At most FORAGE_MOVE_MAX a round. TOC_FORAGE_MOVE_SECS
+ * shortens the wait for tests. Returns how many moved.
+ */
+#define FORAGE_MOVE_SECS   ( 24L * 60L * 60L )
+#define FORAGE_MOVE_MAX    20
+
+static long forage_move_secs( void )
+{
+  const char *env = getenv( "TOC_FORAGE_MOVE_SECS" );
+  long secs;
+
+  if ( env != NULL && parse_long( env, 1, FORAGE_MOVE_SECS, &secs ) )
+    return secs;
+  return FORAGE_MOVE_SECS;
+}
+
+int forage_relocate_stale( int *herbs, int *comps )
+{
+  LIST_ITERATOR iter;
+  OBJ_DATA *obj;
+  ROOM_INDEX_DATA *from, *somewhere, *to;
+  long secs = forage_move_secs();
+  int moved = 0;
+
+  if ( herbs != NULL )
+    *herbs = 0;
+  if ( comps != NULL )
+    *comps = 0;
+
+  FOR_EACH_OBJECT( iter, obj )
+  {
+    if ( moved >= FORAGE_MOVE_MAX )
+      break;
+    if ( ( from = obj->in_room ) == NULL || !is_forage_obj( obj )
+    ||   !obj->enc_floor || obj->enc_since <= 0 || obj->enc_source == NULL
+    ||   ( strcmp( obj->enc_source, "scatter" ) && strcmp( obj->enc_source, "moved" ) )
+    ||   (long) ( current_time - obj->enc_since ) < secs
+    ||   room_has_player( from ) )
+      continue;
+    if ( ( somewhere = random_scatter_room( NULL ) ) == NULL
+    ||   ( to = component_scatter_room( somewhere->area ) ) == NULL
+    ||   to == from )
+      continue;                 /* tried again next round */
+    obj_from_room( obj );
+    obj_to_room( obj, to );
+    encounter_obj_moved( obj, from->vnum );
+    moved++;
+    if ( obj->item_type == ITEM_HERB )
+    {
+      if ( herbs != NULL )
+        ( *herbs )++;
+    }
+    else if ( comps != NULL )
+      ( *comps )++;
+    send_to_room( obj->item_type == ITEM_HERB
+                  ? "You notice a strange plant on the ground.\n\r"
+                  : "You notice something strange on the ground.\n\r", to->vnum );
+  }
+  return moved;
+}
+
+static const char *forage_plural( int n, const char *one, const char *many )
+{
+  return n == 1 ? one : many;
+}
+
+/*
+ * A round that moved anything on says so (owner, 2026-11-15: "make a
+ * wizinfo and info and log entry when this happens with how many got
+ * scattered also"): to the log and to staff on WIZINFO, with what lies on
+ * the ground now, and to players on INFO, with no room or area -- they
+ * are told to look, not where. LAID_* are what the same round scattered.
+ */
+void forage_announce( int moved_herbs, int moved_comps, int laid_herbs, int laid_comps )
+{
+  char buf[MAX_STRING_LENGTH];
+  int herbs, comps;
+
+  if ( moved_herbs + moved_comps <= 0 )
+    return;
+  count_components( &herbs, &comps );
+  snprintf( buf, sizeof(buf),
+            "Forage: moved %d %s and %d %s unfound for a day; scattered %d %s and %d %s; "
+            "%d/%d herbs and %d/%d components now on the ground.",
+            moved_herbs, forage_plural( moved_herbs, "herb", "herbs" ),
+            moved_comps, forage_plural( moved_comps, "component", "components" ),
+            laid_herbs, forage_plural( laid_herbs, "herb", "herbs" ),
+            laid_comps, forage_plural( laid_comps, "component", "components" ),
+            herbs, HERB_CEILING, comps, COMPONENT_CEILING );
+  log_string( buf );
+  wizinfo( buf, LEVEL_IMMORTAL );
+  snprintf( buf, sizeof(buf),
+            "The wind shifts: %d %s and %d spell %s nobody found %s moved somewhere new",
+            moved_herbs, forage_plural( moved_herbs, "herb", "herbs" ),
+            moved_comps, forage_plural( moved_comps, "component", "components" ),
+            forage_plural( moved_herbs + moved_comps, "has", "have" ) );
+  if ( laid_herbs + laid_comps > 0 )
+  {
+    char more[128];
+
+    snprintf( more, sizeof(more), ", and %d more %s been scattered across the world",
+              laid_herbs + laid_comps,
+              forage_plural( laid_herbs + laid_comps, "has", "have" ) );
+    toc_strlcat( buf, more, sizeof(buf) );
+  }
+  toc_strlcat( buf, ".", sizeof(buf) );
+  send_info( buf );
+}
+
 void component_update( void )
 {
+  int moved_herbs, moved_comps, before_herbs, before_comps, after_herbs, after_comps;
+
+  forage_relocate_stale( &moved_herbs, &moved_comps );
+  count_components( &before_herbs, &before_comps );
   component_scatter( false );
+  count_components( &after_herbs, &after_comps );
+  forage_announce( moved_herbs, moved_comps,
+                   UMAX( 0, after_herbs - before_herbs ), UMAX( 0, after_comps - before_comps ) );
 }
 
 /* One round of laying: every tick a chance of each, or ALWAYS for staff

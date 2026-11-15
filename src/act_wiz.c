@@ -9484,14 +9484,19 @@ void do_component_update( CHAR_DATA *ch, char *argument )
     char buf[MAX_STRING_LENGTH];
     int before_herbs, before_comps;
     int after_herbs, after_comps;
+    int moved, moved_herbs, moved_comps;
 
     UNUSED_PARAM(argument);
 
+    /* What lay too long moves on (update.c). */
+    moved = forage_relocate_stale( &moved_herbs, &moved_comps );
     count_components( &before_herbs, &before_comps );
     component_scatter( true );
     component_scatter( true );
     component_scatter( true );
     count_components( &after_herbs, &after_comps );
+    forage_announce( moved_herbs, moved_comps, after_herbs - before_herbs,
+                     after_comps - before_comps );
 
     snprintf( buf, sizeof(buf),
         "Scattered %d herb%s and %d spell component%s.\n\r"
@@ -9502,6 +9507,11 @@ void do_component_update( CHAR_DATA *ch, char *argument )
         after_comps - before_comps == 1 ? "" : "s",
         after_herbs, HERB_CEILING, after_comps, COMPONENT_CEILING );
     send_to_char( buf, ch );
+    if ( moved > 0 )
+    {
+        snprintf( buf, sizeof(buf), "Moved %d that had lain unfound too long.\n\r", moved );
+        send_to_char( buf, ch );
+    }
     return;
 }
 

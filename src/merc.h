@@ -1074,6 +1074,7 @@ int   rest_xp_bonus    args( ( CHAR_DATA *ch, int xp ) );
    fought or taken; the rare visitors; a census of what lies about. */
 void  encounter_obj_floor    args( ( OBJ_DATA *obj ) );
 void  encounter_laid         args( ( OBJ_DATA *obj, const char *source ) );
+void  encounter_obj_moved    args( ( OBJ_DATA *obj, int from_vnum ) );
 void  encounter_obj_held     args( ( OBJ_DATA *obj, CHAR_DATA *ch ) );
 void  encounter_obj_off_floor args( ( OBJ_DATA *obj, const char *why ) );
 void  encounter_room_seen    args( ( CHAR_DATA *ch, bool arrived ) );
@@ -3807,6 +3808,8 @@ void    room_index_forget ( ROOM_INDEX_DATA *room );
 void    count_components ( int *herbs, int *comps );
 bool    is_forage_obj ( const OBJ_DATA *obj );
 void    component_scatter ( bool always );
+int     forage_relocate_stale ( int *herbs, int *comps );
+void    forage_announce ( int moved_herbs, int moved_comps, int laid_herbs, int laid_comps );
 int     telnet_count_players ( void );
 
 /* Defined in update.c, beside the scatterer that enforces them: how many

@@ -79,6 +79,8 @@ class EncounterSummaryTests(unittest.TestCase):
             row("passed", 2, "herb", 35, "a sprig of angelica", 1260, 60, 1, "scatter", "4208", "left"),
             row("cleared", 2, "herb", 35, "a sprig of angelica", 9000, 1, "scatter", "mob 3062",
                 "(mobile_update)", "4208", "dresden.are"),
+            row("moved", 3, "component", 60, "a rakshasa's claw", 86400, 0,
+                "3001", "midgaard.are", "6100", "haon.are"),
             row("rare-seen", "dealer", 29940, 77, "arrive"),
             row("rare-acted", "dealer", 29940, 77, "bought", 30),
             row("rare-seen", "goblin", 29941, 78, "arrive"),
@@ -95,6 +97,7 @@ class EncounterSummaryTests(unittest.TestCase):
                          (herb["laid"], herb["objects"], herb["sightings"], herb["picked"],
                           herb["passed"], herb["cleared"]))
         self.assertEqual({"mob": 1}, dict(s["cleared_why"]["herb"]))
+        self.assertEqual(1, s["kinds"]["component"]["moved"])
         self.assertEqual([10.0, 20.0], s["lain_first"]["herb"])
         self.assertEqual(1, s["per_vnum"][("herb", "35", "a sprig of angelica")]["passed"])
         self.assertEqual(1, s["rare"]["dealer"]["bought"])
@@ -193,6 +196,64 @@ class EncounterLiveTests(unittest.TestCase):
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class EncounterPrivacyTests(unittest.TestCase):
     """The journal is published every five minutes (review, 2026-11-13)."""
+
+    def test_a_herb_or_component_unfound_for_a_day_moves_on(self) -> None:
+        """Owner, 2026-11-14: "if a component isn't picked up in 24 hours
+        they should shift locations". With the day shortened to a second,
+        what staff COMPONENT laid is moved on by the next COMPONENT: a
+        "moved" row closes each stint and a new one begins where it lands.
+        One a player dropped stays, and none moves from under a player."""
+        with LiveMud(fixtures=True, extra_env={"TOC_FORAGE_MOVE_SECS": "1"}) as mud:
+            make(mud, "Zforstaff", Levl=70, Room=TEMPLE)
+            make(mud, "Zforhero", Levl=65, Room=TEMPLE)   # safe wherever it is sent
+            started = int(time.time()) - 1
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as hero:
+                login(staff, "Zforstaff", PW)
+                login(hero, "Zforhero", PW)
+                for client in (staff, hero):
+                    client.sync("scroll 0")
+                staff.must(f"goto {SPARRING_FLOOR}", "")
+                staff.must(f"load obj {AMARANTH}", "You create")
+                staff.must("drop amaranth", "You drop")
+                staff.must(f"goto {TEMPLE}", "")
+                staff.must("component", "lie waiting")
+                laid = [r for r in rows(mud) if r[1] == "laid" and int(r[0]) >= started]
+                self.assertTrue(laid, "COMPONENT laid nothing")
+                # The hero stands with the first one laid: it stays put.
+                guarded = laid[0]
+                staff.must(f"transfer zforhero {guarded[10]}", "")
+                time.sleep(2.5)
+                moved_reply = staff.must("component", "lie waiting")
+                self.assertIn("Moved", moved_reply)
+                # Staff hear it on WIZINFO, players on INFO, with no room
+                # or area; the log keeps it (2026-11-15).
+                staff.drain(1.0)
+                hero.drain(1.0)
+                self.assertRegex(staff.transcript, r"Forage: moved \d+ herbs? and \d+ components?"
+                                 r" unfound for a day; scattered \d+")
+                info = hero.transcript[hero.transcript.find("The wind shifts"):]
+                self.assertIn("[INFO] The wind shifts", hero.transcript)
+                self.assertNotRegex(info.split("\n")[0], r"\.are|\d{4}")
+                hero.send("quit")
+                self.assertTrue(hero.wait_closed())
+                staff.send("quit")
+                staff.wait_closed()
+            mine = [r for r in rows(mud) if r[0].isdigit() and int(r[0]) >= started]
+            toc_log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
+
+        self.assertIn("Forage: moved", toc_log)
+        moved = [r for r in mine if r[1] == "moved"]
+        laid_ids = {r[6]: r for r in mine if r[1] == "laid"}
+        self.assertTrue(moved, "nothing moved")
+        for r in moved:
+            with self.subTest(id=r[6]):
+                self.assertIn(r[6], laid_ids, "only what the world laid moves")
+                self.assertGreaterEqual(int(r[10]), 1, "it lay its day first")
+                self.assertEqual(laid_ids[r[6]][10], r[12], "from where it was laid")
+                self.assertNotEqual(r[12], r[14], "to another room")
+        self.assertNotIn(guarded[6], {r[6] for r in moved}, "moved from under a player")
+        self.assertNotIn("34", {r[8] for r in moved if r[12] == str(SPARRING_FLOOR)},
+                         "a dropped herb is its dropper's")
 
     def test_wizinvis_staff_clearing_the_floor_writes_no_row(self) -> None:
         """A wizinvis immortal's GET and SACRIFICE of a herb were written as

@@ -1089,12 +1089,15 @@ def activity_report(args, since) -> None:
 #   picked      id  kind  vnum  name  lain_s  since_spotted_s  seers  source  command
 #   passed      id  kind  vnum  name  lain_s  in_view_s  seers  source  room  how
 #   cleared     id  kind  vnum  name  lain_s  seers  source  why  actor  room  area
+#   moved       id  kind  vnum  name  lain_s  seers  from_room  from_area  to_room  to_area
+#               (a herb or component the world laid, unfound for a day: it
+#               starts a new stint, with a new id, where it lands)
 #   rare-seen   kind  vnum  visit  how
 #   rare-acted  kind  vnum  visit  what  since_seen_s
 #   rare-passed kind  vnum  visit  in_view_s  how
 #   sightings   mob|item  "vnum:seen/fought/attacked ..." | "vnum:seen/taken ..."
 #   census      "herbs=a/b components=..."  "herbs_held=..."  "laid=... secs=..."
-ENCOUNTER_KINDS = ("laid", "spotted", "picked", "passed", "cleared", "rare-seen",
+ENCOUNTER_KINDS = ("laid", "spotted", "picked", "passed", "cleared", "moved", "rare-seen",
                    "rare-acted", "rare-passed", "sightings", "census", "session")
 
 
@@ -1170,6 +1173,8 @@ def encounter_summary(rows) -> dict:
             kinds[f[7]]["cleared"] += 1
             why = f[13].split()[0] if f[13] else "?"
             cleared_why[f[7]][why] += 1
+        elif kind == "moved" and len(f) > 15:
+            kinds[f[7]]["moved"] += 1
         elif kind == "rare-seen" and len(f) > 9:
             rare[f[6]]["sightings"] += 1
             rare_visits[f[6]].add(f[8])
@@ -1237,13 +1242,14 @@ def encounter_report(args, since) -> None:
         return
     hours = s["play_hours"]
     print("  on the ground (laid, objects seen, sightings, by players, picked, passed, "
-          "cleared, pick rate, sightings an hour played):")
+          "cleared, moved on unfound, pick rate, sightings an hour played):")
     for k, c in sorted(s["kinds"].items()):
         choice = c["picked"] + c["passed"]
         per_hour = f"{c['sightings'] / hours:5.1f}" if hours > 0 else "    -"
         print(f"    {k:<10} laid {c['laid']:<5} seen {c['objects']:<5} sightings {c['sightings']:<5}"
               f" players {c['players']:<3} picked {c['picked']:<4} passed {c['passed']:<4}"
-              f" cleared {c['cleared']:<4} pick {_rate(c['picked'], choice)} {per_hour}/h"
+              f" cleared {c['cleared']:<4} moved {c['moved']:<4}"
+              f" pick {_rate(c['picked'], choice)} {per_hour}/h"
               + (f" ({c['picked unseen']} picked unseen)" if c["picked unseen"] else ""))
     for k in sorted(s["lain_first"]):
         print(f"    {k:<10} minutes lain before first seen: median "

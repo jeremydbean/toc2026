@@ -3962,7 +3962,9 @@ log says what a player typed; the journal says what happened, in columns
   `enc_id`, the time, source `dropped` under a command, else `world`) and
   ends in `obj_to_char`/`get_obj`'s room branch (`encounter_obj_held`: a
   counted player's `picked`, or `cleared` by a mobile or staff),
-  `obj_to_obj` or `extract_obj` (`encounter_obj_off_floor`: `cleared`).
+  `obj_to_obj` or `extract_obj` (`encounter_obj_off_floor`: `cleared`),
+  or a day unfound (`moved`, `encounter_obj_moved`; see Scattering Things
+  Into The World).
   `laid` comes from the scatterers (`encounter_laid`: `component_scatter`,
   the egg hunt, a goblin's spill), `spotted` from do_look's room view
   (`encounter_room_seen`, arriving or LOOK, only standing in the room --
@@ -4981,7 +4983,23 @@ what lies on the ground (`count_components`), and `telnet_count_players()
 < 1` stops the world filling up while it is empty. **They never rot**
 (owner, 2026-11-13): laid with timer 0, and `obj_update` clears an old
 twelve-hour clock on any `is_forage_obj` carried from before; the ceiling
-on the ground is what keeps a long uptime from filling the world.
+on the ground is what keeps a long uptime from filling the world. **What
+nobody picks up in a day moves on** (owner, 2026-11-14: "if a component
+isn't picked up in 24 hours they should shift locations"; two components
+and one herb of nearly four hundred laid had been picked up):
+`forage_relocate_stale()` in `update.c`, first in `component_update` and
+in staff COMPONENT, takes one the world laid (`enc_source` "scatter" or
+"moved", never one a player dropped) that has lain `FORAGE_MOVE_SECS`
+(a day; `TOC_FORAGE_MOVE_SECS` for tests) to a room of another area
+chosen as the scatterer chooses one, never from under a player standing
+with it, at most `FORAGE_MOVE_MAX` (20) a round. `encounter_obj_moved`
+writes a `moved` row (`log/play.tsv`) and starts a new stint with a new
+id, so its time to be found counts from the move
+(`tests/test_encounter_log.py`). A round that moved anything is announced
+by `forage_announce` (owner, 2026-11-15): a `Forage: moved ...; scattered
+...` line, with the counts on the ground, to `log/toc.log` and WIZINFO,
+and an INFO line to players with no room or area. Uptime only: a restart
+lays the world afresh.
 
 ## Monster Wards
 

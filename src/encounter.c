@@ -277,6 +277,35 @@ void encounter_laid( OBJ_DATA *obj, const char *source )
     playlog_row( "laid", NULL, fields );
 }
 
+/* The world moved it on (forage_relocate_stale in update.c, after
+   obj_to_room into its new room): a "moved" row closes the stint that
+   ended -- how long it lay, how many saw it, where -- and a new stint
+   begins where it is now, with a new id, so its time to be found counts
+   from the move. */
+void encounter_obj_moved( OBJ_DATA *obj, int from_vnum )
+{
+    char fields[ENC_FIELDS], name[80], room[16], area[64], troom[16], tarea[64];
+    const char *kind;
+
+    if ( obj == NULL || obj->in_room == NULL )
+        return;
+    if ( ( kind = life_kind( obj ) ) != NULL )
+    {
+        obj_name( obj, name, sizeof(name) );
+        room_text( from_vnum, room, sizeof(room), area, sizeof(area) );
+        room_text( obj->in_room->vnum, troom, sizeof(troom), tarea, sizeof(tarea) );
+        snprintf( fields, sizeof(fields), "%ld\t%s\t%d\t%s\t%ld\t%d\t%s\t%s\t%s\t%s",
+                  obj_id( obj ), kind, obj->pIndexData->vnum, name, lain( obj ),
+                  obj->enc_seers, room, area, troom, tarea );
+        playlog_row( "moved", NULL, fields );
+    }
+    obj->enc_id     = ++enc_next_id;
+    obj->enc_since  = current_time;
+    obj->enc_seers  = 0;
+    obj->enc_source = "moved";
+    obj->enc_floor  = true;
+}
+
 static void write_cleared( OBJ_DATA *obj, const char *kind, const char *why )
 {
     char fields[ENC_FIELDS], name[80], room[16], area[64], actor[96];
