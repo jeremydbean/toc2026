@@ -306105,3 +306105,18 @@ Sun Nov 15 20:37:13 2026 :: Black market: the dealer left the world from room 13
 Sun Nov 15 20:38:31 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 4 of 6 in 6 hours).
 Sun Nov 15 20:41:37 2026 :: Treasure goblin: vanished from room 20530 (Under Dark Woods, emerald.are) (too long in one area).
 Sun Nov 15 20:43:35 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 2 of 6 in 6 hours).
+Sun Nov 15 20:48:41 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 2 of 6 in 6 hours).
+Sun Nov 15 20:50:45 2026 :: Connection guard: last hour 15 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 1 addresses paused and 0 refused now, 14 active player addresses.
+Sun Nov 15 20:50:58 2026 :: Connection guard: 45.156.128.176 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 15 20:51:04 2026 :: Sock.sinaddr:  45.156.128.179
+Sun Nov 15 20:51:04 2026 :: EOF encountered on read.
+Sun Nov 15 20:51:04 2026 :: Connection guard: 45.156.128.179 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sun Nov 15 20:51:29 2026 :: Connection guard: 45.156.128.179 closed without a word (strike 2 of 6 in 6 hours).
+Sun Nov 15 20:51:41 2026 :: Treasure goblin: vanished from room 2323 (The edge of the sea, mahntor.are) (too long in one area).
+Sun Nov 15 20:51:42 2026 :: Sock.sinaddr:  45.156.128.176
+Sun Nov 15 20:51:43 2026 :: EOF encountered on read.
+Sun Nov 15 20:51:43 2026 :: Connection guard: 45.156.128.176 closed before a password prompt (strike 2 of 6 in 6 hours).
+Sun Nov 15 20:51:57 2026 :: Sock.sinaddr:  45.156.128.176
+Sun Nov 15 20:51:57 2026 :: EOF encountered on read.
+Sun Nov 15 20:51:57 2026 :: Connection guard: 45.156.128.176 closed before a password prompt (strike 3 of 6 in 6 hours).
+Sun Nov 15 20:52:03 2026 :: Connection guard: 45.156.128.177 closed without a word (strike 1 of 6 in 6 hours).

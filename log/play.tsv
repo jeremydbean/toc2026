@@ -31420,3 +31420,12 @@
 1794775565	laid	-	0	0	-	1070	component	72	a minotaur's ear	25052	mountain.are	scatter
 1794775629	laid	-	0	0	-	1071	herb	42	a marjoram plant	3837	ratslair.are	scatter
 1794775629	laid	-	0	0	-	1072	component	67	a beholder's eye	5236	oldthalo.are	scatter
+1794775698	laid	-	0	0	-	1073	herb	36	a belladonna plant	2026	catacomb.are	scatter
+1794775752	laid	-	0	0	-	1074	herb	40	a clove	25257	mushroom.are	scatter
+1794775752	laid	-	0	0	-	1075	herb	50	a head of cabbage	25265	mushroom.are	scatter
+1794775752	laid	-	0	0	-	1076	component	60	a rakshasa's claw	6562	dwarves.are	scatter
+1794775846	census	-	0	0	-	herbs=72/150 components=43/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=20 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1794775852	laid	-	0	0	-	1077	herb	35	a sprig of angelica	25017	mountain.are	scatter
+1794775939	laid	-	0	0	-	1078	herb	45	a sarsaparilla vine	16036	pirate.are	scatter
+1794775939	laid	-	0	0	-	1079	herb	49	a pomegranate	16065	pirate.are	scatter
+1794775939	laid	-	0	0	-	1080	component	71	a goblin's finger	2403	dresden.are	scatter
