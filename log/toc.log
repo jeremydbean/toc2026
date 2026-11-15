@@ -304324,3 +304324,9 @@ Sun Nov 15 09:19:54 2026 :: Connection guard: last hour 15 closed without a word
 Sun Nov 15 09:23:18 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 5 of 6 in 6 hours).
 Sun Nov 15 09:27:55 2026 :: Treasure goblin: vanished from room 2147 (Achilles Avenue, hood.are) (too long in one area).
 Sun Nov 15 09:28:23 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 2 of 6 in 6 hours).
+Sun Nov 15 09:33:28 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 5 of 6 in 6 hours).
+Sun Nov 15 09:36:48 2026 :: Sock.sinaddr:  138.91.106.142
+Sun Nov 15 09:36:48 2026 :: EOF encountered on read.
+Sun Nov 15 09:36:48 2026 :: Connection guard: 138.91.106.142 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sun Nov 15 09:36:49 2026 :: Sock.sinaddr:  138.91.106.142
+Sun Nov 15 09:36:49 2026 :: Connection guard: 138.91.106.142 closed before a password prompt (strike 2 of 6 in 6 hours).
