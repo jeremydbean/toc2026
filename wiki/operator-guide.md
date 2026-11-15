@@ -46,6 +46,13 @@ rooms, kept out of staff rooms, deaf to IMMTALK, GODTALK and WIZINFO, shown
 no staff-only CHANGES, REPORTS banner or mail to `immortal`, and blind to
 wizinvis staff. To make somebody staff, make them an immortal by level.
 
+The same holds for possession: SWITCH is refused to anybody below immortal
+level, trust or not (2026-11-14), and a switched immortal's QUIT returns them
+to their body and SAVE saves their own character. Nobody else can command a
+mobile an immortal is in -- CHARM PERSON and ORDER both refuse it -- and a
+charmed player obeys ORDER only for what happens in the room (no aliases,
+channels, tells, notes, settings, stash, spending or quitting).
+
 ```text
 wizhelp
 help <immortal-command>
@@ -76,9 +83,21 @@ Confirm:
 - Disk space can accommodate player versions, logs, image layers, and archives.
 - Dashboard health agrees with a real MUD client connection.
 
-Recounted on 2026-11-12, the checked-in parser inventory is 102 listed area
-files, 7,766 rooms, 2,507 mobiles, and 3,760 objects (the native validator
-said `areas=95 mobs=2507 objects=3760 rooms=7766`); recount with the tools
+Four read-only tools read the synced logs from git (run them from the
+repository root after `git fetch`; they strip addresses, but they print
+character names, so do not paste their output anywhere public):
+
+```bash
+python3 tools/log_report.py --since 2026-11-14     # players, refusals, BUG lines,
+                                                   # sessions, encounters, crashes
+python3 tools/balance_report.py                    # kill rates by area and band
+python3 tools/consider_audit.py                    # CONSIDER against real fights
+python3 tools/audit_players.py                     # player files against the tables
+```
+
+Recounted on 2026-11-15, the checked-in parser inventory is 102 listed area
+files, 7,766 rooms, 2,508 mobiles, and 3,762 objects (the native validator
+said `areas=95 mobs=2508 objects=3762 rooms=7766`); recount with the tools
 rather than trusting this line. Native and Python area totals differ because seven
 listed help/social files have no `#AREA` record: the native validator reports
 95 areas, including the `custom.are` builder workshop. Investigate unexpected deltas, not the known counting model.
@@ -354,6 +373,7 @@ HELP MAPS). Two level 65 commands, both logged:
 
 ```text
 grantmap <player> <area|hyrule1..hyrule9|all>
+grantmap <player> <area|hyrule1..hyrule9|all> revoke
 grantmap list
 cartographer [status|spawn|here|dismiss]
 ```
@@ -361,10 +381,31 @@ cartographer [status|spawn|here|dismiss]
 GRANTMAP gives the whole map of an area (by file name, as `camelot`, or the
 start of its name), of one Hyrule dungeon, or of everything, to a player online
 or saved. It saves their file, reports an unconfirmed save, refuses a player who
-outranks you, and goes to WIZINFO at the pair's notice level. A map cannot be
-taken away again. CARTOGRAPHER shows where the wandering cartographer (mob
+outranks you, and goes to WIZINFO at the pair's notice level. REVOKE at the
+end takes a map back under the same rules: rooms the player has walked into
+stay known, a Hyrule dungeon map found in play is kept, and no achievement is
+taken away; an online player's Mudlet map hides the rooms at once.
+CARTOGRAPHER shows where the wandering cartographer (mob
 29942) is and when he leaves or next comes, or calls or dismisses him. His
 arrival goes to the public log without a room and to WIZINFO with it.
+
+## Herbs, Components And Quest Areas
+
+Herbs and spell components are laid by the tick while anybody plays, up to 150
+herbs and 100 components on the ground, and never rot. One the world laid that
+nobody picks up within a day is moved to a room in another area (at most 20 a
+round, never from under a player standing with it, never one a player
+dropped); each round that moves any writes a `Forage:` line to `log/toc.log`
+and WIZINFO with the counts, and tells players on INFO with no room or area.
+`component` (level 69) lays a round now and runs the same move. A restart lays
+the world afresh, so nothing moves until a day after it.
+
+The questmaster never picks a target in Hyrule, the training yard, Azeroth or
+Descent to Hell. The last two are `quest_unwanted_areas[]` in `src/quest.c`,
+taken out on 2026-11-15 because players abandoned their quests more than any
+other area's; add an area there only on that kind of evidence (the
+`quest-failed` outcome rows in `log/play.tsv` name the area), and say so in
+HELP AQUEST.
 
 ## Moderation And Player Safety
 
@@ -507,10 +548,10 @@ The file is generated, not live. After any change to exits, portals or
 python3 tools/build_directions.py
 ```
 
-Two areas have no route because nothing in the world links to them: the Quest
-Zone (20301-20313), which is finished content with no entrance, and Temple
-Despair (26000-26006), which has no mobs or objects at all. Dresden has none
-because it contains the square the routes start from.
+Every area that holds rooms has a route but Dresden, which contains the square
+the routes start from. The Quest Zone and Temple Despair, which nothing linked
+to, were removed on 2026-11-11; `quest1.are` keeps only the objects the quest
+master and the newbie kit hand out.
 
 ## Area And World Changes
 

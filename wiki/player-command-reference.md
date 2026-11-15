@@ -72,7 +72,7 @@ Contextual movement may also be attached to `push`, `pull`, `move`, `turn`,
 | `achievements [view]` | Points and progress for levels, bosses, relics, crafting, economy, unusual deaths, quests, exploration, and Hyrule |
 | `diary [yesterday \| yyyy-mm-dd \| list]` | Your day written down: time played, levels, kills, deaths, quests, achievements, skills, areas, things gained, coin in and out (the last 30 days) |
 | `equipment`, `inventory`, `worth` | Worn items, carried items, and carried coin with experience to level (`balance` shows the bank) |
-| `consider <target>` | Size up a fight before starting it |
+| `consider <target>` | Size up a fight before starting it; counts your skills and spells once it has seen three of your solo kills |
 | `danger` | Danger Sense: the other players in your area, roughly how far, and how many are stealthed |
 | `compare <item> [item]`, `compare upgrades [slot]`, `compare profile` | Which gear makes you hit harder; the best gear you can get today |
 | `lore <object>` | Inspect an item with lore knowledge |
@@ -186,7 +186,7 @@ remort thresholds and class/race restrictions.
 | `group` | Review or change group membership |
 | `gtell` | Send a group message |
 | `report` | Say your current and maximum hit points, mana and endurance, and your experience, to the room |
-| `order` | Command supported charmed followers |
+| `order` | Command your charmed followers; a charmed player obeys only for what happens in the room |
 | `split` | Split coins with the group: `split 30 silver` (gold if no kind is named) |
 | `autoassist`, `autosplit` | Toggle automatic group behavior |
 | `nofollow`, `noloot` | Set follower and corpse-loot preferences |
@@ -214,7 +214,7 @@ Some channel commands are level-gated or may be disabled by local rules.
 
 | Commands | Use |
 |---|---|
-| `aquest` | Main automated quest command family |
+| `aquest` | Main automated quest command family: kill or recover quests, rush and emergency contracts, a streak bonus |
 | `pkill <password>` | Become a player killer for good, from level 15 (staff can lift it; a remort clears it) |
 | `steal` | Attempt theft; rules and consequences apply. A fumble is bad luck; "too wary" means the target is beyond your level |
 | `murder` | Explicit player-hostile attack |
@@ -301,9 +301,11 @@ An in-game seer who answers questions about the game.
   now, and where items drop. Follow-up questions in one audience work.
 - She answers only questions about Times of Chaos, and keeps answers short.
 - An audience lasts at most five minutes, less if you fall silent. However it
-  ends, you return to where you prayed, dazed for a moment.
-- You cannot pray in battle, while your blood is still up, while something
-  hunts you, or from a death trap.
+  ends, you return to where you prayed. Only a player killer comes back
+  dazed (a minute, unless they prayed from a safe room).
+- You cannot pray in battle, while something or somebody hunts you, or from
+  a death trap; after a `flee` PRAY waits three minutes, ten after any fight
+  with another player.
 - Repeated off-topic questions make her leave; the gods may bar a troublemaker.
 
 ## Related Guides

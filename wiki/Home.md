@@ -1,8 +1,8 @@
 # Times of Chaos Documentation
 
 Welcome to the maintained documentation for Times of Chaos. Recounted on
-2026-11-12, the world inventory is 102 listed area entries, 7,766 rooms, 2,507
-mobiles, and 3,760 objects; `../merc --check-area` and `scripts/area_lint.py`
+2026-11-15, the world inventory is 102 listed area entries, 7,766 rooms, 2,508
+mobiles, and 3,762 objects; `../merc --check-area` and `scripts/area_lint.py`
 give the current figures. The live game runs on Oracle Cloud (`timesofchaos.com`); see
 [Disaster Recovery](disaster-recovery.md) for deploys and recovery.
 

@@ -127,11 +127,16 @@ game now (`src/connguard.c`, owner's rules of 2026-11-06):
 - pauses an address **no player has logged in from in the last 90 days**
   for six hours after six connections in six hours that reach no password
   prompt, or twenty in a minute, doubling for each pause in a week, to
-  seven days. A pause stops **new characters only**: a player on an
-  address the guard does not know yet (a new ISP, a phone, a carrier's
-  shared address) still logs in, and that lifts the pause. A connection
-  the login prompt timed out, an MSSP poll and a web-bridge connection are
-  never strikes;
+  seven days. Since 2026-11-13 a paused address is **reset at connect with
+  no reply**, as a closed port answers (the kernel still completes the
+  handshake; refusing that needs a firewall). A player's address is never
+  paused, so a player is refused only on an address the guard does not
+  know yet (a new ISP, a phone, a carrier's shared address) that has
+  already been paused; staff `DNS ALLOW <address>` lets them in, and a
+  login already at the prompt when a pause begins still lifts it. A
+  connection the login prompt timed out, an MSSP poll and a web-bridge
+  connection are never strikes. Every connection that goes nowhere is
+  logged with its address and its strike count;
 - refuses a flood -- sixty connections in a minute -- before the greeting
   for an hour;
 - tells staff, as WIZINFO, every pause, flood refusal and lifted pause, a
@@ -146,9 +151,10 @@ game now (`src/connguard.c`, owner's rules of 2026-11-06):
 - allows any address at most eight connections waiting to log in, and the
   whole game two hundred from addresses no player uses; refuses a
   descriptor `select()` could not hold (`FD_SETSIZE`);
-- keeps pauses in memory: a restart lifts them, deliberately (the record of
-  players' addresses is what is kept). That record is believed only when
-  read whole -- an unreadable file is never taken for a missing one or
+- keeps pauses across restarts in `log/guard_pauses.tsv` (written aside and
+  renamed in when a pause starts or ends, read at boot), so a pause keeps
+  its length and doubles across deploys. The record of players' addresses
+  is believed only when read whole -- an unreadable file is never taken for a missing one or
   written over -- and only record by record: a torn line, a time that
   overflows or lies more than a day ahead is refused, and every write
   error is kept, so a failed write is never mistaken for a saved one;

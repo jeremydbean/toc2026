@@ -286,14 +286,14 @@ python3 -m unittest discover -s tests
 git diff --check
 ```
 
-October 2026 parser baseline:
+Parser baseline (recounted 2026-11-15):
 
 ```text
 102 listed area entries
-2,494 mobiles
-3,721 objects
-7,787 rooms
-0 critical, 12 warning, 1,635 information area-health findings
+2,508 mobiles
+3,762 objects
+7,766 rooms
+0 critical, 12 warning, 1,691 information area-health findings
 ```
 
 Seven `area.lst` entries (`commands.are`, `routelist.are`, `skills.are`,

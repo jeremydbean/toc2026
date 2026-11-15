@@ -266,6 +266,10 @@ dangerous one-way area assuming `recall` will always rescue you.
 ## Combat
 
 Start with `consider <target>`, then use `kill <target>` for a normal NPC fight.
+CONSIDER weighs both sides' weapons, armour, hit chance and defences, and once
+you have killed three foes alone it adds the damage your own skills and spells
+did a round in your recent fights, and says how much; it learns again as you
+level. Fleeing and luck are not in it, so treat its verdict as a guide.
 Class and guild abilities appear in `skills` and `spells`; read each relevant
 help topic before spending practices.
 
@@ -539,6 +543,10 @@ repair <object>
 Magic and consumable object commands include `quaff`, `recite`, `brandish`,
 `zap`, `eat`, `drink`, `fill`, `brew`, `scribe`, and `concoct`. The item type,
 class skills, charges, and room rules determine whether each command works.
+The herbs and spell components that `brew`, `concoct` and `scribe` use turn up
+on the ground all over the world (never in Hyrule) and never wither; one
+nobody picks up within a day moves on to another area. `brew preview` and
+`concoct preview` say what you could make, for free.
 
 ### Compare
 
@@ -677,9 +685,21 @@ aborting and shopping are business with a questmaster and need one present.
 Every subcommand abbreviates to its first letter. Quest points and rewards are
 distinct from ordinary shop progression.
 
+A quest is to kill a creature or to recover an item. The items carry the crests
+of the game's immortals -- Trinidad's journal, Soulcrusher's amulet, Eclipse's
+crown, Gravestone's sceptre, Tifarah's heart and the Signet of Killuminati --
+and each is bound to you and vanishes when the quest ends. Most quests allow 10
+to 30 minutes; about one in five is a RUSH (5 to 8 minutes, double points) and
+one in twenty an EMERGENCY (5 minutes, five times the points). Quests in a row
+build a streak bonus of up to 300% more points. Abandoning a quest, quitting
+on one or running out of time ends the streak, except an EMERGENCY that runs
+out of time, which keeps it. The wait between quests runs while you are logged
+out too.
+
 The questmaster never sends you into Hyrule -- it is too large and too new to
 be fair as a quest target, and its dungeons do not let you recall -- nor to the
-Training Dummy Yard, whose dummy cannot die. Every other area can come up.
+Training Dummy Yard, whose dummy cannot die, nor to Azeroth or Descent to Hell,
+the quests players turned down most. Every other area can come up.
 
 `pkill` controls or reports player-killing state according to the live rules.
 PK commands, theft, hostile spells, charm, grouping, and corpse handling may
@@ -710,8 +730,10 @@ return portals.
   gives every player it credits a key of their own to the locked room behind
   it, where a locked chest holds this dungeon's piece and treasure. Taking the
   piece spends the key, and a key is lost at `quit`. `help hyrule` has the
-  whole chain. Every guardian is sized to beat a lone character at the top
-  of its band: go well above it, or go with friends.
+  whole chain. An ordinary character at the top of a dungeon's band, with
+  no buffs, wins about two fights in three against the first seven
+  guardians; Level 8's is a fight for two and Ganon one for three. Go well
+  above the band, or go with friends.
 - Ganon is a fight for a group, ideally with two Silver Arrows: he blinks
   about the dark throwing fireballs no parry stops, and heals if left alone.
   His Golden Key opens Zelda's chamber and the great chest there, which holds
@@ -782,10 +804,13 @@ curtain, returns you to where you prayed. She attends one seeker at a time.
 - She answers only questions about Times of Chaos and keeps them brief.
 - An audience lasts at most five minutes, less if you fall silent. However it
   ends -- done, silence, time, or her walking out on off-topic questions --
-  you return to where you prayed, dazed for a moment.
-- It is never an escape: you cannot pray in battle, while your blood is still
-  up after a fight or a flight, while something hunts you, or from a death
-  trap.
+  you return to where you prayed. A player killer comes back dazed for a
+  minute (every command but `quit` refused) unless they prayed from a safe
+  room such as the Temple altar; nobody else is dazed.
+- It is never an escape: you cannot pray in battle, while something or
+  somebody hunts you, or from a death trap, and after you `flee` she waits
+  three minutes -- ten after any fight with another player.
+- Asking her a question earns the Seeker of Answers achievement.
 
 ## Character Settings
 

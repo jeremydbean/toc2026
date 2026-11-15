@@ -1414,8 +1414,8 @@ from two spell components, in either order.
     from what you carry.
   - What you make is your level, and nobody below it can use it.
   - Herbs and components turn up all over the world, outside Hyrule, and
-    lie where they fell until somebody picks them up; they never wither.
-    Every recipe is in the Magic Book, in Hyrule's Level 8.
+    never wither.  One nobody picks up within a day moves on to another
+    area.  Every recipe is in the Magic Book, in Hyrule's Level 8.
   - The rarest concoctions hold TITANIC or EMPOWER.  They last half your
     level in ticks, at most thirty.
 
@@ -1532,9 +1532,9 @@ See also: HYRULE, 'HYRULE GUARDIANS'
 0 'HYRULE GUARDIANS'~
 Nothing in Hyrule attacks first, and the land around each dungeon is
 graded for it.  Each guardian is a hard fight for its band: an ordinary
-character at the top of the band loses alone.  With Hermie's buffs (BUFF
-EMPOWER, BUFF DEFENSE, BUFF COMBAT) one can win alone, narrowly; a group
-does better.
+character at the top of the band, with no buffs, wins about two fights in
+three against the first seven.  Hermie's buffs (BUFF EMPOWER, BUFF DEFENSE,
+BUFF COMBAT), when she is about, make it easier; a group does better.
 
   - The ashen Gleeok of Level 8 is sized for two players, Ganon for
     three.  One may try, and should expect to lose.
@@ -5471,10 +5471,16 @@ See also: COMMANDS, SUMMARY
 69 COMPONENT~
 Syntax: component
 
-Component command forces the scattering of random components throughout
-the world, rather than waiting for the MUD to do it randomly over time.
-This was added to restore components after reboots or crashes that wipe
-the current components from the world.
+COMPONENT lays herbs and spell components about the world now, rather than
+waiting for the tick to do it, up to the ceilings on the ground (150 herbs,
+100 components).  The tick lays them only while somebody is playing, and a
+restart lays the world afresh.
+
+It also moves on, as the tick does, any herb or component the world laid
+that has lain a day unfound, to a room in another area -- never one a
+player dropped, nor from under a player standing with it.  A round that
+moved any says so on the log, on WIZINFO and, with no room or area, on
+INFO.
 
 (do 'owhere component' to see the current components in the world.)
 

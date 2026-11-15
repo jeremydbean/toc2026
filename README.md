@@ -6,8 +6,8 @@ the complete world database, a FastAPI operations dashboard, Docker packaging,
 validation tools, tests, and the source data used to generate Hyrule: First
 Quest.
 
-Recounted on 2026-11-12, the checked-in world parses as **102 listed area
-files, 7,766 rooms, 2,507 mobiles, and 3,760 objects** (`../merc
+Recounted on 2026-11-15, the checked-in world parses as **102 listed area
+files, 7,766 rooms, 2,508 mobiles, and 3,762 objects** (`../merc
 --check-area` from `area/` and `scripts/area_lint.py` give the current
 figures; recount rather than copy). Player progression spans six classes, five
 playable races, four optional cross-class guilds, five remorts, questing, group
@@ -403,8 +403,8 @@ python3 -m unittest discover -s tests
 git diff --check
 ```
 
-The October 2026 baseline is 0 critical, 12 warning, and 1,635 informational
-area-health findings. The warnings are reviewed disconnected room groups; the
+The November 2026 baseline (recounted 2026-11-15) is 0 critical, 12 warning,
+and 1,691 informational area-health findings. The warnings are reviewed disconnected room groups; the
 informational backlog includes intentional and reviewable one-way exits,
 unspawned definitions, and objects without reset sources (the generated Hyrule
 guardians' drop tables are made at kill time, so each counts as a source-less
