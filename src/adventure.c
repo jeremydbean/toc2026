@@ -100,6 +100,18 @@ static void adventure_guild( CHAR_DATA *ch, DString *out, int *shown )
     adventure_line( out, shown, buf );
 }
 
+/* The starter errands while any is to be had, or an expedition under way
+   (errand.c): one line either way. */
+static void adventure_errands( CHAR_DATA *ch, DString *out, int *shown )
+{
+    if ( errand_offered( ch ) )
+        adventure_line( out, shown,
+            "* Errands: three small paid jobs about town -- ERRAND lists them.\n\r" );
+    else if ( ch->pcdata->expedition_area != 0 )
+        adventure_line( out, shown,
+            "* Expedition: ERRAND shows the creatures still to slay and the WALKTO.\n\r" );
+}
+
 /* A quest under way, or whether one may be asked for. */
 static void adventure_quest( CHAR_DATA *ch, DString *out, int *shown )
 {
@@ -207,6 +219,7 @@ void do_adventure( CHAR_DATA *ch, char *argument )
     adventure_school( ch, &out, &shown );
     adventure_training( ch, &out, &shown );
     adventure_guild( ch, &out, &shown );
+    adventure_errands( ch, &out, &shown );
     adventure_quest( ch, &out, &shown );
     adventure_places( ch, &out, &shown );
     adventure_group( ch, &out, &shown );
@@ -216,7 +229,7 @@ void do_adventure( CHAR_DATA *ch, char *argument )
             "  always there, and PRAY asks the Oracle anything about the game.\n\r" );
     dstring_append_cstr( &out,
         "(Only a list: it changes nothing.  HUNTING suggests creatures to fight.)\n\r" );
-    /* At most 19 lines with every section shown, so it never pages under
+    /* At most 20 lines with every section shown, so it never pages under
        the default PAGELEN (22): a paged view eats the next command. */
     page_to_char( dstring_cstr( &out ), ch );
     dstring_free( &out );

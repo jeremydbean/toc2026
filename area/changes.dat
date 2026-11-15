@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261115errands 2026-11-15
+New: ERRAND.  Three small jobs about town for levels 1 to 10, each paid
+once -- slay three of Mud School's creatures, carry Melancholy's letter to
+the questmaster, see four landmarks of Dresden -- and from level 5, ERRAND
+EXPEDITION: an area made for your level with a few of its creatures to
+slay, once a day.
+
 @ 20261115hunting 2026-11-15
 New: HUNTING names up to five creatures worth hunting at your level -- or
 HUNTING <level> for any level -- each in a different area with the WALKTO

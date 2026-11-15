@@ -4057,6 +4057,7 @@ void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
 		               coins_to_copper( victim ) );
 		diary_kill( gch, victim );              /* diary.c */
 		tutorial_kill( gch );                   /* tutorial.c */
+		errand_kill( gch, victim );             /* errand.c */
 	    }
 	}
 

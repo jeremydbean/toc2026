@@ -1475,6 +1475,12 @@ static bool adventure_range( const char *name, int *low, int *high )
     return true;
 }
 
+/* The level range an area's name opens with, for EXPEDITION (errand.c). */
+bool walkto_area_level_range( AREA_DATA *area, int *low, int *high )
+{
+    return area != NULL && adventure_range( area->name, low, high );
+}
+
 int walkto_adventure_areas( CHAR_DATA *ch, char names[][ADVENTURE_PLACE_LEN],
                             int kind[], int max )
 {

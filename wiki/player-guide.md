@@ -116,6 +116,14 @@ and `tutorial on` picks up where you left off (characters made before it
 start with it off). While you make a character, `help` at the class or
 alignment question reads about the choices without making one.
 
+Three small paid jobs help a first session along: `errand` lists them and
+`errand take all` takes them -- slay three of Mud School's creatures, carry
+Melancholy's letter to the questmaster at the top of the oak, and see four
+landmarks of Dresden (the square, the Temple altar, the training yard and
+the Hall of Heroes). Each pays once, up to level 10. From level 5,
+`errand expedition` names an area made for your level and two or three of its
+creatures to slay, once a day. `help errand` has the details.
+
 At any time, `adventure` lists a few things you might do next, each with
 the command or `walkto` that gets you there, and only what applies to you:
 Mud School and its diploma (or putting on the one you have), your first

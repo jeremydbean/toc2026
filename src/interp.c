@@ -570,6 +570,8 @@ const	struct	cmd_type	cmd_table	[] =
     { "adventure",      do_adventure,   POS_DEAD,        0,  LOG_NORMAL, 1 },
     /* Creatures to hunt at a level (hunting.c): last, so nothing moves. */
     { "hunting",        do_hunting,     POS_DEAD,        0,  LOG_NORMAL, 1 },
+    /* Starter errands and expeditions (errand.c): last, so nothing moves. */
+    { "errand",         do_errand,      POS_RESTING,     0,  LOG_NORMAL, 1 },
 /* End of list. */
     { "",		0,		POS_DEAD,	 0,  LOG_NORMAL, 0 }
 };

@@ -72,6 +72,7 @@ Contextual movement may also be attached to `push`, `pull`, `move`, `turn`,
 | `achievements [view]` | Points and progress for levels, bosses, relics, crafting, economy, unusual deaths, quests, exploration, and Hyrule |
 | `diary [yesterday \| yyyy-mm-dd \| list]` | Your day written down: time played, levels, kills, deaths, quests, achievements, skills, areas, things gained, coin in and out (the last 30 days) |
 | `equipment`, `inventory`, `worth` | Worn items, carried items, and carried coin with experience to level (`balance` shows the bank) |
+| `errand`, `errand take <1-3\|all>`, `errand abandon <1-3>`, `errand expedition [abandon]` | Three starter errands (levels 1-10, paid once) and, from level 5, a daily expedition to an area at your level |
 | `hunting`, `hunting <level>` | Up to five creatures to hunt at a level, one an area, with the `walkto` to each: kill time and experience an hour, measured from players' kills where enough exist, else estimated |
 | `consider <target>` | Size up a fight before starting it; counts your skills and spells once it has seen three of your solo kills |
 | `danger` | Danger Sense: the other players in your area, roughly how far, and how many are stealthed |

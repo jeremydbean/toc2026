@@ -2768,6 +2768,20 @@ struct  pc_data
     time_t              tutorial_last;
     int                 tutorial_misses;      /* unknown words this sitting */
     int                 tutorial_school;      /* Mud School steps seen, a bit each (TutSchool) */
+    /* errand.c: the three starter errands (a bit each: done, taken; the
+       combat errand's kills, the letter collected, the landmarks seen)
+       saved as "Errand ..." and the expedition as "Expedition ..." under
+       case 'E'. */
+    int                 errand_done;
+    int                 errand_taken;
+    int                 errand_kills;
+    int                 errand_letter;
+    int                 errand_seen;
+    long                expedition_area;      /* achievement_area_id, 0 none */
+    int                 expedition_mob[3];
+    int                 expedition_got;       /* a bit each target slain */
+    long                expedition_day;       /* the day one was last finished */
+    long                expedition_wait;      /* no new one before this (abandoned) */
     long                play_start_wealth;
     time_t              play_anom_last[8];    /* one line a kind a while */
     int                 play_cmds;
@@ -4686,6 +4700,13 @@ int     walkto_adventure_areas ( CHAR_DATA *ch, char names[][ADVENTURE_PLACE_LEN
                                  int kind[], int max );
 bool    walkto_area_walk_name  ( AREA_DATA *area, char *out, size_t size );
 bool    walkto_area_reachable  ( CHAR_DATA *ch, AREA_DATA *area );
+bool    walkto_area_level_range( AREA_DATA *area, int *low, int *high );
+/* hunting.c */
+int     hunting_area_prey      ( AREA_DATA *area, int level, MOB_INDEX_DATA **out, int max );
+/* errand.c: the starter errands and the expedition */
+void    errand_kill            ( CHAR_DATA *ch, CHAR_DATA *victim );
+void    errand_room_seen       ( CHAR_DATA *ch );
+bool    errand_offered         ( CHAR_DATA *ch );
 bool    walkto_room_is_hyrule  ( ROOM_INDEX_DATA *room );
 
 /* update.c */

@@ -1479,6 +1479,17 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     /* What was waiting to be said: said at the next login, not lost. */
     if ( ch->pcdata != NULL && ch->pcdata->tutorial_pending != 0 )
 	fprintf( fp, "TutPending %d\n", ch->pcdata->tutorial_pending );
+    /* The starter errands and the expedition (errand.c), when any. */
+    if ( ch->pcdata != NULL && ( ch->pcdata->errand_done || ch->pcdata->errand_taken ) )
+	fprintf( fp, "Errand %d %d %d %d %d\n", ch->pcdata->errand_done,
+		 ch->pcdata->errand_taken, ch->pcdata->errand_kills,
+		 ch->pcdata->errand_letter, ch->pcdata->errand_seen );
+    if ( ch->pcdata != NULL && ( ch->pcdata->expedition_area != 0
+      || ch->pcdata->expedition_day != 0 || ch->pcdata->expedition_wait != 0 ) )
+	fprintf( fp, "Expedition %ld %d %d %d %d %ld %ld\n", ch->pcdata->expedition_area,
+		 ch->pcdata->expedition_mob[0], ch->pcdata->expedition_mob[1],
+		 ch->pcdata->expedition_mob[2], ch->pcdata->expedition_got,
+		 ch->pcdata->expedition_day, (long) ch->pcdata->expedition_wait );
     if (ch->saving_throw != 0)
 	fprintf( fp, "Save  %d\n",	ch->saving_throw);
     fprintf( fp, "Alig  %d\n",	ch->alignment		);
@@ -4676,6 +4687,38 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 		return;
 	    }
             KEY( "Exp",		ch->exp,		fread_long( fp ) );
+	    /* errand.c: read into locals, each held to what it can be. */
+	    if ( !str_cmp( word, "Errand" ) )
+	    {
+		int done = fread_number( fp ), taken = fread_number( fp );
+		int kills = fread_number( fp ), letter = fread_number( fp );
+		int seen = fread_number( fp );
+
+		ch->pcdata->errand_done = done & 7;
+		ch->pcdata->errand_taken = taken & 7 & ~( done & 7 );
+		ch->pcdata->errand_kills = URANGE( 0, kills, 3 );
+		ch->pcdata->errand_letter = letter != 0 ? 1 : 0;
+		ch->pcdata->errand_seen = seen & 15;
+		fMatch = true;
+		break;
+	    }
+	    if ( !str_cmp( word, "Expedition" ) )
+	    {
+		long area = fread_long( fp );
+		int m0 = fread_number( fp ), m1 = fread_number( fp );
+		int m2 = fread_number( fp ), got = fread_number( fp );
+		long day = fread_long( fp ), wait = fread_long( fp );
+
+		ch->pcdata->expedition_area = area;
+		ch->pcdata->expedition_mob[0] = URANGE( 0, m0, MAX_VNUM );
+		ch->pcdata->expedition_mob[1] = URANGE( 0, m1, MAX_VNUM );
+		ch->pcdata->expedition_mob[2] = URANGE( 0, m2, MAX_VNUM );
+		ch->pcdata->expedition_got = got & 7;
+		ch->pcdata->expedition_day = UMAX( 0, day );
+		ch->pcdata->expedition_wait = UMAX( 0, wait );
+		fMatch = true;
+		break;
+	    }
 	    break;
 
 	case 'F':

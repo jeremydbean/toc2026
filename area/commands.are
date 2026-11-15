@@ -6414,7 +6414,8 @@ or setting -- and it never appears unless you ask for it.  The TUTORIAL
 is separate and stays on or off as you set it.  Every line is plain text
 and fits an 80-column screen, so it reads the same in any client.
 
-See also: TUTORIAL, HUNTING, WALKTO, AQUEST, GUILDS, MUDSCHOOL, MAPS, GROUP
+See also: TUTORIAL, ERRAND, HUNTING, WALKTO, AQUEST, GUILDS, MUDSCHOOL, MAPS,
+GROUP
 ~
 
 0 HUNTING~
@@ -6442,7 +6443,37 @@ The figures are refreshed as players hunt.  Your own class, gear and group
 change everything, so CONSIDER a creature before you fight it.  Hyrule is
 not listed: its dungeons have their own order.
 
-See also: CONSIDER, ADVENTURE, 'HUNTING GROUNDS', WALKTO, MAPS
+See also: CONSIDER, ADVENTURE, 'HUNTING GROUNDS', WALKTO, MAPS, ERRAND
+~
+
+0 ERRAND ERRANDS EXPEDITION EXPEDITIONS~
+Syntax: errand
+        errand take <1-3|all>
+        errand abandon <1-3>
+        errand expedition
+        errand expedition abandon
+
+Three small jobs about town for your first levels, each paid once:
+
+  1. Pests     slay three of Mud School's creatures (WALKTO MUD SCHOOL)
+  2. A letter  collect Melancholy's letter (WALKTO MELANCHOLY, then type
+               ERRAND there) and carry it to the questmaster at the top of
+               the oak (WALKTO SQUARE, climb UP, ERRAND again)
+  3. The town  see the Oak Tree Square, the Temple altar, the training
+               yard and the Hall of Heroes (DOWN from the square's centre)
+
+They are yours to choose: nothing counts until you ERRAND TAKE one, and
+you can take them up to level 10.  Each pays a tenth of a level's
+experience and some coin, once.  ERRAND alone shows what you have taken
+and what is left, and moves the letter on when its people are with you.
+
+From level 5, ERRAND EXPEDITION sends you to an area made for your level,
+with two or three of its creatures to slay, one of each.  ERRAND shows
+which, and the WALKTO.  An expedition pays a quarter of a level and more
+coin, at most once a day; giving one up means waiting ten minutes for the
+next.  A kill counts wherever in the area it falls, grouped or alone.
+
+See also: ADVENTURE, HUNTING, AQUEST, WALKTO, MUDSCHOOL
 ~
 
 0 $~

@@ -914,6 +914,7 @@ void do_look( CHAR_DATA *ch, char *argument )
            /* What the player was just shown (encounter.c). */
            encounter_room_seen( ch, !str_cmp( arg1, "auto" ) );
            tutorial_room_seen( ch, !str_cmp( arg1, "auto" ) );
+           errand_room_seen( ch );
         }
 /*      if ((ch->hunting != NULL)  && (!IS_NPC(ch)))
             do_track(ch,ch->hunting->name);

@@ -7294,6 +7294,27 @@ resets. `area/hunting.txt` is runtime state: in `.gitignore`, left behind by
 `tests/live_mud.py`, and kept by `toc-deploy` (its `area/*.txt` exclusion).
 A host without the dashboard gets the estimates. `tests/test_hunting.py`.
 
+## ERRAND
+
+`src/errand.c` (2026-11-15). Three starter errands, taken by choice
+(`ERRAND TAKE`), up to level 10, each paid once: Mud School kills (any
+creature whose room is in `school.are`, from `errand_kill` in `group_gain`
+beside `diary_kill`), Melancholy's letter (mob 2429) to the questmaster
+(mob 201) -- ERRAND with them in the room moves it on -- and four landmarks
+(`errand_room_seen` from do_look's room view, the room stood in only). From
+level 5 an expedition: a WALKTO-published, reachable area whose name's range
+holds the level, and two or three distinct creatures `hunting_area_prey`
+finds there (hunting.c's prey rules), slain in that area; once a day
+(`current_time / 86400`), ten minutes' wait after giving one up. Pay is a
+tenth (errand) or a quarter (expedition) of `exp_per_level` and five or
+fifteen kills' coin (`black_market_kill_value`), through `gain_exp` and
+`gain_copper` with `playlog_exp_as("errand")`/`playlog_coin_as("errands")`,
+then a save; staff by level take none. Saved as `Errand <done> <taken>
+<kills> <letter> <seen>` and `Expedition <area id> <mob> <mob> <mob> <got>
+<day> <wait>` under **case 'E'**, each read into locals and masked. ADVENTURE
+gives it one line (`errand_offered`). Last in the command table.
+`tests/test_errands.py`.
+
 ## The Players' Logs Of 2026-11-13
 
 A read of three weeks of logs found these; each is fixed and played by

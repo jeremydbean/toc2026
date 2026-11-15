@@ -350,6 +350,32 @@ static int hunt_estimated( CHAR_DATA *ch, int level, HUNT_PICK *picks, int n )
     return n;
 }
 
+/* Up to max distinct creatures a reset places in the area, ordinary prey
+   within the estimate's band about the level (EXPEDITION, errand.c). */
+int hunting_area_prey( AREA_DATA *area, int level, MOB_INDEX_DATA **out, int max )
+{
+    RESET_DATA *r;
+    int n = 0, i;
+
+    if ( area == NULL )
+        return 0;
+    for ( r = area->reset_first; r != NULL && n < max; r = r->next )
+    {
+        MOB_INDEX_DATA *mob;
+
+        if ( r->command != 'M' || ( mob = get_mob_index( r->arg1 ) ) == NULL
+        ||   !hunt_prey( mob )
+        ||   mob->level < level - HUNTING_BELOW || mob->level > level + HUNTING_ABOVE
+        ||   hunt_placed( area, mob->vnum ) == NULL )
+            continue;
+        for ( i = 0; i < n && out[i] != mob; i++ )
+            ;
+        if ( i == n )
+            out[n++] = mob;
+    }
+    return n;
+}
+
 static void hunt_number( char *out, size_t size, int value )
 {
     if ( value >= 1000000 )

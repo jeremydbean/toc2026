@@ -236,7 +236,7 @@ class HuntingSourceTests(unittest.TestCase):
         interp = (ROOT / "src" / "interp.c").read_text(encoding="utf-8")
         table = interp.split("cmd_table	[] =", 1)[1].split("/* End of list. */", 1)[0]
         names = re.findall(r'\{\s*"([^"]+)"', table)
-        self.assertEqual(names[-2:], ["adventure", "hunting"])
+        self.assertEqual(names.index("hunting"), names.index("adventure") + 1)
 
     def test_the_file_is_never_committed(self) -> None:
         ignore = (ROOT / ".gitignore").read_text(encoding="utf-8")
