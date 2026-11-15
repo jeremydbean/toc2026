@@ -32057,3 +32057,6 @@
 1794782076	laid	-	0	0	-	1317	component	69	a basilisks tongue	333	plains.are	scatter
 1794782146	census	-	0	0	-	herbs=150/150 components=89/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=8 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
 1794782200	laid	-	0	0	-	1318	component	63	a phoenix feather	18231	gelidia.are	scatter
+1794782381	cleared	-	0	0	-	1313	component	57	a trolls fingernail	788	0	scatter	mob 2435	(mobile_update)	0	-
+1794782493	laid	-	0	0	-	1319	component	77	a vial of medusa eye fluid	7643	ultima.are	scatter
+1794782550	laid	-	0	0	-	1320	component	59	a patch of lycanthrope fur	24237	crypt.are	scatter
