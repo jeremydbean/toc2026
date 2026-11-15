@@ -31794,3 +31794,11 @@
 1794777395	laid	-	0	0	-	1201	herb	45	a sarsaparilla vine	19158	rome.are	scatter
 1794777395	laid	-	0	0	-	1202	herb	46	a juniper berry	19137	rome.are	scatter
 1794777457	laid	-	0	0	-	1203	component	57	a trolls fingernail	8728	kerofk.are	scatter
+1794777505	laid	-	0	0	-	1204	herb	37	a sprig of catnip	15149	campus.are	scatter
+1794777505	laid	-	0	0	-	1205	component	77	a vial of medusa eye fluid	5128	drow1.are	scatter
+1794777631	laid	-	0	0	-	1206	herb	37	a sprig of catnip	4531	dresden.are	scatter
+1794777631	laid	-	0	0	-	1207	component	76	a vial of dragons blood	18041	icekeep.are	scatter
+1794777646	census	-	0	0	-	herbs=95/150 components=60/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=17 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1794777699	cleared	-	0	0	-	1080	component	71	a goblin's finger	1760	1	scatter	mob 2435	(mobile_update)	0	-
+1794777772	laid	-	0	0	-	1208	herb	38	a foxglove flower	5362	mirror.are	scatter
+1794777772	laid	-	0	0	-	1209	component	54	eye of newt	13034	lakes.are	scatter
