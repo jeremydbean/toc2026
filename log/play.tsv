@@ -31436,3 +31436,293 @@
 1794776115	laid	-	0	0	-	1085	component	71	a goblin's finger	2033	catacomb.are	scatter
 1794776164	item	Alaric	57	2497	dresden.are	2232	A ruby key	type=key level=26 worn=0 nested=0 timer=0 cond=100 inside=0	obj_update
 1794776211	laid	-	0	0	-	1086	component	87	a vial of grey ooze	17226	highland.are	scatter
+1794776288	laid	-	0	0	-	1087	herb	49	a pomegranate	20151	prison.are	scatter
+1794776288	laid	-	0	0	-	1088	herb	46	a juniper berry	20147	prison.are	scatter
+1794776288	laid	-	0	0	-	1089	component	60	a rakshasa's claw	18100	icekeep.are	scatter
+1794776346	laid	-	0	0	-	1090	component	57	a trolls fingernail	1369	htower.are	scatter
+1794776350	quest	Alaric	57	2497	dresden.are	ordinary	kill	2318	the Minotaur Gatekeeper	25	mahntor.are	29
+1794776350	cmd	Alaric	57	2497	dresden.are	standing	100	20	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Alaric. I have just the task for you.' // Questor Thews tells you 'A bounty has been posted on the Minotaur Gatekeeper.'	-	+
+1794776355	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794776355	cmd	Alaric	57	2402	dresden.are	standing	100	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1794776355	cmd	Alaric	57	2415	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794776355	cmd	Alaric	57	2485	dresden.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794776356	cmd	Alaric	57	2486	dresden.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794776356	cmd	Alaric	57	2487	dresden.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794776356	cmd	Alaric	57	2509	dresden.are	standing	100	0	-	east		Dark Alley. //   When you enter the alleyway you are submerged in darkness until your eyes // adjust to the faint light that penetrates from behind and up above.  As you	-	+
+1794776356	cmd	Alaric	57	2508	dresden.are	standing	100	0	-	north		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1794776357	cmd	Alaric	57	2507	dresden.are	standing	100	0	-	east		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1794776357	cmd	Alaric	57	2505	dresden.are	standing	100	0	-	north		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1794776357	cmd	Alaric	57	2506	dresden.are	standing	100	0	-	north		Dead End. //   As you proceed this way down the alley you suddenly come to a dead end! // Scanning your surroundings you see the buildings on all the sides rise at	-	+
+1794776357	cmd	Alaric	57	2506	dresden.are	standing	100	0	-	open	down	Ok.	-	-
+1794776358	area	Alaric	57	7030	sewer.are	dresden.are	sewer.are	2845	down
+1794776358	cmd	Alaric	57	7030	sewer.are	standing	100	0	-	down		The Quadruple Junction Under the Garbage //   You are standing in something that reminds you of an entry to an ant hive. // There are enormous concrete pipes leading north, south, east and west. 	-	+
+1794776358	cmd	Alaric	57	7022	sewer.are	standing	100	0	-	west		The odd room with smooth walls //   As you enter you hear a loud click from one of the walls ... and you fall // and fall and fall ...	-	+
+1794776358	cmd	Alaric	57	7112	sewer.are	standing	100	0	-	down		An odd intersection //   You stand in a rather odd intersection of pipes. The pipes actually don't // resemble pipes anymore. They look more like a real stone tunnel, or a	-	+
+1794776358	cmd	Alaric	57	7111	sewer.are	standing	100	0	-	north		The southwestern corner of the ledge //   This seems like a ledge that is a little broader than the one just to the  // north of here. The ledge seems to lead around some sort of Abyss of total 	-	+
+1794776359	cmd	Alaric	57	7115	sewer.are	standing	100	0	-	east		The Broad ledge //   You are standing on a ledge that seems quite a lot larger than the rest  // of the ledges. This one leads to the west and the east, plus it has an exit	-	+
+1794776359	cmd	Alaric	57	7129	sewer.are	standing	100	0	-	south		The sewer line. //   You are in a narrow part of the sewer. Down the sewer continues and to the // north is the ledge.	-	+
+1794776359	cmd	Alaric	57	7221	sewer.are	standing	100	0	-	down		The sewer drain. //   You are in a sewer drain, there is nothing special inhere, except for a  // loud echo.	-	+
+1794776359	cmd	Alaric	57	7220	sewer.are	standing	100	0	-	west		A boring drain. //   You are in yet another sewer drain. // [Exits: north east]	-	-
+1794776360	cmd	Alaric	57	7219	sewer.are	standing	100	0	-	north		A dry sewer drain. //   You are in a dry but dirty sewer drain. The drain continues east and south. // [Exits: east south]	-	+
+1794776360	cmd	Alaric	57	7217	sewer.are	standing	100	0	-	east		The half-dry drain. //   You are in a half-dry sewer drain. To the north the drain runs a little bit // downwards into some water to the east you can see a small hole. To the west	-	+
+1794776360	cmd	Alaric	57	7216	sewer.are	standing	100	0	-	north		Under water in the sewer. //   You swim in some dirty water and is holding you breath. You'll better  // continue before you drown. It is a good thing that you can hold your light	-	+
+1794776360	cmd	Alaric	57	7215	sewer.are	standing	100	0	-	north		The half-wet drain. //   You are in a sewer drain where the floor is covered with water. To the north // it looks more dry, south however the drain runs down into some water.	-	+
+1794776361	cmd	Alaric	57	7210	sewer.are	standing	100	0	-	north		The four-way junction. //   You are in a sewer junction. To the north is a small hole, to the west is a // narrow crawlway and to the east and south the sewer continues.	-	+
+1794776361	cmd	Alaric	57	7209	sewer.are	standing	100	0	-	west		The crawlway. //   You are in a narrow crawlway.  You don't notice anything interesting here. // [Exits: east west]	-	-
+1794776361	cmd	Alaric	57	7208	sewer.are	standing	100	0	-	west		The lair entrance. //   You are in a dry part of the sewer. To the north is a wooden door, you  // can see some slime at the lower part of the door. You also see some skulls	-	+
+1794776361	cmd	Alaric	57	7208	sewer.are	standing	100	0	-	open	north	Ok.	-	-
+1794776362	cmd	Alaric	57	7204	sewer.are	standing	100	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce.	-	+
+1794776362	cmd	Alaric	57	7203	sewer.are	standing	100	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce.	-	+
+1794776362	cmd	Alaric	57	7202	sewer.are	standing	100	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce. To the north 	-	+
+1794776362	cmd	Alaric	57	7202	sewer.are	standing	100	0	-	open	north	Ok.	-	-
+1794776363	cmd	Alaric	57	7201	sewer.are	standing	100	0	-	north		The inner Lair //   You are in a octagonal room with smooth purple stone walls.  The floor is  // made from black stone.  In the western wall you see a large black stone door.	-	+
+1794776363	area	Alaric	57	25171	underdrk.are	sewer.are	underdrk.are	5	down
+1794776363	cmd	Alaric	57	25171	underdrk.are	standing	100	0	-	down		The climb up. //   You can hear something above you talking to itself in the darkness.  The smell // coming from there reminds you of a SEWER.  The rocks in this climb were made	-	+
+1794776363	cmd	Alaric	57	25170	underdrk.are	standing	100	0	-	down		The end of the sloping passage. //   The passage ends here and makes a straight vertical climb upwards into onyx // darkness.  You can also go to the down the slope to the east.	-	+
+1794776363	cmd	Alaric	57	25169	underdrk.are	standing	100	0	-	east		The slope steepens. //   The slope starts to steepen here into a sharper angle. The roaring of the // waterfall now is so far in the distance that dripping water drowns out the	-	+
+1794776364	cmd	Alaric	57	25168	underdrk.are	standing	100	0	-	east		The slope upwards. //   The passageway starts to slope upwards here.  The roaring of the waterfall is // more distant now and you can no longer feel the moisture on your face that	-	+
+1794776364	cmd	Alaric	57	25167	underdrk.are	standing	100	0	-	east		The dark passage. //   It's dark here.  You feel moisture on your face and you can hear a roaring of // a waterfall in the distance.  The passage continues to the east and the west.	-	+
+1794776364	cmd	Alaric	57	25166	underdrk.are	standing	100	0	-	east		The Intersection. //   The dark corridor turns west here and also continues to the south.  The roar // of the waterfall comes from the south and no sounds at all come from the	-	+
+1794776364	cmd	Alaric	57	25165	underdrk.are	standing	100	0	-	north		The dim passage. //   Light from the passage north fills this room with soft light.  The walls // look carved from the rock.  There is little dust on the ground and the air	-	+
+1794776365	cmd	Alaric	57	25159	underdrk.are	standing	100	0	-	north		The Trade Route. //   Glowing moss covers the walls of this huge corridor giving off more than // enough light to see by.  The floor is covered in wagon and animal tracks.	-	+
+1794776365	cmd	Alaric	57	25158	underdrk.are	standing	100	0	-	west		The Trade Route. //   Glowing moss covers the walls of this huge corridor giving off more than // enough light to see by.  The floor is covered in wagon and animal tracks.	-	+
+1794776365	cmd	Alaric	57	25153	underdrk.are	standing	100	0	-	west		The Trade Route. //   This corridor is HUGE.  It's the largest one you've seen so far since you've // been in the depths of the world.  It's about one hundred feet wide and	-	+
+1794776365	cmd	Alaric	57	25152	underdrk.are	standing	100	0	-	north		The passage in between. //   This corridor is dark, but you can see light to the south.  There is no dust // on the ground here.  On a rock by the lighted corridor to the south you can	-	+
+1794776366	cmd	Alaric	57	25151	underdrk.are	standing	100	0	-	north		The hole in the wall. //   There is a hole in the wall here and the corridor turns to the south.  There // is also a shaft leading upward.  There is no dust on the floor of the	-	+
+1794776366	cmd	Alaric	57	25185	underdrk.are	standing	100	0	-	up		The ledge. //   The shaft leads up to a shaft and you can see light coming from a hole above // you.  You'd almost be relieved if it wasn't for the shapes coming for you	-	+
+1794776366	area	Alaric	57	2397	mahntor.are	underdrk.are	mahntor.are	3	up
+1794776366	cmd	Alaric	57	2397	mahntor.are	standing	100	0	-	up		The end of the guarded hall //   You are at the end of the hall. Colored doors line the walls to the north. To // your west, you see a brown door. To you east, you see a grey door. The hall	-	+
+1794776370	cmd	Alaric	57	2392	mahntor.are	standing	100	0	-	north		The guarded hall //   You walk down a quiet hall. The stone walls here are wet with moisture. // Colored doors can be seen in the walls here. To your east, you see a green	-	+
+1794776370	cmd	Alaric	57	2389	mahntor.are	standing	100	0	-	north		The guarded hall //   You walk down a small, quiet, torch lit hallway. Doors of different colors are // in each wall. To your east, you see a maroon door. To your west, you see a	-	+
+1794776370	cmd	Alaric	57	2388	mahntor.are	standing	100	0	-	north		The guarded hall //   You walk down a torch lit hallway. It has been carved out of pure stone. It is // very quiet in this hall. You notice rows of colored doors on each wall. To	-	+
+1794776371	cmd	Alaric	57	2387	mahntor.are	standing	100	0	-	north		The Guard Post //   The hall here has been built into a guard post of sorts. It appears as though // it would be quite easy to defend in times of emergency. Obviously, something	-	+
+1794776372	cmd	Alaric	57	2382	mahntor.are	standing	100	0	-	north		The Great Hall //   You stand in the great hall of the keep. Huge pillars rise up to the vaulted // ceiling and torch light glimmers off the marble floor here. You are amazed at	-	+
+1794776372	cmd	Alaric	57	2381	mahntor.are	standing	100	0	-	north		The Grand Hall //   You are in the main hall of the Keep of Mahn-Tor. This hall is huge. The wide // floor of the hall is an expanse of marble. It shimmers in the light thrown	-	+
+1794776373	cmd	Alaric	57	2381	mahntor.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794776373	cmd	Alaric	57	2381	mahntor.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794776373	cmd	Alaric	57	2380	mahntor.are	standing	100	0	-	west		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1794776374	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	west		The entryway to the Keep of Mahn-Tor //   You are at the entry hall to the huge keep. The high vaulted ceiling is carved // from solid stone. Huge stone pillars rise up from the floor to meet the	-	+
+1794776374	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	west		The gate is closed.	-	-
+1794776375	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	open		It's locked.	-	-
+1794776377	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	open		It's locked.	-	-
+1794776378	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	unlock	west	You lack the key: it takes the keep key to unlock it.	-	-
+1794776379	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	wake		You are already standing.	-	-
+1794776380	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	look		The entryway to the Keep of Mahn-Tor //   You are at the entry hall to the huge keep. The high vaulted ceiling is carved // from solid stone. Huge stone pillars rise up from the floor to meet the	-	+
+1794776382	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	kill	gu	Your punch <<< ERADICATES >>> the High Minotaur Guard! [-155] // Your punch ^^^ DESTROYS ^^^ the High Minotaur Guard! [-103]	-	-
+1794776385	cmd	Alaric	57	2379	mahntor.are	fighting	100	0	fight	look	i cor	That is not a container.	-	-
+1794776385	coin	Alaric	57	2379	mahntor.are	+100	loot	(violence_update)	corpse of the High Minotaur Guard	28134995424
+1794776385	coin	Alaric	57	2379	mahntor.are	+1	loot	(violence_update)	corpse of the High Minotaur Guard	28134995425
+1794776386	cmd	Alaric	57	2379	mahntor.are	standing	100	0	-	look	i cor	Corpse of the High Minotaur Guard contains: //      a blue steel helm and visor //      a pair of blue steel greaves	-	+
+1794776388	cmd	Alaric	57	2380	mahntor.are	standing	100	0	-	east		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1794776389	cmd	Alaric	57	2381	mahntor.are	standing	100	0	-	east		The Grand Hall //   You are in the main hall of the Keep of Mahn-Tor. This hall is huge. The wide // floor of the hall is an expanse of marble. It shimmers in the light thrown	-	+
+1794776390	cmd	Alaric	57	2380	mahntor.are	standing	100	0	-	west		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1794776391	cmd	Alaric	57	2380	mahntor.are	standing	100	0	-	kill	gu	Your punch <<< ERADICATES >>> the High Minotaur Guard! [-159] // Your punch <<< ERADICATES >>> the High Minotaur Guard! [-186]	-	-
+1794776391	coin	Alaric	57	2380	mahntor.are	+100	loot	(violence_update)	corpse of the High Minotaur Guard	28134995525
+1794776391	coin	Alaric	57	2380	mahntor.are	+1	loot	(violence_update)	corpse of the High Minotaur Guard	28134995526
+1794776394	cmd	Alaric	57	2380	mahntor.are	standing	100	0	-	fists		Who do you want to attack?	-	-
+1794776395	cmd	Alaric	57	2380	mahntor.are	standing	100	0	-	look	i cor	Corpse of the High Minotaur Guard contains: //      a blue steel helm and visor //      a pair of blue steel greaves	-	+
+1794776396	cmd	Alaric	57	2381	mahntor.are	standing	100	0	-	east		The Grand Hall //   You are in the main hall of the Keep of Mahn-Tor. This hall is huge. The wide // floor of the hall is an expanse of marble. It shimmers in the light thrown	-	+
+1794776397	cmd	Alaric	57	2383	mahntor.are	standing	100	0	-	east		Standing before the throne //   You stand before the throne of Mahn-Tor. This golden throne is so huge that it // takes up almost the entire wall, stretching far above the floor. Sitting upon	-	+
+1794776399	cmd	Alaric	57	2383	mahntor.are	standing	100	0	-	kill	gu	Your punch ^^^ DESTROYS ^^^ the Royal Minotaur Guard! [-103] // Your punch <<< ERADICATES >>> the Royal Minotaur Guard! [-175]	-	-
+1794776399	area	Trentlin	45	4210	dresden.are	-	dresden.are	-1	(game loop)
+1794776400	coin	Alaric	57	2383	mahntor.are	+100	loot	(violence_update)	corpse of the Royal Minotaur Guard	28134995626
+1794776400	coin	Alaric	57	2383	mahntor.are	+1	loot	(violence_update)	corpse of the Royal Minotaur Guard	28134995627
+1794776401	cmd	Trentlin	45	4210	dresden.are	sleeping	93	0	-	who		[45 Dwarf   Monk  ] Trentlin the Master Monk // [57 Dwarf   Emper ] Alaric. // Players found: 2	-	-
+1794776402	cmd	Alaric	57	2383	mahntor.are	standing	100	0	-	look	i cor	Corpse of the Royal Minotaur Guard contains: //      a red steel helm and visor //      a pair of red steel greaves	-	+
+1794776403	cmd	Trentlin	45	4210	dresden.are	sleeping	93	0	-	wake		You wake and stand up.	-	-
+1794776404	cmd	Alaric	57	2383	mahntor.are	standing	100	0	-	east		The throne is closed.	-	-
+1794776405	cmd	Trentlin	45	4210	dresden.are	standing	93	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794776405	cmd	Alaric	57	2383	mahntor.are	standing	100	0	-	open		Ok.	-	-
+1794776405	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	east		The secret hallway //   You are in a small, torch lit hall. It leads from east to west. A large gold // door is to the west. To the east, you see a heavy stone door.	-	+
+1794776407	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	kill	gu	Your punch === OBLITERATES === the Elite Minotaur Guard! [-132] // Your punch === OBLITERATES === the Elite Minotaur Guard! [-140]	-	-
+1794776408	cmd	Trentlin	45	4203	dresden.are	standing	93	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794776408	cmd	Trentlin	45	4204	dresden.are	standing	93	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794776408	cmd	Trentlin	45	4207	dresden.are	standing	93	0	-	south		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794776409	cmd	Trentlin	45	4208	dresden.are	standing	93	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794776411	coin	Trentlin	45	4208	dresden.are	-800000	spent	heal	-	15386562849
+1794776411	cmd	Trentlin	45	4208	dresden.are	standing	93	3	-	heal	refres	The healer utters the words 'candusima'. // You feel fully refreshed! (8 castings, 80 gold.)	-	-
+1794776412	coin	Alaric	57	2385	mahntor.are	+100	loot	(violence_update)	corpse of the Elite Minotaur Guard	28134995727
+1794776412	coin	Alaric	57	2385	mahntor.are	+1	loot	(violence_update)	corpse of the Elite Minotaur Guard	28134995728
+1794776413	coin	Trentlin	45	4208	dresden.are	+38384420	bank	interest	bank	15424947269
+1794776413	laid	-	0	0	-	1110	component	54	eye of newt	29201	korzath2.are	scatter
+1794776414	cmd	Trentlin	45	4207	dresden.are	standing	95	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794776414	cmd	Trentlin	45	4202	dresden.are	standing	95	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794776415	cmd	Trentlin	45	4201	dresden.are	standing	95	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794776415	cmd	Trentlin	45	2427	dresden.are	standing	95	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794776415	cmd	Trentlin	45	2427	dresden.are	standing	95	0	-	east		Alas, you cannot go that way.	-	-
+1794776416	got	Alaric	57	2385	mahntor.are	2359	a runed key	key	26	1000000	get	corpse of the Elite Minotaur Guard
+1794776416	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	get	key cor	You get a runed key from corpse of the Elite Minotaur Guard.	-	-
+1794776416	cmd	Trentlin	45	2404	dresden.are	standing	95	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794776416	cmd	Trentlin	45	2401	dresden.are	standing	95	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794776416	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	kill	gu	Your punch === OBLITERATES === the Elite Minotaur Guard! [-139] // Your punch === OBLITERATES === the Elite Minotaur Guard! [-134]	-	-
+1794776417	cmd	Trentlin	45	2410	dresden.are	standing	95	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794776418	cmd	Trentlin	45	2411	dresden.are	standing	95	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794776418	cmd	Trentlin	45	2414	dresden.are	standing	95	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1794776418	cmd	Trentlin	45	2497	dresden.are	standing	95	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794776421	quest	Trentlin	45	2497	dresden.are	ordinary	recover	25043	The Signet of Killuminati	59	mobfact.are	20
+1794776421	cmd	Trentlin	45	2497	dresden.are	standing	95	15	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Trentlin.' // Questor Thews tells you 'A prized artifact - The Signet of Killuminati - has gone missing!'	-	+
+1794776421	coin	Alaric	57	2385	mahntor.are	+100	loot	(violence_update)	corpse of the Elite Minotaur Guard	28134995828
+1794776421	coin	Alaric	57	2385	mahntor.are	+1	loot	(violence_update)	corpse of the Elite Minotaur Guard	28134995829
+1794776422	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	get	key cor	I see nothing like that in the cor.	-	-
+1794776422	cmd	Trentlin	45	2401	dresden.are	standing	95	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794776422	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	get	key cor	I see nothing like that in the cor.	-	-
+1794776423	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	east		The door is closed.	-	-
+1794776424	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	open		It's locked.	-	-
+1794776426	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	unlock	east	*Click*	-	-
+1794776426	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	east		The door is closed.	-	-
+1794776427	cmd	Alaric	57	2385	mahntor.are	standing	100	0	-	open		Ok.	-	-
+1794776427	cmd	Alaric	57	2386	mahntor.are	standing	100	0	-	east		Entry to the Royal Chambers //   You are at the entrance to the royal chambers of the keep. A plush shag rug // covers the stone floor. Large candelabras hang from the ceiling, lighting the	-	+
+1794776428	cmd	Alaric	57	2393	mahntor.are	standing	100	0	-	south		The Harem Room //   This appears to be the harem room of the Keep. Huge piles of furs and beds // fill the room. The lighting is dim, but the room is very warm. You can hear	-	+
+1794776430	cmd	Trentlin	45	2402	dresden.are	standing	95	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1794776430	cmd	Trentlin	45	2415	dresden.are	standing	95	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794776430	coin	Alaric	57	2393	mahntor.are	+3	loot	kill	corpse of the Harem Girl	28134995832
+1794776430	cmd	Alaric	57	2393	mahntor.are	standing	100	1	-	kill	ha	Your punch <<< ERADICATES >>> the Harem Girl! [-152] // The Harem Girl is DEAD!! // You receive 0 experience points.	-	+
+1794776431	cmd	Trentlin	45	2485	dresden.are	standing	95	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794776431	cmd	Trentlin	45	2486	dresden.are	standing	95	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794776431	cmd	Trentlin	45	2483	dresden.are	standing	95	0	-	north		Fountain of Market Plaza. //   In the center of the plaza is a fountain with a statue of a woman sitting on a // rock surrounded by dolphins facing in all directions.  The water seems to	-	+
+1794776431	cmd	Trentlin	45	2484	dresden.are	standing	95	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794776432	cmd	Trentlin	45	2481	dresden.are	standing	95	0	-	north		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794776432	cmd	Trentlin	45	2514	dresden.are	standing	95	0	-	north		Dark Alley. //   When you enter the alleyway you are submerged in darkness until your eyes // adjust to the faint light that penetrates from behind and up above.  As you	-	+
+1794776432	cmd	Trentlin	45	2505	dresden.are	standing	95	0	-	east		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1794776432	area	Trentlin	45	9400	mobfact.are	dresden.are	mobfact.are	33	east
+1794776432	cmd	Trentlin	45	9400	mobfact.are	standing	95	0	-	east		Entrance to the Mob Factory //   You find that you have entered a strange factory. This factory doesn't // make cars or computers or something - it makes mobs! The sound of	-	+
+1794776435	cmd	Alaric	57	2393	mahntor.are	standing	100	0	-	look	i cor	Corpse of the Harem Girl contains: //      Nothing.	-	-
+1794776435	cmd	Trentlin	45	9403	mobfact.are	standing	95	0	-	south		Foreman's Office //   This is the ofice of the mob factory foreman. The room is sparsely // furnished with a metal desk, a couple of chairs, a shelf with helmets	-	+
+1794776436	cmd	Trentlin	45	9404	mobfact.are	standing	95	0	-	south		Foreman's Bathroom //   This is the place where the foreman makes frequent visits. The smell // here is very strong and reminds you of bovine excrement! There is a	-	+
+1794776437	cmd	Alaric	57	2393	mahntor.are	standing	100	1	-	crane		You flow into action, striking at all your opponents. // Your crane dance scratches the Harem Girl. [-3] // Your crane dance scratches the Harem Girl. [-1]	-	+
+1794776437	cmd	Trentlin	45	9403	mobfact.are	standing	95	0	-	north		Foreman's Office //   This is the ofice of the mob factory foreman. The room is sparsely // furnished with a metal desk, a couple of chairs, a shelf with helmets	-	+
+1794776438	cmd	Trentlin	45	9400	mobfact.are	standing	95	0	-	north		Entrance to the Mob Factory //   You find that you have entered a strange factory. This factory doesn't // make cars or computers or something - it makes mobs! The sound of	-	+
+1794776438	cmd	Trentlin	45	9407	mobfact.are	standing	95	0	-	east		Entrance Hallway to Mob Factory //   You are standing in the entrance hallway of the mob factory. The sound // of machinery gets louder now, and you can hear people shouting in the	-	+
+1794776438	cmd	Trentlin	45	9408	mobfact.are	standing	95	0	-	south		Mob Factory Cafeteria //   You find that you have entered the cafeteria of the mob factory. There // are many workers eating at the numerous tables placed around the room.	-	+
+1794776439	coin	Alaric	57	2393	mahntor.are	+3	loot	(violence_update)	corpse of the Harem Girl	28134995835
+1794776440	achieved	Trentlin	45	9409	mobfact.are	explored-1	15	2304	south
+1794776440	cmd	Trentlin	45	9409	mobfact.are	standing	95	0	-	south		                    ACHIEVEMENT EARNED // No Stone Unturned I  +15 points // Walk into every room of an area.	-	+
+1794776442	coin	Alaric	57	2393	mahntor.are	+3	loot	(violence_update)	corpse of the Harem Girl	28134995838
+1794776442	cmd	Alaric	57	2393	mahntor.are	fighting	100	0	fight	look	i cor	Corpse of the Harem Girl contains: //      Nothing.	-	-
+1794776444	cmd	Trentlin	45	9408	mobfact.are	standing	95	0	-	north		Mob Factory Cafeteria //   You find that you have entered the cafeteria of the mob factory. There // are many workers eating at the numerous tables placed around the room.	-	+
+1794776444	cmd	Alaric	57	2393	mahntor.are	fighting	100	0	fight	look	i cor	Corpse of the Harem Girl contains: //      Nothing.	-	-
+1794776444	cmd	Trentlin	45	9407	mobfact.are	standing	95	0	-	north		Entrance Hallway to Mob Factory //   You are standing in the entrance hallway of the mob factory. The sound // of machinery gets louder now, and you can hear people shouting in the	-	+
+1794776445	cmd	Trentlin	45	9412	mobfact.are	standing	95	0	-	east		Entrance Hallway to Mob Factory //   You are standing in the entrance hallway of the mob factory. The sound // of machinery gets louder now, and you can hear people shouting in the	-	+
+1794776445	coin	Alaric	57	2393	mahntor.are	+3	loot	(violence_update)	corpse of the Harem Girl	28134995841
+1794776446	cmd	Trentlin	45	9413	mobfact.are	standing	95	0	-	south		Mob Factory Reject Room //   This is the factory reject room. All the mobs that are manufactured // incorrectly or have some defect are placed here before subsequent	-	+
+1794776446	cmd	Alaric	57	2393	mahntor.are	fighting	100	0	fight	kill	ha	You do the best you can!	-	-
+1794776446	cmd	Trentlin	45	9414	mobfact.are	standing	95	0	-	south		Mob Factory Reject Room //   This is the factory reject room. All the mobs that are manufactured // incorrectly or have some defect are placed here before subsequent	-	+
+1794776446	cmd	Alaric	57	2393	mahntor.are	fighting	100	0	fight	kill	ha	You do the best you can!	-	-
+1794776448	got	Trentlin	45	9414	mobfact.are	25043	The Signet of Killuminati	trash	59	0	get	the floor
+1794776448	cmd	Trentlin	45	9414	mobfact.are	standing	95	0	-	get	all	You get The Signet of Killuminati.	-	-
+1794776448	coin	Alaric	57	2393	mahntor.are	+3	loot	(violence_update)	corpse of the Harem Girl	28134995844
+1794776455	cmd	Trentlin	45	9413	mobfact.are	standing	95	0	-	north		Mob Factory Reject Room //   This is the factory reject room. All the mobs that are manufactured // incorrectly or have some defect are placed here before subsequent	-	+
+1794776455	cmd	Trentlin	45	9412	mobfact.are	standing	95	0	-	north		Entrance Hallway to Mob Factory //   You are standing in the entrance hallway of the mob factory. The sound // of machinery gets louder now, and you can hear people shouting in the	-	+
+1794776455	cmd	Trentlin	45	9407	mobfact.are	standing	95	0	-	west		Entrance Hallway to Mob Factory //   You are standing in the entrance hallway of the mob factory. The sound // of machinery gets louder now, and you can hear people shouting in the	-	+
+1794776455	cmd	Trentlin	45	9400	mobfact.are	standing	95	0	-	west		Entrance to the Mob Factory //   You find that you have entered a strange factory. This factory doesn't // make cars or computers or something - it makes mobs! The sound of	-	+
+1794776457	area	Trentlin	45	2505	dresden.are	mobfact.are	dresden.are	25	west
+1794776457	cmd	Trentlin	45	2505	dresden.are	standing	95	0	-	west		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1794776459	cmd	Trentlin	45	2514	dresden.are	standing	95	0	-	west		Dark Alley. //   When you enter the alleyway you are submerged in darkness until your eyes // adjust to the faint light that penetrates from behind and up above.  As you	-	+
+1794776459	cmd	Trentlin	45	2481	dresden.are	standing	95	0	-	south		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794776460	cmd	Trentlin	45	2484	dresden.are	standing	95	0	-	south		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794776460	cmd	Trentlin	45	2483	dresden.are	standing	95	0	-	west		Fountain of Market Plaza. //   In the center of the plaza is a fountain with a statue of a woman sitting on a // rock surrounded by dolphins facing in all directions.  The water seems to	-	+
+1794776460	cmd	Trentlin	45	2486	dresden.are	standing	95	0	-	south		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794776460	cmd	Trentlin	45	2485	dresden.are	standing	95	0	-	west		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1794776461	cmd	Trentlin	45	2415	dresden.are	standing	95	0	-	west		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794776461	cmd	Trentlin	45	2402	dresden.are	standing	95	0	-	south		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1794776461	cmd	Trentlin	45	2401	dresden.are	standing	95	0	-	south		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794776462	cmd	Trentlin	45	2410	dresden.are	standing	95	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794776462	cmd	Trentlin	45	2411	dresden.are	standing	95	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794776463	cmd	Trentlin	45	2414	dresden.are	standing	95	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1794776463	cmd	Trentlin	45	2497	dresden.are	standing	95	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794776463	cmd	Trentlin	45	2497	dresden.are	standing	95	0	-	up		Alas, you cannot go that way.	-	-
+1794776465	coin	Trentlin	45	2497	dresden.are	+7576470	quests	aquest	-	15432523739
+1794776465	outcome	Trentlin	45	2497	dresden.are	quest-complete	success	-	-	ordinary qp=4474->4474 offered=25 daily=18->18 coin=+7576470 kill=688770 streak=7 level=45 target=0
+1794776465	cmd	Trentlin	45	2497	dresden.are	standing	95	20	-	aquest	complete	You inform Questor Thews you have completed his quest. // You hand The Signet of Killuminati to Questor Thews. // Questor Thews says 'Splendid - you've returned victorious!'	success:-	+
+1794776470	cmd	Trentlin	45	2497	dresden.are	standing	95	5	-	aquest	gamble yes	The dice BETRAY you! Your 25 quest points are lost.	-	-
+1794776471	cmd	Trentlin	45	2401	dresden.are	standing	95	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794776477	spotted	Trentlin	45	2403	dresden.are	1080	component	71	a goblin's finger	538	1	scatter	arrive
+1794776477	cmd	Trentlin	45	2403	dresden.are	standing	95	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794776477	passed	Trentlin	45	2420	dresden.are	1080	component	71	a goblin's finger	538	0	1	scatter	2403	left
+1794776477	cmd	Trentlin	45	2420	dresden.are	standing	95	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794776477	cmd	Trentlin	45	2421	dresden.are	standing	95	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794776477	cmd	Trentlin	45	2422	dresden.are	standing	95	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794776478	cmd	Trentlin	45	2423	dresden.are	standing	95	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1794776478	cmd	Trentlin	45	2424	dresden.are	standing	95	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1794776478	cmd	Trentlin	45	2425	dresden.are	standing	95	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1794776478	cmd	Trentlin	45	2426	dresden.are	standing	95	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794776479	cmd	Trentlin	45	2426	dresden.are	standing	95	0	-	open	east	Ok.	-	-
+1794776479	cmd	Trentlin	45	2440	dresden.are	standing	95	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794776479	area	Trentlin	45	3503	midennir.are	dresden.are	midennir.are	22	east
+1794776479	cmd	Trentlin	45	3503	midennir.are	standing	95	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1794776479	cmd	Trentlin	45	3502	midennir.are	standing	95	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1794776480	cmd	Trentlin	45	3525	midennir.are	standing	95	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  	-	+
+1794776480	cmd	Trentlin	45	3526	midennir.are	standing	95	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded	-	+
+1794776480	cmd	Trentlin	45	3527	midennir.are	standing	95	0	-	east		The Checkpoint //   You are met by a group of heavily armored knights.  They check you over // for contraband, and then allow you to pass on.  One of the knights cautions to	-	+
+1794776480	cmd	Trentlin	45	3528	midennir.are	standing	95	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road, just east of a heavily  // guarded checkpoint.  You have covered about half the distance between	-	+
+1794776481	cmd	Trentlin	45	3529	midennir.are	standing	95	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially	-	+
+1794776481	cmd	Trentlin	45	3530	midennir.are	standing	95	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste	-	+
+1794776481	cmd	Trentlin	45	3531	midennir.are	standing	95	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your	-	+
+1794776481	cmd	Trentlin	45	3532	midennir.are	standing	95	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous	-	+
+1794776482	area	Trentlin	45	42	connect.are	midennir.are	connect.are	3	east
+1794776482	cmd	Trentlin	45	42	connect.are	standing	95	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities	-	+
+1794776482	area	Trentlin	45	9669	newthalo.are	connect.are	newthalo.are	0	east
+1794776482	cmd	Trentlin	45	9669	newthalo.are	standing	95	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.	-	+
+1794776482	cmd	Trentlin	45	9523	newthalo.are	standing	95	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1794776482	cmd	Trentlin	45	9524	newthalo.are	standing	95	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1794776483	cmd	Trentlin	45	9525	newthalo.are	standing	95	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1794776483	cmd	Trentlin	45	9526	newthalo.are	standing	95	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1794776483	cmd	Trentlin	45	9509	newthalo.are	standing	95	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1794776483	cmd	Trentlin	45	9506	newthalo.are	standing	95	0	-	east		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle	-	+
+1794776484	cmd	Trentlin	45	9517	newthalo.are	standing	95	0	-	east		The Eastern Market Square //   You stand in the market of New Thalos, the gem of the desert. The // market is the hub of the city; all trade and commerce of any significance is	-	+
+1794776484	cmd	Trentlin	45	9527	newthalo.are	standing	95	0	-	east		East Main Street //   Here on East Main, you smell the odor of freshly slaughtered meat and // hear the pounding of new metal from the armory.  The Square is to	-	+
+1794776484	cmd	Trentlin	45	9528	newthalo.are	standing	95	0	-	east		East Main Street //   You are on East Main Street.  To the North is the beginning of // Guildsman's Row.  To the South is a dark alley.  The road also	-	+
+1794776484	cmd	Trentlin	45	9529	newthalo.are	standing	95	0	-	east		East Main Street //   As you walk by the mercenary guild a cold chill causes you to shiver // uncontrollably. You see some shady looking characters lurking about the	-	+
+1794776485	cmd	Trentlin	45	9530	newthalo.are	standing	95	0	-	east		East Main Street //   The Main street through eastern New Thalos begins here and heads westward // towards the marketplace. One of the main gates can be seen to the east, and	-	+
+1794776485	cmd	Trentlin	45	9531	newthalo.are	standing	95	0	-	east		Inside the Eastern Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazened with the crest of New Thalos, swings easily on	-	+
+1794776485	cmd	Trentlin	45	9531	newthalo.are	standing	95	0	-	open	east	Ok.	-	-
+1794776485	cmd	Trentlin	45	9668	newthalo.are	standing	95	0	-	east		Outside the Eastern Gate of New Thalos //   You stand outside the protective walls of the city. The massive iron gate // sits to the west and the unknown awaits you eastward.	-	+
+1794776486	cmd	Trentlin	45	9790	newthalo.are	standing	95	0	-	east		On a road //   The people of New Thalos take great pride in the services their // city may provide. One of these services is the construction crews	-	+
+1794776486	cmd	Trentlin	45	9791	newthalo.are	standing	95	0	-	east		On a road //   You walk along a well used road with beautiful scenery. To the north // tall pine trees form a wall that goes on for miles. Between the road	-	+
+1794776486	cmd	Trentlin	45	9792	newthalo.are	standing	95	0	-	east		On a road //   The Dragon Sea can be seen to the east now spreading out to unknown // lands. The road continues east and west. To the south you hear the	-	+
+1794776486	cmd	Trentlin	45	9793	newthalo.are	standing	95	0	-	east		On a road //   This is the main land route through the land. Merchants can bring their goods // to the coastline and have them ferried onto ships for export. Travel	-	+
+1794776487	cmd	Trentlin	45	9794	newthalo.are	standing	95	0	-	east		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline	-	+
+1794776487	area	Trentlin	45	41	connect.are	newthalo.are	connect.are	5	north
+1794776487	cmd	Trentlin	45	41	connect.are	standing	95	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 	-	+
+1794776487	area	Trentlin	45	16000	pirate.are	connect.are	pirate.are	0	north
+1794776487	cmd	Trentlin	45	16000	pirate.are	standing	95	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a	-	+
+1794776488	cmd	Trentlin	45	16000	pirate.are	standing	95	0	-	equipment		You are using: // <used as light>     (Invis) (Glowing) the Sceptre of Might // <worn on finger>    something.	-	+
+1794776493	cmd	Trentlin	45	16000	pirate.are	standing	97	0	-	steel		You lost your concentration.	-	-
+1794776494	cmd	Trentlin	45	16000	pirate.are	standing	97	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794776499	cmd	Trentlin	45	16000	pirate.are	standing	97	0	-	iron		You lost your concentration.	-	-
+1794776500	cmd	Trentlin	45	16000	pirate.are	standing	97	0	-	iron		Your skin hardens.	-	-
+1794776507	cmd	Trentlin	45	16001	pirate.are	standing	97	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794776507	cmd	Trentlin	45	16002	pirate.are	standing	97	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794776508	cmd	Trentlin	45	16003	pirate.are	standing	97	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794776508	cmd	Trentlin	45	16004	pirate.are	standing	97	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.	-	+
+1794776509	cmd	Trentlin	45	16005	pirate.are	standing	97	0	-	east		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like	-	+
+1794776510	cmd	Trentlin	45	16021	pirate.are	standing	97	0	-	up		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not	-	+
+1794776511	cmd	Trentlin	45	16021	pirate.are	standing	97	0	-	scan		The sailor                         -to the East. // The sailor                         -to the South. // The pirate                         -to the South.	-	+
+1794776513	cmd	Trentlin	45	16016	pirate.are	standing	97	0	-	south		Main Deck of the Royal Eagle - Port //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not	-	+
+1794776514	cmd	Trentlin	45	16016	pirate.are	standing	97	0	-	kill	pira	Your punch *** DEVASTATES *** The pirate! // Your punch maims The pirate!	-	-
+1794776517	skill	Trentlin	45	16016	pirate.are	fists of fury	83	84	success	fists
+1794776517	cmd	Trentlin	45	16016	pirate.are	fighting	97	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The pirate! // You have become better at fists of fury!	-	+
+1794776523	cmd	Trentlin	45	16016	pirate.are	fighting	89	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ The pirate! // Your fists of fury scratches The pirate.	-	+
+1794776529	cmd	Trentlin	45	16016	pirate.are	fighting	82	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS The pirate! // Your fists of fury DISMEMBERS The pirate!	-	+
+1794776534	cmd	Trentlin	45	16016	pirate.are	fighting	56	0	fight	trip		Your trip misses The pirate.	-	-
+1794776538	cmd	Trentlin	45	16016	pirate.are	fighting	56	0	fight	trip		You trip The pirate and The pirate goes down! // Your trip scratches The pirate.	-	-
+1794776544	cmd	Trentlin	45	16016	pirate.are	fighting	49	0	fight	trip		You trip The pirate and The pirate goes down! // Your trip scratches The pirate.	-	-
+1794776547	coin	Trentlin	45	16016	pirate.are	+2000000	loot	(violence_update)	corpse of The pirate	15434523739
+1794776547	coin	Trentlin	45	16016	pirate.are	+1200	loot	(violence_update)	corpse of The pirate	15434524939
+1794776547	coin	Trentlin	45	16016	pirate.are	+17	loot	(violence_update)	corpse of The pirate	15434524956
+1794776547	coin	Trentlin	45	16016	pirate.are	+70000	loot	(violence_update)	corpse of The pirate	15434594956
+1794776552	coin	Trentlin	45	16016	pirate.are	+90	loot	sacrifice	corpse of The pirate	15434595046
+1794776552	cmd	Trentlin	45	16016	pirate.are	standing	49	3	-	sacrifice	co	The Gods give you 90 copper coins for your sacrifice.	-	-
+1794776554	cmd	Trentlin	45	16016	pirate.are	standing	52	0	-	scan		The midshipman                     -to the North. // The swashbuckler                   -to the North.	-	-
+1794776555	cmd	Trentlin	45	16017	pirate.are	standing	52	0	-	east		Main Deck of the Royal Eagle //   You are aboard the Royal Eagle - the flag ship of the Krondorian fleet.  She // seems to have been out to sea many times on many voyages.  Crewmen are	-	+
+1794776555	cmd	Trentlin	45	16017	pirate.are	standing	52	0	-	scan		The sailor                         -to the North. // The swashbuckler                   -to the East. // The sailor                         -to the West.	-	-
+1794776557	cmd	Trentlin	45	16018	pirate.are	standing	52	0	-	east		Main Deck of the Royal Eagle //   You are aboard the Royal Eagle - the flag ship of the Krondorian fleet.  She // seems to have been out to sea many times on many voyages.  Crewmen are	-	+
+1794776558	cmd	Trentlin	45	16018	pirate.are	standing	52	0	-	scan		The drunk pirate                   -to the North. // The midshipman                     -to the East.	-	-
+1794776559	cmd	Trentlin	45	16019	pirate.are	standing	52	0	-	east		Main Deck of the Royal Eagle //   You are aboard the Royal Eagle - the flag ship of the Krondorian fleet.  She // seems to have been out to sea many times on many voyages.  Crewmen are	-	+
+1794776560	cmd	Trentlin	45	16019	pirate.are	standing	52	0	-	scan		The swashbuckler                   -to the West.	-	-
+1794776561	cmd	Trentlin	45	16020	pirate.are	standing	52	0	-	east		Main Deck of the Royal Eagle - Starboard //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not	-	+
+1794776561	cmd	Trentlin	45	16020	pirate.are	standing	52	0	-	scan		The pirate                         -to the North. // The midshipman                     -to the West. // The angry pirate                   -right above you.	-	-
+1794776563	cmd	Trentlin	45	16025	pirate.are	standing	52	0	-	north		Main Deck - Starboard //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794776564	cmd	Trentlin	45	16025	pirate.are	standing	52	0	-	kill	pira	The pirate dodges your attack. // The pirate dodges your attack.	-	-
+1794776567	cmd	Trentlin	45	16025	pirate.are	fighting	43	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The pirate. // Your fists of fury DISEMBOWELS The pirate!	-	+
+1794776573	cmd	Trentlin	45	16025	pirate.are	fighting	43	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEMOLISHES *** The pirate! // Your fists of fury grazes The pirate.	-	+
