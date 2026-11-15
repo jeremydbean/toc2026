@@ -264,9 +264,14 @@ class BalanceModelTests(unittest.TestCase):
 class BalanceWiringTests(unittest.TestCase):
     def test_the_guide_the_oracle_and_the_finder_read_it(self) -> None:
         server = (ROOT / "webadmin" / "server.py").read_text(encoding="utf-8")
-        guide = server.split("async def get_leveling(", 1)[1].split("\ndef ", 1)[0]
-        # Loaded once, off the event loop, and every mobile read from that load.
-        self.assertIn("bal = await balance.load_async(PROGRESS_LOG)", guide)
+        route = server.split("async def get_leveling(", 1)[1].split("\ndef ", 1)[0]
+        # Loaded once, off the event loop, by the route; every mobile read
+        # from that load in leveling_guide, which the route and HUNTING's
+        # writer share (2026-11-15).
+        self.assertIn("bal = await balance.load_async(PROGRESS_LOG)", route)
+        self.assertIn("return leveling_guide(level, limit, bal)", route)
+        guide = server.split("\ndef leveling_guide(", 1)[1].split("\ndef ", 1)[0]
+        self.assertNotIn("balance.load(", guide)
         self.assertIn("balance.near(bal, int(mob.vnum), level)", guide)
         self.assertIn('"basis": "measured" if close else "modelled"', guide)
         self.assertIn("if int(mob.vnum) in guardians:", guide)
