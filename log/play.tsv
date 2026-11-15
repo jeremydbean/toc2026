@@ -30820,3 +30820,170 @@
 1794771724	laid	-	0	0	-	884	component	84	a vial of froghemoth saliva	29479	world.are	scatter
 1794771766	quest	Alaric	57	2497	dresden.are	ordinary	recover	25042	The Heart of Tifarah	59	campus.are	10
 1794771766	cmd	Alaric	57	2497	dresden.are	standing	100	13	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Alaric.' // Questor Thews tells you 'A prized artifact - The Heart of Tifarah - has gone missing!'	-	+
+1794771770	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794771770	cmd	Alaric	57	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794771770	cmd	Alaric	57	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794771771	cmd	Alaric	57	4201	dresden.are	standing	100	0	-	south		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794771771	cmd	Alaric	57	4202	dresden.are	standing	100	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794771771	cmd	Alaric	57	4207	dresden.are	standing	100	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794771771	area	Alaric	57	3700	school.are	dresden.are	school.are	442	up
+1794771771	cmd	Alaric	57	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794771772	cmd	Alaric	57	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794771772	cmd	Alaric	57	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794771772	area	Alaric	57	15000	campus.are	school.are	campus.are	1	enter
+1794771772	cmd	Alaric	57	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794771774	laid	-	0	0	-	891	herb	53	a huckleberry	1019	uargo.are	scatter
+1794771782	cmd	Alaric	57	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794771782	cmd	Alaric	57	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794771783	cmd	Alaric	57	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794771783	cmd	Alaric	57	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794771783	cmd	Alaric	57	15005	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794771783	cmd	Alaric	57	15006	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794771784	cmd	Alaric	57	15030	campus.are	standing	100	0	-	south		The Entrance To Sterling Hall //   This is the entrance to the famed circular building, Sterling Hall. // Supposedly, if you walk in one direction long enough, you will get to	-	+
+1794771785	cmd	Alaric	57	15225	campus.are	standing	100	0	-	south		An Odd Circular Room //   A small circular room sits in the centre of the building.  There are // exits to the north and south.	-	+
+1794771787	cmd	Alaric	57	15222	campus.are	standing	100	0	-	south		Hallway //   The hallway curves around slightly so that you can't quite see what is // to the west and east.  There is an extraneous exit to the north.	-	+
+1794771788	cmd	Alaric	57	15222	campus.are	standing	100	0	-	exits		Obvious exits: // North - An Odd Circular Room // East  - Hallway	-	+
+1794771789	cmd	Alaric	57	15221	campus.are	standing	100	0	-	west		Hallway //   The hallway curves around slightly so that you can't quite see what is // to the west and east.  The sound of snoring denotes a lecture hall to	-	+
+1794771790	cmd	Alaric	57	15221	campus.are	standing	100	0	-	exits		Obvious exits: // East  - Hallway // South - Lecture Hall "A"	-	+
+1794771792	cmd	Alaric	57	15220	campus.are	standing	100	0	-	west		Hallway //   The hallway curves around slightly so that you can't quite see what is // to the west and east.  The sound of snoring denotes a lecture hall to	-	+
+1794771795	cmd	Alaric	57	15226	campus.are	standing	100	0	-	south		Lecture Hall "B" //   The lecture hall is comprised of almost two dozen rows of uncomfortable // seats with small tables bolted to them.  As soon as you enter the room,	-	+
+1794771796	cmd	Alaric	57	15226	campus.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1794771798	cmd	Alaric	57	15220	campus.are	standing	100	0	-	north		Hallway //   The hallway curves around slightly so that you can't quite see what is // to the west and east.  The sound of snoring denotes a lecture hall to	-	+
+1794771799	cmd	Alaric	57	15221	campus.are	standing	100	0	-	east		Hallway //   The hallway curves around slightly so that you can't quite see what is // to the west and east.  The sound of snoring denotes a lecture hall to	-	+
+1794771800	cmd	Alaric	57	15227	campus.are	standing	100	0	-	south		Lecture Hall "A" //   The lecture hall is comprised of almost two dozen rows of uncomfortable // seats with small tables bolted to them.  As soon as you enter the room,	-	+
+1794771800	cmd	Alaric	57	15227	campus.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1794771802	cmd	Alaric	57	15221	campus.are	standing	100	0	-	north		Hallway //   The hallway curves around slightly so that you can't quite see what is // to the west and east.  The sound of snoring denotes a lecture hall to	-	+
+1794771802	cmd	Alaric	57	15220	campus.are	standing	100	0	-	west		Hallway //   The hallway curves around slightly so that you can't quite see what is // to the west and east.  The sound of snoring denotes a lecture hall to	-	+
+1794771803	cmd	Alaric	57	15030	campus.are	standing	100	0	-	west		The Entrance To Sterling Hall //   This is the entrance to the famed circular building, Sterling Hall. // Supposedly, if you walk in one direction long enough, you will get to	-	+
+1794771804	cmd	Alaric	57	15225	campus.are	standing	100	0	-	south		An Odd Circular Room //   A small circular room sits in the centre of the building.  There are // exits to the north and south.	-	+
+1794771806	cmd	Alaric	57	15222	campus.are	standing	100	0	-	south		Hallway //   The hallway curves around slightly so that you can't quite see what is // to the west and east.  There is an extraneous exit to the north.	-	+
+1794771807	cmd	Alaric	57	15223	campus.are	standing	100	0	-	east		Hallway //   The hallway curves around slightly so that you can't quite see what is // to the est and east.  The sound of snoring denotes a lecture hall to	-	+
+1794771809	cmd	Alaric	57	15224	campus.are	standing	100	0	-	east		Hallway //   The hallway curves around slightly so that you can't quite see what is // to the west and east.  The sound of snoring denotes a lecture hall to	-	+
+1794771810	cmd	Alaric	57	15224	campus.are	standing	100	0	-	exits		Obvious exits: // East  - The Entrance To Sterling Hall // South - Lecture Hall "C"	-	+
+1794771811	cmd	Alaric	57	15030	campus.are	standing	100	0	-	east		The Entrance To Sterling Hall //   This is the entrance to the famed circular building, Sterling Hall. // Supposedly, if you walk in one direction long enough, you will get to	-	+
+1794771812	refused	Alaric	57	15030	campus.are	standing	100	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794771813	cmd	Alaric	57	15006	campus.are	standing	100	0	-	north		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794771813	cmd	Alaric	57	15006	campus.are	standing	100	0	-	exits		Obvious exits: // North - Campus Pub Stairwell // East  - Division Road	-	+
+1794771814	cmd	Alaric	57	15065	campus.are	standing	100	0	-	north		Campus Pub Stairwell //   This stairwell leads up to the ever popular (and ever-loud) Campus // Pub.  There are also exits to the north and south leading to the	-	+
+1794771815	cmd	Alaric	57	15065	campus.are	standing	100	0	-	exits		Obvious exits: // North - Closed door // South - Campus Crescent	-	+
+1794771816	cmd	Alaric	57	15065	campus.are	standing	100	0	-	open		Ok.	-	-
+1794771817	cmd	Alaric	57	15065	campus.are	standing	100	0	-	exits		Obvious exits: // North - Campus Bookstore // South - Campus Crescent	-	+
+1794771818	cmd	Alaric	57	15041	campus.are	standing	100	0	-	north		Campus Bookstore //   This shop is filled with over-priced items that every university // student would want for his, her, or its own home.  Such items as	-	+
+1794771819	cmd	Alaric	57	15041	campus.are	standing	100	0	-	exits		Obvious exits: // East  - Division Road // South - Campus Pub Stairwell	-	-
+1794771819	cmd	Alaric	57	15018	campus.are	standing	100	0	-	east		Division Road //   Asphalt pavement lies heinously beneath your feet.  The road continues // north and south.  A building is off to the west.	-	+
+1794771821	cmd	Alaric	57	15018	campus.are	standing	100	0	-	exits		Obvious exits: // North - Division Road // South - Division Road	-	+
+1794771822	cmd	Alaric	57	15041	campus.are	standing	100	0	-	west		Campus Bookstore //   This shop is filled with over-priced items that every university // student would want for his, her, or its own home.  Such items as	-	+
+1794771823	cmd	Alaric	57	15041	campus.are	standing	100	0	-	exits		Obvious exits: // East  - Division Road // South - Campus Pub Stairwell	-	-
+1794771824	cmd	Alaric	57	15065	campus.are	standing	100	0	-	south		Campus Pub Stairwell //   This stairwell leads up to the ever popular (and ever-loud) Campus // Pub.  There are also exits to the north and south leading to the	-	+
+1794771825	cmd	Alaric	57	15065	campus.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794771827	cmd	Alaric	57	15006	campus.are	standing	100	0	-	south		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794771828	cmd	Alaric	57	15006	campus.are	standing	100	0	-	exits		Obvious exits: // North - Campus Pub Stairwell // East  - Division Road	-	+
+1794771829	cmd	Alaric	57	15007	campus.are	standing	100	1	-	east		Division Road //   Asphalt pavement lies heinously beneath your feet.  The road continues // north and south.  A nice cobblestone road leads off to the west.	-	+
+1794771831	cmd	Alaric	57	15007	campus.are	standing	100	0	-	exits		Obvious exits: // North - Division Road // South - Division Road	-	+
+1794771832	cmd	Alaric	57	15019	campus.are	standing	100	0	-	south		Division Road //   Asphalt pavement lies heinously beneath your feet.  The road continues // north and south.	-	+
+1794771834	cmd	Alaric	57	15020	campus.are	standing	100	0	-	south		Division Road //   Asphalt pavement lies heinously beneath your feet.  The road continues // north and south.	-	+
+1794771835	cmd	Alaric	57	15020	campus.are	standing	100	0	-	exits		Obvious exits: // North - Division Road // South - Division Road	-	-
+1794771836	cmd	Alaric	57	15021	campus.are	standing	100	0	-	south		Division Road //   Asphalt pavement lies heinously beneath your feet.  The road continues // north. A dormitory sits to the east.  Strange that it's so far from	-	+
+1794771837	cmd	Alaric	57	15021	campus.are	standing	100	0	-	exits		Obvious exits: // North - Division Road // East  - Wally World Reception Area	-	-
+1794771838	cmd	Alaric	57	15042	campus.are	standing	100	0	-	east		Wally World Reception Area //   This is the entrance to the fabulous Wally World, located soulfully on // East Campus, miles away from everything else.  There are three exits from	-	+
+1794771839	cmd	Alaric	57	15042	campus.are	standing	100	0	-	exits		Obvious exits: // North - Reception Desk // East  - Lobby	-	+
+1794771840	cmd	Alaric	57	15101	campus.are	standing	100	0	-	north		Reception Desk //   This is the main reception desk for the Wally World residence.  You are // able to see the incoming mail behind the desk as well as hooks for keys	-	+
+1794771841	cmd	Alaric	57	15042	campus.are	standing	100	0	-	south		Wally World Reception Area //   This is the entrance to the fabulous Wally World, located soulfully on // East Campus, miles away from everything else.  There are three exits from	-	+
+1794771842	cmd	Alaric	57	15103	campus.are	standing	100	0	-	east		Lobby //   This lobby is the perfect area to make a meeting place, assuming of course // that you can find it again.  Just to make it easy to rediscover, exits have	-	+
+1794771843	cmd	Alaric	57	15104	campus.are	standing	100	0	-	east		Stairwell //   This is, as it says, a stairwell.  The exits are west and up. // [Exits: west up]	-	-
+1794771846	cmd	Alaric	57	15105	campus.are	standing	100	0	-	up		Stairwell //   This is another stairwell.  The exits are west, up, and down. // [Exits: west up down]	-	-
+1794771848	cmd	Alaric	57	15106	campus.are	standing	100	0	-	west		Landing //   This is a landing with halls heading off in all the cardinal directions. // The only problem is that, the hall to the west is blocked by a door.	-	+
+1794771848	cmd	Alaric	57	15106	campus.are	standing	100	0	-	exits		Obvious exits: // North - Hallway // East  - Stairwell	-	+
+1794771849	cmd	Alaric	57	15106	campus.are	standing	100	0	-	west		The door is closed.	-	-
+1794771850	cmd	Alaric	57	15106	campus.are	standing	100	0	-	exits		Obvious exits: // North - Hallway // East  - Stairwell	-	+
+1794771851	cmd	Alaric	57	15106	campus.are	standing	100	0	-	open		Ok.	-	-
+1794771851	cmd	Alaric	57	15107	campus.are	standing	100	0	-	west		Broom Closet //   What a waste of effort it was to come in here... there is absolutely // nothing, not even brooms.  And there is no other exit to boot, just	-	+
+1794771852	cmd	Alaric	57	15107	campus.are	standing	100	0	-	exits		Obvious exits: // East  - Landing	-	-
+1794771852	cmd	Alaric	57	15106	campus.are	standing	100	0	-	east		Landing //   This is a landing with halls heading off in all the cardinal directions. // The only problem is that, the hall to the west is blocked by a door.	-	+
+1794771852	cmd	Alaric	57	15108	campus.are	standing	100	0	-	north		Hallway //   The hall continues north-south and there is a doorway on either side of // the hall.	-	+
+1794771853	cmd	Alaric	57	15108	campus.are	standing	100	0	-	exits		Obvious exits: // North - Hallway // East  - Closed door	-	+
+1794771854	cmd	Alaric	57	15108	campus.are	standing	100	0	-	open		Ok.	-	-
+1794771854	cmd	Alaric	57	15108	campus.are	standing	100	0	-	open		Ok.	-	-
+1794771855	cmd	Alaric	57	15108	campus.are	standing	100	0	-	exits		Obvious exits: // North - Hallway // East  - Private Room 205	-	+
+1794771856	cmd	Alaric	57	15110	campus.are	standing	100	0	-	west		Private Room 206 //   This room is sparsely furnished but you notice one thing upon entering... // the floor is tiled, while the hallways are carpeted.  I wonder why?	-	+
+1794771856	cmd	Alaric	57	15108	campus.are	standing	100	0	-	east		Hallway //   The hall continues north-south and there is a doorway on either side of // the hall.	-	+
+1794771857	cmd	Alaric	57	15109	campus.are	standing	100	0	-	east		Private Room 205 //   This room is sparsely furnished but you notice one thing upon entering... // the floor is tiled, while the hallways are carpeted.  I wonder why?	-	+
+1794771857	cmd	Alaric	57	15108	campus.are	standing	100	0	-	west		Hallway //   The hall continues north-south and there is a doorway on either side of // the hall.	-	+
+1794771858	cmd	Alaric	57	15111	campus.are	standing	100	0	-	north		Hallway //   The hall leads to the south and there is a doorway on either side of the // hall as well as one to the north.	-	+
+1794771859	cmd	Alaric	57	15111	campus.are	standing	100	0	-	open		Ok.	-	-
+1794771860	cmd	Alaric	57	15111	campus.are	standing	100	1	-	open		Ok.	-	-
+1794771860	cmd	Alaric	57	15111	campus.are	standing	100	0	-	open		Ok.	-	-
+1794771861	cmd	Alaric	57	15113	campus.are	standing	100	0	-	west		Private Room 204 //   This room is sparsely furnished but you notice one thing upon entering... // the floor is tiled, while the hallways are carpeted.  I wonder why?	-	+
+1794771861	cmd	Alaric	57	15111	campus.are	standing	100	0	-	east		Hallway //   The hall leads to the south and there is a doorway on either side of the // hall as well as one to the north.	-	+
+1794771862	cmd	Alaric	57	15112	campus.are	standing	100	0	-	east		Private Room 203 //   This room is sparsely furnished but you notice one thing upon entering... // the floor is tiled, while the hallways are carpeted.  I wonder why?	-	+
+1794771862	laid	-	0	0	-	903	herb	42	a marjoram plant	20524	emerald.are	scatter
+1794771862	laid	-	0	0	-	904	component	62	a nightmare's hoof clipping	29453	world.are	scatter
+1794771862	cmd	Alaric	57	15111	campus.are	standing	100	0	-	west		Hallway //   The hall leads to the south and there is a doorway on either side of the // hall as well as one to the north.	-	+
+1794771863	cmd	Alaric	57	15114	campus.are	standing	100	0	-	north		Private Room 201 //   This room is sparsely furnished but you notice one thing upon entering... // the floor is tiled, while the hallways are carpeted.  I wonder why?	-	+
+1794771864	cmd	Alaric	57	15111	campus.are	standing	100	0	-	south		Hallway //   The hall leads to the south and there is a doorway on either side of the // hall as well as one to the north.	-	+
+1794771864	cmd	Alaric	57	15108	campus.are	standing	100	0	-	south		Hallway //   The hall continues north-south and there is a doorway on either side of // the hall.	-	+
+1794771865	cmd	Alaric	57	15106	campus.are	standing	100	0	-	south		Landing //   This is a landing with halls heading off in all the cardinal directions. // The only problem is that, the hall to the west is blocked by a door.	-	+
+1794771865	cmd	Alaric	57	15115	campus.are	standing	100	0	-	south		Hallway //   The hall continues north-south and there is a doorway on either side of // the hall.	-	+
+1794771868	cmd	Alaric	57	15115	campus.are	standing	100	0	-	open		Ok.	-	-
+1794771868	cmd	Alaric	57	15115	campus.are	standing	100	0	-	open		Ok.	-	-
+1794771868	cmd	Alaric	57	15115	campus.are	standing	100	0	-	exits		Obvious exits: // North - Landing // East  - Private Room 207	-	+
+1794771869	cmd	Alaric	57	15117	campus.are	standing	100	0	-	west		Private Room 208 //   This room is sparsely furnished but you notice one thing upon entering... // the floor is tiled, while the hallways are carpeted.  I wonder why?	-	+
+1794771870	cmd	Alaric	57	15115	campus.are	standing	100	0	-	east		Hallway //   The hall continues north-south and there is a doorway on either side of // the hall.	-	+
+1794771870	cmd	Alaric	57	15116	campus.are	standing	100	0	-	east		Private Room 207 //   This room is sparsely furnished but you notice one thing upon entering... // the floor is tiled, while the hallways are carpeted.  I wonder why?	-	+
+1794771871	cmd	Alaric	57	15115	campus.are	standing	100	0	-	west		Hallway //   The hall continues north-south and there is a doorway on either side of // the hall.	-	+
+1794771871	cmd	Alaric	57	15118	campus.are	standing	100	0	-	south		Hallway //   The hall leads to the north and there is a doorway on either side of the // hall as well as one to the south.	-	+
+1794771872	cmd	Alaric	57	15118	campus.are	standing	100	0	-	open		Ok.	-	-
+1794771873	cmd	Alaric	57	15118	campus.are	standing	100	0	-	worth		You have 2934 platinum, 50 gold, 75 silver, 70 copper // and 252749 experience (39551 exp to level).	-	-
+1794771873	cmd	Alaric	57	15118	campus.are	standing	100	0	-	west		The door is closed.	-	-
+1794771874	cmd	Alaric	57	15119	campus.are	standing	100	0	-	east		Private Room 209 //   This room is sparsely furnished but you notice one thing upon entering... // the floor is tiled, while the hallways are carpeted.  I wonder why?	-	+
+1794771874	cmd	Alaric	57	15119	campus.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794771875	cmd	Alaric	57	15118	campus.are	standing	100	0	-	west		Hallway //   The hall leads to the north and there is a doorway on either side of the // hall as well as one to the south.	-	+
+1794771875	cmd	Alaric	57	15118	campus.are	standing	100	0	-	west		The door is closed.	-	-
+1794771876	cmd	Alaric	57	15118	campus.are	standing	100	0	-	open		Ok.	-	-
+1794771876	cmd	Alaric	57	15120	campus.are	standing	100	0	-	west		Private Room 210 //   This room is sparsely furnished but you notice one thing upon entering... // the floor is tiled, while the hallways are carpeted.  I wonder why?	-	+
+1794771877	cmd	Alaric	57	15118	campus.are	standing	100	0	-	east		Hallway //   The hall leads to the north and there is a doorway on either side of the // hall as well as one to the south.	-	+
+1794771878	cmd	Alaric	57	15118	campus.are	standing	100	0	-	south		The door is closed.	-	-
+1794771879	cmd	Alaric	57	15118	campus.are	standing	100	0	-	open		Ok.	-	-
+1794771879	cmd	Alaric	57	15121	campus.are	standing	100	0	-	south		Private Room 202 //   This room is sparsely furnished but you notice one thing upon entering... // the floor is tiled, while the hallways are carpeted.  I wonder why?	-	+
+1794771881	cmd	Alaric	57	15121	campus.are	standing	100	0	-	recall		The Gods have forsaken you.	-	-
+1794771885	cmd	Alaric	57	15118	campus.are	standing	100	0	-	north		Hallway //   The hall leads to the north and there is a doorway on either side of the // hall as well as one to the south.	-	+
+1794771885	cmd	Alaric	57	15115	campus.are	standing	100	0	-	north		Hallway //   The hall continues north-south and there is a doorway on either side of // the hall.	-	+
+1794771885	cmd	Alaric	57	15106	campus.are	standing	100	0	-	north		Landing //   This is a landing with halls heading off in all the cardinal directions. // The only problem is that, the hall to the west is blocked by a door.	-	+
+1794771886	cmd	Alaric	57	15105	campus.are	standing	100	0	-	east		Stairwell //   This is another stairwell.  The exits are west, up, and down. // [Exits: west up down]	-	-
+1794771886	cmd	Alaric	57	15104	campus.are	standing	100	0	-	down		Stairwell //   This is, as it says, a stairwell.  The exits are west and up. // [Exits: west up]	-	-
+1794771886	cmd	Alaric	57	15103	campus.are	standing	100	0	-	west		Lobby //   This lobby is the perfect area to make a meeting place, assuming of course // that you can find it again.  Just to make it easy to rediscover, exits have	-	+
+1794771886	cmd	Alaric	57	15042	campus.are	standing	100	0	-	west		Wally World Reception Area //   This is the entrance to the fabulous Wally World, located soulfully on // East Campus, miles away from everything else.  There are three exits from	-	+
+1794771887	cmd	Alaric	57	15021	campus.are	standing	100	0	-	west		Division Road //   Asphalt pavement lies heinously beneath your feet.  The road continues // north. A dormitory sits to the east.  Strange that it's so far from	-	+
+1794771887	cmd	Alaric	57	15020	campus.are	standing	100	0	-	north		Division Road //   Asphalt pavement lies heinously beneath your feet.  The road continues // north and south.	-	+
+1794771887	cmd	Alaric	57	15019	campus.are	standing	100	0	-	north		Division Road //   Asphalt pavement lies heinously beneath your feet.  The road continues // north and south.	-	+
+1794771887	cmd	Alaric	57	15007	campus.are	standing	100	0	-	north		Division Road //   Asphalt pavement lies heinously beneath your feet.  The road continues // north and south.  A nice cobblestone road leads off to the west.	-	+
+1794771888	cmd	Alaric	57	15006	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794771888	cmd	Alaric	57	15005	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794771888	cmd	Alaric	57	15004	campus.are	standing	100	0	-	west		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794771888	cmd	Alaric	57	15003	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794771889	cmd	Alaric	57	15002	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794771889	cmd	Alaric	57	15001	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794771889	cmd	Alaric	57	15000	campus.are	standing	100	0	-	west		The Eastern Campus Entrance //   This gateway is made of limestone, and covered in ivy.  Beyond the // entrance, the university stretches as far as the eye can see.  A sign	-	+
+1794771889	area	Alaric	57	3795	school.are	campus.are	school.are	117	enter
+1794771889	cmd	Alaric	57	3795	school.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // Strange Blending of Time	-	+
+1794771890	cmd	Alaric	57	3772	school.are	standing	100	0	-	down		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794771890	cmd	Alaric	57	3700	school.are	standing	100	0	-	down		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794771890	area	Alaric	57	4207	dresden.are	school.are	dresden.are	1	down
+1794771890	cmd	Alaric	57	4207	dresden.are	standing	100	0	-	down		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794771890	cmd	Alaric	57	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794771891	cmd	Alaric	57	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794771891	cmd	Alaric	57	2433	dresden.are	standing	100	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794771891	cmd	Alaric	57	2405	dresden.are	standing	100	0	-	east		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794771891	cmd	Alaric	57	2406	dresden.are	standing	100	0	-	north		Northwestern Oak Tree Square. //   This is the northwestern corner of Oak Tree Square. // [Exits: east south]	-	+
+1794771892	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794771892	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794771894	outcome	Alaric	57	2497	dresden.are	quest-failed	failure	abandoned	-	ordinary target=obj:25042 level=59 alive=1 area=campus.are there=0 streak=1
+1794771894	cmd	Alaric	57	2497	dresden.are	standing	100	12	-	aquest	ab	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Alaric. Your quest obligation is lifted.' // Questor Thews says 'You had a streak of 1 in a row - all gone now!'	failure:abandoned	+
+1794771894	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=400/983 align=922 exp=252749 coin=2934507570 bank=24886121996 qp=2349 prac=36 train=76 stash=93/350 remorts=3
+1794771894	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    299 hours | Sex:      Male | Guild:        Monk | // | Age:        31 years | Race:    Dwarf | Castle:       None |	-	+
+1794771937	laid	-	0	0	-	909	herb	38	a foxglove flower	16010	pirate.are	scatter
+1794771937	laid	-	0	0	-	910	herb	35	a sprig of angelica	16071	pirate.are	scatter
+1794772006	laid	-	0	0	-	911	herb	46	a juniper berry	15048	campus.are	scatter
+1794772006	laid	-	0	0	-	912	component	80	a glass encased wing of a fairy	7053	sewer.are	scatter
+1794772057	laid	-	0	0	-	913	herb	50	a head of cabbage	3819	ratslair.are	scatter
+1794772057	laid	-	0	0	-	914	component	76	a vial of dragons blood	10202	tritia.are	scatter

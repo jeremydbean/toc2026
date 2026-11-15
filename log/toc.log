@@ -305243,3 +305243,263 @@ Sun Nov 15 19:41:09 2026 :: Treasure goblin: vanished from room 9613 (The Temple
 Sun Nov 15 19:42:42 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 2 of 6 in 6 hours).
 Sun Nov 15 19:42:46 2026 :: Log Alaric [2497]: aq re
 Sun Nov 15 19:42:46 2026 :: Log Alaric [2497]: quest assigned: recover The Heart of Tifarah (obj 25042) in campus.are, 10 minutes, ordinary
+Sun Nov 15 19:42:50 2026 :: Log Alaric [2497]: enter door
+Sun Nov 15 19:42:50 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sun Nov 15 19:42:50 2026 :: Log Alaric [2401]: west
+Sun Nov 15 19:42:50 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Nov 15 19:42:50 2026 :: Log Alaric [2405]: west
+Sun Nov 15 19:42:50 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Nov 15 19:42:51 2026 :: Log Alaric [2433]: south
+Sun Nov 15 19:42:51 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 2433
+Sun Nov 15 19:42:51 2026 :: Log Alaric [4201]: west
+Sun Nov 15 19:42:51 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4201
+Sun Nov 15 19:42:51 2026 :: Log Alaric [4202]: west
+Sun Nov 15 19:42:51 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4202
+Sun Nov 15 19:42:51 2026 :: Log Alaric [4207]: up
+Sun Nov 15 19:42:51 2026 :: Log Alaric [3700]: arrived (Entrance to Mud School) from 4207
+Sun Nov 15 19:42:52 2026 :: Log Alaric [3700]: up
+Sun Nov 15 19:42:52 2026 :: Log Alaric [3772]: arrived (Newbie Train Station) from 3700
+Sun Nov 15 19:42:52 2026 :: Log Alaric [3772]: up
+Sun Nov 15 19:42:52 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 3772
+Sun Nov 15 19:42:52 2026 :: Log Alaric [3795]: enter portal
+Sun Nov 15 19:42:52 2026 :: Log Alaric [15000]: arrived (The Eastern Campus Entrance) from 3795
+Sun Nov 15 19:43:02 2026 :: Log Alaric [15000]: east
+Sun Nov 15 19:43:02 2026 :: Log Alaric [15001]: arrived (Campus Crescent) from 15000
+Sun Nov 15 19:43:02 2026 :: Log Alaric [15001]: east
+Sun Nov 15 19:43:02 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15001
+Sun Nov 15 19:43:03 2026 :: Log Alaric [15002]: east
+Sun Nov 15 19:43:03 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15002
+Sun Nov 15 19:43:03 2026 :: Log Alaric [15003]: east
+Sun Nov 15 19:43:03 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15003
+Sun Nov 15 19:43:03 2026 :: Log Alaric [15004]: east
+Sun Nov 15 19:43:03 2026 :: Log Alaric [15005]: arrived (Campus Crescent) from 15004
+Sun Nov 15 19:43:03 2026 :: Log Alaric [15005]: east
+Sun Nov 15 19:43:03 2026 :: Log Alaric [15006]: arrived (Campus Crescent) from 15005
+Sun Nov 15 19:43:04 2026 :: Log Alaric [15006]: south
+Sun Nov 15 19:43:04 2026 :: Log Alaric [15030]: arrived (The Entrance To Sterling Hall) from 15006
+Sun Nov 15 19:43:05 2026 :: Log Alaric [15030]: s
+Sun Nov 15 19:43:05 2026 :: Log Alaric [15225]: arrived (An Odd Circular Room) from 15030
+Sun Nov 15 19:43:07 2026 :: Log Alaric [15225]: s
+Sun Nov 15 19:43:07 2026 :: Log Alaric [15222]: arrived (Hallway) from 15225
+Sun Nov 15 19:43:08 2026 :: Log Alaric [15222]: ex
+Sun Nov 15 19:43:09 2026 :: Log Alaric [15222]: w
+Sun Nov 15 19:43:09 2026 :: Log Alaric [15221]: arrived (Hallway) from 15222
+Sun Nov 15 19:43:10 2026 :: Log Alaric [15221]: ex
+Sun Nov 15 19:43:12 2026 :: Log Alaric [15221]: w
+Sun Nov 15 19:43:12 2026 :: Log Alaric [15220]: arrived (Hallway) from 15221
+Sun Nov 15 19:43:15 2026 :: Log Alaric [15220]: s
+Sun Nov 15 19:43:15 2026 :: Log Alaric [15226]: arrived (Lecture Hall "B") from 15220
+Sun Nov 15 19:43:16 2026 :: Log Alaric [15226]: s
+Sun Nov 15 19:43:18 2026 :: Log Alaric [15226]: n
+Sun Nov 15 19:43:18 2026 :: Log Alaric [15220]: arrived (Hallway) from 15226
+Sun Nov 15 19:43:19 2026 :: Log Alaric [15220]: e
+Sun Nov 15 19:43:19 2026 :: Log Alaric [15221]: arrived (Hallway) from 15220
+Sun Nov 15 19:43:20 2026 :: Log Alaric [15221]: s
+Sun Nov 15 19:43:20 2026 :: Log Alaric [15227]: arrived (Lecture Hall "A") from 15221
+Sun Nov 15 19:43:20 2026 :: Log Alaric [15227]: s
+Sun Nov 15 19:43:22 2026 :: Log Alaric [15227]: n
+Sun Nov 15 19:43:22 2026 :: Log Alaric [15221]: arrived (Hallway) from 15227
+Sun Nov 15 19:43:22 2026 :: Log Alaric [15221]: w
+Sun Nov 15 19:43:22 2026 :: Log Alaric [15220]: arrived (Hallway) from 15221
+Sun Nov 15 19:43:23 2026 :: Log Alaric [15220]: w
+Sun Nov 15 19:43:23 2026 :: Log Alaric [15030]: arrived (The Entrance To Sterling Hall) from 15220
+Sun Nov 15 19:43:24 2026 :: Log Alaric [15030]: s
+Sun Nov 15 19:43:24 2026 :: Log Alaric [15225]: arrived (An Odd Circular Room) from 15030
+Sun Nov 15 19:43:26 2026 :: Log Alaric [15225]: s
+Sun Nov 15 19:43:26 2026 :: Log Alaric [15222]: arrived (Hallway) from 15225
+Sun Nov 15 19:43:27 2026 :: Log Alaric [15222]: e
+Sun Nov 15 19:43:27 2026 :: Log Alaric [15223]: arrived (Hallway) from 15222
+Sun Nov 15 19:43:29 2026 :: Log Alaric [15223]: e
+Sun Nov 15 19:43:29 2026 :: Log Alaric [15224]: arrived (Hallway) from 15223
+Sun Nov 15 19:43:30 2026 :: Log Alaric [15224]: ex
+Sun Nov 15 19:43:31 2026 :: Log Alaric [15224]: e
+Sun Nov 15 19:43:31 2026 :: Log Alaric [15030]: arrived (The Entrance To Sterling Hall) from 15224
+Sun Nov 15 19:43:32 2026 :: Log Alaric [15030]: (refused) x
+Sun Nov 15 19:43:33 2026 :: Log Alaric [15030]: n
+Sun Nov 15 19:43:33 2026 :: Log Alaric [15006]: arrived (Campus Crescent) from 15030
+Sun Nov 15 19:43:33 2026 :: Log Alaric [15006]: ex
+Sun Nov 15 19:43:34 2026 :: Log Alaric [15006]: n
+Sun Nov 15 19:43:34 2026 :: Log Alaric [15065]: arrived (Campus Pub Stairwell) from 15006
+Sun Nov 15 19:43:35 2026 :: Log Alaric [15065]: ex
+Sun Nov 15 19:43:36 2026 :: Log Alaric [15065]: on
+Sun Nov 15 19:43:37 2026 :: Log Alaric [15065]: ex
+Sun Nov 15 19:43:38 2026 :: Log Alaric [15065]: n
+Sun Nov 15 19:43:38 2026 :: Log Alaric [15041]: arrived (Campus Bookstore) from 15065
+Sun Nov 15 19:43:39 2026 :: Log Alaric [15041]: ex
+Sun Nov 15 19:43:39 2026 :: Log Alaric [15041]: e
+Sun Nov 15 19:43:39 2026 :: Log Alaric [15018]: arrived (Division Road) from 15041
+Sun Nov 15 19:43:41 2026 :: Log Alaric [15018]: ex
+Sun Nov 15 19:43:42 2026 :: Log Alaric [15018]: w
+Sun Nov 15 19:43:42 2026 :: Log Alaric [15041]: arrived (Campus Bookstore) from 15018
+Sun Nov 15 19:43:43 2026 :: Log Alaric [15041]: ex
+Sun Nov 15 19:43:44 2026 :: Log Alaric [15041]: s
+Sun Nov 15 19:43:44 2026 :: Log Alaric [15065]: arrived (Campus Pub Stairwell) from 15041
+Sun Nov 15 19:43:45 2026 :: Log Alaric [15065]: w
+Sun Nov 15 19:43:47 2026 :: Log Alaric [15065]: s
+Sun Nov 15 19:43:47 2026 :: Log Alaric [15006]: arrived (Campus Crescent) from 15065
+Sun Nov 15 19:43:48 2026 :: Log Alaric [15006]: ex
+Sun Nov 15 19:43:49 2026 :: Log Alaric [15006]: e
+Sun Nov 15 19:43:49 2026 :: Log Alaric [15007]: arrived (Division Road) from 15006
+Sun Nov 15 19:43:51 2026 :: Log Alaric [15007]: ex
+Sun Nov 15 19:43:52 2026 :: Log Alaric [15007]: s
+Sun Nov 15 19:43:52 2026 :: Log Alaric [15019]: arrived (Division Road) from 15007
+Sun Nov 15 19:43:54 2026 :: Log Alaric [15019]: s
+Sun Nov 15 19:43:54 2026 :: Log Alaric [15020]: arrived (Division Road) from 15019
+Sun Nov 15 19:43:55 2026 :: Log Alaric [15020]: ex
+Sun Nov 15 19:43:56 2026 :: Log Alaric [15020]: s
+Sun Nov 15 19:43:56 2026 :: Log Alaric [15021]: arrived (Division Road) from 15020
+Sun Nov 15 19:43:57 2026 :: Log Alaric [15021]: ex
+Sun Nov 15 19:43:58 2026 :: Log Alaric [15021]: e
+Sun Nov 15 19:43:58 2026 :: Log Alaric [15042]: arrived (Wally World Reception Area) from 15021
+Sun Nov 15 19:43:59 2026 :: Log Alaric [15042]: ex
+Sun Nov 15 19:44:00 2026 :: Log Alaric [15042]: n
+Sun Nov 15 19:44:00 2026 :: Log Alaric [15101]: arrived (Reception Desk) from 15042
+Sun Nov 15 19:44:01 2026 :: Log Alaric [15101]: s
+Sun Nov 15 19:44:01 2026 :: Log Alaric [15042]: arrived (Wally World Reception Area) from 15101
+Sun Nov 15 19:44:02 2026 :: Log Alaric [15042]: e
+Sun Nov 15 19:44:02 2026 :: Log Alaric [15103]: arrived (Lobby) from 15042
+Sun Nov 15 19:44:03 2026 :: Log Alaric [15103]: e
+Sun Nov 15 19:44:03 2026 :: Log Alaric [15104]: arrived (Stairwell) from 15103
+Sun Nov 15 19:44:06 2026 :: Log Alaric [15104]: u
+Sun Nov 15 19:44:06 2026 :: Log Alaric [15105]: arrived (Stairwell) from 15104
+Sun Nov 15 19:44:08 2026 :: Log Alaric [15105]: w
+Sun Nov 15 19:44:08 2026 :: Log Alaric [15106]: arrived (Landing) from 15105
+Sun Nov 15 19:44:08 2026 :: Log Alaric [15106]: ex
+Sun Nov 15 19:44:09 2026 :: Log Alaric [15106]: w
+Sun Nov 15 19:44:10 2026 :: Log Alaric [15106]: ex
+Sun Nov 15 19:44:11 2026 :: Log Alaric [15106]: ow
+Sun Nov 15 19:44:11 2026 :: Log Alaric [15106]: w
+Sun Nov 15 19:44:11 2026 :: Log Alaric [15107]: arrived (Broom Closet) from 15106
+Sun Nov 15 19:44:12 2026 :: Log Alaric [15107]: ex
+Sun Nov 15 19:44:12 2026 :: Log Alaric [15107]: e
+Sun Nov 15 19:44:12 2026 :: Log Alaric [15106]: arrived (Landing) from 15107
+Sun Nov 15 19:44:12 2026 :: Log Alaric [15106]: n
+Sun Nov 15 19:44:12 2026 :: Log Alaric [15108]: arrived (Hallway) from 15106
+Sun Nov 15 19:44:13 2026 :: Log Alaric [15108]: ex
+Sun Nov 15 19:44:14 2026 :: Log Alaric [15108]: oe
+Sun Nov 15 19:44:14 2026 :: Log Alaric [15108]: ow
+Sun Nov 15 19:44:15 2026 :: Log Alaric [15108]: ex
+Sun Nov 15 19:44:16 2026 :: Log Alaric [15108]: w
+Sun Nov 15 19:44:16 2026 :: Log Alaric [15110]: arrived (Private Room 206) from 15108
+Sun Nov 15 19:44:16 2026 :: Log Alaric [15110]: e
+Sun Nov 15 19:44:16 2026 :: Log Alaric [15108]: arrived (Hallway) from 15110
+Sun Nov 15 19:44:17 2026 :: Log Alaric [15108]: e
+Sun Nov 15 19:44:17 2026 :: Log Alaric [15109]: arrived (Private Room 205) from 15108
+Sun Nov 15 19:44:17 2026 :: Log Alaric [15109]: w
+Sun Nov 15 19:44:17 2026 :: Log Alaric [15108]: arrived (Hallway) from 15109
+Sun Nov 15 19:44:18 2026 :: Log Alaric [15108]: n
+Sun Nov 15 19:44:18 2026 :: Log Alaric [15111]: arrived (Hallway) from 15108
+Sun Nov 15 19:44:19 2026 :: Log Alaric [15111]: ow
+Sun Nov 15 19:44:20 2026 :: Log Alaric [15111]: oe
+Sun Nov 15 19:44:20 2026 :: Log Alaric [15111]: on
+Sun Nov 15 19:44:21 2026 :: Log Alaric [15111]: w
+Sun Nov 15 19:44:21 2026 :: Log Alaric [15113]: arrived (Private Room 204) from 15111
+Sun Nov 15 19:44:21 2026 :: Log Alaric [15113]: e
+Sun Nov 15 19:44:21 2026 :: Log Alaric [15111]: arrived (Hallway) from 15113
+Sun Nov 15 19:44:22 2026 :: Log Alaric [15111]: e
+Sun Nov 15 19:44:22 2026 :: Log Alaric [15112]: arrived (Private Room 203) from 15111
+Sun Nov 15 19:44:22 2026 :: Log Alaric [15112]: w
+Sun Nov 15 19:44:22 2026 :: Log Alaric [15111]: arrived (Hallway) from 15112
+Sun Nov 15 19:44:23 2026 :: Log Alaric [15111]: n
+Sun Nov 15 19:44:23 2026 :: Log Alaric [15114]: arrived (Private Room 201) from 15111
+Sun Nov 15 19:44:24 2026 :: Log Alaric [15114]: s
+Sun Nov 15 19:44:24 2026 :: Log Alaric [15111]: arrived (Hallway) from 15114
+Sun Nov 15 19:44:24 2026 :: Log Alaric [15111]: s
+Sun Nov 15 19:44:24 2026 :: Log Alaric [15108]: arrived (Hallway) from 15111
+Sun Nov 15 19:44:25 2026 :: Log Alaric [15108]: s
+Sun Nov 15 19:44:25 2026 :: Log Alaric [15106]: arrived (Landing) from 15108
+Sun Nov 15 19:44:25 2026 :: Log Alaric [15106]: s
+Sun Nov 15 19:44:25 2026 :: Log Alaric [15115]: arrived (Hallway) from 15106
+Sun Nov 15 19:44:28 2026 :: Log Alaric [15115]: oe
+Sun Nov 15 19:44:28 2026 :: Log Alaric [15115]: ow
+Sun Nov 15 19:44:28 2026 :: Log Alaric [15115]: ex
+Sun Nov 15 19:44:29 2026 :: Log Alaric [15115]: w
+Sun Nov 15 19:44:29 2026 :: Log Alaric [15117]: arrived (Private Room 208) from 15115
+Sun Nov 15 19:44:30 2026 :: Log Alaric [15117]: e
+Sun Nov 15 19:44:30 2026 :: Log Alaric [15115]: arrived (Hallway) from 15117
+Sun Nov 15 19:44:30 2026 :: Log Alaric [15115]: e
+Sun Nov 15 19:44:30 2026 :: Log Alaric [15116]: arrived (Private Room 207) from 15115
+Sun Nov 15 19:44:31 2026 :: Log Alaric [15116]: w
+Sun Nov 15 19:44:31 2026 :: Log Alaric [15115]: arrived (Hallway) from 15116
+Sun Nov 15 19:44:31 2026 :: Log Alaric [15115]: s
+Sun Nov 15 19:44:31 2026 :: Log Alaric [15118]: arrived (Hallway) from 15115
+Sun Nov 15 19:44:32 2026 :: Log Alaric [15118]: oe
+Sun Nov 15 19:44:33 2026 :: Log Alaric [15118]: wo
+Sun Nov 15 19:44:33 2026 :: Log Alaric [15118]: w
+Sun Nov 15 19:44:34 2026 :: Log Alaric [15118]: e
+Sun Nov 15 19:44:34 2026 :: Log Alaric [15119]: arrived (Private Room 209) from 15118
+Sun Nov 15 19:44:34 2026 :: Log Alaric [15119]: e
+Sun Nov 15 19:44:35 2026 :: Log Alaric [15119]: w
+Sun Nov 15 19:44:35 2026 :: Log Alaric [15118]: arrived (Hallway) from 15119
+Sun Nov 15 19:44:35 2026 :: Log Alaric [15118]: w
+Sun Nov 15 19:44:36 2026 :: Log Alaric [15118]: ow
+Sun Nov 15 19:44:36 2026 :: Log Alaric [15118]: w
+Sun Nov 15 19:44:36 2026 :: Log Alaric [15120]: arrived (Private Room 210) from 15118
+Sun Nov 15 19:44:37 2026 :: Log Alaric [15120]: e
+Sun Nov 15 19:44:37 2026 :: Log Alaric [15118]: arrived (Hallway) from 15120
+Sun Nov 15 19:44:38 2026 :: Log Alaric [15118]: s
+Sun Nov 15 19:44:39 2026 :: Log Alaric [15118]: os
+Sun Nov 15 19:44:39 2026 :: Log Alaric [15118]: s
+Sun Nov 15 19:44:39 2026 :: Log Alaric [15121]: arrived (Private Room 202) from 15118
+Sun Nov 15 19:44:41 2026 :: Log Alaric [15121]: recal
+Sun Nov 15 19:44:45 2026 :: Log Alaric [15121]: north
+Sun Nov 15 19:44:45 2026 :: Log Alaric [15118]: arrived (Hallway) from 15121
+Sun Nov 15 19:44:45 2026 :: Log Alaric [15118]: north
+Sun Nov 15 19:44:45 2026 :: Log Alaric [15115]: arrived (Hallway) from 15118
+Sun Nov 15 19:44:45 2026 :: Log Alaric [15115]: north
+Sun Nov 15 19:44:45 2026 :: Log Alaric [15106]: arrived (Landing) from 15115
+Sun Nov 15 19:44:46 2026 :: Log Alaric [15106]: east
+Sun Nov 15 19:44:46 2026 :: Log Alaric [15105]: arrived (Stairwell) from 15106
+Sun Nov 15 19:44:46 2026 :: Log Alaric [15105]: down
+Sun Nov 15 19:44:46 2026 :: Log Alaric [15104]: arrived (Stairwell) from 15105
+Sun Nov 15 19:44:46 2026 :: Log Alaric [15104]: west
+Sun Nov 15 19:44:46 2026 :: Log Alaric [15103]: arrived (Lobby) from 15104
+Sun Nov 15 19:44:46 2026 :: Log Alaric [15103]: west
+Sun Nov 15 19:44:46 2026 :: Log Alaric [15042]: arrived (Wally World Reception Area) from 15103
+Sun Nov 15 19:44:47 2026 :: Log Alaric [15042]: west
+Sun Nov 15 19:44:47 2026 :: Log Alaric [15021]: arrived (Division Road) from 15042
+Sun Nov 15 19:44:47 2026 :: Log Alaric [15021]: north
+Sun Nov 15 19:44:47 2026 :: Log Alaric [15020]: arrived (Division Road) from 15021
+Sun Nov 15 19:44:47 2026 :: Log Alaric [15020]: north
+Sun Nov 15 19:44:47 2026 :: Log Alaric [15019]: arrived (Division Road) from 15020
+Sun Nov 15 19:44:47 2026 :: Log Alaric [15019]: north
+Sun Nov 15 19:44:47 2026 :: Log Alaric [15007]: arrived (Division Road) from 15019
+Sun Nov 15 19:44:48 2026 :: Log Alaric [15007]: west
+Sun Nov 15 19:44:48 2026 :: Log Alaric [15006]: arrived (Campus Crescent) from 15007
+Sun Nov 15 19:44:48 2026 :: Log Alaric [15006]: west
+Sun Nov 15 19:44:48 2026 :: Log Alaric [15005]: arrived (Campus Crescent) from 15006
+Sun Nov 15 19:44:48 2026 :: Log Alaric [15005]: west
+Sun Nov 15 19:44:48 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15005
+Sun Nov 15 19:44:48 2026 :: Log Alaric [15004]: west
+Sun Nov 15 19:44:48 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15004
+Sun Nov 15 19:44:49 2026 :: Log Alaric [15003]: west
+Sun Nov 15 19:44:49 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15003
+Sun Nov 15 19:44:49 2026 :: Log Alaric [15002]: west
+Sun Nov 15 19:44:49 2026 :: Log Alaric [15001]: arrived (Campus Crescent) from 15002
+Sun Nov 15 19:44:49 2026 :: Log Alaric [15001]: west
+Sun Nov 15 19:44:49 2026 :: Log Alaric [15000]: arrived (The Eastern Campus Entrance) from 15001
+Sun Nov 15 19:44:49 2026 :: Log Alaric [15000]: enter portal
+Sun Nov 15 19:44:49 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 15000
+Sun Nov 15 19:44:50 2026 :: Log Alaric [3795]: down
+Sun Nov 15 19:44:50 2026 :: Log Alaric [3772]: arrived (Newbie Train Station) from 3795
+Sun Nov 15 19:44:50 2026 :: Log Alaric [3772]: down
+Sun Nov 15 19:44:50 2026 :: Log Alaric [3700]: arrived (Entrance to Mud School) from 3772
+Sun Nov 15 19:44:50 2026 :: Log Alaric [3700]: down
+Sun Nov 15 19:44:50 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 3700
+Sun Nov 15 19:44:50 2026 :: Log Alaric [4207]: east
+Sun Nov 15 19:44:50 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Nov 15 19:44:51 2026 :: Log Alaric [4202]: east
+Sun Nov 15 19:44:51 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Nov 15 19:44:51 2026 :: Log Alaric [4201]: north
+Sun Nov 15 19:44:51 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 4201
+Sun Nov 15 19:44:51 2026 :: Log Alaric [2433]: east
+Sun Nov 15 19:44:51 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2433
+Sun Nov 15 19:44:51 2026 :: Log Alaric [2405]: north
+Sun Nov 15 19:44:51 2026 :: Log Alaric [2406]: arrived (Northwestern Oak Tree Square.) from 2405
+Sun Nov 15 19:44:52 2026 :: Log Alaric [2406]: recal
+Sun Nov 15 19:44:52 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 2406
+Sun Nov 15 19:44:52 2026 :: Log Alaric [2497]: east
+Sun Nov 15 19:44:54 2026 :: Log Alaric [2497]: aq ab
+Sun Nov 15 19:44:54 2026 :: Log Alaric [2497]: sc
+Sun Nov 15 19:45:37 2026 :: Log Alaric [2497]: affects off: steel fist
+Sun Nov 15 19:47:47 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 2 of 6 in 6 hours).
