@@ -304280,3 +304280,7 @@ Sun Nov 15 07:41:46 2026 :: Connection guard: 54.167.223.174 closed without a wo
 Sun Nov 15 07:46:50 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 2 of 6 in 6 hours).
 Sun Nov 15 07:47:08 2026 :: Treasure goblin: vanished from room 18015 (An icy trail, icekeep.are) (too long in one area).
 Sun Nov 15 07:51:54 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 15 07:55:16 2026 :: Sock.sinaddr:  216.226.76.30
+Sun Nov 15 07:55:16 2026 :: EOF encountered on read.
+Sun Nov 15 07:55:16 2026 :: Connection guard: 216.226.76.30 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sun Nov 15 07:56:59 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 1 of 6 in 6 hours).
