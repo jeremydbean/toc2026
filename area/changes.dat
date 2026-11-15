@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261115herbtags 2026-11-15
+A herb or spell component lying in a room is now marked (Herb) or
+(Component), in your highlight colour, so they are easier to spot.
+
+@ 20261115gangland 2026-11-15
+Gangland's gang members no longer disarm or trip you; they still dodge.
+
 @ 20261115keysandtypos 2026-11-15
 UNLOCK and LOCK without the key now name the key the lock takes, and say so
 when no key in the world fits.  A typo of ENTER, AFFECTS, RESCUE or a

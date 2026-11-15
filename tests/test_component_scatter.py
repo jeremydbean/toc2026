@@ -102,6 +102,31 @@ class ComponentScatterTests(unittest.TestCase):
                 self.assertIn("Room [", found, found[-500:])
 
 
+    def test_a_herb_or_component_on_the_floor_is_tagged(self) -> None:
+        """Herbs and components lying about are tagged (owner, 2026-11-15:
+        make them easier to see); one carried is not."""
+        with LiveMud() as mud:
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Zspotter", PASSWORD)
+                client.drain(1.0)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+            patch_player_file(mud, "Zspotter", Levl=70, Room=MUD_SCHOOL)
+
+            with mud.connect(timeout=120) as client:
+                login(client, "Zspotter", PASSWORD)
+                client.sync("color off")
+                client.must("load obj 34", "You create")
+                client.must("drop amaranth", "You drop")
+                client.must("load obj 54", "You create")
+                client.must("drop newt", "You drop")
+                room = client.sync("look")
+                self.assertIn("(Herb)", room, room)
+                self.assertIn("(Component)", room, room)
+                client.must("get amaranth", "You get")
+                self.assertNotIn("(Herb)", client.sync("inventory"))
+
+
 class ComponentSourceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:

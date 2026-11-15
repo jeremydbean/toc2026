@@ -4166,8 +4166,11 @@ base_exp = 200 + 50 * (level_range - 4);
   /* TOok out the time exp shit GR */
 
     /* add bonus xp if mob has special abilities. add as see fit */
+    /* OFF_SUMMONER is an offensive flag: read from act, its bit is
+       ACT_NOPURGE, and every no-purge mobile was paid the bonus while no
+       summoner ever was (2026-11-15). */
     if(IS_NPC(victim) && xp > 0 &&
-    (   IS_SET(victim->act, OFF_SUMMONER)
+    (   IS_SET(victim->off_flags, OFF_SUMMONER)
      || IS_SET(victim->affected_by, AFF_SANCTUARY)
      || IS_SET(victim->imm_flags, IMM_MAGIC)
      || victim->spec_fun != 0) )

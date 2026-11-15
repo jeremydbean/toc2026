@@ -81,6 +81,8 @@ EQUAL_LOW, EQUAL_HIGH = 0.75, 1.33   # "an equal choice" around the median
 RISKY = 0.20                # flees and deaths per encounter
 EQUAL_CHOICES_WANTED = 3    # a band with fewer comparable foes is a gap
 FARMED = 0.80               # one character's share of kills that reads as farming
+OUTLEVELLED = 5             # killers' median level this far above the mobile's: its low
+                            # pay is the level gap's (xp_compute), not the mobile's
 CYCLE_CAP_S = 600           # a gap longer than this between kills is a break, not downtime
 SLICE_MIN = 3               # a slice is shown from this many kills
 # CLASS_* in src/merc.h, as the slices name them.
@@ -510,7 +512,15 @@ def _band_pass(mobs: Dict[int, Dict[str, Any]]) -> Dict[Tuple[int, int], Dict[st
                 if len(rates) >= 2 and m["ratio"] >= GENEROUS:
                     flags.append("generous")
                 if len(rates) >= 2 and m["ratio"] <= POOR:
-                    flags.append("poor")
+                    # Most of the "poor" in November 2026 were prey killed
+                    # well above its level, where experience falls off by
+                    # design (the Dylan harpy, level 20, farmed by a 26 for
+                    # 37 xp a kill): no change to the mobile would help.
+                    lvl = m.get("player_level")
+                    if lvl is not None and m["level"] and lvl > m["level"] + OUTLEVELLED:
+                        flags.append("outlevelled")
+                    else:
+                        flags.append("poor")
                 if m["risk"] >= RISKY:
                     flags.append("risky")
                 if b["median_coin"] and m["coin_generated_per_kill"] >= 3 * b["median_coin"]:
@@ -566,6 +576,8 @@ def proposals(result: Dict[str, Any], names: Optional[Callable[[int], str]] = No
                                  "hit points, or add peers so it is not the only farm"),
                     ("poor", "pays far under its band: raise its level or lower its hit points, "
                              "or leave it as scenery"),
+                    ("outlevelled", "pays little because its killers are well above its level, "
+                                    "where experience falls off by design: no change"),
                     ("risky", "sends players running or kills them: lower its damage or warn "
                               "in its description"),
                     ("rich", "carries far more coin than its band: check its wealth figure"),
@@ -576,7 +588,20 @@ def proposals(result: Dict[str, Any], names: Optional[Callable[[int], str]] = No
                                 "finding": flag, "proposal": what, "evidence": ev,
                                 "confidence": confidence(m)})
         choices, gap = band_choices(b, reachable)
-        if gap:
+        if gap and len(b["trusted"]) < EQUAL_CHOICES_WANTED:
+            # Fewer mobiles with enough kills to judge than the gap asks for:
+            # the band cannot show three equal choices, whatever the world
+            # holds (two or three characters played in November 2026).
+            out.append({"vnum": None, "name": "-", "band": f"{low}-{high}", "finding": "gap",
+                        "proposal": ("too little data to judge: fewer than "
+                                     f"{EQUAL_CHOICES_WANTED} mobiles here have "
+                                     f"{MIN_KILLS} kills by {MIN_CHARACTERS} characters; "
+                                     "change nothing yet"),
+                        "evidence": (f"{len(choices)} equal choice(s) among "
+                                     f"{len(b['trusted'])} trusted mobile(s), "
+                                     f"{len(b['mobs'])} fought"),
+                        "confidence": "low"})
+        elif gap:
             out.append({"vnum": None, "name": "-", "band": f"{low}-{high}", "finding": "gap",
                         "proposal": ("too few comparable places to level: add or retune "
                                      "mobiles here so there are at least "

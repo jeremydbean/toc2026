@@ -108,6 +108,13 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
         toc_strlcat( buf, "(Humming) ", sizeof(buf) );
     if ( IS_OBJ_STAT(obj, ITEM_DAMAGED) )
         toc_strlcat( buf, "(Damaged) ", sizeof(buf) );
+    /* A herb or component lying in a room is tagged in the player's
+       highlight colour (owner, 2026-11-15: make them easier to see; players
+       had spotted a handful of the four hundred lying about). Only on the
+       floor: one carried is plainly the player's own. */
+    if ( !fShort && obj->in_room != NULL && is_forage_obj( obj ) )
+        toc_strlcat( buf, obj->item_type == ITEM_HERB ? "{09(Herb){00 " : "{09(Component){00 ",
+                     sizeof(buf) );
 /*    if ( IS_OBJ_STAT(obj, ITEM_EMBALMED   )   toc_strlcat( buf, "(Embalmed) ", sizeof(buf) ); */
  /*
       if ( IS_AFFECTED(ch, AFF_DETECT_GOOD)

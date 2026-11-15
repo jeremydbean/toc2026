@@ -158,3 +158,34 @@ class ReportTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class OutlevelledAndThinTests(unittest.TestCase):
+    """A mobile that pays little because its killers are far above it is
+    "outlevelled", not "poor" -- xp_compute's level gap, not the mobile
+    (2026-11-15: the Dylan harpy, level 20, farmed by a 26). And a band
+    with fewer mobiles judged than a gap asks for says it has too little
+    data, not that the world lacks places to level."""
+
+    @staticmethod
+    def mob(level: int, rate: float, killers: float) -> dict:
+        return {"level": level, "trusted": True, "xp_per_min": rate, "risk": 0.0,
+                "coin_generated_per_kill": 0.0, "farmed": False,
+                "player_level": killers, "kills": 10, "characters": 2,
+                "legacy": 0, "samples": 10}
+
+    def test_far_above_is_outlevelled_and_near_is_poor(self) -> None:
+        mobs = {1: self.mob(20, 1000.0, 20), 2: self.mob(20, 1000.0, 21),
+                3: self.mob(20, 100.0, 26), 4: self.mob(20, 100.0, 24)}
+        balance._band_pass(mobs)
+        self.assertIn("outlevelled", mobs[3]["flags"])
+        self.assertNotIn("poor", mobs[3]["flags"])
+        self.assertIn("poor", mobs[4]["flags"])
+
+    def test_a_thin_band_says_too_little_data(self) -> None:
+        mobs = {1: self.mob(20, 1000.0, 20)}
+        bands = balance._band_pass(mobs)
+        out = balance.proposals({"bands": bands, "mobs": mobs})
+        gaps = [p for p in out if p["finding"] == "gap"]
+        self.assertEqual(len(gaps), 1)
+        self.assertIn("too little data", gaps[0]["proposal"])
