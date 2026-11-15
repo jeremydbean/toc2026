@@ -304139,3 +304139,23 @@ Sun Nov 15 02:42:15 2026 :: Connection guard: 5.161.73.160 closed without a word
 Sun Nov 15 02:42:37 2026 :: Cartographer: left room 754 (Noble Road, camelot.are) (his visit is over).
 Sun Nov 15 02:43:29 2026 :: Black market: the dealer vanished from room 1582 (Small Mine Shaft, gnome.are) (wandering).
 Sun Nov 15 02:45:41 2026 :: Treasure goblin: vanished from room 24233 (A Crypt, crypt.are) (too long in one area).
+Sun Nov 15 02:47:19 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 2 of 6 in 6 hours).
+Sun Nov 15 02:49:25 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sun Nov 15 02:49:29 2026 :: Log WebAdmin: fsave
+Sun Nov 15 02:49:35 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sun Nov 15 02:49:38 2026 :: Received signal 15; saving players and shutting down.
+Sun Nov 15 02:49:38 2026 :: Normal termination of game.
+Sun Nov 15 02:49:39 2026 ::  INIT OK 
+Sun Nov 15 02:49:39 2026 :: walkto_load: 157 destinations.
+Sun Nov 15 02:49:39 2026 :: changes_load: 341 entries.
+Sun Nov 15 02:49:39 2026 :: Hermie: the restart put no mortal off (0 playing, recorded 58 seconds before the boot; a mortal last played over ten minutes before it); she stays away.
+Sun Nov 15 02:49:39 2026 :: Serials: 962 character files read, 4 with a serial.
+Sun Nov 15 02:49:39 2026 :: Connection guard: 45 addresses remembered from before the boot, 2 paused now.
+Sun Nov 15 02:49:39 2026 :: Passwords: SHA-512 crypt self-test passed.
+Sun Nov 15 02:49:39 2026 :: Recovery ledger: 411 records (0 from before the check), 4 requests, 8 players.
+Sun Nov 15 02:49:39 2026 :: ROM is ready to rock on port 9000.
+Sun Nov 15 02:49:39 2026 :: Treasure goblin: appeared.
+Sun Nov 15 02:49:39 2026 :: Automated backup started.
+Sun Nov 15 02:49:39 2026 :: Daily backup started.
+Sun Nov 15 02:49:40 2026 :: Automated backup complete.
+Sun Nov 15 02:49:41 2026 :: Daily backup complete.
