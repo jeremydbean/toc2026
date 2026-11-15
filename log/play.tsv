@@ -30517,3 +30517,91 @@
 1794756426	laid	-	0	0	-	927	component	71	a goblin's finger	627	ofcol.are	scatter
 1794756559	laid	-	0	0	-	928	herb	51	a piece of kelp	25254	mushroom.are	scatter
 1794756687	laid	-	0	0	-	929	herb	51	a piece of kelp	17148	highland.are	scatter
+1794756755	laid	-	0	0	-	930	herb	36	a belladonna plant	7730	ultima.are	scatter
+1794756810	laid	-	0	0	-	931	herb	51	a piece of kelp	10095	glitter.are	scatter
+1794756864	laid	-	0	0	-	932	herb	34	an amaranth plant	2604	arena.are	scatter
+1794756864	laid	-	0	0	-	933	herb	43	a sprig of hyssop	2604	arena.are	scatter
+1794756864	laid	-	0	0	-	934	component	60	a rakshasa's claw	5748	mid_ruin.are	scatter
+1794756877	quest	Alaric	57	2497	dresden.are	ordinary	kill	19131	Venus	42	rome.are	13
+1794756877	cmd	Alaric	57	2497	dresden.are	standing	100	20	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Alaric. I have just the task for you.' // Questor Thews tells you 'The criminal known as Venus has escaped from prison!'	-	+
+1794756882	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794756882	cmd	Alaric	57	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794756882	cmd	Alaric	57	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794756883	cmd	Alaric	57	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794756883	cmd	Alaric	57	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794756883	cmd	Alaric	57	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794756883	cmd	Alaric	57	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794756884	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794756884	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1794756884	cmd	Alaric	57	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794756884	cmd	Alaric	57	3900	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794756885	cmd	Alaric	57	3901	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794756885	cmd	Alaric	57	3902	dresden.are	standing	100	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1794756885	cmd	Alaric	57	3903	dresden.are	standing	100	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1794756885	cmd	Alaric	57	3904	dresden.are	standing	100	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1794756886	area	Alaric	57	300	plains.are	dresden.are	plains.are	1876	north
+1794756886	cmd	Alaric	57	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1794756886	cmd	Alaric	57	315	plains.are	standing	100	0	-	north		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.	-	+
+1794756886	cmd	Alaric	57	320	plains.are	standing	100	0	-	north		Grassy plains //   You walk in some grassy plains. The wind is strong and rough. To the // north you can see the foothills and further on mountain peaks are visible.	-	+
+1794756886	cmd	Alaric	57	305	plains.are	standing	100	0	-	east		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you watch the	-	+
+1794756887	cmd	Alaric	57	306	plains.are	standing	100	0	-	north		Path in the foothills //   You are on the path leading through the small foothills. // The wind blow through your hair as you study the beautiful	-	+
+1794756887	cmd	Alaric	57	326	plains.are	standing	100	0	-	north		The pool in the foothills //   You are standing by a pool in the small foothills. It is clear and cold. // Next to the pool grows an enormous oak tree.  It must stand over a hundred	-	+
+1794756887	cmd	Alaric	57	309	plains.are	standing	100	0	-	east		Path in the foothills //   You are walking on a path situated in the foothills. // From the west you sense a certain freshness and the path	-	+
+1794756887	cmd	Alaric	57	310	plains.are	standing	100	0	-	east		Path in the foothills //   You are walking on a long path in the east-west direction. // The surroundings are green, vegetated foothills.	-	+
+1794756888	cmd	Alaric	57	311	plains.are	standing	100	0	-	east		Path in the foothills //   You are walking on the long, narrow path through the foothills. // To your east you see a T-intersection and to the west the path	-	+
+1794756888	cmd	Alaric	57	312	plains.are	standing	100	0	-	east		The path intersection //   You are standing on an intersection between 3 paths. // To the west you can follow a long, narrow path through the foothills.	-	+
+1794756888	cmd	Alaric	57	332	plains.are	standing	100	0	-	south		The ancient path //   You are moving on an ancient path. The path is slightly covered with // leaves and twitches.	-	+
+1794756888	cmd	Alaric	57	333	plains.are	standing	100	0	-	south		The ancient path //   You are standing on the ancient path which runs north and south. // The path is hardly visible here.	-	+
+1794756889	cmd	Alaric	57	334	plains.are	standing	100	0	-	south		The ancient path //   You are standing on the ancient path which runs north and south. // The path is hardly visible here.	-	+
+1794756889	cmd	Alaric	57	335	plains.are	standing	100	0	-	south		The ancient path //   The path runs north and east from here.  You notice some markers placed // along the side of the path.	-	+
+1794756889	area	Alaric	57	59	connect.are	plains.are	connect.are	3	south
+1794756889	cmd	Alaric	57	59	connect.are	standing	100	0	-	south		Untamed Prairie //   Stepping off the path, you find yourself wading through chest high grasses // of an untamed prairie but sounds of a busy city lead you to invistigate	-	+
+1794756889	area	Alaric	57	19168	rome.are	connect.are	rome.are	0	south
+1794756889	cmd	Alaric	57	19168	rome.are	standing	100	0	-	south		Though the Weeds //   Small unseen animals scurry out of your way and annoying insects buzz around // your head as you fight your way through the tall weeds. The noise of the city	-	+
+1794756895	census	-	0	0	-	herbs=31/150 components=19/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=18 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=1 mobs_fought=0 secs=900
+1794756905	cmd	Alaric	57	19169	rome.are	standing	100	0	-	south		Beside Clay Road //   Fighting your way out of the tall grass, you find yourself standing beside // a wide paved road. The noise of a busy city sounds very near. Was that the 	-	+
+1794756906	cmd	Alaric	57	19165	rome.are	standing	100	0	-	south		Clay Road //   You travel upon an East-West road wide enough for 30 men to march abreast. // It is packed hard through heavy use. To the west, you eyes catch the	-	+
+1794756907	cmd	Alaric	57	19166	rome.are	standing	100	0	-	east		Clay Road //   You travel upon an East-West road wide enough for 30 men to march abreast. // [Exits: east west]	-	-
+1794756908	cmd	Alaric	57	19166	rome.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1794756908	cmd	Alaric	57	19167	rome.are	standing	100	0	-	east		End of the Clay Road //   The mighty clay road turns into lesser, but still well traveled roads here. // You feel a surge run through your body as you look East into the desert that	-	+
+1794756909	cmd	Alaric	57	19167	rome.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1794756910	cmd	Alaric	57	19166	rome.are	standing	100	0	-	west		Clay Road //   You travel upon an East-West road wide enough for 30 men to march abreast. // [Exits: east west]	-	-
+1794756910	cmd	Alaric	57	19165	rome.are	standing	100	0	-	west		Clay Road //   You travel upon an East-West road wide enough for 30 men to march abreast. // It is packed hard through heavy use. To the west, you eyes catch the	-	+
+1794756910	cmd	Alaric	57	19164	rome.are	standing	100	0	-	west		Before Rome //   You travel upon an East-West road wide enough for 30 men to march // abreast.  It is packed hard through heavy use.  To the west stands the	-	+
+1794756911	cmd	Alaric	57	19151	rome.are	standing	100	0	-	west		The East Gate of Rome //   You are standing inside of the eastern gate of Rome.  There are two tall // spires built into the city wall, from which the guards can see the whole	-	+
+1794756920	cmd	Alaric	57	19146	rome.are	standing	100	0	-	west		Clay Avenue //   You are standing on a wide, heavily traveled road that runs east and west // through the heart of the city.  There are marble steps leading up.  To the	-	+
+1794756921	cmd	Alaric	57	19163	rome.are	standing	100	0	-	north		The General Store //   You are standing in the only general store of Rome.  The walls and shelves // are covered with all of the various items required by Roman citizens and	-	+
+1794756922	cmd	Alaric	57	19146	rome.are	standing	100	0	-	south		Clay Avenue //   You are standing on a wide, heavily traveled road that runs east and west // through the heart of the city.  There are marble steps leading up.  To the	-	+
+1794756923	cmd	Alaric	57	19139	rome.are	standing	100	0	-	west		Clay Avenue //   You are on a wide well traveled road running east and west through the heart // of Rome.  There are large crowds of people to the west and the road continues	-	+
+1794756923	cmd	Alaric	57	19141	rome.are	standing	100	0	-	south		The Aqueduct //   You are in a massive stone structure that has been designed to channel water // into the city of Rome.  Due to the recent drought, the water level is low,	-	+
+1794756925	cmd	Alaric	57	19148	rome.are	standing	100	0	-	east		The Aqueduct //   You are in a massive stone structure that has been designed to channel water // into the city of Rome.  Due to the recent drought, the water level is low,	-	+
+1794756926	cmd	Alaric	57	19141	rome.are	standing	100	0	-	east		The Aqueduct //   You are in a massive stone structure that has been designed to channel water // into the city of Rome.  Due to the recent drought, the water level is low,	-	+
+1794756927	cmd	Alaric	57	19148	rome.are	standing	100	0	-	east		The Aqueduct //   You are in a massive stone structure that has been designed to channel water // into the city of Rome.  Due to the recent drought, the water level is low,	-	+
+1794756927	cmd	Alaric	57	19141	rome.are	standing	100	0	-	east		The Aqueduct //   You are in a massive stone structure that has been designed to channel water // into the city of Rome.  Due to the recent drought, the water level is low,	-	+
+1794756928	cmd	Alaric	57	19148	rome.are	standing	100	0	-	east		The Aqueduct //   You are in a massive stone structure that has been designed to channel water // into the city of Rome.  Due to the recent drought, the water level is low,	-	+
+1794756929	cmd	Alaric	57	19141	rome.are	standing	100	0	-	east		The Aqueduct //   You are in a massive stone structure that has been designed to channel water // into the city of Rome.  Due to the recent drought, the water level is low,	-	+
+1794756930	cmd	Alaric	57	19154	rome.are	standing	100	0	-	west		The Aqueduct //   You are in a massive stone structure that has been designed to channel water // into the city of Rome.  Due to the recent drought, the water level is low,	-	+
+1794756931	cmd	Alaric	57	19157	rome.are	standing	100	0	-	south		The Aqueduct //   You are in a massive stone structure that has been designed to channel water // into the city of Rome.  Due to a recent drought, the water level is low,	-	+
+1794756932	cmd	Alaric	57	19158	rome.are	standing	100	1	-	south		The Valley of the Gods //   You stand in a tranquil valley at the base of a large mountain.  A quiet // stream, with fruit trees growing along its banks, winds its way peacefully	-	+
+1794756934	cmd	Alaric	57	19159	rome.are	standing	100	0	-	up		A Mountain Path //   You are standing on a path that leads up through a stand of large trees. // Everything is green and it seems like eternal spring - this is Mother Nature	-	+
+1794756936	cmd	Alaric	57	19156	rome.are	standing	100	0	-	up		A Mountain Path //   You are standing on a small trail that leads through a grove of trees.  Every // thing is lush and green here and it appears to have been raining recently.	-	+
+1794756937	cmd	Alaric	57	19152	rome.are	standing	100	0	-	up		A Mountain Path //   You stand on a small trail that leads up and down.  It has recently been // raining and there are small puddles everywhere.  You are just below the	-	+
+1794756938	cmd	Alaric	57	19152	rome.are	standing	100	0	-	kill	ve	Your punch ^^^ DESTROYS ^^^ Venus! [-100] // Venus parries your attack.	-	-
+1794756941	cmd	Alaric	57	19152	rome.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls Venus. [-23] // Your fists of fury maims Venus! [-35]	-	+
+1794756943	laid	-	0	0	-	950	component	54	eye of newt	11028	ancala.are	scatter
+1794756947	cmd	Alaric	57	19152	rome.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates Venus! [-29] // Your fists of fury decimates Venus! [-25]	-	+
+1794756953	cmd	Alaric	57	19152	rome.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures Venus. [-14] // Your fists of fury scratches Venus. [-2]	-	+
+1794756959	cmd	Alaric	57	19152	rome.are	fighting	92	0	fight	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794756959	coin	Alaric	57	19152	rome.are	+3000000	loot	fists	corpse of Venus	27557752916
+1794756959	coin	Alaric	57	19152	rome.are	+7100	loot	fists	corpse of Venus	27557760016
+1794756959	coin	Alaric	57	19152	rome.are	+12	loot	fists	corpse of Venus	27557760028
+1794756959	coin	Alaric	57	19152	rome.are	+850000	loot	fists	corpse of Venus	27558610028
+1794756959	cmd	Alaric	57	19152	rome.are	fighting	92	9	fight	fists		You attack in an all consuming fury! // Your fists of fury maims Venus! [-36] // Your fists of fury mauls Venus. [-23]	-	+
+1794756966	area	Alaric	57	2497	dresden.are	rome.are	dresden.are	77	recall
+1794756966	cmd	Alaric	57	2497	dresden.are	standing	92	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794756967	coin	Alaric	57	2497	dresden.are	+123303312	quests	aquest	-	27681913340
+1794756967	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	ordinary qp=2310->2310 offered=22 daily=4->4 coin=+123303312 kill=15412914 streak=2 level=57 target=-1
+1794756967	cmd	Alaric	57	2497	dresden.are	standing	92	20	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Splendid - you've returned victorious!' // Questor Thews says 'Streak of 3 in a row! A +20% bonus has been added!'	success:-	+
+1794756967	cmd	Alaric	57	2497	dresden.are	standing	92	5	-	aquest	ga no	You safely collect 22 quest points.	-	-
+1794756996	laid	-	0	0	-	952	component	80	a glass encased wing of a fairy	7002	sewer.are	scatter
+1794757052	laid	-	0	0	-	953	herb	45	a sarsaparilla vine	20574	emerald.are	scatter

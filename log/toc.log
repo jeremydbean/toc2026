@@ -304726,3 +304726,139 @@ Sun Nov 15 15:19:54 2026 :: Connection guard: last hour 25 closed without a word
 Sun Nov 15 15:23:46 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 2 of 6 in 6 hours).
 Sun Nov 15 15:24:42 2026 :: Treasure goblin: vanished from room 5665 (Deeper dark dense forest, tarin.are) (too long in one area).
 Sun Nov 15 15:28:50 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 15 15:33:55 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 2 of 6 in 6 hours).
+Sun Nov 15 15:34:37 2026 :: Log Alaric [2497]: aq re
+Sun Nov 15 15:34:37 2026 :: Log Alaric [2497]: quest assigned: kill Venus (mob 19131, level 42) in rome.are, 13 minutes, ordinary
+Sun Nov 15 15:34:42 2026 :: Log Alaric [2497]: enter door
+Sun Nov 15 15:34:42 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sun Nov 15 15:34:42 2026 :: Log Alaric [2401]: west
+Sun Nov 15 15:34:42 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Nov 15 15:34:42 2026 :: Log Alaric [2405]: west
+Sun Nov 15 15:34:42 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Nov 15 15:34:43 2026 :: Log Alaric [2433]: west
+Sun Nov 15 15:34:43 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Nov 15 15:34:43 2026 :: Log Alaric [2434]: west
+Sun Nov 15 15:34:43 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Nov 15 15:34:43 2026 :: Log Alaric [2435]: west
+Sun Nov 15 15:34:43 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Nov 15 15:34:43 2026 :: Log Alaric [2436]: west
+Sun Nov 15 15:34:43 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Nov 15 15:34:44 2026 :: Log Alaric [2437]: west
+Sun Nov 15 15:34:44 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Nov 15 15:34:44 2026 :: Log Alaric [2438]: open west
+Sun Nov 15 15:34:44 2026 :: Log Alaric [2438]: west
+Sun Nov 15 15:34:44 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Nov 15 15:34:44 2026 :: Log Alaric [2439]: north
+Sun Nov 15 15:34:44 2026 :: Log Alaric [3900]: arrived (West trail around Dresden) from 2439
+Sun Nov 15 15:34:45 2026 :: Log Alaric [3900]: north
+Sun Nov 15 15:34:45 2026 :: Log Alaric [3901]: arrived (West trail around Dresden) from 3900
+Sun Nov 15 15:34:45 2026 :: Log Alaric [3901]: north
+Sun Nov 15 15:34:45 2026 :: Log Alaric [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Sun Nov 15 15:34:45 2026 :: Log Alaric [3902]: east
+Sun Nov 15 15:34:45 2026 :: Log Alaric [3903]: arrived (Dusty trail along north wall.) from 3902
+Sun Nov 15 15:34:45 2026 :: Log Alaric [3903]: east
+Sun Nov 15 15:34:45 2026 :: Log Alaric [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Sun Nov 15 15:34:46 2026 :: Log Alaric [3904]: north
+Sun Nov 15 15:34:46 2026 :: Log Alaric [300]: arrived (Path in the plains) from 3904
+Sun Nov 15 15:34:46 2026 :: Log Alaric [300]: north
+Sun Nov 15 15:34:46 2026 :: Log Alaric [315]: arrived (Gallow hill) from 300
+Sun Nov 15 15:34:46 2026 :: Log Alaric [315]: north
+Sun Nov 15 15:34:46 2026 :: Log Alaric [320]: arrived (Grassy plains) from 315
+Sun Nov 15 15:34:46 2026 :: Log Alaric [320]: east
+Sun Nov 15 15:34:46 2026 :: Log Alaric [305]: arrived (Path in the plains) from 320
+Sun Nov 15 15:34:47 2026 :: Log Alaric [305]: north
+Sun Nov 15 15:34:47 2026 :: Log Alaric [306]: arrived (Path in the foothills) from 305
+Sun Nov 15 15:34:47 2026 :: Log Alaric [306]: north
+Sun Nov 15 15:34:47 2026 :: Log Alaric [326]: arrived (The pool in the foothills) from 306
+Sun Nov 15 15:34:47 2026 :: Treasure goblin: vanished from room 13501 (Halls of Judgement, hell.are) (too long in one area).
+Sun Nov 15 15:34:47 2026 :: Log Alaric [326]: east
+Sun Nov 15 15:34:47 2026 :: Log Alaric [309]: arrived (Path in the foothills) from 326
+Sun Nov 15 15:34:47 2026 :: Log Alaric [309]: east
+Sun Nov 15 15:34:47 2026 :: Log Alaric [310]: arrived (Path in the foothills) from 309
+Sun Nov 15 15:34:48 2026 :: Log Alaric [310]: east
+Sun Nov 15 15:34:48 2026 :: Log Alaric [311]: arrived (Path in the foothills) from 310
+Sun Nov 15 15:34:48 2026 :: Log Alaric [311]: east
+Sun Nov 15 15:34:48 2026 :: Log Alaric [312]: arrived (The path intersection) from 311
+Sun Nov 15 15:34:48 2026 :: Log Alaric [312]: south
+Sun Nov 15 15:34:48 2026 :: Log Alaric [332]: arrived (The ancient path) from 312
+Sun Nov 15 15:34:48 2026 :: Log Alaric [332]: south
+Sun Nov 15 15:34:48 2026 :: Log Alaric [333]: arrived (The ancient path) from 332
+Sun Nov 15 15:34:49 2026 :: Log Alaric [333]: south
+Sun Nov 15 15:34:49 2026 :: Log Alaric [334]: arrived (The ancient path) from 333
+Sun Nov 15 15:34:49 2026 :: Log Alaric [334]: south
+Sun Nov 15 15:34:49 2026 :: Log Alaric [335]: arrived (The ancient path) from 334
+Sun Nov 15 15:34:49 2026 :: Log Alaric [335]: south
+Sun Nov 15 15:34:49 2026 :: Log Alaric [59]: arrived (Untamed Prairie) from 335
+Sun Nov 15 15:34:49 2026 :: Log Alaric [59]: south
+Sun Nov 15 15:34:49 2026 :: Log Alaric [19168]: arrived (Though the Weeds) from 59
+Sun Nov 15 15:35:05 2026 :: Log Alaric [19168]: s
+Sun Nov 15 15:35:05 2026 :: Log Alaric [19169]: arrived (Beside Clay Road) from 19168
+Sun Nov 15 15:35:06 2026 :: Log Alaric [19169]: s
+Sun Nov 15 15:35:06 2026 :: Log Alaric [19165]: arrived (Clay Road) from 19169
+Sun Nov 15 15:35:07 2026 :: Log Alaric [19165]: e
+Sun Nov 15 15:35:07 2026 :: Log Alaric [19166]: arrived (Clay Road) from 19165
+Sun Nov 15 15:35:08 2026 :: Log Alaric [19166]: scan
+Sun Nov 15 15:35:08 2026 :: Log Alaric [19166]: e
+Sun Nov 15 15:35:08 2026 :: Log Alaric [19167]: arrived (End of the Clay Road) from 19166
+Sun Nov 15 15:35:09 2026 :: Log Alaric [19167]: scan
+Sun Nov 15 15:35:10 2026 :: Log Alaric [19167]: w
+Sun Nov 15 15:35:10 2026 :: Log Alaric [19166]: arrived (Clay Road) from 19167
+Sun Nov 15 15:35:10 2026 :: Log Alaric [19166]: w
+Sun Nov 15 15:35:10 2026 :: Log Alaric [19165]: arrived (Clay Road) from 19166
+Sun Nov 15 15:35:10 2026 :: Log Alaric [19165]: w
+Sun Nov 15 15:35:10 2026 :: Log Alaric [19164]: arrived (Before Rome) from 19165
+Sun Nov 15 15:35:11 2026 :: Log Alaric [19164]: w
+Sun Nov 15 15:35:11 2026 :: Log Alaric [19151]: arrived (The East Gate of Rome) from 19164
+Sun Nov 15 15:35:20 2026 :: Log Alaric [19151]: w
+Sun Nov 15 15:35:20 2026 :: Log Alaric [19146]: arrived (Clay Avenue) from 19151
+Sun Nov 15 15:35:21 2026 :: Log Alaric [19146]: n
+Sun Nov 15 15:35:21 2026 :: Log Alaric [19163]: arrived (The General Store) from 19146
+Sun Nov 15 15:35:22 2026 :: Log Alaric [19163]: s
+Sun Nov 15 15:35:22 2026 :: Log Alaric [19146]: arrived (Clay Avenue) from 19163
+Sun Nov 15 15:35:23 2026 :: Log Alaric [19146]: w
+Sun Nov 15 15:35:23 2026 :: Log Alaric [19139]: arrived (Clay Avenue) from 19146
+Sun Nov 15 15:35:23 2026 :: Log Alaric [19139]: s
+Sun Nov 15 15:35:23 2026 :: Log Alaric [19141]: arrived (The Aqueduct) from 19139
+Sun Nov 15 15:35:25 2026 :: Log Alaric [19141]: e
+Sun Nov 15 15:35:25 2026 :: Log Alaric [19148]: arrived (The Aqueduct) from 19141
+Sun Nov 15 15:35:26 2026 :: Log Alaric [19148]: e
+Sun Nov 15 15:35:26 2026 :: Log Alaric [19141]: arrived (The Aqueduct) from 19148
+Sun Nov 15 15:35:27 2026 :: Log Alaric [19141]: e
+Sun Nov 15 15:35:27 2026 :: Log Alaric [19148]: arrived (The Aqueduct) from 19141
+Sun Nov 15 15:35:27 2026 :: Log Alaric [19148]: e
+Sun Nov 15 15:35:27 2026 :: Log Alaric [19141]: arrived (The Aqueduct) from 19148
+Sun Nov 15 15:35:28 2026 :: Log Alaric [19141]: e
+Sun Nov 15 15:35:28 2026 :: Log Alaric [19148]: arrived (The Aqueduct) from 19141
+Sun Nov 15 15:35:29 2026 :: Log Alaric [19148]: e
+Sun Nov 15 15:35:29 2026 :: Log Alaric [19141]: arrived (The Aqueduct) from 19148
+Sun Nov 15 15:35:30 2026 :: Log Alaric [19141]: w
+Sun Nov 15 15:35:30 2026 :: Log Alaric [19154]: arrived (The Aqueduct) from 19141
+Sun Nov 15 15:35:31 2026 :: Log Alaric [19154]: s
+Sun Nov 15 15:35:31 2026 :: Log Alaric [19157]: arrived (The Aqueduct) from 19154
+Sun Nov 15 15:35:32 2026 :: Log Alaric [19157]: s
+Sun Nov 15 15:35:32 2026 :: Log Alaric [19158]: arrived (The Valley of the Gods) from 19157
+Sun Nov 15 15:35:34 2026 :: Log Alaric [19158]: u
+Sun Nov 15 15:35:34 2026 :: Log Alaric [19159]: arrived (A Mountain Path) from 19158
+Sun Nov 15 15:35:35 2026 :: Connection guard: 18.97.5.23 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 15 15:35:36 2026 :: Log Alaric [19159]: u
+Sun Nov 15 15:35:36 2026 :: Log Alaric [19156]: arrived (A Mountain Path) from 19159
+Sun Nov 15 15:35:37 2026 :: Log Alaric [19156]: u
+Sun Nov 15 15:35:37 2026 :: Log Alaric [19152]: arrived (A Mountain Path) from 19156
+Sun Nov 15 15:35:38 2026 :: Log Alaric [19152]: kill ve
+Sun Nov 15 15:35:41 2026 :: Log Alaric [19152]: fi
+Sun Nov 15 15:35:47 2026 :: Log Alaric [19152]: fi
+Sun Nov 15 15:35:53 2026 :: Log Alaric [19152]: fi
+Sun Nov 15 15:35:59 2026 :: Log Alaric [19152]: who
+Sun Nov 15 15:35:59 2026 :: Log Alaric [19152]: fi
+Sun Nov 15 15:35:59 2026 :: Log Alaric [19152]: killed Venus
+Sun Nov 15 15:35:59 2026 :: Log Alaric [19152]: coin +3 platinum
+Sun Nov 15 15:35:59 2026 :: Log Alaric [19152]: coin +71 silver
+Sun Nov 15 15:35:59 2026 :: Log Alaric [19152]: coin +12 copper
+Sun Nov 15 15:35:59 2026 :: Log Alaric [19152]: coin +85 gold
+Sun Nov 15 15:36:06 2026 :: Log Alaric [19152]: recal
+Sun Nov 15 15:36:06 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 19152
+Sun Nov 15 15:36:07 2026 :: Log Alaric [2497]: aq co
+Sun Nov 15 15:36:07 2026 :: Log Alaric [2497]: copper +123303312
+Sun Nov 15 15:36:07 2026 :: Log Alaric [2497]: quest complete: 123p 30g 33s 12c, 22 quest points (streak bonus 20%)
+Sun Nov 15 15:36:07 2026 :: Snapshot of Alaric taken before quest: Alaric.20261115_153607.quest (PRESTORE Alaric to see it).
+Sun Nov 15 15:36:07 2026 :: Log Alaric [2497]: aq ga no
