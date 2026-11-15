@@ -32034,3 +32034,9 @@
 1794780346	census	-	0	0	-	herbs=141/150 components=77/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=20 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
 1794780357	laid	-	0	0	-	1297	component	60	a rakshasa's claw	25116	underdrk.are	scatter
 1794780468	laid	-	0	0	-	1298	herb	49	a pomegranate	66	connect.are	scatter
+1794780609	laid	-	0	0	-	1299	herb	45	a sarsaparilla vine	28041	pyramid.are	scatter
+1794780609	laid	-	0	0	-	1300	herb	44	a sprig of aconite	28046	pyramid.are	scatter
+1794780669	laid	-	0	0	-	1301	herb	50	a head of cabbage	2485	dresden.are	scatter
+1794780669	laid	-	0	0	-	1302	component	77	a vial of medusa eye fluid	17037	ag.are	scatter
+1794780738	laid	-	0	0	-	1303	herb	34	an amaranth plant	10037	glitter.are	scatter
+1794780738	laid	-	0	0	-	1304	herb	51	a piece of kelp	10036	glitter.are	scatter
