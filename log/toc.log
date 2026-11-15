@@ -305018,3 +305018,10 @@ Sun Nov 15 17:30:41 2026 :: Connection guard: 54.87.112.51 closed without a word
 Sun Nov 15 17:35:43 2026 :: Treasure goblin: vanished from room 7407 (Tunnel, sewer.are) (too long in one area).
 Sun Nov 15 17:35:47 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 2 of 6 in 6 hours).
 Sun Nov 15 17:36:54 2026 :: Connection guard: 66.132.186.167 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 15 17:38:33 2026 :: Sock.sinaddr:  137.184.16.61
+Sun Nov 15 17:38:35 2026 :: EOF encountered on read.
+Sun Nov 15 17:38:35 2026 :: Connection guard: 137.184.16.61 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sun Nov 15 17:38:36 2026 :: Sock.sinaddr:  137.184.16.61
+Sun Nov 15 17:38:38 2026 :: EOF encountered on read.
+Sun Nov 15 17:38:38 2026 :: Connection guard: 137.184.16.61 closed before a password prompt (strike 2 of 6 in 6 hours).
+Sun Nov 15 17:40:51 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 1 of 6 in 6 hours).
