@@ -32060,3 +32060,7 @@
 1794782381	cleared	-	0	0	-	1313	component	57	a trolls fingernail	788	0	scatter	mob 2435	(mobile_update)	0	-
 1794782493	laid	-	0	0	-	1319	component	77	a vial of medusa eye fluid	7643	ultima.are	scatter
 1794782550	laid	-	0	0	-	1320	component	59	a patch of lycanthrope fur	24237	crypt.are	scatter
+1794782612	area	Alaric	57	2	limbo.are	dresden.are	limbo.are	3342	(char_update)
+1794782612	area	Alaric	57	2497	dresden.are	limbo.are	dresden.are	0	(game loop)
+1794782612	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794782613	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	worth		You have 3418 platinum, 41 gold, 59 silver, 10 copper // and 252749 experience (39551 exp to level).	-	-
