@@ -130,3 +130,16 @@
 1794789427	got	Trentlin	46	1	Monk 	30505	L6	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
 1794789458	got	Trentlin	46	1	Monk 	30507	L6	obj=30695 obj_name=four_bombs type=treasure obj_level=1 how=(violence_update)
 1794789458	cleared	Trentlin	46	1	Monk 	30507	L6	foes=0
+1794789492	got	Trentlin	46	1	Monk 	30511	L6	obj=30695 obj_name=four_bombs type=treasure obj_level=1 how=fists
+1794789492	cleared	Trentlin	46	1	Monk 	30511	L6	foes=0
+1794789514	got	Trentlin	46	1	Monk 	30516	L6	obj=30361 obj_name=a_pair_of_water-crossing_greaves type=armor obj_level=39 how=get
+1794789536	got	Trentlin	46	1	Monk 	30516	L6	obj=30359 obj_name=the_Heart_Guard_of_the_Manji type=armor obj_level=20 how=get
+1794789581	got	Trentlin	46	1	Monk 	30517	L6	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
+1794789602	cleared	Trentlin	46	1	Monk 	30518	L6	foes=0
+1794789687	cleared	Trentlin	46	1	Monk 	30517	L6	foes=0
+1794789709	seal	Trentlin	46	1	Monk 	30522	L6	obj=30505 obj_name=a_cracked_west_wall dir=3 how=bomb
+1794789730	got	Trentlin	46	1	Monk 	30512	L6	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
+1794789744	got	Trentlin	46	1	Monk 	30512	L6	obj=30695 obj_name=four_bombs type=treasure obj_level=1 how=(violence_update)
+1794789761	cleared	Trentlin	46	1	Monk 	30512	L6	foes=0
+1794789789	got	Trentlin	46	1	Monk 	30508	L6	obj=30695 obj_name=four_bombs type=treasure obj_level=1 how=fists
+1794789789	cleared	Trentlin	46	1	Monk 	30508	L6	foes=0
