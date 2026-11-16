@@ -309214,3 +309214,11 @@ Mon Nov 16 12:19:21 2026 :: Black market: stock 1794831561: Shield of the Knight
 Mon Nov 16 12:19:21 2026 :: Black market: the dealer appeared with 5 items (stock 1794831561), for 26 minutes.
 Mon Nov 16 12:22:40 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 4 of 6 in 6 hours).
 Mon Nov 16 12:23:21 2026 :: Black market: the dealer vanished from room 9516 (The Northeastern Market Square, newthalo.are) (wandering).
+Mon Nov 16 12:24:09 2026 :: Black market: the dealer vanished from room 1578 (The Jail Cell, gnome.are) (wandering).
+Mon Nov 16 12:25:57 2026 :: Treasure goblin: vanished from room 17254 (In a secret gangway, highland.are) (too long in one area).
+Mon Nov 16 12:27:43 2026 :: Connection guard: refused 1 connection from 178.156.184.20 (paused; 9 refused in all, pause 3 this week, 1359 minutes left).
+Mon Nov 16 12:28:06 2026 :: Sock.sinaddr:  40.80.204.134
+Mon Nov 16 12:28:06 2026 :: EOF encountered on read.
+Mon Nov 16 12:28:06 2026 :: Connection guard: 40.80.204.134 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 16 12:28:06 2026 :: Sock.sinaddr:  40.80.204.134
+Mon Nov 16 12:28:06 2026 :: Connection guard: 40.80.204.134 closed before a password prompt (strike 2 of 6 in 6 hours).
