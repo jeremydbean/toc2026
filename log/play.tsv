@@ -33484,3 +33484,14 @@
 1794868444	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] Killuminati, the Don. // [57 Dwarf   Emper ] Alaric. // Players found: 2	-	-
 1794868450	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	look		Center of Oak Tree Square. // [Room: 2401]     [Sector: City]     [Flags: none] //   This is the center of the square.  It is dominated by the trunk of the biggest	-	+
 1794868468	coin	Killuminati	70	2401	dresden.are	+43278877734	bank	interest	bank	19857900740287
+1794868512	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	look	sign	This ancient oak tree is a symbol of strength for our city.  The sages say it // was planted at the beginning of time.  Legends say if you bury coins at the // base of the tree you can be granted the favor of the Gods.  Good luck	-	+
+1794868518	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] Killuminati, the Don. // [57 Dwarf   Emper ] Alaric. // Players found: 2	-	-
+1794868546	laid	-	0	0	-	910	component	64	a manticore's spine	2926	firenewt.are	scatter
+1794868551	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] Killuminati, the Don. // [57 Dwarf   Emper ] Alaric. // Players found: 2	-	-
+1794868580	session	Killuminati	70	2401	dresden.are	quit	162s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	10 commands	0 refused	coin: none	spent on: none	exp: none
+1794868646	laid	-	0	0	-	911	herb	48	an alfalfa sprout	1153	shire.are	scatter
+1794868646	laid	-	0	0	-	912	herb	34	an amaranth plant	1105	shire.are	scatter
+1794868651	census	-	0	0	-	herbs=14/150 components=7/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=21 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=38 mobs_fought=0 secs=900
+1794868721	laid	-	0	0	-	913	herb	40	a clove	17784	landoz.are	scatter
+1794868721	laid	-	0	0	-	914	herb	48	an alfalfa sprout	17741	landoz.are	scatter
+1794868721	laid	-	0	0	-	915	component	64	a manticore's spine	1454	htower.are	scatter
