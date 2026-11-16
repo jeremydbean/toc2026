@@ -309351,3 +309351,9 @@ Mon Nov 16 17:52:43 2026 :: Treasure goblin: vanished from room 24205 (The Aisle
 Mon Nov 16 17:57:33 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 1 of 6 in 6 hours).
 Mon Nov 16 18:02:38 2026 :: Connection guard: 54.167.223.174 closed without a word (strike 1 of 6 in 6 hours).
 Mon Nov 16 18:02:47 2026 :: Treasure goblin: vanished from room 680 (A Hallway of the Golden Citadel, ofcol.are) (too long in one area).
+Mon Nov 16 18:07:43 2026 :: Connection guard: 3.133.226.214 closed without a word (strike 3 of 6 in 6 hours).
+Mon Nov 16 18:08:03 2026 :: Sock.sinaddr:  134.33.64.215
+Mon Nov 16 18:08:03 2026 :: EOF encountered on read.
+Mon Nov 16 18:08:03 2026 :: Connection guard: 134.33.64.215 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 16 18:08:04 2026 :: Sock.sinaddr:  134.33.64.215
+Mon Nov 16 18:08:04 2026 :: Connection guard: 134.33.64.215 closed before a password prompt (strike 2 of 6 in 6 hours).
