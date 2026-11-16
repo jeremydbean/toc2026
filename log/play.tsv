@@ -33173,3 +33173,76 @@
 1794790979	cmd	Trentlin	46	30512	hyrule.are	standing	19	0	-	scan		a bubble                           -to the North. // a like like                        -to the North. // a zol                              -to the North.	-	-
 1794790981	cmd	Trentlin	46	30516	hyrule.are	standing	19	0	-	north		Level 6: Hall of Many Doors //   Four doorways meet in this crowded hall: locked doors to the north and // south, a shutter to the west and an open way east. The floor is smeared	-	+
 1794790982	cmd	Trentlin	46	30516	hyrule.are	standing	19	0	-	consider	l	A like like is well below your level. // A like like has about twice your hit points. // Blow for blow, you would need about 7 rounds to bring a like like down; it would need about 20 rounds for you.	-	+
+1794790991	cmd	Trentlin	46	30516	hyrule.are	standing	19	0	-	recall		The Gods have forsaken you.	-	-
+1794790992	cmd	Trentlin	46	30516	hyrule.are	standing	19	0	-	kill	l	Your punch === OBLITERATES === a like like! // Your punch ^^^ DESTROYS ^^^ a like like!	-	-
+1794790995	cmd	Trentlin	46	30516	hyrule.are	fighting	19	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a like like. // Your fists of fury hits a like like.	-	+
+1794791002	cmd	Trentlin	46	30516	hyrule.are	fighting	19	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a like like! // Your fists of fury *** DEMOLISHES *** a like like!	-	+
+1794791008	cmd	Trentlin	46	30516	hyrule.are	fighting	14	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS a like like! // Your fists of fury ^^^ DESTROYS ^^^ a like like!	-	+
+1794791014	coin	Trentlin	46	30516	hyrule.are	+15000	loot	fists	corpse of a like like	15427320528
+1794791014	coin	Trentlin	46	30516	hyrule.are	+299	loot	fists	corpse of a like like	15427320827
+1794791014	coin	Trentlin	46	30516	hyrule.are	+800000	loot	fists	corpse of a like like	15428120827
+1794791014	cmd	Trentlin	46	30516	hyrule.are	fighting	14	2	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a like like. // Your fists of fury injures a like like.	-	+
+1794791023	cmd	Trentlin	46	30516	hyrule.are	standing	14	0	-	look	in co	Corpse of a like like contains: //      Nothing.	-	-
+1794791023	cmd	Trentlin	46	30516	hyrule.are	standing	14	0	-	iron		You lost your concentration.	-	-
+1794791024	cmd	Trentlin	46	30516	hyrule.are	standing	14	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.	-	-
+1794791031	coin	Trentlin	46	30516	hyrule.are	+74	loot	sacrifice	-	15428120901
+1794791031	cmd	Trentlin	46	30516	hyrule.are	standing	17	0	-	sacrifice	co	The Gods give you 74 copper coins for your sacrifice.	-	-
+1794791033	cmd	Trentlin	46	30516	hyrule.are	standing	17	0	-	look		Level 6: Hall of Many Doors //   Four doorways meet in this crowded hall: locked doors to the north and // south, a shutter to the west and an open way east. The floor is smeared	-	+
+1794791034	cmd	Trentlin	46	30516	hyrule.are	standing	17	0	-	west		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794791036	cmd	Trentlin	46	30516	hyrule.are	standing	17	0	-	look	zo	Bred in the stagnant cisterns of the Dragon, this zol has grown huge and // dark, almost black at its heart, with flecks of ash floating in its jelly // like trapped insects. It smells of standing water and old smoke. It lunges	-	+
+1794791043	cmd	Trentlin	46	30516	hyrule.are	standing	17	0	-	kill	z	Your punch *** DEVASTATES *** a zol! // A zol dodges your attack.	-	-
+1794791064	cmd	Trentlin	46	30516	hyrule.are	fighting	12	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a zol! // Your fists of fury *** DEVASTATES *** a zol!	-	+
+1794791068	coin	Trentlin	46	30516	hyrule.are	+7000	loot	(violence_update)	corpse of a zol	15428127901
+1794791068	coin	Trentlin	46	30516	hyrule.are	+380	loot	(violence_update)	corpse of a zol	15428128281
+1794791068	coin	Trentlin	46	30516	hyrule.are	+880000	loot	(violence_update)	corpse of a zol	15429008281
+1794791074	got	Trentlin	46	30516	hyrule.are	30485	the Dragon dungeon map	map	33	16000000	get	the floor
+1794791074	cmd	Trentlin	46	30516	hyrule.are	standing	12	0	-	get	map	You get the Dragon dungeon map.	-	-
+1794791076	cmd	Trentlin	46	30516	hyrule.are	standing	12	0	-	drop	map	You drop the Dragon dungeon map.	-	-
+1794791076	cmd	Trentlin	46	30515	hyrule.are	standing	12	0	-	west		The shutter opens now that the chamber is clear. // Level 6: Hushed Red Vault //   Bare red stone and a ring of squat blocks are all this chamber holds, and	-	+
+1794791077	cmd	Trentlin	46	30511	hyrule.are	standing	12	0	-	south		The shutter opens now that the chamber is clear. // Level 6: Statue Gallery //   A line of dragon statues stands along the west wall, their stone faces	-	+
+1794791078	cmd	Trentlin	46	30511	hyrule.are	standing	12	0	-	south		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794791082	cmd	Trentlin	46	30515	hyrule.are	standing	12	0	-	north		Level 6: Hushed Red Vault //   Bare red stone and a ring of squat blocks are all this chamber holds, and // the hush is so complete that every footfall rings off the walls and comes	-	+
+1794791083	cmd	Trentlin	46	30515	hyrule.are	standing	12	0	-	sleep		You go to sleep.	-	-
+1794791084	cmd	Trentlin	46	30515	hyrule.are	sleeping	12	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    something.	-	+
+1794791087	cmd	Trentlin	46	30515	hyrule.are	sleeping	12	0	-	inventory		You are carrying: //      a small key //      a purple container of tea	-	+
+1794791089	cmd	Trentlin	46	30515	hyrule.are	sleeping	12	0	-	wake		You wake and stand up.	-	-
+1794791091	cmd	Trentlin	46	30515	hyrule.are	standing	12	0	-	quaff	opa	This liquid is too powerful for you to drink.	-	-
+1794791094	refused	Trentlin	46	30515	hyrule.are	standing	12	0	-	(unknown)		Huh? Did you mean QUAFF?	refusal:unknown-command	-
+1794791096	cmd	Trentlin	46	30515	hyrule.are	standing	12	0	-	quaff	prot	This liquid is too powerful for you to drink.	-	-
+1794791101	cmd	Trentlin	46	30515	hyrule.are	standing	12	0	-	sleep		You go to sleep.	-	-
+1794791104	cmd	Trentlin	46	30515	hyrule.are	sleeping	12	0	-	help	archery	SHOOT ARCHERY BOW // Syntax: shoot <target> // Fires a wielded bow at a visible mobile through an open adjacent exit,	-	+
+1794791136	cmd	Trentlin	46	30515	hyrule.are	sleeping	19	0	-	group		Trentlin's group: // [46 Monk ] Trentlin          181/ 906 hp  399/1954 mana  483/ 507 mv 106436 xp	-	-
+1794791136	refused	Trentlin	46	30515	hyrule.are	sleeping	19	0	-	look		In your dreams, or what?	refusal:position	-
+1794791137	cmd	Trentlin	46	30515	hyrule.are	sleeping	19	0	-	wake		You wake and stand up.	-	-
+1794791138	cmd	Trentlin	46	30515	hyrule.are	standing	19	0	-	look		Level 6: Hushed Red Vault //   Bare red stone and a ring of squat blocks are all this chamber holds, and // the hush is so complete that every footfall rings off the walls and comes	-	+
+1794791139	cmd	Trentlin	46	30516	hyrule.are	standing	19	0	-	east		Level 6: Hall of Many Doors //   Four doorways meet in this crowded hall: locked doors to the north and // south, a shutter to the west and an open way east. The floor is smeared	-	+
+1794791142	cmd	Trentlin	46	30512	hyrule.are	standing	19	0	-	south		Level 6: Ash Chamber //   A drift of fine grey ash covers the floor, swirled into patterns by // draughts that seem to come from nowhere and by robes that sweep through the	-	+
+1794791142	cmd	Trentlin	46	30508	hyrule.are	standing	19	0	-	south		Level 6: Taloned Corner //   Deep talon gouges mark the tops of the blocks set around this corner // chamber, and torn blue wing membrane hangs from a crack in the ceiling	-	+
+1794791143	cmd	Trentlin	46	30509	hyrule.are	standing	19	0	-	east		The shutter opens now that the chamber is clear. // Level 6: Sorcerer's Stair //   A spiral of scorch marks curls across the floor of this chamber toward its	-	+
+1794791144	cmd	Trentlin	46	30520	hyrule.are	standing	19	0	-	down		Level 6: Eastern Stairwell //   A narrow stair sinks into the floor in one corner of this chamber, leading // back toward the western halls. A sticky, glistening film coats the stones	-	+
+1794791145	cmd	Trentlin	46	30514	hyrule.are	standing	19	0	-	south		Level 6: Eastern Bend //   This chamber at the eastern edge of the labyrinth smells of storm and // singed fur. Sparks wink and vanish in the corners, and talon marks score	-	+
+1794791146	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=2 players=1	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=7 mobs_fought=5 secs=900
+1794791146	cmd	Trentlin	46	30513	hyrule.are	standing	19	0	-	west		Level 6: Threshold of the Nest //   Grooves cut by sliding blades scar the floor, and blue scorch marks stain // the walls of this hall. From behind the locked door in the north wall comes	-	+
+1794791148	cmd	Trentlin	46	30513	hyrule.are	standing	19	0	-	scan		a vire                             -to the East. // a bubble                           -to the East.	-	-
+1794791150	cmd	Trentlin	46	30513	hyrule.are	standing	19	0	-	open	north	It's locked.	-	-
+1794791152	cmd	Trentlin	46	30513	hyrule.are	standing	19	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794791154	cmd	Trentlin	46	30513	hyrule.are	standing	19	0	-	open	north	Ok.	-	-
+1794791155	cmd	Trentlin	46	30514	hyrule.are	standing	19	0	-	east		Level 6: Eastern Bend //   This chamber at the eastern edge of the labyrinth smells of storm and // singed fur. Sparks wink and vanish in the corners, and talon marks score	-	+
+1794791157	cmd	Trentlin	46	30514	hyrule.are	standing	19	0	-	sleep		You go to sleep.	-	-
+1794791158	cmd	Trentlin	46	30514	hyrule.are	sleeping	19	0	-	group		Trentlin's group: // [46 Monk ] Trentlin          181/ 906 hp  399/1954 mana  451/ 507 mv 106436 xp	-	-
+1794791160	cmd	Trentlin	46	30514	hyrule.are	sleeping	19	0	-	help	shoot	SHOOT ARCHERY BOW // Syntax: shoot <target> // Fires a wielded bow at a visible mobile through an open adjacent exit,	-	+
+1794791166	cmd	Trentlin	46	30514	hyrule.are	sleeping	19	0	-	help	hyrule items	'HYRULE ITEMS' 'DUNGEON MAP' COMPASS 'BLUE RING' 'MAGICAL SHIELD' // What Hyrule's things do: //   Dungeon map     LOOK or READ it: the floor plan, @ where you stand, the	-	+
+1794791182	cmd	Trentlin	46	30514	hyrule.are	sleeping	19	0	-	inventory		You are carrying: //      a purple container of tea // ( 5) a potion of true sight	-	+
+1794791189	cmd	Trentlin	46	30514	hyrule.are	sleeping	26	0	-	group		Trentlin's group: // [46 Monk ] Trentlin          239/ 906 hp  448/1954 mana  507/ 507 mv 106436 xp	-	-
+1794791266	cmd	Trentlin	46	30514	hyrule.are	sleeping	35	0	-	group		Trentlin's group: // [46 Monk ] Trentlin          320/ 906 hp  533/1954 mana  507/ 507 mv 106436 xp	-	-
+1794791267	cmd	Trentlin	46	30514	hyrule.are	sleeping	35	0	-	wake		You wake and stand up.	-	-
+1794791268	cmd	Trentlin	46	30514	hyrule.are	standing	35	0	-	look		Level 6: Eastern Bend //   This chamber at the eastern edge of the labyrinth smells of storm and // singed fur. Sparks wink and vanish in the corners, and talon marks score	-	+
+1794791269	cmd	Trentlin	46	30514	hyrule.are	standing	35	0	-	scan		a bubble                           -to the North. // a like like                        -to the North. // a blade trap                       -to the West.	-	+
+1794791278	cmd	Trentlin	46	30520	hyrule.are	standing	35	0	-	north		Level 6: Eastern Stairwell //   A narrow stair sinks into the floor in one corner of this chamber, leading // back toward the western halls. A sticky, glistening film coats the stones	-	+
+1794791280	cmd	Trentlin	46	30514	hyrule.are	standing	35	0	-	south		Level 6: Eastern Bend //   This chamber at the eastern edge of the labyrinth smells of storm and // singed fur. Sparks wink and vanish in the corners, and talon marks score	-	+
+1794791280	cmd	Trentlin	46	30513	hyrule.are	standing	35	0	-	west		Level 6: Threshold of the Nest //   Grooves cut by sliding blades scar the floor, and blue scorch marks stain // the walls of this hall. From behind the locked door in the north wall comes	-	+
+1794791282	cmd	Trentlin	46	30519	hyrule.are	standing	35	0	-	north		Level 6: Gohma's Nest //   Shed carapace fragments and deep scuttle marks crisscross the floor of this // lair, and the walls are gouged by great pincers. Broken arrows lie thick	-	+
+1794791284	cmd	Trentlin	46	30519	hyrule.are	fighting	36	0	fight	kill	g	You do the best you can!	-	-
+1794791289	cmd	Trentlin	46	30519	hyrule.are	fighting	35	0	fight	wear	bow	You wield an Eagle archer's bow. // An Eagle archer's bow is a mystery to you. Better ask someone how to use it.	-	-
+1794791290	cmd	Trentlin	46	30519	hyrule.are	fighting	35	0	fight	shoot		You need to know archery to shoot.	-	-
+1794791290	skill	Trentlin	46	30519	hyrule.are	second attack	80	81	success	(violence_update)

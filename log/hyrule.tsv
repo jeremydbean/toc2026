@@ -155,3 +155,6 @@
 1794790610	flee	Trentlin	46	1	Monk 	30519	L6	foe=30223 foe_name=Gohma guardian=1 foe_hp=0 secs=32 hp=21
 1794790927	cleared	Trentlin	46	1	Monk 	30509	L6	foes=0
 1794790949	cleared	Trentlin	46	1	Monk 	30508	L6	foes=0
+1794791068	cleared	Trentlin	46	1	Monk 	30516	L6	foes=0
+1794791074	got	Trentlin	46	1	Monk 	30516	L6	obj=30485 obj_name=the_Dragon_dungeon_map type=map obj_level=33 how=get
+1794791283	engage	Trentlin	46	1	Monk 	30519	L6	foe=30223 foe_name=Gohma foe_hp=8 foe_max=2194 party=1 levels=46 classes=Monk  hps=35 buffs=-
