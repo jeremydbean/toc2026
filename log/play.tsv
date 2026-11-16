@@ -32761,3 +32761,158 @@
 1794789177	cmd	Trentlin	46	16016	pirate.are	standing	95	0	-	wear	gree	You do not have that item.	-	-
 1794789185	cmd	Trentlin	46	16016	pirate.are	standing	95	0	-	compare	gaurd	You do not have that item.	-	-
 1794789188	cmd	Trentlin	46	16016	pirate.are	standing	95	0	-	compare	guard	A) the Heart Guard of the Lion (level 52) -- can't use: needs level 52 // B) the Heart Guard of the Manji (level 20), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794789196	cmd	Trentlin	46	16016	pirate.are	standing	95	0	-	compare	robe	A) some Black velvet robes (level 32) // B) a coat of urchin-spine mail (level 33), worn // Slot: body.  Your damage comes from weapons.	-	+
+1794789198	cmd	Trentlin	46	16016	pirate.are	standing	95	0	-	wear	robe	You stop using a coat of urchin-spine mail. // You wear some Black velvet robes on your body.	-	-
+1794789201	cmd	Trentlin	46	16016	pirate.are	standing	98	17	-	stash	put mail	You put a coat of urchin-spine mail away for safe keeping.	-	-
+1794789202	cmd	Trentlin	46	16016	pirate.are	standing	98	0	-	inventory		You are carrying: //      a purple container of tea // ( 6) a potion of true sight	-	+
+1794789204	cmd	Trentlin	46	16016	pirate.are	standing	98	0	-	compare	star	A) Starlight (level 45) // B) the Sceptre of Might (level 25), worn // Slot: light.  Your damage comes from weapons.	-	+
+1794789208	cmd	Trentlin	46	16016	pirate.are	standing	98	0	-	wear	star	You stop using the Sceptre of Might. // You light Starlight and hold it.	-	-
+1794789213	cmd	Trentlin	46	16016	pirate.are	standing	98	6	-	stash	put scep	You put the Sceptre of Might away for safe keeping.	-	-
+1794789214	area	Trentlin	46	4207	dresden.are	pirate.are	dresden.are	52	recall
+1794789214	cmd	Trentlin	46	4207	dresden.are	standing	98	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794789215	cmd	Trentlin	46	4208	dresden.are	standing	98	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794789216	coin	Trentlin	46	4208	dresden.are	-800000	spent	heal	-	15416448959
+1794789216	cmd	Trentlin	46	4208	dresden.are	standing	98	0	-	heal	refres	The healer utters the words 'candusima'. // You feel fully refreshed! (8 castings, 80 gold.)	-	-
+1794789260	cmd	Trentlin	46	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794789260	area	Trentlin	46	3700	school.are	dresden.are	school.are	46	up
+1794789260	cmd	Trentlin	46	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794789261	cmd	Trentlin	46	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794789261	cmd	Trentlin	46	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794789261	area	Trentlin	46	15000	campus.are	school.are	campus.are	1	enter
+1794789261	cmd	Trentlin	46	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794789261	cmd	Trentlin	46	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794789262	cmd	Trentlin	46	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794789262	cmd	Trentlin	46	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794789262	cmd	Trentlin	46	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794789262	cmd	Trentlin	46	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794789263	cmd	Trentlin	46	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794789263	cmd	Trentlin	46	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794789263	cmd	Trentlin	46	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794789263	cmd	Trentlin	46	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794789264	cmd	Trentlin	46	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794789264	area	Trentlin	46	30200	hyrule.are	campus.are	hyrule.are	3	enter
+1794789264	cmd	Trentlin	46	30200	hyrule.are	standing	100	2	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794789268	cmd	Trentlin	46	30323	hyrule.are	standing	100	0	-	play	recorder 5	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Lizard's Gate	-	+
+1794789272	cmd	Trentlin	46	30476	hyrule.are	standing	100	0	-	down		Level 5: Lizard's Gate //   The entry hall of the Lizard lies deep beneath the Lost Hills, its grey // stone pillars carved with long-tailed lizards climbing toward the ceiling.	-	+
+1794789274	cmd	Trentlin	46	30480	hyrule.are	standing	100	0	-	north		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794789274	cmd	Trentlin	46	30480	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794789278	cmd	Trentlin	46	30480	hyrule.are	standing	100	0	-	iron		You lost your concentration.	-	-
+1794789279	cmd	Trentlin	46	30480	hyrule.are	standing	100	0	-	iron		You lost your concentration.	-	-
+1794789282	cmd	Trentlin	46	30480	hyrule.are	standing	100	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794789289	cmd	Trentlin	46	30480	hyrule.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794789289	cmd	Trentlin	46	30480	hyrule.are	standing	100	0	-	kill	gib	Your punch <<< ERADICATES >>> a gibdo! // A gibdo parries your attack.	-	-
+1794789292	cmd	Trentlin	46	30480	hyrule.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ a gibdo! // Your fists of fury wounds a gibdo.	-	+
+1794789299	coin	Trentlin	46	30480	hyrule.are	+12600	loot	(violence_update)	corpse of a gibdo	15416461559
+1794789299	coin	Trentlin	46	30480	hyrule.are	+179	loot	(violence_update)	corpse of a gibdo	15416461738
+1794789299	coin	Trentlin	46	30480	hyrule.are	+280000	loot	(violence_update)	corpse of a gibdo	15416741738
+1794789300	cmd	Trentlin	46	30483	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear. // Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air	-	+
+1794789301	cmd	Trentlin	46	30480	hyrule.are	standing	100	0	-	south		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794789302	got	Trentlin	46	30480	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794789302	cmd	Trentlin	46	30480	hyrule.are	standing	100	0	-	get	key	You get a small key.	-	-
+1794789302	cmd	Trentlin	46	30483	hyrule.are	standing	100	0	-	north		Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air // carries a faint smell of smoke and scorched hide where bombs have been fed	-	+
+1794789303	cmd	Trentlin	46	30483	hyrule.are	standing	100	0	-	north		The door is closed.	-	-
+1794789305	cmd	Trentlin	46	30484	hyrule.are	standing	100	0	-	east		Level 5: Gray Junction //   Mineral water drips from a fissure in the ceiling and spreads across the // floor in long, shining trails that mingle with slime. A row of weathered	-	+
+1794789306	cmd	Trentlin	46	30486	hyrule.are	standing	100	0	-	north		Level 5: Shuffling Passage //   A long vaulted passage runs between rows of blocks, with scraps of linen // caught on their corners like flags, and the floor is worn into a groove by	-	+
+1794789307	cmd	Trentlin	46	30488	hyrule.are	standing	100	0	-	north		Level 5: Lizard Shrine //   A carved lizard of green stone coils on a pedestal against the east wall of // this small shrine, its eyes worn blank by time and its snout pointing	-	+
+1794789308	cmd	Trentlin	46	30492	hyrule.are	standing	100	0	-	north		Level 5: Bat-Haunted Tomb //   Coffins of carved stone stand in two rows across this tomb, their lids // spattered with bat droppings. The rustle of wings echoes from the shadowed	-	+
+1794789309	cmd	Trentlin	46	30492	hyrule.are	standing	100	0	-	west		The door is closed.	-	-
+1794789310	got	Trentlin	46	30492	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794789310	cmd	Trentlin	46	30492	hyrule.are	standing	100	0	-	get	key	You get a small key.	-	-
+1794789312	cmd	Trentlin	46	30492	hyrule.are	standing	100	0	-	unlock	west	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794789313	cmd	Trentlin	46	30492	hyrule.are	standing	100	0	-	open	west	Ok.	-	-
+1794789313	cmd	Trentlin	46	30491	hyrule.are	standing	100	0	-	west		Level 5: Ossuary //   Bones are stacked in neat niches from floor to ceiling, and a trodden path // of linen scraps crosses between them where the wrapped dead walk their	-	+
+1794789315	cmd	Trentlin	46	30490	hyrule.are	standing	100	0	-	west		Level 5: Whispering Gallery //   Curved walls of polished stone carry every sound around this gallery and // back again, until a single footstep becomes a chorus, and tufts of pale fur	-	+
+1794789316	cmd	Trentlin	46	30490	hyrule.are	standing	100	0	-	west		The door is closed.	-	-
+1794789318	cmd	Trentlin	46	30490	hyrule.are	standing	100	0	-	open	west	It's locked.	-	-
+1794789319	cmd	Trentlin	46	30490	hyrule.are	standing	100	0	-	unlock	west	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794789321	cmd	Trentlin	46	30490	hyrule.are	standing	100	0	-	open	west	Ok.	-	-
+1794789321	cmd	Trentlin	46	30489	hyrule.are	standing	100	0	-	west		Level 5: Digdogger's Den //   The floor of this chamber is churned and dented as if a great spiked ball // had bounced across it a thousand times, and broken spines lie scattered	-	+
+1794789322	cmd	Trentlin	46	30489	hyrule.are	standing	100	1	-	consider	d	Digdogger is far below your level. // Digdogger has about twice your hit points. // Digdogger is far too big to hurt as it is: something must make it smaller first.	-	+
+1794789326	cmd	Trentlin	46	30489	hyrule.are	standing	100	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Digdogger shudders at the melody and shrinks to a third of its size -- now a blade can bite!	-	-
+1794789327	cmd	Trentlin	46	30489	hyrule.are	standing	100	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Down here the tune finds no wind to call. Play it under the open sky.	-	-
+1794789328	cmd	Trentlin	46	30489	hyrule.are	standing	100	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // Down here the tune finds no wind to call. Play it under the open sky.	-	-
+1794789330	cmd	Trentlin	46	30489	hyrule.are	standing	100	0	-	consider	d	Digdogger is far below your level. // Digdogger has about twice your hit points. // Blow for blow, you would need about 4 rounds to bring Digdogger down; it would need about 28 rounds for you.	-	+
+1794789339	cmd	Trentlin	46	30489	hyrule.are	standing	100	0	-	kill	d	Digdogger parries your attack. // Your punch ^^^ DESTROYS ^^^ Digdogger!	-	-
+1794789342	cmd	Trentlin	46	30489	hyrule.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS Digdogger! // Your fists of fury hits Digdogger.	-	+
+1794789346	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=2 players=1	laid=3 spotted=3 picked=3 passed=1 cleared=0 rare=0 mobs_seen=114 mobs_fought=4 secs=900
+1794789348	got	Trentlin	46	30489	hyrule.are	30634	the Lizard's key	key	27	0	fists	-
+1794789348	coin	Trentlin	46	30489	hyrule.are	+3000000	loot	fists	corpse of Digdogger	15419741738
+1794789348	coin	Trentlin	46	30489	hyrule.are	+6000	loot	fists	corpse of Digdogger	15419747738
+1794789348	coin	Trentlin	46	30489	hyrule.are	+96	loot	fists	corpse of Digdogger	15419747834
+1794789348	coin	Trentlin	46	30489	hyrule.are	+300000	loot	fists	corpse of Digdogger	15420047834
+1794789348	cmd	Trentlin	46	30489	hyrule.are	fighting	88	2	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** Digdogger! // Your fists of fury DISEMBOWELS Digdogger!	-	+
+1794789356	cmd	Trentlin	46	30489	hyrule.are	standing	88	0	-	look	in cor	Corpse of Digdogger contains: //      a coat of urchin-spine mail //      an urchin-spine ring	-	+
+1794789363	cmd	Trentlin	46	30489	hyrule.are	standing	88	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    something.	-	+
+1794789367	refused	Trentlin	46	30489	hyrule.are	standing	88	0	-	(unknown)		Huh? Did you mean QUAFF?	refusal:unknown-command	-
+1794789369	cmd	Trentlin	46	30489	hyrule.are	standing	88	0	-	quaff	true	You quaff a potion of true sight. // Your eyes tingle. // Your eyes tingle.	-	+
+1794789370	cmd	Trentlin	46	30489	hyrule.are	standing	88	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Invis) (Magical) a sapphire ring	-	+
+1794789373	cmd	Trentlin	46	30489	hyrule.are	standing	88	0	-	look	in co	Corpse of Digdogger contains: //      (Magical) a coat of urchin-spine mail //      (Magical) an urchin-spine ring	-	+
+1794789377	coin	Trentlin	46	30489	hyrule.are	+72	loot	sacrifice	-	15420047906
+1794789377	cmd	Trentlin	46	30489	hyrule.are	standing	88	0	-	sacrifice	co	The Gods give you 72 copper coins for your sacrifice.	-	-
+1794789378	cmd	Trentlin	46	30490	hyrule.are	standing	88	0	-	east		Level 5: Whispering Gallery //   Curved walls of polished stone carry every sound around this gallery and // back again, until a single footstep becomes a chorus, and tufts of pale fur	-	+
+1794789379	cmd	Trentlin	46	30491	hyrule.are	standing	88	0	-	east		Level 5: Ossuary //   Bones are stacked in neat niches from floor to ceiling, and a trodden path // of linen scraps crosses between them where the wrapped dead walk their	-	+
+1794789379	cmd	Trentlin	46	30492	hyrule.are	standing	88	0	-	east		Level 5: Bat-Haunted Tomb //   Coffins of carved stone stand in two rows across this tomb, their lids // spattered with bat droppings. The rustle of wings echoes from the shadowed	-	+
+1794789380	cmd	Trentlin	46	30488	hyrule.are	standing	88	0	-	south		Level 5: Lizard Shrine //   A carved lizard of green stone coils on a pedestal against the east wall of // this small shrine, its eyes worn blank by time and its snout pointing	-	+
+1794789380	cmd	Trentlin	46	30486	hyrule.are	standing	88	0	-	south		Level 5: Shuffling Passage //   A long vaulted passage runs between rows of blocks, with scraps of linen // caught on their corners like flags, and the floor is worn into a groove by	-	+
+1794789381	cmd	Trentlin	46	30484	hyrule.are	standing	88	0	-	south		Level 5: Gray Junction //   Mineral water drips from a fissure in the ceiling and spreads across the // floor in long, shining trails that mingle with slime. A row of weathered	-	+
+1794789381	cmd	Trentlin	46	30483	hyrule.are	standing	88	0	-	west		Level 5: Hall of Heavy Tracks //   Deep three-toed tracks crush the dust of this broad hall, and the air // carries a faint smell of smoke and scorched hide where bombs have been fed	-	+
+1794789382	cmd	Trentlin	46	30480	hyrule.are	standing	90	0	-	south		Level 5: Embalmers' Hall //   Long stone tables stained dark with old oils stand in the middle of this // cross-shaped hall. Strips of grave cloth trail from them across the floor	-	+
+1794789383	cmd	Trentlin	46	30476	hyrule.are	standing	90	0	-	south		Level 5: Lizard's Gate //   The entry hall of the Lizard lies deep beneath the Lost Hills, its grey // stone pillars carved with long-tailed lizards climbing toward the ceiling.	-	+
+1794789384	cmd	Trentlin	46	30323	hyrule.are	standing	90	0	-	up		The Lizard's Gate //   Beyond the confusing folds of the Lost Hills to the south the ground levels // into a hidden basin of reddish sand. At its heart a squat entrance is cut	-	+
+1794789384	item	Trentlin	46	30323	hyrule.are	30634	the Lizard's key	type=key level=27 worn=0 nested=0 timer=0 cond=100 inside=0	crumbled leaving Level 5
+1794789387	cmd	Trentlin	46	30282	hyrule.are	standing	90	0	-	play	recorder 6	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Dragon's Gate	-	+
+1794789391	cmd	Trentlin	46	30501	hyrule.are	standing	90	0	-	down		Level 6: Dragon's Gate //   Dragon statues of dark red stone flank the entry hall of this labyrinth, // their jaws carved wide as if to breathe fire. Heat radiates from the walls	-	+
+1794789395	cmd	Trentlin	46	30501	hyrule.are	standing	90	0	-	unlock	west	You lack the key: it takes a small key to unlock it.	-	-
+1794789397	cmd	Trentlin	46	30502	hyrule.are	standing	90	0	-	east		Level 6: Rune-Scored Hall //   Arcane sigils are scratched across the flagstones here, and a few still // glow faintly before fading, the marks where robed sorcerers blink in and	-	+
+1794789401	cmd	Trentlin	46	30502	hyrule.are	standing	90	0	-	kill	w	Your punch ^^^ DESTROYS ^^^ a red wizzrobe! // Your punch *** DEMOLISHES *** a red wizzrobe! // A red wizzrobe dodges your attack.	-	-
+1794789403	cmd	Trentlin	46	30502	hyrule.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a red wizzrobe! // Your fists of fury wounds a red wizzrobe.	-	+
+1794789407	coin	Trentlin	46	30502	hyrule.are	+400000	loot	(violence_update)	corpse of a red wizzrobe	15420447906
+1794789407	coin	Trentlin	46	30502	hyrule.are	+5300	loot	(violence_update)	corpse of a red wizzrobe	15420453206
+1794789407	coin	Trentlin	46	30502	hyrule.are	+153	loot	(violence_update)	corpse of a red wizzrobe	15420453359
+1794789407	coin	Trentlin	46	30502	hyrule.are	+60000	loot	(violence_update)	corpse of a red wizzrobe	15420513359
+1794789409	cmd	Trentlin	46	30502	hyrule.are	standing	90	0	-	fists		Who do you want to attack?	-	-
+1794789409	got	Trentlin	46	30502	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794789409	cmd	Trentlin	46	30502	hyrule.are	standing	90	0	-	get	key	You get a small key.	-	-
+1794789410	cmd	Trentlin	46	30501	hyrule.are	standing	90	0	-	west		Level 6: Dragon's Gate //   Dragon statues of dark red stone flank the entry hall of this labyrinth, // their jaws carved wide as if to breathe fire. Heat radiates from the walls	-	+
+1794789410	cmd	Trentlin	46	30501	hyrule.are	standing	90	0	-	west		The door is closed.	-	-
+1794789411	cmd	Trentlin	46	30501	hyrule.are	standing	90	0	-	west		The door is closed.	-	-
+1794789412	cmd	Trentlin	46	30501	hyrule.are	standing	90	0	-	unlock	west	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794789414	cmd	Trentlin	46	30501	hyrule.are	standing	90	0	-	open	west	Ok.	-	-
+1794789414	cmd	Trentlin	46	30500	hyrule.are	standing	90	0	-	west		Level 6: Scorched Antechamber //   Black scorch marks splash the walls of this chamber in starbursts, as if // bolts of magic struck them from every side at once, and the dust shows the	-	+
+1794789415	cmd	Trentlin	46	30503	hyrule.are	standing	90	0	-	north		Level 6: Slime Cistern //   Puddles of green slime pool in the low places of this sunken floor, and // trails of it streak the walls up to knee height, where large blobs have	-	+
+1794789416	cmd	Trentlin	46	30505	hyrule.are	standing	90	0	-	north		Level 6: Smoky Roost //   A tall, narrow chamber whose ceiling vanishes into soot-black shadow, alive // with the rustle of leathery wings that dart down and flutter up again.	-	+
+1794789417	cmd	Trentlin	46	30505	hyrule.are	standing	90	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794789419	cmd	Trentlin	46	30505	hyrule.are	standing	90	0	-	kill	kee	Your punch ^^^ DESTROYS ^^^ a keese! // Your punch DISEMBOWELS a keese!	-	-
+1794789425	coin	Trentlin	46	30505	hyrule.are	+2600	loot	(violence_update)	corpse of a keese	15420515959
+1794789425	coin	Trentlin	46	30505	hyrule.are	+120	loot	(violence_update)	corpse of a keese	15420516079
+1794789425	coin	Trentlin	46	30505	hyrule.are	+930000	loot	(violence_update)	corpse of a keese	15421446079
+1794789427	got	Trentlin	46	30505	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794789427	cmd	Trentlin	46	30505	hyrule.are	standing	90	0	-	get	key	You get a small key.	-	-
+1794789427	cmd	Trentlin	46	30506	hyrule.are	standing	90	0	-	north		The shutter opens now that the chamber is clear. // Level 6: Crossed Grooves of the Dragon //   Grooves cut deep into the floor run from the corners toward the middle of	-	+
+1794789429	cmd	Trentlin	46	30507	hyrule.are	standing	90	0	-	north		The shutter opens now that the chamber is clear. // Level 6: Flickering Hall //   The air here crackles with stray sparks, and patches of the walls are	-	+
+1794789432	cmd	Trentlin	46	30507	hyrule.are	standing	92	0	-	iron		Your skin hardens.	-	-
+1794789439	cmd	Trentlin	46	30507	hyrule.are	standing	92	0	-	east		Alas, you cannot go that way.	-	-
+1794789439	cmd	Trentlin	46	30507	hyrule.are	standing	92	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794789442	cmd	Trentlin	46	30507	hyrule.are	standing	92	0	-	kill	bub	Nothing harms a bubble. Go round it.	-	-
+1794789444	cmd	Trentlin	46	30507	hyrule.are	standing	92	0	-	kill	w	Your punch ^^^ DESTROYS ^^^ a blue wizzrobe! // Your punch ^^^ DESTROYS ^^^ a blue wizzrobe! // Your punch *** DEVASTATES *** a blue wizzrobe!	-	-
+1794789447	cmd	Trentlin	46	30507	hyrule.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes a blue wizzrobe. // Your fists of fury *** DEVASTATES *** a blue wizzrobe!	-	+
+1794789453	cmd	Trentlin	46	30507	hyrule.are	fighting	81	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches a blue wizzrobe. // Your fists of fury mauls a blue wizzrobe.	-	+
+1794789458	got	Trentlin	46	30507	hyrule.are	30695	four bombs	treasure	1	0	(violence_update)	-
+1794789458	coin	Trentlin	46	30507	hyrule.are	+80000	loot	(violence_update)	corpse of a blue wizzrobe	15421526079
+1794789458	coin	Trentlin	46	30507	hyrule.are	+12700	loot	(violence_update)	corpse of a blue wizzrobe	15421538779
+1794789458	coin	Trentlin	46	30507	hyrule.are	+434	loot	(violence_update)	corpse of a blue wizzrobe	15421539213
+1794789458	coin	Trentlin	46	30507	hyrule.are	+510000	loot	(violence_update)	corpse of a blue wizzrobe	15422049213
+1794789462	cmd	Trentlin	46	30507	hyrule.are	standing	75	0	-	look	in co	Corpse of a blue wizzrobe contains: //      Nothing.	-	-
+1794789464	cmd	Trentlin	46	30511	hyrule.are	standing	75	0	-	north		The shutter opens now that the chamber is clear. // Level 6: Statue Gallery //   A line of dragon statues stands along the west wall, their stone faces	-	+
+1794789465	cmd	Trentlin	46	30511	hyrule.are	standing	75	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794789467	cmd	Trentlin	46	30511	hyrule.are	standing	75	0	-	kill	w	Your punch ^^^ DESTROYS ^^^ a red wizzrobe! // Your punch ^^^ DESTROYS ^^^ a red wizzrobe!	-	-
+1794789470	cmd	Trentlin	46	30511	hyrule.are	fighting	75	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a red wizzrobe. // Your fists of fury *** DEVASTATES *** a red wizzrobe!	-	+
+1794789475	cmd	Trentlin	46	30511	hyrule.are	fighting	75	1	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES a red wizzrobe! // Your fists of fury MUTILATES a red wizzrobe!	-	+
+1794789479	coin	Trentlin	46	30511	hyrule.are	+5300	loot	(violence_update)	corpse of a red wizzrobe	15422054513
+1794789479	coin	Trentlin	46	30511	hyrule.are	+153	loot	(violence_update)	corpse of a red wizzrobe	15422054666
+1794789479	coin	Trentlin	46	30511	hyrule.are	+60000	loot	(violence_update)	corpse of a red wizzrobe	15422114666
+1794789482	cmd	Trentlin	46	30511	hyrule.are	standing	75	0	-	look	in co	Corpse of a red wizzrobe contains: //      Nothing.	-	-
+1794789483	coin	Trentlin	46	30511	hyrule.are	+76	loot	sacrifice	-	15422114742
+1794789483	cmd	Trentlin	46	30511	hyrule.are	standing	75	0	-	sacrifice	co	The Gods give you 76 copper coins for your sacrifice.	-	-
+1794789484	cmd	Trentlin	46	30511	hyrule.are	standing	75	0	-	kill	w	Your punch *** DEVASTATES *** a blue wizzrobe! // A blue wizzrobe dodges your attack. // Your punch MASSACRES a blue wizzrobe!	-	-
+1794789487	cmd	Trentlin	46	30511	hyrule.are	fighting	69	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a blue wizzrobe! // Your fists of fury grazes a blue wizzrobe.	-	+

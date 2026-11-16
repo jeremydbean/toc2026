@@ -150,26 +150,32 @@ List spend 1900000 0 heal
 List spend 13469280 0 devote
 End
 Day 2026-11-16
-Played 441
+Played 689
 Level 45 46 1
-Exp 1396 0
-Kills 2
+Exp 1404 0
+Kills 4
 Deaths 0
 Close 0
 Quests 1 57
 Dailies 0 0
+List notable 1 0 Digdogger
 List skill 92 93 enhanced damage
-List area 72 0 City of Dresden
+List area 131 0 City of Dresden
 List area 4 0 Haon Dor
-List area 20 0 New Thalos
+List area 30 0 New Thalos
 List area 0 0 Continental Drift
 List area 193 0 The HighLands
-List area 3 0 Miden'nir
-List area 149 0 Pirate Ship
+List area 6 0 Miden'nir
+List area 201 0 Pirate Ship
+List area 1 0 Mud School
+List area 3 0 Strange Campus
+List area 120 0 Hyrule
 List item 1 0 black steel vambraces
 List item 1 0 a pair of blackened steel greaves
+List item 2 0 a small key
+List item 1 0 the Lizard's key
 List earn 4821390 0 quests
-List earn 2061216 0 loot
-List spend 26300000 0 heal
+List earn 5660163 0 loot
+List spend 27100000 0 heal
 End
 #END

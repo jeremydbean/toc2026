@@ -109,3 +109,24 @@
 1794665195	enter	Trentlin	41	1	Monk 	30282	over	from=L6 how=up hp=53
 1794665220	leave	Trentlin	41	1	Monk 	30266	over	to=out how=recall secs=25 hp=38
 1794665441	got	Trentlin	41	1	Monk 	4208	out	obj=30415 obj_name=the_Magic_Book type=armor obj_level=48 how=stash
+1794789264	enter	Trentlin	46	1	Monk 	30200	over	from=out how=enter hp=100
+1794789272	leave	Trentlin	46	1	Monk 	30323	over	to=L5 how=down secs=8 hp=100
+1794789272	enter	Trentlin	46	1	Monk 	30476	L5	from=over how=down hp=100
+1794789299	cleared	Trentlin	46	1	Monk 	30480	L5	foes=0
+1794789302	got	Trentlin	46	1	Monk 	30480	L5	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
+1794789310	got	Trentlin	46	1	Monk 	30492	L5	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
+1794789339	engage	Trentlin	46	1	Monk 	30489	L5	foe=30309 foe_name=Digdogger foe_hp=33 foe_max=2025 party=1 levels=46 classes=Monk  hps=100 buffs=-
+1794789348	guardian-down	Trentlin	46	1	Monk 	30489	L5	foe=30309 foe_name=Digdogger secs=8 foe_max=2025 party=1 levels=46 classes=Monk  hps=88 buffs=-
+1794789348	got	Trentlin	46	1	Monk 	30489	L5	obj=30634 obj_name=the_Lizard's_key type=key obj_level=27 how=fists
+1794789348	cleared	Trentlin	46	1	Monk 	30489	L5	foes=0
+1794789384	leave	Trentlin	46	1	Monk 	30476	L5	to=over how=up secs=112 hp=90
+1794789384	enter	Trentlin	46	1	Monk 	30323	over	from=L5 how=up hp=90
+1794789384	crumbled	Trentlin	46	1	Monk 	30323	over	dungeon=5 maps=0 compasses=0 keys=0 guardian_keys=1 why=left how=(hyrule_crumble_update)
+1794789391	leave	Trentlin	46	1	Monk 	30282	over	to=L6 how=down secs=7 hp=90
+1794789391	enter	Trentlin	46	1	Monk 	30501	L6	from=over how=down hp=90
+1794789407	cleared	Trentlin	46	1	Monk 	30502	L6	foes=0
+1794789409	got	Trentlin	46	1	Monk 	30502	L6	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
+1794789425	cleared	Trentlin	46	1	Monk 	30505	L6	foes=0
+1794789427	got	Trentlin	46	1	Monk 	30505	L6	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
+1794789458	got	Trentlin	46	1	Monk 	30507	L6	obj=30695 obj_name=four_bombs type=treasure obj_level=1 how=(violence_update)
+1794789458	cleared	Trentlin	46	1	Monk 	30507	L6	foes=0
