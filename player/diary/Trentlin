@@ -150,16 +150,18 @@ List spend 1900000 0 heal
 List spend 13469280 0 devote
 End
 Day 2026-11-16
-Played 1577
+Played 1902
 Level 45 46 1
-Exp 1810 10
-Kills 15
+Exp 1846 20
+Kills 16
 Deaths 0
 Close 0
 Quests 1 57
 Dailies 0 0
 List notable 1 0 Digdogger
 List skill 92 94 enhanced damage
+List skill 84 85 parry
+List skill 85 86 fists of fury
 List area 131 0 City of Dresden
 List area 4 0 Haon Dor
 List area 30 0 New Thalos
@@ -169,15 +171,15 @@ List area 6 0 Miden'nir
 List area 201 0 Pirate Ship
 List area 1 0 Mud School
 List area 3 0 Strange Campus
-List area 1008 0 Hyrule
+List area 1333 0 Hyrule
 List item 1 0 black steel vambraces
 List item 1 0 a pair of blackened steel greaves
-List item 7 0 a small key
+List item 8 0 a small key
 List item 1 0 the Lizard's key
 List item 1 0 a pair of water-crossing greaves
 List item 1 0 the Heart Guard of the Manji
 List earn 4821390 0 quests
-List earn 10871115 0 loot
+List earn 11672920 0 loot
 List spend 27100000 0 heal
 End
 #END

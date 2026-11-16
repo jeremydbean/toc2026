@@ -33121,3 +33121,25 @@
 1794790339	coin	Trentlin	46	30514	hyrule.are	+74	loot	sacrifice	-	15426060663
 1794790339	cmd	Trentlin	46	30514	hyrule.are	standing	30	0	-	sacrifice	co	The Gods give you 74 copper coins for your sacrifice.	-	-
 1794790340	cmd	Trentlin	46	30514	hyrule.are	standing	30	0	-	sleep		You go to sleep.	-	-
+1794790560	cmd	Trentlin	46	30514	hyrule.are	sleeping	51	0	-	group		Trentlin's group: // [46 Monk ] Trentlin          463/ 906 hp  554/1954 mana  507/ 507 mv 106366 xp	-	-
+1794790561	cmd	Trentlin	46	30514	hyrule.are	sleeping	51	0	-	wake		You wake and stand up.	-	-
+1794790561	cmd	Trentlin	46	30514	hyrule.are	standing	51	0	-	look		Level 6: Eastern Bend //   This chamber at the eastern edge of the labyrinth smells of storm and // singed fur. Sparks wink and vanish in the corners, and talon marks score	-	+
+1794790563	cmd	Trentlin	46	30513	hyrule.are	standing	51	0	-	west		Level 6: Threshold of the Nest //   Grooves cut by sliding blades scar the floor, and blue scorch marks stain // the walls of this hall. From behind the locked door in the north wall comes	-	+
+1794790568	cmd	Trentlin	46	30513	hyrule.are	standing	51	0	-	inventory		You are carrying: // ( 2) a small key //      a purple container of tea	-	+
+1794790574	cmd	Trentlin	46	30513	hyrule.are	standing	51	0	-	scan		Gohma                              -to the North. // a bubble                           -to the East.	-	-
+1794790577	cmd	Trentlin	46	30519	hyrule.are	standing	51	0	-	north		Level 6: Gohma's Nest //   Shed carapace fragments and deep scuttle marks crisscross the floor of this // lair, and the walls are gouged by great pincers. Broken arrows lie thick	-	+
+1794790578	cmd	Trentlin	46	30519	hyrule.are	standing	51	0	-	kill	g	Your punch ^^^ DESTROYS ^^^ Gohma! // Gohma's armored eye closes; only an arrow can finish the blow.  Wield the bow and SHOOT it. // Your punch *** DEVASTATES *** Gohma!	-	+
+1794790582	cmd	Trentlin	46	30519	hyrule.are	fighting	45	1	fight	wear	bow	You wield an Eagle archer's bow. // An Eagle archer's bow is a mystery to you. Better ask someone how to use it.	-	-
+1794790596	cmd	Trentlin	46	30519	hyrule.are	fighting	31	0	fight	shoot	goh	You need to know archery to shoot.	-	-
+1794790601	cmd	Trentlin	46	30519	hyrule.are	fighting	32	0	fight	shoot	gohma	You need to know archery to shoot.	-	-
+1794790604	cmd	Trentlin	46	30519	hyrule.are	fighting	32	0	fight	shoot		You need to know archery to shoot.	-	-
+1794790609	cmd	Trentlin	46	30519	hyrule.are	fighting	28	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794790610	cmd	Trentlin	46	30513	hyrule.are	fighting	21	0	fight	flee		Gohma will not be driven from its ground. // Level 6: Threshold of the Nest //   Grooves cut by sliding blades scar the floor, and blue scorch marks stain	-	+
+1794790611	cmd	Trentlin	46	30513	hyrule.are	standing	21	0	-	flee		You aren't fighting anyone.	-	-
+1794790612	cmd	Trentlin	46	30513	hyrule.are	standing	21	0	-	recall		The Gods have forsaken you.	-	-
+1794790613	cmd	Trentlin	46	30514	hyrule.are	standing	21	0	-	east		Level 6: Eastern Bend //   This chamber at the eastern edge of the labyrinth smells of storm and // singed fur. Sparks wink and vanish in the corners, and talon marks score	-	+
+1794790614	cmd	Trentlin	46	30520	hyrule.are	standing	21	0	-	north		Level 6: Eastern Stairwell //   A narrow stair sinks into the floor in one corner of this chamber, leading // back toward the western halls. A sticky, glistening film coats the stones	-	+
+1794790616	cmd	Trentlin	46	30509	hyrule.are	standing	21	0	-	up		Level 6: Sorcerer's Stair //   A spiral of scorch marks curls across the floor of this chamber toward its // center, laid down by blue-robed spellcasters who pass through walls. In the	-	+
+1794790617	cmd	Trentlin	46	30509	hyrule.are	standing	21	0	-	west		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794790620	cmd	Trentlin	46	30509	hyrule.are	standing	21	0	-	recall		The Gods have forsaken you.	-	-
+1794790623	cmd	Trentlin	46	30509	hyrule.are	standing	21	0	-	remove	bow	You stop using an Eagle archer's bow.	-	-
