@@ -2688,6 +2688,8 @@ Characters already wrapped kept a negative pool that the tick climbed
 back from for days (the creator still read -24,249 of 100,000 on
 2026-11-16); the login fix `20261116-wrapped-pools` puts back the value
 plus 65,536 when the maximum allows, else 0 (`tests/test_wrapped_pools.py`).
+A negative mana or endurance is an `ANOMALY:` (kind 7, `playlog_tick`): every
+cost is checked before it is taken, and the plague tick floors at 0.
 **So is WIMPY** (review, 2026-11-12: with 100,000 hit points WIMPY 40000
 said 40000 and stored -25536, which never flees). `ch->wimpy` is an
 `int`; WIMPY (a fifth of the maximum by default, at most half), SET CHAR

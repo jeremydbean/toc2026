@@ -1273,6 +1273,14 @@ void playlog_tick( CHAR_DATA *ch )
         snprintf( detail, sizeof(detail), "%d practices, %d trains", ch->practice, ch->train );
         anomaly( ch, 2, "negative practices or trains", detail );
     }
+    if ( ch->mana < 0 || ch->move < 0 )
+    {
+        /* Never legitimate: every cost is checked before it is taken. A
+           16-bit store once wrapped big pools negative (2026-11-13). */
+        snprintf( detail, sizeof(detail), "mana %d of %d, endurance %d of %d",
+                  ch->mana, ch->max_mana, ch->move, ch->max_move );
+        anomaly( ch, 7, "negative mana or endurance", detail );
+    }
     if ( ch->position == POS_FIGHTING && ch->fighting == NULL )
         anomaly( ch, 3, "fighting nobody", "position is fighting, no opponent" );
     else if ( ch->fighting != NULL && ch->fighting->in_room != ch->in_room )

@@ -103,6 +103,17 @@ class WrappedPoolSourceTests(unittest.TestCase):
             self.assertIsNone(re.search(r"\((?:int16_t|sh_int)\)\s*\(\s*\w+->(?:move|mana|hit)\b", text),
                               path.name)
 
+    def test_plague_floors_and_a_negative_pool_is_an_anomaly(self) -> None:
+        update = (ROOT / "src" / "update.c").read_text(encoding="latin-1")
+        self.assertIn("ch->mana = UMAX( 0, ch->mana - dam );", update)
+        self.assertIn("ch->move = UMAX( 0, ch->move - dam );", update)
+        self.assertNotRegex(update, r"ch->(mana|move) -= dam;")
+        playlog = (ROOT / "src" / "playlog.c").read_text(encoding="latin-1")
+        tick = playlog.split("void playlog_tick", 1)[1].split("\n}\n", 1)[0]
+        self.assertIn('anomaly( ch, 7, "negative mana or endurance"', tick)
+        merc = (ROOT / "src" / "merc.h").read_text(encoding="latin-1")
+        self.assertIn("play_anom_last[8]", merc)
+
 
 if __name__ == "__main__":
     unittest.main()

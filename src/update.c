@@ -2262,8 +2262,9 @@ void char_update( void )
 	    }
 
 	    dam = UMIN(ch->level,5);
-	    ch->mana -= dam;
-	    ch->move -= dam;
+	    /* Fever wears the pools down, never below empty. */
+	    ch->mana = UMAX( 0, ch->mana - dam );
+	    ch->move = UMAX( 0, ch->move - dam );
 	    /* Nothing harms a Hyrule creature that cannot be hurt yet. */
 	    if ( !hyrule_shrugs_off( ch ) )
 		damage( ch, ch, dam, gsn_plague,DAM_DISEASE);
