@@ -2684,6 +2684,10 @@ through `(sh_int)` or `clamp_sh_int` again (`tests/test_pool_cap.py`).
 move, and a summoned guardian's hit points wrapped the same way): the
 test sweeps every pool, live and permanent, for either cast and walks a
 step at 40,000 endurance.
+Characters already wrapped kept a negative pool that the tick climbed
+back from for days (the creator still read -24,249 of 100,000 on
+2026-11-16); the login fix `20261116-wrapped-pools` puts back the value
+plus 65,536 when the maximum allows, else 0 (`tests/test_wrapped_pools.py`).
 **So is WIMPY** (review, 2026-11-12: with 100,000 hit points WIMPY 40000
 said 40000 and stored -25536, which never flees). `ch->wimpy` is an
 `int`; WIMPY (a fifth of the maximum by default, at most half), SET CHAR

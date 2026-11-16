@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261116wrappedpools 2026-11-16
+Fixed: a character with more than 32,767 endurance or mana could find it
+negative after a step, from a bug fixed on November 13.  Anyone still
+carrying a negative pool has it put back at their next login.
+
 @ 20261115souvenirs 2026-11-15
 New: SOUVENIRS.  Every area you walk end to end leaves you a keepsake of
 one of its rooms -- a sketch, a pressed flower, a pebble -- your own, and

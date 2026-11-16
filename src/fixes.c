@@ -240,6 +240,43 @@ static bool fix_season_area_ids( CHAR_DATA *ch )
     return true;
 }
 
+/* Mana or endurance a 16-bit store wrapped negative before 2026-11-13
+   (a step stored (int16_t)(move - cost): 41,287 read -24,249) and the
+   tick has been climbing back from at a few dozen a tick ever since. A
+   negative mana or endurance is never legitimate, so put back what was
+   there: the wrapped value plus 65,536 when that is a value the maximum
+   allows, else nothing below zero. Hit points are left alone -- below
+   zero is a death the loader already answers (revive_at_load). */
+static bool fix_pool_unwrap( long *pool, long max )
+{
+    long unwrapped;
+
+    if ( *pool >= 0 )
+        return false;
+    unwrapped = *pool + 65536L;
+    *pool = ( max > 32767L && unwrapped >= 0 && unwrapped <= max ) ? unwrapped : 0;
+    return true;
+}
+
+static bool fix_wrapped_pools( CHAR_DATA *ch )
+{
+    long mana = ch->mana, move = ch->move;
+    bool fixed_mana = fix_pool_unwrap( &mana, ch->max_mana );
+    bool fixed_move = fix_pool_unwrap( &move, ch->max_move );
+    char buf[MAX_STRING_LENGTH];
+
+    if ( !fixed_mana && !fixed_move )
+        return false;
+    snprintf( buf, sizeof(buf), "Wrapped pools: %s's mana %d -> %ld, endurance %d -> %ld.",
+              ch->name, ch->mana, mana, ch->move, move );
+    log_string( buf );
+    ch->mana = (int) mana;
+    ch->move = (int) move;
+    send_to_char( "{0BA correction:{00 an old bug had turned your endurance or mana negative; "
+                  "it is back to what it was.\n\r", ch );
+    return true;
+}
+
 static const PLAYER_FIX player_fixes[] =
 {
     /* Creation gave every new non-mage the mage's starting groups,
@@ -274,6 +311,11 @@ static const PLAYER_FIX player_fixes[] =
        Moving an id takes nothing from anybody, so staff too. */
     { "20261114-season-area-ids", "holiday areas recorded under the copy's name",
       fix_season_area_ids, true },
+    /* Mana and endurance a 16-bit store wrapped negative before the
+       2026-11-13 fix (Killuminati's endurance, -24,249 of 100,000). Staff
+       too: it gives back only what the wrap took. */
+    { "20261116-wrapped-pools", "mana or endurance wrapped negative by an old 16-bit store",
+      fix_wrapped_pools, true },
 };
 
 #define PLAYER_FIX_COUNT ( (int)( sizeof(player_fixes) / sizeof(player_fixes[0]) ) )
