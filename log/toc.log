@@ -309474,3 +309474,6 @@ Mon Nov 16 22:01:11 2026 :: Connection guard: 3.20.63.178 closed without a word 
 Mon Nov 16 22:03:17 2026 :: Treasure goblin: vanished from room 17124 (A path uphill, highland.are) (too long in one area).
 Mon Nov 16 22:06:16 2026 :: Connection guard: 3.133.226.214 closed without a word (strike 5 of 6 in 6 hours).
 Mon Nov 16 22:08:54 2026 :: Cartographer: appeared.
+Mon Nov 16 22:10:11 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Mon Nov 16 22:11:20 2026 :: Connection guard: refused 1 connection from 3.149.57.90 (paused; 15 refused in all, pause 3 this week, 629 minutes left).
+Mon Nov 16 22:13:22 2026 :: Treasure goblin: vanished from room 10122 (A narrow hallway., glitter.are) (too long in one area).
