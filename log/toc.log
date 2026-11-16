@@ -309118,3 +309118,5 @@ Mon Nov 16 08:38:14 2026 :: Black market: the dealer appeared with 5 items (stoc
 Mon Nov 16 08:39:23 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 6 of 6 in 6 hours).
 Mon Nov 16 08:39:23 2026 :: Connection guard: 3.149.57.90 paused for 24 hours (pause 3 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 3.149.57.90 lifts it.
 Mon Nov 16 08:43:31 2026 :: Black market: the dealer vanished from room 15174 (A Hallway, campus.are) (wandering).
+Mon Nov 16 08:44:26 2026 :: Connection guard: refused 1 connection from 52.15.147.27 (paused; 3 refused in all, pause 2 this week, 264 minutes left).
+Mon Nov 16 08:47:51 2026 :: Treasure goblin: vanished from room 4034 (Trail up the mountain, moria.are) (too long in one area).
