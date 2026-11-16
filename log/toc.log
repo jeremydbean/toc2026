@@ -309064,3 +309064,4 @@ Mon Nov 16 06:08:28 2026 :: Connection guard: 167.71.241.147 closed before a pas
 Mon Nov 16 06:09:55 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Mon Nov 16 06:12:12 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 3 of 6 in 6 hours).
 Mon Nov 16 06:12:53 2026 :: Treasure goblin: vanished from room 2553 (Guards Room., limbo.are) (too long in one area).
+Mon Nov 16 06:17:16 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 4 refused in all, pause 2 this week, 670 minutes left).
