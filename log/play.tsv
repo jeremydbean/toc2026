@@ -33246,3 +33246,121 @@
 1794791289	cmd	Trentlin	46	30519	hyrule.are	fighting	35	0	fight	wear	bow	You wield an Eagle archer's bow. // An Eagle archer's bow is a mystery to you. Better ask someone how to use it.	-	-
 1794791290	cmd	Trentlin	46	30519	hyrule.are	fighting	35	0	fight	shoot		You need to know archery to shoot.	-	-
 1794791290	skill	Trentlin	46	30519	hyrule.are	second attack	80	81	success	(violence_update)
+1794791292	cmd	Trentlin	46	30519	hyrule.are	fighting	30	0	fight	shoot		You need to know archery to shoot.	-	-
+1794791294	cmd	Trentlin	46	30519	hyrule.are	fighting	26	0	fight	flee		PANIC! You couldn't escape!	-	-
+1794791294	cmd	Trentlin	46	30513	hyrule.are	fighting	26	0	fight	flee		Gohma will not be driven from its ground. // Level 6: Threshold of the Nest //   Grooves cut by sliding blades scar the floor, and blue scorch marks stain	-	+
+1794791301	cmd	Trentlin	46	30513	hyrule.are	standing	26	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    something.	-	+
+1794791305	cmd	Trentlin	46	30513	hyrule.are	standing	26	0	-	wear	bow	You stop using an Eagle archer's bow. // You wield a short bow. // A short bow is a mystery to you. Better ask someone how to use it.	-	-
+1794791306	cmd	Trentlin	46	30513	hyrule.are	standing	26	0	-	scan		Gohma                              -to the North. // a vire                             -to the East. // a bubble                           -to the East.	-	-
+1794791311	cmd	Trentlin	46	30519	hyrule.are	standing	26	0	-	north		Level 6: Gohma's Nest //   Shed carapace fragments and deep scuttle marks crisscross the floor of this // lair, and the walls are gouged by great pincers. Broken arrows lie thick	-	+
+1794791311	cmd	Trentlin	46	30519	hyrule.are	standing	26	0	-	shoot	gohman	Shoot at whom? They must be here with you.	-	-
+1794791313	coin	Trentlin	46	30519	hyrule.are	-10000	spent	shoot	-	15428998281
+1794791313	got	Trentlin	46	30519	hyrule.are	30635	the Dragon's key	key	33	0	shoot	-
+1794791313	coin	Trentlin	46	30519	hyrule.are	+19600	loot	shoot	corpse of Gohma	15429017881
+1794791313	coin	Trentlin	46	30519	hyrule.are	+56	loot	shoot	corpse of Gohma	15429017937
+1794791313	coin	Trentlin	46	30519	hyrule.are	+280000	loot	shoot	corpse of Gohma	15429297937
+1794791313	cmd	Trentlin	46	30519	hyrule.are	fighting	26	2	fight	shoot		You draw, aim at Gohma and let an arrow fly. // Your arrow DISEMBOWELS Gohma! // Gohma is DEAD!!	-	+
+1794791320	cmd	Trentlin	46	30519	hyrule.are	standing	26	0	-	look	in co	Corpse of Gohma contains: //      an unblinking eye ring //      a dragon-banner cloak	-	+
+1794791322	cmd	Trentlin	46	30519	hyrule.are	standing	26	0	-	inventory		You are carrying: //      (Glowing) the Dragon's key //      a purple container of tea	-	+
+1794791324	cmd	Trentlin	46	30519	hyrule.are	standing	26	0	-	drop	bow	You drop an Eagle archer's bow.	-	-
+1794791326	coin	Trentlin	46	30519	hyrule.are	+34	loot	sacrifice	-	15429297971
+1794791326	cmd	Trentlin	46	30519	hyrule.are	standing	26	0	-	sacrifice	bow	The Gods give you 34 copper coins for your sacrifice.	-	-
+1794791328	cmd	Trentlin	46	30519	hyrule.are	standing	26	0	-	look	in co	Corpse of Gohma contains: //      an unblinking eye ring //      a dragon-banner cloak	-	+
+1794791332	got	Trentlin	46	30519	hyrule.are	30678	an unblinking eye ring	armor	40	80000000	get	corpse of Gohma
+1794791332	got	Trentlin	46	30519	hyrule.are	30739	a dragon-banner cloak	armor	40	80000000	get	corpse of Gohma
+1794791332	got	Trentlin	46	30519	hyrule.are	30735	a carapace cuirass	armor	40	80000000	get	corpse of Gohma
+1794791332	got	Trentlin	46	30519	hyrule.are	30378	the Heart Guard of the Dragon	armor	40	80000000	get	corpse of Gohma
+1794791332	got	Trentlin	46	30519	hyrule.are	30587	the Gohma eye-lance	weapon	40	96000000	get	corpse of Gohma
+1794791332	got	Trentlin	46	30519	hyrule.are	30596	the Dragon's Heart Container	armor	40	80000000	get	corpse of Gohma
+1794791332	cmd	Trentlin	46	30519	hyrule.are	standing	26	0	-	get	all co	You get an unblinking eye ring from corpse of Gohma. // You get a dragon-banner cloak from corpse of Gohma. // You get a carapace cuirass from corpse of Gohma.	-	+
+1794791335	cmd	Trentlin	46	30519	hyrule.are	standing	26	0	-	drop	lance	You drop the Gohma eye-lance.	-	-
+1794791336	coin	Trentlin	46	30519	hyrule.are	+80	loot	sacrifice	-	15429298051
+1794791336	cmd	Trentlin	46	30519	hyrule.are	standing	26	0	-	sacrifice	lance	The Gods give you 80 copper coins for your sacrifice.	-	-
+1794791337	cmd	Trentlin	46	30519	hyrule.are	standing	26	0	-	look		Level 6: Gohma's Nest //   Shed carapace fragments and deep scuttle marks crisscross the floor of this // lair, and the walls are gouged by great pincers. Broken arrows lie thick	-	+
+1794791339	cmd	Trentlin	46	30519	hyrule.are	standing	26	0	-	unlock	north	There is a flash of light as you unlock the door.	-	-
+1794791340	cmd	Trentlin	46	30519	hyrule.are	standing	26	0	-	open	north	Ok.	-	-
+1794791341	cmd	Trentlin	46	30524	hyrule.are	standing	26	0	-	north		Level 6: Dragon's Glowing Sanctum //   Polished red stone glows with a soft golden light in this sanctum, warming // the dragon carvings along its walls, every one turned toward an iron-banded	-	+
+1794791344	cmd	Trentlin	46	30524	hyrule.are	standing	26	0	-	unlock	chest	*Click*	-	-
+1794791345	cmd	Trentlin	46	30524	hyrule.are	standing	29	0	-	open	chest	Ok.	-	-
+1794791346	cmd	Trentlin	46	30524	hyrule.are	standing	29	0	-	get	all chest	You already hold the sixth Triforce shard; one is all the Triforce needs.	-	-
+1794791348	cmd	Trentlin	46	30282	hyrule.are	standing	29	0	-	enter	light	You enter the Dragon's returning light // Your stomach flip flops. Everything goes black for a moment. // The Dragon's Gate	-	+
+1794791348	item	Trentlin	46	30282	hyrule.are	30635	the Dragon's key	type=key level=33 worn=0 nested=0 timer=0 cond=100 inside=0	crumbled leaving Level 6
+1794791352	area	Trentlin	46	4207	dresden.are	hyrule.are	dresden.are	2088	recall
+1794791352	cmd	Trentlin	46	4207	dresden.are	standing	29	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794791354	cmd	Trentlin	46	4207	dresden.are	standing	29	0	-	inventory		You are carrying: //      (Glowing) the Dragon's Heart Container //      the Heart Guard of the Dragon	-	+
+1794791356	cmd	Trentlin	46	4207	dresden.are	standing	29	0	-	compare	container	A) the Dragon's Heart Container (level 40) // B) the Lizard's Heart Container (level 33), worn // Slot: held.  Your damage comes from weapons.	-	+
+1794791362	cmd	Trentlin	46	4207	dresden.are	standing	29	0	-	drop	container	You drop the Dragon's Heart Container.	-	-
+1794791363	coin	Trentlin	46	4207	dresden.are	+80	loot	sacrifice	-	15429298131
+1794791363	cmd	Trentlin	46	4207	dresden.are	standing	29	0	-	sacrifice	container	The Gods give you 80 copper coins for your sacrifice.	-	-
+1794791364	cmd	Trentlin	46	4207	dresden.are	standing	29	0	-	inventory		You are carrying: //      the Heart Guard of the Dragon //      a carapace cuirass	-	+
+1794791367	cmd	Trentlin	46	4207	dresden.are	standing	29	0	-	compare	heart	A) the Heart Guard of the Dragon (level 40) // B) the Heart Guard of the Manji (level 20), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794791374	cmd	Trentlin	46	4207	dresden.are	standing	29	0	-	wear	heart	You stop using the Heart Guard of the Lizard. // You wear the Heart Guard of the Dragon around your neck.	-	-
+1794791380	cmd	Trentlin	46	4207	dresden.are	standing	29	0	-	stash	put manji	You are not carrying that.	-	-
+1794791389	cmd	Trentlin	46	4207	dresden.are	standing	29	0	-	inventory		You are carrying: //      a carapace cuirass //      a dragon-banner cloak	-	+
+1794791393	cmd	Trentlin	46	4207	dresden.are	standing	29	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    something.	-	+
+1794791399	cmd	Trentlin	46	4207	dresden.are	standing	29	0	-	compare	heart	A) the Heart Guard of the Lizard (level 33) // B) the Heart Guard of the Manji (level 20), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794791405	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	remove	manji	You stop using the Heart Guard of the Manji.	-	-
+1794791406	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	wear	liza	You wear the Heart Guard of the Lizard around your neck.	-	-
+1794791409	cmd	Trentlin	46	4207	dresden.are	standing	31	13	-	stash	put manji	You put the Heart Guard of the Manji away for safe keeping.	-	-
+1794791409	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	inventory		You are carrying: //      a carapace cuirass //      a dragon-banner cloak	-	+
+1794791411	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	compare	cuir	A) a carapace cuirass (level 40) // B) some Black velvet robes (level 32), worn // Slot: body.  Your damage comes from weapons.	-	+
+1794791419	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	drop	cuir	You drop a carapace cuirass.	-	-
+1794791421	coin	Trentlin	46	4207	dresden.are	+80	loot	sacrifice	-	15429298211
+1794791421	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	sacrifice	cuir	The Gods give you 80 copper coins for your sacrifice.	-	-
+1794791422	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	inventory		You are carrying: //      a dragon-banner cloak //      an unblinking eye ring	-	+
+1794791424	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	compare	cloa	A) a dragon-banner cloak (level 40) // B) a twin-headed mantle (level 27), worn // Slot: about body.  Your damage comes from weapons.	-	+
+1794791430	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	drop	cloa	You drop a dragon-banner cloak.	-	-
+1794791431	coin	Trentlin	46	4207	dresden.are	+80	loot	sacrifice	-	15429298291
+1794791431	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	sacrifice	cloa	The Gods give you 80 copper coins for your sacrifice.	-	-
+1794791431	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	inventory		You are carrying: //      an unblinking eye ring //      a purple container of tea	-	+
+1794791433	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	compare	ring	A) an unblinking eye ring (level 40) // B) a sapphire ring (level 34), worn // Slot: finger.  Your damage comes from weapons.	-	+
+1794791449	state	Trentlin	46	4207	dresden.are	lvl=46 hp=285/906 mana=590/1944 mv=299/507 align=314 exp=106660 coin=37145580 bank=15392152711 qp=4531 prac=41 train=9 stash=68/75 remorts=1
+1794791449	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	score		| Name:       Trentlin | Level:      46 | Class:        Monk | // | Played:     39 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794791452	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	help	save	SAVE // Syntax: save // Saves your character now.  The game also saves you about every five	-	+
+1794791457	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	help	saves	No help on that word.  Did you mean: SAVE, STAVES?	-	-
+1794791460	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	help	save vs	No help on 'save vs'; here is save: // SAVE // Syntax: save	-	+
+1794791468	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	drop	ring	You drop an unblinking eye ring.	-	-
+1794791469	coin	Trentlin	46	4207	dresden.are	+80	loot	sacrifice	-	15429298371
+1794791469	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	sacrifice	ring	The Gods give you 80 copper coins for your sacrifice.	-	-
+1794791470	cmd	Trentlin	46	4207	dresden.are	standing	31	0	-	inventory		You are carrying: //      a purple container of tea // ( 5) a potion of true sight	-	+
+1794791476	cmd	Trentlin	46	4207	dresden.are	standing	33	0	-	compare	sword	A) a wooden sword (level 1) // B) a short bow (level 6), worn // Slot: wield.  Your damage comes from weapons.	-	+
+1794791477	cmd	Trentlin	46	4207	dresden.are	standing	33	0	-	drop	sword	You can't let go of a wooden sword.	-	-
+1794791479	cmd	Trentlin	46	4208	dresden.are	standing	33	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794791481	coin	Trentlin	46	4208	dresden.are	-2500000	spent	heal	-	15426798371
+1794791481	cmd	Trentlin	46	4208	dresden.are	standing	33	0	-	heal	curse	The healer utters the words 'judicandus qfuhuqar'. // You feel better!	-	-
+1794791491	cmd	Trentlin	46	4208	dresden.are	standing	38	0	-	stash		Your stash holds 68 of 75 things. //     1) the Heart Guard of the Manji //     2) (Invis) (Glowing) the Sceptre of Might	-	+
+1794791534	got	Trentlin	46	4208	dresden.are	10006	(Flaming) the Crystalline Dagger of Wonders	weapon	49	40000000	stash	-
+1794791534	cmd	Trentlin	46	4208	dresden.are	standing	40	8	-	stash	get crystalline	You take (Flaming) the Crystalline Dagger of Wonders out of your stash.	-	-
+1794791535	got	Trentlin	46	4208	dresden.are	10004	the Crystalline Royal Cloak	armor	50	30000000	stash	-
+1794791535	cmd	Trentlin	46	4208	dresden.are	standing	40	5	-	stash	get crystalline	You take the Crystalline Royal Cloak out of your stash.	-	-
+1794791535	got	Trentlin	46	4208	dresden.are	10002	the Crystalline Diadem of Perception	armor	50	60000000	stash	-
+1794791535	cmd	Trentlin	46	4208	dresden.are	standing	40	5	-	stash	get crystalline	You take the Crystalline Diadem of Perception out of your stash.	-	-
+1794791535	got	Trentlin	46	4208	dresden.are	10003	the Crystalline Robe of Shielding	armor	50	90000000	stash	-
+1794791535	cmd	Trentlin	46	4208	dresden.are	standing	40	5	-	stash	get crystalline	You take the Crystalline Robe of Shielding out of your stash.	-	-
+1794791536	got	Trentlin	46	4208	dresden.are	10001	(Flaming) the Crystalline Sword of Justice	weapon	50	40000000	stash	-
+1794791536	cmd	Trentlin	46	4208	dresden.are	standing	40	6	-	stash	get crystalline	You take (Flaming) the Crystalline Sword of Justice out of your stash.	-	-
+1794791536	got	Trentlin	46	4208	dresden.are	10005	the Crystalline Crown of Perception	armor	49	65000000	stash	-
+1794791536	cmd	Trentlin	46	4208	dresden.are	standing	40	5	-	stash	get crystalline	You take the Crystalline Crown of Perception out of your stash.	-	-
+1794791536	got	Trentlin	46	4208	dresden.are	10000	the Crystalline Sceptre of Commanding	armor	50	60000000	stash	-
+1794791536	cmd	Trentlin	46	4208	dresden.are	standing	40	6	-	stash	get crystalline	You take the Crystalline Sceptre of Commanding out of your stash.	-	-
+1794791536	cmd	Trentlin	46	4208	dresden.are	standing	40	0	-	stash	get crystalline	There is nothing like that in your stash.  STASH GET takes a name or the number STASH shows.	-	-
+1794791537	cmd	Trentlin	46	4208	dresden.are	standing	40	0	-	stash	get crystalline	There is nothing like that in your stash.  STASH GET takes a name or the number STASH shows.	-	-
+1794791537	cmd	Trentlin	46	4208	dresden.are	standing	40	0	-	stash	get crystalline	There is nothing like that in your stash.  STASH GET takes a name or the number STASH shows.	-	-
+1794791537	cmd	Trentlin	46	4208	dresden.are	standing	40	0	-	stash	get crystalline	There is nothing like that in your stash.  STASH GET takes a name or the number STASH shows.	-	-
+1794791537	cmd	Trentlin	46	4208	dresden.are	standing	40	0	-	stash	get crystalline	There is nothing like that in your stash.  STASH GET takes a name or the number STASH shows.	-	-
+1794791542	cmd	Trentlin	46	4208	dresden.are	standing	40	0	-	stash	get titatn	There is nothing like that in your stash.  STASH GET takes a name or the number STASH shows.	-	-
+1794791544	got	Trentlin	46	4208	dresden.are	29039	titanium arm plates	armor	39	7000000	stash	-
+1794791544	cmd	Trentlin	46	4208	dresden.are	standing	100	7	-	stash	get tita	You take titanium arm plates out of your stash.	-	-
+1794791546	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	compare	tita	A) titanium arm plates (level 39) // B) nothing -- the slot is empty // Slot: arms.  Your damage comes from weapons.	-	+
+1794791550	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	wear	tita	You wear titanium arm plates on your arms.	-	-
+1794791552	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) the Crystalline Sceptre of Commanding //      (Glowing) the Crystalline Crown of Perception	-	+
+1794791555	got	Trentlin	46	4208	dresden.are	29010	some captain's boots	armor	6	11000	stash	-
+1794791555	cmd	Trentlin	46	4208	dresden.are	standing	100	7	-	stash	get boot	You take some captain's boots out of your stash.	-	-
+1794791556	got	Trentlin	46	4208	dresden.are	30743	a pair of ashstride boots	armor	46	105800000	stash	-
+1794791556	cmd	Trentlin	46	4208	dresden.are	standing	100	5	-	stash	get boot	You take a pair of ashstride boots out of your stash.	-	-
+1794791556	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	stash	get boot	There is nothing like that in your stash.  STASH GET takes a name or the number STASH shows.	-	-
+1794791561	cmd	Trentlin	46	4208	dresden.are	standing	100	7	-	stash	put captain	You put some captain's boots away for safe keeping.	-	-
+1794791562	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	compare	boot	A) a pair of ashstride boots (level 46) // B) a pair of Dodongo stompers (level 14), worn // Slot: feet.  Your damage comes from weapons.	-	+
+1794791580	cmd	Trentlin	46	4208	dresden.are	standing	100	13	-	stash	put boot	You put a pair of ashstride boots away for safe keeping.	-	-
+1794791581	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) the Crystalline Sceptre of Commanding //      (Glowing) the Crystalline Crown of Perception	-	+
+1794791585	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	compare	crys	A) the Crystalline Sceptre of Commanding (level 50) -- can't use: needs level 50 // B) the Lizard's Heart Container (level 33), worn // Slot: held.  Your damage comes from weapons.	-	+

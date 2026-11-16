@@ -150,19 +150,21 @@ List spend 1900000 0 heal
 List spend 13469280 0 devote
 End
 Day 2026-11-16
-Played 2542
+Played 2885
 Level 45 46 1
-Exp 1926 30
-Kills 20
+Exp 2160 40
+Kills 21
 Deaths 0
 Close 0
 Quests 1 57
 Dailies 0 0
 List notable 1 0 Digdogger
+List notable 1 0 Gohma
 List skill 92 94 enhanced damage
 List skill 84 85 parry
 List skill 85 86 fists of fury
-List area 131 0 City of Dresden
+List skill 80 81 second attack
+List area 359 0 City of Dresden
 List area 4 0 Haon Dor
 List area 30 0 New Thalos
 List area 0 0 Continental Drift
@@ -171,7 +173,7 @@ List area 6 0 Miden'nir
 List area 201 0 Pirate Ship
 List area 1 0 Mud School
 List area 3 0 Strange Campus
-List area 1973 0 Hyrule
+List area 2088 0 Hyrule
 List item 1 0 black steel vambraces
 List item 1 0 a pair of blackened steel greaves
 List item 8 0 a small key
@@ -179,8 +181,15 @@ List item 1 0 the Lizard's key
 List item 1 0 a pair of water-crossing greaves
 List item 1 0 the Heart Guard of the Manji
 List item 1 0 the Dragon dungeon map
+List item 1 0 the Dragon's key
+List item 1 0 an unblinking eye ring
+List item 1 0 a dragon-banner cloak
+List item 1 0 a carapace cuirass
+List item 1 0 the Heart Guard of the Dragon
+More item 2
 List earn 4821390 0 quests
-List earn 14620538 0 loot
-List spend 27100000 0 heal
+List earn 14920628 0 loot
+List spend 29600000 0 heal
+List spend 10000 0 shoot
 End
 #END

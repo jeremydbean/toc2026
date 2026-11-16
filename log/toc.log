@@ -308706,3 +308706,123 @@ Mon Nov 16 01:08:02 2026 :: Log Trentlin [30519]: arrived (Level 6: Gohma's Nest
 Mon Nov 16 01:08:04 2026 :: Log Trentlin [30519]: k g
 Mon Nov 16 01:08:09 2026 :: Log Trentlin [30519]: wear bow
 Mon Nov 16 01:08:10 2026 :: Log Trentlin [30519]: shoot
+Mon Nov 16 01:08:12 2026 :: Log Trentlin [30519]: shoot
+Mon Nov 16 01:08:14 2026 :: Log Trentlin [30519]: flee
+Mon Nov 16 01:08:14 2026 :: Log Trentlin [30519]: flee
+Mon Nov 16 01:08:14 2026 :: Log Trentlin [30513]: arrived (Level 6: Threshold of the Nest) from 30519
+Mon Nov 16 01:08:21 2026 :: Log Trentlin [30513]: eq
+Mon Nov 16 01:08:25 2026 :: Log Trentlin [30513]: wear bow
+Mon Nov 16 01:08:26 2026 :: Log Trentlin [30513]: sca
+Mon Nov 16 01:08:31 2026 :: Log Trentlin [30513]: n
+Mon Nov 16 01:08:31 2026 :: Log Trentlin [30519]: arrived (Level 6: Gohma's Nest) from 30513
+Mon Nov 16 01:08:31 2026 :: Log Trentlin [30519]: shoot gohman
+Mon Nov 16 01:08:33 2026 :: Log Trentlin [30519]: shoot
+Mon Nov 16 01:08:33 2026 :: Log Trentlin [30519]: gold -1
+Mon Nov 16 01:08:33 2026 :: Log Trentlin [30519]: killed Gohma
+Mon Nov 16 01:08:33 2026 :: Log Trentlin [30519]: coin +196 silver
+Mon Nov 16 01:08:33 2026 :: Log Trentlin [30519]: coin +56 copper
+Mon Nov 16 01:08:33 2026 :: Log Trentlin [30519]: coin +28 gold
+Mon Nov 16 01:08:40 2026 :: Log Trentlin [30519]: l in co
+Mon Nov 16 01:08:42 2026 :: Log Trentlin [30519]: i
+Mon Nov 16 01:08:44 2026 :: Log Trentlin [30519]: drop bow
+Mon Nov 16 01:08:46 2026 :: Log Trentlin [30519]: sac bow
+Mon Nov 16 01:08:46 2026 :: Log Trentlin [30519]: coin +34 copper
+Mon Nov 16 01:08:48 2026 :: Log Trentlin [30519]: l in co
+Mon Nov 16 01:08:52 2026 :: Log Trentlin [30519]: get all co
+Mon Nov 16 01:08:55 2026 :: Log Trentlin [30519]: drop lance
+Mon Nov 16 01:08:56 2026 :: Log Trentlin [30519]: sac lance
+Mon Nov 16 01:08:56 2026 :: Log Trentlin [30519]: coin +80 copper
+Mon Nov 16 01:08:57 2026 :: Log Trentlin [30519]: l
+Mon Nov 16 01:08:59 2026 :: Log Trentlin [30519]: unlock north
+Mon Nov 16 01:09:00 2026 :: Log Trentlin [30519]: open north
+Mon Nov 16 01:09:01 2026 :: Log Trentlin [30519]: n
+Mon Nov 16 01:09:01 2026 :: Log Trentlin [30524]: arrived (Level 6: Dragon's Glowing Sanctum) from 30519
+Mon Nov 16 01:09:04 2026 :: Log Trentlin [30524]: unlock chest
+Mon Nov 16 01:09:05 2026 :: Log Trentlin [30524]: open chest
+Mon Nov 16 01:09:06 2026 :: Log Trentlin [30524]: get all chest
+Mon Nov 16 01:09:08 2026 :: Log Trentlin [30524]: enter light
+Mon Nov 16 01:09:08 2026 :: Log Trentlin [30282]: arrived (The Dragon's Gate) from 30524
+Mon Nov 16 01:09:12 2026 :: Log Trentlin [30282]: reca
+Mon Nov 16 01:09:12 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 30282
+Mon Nov 16 01:09:14 2026 :: Log Trentlin [4207]: i
+Mon Nov 16 01:09:16 2026 :: Log Trentlin [4207]: comp container
+Mon Nov 16 01:09:22 2026 :: Log Trentlin [4207]: drop container
+Mon Nov 16 01:09:23 2026 :: Log Trentlin [4207]: sac container
+Mon Nov 16 01:09:23 2026 :: Log Trentlin [4207]: coin +80 copper
+Mon Nov 16 01:09:24 2026 :: Log Trentlin [4207]: i
+Mon Nov 16 01:09:27 2026 :: Log Trentlin [4207]: comp heart
+Mon Nov 16 01:09:34 2026 :: Log Trentlin [4207]: wear heart
+Mon Nov 16 01:09:40 2026 :: Log Trentlin [4207]: stash put manji
+Mon Nov 16 01:09:49 2026 :: Log Trentlin [4207]: i
+Mon Nov 16 01:09:53 2026 :: Log Trentlin [4207]: eq
+Mon Nov 16 01:09:59 2026 :: Log Trentlin [4207]: comp heart
+Mon Nov 16 01:10:05 2026 :: Log Trentlin [4207]: rem manji
+Mon Nov 16 01:10:05 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Mon Nov 16 01:10:06 2026 :: Log Trentlin [4207]: wear liza
+Mon Nov 16 01:10:09 2026 :: Log Trentlin [4207]: stash put manji
+Mon Nov 16 01:10:09 2026 :: Log Trentlin [4207]: stashed the Heart Guard of the Manji (vnum 30359)
+Mon Nov 16 01:10:09 2026 :: Log Trentlin [4207]: i
+Mon Nov 16 01:10:11 2026 :: Log Trentlin [4207]: comp cuir
+Mon Nov 16 01:10:19 2026 :: Log Trentlin [4207]: drop cuir
+Mon Nov 16 01:10:21 2026 :: Log Trentlin [4207]: sac cuir
+Mon Nov 16 01:10:21 2026 :: Log Trentlin [4207]: coin +80 copper
+Mon Nov 16 01:10:22 2026 :: Log Trentlin [4207]: i
+Mon Nov 16 01:10:24 2026 :: Log Trentlin [4207]: comp cloa
+Mon Nov 16 01:10:30 2026 :: Log Trentlin [4207]: drop cloa
+Mon Nov 16 01:10:31 2026 :: Log Trentlin [4207]: sac cloa
+Mon Nov 16 01:10:31 2026 :: Log Trentlin [4207]: coin +80 copper
+Mon Nov 16 01:10:31 2026 :: Log Trentlin [4207]: i
+Mon Nov 16 01:10:33 2026 :: Log Trentlin [4207]: comp ring
+Mon Nov 16 01:10:49 2026 :: Log Trentlin [4207]: sco
+Mon Nov 16 01:10:52 2026 :: Log Trentlin [4207]: help save
+Mon Nov 16 01:10:57 2026 :: Log Trentlin [4207]: help saves
+Mon Nov 16 01:11:00 2026 :: Log Trentlin [4207]: help save vs
+Mon Nov 16 01:11:08 2026 :: Log Trentlin [4207]: drop ring
+Mon Nov 16 01:11:09 2026 :: Log Trentlin [4207]: sac ring
+Mon Nov 16 01:11:09 2026 :: Log Trentlin [4207]: coin +80 copper
+Mon Nov 16 01:11:10 2026 :: Log Trentlin [4207]: i
+Mon Nov 16 01:11:16 2026 :: Log Trentlin [4207]: comp sword
+Mon Nov 16 01:11:17 2026 :: Log Trentlin [4207]: drop sword
+Mon Nov 16 01:11:19 2026 :: Log Trentlin [4207]: w
+Mon Nov 16 01:11:19 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Mon Nov 16 01:11:21 2026 :: Log Trentlin [4208]: heal curse
+Mon Nov 16 01:11:21 2026 :: Log Trentlin [4208]: gold -250
+Mon Nov 16 01:11:31 2026 :: Log Trentlin [4208]: stash
+Mon Nov 16 01:12:14 2026 :: Log Trentlin [4208]: stash get crystalline
+Mon Nov 16 01:12:14 2026 :: Log Trentlin [4208]: withdrew (Flaming) the Crystalline Dagger of Wonders (vnum 10006) from the stash
+Mon Nov 16 01:12:15 2026 :: Log Trentlin [4208]: stash get crystalline
+Mon Nov 16 01:12:15 2026 :: Log Trentlin [4208]: withdrew the Crystalline Royal Cloak (vnum 10004) from the stash
+Mon Nov 16 01:12:15 2026 :: Log Trentlin [4208]: stash get crystalline
+Mon Nov 16 01:12:15 2026 :: Log Trentlin [4208]: withdrew the Crystalline Diadem of Perception (vnum 10002) from the stash
+Mon Nov 16 01:12:15 2026 :: Log Trentlin [4208]: stash get crystalline
+Mon Nov 16 01:12:15 2026 :: Log Trentlin [4208]: withdrew the Crystalline Robe of Shielding (vnum 10003) from the stash
+Mon Nov 16 01:12:16 2026 :: Log Trentlin [4208]: stash get crystalline
+Mon Nov 16 01:12:16 2026 :: Log Trentlin [4208]: withdrew (Flaming) the Crystalline Sword of Justice (vnum 10001) from the stash
+Mon Nov 16 01:12:16 2026 :: Log Trentlin [4208]: stash get crystalline
+Mon Nov 16 01:12:16 2026 :: Log Trentlin [4208]: withdrew the Crystalline Crown of Perception (vnum 10005) from the stash
+Mon Nov 16 01:12:16 2026 :: Log Trentlin [4208]: stash get crystalline
+Mon Nov 16 01:12:16 2026 :: Log Trentlin [4208]: withdrew the Crystalline Sceptre of Commanding (vnum 10000) from the stash
+Mon Nov 16 01:12:16 2026 :: Log Trentlin [4208]: stash get crystalline
+Mon Nov 16 01:12:17 2026 :: Log Trentlin [4208]: stash get crystalline
+Mon Nov 16 01:12:17 2026 :: Log Trentlin [4208]: stash get crystalline
+Mon Nov 16 01:12:17 2026 :: Log Trentlin [4208]: stash get crystalline
+Mon Nov 16 01:12:17 2026 :: Log Trentlin [4208]: stash get crystalline
+Mon Nov 16 01:12:22 2026 :: Log Trentlin [4208]: stash get titatn
+Mon Nov 16 01:12:24 2026 :: Log Trentlin [4208]: stash get tita
+Mon Nov 16 01:12:24 2026 :: Log Trentlin [4208]: withdrew titanium arm plates (vnum 29039) from the stash
+Mon Nov 16 01:12:26 2026 :: Log Trentlin [4208]: comp tita
+Mon Nov 16 01:12:30 2026 :: Log Trentlin [4208]: wear tita
+Mon Nov 16 01:12:32 2026 :: Log Trentlin [4208]: i
+Mon Nov 16 01:12:35 2026 :: Log Trentlin [4208]: stash get boot
+Mon Nov 16 01:12:35 2026 :: Log Trentlin [4208]: withdrew some captain's boots (vnum 29010) from the stash
+Mon Nov 16 01:12:36 2026 :: Log Trentlin [4208]: stash get boot
+Mon Nov 16 01:12:36 2026 :: Log Trentlin [4208]: withdrew a pair of ashstride boots (vnum 30743) from the stash
+Mon Nov 16 01:12:36 2026 :: Log Trentlin [4208]: stash get boot
+Mon Nov 16 01:12:41 2026 :: Log Trentlin [4208]: stash put captain
+Mon Nov 16 01:12:41 2026 :: Log Trentlin [4208]: stashed some captain's boots (vnum 29010)
+Mon Nov 16 01:12:42 2026 :: Connection guard: 54.167.223.174 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 16 01:12:42 2026 :: Log Trentlin [4208]: comp boot
+Mon Nov 16 01:13:00 2026 :: Log Trentlin [4208]: stash put boot
+Mon Nov 16 01:13:00 2026 :: Log Trentlin [4208]: stashed a pair of ashstride boots (vnum 30743)
+Mon Nov 16 01:13:01 2026 :: Log Trentlin [4208]: i
+Mon Nov 16 01:13:05 2026 :: Log Trentlin [4208]: comp crys

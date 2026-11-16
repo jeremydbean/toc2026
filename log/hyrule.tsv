@@ -158,3 +158,19 @@
 1794791068	cleared	Trentlin	46	1	Monk 	30516	L6	foes=0
 1794791074	got	Trentlin	46	1	Monk 	30516	L6	obj=30485 obj_name=the_Dragon_dungeon_map type=map obj_level=33 how=get
 1794791283	engage	Trentlin	46	1	Monk 	30519	L6	foe=30223 foe_name=Gohma foe_hp=8 foe_max=2194 party=1 levels=46 classes=Monk  hps=35 buffs=-
+1794791294	flee	Trentlin	46	1	Monk 	30519	L6	foe=30223 foe_name=Gohma guardian=1 foe_hp=0 secs=10 hp=26
+1794791311	engage	Trentlin	46	1	Monk 	30519	L6	foe=30223 foe_name=Gohma foe_hp=0 foe_max=2194 party=1 levels=46 classes=Monk  hps=26 buffs=-
+1794791313	guardian-down	Trentlin	46	1	Monk 	30519	L6	foe=30223 foe_name=Gohma secs=29 foe_max=2194 party=1 levels=46 classes=Monk  hps=26 buffs=-
+1794791313	got	Trentlin	46	1	Monk 	30519	L6	obj=30635 obj_name=the_Dragon's_key type=key obj_level=33 how=shoot
+1794791313	cleared	Trentlin	46	1	Monk 	30519	L6	foes=0
+1794791332	got	Trentlin	46	1	Monk 	30519	L6	obj=30678 obj_name=an_unblinking_eye_ring type=armor obj_level=40 how=get
+1794791332	got	Trentlin	46	1	Monk 	30519	L6	obj=30739 obj_name=a_dragon-banner_cloak type=armor obj_level=40 how=get
+1794791332	got	Trentlin	46	1	Monk 	30519	L6	obj=30735 obj_name=a_carapace_cuirass type=armor obj_level=40 how=get
+1794791332	got	Trentlin	46	1	Monk 	30519	L6	obj=30378 obj_name=the_Heart_Guard_of_the_Dragon type=armor obj_level=40 how=get
+1794791332	got	Trentlin	46	1	Monk 	30519	L6	obj=30587 obj_name=the_Gohma_eye-lance type=weapon obj_level=40 how=get
+1794791332	got	Trentlin	46	1	Monk 	30519	L6	obj=30596 obj_name=the_Dragon's_Heart_Container type=armor obj_level=40 how=get
+1794791348	leave	Trentlin	46	1	Monk 	30524	L6	to=over how=enter secs=1957 hp=29
+1794791348	enter	Trentlin	46	1	Monk 	30282	over	from=L6 how=enter hp=29
+1794791348	crumbled	Trentlin	46	1	Monk 	30282	over	dungeon=6 maps=0 compasses=0 keys=0 guardian_keys=1 why=left how=(hyrule_crumble_update)
+1794791352	leave	Trentlin	46	1	Monk 	30282	over	to=out how=recall secs=4 hp=29
+1794791556	got	Trentlin	46	1	Monk 	4208	out	obj=30743 obj_name=a_pair_of_ashstride_boots type=armor obj_level=46 how=stash
