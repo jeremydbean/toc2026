@@ -33466,3 +33466,21 @@
 1794868122	laid	-	0	0	-	898	herb	52	an asparagus shoot	1519	gnome.are	scatter
 1794868122	laid	-	0	0	-	899	herb	45	a sarsaparilla vine	1522	gnome.are	scatter
 1794868122	laid	-	0	0	-	900	component	73	a roper's tentacle	3705	school.are	scatter
+1794868242	laid	-	0	0	-	901	herb	36	a belladonna plant	13496	hell.are	scatter
+1794868301	laid	-	0	0	-	902	herb	43	a sprig of hyssop	2169	hood.are	scatter
+1794868301	laid	-	0	0	-	903	herb	50	a head of cabbage	2154	hood.are	scatter
+1794868301	laid	-	0	0	-	904	component	68	a gorgon's horn	13244	solace.are	scatter
+1794868369	laid	-	0	0	-	905	herb	42	a marjoram plant	17703	landoz.are	scatter
+1794868369	laid	-	0	0	-	906	herb	49	a pomegranate	17715	landoz.are	scatter
+1794868369	laid	-	0	0	-	907	component	67	a beholder's eye	5836	mid_ruin.are	scatter
+1794868415	laid	-	0	0	-	908	herb	49	a pomegranate	15047	campus.are	scatter
+1794868415	laid	-	0	0	-	909	component	83	a vial of thessalhydra venom	5554	ofcol.are	scatter
+1794868426	cmd	Killuminati	70	1	limbo.are	standing	100	0	-	wizinvis		You slowly fade back into existence.	-	-
+1794868428	area	Killuminati	70	2497	dresden.are	limbo.are	dresden.are	10	goto
+1794868428	cmd	Killuminati	70	2497	dresden.are	standing	100	0	-	goto	ala	The Questmaster's Globe, above the Oak // [Room: 2497]     [Sector: Forest]     [Flags: No_Mob Private] //   A sudden wind blows you from the top branch!  You reach out for a nearby	-	+
+1794868429	cmd	Killuminati	70	2497	dresden.are	standing	100	0	-	(social)		You chew your cud and moo plaintively.  Muh-OOOOO!	-	-
+1794868434	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794868443	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	hermie	240	The air warms, and Hermie steps out of it with a notebook under her arm. // Hermie says 'Say my name and I will read you the list.  Look at me for the details.' // Hermie is now taking requests here for 240 minutes.	-	+
+1794868444	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] Killuminati, the Don. // [57 Dwarf   Emper ] Alaric. // Players found: 2	-	-
+1794868450	cmd	Killuminati	70	2401	dresden.are	standing	100	0	-	look		Center of Oak Tree Square. // [Room: 2401]     [Sector: City]     [Flags: none] //   This is the center of the square.  It is dominated by the trunk of the biggest	-	+
+1794868468	coin	Killuminati	70	2401	dresden.are	+43278877734	bank	interest	bank	19857900740287
