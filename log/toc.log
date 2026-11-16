@@ -308874,3 +308874,33 @@ Mon Nov 16 01:33:01 2026 :: Connection guard: 54.167.223.174 closed without a wo
 Mon Nov 16 01:33:03 2026 :: Log Killuminati [4207]: arrived (Before the Altar.) from 0
 Mon Nov 16 01:33:05 2026 :: Log Killuminati [4207]: /
 Mon Nov 16 01:33:08 2026 :: Log Killuminati [4207]: change
+Mon Nov 16 01:34:05 2026 :: Log Killuminati [4207]: /tocgui atlas
+Mon Nov 16 01:34:22 2026 :: Log Killuminati [4207]: lo
+Mon Nov 16 01:34:23 2026 :: Log Killuminati [4207]: /
+Mon Nov 16 01:34:24 2026 :: Log Killuminati [4207]: e
+Mon Nov 16 01:34:26 2026 :: Log Killuminati [4207]: wa
+Mon Nov 16 01:34:27 2026 :: Log Killuminati [4207]: restore self
+Mon Nov 16 01:34:31 2026 :: Log Killuminati [4207]: e
+Mon Nov 16 01:34:31 2026 :: Log Killuminati [4202]: arrived (Halls of Healing.) from 4207
+Mon Nov 16 01:34:32 2026 :: Log Killuminati [4202]: e
+Mon Nov 16 01:34:32 2026 :: Log Killuminati [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Mon Nov 16 01:34:32 2026 :: Log Killuminati [4201]: n
+Mon Nov 16 01:34:32 2026 :: Log Killuminati [2433]: arrived (Temple Boulevard.) from 4201
+Mon Nov 16 01:34:33 2026 :: Log Killuminati [2433]: n
+Mon Nov 16 01:34:34 2026 :: Log Killuminati [2433]: e
+Mon Nov 16 01:34:34 2026 :: Log Killuminati [2405]: arrived (Western Oak Tree Square.) from 2433
+Mon Nov 16 01:34:39 2026 :: Log Killuminati [2405]: owhere blood
+Mon Nov 16 01:34:47 2026 :: Log Killuminati [2405]: goto 29376
+Mon Nov 16 01:34:47 2026 :: Log Killuminati [29376]: arrived (Across the Sea) from 2405
+Mon Nov 16 01:34:47 2026 :: Log Killuminati [29376]: goto 29376
+Mon Nov 16 01:34:47 2026 :: Log Killuminati [29376]: arrived (Across the Sea) from 29376
+Mon Nov 16 01:34:50 2026 :: Log Killuminati [29376]: ]
+Mon Nov 16 01:34:53 2026 :: Log Killuminati [29376]: goto 1
+Mon Nov 16 01:34:53 2026 :: Log Killuminati [1]: arrived (The Void) from 29376
+Mon Nov 16 01:34:54 2026 :: Log Killuminati [1]: quit
+Mon Nov 16 01:34:54 2026 :: Killuminati has quit.
+Mon Nov 16 01:34:54 2026 :: [QUIT] Player rejoined the real world.
+Mon Nov 16 01:35:40 2026 :: Treasure goblin: vanished from room 4040 (The mountain top., moria.are) (too long in one area).
+Mon Nov 16 01:37:48 2026 :: Black market: stock 1794793068: Gauntlets of Bravery (725, level 46, 42p); an oiled cloak (29047, level 43, 39p); (Dark) a black Tumuz Orgmeen tunic (1019, level 30, 28p); platinum sleeves (644, level 33, 30p); a piece of shadowed horseman's cake (29926, level 0, 2704p).
+Mon Nov 16 01:37:48 2026 :: Black market: the dealer appeared with 5 items (stock 1794793068), for 31 minutes.
+Mon Nov 16 01:38:06 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 3 of 6 in 6 hours).
