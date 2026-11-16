@@ -309259,3 +309259,5 @@ Mon Nov 16 13:56:39 2026 :: Treasure goblin: vanished from room 7104 (A junction
 Mon Nov 16 13:59:06 2026 :: Connection guard: refused 1 connection from 3.149.57.90 (paused; 8 refused in all, pause 3 this week, 1121 minutes left).
 Mon Nov 16 14:04:11 2026 :: Connection guard: refused 1 connection from 178.156.184.20 (paused; 10 refused in all, pause 3 this week, 1263 minutes left).
 Mon Nov 16 14:06:44 2026 :: Treasure goblin: vanished from room 2069 (Unknown passage, catacomb.are) (too long in one area).
+Mon Nov 16 14:09:16 2026 :: Connection guard: refused 1 connection from 178.156.184.20 (paused; 11 refused in all, pause 3 this week, 1258 minutes left).
+Mon Nov 16 14:09:54 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
