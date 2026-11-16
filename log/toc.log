@@ -309414,3 +309414,23 @@ Mon Nov 16 20:09:30 2026 :: Connection guard: 52.15.147.27 closed without a word
 Mon Nov 16 20:09:59 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Mon Nov 16 20:13:48 2026 :: Treasure goblin: vanished from room 5302 (Main Street, mirror.are) (too long in one area).
 Mon Nov 16 20:14:34 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 2 of 6 in 6 hours).
+Mon Nov 16 20:19:38 2026 :: Connection guard: refused 1 connection from 3.149.57.90 (paused; 14 refused in all, pause 3 this week, 740 minutes left).
+Mon Nov 16 20:22:17 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Mon Nov 16 20:22:21 2026 :: Log WebAdmin: fsave
+Mon Nov 16 20:22:27 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Mon Nov 16 20:22:30 2026 :: Received signal 15; saving players and shutting down.
+Mon Nov 16 20:22:30 2026 :: Normal termination of game.
+Mon Nov 16 20:22:30 2026 ::  INIT OK 
+Mon Nov 16 20:22:30 2026 :: walkto_load: 157 destinations.
+Mon Nov 16 20:22:30 2026 :: changes_load: 356 entries.
+Mon Nov 16 20:22:30 2026 :: Hermie: the restart put no mortal off (0 playing, recorded 2 seconds before the boot; a mortal last played over ten minutes before it); she stays away.
+Mon Nov 16 20:22:30 2026 :: Serials: 962 character files read, 4 with a serial.
+Mon Nov 16 20:22:30 2026 :: Connection guard: 43 addresses remembered from before the boot, 3 paused now.
+Mon Nov 16 20:22:30 2026 :: Passwords: SHA-512 crypt self-test passed.
+Mon Nov 16 20:22:30 2026 :: Recovery ledger: 423 records (0 from before the check), 4 requests, 8 players.
+Mon Nov 16 20:22:30 2026 :: ROM is ready to rock on port 9000.
+Mon Nov 16 20:22:31 2026 :: Treasure goblin: appeared.
+Mon Nov 16 20:22:31 2026 :: Automated backup started.
+Mon Nov 16 20:22:31 2026 :: Daily backup started.
+Mon Nov 16 20:22:31 2026 :: Automated backup complete.
+Mon Nov 16 20:22:32 2026 :: Daily backup complete.
