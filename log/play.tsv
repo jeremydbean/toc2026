@@ -33571,3 +33571,11 @@
 1794871985	laid	-	0	0	-	982	herb	48	an alfalfa sprout	1014	uargo.are	scatter
 1794871985	laid	-	0	0	-	983	herb	41	a sprig of mistletoe	1010	uargo.are	scatter
 1794871985	laid	-	0	0	-	984	component	66	a strand of hair	25133	underdrk.are	scatter
+1794872112	laid	-	0	0	-	985	herb	34	an amaranth plant	16020	pirate.are	scatter
+1794872155	laid	-	0	0	-	986	herb	46	a juniper berry	15135	campus.are	scatter
+1794872155	laid	-	0	0	-	987	herb	39	a chervil leaf	15020	campus.are	scatter
+1794872155	laid	-	0	0	-	988	component	86	an inert gelatinous cube	17778	landoz.are	scatter
+1794872251	census	-	0	0	-	herbs=63/150 components=34/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=23 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1794872298	laid	-	0	0	-	989	herb	43	a sprig of hyssop	24144	coven.are	scatter
+1794872298	laid	-	0	0	-	990	herb	50	a head of cabbage	24156	coven.are	scatter
+1794872375	laid	-	0	0	-	991	herb	46	a juniper berry	24574	abyss.are	scatter
