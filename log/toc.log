@@ -309205,3 +309205,6 @@ Mon Nov 16 11:57:17 2026 :: Connection guard: 5.161.177.47 closed without a word
 Mon Nov 16 12:02:22 2026 :: Connection guard: refused 1 connection from 178.156.184.20 (paused; 8 refused in all, pause 3 this week, 1385 minutes left).
 Mon Nov 16 12:05:48 2026 :: Treasure goblin: vanished from room 5253 (A back alley, oldthalo.are) (too long in one area).
 Mon Nov 16 12:07:27 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 16 12:09:57 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Mon Nov 16 12:12:31 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 16 12:13:32 2026 :: Cartographer: appeared.

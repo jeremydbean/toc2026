@@ -5161,3 +5161,4 @@
 1794826279	wizinfo	60	Connection guard: last hour 10 closed without a word, 3 refused, 0 new characters refused, 0 newly paused; 6 addresses paused and 0 refused now, 14 active player addresses.
 1794827192	wizinfo	60	Connection guard: 178.156.184.20 paused for 24 hours (pause 3 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 178.156.184.20 lifts it.
 1794829879	wizinfo	60	Connection guard: last hour 15 closed without a word, 1 refused, 0 new characters refused, 1 newly paused; 5 addresses paused and 0 refused now, 14 active player addresses.
+1794831212	wizinfo	60	Cartographer: appeared in room 25251 (The dark passage., mushroom.are) (level 19).
