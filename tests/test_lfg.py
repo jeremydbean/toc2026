@@ -112,6 +112,79 @@ class LfgTests(unittest.TestCase):
                 self.assertIn("no longer", hlp.sync("helper off"))
 
 
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class LfgGroupLifecycleTests(unittest.TestCase):
+    """A group formed ends the mark for good: leaving the group, being
+    removed or a groupmate's lost link within the hour never brings it
+    back, and LFG is never typed while grouped."""
+
+    @staticmethod
+    def group(leader, member, leader_name: str) -> None:
+        followed = member.sync(f"follow {leader_name}")
+        if "want any followers" in followed:
+            leader.sync("nofollow")            # new characters start with it on
+            followed = member.sync(f"follow {leader_name}")
+        assert "You now follow" in followed, followed
+
+    def test_join_removal_and_disconnect(self) -> None:
+        with LiveMud() as mud:
+            for name in ("Zlfglead", "Zlfgjoin", "Zlfgsolo", "Zlfgwatch"):
+                make(mud, name, Levl=8, Room=TEMPLE)
+            with mud.connect(timeout=120) as lead, mud.connect(timeout=120) as join, \
+                    mud.connect(timeout=120) as watch:
+                login(lead, "Zlfglead", PW)
+                login(join, "Zlfgjoin", PW)
+                login(watch, "Zlfgwatch", PW)
+                lead.sync("lfg on")
+                join.sync("lfg on")
+                said = watch.sync("who")
+                self.assertIn("(LFG) ", who_line(said, "Zlfglead"), said)
+                self.assertIn("(LFG) ", who_line(said, "Zlfgjoin"), said)
+
+                # Joining: both marks end, and both are told.
+                self.group(lead, join, "zlfglead")
+                said = lead.must("group zlfgjoin", "joins your group")
+                self.assertIn("no longer marked as looking", said, said)
+                join.sync("inventory")
+                self.assertIn("no longer marked as looking", join.transcript)
+                said = watch.sync("who")
+                self.assertNotIn("(LFG)", who_line(said, "Zlfglead"), said)
+                self.assertNotIn("(LFG)", who_line(said, "Zlfgjoin"), said)
+
+                # Removed from the group: the old marks stay gone.
+                lead.must("group zlfgjoin", "You remove")
+                join.sync("follow self")
+                said = watch.sync("who")
+                self.assertNotIn("(LFG)", who_line(said, "Zlfglead"), said)
+                self.assertNotIn("(LFG)", who_line(said, "Zlfgjoin"), said)
+                listed = watch.sync("lfg list")
+                self.assertNotIn("Zlfglead", listed, listed)
+                self.assertNotIn("Zlfgjoin", listed, listed)
+
+                # Asked for again, the mark shows in WHO and LFG LIST, and
+                # IGNORE still hides it.
+                join.sync("lfg on")
+                self.assertIn("(LFG) ", who_line(watch.sync("who"), "Zlfgjoin"))
+                self.assertIn("Zlfgjoin", watch.sync("lfg list"))
+                watch.must("ignore zlfgjoin", "ignor")
+                self.assertNotIn("Zlfgjoin", watch.sync("lfg list"))
+                watch.sync("unignore zlfgjoin")
+
+                # A groupmate's lost link: the solo player's mark, ended by
+                # the group, does not come back when the leader drops.
+                with mud.connect(timeout=120) as solo:
+                    login(solo, "Zlfgsolo", PW)
+                    solo.sync("lfg on")
+                    self.group(lead, solo, "zlfglead")
+                    lead.must("group zlfgsolo", "joins your group")
+                    self.assertIn("in a group already", solo.sync("lfg"))
+                    lead.close()
+                    watch.drain(2.0)
+                    said = watch.sync("who")
+                    self.assertNotIn("(LFG)", who_line(said, "Zlfgsolo"), said)
+                    self.assertNotIn("Zlfgsolo", watch.sync("lfg list"))
+
+
 class LfgSourceTests(unittest.TestCase):
     def test_last_in_the_table_and_saved_under_h(self) -> None:
         interp = (ROOT / "src" / "interp.c").read_text(encoding="utf-8")

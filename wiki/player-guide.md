@@ -118,7 +118,8 @@ alignment question reads about the choices without making one.
 
 Three small paid jobs help a first session along: `errand` lists them and
 `errand take all` takes them -- slay three of Mud School's creatures, carry
-Melancholy's letter to the questmaster at the top of the oak, and see four
+Melancholy's letter to the questmaster above the oak (`walkto square`, then
+`up` four times), and see four
 landmarks of Dresden (the square, the Temple altar, the training yard and
 the Hall of Heroes). Each pays once, up to level 10. From level 5,
 `errand expedition` names an area made for your level and two or three of its
@@ -127,7 +128,8 @@ creatures to slay, once a day. `help errand` has the details.
 At any time, `adventure` lists a few things you might do next, each with
 the command or `walkto` that gets you there, and only what applies to you:
 Mud School and its diploma (or putting on the one you have), your first
-fight, practices and trains to spend, the guild choice at levels 3-5, a
+fight, practices and trains to spend, the guild choice at levels 3-5, the
+errands and expedition you have under way (and whether more are on offer), a
 quest (whether one is ready, or how to check on yours -- never its target),
 up to three areas made for your level that you have not entered or not yet
 walked end to end, and your group or how many players near your level are
@@ -695,7 +697,7 @@ unwanted followers, and `noloot` decides whether players outside your group may
 loot your corpse while you are in the game (see Death And Corpses).
 
 To find company, `lfg` marks you as looking for a group for an hour (or until
-you join one); WHO shows it, and `lfg list` lists who else is looking within
+you join one -- it does not come back when the group breaks up); WHO shows it, and `lfg list` lists who else is looking within
 ten levels of you, and the helpers on. From level 10, `helper` marks you as
 glad to help newer players: it is kept between logins, WHO shows it, and you
 hear when someone turns LFG on (at most once every ten minutes each). Both

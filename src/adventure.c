@@ -100,16 +100,34 @@ static void adventure_guild( CHAR_DATA *ch, DString *out, int *shown )
     adventure_line( out, shown, buf );
 }
 
-/* The starter errands while any is to be had, or an expedition under way
-   (errand.c): one line either way. */
+/* Jobs under way first -- an expedition, errands taken -- then errands
+   still to be had (errand.c). One line whatever the mix, so the view's
+   length does not move. */
 static void adventure_errands( CHAR_DATA *ch, DString *out, int *shown )
 {
-    if ( errand_offered( ch ) )
-        adventure_line( out, shown,
-            "* Errands: three small paid jobs about town -- ERRAND lists them.\n\r" );
-    else if ( ch->pcdata->expedition_area != 0 )
-        adventure_line( out, shown,
-            "* Expedition: ERRAND shows the creatures still to slay and the WALKTO.\n\r" );
+    char buf[MAX_STRING_LENGTH];
+    char doing[80];
+    int taken;
+    bool expedition, offered;
+
+    errand_jobs( ch, &taken, &expedition, &offered );
+    if ( !expedition && taken == 0 )
+    {
+        if ( offered )
+            adventure_line( out, shown,
+                "* Errands: small paid jobs about town -- ERRAND lists them.\n\r" );
+        return;
+    }
+    if ( expedition && taken > 0 )
+        snprintf( doing, sizeof(doing), "your expedition and %d errand%s",
+                  taken, taken == 1 ? "" : "s" );
+    else if ( expedition )
+        snprintf( doing, sizeof(doing), "your expedition" );
+    else
+        snprintf( doing, sizeof(doing), "%d errand%s", taken, taken == 1 ? "" : "s" );
+    snprintf( buf, sizeof(buf), "* Under way: %s%s.  ERRAND shows all.\n\r",
+              doing, offered ? "; more on offer" : "" );
+    adventure_line( out, shown, buf );
 }
 
 /* A quest under way, or whether one may be asked for. */
@@ -135,7 +153,7 @@ static void adventure_quest( CHAR_DATA *ch, DString *out, int *shown )
         "  A daily quest: %s.\n\r%s",
         phrase, daily,
         ready || daily_ready
-        ? "  WALKTO SQUARE, climb UP the oak, then AQUEST REQUEST or AQUEST DAILY REQUEST.\n\r"
+        ? "  WALKTO SQUARE, UP four times, then AQUEST REQUEST or AQUEST DAILY REQUEST.\n\r"
         : "" );
     adventure_line( out, shown, buf );
 }

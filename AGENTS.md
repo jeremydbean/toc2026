@@ -7272,7 +7272,12 @@ areas against the achievements' entered and explored sets
 (`walkto_adventure_areas`: in range, not Hyrule, not a death trap or a
 newbie room past 10, a name `walkto_find` resolves to that area alone,
 and a route WALKTO's own search finds from where they stand), AchKills,
-and the group. It names no quest target, room or other
+and the group. Its errand line is one line whatever the mix: jobs under way
+first -- an expedition, errands taken, which count at any level -- then
+"more on offer" (`errand_jobs`). The questmaster is four UP exits above the
+Oak Tree Square (2401, 2410, 2411, 2414, 2497); CLIMB works an object, so no
+direction to him says climb (`tests/test_errands.py` walks it as a mortal).
+It names no quest target, room or other
 player (company is a count). With every section shown it is 19 lines, under
 `PAGELEN`: a view that pages eats the next command, and the test fails on
 "Hit Return". A new section must fit, or another must give way.
@@ -7318,14 +7323,17 @@ fifteen kills' coin (`black_market_kill_value`), through `gain_exp` and
 then a save; staff by level take none. Saved as `Errand <done> <taken>
 <kills> <letter> <seen>` and `Expedition <area id> <mob> <mob> <mob> <got>
 <day> <wait>` under **case 'E'**, each read into locals and masked. ADVENTURE
-gives it one line (`errand_offered`). Last in the command table.
+gives it one line (`errand_jobs`: under way first, then on offer). Last in
+the command table.
 `tests/test_errands.py`.
 
 ## LFG And HELPER
 
 `src/lfg.c` (2026-11-15), both opt-in. LFG is `pcdata->lfg_until` (memory
 only, an hour) and reads as off while the player is in a group with another
-player (`player_lfg`); HELPER is `pcdata->helper`, saved `Helper 1` under
+player (`player_lfg`); GROUP forming one clears it for both (`lfg_group_formed`
+from `do_group`), so leaving the group, being removed or a groupmate's lost
+link never brings an old mark back (`tests/test_lfg.py`); HELPER is `pcdata->helper`, saved `Helper 1` under
 **case 'H'** only when set, and counts from level 10 (`player_helper`). WHO
 tags them `(LFG)` and `(Helper)`. LFG LIST and the helpers' notice show only
 whom WHO would (`online_can_list`) and never across an IGNORE either way

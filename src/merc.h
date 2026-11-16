@@ -4715,9 +4715,11 @@ int     hunting_area_prey      ( AREA_DATA *area, int level, MOB_INDEX_DATA **ou
 void    errand_kill            ( CHAR_DATA *ch, CHAR_DATA *victim );
 void    errand_room_seen       ( CHAR_DATA *ch );
 bool    errand_offered         ( CHAR_DATA *ch );
+void    errand_jobs            ( CHAR_DATA *ch, int *taken, bool *expedition, bool *offered );
 /* lfg.c */
 bool    player_lfg             ( CHAR_DATA *ch );
 bool    player_helper          ( CHAR_DATA *ch );
+void    lfg_group_formed       ( CHAR_DATA *leader, CHAR_DATA *member );
 void    lfg_counts             ( CHAR_DATA *ch, int near, int *looking, int *helpers );
 /* abilities.c: JOIN SWITCH at the guild clerk */
 void    guild_switch           ( CHAR_DATA *clerk, CHAR_DATA *ch, char *argument );

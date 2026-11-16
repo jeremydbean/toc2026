@@ -49,6 +49,26 @@ bool player_lfg( CHAR_DATA *ch )
         && ch->pcdata->lfg_until > current_time && !lfg_grouped( ch );
 }
 
+/* A group with another player was just formed (GROUP, from do_group):
+   whoever was looking has found one. The mark is cleared, not suppressed,
+   so leaving the group within the hour does not bring it back. */
+static void lfg_found( CHAR_DATA *ch )
+{
+    if ( ch->pcdata->lfg_until > current_time )
+        send_to_char( "You have a group: you are no longer marked as looking for one.\n\r", ch );
+    ch->pcdata->lfg_until = 0;
+}
+
+void lfg_group_formed( CHAR_DATA *leader, CHAR_DATA *member )
+{
+    if ( leader == NULL || member == NULL || leader == member
+    ||   IS_NPC(leader) || IS_NPC(member)
+    ||   leader->pcdata == NULL || member->pcdata == NULL )
+        return;
+    lfg_found( leader );
+    lfg_found( member );
+}
+
 bool player_helper( CHAR_DATA *ch )
 {
     return ch != NULL && !IS_NPC(ch) && ch->pcdata != NULL && ch->pcdata->helper

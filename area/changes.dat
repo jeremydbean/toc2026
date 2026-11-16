@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261116oakdirections 2026-11-16
+Fixed: the way to the questmaster is UP four times from the Oak Tree
+Square; ADVENTURE, ERRAND, the tutorial and AQUEST said to climb, which
+CLIMB does not do.  ADVENTURE now names the errands and expedition you
+have under way, and a group you join ends your LFG mark for good instead
+of bringing it back when the group breaks up.
+
 @ 20261116wrappedpools 2026-11-16
 Fixed: a character with more than 32,767 endurance or mana could find it
 negative after a step, from a bug fixed on November 13.  Anyone still

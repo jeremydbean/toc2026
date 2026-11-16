@@ -1678,6 +1678,8 @@ Syntax: aquest info | points | time | gamble <yes|no>    anywhere
 
 The questmaster sends you to kill a creature or recover an item.  Each
 subcommand may be cut to its first letter; AQUEST alone lists them.
+Questor Thews waits in a globe above the great oak: WALKTO SQUARE, then
+UP four times.
 
   - Targets are creatures no higher than your level, in places you may
     go; never in Hyrule, the training yard, Azeroth or Descent to Hell.
@@ -6418,6 +6420,8 @@ now, and nothing else:
     waiting to be spent, and where to spend them.
   - The guild choice, from level 3 to 5 for a mage, cleric, thief or
     warrior in no guild: at level 6 you join your class's guild free.
+  - Errands and an expedition you have under way (ERRAND shows what is
+    left), then whether more errands are on offer.
   - A quest: whether the questmaster has one for you now, or how to check
     on the one you are on.  It never names a quest's target.
   - Up to three areas made for your level that you have not entered yet,
@@ -6474,7 +6478,7 @@ Three small jobs about town for your first levels, each paid once:
   1. Pests     slay three of Mud School's creatures (WALKTO MUD SCHOOL)
   2. A letter  collect Melancholy's letter (WALKTO MELANCHOLY, then type
                ERRAND there) and carry it to the questmaster at the top of
-               the oak (WALKTO SQUARE, climb UP, ERRAND again)
+               the oak (WALKTO SQUARE, then UP four times, ERRAND again)
   3. The town  see the Oak Tree Square, the Temple altar, the training
                yard and the Hall of Heroes (DOWN from the square's centre)
 
@@ -6499,7 +6503,9 @@ Syntax: lfg                 mark yourself looking for a group, or stop
         helper              mark yourself a helper (level 10 and up), or stop
         helper on|off
 
-LFG marks you as looking for a group for an hour, or until you join one.
+LFG marks you as looking for a group for an hour, or until you join one:
+joining a group ends it, and it does not come back when the group breaks
+up -- type LFG again if you are still looking.
 WHO shows (LFG) beside your name, and LFG LIST lists you to anyone within
 ten levels of you.  Turning it on tells the helpers who are on, once --
 not again for ten minutes however often you turn it off and on.

@@ -163,7 +163,127 @@ class ErrandTests(unittest.TestCase):
                 self.assertNotIn("* Errands:", old.sync("adventure", timeout=30))
 
 
-class ErrandSourceTests(unittest.TestCase):
+NUMBERS = {"once": 1, "twice": 2, "two": 2, "three": 3, "four": 4, "five": 5}
+QUESTMASTER_ROOM = 2497
+SQUARE = 2401
+
+
+def steps(said: str) -> tuple[str, str, int]:
+    """The way the game says to go: WALKTO <place>, then <DIR> <n> times."""
+    m = re.search(r"WALKTO (\w+), then ([A-Z]+) (\w+) times", said)
+    assert m, said
+    return m.group(1), m.group(2).lower(), NUMBERS[m.group(3)]
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class LetterWalkTests(unittest.TestCase):
+    """Melancholy's letter carried as the game tells a mortal to carry it:
+    from the Oak Tree Square, on foot, with no staff to move anybody."""
+
+    def test_the_stated_way_reaches_the_questmaster(self) -> None:
+        with LiveMud() as mud:
+            make(mud, "Zerrwalker", Levl=8, Room=SQUARE, HMV="3000 3000 500 500 3000 3000")
+            with mud.connect(timeout=120) as hero:
+                login(hero, "Zerrwalker", PW)
+                self.assertIn("Center of Oak Tree Square", hero.sync("look"))
+                # ADVENTURE and the questmaster's refusal give the same way.
+                self.assertIn("WALKTO SQUARE, UP four times", hero.sync("adventure", timeout=30))
+                self.assertIn("go UP four times", hero.sync("aquest request"))
+
+                said = hero.sync("errand take 2")
+                self.assertIn("Letter: WALKTO MELANCHOLY", said, said)
+                hero.send("walkto melancholy")
+                hero.expect("You have arrived", timeout=120)
+                given = hero.sync("errand")
+                self.assertIn("sealed letter", given, given)
+                place, way, count = steps(given)
+                # ERRAND repeats the same way while the letter is carried.
+                self.assertEqual(steps(hero.sync("errand")), (place, way, count))
+                self.assertNotIn("climb", given.lower())
+
+                hero.send("walkto " + place.lower())
+                hero.expect("You have arrived", timeout=120)
+                self.assertIn("Center of Oak Tree Square", hero.sync("look"))
+                for _ in range(count):
+                    hero.sync(way)
+                self.assertIn("Questmaster's Globe", hero.sync("look"))
+                done = hero.sync("errand")
+                self.assertIn("Errand done: Melancholy's letter delivered", done, done)
+                self.assertRegex(done, r"You gain \d+ experience and ")
+
+
+def adventure_jobs(client) -> str:
+    said = client.sync("adventure", timeout=30)
+    assert "What you might do next" in said, said
+    assert "Hit Return" not in said and "[Return" not in said, said
+    for line in said.replace("\r", "").split("\n"):
+        assert len(line) <= 79, line
+    return said
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class AdventureJobsTests(unittest.TestCase):
+    """ADVENTURE names the jobs under way before the ones on offer."""
+
+    def test_jobs_under_way_and_on_offer(self) -> None:
+        with LiveMud() as mud:
+            make(mud, "Zerrgod", Levl=70, Room=TEMPLE)
+            make(mud, "Zerrall", Levl=7, Room=TEMPLE)
+            make(mud, "Zerrboth", Levl=7, Room=TEMPLE)
+            make(mud, "Zerrexped", Levl=7, Room=TEMPLE)
+            school = f"{area_id('school.are')} {KOBOLD} {GREMLIN} 0 0 0 0"
+            # An expedition, the pests errand taken, the other two not.
+            set_line(mud, "Zerrboth", "Errand", "0 1 0 0 0")
+            set_line(mud, "Zerrboth", "Expedition", school)
+            # An expedition and no errand taken.
+            set_line(mud, "Zerrexped", "Expedition", school)
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as hero:
+                login(staff, "Zerrgod", PW)
+                login(hero, "Zerrall", PW)
+                said = adventure_jobs(hero)
+                self.assertIn("* Errands: small paid jobs", said, said)
+
+                # All three taken: under way, nothing more on offer.
+                hero.sync("errand take all")
+                said = adventure_jobs(hero)
+                self.assertIn("* Under way: 3 errands.  ERRAND shows all.", said, said)
+                self.assertNotIn("* Errands:", said)
+
+                # One finished: two left under way.
+                staff.sync("transfer zerrall 2498")
+                self.assertIn("sealed letter", hero.sync("errand"))
+                staff.sync("transfer zerrall 2497")
+                self.assertIn("Errand done", hero.sync("errand"))
+                staff.sync(f"transfer zerrall {TEMPLE}")
+                said = adventure_jobs(hero)
+                self.assertIn("* Under way: 2 errands.  ERRAND shows all.", said, said)
+
+                with mud.connect(timeout=120) as both, mud.connect(timeout=120) as exped:
+                    login(both, "Zerrboth", PW)
+                    login(exped, "Zerrexped", PW)
+                    said = adventure_jobs(both)
+                    self.assertIn("* Under way: your expedition and 1 errand; more on offer.", said, said)
+                    self.assertNotIn("* Errands:", said)
+                    said = adventure_jobs(exped)
+                    self.assertIn("* Under way: your expedition; more on offer.", said, said)
+
+
+class OakDirectionSourceTests(unittest.TestCase):
+    def test_no_climb_for_the_oak(self) -> None:
+        """CLIMB works an object; the oak is four UP exits (2401, 2410,
+        2411, 2414, 2497), so no direction to the questmaster says climb."""
+        for name in ("adventure.c", "errand.c", "tutorial.c"):
+            text = (ROOT / "src" / name).read_text(encoding="latin-1")
+            text = re.sub(r"/\*.*?\*/", " ", text, flags=re.S)     # comments aside
+            self.assertNotRegex(text, r"(?i)climb\s+up", name)
+        quest = (ROOT / "src" / "quest.c").read_text(encoding="latin-1")
+        self.assertNotIn("climb up from the Oak Tree Square", quest)
+        commands = (ROOT / "area" / "commands.are").read_text(encoding="latin-1")
+        errand_help = commands.split("ERRAND ERRANDS EXPEDITION EXPEDITIONS~", 1)[1].split("~", 1)[0]
+        self.assertNotIn("climb", errand_help.lower())
+        self.assertIn("UP four times", errand_help)
+
+
     def test_keys_are_read_under_e_and_last_in_the_table(self) -> None:
         save = (ROOT / "src" / "save.c").read_text(encoding="latin-1")
         case_e = save.split("case 'E':", 1)[1].split("case 'F':", 1)[0]

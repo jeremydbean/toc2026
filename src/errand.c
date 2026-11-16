@@ -83,6 +83,27 @@ static long errand_day( void )
     return (long) ( current_time / 86400 );
 }
 
+static AREA_DATA *expedition_area( long id );
+
+/* What ADVENTURE sums up: errands taken and not yet done (they count at any
+   level), whether an expedition is under way, and whether an errand is
+   still to be had. */
+void errand_jobs( CHAR_DATA *ch, int *taken, bool *expedition, bool *offered )
+{
+    int i;
+
+    *taken = 0;
+    *expedition = false;
+    *offered = errand_offered( ch );
+    if ( !errand_player( ch ) )
+        return;
+    for ( i = 0; i < ERRANDS; i++ )
+        if ( errand_bit( ch->pcdata->errand_taken, i )
+        &&   !errand_bit( ch->pcdata->errand_done, i ) )
+            (*taken)++;
+    *expedition = expedition_area( ch->pcdata->expedition_area ) != NULL;
+}
+
 static AREA_DATA *expedition_area( long id )
 {
     AREA_DATA *area;
@@ -249,7 +270,7 @@ static bool errand_letter_step( CHAR_DATA *ch )
     {
         pc->errand_letter = 1;
         send_to_char( "Melancholy hands you a sealed letter: \"For the questmaster, at the top\n\r"
-                      "of the oak.  WALKTO SQUARE, then climb UP, and ERRAND again there.\"\n\r", ch );
+                      "of the oak.  WALKTO SQUARE, then UP four times, and ERRAND again there.\"\n\r", ch );
         save_char_obj( ch );
         return true;
     }
@@ -300,7 +321,7 @@ static void errand_status( CHAR_DATA *ch )
         dstring_append_cstr( &out, "  Pests: WALKTO MUD SCHOOL; any creature there counts.\n\r" );
     if ( errand_bit( pc->errand_taken, ERRAND_LETTER ) )
         dstring_append_cstr( &out, pc->errand_letter
-            ? "  Letter: WALKTO SQUARE, climb UP to the questmaster, and type ERRAND.\n\r"
+            ? "  Letter: WALKTO SQUARE, then UP four times to the questmaster; type ERRAND.\n\r"
             : "  Letter: WALKTO MELANCHOLY and type ERRAND there to collect it.\n\r" );
     if ( errand_bit( pc->errand_taken, ERRAND_TOWN ) )
     {

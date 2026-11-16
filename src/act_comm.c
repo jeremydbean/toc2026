@@ -4673,6 +4673,7 @@ void do_group( CHAR_DATA *ch, char *argument )
     act( "$N joins $n's group.", ch, NULL, victim, TO_NOTVICT );
     act( "You join $n's group.", ch, NULL, victim, TO_VICT    );
     act( "$N joins your group.", ch, NULL, victim, TO_CHAR    );
+    lfg_group_formed( ch, victim );
     return;
 }
 

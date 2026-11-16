@@ -540,9 +540,9 @@ static void tut_text( CHAR_DATA *ch, int step, char *buf, size_t size )
     case TUT_QUEST:
         snprintf( buf, size,
             "The questmaster sends you after creatures and items for coin and quest\n\r"
-            "points.  From the Oak Tree Square (WALKTO SQUARE) climb UP through the\n\r"
-            "oak to the very top -- the Questmaster's Globe is one climb above its\n\r"
-            "crown -- and AQUEST REQUEST there.  HELP AQUEST says more.\n\r" );
+            "points.  From the Oak Tree Square (WALKTO SQUARE) go UP four times,\n\r"
+            "through the oak and past its crown to the Questmaster's Globe, and\n\r"
+            "AQUEST REQUEST there.  HELP AQUEST says more.\n\r" );
         break;
     case TUT_HELP:
         snprintf( buf, size,

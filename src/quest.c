@@ -1377,7 +1377,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
                          "UP, in the globe above you.\n\r", ch);
         else
             send_to_char("There is no questmaster here.  Questor Thews waits at the very "
-                         "top of the great oak:\n\rclimb up from the Oak Tree Square.  "
+                         "top of the great oak:\n\rfrom the Oak Tree Square go UP four times.  "
                          "AQUEST INFO works anywhere.\n\r", ch);
         return;
     }
