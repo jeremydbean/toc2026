@@ -309030,3 +309030,17 @@ Mon Nov 16 05:21:26 2026 :: Connection guard: 3.149.57.90 closed without a word 
 Mon Nov 16 05:22:29 2026 :: Treasure goblin: vanished from room 24224 (A Cloistered Hall, crypt.are) (too long in one area).
 Mon Nov 16 05:26:31 2026 :: Connection guard: 54.167.223.174 closed without a word (strike 6 of 6 in 6 hours).
 Mon Nov 16 05:26:31 2026 :: Connection guard: 54.167.223.174 paused for 12 hours (pause 2 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 54.167.223.174 lifts it.
+Mon Nov 16 05:30:05 2026 :: Connection guard: 35.210.123.92 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 16 05:30:15 2026 :: Connection guard: 35.210.123.92 closed without a word (strike 2 of 6 in 6 hours).
+Mon Nov 16 05:30:16 2026 :: Sock.sinaddr:  35.210.123.92
+Mon Nov 16 05:30:16 2026 :: EOF encountered on read.
+Mon Nov 16 05:30:16 2026 :: Connection guard: 35.210.123.92 closed before a password prompt (strike 3 of 6 in 6 hours).
+Mon Nov 16 05:30:16 2026 :: Connection guard: 35.210.123.92 closed without a word (strike 4 of 6 in 6 hours).
+Mon Nov 16 05:30:16 2026 :: Connection guard: 35.210.123.92 closed without a word (strike 5 of 6 in 6 hours).
+Mon Nov 16 05:30:17 2026 :: Connection guard: 35.210.123.92 closed without a word (strike 6 of 6 in 6 hours).
+Mon Nov 16 05:30:17 2026 :: Connection guard: 35.210.123.92 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.210.123.92 lifts it.
+Mon Nov 16 05:30:17 2026 :: Connection guard: refused 1 connection from 35.210.123.92 (paused; 1 refused in all, pause 1 this week, 360 minutes left).
+Mon Nov 16 05:30:17 2026 :: Connection guard: 35.210.123.92 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 16 05:31:17 2026 :: Connection guard: refused 24 connections from 35.210.123.92 (since the last line; 25 refused in all, pause 1 this week, 359 minutes left).
+Mon Nov 16 05:31:35 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 4 of 6 in 6 hours).
+Mon Nov 16 05:32:34 2026 :: Treasure goblin: vanished from room 7216 (Under water in the sewer., sewer.are) (too long in one area).
