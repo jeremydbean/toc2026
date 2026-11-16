@@ -33538,3 +33538,9 @@
 1794870451	census	-	0	0	-	herbs=41/150 components=22/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=22 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
 1794870519	laid	-	0	0	-	955	herb	42	a marjoram plant	17801	landoz.are	scatter
 1794870519	laid	-	0	0	-	956	herb	49	a pomegranate	17715	landoz.are	scatter
+1794870661	laid	-	0	0	-	957	herb	35	a sprig of angelica	2162	hood.are	scatter
+1794870729	laid	-	0	0	-	958	herb	53	a huckleberry	4060	moria.are	scatter
+1794870729	laid	-	0	0	-	959	component	59	a patch of lycanthrope fur	17731	landoz.are	scatter
+1794870772	laid	-	0	0	-	960	herb	53	a huckleberry	24563	abyss.are	scatter
+1794870772	laid	-	0	0	-	961	herb	48	an alfalfa sprout	24517	abyss.are	scatter
+1794870844	laid	-	0	0	-	962	component	83	a vial of thessalhydra venom	24244	crypt.are	scatter
