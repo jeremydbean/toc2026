@@ -309005,3 +309005,4 @@ Mon Nov 16 04:45:54 2026 :: Connection guard: 178.156.189.113 closed without a w
 Mon Nov 16 04:50:59 2026 :: Connection guard: refused 1 connection from 3.20.63.178 (paused; 4 refused in all, pause 1 this week, 15 minutes left).
 Mon Nov 16 04:51:19 2026 :: Connection guard: last hour 12 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 2 addresses paused and 0 refused now, 14 active player addresses.
 Mon Nov 16 04:52:15 2026 :: Treasure goblin: vanished from room 1400 (A hallway, htower.are) (too long in one area).
+Mon Nov 16 04:56:03 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 2 of 6 in 6 hours).
