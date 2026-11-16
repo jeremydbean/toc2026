@@ -308911,3 +308911,10 @@ Mon Nov 16 01:48:15 2026 :: Connection guard: 5.161.61.238 closed without a word
 Mon Nov 16 01:50:45 2026 :: Connection guard: last hour 14 closed without a word, 1 refused, 0 new characters refused, 1 newly paused; 3 addresses paused and 0 refused now, 14 active player addresses.
 Mon Nov 16 01:51:25 2026 :: Black market: the dealer vanished from room 10090 (A dimly lit hallway., glitter.are) (wandering).
 Mon Nov 16 01:52:36 2026 :: Sock.sinaddr:  66.249.69.1
+Mon Nov 16 01:53:20 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 16 01:54:05 2026 :: EOF encountered on read.
+Mon Nov 16 01:54:05 2026 :: Connection guard: 66.249.69.1 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 16 01:54:06 2026 :: Sock.sinaddr:  66.249.69.14
+Mon Nov 16 01:55:35 2026 :: EOF encountered on read.
+Mon Nov 16 01:55:35 2026 :: Connection guard: 66.249.69.14 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 16 01:55:49 2026 :: Treasure goblin: vanished from room 668 (Dirt Road, ofcol.are) (too long in one area).
