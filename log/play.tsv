@@ -33393,3 +33393,76 @@
 1794791657	sightings	Trentlin	46	4208	dresden.are	mob	31114:1/0/0 32084:1/0/0 30309:1/1/0 32275:1/0/0 32105:8/4/0 31135:3/1/0 31115:1/1/0 32375:2/0/0 32045:7/0/0 31215:10/5/0 31155:3/1/0 30354:1/0/0 32065:5/4/0 30223:1/1/0
 1794791657	sightings	Trentlin	46	4208	dresden.are	item	6106:2/0 6105:1/0 25042:1/1 3609:1/1 728:1/1 30227:8/8 30361:1/0 16:2/0 30485:2/1 17:1/0 12:1/0
 1794791657	session	Trentlin	46	4208	dresden.are	quit	2962s	+1 levels	+2120 exp	-9867784 copper	21 kills	0 deaths	1 quests	868 commands	3 refused	coin: loot 14p 92g 8s 26c, quests 4p 82g 13s 90c, spent 29p 61g	spent on: heal 29p 60g, shoot 1g	exp: kills +2120, skilluse +40, flee -40
+1794867927	area	Alaric	57	2497	dresden.are	-	dresden.are	-1	(game loop)
+1794867928	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794867930	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=463/983 align=977 exp=252749 coin=3726674190 bank=24886121996 qp=2493 prac=36 train=76 stash=93/350 remorts=3
+1794867930	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    303 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
+1794867932	quest	Alaric	57	2497	dresden.are	ordinary	recover	25042	The Heart of Tifarah	59	canyon.are	23
+1794867932	cmd	Alaric	57	2497	dresden.are	standing	100	15	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'Raiders stole The Heart of Tifarah from the realm!'	-	+
+1794867935	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794867936	cmd	Alaric	57	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794867936	cmd	Alaric	57	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794867936	cmd	Alaric	57	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794867936	cmd	Alaric	57	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794867937	cmd	Alaric	57	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794867937	cmd	Alaric	57	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794867937	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794867937	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1794867938	cmd	Alaric	57	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794867938	cmd	Alaric	57	3900	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794867938	cmd	Alaric	57	3901	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794867938	cmd	Alaric	57	3902	dresden.are	standing	100	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1794867939	cmd	Alaric	57	3903	dresden.are	standing	100	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1794867939	cmd	Alaric	57	3904	dresden.are	standing	100	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1794867939	area	Alaric	57	300	plains.are	dresden.are	plains.are	12	north
+1794867939	cmd	Alaric	57	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1794867939	cmd	Alaric	57	316	plains.are	standing	100	0	-	west		Grassy plains //   You walk in the grassy plains among the herbs which grow here. The wind is // strong and rough. Far to the north you can see the foothills and further on	-	+
+1794867940	cmd	Alaric	57	318	plains.are	standing	100	0	-	north		Grassy plains //   You walk in the beautiful grassy plains. The wind is strong and rough. // Far to the north you can see the foothills and further on mountain peaks	-	+
+1794867940	cmd	Alaric	57	319	plains.are	standing	100	0	-	north		Grassy plains //   You walk in the grassy plains among the herbs which grow here. The wind is // strong and rough. To the north you can see the foothills and just behind	-	+
+1794867940	cmd	Alaric	57	330	plains.are	standing	100	0	-	north		In front of hut in foothills //   You are standing in the foothills. To the west, well hidden among the small // foothills and pines, you see a small hut. To the north you can see	-	+
+1794867940	cmd	Alaric	57	323	plains.are	standing	100	0	-	north		The steep foothills //   You walk in the steep foothills. It is rather hard to move here. // To the north you can see a grassy valley with wildflowers. To the west 	-	+
+1794867941	area	Alaric	57	24	connect.are	plains.are	connect.are	2	west
+1794867941	cmd	Alaric	57	24	connect.are	standing	100	0	-	west		Crossing the Foothills //   The hills grow steadily steeper as you trudge up the narrow trails.  To the // northwest, the trail degenerates into a narrow series of switchbacks, 	-	+
+1794867941	cmd	Alaric	57	25	connect.are	standing	100	0	-	northwest		The Switchbacks //   You continue climbing a rocky path.  You need to scramble over boulders and // jump crevices to make any progress.  The path twists so often you can never	-	+
+1794867941	area	Alaric	57	9201	canyon.are	connect.are	canyon.are	0	north
+1794867941	cmd	Alaric	57	9201	canyon.are	standing	100	0	-	north		A Mountain Path //   You are on a mountain path which ascends a steep mountainside.  The trail // curves around the mountain so that you cannot really see what lies ahead.	-	+
+1794867944	cmd	Alaric	57	9201	canyon.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794867944	cmd	Alaric	57	9202	canyon.are	standing	100	0	-	up		A Mountain Path //   You are on a rocky mountain path leading up and around a steep mountainside. // You sense a glow from the area beyond the mountain, which you cannot see yet.	-	+
+1794867945	cmd	Alaric	57	9203	canyon.are	standing	100	0	-	up		Mountainside Tombs //   There are a few stone heaps here and there, the tombs of those who did not // last the arduous journey up the mountain.  Curiously you notice a few	-	+
+1794867945	cmd	Alaric	57	9204	canyon.are	standing	100	0	-	up		A Blind Curve on the Mountain Path. //   This looks like a normal mountain path, but it is NOT!  This section of the // path is habitated by a huge (and of course, man-eating) Cyclops.  The path	-	+
+1794867945	cmd	Alaric	57	9204	canyon.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794867949	cmd	Alaric	57	9205	canyon.are	standing	100	0	-	up		Vista //   This is a stunning vista overlooking a canyon.  There is a sign here that says: // BEHOLD -- ELEMENTAL CANYON	-	+
+1794867951	cmd	Alaric	57	9206	canyon.are	standing	100	0	-	north		The Overlook //   You see various elemental servants wandering around the canyon.  The noise of // humming coming from the canyon gets louder.  The path makes a steep descent	-	+
+1794867953	refused	Alaric	57	9206	canyon.are	standing	100	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794867953	cmd	Alaric	57	9207	canyon.are	standing	100	0	-	down		Entrance to Elemental Canyon //   You are awed by the sounds and sights of great powers at works here. // Elemental servants bustle back and forth doing the biddings of the elemental	-	+
+1794867955	cmd	Alaric	57	9209	canyon.are	standing	100	0	-	north		Elemental Gateway //   To the west a path dips and winds among some flowing firepits.  To the // northeast a path goes toward the river.  Beyond toward the northeast and	-	+
+1794867956	cmd	Alaric	57	9210	canyon.are	standing	100	0	-	east		The Floor of the Canyon //   Various elemental forms wander the floor of the canyon.  Some seem to be // going about their business, while others seem to have no business at	-	+
+1794867957	cmd	Alaric	57	9213	canyon.are	standing	100	0	-	north		The Floor of the Canyon //   Various elemental forms wander the floor of the canyon.  Some seem to be // going about their business, while others seem to have no business at	-	+
+1794867967	cmd	Alaric	57	9216	canyon.are	standing	100	0	-	north		The Floor of the Canyon //   Various elemental forms wander the floor of the canyon.  Some seem to be // going about their business, while others seem to have no business at	-	+
+1794867967	cmd	Alaric	57	9219	canyon.are	standing	100	0	-	north		The Floor of the Canyon //   Various elemental forms wander the floor of the canyon.  Some seem to be // going about their business, while others seem to have no business at	-	+
+1794867967	cmd	Alaric	57	9254	canyon.are	standing	100	0	-	north		Mesa East //   A path starts to the north.  The mesa continues to the west. // Or you can climb down to the canyon floor to the south.	-	+
+1794867969	cmd	Alaric	57	9255	canyon.are	standing	100	0	-	north		Floating in Air //   Last you knew, you were walking on the mesa.  Abruptly the path dropped // from beneath your feet much to quick for you to recover.  Instead of	-	+
+1794867970	cmd	Alaric	57	9257	canyon.are	standing	100	0	-	north		Floating in Air //   You look down and see the ground 100 feet below you.  The wind whispering // in your ear seems to reassure you that this is fine.  To the east aways	-	+
+1794867971	cmd	Alaric	57	9258	canyon.are	standing	100	0	-	east		Floating in Air //   You look down and see the ground 100 feet below you.  The wind whispering // in your ear seems to reassure you that this is fine. There is a portal	-	+
+1794867972	cmd	Alaric	57	9259	canyon.are	standing	100	0	-	east		Windy Tunnel //   A tunnel leads east.  To the west you can enter a portal. The wind in // this tunnel is quite fierce, it seems as if it's forced.  	-	+
+1794867974	got	Alaric	57	9259	canyon.are	25042	The Heart of Tifarah	trash	59	0	get	the floor
+1794867974	cmd	Alaric	57	9259	canyon.are	standing	100	0	-	get	all	You get The Heart of Tifarah.	-	-
+1794867974	cmd	Alaric	57	9260	canyon.are	standing	100	0	-	east		Air Chamber //   Tiny tornadoes come and go and dance along the ground here.  At the back // of the chamber you notice a huge throne made of swirling clouds.	-	+
+1794867977	area	Alaric	57	2497	dresden.are	canyon.are	dresden.are	36	recall
+1794867977	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794867977	coin	Alaric	57	2497	dresden.are	+169542054	quests	aquest	-	28782338240
+1794867977	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	ordinary qp=2493->2493 offered=15 daily=4->4 coin=+169542054 kill=15412914 streak=3 level=57 target=0
+1794867977	cmd	Alaric	57	2497	dresden.are	standing	100	22	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Heart of Tifarah to Questor Thews. // Questor Thews says 'Excellent work! The realm is in your debt!'	success:-	+
+1794867979	cmd	Alaric	57	2497	dresden.are	standing	100	6	-	aquest	ga no	You safely collect 15 quest points.	-	-
+1794867980	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2865/2875 mv=191/983 align=977 exp=252749 coin=3896216244 bank=24886121996 qp=2508 prac=36 train=76 stash=93/350 remorts=3
+1794867980	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    304 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
+1794867991	coin	Alaric	57	2497	dresden.are	+62215304	bank	interest	bank	28844553544
+1794867991	laid	-	0	0	-	892	herb	40	a clove	19130	rome.are	scatter
+1794867991	laid	-	0	0	-	893	herb	47	a sprig of saffron	19122	rome.are	scatter
+1794867991	laid	-	0	0	-	894	component	77	a vial of medusa eye fluid	9682	newthalo.are	scatter
+1794868053	laid	-	0	0	-	895	herb	37	a sprig of catnip	11054	ancala.are	scatter
+1794868053	laid	-	0	0	-	896	herb	48	an alfalfa sprout	11001	ancala.are	scatter
+1794868053	laid	-	0	0	-	897	component	57	a trolls fingernail	6602	daycare.are	scatter
+1794868122	laid	-	0	0	-	898	herb	52	an asparagus shoot	1519	gnome.are	scatter
+1794868122	laid	-	0	0	-	899	herb	45	a sarsaparilla vine	1522	gnome.are	scatter
+1794868122	laid	-	0	0	-	900	component	73	a roper's tentacle	3705	school.are	scatter
