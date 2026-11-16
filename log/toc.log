@@ -309061,3 +309061,6 @@ Mon Nov 16 06:07:08 2026 :: Connection guard: 5.161.113.195 closed without a wor
 Mon Nov 16 06:08:28 2026 :: Sock.sinaddr:  167.71.241.147
 Mon Nov 16 06:08:28 2026 :: EOF encountered on read.
 Mon Nov 16 06:08:28 2026 :: Connection guard: 167.71.241.147 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 16 06:09:55 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Mon Nov 16 06:12:12 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 3 of 6 in 6 hours).
+Mon Nov 16 06:12:53 2026 :: Treasure goblin: vanished from room 2553 (Guards Room., limbo.are) (too long in one area).
