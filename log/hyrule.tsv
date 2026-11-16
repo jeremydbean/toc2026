@@ -143,3 +143,7 @@
 1794789761	cleared	Trentlin	46	1	Monk 	30512	L6	foes=0
 1794789789	got	Trentlin	46	1	Monk 	30508	L6	obj=30695 obj_name=four_bombs type=treasure obj_level=1 how=fists
 1794789789	cleared	Trentlin	46	1	Monk 	30508	L6	foes=0
+1794789848	engage	Trentlin	46	1	Monk 	30519	L6	foe=30223 foe_name=Gohma foe_hp=100 foe_max=2194 party=1 levels=46 classes=Monk  hps=65 buffs=-
+1794789877	flee	Trentlin	46	1	Monk 	30519	L6	foe=30223 foe_name=Gohma guardian=1 foe_hp=0 secs=29 hp=21
+1794789909	cleared	Trentlin	46	1	Monk 	30514	L6	foes=0
+1794789913	got	Trentlin	46	1	Monk 	30514	L6	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
