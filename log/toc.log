@@ -309237,3 +309237,4 @@ Mon Nov 16 12:53:07 2026 :: Connection guard: 178.156.181.172 closed without a w
 Mon Nov 16 12:53:07 2026 :: Connection guard: 178.156.181.172 paused for 12 hours (pause 2 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 178.156.181.172 lifts it.
 Mon Nov 16 12:56:11 2026 :: Treasure goblin: vanished from room 28126 (A Giant Cave, azeroth.are) (too long in one area).
 Mon Nov 16 12:58:11 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 2 of 6 in 6 hours).
+Mon Nov 16 13:03:16 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 5 of 6 in 6 hours).
