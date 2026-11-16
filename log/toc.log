@@ -308501,3 +308501,47 @@ Mon Nov 16 00:46:13 2026 :: Log Trentlin [30514]: l
 Mon Nov 16 00:46:14 2026 :: Log Trentlin [30514]: sleep
 Mon Nov 16 00:46:54 2026 :: Log Trentlin [30514]: affects off: iron skin
 Mon Nov 16 00:47:19 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 4 of 6 in 6 hours).
+Mon Nov 16 00:48:58 2026 :: Log Trentlin [30514]: affects off: steel fist
+Mon Nov 16 00:50:29 2026 :: Log Trentlin [30514]: wake
+Mon Nov 16 00:50:30 2026 :: Log Trentlin [30514]: iron
+Mon Nov 16 00:50:32 2026 :: Log Trentlin [30514]: iron
+Mon Nov 16 00:50:39 2026 :: Log Trentlin [30514]: l
+Mon Nov 16 00:50:40 2026 :: Log Trentlin [30514]: wear bow
+Mon Nov 16 00:50:44 2026 :: Log Trentlin [30514]: eq
+Mon Nov 16 00:50:45 2026 :: Connection guard: last hour 14 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 2 addresses paused and 0 refused now, 14 active player addresses.
+Mon Nov 16 00:50:45 2026 :: Log Trentlin [30514]: w
+Mon Nov 16 00:50:45 2026 :: Log Trentlin [30513]: arrived (Level 6: Threshold of the Nest) from 30514
+Mon Nov 16 00:50:46 2026 :: Log Trentlin [30513]: n
+Mon Nov 16 00:50:48 2026 :: Log Trentlin [30513]: open north
+Mon Nov 16 00:50:51 2026 :: Log Trentlin [30513]: unlock north
+Mon Nov 16 00:50:53 2026 :: Log Trentlin [30513]: open north
+Mon Nov 16 00:50:53 2026 :: Log Trentlin [30513]: n
+Mon Nov 16 00:50:53 2026 :: Log Trentlin [30519]: arrived (Level 6: Gohma's Nest) from 30513
+Mon Nov 16 00:50:58 2026 :: Log Trentlin [30519]: kick
+Mon Nov 16 00:51:01 2026 :: Log Trentlin [30519]: kick
+Mon Nov 16 00:51:04 2026 :: Log Trentlin [30519]: rem bow
+Mon Nov 16 00:51:04 2026 :: Do_remove: Trentlin : bow
+Mon Nov 16 00:51:05 2026 :: Log Trentlin [30519]: fists
+Mon Nov 16 00:51:11 2026 :: Log Trentlin [30519]: wear bow
+Mon Nov 16 00:51:50 2026 :: Log Trentlin [30519]: flee
+Mon Nov 16 00:51:50 2026 :: Log Trentlin [30513]: arrived (Level 6: Threshold of the Nest) from 30519
+Mon Nov 16 00:51:51 2026 :: Log Trentlin [30513]: flee
+Mon Nov 16 00:51:51 2026 :: Log Trentlin [30513]: e
+Mon Nov 16 00:51:51 2026 :: Log Trentlin [30514]: arrived (Level 6: Eastern Bend) from 30513
+Mon Nov 16 00:51:54 2026 :: Log Trentlin [30514]: rem bow
+Mon Nov 16 00:51:55 2026 :: Log Trentlin [30514]: k b
+Mon Nov 16 00:51:58 2026 :: Log Trentlin [30514]: fists
+Mon Nov 16 00:52:04 2026 :: Log Trentlin [30514]: fists
+Mon Nov 16 00:52:09 2026 :: Log Trentlin [30514]: fists
+Mon Nov 16 00:52:09 2026 :: Log Trentlin [30514]: killed a vire
+Mon Nov 16 00:52:09 2026 :: Log Trentlin [30514]: coin +8 gold
+Mon Nov 16 00:52:09 2026 :: Log Trentlin [30514]: coin +115 silver
+Mon Nov 16 00:52:09 2026 :: Log Trentlin [30514]: coin +231 copper
+Mon Nov 16 00:52:09 2026 :: Log Trentlin [30514]: coin +71 gold
+Mon Nov 16 00:52:16 2026 :: Log Trentlin [30514]: affects off: iron skin
+Mon Nov 16 00:52:17 2026 :: Log Trentlin [30514]: l in co
+Mon Nov 16 00:52:17 2026 :: Log Trentlin [30514]: get key
+Mon Nov 16 00:52:19 2026 :: Log Trentlin [30514]: sac co
+Mon Nov 16 00:52:19 2026 :: Log Trentlin [30514]: coin +74 copper
+Mon Nov 16 00:52:20 2026 :: Log Trentlin [30514]: sleep
+Mon Nov 16 00:52:24 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 4 of 6 in 6 hours).

@@ -33083,3 +33083,41 @@
 1794789972	cmd	Trentlin	46	30514	hyrule.are	sleeping	33	0	-	wake		You wake and stand up.	-	-
 1794789973	cmd	Trentlin	46	30514	hyrule.are	standing	33	0	-	look		Level 6: Eastern Bend //   This chamber at the eastern edge of the labyrinth smells of storm and // singed fur. Sparks wink and vanish in the corners, and talon marks score	-	+
 1794789974	cmd	Trentlin	46	30514	hyrule.are	standing	33	0	-	sleep		You go to sleep.	-	-
+1794790229	cmd	Trentlin	46	30514	hyrule.are	sleeping	72	0	-	wake		You wake and stand up.	-	-
+1794790230	cmd	Trentlin	46	30514	hyrule.are	standing	72	0	-	iron		You lost your concentration.	-	-
+1794790232	cmd	Trentlin	46	30514	hyrule.are	standing	72	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.	-	-
+1794790239	cmd	Trentlin	46	30514	hyrule.are	standing	72	0	-	look		Level 6: Eastern Bend //   This chamber at the eastern edge of the labyrinth smells of storm and // singed fur. Sparks wink and vanish in the corners, and talon marks score	-	+
+1794790240	cmd	Trentlin	46	30514	hyrule.are	standing	72	0	-	wear	bow	You wield an Eagle archer's bow. // An Eagle archer's bow is a mystery to you. Better ask someone how to use it.	-	-
+1794790244	cmd	Trentlin	46	30514	hyrule.are	standing	72	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    something.	-	+
+1794790245	cmd	Trentlin	46	30513	hyrule.are	standing	72	0	-	west		Level 6: Threshold of the Nest //   Grooves cut by sliding blades scar the floor, and blue scorch marks stain // the walls of this hall. From behind the locked door in the north wall comes	-	+
+1794790246	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=2 players=1	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=35 mobs_fought=12 secs=900
+1794790246	cmd	Trentlin	46	30513	hyrule.are	standing	72	0	-	north		The door is closed.	-	-
+1794790248	cmd	Trentlin	46	30513	hyrule.are	standing	72	0	-	open	north	It's locked.	-	-
+1794790251	cmd	Trentlin	46	30513	hyrule.are	standing	72	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794790253	cmd	Trentlin	46	30513	hyrule.are	standing	72	0	-	open	north	Ok.	-	-
+1794790253	cmd	Trentlin	46	30519	hyrule.are	standing	72	0	-	north		Level 6: Gohma's Nest //   Shed carapace fragments and deep scuttle marks crisscross the floor of this // lair, and the walls are gouged by great pincers. Broken arrows lie thick	-	+
+1794790258	cmd	Trentlin	46	30519	hyrule.are	fighting	67	0	fight	kick		Your kick scratches Gohma.	-	-
+1794790261	cmd	Trentlin	46	30519	hyrule.are	fighting	67	0	fight	kick		Your kick wounds Gohma.	-	-
+1794790264	cmd	Trentlin	46	30519	hyrule.are	fighting	65	0	fight	remove	bow	You stop using an Eagle archer's bow.	-	-
+1794790265	cmd	Trentlin	46	30519	hyrule.are	fighting	65	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures Gohma. // Your fists of fury MASSACRES Gohma!	-	+
+1794790271	cmd	Trentlin	46	30519	hyrule.are	fighting	56	0	fight	wear	bow	You wield an Eagle archer's bow. // An Eagle archer's bow is a mystery to you. Better ask someone how to use it.	-	-
+1794790310	cmd	Trentlin	46	30513	hyrule.are	fighting	28	0	fight	flee		Gohma will not be driven from its ground. // Level 6: Threshold of the Nest //   Grooves cut by sliding blades scar the floor, and blue scorch marks stain	-	+
+1794790311	cmd	Trentlin	46	30513	hyrule.are	standing	28	0	-	flee		You aren't fighting anyone.	-	-
+1794790311	cmd	Trentlin	46	30514	hyrule.are	standing	28	0	-	east		Level 6: Eastern Bend //   This chamber at the eastern edge of the labyrinth smells of storm and // singed fur. Sparks wink and vanish in the corners, and talon marks score	-	+
+1794790314	cmd	Trentlin	46	30514	hyrule.are	standing	28	0	-	remove	bow	You stop using an Eagle archer's bow.	-	-
+1794790315	cmd	Trentlin	46	30514	hyrule.are	standing	28	0	-	kill	b	Your punch ^^^ DESTROYS ^^^ a vire! // A vire dodges your attack. // Your punch ^^^ DESTROYS ^^^ a vire!	-	-
+1794790317	skill	Trentlin	46	30514	hyrule.are	parry	84	85	success	(violence_update)
+1794790318	cmd	Trentlin	46	30514	hyrule.are	fighting	28	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEMOLISHES *** a vire! // Your fists of fury maims a vire!	-	+
+1794790324	skill	Trentlin	46	30514	hyrule.are	fists of fury	85	86	success	fists
+1794790324	cmd	Trentlin	46	30514	hyrule.are	fighting	28	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a vire. // Your fists of fury grazes a vire.	-	+
+1794790329	cmd	Trentlin	46	30514	hyrule.are	fighting	28	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS a vire! // Your fists of fury DISMEMBERS a vire!	-	+
+1794790329	coin	Trentlin	46	30514	hyrule.are	+80000	loot	(violence_update)	corpse of a vire	15425338858
+1794790329	coin	Trentlin	46	30514	hyrule.are	+11500	loot	(violence_update)	corpse of a vire	15425350358
+1794790329	coin	Trentlin	46	30514	hyrule.are	+231	loot	(violence_update)	corpse of a vire	15425350589
+1794790329	coin	Trentlin	46	30514	hyrule.are	+710000	loot	(violence_update)	corpse of a vire	15426060589
+1794790337	cmd	Trentlin	46	30514	hyrule.are	standing	30	0	-	look	in co	A stinking corpse contains: //      Nothing.	-	-
+1794790337	got	Trentlin	46	30514	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794790337	cmd	Trentlin	46	30514	hyrule.are	standing	30	0	-	get	key	You get a small key.	-	-
+1794790339	coin	Trentlin	46	30514	hyrule.are	+74	loot	sacrifice	-	15426060663
+1794790339	cmd	Trentlin	46	30514	hyrule.are	standing	30	0	-	sacrifice	co	The Gods give you 74 copper coins for your sacrifice.	-	-
+1794790340	cmd	Trentlin	46	30514	hyrule.are	standing	30	0	-	sleep		You go to sleep.	-	-
