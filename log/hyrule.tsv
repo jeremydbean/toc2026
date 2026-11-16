@@ -153,3 +153,5 @@
 1794790337	got	Trentlin	46	1	Monk 	30514	L6	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
 1794790578	engage	Trentlin	46	1	Monk 	30519	L6	foe=30223 foe_name=Gohma foe_hp=3 foe_max=2194 party=1 levels=46 classes=Monk  hps=51 buffs=-
 1794790610	flee	Trentlin	46	1	Monk 	30519	L6	foe=30223 foe_name=Gohma guardian=1 foe_hp=0 secs=32 hp=21
+1794790927	cleared	Trentlin	46	1	Monk 	30509	L6	foes=0
+1794790949	cleared	Trentlin	46	1	Monk 	30508	L6	foes=0
