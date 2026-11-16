@@ -309357,3 +309357,6 @@ Mon Nov 16 18:08:03 2026 :: EOF encountered on read.
 Mon Nov 16 18:08:03 2026 :: Connection guard: 134.33.64.215 closed before a password prompt (strike 1 of 6 in 6 hours).
 Mon Nov 16 18:08:04 2026 :: Sock.sinaddr:  134.33.64.215
 Mon Nov 16 18:08:04 2026 :: Connection guard: 134.33.64.215 closed before a password prompt (strike 2 of 6 in 6 hours).
+Mon Nov 16 18:10:12 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Mon Nov 16 18:12:48 2026 :: Connection guard: refused 1 connection from 3.149.57.90 (paused; 12 refused in all, pause 3 this week, 867 minutes left).
+Mon Nov 16 18:12:52 2026 :: Treasure goblin: vanished from room 1469 (The chamber of the white light, htower.are) (too long in one area).
