@@ -5155,3 +5155,4 @@
 1794815479	wizinfo	60	Connection guard: last hour 11 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 5 addresses paused and 0 refused now, 14 active player addresses.
 1794816672	wizinfo	60	Cartographer: appeared in room 5302 (Main Street, mirror.are) (level 9).
 1794818294	wizinfo	60	Black market: the dealer appeared in room 15181 (A Classroom, campus.are) with 5 items (stock 1794818294), for 38 minutes.
+1794818363	wizinfo	60	Connection guard: 3.149.57.90 paused for 24 hours (pause 3 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 3.149.57.90 lifts it.

@@ -309115,3 +309115,6 @@ Mon Nov 16 08:34:18 2026 :: Connection guard: 178.156.184.20 closed without a wo
 Mon Nov 16 08:37:46 2026 :: Treasure goblin: vanished from room 10160 (A bedroom., glitter.are) (too long in one area).
 Mon Nov 16 08:38:14 2026 :: Black market: stock 1794818294: staff of strength (29054, level 45, 41p); Sentri's sleeves (7655, level 35, 32p); some studded leather bracers (1015, level 31, 28p); an obsidian bracer (13213, level 29, 18p); the Horseman's cursed helm (29921, level 50, 12000p).
 Mon Nov 16 08:38:14 2026 :: Black market: the dealer appeared with 5 items (stock 1794818294), for 38 minutes.
+Mon Nov 16 08:39:23 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 6 of 6 in 6 hours).
+Mon Nov 16 08:39:23 2026 :: Connection guard: 3.149.57.90 paused for 24 hours (pause 3 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 3.149.57.90 lifts it.
+Mon Nov 16 08:43:31 2026 :: Black market: the dealer vanished from room 15174 (A Hallway, campus.are) (wandering).
