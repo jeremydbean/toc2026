@@ -33544,3 +33544,10 @@
 1794870772	laid	-	0	0	-	960	herb	53	a huckleberry	24563	abyss.are	scatter
 1794870772	laid	-	0	0	-	961	herb	48	an alfalfa sprout	24517	abyss.are	scatter
 1794870844	laid	-	0	0	-	962	component	83	a vial of thessalhydra venom	24244	crypt.are	scatter
+1794870898	laid	-	0	0	-	963	herb	40	a clove	7758	ultima.are	scatter
+1794871049	laid	-	0	0	-	964	component	87	a vial of grey ooze	15001	campus.are	scatter
+1794871116	laid	-	0	0	-	965	component	76	a vial of dragons blood	29363	voyage.are	scatter
+1794871157	area	Alaric	57	2	limbo.are	dresden.are	limbo.are	3180	(char_update)
+1794871157	area	Alaric	57	2497	dresden.are	limbo.are	dresden.are	0	(game loop)
+1794871157	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794871157	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	worth		You have 3896 platinum, 21 gold, 62 silver, 44 copper // and 252749 experience (39551 exp to level).	-	-
