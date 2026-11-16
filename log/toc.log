@@ -309049,3 +309049,8 @@ Mon Nov 16 05:41:45 2026 :: Connection guard: 5.161.117.52 closed without a word
 Mon Nov 16 05:42:39 2026 :: Treasure goblin: vanished from room 17203 (In Nessy's cave, highland.are) (too long in one area).
 Mon Nov 16 05:46:35 2026 :: Cartographer: left room 7838 (The Living Room, valley.are) (his visit is over).
 Mon Nov 16 05:46:49 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 16 05:51:19 2026 :: Connection guard: last hour 24 closed without a word, 50 refused, 0 new characters refused, 3 newly paused; 4 addresses paused and 0 refused now, 14 active player addresses.
+Mon Nov 16 05:51:50 2026 :: Connection guard: refused 1 connection from 35.210.223.127 (paused; 26 refused in all, pause 1 this week, 325 minutes left).
+Mon Nov 16 05:51:54 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 2 of 6 in 6 hours).
+Mon Nov 16 05:52:43 2026 :: Treasure goblin: vanished from room 16076 (Treasure Room, pirate.are) (too long in one area).
+Mon Nov 16 05:52:50 2026 :: Connection guard: refused 31 connections from 35.210.223.127 (since the last line; 57 refused in all, pause 1 this week, 324 minutes left).
