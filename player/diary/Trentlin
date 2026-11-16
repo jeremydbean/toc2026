@@ -150,18 +150,26 @@ List spend 1900000 0 heal
 List spend 13469280 0 devote
 End
 Day 2026-11-16
-Played 85
-Level 45 45 0
-Exp 0 0
-Kills 0
+Played 441
+Level 45 46 1
+Exp 1396 0
+Kills 2
 Deaths 0
 Close 0
-Quests 0 0
+Quests 1 57
 Dailies 0 0
-List area 19 0 City of Dresden
+List skill 92 93 enhanced damage
+List area 72 0 City of Dresden
 List area 4 0 Haon Dor
-List area 0 0 New Thalos
+List area 20 0 New Thalos
 List area 0 0 Continental Drift
-List area 62 0 The HighLands
+List area 193 0 The HighLands
+List area 3 0 Miden'nir
+List area 149 0 Pirate Ship
+List item 1 0 black steel vambraces
+List item 1 0 a pair of blackened steel greaves
+List earn 4821390 0 quests
+List earn 2061216 0 loot
+List spend 26300000 0 heal
 End
 #END
