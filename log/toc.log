@@ -309187,3 +309187,6 @@ Mon Nov 16 11:11:38 2026 :: Connection guard: 178.156.181.172 closed without a w
 Mon Nov 16 11:15:24 2026 :: Treasure goblin: vanished from room 5012 (Narrow bend, eastern.are) (too long in one area).
 Mon Nov 16 11:16:43 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 2 of 6 in 6 hours).
 Mon Nov 16 11:17:11 2026 :: Connection guard: 79.124.49.134 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 16 11:20:55 2026 :: Connection guard: 79.124.49.134 closed without a word (strike 2 of 6 in 6 hours).
+Mon Nov 16 11:20:57 2026 :: Connection guard: 79.124.49.134 closed without a word (strike 3 of 6 in 6 hours).
+Mon Nov 16 11:21:46 2026 :: Connection guard: refused 1 connection from 178.156.184.20 (paused; 7 refused in all, pause 3 this week, 1425 minutes left).
