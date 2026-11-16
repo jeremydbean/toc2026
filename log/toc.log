@@ -309222,3 +309222,5 @@ Mon Nov 16 12:28:06 2026 :: EOF encountered on read.
 Mon Nov 16 12:28:06 2026 :: Connection guard: 40.80.204.134 closed before a password prompt (strike 1 of 6 in 6 hours).
 Mon Nov 16 12:28:06 2026 :: Sock.sinaddr:  40.80.204.134
 Mon Nov 16 12:28:06 2026 :: Connection guard: 40.80.204.134 closed before a password prompt (strike 2 of 6 in 6 hours).
+Mon Nov 16 12:31:33 2026 :: Black market: the dealer vanished from room 13298 (Hallway, solace.are) (wandering).
+Mon Nov 16 12:32:48 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 3 of 6 in 6 hours).
