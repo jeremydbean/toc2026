@@ -309293,3 +309293,6 @@ Mon Nov 16 15:35:32 2026 :: Connection guard: 5.161.113.195 closed without a wor
 Mon Nov 16 15:40:37 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 3 of 6 in 6 hours).
 Mon Nov 16 15:41:34 2026 :: Cartographer: appeared.
 Mon Nov 16 15:45:41 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 16 15:50:44 2026 :: Connection guard: refused 1 connection from 3.149.57.90 (paused; 11 refused in all, pause 3 this week, 1009 minutes left).
+Mon Nov 16 15:51:19 2026 :: Connection guard: last hour 10 closed without a word, 3 refused, 0 new characters refused, 0 newly paused; 5 addresses paused and 0 refused now, 14 active player addresses.
+Mon Nov 16 15:51:47 2026 :: Treasure goblin: vanished from room 5266 (The darker dwarf forest, oldthalo.are) (too long in one area).
