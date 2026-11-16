@@ -309627,3 +309627,5 @@ Mon Nov 16 22:57:03 2026 :: Connection guard: 5.161.177.47 closed without a word
 Mon Nov 16 22:57:44 2026 :: Sock.sinaddr:  108.61.197.247
 Mon Nov 16 22:57:44 2026 :: Connection guard: 108.61.197.247 closed before a password prompt (strike 1 of 6 in 6 hours).
 Mon Nov 16 22:57:45 2026 :: Connection guard: 108.61.197.247 closed without a word (strike 2 of 6 in 6 hours).
+Mon Nov 16 23:02:08 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 5 of 6 in 6 hours).
+Mon Nov 16 23:03:45 2026 :: Treasure goblin: vanished from room 5616 (Guardmens corridors, tarin.are) (too long in one area).
