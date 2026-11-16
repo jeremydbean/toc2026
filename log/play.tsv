@@ -33364,3 +33364,32 @@
 1794791580	cmd	Trentlin	46	4208	dresden.are	standing	100	13	-	stash	put boot	You put a pair of ashstride boots away for safe keeping.	-	-
 1794791581	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) the Crystalline Sceptre of Commanding //      (Glowing) the Crystalline Crown of Perception	-	+
 1794791585	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	compare	crys	A) the Crystalline Sceptre of Commanding (level 50) -- can't use: needs level 50 // B) the Lizard's Heart Container (level 33), worn // Slot: held.  Your damage comes from weapons.	-	+
+1794791594	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	compare	2.crys	A) the Crystalline Crown of Perception (level 49) -- can't use: needs level 49 // B) a great war helmet (level 25), worn // Slot: head.  Your damage comes from weapons.	-	+
+1794791603	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	drop	crown	You drop the Crystalline Crown of Perception.	-	-
+1794791604	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	sacrifice	cornw	You can't find it.	-	-
+1794791607	coin	Trentlin	46	4208	dresden.are	+98	loot	sacrifice	-	15426798469
+1794791607	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	sacrifice	crown	The Gods give you 98 copper coins for your sacrifice.	-	-
+1794791609	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	compare	2.crys	A) (Flaming) the Crystalline Sword of Justice (level 50) -- can't use: needs level 50 // B) a short bow (level 6), worn // Slot: wield.  Your damage comes from weapons.	-	+
+1794791615	cmd	Trentlin	46	4208	dresden.are	standing	100	12	-	stash	put sword	You put (Flaming) the Crystalline Sword of Justice away for safe keeping.	-	-
+1794791617	cmd	Trentlin	46	4208	dresden.are	standing	100	7	-	stash	put dag	You put (Flaming) the Crystalline Dagger of Wonders away for safe keeping.	-	-
+1794791618	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	remove	bow	You stop using a short bow.	-	-
+1794791619	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) the Crystalline Sceptre of Commanding //      (Glowing) the Crystalline Robe of Shielding	-	+
+1794791622	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	compare	cryst	A) the Crystalline Sceptre of Commanding (level 50) -- can't use: needs level 50 // B) the Lizard's Heart Container (level 33), worn // Slot: held.  Your damage comes from weapons.	-	+
+1794791625	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	compare	2.cryst	A) the Crystalline Robe of Shielding (level 50) -- can't use: needs level 50 // B) some Black velvet robes (level 32), worn // Slot: body.  Your damage comes from weapons.	-	+
+1794791632	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	compare	3.cryst	A) the Crystalline Diadem of Perception (level 50) -- can't use: needs level 50 // B) a great war helmet (level 25), worn // Slot: head.  Your damage comes from weapons.	-	+
+1794791638	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	drop	dia	You drop the Crystalline Diadem of Perception.	-	-
+1794791639	coin	Trentlin	46	4208	dresden.are	+100	loot	sacrifice	-	15426798569
+1794791639	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	sacrifice	dia	The Gods give you 100 copper coins for your sacrifice.	-	-
+1794791640	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) the Crystalline Sceptre of Commanding //      (Glowing) the Crystalline Robe of Shielding	-	+
+1794791643	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	compare	cloak	A) the Crystalline Royal Cloak (level 50) -- can't use: needs level 50 // B) the Heart Guard of the Lizard (level 33), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794791651	cmd	Trentlin	46	4208	dresden.are	standing	100	12	-	stash	put crys	You put the Crystalline Sceptre of Commanding away for safe keeping.	-	-
+1794791651	cmd	Trentlin	46	4208	dresden.are	standing	100	4	-	stash	put crys	You put the Crystalline Robe of Shielding away for safe keeping.	-	-
+1794791651	cmd	Trentlin	46	4208	dresden.are	standing	100	4	-	stash	put crys	You put the Crystalline Royal Cloak away for safe keeping.	-	-
+1794791652	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	stash	put crys	You are not carrying that.	-	-
+1794791652	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	stash	put crys	You are not carrying that.	-	-
+1794791654	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      a purple container of tea // ( 5) a potion of true sight	-	+
+1794791656	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    something.	-	+
+1794791657	sightings	Trentlin	46	4208	dresden.are	mob	2434:2/0/0 2435:1/0/0 4448:1/0/0 201:1/0/0 2431:1/0/0 53:1/0/0 4444:1/0/0 4456:1/0/0 6102:2/0/0 6100:2/0/0 17101:10/0/0 17109:17/0/0 17112:4/0/0 17105:1/0/0 17116:8/0/0 17100:1/0/0 4202:1/0/0 4201:1/0/0 2433:1/0/0 2430:1/0/0 4459:2/0/0 4445:1/0/0 4457:1/0/0 9543:1/0/0 9562:4/0/0 9542:1/0/0 9519:1/0/0 9520:2/0/0 9592:5/0/0 9540:1/0/0 9533:3/0/0 9537:1/0/0 9568:2/0/0 9544:3/0/0 16012:4/0/0 16008:1/0/0 16010:1/0/0 16011:1/0/0 16009:2/2/0 15045:1/0/0 15016:1/0/0 15013:1/0/0 15018:1/0/0 15029:2/0/0 15014:1/0/0 15015:1/0/0 31064:1/0/0 31194:4/1/0 31184:1/0/0 31134:1/0/0 31204:1/0/0
+1794791657	sightings	Trentlin	46	4208	dresden.are	mob	31114:1/0/0 32084:1/0/0 30309:1/1/0 32275:1/0/0 32105:8/4/0 31135:3/1/0 31115:1/1/0 32375:2/0/0 32045:7/0/0 31215:10/5/0 31155:3/1/0 30354:1/0/0 32065:5/4/0 30223:1/1/0
+1794791657	sightings	Trentlin	46	4208	dresden.are	item	6106:2/0 6105:1/0 25042:1/1 3609:1/1 728:1/1 30227:8/8 30361:1/0 16:2/0 30485:2/1 17:1/0 12:1/0
+1794791657	session	Trentlin	46	4208	dresden.are	quit	2962s	+1 levels	+2120 exp	-9867784 copper	21 kills	0 deaths	1 quests	868 commands	3 refused	coin: loot 14p 92g 8s 26c, quests 4p 82g 13s 90c, spent 29p 61g	spent on: heal 29p 60g, shoot 1g	exp: kills +2120, skilluse +40, flee -40

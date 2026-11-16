@@ -150,7 +150,7 @@ List spend 1900000 0 heal
 List spend 13469280 0 devote
 End
 Day 2026-11-16
-Played 2885
+Played 2962
 Level 45 46 1
 Exp 2160 40
 Kills 21
@@ -164,7 +164,7 @@ List skill 92 94 enhanced damage
 List skill 84 85 parry
 List skill 85 86 fists of fury
 List skill 80 81 second attack
-List area 359 0 City of Dresden
+List area 436 0 City of Dresden
 List area 4 0 Haon Dor
 List area 30 0 New Thalos
 List area 0 0 Continental Drift
@@ -188,7 +188,7 @@ List item 1 0 a carapace cuirass
 List item 1 0 the Heart Guard of the Dragon
 More item 2
 List earn 4821390 0 quests
-List earn 14920628 0 loot
+List earn 14920826 0 loot
 List spend 29600000 0 heal
 List spend 10000 0 shoot
 End
