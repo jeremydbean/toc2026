@@ -309398,3 +309398,12 @@ Mon Nov 16 19:47:36 2026 :: Sock.sinaddr:  18.116.101.220
 Mon Nov 16 19:47:37 2026 :: EOF encountered on read.
 Mon Nov 16 19:47:37 2026 :: Connection guard: 18.116.101.220 closed before a password prompt (strike 2 of 6 in 6 hours).
 Mon Nov 16 19:49:13 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 2 of 6 in 6 hours).
+Mon Nov 16 19:49:43 2026 :: Sock.sinaddr:  18.116.101.220
+Mon Nov 16 19:49:43 2026 :: Connection guard: 18.116.101.220 closed before a password prompt (strike 3 of 6 in 6 hours).
+Mon Nov 16 19:49:59 2026 :: Connection guard: 18.116.101.220 closed without a word (strike 4 of 6 in 6 hours).
+Mon Nov 16 19:50:40 2026 :: Sock.sinaddr:  45.79.207.181
+Mon Nov 16 19:50:40 2026 :: Connection guard: 45.79.207.181 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 16 19:51:07 2026 :: Connection guard: 18.116.101.220 closed without a word (strike 5 of 6 in 6 hours).
+Mon Nov 16 19:51:19 2026 :: Connection guard: last hour 15 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 3 addresses paused and 0 refused now, 14 active player addresses.
+Mon Nov 16 19:53:39 2026 :: Treasure goblin: vanished from room 2359 (The frigid wastelands, mahntor.are) (too long in one area).
+Mon Nov 16 19:54:18 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 2 of 6 in 6 hours).
