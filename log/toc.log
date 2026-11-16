@@ -309068,3 +309068,5 @@ Mon Nov 16 06:17:16 2026 :: Connection guard: refused 1 connection from 54.167.2
 Mon Nov 16 06:22:20 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 5 of 6 in 6 hours).
 Mon Nov 16 06:22:57 2026 :: Treasure goblin: vanished from room 24111 (At an Ancient Clearing in Forest Murkmire, coven.are) (too long in one area).
 Mon Nov 16 06:27:26 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 3 of 6 in 6 hours).
+Mon Nov 16 06:32:30 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 6 of 6 in 6 hours).
+Mon Nov 16 06:32:30 2026 :: Connection guard: 178.156.189.113 paused for 12 hours (pause 2 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 178.156.189.113 lifts it.
