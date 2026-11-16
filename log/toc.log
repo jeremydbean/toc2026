@@ -309057,3 +309057,7 @@ Mon Nov 16 05:52:50 2026 :: Connection guard: refused 31 connections from 35.210
 Mon Nov 16 05:56:59 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 2 of 6 in 6 hours).
 Mon Nov 16 06:02:04 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 3 of 6 in 6 hours).
 Mon Nov 16 06:02:48 2026 :: Treasure goblin: vanished from room 5764 (Twisting trail through the forest, mid_ruin.are) (too long in one area).
+Mon Nov 16 06:07:08 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 4 of 6 in 6 hours).
+Mon Nov 16 06:08:28 2026 :: Sock.sinaddr:  167.71.241.147
+Mon Nov 16 06:08:28 2026 :: EOF encountered on read.
+Mon Nov 16 06:08:28 2026 :: Connection guard: 167.71.241.147 closed before a password prompt (strike 1 of 6 in 6 hours).
