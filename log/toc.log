@@ -309026,3 +309026,5 @@ Mon Nov 16 05:16:32 2026 :: Connection guard: 35.210.223.127 paused for 6 hours 
 Mon Nov 16 05:16:32 2026 :: Connection guard: refused 1 connection from 35.210.223.127 (paused; 1 refused in all, pause 1 this week, 360 minutes left).
 Mon Nov 16 05:16:32 2026 :: Connection guard: 35.210.223.127 closed without a word (strike 1 of 6 in 6 hours).
 Mon Nov 16 05:17:32 2026 :: Connection guard: refused 24 connections from 35.210.223.127 (since the last line; 25 refused in all, pause 1 this week, 359 minutes left).
+Mon Nov 16 05:21:26 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 3 of 6 in 6 hours).
+Mon Nov 16 05:22:29 2026 :: Treasure goblin: vanished from room 24224 (A Cloistered Hall, crypt.are) (too long in one area).
