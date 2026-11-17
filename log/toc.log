@@ -312301,3 +312301,7 @@ Tue Nov 17 12:25:31 2026 :: Connection guard: 201.79.61.174 closed before a pass
 Tue Nov 17 12:29:26 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 3 of 6 in 6 hours).
 Tue Nov 17 12:32:10 2026 :: Treasure goblin: vanished from room 12031 (Catwalks, froboz.are) (too long in one area).
 Tue Nov 17 12:34:29 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 17 12:36:39 2026 :: Sock.sinaddr:  204.76.203.44
+Tue Nov 17 12:36:39 2026 :: Connection guard: 204.76.203.44 closed before a password prompt (strike 1 of 6 in 6 hours).
+Tue Nov 17 12:36:39 2026 :: Connection guard: 204.76.203.44 closed without a word (strike 2 of 6 in 6 hours).
+Tue Nov 17 12:39:33 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 2 of 6 in 6 hours).
