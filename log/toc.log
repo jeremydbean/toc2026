@@ -309661,3 +309661,5 @@ Mon Nov 16 23:54:09 2026 :: Treasure goblin: vanished from room 12004 (Parking L
 Mon Nov 16 23:57:56 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 2 of 6 in 6 hours).
 Tue Nov 17 00:03:00 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 4 of 6 in 6 hours).
 Tue Nov 17 00:04:13 2026 :: Treasure goblin: vanished from room 5207 (The market place, oldthalo.are) (too long in one area).
+Tue Nov 17 00:08:06 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 6 of 6 in 6 hours).
+Tue Nov 17 00:08:06 2026 :: Connection guard: 5.161.194.92 paused for 12 hours (pause 2 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.194.92 lifts it.

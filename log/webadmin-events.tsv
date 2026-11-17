@@ -5185,3 +5185,4 @@
 1794869793	wizinfo	60	Black market: the dealer appeared in room 7683 (Yew Forest, ultima.are) with 5 items (stock 1794869793), for 25 minutes.
 1794871350	wizinfo	60	Connection guard: last hour 12 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 3 addresses paused and 0 refused now, 14 active player addresses.
 1794872198	wizinfo	60	New stun trap on the north door of Dungeon. [room 4479], [ ALL ] Drakk   City of Dresden.
+1794874086	wizinfo	60	Connection guard: 5.161.194.92 paused for 12 hours (pause 2 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.194.92 lifts it.
