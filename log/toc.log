@@ -312066,3 +312066,5 @@ Tue Nov 17 09:11:26 2026 :: Connection guard: 178.156.185.231 closed without a w
 Tue Nov 17 09:11:26 2026 :: Connection guard: 178.156.185.231 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 178.156.185.231 lifts it.
 Tue Nov 17 09:16:30 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 2 of 6 in 6 hours).
 Tue Nov 17 09:19:58 2026 :: Treasure goblin: vanished from room 629 (Big House, ofcol.are) (too long in one area).
+Tue Nov 17 09:21:35 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 17 09:22:30 2026 :: Connection guard: last hour 12 closed without a word, 1 refused, 0 new characters refused, 2 newly paused; 6 addresses paused and 0 refused now, 14 active player addresses.
