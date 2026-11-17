@@ -33626,3 +33626,10 @@
 1794874701	laid	-	0	0	-	1030	herb	37	a sprig of catnip	4601	dresden.are	scatter
 1794874776	laid	-	0	0	-	1031	herb	47	a sprig of saffron	6011	haon.are	scatter
 1794874776	laid	-	0	0	-	1032	herb	37	a sprig of catnip	6115	haon.are	scatter
+1794874921	laid	-	0	0	-	1033	herb	36	a belladonna plant	1650	wyvern.are	scatter
+1794874921	laid	-	0	0	-	1034	component	54	eye of newt	1833	haven.are	scatter
+1794874951	census	-	0	0	-	herbs=92/150 components=51/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=16 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1794874965	laid	-	0	0	-	1035	herb	53	a huckleberry	2050	catacomb.are	scatter
+1794874965	laid	-	0	0	-	1036	herb	35	a sprig of angelica	2067	catacomb.are	scatter
+1794875032	laid	-	0	0	-	1037	herb	46	a juniper berry	9994	valhalla.are	scatter
+1794875032	laid	-	0	0	-	1038	herb	46	a juniper berry	9921	valhalla.are	scatter

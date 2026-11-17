@@ -309671,3 +309671,8 @@ Tue Nov 17 00:14:28 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe,
 Tue Nov 17 00:14:28 2026 :: Log Alaric [2497]: who
 Tue Nov 17 00:14:28 2026 :: Log Alaric [2497]: worth
 Tue Nov 17 00:18:15 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 3 of 6 in 6 hours).
+Tue Nov 17 00:22:30 2026 :: Connection guard: last hour 13 closed without a word, 1 refused, 0 new characters refused, 1 newly paused; 4 addresses paused and 0 refused now, 14 active player addresses.
+Tue Nov 17 00:22:45 2026 :: Automated backup started.
+Tue Nov 17 00:22:46 2026 :: Automated backup complete.
+Tue Nov 17 00:23:20 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 17 00:24:23 2026 :: Treasure goblin: vanished from room 7594 (A meditation chamber, astral.are) (too long in one area).
