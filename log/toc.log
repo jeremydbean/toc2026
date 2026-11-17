@@ -312401,3 +312401,5 @@ Tue Nov 17 14:34:20 2026 :: Sock.sinaddr:  66.240.219.146
 Tue Nov 17 14:34:27 2026 :: EOF encountered on read.
 Tue Nov 17 14:34:27 2026 :: Connection guard: 66.240.219.146 closed before a password prompt (strike 1 of 6 in 6 hours).
 Tue Nov 17 14:36:18 2026 :: Connection guard: refused 1 connection from 178.156.185.231 (paused; 3 refused in all, pause 1 this week, 36 minutes left).
+Tue Nov 17 14:41:23 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 3 of 6 in 6 hours).
+Tue Nov 17 14:43:11 2026 :: Treasure goblin: vanished from room 6548 (Maze, dwarves.are) (too long in one area).
