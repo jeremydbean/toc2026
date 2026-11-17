@@ -5270,3 +5270,6 @@
 1794942241	wizinfo	60	Treasure goblin: appeared in room 3814 (A Dark Hallway, ratslair.are).
 1794944763	wizinfo	60	Connection guard: 5.161.215.244 paused for 12 hours (pause 2 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.215.244 lifts it.
 1794945841	wizinfo	60	Connection guard: last hour 11 closed without a word, 2 refused, 0 new characters refused, 1 newly paused; 8 addresses paused and 0 refused now, 14 active player addresses.
+1794946314	wizinfo	60	Cartographer: appeared in room 6365 (A Link in the Ethereal Web, arac.are) (level 21).
+1794946432	wizinfo	60	Connection guard: 147.224.214.89 refused a connection: 8 already waiting at the login prompt (told again in 10 minutes at most).
+1794946432	wizinfo	60	Connection guard: 147.224.214.89 paused for 6 hours (pause 1 this week; too many connections in a minute; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 147.224.214.89 lifts it.

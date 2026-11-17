@@ -313223,3 +313223,27 @@ Tue Nov 17 20:04:01 2026 :: Connection guard: last hour 11 closed without a word
 Tue Nov 17 20:04:29 2026 :: Treasure goblin: vanished from room 1313 (Inside the High Tower of Sorcerery, htower.are) (too long in one area).
 Tue Nov 17 20:06:19 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 13 refused in all, pause 3 this week, 973 minutes left).
 Tue Nov 17 20:10:07 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Tue Nov 17 20:11:22 2026 :: Connection guard: refused 1 connection from 5.161.215.244 (paused; 2 refused in all, pause 2 this week, 695 minutes left).
+Tue Nov 17 20:11:54 2026 :: Cartographer: appeared.
+Tue Nov 17 20:12:00 2026 :: Connection guard: 185.93.89.79 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 17 20:13:52 2026 :: Connection guard: 147.224.214.89 refused a connection: 8 already waiting at the login prompt (told again in 10 minutes at most).
+Tue Nov 17 20:13:52 2026 :: Connection guard: refused 1 connection from 147.224.214.89 (too many waiting at the login prompt; 0 refused in all, pause 0 this week, -29915772 minutes left).
+Tue Nov 17 20:13:52 2026 :: Connection guard: 147.224.214.89 paused for 6 hours (pause 1 this week; too many connections in a minute; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 147.224.214.89 lifts it.
+Tue Nov 17 20:13:52 2026 :: Sock.sinaddr:  147.224.214.89
+Tue Nov 17 20:13:52 2026 :: Sock.sinaddr:  147.224.214.89
+Tue Nov 17 20:13:52 2026 :: Sock.sinaddr:  147.224.214.89
+Tue Nov 17 20:13:52 2026 :: Sock.sinaddr:  147.224.214.89
+Tue Nov 17 20:13:52 2026 :: Sock.sinaddr:  147.224.214.89
+Tue Nov 17 20:13:52 2026 :: Sock.sinaddr:  147.224.214.89
+Tue Nov 17 20:13:52 2026 :: Sock.sinaddr:  147.224.214.89
+Tue Nov 17 20:13:52 2026 :: Sock.sinaddr:  147.224.214.89
+Tue Nov 17 20:13:52 2026 :: Connection guard: 147.224.214.89 closed before a password prompt (strike 1 of 6 in 6 hours).
+Tue Nov 17 20:13:52 2026 :: Connection guard: 147.224.214.89 closed before a password prompt (strike 2 of 6 in 6 hours).
+Tue Nov 17 20:13:52 2026 :: Connection guard: 147.224.214.89 closed before a password prompt (strike 3 of 6 in 6 hours).
+Tue Nov 17 20:13:52 2026 :: Connection guard: 147.224.214.89 closed before a password prompt (strike 4 of 6 in 6 hours).
+Tue Nov 17 20:13:52 2026 :: Connection guard: 147.224.214.89 closed before a password prompt (strike 5 of 6 in 6 hours).
+Tue Nov 17 20:13:52 2026 :: Connection guard: 147.224.214.89 closed before a password prompt (strike 6 of 6 in 6 hours).
+Tue Nov 17 20:13:52 2026 :: Connection guard: 147.224.214.89 closed before a password prompt (strike 7 of 6 in 6 hours).
+Tue Nov 17 20:13:52 2026 :: Connection guard: 147.224.214.89 closed before a password prompt (strike 8 of 6 in 6 hours).
+Tue Nov 17 20:14:34 2026 :: Treasure goblin: vanished from room 2317 (The hills overlooking the shore, mahntor.are) (too long in one area).
+Tue Nov 17 20:14:52 2026 :: Connection guard: refused 21 connections from 147.224.214.89 (since the last line; 11 refused in all, pause 1 this week, 359 minutes left).
