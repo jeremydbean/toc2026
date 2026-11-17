@@ -34102,3 +34102,6 @@
 1794878164	sightings	Alaric	57	2497	dresden.are	mob	201:1/0/0 10:1/0/0 4468:1/0/0 53:1/0/0 4444:1/0/0 2435:1/0/0 4456:1/0/0 309:1/0/0 300:1/0/0 9201:3/0/0 9238:1/0/0 9205:2/0/0 9232:1/0/0 9207:2/0/0 9204:1/0/0 9203:2/0/0 9222:3/0/0 9206:1/0/0 9225:7/0/0 9233:1/0/0 9224:2/0/0 9235:1/0/0 9237:1/0/0 9210:1/0/0
 1794878164	sightings	Alaric	57	2497	dresden.are	item	4446:1/0 4445:1/0 4444:1/0 304:2/0 301:1/0 25042:1/1
 1794878164	session	Alaric	57	2497	dresden.are	quit	10237s	+0 levels	+0 exp	+62370843 copper	0 kills	0 deaths	1 quests	59 commands	1 refused	coin: quests 169p 54g 20s 54c	spent on: none	exp: none
+1794880791	area	Trentlin	50	4210	dresden.are	-	dresden.are	-1	(game loop)
+1794880793	cmd	Trentlin	50	4210	dresden.are	sleeping	46	0	-	wake		You wake and stand up.	-	-
+1794880793	cmd	Trentlin	50	4210	dresden.are	standing	46	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
