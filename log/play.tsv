@@ -34559,3 +34559,145 @@
 1794881389	cmd	Trentlin	50	30332	hyrule.are	standing	100	0	-	down		Sand-Floored Hermitage //   Fine pale sand has blown in from the glade and drifted against the walls of // this snug cave, deep enough to swallow your heels. The ceiling is low and	-	+
 1794881391	cmd	Trentlin	50	30332	hyrule.are	standing	100	0	-	list		A mournful old man has nothing to sell, and these words cost nothing: //   "Meet the old man at the grave."	-	-
 1794881392	laid	-	0	0	-	1309	component	63	a phoenix feather	29007	korzath1.are	scatter
+1794881395	cmd	Trentlin	50	30206	hyrule.are	standing	100	0	-	up		Sandy Glade //   A clearing of loose, pale sand opens among the trees, oddly bare where the // forest should be. The sand is rippled and pocked with small round burrow	-	+
+1794881396	cmd	Trentlin	50	30221	hyrule.are	standing	100	0	-	north		Forest Stream //   A narrow stream threads through the trees, chattering over pebbles and // pooling in quiet, fern-hung basins. Mossy stepping stones make for an easy	-	+
+1794881397	cmd	Trentlin	50	30220	hyrule.are	standing	100	0	-	west		The Herb-Gatherers' Wood //   Tall trees stand well apart here, and a worn trail winds between them to // the north, east and west. A cave mouth above the trail breathes a bitter	-	+
+1794881399	cmd	Trentlin	50	30694	hyrule.are	standing	100	0	-	up		Simmering Herb Cellar //   Mist from the woods creeps down the steps and mingles with the steam of // simmering herbs, so that the cave seems full of a sour green fog. A pair of	-	+
+1794881400	cmd	Trentlin	50	30694	hyrule.are	standing	100	0	-	list		An old woman smelling of herbs looks you over for a royal seal. "Show me the Princess's letter first."	-	-
+1794881401	cmd	Trentlin	50	30220	hyrule.are	standing	100	0	-	down		The Herb-Gatherers' Wood //   Tall trees stand well apart here, and a worn trail winds between them to // the north, east and west. A cave mouth above the trail breathes a bitter	-	+
+1794881402	cmd	Trentlin	50	30221	hyrule.are	standing	100	0	-	east		Forest Stream //   A narrow stream threads through the trees, chattering over pebbles and // pooling in quiet, fern-hung basins. Mossy stepping stones make for an easy	-	+
+1794881403	cmd	Trentlin	50	30222	hyrule.are	standing	100	0	-	east		Candle Shop Knoll //   A grassy knoll rises above the surrounding fields, crowned by a weathered // outcrop of brown rock. A cave mouth in its side flickers with a soft yellow	-	+
+1794881403	cmd	Trentlin	50	30682	hyrule.are	standing	100	0	-	down		The Waxlight Shop //   Drips of old wax have built up on every ledge of this cave into pale, lumpy // spires, and the warm smell of tallow is thick enough to taste. Two fires	-	+
+1794881404	cmd	Trentlin	50	30682	hyrule.are	standing	100	0	-	list		[Lv Price] Item // [ 5        60g] a Blue Candle. // [ 1         1p] a small key.	-	+
+1794881407	coin	Trentlin	50	30682	hyrule.are	-1000000	spent	buy	a bald merchant	16373919001
+1794881407	got	Trentlin	50	30682	hyrule.are	30545	a small key	key	1	1000000	buy	a bald merchant
+1794881407	cmd	Trentlin	50	30682	hyrule.are	standing	100	0	-	buy	key	You buy a small key.	-	-
+1794881407	coin	Trentlin	50	30682	hyrule.are	-1000000	spent	buy	a bald merchant	16372919001
+1794881407	got	Trentlin	50	30682	hyrule.are	30545	a small key	key	1	1000000	buy	a bald merchant
+1794881407	cmd	Trentlin	50	30682	hyrule.are	standing	100	0	-	buy	key	You buy a small key.	-	-
+1794881408	coin	Trentlin	50	30682	hyrule.are	-1000000	spent	buy	a bald merchant	16371919001
+1794881408	got	Trentlin	50	30682	hyrule.are	30545	a small key	key	1	1000000	buy	a bald merchant
+1794881408	cmd	Trentlin	50	30682	hyrule.are	standing	100	0	-	buy	key	You buy a small key.	-	-
+1794881408	coin	Trentlin	50	30682	hyrule.are	-1000000	spent	buy	a bald merchant	16370919001
+1794881408	got	Trentlin	50	30682	hyrule.are	30545	a small key	key	1	1000000	buy	a bald merchant
+1794881408	cmd	Trentlin	50	30682	hyrule.are	standing	100	0	-	buy	key	You buy a small key.	-	-
+1794881408	coin	Trentlin	50	30682	hyrule.are	-1000000	spent	buy	a bald merchant	16369919001
+1794881408	got	Trentlin	50	30682	hyrule.are	30545	a small key	key	1	1000000	buy	a bald merchant
+1794881408	cmd	Trentlin	50	30682	hyrule.are	standing	100	0	-	buy	key	You buy a small key.	-	-
+1794881408	coin	Trentlin	50	30682	hyrule.are	-1000000	spent	buy	a bald merchant	16368919001
+1794881408	got	Trentlin	50	30682	hyrule.are	30545	a small key	key	1	1000000	buy	a bald merchant
+1794881408	cmd	Trentlin	50	30682	hyrule.are	standing	100	0	-	buy	key	You buy a small key.	-	-
+1794881409	cmd	Trentlin	50	30222	hyrule.are	standing	100	0	-	up		Candle Shop Knoll //   A grassy knoll rises above the surrounding fields, crowned by a weathered // outcrop of brown rock. A cave mouth in its side flickers with a soft yellow	-	+
+1794881411	cmd	Trentlin	50	30317	hyrule.are	standing	100	0	-	play	recorder 9	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Spectacle Rock	-	+
+1794881416	cmd	Trentlin	50	30317	hyrule.are	standing	100	0	-	bomb	rock	You set a bomb beside a cracked stone floor and dive aside. The blast opens a passage!	-	-
+1794881416	cmd	Trentlin	50	30590	hyrule.are	standing	100	0	-	down		Level 9: Gate Beneath Spectacle Rock //   Cold air pours down from the mountain's heart into this bare stone // vestibule, carved where the twin crags of Spectacle Rock meet the ground.	-	+
+1794881418	cmd	Trentlin	50	30596	hyrule.are	standing	100	0	-	north		Level 9: Mountain Gate Fireside //   Black rock walls swallow most of the light thrown by the iron braziers that // flank a worn patch of floor, and the corners stay dark however the flames	-	+
+1794881418	cmd	Trentlin	50	30595	hyrule.are	standing	100	0	-	west		The shutter opens now that the chamber is clear. // Level 9: Scorched Vestibule //   Blackened rings and starbursts of soot mark the floor and walls, as though	-	+
+1794881424	cmd	Trentlin	50	30595	hyrule.are	standing	100	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!	-	-
+1794881425	cmd	Trentlin	50	30602	hyrule.are	standing	100	0	-	north		Level 9: The Sealed Sand Hollow //   Every wall of this sandy chamber is solid and doorless, but each shows a // faint web of cracks where the stone has been weakened, waiting for bombs.	-	+
+1794881425	cmd	Trentlin	50	30633	hyrule.are	standing	100	0	-	down		Level 9: Stair of the Devourers //   Sticky residue coats the floor around a stair that drops into a tunnel // running deep beneath the dungeon, and scraps of chewed leather and bent	-	+
+1794881427	cmd	Trentlin	50	30633	hyrule.are	standing	100	0	-	east		The door is bound shut by an old magic: only its key will open it.	-	-
+1794881429	cmd	Trentlin	50	30633	hyrule.are	standing	100	0	-	unlock	east	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794881430	cmd	Trentlin	50	30633	hyrule.are	standing	100	0	-	open	east	Ok.	-	-
+1794881431	cmd	Trentlin	50	30634	hyrule.are	standing	100	0	-	east		Level 9: Blue-Scorched Hall //   Pale bluish scorch marks streak the walls in straight lines, crossing and // recrossing one another where blue-robed sorcerers have stepped through the	-	+
+1794881437	cmd	Trentlin	50	30634	hyrule.are	standing	100	0	-	bomb	south	You set a bomb beside a cracked south wall and dive aside. The blast opens a passage!	-	-
+1794881437	cmd	Trentlin	50	30626	hyrule.are	standing	100	0	-	south		Level 9: Ooze-Streaked Passage //   Streaks of slime run down the walls of this narrow chamber, a few shield // rivets lie in a sticky puddle, and a cold, uneasy feeling lingers in the	-	+
+1794881441	cmd	Trentlin	50	30626	hyrule.are	standing	100	0	-	east		The door is bound shut by an old magic: only its key will open it.	-	-
+1794881445	cmd	Trentlin	50	30626	hyrule.are	standing	100	0	-	unlock	east	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794881445	cmd	Trentlin	50	30627	hyrule.are	standing	100	0	-	east		Level 9: Hall of Quivering Gel //   Little blobs of jelly quiver on every flagstone, leaving sticky trails // behind them and hopping in short bursts toward any warmth. The room smells	-	+
+1794881451	cmd	Trentlin	50	30627	hyrule.are	standing	100	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!	-	-
+1794881451	cmd	Trentlin	50	30628	hyrule.are	standing	100	0	-	east		Level 9: The Cartographer's Vault //   Dust spins in a slow circle across the floor of this sealed eastern vault, // as if stirred by an endless breath, and the walls are scored by the orbit	-	+
+1794881454	cmd	Trentlin	50	30628	hyrule.are	standing	100	0	-	get	all	You can't take that.	-	-
+1794881455	cmd	Trentlin	50	30628	hyrule.are	standing	100	0	-	look	in chest	Death Mountain's equipment chest contains: //      (Magical) Ganon's shadow crown //      (Magical) a coat of red-ring mail	-	+
+1794881459	got	Trentlin	50	30628	hyrule.are	30388	Ganon's shadow crown	armor	59	174050000	get	Death Mountain's equipment chest
+1794881459	got	Trentlin	50	30628	hyrule.are	30387	a coat of red-ring mail	armor	59	174050000	get	Death Mountain's equipment chest
+1794881459	got	Trentlin	50	30628	hyrule.are	30386	a silver-arrow spear	weapon	58	168200000	get	Death Mountain's equipment chest
+1794881459	got	Trentlin	50	30628	hyrule.are	30385	the Heart Guard of the Lion	armor	52	135200000	get	Death Mountain's equipment chest
+1794881459	got	Trentlin	50	30628	hyrule.are	30384	a Magical Key pendant	armor	57	162450000	get	Death Mountain's equipment chest
+1794881459	got	Trentlin	50	30628	hyrule.are	30383	a pair of spellbook bracers	armor	57	162450000	get	Death Mountain's equipment chest
+1794881459	got	Trentlin	50	30628	hyrule.are	30382	the Heart Guard of the Demon	armor	46	105800000	get	Death Mountain's equipment chest
+1794881459	got	Trentlin	50	30628	hyrule.are	30381	an ancient dragon-scale mantle	armor	56	156800000	get	Death Mountain's equipment chest
+1794881459	got	Trentlin	50	30628	hyrule.are	30380	a Goriya provisioner's belt	armor	55	151250000	get	Death Mountain's equipment chest
+1794881459	got	Trentlin	50	30628	hyrule.are	30379	a pair of Demon maze boots	armor	55	151250000	get	Death Mountain's equipment chest
+1794881459	got	Trentlin	50	30628	hyrule.are	30378	the Heart Guard of the Dragon	armor	40	80000000	get	Death Mountain's equipment chest
+1794881459	got	Trentlin	50	30628	hyrule.are	30377	the shield of Gohma's eye	armor	54	145800000	get	Death Mountain's equipment chest
+1794881459	got	Trentlin	50	30628	hyrule.are	30376	a dragon-mage's wandblade	weapon	53	140450000	get	Death Mountain's equipment chest
+1794881459	got	Trentlin	50	30628	hyrule.are	30375	a pair of orange Wizzrobe gloves	armor	53	140450000	get	Death Mountain's equipment chest
+1794881459	cmd	Trentlin	50	30628	hyrule.are	standing	100	0	-	get	all chest	You get Ganon's shadow crown from Death Mountain's equipment chest. // You get a coat of red-ring mail from Death Mountain's equipment chest. // You get a silver-arrow spear from Death Mountain's equipment chest.	-	+
+1794881461	cmd	Trentlin	50	30628	hyrule.are	standing	100	0	-	inventory		You are carrying: //      (Magical) a pair of orange Wizzrobe gloves //      (Magical) a dragon-mage's wandblade	-	+
+1794881463	cmd	Trentlin	50	30628	hyrule.are	standing	100	0	-	look		Level 9: The Cartographer's Vault //   Dust spins in a slow circle across the floor of this sealed eastern vault, // as if stirred by an endless breath, and the walls are scored by the orbit	-	+
+1794881464	cmd	Trentlin	50	30628	hyrule.are	standing	100	0	-	consider	pa	A patra is well above your level. // A patra has many times your hit points. // A patra's great eye is out of reach while its ring of eyes orbits it: each blow cuts down one of the ring first.	-	+
+1794881468	laid	-	0	0	-	1326	herb	46	a juniper berry	1004	uargo.are	scatter
+1794881468	laid	-	0	0	-	1327	herb	39	a chervil leaf	1042	uargo.are	scatter
+1794881468	laid	-	0	0	-	1328	component	78	a vial of demons blood	5356	mirror.are	scatter
+1794881475	cmd	Trentlin	50	30628	hyrule.are	standing	100	0	-	kill	pa	Your blow cuts down one of the eyes orbiting a patra -- 7 left. The great eye is out of reach until the ring is broken. // A patra parries your attack. // A patra dodges your attack.	-	-
+1794881479	cmd	Trentlin	50	30628	hyrule.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your blow cuts down one of the eyes orbiting a patra -- 6 left. The great eye is out of reach until the ring is broken. // Your blow cuts down one of the eyes orbiting a patra -- 5 left. The great ey	-	+
+1794881484	cmd	Trentlin	50	30628	hyrule.are	fighting	89	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a patra! // Your fists of fury decimates a patra!	-	+
+1794881490	cmd	Trentlin	50	30628	hyrule.are	fighting	85	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ a patra! // Your fists of fury MASSACRES a patra!	-	+
+1794881497	cmd	Trentlin	50	30628	hyrule.are	fighting	79	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS a patra! // Your fists of fury decimates a patra!	-	+
+1794881509	cmd	Trentlin	50	30628	hyrule.are	fighting	79	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a patra. // Your fists of fury *** DEVASTATES *** a patra!	-	+
+1794881511	laid	-	0	0	-	1329	herb	40	a clove	18014	icekeep.are	scatter
+1794881511	laid	-	0	0	-	1330	herb	47	a sprig of saffron	18132	icekeep.are	scatter
+1794881511	laid	-	0	0	-	1331	component	70	a dragon tooth	7599	astral.are	scatter
+1794881521	cmd	Trentlin	50	30628	hyrule.are	fighting	71	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a patra! // Your fists of fury grazes a patra.	-	+
+1794881533	cmd	Trentlin	50	30628	hyrule.are	fighting	50	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a patra. // Your fists of fury DISMEMBERS a patra!	-	+
+1794881556	cmd	Trentlin	50	30628	hyrule.are	fighting	21	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a patra. // Your fists of fury MUTILATES a patra!	-	+
+1794881564	laid	-	0	0	-	1332	herb	40	a clove	20167	prison.are	scatter
+1794881564	laid	-	0	0	-	1333	herb	36	a belladonna plant	20103	prison.are	scatter
+1794881568	cmd	Trentlin	50	30627	hyrule.are	fighting	11	0	fight	flee		A patra will not be driven from its ground. // Level 9: Hall of Quivering Gel //   Little blobs of jelly quiver on every flagstone, leaving sticky trails	-	+
+1794881569	cmd	Trentlin	50	30627	hyrule.are	standing	11	0	-	flee		You aren't fighting anyone.	-	-
+1794881570	cmd	Trentlin	50	30627	hyrule.are	standing	11	0	-	inventory		You are carrying: //      (Magical) a pair of orange Wizzrobe gloves //      (Magical) a dragon-mage's wandblade	-	+
+1794881573	cmd	Trentlin	50	30627	hyrule.are	standing	11	0	-	quaff	prot	This liquid is too powerful for you to drink.	-	-
+1794881575	cmd	Trentlin	50	30627	hyrule.are	standing	11	0	-	quaff	opa	This liquid is too powerful for you to drink.	-	-
+1794881577	cmd	Trentlin	50	30627	hyrule.are	standing	11	0	-	inventory		You are carrying: //      (Magical) a pair of orange Wizzrobe gloves //      (Magical) a dragon-mage's wandblade	-	+
+1794881581	cmd	Trentlin	50	30627	hyrule.are	standing	11	0	-	compare	crown	A) Ganon's shadow crown (level 59) -- can't use: needs level 59 // B) a great war helmet (level 25), worn // Slot: head.  Your damage comes from weapons.	-	+
+1794881594	cmd	Trentlin	50	30627	hyrule.are	standing	11	13	-	stash	put crown	You put Ganon's shadow crown away for safe keeping.	-	-
+1794881595	cmd	Trentlin	50	30627	hyrule.are	standing	11	0	-	inventory		You are carrying: //      (Magical) a pair of orange Wizzrobe gloves //      (Magical) a dragon-mage's wandblade	-	+
+1794881600	cmd	Trentlin	50	30627	hyrule.are	standing	11	0	-	compare	brac	A) a pair of spellbook bracers (level 57) -- can't use: needs level 57 // B) a white bracer (level 40), worn // Slot: wrist.  Your damage comes from weapons.	-	+
+1794881606	cmd	Trentlin	50	30627	hyrule.are	standing	11	0	-	drop	brac	You drop a pair of spellbook bracers.	-	-
+1794881607	coin	Trentlin	50	30627	hyrule.are	+114	loot	sacrifice	-	16368919115
+1794881607	cmd	Trentlin	50	30627	hyrule.are	standing	11	0	-	sacrifice	brac	The Gods give you 114 copper coins for your sacrifice.	-	-
+1794881608	cmd	Trentlin	50	30627	hyrule.are	standing	11	0	-	inventory		You are carrying: //      (Magical) a pair of orange Wizzrobe gloves //      (Magical) a dragon-mage's wandblade	-	+
+1794881610	cmd	Trentlin	50	30627	hyrule.are	standing	11	0	-	compare	mant	A) an ancient dragon-scale mantle (level 56) -- can't use: needs level 56 // B) a twin-headed mantle (level 27), worn // Slot: about body.  Your damage comes from weapons.	-	+
+1794881614	cmd	Trentlin	50	30627	hyrule.are	standing	11	0	-	drop	mant	You drop an ancient dragon-scale mantle.	-	-
+1794881615	coin	Trentlin	50	30627	hyrule.are	+112	loot	sacrifice	-	16368919227
+1794881615	cmd	Trentlin	50	30627	hyrule.are	standing	11	0	-	sacrifice	mant	The Gods give you 112 copper coins for your sacrifice.	-	-
+1794881616	cmd	Trentlin	50	30627	hyrule.are	standing	11	0	-	inventory		You are carrying: //      (Magical) a pair of orange Wizzrobe gloves //      (Magical) a dragon-mage's wandblade	-	+
+1794881619	cmd	Trentlin	50	30627	hyrule.are	standing	11	0	-	compare	belt	A) a Goriya provisioner's belt (level 55) -- can't use: needs level 55 // B) a quick sheathe (level 9), worn // Slot: waist.  Your damage comes from weapons.	-	+
+1794881623	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	drop	bel	You drop a Goriya provisioner's belt.	-	-
+1794881624	coin	Trentlin	50	30627	hyrule.are	+110	loot	sacrifice	-	16368919337
+1794881624	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	sacrifice	bel	The Gods give you 110 copper coins for your sacrifice.	-	-
+1794881624	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	inventory		You are carrying: //      (Magical) a pair of orange Wizzrobe gloves //      (Magical) a dragon-mage's wandblade	-	+
+1794881626	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	compare	boot	A) a pair of Demon maze boots (level 55) -- can't use: needs level 55 // B) a pair of Dodongo stompers (level 14), worn // Slot: feet.  Your damage comes from weapons.	-	+
+1794881629	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	drop	boot	You drop a pair of Demon maze boots.	-	-
+1794881630	coin	Trentlin	50	30627	hyrule.are	+110	loot	sacrifice	-	16368919447
+1794881630	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	sacrifice	boot	The Gods give you 110 copper coins for your sacrifice.	-	-
+1794881631	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	inventory		You are carrying: //      (Magical) a pair of orange Wizzrobe gloves //      (Magical) a dragon-mage's wandblade	-	+
+1794881634	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	compare	dragon	A) a dragon-mage's wandblade (level 53) -- can't use: needs level 53 // B) nothing -- the slot is empty // Slot: wield.  Your damage comes from weapons.	-	+
+1794881648	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	drop	dragon	You drop a dragon-mage's wandblade.	-	-
+1794881650	coin	Trentlin	50	30627	hyrule.are	+106	loot	sacrifice	-	16368919553
+1794881650	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	sacrifice	dragon	The Gods give you 106 copper coins for your sacrifice.	-	-
+1794881652	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	compare	dragon	A) the Heart Guard of the Dragon (level 40) // B) the Heart Guard of the Lizard (level 33), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794881659	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	drop	dragon	You drop the Heart Guard of the Dragon.	-	-
+1794881660	coin	Trentlin	50	30627	hyrule.are	+80	loot	sacrifice	-	16368919633
+1794881660	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	sacrifice	dragon	The Gods give you 80 copper coins for your sacrifice.	-	-
+1794881662	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	inventory		You are carrying: //      (Magical) a pair of orange Wizzrobe gloves //      (Magical) the shield of Gohma's eye	-	+
+1794881665	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	compare	shield	A) the shield of Gohma's eye (level 54) -- can't use: needs level 54 // B) a coiled-snake shield (level 27), worn // Slot: off hand.  Your damage comes from weapons.	-	+
+1794881668	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	drop	shie	You drop the shield of Gohma's eye.	-	-
+1794881669	coin	Trentlin	50	30627	hyrule.are	+108	loot	sacrifice	-	16368919741
+1794881669	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	sacrifice	shi	The Gods give you 108 copper coins for your sacrifice.	-	-
+1794881670	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	inventory		You are carrying: //      (Magical) a pair of orange Wizzrobe gloves //      (Magical) the Heart Guard of the Demon	-	+
+1794881672	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	compare	glo	A) a pair of orange Wizzrobe gloves (level 53) -- can't use: needs level 53 // B) a pair of pincer gauntlets (level 40), worn // Slot: hands.  Your damage comes from weapons.	-	+
+1794881674	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	drop	glo	You drop a pair of orange Wizzrobe gloves.	-	-
+1794881675	coin	Trentlin	50	30627	hyrule.are	+106	loot	sacrifice	-	16368919847
+1794881675	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	sacrifice	glo	The Gods give you 106 copper coins for your sacrifice.	-	-
+1794881676	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	inventory		You are carrying: //      (Magical) the Heart Guard of the Demon //      (Magical) a Magical Key pendant	-	+
+1794881679	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	compare	demon	A) the Heart Guard of the Demon (level 46) // B) the Heart Guard of the Lizard (level 33), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794881683	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	drop	demon	You drop the Heart Guard of the Demon.	-	-
+1794881685	coin	Trentlin	50	30627	hyrule.are	+92	loot	sacrifice	-	16368919939
+1794881685	cmd	Trentlin	50	30627	hyrule.are	standing	12	0	-	sacrifice	demon	The Gods give you 92 copper coins for your sacrifice.	-	-
+1794881685	laid	-	0	0	-	1343	herb	43	a sprig of hyssop	5340	mirror.are	scatter
+1794881685	laid	-	0	0	-	1344	herb	49	a pomegranate	5376	mirror.are	scatter
+1794881685	laid	-	0	0	-	1345	component	59	a patch of lycanthrope fur	5369	mirror.are	scatter
+1794881685	cmd	Trentlin	50	30627	hyrule.are	standing	14	0	-	inventory		You are carrying: //      (Magical) a Magical Key pendant // ( 2) (Magical) the Heart Guard of the Lion	-	+
+1794881687	cmd	Trentlin	50	30627	hyrule.are	standing	14	0	-	compare	pen	A) a Magical Key pendant (level 57) -- can't use: needs level 57 // B) the Heart Guard of the Lizard (level 33), worn // Slot: neck.  Your damage comes from weapons.	-	+

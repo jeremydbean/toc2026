@@ -203,3 +203,30 @@
 1794881294	leave	Trentlin	50	1	Monk 	30317	over	to=out how=recall secs=1 hp=35
 1794881366	enter	Trentlin	50	1	Monk 	30200	over	from=out how=enter hp=100
 1794881376	got	Trentlin	50	1	Monk 	30686	over	obj=30695 obj_name=four_bombs type=treasure obj_level=1 how=buy
+1794881407	got	Trentlin	50	1	Monk 	30682	over	obj=30545 obj_name=a_small_key type=key obj_level=1 how=buy
+1794881407	got	Trentlin	50	1	Monk 	30682	over	obj=30545 obj_name=a_small_key type=key obj_level=1 how=buy
+1794881408	got	Trentlin	50	1	Monk 	30682	over	obj=30545 obj_name=a_small_key type=key obj_level=1 how=buy
+1794881408	got	Trentlin	50	1	Monk 	30682	over	obj=30545 obj_name=a_small_key type=key obj_level=1 how=buy
+1794881408	got	Trentlin	50	1	Monk 	30682	over	obj=30545 obj_name=a_small_key type=key obj_level=1 how=buy
+1794881408	got	Trentlin	50	1	Monk 	30682	over	obj=30545 obj_name=a_small_key type=key obj_level=1 how=buy
+1794881416	seal	Trentlin	50	1	Monk 	30317	over	obj=30509 obj_name=a_cracked_stone_floor dir=5 how=bomb
+1794881416	leave	Trentlin	50	1	Monk 	30317	over	to=L9 how=down secs=50 hp=100
+1794881416	enter	Trentlin	50	1	Monk 	30590	L9	from=over how=down hp=100
+1794881424	seal	Trentlin	50	1	Monk 	30595	L9	obj=30502 obj_name=a_cracked_north_wall dir=0 how=bomb
+1794881437	seal	Trentlin	50	1	Monk 	30634	L9	obj=30504 obj_name=a_cracked_south_wall dir=2 how=bomb
+1794881451	seal	Trentlin	50	1	Monk 	30627	L9	obj=30503 obj_name=a_cracked_east_wall dir=1 how=bomb
+1794881459	got	Trentlin	50	1	Monk 	30628	L9	obj=30388 obj_name=Ganon's_shadow_crown type=armor obj_level=59 how=get
+1794881459	got	Trentlin	50	1	Monk 	30628	L9	obj=30387 obj_name=a_coat_of_red-ring_mail type=armor obj_level=59 how=get
+1794881459	got	Trentlin	50	1	Monk 	30628	L9	obj=30386 obj_name=a_silver-arrow_spear type=weapon obj_level=58 how=get
+1794881459	got	Trentlin	50	1	Monk 	30628	L9	obj=30385 obj_name=the_Heart_Guard_of_the_Lion type=armor obj_level=52 how=get
+1794881459	got	Trentlin	50	1	Monk 	30628	L9	obj=30384 obj_name=a_Magical_Key_pendant type=armor obj_level=57 how=get
+1794881459	got	Trentlin	50	1	Monk 	30628	L9	obj=30383 obj_name=a_pair_of_spellbook_bracers type=armor obj_level=57 how=get
+1794881459	got	Trentlin	50	1	Monk 	30628	L9	obj=30382 obj_name=the_Heart_Guard_of_the_Demon type=armor obj_level=46 how=get
+1794881459	got	Trentlin	50	1	Monk 	30628	L9	obj=30381 obj_name=an_ancient_dragon-scale_mantle type=armor obj_level=56 how=get
+1794881459	got	Trentlin	50	1	Monk 	30628	L9	obj=30380 obj_name=a_Goriya_provisioner's_belt type=armor obj_level=55 how=get
+1794881459	got	Trentlin	50	1	Monk 	30628	L9	obj=30379 obj_name=a_pair_of_Demon_maze_boots type=armor obj_level=55 how=get
+1794881459	got	Trentlin	50	1	Monk 	30628	L9	obj=30378 obj_name=the_Heart_Guard_of_the_Dragon type=armor obj_level=40 how=get
+1794881459	got	Trentlin	50	1	Monk 	30628	L9	obj=30377 obj_name=the_shield_of_Gohma's_eye type=armor obj_level=54 how=get
+1794881459	got	Trentlin	50	1	Monk 	30628	L9	obj=30376 obj_name=a_dragon-mage's_wandblade type=weapon obj_level=53 how=get
+1794881459	got	Trentlin	50	1	Monk 	30628	L9	obj=30375 obj_name=a_pair_of_orange_Wizzrobe_gloves type=armor obj_level=53 how=get
+1794881568	flee	Trentlin	50	1	Monk 	30628	L9	foe=32188 foe_name=a_patra guardian=0 foe_hp=14 secs=93 hp=11
