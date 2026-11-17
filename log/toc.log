@@ -311947,3 +311947,5 @@ Tue Nov 17 04:21:58 2026 :: Connection guard: 5.161.215.244 closed without a wor
 Tue Nov 17 04:22:30 2026 :: Connection guard: last hour 13 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 3 addresses paused and 0 refused now, 14 active player addresses.
 Tue Nov 17 04:23:24 2026 :: Automated backup started.
 Tue Nov 17 04:23:24 2026 :: Automated backup complete.
+Tue Nov 17 04:27:03 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 4 of 6 in 6 hours).
+Tue Nov 17 04:27:42 2026 :: Treasure goblin: vanished from room 7751 (The Place of Ultimate Evil, ultima.are) (too long in one area).
