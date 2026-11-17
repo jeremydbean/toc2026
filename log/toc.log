@@ -313758,3 +313758,257 @@ Tue Nov 17 21:16:08 2026 :: Log Trentlin [9130]: arrived (Grumpy little cloud.) 
 Tue Nov 17 21:16:09 2026 :: Log Trentlin [9130]: ex
 Tue Nov 17 21:16:11 2026 :: Log Trentlin [9130]: w
 Tue Nov 17 21:16:11 2026 :: Log Trentlin [9129]: arrived (Sleepy little cloud.) from 9130
+Tue Nov 17 21:16:11 2026 :: Log Trentlin [9129]: ex
+Tue Nov 17 21:16:12 2026 :: Log Trentlin [9129]: n
+Tue Nov 17 21:16:12 2026 :: Log Trentlin [9132]: arrived (Bashful little cloud.) from 9129
+Tue Nov 17 21:16:14 2026 :: Log Trentlin [9132]: w
+Tue Nov 17 21:16:14 2026 :: Log Trentlin [9142]: arrived (Suspicious little raincloud.) from 9132
+Tue Nov 17 21:16:16 2026 :: Log Trentlin [9142]: ex
+Tue Nov 17 21:16:22 2026 :: Log Trentlin [9142]: north
+Tue Nov 17 21:16:22 2026 :: Log Trentlin [9143]: arrived (Cirrus maximus cloud.) from 9142
+Tue Nov 17 21:16:23 2026 :: Log Trentlin [9143]: east
+Tue Nov 17 21:16:23 2026 :: Log Trentlin [9133]: arrived (Sneezing little cloud.) from 9143
+Tue Nov 17 21:16:23 2026 :: Log Trentlin [9133]: north
+Tue Nov 17 21:16:23 2026 :: Log Trentlin [9145]: arrived (Raging hurricane.) from 9133
+Tue Nov 17 21:16:23 2026 :: Log Trentlin [9145]: east
+Tue Nov 17 21:16:27 2026 :: Log Trentlin [9145]: ex
+Tue Nov 17 21:16:27 2026 :: Log Trentlin [9145]: open east
+Tue Nov 17 21:16:27 2026 :: Log Trentlin [9145]: east
+Tue Nov 17 21:16:29 2026 :: Log Trentlin [9145]: w
+Tue Nov 17 21:16:29 2026 :: Log Trentlin [9150]: arrived (Raging hurricane.) from 9145
+Tue Nov 17 21:16:29 2026 :: Log Trentlin [9150]: north
+Tue Nov 17 21:16:29 2026 :: Log Trentlin [9151]: arrived (Raging hurricane.) from 9150
+Tue Nov 17 21:16:29 2026 :: Log Trentlin [9151]: ex
+Tue Nov 17 21:16:31 2026 :: Log Trentlin [9151]: u
+Tue Nov 17 21:16:31 2026 :: Log Trentlin [9150]: arrived (Raging hurricane.) from 9151
+Tue Nov 17 21:16:32 2026 :: Log Trentlin [9150]: ex
+Tue Nov 17 21:16:33 2026 :: Log Trentlin [9150]: n
+Tue Nov 17 21:16:33 2026 :: Log Trentlin [9151]: arrived (Raging hurricane.) from 9150
+Tue Nov 17 21:16:33 2026 :: Log Trentlin [9151]: ex
+Tue Nov 17 21:16:34 2026 :: Log Trentlin [9151]: d
+Tue Nov 17 21:16:34 2026 :: Log Trentlin [9152]: arrived (Raging hurricane.) from 9151
+Tue Nov 17 21:16:35 2026 :: Log Trentlin [9152]: ex
+Tue Nov 17 21:16:35 2026 :: Log Trentlin [9152]: s
+Tue Nov 17 21:16:35 2026 :: Log Trentlin [9149]: arrived (Raging hurricane.) from 9152
+Tue Nov 17 21:16:36 2026 :: Log Trentlin [9149]: ex
+Tue Nov 17 21:16:39 2026 :: Log Trentlin [9149]: e
+Tue Nov 17 21:16:39 2026 :: Log Trentlin [9152]: arrived (Raging hurricane.) from 9149
+Tue Nov 17 21:16:40 2026 :: Log Trentlin [9152]: ex
+Tue Nov 17 21:16:41 2026 :: Log Trentlin [9152]: s
+Tue Nov 17 21:16:41 2026 :: Log Trentlin [9149]: arrived (Raging hurricane.) from 9152
+Tue Nov 17 21:16:41 2026 :: Log Trentlin [9149]: ex
+Tue Nov 17 21:16:44 2026 :: Log Trentlin [9149]: w
+Tue Nov 17 21:16:44 2026 :: Log Trentlin [9150]: arrived (Raging hurricane.) from 9149
+Tue Nov 17 21:16:45 2026 :: Log Trentlin [9150]: ex
+Tue Nov 17 21:17:04 2026 :: Log Trentlin [9150]: w
+Tue Nov 17 21:17:05 2026 :: Log Trentlin [9150]: n
+Tue Nov 17 21:17:05 2026 :: Log Trentlin [9151]: arrived (Raging hurricane.) from 9150
+Tue Nov 17 21:17:05 2026 :: Log Trentlin [9151]: ex
+Tue Nov 17 21:17:06 2026 :: Log Trentlin [9151]: d
+Tue Nov 17 21:17:06 2026 :: Log Trentlin [9152]: arrived (Raging hurricane.) from 9151
+Tue Nov 17 21:17:07 2026 :: Log Trentlin [9152]: ex
+Tue Nov 17 21:17:07 2026 :: Log Trentlin [9152]: s
+Tue Nov 17 21:17:07 2026 :: Log Trentlin [9149]: arrived (Raging hurricane.) from 9152
+Tue Nov 17 21:17:08 2026 :: Log Trentlin [9149]: ex
+Tue Nov 17 21:17:10 2026 :: Log Trentlin [9149]: u
+Tue Nov 17 21:17:10 2026 :: Log Trentlin [9157]: arrived (Cumulative nimbus cloud.) from 9149
+Tue Nov 17 21:17:11 2026 :: Log Trentlin [9157]: ex
+Tue Nov 17 21:17:22 2026 :: Log Trentlin [9157]: s
+Tue Nov 17 21:17:22 2026 :: Log Trentlin [9159]: arrived (Yet another cloud) from 9157
+Tue Nov 17 21:17:25 2026 :: Log Trentlin [9159]: climb rope
+Tue Nov 17 21:17:25 2026 :: Log Trentlin [9160]: arrived (Front gate) from 9159
+Tue Nov 17 21:17:26 2026 :: Connection guard: refused 1 connection from 178.156.189.113 (paused; 11 refused in all, pause 3 this week, 623 minutes left).
+Tue Nov 17 21:17:28 2026 :: Log Trentlin [9160]: s
+Tue Nov 17 21:17:28 2026 :: Log Trentlin [9161]: arrived (Lawn) from 9160
+Tue Nov 17 21:17:29 2026 :: Log Trentlin [9161]: ex
+Tue Nov 17 21:17:53 2026 :: Log Trentlin [9161]: n
+Tue Nov 17 21:17:53 2026 :: Log Trentlin [9160]: arrived (Front gate) from 9161
+Tue Nov 17 21:17:54 2026 :: Log Trentlin [9160]: ex
+Tue Nov 17 21:17:54 2026 :: Log Trentlin [9160]: s
+Tue Nov 17 21:17:54 2026 :: Log Trentlin [9161]: arrived (Lawn) from 9160
+Tue Nov 17 21:17:55 2026 :: Log Trentlin [9161]: ex
+Tue Nov 17 21:18:13 2026 :: Log Trentlin [9161]: w
+Tue Nov 17 21:18:13 2026 :: Log Trentlin [9162]: arrived (Croquet game) from 9161
+Tue Nov 17 21:18:13 2026 :: Log Trentlin [9162]: ex
+Tue Nov 17 21:18:15 2026 :: Log Trentlin [9162]: e
+Tue Nov 17 21:18:15 2026 :: Log Trentlin [9161]: arrived (Lawn) from 9162
+Tue Nov 17 21:18:16 2026 :: Log Trentlin [9161]: ex
+Tue Nov 17 21:18:18 2026 :: Log Trentlin [9161]: s
+Tue Nov 17 21:18:18 2026 :: Log Trentlin [9163]: arrived (Huge, gorgeous fountain.) from 9161
+Tue Nov 17 21:18:18 2026 :: Log Trentlin [9163]: ex
+Tue Nov 17 21:18:32 2026 :: Log Trentlin [9163]: w
+Tue Nov 17 21:18:32 2026 :: Log Trentlin [9164]: arrived (Patio.) from 9163
+Tue Nov 17 21:18:32 2026 :: Log Trentlin [9164]: ex
+Tue Nov 17 21:18:56 2026 :: Log Trentlin [9164]: u
+Tue Nov 17 21:18:56 2026 :: Log Trentlin [9165]: arrived (Long stairway.) from 9164
+Tue Nov 17 21:18:56 2026 :: Log Trentlin [9165]: ex
+Tue Nov 17 21:18:58 2026 :: Log Trentlin [9165]: u
+Tue Nov 17 21:18:58 2026 :: Log Trentlin [9166]: arrived (Front door) from 9165
+Tue Nov 17 21:18:59 2026 :: Log Trentlin [9166]: ex
+Tue Nov 17 21:19:01 2026 :: Log Trentlin [9166]: s
+Tue Nov 17 21:19:01 2026 :: Log Trentlin [9177]: arrived (Foyer.) from 9166
+Tue Nov 17 21:19:01 2026 :: Log Trentlin [9177]: ex
+Tue Nov 17 21:19:12 2026 :: Log Trentlin [9177]: e
+Tue Nov 17 21:19:12 2026 :: Log Trentlin [9183]: arrived (Elegant hallway.) from 9177
+Tue Nov 17 21:19:13 2026 :: Log Trentlin [9183]: ex
+Tue Nov 17 21:19:16 2026 :: Log Trentlin [9183]: e
+Tue Nov 17 21:19:16 2026 :: Log Trentlin [9185]: arrived (Office) from 9183
+Tue Nov 17 21:19:16 2026 :: Log Trentlin [9185]: ex
+Tue Nov 17 21:19:18 2026 :: Log Trentlin [9185]: s
+Tue Nov 17 21:19:18 2026 :: Log Trentlin [9186]: arrived (Eastern tower.) from 9185
+Tue Nov 17 21:19:19 2026 :: Log Trentlin [9186]: ex
+Tue Nov 17 21:19:21 2026 :: Log Trentlin [9186]: u
+Tue Nov 17 21:19:21 2026 :: Log Trentlin [9187]: arrived (Eastern tower.) from 9186
+Tue Nov 17 21:19:22 2026 :: Log Trentlin [9187]: ex
+Tue Nov 17 21:19:23 2026 :: Log Trentlin [9187]: k ef
+Tue Nov 17 21:19:26 2026 :: Log Trentlin [9187]: fists
+Tue Nov 17 21:19:28 2026 :: Log Trentlin [9187]: killed the mysterious effreeti
+Tue Nov 17 21:19:28 2026 :: Log Trentlin [9187]: coin +1 platinum
+Tue Nov 17 21:19:28 2026 :: Log Trentlin [9187]: coin +36 silver
+Tue Nov 17 21:19:28 2026 :: Log Trentlin [9187]: coin +96 copper
+Tue Nov 17 21:19:28 2026 :: Log Trentlin [9187]: coin +65 gold
+Tue Nov 17 21:19:34 2026 :: Log Trentlin [9187]: reca
+Tue Nov 17 21:19:34 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 9187
+Tue Nov 17 21:19:35 2026 :: Log Trentlin [4207]: e
+Tue Nov 17 21:19:35 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Tue Nov 17 21:19:35 2026 :: Log Trentlin [4202]: e
+Tue Nov 17 21:19:35 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Nov 17 21:19:35 2026 :: Log Trentlin [4201]: e
+Tue Nov 17 21:19:35 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Tue Nov 17 21:19:35 2026 :: Log Trentlin [2427]: e
+Tue Nov 17 21:19:36 2026 :: Log Trentlin [2427]: e
+Tue Nov 17 21:19:36 2026 :: Log Trentlin [2427]: n
+Tue Nov 17 21:19:36 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Nov 17 21:19:36 2026 :: Log Trentlin [2404]: n
+Tue Nov 17 21:19:36 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Nov 17 21:19:36 2026 :: Log Trentlin [2401]: u
+Tue Nov 17 21:19:36 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Tue Nov 17 21:19:37 2026 :: Log Trentlin [2410]: u
+Tue Nov 17 21:19:37 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Tue Nov 17 21:19:37 2026 :: Log Trentlin [2411]: u
+Tue Nov 17 21:19:37 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Tue Nov 17 21:19:37 2026 :: Log Trentlin [2414]: u
+Tue Nov 17 21:19:37 2026 :: Log Trentlin [2497]: arrived (The Questmaster's Globe, above the Oak) from 2414
+Tue Nov 17 21:19:38 2026 :: Log Trentlin [2497]: aquest complete
+Tue Nov 17 21:19:38 2026 :: Log Trentlin [2497]: copper +148721100
+Tue Nov 17 21:19:38 2026 :: Log Trentlin [2497]: quest complete: 148p 72g 11s, 71 quest points (streak bonus 103%)
+Tue Nov 17 21:19:38 2026 :: Snapshot of Trentlin taken before quest: Trentlin.20261117_211938.quest (PRESTORE Trentlin to see it).
+Tue Nov 17 21:19:42 2026 :: Log Trentlin [2497]: aquest gamble no
+Tue Nov 17 21:19:43 2026 :: Log Trentlin [2497]: enter door
+Tue Nov 17 21:19:43 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Nov 17 21:19:45 2026 :: Log Trentlin [2401]: west
+Tue Nov 17 21:19:45 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2401
+Tue Nov 17 21:19:46 2026 :: Log Trentlin [2405]: west
+Tue Nov 17 21:19:46 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 2405
+Tue Nov 17 21:19:46 2026 :: Log Trentlin [2433]: south
+Tue Nov 17 21:19:46 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 2433
+Tue Nov 17 21:19:46 2026 :: Log Trentlin [4201]: west
+Tue Nov 17 21:19:46 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4201
+Tue Nov 17 21:19:46 2026 :: Log Trentlin [4202]: west
+Tue Nov 17 21:19:46 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4202
+Tue Nov 17 21:19:47 2026 :: Log Trentlin [4207]: up
+Tue Nov 17 21:19:47 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Tue Nov 17 21:19:47 2026 :: Log Trentlin [3700]: up
+Tue Nov 17 21:19:47 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3700
+Tue Nov 17 21:19:47 2026 :: Log Trentlin [3772]: up
+Tue Nov 17 21:19:47 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 3772
+Tue Nov 17 21:19:47 2026 :: Log Trentlin [3795]: enter portal
+Tue Nov 17 21:19:47 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Tue Nov 17 21:19:48 2026 :: Log Trentlin [15000]: east
+Tue Nov 17 21:19:48 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15000
+Tue Nov 17 21:19:48 2026 :: Log Trentlin [15001]: east
+Tue Nov 17 21:19:48 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15001
+Tue Nov 17 21:19:48 2026 :: Log Trentlin [15002]: play recorder 6
+Tue Nov 17 21:19:48 2026 :: Log Trentlin [15002]: east
+Tue Nov 17 21:19:48 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Tue Nov 17 21:19:49 2026 :: Log Trentlin [15003]: east
+Tue Nov 17 21:19:49 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15003
+Tue Nov 17 21:19:49 2026 :: Log Trentlin [15004]: north
+Tue Nov 17 21:19:49 2026 :: Log Trentlin [15010]: arrived (University Avenue) from 15004
+Tue Nov 17 21:19:49 2026 :: Log Trentlin [15010]: north
+Tue Nov 17 21:19:49 2026 :: Log Trentlin [15011]: arrived (University Avenue) from 15010
+Tue Nov 17 21:19:49 2026 :: Log Trentlin [15011]: north
+Tue Nov 17 21:19:49 2026 :: Log Trentlin [15012]: arrived (University Avenue) from 15011
+Tue Nov 17 21:19:50 2026 :: Log Trentlin [15012]: north
+Tue Nov 17 21:19:50 2026 :: Log Trentlin [15013]: arrived (University Avenue) from 15012
+Tue Nov 17 21:19:50 2026 :: Log Trentlin [15013]: east
+Tue Nov 17 21:19:50 2026 :: Log Trentlin [15038]: arrived (The Back Hall) from 15013
+Tue Nov 17 21:19:50 2026 :: Log Trentlin [15038]: east
+Tue Nov 17 21:19:50 2026 :: Log Trentlin [15068]: arrived (The Games Room) from 15038
+Tue Nov 17 21:19:50 2026 :: Log Trentlin [15068]: enter cabinet
+Tue Nov 17 21:19:50 2026 :: Log Trentlin [30200]: arrived (The First Quest Begins) from 15068
+Tue Nov 17 21:19:52 2026 :: Log Trentlin [30200]: play recorder 6
+Tue Nov 17 21:19:52 2026 :: Log Trentlin [30282]: arrived (The Dragon's Gate) from 30200
+Tue Nov 17 21:19:56 2026 :: Log Trentlin [30282]: d
+Tue Nov 17 21:19:56 2026 :: Log Trentlin [30501]: arrived (Level 6: Dragon's Gate) from 30282
+Tue Nov 17 21:19:57 2026 :: Log Trentlin [30501]: w
+Tue Nov 17 21:19:59 2026 :: Log Trentlin [30501]: unlock west
+Tue Nov 17 21:20:01 2026 :: Log Trentlin [30501]: open west
+Tue Nov 17 21:20:01 2026 :: Log Trentlin [30501]: w
+Tue Nov 17 21:20:01 2026 :: Log Trentlin [30500]: arrived (Level 6: Scorched Antechamber) from 30501
+Tue Nov 17 21:20:02 2026 :: Log Trentlin [30500]: n
+Tue Nov 17 21:20:02 2026 :: Log Trentlin [30503]: arrived (Level 6: Slime Cistern) from 30500
+Tue Nov 17 21:20:02 2026 :: Log Trentlin [30503]: n
+Tue Nov 17 21:20:02 2026 :: Log Trentlin [30505]: arrived (Level 6: Smoky Roost) from 30503
+Tue Nov 17 21:20:02 2026 :: Log Trentlin [30505]: n
+Tue Nov 17 21:20:04 2026 :: Log Trentlin [30505]: k ke
+Tue Nov 17 21:20:04 2026 :: Log Trentlin [30505]: killed a keese
+Tue Nov 17 21:20:04 2026 :: Log Trentlin [30505]: coin +41 silver
+Tue Nov 17 21:20:04 2026 :: Log Trentlin [30505]: coin +339 copper
+Tue Nov 17 21:20:04 2026 :: Log Trentlin [30505]: coin +86 gold
+Tue Nov 17 21:20:09 2026 :: Log Trentlin [30505]: get key
+Tue Nov 17 21:20:09 2026 :: Log Trentlin [30505]: n
+Tue Nov 17 21:20:09 2026 :: Log Trentlin [30506]: arrived (Level 6: Crossed Grooves of the Dragon) from 30505
+Tue Nov 17 21:20:10 2026 :: Log Trentlin [30506]: n
+Tue Nov 17 21:20:10 2026 :: Log Trentlin [30507]: arrived (Level 6: Flickering Hall) from 30506
+Tue Nov 17 21:20:11 2026 :: Log Trentlin [30507]: n
+Tue Nov 17 21:20:15 2026 :: Log Trentlin [30507]: k w
+Tue Nov 17 21:20:24 2026 :: Log Trentlin [30507]: fists
+Tue Nov 17 21:20:25 2026 :: Log Trentlin [30507]: killed a blue wizzrobe
+Tue Nov 17 21:20:25 2026 :: Log Trentlin [30507]: coin +176 silver
+Tue Nov 17 21:20:25 2026 :: Log Trentlin [30507]: coin +111 copper
+Tue Nov 17 21:20:25 2026 :: Log Trentlin [30507]: coin +9 gold
+Tue Nov 17 21:20:30 2026 :: Log Trentlin [30507]: n
+Tue Nov 17 21:20:30 2026 :: Log Trentlin [30511]: arrived (Level 6: Statue Gallery) from 30507
+Tue Nov 17 21:20:31 2026 :: Log Trentlin [30511]: bomb east
+Tue Nov 17 21:20:32 2026 :: Log Trentlin [30511]: e
+Tue Nov 17 21:20:32 2026 :: Log Trentlin [30512]: arrived (Level 6: Ash Chamber) from 30511
+Tue Nov 17 21:20:32 2026 :: Log Trentlin [30512]: s
+Tue Nov 17 21:20:34 2026 :: Log Trentlin [30512]: get key
+Tue Nov 17 21:20:35 2026 :: Log Trentlin [30512]: k w
+Tue Nov 17 21:20:37 2026 :: Log Trentlin [30512]: fists
+Tue Nov 17 21:20:40 2026 :: Log Trentlin [30512]: killed a red wizzrobe
+Tue Nov 17 21:20:40 2026 :: Log Trentlin [30512]: coin +8 gold
+Tue Nov 17 21:20:40 2026 :: Log Trentlin [30512]: coin +36 silver
+Tue Nov 17 21:20:40 2026 :: Log Trentlin [30512]: coin +446 copper
+Tue Nov 17 21:20:40 2026 :: Log Trentlin [30512]: coin +3 gold
+Tue Nov 17 21:20:44 2026 :: Log Trentlin [30512]: k w
+Tue Nov 17 21:20:46 2026 :: Log Trentlin [30512]: killed a blue wizzrobe
+Tue Nov 17 21:20:46 2026 :: Log Trentlin [30512]: coin +176 silver
+Tue Nov 17 21:20:46 2026 :: Log Trentlin [30512]: coin +111 copper
+Tue Nov 17 21:20:46 2026 :: Log Trentlin [30512]: coin +9 gold
+Tue Nov 17 21:20:47 2026 :: Log Trentlin [30512]: fists
+Tue Nov 17 21:20:48 2026 :: Log Trentlin [30512]: s
+Tue Nov 17 21:20:48 2026 :: Log Trentlin [30508]: arrived (Level 6: Taloned Corner) from 30512
+Tue Nov 17 21:20:49 2026 :: Log Trentlin [30508]: e
+Tue Nov 17 21:20:50 2026 :: Log Trentlin [30508]: k v
+Tue Nov 17 21:20:53 2026 :: Log Trentlin [30508]: fists
+Tue Nov 17 21:20:58 2026 :: Log Trentlin [30508]: killed a vire
+Tue Nov 17 21:20:58 2026 :: Log Trentlin [30508]: coin +146 silver
+Tue Nov 17 21:20:58 2026 :: Log Trentlin [30508]: coin +354 copper
+Tue Nov 17 21:20:58 2026 :: Log Trentlin [30508]: coin +92 gold
+Tue Nov 17 21:21:00 2026 :: Log Trentlin [30508]: e
+Tue Nov 17 21:21:00 2026 :: Log Trentlin [30509]: arrived (Level 6: Sorcerer's Stair) from 30508
+Tue Nov 17 21:21:01 2026 :: Log Trentlin [30509]: d
+Tue Nov 17 21:21:01 2026 :: Log Trentlin [30520]: arrived (Level 6: Eastern Stairwell) from 30509
+Tue Nov 17 21:21:01 2026 :: Log Trentlin [30520]: w
+Tue Nov 17 21:21:02 2026 :: Log Trentlin [30520]: s
+Tue Nov 17 21:21:02 2026 :: Log Trentlin [30514]: arrived (Level 6: Eastern Bend) from 30520
+Tue Nov 17 21:21:02 2026 :: Log Trentlin [30514]: w
+Tue Nov 17 21:21:02 2026 :: Log Trentlin [30513]: arrived (Level 6: Threshold of the Nest) from 30514
+Tue Nov 17 21:21:03 2026 :: Log Trentlin [30513]: n
+Tue Nov 17 21:21:07 2026 :: Log Trentlin [30513]: unlock niorth
+Tue Nov 17 21:21:08 2026 :: Log Trentlin [30513]: unlock n
+Tue Nov 17 21:21:11 2026 :: Log Trentlin [30513]: open n
+Tue Nov 17 21:21:11 2026 :: Log Trentlin [30513]: n
+Tue Nov 17 21:21:11 2026 :: Log Trentlin [30519]: arrived (Level 6: Gohma's Nest) from 30513

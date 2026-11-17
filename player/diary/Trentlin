@@ -193,13 +193,13 @@ List spend 29600000 0 heal
 List spend 10000 0 shoot
 End
 Day 2026-11-17
-Played 2892
+Played 3180
 Level 46 50 4
 Exp 9363 25
-Kills 31
+Kills 34
 Deaths 0
 Close 0
-Quests 7 302
+Quests 8 373
 Dailies 0 0
 List notable 1 0 Gohma
 List achv 30 0 Across Hyrule
@@ -209,9 +209,9 @@ List skill 81 82 second attack
 List skill 94 96 enhanced damage
 List skill 98 100 hand to hand
 List skill 85 86 parry
-List area 557 0 City of Dresden
-List area 16 0 Plains of the North
-List area 4 0 Continental Drift
+List area 571 0 City of Dresden
+List area 18 0 Plains of the North
+List area 5 0 Continental Drift
 List area 200 0 The Astral Plane
 List area 3 0 Miden'nir
 List area 8 0 New Thalos
@@ -219,10 +219,10 @@ List area 173 0 Pirate Ship
 List area 43 0 Haon Dor
 List area 17 0 The Lonely Mountain
 List area 4 0 Mud School
-List area 10 0 Strange Campus
-List area 1161 0 Hyrule
-More area 56
-List item 8 0 a small key
+List area 13 0 Strange Campus
+List area 1205 0 Hyrule
+More area 70
+List item 10 0 a small key
 List item 1 0 Ganon's shadow crown
 List item 1 0 a coat of red-ring mail
 List item 1 0 a silver-arrow spear
@@ -234,10 +234,10 @@ List item 1 0 an ancient dragon-scale mantle
 List item 1 0 a Goriya provisioner's belt
 List item 1 0 a pair of Demon maze boots
 List item 1 0 the Heart Guard of the Dragon
-More item 6
+More item 7
 List earn 77056963 0 interest
-List earn 343621040 0 loot
-List earn 910071156 0 quests
+List earn 346246886 0 loot
+List earn 1058792256 0 quests
 List spend 1700000 0 heal
 List spend 6200000 0 buy
 List spend 10000 0 shoot

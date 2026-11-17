@@ -36020,3 +36020,189 @@
 1794950168	cmd	Trentlin	50	9130	dylan.are	standing	96	0	-	north		Grumpy little cloud. //   This cloud mutters and grumbles at you.  You have to jump quickly // to avoid a lightning bolt that passes by your toe.  Your aren't	-	+
 1794950169	cmd	Trentlin	50	9130	dylan.are	standing	96	0	-	exits		Obvious exits: // East  - Happy little cloud. // South - A fluffy white cloud.	-	+
 1794950171	cmd	Trentlin	50	9129	dylan.are	standing	96	0	-	west		Sleepy little cloud. //   This cloud is peacefully snoozing away, enjoying himself.  There // is grumpy cloud to the east and a rather shy cloud north of here.	-	+
+1794950171	cmd	Trentlin	50	9129	dylan.are	standing	96	0	-	exits		Obvious exits: // North - Bashful little cloud. // East  - Grumpy little cloud.	-	-
+1794950172	cmd	Trentlin	50	9132	dylan.are	standing	96	0	-	north		Bashful little cloud. //   This cloud blushes and tries to avoid your glance as you look at // your surroundings.  You decide that overall it is a peaceful little	-	+
+1794950174	cmd	Trentlin	50	9142	dylan.are	standing	96	0	-	west		Suspicious little raincloud. //   On second glance, this cloud doesn't seem much like a raincloud. // A balloon sticks out of the top and you think you hear it humming	-	+
+1794950176	cmd	Trentlin	50	9142	dylan.are	standing	96	0	-	exits		Obvious exits: // North - Cirrus maximus cloud. // East  - Bashful little cloud.	-	-
+1794950182	cmd	Trentlin	50	9143	dylan.are	standing	96	0	-	north		Cirrus maximus cloud. //   This cloud looks like it is of the cirrus maximus genre of clouds. // [Exits: east south]	-	-
+1794950183	cmd	Trentlin	50	9133	dylan.are	standing	96	0	-	east		Sneezing little cloud. //   The cloud is wracked with sneezes.  At first you thought you were // in an earthquake before you realized where you are!	-	+
+1794950183	cmd	Trentlin	50	9145	dylan.are	standing	96	0	-	north		Raging hurricane. //   You are buffeted and knocked about by the almost godlike strength // of the raging hurricane.  It is hard to see and hear anything.	-	+
+1794950183	cmd	Trentlin	50	9145	dylan.are	standing	96	0	-	east		Alas, you cannot go that way.	-	-
+1794950187	cmd	Trentlin	50	9145	dylan.are	standing	96	0	-	exits		Obvious exits: // South - Sneezing little cloud. // West  - Raging hurricane.	-	+
+1794950187	cmd	Trentlin	50	9145	dylan.are	standing	96	0	-	open	east	I see no door east here.	-	-
+1794950187	cmd	Trentlin	50	9145	dylan.are	standing	96	0	-	east		Alas, you cannot go that way.	-	-
+1794950189	cmd	Trentlin	50	9150	dylan.are	standing	96	0	-	west		Raging hurricane. //   You are buffeted and knocked about by the almost godlike strength // of the raging hurricane.  It is hard to see and hear anything.	-	+
+1794950189	cmd	Trentlin	50	9151	dylan.are	standing	96	0	-	north		Raging hurricane. //   You are buffeted and knocked about by the almost godlike strength // of the raging hurricane.  It is hard to see and hear anything.	-	+
+1794950189	cmd	Trentlin	50	9151	dylan.are	standing	96	0	-	exits		Obvious exits: // Up    - Raging hurricane. // Down  - Raging hurricane.	-	-
+1794950191	cmd	Trentlin	50	9150	dylan.are	standing	96	0	-	up		Raging hurricane. //   You are buffeted and knocked about by the almost godlike strength // of the raging hurricane.  It is hard to see and hear anything.	-	+
+1794950192	cmd	Trentlin	50	9150	dylan.are	standing	96	0	-	exits		Obvious exits: // North - Raging hurricane. // East  - Raging hurricane.	-	+
+1794950193	cmd	Trentlin	50	9151	dylan.are	standing	96	0	-	north		Raging hurricane. //   You are buffeted and knocked about by the almost godlike strength // of the raging hurricane.  It is hard to see and hear anything.	-	+
+1794950193	cmd	Trentlin	50	9151	dylan.are	standing	96	0	-	exits		Obvious exits: // Up    - Raging hurricane. // Down  - Raging hurricane.	-	-
+1794950194	cmd	Trentlin	50	9152	dylan.are	standing	96	0	-	down		Raging hurricane. //   You are buffeted and knocked about by the almost godlike strength // of the raging hurricane.  It is hard to see and hear anything.	-	+
+1794950195	cmd	Trentlin	50	9152	dylan.are	standing	96	0	-	exits		Obvious exits: // South - Raging hurricane. // Up    - Raging hurricane.	-	-
+1794950195	cmd	Trentlin	50	9149	dylan.are	standing	96	0	-	south		Raging hurricane. //   You are buffeted and knocked about by the almost godlike strength // of the raging hurricane.  It is hard to see and hear anything.	-	+
+1794950196	cmd	Trentlin	50	9149	dylan.are	standing	96	0	-	exits		Obvious exits: // East  - Raging hurricane. // West  - Raging hurricane.	-	+
+1794950199	cmd	Trentlin	50	9152	dylan.are	standing	98	0	-	east		Raging hurricane. //   You are buffeted and knocked about by the almost godlike strength // of the raging hurricane.  It is hard to see and hear anything.	-	+
+1794950200	cmd	Trentlin	50	9152	dylan.are	standing	98	0	-	exits		Obvious exits: // South - Raging hurricane. // Up    - Raging hurricane.	-	-
+1794950201	cmd	Trentlin	50	9149	dylan.are	standing	98	0	-	south		Raging hurricane. //   You are buffeted and knocked about by the almost godlike strength // of the raging hurricane.  It is hard to see and hear anything.	-	+
+1794950201	cmd	Trentlin	50	9149	dylan.are	standing	98	0	-	exits		Obvious exits: // East  - Raging hurricane. // West  - Raging hurricane.	-	+
+1794950204	cmd	Trentlin	50	9150	dylan.are	standing	98	0	-	west		Raging hurricane. //   You are buffeted and knocked about by the almost godlike strength // of the raging hurricane.  It is hard to see and hear anything.	-	+
+1794950205	cmd	Trentlin	50	9150	dylan.are	standing	98	0	-	exits		Obvious exits: // North - Raging hurricane. // East  - Raging hurricane.	-	+
+1794950224	cmd	Trentlin	50	9150	dylan.are	standing	98	0	-	west		Alas, you cannot go that way.	-	-
+1794950225	cmd	Trentlin	50	9151	dylan.are	standing	98	0	-	north		Raging hurricane. //   You are buffeted and knocked about by the almost godlike strength // of the raging hurricane.  It is hard to see and hear anything.	-	+
+1794950225	cmd	Trentlin	50	9151	dylan.are	standing	98	0	-	exits		Obvious exits: // Up    - Raging hurricane. // Down  - Raging hurricane.	-	-
+1794950226	cmd	Trentlin	50	9152	dylan.are	standing	98	0	-	down		Raging hurricane. //   You are buffeted and knocked about by the almost godlike strength // of the raging hurricane.  It is hard to see and hear anything.	-	+
+1794950227	cmd	Trentlin	50	9152	dylan.are	standing	98	0	-	exits		Obvious exits: // South - Raging hurricane. // Up    - Raging hurricane.	-	-
+1794950227	cmd	Trentlin	50	9149	dylan.are	standing	98	0	-	south		Raging hurricane. //   You are buffeted and knocked about by the almost godlike strength // of the raging hurricane.  It is hard to see and hear anything.	-	+
+1794950228	cmd	Trentlin	50	9149	dylan.are	standing	98	0	-	exits		Obvious exits: // East  - Raging hurricane. // West  - Raging hurricane.	-	+
+1794950230	cmd	Trentlin	50	9157	dylan.are	standing	98	0	-	up		Cumulative nimbus cloud. //   This cloud looks like it belongs to the phylum of cumulative nimbus clouds. // [Exits: south west up]	-	-
+1794950231	cmd	Trentlin	50	9157	dylan.are	standing	98	3	-	exits		Obvious exits: // South - Yet another cloud // West  - Dark hidden cloud.	-	+
+1794950242	cmd	Trentlin	50	9159	dylan.are	standing	98	0	-	south		Yet another cloud //   You find yourself in yet another cloud.  Will the madness never // end?  There is a rope ladder leading up.	-	+
+1794950245	cmd	Trentlin	50	9160	dylan.are	standing	98	0	-	climb	rope	You climb up a rope ladder, and find yourself in another room. // Front gate //   There is a gate here.  It is huge, towering over you.  It creaks	-	+
+1794950248	cmd	Trentlin	50	9161	dylan.are	standing	98	0	-	south		Lawn //   The lawn seems to stretch and stretch to the south and to the west. // North of you is a gate.  The grass is emerald green and luscious,	-	+
+1794950249	cmd	Trentlin	50	9161	dylan.are	standing	98	0	-	exits		Obvious exits: // North - Front gate // South - Huge, gorgeous fountain.	-	+
+1794950250	laid	-	0	0	-	979	component	70	a dragon tooth	9404	mobfact.are	scatter
+1794950273	cmd	Trentlin	50	9160	dylan.are	standing	99	0	-	north		Front gate //   There is a gate here.  It is huge, towering over you.  It creaks // as it sways in the breeze.  To the south you see a huge lawn.	-	+
+1794950274	cmd	Trentlin	50	9160	dylan.are	standing	99	0	-	exits		Obvious exits: // South - Lawn	-	-
+1794950274	cmd	Trentlin	50	9161	dylan.are	standing	99	0	-	south		Lawn //   The lawn seems to stretch and stretch to the south and to the west. // North of you is a gate.  The grass is emerald green and luscious,	-	+
+1794950275	cmd	Trentlin	50	9161	dylan.are	standing	99	0	-	exits		Obvious exits: // North - Front gate // South - Huge, gorgeous fountain.	-	+
+1794950293	cmd	Trentlin	50	9162	dylan.are	standing	99	0	-	west		Croquet game //   A croquet game has been set up and carelessly left out.  Who ever // was playing blue was in the lead before they quit.  Benches have	-	+
+1794950293	cmd	Trentlin	50	9162	dylan.are	standing	99	0	-	exits		Obvious exits: // East  - Lawn // South - Patio.	-	-
+1794950295	cmd	Trentlin	50	9161	dylan.are	standing	99	0	-	east		Lawn //   The lawn seems to stretch and stretch to the south and to the west. // North of you is a gate.  The grass is emerald green and luscious,	-	+
+1794950296	cmd	Trentlin	50	9161	dylan.are	standing	99	0	-	exits		Obvious exits: // North - Front gate // South - Huge, gorgeous fountain.	-	+
+1794950298	cmd	Trentlin	50	9163	dylan.are	standing	99	0	-	south		Huge, gorgeous fountain. //   An enormous golden fountain is here.  You see swans, angels, // gryphons and a host of other creatures in the fountain.  The	-	+
+1794950298	cmd	Trentlin	50	9163	dylan.are	standing	99	0	-	exits		Obvious exits: // North - Lawn // West  - Patio.	-	-
+1794950312	cmd	Trentlin	50	9164	dylan.are	standing	99	0	-	west		Patio. //   A huge patio overlooks the lawn area.  There are enough tables and // chairs for a party of 100.  The tables and chairs are ornate and	-	+
+1794950312	cmd	Trentlin	50	9164	dylan.are	standing	99	0	-	exits		Obvious exits: // North - Croquet game // East  - Huge, gorgeous fountain.	-	+
+1794950312	laid	-	0	0	-	983	herb	36	a belladonna plant	2427	dresden.are	scatter
+1794950312	laid	-	0	0	-	984	component	59	a patch of lycanthrope fur	24590	abyss.are	scatter
+1794950336	cmd	Trentlin	50	9165	dylan.are	standing	100	0	-	up		Long stairway. //   This stairway is suspended on clouds.  It leads from the house to // the front lawn.  The banisters are made of ornate gold and silver	-	+
+1794950336	cmd	Trentlin	50	9165	dylan.are	standing	100	0	-	exits		Obvious exits: // Up    - Front door // Down  - Patio.	-	-
+1794950338	cmd	Trentlin	50	9166	dylan.are	standing	100	0	-	up		Front door //   You stand at the front door of an immense, sprawling mansion made // of granite and marble.  The door is at least 10 feet high and is	-	+
+1794950339	cmd	Trentlin	50	9166	dylan.are	standing	100	0	-	exits		Obvious exits: // East  - Lawn northeast of house. // South - Foyer.	-	+
+1794950341	cmd	Trentlin	50	9177	dylan.are	standing	100	0	-	south		Foyer. //   "Magnificent" does not even begin to describe the foyer.  Lavishly // decorated, yet elegant, it gives an impression of indescribable	-	+
+1794950341	cmd	Trentlin	50	9177	dylan.are	standing	100	0	-	exits		Obvious exits: // North - Front door // East  - Elegant hallway.	-	+
+1794950341	census	-	0	0	-	herbs=10/150 components=4/100 eggs=0 coin_piles=10	herbs_held=0 components_held=2 players=1	laid=14 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=113 mobs_fought=7 secs=900
+1794950352	cmd	Trentlin	50	9183	dylan.are	standing	100	0	-	east		Elegant hallway. //   You are in a long, sprawling hallway connecting the eastern and // western wings of the house.  There are several chairs and sofas in	-	+
+1794950353	cmd	Trentlin	50	9183	dylan.are	standing	100	0	-	exits		Obvious exits: // East  - Office // South - Conservatory	-	+
+1794950356	cmd	Trentlin	50	9185	dylan.are	standing	100	0	-	east		Office //   You find yourself in a lavish office.  The desk is absolutely huge, // at least ten feet by five feet and made of ebony and inlaid with	-	+
+1794950356	cmd	Trentlin	50	9185	dylan.are	standing	100	0	-	exits		Obvious exits: // South - Eastern tower. // West  - Elegant hallway.	-	-
+1794950358	cmd	Trentlin	50	9186	dylan.are	standing	100	0	-	south		Eastern tower. //   You are in the bottom part of a tower.  A draft brings a chill to // your spine and causes creaks and groans.  Curtains flutter in the	-	+
+1794950359	cmd	Trentlin	50	9186	dylan.are	standing	100	0	-	exits		Obvious exits: // North - Office // Up    - Eastern tower.	-	-
+1794950361	cmd	Trentlin	50	9187	dylan.are	standing	100	0	-	up		Eastern tower. //   The tower creaks and groans, almost as if it were muttering to // itself.  There are windows displaying a full moon, reigning over	-	+
+1794950362	cmd	Trentlin	50	9187	dylan.are	standing	100	0	-	exits		Obvious exits: // Down  - Eastern tower.	-	-
+1794950363	cmd	Trentlin	50	9187	dylan.are	standing	100	0	-	kill	ef	Your punch ^^^ DESTROYS ^^^ the mysterious effreeti! // Your punch *** DEVASTATES *** the mysterious effreeti! // Your punch MASSACRES the mysterious effreeti!	-	-
+1794950366	cmd	Trentlin	50	9187	dylan.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates the mysterious effreeti! // Your fists of fury wounds the mysterious effreeti.	-	+
+1794950368	coin	Trentlin	50	9187	dylan.are	+1000000	loot	(violence_update)	corpse of the mysterious effreeti	16750637728
+1794950368	coin	Trentlin	50	9187	dylan.are	+3600	loot	(violence_update)	corpse of the mysterious effreeti	16750641328
+1794950368	coin	Trentlin	50	9187	dylan.are	+96	loot	(violence_update)	corpse of the mysterious effreeti	16750641424
+1794950368	coin	Trentlin	50	9187	dylan.are	+650000	loot	(violence_update)	corpse of the mysterious effreeti	16751291424
+1794950374	area	Trentlin	50	4207	dresden.are	dylan.are	dresden.are	213	recall
+1794950374	cmd	Trentlin	50	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794950375	cmd	Trentlin	50	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794950375	cmd	Trentlin	50	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794950375	spotted	Trentlin	50	2427	dresden.are	983	herb	36	a belladonna plant	63	1	scatter	arrive
+1794950375	cmd	Trentlin	50	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794950375	cmd	Trentlin	50	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794950376	cmd	Trentlin	50	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794950376	passed	Trentlin	50	2404	dresden.are	983	herb	36	a belladonna plant	64	1	1	scatter	2427	left
+1794950376	cmd	Trentlin	50	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794950376	cmd	Trentlin	50	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794950376	cmd	Trentlin	50	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794950377	cmd	Trentlin	50	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794950377	cmd	Trentlin	50	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1794950377	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794950378	coin	Trentlin	50	2497	dresden.are	+148721100	quests	aquest	-	16900012524
+1794950378	outcome	Trentlin	50	2497	dresden.are	quest-complete	success	-	-	ordinary qp=4833->4833 offered=71 daily=18->18 coin=+148721100 kill=13520100 streak=16 level=50 target=-1
+1794950378	cmd	Trentlin	50	2497	dresden.are	standing	100	19	-	aquest	complete	You inform Questor Thews you have completed his quest. // Questor Thews says 'Excellent work! The realm is in your debt!' // Questor Thews says 'Streak of 17 in a row! A +103% bonus has been added!'	success:-	+
+1794950382	cmd	Trentlin	50	2497	dresden.are	standing	100	6	-	aquest	gamble no	You safely collect 71 quest points.	-	-
+1794950382	laid	-	0	0	-	989	herb	42	a marjoram plant	6525	dwarves.are	scatter
+1794950382	laid	-	0	0	-	990	component	83	a vial of thessalhydra venom	793	camelot.are	scatter
+1794950383	cmd	Trentlin	50	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794950385	cmd	Trentlin	50	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794950386	cmd	Trentlin	50	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794950386	cmd	Trentlin	50	4201	dresden.are	standing	100	0	-	south		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794950386	cmd	Trentlin	50	4202	dresden.are	standing	100	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794950386	cmd	Trentlin	50	4207	dresden.are	standing	100	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794950387	area	Trentlin	50	3700	school.are	dresden.are	school.are	13	up
+1794950387	cmd	Trentlin	50	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794950387	cmd	Trentlin	50	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794950387	cmd	Trentlin	50	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794950387	area	Trentlin	50	15000	campus.are	school.are	campus.are	0	enter
+1794950387	cmd	Trentlin	50	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794950388	cmd	Trentlin	50	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794950388	cmd	Trentlin	50	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794950388	cmd	Trentlin	50	15002	campus.are	standing	100	0	-	play	recorder 6	You play the Recorder, and an ancient melody fills the room. // The melody fades without an answer.	-	-
+1794950388	cmd	Trentlin	50	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794950389	cmd	Trentlin	50	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794950389	cmd	Trentlin	50	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794950389	cmd	Trentlin	50	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794950389	cmd	Trentlin	50	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794950390	cmd	Trentlin	50	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794950390	cmd	Trentlin	50	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794950390	cmd	Trentlin	50	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794950390	area	Trentlin	50	30200	hyrule.are	campus.are	hyrule.are	3	enter
+1794950390	cmd	Trentlin	50	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794950392	cmd	Trentlin	50	30282	hyrule.are	standing	100	0	-	play	recorder 6	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Dragon's Gate	-	+
+1794950396	cmd	Trentlin	50	30501	hyrule.are	standing	100	0	-	down		Level 6: Dragon's Gate //   Dragon statues of dark red stone flank the entry hall of this labyrinth, // their jaws carved wide as if to breathe fire. Heat radiates from the walls	-	+
+1794950397	cmd	Trentlin	50	30501	hyrule.are	standing	100	0	-	west		The door is bound shut by an old magic: only its key will open it.	-	-
+1794950399	cmd	Trentlin	50	30501	hyrule.are	standing	100	0	-	unlock	west	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794950401	cmd	Trentlin	50	30501	hyrule.are	standing	100	0	-	open	west	Ok.	-	-
+1794950401	cmd	Trentlin	50	30500	hyrule.are	standing	100	0	-	west		Level 6: Scorched Antechamber //   Black scorch marks splash the walls of this chamber in starbursts, as if // bolts of magic struck them from every side at once, and the dust shows the	-	+
+1794950402	cmd	Trentlin	50	30503	hyrule.are	standing	100	0	-	north		Level 6: Slime Cistern //   Puddles of green slime pool in the low places of this sunken floor, and // trails of it streak the walls up to knee height, where large blobs have	-	+
+1794950402	cmd	Trentlin	50	30505	hyrule.are	standing	100	0	-	north		Level 6: Smoky Roost //   A tall, narrow chamber whose ceiling vanishes into soot-black shadow, alive // with the rustle of leathery wings that dart down and flutter up again.	-	+
+1794950402	cmd	Trentlin	50	30505	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794950404	cmd	Trentlin	50	30505	hyrule.are	standing	100	0	-	kill	ke	A keese dodges your attack. // Your punch === OBLITERATES === a keese! // Your punch === OBLITERATES === a keese!	-	+
+1794950404	coin	Trentlin	50	30505	hyrule.are	+4100	loot	(violence_update)	corpse of a keese	16900016624
+1794950404	coin	Trentlin	50	30505	hyrule.are	+339	loot	(violence_update)	corpse of a keese	16900016963
+1794950404	coin	Trentlin	50	30505	hyrule.are	+860000	loot	(violence_update)	corpse of a keese	16900876963
+1794950409	got	Trentlin	50	30505	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794950409	cmd	Trentlin	50	30505	hyrule.are	standing	100	0	-	get	key	You get a small key.	-	-
+1794950409	cmd	Trentlin	50	30506	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear. // Level 6: Crossed Grooves of the Dragon //   Grooves cut deep into the floor run from the corners toward the middle of	-	+
+1794950410	cmd	Trentlin	50	30507	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear. // Level 6: Flickering Hall //   The air here crackles with stray sparks, and patches of the walls are	-	+
+1794950411	cmd	Trentlin	50	30507	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794950415	cmd	Trentlin	50	30507	hyrule.are	standing	100	0	-	kill	w	A blue wizzrobe dodges your attack. // Your punch === OBLITERATES === a blue wizzrobe! // Your punch <<< ERADICATES >>> a blue wizzrobe!	-	-
+1794950424	cmd	Trentlin	50	30507	hyrule.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a blue wizzrobe! // Your fists of fury decimates a blue wizzrobe!	-	+
+1794950425	got	Trentlin	50	30507	hyrule.are	30695	four bombs	treasure	1	0	(violence_update)	-
+1794950425	coin	Trentlin	50	30507	hyrule.are	+17600	loot	(violence_update)	corpse of a blue wizzrobe	16900894563
+1794950425	coin	Trentlin	50	30507	hyrule.are	+111	loot	(violence_update)	corpse of a blue wizzrobe	16900894674
+1794950425	coin	Trentlin	50	30507	hyrule.are	+90000	loot	(violence_update)	corpse of a blue wizzrobe	16900984674
+1794950430	cmd	Trentlin	50	30511	hyrule.are	standing	97	0	-	north		The shutter opens now that the chamber is clear. // Level 6: Statue Gallery //   A line of dragon statues stands along the west wall, their stone faces	-	+
+1794950431	cmd	Trentlin	50	30511	hyrule.are	standing	97	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!	-	-
+1794950432	cmd	Trentlin	50	30512	hyrule.are	standing	97	0	-	east		Level 6: Ash Chamber //   A drift of fine grey ash covers the floor, swirled into patterns by // draughts that seem to come from nowhere and by robes that sweep through the	-	+
+1794950432	cmd	Trentlin	50	30512	hyrule.are	standing	97	0	-	south		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794950434	got	Trentlin	50	30512	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794950434	cmd	Trentlin	50	30512	hyrule.are	standing	97	0	-	get	key	You get a small key.	-	-
+1794950434	laid	-	0	0	-	1002	component	54	eye of newt	1427	htower.are	scatter
+1794950435	cmd	Trentlin	50	30512	hyrule.are	standing	99	0	-	kill	w	Your punch <<< ERADICATES >>> a red wizzrobe! // A red wizzrobe dodges your attack. // A red wizzrobe parries your attack.	-	-
+1794950437	cmd	Trentlin	50	30512	hyrule.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS a red wizzrobe! // Your fists of fury injures a red wizzrobe.	-	+
+1794950440	got	Trentlin	50	30512	hyrule.are	30695	four bombs	treasure	1	0	(violence_update)	-
+1794950440	coin	Trentlin	50	30512	hyrule.are	+80000	loot	(violence_update)	corpse of a red wizzrobe	16901064674
+1794950440	coin	Trentlin	50	30512	hyrule.are	+3600	loot	(violence_update)	corpse of a red wizzrobe	16901068274
+1794950440	coin	Trentlin	50	30512	hyrule.are	+446	loot	(violence_update)	corpse of a red wizzrobe	16901068720
+1794950440	coin	Trentlin	50	30512	hyrule.are	+30000	loot	(violence_update)	corpse of a red wizzrobe	16901098720
+1794950444	cmd	Trentlin	50	30512	hyrule.are	standing	99	0	-	kill	w	A blue wizzrobe parries your attack. // Your punch === OBLITERATES === a blue wizzrobe! // Your punch <<< ERADICATES >>> a blue wizzrobe!	-	-
+1794950446	got	Trentlin	50	30512	hyrule.are	30695	four bombs	treasure	1	0	(violence_update)	-
+1794950446	coin	Trentlin	50	30512	hyrule.are	+17600	loot	(violence_update)	corpse of a blue wizzrobe	16901116320
+1794950446	coin	Trentlin	50	30512	hyrule.are	+111	loot	(violence_update)	corpse of a blue wizzrobe	16901116431
+1794950446	coin	Trentlin	50	30512	hyrule.are	+90000	loot	(violence_update)	corpse of a blue wizzrobe	16901206431
+1794950447	cmd	Trentlin	50	30512	hyrule.are	standing	99	0	-	fists		Who do you want to attack?	-	-
+1794950448	cmd	Trentlin	50	30508	hyrule.are	standing	99	0	-	south		The shutter opens now that the chamber is clear. // Level 6: Taloned Corner //   Deep talon gouges mark the tops of the blocks set around this corner	-	+
+1794950449	cmd	Trentlin	50	30508	hyrule.are	standing	99	0	-	east		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794950450	cmd	Trentlin	50	30508	hyrule.are	standing	99	0	-	kill	v	Your punch misses a vire. // Your punch <<< ERADICATES >>> a vire! // Your punch >>> ANNIHILATES <<< a vire!	-	-
+1794950453	cmd	Trentlin	50	30508	hyrule.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a vire! // Your fists of fury MASSACRES a vire!	-	+
+1794950458	skill	Trentlin	50	30508	hyrule.are	enhanced damage	96	97	success	(violence_update)
+1794950458	got	Trentlin	50	30508	hyrule.are	30695	four bombs	treasure	1	0	(violence_update)	-
+1794950458	coin	Trentlin	50	30508	hyrule.are	+14600	loot	(violence_update)	corpse of a vire	16901221031
+1794950458	coin	Trentlin	50	30508	hyrule.are	+354	loot	(violence_update)	corpse of a vire	16901221385
+1794950458	coin	Trentlin	50	30508	hyrule.are	+920000	loot	(violence_update)	corpse of a vire	16902141385
+1794950460	cmd	Trentlin	50	30509	hyrule.are	standing	99	0	-	east		The shutter opens now that the chamber is clear. // Level 6: Sorcerer's Stair //   A spiral of scorch marks curls across the floor of this chamber toward its	-	+
+1794950461	cmd	Trentlin	50	30520	hyrule.are	standing	99	0	-	down		Level 6: Eastern Stairwell //   A narrow stair sinks into the floor in one corner of this chamber, leading // back toward the western halls. A sticky, glistening film coats the stones	-	+
+1794950461	cmd	Trentlin	50	30520	hyrule.are	standing	99	0	-	west		Alas, you cannot go that way.	-	-
+1794950462	cmd	Trentlin	50	30514	hyrule.are	standing	99	0	-	south		Level 6: Eastern Bend //   This chamber at the eastern edge of the labyrinth smells of storm and // singed fur. Sparks wink and vanish in the corners, and talon marks score	-	+
+1794950462	cmd	Trentlin	50	30513	hyrule.are	standing	99	0	-	west		Level 6: Threshold of the Nest //   Grooves cut by sliding blades scar the floor, and blue scorch marks stain // the walls of this hall. From behind the locked door in the north wall comes	-	+
+1794950463	cmd	Trentlin	50	30513	hyrule.are	standing	99	0	-	north		The door is bound shut by an old magic: only its key will open it.	-	-
+1794950467	cmd	Trentlin	50	30513	hyrule.are	standing	99	0	-	unlock	niorth	I see no niorth here.	-	-
+1794950468	cmd	Trentlin	50	30513	hyrule.are	standing	99	0	-	unlock	n	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794950471	cmd	Trentlin	50	30513	hyrule.are	standing	99	0	-	open	n	Ok.	-	-
+1794950471	cmd	Trentlin	50	30519	hyrule.are	standing	99	0	-	north		Level 6: Gohma's Nest //   Shed carapace fragments and deep scuttle marks crisscross the floor of this // lair, and the walls are gouged by great pincers. Broken arrows lie thick	-	+

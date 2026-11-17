@@ -255,3 +255,17 @@
 1794950130	enter	Trentlin	50	1	Monk 	30282	over	from=L6 how=enter hp=95
 1794950130	crumbled	Trentlin	50	1	Monk 	30282	over	dungeon=6 maps=0 compasses=0 keys=1 guardian_keys=1 why=left how=(hyrule_crumble_update)
 1794950131	leave	Trentlin	50	1	Monk 	30282	over	to=out how=recall secs=1 hp=95
+1794950390	enter	Trentlin	50	1	Monk 	30200	over	from=out how=enter hp=100
+1794950396	leave	Trentlin	50	1	Monk 	30282	over	to=L6 how=down secs=6 hp=100
+1794950396	enter	Trentlin	50	1	Monk 	30501	L6	from=over how=down hp=100
+1794950404	cleared	Trentlin	50	1	Monk 	30505	L6	foes=0
+1794950409	got	Trentlin	50	1	Monk 	30505	L6	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
+1794950425	got	Trentlin	50	1	Monk 	30507	L6	obj=30695 obj_name=four_bombs type=treasure obj_level=1 how=(violence_update)
+1794950425	cleared	Trentlin	50	1	Monk 	30507	L6	foes=0
+1794950431	seal	Trentlin	50	1	Monk 	30511	L6	obj=30503 obj_name=a_cracked_east_wall dir=1 how=bomb
+1794950434	got	Trentlin	50	1	Monk 	30512	L6	obj=30227 obj_name=a_small_key type=key obj_level=1 how=get
+1794950440	got	Trentlin	50	1	Monk 	30512	L6	obj=30695 obj_name=four_bombs type=treasure obj_level=1 how=(violence_update)
+1794950446	got	Trentlin	50	1	Monk 	30512	L6	obj=30695 obj_name=four_bombs type=treasure obj_level=1 how=(violence_update)
+1794950446	cleared	Trentlin	50	1	Monk 	30512	L6	foes=0
+1794950458	got	Trentlin	50	1	Monk 	30508	L6	obj=30695 obj_name=four_bombs type=treasure obj_level=1 how=(violence_update)
+1794950458	cleared	Trentlin	50	1	Monk 	30508	L6	foes=0
