@@ -314100,3 +314100,6 @@ Tue Nov 17 23:04:45 2026 :: Automated backup complete.
 Tue Nov 17 23:05:53 2026 :: Treasure goblin: vanished from room 118 (Smurfberry Patch, smurf.are) (too long in one area).
 Tue Nov 17 23:09:08 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 3 of 6 in 6 hours).
 Tue Nov 17 23:09:54 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Tue Nov 17 23:14:13 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 6 of 6 in 6 hours).
+Tue Nov 17 23:14:13 2026 :: Connection guard: 52.22.236.30 paused for 12 hours (pause 2 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 52.22.236.30 lifts it.
+Tue Nov 17 23:15:58 2026 :: Treasure goblin: vanished from room 5123 (City street, drow1.are) (too long in one area).
