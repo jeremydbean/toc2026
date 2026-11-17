@@ -33936,3 +33936,108 @@
 1794875679	cmd	Trentlin	48	25015	mountain.are	standing	100	0	-	kill	ra	A Black Raven parries your attack. // A Black Raven is unaffected by your punch! // A Black Raven is unaffected by your punch!	-	-
 1794875685	area	Trentlin	48	4207	dresden.are	mountain.are	dresden.are	17	recall
 1794875685	cmd	Trentlin	48	4207	dresden.are	fighting	100	0	fight	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794875705	cmd	Trentlin	48	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794875706	coin	Trentlin	48	4208	dresden.are	-500000	spent	heal	-	15474572297
+1794875706	cmd	Trentlin	48	4208	dresden.are	standing	100	0	-	heal	reresh	The healer utters the words 'candusima'. // You feel fully refreshed! (5 castings, 50 gold.)	-	-
+1794875712	cmd	Trentlin	48	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794875712	laid	-	0	0	-	1129	herb	46	a juniper berry	6356	arac.are	scatter
+1794875712	laid	-	0	0	-	1130	herb	50	a head of cabbage	6328	arac.are	scatter
+1794875712	laid	-	0	0	-	1131	component	60	a rakshasa's claw	17756	landoz.are	scatter
+1794875712	area	Trentlin	48	3700	school.are	dresden.are	school.are	27	up
+1794875712	cmd	Trentlin	48	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794875713	cmd	Trentlin	48	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794875713	cmd	Trentlin	48	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794875713	area	Trentlin	48	15000	campus.are	school.are	campus.are	1	enter
+1794875713	cmd	Trentlin	48	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794875713	spotted	Trentlin	48	15001	campus.are	964	component	87	a vial of grey ooze	4664	1	scatter	arrive
+1794875713	cmd	Trentlin	48	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794875714	passed	Trentlin	48	15002	campus.are	964	component	87	a vial of grey ooze	4665	1	1	scatter	15001	left
+1794875714	cmd	Trentlin	48	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794875714	cmd	Trentlin	48	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794875714	cmd	Trentlin	48	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794875714	cmd	Trentlin	48	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794875715	cmd	Trentlin	48	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794875715	cmd	Trentlin	48	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794875715	cmd	Trentlin	48	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794875715	cmd	Trentlin	48	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794875716	cmd	Trentlin	48	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794875716	area	Trentlin	48	30200	hyrule.are	campus.are	hyrule.are	3	enter
+1794875716	cmd	Trentlin	48	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794875718	cmd	Trentlin	48	30200	hyrule.are	standing	100	0	-	inventory		You are carrying: //      (Magical) a purple container of tea // ( 5) (Magical) a potion of true sight	-	+
+1794875721	cmd	Trentlin	48	30317	hyrule.are	standing	100	0	-	play	recorder 9	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Spectacle Rock	-	+
+1794875733	cmd	Trentlin	48	30317	hyrule.are	standing	100	0	-	bomb	robk	You find no cracked surface to bomb there.	-	-
+1794875733	cmd	Trentlin	48	30317	hyrule.are	standing	100	0	-	bomb	rock	You set a bomb beside a cracked stone floor and dive aside. The blast opens a passage!	-	-
+1794875737	cmd	Trentlin	48	30317	hyrule.are	standing	100	0	-	look		Spectacle Rock //   Two great round boulders stand side by side on the summit, joined by a low // saddle of stone like a giant's pair of spectacles left on the mountaintop.	-	+
+1794875738	achieved	Trentlin	48	30590	hyrule.are	hyrule-cartographer	30	2334	down
+1794875738	cmd	Trentlin	48	30590	hyrule.are	standing	100	0	-	down		                    ACHIEVEMENT EARNED // Across Hyrule  +30 points // Discover the entrance to all nine Hyrule dungeons.	-	+
+1794875740	cmd	Trentlin	48	30590	hyrule.are	standing	100	0	-	scan		a stern old man                    -to the North. // a blue lynel                       -right above you. // a blue leever                      -right above you.	-	-
+1794875742	cmd	Trentlin	48	30596	hyrule.are	standing	100	0	-	north		Level 9: Mountain Gate Fireside //   Black rock walls swallow most of the light thrown by the iron braziers that // flank a worn patch of floor, and the corners stay dark however the flames	-	+
+1794875748	cmd	Trentlin	48	30596	hyrule.are	standing	100	0	-	consider	man	Don't even think about it.	-	-
+1794875753	refused	Trentlin	48	30596	hyrule.are	standing	100	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794875754	cmd	Trentlin	48	30596	hyrule.are	standing	100	0	-	look	triforce	This is the first of the eight shards of Wisdom, from the Eagle's chest. It // is one of nine Triforce pieces, one from each of Hyrule's dungeon // guardians: eight of Wisdom, and Ganon's Power. Carry it: Level 2's door	-	+
+1794875759	cmd	Trentlin	48	30596	hyrule.are	standing	100	21	-	combine	triforce	The Triforce is made from nine pieces, one from each of Hyrule's // dungeon guardians, and you are carrying 8 of them.	-	-
+1794875763	cmd	Trentlin	48	30595	hyrule.are	standing	100	0	-	west		The shutter opens now that the chamber is clear. // Level 9: Scorched Vestibule //   Blackened rings and starbursts of soot mark the floor and walls, as though	-	+
+1794875767	cmd	Trentlin	48	30595	hyrule.are	standing	100	0	-	consider	w	A red wizzrobe is well above your level. // A red wizzrobe has several times your hit points. // Blow for blow, you would need about 8 rounds to bring a red wizzrobe down; it would need about 74 rounds for you.	-	+
+1794875772	cmd	Trentlin	48	30595	hyrule.are	standing	100	0	-	kill	w	A red wizzrobe parries your attack. // A red wizzrobe dodges your attack. // A red wizzrobe parries your attack.	-	-
+1794875775	cmd	Trentlin	48	30595	hyrule.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEMOLISHES *** a red wizzrobe! // Your fists of fury injures a red wizzrobe.	-	+
+1794875780	laid	-	0	0	-	1140	herb	52	an asparagus shoot	5943	mid_ruin.are	scatter
+1794875782	cmd	Trentlin	48	30595	hyrule.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES a red wizzrobe! // Your fists of fury DISEMBOWELS a red wizzrobe!	-	+
+1794875790	cmd	Trentlin	48	30595	hyrule.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a red wizzrobe. // Your fists of fury decimates a red wizzrobe!	-	+
+1794875816	coin	Trentlin	48	30595	hyrule.are	+25000000	loot	(violence_update)	corpse of a red wizzrobe	15499572297
+1794875816	coin	Trentlin	48	30595	hyrule.are	+2200	loot	(violence_update)	corpse of a red wizzrobe	15499574497
+1794875816	coin	Trentlin	48	30595	hyrule.are	+160	loot	(violence_update)	corpse of a red wizzrobe	15499574657
+1794875816	coin	Trentlin	48	30595	hyrule.are	+1300000	loot	(violence_update)	corpse of a red wizzrobe	15500874657
+1794875831	skill	Trentlin	48	30595	hyrule.are	second attack	81	82	success	kill
+1794875831	cmd	Trentlin	48	30595	hyrule.are	standing	69	0	-	kill	w	A blue wizzrobe dodges your attack. // Your punch === OBLITERATES === a blue wizzrobe! // A blue wizzrobe dodges your attack.	-	+
+1794875834	cmd	Trentlin	48	30595	hyrule.are	fighting	69	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a blue wizzrobe. // Your fists of fury MASSACRES a blue wizzrobe!	-	+
+1794875840	cmd	Trentlin	48	30595	hyrule.are	fighting	61	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a blue wizzrobe. // Your fists of fury *** DEVASTATES *** a blue wizzrobe!	-	+
+1794875842	laid	-	0	0	-	1143	herb	42	a marjoram plant	29313	korzath2.are	scatter
+1794875842	laid	-	0	0	-	1144	herb	52	an asparagus shoot	29270	korzath2.are	scatter
+1794875845	cmd	Trentlin	48	30595	hyrule.are	fighting	55	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS a blue wizzrobe! // Your fists of fury MANGLES a blue wizzrobe!	-	+
+1794875849	skill	Trentlin	48	30595	hyrule.are	enhanced damage	94	95	success	(violence_update)
+1794875851	cmd	Trentlin	48	30595	hyrule.are	fighting	48	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a blue wizzrobe. // Your fists of fury DISEMBOWELS a blue wizzrobe!	-	+
+1794875851	census	-	0	0	-	herbs=106/150 components=57/100 eggs=0 coin_piles=10	herbs_held=0 components_held=2 players=2	laid=20 spotted=4 picked=0 passed=4 cleared=0 rare=1 mobs_seen=82 mobs_fought=9 secs=900
+1794875855	level	Trentlin	49	30595	hyrule.are	48	49	Monk 	1	114432	277	(violence_update)
+1794875855	coin	Trentlin	49	30595	hyrule.are	+18000000	loot	(violence_update)	corpse of a blue wizzrobe	15518874657
+1794875855	coin	Trentlin	49	30595	hyrule.are	+27400	loot	(violence_update)	corpse of a blue wizzrobe	15518902057
+1794875855	coin	Trentlin	49	30595	hyrule.are	+81	loot	(violence_update)	corpse of a blue wizzrobe	15518902138
+1794875855	coin	Trentlin	49	30595	hyrule.are	+630000	loot	(violence_update)	corpse of a blue wizzrobe	15519532138
+1794875857	cmd	Trentlin	49	30595	hyrule.are	standing	47	0	-	fists		Who do you want to attack?	-	-
+1794875859	cmd	Trentlin	49	30595	hyrule.are	standing	47	0	-	iron		Your skin hardens.	-	-
+1794875866	cmd	Trentlin	49	30595	hyrule.are	standing	47	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794875870	cmd	Trentlin	49	30595	hyrule.are	standing	47	0	-	look		Level 9: Scorched Vestibule //   Blackened rings and starbursts of soot mark the floor and walls, as though // bolts of fire have been hurled here again and again by sorcerers in red and	-	+
+1794875874	cmd	Trentlin	49	30595	hyrule.are	standing	47	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!	-	-
+1794875875	cmd	Trentlin	49	30602	hyrule.are	standing	47	0	-	north		Level 9: The Sealed Sand Hollow //   Every wall of this sandy chamber is solid and doorless, but each shows a // faint web of cracks where the stone has been weakened, waiting for bombs.	-	+
+1794875878	cmd	Trentlin	49	30602	hyrule.are	standing	47	0	-	consider	la	A red lanmola is well above your level. // A red lanmola has many times your hit points. // Blow for blow, you would need about 12 rounds to bring a red lanmola down; it would need about 20 rounds for you.	-	+
+1794875882	cmd	Trentlin	49	30602	hyrule.are	standing	47	0	-	look	la	Its plates are the colour of rust and old blood, each one notched and // chipped from grinding through the packed red sand of Death Mountain's // hollows. It is slower than its blue cousin but still frighteningly quick,	-	+
+1794875883	cmd	Trentlin	49	30595	hyrule.are	standing	47	0	-	south		Level 9: Scorched Vestibule //   Blackened rings and starbursts of soot mark the floor and walls, as though // bolts of fire have been hurled here again and again by sorcerers in red and	-	+
+1794875883	cmd	Trentlin	49	30594	hyrule.are	standing	47	0	-	west		Level 9: Crossroads of Ash //   Four squat blocks stand in a square at the room's center, their tops dusted // with grey ash that drifts down from somewhere far above. Sticky slime	-	+
+1794875886	cmd	Trentlin	49	30594	hyrule.are	standing	47	0	-	scan		a red wizzrobe                     -to the North. // a blue wizzrobe                    -to the North.	-	-
+1794875892	cmd	Trentlin	49	30594	hyrule.are	standing	47	0	-	kill	w	A red wizzrobe dodges your attack. // A red wizzrobe parries your attack. // Your punch <<< ERADICATES >>> a red wizzrobe!	-	-
+1794875895	cmd	Trentlin	49	30594	hyrule.are	fighting	47	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS a red wizzrobe! // Your fists of fury MANGLES a red wizzrobe!	-	+
+1794875901	cmd	Trentlin	49	30594	hyrule.are	fighting	47	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a red wizzrobe. // Your fists of fury injures a red wizzrobe.	-	+
+1794875907	cmd	Trentlin	49	30594	hyrule.are	fighting	45	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MANGLES a red wizzrobe! // Your fists of fury DISMEMBERS a red wizzrobe!	-	+
+1794875913	cmd	Trentlin	49	30594	hyrule.are	fighting	45	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims a red wizzrobe! // Your fists of fury *** DEVASTATES *** a red wizzrobe!	-	+
+1794875920	skill	Trentlin	49	30594	hyrule.are	fists of fury	87	88	success	fists
+1794875920	level	Trentlin	50	30594	hyrule.are	49	50	Monk 	1	115998	65	fists
+1794875920	coin	Trentlin	50	30594	hyrule.are	+25000000	loot	fists	corpse of a red wizzrobe	15544532138
+1794875920	coin	Trentlin	50	30594	hyrule.are	+2200	loot	fists	corpse of a red wizzrobe	15544534338
+1794875920	coin	Trentlin	50	30594	hyrule.are	+160	loot	fists	corpse of a red wizzrobe	15544534498
+1794875920	coin	Trentlin	50	30594	hyrule.are	+1300000	loot	fists	corpse of a red wizzrobe	15545834498
+1794875920	cmd	Trentlin	50	30594	hyrule.are	fighting	45	29	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches a red wizzrobe. // Your fists of fury ^^^ DESTROYS ^^^ a red wizzrobe!	-	+
+1794875930	cmd	Trentlin	50	30594	hyrule.are	standing	46	0	-	look		Level 9: Crossroads of Ash //   Four squat blocks stand in a square at the room's center, their tops dusted // with grey ash that drifts down from somewhere far above. Sticky slime	-	+
+1794875930	cmd	Trentlin	50	30595	hyrule.are	standing	46	0	-	east		Level 9: Scorched Vestibule //   Blackened rings and starbursts of soot mark the floor and walls, as though // bolts of fire have been hurled here again and again by sorcerers in red and	-	+
+1794875930	cmd	Trentlin	50	30596	hyrule.are	standing	46	0	-	east		Level 9: Mountain Gate Fireside //   Black rock walls swallow most of the light thrown by the iron braziers that // flank a worn patch of floor, and the corners stay dark however the flames	-	+
+1794875931	cmd	Trentlin	50	30590	hyrule.are	standing	46	0	-	south		Level 9: Gate Beneath Spectacle Rock //   Cold air pours down from the mountain's heart into this bare stone // vestibule, carved where the twin crags of Spectacle Rock meet the ground.	-	+
+1794875932	cmd	Trentlin	50	30590	hyrule.are	standing	46	0	-	recall		The Gods have forsaken you.	-	-
+1794875932	cmd	Trentlin	50	30317	hyrule.are	standing	46	0	-	up		Spectacle Rock //   Two great round boulders stand side by side on the summit, joined by a low // saddle of stone like a giant's pair of spectacles left on the mountaintop.	-	+
+1794875933	area	Trentlin	50	4207	dresden.are	hyrule.are	dresden.are	217	recall
+1794875933	cmd	Trentlin	50	4207	dresden.are	standing	46	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794875934	cmd	Trentlin	50	4202	dresden.are	standing	46	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794875935	cmd	Trentlin	50	4203	dresden.are	standing	46	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794875935	cmd	Trentlin	50	4210	dresden.are	standing	46	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794875936	cmd	Trentlin	50	4210	dresden.are	standing	46	0	-	north		Alas, you cannot go that way.	-	-
+1794875936	cmd	Trentlin	50	4210	dresden.are	standing	46	0	-	sleep		You go to sleep.	-	-
+1794875937	sightings	Trentlin	50	4210	dresden.are	mob	4201:1/0/0 4202:1/0/0 98:1/0/0 58:1/0/0 201:1/0/0 7500:1/0/0 7504:2/0/0 7505:1/0/0 7506:1/0/0 7501:1/0/0 7507:4/0/0 7519:6/0/0 7518:1/1/0 2434:5/0/0 10:1/0/0 4445:1/0/0 4457:1/0/0 9543:1/0/0 9562:4/0/0 9542:1/0/0 9519:1/0/0 9520:2/0/0 9533:2/0/0 9592:5/0/0 9540:1/0/0 9537:1/0/0 9568:2/0/0 9544:3/0/0 16012:3/0/0 16008:3/0/0 16010:2/0/0 16011:2/0/0 16009:5/5/0 16006:1/0/0 6102:2/0/0 6100:2/0/0 25008:1/1/0 15018:1/0/0 15029:2/0/0 31088:1/0/0 31078:1/0/0 30359:1/0/0 32108:2/2/0 31218:1/1/0 32178:1/0/0 31158:1/0/0
+1794875937	sightings	Trentlin	50	4210	dresden.are	item	16038:1/0 16:2/0 6106:1/0 6104:1/0 12:1/0
+1794875937	session	Trentlin	50	4210	dresden.are	quit	804s	+4 levels	+9338 exp	+80555548 copper	9 kills	0 deaths	1 quests	308 commands	1 refused	coin: loot 76p 83g 10s 92c, quests 4p 22g 44s 56c, spent 50g	spent on: heal 50g	exp: skilluse +66, kills +9297, recall -25
