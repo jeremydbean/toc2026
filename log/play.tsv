@@ -35666,3 +35666,4 @@
 1794930486	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ga no	You safely collect 30 quest points.	-	-
 1794930489	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2834/2875 mv=223/983 align=1000 exp=252749 coin=4050537326 bank=25010708143 qp=2538 prac=36 train=76 stash=93/350 remorts=3
 1794930489	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    307 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
+1794930751	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=4 spotted=1 picked=0 passed=1 cleared=0 rare=0 mobs_seen=43 mobs_fought=2 secs=900
