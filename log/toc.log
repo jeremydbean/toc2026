@@ -314093,3 +314093,8 @@ Tue Nov 17 22:48:49 2026 :: Connection guard: refused 1 connection from 3.20.63.
 Tue Nov 17 22:53:53 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 4 of 6 in 6 hours).
 Tue Nov 17 22:55:49 2026 :: Treasure goblin: vanished from room 1575 (Entrance to a Dungeon, gnome.are) (too long in one area).
 Tue Nov 17 22:58:58 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 17 23:04:01 2026 :: Connection guard: last hour 12 closed without a word, 9 refused, 0 new characters refused, 0 newly paused; 9 addresses paused and 0 refused now, 14 active player addresses.
+Tue Nov 17 23:04:03 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 2 of 6 in 6 hours).
+Tue Nov 17 23:04:44 2026 :: Automated backup started.
+Tue Nov 17 23:04:45 2026 :: Automated backup complete.
+Tue Nov 17 23:05:53 2026 :: Treasure goblin: vanished from room 118 (Smurfberry Patch, smurf.are) (too long in one area).
