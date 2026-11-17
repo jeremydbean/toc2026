@@ -313124,3 +313124,12 @@ Tue Nov 17 16:48:32 2026 :: Connection guard: 176.65.148.51 closed without a wor
 Tue Nov 17 16:53:24 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 2 of 6 in 6 hours).
 Tue Nov 17 16:54:11 2026 :: Treasure goblin: vanished from room 8790 (Dining Room, kerofk.are) (too long in one area).
 Tue Nov 17 16:58:29 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 3 of 6 in 6 hours).
+Tue Nov 17 17:02:50 2026 :: 212.47.67.62 input overflow, discarding partial line.
+Tue Nov 17 17:02:50 2026 :: Sock.sinaddr:  212.47.67.62
+Tue Nov 17 17:02:50 2026 :: Connection guard: 212.47.67.62 closed without a word (strike 5 of 6 in 6 hours).
+Tue Nov 17 17:02:50 2026 :: Connection guard: 212.47.67.62 closed before a password prompt (strike 6 of 6 in 6 hours).
+Tue Nov 17 17:02:50 2026 :: Connection guard: 212.47.67.62 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 212.47.67.62 lifts it.
+Tue Nov 17 17:02:50 2026 :: Connection guard: refused 1 connection from 212.47.67.62 (paused; 1 refused in all, pause 1 this week, 360 minutes left).
+Tue Nov 17 17:03:33 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 17 17:03:50 2026 :: Connection guard: refused 3 connections from 212.47.67.62 (since the last line; 4 refused in all, pause 1 this week, 359 minutes left).
+Tue Nov 17 17:04:16 2026 :: Treasure goblin: vanished from room 1648 (Turret of the Eastern Tower, wyvern.are) (too long in one area).
