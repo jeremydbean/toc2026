@@ -34041,3 +34041,13 @@
 1794875937	sightings	Trentlin	50	4210	dresden.are	mob	4201:1/0/0 4202:1/0/0 98:1/0/0 58:1/0/0 201:1/0/0 7500:1/0/0 7504:2/0/0 7505:1/0/0 7506:1/0/0 7501:1/0/0 7507:4/0/0 7519:6/0/0 7518:1/1/0 2434:5/0/0 10:1/0/0 4445:1/0/0 4457:1/0/0 9543:1/0/0 9562:4/0/0 9542:1/0/0 9519:1/0/0 9520:2/0/0 9533:2/0/0 9592:5/0/0 9540:1/0/0 9537:1/0/0 9568:2/0/0 9544:3/0/0 16012:3/0/0 16008:3/0/0 16010:2/0/0 16011:2/0/0 16009:5/5/0 16006:1/0/0 6102:2/0/0 6100:2/0/0 25008:1/1/0 15018:1/0/0 15029:2/0/0 31088:1/0/0 31078:1/0/0 30359:1/0/0 32108:2/2/0 31218:1/1/0 32178:1/0/0 31158:1/0/0
 1794875937	sightings	Trentlin	50	4210	dresden.are	item	16038:1/0 16:2/0 6106:1/0 6104:1/0 12:1/0
 1794875937	session	Trentlin	50	4210	dresden.are	quit	804s	+4 levels	+9338 exp	+80555548 copper	9 kills	0 deaths	1 quests	308 commands	1 refused	coin: loot 76p 83g 10s 92c, quests 4p 22g 44s 56c, spent 50g	spent on: heal 50g	exp: skilluse +66, kills +9297, recall -25
+1794875993	laid	-	0	0	-	1153	herb	40	a clove	9692	newthalo.are	scatter
+1794875993	laid	-	0	0	-	1154	herb	51	a piece of kelp	9639	newthalo.are	scatter
+1794876069	laid	-	0	0	-	1155	component	56	a dragons claw	10081	glitter.are	scatter
+1794876138	laid	-	0	0	-	1156	herb	48	an alfalfa sprout	29518	lud.are	scatter
+1794876138	laid	-	0	0	-	1157	herb	52	an asparagus shoot	29530	lud.are	scatter
+1794876138	laid	-	0	0	-	1158	component	63	a phoenix feather	17149	highland.are	scatter
+1794876202	laid	-	0	0	-	1159	herb	50	a head of cabbage	5829	mid_ruin.are	scatter
+1794876202	laid	-	0	0	-	1160	herb	37	a sprig of catnip	5764	mid_ruin.are	scatter
+1794876202	laid	-	0	0	-	1161	component	57	a trolls fingernail	9927	valhalla.are	scatter
+1794876254	laid	-	0	0	-	1162	herb	49	a pomegranate	3614	dkforest.are	scatter
