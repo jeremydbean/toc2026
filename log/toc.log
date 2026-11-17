@@ -312287,3 +312287,14 @@ Tue Nov 17 12:12:01 2026 :: Treasure goblin: vanished from room 9324 (Lost in Sp
 Tue Nov 17 12:14:12 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 3 of 6 in 6 hours).
 Tue Nov 17 12:19:17 2026 :: Connection guard: 54.167.223.174 closed without a word (strike 6 of 6 in 6 hours).
 Tue Nov 17 12:19:17 2026 :: Connection guard: 54.167.223.174 paused for 24 hours (pause 3 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 54.167.223.174 lifts it.
+Tue Nov 17 12:22:06 2026 :: Treasure goblin: vanished from room 7775 (The Altar of Spirituality, ultima.are) (too long in one area).
+Tue Nov 17 12:22:30 2026 :: Connection guard: last hour 12 closed without a word, 1 refused, 0 new characters refused, 1 newly paused; 5 addresses paused and 0 refused now, 14 active player addresses.
+Tue Nov 17 12:24:18 2026 :: Automated backup started.
+Tue Nov 17 12:24:19 2026 :: Automated backup complete.
+Tue Nov 17 12:24:21 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 2 of 6 in 6 hours).
+Tue Nov 17 12:25:25 2026 :: Sock.sinaddr:  201.79.61.174
+Tue Nov 17 12:25:28 2026 :: EOF encountered on read.
+Tue Nov 17 12:25:28 2026 :: Connection guard: 201.79.61.174 closed before a password prompt (strike 1 of 6 in 6 hours).
+Tue Nov 17 12:25:28 2026 :: Sock.sinaddr:  201.79.61.174
+Tue Nov 17 12:25:31 2026 :: EOF encountered on read.
+Tue Nov 17 12:25:31 2026 :: Connection guard: 201.79.61.174 closed before a password prompt (strike 2 of 6 in 6 hours).
