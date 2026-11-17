@@ -312386,3 +312386,6 @@ Tue Nov 17 14:07:46 2026 :: Sock.sinaddr:  97.202.254.41
 Tue Nov 17 14:07:46 2026 :: EOF encountered on read.
 Tue Nov 17 14:07:46 2026 :: Connection guard: 97.202.254.41 closed before a password prompt (a player's address; not counted).
 Tue Nov 17 14:10:03 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Tue Nov 17 14:10:57 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 2 of 6 in 6 hours).
+Tue Nov 17 14:12:32 2026 :: Connection guard: 97.202.254.41 closed without a word (a player's address; not counted).
+Tue Nov 17 14:12:57 2026 :: Treasure goblin: vanished from room 7573 (A large dwelling, astral.are) (too long in one area).
