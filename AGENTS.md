@@ -5848,13 +5848,22 @@ cycle (`DISASTER_CHANCE`). The rules:
 Owner, 2026-11-17: whatever is luck, the creator alone (trust 72, `CR`)
 may decide on demand, and nothing of it reaches the public changes list.
 `src/fate.c`: FATE <player> MISRECALL [vnum] | EMERGENCY | RUSH | MAP |
-CLEAR sets `pcdata->fate_*` (memory only, never told to the player), and
-each is spent by the code that makes the roll it replaces --
+DISASTER <kind> | CLEAR sets `pcdata->fate_*`, never told to the player,
+saved as `Fate <misrecall> <room> <contract> <map> <disaster>` under
+**case 'F'** (written only when one is set, each read into a local and
+held to its range) so it waits across logins; a player not in the game is
+loaded with `offline_player_load`, fated, saved and extracted (owner,
+2026-11-17: offline and queued). A misrecall may name a death trap -- the
+creator is warned, the tick's death trap kills. Each is spent by the code
+that makes the roll it replaces --
 `fate_take_misrecall` at `recall_travel`'s misfire (own prayer only; a
 refused prayer leaves it waiting; it beats sure recall and clover luck),
 `fate_take_contract` at the questmaster's contract roll, `fate_kill_map`
 after `make_corpse` (`map_corpse_drop_sure`; an area with no map keeps
-it). DISASTER <kind> AREA <area> and DISASTER <kind> <player> are the
+it), a fated disaster in `disaster_update` (`disaster_strike_sure( NULL,
+...)` every cycle the player is playing, out of a fight and a shelter,
+where the kind reaches). DISASTER <kind> <player> at somebody offline
+queues the same fate (`fate_queue_disaster`). DISASTER <kind> AREA <area> and DISASTER <kind> <player> are the
 creator's too (`get_trust >= LEVEL_CREATOR` inside DISASTER, which stays
 L5): the area form begins a disaster where somebody stands; the player
 form is `disaster_strike_sure` -- no saving throw or dodge (`strike_sure`),

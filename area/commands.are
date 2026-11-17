@@ -1065,7 +1065,9 @@ disaster does.  A sure strike hits that player at once with no saving
 throw and no dodge -- and nobody else -- but still never kills, never
 strikes staff or anybody in a shelter, and does nothing a sector rules out
 (a sandstorm needs a desert): you are told which kinds would reach where
-they stand.  Neither pays the survival achievement.
+they stand.  Neither pays the survival achievement.  A player who is
+offline is fated instead: the strike waits for them (FATE <player>
+DISASTER <kind>).
 
 See also: DISASTERS
 ~
@@ -2618,6 +2620,7 @@ Syntax: fate <player>
         fate <player> emergency
         fate <player> rush
         fate <player> map
+        fate <player> disaster <kind>
         fate <player> clear
 
 The creator's hand on a player's next roll.  FATE <player> shows what is
@@ -2633,10 +2636,15 @@ fated for them.
   rush        their next quest is a rush contract.
   map         the next creature they kill drops its area's map (never in
               Hyrule or from a pet; the fate waits for a kill that can).
+  disaster    a sure strike of that kind (no saving throw, never lethal)
+              the first time they stand where it can reach them, out of a
+              fight and out of any shelter.
   clear       nothing fated.
 
-A fate is spent by the roll it replaces, is never told to the player, and
-is forgotten if they leave the game.  The log and a creator-only WIZINFO
+A fate is spent by the roll it replaces and is never told to the player.
+It is saved until spent, so it waits across logins and reboots, and a
+player who is offline can be fated: their file is loaded, fated and
+saved, and it waits for them.  The log and a creator-only WIZINFO
 say who fated what.  Psionics are GRANTPSI; a disaster aimed at somebody
 is DISASTER <kind> <player>.
 

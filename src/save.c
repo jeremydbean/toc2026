@@ -1273,6 +1273,12 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "Gui  %d\n",	ch->pcdata->guild	);
     fprintf( fp, "Psionic  %d\n", ch->pcdata->psionic );
     fprintf( fp, "PsiGrant %d\n", ch->pcdata->psionic_grant_pending );
+    /* The creator's FATE, until spent (fate.c). */
+    if ( ch->pcdata->fate_misrecall || ch->pcdata->fate_contract != 0
+    ||   ch->pcdata->fate_map || ch->pcdata->fate_disaster != 0 )
+        fprintf( fp, "Fate %d %d %d %d %d\n", ch->pcdata->fate_misrecall ? 1 : 0,
+                 ch->pcdata->fate_recall_room, ch->pcdata->fate_contract,
+                 ch->pcdata->fate_map ? 1 : 0, ch->pcdata->fate_disaster );
     fprintf( fp, "PsiSpec %s~\n", ch->pcdata->psionic_grant_spec ? ch->pcdata->psionic_grant_spec : "" );
     fprintf( fp, "PsiKnown %s~\n", ch->pcdata->psionic_known ? ch->pcdata->psionic_known : "" );
     if ( ch->pcdata->black_market_stock != 0 )
@@ -4730,6 +4736,27 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	case 'F':
 	    /* Login fixes already applied (fixes.c). */
 	    KEYS( "Fixes",	ch->pcdata->fixes_done );
+	    /* The creator's FATE (fate.c): read into locals, each held to
+	       what it may be. */
+	    if ( !str_cmp( word, "Fate" ) )
+	    {
+		int misrecall = fread_number( fp );
+		int room      = fread_number( fp );
+		int contract  = fread_number( fp );
+		int map       = fread_number( fp );
+		int disaster  = fread_number( fp );
+
+		ch->pcdata->fate_misrecall   = misrecall != 0;
+		ch->pcdata->fate_recall_room = room > 0 && room <= MAX_VNUM ? room : 0;
+		ch->pcdata->fate_contract    = contract == FATE_CONTRACT_EMERGENCY
+		                            || contract == FATE_CONTRACT_RUSH
+		                             ? contract : FATE_CONTRACT_NONE;
+		ch->pcdata->fate_map         = map != 0;
+		ch->pcdata->fate_disaster    = disaster > 0 && disaster < DISASTER_COUNT
+		                             ? disaster : 0;
+		fMatch = true;
+		break;
+	    }
 	    break;
 
 	case 'G':

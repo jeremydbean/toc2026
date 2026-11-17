@@ -130,9 +130,36 @@ class CreatorLuckTests(unittest.TestCase):
                 log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1", errors="replace")
                 self.assertIn("Fate: Zlucky's kill dropped its area's map, as fated.", log)
 
-                self.assertIn("Nobody playing", god.sync("fate znobody rush"))
+                self.assertIn("online or saved", god.sync("fate znobody rush"))
                 god.must("fate zlucky emergency", "emergency contract")
                 god.must("fate zlucky clear", "Nothing is fated")
+                hero.send("quit")
+                self.assertTrue(hero.wait_closed())
+
+            # Offline: fated and saved, and it waits for them. A queued
+            # disaster strikes once they stand where it can reach them.
+            text = (mud.player_dir / "Zlucky").read_text(encoding="latin-1")
+            self.assertNotRegex(text, r"(?m)^Fate ")
+            with mud.connect(timeout=120) as god:
+                login(god, "Killuminati", PW)
+                god.must("fate zlucky rush", "rush contract", "waits for them")
+                god.must("disaster earthquake zlucky", "waits for Zlucky")
+                said = god.sync("fate zlucky")
+                self.assertIn("rush contract", said, said)
+                self.assertIn("earthquake strikes them", said, said)
+                text = (mud.player_dir / "Zlucky").read_text(encoding="latin-1")
+                self.assertRegex(text, r"(?m)^Fate 0 0 2 0 3$")
+                patch_player_file(mud, "Zlucky", Room=QUIET_ROOM)
+                with mud.connect(timeout=120) as hero:
+                    login(hero, "Zlucky", PW)
+                    hero.expect("The earth heaves under your feet", timeout=60)
+                    hero.sync("look")
+                    self.assertNotIn("keep your footing", hero.transcript)
+                    said = god.sync("fate zlucky")
+                    self.assertIn("rush contract", said, said)
+                    self.assertNotIn("earthquake", said, said)
+                    log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1", errors="replace")
+                    self.assertIn("Fate: Zlucky's fated earthquake struck.", log)
 
 
 class CreatorLuckSourceTests(unittest.TestCase):

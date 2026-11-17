@@ -2679,11 +2679,15 @@ struct  pc_data
     /* What the creator has fated for this player's next roll (fate.c):
        a recall prayer that misfires (to fate_recall_room, or anywhere
        when 0), the next quest's contract (FATE_CONTRACT_*), the area's
-       map in the next corpse they make. Memory only: a quit forgets it. */
+       map in the next corpse they make, a disaster (DISASTER_*) that
+       strikes the first time they stand where it can. Saved as `Fate`
+       (case 'F') until spent, so it waits across logins and can be set
+       while they are offline. */
     bool                fate_misrecall;
     int                 fate_recall_room;
     int                 fate_contract;
     bool                fate_map;
+    int                 fate_disaster;
     /* A cleric's RESURRECTION offer to this player: who called, the
        corpse it named (looked for again before use) and when it fades
        (resurrect.c). Not saved. */
@@ -4473,6 +4477,7 @@ void    disaster_dragon_slain   ( CHAR_DATA *ch, CHAR_DATA *drake );
 bool    disaster_strike_sure    ( CHAR_DATA *ch, CHAR_DATA *victim, int type );
 int     recall_misfire_odds     ( CHAR_DATA *ch );
 const char *disaster_kind_word  ( int type );
+int     disaster_kind_lookup    ( const char *word );
 
 /* fate.c: the creator's hand on the dice (creator only, trust 72). */
 #define FATE_CONTRACT_NONE      0
@@ -4482,6 +4487,7 @@ ROOM_INDEX_DATA *fate_take_misrecall ( CHAR_DATA *ch );
 int     fate_take_contract      ( CHAR_DATA *ch );
 void    fate_kill_map           ( CHAR_DATA *killer, CHAR_DATA *victim,
                                   OBJ_DATA *corpse );
+bool    fate_queue_disaster     ( CHAR_DATA *ch, const char *name, int type );
 bool    is_creator      ( const CHAR_DATA *ch );
 bool    is_creator_founder ( const CHAR_DATA *ch );
 bool    is_creator_in_person ( CHAR_DATA *ch );

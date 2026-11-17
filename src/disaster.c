@@ -114,6 +114,8 @@ static int disaster_lookup( const char *word )
     return 0;
 }
 
+static bool disaster_reaches( int type, int sector, bool flying );
+
 /* Set while the creator's DISASTER <kind> <player> strikes: no saving
    throw and no dodge, so the blow lands (disaster_strike_sure). */
 static bool strike_sure = false;
@@ -125,6 +127,12 @@ static bool disaster_saves( CHAR_DATA *vch )
     return !strike_sure
         && ( saves_spell( vch->level, vch )
           || number_percent() <= CLOVER_DISASTER_STEP * clover_luck( vch ) );
+}
+
+/* A kind by its word (or a prefix of it), 0 for none: for FATE. */
+int disaster_kind_lookup( const char *word )
+{
+    return disaster_lookup( word );
 }
 
 /* The word DISASTER takes for a kind ("flood", "dragon"). */
@@ -781,21 +789,21 @@ static void disaster_end( AREA_DATA *area, bool quietly )
        through it. The dragon is not one of these. */
     for ( d = descriptor_list; d != NULL; d = d->next )
     {
-        CHAR_DATA *vch = d->character;
+        CHAR_DATA *fch = d->character;
 
-        if ( d->connected != CON_PLAYING || vch == NULL || IS_NPC(vch)
-          || vch->pcdata == NULL || vch->pcdata->disaster_area != area
-          || vch->pcdata->disaster_kind != type )
+        if ( d->connected != CON_PLAYING || fch == NULL || IS_NPC(fch)
+          || fch->pcdata == NULL || fch->pcdata->disaster_area != area
+          || fch->pcdata->disaster_kind != type )
             continue;
-        vch->pcdata->disaster_area = NULL;
-        vch->pcdata->disaster_kind = 0;
+        fch->pcdata->disaster_area = NULL;
+        fch->pcdata->disaster_kind = 0;
         /* Alive at the end, with no death since it struck: a flood or a
            tornado that carried somebody out of the area still counts. */
-        if ( by_staff || type == DISASTER_DRAGON || vch->hit <= 0
-          || vch->position <= POS_STUNNED
-          || vch->pcdata->achievement_deaths != vch->pcdata->disaster_deaths )
+        if ( by_staff || type == DISASTER_DRAGON || fch->hit <= 0
+          || fch->position <= POS_STUNNED
+          || fch->pcdata->achievement_deaths != fch->pcdata->disaster_deaths )
             continue;
-        achievement_record_event( vch,
+        achievement_record_event( fch,
             (achievement_event_type)( ACHIEVEMENT_EVENT_DISASTER_FIRST + type ), true );
     }
     snprintf( buf, sizeof(buf), "%s is no longer a disaster area.",
@@ -834,8 +842,38 @@ void disaster_update( void )
     CHAR_DATA *vch;
     LIST_ITERATOR iter;
     bool random_off = getenv( "TOC_NO_DISASTERS" ) != NULL;
+    DESCRIPTOR_DATA *d;
 
     dragon_update();
+
+    /* A disaster the creator fated (FATE <player> DISASTER, or DISASTER at
+       somebody offline) strikes the first time they stand where it can:
+       tried every cycle, spent when it lands. Out of a fight, so it does
+       not land as one more blow in a melee. */
+    for ( d = descriptor_list; d != NULL; d = d->next )
+    {
+        CHAR_DATA *fch = d->character;
+        int type;
+
+        if ( d->connected != CON_PLAYING || fch == NULL || IS_NPC(fch)
+        ||   fch->pcdata == NULL || ( type = fch->pcdata->fate_disaster ) <= 0
+        ||   fch->fighting != NULL || fch->in_room == NULL
+        ||   disaster_room_shelters( fch->in_room ) || IS_IMMORTAL(fch) )
+            continue;
+        if ( type != DISASTER_DRAGON
+        &&   !disaster_reaches( type, fch->in_room->sector_type,
+                                IS_AFFECTED(fch, AFF_FLYING) ) )
+            continue;
+        if ( disaster_strike_sure( NULL, fch, type ) )
+        {
+            char buf[MAX_STRING_LENGTH];
+
+            fch->pcdata->fate_disaster = 0;
+            snprintf( buf, sizeof(buf), "Fate: %s's fated %s struck.", fch->name,
+                      disaster_word[type] );
+            log_string( buf );
+        }
+    }
 
     for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
     {
@@ -933,6 +971,14 @@ static bool disaster_reaches( int type, int sector, bool flying )
  * room instead. No area disaster begins, so nobody else is touched and no
  * survival achievement is paid. The dragon goes through dragon_snatch.
  */
+/* What a sure strike tells the creator who sent it; nothing when it came
+   from a queued fate. */
+static void tell_staff( CHAR_DATA *ch, const char *text )
+{
+    if ( ch != NULL )
+        send_to_char( text, ch );
+}
+
 bool disaster_strike_sure( CHAR_DATA *ch, CHAR_DATA *victim, int type )
 {
     char buf[MAX_STRING_LENGTH];
@@ -943,18 +989,18 @@ bool disaster_strike_sure( CHAR_DATA *ch, CHAR_DATA *victim, int type )
     if ( victim == NULL || IS_NPC(victim) || victim->pcdata == NULL
     ||   victim->in_room == NULL )
     {
-        send_to_char( "They aren't here.\n\r", ch );
+        tell_staff( ch, "They aren't here.\n\r" );
         return false;
     }
     if ( IS_IMMORTAL(victim) )
     {
-        send_to_char( "Disasters pass staff by.\n\r", ch );
+        tell_staff( ch, "Disasters pass staff by.\n\r" );
         return false;
     }
     if ( disaster_room_shelters( victim->in_room ) )
     {
-        send_to_char( "They are standing in a shelter (the Temple, the altar, a safe room\n\r"
-                      "or an arena), where no disaster strikes.\n\r", ch );
+        tell_staff( ch, "They are standing in a shelter (the Temple, the altar, a safe room\n\r"
+                        "or an arena), where no disaster strikes.\n\r" );
         return false;
     }
     if ( type == DISASTER_DRAGON )
@@ -974,14 +1020,15 @@ bool disaster_strike_sure( CHAR_DATA *ch, CHAR_DATA *victim, int type )
                 toc_strlcat( buf, disaster_word[kind], sizeof(buf) );
             }
         toc_strlcat( buf, " dragon.\n\r", sizeof(buf) );
-        send_to_char( buf, ch );
+        tell_staff( ch, buf );
         return false;
     }
 
     send_to_char( disaster_warning[type], victim );
     send_to_char( "\n\r", victim );
     snprintf( buf, sizeof(buf), "Disaster: %s sent %s on %s in %s (a sure strike).",
-              ( ch->desc != NULL && ch->desc->original != NULL ? ch->desc->original : ch )->name,
+              ch == NULL ? "a fate"
+              : ( ch->desc != NULL && ch->desc->original != NULL ? ch->desc->original : ch )->name,
               disaster_name[type], victim->name,
               victim->in_room->area->file_name != NULL
               ? victim->in_room->area->file_name : "?" );
@@ -997,7 +1044,7 @@ bool disaster_strike_sure( CHAR_DATA *ch, CHAR_DATA *victim, int type )
 
     snprintf( buf, sizeof(buf), "%s struck %s.\n\r", capitalize( disaster_name[type] ),
               victim->name );
-    send_to_char( buf, ch );
+    tell_staff( ch, buf );
     return true;
 }
 
@@ -1174,10 +1221,15 @@ void do_disaster( CHAR_DATA *ch, char *argument )
             bool logging_in;
             CHAR_DATA *victim = player_in_game( argument, &logging_in );
 
-            if ( victim == NULL || logging_in || victim->in_room == NULL )
+            if ( logging_in )
             {
-                send_to_char( "Nobody playing by that name.  DISASTER <kind> <player> or\n\r"
-                              "DISASTER <kind> AREA <area>.\n\r", ch );
+                send_to_char( "They are logging in; try again in a moment.\n\r", ch );
+                return;
+            }
+            /* Offline: the strike waits for them (fate.c). */
+            if ( victim == NULL || victim->in_room == NULL )
+            {
+                fate_queue_disaster( ch, argument, type );
                 return;
             }
             if ( rank_protects( ch, victim ) )
