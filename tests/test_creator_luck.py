@@ -143,6 +143,11 @@ class CreatorLuckSourceTests(unittest.TestCase):
             self.assertRegex(row, r",\s*CR,", name)
         disaster = (ROOT / "src" / "disaster.c").read_text(encoding="latin-1")
         self.assertIn("get_trust( ch ) < LEVEL_CREATOR", disaster)
+        # A fated misrecall may name a death trap (owner, 2026-11-17): the
+        # creator is warned, never refused.
+        fate = (ROOT / "src" / "fate.c").read_text(encoding="latin-1")
+        self.assertIn("the misfire will kill them", fate)
+        self.assertNotIn("a misfire is not a death", fate)
 
     def test_clover_luck_bends_the_rolls(self) -> None:
         reads = {

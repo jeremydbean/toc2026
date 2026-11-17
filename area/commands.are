@@ -2627,7 +2627,8 @@ fated for them.
               room, or with no room into anywhere a misfire may throw them
               (sure recall from remorts does not save them).  A prayer the
               gods refuse -- a no-recall room, a curse -- is refused and
-              the fate waits.  A death trap is refused as the room.
+              the fate waits.  A death trap is allowed, and kills them
+              as walking in would; you are warned when you set it.
   emergency   their next quest is an emergency contract.
   rush        their next quest is a rush contract.
   map         the next creature they kill drops its area's map (never in

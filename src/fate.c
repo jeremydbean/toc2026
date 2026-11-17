@@ -142,11 +142,10 @@ void do_fate( CHAR_DATA *ch, char *argument )
                 send_to_char( "No room has that vnum.\n\r", ch );
                 return;
             }
+            /* A death trap is allowed (owner, 2026-11-17): the creator is
+               told what it means, and the tick's death trap does the rest. */
             if ( IS_SET(room->room_flags, ROOM_DT) )
-            {
-                send_to_char( "That room is a death trap; a misfire is not a death.\n\r", ch );
-                return;
-            }
+                send_to_char( "That room is a death trap: the misfire will kill them.\n\r", ch );
         }
         victim->pcdata->fate_misrecall = true;
         victim->pcdata->fate_recall_room = vnum;
