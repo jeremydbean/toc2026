@@ -312010,3 +312010,6 @@ Tue Nov 17 07:08:57 2026 :: Treasure goblin: vanished from room 5316 (A back all
 Tue Nov 17 07:09:33 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 2 of 6 in 6 hours).
 Tue Nov 17 07:10:09 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Tue Nov 17 07:14:37 2026 :: Connection guard: 54.167.223.174 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 17 07:19:02 2026 :: Treasure goblin: vanished from room 29065 (Service Hallway, korzath1.are) (too long in one area).
+Tue Nov 17 07:19:40 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 6 of 6 in 6 hours).
+Tue Nov 17 07:19:40 2026 :: Connection guard: 5.161.177.47 paused for 24 hours (pause 3 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.177.47 lifts it.
