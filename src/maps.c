@@ -717,9 +717,10 @@ bool map_item_read( CHAR_DATA *ch, char *argument )
 /* make_corpse: now and then, the map of the area a mobile fell in. Not in
    Hyrule, whose dungeons have maps of their own, and never for somebody's
    pet or servant. */
-void map_corpse_drop( OBJ_DATA *corpse, CHAR_DATA *victim )
+/* The roll's odds in a thousand, or 1000 for a drop that is sure (FATE
+   MAP, TOC_MAP_DROPS=always). True when a map went into the corpse. */
+static bool map_corpse_drop_roll( OBJ_DATA *corpse, CHAR_DATA *victim, int per_mille )
 {
-    const char *always = getenv( "TOC_MAP_DROPS" );    /* tests only */
     ROOM_INDEX_DATA *anchor;
     OBJ_DATA *map;
     AREA_DATA *area;
@@ -727,18 +728,47 @@ void map_corpse_drop( OBJ_DATA *corpse, CHAR_DATA *victim )
     if ( corpse == NULL || victim == NULL || !IS_NPC(victim)
     ||   victim->in_room == NULL || is_cartographer( victim )
     ||   IS_AFFECTED( victim, AFF_CHARM ) || IS_SET( victim->act, ACT_PET ) )
-        return;
+        return false;
     area = victim->in_room->area;
     if ( map_is_hyrule( area ) || !map_area_mappable( area ) )
-        return;
-    if ( !( always != NULL && !str_cmp( always, "always" ) )
-    &&   number_range( 1, 1000 ) > MAP_DROP_PER_MILLE )
-        return;
+        return false;
+    if ( per_mille < 1000 && number_range( 1, 1000 ) > per_mille )
+        return false;
     if ( ( anchor = map_area_anchor( area ) ) == NULL
     ||   ( map = map_item_create( anchor ) ) == NULL )
-        return;
+        return false;
     map->value[2] = MAP_FOUND_ON_FOE;       /* Treasure Map, when it is read */
     obj_to_obj( map, corpse );
+    return true;
+}
+
+void map_corpse_drop( OBJ_DATA *corpse, CHAR_DATA *victim )
+{
+    const char *always = getenv( "TOC_MAP_DROPS" );    /* tests only */
+
+    map_corpse_drop_roll( corpse, victim,
+                          always != NULL && !str_cmp( always, "always" )
+                          ? 1000 : MAP_DROP_PER_MILLE );
+}
+
+/* FATE MAP: the drop without the roll. */
+bool map_corpse_drop_sure( OBJ_DATA *corpse, CHAR_DATA *victim )
+{
+    return map_corpse_drop_roll( corpse, victim, 1000 );
+}
+
+/* A clover's luck: one more roll at the same odds for each point the
+   killer carries, made after the ordinary one missed (holiday.c). */
+void map_corpse_drop_lucky( OBJ_DATA *corpse, CHAR_DATA *victim, int luck )
+{
+    OBJ_DATA *obj;
+
+    if ( corpse == NULL || luck <= 0 )
+        return;
+    for ( obj = corpse->contains; obj != NULL; obj = obj->next_content )
+        if ( obj->pIndexData != NULL && obj->pIndexData->vnum == OBJ_VNUM_AREA_MAP )
+            return;
+    map_corpse_drop_roll( corpse, victim, MAP_DROP_PER_MILLE * luck );
 }
 
 /* ------------------------------------------------------------------

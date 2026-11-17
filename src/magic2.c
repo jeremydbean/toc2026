@@ -3823,7 +3823,10 @@ void spell_vengence( int sn, int level, CHAR_DATA *ch, void *vo )
         return;
     }
 
-    chance = number_percent();
+    /* Even odds, tilted by a clover's luck: the caster's toward the
+       victim, the victim's back toward the caster (holiday.c). */
+    chance = number_percent()
+           + CLOVER_FARSLAY_STEP * ( clover_luck( ch ) - clover_luck( victim ) );
 
     if (chance > 50)
     {

@@ -218,7 +218,7 @@ class SerialLiveTests(unittest.TestCase):
                     create_character(client, name, PW)
                     client.send("quit")
                     self.assertTrue(client.wait_closed())
-            patch_player_file(mud, "Zmemstand", Levl=70, Room=4207)
+            patch_player_file(mud, "Zmemstand", Levl=70, Room=4207, Creator=1)
             with mud.connect(timeout=120) as staff:
                 login(staff, "Zmemstand", PW)
                 staff.sync("scroll 0")

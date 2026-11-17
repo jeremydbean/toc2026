@@ -114,6 +114,25 @@ static int disaster_lookup( const char *word )
     return 0;
 }
 
+/* Set while the creator's DISASTER <kind> <player> strikes: no saving
+   throw and no dodge, so the blow lands (disaster_strike_sure). */
+static bool strike_sure = false;
+
+/* A victim's saving throw against a disaster, unless the strike is sure. */
+static bool disaster_saves( CHAR_DATA *vch )
+{
+    /* A clover's luck is an extra chance to come through (holiday.c). */
+    return !strike_sure
+        && ( saves_spell( vch->level, vch )
+          || number_percent() <= CLOVER_DISASTER_STEP * clover_luck( vch ) );
+}
+
+/* The word DISASTER takes for a kind ("flood", "dragon"). */
+const char *disaster_kind_word( int type )
+{
+    return type > 0 && type < DISASTER_COUNT ? disaster_word[type] : "?";
+}
+
 /* Whether an area is never struck: Mud School and Limbo. */
 static bool disaster_spares_area( const AREA_DATA *area )
 {
@@ -218,8 +237,9 @@ static void disaster_strike_char( CHAR_DATA *vch, int type )
             return;
         }
         if ( IS_AFFECTED(vch, AFF_FLYING)
-          || ( sector != SECT_UNDERGROUND
-            && dice( 3, 8 ) <= get_curr_stat( vch, STAT_DEX ) - 5 ) )
+          || ( sector != SECT_UNDERGROUND && !strike_sure
+            && ( dice( 3, 8 ) <= get_curr_stat( vch, STAT_DEX ) - 5
+              || number_percent() <= CLOVER_DISASTER_STEP * clover_luck( vch ) ) ) )
         {
             send_to_char( "and you get yourself out of the water's path just in time!\n\r", vch );
             return;
@@ -239,7 +259,7 @@ static void disaster_strike_char( CHAR_DATA *vch, int type )
             return;
         }
         send_to_char( "Lightning splits the sky all around you...\n\r", vch );
-        if ( saves_spell( vch->level, vch ) )
+        if ( disaster_saves( vch ) )
         {
             send_to_char( "<<BOOM>> That one struck close. Too close.\n\r", vch );
             return;
@@ -254,7 +274,7 @@ static void disaster_strike_char( CHAR_DATA *vch, int type )
           || sector == SECT_AIR || sector == SECT_UNDER_WATER )
             return;
         send_to_char( "The earth heaves under your feet...\n\r", vch );
-        if ( saves_spell( vch->level, vch ) )
+        if ( disaster_saves( vch ) )
         {
             send_to_char( "but you keep your footing.\n\r", vch );
             return;
@@ -300,7 +320,7 @@ static void disaster_strike_char( CHAR_DATA *vch, int type )
         send_to_char( sector == SECT_INSIDE
                       ? "The wind tears the roof off the building!\n\r"
                       : "A dark funnel touches down beside you!\n\r", vch );
-        if ( saves_spell( vch->level, vch ) )
+        if ( disaster_saves( vch ) )
         {
             send_to_char( "You grab hold of something and hang on until it passes. Phew!\n\r", vch );
             return;
@@ -327,7 +347,7 @@ static void disaster_strike_char( CHAR_DATA *vch, int type )
         if ( sector != SECT_DESERT )
             return;
         send_to_char( "The wall of sand reaches you...\n\r", vch );
-        if ( saves_spell( vch->level, vch ) )
+        if ( disaster_saves( vch ) )
         {
             send_to_char( "but you find shelter and wait out the sand storm.\n\r", vch );
             return;
@@ -358,7 +378,7 @@ static void disaster_strike_char( CHAR_DATA *vch, int type )
         if ( sector != SECT_FIELD && sector != SECT_FOREST && sector != SECT_HILLS )
             return;
         send_to_char( "A wall of fire comes racing toward you!\n\r", vch );
-        if ( saves_spell( vch->level, vch ) )
+        if ( disaster_saves( vch ) )
         {
             send_to_char( "Good thing you're quick on your feet!\n\r", vch );
             return;
@@ -680,7 +700,8 @@ void disaster_dragon_slain( CHAR_DATA *ch, CHAR_DATA *drake )
     format_price( hoard, price, sizeof(price) );
 
     gear = dragon_hoard_item( drake, black_market_gear_for_level( level ) );
-    if ( gear == NULL || number_percent() <= DRAGON_RARE_CHANCE )
+    if ( gear == NULL
+    ||   number_percent() <= DRAGON_RARE_CHANCE + CLOVER_RARE_STEP * clover_luck( ch ) )
         rare = dragon_hoard_item( drake, black_market_rarity() );
 
     act( "$n crashes to the ground, and the hoard it carried spills across the earth!",
@@ -875,11 +896,174 @@ void disaster_update( void )
 }
 
 
+/* Whether a disaster of this kind can strike somebody standing in this
+   sector at all -- the sector rules of disaster_strike_char, without its
+   dice. A sure strike is refused where it would only make noise. */
+static bool disaster_reaches( int type, int sector, bool flying )
+{
+    switch ( type )
+    {
+    case DISASTER_FLOOD:
+        return sector != SECT_INSIDE && !flying;
+    case DISASTER_LIGHTNING:
+        return sector != SECT_INSIDE && sector != SECT_UNDERGROUND
+            && sector != SECT_UNDER_WATER;
+    case DISASTER_EARTHQUAKE:
+        return sector != SECT_WATER_SWIM && sector != SECT_WATER_NOSWIM
+            && sector != SECT_AIR && sector != SECT_UNDER_WATER;
+    case DISASTER_TORNADO:
+        return sector != SECT_UNDERGROUND;
+    case DISASTER_SANDSTORM:
+        return sector == SECT_DESERT;
+    case DISASTER_FIRE:
+        return sector == SECT_FIELD || sector == SECT_FOREST || sector == SECT_HILLS;
+    case DISASTER_TIDAL:
+        return sector == SECT_WATER_SWIM || sector == SECT_WATER_NOSWIM;
+    default:
+        return false;
+    }
+}
+
+/*
+ * The creator's DISASTER <kind> <player>: that player is struck now, with
+ * no saving throw and no dodge. The rules that are not luck still hold: a
+ * disaster never kills, never strikes staff, a mobile or anybody in a
+ * shelter (the Temple, the altar, a safe room, an arena), and does nothing
+ * a sector rules out -- the creator is told which kinds would reach the
+ * room instead. No area disaster begins, so nobody else is touched and no
+ * survival achievement is paid. The dragon goes through dragon_snatch.
+ */
+bool disaster_strike_sure( CHAR_DATA *ch, CHAR_DATA *victim, int type )
+{
+    char buf[MAX_STRING_LENGTH];
+    char area_name[MAX_INPUT_LENGTH];
+    int sector, kind;
+    bool flying;
+
+    if ( victim == NULL || IS_NPC(victim) || victim->pcdata == NULL
+    ||   victim->in_room == NULL )
+    {
+        send_to_char( "They aren't here.\n\r", ch );
+        return false;
+    }
+    if ( IS_IMMORTAL(victim) )
+    {
+        send_to_char( "Disasters pass staff by.\n\r", ch );
+        return false;
+    }
+    if ( disaster_room_shelters( victim->in_room ) )
+    {
+        send_to_char( "They are standing in a shelter (the Temple, the altar, a safe room\n\r"
+                      "or an arena), where no disaster strikes.\n\r", ch );
+        return false;
+    }
+    if ( type == DISASTER_DRAGON )
+        return dragon_snatch( victim->in_room->area, victim, ch );
+
+    sector = victim->in_room->sector_type;
+    flying = IS_AFFECTED(victim, AFF_FLYING);
+    if ( !disaster_reaches( type, sector, flying ) )
+    {
+        snprintf( buf, sizeof(buf), "%s cannot reach them where they stand%s.  Kinds that would:",
+                  capitalize( disaster_name[type] ),
+                  type == DISASTER_FLOOD && flying ? " (they are flying)" : "" );
+        for ( kind = 1; kind < DISASTER_DRAGON; kind++ )
+            if ( disaster_reaches( kind, sector, flying ) )
+            {
+                toc_strlcat( buf, " ", sizeof(buf) );
+                toc_strlcat( buf, disaster_word[kind], sizeof(buf) );
+            }
+        toc_strlcat( buf, " dragon.\n\r", sizeof(buf) );
+        send_to_char( buf, ch );
+        return false;
+    }
+
+    send_to_char( disaster_warning[type], victim );
+    send_to_char( "\n\r", victim );
+    snprintf( buf, sizeof(buf), "Disaster: %s sent %s on %s in %s (a sure strike).",
+              ( ch->desc != NULL && ch->desc->original != NULL ? ch->desc->original : ch )->name,
+              disaster_name[type], victim->name,
+              victim->in_room->area->file_name != NULL
+              ? victim->in_room->area->file_name : "?" );
+    log_string( buf );
+    quest_area_name( victim->in_room->area->name, area_name, sizeof(area_name) );
+    snprintf( buf, sizeof(buf), "%s struck %s in %s.", capitalize( disaster_name[type] ),
+              victim->name, area_name );
+    wizinfo( buf, LEVEL_CREATOR );
+
+    strike_sure = true;
+    disaster_strike_char( victim, type );
+    strike_sure = false;
+
+    snprintf( buf, sizeof(buf), "%s struck %s.\n\r", capitalize( disaster_name[type] ),
+              victim->name );
+    send_to_char( buf, ch );
+    return true;
+}
+
+/* An area named by its file (with or without .are) or by a word of its
+   name. NULL, with the creator told why, when none or several match. */
+static AREA_DATA *disaster_find_area( CHAR_DATA *ch, const char *name )
+{
+    AREA_DATA *pArea, *found = NULL;
+    char shown[MAX_INPUT_LENGTH];
+    char file[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    int matches = 0;
+
+    for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
+    {
+        if ( pArea->file_name == NULL )
+            continue;
+        /* A built area's file is built/<name>.are: match the name. */
+        toc_strlcpy( file, strrchr( pArea->file_name, '/' ) != NULL
+                     ? strrchr( pArea->file_name, '/' ) + 1 : pArea->file_name,
+                     sizeof(file) );
+        if ( strlen( file ) > 4 && !str_cmp( file + strlen( file ) - 4, ".are" ) )
+            file[strlen( file ) - 4] = '\0';
+        if ( !str_cmp( name, pArea->file_name ) || !str_cmp( name, file ) )
+            return pArea;
+        toc_strlcat( file, ".are", sizeof(file) );
+        if ( !str_cmp( name, file ) )
+            return pArea;
+    }
+    buf[0] = '\0';
+    for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
+    {
+        quest_area_name( pArea->name, shown, sizeof(shown) );
+        if ( !str_infix( name, shown ) )
+        {
+            found = pArea;
+            if ( ++matches <= 6 )
+            {
+                toc_strlcat( buf, "  ", sizeof(buf) );
+                toc_strlcat( buf, shown, sizeof(buf) );
+                toc_strlcat( buf, " (", sizeof(buf) );
+                toc_strlcat( buf, pArea->file_name != NULL ? pArea->file_name : "?", sizeof(buf) );
+                toc_strlcat( buf, ")\n\r", sizeof(buf) );
+            }
+        }
+    }
+    if ( matches == 1 )
+        return found;
+    if ( matches == 0 )
+        send_to_char( "No area by that name.  Give its file (DISASTER FLOOD AREA DRESDEN)\n\r"
+                      "or a word of its name.\n\r", ch );
+    else
+    {
+        send_to_char( "Several areas match; give the file name:\n\r", ch );
+        send_to_char( buf, ch );
+    }
+    return NULL;
+}
+
 /*
  * DISASTER                      areas suffering one now
  * DISASTER <kind>               strike the area you stand in
  * DISASTER STOP                 end the one in your area
  * DISASTER DRAGON <player>      the dragon takes that player, now
+ * DISASTER <kind> AREA <area>   (creator) strike that area, wherever it is
+ * DISASTER <kind> <player>      (creator) a sure strike on that player now
  */
 void do_disaster( CHAR_DATA *ch, char *argument )
 {
@@ -936,6 +1120,73 @@ void do_disaster( CHAR_DATA *ch, char *argument )
     if ( ( type = disaster_lookup( arg ) ) == 0 )
     {
         send_to_char( "No such disaster. Type DISASTER for the list.\n\r", ch );
+        return;
+    }
+
+    /* Aimed anywhere but the room you stand in: the creator's alone
+       (owner, 2026-11-17). DISASTER DRAGON <player> is older and stays
+       with the command. */
+    if ( argument[0] != '\0' && ( type != DISASTER_DRAGON || get_trust( ch ) >= LEVEL_CREATOR ) )
+    {
+        char where[MAX_INPUT_LENGTH];
+        const char *rest;
+
+        if ( get_trust( ch ) < LEVEL_CREATOR )
+        {
+            send_to_char( "Aiming a disaster at another area or at a player is the creator's alone.\n\r", ch );
+            return;
+        }
+        rest = one_argument( argument, where );
+        if ( !str_cmp( where, "area" ) )
+        {
+            AREA_DATA *target;
+
+            if ( rest[0] == '\0' )
+            {
+                send_to_char( "Strike which area?  DISASTER <kind> AREA <file or name>\n\r", ch );
+                return;
+            }
+            if ( ( target = disaster_find_area( ch, rest ) ) == NULL )
+                return;
+            if ( disaster_spares_area( target ) )
+            {
+                send_to_char( "Mud School and Limbo are never struck.\n\r", ch );
+                return;
+            }
+            if ( target->nplayer <= 0 )
+            {
+                send_to_char( "Nobody is in that area; a disaster there would end at once.\n\r", ch );
+                return;
+            }
+            if ( target->disaster_type > 0 )
+            {
+                send_to_char( "That area is already suffering one.\n\r", ch );
+                return;
+            }
+            disaster_begin( target, type );
+            target->disaster_by_staff = true;
+            snprintf( buf, sizeof(buf), "%s strikes %s next cycle.\n\r",
+                      capitalize( disaster_name[type] ), area_shown_name( target->name ) );
+            send_to_char( buf, ch );
+            return;
+        }
+        {
+            bool logging_in;
+            CHAR_DATA *victim = player_in_game( argument, &logging_in );
+
+            if ( victim == NULL || logging_in || victim->in_room == NULL )
+            {
+                send_to_char( "Nobody playing by that name.  DISASTER <kind> <player> or\n\r"
+                              "DISASTER <kind> AREA <area>.\n\r", ch );
+                return;
+            }
+            if ( rank_protects( ch, victim ) )
+            {
+                send_to_char( "They outrank you.\n\r", ch );
+                return;
+            }
+            disaster_strike_sure( ch, victim, type );
+        }
         return;
     }
 

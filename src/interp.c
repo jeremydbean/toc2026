@@ -426,7 +426,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "gwhere",         do_gwhere,      POS_DEAD,       L8,  LOG_ALWAYS, 1 },
     { "hero",           do_hero,        POS_DEAD,       HE,  LOG_NORMAL, 1 },
     { "holylight",      do_holylight,   POS_DEAD,      L10,  LOG_NORMAL, 1 },
-    { "grantpsi",       do_grantpsi, POS_DEAD,      ML,  LOG_ALWAYS, 1 },
+    { "grantpsi",       do_grantpsi, POS_DEAD,      CR,  LOG_ALWAYS, 1 },
     { "grantmap",       do_grantmap,    POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "hpardon",        do_hpardon,     POS_DEAD,       L8,  LOG_NORMAL, 1 },
     { "immtalk",        do_immtalk,     POS_DEAD,       IM,  LOG_NORMAL, 1 },
@@ -579,6 +579,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "screenreader",   do_screenreader, POS_DEAD,       0,  LOG_NORMAL, 1 },
     /* Keepsakes of explored areas (maps.c): last, so nothing moves. */
     { "souvenirs",      do_souvenirs,   POS_DEAD,        0,  LOG_NORMAL, 1 },
+    { "fate",           do_fate,        POS_DEAD,       CR,  LOG_ALWAYS, 1 },
 /* End of list. */
     { "",		0,		POS_DEAD,	 0,  LOG_NORMAL, 0 }
 };

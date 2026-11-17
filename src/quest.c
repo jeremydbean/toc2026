@@ -1836,10 +1836,17 @@ void do_quest(CHAR_DATA *ch, char *argument)
 
         if (ch->questmob > 0 || ch->questobj > 0)
 	{
+	    /* The creator's FATE spends here; a clover's luck tilts the
+	       rolls (CLOVER_*_STEP). */
+	    int fated = fate_take_contract(ch);
+	    int luck = clover_luck(ch);
+
 	    /* Rolled ahead of the rush contract, so an emergency is the
 	       rarer of the two and the rush chance reads against what is
 	       left. A quest is one or the other, never both. */
-	    if (chance(QUEST_EMERGENCY_CHANCE))
+	    if (fated == FATE_CONTRACT_EMERGENCY
+	    ||  (fated == FATE_CONTRACT_NONE
+	      && chance(QUEST_EMERGENCY_CHANCE + CLOVER_EMERGENCY_STEP * luck)))
 	    {
 		ch->countdown = (sh_int)QUEST_EMERGENCY_MINUTES;
 		ch->questrush = false;
@@ -1855,7 +1862,8 @@ void do_quest(CHAR_DATA *ch, char *argument)
 		    "You have %d minutes. Go now!", ch->countdown);
 		do_say(questman, buf);
 	    }
-	    else if (chance(20))
+	    else if (fated == FATE_CONTRACT_RUSH
+	         || (fated == FATE_CONTRACT_NONE && chance(20 + CLOVER_RUSH_STEP * luck)))
 	    {
 		ch->countdown = (sh_int)(number_range(5, 8));
 		ch->questrush = true;

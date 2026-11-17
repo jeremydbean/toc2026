@@ -59,6 +59,15 @@ help <immortal-command>
 diagnostics
 ```
 
+**Luck is the creator's to command** (trust 72; 2026-11-17). FATE
+<player> MISRECALL [room] / EMERGENCY / RUSH / MAP / CLEAR fixes that
+player's next roll of that kind, spent where the roll is made and never
+told to them; DISASTER <kind> AREA <area> starts a disaster in any
+occupied area and DISASTER <kind> <player> lands one on them at once with
+no saving throw (never lethal, never in a shelter); GRANTPSI is the
+creator's too. HELP FATE, HELP DISASTER and HELP GRANTPSI have the
+details; the log names who fated what (`Fate:`).
+
 Command logging also varies. High-impact commands are generally logged, but
 logs are not a substitute for change notes and host-level audit controls.
 

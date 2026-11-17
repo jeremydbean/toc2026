@@ -43,7 +43,8 @@ def immortal(mud: LiveMud, name: str) -> None:
         create_character(client, name, PASSWORD)
         client.send("quit")
         client.wait_closed()
-    patch_player_file(mud, name, Levl=IMMORTAL_LEVEL)
+    # GRANTPSI is the creator's (2026-11-17): the fixture holds the rank.
+    patch_player_file(mud, name, Levl=IMMORTAL_LEVEL, Creator=1)
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")

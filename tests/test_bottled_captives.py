@@ -80,7 +80,7 @@ class CaptiveLiveTests(unittest.TestCase):
                     create_character(client, name, PW)
                     client.send("quit")
                     self.assertTrue(client.wait_closed())
-            patch_player_file(mud, "Zbotstaff", Levl=70, Room=TEMPLE)
+            patch_player_file(mud, "Zbotstaff", Levl=70, Room=TEMPLE, Creator=1)
             patch_player_file(mud, "Zbottler", Levl=20, Room=SPARRING_GALLERY)
             path = mud.player_dir / "Zbottler"
             text = path.read_text(encoding="latin-1")

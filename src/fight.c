@@ -3659,6 +3659,7 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
                                bool bypass_hyrule_ganon )
 {
     int i;
+    int kill_luck = 0;
     OBJ_DATA *obj;
     OBJ_DATA *obj_next;
 
@@ -3785,6 +3786,9 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
         cartographer_slain( ch, victim );
       if ( is_disaster_dragon( victim ) )
         disaster_dragon_slain( ch, victim );
+      /* The killer's clover luck, read before the pot of gold spends a
+         point of it, for the rare drops below. */
+      kill_luck = clover_luck( ch );
       /* A four-leaf clover's pot of gold, into the purse the corpse
          takes its coin from. */
       holiday_kill( ch, victim );
@@ -3799,6 +3803,10 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
 
         if ( IS_NPC(victim) )
         {
+          /* The creator's FATE MAP, and a clover's luck at a map (fate.c,
+             holiday.c). */
+          fate_kill_map( ch, victim, corpse );
+          map_corpse_drop_lucky( corpse, victim, kill_luck );
           reward_hyrule_hero_tunic( ch, victim );
           /* "10th enemy has the bomb" (hyrule.c). */
           hyrule_note_kill( ch, victim );
@@ -5458,6 +5466,12 @@ void do_backstab( CHAR_DATA *ch, char *argument )
        only fall to their arrows: the backstab lands as a backstab. */
     if ( is_divinely_warded( victim ) || hyrule_defies_instant_death( victim ) )
         chance = 0;
+
+    /* A clover's luck: the killer's raises it, a lucky victim's lowers
+       it, only where a fatality could happen at all (holiday.c). */
+    if ( chance > 0 )
+        chance = UMAX( 1, chance + CLOVER_FATALITY_STEP
+                                   * ( clover_luck( ch ) - clover_luck( victim ) ) );
 
     if ((chance >= number_percent()) && chance !=0)
     {

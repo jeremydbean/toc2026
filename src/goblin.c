@@ -531,7 +531,7 @@ void treasure_goblin_slain( CHAR_DATA *ch, CHAR_DATA *gob )
         int vnum = 0;
         OBJ_INDEX_DATA *pObj;
 
-        if ( number_percent() <= GOBLIN_RARE_CHANCE )
+        if ( number_percent() <= GOBLIN_RARE_CHANCE + CLOVER_RARE_STEP * clover_luck( ch ) )
             vnum = black_market_rarity();
         else if ( number_percent() <= GOBLIN_GEAR_CHANCE && who != NULL )
             vnum = black_market_gear_for_level( who->level );

@@ -1948,7 +1948,17 @@ decoration. Rules the code depends on:
   broadcast three times; review, 2026-11-02). Clover
   luck is `pcdata->holiday_luck`, memory only, at most `LUCK_MAX`; a
   clover past the cap is refused before the bite (`holiday_eat_refused`)
-  and eating one says how much luck is held.
+  and eating one says how much luck is held. **While held it bends the
+  dice** (owner, 2026-11-17): `clover_luck(ch)` (the player's points, a
+  charmed pet's master's) is read by an extra map roll per point in a
+  kill's corpse (`map_corpse_drop_lucky`, the luck read in
+  `raw_kill_internal` before the pot of gold spends a point), the
+  goblin's and dragon's rarity, the rush and emergency contracts, Herbie,
+  a backstab's fatality and the Farslay rite (the victim's luck pushing
+  back), the recall misfire (`recall_misfire_odds`) and a disaster's blow
+  (`disaster_saves`); the steps are `CLOVER_*_STEP` in merc.h. Only the
+  pot of gold spends it. A new luck roll reads `clover_luck` and gets a
+  step there (`tests/test_creator_luck.py`).
   `holiday_snack` lets a clover, a candy heart and trick-or-treat candy
   past "too full" -- every new character starts full.
 - **Holiday objects are unlevelled** (level 0), so
@@ -5832,6 +5842,28 @@ cycle (`DISASTER_CHANCE`). The rules:
 - **Logged without the room it waits in**: who was taken and from which
   area file; WIZINFO carries the rooms. `TOC_DRAGON_WAIT` shortens the
   wait for the live test (`tests/test_disasters.py`).
+
+## The Creator's Dice
+
+Owner, 2026-11-17: whatever is luck, the creator alone (trust 72, `CR`)
+may decide on demand, and nothing of it reaches the public changes list.
+`src/fate.c`: FATE <player> MISRECALL [vnum] | EMERGENCY | RUSH | MAP |
+CLEAR sets `pcdata->fate_*` (memory only, never told to the player), and
+each is spent by the code that makes the roll it replaces --
+`fate_take_misrecall` at `recall_travel`'s misfire (own prayer only; a
+refused prayer leaves it waiting; it beats sure recall and clover luck),
+`fate_take_contract` at the questmaster's contract roll, `fate_kill_map`
+after `make_corpse` (`map_corpse_drop_sure`; an area with no map keeps
+it). DISASTER <kind> AREA <area> and DISASTER <kind> <player> are the
+creator's too (`get_trust >= LEVEL_CREATOR` inside DISASTER, which stays
+L5): the area form begins a disaster where somebody stands; the player
+form is `disaster_strike_sure` -- no saving throw or dodge (`strike_sure`),
+nobody else, never staff or a shelter, never what the sector rules out
+(`disaster_reaches`), no survival achievement. GRANTPSI moved to `CR`, so
+its live tests' staff fixtures carry `Creator 1`. Each is logged with
+`Fate:`/`Disaster:` and WIZINFO at `LEVEL_CREATOR`. A new luck the creator
+should command is a FATE word spent where its roll is made
+(`tests/test_creator_luck.py`).
 
 ## The Holiday Bosses
 

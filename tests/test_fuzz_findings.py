@@ -314,7 +314,7 @@ class PlayerReaderFindings(unittest.TestCase):
                 create_character(client, "Zgrantor", "fuzzpass1")
                 quit_and_wait(client)
             remove_key(mud, "Zroomless", "Room")
-            patch_player_file(mud, "Zgrantor", Levl=70)
+            patch_player_file(mud, "Zgrantor", Levl=70, Creator=1)
 
             with mud.connect(timeout=60) as staff:
                 login(staff, "Zgrantor", "fuzzpass1")

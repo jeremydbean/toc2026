@@ -2676,6 +2676,14 @@ struct  pc_data
     AREA_DATA *         disaster_area;
     int                 disaster_kind;
     long                disaster_deaths;    /* deaths when it struck */
+    /* What the creator has fated for this player's next roll (fate.c):
+       a recall prayer that misfires (to fate_recall_room, or anywhere
+       when 0), the next quest's contract (FATE_CONTRACT_*), the area's
+       map in the next corpse they make. Memory only: a quit forgets it. */
+    bool                fate_misrecall;
+    int                 fate_recall_room;
+    int                 fate_contract;
+    bool                fate_map;
     /* A cleric's RESURRECTION offer to this player: who called, the
        corpse it named (looked for again before use) and when it fades
        (resurrect.c). Not saved. */
@@ -4462,6 +4470,18 @@ void    disaster_update         ( void );
 bool    is_disaster_dragon      ( const CHAR_DATA *ch );
 void    disaster_dragon_forget  ( CHAR_DATA *ch );
 void    disaster_dragon_slain   ( CHAR_DATA *ch, CHAR_DATA *drake );
+bool    disaster_strike_sure    ( CHAR_DATA *ch, CHAR_DATA *victim, int type );
+int     recall_misfire_odds     ( CHAR_DATA *ch );
+const char *disaster_kind_word  ( int type );
+
+/* fate.c: the creator's hand on the dice (creator only, trust 72). */
+#define FATE_CONTRACT_NONE      0
+#define FATE_CONTRACT_EMERGENCY 1
+#define FATE_CONTRACT_RUSH      2
+ROOM_INDEX_DATA *fate_take_misrecall ( CHAR_DATA *ch );
+int     fate_take_contract      ( CHAR_DATA *ch );
+void    fate_kill_map           ( CHAR_DATA *killer, CHAR_DATA *victim,
+                                  OBJ_DATA *corpse );
 bool    is_creator      ( const CHAR_DATA *ch );
 bool    is_creator_founder ( const CHAR_DATA *ch );
 bool    is_creator_in_person ( CHAR_DATA *ch );
@@ -4638,6 +4658,8 @@ void    map_login                ( CHAR_DATA *ch );
 bool    map_item_read            ( CHAR_DATA *ch, char *argument );
 OBJ_DATA *map_item_create        ( ROOM_INDEX_DATA *anchor );
 void    map_corpse_drop          ( OBJ_DATA *corpse, CHAR_DATA *victim );
+bool    map_corpse_drop_sure     ( OBJ_DATA *corpse, CHAR_DATA *victim );
+void    map_corpse_drop_lucky    ( OBJ_DATA *corpse, CHAR_DATA *victim, int luck );
 void    gmcp_send_map_known      ( DESCRIPTOR_DATA *d );
 extern CHAR_DATA *cartographer;
 bool    is_cartographer          ( const CHAR_DATA *ch );
@@ -4786,6 +4808,24 @@ bool        holiday_eat_refused     ( CHAR_DATA *ch, OBJ_DATA *obj );
 bool        holiday_given           ( CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj );
 bool        holiday_dropped         ( CHAR_DATA *ch, OBJ_DATA *obj );
 void        holiday_kill            ( CHAR_DATA *ch, CHAR_DATA *victim );
+int         clover_luck             ( CHAR_DATA *ch );
+/* What each point of clover luck adds (holiday.c): percent to the goblin's
+   and the dragon's rarity, to the rush and the emergency contract, and
+   points off Herbie's roll (out of 100). A map gets one more roll at the
+   ordinary odds per point (maps.c). */
+#define CLOVER_RARE_STEP        5
+#define CLOVER_RUSH_STEP       10
+#define CLOVER_EMERGENCY_STEP   3
+#define CLOVER_HERBIE_STEP      1
+/* And for the luck of the one at risk (owner, 2026-11-17): a backstab's
+   fatality chance (points of percent, the killer's less the victim's), the
+   Farslay rite's odds against backfiring (the same), the recall misfire's
+   five in a hundred (points off), and an extra chance in a hundred to
+   dodge a disaster's blow. */
+#define CLOVER_FATALITY_STEP    2
+#define CLOVER_FARSLAY_STEP    10
+#define CLOVER_RECALL_STEP      2
+#define CLOVER_DISASTER_STEP   15
 void        holiday_login_notice    ( CHAR_DATA *ch );
 void        holiday_shop_flavour    ( CHAR_DATA *keeper, CHAR_DATA *ch );
 void        holiday_forget          ( CHAR_DATA *ch );

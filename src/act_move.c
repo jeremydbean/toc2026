@@ -3784,7 +3784,7 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
     char buf[MAX_STRING_LENGTH];
     ROOM_INDEX_DATA *location;
     int lose, skill, chance;
-    bool sure;
+    bool sure, fated;
 
     if (IS_NPC(ch))
     {
@@ -3880,6 +3880,16 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
 
     chance = number_percent();
 
+    /* The creator's FATE MISRECALL: this prayer is heard and misfires,
+       sure recall or not (fate.c spends it at the misfire below). */
+    fated = own_prayer && !IS_NPC(ch) && ch->pcdata->fate_misrecall;
+    if ( fated )
+    {
+        sure = false;
+        skill = 101;
+        chance = 1;
+    }
+
     if (ch->fighting != NULL)
     {
        if (chance < skill)
@@ -3892,9 +3902,9 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
              achievement_record_event( ch, ACHIEVEMENT_EVENT_RECALL_LOW_HP, true );
              diary_close_call( ch, "recalled out of a fight near death" );
           }
-          if (chance < 5 && !sure)
+          if ((fated || chance < recall_misfire_odds(ch)) && !sure)
           {
-             location = get_random_room(ch);
+             location = own_prayer ? fate_take_misrecall(ch) : get_random_room(ch);
              send_to_char("Something is very wrong!\n\r",ch);
              act("$n failed to recall, but $e went somewhere.", ch, NULL, NULL, TO_ROOM);
              lose = (ch->desc != NULL) ? 25 : 50;
@@ -3943,9 +3953,9 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
 
    if (chance < skill)
    {
-      if (chance < 5 && !sure)
+      if ((fated || chance < recall_misfire_odds(ch)) && !sure)
       {
-         location = get_random_room(ch);
+         location = own_prayer ? fate_take_misrecall(ch) : get_random_room(ch);
          send_to_char("Something is very wrong!\n\r",ch);
          act("$n failed to recall, but $e went somewhere.", ch, NULL, NULL, TO_ROOM);
       }
@@ -3984,6 +3994,13 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
       WAIT_STATE(ch,4);
       recall_miss_message(ch);
       return;
+}
+
+/* The odds in a hundred that a heard recall prayer misfires: five, less
+   a clover's luck (holiday.c). The creator's FATE MISRECALL is apart. */
+int recall_misfire_odds( CHAR_DATA *ch )
+{
+    return UMAX( 0, 5 - CLOVER_RECALL_STEP * clover_luck( ch ) );
 }
 
 /* Being sent home by something other than your own prayer. */

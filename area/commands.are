@@ -977,7 +977,15 @@ What the holiday treats do:
   Clover (St. Patrick's)      EAT it: the next foe you slay spills a pot of
                               gold.  You hold luck for three kills at most;
                               a fourth clover is refused.  Luck is lost when
-                              you leave the game.
+                              you leave the game.  While you hold it, luck
+                              leans your way, more with each point: an area
+                              map in what you slay, the treasure goblin's
+                              and the black dragon's rarities, rush and
+                              emergency quests, Herbie's visit when you are
+                              badly hurt, a backstab's fatality, the Farslay
+                              rite's odds (a lucky victim's luck pushes
+                              back), fewer misfired recalls, and dodging a
+                              disaster's blow.
   Painted egg (Noblegarden)   hidden around Dresden; OPEN it
   Firework (Midsummer)        DROP it and the whole area sees it
   Festival keg (Brewfest)     DRINK from it, free
@@ -1034,6 +1042,8 @@ Syntax: disaster                    (areas suffering one; where the dragon is)
         disaster <kind>             (strike the area you stand in)
         disaster stop               (end the one in your area)
         disaster dragon <player>    (the dragon takes that player now)
+        disaster <kind> area <area> (creator: strike that area, anywhere)
+        disaster <kind> <player>    (creator: a sure strike on them, now)
 
 Kinds: flood, lightning, earthquake, tornado, sandstorm, fire, tidal,
 dragon.  A disaster you start, like a random one, warns the area and
@@ -1048,6 +1058,14 @@ the dragon lands in another outdoor room of their area, scaled to their
 level, and leaves three minutes later if nobody fights it.  The log
 names who was taken and from which area, never where the dragon waits;
 WIZINFO gives the rooms.
+
+The creator alone may aim one.  AREA takes an area's file (dresden) or a
+word of its name; somebody must be in it, and it warns and strikes as any
+disaster does.  A sure strike hits that player at once with no saving
+throw and no dodge -- and nobody else -- but still never kills, never
+strikes staff or anybody in a shelter, and does nothing a sector rules out
+(a sandstorm needs a desert): you are told which kinds would reach where
+they stand.  Neither pays the survival achievement.
 
 See also: DISASTERS
 ~
@@ -2567,7 +2585,7 @@ separate list.
 See also: DNS, BAN, WIZINFO
 ~
 
-70 GRANTPSI~
+72 GRANTPSI~
 Syntax: grantpsi <player> [now|level] [skill1,skill2,...]
 
 GRANTPSI gives a player psionics.  It never tells the player anything:
@@ -2588,9 +2606,40 @@ transfusion, nightmare, mind leech, pyrotechnics, and confuse.
 
 The target does not have to be online: the saved character is loaded,
 granted or flagged, and written back.  When the powers are actually
-given, by this or by a remort, WIZINFO names them.
+given, by this or by a remort, WIZINFO names them.  It is the creator's
+alone (trust 72).
 
-See also: PSIONICS, ADVANCE
+See also: PSIONICS, ADVANCE, FATE
+~
+
+72 FATE~
+Syntax: fate <player>
+        fate <player> misrecall [<room vnum>]
+        fate <player> emergency
+        fate <player> rush
+        fate <player> map
+        fate <player> clear
+
+The creator's hand on a player's next roll.  FATE <player> shows what is
+fated for them.
+
+  misrecall   their next RECALL prayer is heard and misfires, into that
+              room, or with no room into anywhere a misfire may throw them
+              (sure recall from remorts does not save them).  A prayer the
+              gods refuse -- a no-recall room, a curse -- is refused and
+              the fate waits.  A death trap is refused as the room.
+  emergency   their next quest is an emergency contract.
+  rush        their next quest is a rush contract.
+  map         the next creature they kill drops its area's map (never in
+              Hyrule or from a pet; the fate waits for a kill that can).
+  clear       nothing fated.
+
+A fate is spent by the roll it replaces, is never told to the player, and
+is forgotten if they leave the game.  The log and a creator-only WIZINFO
+say who fated what.  Psionics are GRANTPSI; a disaster aimed at somebody
+is DISASTER <kind> <player>.
+
+See also: GRANTPSI, DISASTER
 ~
 
 67 FSAVE~

@@ -565,7 +565,10 @@ void holiday_eaten( CHAR_DATA *ch, int vnum )
                   "{0AA warm, green luck settles over you. The next foe you slay "
                   "will spill a pot of gold.{00\n\r"
                   "You carry luck for %d kill%s (at most %d). It lasts until you "
-                  "leave the game.\n\r",
+                  "leave the game.\n\r"
+                  "While you carry it, luck leans your way: rare drops, rush quests, "
+                  "Herbie, fatalities,\n\r"
+                  "Farslay, recalls and disasters.  HELP 'HOLIDAY TREATS' says how.\n\r",
                   ch->pcdata->holiday_luck, ch->pcdata->holiday_luck == 1 ? "" : "s",
                   LUCK_MAX );
         send_to_char( buf, ch );
@@ -705,6 +708,24 @@ bool holiday_dropped( CHAR_DATA *ch, OBJ_DATA *obj )
         send_to_char( buf, who );
     }
     return true;
+}
+
+/* A clover's luck, as the dice read it: the points a player carries (one
+   to LUCK_MAX), or their master's for a charmed pet or servant; 0 for
+   anybody else. While held it bends rare rolls their way (owner,
+   2026-11-17): a map in a kill's corpse (maps.c), the treasure goblin's
+   and the black dragon's rarities, the questmaster's rush and emergency
+   contracts (quest.c), Herbie's visit (special.c), a backstab's fatality
+   and the Farslay rite (the victim's luck pushing back), the recall
+   misfire (act_move.c) and a disaster's blow (disaster.c). The steps are
+   CLOVER_*_STEP in merc.h. Only the pot of gold spends it. */
+int clover_luck( CHAR_DATA *ch )
+{
+    if ( ch != NULL && IS_NPC(ch) && ch->master != NULL && IS_AFFECTED(ch, AFF_CHARM) )
+        ch = ch->master;
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return 0;
+    return URANGE( 0, ch->pcdata->holiday_luck, LUCK_MAX );
 }
 
 /* raw_kill, before the corpse is made: a clover's luck turns the kill

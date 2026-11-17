@@ -407,12 +407,17 @@ class EmergencyContractTests(unittest.TestCase):
         self.assertIn("#define QUEST_EMERGENCY_MULTIPLIER  5", self.merc)
 
     def test_it_is_rolled_ahead_of_the_rush_and_excludes_it(self) -> None:
-        offer = self.quest.split("if (chance(QUEST_EMERGENCY_CHANCE))", 1)
+        # The rolls carry the creator's FATE and a clover's luck
+        # (2026-11-17); a fated contract skips both rolls.
+        emergency = "chance(QUEST_EMERGENCY_CHANCE + CLOVER_EMERGENCY_STEP * luck)"
+        rush = "else if (fated == FATE_CONTRACT_RUSH"
+        offer = self.quest.split(emergency, 1)
         self.assertEqual(len(offer), 2, "the emergency roll went missing")
-        self.assertIn("else if (chance(20))", offer[1],
+        self.assertIn(rush, offer[1],
                       "the rush contract must be the alternative, not a "
                       "second roll that can also land")
-        body = offer[1][:offer[1].index("else if (chance(20))")]
+        self.assertIn("chance(20 + CLOVER_RUSH_STEP * luck)", offer[1])
+        body = offer[1][:offer[1].index(rush)]
         self.assertIn("ch->questrush = false;", body)
         self.assertIn("ch->questemergency = true;", body)
 

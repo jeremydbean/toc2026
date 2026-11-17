@@ -93,7 +93,7 @@ class PsionicTopUpTests(unittest.TestCase):
             make(mud, "Zpsiimm")
             patch_player_file(mud, "Zpsioff", Levl=30, NumRemorts=3, Room=TEMPLE,
                               Psionic=0)
-            patch_player_file(mud, "Zpsiimm", Levl=70, Room=TEMPLE)
+            patch_player_file(mud, "Zpsiimm", Levl=70, Room=TEMPLE, Creator=1)
             with mud.connect(timeout=120) as staff:
                 login(staff, "Zpsiimm", PW)
                 staff.send("grantpsi Zpsioff now")

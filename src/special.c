@@ -3255,6 +3255,10 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
      if (most_hurt->level > 30)
          chance = 99;
 
+     /* A clover's luck brings the angel sooner (holiday.c). */
+     if ( chance > 0 )
+         chance -= CLOVER_HERBIE_STEP * clover_luck( most_hurt );
+
      if( chancez < chance )
          return false;
 

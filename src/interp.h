@@ -332,6 +332,7 @@ DECLARE_DO_FUN( do_souvenirs );
 DECLARE_DO_FUN( do_grantmap );
 DECLARE_DO_FUN( do_cartographer );
 DECLARE_DO_FUN( do_disaster );
+DECLARE_DO_FUN( do_fate );
 DECLARE_DO_FUN( do_use );
 DECLARE_DO_FUN( do_rested );
 DECLARE_DO_FUN( do_alignment );
