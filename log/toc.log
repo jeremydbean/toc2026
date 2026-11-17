@@ -312426,3 +312426,135 @@ Tue Nov 17 15:10:44 2026 :: Sock.sinaddr:  208.126.22.104
 Tue Nov 17 15:10:44 2026 :: Loading Alaric's playerfile
 Tue Nov 17 15:10:45 2026 :: Loading Alaric's playerfile
 Tue Nov 17 15:10:45 2026 :: Alaric@208.126.22.104 has connected.
+Tue Nov 17 15:10:46 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 0
+Tue Nov 17 15:10:47 2026 :: Log Alaric [2497]: who
+Tue Nov 17 15:10:48 2026 :: Log Alaric [2497]: wake
+Tue Nov 17 15:10:49 2026 :: Log Alaric [2497]: aq re
+Tue Nov 17 15:10:49 2026 :: Log Alaric [2497]: quest assigned: kill the student (mob 15030, level 15) in campus.are, 22 minutes, ordinary
+Tue Nov 17 15:10:56 2026 :: Log Alaric [2497]: enter door
+Tue Nov 17 15:10:56 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Nov 17 15:10:56 2026 :: Log Alaric [2401]: south
+Tue Nov 17 15:10:56 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Tue Nov 17 15:10:57 2026 :: Log Alaric [2404]: south
+Tue Nov 17 15:10:57 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 2404
+Tue Nov 17 15:10:57 2026 :: Log Alaric [2427]: west
+Tue Nov 17 15:10:57 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 2427
+Tue Nov 17 15:10:57 2026 :: Log Alaric [4201]: west
+Tue Nov 17 15:10:57 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4201
+Tue Nov 17 15:10:57 2026 :: Log Alaric [4202]: west
+Tue Nov 17 15:10:57 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4202
+Tue Nov 17 15:10:58 2026 :: Log Alaric [4207]: up
+Tue Nov 17 15:10:58 2026 :: Log Alaric [3700]: arrived (Entrance to Mud School) from 4207
+Tue Nov 17 15:10:58 2026 :: Log Alaric [3700]: up
+Tue Nov 17 15:10:58 2026 :: Log Alaric [3772]: arrived (Newbie Train Station) from 3700
+Tue Nov 17 15:10:58 2026 :: Log Alaric [3772]: up
+Tue Nov 17 15:10:58 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 3772
+Tue Nov 17 15:10:58 2026 :: Log Alaric [3795]: enter portal
+Tue Nov 17 15:10:58 2026 :: Log Alaric [15000]: arrived (The Eastern Campus Entrance) from 3795
+Tue Nov 17 15:11:01 2026 :: Log Alaric [15000]: e
+Tue Nov 17 15:11:01 2026 :: Log Alaric [15001]: arrived (Campus Crescent) from 15000
+Tue Nov 17 15:11:02 2026 :: Log Alaric [15001]: e
+Tue Nov 17 15:11:02 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15001
+Tue Nov 17 15:11:02 2026 :: Log Alaric [15002]: e
+Tue Nov 17 15:11:02 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15002
+Tue Nov 17 15:11:18 2026 :: Log Alaric [15003]: east
+Tue Nov 17 15:11:18 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15003
+Tue Nov 17 15:11:18 2026 :: Log Alaric [15004]: east
+Tue Nov 17 15:11:18 2026 :: Log Alaric [15005]: arrived (Campus Crescent) from 15004
+Tue Nov 17 15:11:18 2026 :: Log Alaric [15005]: east
+Tue Nov 17 15:11:18 2026 :: Log Alaric [15006]: arrived (Campus Crescent) from 15005
+Tue Nov 17 15:11:18 2026 :: Log Alaric [15006]: east
+Tue Nov 17 15:11:18 2026 :: Log Alaric [15007]: arrived (Division Road) from 15006
+Tue Nov 17 15:11:32 2026 :: Log Alaric [15007]: north
+Tue Nov 17 15:11:32 2026 :: Log Alaric [15018]: arrived (Division Road) from 15007
+Tue Nov 17 15:11:33 2026 :: Log Alaric [15018]: west
+Tue Nov 17 15:11:33 2026 :: Log Alaric [15041]: arrived (Campus Bookstore) from 15018
+Tue Nov 17 15:11:45 2026 :: Log Alaric [15041]: open south
+Tue Nov 17 15:11:45 2026 :: Log Alaric [15041]: south
+Tue Nov 17 15:11:45 2026 :: Log Alaric [15065]: arrived (Campus Pub Stairwell) from 15041
+Tue Nov 17 15:11:45 2026 :: Log Alaric [15065]: south
+Tue Nov 17 15:11:45 2026 :: Log Alaric [15006]: arrived (Campus Crescent) from 15065
+Tue Nov 17 15:11:45 2026 :: Log Alaric [15006]: west
+Tue Nov 17 15:11:45 2026 :: Log Alaric [15005]: arrived (Campus Crescent) from 15006
+Tue Nov 17 15:11:46 2026 :: Log Alaric [15005]: west
+Tue Nov 17 15:11:46 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15005
+Tue Nov 17 15:11:46 2026 :: Log Alaric [15004]: north
+Tue Nov 17 15:11:46 2026 :: Log Alaric [15010]: arrived (University Avenue) from 15004
+Tue Nov 17 15:11:46 2026 :: Log Alaric [15010]: east
+Tue Nov 17 15:11:46 2026 :: Log Alaric [15033]: arrived (Corry-Mack Building) from 15010
+Tue Nov 17 15:11:46 2026 :: Log Alaric [15033]: east
+Tue Nov 17 15:11:46 2026 :: Log Alaric [15174]: arrived (A Hallway) from 15033
+Tue Nov 17 15:11:48 2026 :: Log Alaric [15174]: s
+Tue Nov 17 15:11:48 2026 :: Log Alaric [15178]: arrived (A Hallway) from 15174
+Tue Nov 17 15:11:48 2026 :: Connection guard: refused 1 connection from 178.156.189.113 (paused; 8 refused in all, pause 3 this week, 989 minutes left).
+Tue Nov 17 15:11:48 2026 :: Log Alaric [15178]: ex
+Tue Nov 17 15:11:49 2026 :: Log Alaric [15178]: w
+Tue Nov 17 15:11:49 2026 :: Log Alaric [15176]: arrived (A Hallway) from 15178
+Tue Nov 17 15:11:50 2026 :: Log Alaric [15176]: ex
+Tue Nov 17 15:11:51 2026 :: Log Alaric [15176]: e
+Tue Nov 17 15:11:51 2026 :: Log Alaric [15179]: arrived (A Hallway) from 15176
+Tue Nov 17 15:11:52 2026 :: Log Alaric [15179]: e
+Tue Nov 17 15:11:52 2026 :: Log Alaric [15181]: arrived (A Classroom) from 15179
+Tue Nov 17 15:11:52 2026 :: Log Alaric [15181]: e
+Tue Nov 17 15:11:52 2026 :: Log Alaric [15175]: arrived (A Hallway) from 15181
+Tue Nov 17 15:11:53 2026 :: Log Alaric [15175]: ex
+Tue Nov 17 15:11:54 2026 :: Log Alaric [15175]: n
+Tue Nov 17 15:11:54 2026 :: Log Alaric [15180]: arrived (A Classroom) from 15175
+Tue Nov 17 15:11:54 2026 :: Log Alaric [15180]: ex
+Tue Nov 17 15:11:56 2026 :: Log Alaric [15180]: n
+Tue Nov 17 15:11:56 2026 :: Log Alaric [15178]: arrived (A Hallway) from 15180
+Tue Nov 17 15:11:57 2026 :: Log Alaric [15178]: ex
+Tue Nov 17 15:11:59 2026 :: Log Alaric [15178]: recal
+Tue Nov 17 15:12:03 2026 :: Log Alaric [15178]: (refused) awalk dresden
+Tue Nov 17 15:12:06 2026 :: Log Alaric [15178]: north
+Tue Nov 17 15:12:06 2026 :: Log Alaric [15180]: arrived (A Classroom) from 15178
+Tue Nov 17 15:12:06 2026 :: Log Alaric [15180]: open east
+Tue Nov 17 15:12:06 2026 :: Log Alaric [15180]: east
+Tue Nov 17 15:12:06 2026 :: Log Alaric [15184]: arrived (Mob Chute A) from 15180
+Tue Nov 17 15:12:06 2026 :: Log Alaric [15184]: south
+Tue Nov 17 15:12:06 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15184
+Tue Nov 17 15:12:07 2026 :: Log Alaric [15004]: west
+Tue Nov 17 15:12:07 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15004
+Tue Nov 17 15:12:07 2026 :: Log Alaric [15003]: west
+Tue Nov 17 15:12:07 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15003
+Tue Nov 17 15:12:07 2026 :: Log Alaric [15002]: west
+Tue Nov 17 15:12:07 2026 :: Log Alaric [15001]: arrived (Campus Crescent) from 15002
+Tue Nov 17 15:12:07 2026 :: Log Alaric [15001]: west
+Tue Nov 17 15:12:07 2026 :: Log Alaric [15000]: arrived (The Eastern Campus Entrance) from 15001
+Tue Nov 17 15:12:08 2026 :: Log Alaric [15000]: enter portal
+Tue Nov 17 15:12:08 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 15000
+Tue Nov 17 15:12:08 2026 :: Log Alaric [3795]: down
+Tue Nov 17 15:12:08 2026 :: Log Alaric [3772]: arrived (Newbie Train Station) from 3795
+Tue Nov 17 15:12:08 2026 :: Log Alaric [3772]: down
+Tue Nov 17 15:12:08 2026 :: Log Alaric [3700]: arrived (Entrance to Mud School) from 3772
+Tue Nov 17 15:12:08 2026 :: Log Alaric [3700]: down
+Tue Nov 17 15:12:08 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 3700
+Tue Nov 17 15:12:09 2026 :: Log Alaric [4207]: east
+Tue Nov 17 15:12:09 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Tue Nov 17 15:12:09 2026 :: Log Alaric [4202]: east
+Tue Nov 17 15:12:09 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Nov 17 15:12:09 2026 :: Log Alaric [4201]: north
+Tue Nov 17 15:12:09 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 4201
+Tue Nov 17 15:12:09 2026 :: Log Alaric [2433]: east
+Tue Nov 17 15:12:09 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2433
+Tue Nov 17 15:12:10 2026 :: Log Alaric [2405]: north
+Tue Nov 17 15:12:10 2026 :: Log Alaric [2406]: arrived (Northwestern Oak Tree Square.) from 2405
+Tue Nov 17 15:12:10 2026 :: Log Alaric [2406]: east
+Tue Nov 17 15:12:10 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2406
+Tue Nov 17 15:12:10 2026 :: Log Alaric [2402]: north
+Tue Nov 17 15:12:10 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Tue Nov 17 15:12:10 2026 :: Log Alaric [2415]: north
+Tue Nov 17 15:12:10 2026 :: Log Alaric [2496]: arrived (Main Processional.) from 2415
+Tue Nov 17 15:12:11 2026 :: Log Alaric [2496]: north
+Tue Nov 17 15:12:11 2026 :: Log Alaric [2416]: arrived (Main Processional.) from 2496
+Tue Nov 17 15:12:11 2026 :: Log Alaric [2416]: west
+Tue Nov 17 15:12:11 2026 :: Log Alaric [2478]: arrived (Fireball Lane.) from 2416
+Tue Nov 17 15:12:11 2026 :: Log Alaric [2478]: recal
+Tue Nov 17 15:12:11 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 2478
+Tue Nov 17 15:12:11 2026 :: Log Alaric [2497]: west
+Tue Nov 17 15:12:13 2026 :: Log Alaric [2497]: aq ab
+Tue Nov 17 15:12:14 2026 :: Log Alaric [2497]: score
+Tue Nov 17 15:12:19 2026 :: Log Alaric [2497]: quit
+Tue Nov 17 15:12:19 2026 :: Alaric has quit.
+Tue Nov 17 15:12:19 2026 :: [QUIT] Player rejoined the real world.
+Tue Nov 17 15:13:25 2026 :: Treasure goblin: vanished from room 29051 (Servant's Quarters, korzath1.are) (too long in one area).

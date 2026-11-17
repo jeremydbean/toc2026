@@ -35296,3 +35296,88 @@
 1794916197	sightings	Trentlin	50	2497	dresden.are	mob	4201:1/0/0 4202:1/0/0 4468:1/0/0 2435:2/0/0 201:1/0/0 2434:2/0/0 4456:1/0/0 6115:1/0/0 6102:2/0/0 6100:2/0/0 6103:1/0/0 8314:3/0/0 8310:1/0/0 8306:1/0/0 8302:1/0/0 8320:2/0/0 8312:1/0/0 8301:1/0/0 707:1/0/0 715:1/0/0 716:1/0/0 730:1/1/0
 1794916197	sightings	Trentlin	50	2497	dresden.are	item	6106:2/0 6105:1/0 736:1/0 735:1/0 734:1/0
 1794916197	session	Trentlin	50	2497	dresden.are	quit	63s	+0 levels	+0 exp	+94640700 copper	1 kills	0 deaths	1 quests	75 commands	0 refused	coin: loot 5s 16c, quests 94p 64g 7s	spent on: none	exp: none
+1794928246	area	Alaric	57	2497	dresden.are	-	dresden.are	-1	(game loop)
+1794928247	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794928248	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1794928249	quest	Alaric	57	2497	dresden.are	ordinary	kill	15030	the student	15	campus.are	22
+1794928249	cmd	Alaric	57	2497	dresden.are	standing	100	28	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Alaric. I have just the task for you.' // Questor Thews tells you 'A bounty has been posted on the student.'	-	+
+1794928256	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794928256	cmd	Alaric	57	2404	dresden.are	standing	100	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794928257	cmd	Alaric	57	2427	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794928257	cmd	Alaric	57	4201	dresden.are	standing	100	0	-	west		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794928257	cmd	Alaric	57	4202	dresden.are	standing	100	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794928257	cmd	Alaric	57	4207	dresden.are	standing	100	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794928258	area	Alaric	57	3700	school.are	dresden.are	school.are	12	up
+1794928258	cmd	Alaric	57	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794928258	cmd	Alaric	57	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794928258	cmd	Alaric	57	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794928258	area	Alaric	57	15000	campus.are	school.are	campus.are	0	enter
+1794928258	cmd	Alaric	57	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794928261	spotted	Alaric	57	15001	campus.are	964	component	87	a vial of grey ooze	57212	3	scatter	arrive
+1794928261	cmd	Alaric	57	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794928262	passed	Alaric	57	15002	campus.are	964	component	87	a vial of grey ooze	57213	1	3	scatter	15001	left
+1794928262	cmd	Alaric	57	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794928262	cmd	Alaric	57	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794928269	laid	-	0	0	-	1440	component	65	a dragon's scale	17233	highland.are	scatter
+1794928278	cmd	Alaric	57	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794928278	cmd	Alaric	57	15005	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794928278	cmd	Alaric	57	15006	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794928278	cmd	Alaric	57	15007	campus.are	standing	100	0	-	east		Division Road //   Asphalt pavement lies heinously beneath your feet.  The road continues // north and south.  A nice cobblestone road leads off to the west.	-	+
+1794928292	cmd	Alaric	57	15018	campus.are	standing	100	0	-	north		Division Road //   Asphalt pavement lies heinously beneath your feet.  The road continues // north and south.  A building is off to the west.	-	+
+1794928293	cmd	Alaric	57	15041	campus.are	standing	100	0	-	west		Campus Bookstore //   This shop is filled with over-priced items that every university // student would want for his, her, or its own home.  Such items as	-	+
+1794928305	cmd	Alaric	57	15041	campus.are	standing	100	0	-	open	south	Ok.	-	-
+1794928305	cmd	Alaric	57	15065	campus.are	standing	100	0	-	south		Campus Pub Stairwell //   This stairwell leads up to the ever popular (and ever-loud) Campus // Pub.  There are also exits to the north and south leading to the	-	+
+1794928305	cmd	Alaric	57	15006	campus.are	standing	100	0	-	south		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794928305	cmd	Alaric	57	15005	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794928306	cmd	Alaric	57	15004	campus.are	standing	100	0	-	west		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794928306	cmd	Alaric	57	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794928306	cmd	Alaric	57	15033	campus.are	standing	100	0	-	east		Corry-Mack Building //   The Arts faculty building was obviously the brain child of a maze // enthusiast.  Its twisting halls have absolutely boggled the greatest	-	+
+1794928306	cmd	Alaric	57	15174	campus.are	standing	100	0	-	east		A Hallway //   This hallway leads through the building in all cardinal directions. // [Exits: north east south west up]	-	-
+1794928308	cmd	Alaric	57	15178	campus.are	standing	100	0	-	south		A Hallway //   This hallway leads through the building in most directions. // [Exits: north east south west]	-	-
+1794928308	cmd	Alaric	57	15178	campus.are	standing	100	0	-	exits		Obvious exits: // North - A Classroom // East  - A Classroom	-	+
+1794928309	cmd	Alaric	57	15176	campus.are	standing	100	0	-	west		A Hallway //   This hallway leads through the building in most directions. // [Exits: north east south west]	-	-
+1794928310	cmd	Alaric	57	15176	campus.are	standing	100	0	-	exits		Obvious exits: // North - A Hallway // East  - A Hallway	-	+
+1794928311	cmd	Alaric	57	15179	campus.are	standing	100	0	-	east		A Hallway //   This hallway leads through the building in most directions. // [Exits: north east south west]	-	+
+1794928312	cmd	Alaric	57	15181	campus.are	standing	100	0	-	east		A Classroom //   This room suddenly dispels the monotony of the halls you were just passing // through.	-	+
+1794928312	cmd	Alaric	57	15175	campus.are	standing	100	0	-	east		A Hallway //   This hallway leads through the building in most directions. // [Exits: north south west]	-	-
+1794928313	cmd	Alaric	57	15175	campus.are	standing	100	0	-	exits		Obvious exits: // North - A Classroom // South - A Hallway	-	+
+1794928314	cmd	Alaric	57	15180	campus.are	standing	100	0	-	north		A Classroom //   This room suddenly dispels the monotony of the halls you were just // passing through.	-	+
+1794928314	cmd	Alaric	57	15180	campus.are	standing	100	0	-	exits		Obvious exits: // North - A Hallway // East  - Closed door	-	+
+1794928316	cmd	Alaric	57	15178	campus.are	standing	100	0	-	north		A Hallway //   This hallway leads through the building in most directions. // [Exits: north east south west]	-	-
+1794928317	cmd	Alaric	57	15178	campus.are	standing	100	0	-	exits		Obvious exits: // North - A Classroom // East  - A Classroom	-	+
+1794928319	cmd	Alaric	57	15178	campus.are	standing	100	0	-	recall		The Gods have forsaken you.	-	-
+1794928323	refused	Alaric	57	15178	campus.are	standing	100	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794928326	cmd	Alaric	57	15180	campus.are	standing	100	0	-	north		A Classroom //   This room suddenly dispels the monotony of the halls you were just // passing through.	-	+
+1794928326	cmd	Alaric	57	15180	campus.are	standing	100	0	-	open	east	Ok.	-	-
+1794928326	cmd	Alaric	57	15184	campus.are	standing	100	0	-	east		Mob Chute A //   Oops, you are not supposed to be here.  This is a programmer's tool to // disperse mobs all over campus.  Exits go in all directions.  There is a	-	+
+1794928326	cmd	Alaric	57	15004	campus.are	standing	100	0	-	south		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794928327	cmd	Alaric	57	15003	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794928327	cmd	Alaric	57	15002	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794928327	cmd	Alaric	57	15001	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794928327	cmd	Alaric	57	15000	campus.are	standing	100	0	-	west		The Eastern Campus Entrance //   This gateway is made of limestone, and covered in ivy.  Beyond the // entrance, the university stretches as far as the eye can see.  A sign	-	+
+1794928328	area	Alaric	57	3795	school.are	campus.are	school.are	70	enter
+1794928328	cmd	Alaric	57	3795	school.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // Strange Blending of Time	-	+
+1794928328	cmd	Alaric	57	3772	school.are	standing	100	0	-	down		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794928328	cmd	Alaric	57	3700	school.are	standing	100	0	-	down		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794928328	area	Alaric	57	4207	dresden.are	school.are	dresden.are	0	down
+1794928328	cmd	Alaric	57	4207	dresden.are	standing	100	0	-	down		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794928329	cmd	Alaric	57	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794928329	cmd	Alaric	57	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794928329	cmd	Alaric	57	2433	dresden.are	standing	100	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794928329	cmd	Alaric	57	2405	dresden.are	standing	100	0	-	east		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794928330	cmd	Alaric	57	2406	dresden.are	standing	100	0	-	north		Northwestern Oak Tree Square. //   This is the northwestern corner of Oak Tree Square. // [Exits: east south]	-	-
+1794928330	cmd	Alaric	57	2402	dresden.are	standing	100	0	-	east		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1794928330	cmd	Alaric	57	2415	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794928330	cmd	Alaric	57	2496	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794928331	cmd	Alaric	57	2416	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794928331	cmd	Alaric	57	2478	dresden.are	standing	100	0	-	west		Fireball Lane. //   The stones making up the street change from a brownish grey to a deep // black.  It looks as if a very fine layer of soot has covered the street,	-	+
+1794928331	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794928331	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794928333	outcome	Alaric	57	2497	dresden.are	quest-failed	failure	abandoned	-	ordinary target=mob:15030 level=15 alive=10 area=campus.are there=0 streak=4
+1794928333	cmd	Alaric	57	2497	dresden.are	standing	100	14	-	aquest	ab	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Alaric. Your quest obligation is lifted.' // Questor Thews says 'You had a streak of 4 in a row - all gone now!'	failure:abandoned	+
+1794928334	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=459/983 align=977 exp=252749 coin=3896216244 bank=25010708143 qp=2508 prac=36 train=76 stash=93/350 remorts=3
+1794928334	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    306 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
+1794928338	laid	-	0	0	-	1468	component	69	a basilisks tongue	102	smurf.are	scatter
+1794928339	sightings	Alaric	57	2497	dresden.are	mob	201:1/0/0 4468:1/0/0 4202:1/0/0 15014:5/0/0 15011:3/0/0 15018:1/0/0 15013:3/0/0 15006:3/0/0 15019:1/0/0 15041:1/0/0 15021:1/0/0 15020:1/0/0 15043:1/0/0 15045:1/0/0 15005:2/0/0 15007:2/0/0 15015:1/0/0 15016:1/0/0 15012:2/0/0 2434:2/0/0 2435:2/0/0 4458:3/0/0 2433:1/0/0 4447:1/0/0
+1794928339	sightings	Alaric	57	2497	dresden.are	item	15043:1/0
+1794928339	session	Alaric	57	2497	dresden.are	quit	93s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	71 commands	1 refused	coin: none	spent on: none	exp: none
