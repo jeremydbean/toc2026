@@ -314103,3 +314103,5 @@ Tue Nov 17 23:09:54 2026 :: Connection guard: 23.31.96.97 closed without a word 
 Tue Nov 17 23:14:13 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 6 of 6 in 6 hours).
 Tue Nov 17 23:14:13 2026 :: Connection guard: 52.22.236.30 paused for 12 hours (pause 2 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 52.22.236.30 lifts it.
 Tue Nov 17 23:15:58 2026 :: Treasure goblin: vanished from room 5123 (City street, drow1.are) (too long in one area).
+Tue Nov 17 23:16:23 2026 :: Connection guard: 221.131.139.70 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 17 23:19:18 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 3 of 6 in 6 hours).
