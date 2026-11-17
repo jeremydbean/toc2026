@@ -312285,3 +312285,5 @@ Tue Nov 17 12:09:07 2026 :: Connection guard: refused 1 connection from 5.161.17
 Tue Nov 17 12:10:24 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Tue Nov 17 12:12:01 2026 :: Treasure goblin: vanished from room 9324 (Lost in Space, galaxy.are) (too long in one area).
 Tue Nov 17 12:14:12 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 3 of 6 in 6 hours).
+Tue Nov 17 12:19:17 2026 :: Connection guard: 54.167.223.174 closed without a word (strike 6 of 6 in 6 hours).
+Tue Nov 17 12:19:17 2026 :: Connection guard: 54.167.223.174 paused for 24 hours (pause 3 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 54.167.223.174 lifts it.
