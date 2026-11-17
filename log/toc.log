@@ -312000,3 +312000,8 @@ Tue Nov 17 06:48:48 2026 :: Treasure goblin: vanished from room 5923 (A bend in 
 Tue Nov 17 06:49:14 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 4 of 6 in 6 hours).
 Tue Nov 17 06:53:45 2026 :: Connection guard: 165.154.162.212 closed without a word (strike 1 of 6 in 6 hours).
 Tue Nov 17 06:54:20 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 17 06:57:19 2026 :: Sock.sinaddr:  147.185.132.37
+Tue Nov 17 06:57:19 2026 :: EOF encountered on read.
+Tue Nov 17 06:57:19 2026 :: Connection guard: 147.185.132.37 closed before a password prompt (strike 1 of 6 in 6 hours).
+Tue Nov 17 06:58:52 2026 :: Treasure goblin: vanished from room 300 (Path in the plains, plains.are) (too long in one area).
+Tue Nov 17 06:59:23 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 4 of 6 in 6 hours).
