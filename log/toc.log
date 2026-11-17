@@ -309676,3 +309676,138 @@ Tue Nov 17 00:22:45 2026 :: Automated backup started.
 Tue Nov 17 00:22:46 2026 :: Automated backup complete.
 Tue Nov 17 00:23:20 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 1 of 6 in 6 hours).
 Tue Nov 17 00:24:23 2026 :: Treasure goblin: vanished from room 7594 (A meditation chamber, astral.are) (too long in one area).
+Tue Nov 17 00:25:31 2026 :: Sock.sinaddr:  24.2.118.125
+Tue Nov 17 00:25:31 2026 :: Loading Trentlin's playerfile
+Tue Nov 17 00:25:33 2026 :: Loading Trentlin's playerfile
+Tue Nov 17 00:25:33 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Tue Nov 17 00:25:33 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 0
+Tue Nov 17 00:25:40 2026 :: Log Trentlin [4208]: aquest info
+Tue Nov 17 00:25:41 2026 :: Log Trentlin [4208]: e
+Tue Nov 17 00:25:41 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Tue Nov 17 00:25:41 2026 :: Log Trentlin [4207]: e
+Tue Nov 17 00:25:41 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Tue Nov 17 00:25:42 2026 :: Log Trentlin [4202]: e
+Tue Nov 17 00:25:42 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Nov 17 00:25:42 2026 :: Log Trentlin [4201]: e
+Tue Nov 17 00:25:42 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Tue Nov 17 00:25:42 2026 :: Log Trentlin [2427]: e
+Tue Nov 17 00:25:44 2026 :: Log Trentlin [2427]: n
+Tue Nov 17 00:25:44 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Nov 17 00:25:44 2026 :: Log Trentlin [2404]: n
+Tue Nov 17 00:25:44 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Nov 17 00:25:45 2026 :: Log Trentlin [2401]: levitate
+Tue Nov 17 00:25:48 2026 :: Log Trentlin [2401]: heal all
+Tue Nov 17 00:25:48 2026 :: Spellup: Hermie gave Trentlin the full list (30 ticks) in room 2401.
+Tue Nov 17 00:25:53 2026 :: Log Trentlin [2401]: aff
+Tue Nov 17 00:25:56 2026 :: Log Trentlin [2401]: sco
+Tue Nov 17 00:26:00 2026 :: Log Trentlin [2401]: u
+Tue Nov 17 00:26:00 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Tue Nov 17 00:26:00 2026 :: Log Trentlin [2410]: u
+Tue Nov 17 00:26:00 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Tue Nov 17 00:26:00 2026 :: Log Trentlin [2411]: u
+Tue Nov 17 00:26:00 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Tue Nov 17 00:26:00 2026 :: Log Trentlin [2414]: u
+Tue Nov 17 00:26:00 2026 :: Log Trentlin [2497]: arrived (The Questmaster's Globe, above the Oak) from 2414
+Tue Nov 17 00:26:01 2026 :: Log Trentlin [2497]: u
+Tue Nov 17 00:26:03 2026 :: Log Trentlin [2497]: aquest request
+Tue Nov 17 00:26:03 2026 :: Log Trentlin [2497]: quest assigned: kill The enslaved red dragon (mob 7518, level 28) in astral.are, 24 minutes, ordinary
+Tue Nov 17 00:26:19 2026 :: Log Trentlin [2497]: enter door
+Tue Nov 17 00:26:19 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Nov 17 00:26:38 2026 :: Log Trentlin [2401]: l
+Tue Nov 17 00:26:42 2026 :: Log Trentlin [2401]: r w 7
+Tue Nov 17 00:26:42 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2401
+Tue Nov 17 00:26:42 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 2405
+Tue Nov 17 00:26:42 2026 :: Log Trentlin [2434]: arrived (Temple Boulevard.) from 2433
+Tue Nov 17 00:26:42 2026 :: Log Trentlin [2435]: arrived (Temple Boulevard.) from 2434
+Tue Nov 17 00:26:42 2026 :: Log Trentlin [2436]: arrived (Temple Boulevard.) from 2435
+Tue Nov 17 00:26:42 2026 :: Log Trentlin [2437]: arrived (Temple Boulevard.) from 2436
+Tue Nov 17 00:26:42 2026 :: Log Trentlin [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Tue Nov 17 00:26:42 2026 :: Log Trentlin [2438]: open west
+Tue Nov 17 00:26:42 2026 :: Log Trentlin [2438]: w
+Tue Nov 17 00:26:42 2026 :: Log Trentlin [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Tue Nov 17 00:26:42 2026 :: Log Trentlin [2439]: r n 3
+Tue Nov 17 00:26:42 2026 :: Log Trentlin [3900]: arrived (West trail around Dresden) from 2439
+Tue Nov 17 00:26:42 2026 :: Log Trentlin [3901]: arrived (West trail around Dresden) from 3900
+Tue Nov 17 00:26:42 2026 :: Log Trentlin [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Tue Nov 17 00:26:43 2026 :: Log Trentlin [3902]: r e 2
+Tue Nov 17 00:26:43 2026 :: Log Trentlin [3903]: arrived (Dusty trail along north wall.) from 3902
+Tue Nov 17 00:26:43 2026 :: Log Trentlin [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Tue Nov 17 00:26:43 2026 :: Log Trentlin [3904]: n
+Tue Nov 17 00:26:43 2026 :: Log Trentlin [300]: arrived (Path in the plains) from 3904
+Tue Nov 17 00:26:43 2026 :: Log Trentlin [300]: n
+Tue Nov 17 00:26:43 2026 :: Log Trentlin [315]: arrived (Gallow hill) from 300
+Tue Nov 17 00:26:43 2026 :: Log Trentlin [315]: r u
+Tue Nov 17 00:26:43 2026 :: Log Trentlin [61]: arrived (Before the Rainbow) from 315
+Tue Nov 17 00:26:43 2026 :: Log Trentlin [7500]: arrived (The Bottom of the Rainbow) from 61
+Tue Nov 17 00:26:43 2026 :: Log Trentlin [7501]: arrived (On the Rainbow) from 7500
+Tue Nov 17 00:26:43 2026 :: Log Trentlin [7502]: arrived (On the Rainbow) from 7501
+Tue Nov 17 00:26:43 2026 :: Log Trentlin [7503]: arrived (On the Rainbow) from 7502
+Tue Nov 17 00:26:43 2026 :: Log Trentlin [7504]: arrived (On the Rainbow) from 7503
+Tue Nov 17 00:26:43 2026 :: Log Trentlin [7505]: arrived (The Glowing Bridge at the Rainbow's End) from 7504
+Tue Nov 17 00:26:44 2026 :: Log Trentlin [7505]: stand
+Tue Nov 17 00:26:44 2026 :: Log Trentlin [7505]: n
+Tue Nov 17 00:26:44 2026 :: Log Trentlin [7506]: arrived (The Astral Gate) from 7505
+Tue Nov 17 00:26:44 2026 :: Log Trentlin [7506]: open north
+Tue Nov 17 00:26:44 2026 :: Log Trentlin [7506]: n
+Tue Nov 17 00:26:44 2026 :: Log Trentlin [7507]: arrived (Into the Astral Plane) from 7506
+Tue Nov 17 00:26:48 2026 :: Log Trentlin [7507]: ex
+Tue Nov 17 00:26:50 2026 :: Log Trentlin [7507]: n
+Tue Nov 17 00:26:50 2026 :: Log Trentlin [7508]: arrived (Exploring the Astral Plane) from 7507
+Tue Nov 17 00:26:51 2026 :: Log Trentlin [7508]: ex
+Tue Nov 17 00:27:30 2026 :: Log Trentlin [7508]: e
+Tue Nov 17 00:27:30 2026 :: Log Trentlin [7514]: arrived (Roaming the Astral Plane) from 7508
+Tue Nov 17 00:27:30 2026 :: Log Trentlin [7514]: ex
+Tue Nov 17 00:27:37 2026 :: Log Trentlin [7514]: w
+Tue Nov 17 00:27:37 2026 :: Log Trentlin [7508]: arrived (Exploring the Astral Plane) from 7514
+Tue Nov 17 00:27:37 2026 :: Log Trentlin [7508]: ex
+Tue Nov 17 00:27:40 2026 :: Log Trentlin [7508]: e
+Tue Nov 17 00:27:40 2026 :: Log Trentlin [7514]: arrived (Roaming the Astral Plane) from 7508
+Tue Nov 17 00:27:40 2026 :: Log Trentlin [7514]: ex
+Tue Nov 17 00:27:42 2026 :: Log Trentlin [7514]: s
+Tue Nov 17 00:27:42 2026 :: Log Trentlin [7517]: arrived (Roaming the Astral Plane) from 7514
+Tue Nov 17 00:27:43 2026 :: Log Trentlin [7517]: ex
+Tue Nov 17 00:27:46 2026 :: Log Trentlin [7517]: e
+Tue Nov 17 00:27:46 2026 :: Log Trentlin [7522]: arrived (Wandering the Astral Plane) from 7517
+Tue Nov 17 00:27:46 2026 :: Log Trentlin [7522]: ex
+Tue Nov 17 00:28:03 2026 :: Log Trentlin [7522]: d
+Tue Nov 17 00:28:03 2026 :: Log Trentlin [7544]: arrived (Walking the Silvery Strand) from 7522
+Tue Nov 17 00:28:04 2026 :: Log Trentlin [7544]: ex
+Tue Nov 17 00:28:06 2026 :: Log Trentlin [7544]: d
+Tue Nov 17 00:28:06 2026 :: Log Trentlin [7527]: arrived (Travelling the Astral Plane) from 7544
+Tue Nov 17 00:28:09 2026 :: Log Trentlin [7527]: ex
+Tue Nov 17 00:28:20 2026 :: Log Trentlin [7527]: w
+Tue Nov 17 00:28:20 2026 :: Log Trentlin [7525]: arrived (Travelling the Astral Plane) from 7527
+Tue Nov 17 00:28:21 2026 :: Log Trentlin [7525]: ex
+Tue Nov 17 00:28:25 2026 :: Connection guard: refused 1 connection from 178.156.184.20 (paused; 14 refused in all, pause 3 this week, 639 minutes left).
+Tue Nov 17 00:28:26 2026 :: Log Trentlin [7525]: s
+Tue Nov 17 00:28:26 2026 :: Log Trentlin [7541]: arrived (Walking the Silvery Strand) from 7525
+Tue Nov 17 00:28:26 2026 :: Log Trentlin [7541]: ex
+Tue Nov 17 00:28:28 2026 :: Log Trentlin [7541]: d
+Tue Nov 17 00:28:28 2026 :: Log Trentlin [7540]: arrived (Walking the Silvery Strand) from 7541
+Tue Nov 17 00:28:29 2026 :: Log Trentlin [7540]: ex
+Tue Nov 17 00:28:32 2026 :: Log Trentlin [7540]: w
+Tue Nov 17 00:28:32 2026 :: Log Trentlin [7541]: arrived (Walking the Silvery Strand) from 7540
+Tue Nov 17 00:28:32 2026 :: Log Trentlin [7541]: ex
+Tue Nov 17 00:28:49 2026 :: Log Trentlin [7541]: s
+Tue Nov 17 00:28:49 2026 :: Log Trentlin [7525]: arrived (Travelling the Astral Plane) from 7541
+Tue Nov 17 00:28:50 2026 :: Log Trentlin [7525]: ex
+Tue Nov 17 00:28:53 2026 :: Log Trentlin [7525]: n
+Tue Nov 17 00:28:53 2026 :: Log Trentlin [7528]: arrived (Traversing the Astral Plane) from 7525
+Tue Nov 17 00:28:53 2026 :: Log Trentlin [7528]: ex
+Tue Nov 17 00:29:02 2026 :: Log Trentlin [7528]: w
+Tue Nov 17 00:29:02 2026 :: Log Trentlin [7545]: arrived (Deep Within the Astral Plane) from 7528
+Tue Nov 17 00:29:02 2026 :: Log Trentlin [7545]: ex
+Tue Nov 17 00:29:19 2026 :: Log Trentlin [7545]: u
+Tue Nov 17 00:29:19 2026 :: Log Trentlin [7550]: arrived (Inside the Githyanki Keep) from 7545
+Tue Nov 17 00:29:21 2026 :: Log Trentlin [7550]: open north
+Tue Nov 17 00:29:22 2026 :: Log Trentlin [7550]: n
+Tue Nov 17 00:29:22 2026 :: Log Trentlin [7551]: arrived (A guard station) from 7550
+Tue Nov 17 00:29:25 2026 :: Log Trentlin [7551]: con g
+Tue Nov 17 00:29:32 2026 :: Log Trentlin [7551]: open east
+Tue Nov 17 00:29:34 2026 :: Log Trentlin [7551]: open west
+Tue Nov 17 00:29:34 2026 :: Log Trentlin [7551]: ex
+Tue Nov 17 00:29:46 2026 :: Log Trentlin [7551]: e
+Tue Nov 17 00:29:46 2026 :: Log Trentlin [7561]: arrived (A grey road) from 7551
+Tue Nov 17 00:29:47 2026 :: Log Trentlin [7561]: affects off: levitate
+Tue Nov 17 00:29:47 2026 :: Log Trentlin [7561]: e
+Tue Nov 17 00:29:47 2026 :: Log Trentlin [7560]: arrived (A grey road) from 7561

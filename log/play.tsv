@@ -33633,3 +33633,90 @@
 1794874965	laid	-	0	0	-	1036	herb	35	a sprig of angelica	2067	catacomb.are	scatter
 1794875032	laid	-	0	0	-	1037	herb	46	a juniper berry	9994	valhalla.are	scatter
 1794875032	laid	-	0	0	-	1038	herb	46	a juniper berry	9921	valhalla.are	scatter
+1794875103	laid	-	0	0	-	1039	herb	39	a chervil leaf	24326	chess.are	scatter
+1794875103	laid	-	0	0	-	1040	component	60	a rakshasa's claw	9989	valhalla.are	scatter
+1794875133	area	Trentlin	46	4208	dresden.are	-	dresden.are	-1	(game loop)
+1794875140	cmd	Trentlin	46	4208	dresden.are	standing	100	0	-	aquest	info	.-[ Quest Summary ]-------------------------------------------. // | Quest Points: 4531 // | Next Quest  : Ready! Find a questmaster and type AQUEST REQUEST.	-	+
+1794875141	cmd	Trentlin	46	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794875141	cmd	Trentlin	46	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794875142	cmd	Trentlin	46	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794875142	cmd	Trentlin	46	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794875142	cmd	Trentlin	46	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794875144	cmd	Trentlin	46	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794875144	rare-seen	Trentlin	46	2401	dresden.are	hermie	98	1043	arrive
+1794875144	cmd	Trentlin	46	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794875145	cmd	Trentlin	46	2401	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794875148	cmd	Trentlin	46	2401	dresden.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are clothed in mystical armor. // You feel righteous.	-	+
+1794875153	cmd	Trentlin	46	2401	dresden.are	standing	100	0	-	affect		You are affected by: // Spell: 'empower' modifies experience by 50 for 30 hours. // Spell: 'empower' modifies armor class by -100 for 30 hours.	-	+
+1794875156	state	Trentlin	46	2401	dresden.are	lvl=46 hp=906/906 mana=1944/1944 mv=507/507 align=314 exp=106660 coin=34645858 bank=15392152711 qp=4531 prac=41 train=9 stash=65/75 remorts=1
+1794875156	cmd	Trentlin	46	2401	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      46 | Class:        Monk | // | Played:     39 hours | Sex:      Male | Guild:        Monk | // | Age:        18 years | Race:    Dwarf | Castle:       None |	-	+
+1794875160	rare-passed	Trentlin	46	2410	dresden.are	hermie	98	1043	16	left
+1794875160	cmd	Trentlin	46	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794875160	cmd	Trentlin	46	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794875160	cmd	Trentlin	46	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1794875160	cmd	Trentlin	46	2497	dresden.are	standing	100	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794875161	cmd	Trentlin	46	2497	dresden.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1794875162	coin	Trentlin	46	2497	dresden.are	+38480381	bank	interest	bank	15465278950
+1794875162	laid	-	0	0	-	1045	component	70	a dragon tooth	2428	dresden.are	scatter
+1794875163	quest	Trentlin	46	2497	dresden.are	ordinary	kill	7518	The enslaved red dragon	28	astral.are	24
+1794875163	cmd	Trentlin	46	2497	dresden.are	standing	100	13	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Trentlin.' // Questor Thews tells you 'The enslaved red dragon threatens the peace of the realm!'	-	+
+1794875179	cmd	Trentlin	46	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794875198	cmd	Trentlin	46	2401	dresden.are	standing	100	0	-	look		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794875202	cmd	Trentlin	46	2438	dresden.are	standing	100	0	-	run	w 7	Western Oak Tree Square. // [Exits: north east south west] // Temple Boulevard.	-	+
+1794875202	cmd	Trentlin	46	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1794875202	cmd	Trentlin	46	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794875202	cmd	Trentlin	46	3902	dresden.are	standing	100	0	-	run	n 3	West trail around Dresden // [Exits: north south] // West trail around Dresden	-	+
+1794875203	cmd	Trentlin	46	3904	dresden.are	standing	100	0	-	run	e 2	Dusty trail along north wall. // [Exits: east west] // The long dusty trail following the north wall.	-	+
+1794875203	area	Trentlin	46	300	plains.are	dresden.are	plains.are	70	north
+1794875203	cmd	Trentlin	46	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1794875203	cmd	Trentlin	46	315	plains.are	standing	100	0	-	north		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.	-	+
+1794875203	area	Trentlin	46	61	connect.are	plains.are	connect.are	0	run
+1794875203	area	Trentlin	46	7500	astral.are	connect.are	astral.are	0	run
+1794875203	cmd	Trentlin	46	7505	astral.are	standing	100	0	-	run	u	Before the Rainbow // [Exits: up down] // The Bottom of the Rainbow	-	+
+1794875204	cmd	Trentlin	46	7505	astral.are	resting	100	0	-	stand		You stand up.	-	-
+1794875204	cmd	Trentlin	46	7506	astral.are	standing	100	0	-	north		The Astral Gate //   Here the bridge ends before a massive, pearly-colored gate beyond which // you can see a field of blackness filled with silvery snake-like tendrils,	-	+
+1794875204	cmd	Trentlin	46	7506	astral.are	standing	100	0	-	open	north	Ok.	-	-
+1794875204	laid	-	0	0	-	1047	component	86	an inert gelatinous cube	13517	hell.are	scatter
+1794875204	cmd	Trentlin	46	7507	astral.are	standing	100	0	-	north		Into the Astral Plane //   You step through the gate, and into another reality... //    You find yourself floating in a field of blackness, filled with tiny	-	+
+1794875208	cmd	Trentlin	46	7507	astral.are	standing	100	0	-	exits		Obvious exits: // North - Exploring the Astral Plane // East  - Exploring the Astral Plane	-	+
+1794875210	cmd	Trentlin	46	7508	astral.are	standing	100	0	-	north		Exploring the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils	-	+
+1794875211	cmd	Trentlin	46	7508	astral.are	standing	100	0	-	exits		Obvious exits: // North - Into the Astral Plane // East  - Roaming the Astral Plane	-	+
+1794875250	cmd	Trentlin	46	7514	astral.are	standing	100	0	-	east		Roaming the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils	-	+
+1794875250	cmd	Trentlin	46	7514	astral.are	standing	100	0	-	exits		Obvious exits: // North - Exploring the Astral Plane // East  - Wandering the Astral Plane	-	+
+1794875257	cmd	Trentlin	46	7508	astral.are	standing	100	0	-	west		Exploring the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils	-	+
+1794875257	cmd	Trentlin	46	7508	astral.are	standing	100	0	-	exits		Obvious exits: // North - Into the Astral Plane // East  - Roaming the Astral Plane	-	+
+1794875260	cmd	Trentlin	46	7514	astral.are	standing	100	0	-	east		Roaming the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils	-	+
+1794875260	cmd	Trentlin	46	7514	astral.are	standing	100	0	-	exits		Obvious exits: // North - Exploring the Astral Plane // East  - Wandering the Astral Plane	-	+
+1794875262	cmd	Trentlin	46	7517	astral.are	standing	100	0	-	south		Roaming the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils	-	+
+1794875263	cmd	Trentlin	46	7517	astral.are	standing	100	0	-	exits		Obvious exits: // North - Roaming the Astral Plane // East  - Wandering the Astral Plane	-	+
+1794875266	cmd	Trentlin	46	7522	astral.are	standing	100	0	-	east		Wandering the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils	-	+
+1794875266	cmd	Trentlin	46	7522	astral.are	standing	100	0	-	exits		Obvious exits: // North - Roaming the Astral Plane // South - Roaming the Astral Plane	-	+
+1794875283	cmd	Trentlin	46	7544	astral.are	standing	100	0	-	down		Walking the Silvery Strand //   You are standing atop a silvery strand of light that twists and turns // through the astral field.	-	+
+1794875284	cmd	Trentlin	46	7544	astral.are	standing	100	0	-	exits		Obvious exits: // South - Wandering the Astral Plane // Down  - Travelling the Astral Plane	-	-
+1794875286	cmd	Trentlin	46	7527	astral.are	standing	100	0	-	down		Travelling the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils	-	+
+1794875289	cmd	Trentlin	46	7527	astral.are	standing	100	0	-	exits		Obvious exits: // North - Traversing the Astral Plane // East  - Traversing the Astral Plane	-	+
+1794875300	cmd	Trentlin	46	7525	astral.are	standing	100	0	-	west		Travelling the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils	-	+
+1794875301	cmd	Trentlin	46	7525	astral.are	standing	100	0	-	exits		Obvious exits: // North - Traversing the Astral Plane // East  - Travelling the Astral Plane	-	+
+1794875306	cmd	Trentlin	46	7541	astral.are	standing	100	0	-	south		Walking the Silvery Strand //   You are standing atop a silvery strand of light that twists and turns // through the astral field.	-	+
+1794875306	cmd	Trentlin	46	7541	astral.are	standing	100	0	-	exits		Obvious exits: // South - Travelling the Astral Plane // Down  - Walking the Silvery Strand	-	-
+1794875308	cmd	Trentlin	46	7540	astral.are	standing	100	0	-	down		Walking the Silvery Strand //   You are standing atop a silvery strand of light that twists and turns // through the astral field.	-	+
+1794875309	cmd	Trentlin	46	7540	astral.are	standing	100	0	-	exits		Obvious exits: // South - Wandering the Astral Plane // West  - Walking the Silvery Strand	-	-
+1794875312	cmd	Trentlin	46	7541	astral.are	standing	100	0	-	west		Walking the Silvery Strand //   You are standing atop a silvery strand of light that twists and turns // through the astral field.	-	+
+1794875312	cmd	Trentlin	46	7541	astral.are	standing	100	0	-	exits		Obvious exits: // South - Travelling the Astral Plane // Down  - Walking the Silvery Strand	-	-
+1794875327	laid	-	0	0	-	1052	herb	45	a sarsaparilla vine	17198	highland.are	scatter
+1794875327	laid	-	0	0	-	1053	component	78	a vial of demons blood	5556	ofcol.are	scatter
+1794875329	cmd	Trentlin	46	7525	astral.are	standing	100	0	-	south		Travelling the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils	-	+
+1794875330	cmd	Trentlin	46	7525	astral.are	standing	100	0	-	exits		Obvious exits: // North - Traversing the Astral Plane // East  - Travelling the Astral Plane	-	+
+1794875333	cmd	Trentlin	46	7528	astral.are	standing	100	0	-	north		Traversing the Astral Plane //   You find yourself deep within in a dark field filled with tiny tendrils // of silvery light and insubstantial shining motes of dust.  The weightlessness	-	+
+1794875333	cmd	Trentlin	46	7528	astral.are	standing	100	0	-	exits		Obvious exits: // North - Lost in the Astral Plane // East  - Exploring the Astral Plane	-	+
+1794875342	cmd	Trentlin	46	7545	astral.are	standing	100	0	-	west		Deep Within the Astral Plane //   You have travelled deep inside the astral field.  Here the fabric of the // field has become twisted and warped due to the proximity of another plane of	-	+
+1794875342	cmd	Trentlin	46	7545	astral.are	standing	100	0	-	exits		Obvious exits: // North - Deep Within the Astral Plane // East  - Traversing the Astral Plane	-	+
+1794875359	cmd	Trentlin	46	7550	astral.are	standing	100	0	-	up		Inside the Githyanki Keep //   You are standing just inside a nexial portal that leads out onto the // Astral Plane.  It seems that you have found the lair of the Githyanki,	-	+
+1794875361	cmd	Trentlin	46	7550	astral.are	standing	100	0	-	open	north	Ok.	-	-
+1794875362	cmd	Trentlin	46	7551	astral.are	standing	100	0	-	north		A guard station //   This is a small building just inside the keep.  Doors lead out to the east // and west.  Some small weapons hang on hooks on the walls, for use in defense	-	+
+1794875365	cmd	Trentlin	46	7551	astral.are	standing	100	0	-	consider	g	A githyanki guardian is far below your level. // A githyanki guardian has about a third of your hit points. // A githyanki guardian could barely scratch you; you would need a single round to bring him down.	-	+
+1794875372	cmd	Trentlin	46	7551	astral.are	standing	100	0	-	open	east	Ok.	-	-
+1794875374	cmd	Trentlin	46	7551	astral.are	standing	100	0	-	open	west	Ok.	-	-
+1794875374	cmd	Trentlin	46	7551	astral.are	standing	100	0	-	exits		Obvious exits: // East  - A grey road // South - Inside the Githyanki Keep	-	+
+1794875386	cmd	Trentlin	46	7561	astral.are	standing	100	0	-	east		A grey road //   The ground beneath your feet is a uniformly grey cobblestone.  A dull red // sun hangs in an orange sky above your head; you hear none of the sounds you	-	+
+1794875387	cmd	Trentlin	46	7560	astral.are	standing	100	0	-	east		A grey road //   The ground beneath your feet is a uniformly grey cobblestone.  A dull red // sun hangs in an orange sky above your head; you hear none of the sounds you	-	+
