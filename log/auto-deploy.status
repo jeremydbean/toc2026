@@ -1,1 +1,1 @@
-2026-11-17T18:22:50Z waiting for CI on fd2a1236 (in_progress) before deploying 18493a18
+2026-11-17T18:32:51Z not deploying 6a5ad52a: CI on fd2a1236 says failure; push a fix

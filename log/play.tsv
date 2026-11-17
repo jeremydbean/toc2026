@@ -35691,3 +35691,4 @@
 1794935360	sightings	Alaric	57	2497	dresden.are	mob	201:1/0/0 2431:1/0/0 6100:2/0/0 6103:2/0/0 6101:2/0/0 4201:1/0/0 4458:1/0/0 2430:5/0/0 2434:2/0/0 2433:1/0/0 2432:1/0/0 4448:1/0/0 4459:1/0/0 5011:1/0/0 5010:1/0/0 25100:1/0/0 25114:1/0/0 25108:10/0/0 25107:1/0/0 25105:1/0/0 2240:5/0/0 2202:1/1/0 2200:2/0/0 2201:5/0/0 2227:1/0/0 2207:1/1/0
 1794935360	sightings	Alaric	57	2497	dresden.are	item	6104:1/0 6106:1/0 5005:1/0
 1794935360	session	Alaric	57	2497	dresden.are	quit	5901s	+0 levels	+0 exp	+154321082 copper	2 kills	0 deaths	1 quests	235 commands	1 refused	coin: loot 1p 59g 19s 42c, quests 154p 12g 91s 40c, spent 1p 40g	spent on: heal 1p 40g	exp: none
+1794940482	cleared	-	0	0	-	1028	component	64	a manticore's spine	65843	0	scatter	mob 2435	(mobile_update)	0	-
