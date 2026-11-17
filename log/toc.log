@@ -312074,3 +312074,5 @@ Tue Nov 17 09:31:45 2026 :: Connection guard: 3.212.128.62 closed without a word
 Tue Nov 17 09:36:50 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 3 of 6 in 6 hours).
 Tue Nov 17 09:38:08 2026 :: Sock.sinaddr:  45.79.115.134
 Tue Nov 17 09:38:08 2026 :: Connection guard: 45.79.115.134 closed before a password prompt (strike 1 of 6 in 6 hours).
+Tue Nov 17 09:41:27 2026 :: Treasure goblin: vanished from room 19104 (Southern Commoner's Seats, rome.are) (too long in one area).
+Tue Nov 17 09:41:54 2026 :: Connection guard: refused 1 connection from 178.156.185.231 (paused; 1 refused in all, pause 1 this week, 330 minutes left).
