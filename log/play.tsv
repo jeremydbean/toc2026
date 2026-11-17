@@ -33720,3 +33720,219 @@
 1794875374	cmd	Trentlin	46	7551	astral.are	standing	100	0	-	exits		Obvious exits: // East  - A grey road // South - Inside the Githyanki Keep	-	+
 1794875386	cmd	Trentlin	46	7561	astral.are	standing	100	0	-	east		A grey road //   The ground beneath your feet is a uniformly grey cobblestone.  A dull red // sun hangs in an orange sky above your head; you hear none of the sounds you	-	+
 1794875387	cmd	Trentlin	46	7560	astral.are	standing	100	0	-	east		A grey road //   The ground beneath your feet is a uniformly grey cobblestone.  A dull red // sun hangs in an orange sky above your head; you hear none of the sounds you	-	+
+1794875390	cmd	Trentlin	46	7560	astral.are	standing	100	0	-	open	east	Ok.	-	-
+1794875390	cmd	Trentlin	46	7560	astral.are	standing	100	0	-	exits		Obvious exits: // North - A grey road // East  - The Githyanki Weaponry	-	+
+1794875391	cmd	Trentlin	46	7565	astral.are	standing	100	0	-	east		The Githyanki Weaponry //   A large chamber, full of weapons in various states of completion.  Strange // glowing blocks of silvery metal are being pounded and rolled out into deadly 	-	+
+1794875393	cmd	Trentlin	46	7566	astral.are	standing	100	0	-	north		The Forge //   In the center of the room is a massive furnace which emits great gouts of // heat and a strange smell which comes from the melting of the silvery metal used	-	+
+1794875394	cmd	Trentlin	46	7568	astral.are	standing	100	0	-	east		Inside the furnace //   You gasp for breath and choke on toxic sulphur and brimstone.  The sweat // on your forehead is instantly vaporized by the flames that surround you.  You	-	+
+1794875396	cmd	Trentlin	46	7568	astral.are	standing	100	0	-	consider	dra	The enslaved red dragon is far below your level. // The enslaved red dragon has about as many hit points as you. // Blow for blow, you would need about 2 rounds to bring The enslaved red dragon down; he would need over a hundred rounds for	-	+
+1794875399	cmd	Trentlin	46	7568	astral.are	standing	100	0	-	kill	dra	Your punch === OBLITERATES === The enslaved red dragon! // Your punch === OBLITERATES === The enslaved red dragon! // Your punch ^^^ DESTROYS ^^^ The enslaved red dragon!	-	-
+1794875402	coin	Trentlin	46	7568	astral.are	+5500	loot	(violence_update)	corpse of The enslaved red dragon	15465284450
+1794875402	coin	Trentlin	46	7568	astral.are	+351	loot	(violence_update)	corpse of The enslaved red dragon	15465284801
+1794875402	coin	Trentlin	46	7568	astral.are	+410000	loot	(violence_update)	corpse of The enslaved red dragon	15465694801
+1794875403	area	Trentlin	46	4207	dresden.are	astral.are	dresden.are	200	recall
+1794875403	cmd	Trentlin	46	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794875404	cmd	Trentlin	46	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794875405	cmd	Trentlin	46	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794875405	cmd	Trentlin	46	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794875405	cmd	Trentlin	46	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794875405	cmd	Trentlin	46	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794875406	cmd	Trentlin	46	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794875406	cmd	Trentlin	46	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794875406	cmd	Trentlin	46	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794875406	cmd	Trentlin	46	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794875407	cmd	Trentlin	46	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1794875407	cmd	Trentlin	46	2497	dresden.are	standing	100	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794875408	coin	Trentlin	46	2497	dresden.are	+4224456	quests	aquest	-	15469919257
+1794875408	outcome	Trentlin	46	2497	dresden.are	quest-complete	success	-	-	ordinary qp=4531->4531 offered=32 daily=18->18 coin=+4224456 kill=704076 streak=9 level=46 target=-1
+1794875408	cmd	Trentlin	46	2497	dresden.are	standing	100	21	-	aquest	complete	You inform Questor Thews you have completed his quest. // Questor Thews says 'Excellent work! The realm is in your debt!' // Questor Thews says 'Streak of 10 in a row! A +70% bonus has been added!'	success:-	+
+1794875410	cmd	Trentlin	46	2497	dresden.are	standing	100	0	-	(social)		You wave.	-	-
+1794875413	cmd	Trentlin	46	2497	dresden.are	standing	100	7	-	aquest	gamble yes	The dice BETRAY you! Your 32 quest points are lost.	-	-
+1794875414	cmd	Trentlin	46	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794875420	cmd	Trentlin	46	2401	dresden.are	standing	100	0	-	heal	refresh	Hermie turns to you with a wink. // Hermie rests a hand on your shoulder, and the ache goes out of you.	-	-
+1794875424	cmd	Trentlin	46	2401	dresden.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794875432	cmd	Trentlin	46	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1794875432	cmd	Trentlin	46	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794875432	cmd	Trentlin	46	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1794875433	cmd	Trentlin	46	2422	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1794875433	cmd	Trentlin	46	2423	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1794875433	cmd	Trentlin	46	2424	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1794875433	cmd	Trentlin	46	2425	dresden.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1794875434	cmd	Trentlin	46	2426	dresden.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794875434	cmd	Trentlin	46	2426	dresden.are	standing	100	0	-	open	east	Ok.	-	-
+1794875434	cmd	Trentlin	46	2440	dresden.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794875434	area	Trentlin	46	3503	midennir.are	dresden.are	midennir.are	31	east
+1794875434	cmd	Trentlin	46	3503	midennir.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1794875435	cmd	Trentlin	46	3502	midennir.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1794875435	cmd	Trentlin	46	3525	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  	-	+
+1794875435	cmd	Trentlin	46	3526	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded	-	+
+1794875435	cmd	Trentlin	46	3527	midennir.are	standing	100	0	-	east		The Checkpoint //   You are met by a group of heavily armored knights.  They check you over // for contraband, and then allow you to pass on.  One of the knights cautions to	-	+
+1794875436	cmd	Trentlin	46	3528	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road, just east of a heavily  // guarded checkpoint.  You have covered about half the distance between	-	+
+1794875436	cmd	Trentlin	46	3529	midennir.are	standing	100	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially	-	+
+1794875436	cmd	Trentlin	46	3530	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste	-	+
+1794875436	cmd	Trentlin	46	3531	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your	-	+
+1794875437	cmd	Trentlin	46	3532	midennir.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous	-	+
+1794875437	area	Trentlin	46	42	connect.are	midennir.are	connect.are	3	east
+1794875437	cmd	Trentlin	46	42	connect.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities	-	+
+1794875437	area	Trentlin	46	9669	newthalo.are	connect.are	newthalo.are	0	east
+1794875437	spotted	Trentlin	46	9669	newthalo.are	1007	component	57	a trolls fingernail	2318	1	scatter	arrive
+1794875437	cmd	Trentlin	46	9669	newthalo.are	standing	100	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.	-	+
+1794875437	passed	Trentlin	46	9523	newthalo.are	1007	component	57	a trolls fingernail	2318	0	1	scatter	9669	left
+1794875437	cmd	Trentlin	46	9523	newthalo.are	standing	100	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1794875438	cmd	Trentlin	46	9524	newthalo.are	standing	100	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1794875438	cmd	Trentlin	46	9525	newthalo.are	standing	100	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1794875438	cmd	Trentlin	46	9526	newthalo.are	standing	100	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1794875438	cmd	Trentlin	46	9509	newthalo.are	standing	100	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1794875439	cmd	Trentlin	46	9506	newthalo.are	standing	100	0	-	east		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle	-	+
+1794875439	cmd	Trentlin	46	9517	newthalo.are	standing	100	0	-	east		The Eastern Market Square //   You stand in the market of New Thalos, the gem of the desert. The // market is the hub of the city; all trade and commerce of any significance is	-	+
+1794875439	cmd	Trentlin	46	9527	newthalo.are	standing	100	0	-	east		East Main Street //   Here on East Main, you smell the odor of freshly slaughtered meat and // hear the pounding of new metal from the armory.  The Square is to	-	+
+1794875439	cmd	Trentlin	46	9528	newthalo.are	standing	100	0	-	east		East Main Street //   You are on East Main Street.  To the North is the beginning of // Guildsman's Row.  To the South is a dark alley.  The road also	-	+
+1794875440	cmd	Trentlin	46	9529	newthalo.are	standing	100	0	-	east		East Main Street //   As you walk by the mercenary guild a cold chill causes you to shiver // uncontrollably. You see some shady looking characters lurking about the	-	+
+1794875440	cmd	Trentlin	46	9530	newthalo.are	standing	100	0	-	east		East Main Street //   The Main street through eastern New Thalos begins here and heads westward // towards the marketplace. One of the main gates can be seen to the east, and	-	+
+1794875440	cmd	Trentlin	46	9531	newthalo.are	standing	100	0	-	east		Inside the Eastern Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazened with the crest of New Thalos, swings easily on	-	+
+1794875440	cmd	Trentlin	46	9531	newthalo.are	standing	100	0	-	open	east	Ok.	-	-
+1794875441	cmd	Trentlin	46	9668	newthalo.are	standing	100	0	-	east		Outside the Eastern Gate of New Thalos //   You stand outside the protective walls of the city. The massive iron gate // sits to the west and the unknown awaits you eastward.	-	+
+1794875441	cmd	Trentlin	46	9790	newthalo.are	standing	100	0	-	east		On a road //   The people of New Thalos take great pride in the services their // city may provide. One of these services is the construction crews	-	+
+1794875441	laid	-	0	0	-	1097	herb	40	a clove	2397	mahntor.are	scatter
+1794875441	laid	-	0	0	-	1098	herb	45	a sarsaparilla vine	2307	mahntor.are	scatter
+1794875441	cmd	Trentlin	46	9791	newthalo.are	standing	100	0	-	east		On a road //   You walk along a well used road with beautiful scenery. To the north // tall pine trees form a wall that goes on for miles. Between the road	-	+
+1794875441	cmd	Trentlin	46	9792	newthalo.are	standing	100	0	-	east		On a road //   The Dragon Sea can be seen to the east now spreading out to unknown // lands. The road continues east and west. To the south you hear the	-	+
+1794875442	cmd	Trentlin	46	9793	newthalo.are	standing	100	0	-	east		On a road //   This is the main land route through the land. Merchants can bring their goods // to the coastline and have them ferried onto ships for export. Travel	-	+
+1794875442	cmd	Trentlin	46	9794	newthalo.are	standing	100	0	-	east		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline	-	+
+1794875442	area	Trentlin	46	41	connect.are	newthalo.are	connect.are	5	north
+1794875442	cmd	Trentlin	46	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 	-	+
+1794875442	area	Trentlin	46	16000	pirate.are	connect.are	pirate.are	0	north
+1794875442	cmd	Trentlin	46	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a	-	+
+1794875443	cmd	Trentlin	46	16000	pirate.are	standing	100	0	-	iron		Your skin hardens.	-	-
+1794875451	cmd	Trentlin	46	16001	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794875451	cmd	Trentlin	46	16002	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794875452	cmd	Trentlin	46	16003	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.	-	+
+1794875453	cmd	Trentlin	46	16004	pirate.are	standing	100	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.	-	+
+1794875454	cmd	Trentlin	46	16005	pirate.are	standing	100	0	-	east		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like	-	+
+1794875455	cmd	Trentlin	46	16021	pirate.are	standing	100	0	-	up		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not	-	+
+1794875457	cmd	Trentlin	46	16021	pirate.are	standing	100	0	-	kill	swas	Your punch === OBLITERATES === The swashbuckler! // Your punch ^^^ DESTROYS ^^^ The swashbuckler! // The swashbuckler blocks your attack with his shield.	-	-
+1794875460	cmd	Trentlin	46	16021	pirate.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The swashbuckler! // Your fists of fury scratches The swashbuckler.	-	+
+1794875466	skill	Trentlin	46	16021	pirate.are	fists of fury	86	87	success	fists
+1794875466	coin	Trentlin	46	16021	pirate.are	+1000000	loot	fists	corpse of The swashbuckler	15470919257
+1794875466	coin	Trentlin	46	16021	pirate.are	+600	loot	fists	corpse of The swashbuckler	15470919857
+1794875466	coin	Trentlin	46	16021	pirate.are	+8	loot	fists	corpse of The swashbuckler	15470919865
+1794875466	coin	Trentlin	46	16021	pirate.are	+30000	loot	fists	corpse of The swashbuckler	15470949865
+1794875466	cmd	Trentlin	46	16021	pirate.are	fighting	95	2	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The swashbuckler. // Your fists of fury injures The swashbuckler.	-	+
+1794875474	cmd	Trentlin	46	16021	pirate.are	standing	95	2	-	scan		The sailor                         -to the South. // The pirate                         -to the South. // The bucaneer                       -right below you.	-	-
+1794875474	cmd	Trentlin	46	16021	pirate.are	standing	95	0	-	wear	diplo	You stop using the Lizard's Heart Container. // You hold a mud school diploma in your hands.	-	-
+1794875477	cmd	Trentlin	46	16022	pirate.are	standing	102	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794875478	cmd	Trentlin	46	16022	pirate.are	standing	102	0	-	scan		The drunk pirate                   -to the East. // The sailor                         -to the South. // The pirate                         -to the West.	-	+
+1794875479	cmd	Trentlin	46	16023	pirate.are	standing	102	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794875480	cmd	Trentlin	46	16023	pirate.are	standing	102	0	-	scan		The pirate                         -to the North. // The swashbuckler                   -to the South.	-	-
+1794875482	cmd	Trentlin	46	16018	pirate.are	standing	102	0	-	south		Main Deck of the Royal Eagle //   You are aboard the Royal Eagle - the flag ship of the Krondorian fleet.  She // seems to have been out to sea many times on many voyages.  Crewmen are	-	+
+1794875484	cmd	Trentlin	46	16018	pirate.are	standing	102	0	-	kill	swas	Your punch <<< ERADICATES >>> The swashbuckler! // Your punch >>> ANNIHILATES <<< The swashbuckler! // Your punch <<< ERADICATES >>> The swashbuckler!	-	-
+1794875487	cmd	Trentlin	46	16018	pirate.are	fighting	102	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims The swashbuckler! // Your fists of fury scratches The swashbuckler.	-	+
+1794875492	level	Trentlin	47	16018	pirate.are	46	47	Monk 	1	108499	-1	(violence_update)
+1794875492	coin	Trentlin	47	16018	pirate.are	+1000000	loot	(violence_update)	corpse of The swashbuckler	15471949865
+1794875492	coin	Trentlin	47	16018	pirate.are	+600	loot	(violence_update)	corpse of The swashbuckler	15471950465
+1794875492	coin	Trentlin	47	16018	pirate.are	+8	loot	(violence_update)	corpse of The swashbuckler	15471950473
+1794875492	coin	Trentlin	47	16018	pirate.are	+30000	loot	(violence_update)	corpse of The swashbuckler	15471980473
+1794875492	cmd	Trentlin	47	16018	pirate.are	standing	95	0	-	fists		Who do you want to attack?	-	-
+1794875495	cmd	Trentlin	47	16018	pirate.are	standing	95	0	-	scan		The drunk pirate                   -to the North. // The midshipman                     -to the East. // The sailor                         -to the West.	-	-
+1794875496	cmd	Trentlin	47	16023	pirate.are	standing	95	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794875497	cmd	Trentlin	47	16023	pirate.are	standing	95	0	-	scan		The pirate                         -to the North. // The sailor                         -to the West.	-	-
+1794875498	cmd	Trentlin	47	16028	pirate.are	standing	95	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794875500	cmd	Trentlin	47	16028	pirate.are	standing	95	0	-	scan		The midshipman                     -to the North. // The swashbuckler                   -to the North. // The drunk pirate                   -to the South.	-	-
+1794875502	cmd	Trentlin	47	16033	pirate.are	standing	95	0	-	north		Base of the Mast //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794875503	cmd	Trentlin	47	16033	pirate.are	standing	95	0	-	kill	swas	The swashbuckler dodges your attack. // Your punch === OBLITERATES === The swashbuckler! // The swashbuckler dodges your attack.	-	+
+1794875505	cmd	Trentlin	47	16033	pirate.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The swashbuckler. // Your fists of fury mauls The swashbuckler.	-	+
+1794875511	cmd	Trentlin	47	16033	pirate.are	fighting	89	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES The swashbuckler! // Your fists of fury DISEMBOWELS The swashbuckler!	-	+
+1794875517	coin	Trentlin	47	16033	pirate.are	+1000000	loot	fists	corpse of The swashbuckler	15472980473
+1794875517	coin	Trentlin	47	16033	pirate.are	+600	loot	fists	corpse of The swashbuckler	15472981073
+1794875517	coin	Trentlin	47	16033	pirate.are	+8	loot	fists	corpse of The swashbuckler	15472981081
+1794875517	coin	Trentlin	47	16033	pirate.are	+30000	loot	fists	corpse of The swashbuckler	15473011081
+1794875517	cmd	Trentlin	47	16033	pirate.are	fighting	83	1	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The swashbuckler! // Your fists of fury injures The swashbuckler.	-	+
+1794875524	cmd	Trentlin	47	16078	pirate.are	standing	83	0	-	up		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around	-	+
+1794875524	cmd	Trentlin	47	16078	pirate.are	standing	83	0	-	scan		The midshipman                     -right below you.	-	-
+1794875526	cmd	Trentlin	47	16078	pirate.are	standing	83	0	-	kill	swas	The swashbuckler dodges your attack. // The swashbuckler parries your attack. // Your punch <<< ERADICATES >>> The swashbuckler!	-	-
+1794875528	cmd	Trentlin	47	16078	pirate.are	fighting	83	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The swashbuckler. // Your fists of fury decimates The swashbuckler!	-	+
+1794875535	cmd	Trentlin	47	16078	pirate.are	fighting	77	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims The swashbuckler! // Your fists of fury decimates The swashbuckler!	-	+
+1794875540	skill	Trentlin	47	16078	pirate.are	dodge	82	83	success	(violence_update)
+1794875541	coin	Trentlin	47	16078	pirate.are	+1000000	loot	fists	corpse of The swashbuckler	15474011081
+1794875541	coin	Trentlin	47	16078	pirate.are	+600	loot	fists	corpse of The swashbuckler	15474011681
+1794875541	coin	Trentlin	47	16078	pirate.are	+8	loot	fists	corpse of The swashbuckler	15474011689
+1794875541	coin	Trentlin	47	16078	pirate.are	+30000	loot	fists	corpse of The swashbuckler	15474041689
+1794875541	cmd	Trentlin	47	16078	pirate.are	fighting	70	2	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The swashbuckler. // Your fists of fury *** DEVASTATES *** The swashbuckler!	-	+
+1794875548	cmd	Trentlin	47	16078	pirate.are	standing	72	0	-	scan		The midshipman                     -right below you.	-	-
+1794875548	cmd	Trentlin	47	16078	pirate.are	standing	72	0	-	iron		Your skin hardens.	-	-
+1794875556	cmd	Trentlin	47	16079	pirate.are	standing	72	0	-	east		Out on the Mast //   You are hanging out on the mast of the Royal Eagle.  Literally!  The // only way to climb around the mast is by using all the ropes dangling	-	+
+1794875557	cmd	Trentlin	47	16078	pirate.are	standing	72	0	-	west		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around	-	+
+1794875557	cmd	Trentlin	47	16081	pirate.are	standing	72	0	-	up		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around	-	+
+1794875559	cmd	Trentlin	47	16078	pirate.are	standing	72	0	-	down		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around	-	+
+1794875560	cmd	Trentlin	47	16081	pirate.are	standing	72	0	-	up		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around	-	+
+1794875560	cmd	Trentlin	47	16081	pirate.are	standing	72	0	-	scan		The swashbuckler                   -to the West. // The Lookout                        -right above you. // The bucaneer                       -right below you.	-	-
+1794875562	cmd	Trentlin	47	16080	pirate.are	standing	72	0	-	west		Out on the Mast //   You are hanging out on the mast of the Royal Eagle.  Literally!  The // only way to climb around the mast is by using all the ropes dangling	-	+
+1794875563	cmd	Trentlin	47	16080	pirate.are	standing	72	0	-	kill	swas	The swashbuckler parries your attack. // The swashbuckler blocks your attack with his shield. // Your punch <<< ERADICATES >>> The swashbuckler!	-	-
+1794875564	skill	Trentlin	47	16080	pirate.are	dodge	83	84	success	(violence_update)
+1794875566	cmd	Trentlin	47	16080	pirate.are	fighting	72	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** The swashbuckler! // Your fists of fury wounds The swashbuckler.	-	+
+1794875572	cmd	Trentlin	47	16080	pirate.are	fighting	71	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The swashbuckler. // Your fists of fury *** DEVASTATES *** The swashbuckler!	-	+
+1794875578	level	Trentlin	48	16080	pirate.are	47	48	Monk 	1	110461	86	fists
+1794875578	coin	Trentlin	48	16080	pirate.are	+1000000	loot	fists	corpse of The swashbuckler	15475041689
+1794875578	coin	Trentlin	48	16080	pirate.are	+600	loot	fists	corpse of The swashbuckler	15475042289
+1794875578	coin	Trentlin	48	16080	pirate.are	+8	loot	fists	corpse of The swashbuckler	15475042297
+1794875578	coin	Trentlin	48	16080	pirate.are	+30000	loot	fists	corpse of The swashbuckler	15475072297
+1794875578	cmd	Trentlin	48	16080	pirate.are	fighting	71	27	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES The swashbuckler! // Your fists of fury DISEMBOWELS The swashbuckler!	-	+
+1794875585	cmd	Trentlin	48	16081	pirate.are	standing	70	0	-	east		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around	-	+
+1794875586	cmd	Trentlin	48	16078	pirate.are	standing	70	0	-	down		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around	-	+
+1794875586	cmd	Trentlin	48	16033	pirate.are	standing	70	0	-	down		Base of the Mast //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on	-	+
+1794875614	cmd	Trentlin	48	16033	pirate.are	standing	71	0	-	scan		The bucaneer                       -right above you.	-	-
+1794875615	area	Trentlin	48	4207	dresden.are	pirate.are	dresden.are	173	recall
+1794875615	cmd	Trentlin	48	4207	dresden.are	standing	71	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794875616	cmd	Trentlin	48	4202	dresden.are	standing	71	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794875617	cmd	Trentlin	48	4201	dresden.are	standing	71	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794875617	cmd	Trentlin	48	2427	dresden.are	standing	71	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794875617	cmd	Trentlin	48	2427	dresden.are	standing	71	0	-	east		Alas, you cannot go that way.	-	-
+1794875617	cmd	Trentlin	48	2427	dresden.are	standing	71	0	-	east		Alas, you cannot go that way.	-	-
+1794875618	cmd	Trentlin	48	2404	dresden.are	standing	71	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794875618	cmd	Trentlin	48	2401	dresden.are	standing	71	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794875621	cmd	Trentlin	48	2401	dresden.are	standing	71	0	-	heal	heal	Hermie turns to you with a wink. // Hermie rests a hand on your shoulder, and the ache goes out of you.	-	-
+1794875622	cmd	Trentlin	48	2401	dresden.are	standing	100	0	-	heal	refresh	Hermie turns to you with a wink. // Hermie rests a hand on your shoulder, and the ache goes out of you.	-	-
+1794875661	cmd	Trentlin	48	2438	dresden.are	standing	100	0	-	run	w 7	Western Oak Tree Square. // [Exits: north east south west] // Temple Boulevard.	-	+
+1794875662	cmd	Trentlin	48	2438	dresden.are	standing	100	0	-	open	west	It's already open.	-	-
+1794875662	area	Trentlin	48	6000	haon.are	dresden.are	haon.are	47	run
+1794875662	cmd	Trentlin	48	6103	haon.are	standing	100	0	-	run	w 10	Outside the Western Gates of Dresden. // [Exits: north east west] // The edge of the forest	-	+
+1794875662	cmd	Trentlin	48	6108	haon.are	standing	100	0	-	south		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees standing // close on all sides.  The trail leads north and west and to the south, a frail	-	+
+1794875662	cmd	Trentlin	48	6107	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and east.	-	+
+1794875663	cmd	Trentlin	48	6106	haon.are	standing	100	0	-	east		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.	-	+
+1794875663	cmd	Trentlin	48	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.	-	+
+1794875663	cmd	Trentlin	48	6116	haon.are	standing	100	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously on all sides.  The path continues east and south.	-	+
+1794875663	spotted	Trentlin	48	6115	haon.are	1032	herb	37	a sprig of catnip	887	1	scatter	arrive
+1794875663	spotted	Trentlin	48	6115	haon.are	918	herb	38	a foxglove flower	6771	1	scatter	arrive
+1794875663	cmd	Trentlin	48	6115	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel as // if the ancient trees observe you in watchful silence.  The path continues	-	+
+1794875664	passed	Trentlin	48	6114	haon.are	1032	herb	37	a sprig of catnip	888	1	1	scatter	6115	left
+1794875664	passed	Trentlin	48	6114	haon.are	918	herb	38	a foxglove flower	6772	1	1	scatter	6115	left
+1794875664	cmd	Trentlin	48	6114	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead north, east and west.	-	+
+1794875664	cmd	Trentlin	48	6122	haon.are	standing	100	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously all around.  The path continues east and south.	-	+
+1794875664	cmd	Trentlin	48	6123	haon.are	standing	100	0	-	south		A junction on the river bank in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all around.  To the south a dark river flows	-	+
+1794875664	cmd	Trentlin	48	6125	haon.are	standing	100	0	-	west		A small path on the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom everywhere.  To the south you smell marsh gas.  The path continues	-	+
+1794875665	cmd	Trentlin	48	6126	haon.are	standing	100	0	-	north		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees standing // close on all sides.  The trail leads north and west, and to the south a frail	-	+
+1794875666	cmd	Trentlin	48	6128	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees that stand close on all sides. Not a sound is to be heard.. everything	-	+
+1794875666	cmd	Trentlin	48	6129	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees that stand close on all sides. Not a sound is to be heard - everything	-	+
+1794875666	cmd	Trentlin	48	6135	haon.are	standing	100	0	-	west		A dusty trail in the deep, dark forest //   You are on a dusty trail leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The trail continues north and east.	-	+
+1794875666	cmd	Trentlin	48	6136	haon.are	standing	100	0	-	north		A dusty trail in the deep, dark forest //   You are on a dusty trail leading through the deep, dark forest.  Ancient, // grey trees loom everywhere.  The trail continues south and west.  A broad	-	+
+1794875667	cmd	Trentlin	48	6137	haon.are	standing	100	0	-	west		At the end of the trail through the deep, dark forest //   You are on a dusty trail leading through the deep, dark forest.  Ancient grey // trees loom all around you.  You see a forest clearing to the north of you.	-	+
+1794875667	area	Trentlin	48	30	connect.are	haon.are	connect.are	5	north
+1794875667	cmd	Trentlin	48	30	connect.are	standing	100	0	-	north		Forest Clearing //   The bleak oppression of the forest ends suddenly as you step out into a wide // glade. From here you can continue south, back into the forest, or northwest	-	+
+1794875667	cmd	Trentlin	48	31	connect.are	standing	100	0	-	nw		A Twisting Path //   You twist and turn your way thru a low set of hill's that lead up to the  // great peaks of the mountains. You notice that in these far northern 	-	+
+1794875667	cmd	Trentlin	48	32	connect.are	standing	100	0	-	west		An unused path //   A small westward path leads off of the main trail leading north into the  // mountain range. It twists and turns at random intervals, and looks fairly 	-	+
+1794875668	cmd	Trentlin	48	33	connect.are	standing	100	0	-	west		Sharp turn //   From here the path takes a sharp turn to the northwest, the sounds of a  // great river reach your ears, and fill's your head like the hum of many 	-	+
+1794875668	cmd	Trentlin	48	34	connect.are	standing	100	0	-	nw		The Wind Gap //   From here you can make out a large river valley that reaches down into  // the mist canopy of the foresy of Haon dor. To the north a small beaten 	-	+
+1794875668	laid	-	0	0	-	1126	herb	46	a juniper berry	6313	arac.are	scatter
+1794875668	laid	-	0	0	-	1127	component	86	an inert gelatinous cube	2303	mahntor.are	scatter
+1794875668	area	Trentlin	48	25001	mountain.are	connect.are	mountain.are	1	north
+1794875668	cmd	Trentlin	48	25001	mountain.are	standing	100	0	-	north		A small mountain crevice //   You are walking thry a small mountain crevice, large stone walls loom over // you on each side, and the feeling of being imposed upon looms large in your	-	+
+1794875668	cmd	Trentlin	48	25002	mountain.are	standing	100	0	-	north		Near the river //   You walk out of the mountain crevice to gaze upon quite an interesting site. // A large river seems to flow into the mountain face behind you, but if you	-	+
+1794875669	cmd	Trentlin	48	25004	mountain.are	standing	100	0	-	north		Beginning of the climb //   You stand at the bottom of what looks like a steep mountain path, it twists // off to the northwest from here and looks like a hard path to travel. Off to	-	+
+1794875669	cmd	Trentlin	48	25005	mountain.are	standing	100	0	-	nw		Hard Climb //   You are amazed at the exercion that you are putting forth, small pebbles roll // away at your feet as you scramble up the slope. To the north you can make out	-	+
+1794875669	cmd	Trentlin	48	25006	mountain.are	standing	100	0	-	north		Head of the Bridge //   You have reached the head of what looks like a small, and seemingly unsturdy // bridge, it sways back in forth with the gusts of wind that come up off the	-	+
+1794875669	cmd	Trentlin	48	25009	mountain.are	standing	100	0	-	run	w 3	On the bridge // [Exits: east west] // Middle of the Bridge	-	+
+1794875670	cmd	Trentlin	48	25015	mountain.are	standing	100	0	-	nw		Onward and Upward //   You slowly move your way past the rickety bridge that spanned the river. Now // a long but gentler sloap greets your eyes as you move upward, towards the	-	+
+1794875671	cmd	Trentlin	48	25015	mountain.are	standing	100	0	-	iron		Your skin hardens.	-	-
+1794875679	cmd	Trentlin	48	25015	mountain.are	standing	100	0	-	kill	ra	A Black Raven parries your attack. // A Black Raven is unaffected by your punch! // A Black Raven is unaffected by your punch!	-	-
+1794875685	area	Trentlin	48	4207	dresden.are	mountain.are	dresden.are	17	recall
+1794875685	cmd	Trentlin	48	4207	dresden.are	fighting	100	0	fight	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+

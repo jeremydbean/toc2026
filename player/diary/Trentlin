@@ -193,18 +193,25 @@ List spend 29600000 0 heal
 List spend 10000 0 shoot
 End
 Day 2026-11-17
-Played 194
-Level 46 46 0
-Exp 0 0
-Kills 0
+Played 462
+Level 46 48 2
+Exp 3801 0
+Kills 6
 Deaths 0
 Close 0
-Quests 0 0
+Quests 1 0
 Dailies 0 0
-List area 70 0 City of Dresden
+List skill 86 87 fists of fury
+List skill 82 84 dodge
+List area 101 0 City of Dresden
 List area 0 0 Plains of the North
 List area 0 0 Continental Drift
-List area 124 0 The Astral Plane
+List area 200 0 The Astral Plane
+List area 3 0 Miden'nir
+List area 5 0 New Thalos
+List area 153 0 Pirate Ship
 List earn 38480381 0 interest
+List earn 5568891 0 loot
+List earn 4224456 0 quests
 End
 #END
