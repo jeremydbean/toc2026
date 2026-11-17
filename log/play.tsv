@@ -35791,3 +35791,232 @@
 1794949865	cmd	Trentlin	50	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
 1794949869	cmd	Trentlin	50	2436	dresden.are	standing	100	0	-	where	hermie	You didn't find any hermie.	-	-
 1794949871	cmd	Trentlin	50	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794949871	cmd	Trentlin	50	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794949873	area	Trentlin	50	2564	limbo.are	dresden.are	limbo.are	39	south
+1794949873	cmd	Trentlin	50	2564	limbo.are	standing	100	0	-	south		Wall Road. //   The alley is shrouded in flitting shadows, and the darkness that pervades // this area sends a chill up your spine.	-	+
+1794949874	area	Trentlin	50	2438	dresden.are	limbo.are	dresden.are	1	north
+1794949874	cmd	Trentlin	50	2438	dresden.are	standing	100	0	-	north		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794949875	cmd	Trentlin	50	2437	dresden.are	standing	100	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794949875	cmd	Trentlin	50	4800	dresden.are	standing	100	0	-	south		Another Dimension //   You have somehow left the City of Dresden, and entered another dimension. // To the north you can still make out the streets of Dresden thru the mist,	-	+
+1794949876	cmd	Trentlin	50	4801	dresden.are	standing	100	0	-	south		The passage way //   A long narrow path leads upwards in a small secluded valley. Large but gentle // breezes ruffle the plethora of raiment that you wear, and a playful mist	-	+
+1794949876	cmd	Trentlin	50	4802	dresden.are	standing	100	0	-	south		The narrow entrance //   You have reached the entrance of a narrow box canyon. Standing beside you is // an odd weather worn stone statue, that seems oddly out of place in the	-	+
+1794949877	cmd	Trentlin	50	4803	dresden.are	standing	100	0	-	south		The Palm of the Creator //   A large stone hand rises out of the earth and points skyward...the only place // you find to stand in the room is at the center of the giant stone effigy.	-	+
+1794949878	cmd	Trentlin	50	4803	dresden.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1794949885	cmd	Trentlin	50	4807	dresden.are	standing	100	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1794949888	cmd	Trentlin	50	4807	dresden.are	standing	100	0	-	gain	convert	The Master of Movement helps you apply your practice to training	-	-
+1794949888	cmd	Trentlin	50	4807	dresden.are	standing	100	0	-	gain	convert	The Master of Movement helps you apply your practice to training	-	-
+1794949888	cmd	Trentlin	50	4807	dresden.are	standing	100	0	-	gain	convert	The Master of Movement helps you apply your practice to training	-	-
+1794949888	cmd	Trentlin	50	4807	dresden.are	standing	100	0	-	gain	convert	The Master of Movement helps you apply your practice to training	-	-
+1794949889	cmd	Trentlin	50	4807	dresden.are	standing	100	0	-	gain	convert	The Master of Movement helps you apply your practice to training	-	-
+1794949890	refused	Trentlin	50	4807	dresden.are	standing	100	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794949891	cmd	Trentlin	50	4807	dresden.are	standing	100	0	-	practice		fists of fury       89%  herbal brewing      75%  iron skin           76%   // levitate            75%  meditation          77%  second attack       82%   // bash                 1%  	-	+
+1794949895	cmd	Trentlin	50	4804	dresden.are	standing	100	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1794949897	cmd	Trentlin	50	4806	dresden.are	standing	100	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1794949899	cmd	Trentlin	50	4806	dresden.are	standing	100	0	-	practice		nerve damage        87%  steel fist          75%  fast healing        76%   // hand to hand       100%  kick                81%  dodge               84%   // parry               85%  trip                78%  enhanced damage     96%  	-	+
+1794949900	cmd	Trentlin	50	4804	dresden.are	standing	100	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1794949902	cmd	Trentlin	50	4804	dresden.are	standing	100	0	-	look	in pit	The donation pit contains: //      Nothing.	-	-
+1794949903	cmd	Trentlin	50	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794949904	cmd	Trentlin	50	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794949906	laid	-	0	0	-	903	herb	35	a sprig of angelica	25267	mushroom.are	scatter
+1794949906	laid	-	0	0	-	904	herb	41	a sprig of mistletoe	25207	mushroom.are	scatter
+1794949907	coin	Trentlin	50	4208	dresden.are	-400000	spent	heal	-	16745958243
+1794949907	cmd	Trentlin	50	4208	dresden.are	standing	100	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (4 castings, 40 gold.)	-	-
+1794949911	cmd	Trentlin	50	4208	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Invis) (Magical) a sapphire ring	-	+
+1794949953	cmd	Trentlin	50	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794949953	area	Trentlin	50	3700	school.are	dresden.are	school.are	79	up
+1794949953	cmd	Trentlin	50	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794949953	cmd	Trentlin	50	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794949953	cmd	Trentlin	50	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794949954	area	Trentlin	50	15000	campus.are	school.are	campus.are	1	enter
+1794949954	cmd	Trentlin	50	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794949954	cmd	Trentlin	50	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794949954	cmd	Trentlin	50	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794949954	cmd	Trentlin	50	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794949955	cmd	Trentlin	50	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794949955	cmd	Trentlin	50	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794949955	cmd	Trentlin	50	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794949955	cmd	Trentlin	50	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794949956	cmd	Trentlin	50	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794949956	cmd	Trentlin	50	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794949956	cmd	Trentlin	50	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794949956	area	Trentlin	50	30200	hyrule.are	campus.are	hyrule.are	2	enter
+1794949956	cmd	Trentlin	50	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794949960	cmd	Trentlin	50	30282	hyrule.are	standing	100	0	-	play	recorder 6	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Dragon's Gate	-	+
+1794949964	cmd	Trentlin	50	30501	hyrule.are	standing	100	0	-	down		Level 6: Dragon's Gate //   Dragon statues of dark red stone flank the entry hall of this labyrinth, // their jaws carved wide as if to breathe fire. Heat radiates from the walls	-	+
+1794949965	cmd	Trentlin	50	30501	hyrule.are	standing	100	0	-	where	gohman	You didn't find any gohman.	-	-
+1794949968	cmd	Trentlin	50	30501	hyrule.are	standing	100	0	-	where	gohma	Gohma                        Level 6: Gohma's Nest	-	-
+1794949971	cmd	Trentlin	50	30501	hyrule.are	standing	100	0	-	west		The door is bound shut by an old magic: only its key will open it.	-	-
+1794949974	cmd	Trentlin	50	30502	hyrule.are	standing	100	0	-	east		Level 6: Rune-Scored Hall //   Arcane sigils are scratched across the flagstones here, and a few still // glow faintly before fading, the marks where robed sorcerers blink in and	-	+
+1794949976	cmd	Trentlin	50	30502	hyrule.are	standing	100	0	-	north		The door is bound shut by an old magic: only its key will open it.	-	-
+1794949978	cmd	Trentlin	50	30501	hyrule.are	standing	100	0	-	west		Level 6: Dragon's Gate //   Dragon statues of dark red stone flank the entry hall of this labyrinth, // their jaws carved wide as if to breathe fire. Heat radiates from the walls	-	+
+1794949980	cmd	Trentlin	50	30501	hyrule.are	standing	100	0	-	unlock	west	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794949982	cmd	Trentlin	50	30501	hyrule.are	standing	100	0	-	open	west	Ok.	-	-
+1794949982	cmd	Trentlin	50	30500	hyrule.are	standing	100	0	-	west		Level 6: Scorched Antechamber //   Black scorch marks splash the walls of this chamber in starbursts, as if // bolts of magic struck them from every side at once, and the dust shows the	-	+
+1794949983	cmd	Trentlin	50	30503	hyrule.are	standing	100	0	-	north		Level 6: Slime Cistern //   Puddles of green slime pool in the low places of this sunken floor, and // trails of it streak the walls up to knee height, where large blobs have	-	+
+1794949983	cmd	Trentlin	50	30505	hyrule.are	standing	100	0	-	north		Level 6: Smoky Roost //   A tall, narrow chamber whose ceiling vanishes into soot-black shadow, alive // with the rustle of leathery wings that dart down and flutter up again.	-	+
+1794949983	cmd	Trentlin	50	30505	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794949984	cmd	Trentlin	50	30505	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794949986	cmd	Trentlin	50	30505	hyrule.are	standing	100	0	-	kill	kee	Your punch ^^^ DESTROYS ^^^ a keese! // A keese dodges your attack. // Your punch misses a keese.	-	+
+1794949987	coin	Trentlin	50	30505	hyrule.are	+400000	loot	(violence_update)	corpse of a keese	16746358243
+1794949987	coin	Trentlin	50	30505	hyrule.are	+4100	loot	(violence_update)	corpse of a keese	16746362343
+1794949987	coin	Trentlin	50	30505	hyrule.are	+339	loot	(violence_update)	corpse of a keese	16746362682
+1794949987	coin	Trentlin	50	30505	hyrule.are	+860000	loot	(violence_update)	corpse of a keese	16747222682
+1794949991	got	Trentlin	50	30505	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794949991	cmd	Trentlin	50	30505	hyrule.are	standing	100	0	-	get	key	You get a small key.	-	-
+1794949991	cmd	Trentlin	50	30506	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear. // Level 6: Crossed Grooves of the Dragon //   Grooves cut deep into the floor run from the corners toward the middle of	-	+
+1794949992	cmd	Trentlin	50	30507	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear. // Level 6: Flickering Hall //   The air here crackles with stray sparks, and patches of the walls are	-	+
+1794949994	cmd	Trentlin	50	30507	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794950000	cmd	Trentlin	50	30507	hyrule.are	standing	100	0	-	bomb	east	You find no cracked surface to bomb there.	-	-
+1794950002	cmd	Trentlin	50	30507	hyrule.are	standing	100	0	-	kill	w	Your punch <<< ERADICATES >>> a blue wizzrobe! // Your punch >>> ANNIHILATES <<< a blue wizzrobe! // Your punch misses a blue wizzrobe.	-	-
+1794950005	coin	Trentlin	50	30507	hyrule.are	+17600	loot	(violence_update)	corpse of a blue wizzrobe	16747240282
+1794950005	coin	Trentlin	50	30507	hyrule.are	+111	loot	(violence_update)	corpse of a blue wizzrobe	16747240393
+1794950005	coin	Trentlin	50	30507	hyrule.are	+90000	loot	(violence_update)	corpse of a blue wizzrobe	16747330393
+1794950007	cmd	Trentlin	50	30511	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear. // Level 6: Statue Gallery //   A line of dragon statues stands along the west wall, their stone faces	-	+
+1794950008	cmd	Trentlin	50	30511	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794950011	laid	-	0	0	-	922	herb	49	a pomegranate	1415	htower.are	scatter
+1794950011	laid	-	0	0	-	923	herb	37	a sprig of catnip	1342	htower.are	scatter
+1794950014	cmd	Trentlin	50	30511	hyrule.are	standing	100	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!	-	-
+1794950015	cmd	Trentlin	50	30512	hyrule.are	standing	100	0	-	east		Level 6: Ash Chamber //   A drift of fine grey ash covers the floor, swirled into patterns by // draughts that seem to come from nowhere and by robes that sweep through the	-	+
+1794950017	got	Trentlin	50	30512	hyrule.are	30227	a small key	key	1	0	get	the floor
+1794950017	cmd	Trentlin	50	30512	hyrule.are	standing	100	0	-	get	key	You get a small key.	-	-
+1794950017	cmd	Trentlin	50	30512	hyrule.are	standing	100	0	-	south		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794950020	cmd	Trentlin	50	30512	hyrule.are	standing	100	0	-	kill	w	Your punch <<< ERADICATES >>> a red wizzrobe! // A red wizzrobe dodges your attack. // Your punch === OBLITERATES === a red wizzrobe!	-	-
+1794950026	coin	Trentlin	50	30512	hyrule.are	+3600	loot	(violence_update)	corpse of a red wizzrobe	16747333993
+1794950026	coin	Trentlin	50	30512	hyrule.are	+446	loot	(violence_update)	corpse of a red wizzrobe	16747334439
+1794950026	coin	Trentlin	50	30512	hyrule.are	+30000	loot	(violence_update)	corpse of a red wizzrobe	16747364439
+1794950027	cmd	Trentlin	50	30512	hyrule.are	standing	99	2	-	kill	w	Your punch <<< ERADICATES >>> a blue wizzrobe! // A blue wizzrobe parries your attack. // A blue wizzrobe parries your attack.	-	-
+1794950029	skill	Trentlin	50	30512	hyrule.are	parry	85	86	success	(violence_update)
+1794950035	coin	Trentlin	50	30512	hyrule.are	+17600	loot	(violence_update)	corpse of a blue wizzrobe	16747382039
+1794950035	coin	Trentlin	50	30512	hyrule.are	+111	loot	(violence_update)	corpse of a blue wizzrobe	16747382150
+1794950035	coin	Trentlin	50	30512	hyrule.are	+90000	loot	(violence_update)	corpse of a blue wizzrobe	16747472150
+1794950036	cmd	Trentlin	50	30508	hyrule.are	standing	99	0	-	south		The shutter opens now that the chamber is clear. // Level 6: Taloned Corner //   Deep talon gouges mark the tops of the blocks set around this corner	-	+
+1794950037	cmd	Trentlin	50	30508	hyrule.are	standing	99	0	-	east		The shutter is sealed fast, and will not open while enemies remain here.	-	-
+1794950039	cmd	Trentlin	50	30508	hyrule.are	standing	99	0	-	kill	v	Your punch === OBLITERATES === a vire! // A vire dodges your attack. // Your punch <<< ERADICATES >>> a vire!	-	-
+1794950047	coin	Trentlin	50	30508	hyrule.are	+14600	loot	(violence_update)	corpse of a vire	16747486750
+1794950047	coin	Trentlin	50	30508	hyrule.are	+354	loot	(violence_update)	corpse of a vire	16747487104
+1794950047	coin	Trentlin	50	30508	hyrule.are	+920000	loot	(violence_update)	corpse of a vire	16748407104
+1794950048	cmd	Trentlin	50	30509	hyrule.are	standing	99	0	-	east		The shutter opens now that the chamber is clear. // Level 6: Sorcerer's Stair //   A spiral of scorch marks curls across the floor of this chamber toward its	-	+
+1794950049	cmd	Trentlin	50	30520	hyrule.are	standing	99	0	-	down		Level 6: Eastern Stairwell //   A narrow stair sinks into the floor in one corner of this chamber, leading // back toward the western halls. A sticky, glistening film coats the stones	-	+
+1794950050	cmd	Trentlin	50	30514	hyrule.are	standing	99	0	-	south		Level 6: Eastern Bend //   This chamber at the eastern edge of the labyrinth smells of storm and // singed fur. Sparks wink and vanish in the corners, and talon marks score	-	+
+1794950052	cmd	Trentlin	50	30513	hyrule.are	standing	99	0	-	west		Level 6: Threshold of the Nest //   Grooves cut by sliding blades scar the floor, and blue scorch marks stain // the walls of this hall. From behind the locked door in the north wall comes	-	+
+1794950053	cmd	Trentlin	50	30513	hyrule.are	standing	99	0	-	north		The door is bound shut by an old magic: only its key will open it.	-	-
+1794950057	cmd	Trentlin	50	30513	hyrule.are	standing	99	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794950057	cmd	Trentlin	50	30519	hyrule.are	standing	99	0	-	north		Level 6: Gohma's Nest //   Shed carapace fragments and deep scuttle marks crisscross the floor of this // lair, and the walls are gouged by great pincers. Broken arrows lie thick	-	+
+1794950059	cmd	Trentlin	50	30519	hyrule.are	standing	99	0	-	consider	g	Gohma is well below your level. // Gohma has about twice your hit points. // Blow for blow, you would need about 4 rounds to bring Gohma down; it would need over a hundred rounds for you.	-	+
+1794950060	state	Trentlin	50	30519	hyrule.are	lvl=50 hp=889/896 mana=2098/2098 mv=482/489 align=389 exp=115998 coin=1279197430 bank=15469209674 qp=4833 prac=7 train=18 stash=66/75 remorts=1
+1794950060	cmd	Trentlin	50	30519	hyrule.are	standing	99	0	-	score		| Name:       Trentlin | Level:      50 | Class:        Monk | // | Played:     40 hours | Sex:      Male | Guild:        Monk | // | Age:        19 years | Race:    Dwarf | Castle:       None |	-	+
+1794950063	cmd	Trentlin	50	30519	hyrule.are	standing	99	0	-	consider	g	Gohma is well below your level. // Gohma has about twice your hit points. // Blow for blow, you would need about 4 rounds to bring Gohma down; it would need over a hundred rounds for you.	-	+
+1794950067	cmd	Trentlin	50	30519	hyrule.are	standing	99	0	-	kill	g	Your punch ^^^ DESTROYS ^^^ Gohma! // Your punch <<< ERADICATES >>> Gohma! // Gohma parries your attack.	-	-
+1794950071	cmd	Trentlin	50	30519	hyrule.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates Gohma! // Your fists of fury devastates Gohma!	-	+
+1794950072	laid	-	0	0	-	940	herb	43	a sprig of hyssop	9795	newthalo.are	scatter
+1794950072	laid	-	0	0	-	941	herb	51	a piece of kelp	9672	newthalo.are	scatter
+1794950072	laid	-	0	0	-	942	component	55	a unicorn horn	5683	tarin.are	scatter
+1794950077	cmd	Trentlin	50	30519	hyrule.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits Gohma. // Your fists of fury wounds Gohma.	-	+
+1794950085	cmd	Trentlin	50	30519	hyrule.are	fighting	93	0	fight	wear	bow	You wield a short bow. // A short bow is a mystery to you. Better ask someone how to use it.	-	-
+1794950087	coin	Trentlin	50	30519	hyrule.are	-10000	spent	shoot	-	16748397104
+1794950087	got	Trentlin	50	30519	hyrule.are	30635	the Dragon's key	key	33	0	shoot	-
+1794950087	coin	Trentlin	50	30519	hyrule.are	+200	loot	shoot	corpse of Gohma	16748397304
+1794950087	coin	Trentlin	50	30519	hyrule.are	+338	loot	shoot	corpse of Gohma	16748397642
+1794950087	coin	Trentlin	50	30519	hyrule.are	+1240000	loot	shoot	corpse of Gohma	16749637642
+1794950087	cmd	Trentlin	50	30519	hyrule.are	fighting	92	4	fight	shoot		You draw, aim at Gohma and let an arrow fly. // Your arrow ^^^ DESTROYS ^^^ Gohma! // Gohma is DEAD!!	-	+
+1794950093	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	remove	bow	You stop using a short bow.	-	-
+1794950093	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	look	in co	Corpse of Gohma contains: //      (Magical) Gohma's carapace shield //      (Magical) an unblinking eye ring	-	+
+1794950106	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Invis) (Magical) a sapphire ring	-	+
+1794950110	got	Trentlin	50	30519	hyrule.are	30679	a pair of pincer-toed boots	armor	40	80000000	get	corpse of Gohma
+1794950110	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	get	boots co	You get a pair of pincer-toed boots from corpse of Gohma.	-	-
+1794950111	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	compare	boot	A) a pair of pincer-toed boots (level 40) // B) a pair of Dodongo stompers (level 14), worn // Slot: feet.  Your damage comes from weapons.	-	+
+1794950119	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	wear	boot	You stop using a pair of Dodongo stompers. // You wear a pair of pincer-toed boots on your feet.	-	-
+1794950122	cmd	Trentlin	50	30519	hyrule.are	standing	95	6	-	stash	put stomp	You put a pair of Dodongo stompers away for safe keeping.	-	-
+1794950123	coin	Trentlin	50	30519	hyrule.are	+86	loot	sacrifice	-	16749637728
+1794950123	cmd	Trentlin	50	30519	hyrule.are	standing	95	0	-	sacrifice	co	The Gods give you 86 copper coins for your sacrifice.	-	-
+1794950124	cmd	Trentlin	50	30519	hyrule.are	standing	95	0	-	look		Level 6: Gohma's Nest //   Shed carapace fragments and deep scuttle marks crisscross the floor of this // lair, and the walls are gouged by great pincers. Broken arrows lie thick	-	+
+1794950125	cmd	Trentlin	50	30519	hyrule.are	standing	95	0	-	north		The door has been Wizard Locked. You can not pass	-	-
+1794950127	cmd	Trentlin	50	30519	hyrule.are	standing	95	0	-	unlock	north	There is a flash of light as you unlock the door.	-	-
+1794950128	cmd	Trentlin	50	30519	hyrule.are	standing	95	0	-	open	north	Ok.	-	-
+1794950129	cmd	Trentlin	50	30524	hyrule.are	standing	95	0	-	north		Level 6: Dragon's Glowing Sanctum //   Polished red stone glows with a soft golden light in this sanctum, warming // the dragon carvings along its walls, every one turned toward an iron-banded	-	+
+1794950130	cmd	Trentlin	50	30282	hyrule.are	standing	95	0	-	enter	light	You enter the Dragon's returning light // Your stomach flip flops. Everything goes black for a moment. // The Dragon's Gate	-	+
+1794950130	item	Trentlin	50	30282	hyrule.are	30635	the Dragon's key	type=key level=33 worn=0 nested=0 timer=0 cond=100 inside=0	crumbled leaving Level 6
+1794950130	item	Trentlin	50	30282	hyrule.are	30227	a small key	type=key level=1 worn=0 nested=0 timer=0 cond=100 inside=0	crumbled leaving Level 6
+1794950131	area	Trentlin	50	4207	dresden.are	hyrule.are	dresden.are	175	recall
+1794950131	cmd	Trentlin	50	4207	dresden.are	standing	95	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794950132	cmd	Trentlin	50	4202	dresden.are	standing	95	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794950132	cmd	Trentlin	50	4201	dresden.are	standing	95	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794950132	cmd	Trentlin	50	2427	dresden.are	standing	95	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794950132	cmd	Trentlin	50	2427	dresden.are	standing	95	0	-	east		Alas, you cannot go that way.	-	-
+1794950133	cmd	Trentlin	50	2427	dresden.are	standing	95	0	-	east		Alas, you cannot go that way.	-	-
+1794950133	cmd	Trentlin	50	2404	dresden.are	standing	95	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794950133	cmd	Trentlin	50	2401	dresden.are	standing	95	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794950133	cmd	Trentlin	50	2410	dresden.are	standing	95	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794950134	cmd	Trentlin	50	2411	dresden.are	standing	95	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794950134	cmd	Trentlin	50	2414	dresden.are	standing	95	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1794950134	cmd	Trentlin	50	2497	dresden.are	standing	95	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794950135	quest	Trentlin	50	2497	dresden.are	ordinary	kill	9104	the mysterious effreeti	27	dylan.are	29
+1794950135	cmd	Trentlin	50	2497	dresden.are	standing	95	14	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Trentlin. The realm needs someone of your skill.' // Questor Thews tells you 'A bounty has been posted on the mysterious effreeti.'	-	+
+1794950141	cmd	Trentlin	50	2401	dresden.are	standing	95	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794950143	cmd	Trentlin	50	2405	dresden.are	standing	95	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794950143	cmd	Trentlin	50	2433	dresden.are	standing	95	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794950144	cmd	Trentlin	50	2434	dresden.are	standing	95	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794950144	cmd	Trentlin	50	2435	dresden.are	standing	95	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794950144	cmd	Trentlin	50	2436	dresden.are	standing	95	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794950144	cmd	Trentlin	50	2437	dresden.are	standing	95	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794950145	cmd	Trentlin	50	2438	dresden.are	standing	95	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794950145	cmd	Trentlin	50	2438	dresden.are	standing	95	0	-	open	west	Ok.	-	-
+1794950145	cmd	Trentlin	50	2439	dresden.are	standing	95	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794950145	cmd	Trentlin	50	3900	dresden.are	standing	95	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794950146	cmd	Trentlin	50	3901	dresden.are	standing	95	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794950146	cmd	Trentlin	50	3902	dresden.are	standing	95	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1794950146	cmd	Trentlin	50	3903	dresden.are	standing	95	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1794950146	laid	-	0	0	-	944	herb	52	an asparagus shoot	2326	mahntor.are	scatter
+1794950146	laid	-	0	0	-	945	herb	37	a sprig of catnip	2329	mahntor.are	scatter
+1794950146	cmd	Trentlin	50	3904	dresden.are	standing	96	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1794950147	area	Trentlin	50	300	plains.are	dresden.are	plains.are	16	north
+1794950147	cmd	Trentlin	50	300	plains.are	standing	96	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1794950147	cmd	Trentlin	50	315	plains.are	standing	96	0	-	north		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.	-	+
+1794950147	cmd	Trentlin	50	320	plains.are	standing	96	0	-	north		Grassy plains //   You walk in some grassy plains. The wind is strong and rough. To the // north you can see the foothills and further on mountain peaks are visible.	-	+
+1794950147	cmd	Trentlin	50	305	plains.are	standing	96	0	-	east		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you watch the	-	+
+1794950148	cmd	Trentlin	50	306	plains.are	standing	96	0	-	north		Path in the foothills //   You are on the path leading through the small foothills. // The wind blow through your hair as you study the beautiful	-	+
+1794950148	cmd	Trentlin	50	326	plains.are	standing	96	0	-	north		The pool in the foothills //   You are standing by a pool in the small foothills. It is clear and cold. // Next to the pool grows an enormous oak tree.  It must stand over a hundred	-	+
+1794950148	cmd	Trentlin	50	309	plains.are	standing	96	0	-	east		Path in the foothills //   You are walking on a path situated in the foothills. // From the west you sense a certain freshness and the path	-	+
+1794950148	cmd	Trentlin	50	310	plains.are	standing	96	0	-	east		Path in the foothills //   You are walking on a long path in the east-west direction. // The surroundings are green, vegetated foothills.	-	+
+1794950149	cmd	Trentlin	50	327	plains.are	standing	96	0	-	north		The foothills //   You are walking in some foothills. It is rather hard to move here. // Further to the north you can see the mountains towering over you.	-	+
+1794950149	cmd	Trentlin	50	313	plains.are	standing	96	0	-	east		Road to Ofcol //   You are walking on a wide road with trail marks on it.  To the north // you see the village of Ofcol and to the south there is the T intersection.	-	+
+1794950149	cmd	Trentlin	50	314	plains.are	standing	96	0	-	north		Road to Ofcol //   You are walking on a wide road with trail marks on it.  From the north // you hear the villagers of Ofcol go about their daily business. To the south	-	+
+1794950149	area	Trentlin	50	52	connect.are	plains.are	connect.are	2	north
+1794950149	cmd	Trentlin	50	52	connect.are	standing	96	0	-	north		Outside Ofcol //   You are standing outside the village of Ofcol. // The village looks very small, but still a nice and safe place to stay.	-	+
+1794950150	area	Trentlin	50	5550	ofcol.are	connect.are	ofcol.are	1	north
+1794950150	cmd	Trentlin	50	5550	ofcol.are	standing	96	0	-	north		Village street //   You stand at the small village street in Ofcol. // From here you see small houses and only few people.	-	+
+1794950150	cmd	Trentlin	50	5551	ofcol.are	standing	96	0	-	north		Village street //   You are standing on the village street of Ofcol. // East from here is a small alley and north you enter the village	-	+
+1794950150	cmd	Trentlin	50	5553	ofcol.are	standing	96	0	-	east		The small alley //   You are in a small, quiet alley.  From here you see the village street // to the west and a small room lies to the south.	-	+
+1794950150	cmd	Trentlin	50	601	ofcol.are	standing	96	0	-	east		The Big Intersection //   You are in the big intersection between Raff Way and Impy Way.  Crowds  // of people walk past you as they go on their daily tasks.  Raff Way continues	-	+
+1794950151	cmd	Trentlin	50	666	ofcol.are	standing	96	0	-	east		Raff Way //   You are on Raff Way.  To the west, you can see a big intersection.  To  // the east, you see Raff Way continue toward the Golden Citadel.  There are 	-	+
+1794950151	cmd	Trentlin	50	667	ofcol.are	standing	96	0	-	east		Raff Way //   You are on Raff Way.  Raff Way continues west to the city of Ofcol.  To  // the east, you see Raff Way continue toward the Golden Citadel.  There are 	-	+
+1794950151	cmd	Trentlin	50	699	ofcol.are	standing	96	0	-	east		Outside the Entrance to the Golden Citadel //   You are outside the entrance to the Golden Citadel.  A great gate is to // to the east, marking the entranceway into the citadel.  The road also leads	-	+
+1794950151	cmd	Trentlin	50	698	ofcol.are	standing	96	0	-	east		Inside the Entrance to the Golden Citadel //   You are inside the entrance to the Golden Citadel.  Rich golden tapestries // line the walls, and golden tiles cover the floors.  The exit to this citadel is	-	+
+1794950152	cmd	Trentlin	50	679	ofcol.are	standing	96	0	-	east		A Hallway of the Golden Citadel //   You are in a hallway of the Golden Citadel.  Gold tiles cover the floors, // and rich golden tapestries drape the walls.  Servants in golden livery pass you	-	+
+1794950152	cmd	Trentlin	50	671	ofcol.are	standing	96	0	-	east		The Anteroom to the Temple of Ofcol //   You are in an anteroom to the Temple of Ofcol.  Gold tiles cover the // floor, and servants in golden livery pass you by peaceably.  The temple is to	-	+
+1794950152	cmd	Trentlin	50	669	ofcol.are	standing	96	0	-	east		The Temple of Ofcol //   You are in the Temple of Ofcol.  Golden tiles cover the floor, and solid // gold columns reach the twelve foot ceiling of this vast chamber.  Servants in	-	+
+1794950152	cmd	Trentlin	50	673	ofcol.are	standing	96	0	-	south		The Anteroom to the Temple of Ofcol //   You are in an anteroom to the Temple of Ofcol.  Gold tiles cover the // floor, and servants in golden livery pass you by peaceably.  The temple is to	-	+
+1794950153	cmd	Trentlin	50	690	ofcol.are	standing	96	0	-	up		An Upper Chamber of the Golden Citadel //   You are in one of the upper chambers of the Golden Citadel.  The decora- // tions of this place surpass even those of the first floor.  Gold tiles etched	-	+
+1794950153	cmd	Trentlin	50	695	ofcol.are	standing	96	0	-	up		A Top Chamber of the Golden Citadel //   You are in one of the top chambers of the Golden Citadel.  The decorations // of this room looks like a dragon's hoard.  The whole room is carved out of pure	-	+
+1794950153	area	Trentlin	50	7914	redfern.are	ofcol.are	redfern.are	3	up
+1794950153	cmd	Trentlin	50	7914	redfern.are	standing	96	0	-	up		On the Huge Chain //   This place has quite a good view over Dresden. Your possibilities of movement // seems to extend only to up and down. Unless you want to let go of the secure	-	+
+1794950153	cmd	Trentlin	50	7916	redfern.are	standing	96	0	-	up		On the Great Chain of Naris //   You are approximately on the middle of the treacherous Chain. One false step // and death will come and collect you quickly. The chain leads upwards and down.	-	+
+1794950154	cmd	Trentlin	50	7918	redfern.are	standing	96	0	-	up		The Mighty Chain of Naris //   This place offers a splendid view of the WHOLE COUNTRY SIDE!!! A magnificent // light shines upon you and the way up through the clouds is opened. Up there	-	+
+1794950154	cmd	Trentlin	50	7900	redfern.are	standing	96	0	-	up		Outside Redferne's residence //   A huge cloud forms the plateau on which you are now standing. The wind here // is absolutely quiet and the sun is shining warmly upon you. From under the	-	+
+1794950154	area	Trentlin	50	9101	dylan.are	redfern.are	dylan.are	1	south
+1794950154	cmd	Trentlin	50	9101	dylan.are	standing	96	0	-	south		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794950156	area	Trentlin	50	7900	redfern.are	dylan.are	redfern.are	2	north
+1794950156	cmd	Trentlin	50	7900	redfern.are	standing	96	0	-	north		Outside Redferne's residence //   A huge cloud forms the plateau on which you are now standing. The wind here // is absolutely quiet and the sun is shining warmly upon you. From under the	-	+
+1794950157	got	Trentlin	50	7900	redfern.are	7216	a red dragon claw	weapon	29	18000000	get	the floor
+1794950157	cmd	Trentlin	50	7900	redfern.are	standing	96	0	-	get	all	You get a red dragon claw.	-	-
+1794950161	cmd	Trentlin	50	7900	redfern.are	standing	96	0	-	put	claw pack	You put a red dragon claw in a metallic pack.	-	-
+1794950161	area	Trentlin	50	9101	dylan.are	redfern.are	dylan.are	5	south
+1794950161	cmd	Trentlin	50	9101	dylan.are	standing	96	0	-	south		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794950162	cmd	Trentlin	50	9102	dylan.are	standing	96	0	-	up		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794950163	cmd	Trentlin	50	9103	dylan.are	standing	96	0	-	east		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794950164	cmd	Trentlin	50	9128	dylan.are	standing	96	0	-	north		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794950165	cmd	Trentlin	50	9128	dylan.are	standing	96	0	-	east		Alas, you cannot go that way.	-	-
+1794950166	cmd	Trentlin	50	9127	dylan.are	standing	96	0	-	down		A fluffy white cloud. //   You find yourself standing on a small cloud.  The cloud feels kind // of spongy beneath your feet.  You find it hard to see anything in	-	+
+1794950168	cmd	Trentlin	50	9130	dylan.are	standing	96	0	-	north		Grumpy little cloud. //   This cloud mutters and grumbles at you.  You have to jump quickly // to avoid a lightning bolt that passes by your toe.  Your aren't	-	+
+1794950169	cmd	Trentlin	50	9130	dylan.are	standing	96	0	-	exits		Obvious exits: // East  - Happy little cloud. // South - A fluffy white cloud.	-	+
+1794950171	cmd	Trentlin	50	9129	dylan.are	standing	96	0	-	west		Sleepy little cloud. //   This cloud is peacefully snoozing away, enjoying himself.  There // is grumpy cloud to the east and a rather shy cloud north of here.	-	+
