@@ -193,36 +193,36 @@ List spend 29600000 0 heal
 List spend 10000 0 shoot
 End
 Day 2026-11-17
-Played 1048
+Played 1362
 Level 46 50 4
 Exp 9363 25
-Kills 11
+Kills 22
 Deaths 0
 Close 0
-Quests 2 0
+Quests 3 86
 Dailies 0 0
 List achv 30 0 Across Hyrule
-List skill 86 88 fists of fury
+List skill 86 89 fists of fury
 List skill 82 84 dodge
 List skill 81 82 second attack
-List skill 94 95 enhanced damage
-List skill 98 99 hand to hand
-List area 226 0 City of Dresden
+List skill 94 96 enhanced damage
+List skill 98 100 hand to hand
+List area 256 0 City of Dresden
 List area 10 0 Plains of the North
 List area 1 0 Continental Drift
 List area 200 0 The Astral Plane
 List area 3 0 Miden'nir
-List area 5 0 New Thalos
+List area 7 0 New Thalos
 List area 173 0 Pirate Ship
 List area 5 0 Haon Dor
 List area 17 0 The Lonely Mountain
 List area 2 0 Mud School
 List area 6 0 Strange Campus
-List area 378 0 Hyrule
-More area 3
+List area 637 0 Hyrule
+More area 8
 List earn 38480381 0 interest
-List earn 97341337 0 loot
-List earn 274626456 0 quests
+List earn 338271395 0 loot
+List earn 572068656 0 quests
 List spend 500000 0 heal
 End
 #END
