@@ -312369,3 +312369,20 @@ Tue Nov 17 13:52:48 2026 :: Treasure goblin: vanished from room 15042 (Wally Wor
 Tue Nov 17 13:55:43 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 3 of 6 in 6 hours).
 Tue Nov 17 14:00:49 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 5 of 6 in 6 hours).
 Tue Nov 17 14:02:52 2026 :: Treasure goblin: vanished from room 5129 (Long Hallway, drow1.are) (too long in one area).
+Tue Nov 17 14:05:53 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 4 of 6 in 6 hours).
+Tue Nov 17 14:06:11 2026 :: Connection guard: 97.202.254.41 closed without a word (a player's address; not counted).
+Tue Nov 17 14:06:11 2026 :: Connection guard: 97.202.254.41 closed without a word (a player's address; not counted).
+Tue Nov 17 14:06:11 2026 :: Connection guard: 97.202.254.41 closed without a word (a player's address; not counted).
+Tue Nov 17 14:06:11 2026 :: Connection guard: 97.202.254.41 closed without a word (a player's address; not counted).
+Tue Nov 17 14:06:25 2026 :: Sock.sinaddr:  97.202.254.41
+Tue Nov 17 14:06:26 2026 :: EOF encountered on read.
+Tue Nov 17 14:06:26 2026 :: Connection guard: 97.202.254.41 closed before a password prompt (a player's address; not counted).
+Tue Nov 17 14:06:27 2026 :: Sock.sinaddr:  97.202.254.41
+Tue Nov 17 14:06:27 2026 :: EOF encountered on read.
+Tue Nov 17 14:06:27 2026 :: Connection guard: 97.202.254.41 closed before a password prompt (a player's address; not counted).
+Tue Nov 17 14:07:34 2026 :: Connection guard: 97.202.254.41 closed without a word (a player's address; not counted).
+Tue Nov 17 14:07:34 2026 :: Connection guard: 97.202.254.41 closed without a word (a player's address; not counted).
+Tue Nov 17 14:07:46 2026 :: Sock.sinaddr:  97.202.254.41
+Tue Nov 17 14:07:46 2026 :: EOF encountered on read.
+Tue Nov 17 14:07:46 2026 :: Connection guard: 97.202.254.41 closed before a password prompt (a player's address; not counted).
+Tue Nov 17 14:10:03 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
