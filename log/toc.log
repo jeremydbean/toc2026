@@ -312298,3 +312298,4 @@ Tue Nov 17 12:25:28 2026 :: Connection guard: 201.79.61.174 closed before a pass
 Tue Nov 17 12:25:28 2026 :: Sock.sinaddr:  201.79.61.174
 Tue Nov 17 12:25:31 2026 :: EOF encountered on read.
 Tue Nov 17 12:25:31 2026 :: Connection guard: 201.79.61.174 closed before a password prompt (strike 2 of 6 in 6 hours).
+Tue Nov 17 12:29:26 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 3 of 6 in 6 hours).
