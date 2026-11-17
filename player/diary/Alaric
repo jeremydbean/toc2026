@@ -139,7 +139,7 @@ List earn 477800334 0 quests
 List earn 62215304 0 interest
 End
 Day 2026-11-17
-Played 4648
+Played 4890
 Level 57 57 0
 Exp 0 0
 Kills 0
@@ -148,10 +148,17 @@ Close 0
 Quests 0 0
 Dailies 0 0
 List achv 10 0 Not in Kansas Anymore
-List area 4576 0 City of Dresden
+List area 4723 0 City of Dresden
 List area 2 0 Limbo
 List area 0 0 Mud School
 List area 70 0 Strange Campus
+List area 71 0 Haon Dor
+List area 9 0 Continental Drift
+List area 6 0 Ruins of Midgaard
+List area 5 0 New Thalos
+List area 4 0 High Tower of Sorcery
+List area 0 0 Wyvern's Tower
 List earn 62370843 0 interest
+List spend 1400000 0 heal
 End
 #END

@@ -35381,3 +35381,121 @@
 1794928339	sightings	Alaric	57	2497	dresden.are	mob	201:1/0/0 4468:1/0/0 4202:1/0/0 15014:5/0/0 15011:3/0/0 15018:1/0/0 15013:3/0/0 15006:3/0/0 15019:1/0/0 15041:1/0/0 15021:1/0/0 15020:1/0/0 15043:1/0/0 15045:1/0/0 15005:2/0/0 15007:2/0/0 15015:1/0/0 15016:1/0/0 15012:2/0/0 2434:2/0/0 2435:2/0/0 4458:3/0/0 2433:1/0/0 4447:1/0/0
 1794928339	sightings	Alaric	57	2497	dresden.are	item	15043:1/0
 1794928339	session	Alaric	57	2497	dresden.are	quit	93s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	71 commands	1 refused	coin: none	spent on: none	exp: none
+1794929459	area	Alaric	57	2497	dresden.are	-	dresden.are	-1	(game loop)
+1794929460	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794929462	quest	Alaric	57	2497	dresden.are	ordinary	kill	10212	the man	38	tritia.are	29
+1794929462	cmd	Alaric	57	2497	dresden.are	standing	100	23	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'the man has been declared an outlaw!'	-	+
+1794929477	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794929500	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	run	w 7	Western Oak Tree Square. // [Exits: north east south west] // Temple Boulevard.	-	+
+1794929500	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	open	gate	Ok.	-	-
+1794929500	area	Alaric	57	6000	haon.are	dresden.are	haon.are	41	run
+1794929500	cmd	Alaric	57	6101	haon.are	standing	100	0	-	run	w 8	Outside the Western Gates of Dresden. // [Exits: north east west] // The edge of the forest	-	+
+1794929500	cmd	Alaric	57	6105	haon.are	standing	100	0	-	run	s 2	A small path in the deep, dark forest // [Exits: north south] // A small path in the deep, dark forest	-	+
+1794929501	cmd	Alaric	57	6106	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.	-	+
+1794929501	cmd	Alaric	57	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.	-	+
+1794929501	cmd	Alaric	57	6116	haon.are	standing	100	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously on all sides.  The path continues east and south.	-	+
+1794929501	cmd	Alaric	57	6115	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel as // if the ancient trees observe you in watchful silence.  The path continues	-	+
+1794929502	cmd	Alaric	57	6122	haon.are	standing	100	0	-	run	w 2	A junction in the deep, dark forest // [Exits: north east west] // A small path in the deep, dark forest	-	+
+1794929502	cmd	Alaric	57	6123	haon.are	standing	100	0	-	run	s 2	A junction on the river bank in the deep, dark forest // [Exits: north east south west] // You need a boat to go there, or to fly.	-	-
+1794929502	cmd	Alaric	57	6125	haon.are	standing	100	0	-	run	w 4	A small path on the river bank in the deep, dark forest // [Exits: north east] // You slam into a wall!.	-	-
+1794929502	cmd	Alaric	57	6127	haon.are	resting	100	0	-	run	n 2	You stand up. // A narrow trail through the deep, dark forest // [Exits: north south west]	-	+
+1794929503	cmd	Alaric	57	6127	haon.are	standing	100	0	-	run	w 2	You slam into a wall!.	-	-
+1794929503	cmd	Alaric	57	6125	haon.are	resting	100	0	-	run	s 3	You stand up. // A narrow trail through the deep, dark forest // [Exits: north south west]	-	+
+1794929503	cmd	Alaric	57	6125	haon.are	resting	100	0	-	run	w 3	You stand up. // You slam into a wall!.	-	-
+1794929513	cmd	Alaric	57	6125	haon.are	resting	100	0	-	look		A small path on the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom everywhere.  To the south you smell marsh gas.  The path continues	-	+
+1794929514	cmd	Alaric	57	6125	haon.are	resting	100	0	-	wake		You stand up.	-	-
+1794929515	cmd	Alaric	57	6126	haon.are	standing	100	0	-	north		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees standing // close on all sides.  The trail leads north and west, and to the south a frail	-	+
+1794929515	cmd	Alaric	57	6128	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees that stand close on all sides. Not a sound is to be heard.. everything	-	+
+1794929516	cmd	Alaric	57	6129	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees that stand close on all sides. Not a sound is to be heard - everything	-	+
+1794929516	cmd	Alaric	57	6135	haon.are	standing	100	0	-	west		A dusty trail in the deep, dark forest //   You are on a dusty trail leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The trail continues north and east.	-	+
+1794929517	cmd	Alaric	57	6136	haon.are	standing	100	0	-	north		A dusty trail in the deep, dark forest //   You are on a dusty trail leading through the deep, dark forest.  Ancient, // grey trees loom everywhere.  The trail continues south and west.  A broad	-	+
+1794929517	cmd	Alaric	57	6137	haon.are	standing	100	0	-	west		At the end of the trail through the deep, dark forest //   You are on a dusty trail leading through the deep, dark forest.  Ancient grey // trees loom all around you.  You see a forest clearing to the north of you.	-	+
+1794929518	area	Alaric	57	30	connect.are	haon.are	connect.are	18	north
+1794929518	cmd	Alaric	57	30	connect.are	standing	100	0	-	north		Forest Clearing //   The bleak oppression of the forest ends suddenly as you step out into a wide // glade. From here you can continue south, back into the forest, or northwest	-	+
+1794929520	area	Alaric	57	6137	haon.are	connect.are	haon.are	2	south
+1794929520	cmd	Alaric	57	6137	haon.are	standing	100	0	-	south		At the end of the trail through the deep, dark forest //   You are on a dusty trail leading through the deep, dark forest.  Ancient grey // trees loom all around you.  You see a forest clearing to the north of you.	-	+
+1794929520	area	Alaric	57	5926	mid_ruin.are	haon.are	mid_ruin.are	0	south
+1794929520	cmd	Alaric	57	5926	mid_ruin.are	standing	100	0	-	south		A small entrance to the Midgaard Woods //   You just stepped on a small, dusty trail leading into the Midgaard Woods. // The sudden silence startles you ... the humming of the bees has stopped, as	-	+
+1794929522	area	Alaric	57	6137	haon.are	mid_ruin.are	haon.are	2	north
+1794929522	cmd	Alaric	57	6137	haon.are	standing	100	0	-	north		At the end of the trail through the deep, dark forest //   You are on a dusty trail leading through the deep, dark forest.  Ancient grey // trees loom all around you.  You see a forest clearing to the north of you.	-	+
+1794929523	cmd	Alaric	57	6136	haon.are	standing	100	0	-	east		A dusty trail in the deep, dark forest //   You are on a dusty trail leading through the deep, dark forest.  Ancient, // grey trees loom everywhere.  The trail continues south and west.  A broad	-	+
+1794929528	cmd	Alaric	57	6135	haon.are	standing	100	0	-	south		A dusty trail in the deep, dark forest //   You are on a dusty trail leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The trail continues north and east.	-	+
+1794929528	cmd	Alaric	57	6129	haon.are	standing	100	0	-	east		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees that stand close on all sides. Not a sound is to be heard - everything	-	+
+1794929528	cmd	Alaric	57	6128	haon.are	standing	100	0	-	east		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees that stand close on all sides. Not a sound is to be heard.. everything	-	+
+1794929528	cmd	Alaric	57	6126	haon.are	standing	100	0	-	east		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees standing // close on all sides.  The trail leads north and west, and to the south a frail	-	+
+1794929529	cmd	Alaric	57	6127	haon.are	standing	100	0	-	north		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees // standing close on all sides.  The trail leads east and south.	-	+
+1794929529	cmd	Alaric	57	6112	haon.are	standing	100	0	-	east		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees // standing close on all sides.  The trail leads north and west and to the	-	+
+1794929529	cmd	Alaric	57	6111	haon.are	standing	100	0	-	north		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way north-south between huge, ancient // trees that loom ominously above you.	-	+
+1794929529	cmd	Alaric	57	6110	haon.are	standing	100	0	-	north		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees that // stand close on all sides.  The trail leads east and south.  To the north,	-	+
+1794929530	cmd	Alaric	57	6144	haon.are	standing	100	0	-	north		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient, // grey trees loom everywhere.  The tree trunks here seem to be covered in	-	+
+1794929530	cmd	Alaric	57	6130	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way westwards just below huge sticky // wires suspended like ropes between the trees. To the west the path seems	-	+
+1794929531	area	Alaric	57	66	connect.are	haon.are	connect.are	9	north
+1794929531	cmd	Alaric	57	66	connect.are	standing	100	0	-	north		A dark section of the forest //   You have reached a very dark section of the forest, the only thing you can // see is a dark tornado swirling in the air ahead of you.	-	+
+1794929535	area	Alaric	57	6130	haon.are	connect.are	haon.are	4	south
+1794929535	cmd	Alaric	57	6130	haon.are	standing	100	0	-	south		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way westwards just below huge sticky // wires suspended like ropes between the trees. To the west the path seems	-	+
+1794929537	cmd	Alaric	57	6130	haon.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1794929538	cmd	Alaric	57	6144	haon.are	standing	100	0	-	east		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient, // grey trees loom everywhere.  The tree trunks here seem to be covered in	-	+
+1794929568	cmd	Alaric	57	6144	haon.are	standing	100	0	-	enter	do	You do not see that here.	-	-
+1794929569	cmd	Alaric	57	6144	haon.are	standing	100	0	-	look		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient, // grey trees loom everywhere.  The tree trunks here seem to be covered in	-	+
+1794929570	area	Alaric	57	2497	dresden.are	haon.are	dresden.are	35	recall
+1794929570	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794929570	laid	-	0	0	-	1472	component	57	a trolls fingernail	9236	canyon.are	scatter
+1794929571	refused	Alaric	57	2497	dresden.are	standing	100	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794929573	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794929597	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	run	w 7	Western Oak Tree Square. // [Exits: north east south west] // Temple Boulevard.	-	+
+1794929597	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	open	gate	It's already open.	-	-
+1794929598	area	Alaric	57	6000	haon.are	dresden.are	haon.are	28	run
+1794929598	cmd	Alaric	57	6101	haon.are	standing	100	0	-	run	w 8	Outside the Western Gates of Dresden. // [Exits: north east west] // The edge of the forest	-	+
+1794929598	cmd	Alaric	57	6105	haon.are	standing	100	0	-	run	s 2	A small path in the deep, dark forest // [Exits: north south] // A small path in the deep, dark forest	-	+
+1794929598	cmd	Alaric	57	6106	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.	-	+
+1794929598	cmd	Alaric	57	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.	-	+
+1794929599	cmd	Alaric	57	6116	haon.are	standing	100	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously on all sides.  The path continues east and south.	-	+
+1794929599	cmd	Alaric	57	6115	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel as // if the ancient trees observe you in watchful silence.  The path continues	-	+
+1794929599	cmd	Alaric	57	6122	haon.are	standing	100	0	-	run	w 2	A junction in the deep, dark forest // [Exits: north east west] // A small path in the deep, dark forest	-	+
+1794929599	cmd	Alaric	57	6123	haon.are	standing	100	0	-	run	s 2	A junction on the river bank in the deep, dark forest // [Exits: north east south west] // You need a boat to go there, or to fly.	-	-
+1794929600	cmd	Alaric	57	6125	haon.are	standing	100	0	-	run	w 4	A small path on the river bank in the deep, dark forest // [Exits: north east] // You slam into a wall!.	-	-
+1794929600	cmd	Alaric	57	6127	haon.are	resting	100	0	-	run	n 2	You stand up. // A narrow trail through the deep, dark forest // [Exits: north south west]	-	+
+1794929600	cmd	Alaric	57	6127	haon.are	standing	100	0	-	run	w 2	You slam into a wall!.	-	-
+1794929600	cmd	Alaric	57	6125	haon.are	resting	100	0	-	run	s 3	You stand up. // A narrow trail through the deep, dark forest // [Exits: north south west]	-	+
+1794929601	cmd	Alaric	57	6125	haon.are	resting	100	0	-	run	w 3	You stand up. // You slam into a wall!.	-	-
+1794929604	cmd	Alaric	57	6123	haon.are	resting	100	0	-	east		You stand up. // A junction on the river bank in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to	-	+
+1794929604	cmd	Alaric	57	6123	haon.are	standing	100	0	-	south		You need a boat to go there, or to fly.	-	-
+1794929606	cmd	Alaric	57	6123	haon.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794929607	area	Alaric	57	9774	newthalo.are	haon.are	newthalo.are	9	south
+1794929607	cmd	Alaric	57	9774	newthalo.are	standing	100	0	-	south		On the Dark River //   The river continues east and west meandering through the woods. You // hear the sounds of wood being chopped far off in the distance.	-	+
+1794929608	cmd	Alaric	57	9775	newthalo.are	standing	100	0	-	west		On the Dark River //   The river continues east meandering through the woods. // [Exits: east west southwest]	-	-
+1794929609	area	Alaric	57	5979	mid_ruin.are	newthalo.are	mid_ruin.are	2	west
+1794929609	cmd	Alaric	57	5979	mid_ruin.are	standing	100	0	-	west		On the River //   The river enters from a hole in the eastern city wall.  The hole has been // blocked by several vertically positioned iron bars set into the wall.	-	+
+1794929609	cmd	Alaric	57	5978	mid_ruin.are	standing	100	0	-	west		On the River //   You see the warehouse on the northern riverbank.  East of here the river // passes under the eastern bridge and through the city wall. The banks of the	-	+
+1794929610	cmd	Alaric	57	5977	mid_ruin.are	standing	100	0	-	west		On the River //   The levee is directly north of here.  The river flows in an east west direction. // [Exits: north east west]	-	-
+1794929612	cmd	Alaric	57	5978	mid_ruin.are	standing	100	0	-	east		On the River //   You see the warehouse on the northern riverbank.  East of here the river // passes under the eastern bridge and through the city wall. The banks of the	-	+
+1794929612	cmd	Alaric	57	5979	mid_ruin.are	standing	100	0	-	east		On the River //   The river enters from a hole in the eastern city wall.  The hole has been // blocked by several vertically positioned iron bars set into the wall.	-	+
+1794929613	area	Alaric	57	9775	newthalo.are	mid_ruin.are	newthalo.are	4	east
+1794929613	cmd	Alaric	57	9775	newthalo.are	standing	100	0	-	east		On the Dark River //   The river continues east meandering through the woods. // [Exits: east west southwest]	-	-
+1794929616	area	Alaric	57	15	connect.are	newthalo.are	connect.are	3	sw
+1794929616	cmd	Alaric	57	15	connect.are	standing	100	0	-	sw		Bend in River //   After making a gentle bend, the river becomes dark and sinister. Overhanging // branches block out the sun and an eerie mist floats above the surface of the	-	+
+1794929618	cmd	Alaric	57	16	connect.are	standing	100	0	-	west		Misty River //   The mist becomes thicker making it almost impossible to view the surrounding // area. You think you catch a glimpse of a shadowy grove on the northern bank	-	+
+1794929619	area	Alaric	57	1300	htower.are	connect.are	htower.are	3	north
+1794929619	cmd	Alaric	57	1300	htower.are	standing	100	0	-	north		Entrance to the Shadow Grove //   Before you, the grove of shadows lies. Giant grey trees are all that // can be seen through the thick shadows. A great sense of both power and	-	+
+1794929623	area	Alaric	57	2497	dresden.are	htower.are	dresden.are	4	recall
+1794929623	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794929625	outcome	Alaric	57	2497	dresden.are	quest-failed	failure	abandoned	-	ordinary target=mob:10212 level=38 alive=1 area=tritia.are there=0 streak=0
+1794929625	cmd	Alaric	57	2497	dresden.are	standing	100	13	-	aquest	ab	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Alaric. Your quest obligation is lifted.' // Questor Thews says 'Perhaps fortune will favor you more next time.'	failure:abandoned	-
+1794929627	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794929628	area	Alaric	57	1607	wyvern.are	dresden.are	wyvern.are	5	jump
+1794929628	cmd	Alaric	57	1607	wyvern.are	standing	100	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you	-	+
+1794929628	area	Alaric	57	4208	dresden.are	wyvern.are	dresden.are	0	(room_update)
+1794929630	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794929633	coin	Alaric	57	4208	dresden.are	-1400000	spent	heal	-	28905524387
+1794929633	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	heal	ref	The healer utters the words 'candusima'. // You feel fully refreshed! (14 castings, 140 gold.)	-	-
+1794929636	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794929637	cmd	Alaric	57	2427	dresden.are	standing	100	0	-	run	e 4	Before the Altar. // [Exits: north east south west up] // Halls of Healing.	-	+
+1794929638	cmd	Alaric	57	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794929638	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794929639	cmd	Alaric	57	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794929640	cmd	Alaric	57	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794929640	cmd	Alaric	57	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1794929640	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794929640	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1794929641	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=973/983 align=977 exp=252749 coin=3894816244 bank=25010708143 qp=2508 prac=36 train=76 stash=93/350 remorts=3
+1794929641	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    306 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
