@@ -313259,3 +313259,5 @@ Tue Nov 17 20:41:03 2026 :: EOF encountered on read.
 Tue Nov 17 20:41:03 2026 :: Connection guard: 20.163.35.253 closed before a password prompt (strike 1 of 6 in 6 hours).
 Tue Nov 17 20:41:03 2026 :: Sock.sinaddr:  20.163.35.253
 Tue Nov 17 20:41:03 2026 :: Connection guard: 20.163.35.253 closed before a password prompt (strike 2 of 6 in 6 hours).
+Tue Nov 17 20:41:53 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 3 of 6 in 6 hours).
+Tue Nov 17 20:44:48 2026 :: Treasure goblin: vanished from room 6321 (Above the Ravine, arac.are) (too long in one area).
