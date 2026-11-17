@@ -311446,3 +311446,128 @@ Tue Nov 17 02:19:43 2026 :: Log Trentlin [9145]: arrived (Raging hurricane.) fro
 Tue Nov 17 02:19:44 2026 :: Log Trentlin [9145]: ex
 Tue Nov 17 02:19:55 2026 :: Log Trentlin [9145]: e
 Tue Nov 17 02:19:55 2026 :: Log Trentlin [9150]: arrived (Raging hurricane.) from 9145
+Tue Nov 17 02:19:55 2026 :: Log Trentlin [9150]: ex
+Tue Nov 17 02:19:56 2026 :: Log Trentlin [9150]: w
+Tue Nov 17 02:19:56 2026 :: Log Trentlin [9151]: arrived (Raging hurricane.) from 9150
+Tue Nov 17 02:19:57 2026 :: Log Trentlin [9151]: ex
+Tue Nov 17 02:19:57 2026 :: Log Trentlin [9151]: e
+Tue Nov 17 02:19:57 2026 :: Log Trentlin [9150]: arrived (Raging hurricane.) from 9151
+Tue Nov 17 02:19:58 2026 :: Log Trentlin [9150]: ex
+Tue Nov 17 02:19:59 2026 :: Log Trentlin [9150]: n
+Tue Nov 17 02:19:59 2026 :: Log Trentlin [9149]: arrived (Raging hurricane.) from 9150
+Tue Nov 17 02:19:59 2026 :: Log Trentlin [9149]: ex
+Tue Nov 17 02:20:01 2026 :: Log Trentlin [9149]: e
+Tue Nov 17 02:20:01 2026 :: Log Trentlin [9157]: arrived (Cumulative nimbus cloud.) from 9149
+Tue Nov 17 02:20:02 2026 :: Log Trentlin [9157]: ex
+Tue Nov 17 02:20:04 2026 :: Connection guard: refused 1 connection from 178.156.184.20 (paused; 15 refused in all, pause 3 this week, 527 minutes left).
+Tue Nov 17 02:20:04 2026 :: Log Trentlin [9157]: s
+Tue Nov 17 02:20:04 2026 :: Log Trentlin [9159]: arrived (Yet another cloud) from 9157
+Tue Nov 17 02:20:07 2026 :: Log Trentlin [9159]: climb rope
+Tue Nov 17 02:20:07 2026 :: Log Trentlin [9160]: arrived (Front gate) from 9159
+Tue Nov 17 02:20:08 2026 :: Log Trentlin [9160]: s
+Tue Nov 17 02:20:08 2026 :: Log Trentlin [9161]: arrived (Lawn) from 9160
+Tue Nov 17 02:20:09 2026 :: Sock.sinaddr:  66.249.69.15
+Tue Nov 17 02:20:09 2026 :: Log Trentlin [9161]: ex
+Tue Nov 17 02:20:12 2026 :: Log Trentlin [9161]: w
+Tue Nov 17 02:20:12 2026 :: Log Trentlin [9162]: arrived (Croquet game) from 9161
+Tue Nov 17 02:20:13 2026 :: Log Trentlin [9162]: ex
+Tue Nov 17 02:20:27 2026 :: Log Trentlin [9162]: s
+Tue Nov 17 02:20:27 2026 :: Log Trentlin [9164]: arrived (Patio.) from 9162
+Tue Nov 17 02:20:27 2026 :: Log Trentlin [9164]: ex
+Tue Nov 17 02:20:30 2026 :: Log Trentlin [9164]: u
+Tue Nov 17 02:20:30 2026 :: Log Trentlin [9165]: arrived (Long stairway.) from 9164
+Tue Nov 17 02:20:31 2026 :: Log Trentlin [9165]: ex
+Tue Nov 17 02:20:33 2026 :: Log Trentlin [9165]: u
+Tue Nov 17 02:20:33 2026 :: Log Trentlin [9166]: arrived (Front door) from 9165
+Tue Nov 17 02:20:34 2026 :: Log Trentlin [9166]: ex
+Tue Nov 17 02:20:37 2026 :: Log Trentlin [9166]: e
+Tue Nov 17 02:20:37 2026 :: Log Trentlin [9173]: arrived (Lawn northeast of house.) from 9166
+Tue Nov 17 02:20:38 2026 :: Log Trentlin [9173]: s
+Tue Nov 17 02:20:38 2026 :: Log Trentlin [9172]: arrived (Lawn east of house.) from 9173
+Tue Nov 17 02:20:39 2026 :: Log Trentlin [9172]: ex
+Tue Nov 17 02:20:54 2026 :: Log Trentlin [9172]: n
+Tue Nov 17 02:20:54 2026 :: Log Trentlin [9173]: arrived (Lawn northeast of house.) from 9172
+Tue Nov 17 02:20:55 2026 :: Log Trentlin [9173]: ex
+Tue Nov 17 02:21:07 2026 :: Log Trentlin [9173]: s
+Tue Nov 17 02:21:07 2026 :: Log Trentlin [9172]: arrived (Lawn east of house.) from 9173
+Tue Nov 17 02:21:07 2026 :: Log Trentlin [9172]: ex
+Tue Nov 17 02:21:09 2026 :: Log Trentlin [9172]: n
+Tue Nov 17 02:21:09 2026 :: Log Trentlin [9173]: arrived (Lawn northeast of house.) from 9172
+Tue Nov 17 02:21:10 2026 :: Log Trentlin [9173]: ex
+Tue Nov 17 02:21:36 2026 :: Log Trentlin [9173]: s
+Tue Nov 17 02:21:36 2026 :: Log Trentlin [9172]: arrived (Lawn east of house.) from 9173
+Tue Nov 17 02:21:37 2026 :: Log Trentlin [9172]: ex
+Tue Nov 17 02:21:38 2026 :: Log Trentlin [9172]: n
+Tue Nov 17 02:21:38 2026 :: Log Trentlin [9173]: arrived (Lawn northeast of house.) from 9172
+Tue Nov 17 02:21:38 2026 :: Log Trentlin [9173]: ex
+Tue Nov 17 02:21:39 2026 :: EOF encountered on read.
+Tue Nov 17 02:21:39 2026 :: Connection guard: 66.249.69.15 closed before a password prompt (strike 1 of 6 in 6 hours).
+Tue Nov 17 02:21:39 2026 :: Sock.sinaddr:  66.249.69.14
+Tue Nov 17 02:21:39 2026 :: Log Trentlin [9173]: w
+Tue Nov 17 02:21:39 2026 :: Log Trentlin [9166]: arrived (Front door) from 9173
+Tue Nov 17 02:21:40 2026 :: Log Trentlin [9166]: ex
+Tue Nov 17 02:21:47 2026 :: Log Trentlin [9166]: s
+Tue Nov 17 02:21:47 2026 :: Log Trentlin [9177]: arrived (Foyer.) from 9166
+Tue Nov 17 02:21:48 2026 :: Log Trentlin [9177]: ex
+Tue Nov 17 02:21:55 2026 :: Log Trentlin [9177]: e
+Tue Nov 17 02:21:55 2026 :: Log Trentlin [9183]: arrived (Elegant hallway.) from 9177
+Tue Nov 17 02:21:56 2026 :: Log Trentlin [9183]: ex
+Tue Nov 17 02:22:04 2026 :: Log Trentlin [9183]: e
+Tue Nov 17 02:22:04 2026 :: Log Trentlin [9185]: arrived (Office) from 9183
+Tue Nov 17 02:22:04 2026 :: Log Trentlin [9185]: ex
+Tue Nov 17 02:22:05 2026 :: Log Trentlin [9185]: s
+Tue Nov 17 02:22:05 2026 :: Log Trentlin [9186]: arrived (Eastern tower.) from 9185
+Tue Nov 17 02:22:06 2026 :: Log Trentlin [9186]: ex
+Tue Nov 17 02:22:09 2026 :: Log Trentlin [9186]: u
+Tue Nov 17 02:22:09 2026 :: Log Trentlin [9187]: arrived (Eastern tower.) from 9186
+Tue Nov 17 02:22:12 2026 :: Log Trentlin [9187]: con ef
+Tue Nov 17 02:22:14 2026 :: Log Trentlin [9187]: k ef
+Tue Nov 17 02:22:17 2026 :: Log Trentlin [9187]: fists
+Tue Nov 17 02:22:23 2026 :: Log Trentlin [9187]: fists
+Tue Nov 17 02:22:23 2026 :: Log Trentlin [9187]: killed the mysterious effreeti
+Tue Nov 17 02:22:23 2026 :: Log Trentlin [9187]: coin +1 platinum
+Tue Nov 17 02:22:23 2026 :: Log Trentlin [9187]: coin +36 silver
+Tue Nov 17 02:22:23 2026 :: Log Trentlin [9187]: coin +96 copper
+Tue Nov 17 02:22:23 2026 :: Log Trentlin [9187]: coin +65 gold
+Tue Nov 17 02:22:30 2026 :: Connection guard: last hour 10 closed without a word, 3 refused, 0 new characters refused, 0 newly paused; 3 addresses paused and 0 refused now, 14 active player addresses.
+Tue Nov 17 02:22:33 2026 :: Log Trentlin [9187]: reca
+Tue Nov 17 02:22:33 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 9187
+Tue Nov 17 02:22:34 2026 :: Log Trentlin [4207]: e
+Tue Nov 17 02:22:34 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Tue Nov 17 02:22:34 2026 :: Log Trentlin [4202]: e
+Tue Nov 17 02:22:34 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Nov 17 02:22:35 2026 :: Log Trentlin [4201]: e
+Tue Nov 17 02:22:35 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Tue Nov 17 02:22:35 2026 :: Log Trentlin [2427]: e
+Tue Nov 17 02:22:35 2026 :: Log Trentlin [2427]: e
+Tue Nov 17 02:22:36 2026 :: Log Trentlin [2427]: n
+Tue Nov 17 02:22:36 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Nov 17 02:22:36 2026 :: Log Trentlin [2404]: n
+Tue Nov 17 02:22:36 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Nov 17 02:22:37 2026 :: Log Trentlin [2401]: heal all
+Tue Nov 17 02:22:37 2026 :: Spellup: Hermie gave Trentlin the full list (30 ticks) in room 2401.
+Tue Nov 17 02:22:38 2026 :: Log Trentlin [2401]: u
+Tue Nov 17 02:22:38 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Tue Nov 17 02:22:39 2026 :: Log Trentlin [2410]: u
+Tue Nov 17 02:22:39 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Tue Nov 17 02:22:39 2026 :: Log Trentlin [2411]: u
+Tue Nov 17 02:22:39 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Tue Nov 17 02:22:39 2026 :: Log Trentlin [2414]: u
+Tue Nov 17 02:22:39 2026 :: Log Trentlin [2497]: arrived (The Questmaster's Globe, above the Oak) from 2414
+Tue Nov 17 02:22:39 2026 :: Log Trentlin [2497]: u
+Tue Nov 17 02:22:41 2026 :: Log Trentlin [2497]: aquest complete
+Tue Nov 17 02:22:41 2026 :: Log Trentlin [2497]: copper +54080400
+Tue Nov 17 02:22:41 2026 :: Log Trentlin [2497]: quest complete: 54p 8g 4s, 64 quest points (streak bonus 85%)
+Tue Nov 17 02:22:41 2026 :: Snapshot of Trentlin taken before quest: Trentlin.20261117_022241.quest (PRESTORE Trentlin to see it).
+Tue Nov 17 02:22:44 2026 :: Log Trentlin [2497]: aquest gamble no
+Tue Nov 17 02:22:47 2026 :: Log Trentlin [2497]: aquest points
+Tue Nov 17 02:22:50 2026 :: Log Trentlin [2497]: affects off: levitate
+Tue Nov 17 02:22:51 2026 :: Log Trentlin [2497]: aquest list
+Tue Nov 17 02:22:53 2026 :: Log Trentlin [2497]: levitate
+Tue Nov 17 02:22:59 2026 :: Log Trentlin [2497]: enter door
+Tue Nov 17 02:22:59 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Nov 17 02:23:00 2026 :: Log Trentlin [2401]: quit
+Tue Nov 17 02:23:00 2026 :: Trentlin has quit.
+Tue Nov 17 02:23:00 2026 :: [QUIT] Player rejoined the real world.
+Tue Nov 17 02:23:09 2026 :: EOF encountered on read.
+Tue Nov 17 02:23:09 2026 :: Connection guard: 66.249.69.14 closed before a password prompt (strike 1 of 6 in 6 hours).
