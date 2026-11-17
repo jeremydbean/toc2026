@@ -313074,3 +313074,12 @@ Tue Nov 17 16:23:57 2026 :: Treasure goblin: vanished from room 5825 (Emerald Av
 Tue Nov 17 16:24:39 2026 :: Automated backup started.
 Tue Nov 17 16:24:39 2026 :: Automated backup complete.
 Tue Nov 17 16:28:00 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 12 refused in all, pause 3 this week, 892 minutes left).
+Tue Nov 17 16:30:59 2026 :: Connection guard: 195.178.110.204 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 17 16:31:50 2026 :: Sock.sinaddr:  192.178.6.196
+Tue Nov 17 16:33:06 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 17 16:33:20 2026 :: EOF encountered on read.
+Tue Nov 17 16:33:20 2026 :: Connection guard: 192.178.6.196 closed before a password prompt (strike 1 of 6 in 6 hours).
+Tue Nov 17 16:33:20 2026 :: Sock.sinaddr:  192.178.6.195
+Tue Nov 17 16:34:02 2026 :: Treasure goblin: vanished from room 17202 (In Nessy cave, highland.are) (too long in one area).
+Tue Nov 17 16:34:50 2026 :: EOF encountered on read.
+Tue Nov 17 16:34:50 2026 :: Connection guard: 192.178.6.195 closed before a password prompt (strike 1 of 6 in 6 hours).
