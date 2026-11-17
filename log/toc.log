@@ -312021,3 +312021,6 @@ Tue Nov 17 07:34:55 2026 :: Connection guard: 5.161.75.7 closed without a word (
 Tue Nov 17 07:39:11 2026 :: Treasure goblin: vanished from room 14023 (Kitchen, whouse.are) (too long in one area).
 Tue Nov 17 07:40:01 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 6 of 6 in 6 hours).
 Tue Nov 17 07:40:01 2026 :: Connection guard: 178.156.189.113 paused for 24 hours (pause 3 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 178.156.189.113 lifts it.
+Tue Nov 17 07:44:05 2026 :: Sock.sinaddr:  66.228.62.150
+Tue Nov 17 07:44:05 2026 :: Connection guard: 66.228.62.150 closed before a password prompt (strike 1 of 6 in 6 hours).
+Tue Nov 17 07:45:05 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 1 of 6 in 6 hours).
