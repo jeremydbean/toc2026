@@ -312080,3 +312080,5 @@ Tue Nov 17 09:47:00 2026 :: Connection guard: 54.167.223.174 closed without a wo
 Tue Nov 17 09:47:41 2026 :: Sock.sinaddr:  199.165.159.161
 Tue Nov 17 09:47:41 2026 :: EOF encountered on read.
 Tue Nov 17 09:47:41 2026 :: Connection guard: 199.165.159.161 closed before a password prompt (strike 1 of 6 in 6 hours).
+Tue Nov 17 09:51:32 2026 :: Treasure goblin: vanished from room 7831 (A Trail in the Valley, valley.are) (too long in one area).
+Tue Nov 17 09:52:05 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 1 of 6 in 6 hours).
