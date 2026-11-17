@@ -269,3 +269,10 @@
 1794950446	cleared	Trentlin	50	1	Monk 	30512	L6	foes=0
 1794950458	got	Trentlin	50	1	Monk 	30508	L6	obj=30695 obj_name=four_bombs type=treasure obj_level=1 how=(violence_update)
 1794950458	cleared	Trentlin	50	1	Monk 	30508	L6	foes=0
+1794950473	engage	Trentlin	50	1	Monk 	30519	L6	foe=30223 foe_name=Gohma foe_hp=100 foe_max=2198 party=1 levels=50 classes=Monk  hps=99 buffs=ESH
+1794950495	guardian-down	Trentlin	50	1	Monk 	30519	L6	foe=30223 foe_name=Gohma secs=22 foe_max=2198 party=1 levels=50 classes=Monk  hps=90 buffs=ESH
+1794950495	got	Trentlin	50	1	Monk 	30519	L6	obj=30635 obj_name=the_Dragon's_key type=key obj_level=33 how=shoot
+1794950495	cleared	Trentlin	50	1	Monk 	30519	L6	foes=0
+1794950514	got	Trentlin	50	1	Monk 	30519	L6	obj=30675 obj_name=a_bracer_set_with_an_amber_eye type=armor obj_level=40 how=get
+1794950515	got	Trentlin	50	1	Monk 	30519	L6	obj=30739 obj_name=a_dragon-banner_cloak type=armor obj_level=40 how=get
+1794950547	leave	Trentlin	50	1	Monk 	30519	L6	to=out how=quit secs=151 hp=92

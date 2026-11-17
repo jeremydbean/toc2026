@@ -36206,3 +36206,41 @@
 1794950468	cmd	Trentlin	50	30513	hyrule.are	standing	99	0	-	unlock	n	*Click* // The small key vanishes into the dungeon lock.	-	-
 1794950471	cmd	Trentlin	50	30513	hyrule.are	standing	99	0	-	open	n	Ok.	-	-
 1794950471	cmd	Trentlin	50	30519	hyrule.are	standing	99	0	-	north		Level 6: Gohma's Nest //   Shed carapace fragments and deep scuttle marks crisscross the floor of this // lair, and the walls are gouged by great pincers. Broken arrows lie thick	-	+
+1794950473	cmd	Trentlin	50	30519	hyrule.are	standing	99	0	-	kill	go	Your punch <<< ERADICATES >>> Gohma! // Gohma parries your attack. // Your punch misses Gohma.	-	-
+1794950476	cmd	Trentlin	50	30519	hyrule.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes Gohma. // Your fists of fury === OBLITERATES === Gohma!	-	+
+1794950482	cmd	Trentlin	50	30519	hyrule.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES Gohma! // Your fists of fury MANGLES Gohma!	-	+
+1794950487	cmd	Trentlin	50	30519	hyrule.are	fighting	94	0	fight	wear	bo	You must be level 53 to use this object.	-	-
+1794950488	cmd	Trentlin	50	30519	hyrule.are	fighting	94	0	fight	shoot		You need to wield a bow to shoot.	-	-
+1794950491	cmd	Trentlin	50	30519	hyrule.are	fighting	92	0	fight	inventory		You are carrying: // ( 3) a small key //      (Magical) a ruby container of tea	-	+
+1794950493	cmd	Trentlin	50	30519	hyrule.are	fighting	92	0	fight	wear	bow	You wield a short bow. // A short bow is a mystery to you. Better ask someone how to use it.	-	-
+1794950495	coin	Trentlin	50	30519	hyrule.are	-10000	spent	shoot	-	16902131385
+1794950495	got	Trentlin	50	30519	hyrule.are	30635	the Dragon's key	key	33	0	shoot	-
+1794950495	coin	Trentlin	50	30519	hyrule.are	+200	loot	shoot	corpse of Gohma	16902131585
+1794950495	coin	Trentlin	50	30519	hyrule.are	+338	loot	shoot	corpse of Gohma	16902131923
+1794950495	coin	Trentlin	50	30519	hyrule.are	+1240000	loot	shoot	corpse of Gohma	16903371923
+1794950495	cmd	Trentlin	50	30519	hyrule.are	fighting	90	2	fight	shoot		You draw, aim at Gohma and let an arrow fly. // Your arrow *** DEVASTATES *** Gohma! // Gohma is DEAD!!	-	+
+1794950500	cmd	Trentlin	50	30519	hyrule.are	standing	90	0	-	remove	bow	You stop using a short bow.	-	-
+1794950501	cmd	Trentlin	50	30519	hyrule.are	standing	90	0	-	inventory		You are carrying: //      (Magical) (Glowing) the Dragon's key // ( 3) a small key	-	+
+1794950504	laid	-	0	0	-	1012	herb	50	a head of cabbage	7544	astral.are	scatter
+1794950504	laid	-	0	0	-	1013	component	61	a mummy's wrapping	10118	glitter.are	scatter
+1794950508	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	look	in cor	Corpse of Gohma contains: //      (Magical) a dragon-banner cloak //      (Magical) Gohma's carapace shield	-	+
+1794950514	got	Trentlin	50	30519	hyrule.are	30675	a bracer set with an amber eye	armor	40	80000000	get	corpse of Gohma
+1794950514	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	get	bra co	You get a bracer set with an amber eye from corpse of Gohma.	-	-
+1794950515	got	Trentlin	50	30519	hyrule.are	30739	a dragon-banner cloak	armor	40	80000000	get	corpse of Gohma
+1794950515	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	get	cloa co	You get a dragon-banner cloak from corpse of Gohma.	-	-
+1794950516	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	compare	bra	A) a bracer set with an amber eye (level 40) // B) a white bracer (level 40), worn // Slot: wrist.  Your damage comes from weapons.	-	+
+1794950524	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	compare	cloa	A) a dragon-banner cloak (level 40) // B) a twin-headed mantle (level 27), worn // Slot: about body.  Your damage comes from weapons.	-	+
+1794950530	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	wear	bra	You stop using a white bracer. // You wear a bracer set with an amber eye around your left wrist.	-	-
+1794950532	cmd	Trentlin	50	30519	hyrule.are	standing	92	11	-	stash	put bra	You put a white bracer away for safe keeping.	-	-
+1794950534	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	wear	cloa	You stop using a twin-headed mantle. // You wear a dragon-banner cloak about your body.	-	-
+1794950537	cmd	Trentlin	50	30519	hyrule.are	standing	92	7	-	stash	put mant	You put a twin-headed mantle away for safe keeping.	-	-
+1794950538	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	inventory		You are carrying: //      (Magical) (Glowing) the Dragon's key // ( 3) a small key	-	+
+1794950540	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	look	in co	Corpse of Gohma contains: //      (Magical) Gohma's carapace shield //      (Magical) the Heart Guard of the Dragon	-	+
+1794950542	coin	Trentlin	50	30519	hyrule.are	+86	loot	sacrifice	-	16903372009
+1794950542	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	sacrifice	co	The Gods give you 86 copper coins for your sacrifice.	-	-
+1794950543	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	north		The door has been Wizard Locked. You can not pass	-	-
+1794950544	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	look		Level 6: Gohma's Nest //   Shed carapace fragments and deep scuttle marks crisscross the floor of this // lair, and the walls are gouged by great pincers. Broken arrows lie thick	-	+
+1794950547	sightings	Trentlin	50	30519	hyrule.are	mob	201:1/0/0 10:1/0/0 4468:1/0/0 53:1/0/0 4444:1/0/0 2435:1/0/0 4456:1/0/0 6000:1/0/0 6005:1/0/0 6003:2/0/0 13003:1/0/0 13001:1/0/0 13216:6/0/0 13215:16/0/0 13213:3/0/0 13212:1/0/0 13214:1/0/0 13206:2/0/0 13217:1/0/0 13218:1/0/0 13241:1/1/0 4202:1/0/0 4201:1/0/0 58:1/0/0 2434:1/0/0 4801:1/0/0 4803:1/0/0 4802:1/0/0 15018:1/0/0 15029:2/0/0 32275:1/0/0 32105:5/2/0 31135:2/0/0 31115:2/2/0 32375:2/0/0 32045:4/0/0 31215:7/4/0 32065:3/2/0 31155:1/0/0 30223:2/2/0 617:2/0/0 618:2/0/0 601:1/0/0 600:2/0/0 623:3/0/0 603:1/0/0 634:3/0/0 628:1/0/0 602:1/0/0 625:1/0/0 633:1/0/0 7900:1/0/0
+1794950547	sightings	Trentlin	50	30519	hyrule.are	mob	9101:14/0/0 9103:2/0/0 9104:1/1/0 15015:1/0/0 15012:1/0/0
+1794950547	sightings	Trentlin	50	30519	hyrule.are	item	4446:1/0 4445:1/0 4444:1/0 6011:1/0 30227:4/4 300:1/0 7216:1/1 15:1/0
+1794950547	session	Trentlin	50	30519	hyrule.are	quit	765s	+0 levels	+0 exp	+250859362 copper	14 kills	0 deaths	2 quests	427 commands	2 refused	coin: loot 8p 71g 75s 62c, quests 243p 36g 18s, spent 1p 22g	spent on: heal 1p 20g, shoot 2g	exp: capped:skilluse +16, capped:kills +58

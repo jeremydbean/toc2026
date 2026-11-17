@@ -314012,3 +314012,40 @@ Tue Nov 17 21:21:08 2026 :: Log Trentlin [30513]: unlock n
 Tue Nov 17 21:21:11 2026 :: Log Trentlin [30513]: open n
 Tue Nov 17 21:21:11 2026 :: Log Trentlin [30513]: n
 Tue Nov 17 21:21:11 2026 :: Log Trentlin [30519]: arrived (Level 6: Gohma's Nest) from 30513
+Tue Nov 17 21:21:13 2026 :: Log Trentlin [30519]: k go
+Tue Nov 17 21:21:16 2026 :: Log Trentlin [30519]: fists
+Tue Nov 17 21:21:22 2026 :: Log Trentlin [30519]: fists
+Tue Nov 17 21:21:27 2026 :: Log Trentlin [30519]: wear bo
+Tue Nov 17 21:21:28 2026 :: Log Trentlin [30519]: shoot
+Tue Nov 17 21:21:31 2026 :: Log Trentlin [30519]: i
+Tue Nov 17 21:21:33 2026 :: Log Trentlin [30519]: wear bow
+Tue Nov 17 21:21:35 2026 :: Log Trentlin [30519]: shoot
+Tue Nov 17 21:21:35 2026 :: Log Trentlin [30519]: gold -1
+Tue Nov 17 21:21:35 2026 :: Log Trentlin [30519]: killed Gohma
+Tue Nov 17 21:21:35 2026 :: Log Trentlin [30519]: coin +2 silver
+Tue Nov 17 21:21:35 2026 :: Log Trentlin [30519]: coin +338 copper
+Tue Nov 17 21:21:35 2026 :: Log Trentlin [30519]: coin +124 gold
+Tue Nov 17 21:21:40 2026 :: Log Trentlin [30519]: rem bow
+Tue Nov 17 21:21:41 2026 :: Log Trentlin [30519]: i
+Tue Nov 17 21:21:48 2026 :: Log Trentlin [30519]: l in cor
+Tue Nov 17 21:21:54 2026 :: Log Trentlin [30519]: get bra co
+Tue Nov 17 21:21:55 2026 :: Log Trentlin [30519]: get cloa co
+Tue Nov 17 21:21:56 2026 :: Log Trentlin [30519]: comp bra
+Tue Nov 17 21:22:04 2026 :: Log Trentlin [30519]: comp cloa
+Tue Nov 17 21:22:10 2026 :: Log Trentlin [30519]: wear bra
+Tue Nov 17 21:22:12 2026 :: Log Trentlin [30519]: stash put bra
+Tue Nov 17 21:22:12 2026 :: Log Trentlin [30519]: stashed a white bracer (vnum 717)
+Tue Nov 17 21:22:14 2026 :: Log Trentlin [30519]: wear cloa
+Tue Nov 17 21:22:17 2026 :: Log Trentlin [30519]: stash put mant
+Tue Nov 17 21:22:17 2026 :: Log Trentlin [30519]: stashed a twin-headed mantle (vnum 30724)
+Tue Nov 17 21:22:18 2026 :: Log Trentlin [30519]: i
+Tue Nov 17 21:22:20 2026 :: Log Trentlin [30519]: l in co
+Tue Nov 17 21:22:22 2026 :: Log Trentlin [30519]: sac co
+Tue Nov 17 21:22:22 2026 :: Log Trentlin [30519]: coin +86 copper
+Tue Nov 17 21:22:23 2026 :: Log Trentlin [30519]: n
+Tue Nov 17 21:22:24 2026 :: Log Trentlin [30519]: l
+Tue Nov 17 21:22:27 2026 :: Log Trentlin [30519]: quit
+Tue Nov 17 21:22:27 2026 :: Trentlin has quit.
+Tue Nov 17 21:22:27 2026 :: [QUIT] Player rejoined the real world.
+Tue Nov 17 21:22:31 2026 :: Connection guard: refused 1 connection from 18.116.205.62 (paused; 2 refused in all, pause 1 this week, 183 minutes left).
+Tue Nov 17 21:25:07 2026 :: Treasure goblin: vanished from room 18073 (The Throne Room, icekeep.are) (too long in one area).
