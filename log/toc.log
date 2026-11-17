@@ -313064,3 +313064,7 @@ Tue Nov 17 16:12:38 2026 :: Connection guard: 212.47.67.62 closed without a word
 Tue Nov 17 16:12:39 2026 :: Connection guard: 212.47.67.62 closed without a word (strike 4 of 6 in 6 hours).
 Tue Nov 17 16:12:45 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 3 of 6 in 6 hours).
 Tue Nov 17 16:13:53 2026 :: Treasure goblin: vanished from room 708 (Inside a Hut, camelot.are) (too long in one area).
+Tue Nov 17 16:17:06 2026 :: Sock.sinaddr:  129.151.245.51
+Tue Nov 17 16:17:06 2026 :: EOF encountered on read.
+Tue Nov 17 16:17:06 2026 :: Connection guard: 129.151.245.51 closed before a password prompt (strike 1 of 6 in 6 hours).
+Tue Nov 17 16:17:50 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 1 of 6 in 6 hours).
