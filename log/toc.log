@@ -313218,3 +313218,6 @@ Tue Nov 17 19:46:03 2026 :: Connection guard: 5.161.215.244 paused for 12 hours 
 Tue Nov 17 19:51:06 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 3 of 6 in 6 hours).
 Tue Nov 17 19:54:25 2026 :: Treasure goblin: vanished from room 20122 (The administration hallway, prison.are) (too long in one area).
 Tue Nov 17 19:56:11 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 2 of 6 in 6 hours).
+Tue Nov 17 20:01:14 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 13 refused in all, pause 3 this week, 679 minutes left).
+Tue Nov 17 20:04:01 2026 :: Connection guard: last hour 11 closed without a word, 2 refused, 0 new characters refused, 1 newly paused; 8 addresses paused and 0 refused now, 14 active player addresses.
+Tue Nov 17 20:04:29 2026 :: Treasure goblin: vanished from room 1313 (Inside the High Tower of Sorcerery, htower.are) (too long in one area).
