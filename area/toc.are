@@ -171,10 +171,10 @@ jobs of every trust below yours.
   68  Read the world as built: ALIST, ASTAT, MSHOW, OSHOW, RSHOW, RESETS.
   69  Build: BUILD, the guided builder, and ANEW, MCREATE, OCREATE,
       PLACE, RSAVE and ASAVE.
-  70  Implementors: TRUST (up to 70), GRANTPSI, DNS.
+  70  Implementors: TRUST (up to 70), DNS.
   71  Given only by the creator, and outranks every implementor.
   72  The creator: SHUTDOWN, REBOOT, LOG, SNOOP, BAN, ALLOW, WIZLOCK,
-      NEWLOCK, DENY, UNDENY and CREATOR.
+      NEWLOCK, DENY, UNDENY, CREATOR and GRANTPSI.
 
 Rank protects: a command aimed at another member of staff refuses one
 whose trust is at least yours (implementors may act on each other).
