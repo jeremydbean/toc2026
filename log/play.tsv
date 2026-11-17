@@ -35499,3 +35499,19 @@
 1794929640	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
 1794929641	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=973/983 align=977 exp=252749 coin=3894816244 bank=25010708143 qp=2508 prac=36 train=76 stash=93/350 remorts=3
 1794929641	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    306 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
+1794929763	laid	-	0	0	-	1473	component	79	a glass container of cobwebs	13082	lakes.are	scatter
+1794929849	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794929851	census	-	0	0	-	herbs=150/150 components=96/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=2 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=9 mobs_fought=0 secs=900
+1794929857	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2860/2875 mv=983/983 align=977 exp=252749 coin=3894816244 bank=25010708143 qp=2508 prac=36 train=76 stash=93/350 remorts=3
+1794929857	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    306 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
+1794929862	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2860/2875 mv=983/983 align=977 exp=252749 coin=3894816244 bank=25010708143 qp=2508 prac=36 train=76 stash=93/350 remorts=3
+1794929862	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    306 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
+1794929864	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring	-	+
+1794929866	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	inventory		You are carrying: //      a multi-colored key ring //      (Glowing) British's amulet	-	+
+1794929870	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wear	dip	You stop using British's sceptre. // You hold a mud school diploma in your hands.	-	-
+1794929871	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1494 mana=2860/2825 mv=983/1083 align=977 exp=252749 coin=3894816244 bank=25010708143 qp=2508 prac=36 train=76 stash=93/350 remorts=3
+1794929871	cmd	Alaric	57	2497	dresden.are	standing	103	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    306 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
+1794929874	cmd	Alaric	57	2497	dresden.are	standing	103	0	-	wear	sc	You stop using a mud school diploma. // You hold British's sceptre in your hands.	-	-
+1794929874	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2860/2875 mv=983/983 align=977 exp=252749 coin=3894816244 bank=25010708143 qp=2508 prac=36 train=76 stash=93/350 remorts=3
+1794929874	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    306 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
+1794929876	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
