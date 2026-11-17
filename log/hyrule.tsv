@@ -230,3 +230,6 @@
 1794881459	got	Trentlin	50	1	Monk 	30628	L9	obj=30376 obj_name=a_dragon-mage's_wandblade type=weapon obj_level=53 how=get
 1794881459	got	Trentlin	50	1	Monk 	30628	L9	obj=30375 obj_name=a_pair_of_orange_Wizzrobe_gloves type=armor obj_level=53 how=get
 1794881568	flee	Trentlin	50	1	Monk 	30628	L9	foe=32188 foe_name=a_patra guardian=0 foe_hp=14 secs=93 hp=11
+1794881715	leave	Trentlin	50	1	Monk 	30590	L9	to=over how=up secs=299 hp=14
+1794881715	enter	Trentlin	50	1	Monk 	30317	over	from=L9 how=up hp=14
+1794881715	leave	Trentlin	50	1	Monk 	30317	over	to=out how=recall secs=0 hp=14
