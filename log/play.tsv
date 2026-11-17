@@ -34105,3 +34105,188 @@
 1794880791	area	Trentlin	50	4210	dresden.are	-	dresden.are	-1	(game loop)
 1794880793	cmd	Trentlin	50	4210	dresden.are	sleeping	46	0	-	wake		You wake and stand up.	-	-
 1794880793	cmd	Trentlin	50	4210	dresden.are	standing	46	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794880794	cmd	Trentlin	50	4203	dresden.are	standing	46	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794880795	cmd	Trentlin	50	4202	dresden.are	standing	46	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794880795	cmd	Trentlin	50	4201	dresden.are	standing	46	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794880795	cmd	Trentlin	50	2427	dresden.are	standing	46	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794880796	cmd	Trentlin	50	2404	dresden.are	standing	46	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794880796	rare-seen	Trentlin	50	2401	dresden.are	hermie	98	1043	arrive
+1794880796	cmd	Trentlin	50	2401	dresden.are	standing	46	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794880798	cmd	Trentlin	50	2401	dresden.are	standing	46	0	-	heal	heal	Hermie turns to you with a wink. // Hermie rests a hand on your shoulder, and the ache goes out of you.	-	-
+1794880799	rare-passed	Trentlin	50	2410	dresden.are	hermie	98	1043	3	left
+1794880799	cmd	Trentlin	50	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794880800	cmd	Trentlin	50	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794880800	cmd	Trentlin	50	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1794880800	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794880800	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1794880802	quest	Trentlin	50	2497	dresden.are	rush	kill	1020	an Orgeem Imp	35	uargo.are	5
+1794880802	cmd	Trentlin	50	2497	dresden.are	standing	100	22	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Trentlin.' // Questor Thews tells you 'A bounty has been posted on an Orgeem Imp.'	-	+
+1794880806	cmd	Trentlin	50	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794880807	cmd	Trentlin	50	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794880807	cmd	Trentlin	50	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794880807	cmd	Trentlin	50	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794880807	cmd	Trentlin	50	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794880808	cmd	Trentlin	50	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794880808	cmd	Trentlin	50	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794880809	cmd	Trentlin	50	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794880810	laid	-	0	0	-	1205	component	69	a basilisks tongue	24130	coven.are	scatter
+1794880810	cmd	Trentlin	50	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794880812	cmd	Trentlin	50	3900	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794880812	cmd	Trentlin	50	3901	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1794880812	cmd	Trentlin	50	3902	dresden.are	standing	100	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1794880814	cmd	Trentlin	50	3902	dresden.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794880815	cmd	Trentlin	50	3903	dresden.are	standing	100	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1794880815	cmd	Trentlin	50	3904	dresden.are	standing	100	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1794880815	area	Trentlin	50	300	plains.are	dresden.are	plains.are	24	north
+1794880815	cmd	Trentlin	50	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1794880816	cmd	Trentlin	50	315	plains.are	standing	100	0	-	north		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.	-	+
+1794880816	cmd	Trentlin	50	320	plains.are	standing	100	0	-	north		Grassy plains //   You walk in some grassy plains. The wind is strong and rough. To the // north you can see the foothills and further on mountain peaks are visible.	-	+
+1794880816	cmd	Trentlin	50	322	plains.are	standing	100	0	-	north		Grassy foothills //   You walk in the grassy foothills north of the plains. The wind is rough. // To the north you can see foothills and just behind them mountain peaks	-	+
+1794880816	cmd	Trentlin	50	324	plains.are	standing	100	0	-	north		The steep foothills //   You are walking in the steep foothills. It is rather hard to move here. // To the north you can see the mountains towering over you.  Pine trees	-	+
+1794880817	cmd	Trentlin	50	324	plains.are	standing	100	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.	-	-
+1794880825	area	Trentlin	50	45	connect.are	plains.are	connect.are	10	north
+1794880825	cmd	Trentlin	50	45	connect.are	standing	100	0	-	north		Base of Mount Ulmo //   Before you is a mountainous path, which leads upward into the clouds // overhead!	-	+
+1794880825	area	Trentlin	50	1000	uargo.are	connect.are	uargo.are	0	north
+1794880825	cmd	Trentlin	50	1000	uargo.are	standing	100	0	-	north		A mountain path //   A fresh mountain breeze blows in your face. You walk on a small path,  // which winds its way up the Mount Ulmo. The grassy fields along the dusty 	-	+
+1794880825	cmd	Trentlin	50	1001	uargo.are	standing	100	0	-	north		A mountain path //   A steep climb lies ahead and your surroundings are filled with debris, // a few small boulders and various small stones, that have been chipped off	-	+
+1794880826	cmd	Trentlin	50	1001	uargo.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794880826	cmd	Trentlin	50	1002	uargo.are	standing	100	0	-	up		A mountain path //   After climbing up the steep path you are now able to see the Mt. Ulmo  // pass right ahead of you. From afar the pass looks more like a small crack	-	+
+1794880827	cmd	Trentlin	50	1003	uargo.are	standing	100	0	-	north		Mt. Ulmo Pass //   You walk through the pass over Mount Ulmo. Steep rock surfaces rise up // high to either side of you. From here the mountain path will take you down-	-	+
+1794880827	cmd	Trentlin	50	1003	uargo.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1794880828	cmd	Trentlin	50	1004	uargo.are	standing	100	0	-	down		A sloping path down the hill //   With little difficulty you work your way down Mt. Ulmo into the Upper Argo. // The land certainly looks more friendly than the grey scenery of Mt. Ulmo.	-	+
+1794880829	cmd	Trentlin	50	1005	uargo.are	standing	100	0	-	north		A sloping path down the hill //   The path gets less steep as you get nearer to the Upper Argo. You begin // to see more of the low bushes, scattered over the still rocky underground.	-	+
+1794880829	cmd	Trentlin	50	1006	uargo.are	standing	100	0	-	north		The Upper Argo //   You are in the Argonath Region and you've reached a rather bushy area,  // called the Upper Argo. Further north lies the Gan and ultimately the city of 	-	+
+1794880830	cmd	Trentlin	50	1007	uargo.are	standing	100	0	-	north		A clearing //   You are standing in an relatively open, grassy area. To the west are  // some low scrubs, to the east you can see the outskirts of a pine forest.	-	+
+1794880833	cmd	Trentlin	50	1015	uargo.are	standing	100	0	-	north		A clearing //   You are standing in the open. To the north and south lie vast grassy // fields. To the east a small group of broadleaf trees blocks your way. Here 	-	+
+1794880834	cmd	Trentlin	50	1020	uargo.are	standing	100	0	-	north		A clearing //   You are in a relatively open grassy field. You can see, that some of  // the grass has been trampled. The field continues north and south, to the	-	+
+1794880835	cmd	Trentlin	50	1021	uargo.are	standing	100	0	-	east		A bushy clearing //   You are standing in the middle of some thron bushes. Some broadleaf  // trees block your way south. The bushy clearing continues east, to the west 	-	+
+1794880836	cmd	Trentlin	50	1021	uargo.are	standing	100	0	-	scan		an Orgeem Imp                      -to the North. // an Orgeem Imp                      -to the North. // an Orgeem Imp                      -to the North.	-	+
+1794880837	cmd	Trentlin	50	1021	uargo.are	standing	100	0	-	kill	im	Your punch <<< ERADICATES >>> an Orgeem Imp! // An Orgeem Imp dodges your attack. // Your punch >>> ANNIHILATES <<< an Orgeem Imp!	-	+
+1794880840	cmd	Trentlin	50	1021	uargo.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds an Orgeem Imp. // Your fists of fury hits an Orgeem Imp.	-	+
+1794880841	coin	Trentlin	50	1021	uargo.are	+200	loot	(violence_update)	corpse of an Orgeem Imp	15545834698
+1794880841	coin	Trentlin	50	1021	uargo.are	+3	loot	(violence_update)	corpse of an Orgeem Imp	15545834701
+1794880841	coin	Trentlin	50	1021	uargo.are	+10000	loot	(violence_update)	corpse of an Orgeem Imp	15545844701
+1794880847	area	Trentlin	50	4207	dresden.are	uargo.are	dresden.are	22	recall
+1794880847	cmd	Trentlin	50	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794880848	cmd	Trentlin	50	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794880848	cmd	Trentlin	50	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794880848	cmd	Trentlin	50	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794880848	cmd	Trentlin	50	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794880849	cmd	Trentlin	50	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794880849	cmd	Trentlin	50	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794880850	cmd	Trentlin	50	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794880850	cmd	Trentlin	50	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794880850	cmd	Trentlin	50	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794880850	cmd	Trentlin	50	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1794880851	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794880852	coin	Trentlin	50	2497	dresden.are	+270402000	quests	aquest	-	15816246701
+1794880852	outcome	Trentlin	50	2497	dresden.are	quest-complete	success	-	-	rush qp=4531->4531 offered=119 daily=18->18 coin=+270402000 kill=13520100 streak=10 level=50 target=-1
+1794880852	cmd	Trentlin	50	2497	dresden.are	standing	100	19	-	aquest	complete	You inform Questor Thews you have completed his quest. // Questor Thews says 'Excellent work! The realm is in your debt!' // Questor Thews says 'Rush contract fulfilled - your double reward is well earned!'	success:-	+
+1794880855	cmd	Trentlin	50	2497	dresden.are	standing	100	6	-	aquest	gamble yes	The dice BETRAY you! Your 119 quest points are lost.	-	-
+1794880859	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	aquest	info	.-[ Quest Summary ]-------------------------------------------. // | Quest Points: 4531 // | Next Quest  : 5 minutes before you may quest again	-	+
+1794880861	cmd	Trentlin	50	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794880864	cmd	Trentlin	50	2401	dresden.are	standing	100	0	-	heal	refresh	Hermie turns to you with a wink. // Hermie rests a hand on your shoulder, and the ache goes out of you.	-	-
+1794880869	cmd	Trentlin	50	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794880869	cmd	Trentlin	50	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794880869	cmd	Trentlin	50	4201	dresden.are	standing	100	0	-	south		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794880870	cmd	Trentlin	50	4202	dresden.are	standing	100	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794880870	cmd	Trentlin	50	4207	dresden.are	standing	100	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794880870	area	Trentlin	50	3700	school.are	dresden.are	school.are	23	up
+1794880870	cmd	Trentlin	50	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794880870	cmd	Trentlin	50	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794880871	cmd	Trentlin	50	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794880871	area	Trentlin	50	15000	campus.are	school.are	campus.are	1	enter
+1794880871	cmd	Trentlin	50	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794880871	spotted	Trentlin	50	15001	campus.are	964	component	87	a vial of grey ooze	9822	2	scatter	arrive
+1794880871	cmd	Trentlin	50	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794880871	passed	Trentlin	50	15002	campus.are	964	component	87	a vial of grey ooze	9822	0	2	scatter	15001	left
+1794880871	cmd	Trentlin	50	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794880872	cmd	Trentlin	50	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794880872	cmd	Trentlin	50	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794880872	cmd	Trentlin	50	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794880872	cmd	Trentlin	50	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794880873	cmd	Trentlin	50	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794880873	cmd	Trentlin	50	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794880873	cmd	Trentlin	50	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794880873	cmd	Trentlin	50	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794880874	area	Trentlin	50	30200	hyrule.are	campus.are	hyrule.are	3	enter
+1794880874	cmd	Trentlin	50	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794880875	cmd	Trentlin	50	30317	hyrule.are	standing	100	0	-	play	recorder 9	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Spectacle Rock	-	+
+1794880881	cmd	Trentlin	50	30317	hyrule.are	standing	100	0	-	bomb	rock	You set a bomb beside a cracked stone floor and dive aside. The blast opens a passage!	-	-
+1794880882	cmd	Trentlin	50	30590	hyrule.are	standing	100	0	-	down		Level 9: Gate Beneath Spectacle Rock //   Cold air pours down from the mountain's heart into this bare stone // vestibule, carved where the twin crags of Spectacle Rock meet the ground.	-	+
+1794880884	cmd	Trentlin	50	30596	hyrule.are	standing	100	0	-	north		Level 9: Mountain Gate Fireside //   Black rock walls swallow most of the light thrown by the iron braziers that // flank a worn patch of floor, and the corners stay dark however the flames	-	+
+1794880885	cmd	Trentlin	50	30603	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear. // Level 9: Gallery of Ooze //   Slime coats the lower walls of this long gallery in shining streaks, a	-	+
+1794880887	laid	-	0	0	-	1214	component	77	a vial of medusa eye fluid	2221	draconia.are	scatter
+1794880893	cmd	Trentlin	50	30611	hyrule.are	standing	100	0	-	north		Level 9: Hall of Blue Flames //   Strange pale scorch marks, more blue than black, streak the walls of this // chamber where blue-robed sorcerers walk straight through stone and cast as	-	+
+1794880897	cmd	Trentlin	50	30610	hyrule.are	standing	100	0	-	west		Level 9: Crowded Sorcery Hall //   Slime, soot, swallowed shield straps and a lingering cold chill mark this // busy hall in equal measure. Low blocks stand in pairs across the floor,	-	+
+1794880902	cmd	Trentlin	50	30609	hyrule.are	standing	100	0	-	west		Level 9: Chamber of Scorch Rings //   Overlapping rings of black soot cover the floor, many layers deep, as // though red-robed sorcerers appeared in every corner at once and loosed fire	-	+
+1794880907	cmd	Trentlin	50	30601	hyrule.are	standing	100	0	-	south		Level 9: Hall of Twin Pillars //   Two great pillars of black stone flank the center of this room, each // wrapped in a spiral of soot from fire beams that struck and glanced away.	-	+
+1794880910	cmd	Trentlin	50	30594	hyrule.are	standing	100	0	-	south		Level 9: Crossroads of Ash //   Four squat blocks stand in a square at the room's center, their tops dusted // with grey ash that drifts down from somewhere far above. Sticky slime	-	+
+1794880916	cmd	Trentlin	50	30595	hyrule.are	standing	100	0	-	east		Level 9: Scorched Vestibule //   Blackened rings and starbursts of soot mark the floor and walls, as though // bolts of fire have been hurled here again and again by sorcerers in red and	-	+
+1794880919	cmd	Trentlin	50	30595	hyrule.are	standing	100	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!	-	-
+1794880921	cmd	Trentlin	50	30602	hyrule.are	standing	100	0	-	north		Level 9: The Sealed Sand Hollow //   Every wall of this sandy chamber is solid and doorless, but each shows a // faint web of cracks where the stone has been weakened, waiting for bombs.	-	+
+1794880923	cmd	Trentlin	50	30602	hyrule.are	standing	100	0	-	scan		a red wizzrobe                     -to the South. // a blue wizzrobe                    -to the South. // a like like                        -right below you.	-	+
+1794880924	cmd	Trentlin	50	30633	hyrule.are	standing	100	0	-	down		Level 9: Stair of the Devourers //   Sticky residue coats the floor around a stair that drops into a tunnel // running deep beneath the dungeon, and scraps of chewed leather and bent	-	+
+1794880925	cmd	Trentlin	50	30633	hyrule.are	standing	100	0	-	scan		a vire                             -to the South. // a vire                             -to the South. // a red lanmola                      -right above you.	-	-
+1794880930	cmd	Trentlin	50	30633	hyrule.are	standing	100	0	-	unlock	east	You lack the key: it takes a small key to unlock it.	-	-
+1794880931	cmd	Trentlin	50	30633	hyrule.are	standing	100	0	-	open	east	It's locked.	-	-
+1794880933	cmd	Trentlin	50	30625	hyrule.are	standing	100	0	-	south		Level 9: Winged Watchtower //   The ceiling here rises into a tall, dark shaft, and claw marks streak its // upper walls where heavy blue wings have gripped the stone and horned shapes	-	+
+1794880936	cmd	Trentlin	50	30625	hyrule.are	standing	100	0	-	consider	v	A vire is well above your level. // A vire has several times your hit points. // A vire could barely scratch you; you would need about 13 rounds to bring it down.	-	+
+1794880939	cmd	Trentlin	50	30625	hyrule.are	standing	100	0	-	iron		Your skin is already as hard as iron.	-	-
+1794880941	cmd	Trentlin	50	30625	hyrule.are	standing	100	0	-	affect		You are affected by: // Skill: 'iron skin' grants immunity to piercing for 0 hours. // Skill: 'iron skin' modifies armor class by -25 for 0 hours.	-	+
+1794880945	skill	Trentlin	50	30625	hyrule.are	hand to hand	98	99	success	kill
+1794880945	cmd	Trentlin	50	30625	hyrule.are	standing	100	0	-	kill	v	A vire parries your attack. // You have become better at hand to hand! // Your punch === OBLITERATES === a vire!	-	+
+1794880950	cmd	Trentlin	50	30625	hyrule.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a vire. // Your fists of fury maims a vire!	-	+
+1794880956	cmd	Trentlin	50	30625	hyrule.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a vire. // Your fists of fury wounds a vire.	-	+
+1794880962	cmd	Trentlin	50	30625	hyrule.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a vire! // Your fists of fury wounds a vire.	-	+
+1794880966	laid	-	0	0	-	1232	herb	51	a piece of kelp	9661	newthalo.are	scatter
+1794880966	laid	-	0	0	-	1233	herb	43	a sprig of hyssop	9680	newthalo.are	scatter
+1794880966	laid	-	0	0	-	1234	component	87	a vial of grey ooze	17299	highland.are	scatter
+1794880968	cmd	Trentlin	50	30625	hyrule.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a vire! // Your fists of fury *** DEVASTATES *** a vire!	-	+
+1794880978	cmd	Trentlin	50	30625	hyrule.are	fighting	97	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a vire. // Your fists of fury MANGLES a vire!	-	+
+1794880984	cmd	Trentlin	50	30625	hyrule.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a vire! // Your fists of fury MUTILATES a vire!	-	+
+1794880988	coin	Trentlin	50	30625	hyrule.are	+19000000	loot	(violence_update)	corpse of a vire	15835246701
+1794880988	coin	Trentlin	50	30625	hyrule.are	+39700	loot	(violence_update)	corpse of a vire	15835286401
+1794880988	coin	Trentlin	50	30625	hyrule.are	+228	loot	(violence_update)	corpse of a vire	15835286629
+1794880988	coin	Trentlin	50	30625	hyrule.are	+1460000	loot	(violence_update)	corpse of a vire	15836746629
+1794881019	cmd	Trentlin	50	30625	hyrule.are	standing	91	0	-	look	in co	Corpse of a vire contains: //      Nothing.	-	-
+1794881020	coin	Trentlin	50	30625	hyrule.are	+114	loot	sacrifice	-	15836746743
+1794881020	cmd	Trentlin	50	30625	hyrule.are	standing	91	0	-	sacrifice	co	The Gods give you 114 copper coins for your sacrifice.	-	-
+1794881020	cmd	Trentlin	50	30625	hyrule.are	standing	91	0	-	look		Level 9: Winged Watchtower //   The ceiling here rises into a tall, dark shaft, and claw marks streak its // upper walls where heavy blue wings have gripped the stone and horned shapes	-	+
+1794881021	cmd	Trentlin	50	30617	hyrule.are	standing	91	0	-	south		Level 9: Bat-Haunted Gallery //   The rustle of leathery wings never quite stops in this high gallery, and // droppings streak the walls below its dark ledges where bats cluster by the	-	+
+1794881026	cmd	Trentlin	50	30617	hyrule.are	standing	91	0	-	bomb	west	You set a bomb beside a cracked west wall and dive aside. The blast opens a passage!	-	-
+1794881027	cmd	Trentlin	50	30616	hyrule.are	standing	91	0	-	west		Level 9: Pool of Gel //   Small, jiggling droplets of jelly cling to every surface of this room, // quivering with a life of their own and hopping from tile to tile. The floor	-	+
+1794881030	cmd	Trentlin	50	30616	hyrule.are	standing	91	0	-	north		The door is bound shut by an old magic: only its key will open it.	-	-
+1794881036	cmd	Trentlin	50	30616	hyrule.are	standing	92	0	-	consider	ge	A gel is a little above your level. // A gel has about twice your hit points. // Blow for blow, you would need about 4 rounds to bring a gel down; it would need about 90 rounds for you.	-	+
+1794881039	cmd	Trentlin	50	30616	hyrule.are	standing	92	0	-	look	ge	Ash has worked its way through this gel until it is the dull grey of wet // cement, and it has gorged in the choked crossways of Death Mountain until // it sags like a sack of wet sand. It hops slowly but relentlessly, and its	-	+
+1794881040	cmd	Trentlin	50	30616	hyrule.are	standing	92	0	-	kill	ge	Your punch === OBLITERATES === a gel! // Your punch <<< ERADICATES >>> a gel! // A gel parries your attack.	-	-
+1794881044	cmd	Trentlin	50	30616	hyrule.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a gel! // Your fists of fury *** DEVASTATES *** a gel!	-	+
+1794881048	coin	Trentlin	50	30616	hyrule.are	+22000000	loot	(violence_update)	corpse of a gel	15858746743
+1794881048	coin	Trentlin	50	30616	hyrule.are	+30400	loot	(violence_update)	corpse of a gel	15858777143
+1794881048	coin	Trentlin	50	30616	hyrule.are	+198	loot	(violence_update)	corpse of a gel	15858777341
+1794881048	coin	Trentlin	50	30616	hyrule.are	+950000	loot	(violence_update)	corpse of a gel	15859727341
+1794881054	cmd	Trentlin	50	30616	hyrule.are	standing	87	0	-	iron		Your skin hardens.	-	-
+1794881060	cmd	Trentlin	50	30616	hyrule.are	standing	87	0	-	look	in co	Corpse of a gel contains: //      (Glowing) a bottled fairy	-	-
+1794881066	got	Trentlin	50	30616	hyrule.are	30618	a bottled fairy	potion	53	900000	get	corpse of a gel
+1794881066	cmd	Trentlin	50	30616	hyrule.are	standing	87	0	-	get	all co	You get a bottled fairy from corpse of a gel.	-	-
+1794881067	coin	Trentlin	50	30616	hyrule.are	+106	loot	sacrifice	-	15859727447
+1794881067	cmd	Trentlin	50	30616	hyrule.are	standing	87	0	-	sacrifice	co	The Gods give you 106 copper coins for your sacrifice.	-	-
+1794881068	cmd	Trentlin	50	30616	hyrule.are	standing	87	0	-	kill	ge	Your punch >>> ANNIHILATES <<< a gel! // A gel dodges your attack. // A gel parries your attack.	-	-
+1794881070	cmd	Trentlin	50	30616	hyrule.are	fighting	84	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a gel! // Your fists of fury maims a gel!	-	+
+1794881072	skill	Trentlin	50	30616	hyrule.are	enhanced damage	95	96	success	(violence_update)
+1794881078	coin	Trentlin	50	30616	hyrule.are	+22000000	loot	(violence_update)	corpse of a gel	15881727447
+1794881078	coin	Trentlin	50	30616	hyrule.are	+30400	loot	(violence_update)	corpse of a gel	15881757847
+1794881078	coin	Trentlin	50	30616	hyrule.are	+198	loot	(violence_update)	corpse of a gel	15881758045
+1794881078	coin	Trentlin	50	30616	hyrule.are	+950000	loot	(violence_update)	corpse of a gel	15882708045
+1794881081	cmd	Trentlin	50	30616	hyrule.are	standing	80	0	-	get	all co	I see nothing in the co.	-	-
+1794881082	coin	Trentlin	50	30616	hyrule.are	+106	loot	sacrifice	-	15882708151
+1794881082	cmd	Trentlin	50	30616	hyrule.are	standing	80	0	-	sacrifice	co	The Gods give you 106 copper coins for your sacrifice.	-	-
+1794881083	cmd	Trentlin	50	30616	hyrule.are	standing	80	0	-	kill	ge	Your punch === OBLITERATES === a gel! // A gel parries your attack. // A gel dodges your attack.	-	-
+1794881084	skill	Trentlin	50	30616	hyrule.are	hand to hand	99	100	success	(violence_update)
+1794881086	cmd	Trentlin	50	30616	hyrule.are	fighting	80	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates a gel! // Your fists of fury MASSACRES a gel!	-	+
+1794881090	laid	-	0	0	-	1245	herb	48	an alfalfa sprout	1815	haven.are	scatter
+1794881090	laid	-	0	0	-	1246	component	81	a vial of squid ink	7501	astral.are	scatter
+1794881093	coin	Trentlin	50	30616	hyrule.are	+22000000	loot	(violence_update)	corpse of a gel	15904708151
+1794881093	coin	Trentlin	50	30616	hyrule.are	+30400	loot	(violence_update)	corpse of a gel	15904738551
+1794881093	coin	Trentlin	50	30616	hyrule.are	+198	loot	(violence_update)	corpse of a gel	15904738749
+1794881093	coin	Trentlin	50	30616	hyrule.are	+950000	loot	(violence_update)	corpse of a gel	15905688749

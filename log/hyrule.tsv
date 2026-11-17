@@ -183,3 +183,11 @@
 1794875932	leave	Trentlin	50	1	Monk 	30590	L9	to=over how=up secs=194 hp=46
 1794875932	enter	Trentlin	50	1	Monk 	30317	over	from=L9 how=up hp=46
 1794875933	leave	Trentlin	50	1	Monk 	30317	over	to=out how=recall secs=1 hp=46
+1794880874	enter	Trentlin	50	1	Monk 	30200	over	from=out how=enter hp=100
+1794880881	seal	Trentlin	50	1	Monk 	30317	over	obj=30509 obj_name=a_cracked_stone_floor dir=5 how=bomb
+1794880882	leave	Trentlin	50	1	Monk 	30317	over	to=L9 how=down secs=8 hp=100
+1794880882	enter	Trentlin	50	1	Monk 	30590	L9	from=over how=down hp=100
+1794880919	seal	Trentlin	50	1	Monk 	30595	L9	obj=30502 obj_name=a_cracked_north_wall dir=0 how=bomb
+1794881026	seal	Trentlin	50	1	Monk 	30617	L9	obj=30505 obj_name=a_cracked_west_wall dir=3 how=bomb
+1794881066	got	Trentlin	50	1	Monk 	30616	L9	obj=30618 obj_name=a_bottled_fairy type=potion obj_level=53 how=get
+1794881093	cleared	Trentlin	50	1	Monk 	30616	L9	foes=0
