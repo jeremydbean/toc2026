@@ -313267,3 +313267,6 @@ Tue Nov 17 20:52:01 2026 :: Connection guard: 52.87.72.16 closed without a word 
 Tue Nov 17 20:52:01 2026 :: Connection guard: 52.87.72.16 paused for 12 hours (pause 2 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 52.87.72.16 lifts it.
 Tue Nov 17 20:54:53 2026 :: Treasure goblin: vanished from room 25141 (The bottom of the shaft., underdrk.are) (too long in one area).
 Tue Nov 17 20:57:06 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 2 of 6 in 6 hours).
+Tue Nov 17 21:02:11 2026 :: Connection guard: refused 1 connection from 3.20.63.178 (paused; 6 refused in all, pause 2 this week, 406 minutes left).
+Tue Nov 17 21:04:01 2026 :: Connection guard: last hour 9 closed without a word, 27 refused, 0 new characters refused, 2 newly paused; 10 addresses paused and 0 refused now, 14 active player addresses.
+Tue Nov 17 21:04:57 2026 :: Treasure goblin: vanished from room 2315 (Before the dark cave, mahntor.are) (too long in one area).
