@@ -35515,3 +35515,7 @@
 1794929874	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2860/2875 mv=983/983 align=977 exp=252749 coin=3894816244 bank=25010708143 qp=2508 prac=36 train=76 stash=93/350 remorts=3
 1794929874	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    306 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
 1794929876	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794930142	laid	-	0	0	-	1474	component	79	a glass container of cobwebs	16065	pirate.are	scatter
+1794930184	laid	-	0	0	-	1475	component	71	a goblin's finger	25022	mountain.are	scatter
+1794930240	laid	-	0	0	-	1476	component	62	a nightmare's hoof clipping	9643	newthalo.are	scatter
+1794930316	laid	-	0	0	-	1477	component	86	an inert gelatinous cube	8837	kerofk.are	scatter
