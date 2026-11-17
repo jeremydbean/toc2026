@@ -35692,3 +35692,102 @@
 1794935360	sightings	Alaric	57	2497	dresden.are	item	6104:1/0 6106:1/0 5005:1/0
 1794935360	session	Alaric	57	2497	dresden.are	quit	5901s	+0 levels	+0 exp	+154321082 copper	2 kills	0 deaths	1 quests	235 commands	1 refused	coin: loot 1p 59g 19s 42c, quests 154p 12g 91s 40c, spent 1p 40g	spent on: heal 1p 40g	exp: none
 1794940482	cleared	-	0	0	-	1028	component	64	a manticore's spine	65843	0	scatter	mob 2435	(mobile_update)	0	-
+1794949782	area	Trentlin	50	2497	dresden.are	-	dresden.are	-1	(game loop)
+1794949786	quest	Trentlin	50	2497	dresden.are	ordinary	kill	13241	old lady	8	solace.are	24
+1794949786	cmd	Trentlin	50	2497	dresden.are	standing	100	21	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Trentlin!' // Questor Thews tells you 'The criminal known as old lady has escaped from prison!'	-	+
+1794949789	cmd	Trentlin	50	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794949790	cmd	Trentlin	50	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794949790	cmd	Trentlin	50	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794949791	cmd	Trentlin	50	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794949791	cmd	Trentlin	50	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794949791	cmd	Trentlin	50	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794949791	cmd	Trentlin	50	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794949792	cmd	Trentlin	50	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794949792	cmd	Trentlin	50	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1794949792	cmd	Trentlin	50	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794949792	area	Trentlin	50	6000	haon.are	dresden.are	haon.are	10	west
+1794949792	cmd	Trentlin	50	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794949793	cmd	Trentlin	50	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1794949793	coin	Trentlin	50	6001	haon.are	+38576582	bank	interest	bank	16652512647
+1794949793	laid	-	0	0	-	854	herb	46	a juniper berry	17771	landoz.are	scatter
+1794949793	cmd	Trentlin	50	6002	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1794949793	cmd	Trentlin	50	6011	haon.are	standing	100	0	-	south		A small path through the light forest //   You are on a small path leading through the forest.  The trees are tall and // slender.  Paths lead north and south.	-	+
+1794949793	cmd	Trentlin	50	6008	haon.are	standing	100	0	-	south		The forest clearing //   You are in a clearing in the forest.  Lots of fresh stumps of varying sizes // protrude from the ground and heavy logs are stacked neatly in a big pile	-	+
+1794949794	cmd	Trentlin	50	6009	haon.are	standing	100	0	-	east		Outside a small cabin in the forest //   You are outside a small cabin built entirely from heavy logs.  There is a // wooden door to the north and small paths lead west and south through the	-	+
+1794949794	cmd	Trentlin	50	6014	haon.are	standing	100	0	-	south		An intersection in the dense forest //   You are on a small path leading through the dense forest. The forest // gradually lightens to the north.  Paths lead north, east and west.	-	+
+1794949794	cmd	Trentlin	50	6015	haon.are	standing	100	0	-	east		A small path in the dense forest //   You are on a small path leading through the dense forest.  The crowns of // the old trees leave the forest in a surreal twilight illumination.	-	+
+1794949794	cmd	Trentlin	50	6016	haon.are	standing	100	0	-	south		A small path in the dense forest //   You are on a small path leading through the dense forest.  The crowns of the // old trees leave the forest in an unreal twilight illumination.  To the west	-	+
+1794949795	cmd	Trentlin	50	6017	haon.are	standing	100	0	-	south		A small path in the dense forest //   You are on a small path leading through the dense forest.  The forest // seems to become lighter to the west. The path continues north and west.	-	+
+1794949795	cmd	Trentlin	50	6018	haon.are	standing	100	0	-	west		An intersection in the light forest //   You are on a small path leading through the forest.  A path leads north // to a small field and other paths lead east and west into the dense forest.	-	+
+1794949795	area	Trentlin	50	51	connect.are	haon.are	connect.are	3	south
+1794949795	cmd	Trentlin	50	51	connect.are	standing	100	0	-	south		The top of the cliff. //   You are standing on the ledge of a huge cliff on the side of a valley // with a beautiful lake and tiny village nestled in it.  It looks so	-	+
+1794949795	area	Trentlin	50	13001	lakes.are	connect.are	lakes.are	0	down
+1794949795	cmd	Trentlin	50	13001	lakes.are	standing	100	0	-	down		Rock Outcropping //   >From this rock outcropping the valley below seems peaceful, untouched. // Dense forests of pine carpet the mountainsides, broken only by thick aspen	-	+
+1794949796	cmd	Trentlin	50	13002	lakes.are	standing	100	0	-	down		Small Grove //   Suddenly, soft music begins. Its source is slim, beautiful girl. Lyre in // hand, she sits gracefully as she plays; nearby, a large plainsman raises	-	+
+1794949796	cmd	Trentlin	50	13003	lakes.are	standing	100	0	-	west		Entrance to the Town of Solace //   A warm autumn breeze rustles the great vallenwood trees of Solace. The // road that wanders through the trees blazes in the bright colors of autumn.	-	+
+1794949796	area	Trentlin	50	13201	solace.are	lakes.are	solace.are	1	north
+1794949796	cmd	Trentlin	50	13201	solace.are	standing	100	0	-	north		Gateway to Solace //   This is the gateway to the town of Solace. It keeps the monsters out and // the people in. This is a quiet farming town on the shores of Crystalmir	-	+
+1794949800	cmd	Trentlin	50	13202	solace.are	standing	100	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.	-	+
+1794949800	cmd	Trentlin	50	13257	solace.are	standing	100	0	-	east		Jander's Restaurant //   Jander's bar and restaurant used to be a very popular bar in Solace. // For some reason or another it is now empty. Dust and cobwebs cover	-	+
+1794949800	cmd	Trentlin	50	13256	solace.are	standing	100	0	-	east		Jander's Poolhall //   Jander's bar used to be a very popular bar in Solace. For some reason or // another it is now empty. Dust and cobwebs cover everything. It looks as if	-	+
+1794949801	cmd	Trentlin	50	13259	solace.are	standing	100	0	-	north		Jander's Office //   This is Jander's Office and obviously you didn't read the sign before // coming in.The office is dusty and abandon like the rest of the bar, but is	-	+
+1794949805	cmd	Trentlin	50	13259	solace.are	standing	100	0	-	consider	gh	Ghost of Jander is far below your level. // Ghost of Jander has about a third of your hit points. // Ghost of Jander could barely scratch you; you would need a single round to bring him down.	-	+
+1794949807	cmd	Trentlin	50	13259	solace.are	standing	100	0	-	look	g	The ghost of Jander is as he was in life. A rather large man with flaming // red hair. His clothes seems dirty and tattered. His bushy beard obscures // his stone face.	-	+
+1794949808	cmd	Trentlin	50	13256	solace.are	standing	100	0	-	south		Jander's Poolhall //   Jander's bar used to be a very popular bar in Solace. For some reason or // another it is now empty. Dust and cobwebs cover everything. It looks as if	-	+
+1794949809	cmd	Trentlin	50	13255	solace.are	standing	100	0	-	east		Jander's //   Jander's bar used to be a very popular bar in Solace. For some reason or // another it is now empty. Dust and cobwebs cover everything. It looks as if	-	+
+1794949809	cmd	Trentlin	50	13212	solace.are	standing	100	0	-	east		Ketra Road. //   It is one of the sidestreets of Solace. But even here there are shops. // Most of it is run down houses and shacks.	-	+
+1794949810	cmd	Trentlin	50	13211	solace.are	standing	100	0	-	north		Ketra Road. //   It is one of the sidestreets of Solace. But even here there are shops. // Most of it is run down houses and shacks.	-	+
+1794949810	cmd	Trentlin	50	13210	solace.are	standing	100	0	-	north		Ketra Road. //   It is one of the sidestreets of Solace. But even here there are shops. // Most of it is run down houses and shacks.	-	+
+1794949811	cmd	Trentlin	50	13209	solace.are	standing	100	0	-	north		Corner of East Gullen and Ketra Road. //   This is the Corner of East Gullen Way and Ketra Road. // Everything is amazingly clean here.	-	+
+1794949811	cmd	Trentlin	50	13208	solace.are	standing	100	0	-	west		East Gullen Way //   This is the road called East Gullen Way. It is lined with small houses and // shops.	-	+
+1794949812	cmd	Trentlin	50	13207	solace.are	standing	100	0	-	west		East Gullen Way //   This is the road called East Gullen Way. It is lined with small houses and // shops.	-	+
+1794949812	cmd	Trentlin	50	13206	solace.are	standing	100	0	-	west		East Gullen Way //   This is the road called East Gullen Way. It is lined with small houses and // shops.	-	+
+1794949813	cmd	Trentlin	50	13205	solace.are	standing	100	0	-	west		Intersection at Main Road. //   Here there is an intersection at the main road. // You see to the east and west, smaller houses and some more shops.	-	+
+1794949814	cmd	Trentlin	50	13228	solace.are	standing	100	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.	-	+
+1794949814	cmd	Trentlin	50	13229	solace.are	standing	100	0	-	north		End of the Main Road //   The main road of Solace stops here. Other smaller roadways lead off // in various directions.	-	+
+1794949815	cmd	Trentlin	50	13262	solace.are	standing	100	0	-	east		Dusty road. //   This dusty road looks well traveled. To the East you see the Townguard // Administration Building.	-	+
+1794949815	cmd	Trentlin	50	13263	solace.are	standing	100	0	-	east		Townguard Administration Building. //   Before you stands the Townguard Administration Building. This is a large // building with various statues and other artwork decorating the building.	-	+
+1794949817	cmd	Trentlin	50	13264	solace.are	standing	100	0	-	east		Entrance Hall. //   The entrance hall is made entirely of marble and granite. It seems sort of // extravagant for a townguard administration building. The 30 foot high	-	+
+1794949818	cmd	Trentlin	50	13265	solace.are	standing	100	0	-	south		Marble Corridor. //   This corridor is also decorated with paintings and sculptures. Marble // columns line the walls. Crystal chandeliers hang from the ceiling.	-	+
+1794949819	cmd	Trentlin	50	13266	solace.are	standing	100	0	-	west		Town Clerk. //   This is where you pay your fines and taxes. // The Town Clerk's desk sits in front of you. There are chairs and a	-	+
+1794949821	cmd	Trentlin	50	13267	solace.are	standing	100	0	-	west		Deposits Room. //   This is a large safe like room. All payments for taxes and fines are deposited // here by the clerk. The walls are made of white marble and have gold deposit	-	+
+1794949823	cmd	Trentlin	50	13266	solace.are	standing	100	0	-	east		Town Clerk. //   This is where you pay your fines and taxes. // The Town Clerk's desk sits in front of you. There are chairs and a	-	+
+1794949823	cmd	Trentlin	50	13265	solace.are	standing	100	0	-	east		Marble Corridor. //   This corridor is also decorated with paintings and sculptures. Marble // columns line the walls. Crystal chandeliers hang from the ceiling.	-	+
+1794949824	cmd	Trentlin	50	13268	solace.are	standing	100	0	-	east		Marble Corridor. //   This corridor is also decorated with paintings and sculptures. Marble // columns line the walls. Crystal chandeliers hang from the ceiling.	-	+
+1794949830	coin	Trentlin	50	13268	solace.are	+4800	loot	kill	corpse of old lady	16652517447
+1794949830	coin	Trentlin	50	13268	solace.are	+96	loot	kill	corpse of old lady	16652517543
+1794949830	cmd	Trentlin	50	13268	solace.are	standing	100	10	-	kill	lad	Your punch >>> ANNIHILATES <<< old lady! // Old lady is DEAD!! // You have almost finished your QUEST!	-	+
+1794949834	area	Trentlin	50	4207	dresden.are	solace.are	dresden.are	38	recall
+1794949834	cmd	Trentlin	50	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794949834	cmd	Trentlin	50	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794949836	refused	Trentlin	50	4208	dresden.are	standing	100	0	-	(unknown)		Huh? Did you mean HEAL?	refusal:unknown-command	-
+1794949838	coin	Trentlin	50	4208	dresden.are	-800000	spent	heal	-	16651717543
+1794949838	cmd	Trentlin	50	4208	dresden.are	standing	100	0	-	heal	refres	The healer utters the words 'candusima'. // You feel fully refreshed! (8 castings, 80 gold.)	-	-
+1794949841	cmd	Trentlin	50	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794949841	cmd	Trentlin	50	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794949841	cmd	Trentlin	50	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794949842	cmd	Trentlin	50	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794949842	cmd	Trentlin	50	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794949842	cmd	Trentlin	50	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794949842	cmd	Trentlin	50	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794949843	cmd	Trentlin	50	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794949843	cmd	Trentlin	50	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794949843	cmd	Trentlin	50	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794949843	cmd	Trentlin	50	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794949844	cmd	Trentlin	50	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1794949844	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794949844	coin	Trentlin	50	2497	dresden.are	+94640700	quests	aquest	-	16746358243
+1794949844	outcome	Trentlin	50	2497	dresden.are	quest-complete	success	-	-	ordinary qp=4833->4833 offered=50 daily=18->18 coin=+94640700 kill=13520100 streak=15 level=50 target=-1
+1794949844	cmd	Trentlin	50	2497	dresden.are	standing	100	19	-	aquest	complete	You inform Questor Thews you have completed his quest. // Questor Thews says 'Splendid - you've returned victorious!' // Questor Thews says 'Streak of 16 in a row! A +100% bonus has been added!'	success:-	+
+1794949848	cmd	Trentlin	50	2497	dresden.are	standing	100	7	-	aquest	gamble yes	The dice BETRAY you! Your 50 quest points are lost.	-	-
+1794949850	state	Trentlin	50	2497	dresden.are	lvl=50 hp=896/896 mana=2098/2098 mv=479/489 align=389 exp=115998 coin=1277148569 bank=15469209674 qp=4833 prac=57 train=13 stash=66/75 remorts=1
+1794949850	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      50 | Class:        Monk | // | Played:     40 hours | Sex:      Male | Guild:        Monk | // | Age:        19 years | Race:    Dwarf | Castle:       None |	-	+
+1794949854	laid	-	0	0	-	898	component	68	a gorgon's horn	7559	astral.are	scatter
+1794949863	cmd	Trentlin	50	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794949864	cmd	Trentlin	50	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794949864	cmd	Trentlin	50	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794949865	cmd	Trentlin	50	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794949865	cmd	Trentlin	50	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794949865	cmd	Trentlin	50	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794949869	cmd	Trentlin	50	2436	dresden.are	standing	100	0	-	where	hermie	You didn't find any hermie.	-	-
+1794949871	cmd	Trentlin	50	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+

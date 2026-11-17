@@ -193,13 +193,13 @@ List spend 29600000 0 heal
 List spend 10000 0 shoot
 End
 Day 2026-11-17
-Played 2528
+Played 2600
 Level 46 50 4
 Exp 9363 25
-Kills 24
+Kills 25
 Deaths 0
 Close 0
-Quests 6 302
+Quests 7 302
 Dailies 0 0
 List achv 30 0 Across Hyrule
 List skill 86 89 fists of fury
@@ -207,19 +207,19 @@ List skill 82 84 dodge
 List skill 81 82 second attack
 List skill 94 96 enhanced damage
 List skill 98 100 hand to hand
-List area 414 0 City of Dresden
+List area 444 0 City of Dresden
 List area 16 0 Plains of the North
 List area 4 0 Continental Drift
 List area 200 0 The Astral Plane
 List area 3 0 Miden'nir
 List area 8 0 New Thalos
 List area 173 0 Pirate Ship
-List area 40 0 Haon Dor
+List area 43 0 Haon Dor
 List area 17 0 The Lonely Mountain
 List area 3 0 Mud School
 List area 8 0 Strange Campus
 List area 986 0 Hyrule
-More area 49
+More area 54
 List item 6 0 a small key
 List item 1 0 Ganon's shadow crown
 List item 1 0 a coat of red-ring mail
@@ -233,10 +233,10 @@ List item 1 0 a Goriya provisioner's belt
 List item 1 0 a pair of Demon maze boots
 List item 1 0 the Heart Guard of the Dragon
 More item 4
-List earn 38480381 0 interest
-List earn 339926659 0 loot
-List earn 815430456 0 quests
-List spend 500000 0 heal
+List earn 77056963 0 interest
+List earn 339931555 0 loot
+List earn 910071156 0 quests
+List spend 1300000 0 heal
 List spend 6200000 0 buy
 End
 #END
