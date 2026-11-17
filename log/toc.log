@@ -313133,3 +313133,9 @@ Tue Nov 17 17:02:50 2026 :: Connection guard: refused 1 connection from 212.47.6
 Tue Nov 17 17:03:33 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 1 of 6 in 6 hours).
 Tue Nov 17 17:03:50 2026 :: Connection guard: refused 3 connections from 212.47.67.62 (since the last line; 4 refused in all, pause 1 this week, 359 minutes left).
 Tue Nov 17 17:04:16 2026 :: Treasure goblin: vanished from room 1648 (Turret of the Eastern Tower, wyvern.are) (too long in one area).
+Tue Nov 17 17:08:36 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 17 17:09:19 2026 :: Log Alaric [2497]: sc
+Tue Nov 17 17:09:20 2026 :: Log Alaric [2497]: quit
+Tue Nov 17 17:09:20 2026 :: Alaric has quit.
+Tue Nov 17 17:09:20 2026 :: [QUIT] Player rejoined the real world.
+Tue Nov 17 17:10:03 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).

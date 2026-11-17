@@ -35685,3 +35685,9 @@
 1794933627	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
 1794933627	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	worth		You have 4050 platinum, 53 gold, 73 silver, 26 copper // and 252749 experience (39551 exp to level).	-	-
 1794934351	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=2	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1794935251	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=2	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1794935359	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=983/983 align=1000 exp=252749 coin=4050537326 bank=25010708143 qp=2538 prac=36 train=76 stash=93/350 remorts=3
+1794935359	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    308 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
+1794935360	sightings	Alaric	57	2497	dresden.are	mob	201:1/0/0 2431:1/0/0 6100:2/0/0 6103:2/0/0 6101:2/0/0 4201:1/0/0 4458:1/0/0 2430:5/0/0 2434:2/0/0 2433:1/0/0 2432:1/0/0 4448:1/0/0 4459:1/0/0 5011:1/0/0 5010:1/0/0 25100:1/0/0 25114:1/0/0 25108:10/0/0 25107:1/0/0 25105:1/0/0 2240:5/0/0 2202:1/1/0 2200:2/0/0 2201:5/0/0 2227:1/0/0 2207:1/1/0
+1794935360	sightings	Alaric	57	2497	dresden.are	item	6104:1/0 6106:1/0 5005:1/0
+1794935360	session	Alaric	57	2497	dresden.are	quit	5901s	+0 levels	+0 exp	+154321082 copper	2 kills	0 deaths	1 quests	235 commands	1 refused	coin: loot 1p 59g 19s 42c, quests 154p 12g 91s 40c, spent 1p 40g	spent on: heal 1p 40g	exp: none
