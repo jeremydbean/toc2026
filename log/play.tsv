@@ -34057,3 +34057,10 @@
 1794876446	laid	-	0	0	-	1166	component	65	a dragon's scale	5771	mid_ruin.are	scatter
 1794876552	laid	-	0	0	-	1167	herb	35	a sprig of angelica	28057	pyramid.are	scatter
 1794876552	laid	-	0	0	-	1168	component	85	a vial of crushed tarrasque scale	7103	sewer.are	scatter
+1794876615	laid	-	0	0	-	1169	herb	41	a sprig of mistletoe	13460	hell.are	scatter
+1794876615	laid	-	0	0	-	1170	component	56	a dragons claw	1323	htower.are	scatter
+1794876659	laid	-	0	0	-	1171	herb	43	a sprig of hyssop	5310	mirror.are	scatter
+1794876721	laid	-	0	0	-	1172	herb	37	a sprig of catnip	4430	dresden.are	scatter
+1794876721	laid	-	0	0	-	1173	component	60	a rakshasa's claw	4435	dresden.are	scatter
+1794876751	census	-	0	0	-	herbs=119/150 components=65/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=21 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=3 mobs_fought=1 secs=900
+1794876770	laid	-	0	0	-	1174	component	66	a strand of hair	17241	highland.are	scatter
