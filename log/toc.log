@@ -313083,3 +313083,34 @@ Tue Nov 17 16:33:20 2026 :: Sock.sinaddr:  192.178.6.195
 Tue Nov 17 16:34:02 2026 :: Treasure goblin: vanished from room 17202 (In Nessy cave, highland.are) (too long in one area).
 Tue Nov 17 16:34:50 2026 :: EOF encountered on read.
 Tue Nov 17 16:34:50 2026 :: Connection guard: 192.178.6.195 closed before a password prompt (strike 1 of 6 in 6 hours).
+Tue Nov 17 16:36:14 2026 :: Sock.sinaddr:  108.81.26.245
+Tue Nov 17 16:36:14 2026 :: Loading Miseri's playerfile
+Tue Nov 17 16:36:16 2026 :: Loading Miseri's playerfile
+Tue Nov 17 16:36:16 2026 :: Miseri@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Tue Nov 17 16:36:16 2026 :: Log Miseri [30435]: arrived (Level 2: Dodongo's Lair) from 0
+Tue Nov 17 16:36:16 2026 :: Hyrule leftovers: 2 of Miseri's dungeon-only objects crumbled.
+Tue Nov 17 16:36:16 2026 :: Login fix 20261112-hyrule-crumble (Hyrule dungeon items carried out of their dungeon) applied to Miseri.
+Tue Nov 17 16:36:16 2026 :: Login fix 20261114-season-area-ids (holiday areas recorded under the copy's name) applied to Miseri.
+Tue Nov 17 16:36:20 2026 :: Log Miseri [30435]: /
+Tue Nov 17 16:36:20 2026 :: Log Miseri [30435]: /
+Tue Nov 17 16:36:23 2026 :: Log Miseri [30435]: quit
+Tue Nov 17 16:36:23 2026 :: Miseri has quit.
+Tue Nov 17 16:36:23 2026 :: [QUIT] Player rejoined the real world.
+Tue Nov 17 16:36:30 2026 :: Sock.sinaddr:  108.81.26.245
+Tue Nov 17 16:36:30 2026 :: Loading Killuminati's playerfile
+Tue Nov 17 16:36:31 2026 :: Loading Killuminati's playerfile
+Tue Nov 17 16:36:31 2026 :: Killuminati@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Tue Nov 17 16:36:32 2026 :: Log Killuminati [2401]: arrived (Center of Oak Tree Square.) from 0
+Tue Nov 17 16:36:33 2026 :: Log Killuminati [2401]: /
+Tue Nov 17 16:36:37 2026 :: Log Killuminati [2401]: snoop ala
+Tue Nov 17 16:36:40 2026 :: Log Killuminati [2401]: sc
+Tue Nov 17 16:38:10 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 4 of 6 in 6 hours).
+Tue Nov 17 16:38:33 2026 :: Log Killuminati [2401]: lo
+Tue Nov 17 16:38:37 2026 :: Log Killuminati [2401]: at ala look
+Tue Nov 17 16:38:37 2026 :: Log Killuminati [2497]: arrived (The Questmaster's Globe, above the Oak) from 2401
+Tue Nov 17 16:38:37 2026 :: Log Killuminati [2497]: look
+Tue Nov 17 16:38:37 2026 :: Log Killuminati [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Nov 17 16:40:26 2026 :: Log Alaric [2]: arrived (Limbo) from 2497
+Tue Nov 17 16:40:27 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 2
+Tue Nov 17 16:40:27 2026 :: Log Alaric [2497]: who
+Tue Nov 17 16:40:27 2026 :: Log Alaric [2497]: worth

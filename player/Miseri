@@ -2,7 +2,7 @@
 Name Miseri~
 Id   10516
 Serial 16626392
-LogO 1794519335
+LogO 1794933383
 Vers 4
 Prom ~
 Race human~
@@ -14,11 +14,11 @@ PsiGrant 0
 PsiSpec ~
 PsiKnown mindblast,project,mindbar,pyrotechnics~
 ChangesSeen ~
-Fixes 20261021-mage-groups 20261021-mage-weapons 20261112-quest-serial~
+Fixes 20261021-mage-groups 20261021-mage-weapons 20261112-quest-serial 20261029-spare-shards 20261030-spare-shards-again 20261112-hyrule-crumble 20261114-season-area-ids 20261116-wrapped-pools~
 Cast none
 Levl 15
 Tru  70
-Plyd 7161
+Plyd 7168
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
@@ -58,16 +58,17 @@ Achv first-triforce-shard 1794516778
 Achv hyrule-eagle 1794515480
 Achv hyrule-moon 1794517822
 Achv carry-ten-platinum 1793111546
-AchSet areas 840101374 1103516333 ~
-AchSet rooms 3700 3744 3757 3759 4207 ~
-LastOut  1794519335
+Achv maps-1 1794933376
+AchSet areas 1103516333 1368665472 1674073230 ~
+AchSet rooms 3700 3744 3757 3759 4207 30435 ~
+LastOut  1794933383
 Rested 2250 0
 Daily 0 0 0 0 0
-SesLogin 1794514641
-SesDur   4694
-SesExpG  1262
-SesLvlG  1
-SesKill  12
+SesLogin 1794933376
+SesDur   7
+SesExpG  0
+SesLvlG  0
+SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
@@ -102,6 +103,7 @@ Color 16 6
 Pos  8
 Prac 59
 Trai 11
+Tutorial 0 1048576
 Save  -1
 Alig  -136
 Hit   21
@@ -158,26 +160,26 @@ Sk 50 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
-AffD 'empower'   0  -1   0   0          0          0
-AffD 'sanctuary'   0  -1   0   0        128          0
-AffD 'haste'   0  -1   4   2    2097152          0
-AffD 'fly'   0  -1   0   0     524288          0
-AffD 'pass door'   0  -1   0   0    1048576          0
-AffD 'protection evil'   0  -1   0   0       8192          0
-AffD 'fire shield'   0  -1   0   0          0          8
-AffD 'divine protection'   0  -1   0   0          0       4096
-AffD 'giant strength'   0  -1  15   1          0          0
-AffD 'empower'   0  -1  15   3          0          0
-AffD 'empower'   0  -1  15   4          0          0
-AffD 'empower'   0  -1  11   2          0          0
-AffD 'empower'   0  -1  15   5          0          0
-AffD 'empower'   0  -1  20  18          0          0
-AffD 'empower'   0  -1  20  19          0          0
-AffD 'empower'   0  -1 -100  17          0          0
-AffD 'titanic'   0  -1 150  13          0          0
-AffD 'titanic'   0  -1 620  12          0          0
-AffD 'titanic'   0  -1 325  14          0          0
 AffD 'titanic'   0  -1  50  16          0          0
+AffD 'titanic'   0  -1 325  14          0          0
+AffD 'titanic'   0  -1 620  12          0          0
+AffD 'titanic'   0  -1 150  13          0          0
+AffD 'empower'   0  -1 -100  17          0          0
+AffD 'empower'   0  -1  20  19          0          0
+AffD 'empower'   0  -1  20  18          0          0
+AffD 'empower'   0  -1  15   5          0          0
+AffD 'empower'   0  -1  11   2          0          0
+AffD 'empower'   0  -1  15   4          0          0
+AffD 'empower'   0  -1  15   3          0          0
+AffD 'giant strength'   0  -1  15   1          0          0
+AffD 'divine protection'   0  -1   0   0          0       4096
+AffD 'fire shield'   0  -1   0   0          0          8
+AffD 'protection evil'   0  -1   0   0       8192          0
+AffD 'pass door'   0  -1   0   0    1048576          0
+AffD 'fly'   0  -1   0   0     524288          0
+AffD 'haste'   0  -1   4   2    2097152          0
+AffD 'sanctuary'   0  -1   0   0        128          0
+AffD 'empower'   0  -1   0   0          0          0
 End
 
 #O
@@ -767,26 +769,6 @@ Cost 5000000
 Cond 100
 Repd 0
 Val  1 4 5 3 0
-End
-
-#O
-Vnum 30489
-Nest 0
-Wear -1
-Lev  2
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 30480
-Nest 0
-Wear -1
-Lev  2
-Cost 0
-Cond 100
-Repd 0
 End
 
 #O
