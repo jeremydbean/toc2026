@@ -33610,3 +33610,10 @@
 1794874051	census	-	0	0	-	herbs=83/150 components=44/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=11 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
 1794874065	laid	-	0	0	-	1019	herb	42	a marjoram plant	24157	coven.are	scatter
 1794874144	laid	-	0	0	-	1020	component	65	a dragon's scale	4703	dresden.are	scatter
+1794874250	laid	-	0	0	-	1021	component	84	a vial of froghemoth saliva	4150	moria.are	scatter
+1794874327	laid	-	0	0	-	1022	component	58	some pixie dust	5027	eastern.are	scatter
+1794874467	area	Alaric	57	2	limbo.are	dresden.are	limbo.are	3310	(char_update)
+1794874467	laid	-	0	0	-	1023	component	77	a vial of medusa eye fluid	7641	ultima.are	scatter
+1794874468	area	Alaric	57	2497	dresden.are	limbo.are	dresden.are	1	(game loop)
+1794874468	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1794874468	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	worth		You have 3896 platinum, 21 gold, 62 silver, 44 copper // and 252749 experience (39551 exp to level).	-	-
