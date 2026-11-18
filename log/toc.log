@@ -316433,3 +316433,15 @@ Wed Nov 18 17:10:39 2026 :: Connection guard: 5.161.61.238 closed without a word
 Wed Nov 18 17:10:42 2026 :: Connection guard: 216.225.206.228 closed without a word (strike 1 of 6 in 6 hours).
 Wed Nov 18 17:10:43 2026 :: Connection guard: 216.225.206.228 closed without a word (strike 2 of 6 in 6 hours).
 Wed Nov 18 17:15:45 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 2 of 6 in 6 hours).
+Wed Nov 18 17:18:05 2026 :: Treasure goblin: vanished from room 9412 (Entrance Hallway to Mob Factory, mobfact.are) (too long in one area).
+Wed Nov 18 17:19:44 2026 :: Sock.sinaddr:  173.252.82.112
+Wed Nov 18 17:19:44 2026 :: Connection guard: 173.252.82.112 closed before a password prompt (strike 1 of 6 in 6 hours).
+Wed Nov 18 17:19:45 2026 :: Sock.sinaddr:  69.171.231.29
+Wed Nov 18 17:19:45 2026 :: Sock.sinaddr:  57.141.0.8
+Wed Nov 18 17:19:45 2026 :: Connection guard: 69.171.231.29 closed before a password prompt (strike 1 of 6 in 6 hours).
+Wed Nov 18 17:19:45 2026 :: Connection guard: 57.141.0.8 closed before a password prompt (strike 1 of 6 in 6 hours).
+Wed Nov 18 17:19:46 2026 :: Sock.sinaddr:  57.141.0.56
+Wed Nov 18 17:19:46 2026 :: Connection guard: 57.141.0.56 closed before a password prompt (strike 1 of 6 in 6 hours).
+Wed Nov 18 17:20:18 2026 :: Sock.sinaddr:  173.252.79.26
+Wed Nov 18 17:20:18 2026 :: Connection guard: 173.252.79.26 closed before a password prompt (strike 1 of 6 in 6 hours).
+Wed Nov 18 17:20:49 2026 :: Connection guard: 54.167.223.174 closed without a word (strike 3 of 6 in 6 hours).
