@@ -316368,3 +316368,12 @@ Wed Nov 18 14:58:35 2026 :: Connection guard: 178.156.189.113 closed without a w
 Wed Nov 18 15:03:40 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 3 of 6 in 6 hours).
 Wed Nov 18 15:04:01 2026 :: Connection guard: last hour 15 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 5 addresses paused and 0 refused now, 14 active player addresses.
 Wed Nov 18 15:07:04 2026 :: Treasure goblin: vanished from room 9612 (Entrance to the Guild of Clerics, newthalo.are) (too long in one area).
+Wed Nov 18 15:07:53 2026 :: Automated backup started.
+Wed Nov 18 15:07:54 2026 :: Automated backup complete.
+Wed Nov 18 15:08:45 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 18 15:10:03 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Wed Nov 18 15:10:13 2026 :: Sock.sinaddr:  20.65.202.124
+Wed Nov 18 15:10:14 2026 :: EOF encountered on read.
+Wed Nov 18 15:10:14 2026 :: Connection guard: 20.65.202.124 closed before a password prompt (strike 1 of 6 in 6 hours).
+Wed Nov 18 15:10:14 2026 :: Sock.sinaddr:  20.65.202.124
+Wed Nov 18 15:10:14 2026 :: Connection guard: 20.65.202.124 closed before a password prompt (strike 2 of 6 in 6 hours).
