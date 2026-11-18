@@ -315342,3 +315342,5 @@ Wed Nov 18 04:50:29 2026 :: Sock.sinaddr:  147.185.133.42
 Wed Nov 18 04:50:29 2026 :: EOF encountered on read.
 Wed Nov 18 04:50:29 2026 :: Connection guard: 147.185.133.42 closed before a password prompt (strike 1 of 6 in 6 hours).
 Wed Nov 18 04:54:26 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 3 of 6 in 6 hours).
+Wed Nov 18 04:57:20 2026 :: Cartographer: appeared.
+Wed Nov 18 04:59:30 2026 :: Connection guard: refused 1 connection from 5.161.215.244 (paused; 6 refused in all, pause 2 this week, 167 minutes left).
