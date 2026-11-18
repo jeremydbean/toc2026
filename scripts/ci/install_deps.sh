@@ -22,11 +22,22 @@ done
 
 how="nothing to install"
 if [ "${#missing[@]}" -gt 0 ]; then
-    apt=(sudo apt-get install -y --no-install-recommends -o Acquire::Retries=3)
+    # Install packages, never start their services: caddy's postinst
+    # started a web server on the runner, and twice (2026-11-18) a shard
+    # died when the retry found dpkg still holding its lock ("Could not
+    # get lock /var/lib/dpkg/lock ... held by process (dpkg)"). Wait for
+    # the lock rather than fail on it, too.
+    if [ ! -e /usr/sbin/policy-rc.d ]; then
+        printf '#!/bin/sh\nexit 101\n' | sudo tee /usr/sbin/policy-rc.d >/dev/null
+        sudo chmod 755 /usr/sbin/policy-rc.d
+    fi
+    apt=(sudo apt-get install -y --no-install-recommends -o Acquire::Retries=3
+         -o DPkg::Lock::Timeout=180)
     if DEBIAN_FRONTEND=noninteractive timeout 300 "${apt[@]}" "${missing[@]}"; then
         how="installed ${missing[*]} from the image's package lists"
     else
-        DEBIAN_FRONTEND=noninteractive timeout 300 sudo apt-get update -o Acquire::Retries=3
+        DEBIAN_FRONTEND=noninteractive timeout 300 sudo apt-get update -o Acquire::Retries=3 \
+            -o DPkg::Lock::Timeout=180
         DEBIAN_FRONTEND=noninteractive timeout 300 "${apt[@]}" "${missing[@]}"
         how="refreshed the package lists and installed ${missing[*]}"
     fi
