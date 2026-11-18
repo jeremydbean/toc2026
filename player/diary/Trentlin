@@ -243,34 +243,35 @@ List spend 6200000 0 buy
 List spend 20000 0 shoot
 End
 Day 2026-11-18
-Played 2652
+Played 3027
 Level 50 51 1
-Exp 4292 10
-Kills 10
+Exp 8248 10
+Kills 14
 Deaths 0
 Close 0
-Quests 2 169
+Quests 3 169
 Dailies 0 0
 List notable 1 0 Gohma
 List skill 97 100 enhanced damage
 List skill 84 85 dodge
 List skill 89 93 fists of fury
-List skill 86 87 parry
+List skill 86 88 parry
 List skill 76 78 fast healing
 List skill 76 78 iron skin
-List skill 82 83 second attack
-List area 932 0 Hyrule
-List area 969 0 City of Dresden
-List area 5 0 Mud School
-List area 15 0 Strange Campus
+List skill 82 84 second attack
+List area 1192 0 Hyrule
+List area 1026 0 City of Dresden
+List area 6 0 Mud School
+List area 18 0 Strange Campus
 List area 4 0 Haon Dor
 List area 5 0 New Thalos
-List area 0 0 Continental Drift
+List area 2 0 Continental Drift
 List area 554 0 The HighLands
 List area 2 0 Miden'nir
 List area 38 0 Gnome Village
 List area 56 0 Korzath's Fortress
 List area 72 0 Battleground
+More area 8
 List item 1 0 the Dragon's key
 List item 1 0 a pair of crab-leg greaves
 List item 1 0 a pair of shell vambraces
@@ -278,9 +279,9 @@ List item 1 0 the Red Ring of Hyrule
 List item 1 0 a key of the tower
 List item 1 0 a silver-arrow spear
 List item 1 0 a diamond key
-List earn 109620098 0 loot
-List earn 256881900 0 quests
+List earn 209661049 0 loot
+List earn 408577422 0 quests
 List spend 10000 0 shoot
-List spend 97900000 0 heal
+List spend 128800000 0 heal
 End
 #END
