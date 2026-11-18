@@ -317499,3 +317499,298 @@ Wed Nov 18 21:32:39 2026 :: Log Trentlin [16009]: e
 Wed Nov 18 21:32:39 2026 :: Log Trentlin [16010]: arrived (Southeast Corner of Aft Deck) from 16009
 Wed Nov 18 21:32:39 2026 :: Log Trentlin [16010]: con an
 Wed Nov 18 21:32:40 2026 :: Log Trentlin [16010]: k an
+Wed Nov 18 21:32:48 2026 :: Log Trentlin [16010]: fists
+Wed Nov 18 21:32:59 2026 :: Log Trentlin [16010]: fists
+Wed Nov 18 21:33:06 2026 :: Log Trentlin [16010]: fists
+Wed Nov 18 21:33:12 2026 :: Log Trentlin [16010]: sco
+Wed Nov 18 21:33:18 2026 :: Log Trentlin [16010]: fists
+Wed Nov 18 21:33:22 2026 :: Log Trentlin [16010]: killed The angry pirate
+Wed Nov 18 21:33:22 2026 :: Log Trentlin [16010]: coin +1 platinum
+Wed Nov 18 21:33:22 2026 :: Log Trentlin [16010]: coin +5 silver
+Wed Nov 18 21:33:22 2026 :: Log Trentlin [16010]: coin +6 copper
+Wed Nov 18 21:33:22 2026 :: Log Trentlin [16010]: coin +2 gold
+Wed Nov 18 21:33:27 2026 :: Log Trentlin [16010]: sac co
+Wed Nov 18 21:33:27 2026 :: Log Trentlin [16010]: coin +84 copper
+Wed Nov 18 21:33:28 2026 :: Log Trentlin [16010]: w
+Wed Nov 18 21:33:28 2026 :: Log Trentlin [16009]: arrived (Aft Deck South) from 16010
+Wed Nov 18 21:33:28 2026 :: Log Trentlin [16009]: n
+Wed Nov 18 21:33:28 2026 :: Log Trentlin [16014]: arrived (Aft Deck) from 16009
+Wed Nov 18 21:33:29 2026 :: Log Trentlin [16014]: w
+Wed Nov 18 21:33:29 2026 :: Log Trentlin [16013]: arrived (Center Aft Deck) from 16014
+Wed Nov 18 21:33:31 2026 :: Log Trentlin [16013]: con cap
+Wed Nov 18 21:33:46 2026 :: Log Trentlin [16013]: l ca
+Wed Nov 18 21:33:47 2026 :: Log Trentlin [16013]: reca
+Wed Nov 18 21:33:47 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 16013
+Wed Nov 18 21:33:50 2026 :: Log Trentlin [4207]: w
+Wed Nov 18 21:33:50 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Wed Nov 18 21:33:52 2026 :: Log Trentlin [4208]: stash
+Wed Nov 18 21:34:19 2026 :: Log Trentlin [4208]: stash get demon
+Wed Nov 18 21:34:19 2026 :: Log Trentlin [4208]: withdrew a suit of demon-scale plate (vnum 30680) from the stash
+Wed Nov 18 21:34:23 2026 :: Log Trentlin [4208]: stash get trent
+Wed Nov 18 21:34:23 2026 :: Log Trentlin [4208]: withdrew Trentlin's level 54 gear (vnum 3032) from the stash
+Wed Nov 18 21:34:25 2026 :: Log Trentlin [4208]: comp demon
+Wed Nov 18 21:34:31 2026 :: Log Trentlin [4208]: wear demon
+Wed Nov 18 21:34:40 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 6 of 6 in 6 hours).
+Wed Nov 18 21:34:40 2026 :: Connection guard: 52.87.72.16 paused for 24 hours (pause 3 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 52.87.72.16 lifts it.
+Wed Nov 18 21:34:41 2026 :: Log Trentlin [4208]: stash put robes
+Wed Nov 18 21:34:41 2026 :: Log Trentlin [4208]: stashed some Black velvet robes (vnum 10048)
+Wed Nov 18 21:34:44 2026 :: Log Trentlin [4208]: l in gear
+Wed Nov 18 21:34:46 2026 :: Log Trentlin [4208]: drop gear
+Wed Nov 18 21:34:47 2026 :: Treasure goblin: vanished from room 8028 (Throt & Gleep's Vault, mega1.are) (too long in one area).
+Wed Nov 18 21:34:49 2026 :: Log Trentlin [4208]: sac gear
+Wed Nov 18 21:34:49 2026 :: Log Trentlin [4208]: coin +1 copper
+Wed Nov 18 21:34:50 2026 :: Log Trentlin [4208]: l
+Wed Nov 18 21:34:53 2026 :: Log Trentlin [4208]: stash
+Wed Nov 18 21:34:54 2026 :: Log Trentlin [4208]: affects off: iron skin
+Wed Nov 18 21:34:57 2026 :: Log Trentlin [4208]: stash buy
+Wed Nov 18 21:34:57 2026 :: Log Trentlin [4208]: copper -10000000
+Wed Nov 18 21:35:02 2026 :: Log Trentlin [4208]: stash buy
+Wed Nov 18 21:35:02 2026 :: Log Trentlin [4208]: copper -22500000
+Wed Nov 18 21:35:04 2026 :: Log Trentlin [4208]: stash buy
+Wed Nov 18 21:35:04 2026 :: Log Trentlin [4208]: copper -40000000
+Wed Nov 18 21:35:09 2026 :: Log Trentlin [4208]: wo
+Wed Nov 18 21:35:16 2026 :: Log Trentlin [4208]: e
+Wed Nov 18 21:35:16 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Wed Nov 18 21:35:16 2026 :: Log Trentlin [4207]: e
+Wed Nov 18 21:35:16 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Wed Nov 18 21:35:17 2026 :: Log Trentlin [4202]: e
+Wed Nov 18 21:35:17 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Wed Nov 18 21:35:17 2026 :: Log Trentlin [4201]: e
+Wed Nov 18 21:35:17 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Wed Nov 18 21:35:17 2026 :: Log Trentlin [2427]: e
+Wed Nov 18 21:35:17 2026 :: Log Trentlin [2427]: e
+Wed Nov 18 21:35:18 2026 :: Log Trentlin [2427]: e
+Wed Nov 18 21:35:18 2026 :: Log Trentlin [2427]: n
+Wed Nov 18 21:35:18 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Nov 18 21:35:18 2026 :: Log Trentlin [2404]: n
+Wed Nov 18 21:35:18 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Wed Nov 18 21:35:19 2026 :: Log Trentlin [2401]: u
+Wed Nov 18 21:35:19 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Nov 18 21:35:19 2026 :: Log Trentlin [2410]: u
+Wed Nov 18 21:35:19 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Nov 18 21:35:19 2026 :: Log Trentlin [2411]: u
+Wed Nov 18 21:35:19 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Wed Nov 18 21:35:20 2026 :: Log Trentlin [2414]: u
+Wed Nov 18 21:35:20 2026 :: Log Trentlin [2497]: arrived (The Questmaster's Globe, above the Oak) from 2414
+Wed Nov 18 21:35:22 2026 :: Log Trentlin [2497]: aquest request
+Wed Nov 18 21:35:22 2026 :: Log Trentlin [2497]: quest assigned: recover The Crown of Eclipse (obj 25040) in moria.are, 29 minutes, ordinary
+Wed Nov 18 21:35:29 2026 :: Log Trentlin [2497]: enter door
+Wed Nov 18 21:35:29 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Nov 18 21:35:30 2026 :: Log Trentlin [2401]: south
+Wed Nov 18 21:35:30 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2401
+Wed Nov 18 21:35:30 2026 :: Log Trentlin [2404]: south
+Wed Nov 18 21:35:30 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 2404
+Wed Nov 18 21:35:31 2026 :: Log Trentlin [2427]: south
+Wed Nov 18 21:35:31 2026 :: Log Trentlin [2428]: arrived (Main Processional.) from 2427
+Wed Nov 18 21:35:31 2026 :: Log Trentlin [2428]: south
+Wed Nov 18 21:35:31 2026 :: Log Trentlin [2429]: arrived (Bridge of the Mermaids.) from 2428
+Wed Nov 18 21:35:31 2026 :: Log Trentlin [2429]: south
+Wed Nov 18 21:35:31 2026 :: Log Trentlin [2430]: arrived (Main Processional.) from 2429
+Wed Nov 18 21:35:31 2026 :: Log Trentlin [2430]: south
+Wed Nov 18 21:35:31 2026 :: Log Trentlin [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Wed Nov 18 21:35:32 2026 :: Log Trentlin [2431]: open south
+Wed Nov 18 21:35:32 2026 :: Log Trentlin [2431]: south
+Wed Nov 18 21:35:32 2026 :: Log Trentlin [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Wed Nov 18 21:35:32 2026 :: Log Trentlin [2432]: south
+Wed Nov 18 21:35:32 2026 :: Log Trentlin [3505]: arrived (The Trail to Miden'nir) from 2432
+Wed Nov 18 21:35:32 2026 :: Log Trentlin [3505]: east
+Wed Nov 18 21:35:32 2026 :: Log Trentlin [3506]: arrived (The Miden'nir) from 3505
+Wed Nov 18 21:35:33 2026 :: Log Trentlin [3506]: east
+Wed Nov 18 21:35:33 2026 :: Log Trentlin [3550]: arrived (At The Foot of The Dark Hills) from 3506
+Wed Nov 18 21:35:33 2026 :: Log Trentlin [3550]: north
+Wed Nov 18 21:35:33 2026 :: Log Trentlin [18]: arrived (Entering the hills) from 3550
+Wed Nov 18 21:35:33 2026 :: Log Trentlin [18]: north
+Wed Nov 18 21:35:33 2026 :: Log Trentlin [4000]: arrived (The hills) from 18
+Wed Nov 18 21:35:34 2026 :: Log Trentlin [4000]: spell
+Wed Nov 18 21:35:35 2026 :: Log Trentlin [4000]: n
+Wed Nov 18 21:35:35 2026 :: Log Trentlin [4001]: arrived (The hills) from 4000
+Wed Nov 18 21:35:36 2026 :: Log Trentlin [4001]: n
+Wed Nov 18 21:35:36 2026 :: Log Trentlin [4002]: arrived (End of the path) from 4001
+Wed Nov 18 21:35:37 2026 :: Log Trentlin [4002]: n
+Wed Nov 18 21:35:37 2026 :: Log Trentlin [4010]: arrived (The cave) from 4002
+Wed Nov 18 21:35:39 2026 :: Log Trentlin [4010]: n
+Wed Nov 18 21:35:39 2026 :: Log Trentlin [4011]: arrived (The tunnel) from 4010
+Wed Nov 18 21:35:40 2026 :: Log Trentlin [4011]: ex
+Wed Nov 18 21:35:41 2026 :: Log Trentlin [4011]: n
+Wed Nov 18 21:35:41 2026 :: Log Trentlin [4014]: arrived (The tunnel) from 4011
+Wed Nov 18 21:35:43 2026 :: Log Trentlin [4014]: ex
+Wed Nov 18 21:35:44 2026 :: Log Trentlin [4014]: e
+Wed Nov 18 21:35:44 2026 :: Log Trentlin [4015]: arrived (The tunnel) from 4014
+Wed Nov 18 21:35:46 2026 :: Log Trentlin [4015]: w
+Wed Nov 18 21:35:46 2026 :: Log Trentlin [4014]: arrived (The tunnel) from 4015
+Wed Nov 18 21:35:46 2026 :: Log Trentlin [4014]: w
+Wed Nov 18 21:35:46 2026 :: Log Trentlin [-]: arrived (-) from 4014
+Wed Nov 18 21:35:50 2026 :: Log Trentlin [-]: k trea
+Wed Nov 18 21:35:56 2026 :: Log Trentlin [4013]: l
+Wed Nov 18 21:35:57 2026 :: Log Trentlin [4013]: get all
+Wed Nov 18 21:35:57 2026 :: Log Trentlin [4013]: coin +24 copper
+Wed Nov 18 21:35:57 2026 :: Log Trentlin [4013]: coin +54 silver
+Wed Nov 18 21:35:57 2026 :: Log Trentlin [4013]: coin +36 gold
+Wed Nov 18 21:35:57 2026 :: Log Trentlin [4013]: coin +84 platinum
+Wed Nov 18 21:35:58 2026 :: Log Trentlin [4013]: w
+Wed Nov 18 21:35:58 2026 :: Log Trentlin [-]: arrived (-) from 4013
+Wed Nov 18 21:36:00 2026 :: Log Trentlin [-]: k trea
+Wed Nov 18 21:36:04 2026 :: Log Trentlin [4012]: get all
+Wed Nov 18 21:36:04 2026 :: Log Trentlin [4012]: coin +24 copper
+Wed Nov 18 21:36:04 2026 :: Log Trentlin [4012]: coin +54 silver
+Wed Nov 18 21:36:04 2026 :: Log Trentlin [4012]: coin +36 gold
+Wed Nov 18 21:36:04 2026 :: Log Trentlin [4012]: coin +84 platinum
+Wed Nov 18 21:36:06 2026 :: Log Trentlin [4012]: n
+Wed Nov 18 21:36:06 2026 :: Log Trentlin [-]: arrived (-) from 4012
+Wed Nov 18 21:36:07 2026 :: Log Trentlin [-]: k trea
+Wed Nov 18 21:36:12 2026 :: Log Trentlin [4016]: get all
+Wed Nov 18 21:36:12 2026 :: Log Trentlin [4016]: coin +28 copper
+Wed Nov 18 21:36:12 2026 :: Log Trentlin [4016]: coin +63 silver
+Wed Nov 18 21:36:12 2026 :: Log Trentlin [4016]: coin +42 gold
+Wed Nov 18 21:36:12 2026 :: Log Trentlin [4016]: coin +98 platinum
+Wed Nov 18 21:36:13 2026 :: Log Trentlin [4016]: s
+Wed Nov 18 21:36:13 2026 :: Log Trentlin [-]: arrived (-) from 4016
+Wed Nov 18 21:36:13 2026 :: Log Trentlin [-]: l trea
+Wed Nov 18 21:36:15 2026 :: Log Trentlin [-]: trip trea
+Wed Nov 18 21:36:22 2026 :: Connection guard: 35.203.210.80 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 18 21:36:22 2026 :: Connection guard: 35.203.210.80 closed without a word (strike 2 of 6 in 6 hours).
+Wed Nov 18 21:36:23 2026 :: Log Trentlin [4012]: get all
+Wed Nov 18 21:36:23 2026 :: Log Trentlin [4012]: coin +24 copper
+Wed Nov 18 21:36:23 2026 :: Log Trentlin [4012]: coin +54 silver
+Wed Nov 18 21:36:23 2026 :: Log Trentlin [4012]: coin +36 gold
+Wed Nov 18 21:36:23 2026 :: Log Trentlin [4012]: coin +84 platinum
+Wed Nov 18 21:36:24 2026 :: Log Trentlin [4012]: e
+Wed Nov 18 21:36:24 2026 :: Log Trentlin [-]: arrived (-) from 4012
+Wed Nov 18 21:36:24 2026 :: Log Trentlin [-]: k trea
+Wed Nov 18 21:36:29 2026 :: Log Trentlin [4013]: get all
+Wed Nov 18 21:36:29 2026 :: Log Trentlin [4013]: coin +28 copper
+Wed Nov 18 21:36:29 2026 :: Log Trentlin [4013]: coin +63 silver
+Wed Nov 18 21:36:29 2026 :: Log Trentlin [4013]: coin +42 gold
+Wed Nov 18 21:36:29 2026 :: Log Trentlin [4013]: coin +98 platinum
+Wed Nov 18 21:36:29 2026 :: Log Trentlin [4013]: e
+Wed Nov 18 21:36:29 2026 :: Log Trentlin [-]: arrived (-) from 4013
+Wed Nov 18 21:36:29 2026 :: Log Trentlin [-]: k trea
+Wed Nov 18 21:36:34 2026 :: Log Trentlin [4014]: get all
+Wed Nov 18 21:36:34 2026 :: Log Trentlin [4014]: coin +32 copper
+Wed Nov 18 21:36:34 2026 :: Log Trentlin [4014]: coin +72 silver
+Wed Nov 18 21:36:34 2026 :: Log Trentlin [4014]: coin +48 gold
+Wed Nov 18 21:36:34 2026 :: Log Trentlin [4014]: coin +112 platinum
+Wed Nov 18 21:36:34 2026 :: Log Trentlin [4014]: s
+Wed Nov 18 21:36:34 2026 :: Log Trentlin [-]: arrived (-) from 4014
+Wed Nov 18 21:36:34 2026 :: Log Trentlin [-]: k trea
+Wed Nov 18 21:36:39 2026 :: Log Trentlin [4011]: get all
+Wed Nov 18 21:36:39 2026 :: Log Trentlin [4011]: coin +28 copper
+Wed Nov 18 21:36:39 2026 :: Log Trentlin [4011]: coin +63 silver
+Wed Nov 18 21:36:39 2026 :: Log Trentlin [4011]: coin +42 gold
+Wed Nov 18 21:36:39 2026 :: Log Trentlin [4011]: coin +98 platinum
+Wed Nov 18 21:36:39 2026 :: Log Trentlin [4011]: n
+Wed Nov 18 21:36:39 2026 :: Log Trentlin [-]: arrived (-) from 4011
+Wed Nov 18 21:36:39 2026 :: Log Trentlin [-]: k trea
+Wed Nov 18 21:36:44 2026 :: Log Trentlin [4014]: get all
+Wed Nov 18 21:36:44 2026 :: Log Trentlin [4014]: coin +20 copper
+Wed Nov 18 21:36:44 2026 :: Log Trentlin [4014]: coin +45 silver
+Wed Nov 18 21:36:44 2026 :: Log Trentlin [4014]: coin +30 gold
+Wed Nov 18 21:36:44 2026 :: Log Trentlin [4014]: coin +70 platinum
+Wed Nov 18 21:36:44 2026 :: Log Trentlin [4014]: n
+Wed Nov 18 21:36:44 2026 :: Log Trentlin [-]: arrived (-) from 4014
+Wed Nov 18 21:36:44 2026 :: Log Trentlin [-]: k trea
+Wed Nov 18 21:36:49 2026 :: Log Trentlin [4018]: get all
+Wed Nov 18 21:36:49 2026 :: Log Trentlin [4018]: coin +20 copper
+Wed Nov 18 21:36:49 2026 :: Log Trentlin [4018]: coin +45 silver
+Wed Nov 18 21:36:49 2026 :: Log Trentlin [4018]: coin +30 gold
+Wed Nov 18 21:36:49 2026 :: Log Trentlin [4018]: coin +70 platinum
+Wed Nov 18 21:36:49 2026 :: Log Trentlin [4018]: s
+Wed Nov 18 21:36:49 2026 :: Log Trentlin [-]: arrived (-) from 4018
+Wed Nov 18 21:36:49 2026 :: Log Trentlin [-]: k trea
+Wed Nov 18 21:36:54 2026 :: Log Trentlin [4014]: get all
+Wed Nov 18 21:36:54 2026 :: Log Trentlin [4014]: coin +20 copper
+Wed Nov 18 21:36:54 2026 :: Log Trentlin [4014]: coin +45 silver
+Wed Nov 18 21:36:54 2026 :: Log Trentlin [4014]: coin +30 gold
+Wed Nov 18 21:36:54 2026 :: Log Trentlin [4014]: coin +70 platinum
+Wed Nov 18 21:36:54 2026 :: Log Trentlin [4014]: e
+Wed Nov 18 21:36:54 2026 :: Log Trentlin [-]: arrived (-) from 4014
+Wed Nov 18 21:36:54 2026 :: Log Trentlin [-]: k tr
+Wed Nov 18 21:36:58 2026 :: Log Trentlin [4015]: get all
+Wed Nov 18 21:36:58 2026 :: Log Trentlin [4015]: coin +28 copper
+Wed Nov 18 21:36:58 2026 :: Log Trentlin [4015]: coin +63 silver
+Wed Nov 18 21:36:58 2026 :: Log Trentlin [4015]: coin +42 gold
+Wed Nov 18 21:36:58 2026 :: Log Trentlin [4015]: coin +98 platinum
+Wed Nov 18 21:36:59 2026 :: Log Trentlin [4015]: n
+Wed Nov 18 21:36:59 2026 :: Log Trentlin [-]: arrived (-) from 4015
+Wed Nov 18 21:36:59 2026 :: Log Trentlin [-]: fol tr
+Wed Nov 18 21:37:01 2026 :: Log Trentlin [-]: k tr
+Wed Nov 18 21:37:05 2026 :: Log Trentlin [4019]: get all
+Wed Nov 18 21:37:05 2026 :: Log Trentlin [4019]: coin +20 copper
+Wed Nov 18 21:37:05 2026 :: Log Trentlin [4019]: coin +45 silver
+Wed Nov 18 21:37:05 2026 :: Log Trentlin [4019]: coin +30 gold
+Wed Nov 18 21:37:05 2026 :: Log Trentlin [4019]: coin +70 platinum
+Wed Nov 18 21:37:05 2026 :: Log Trentlin [4019]: s
+Wed Nov 18 21:37:05 2026 :: Log Trentlin [-]: arrived (-) from 4019
+Wed Nov 18 21:37:06 2026 :: Log Trentlin [-]: k tr
+Wed Nov 18 21:37:11 2026 :: Log Trentlin [4015]: get all
+Wed Nov 18 21:37:11 2026 :: Log Trentlin [4015]: coin +16 copper
+Wed Nov 18 21:37:11 2026 :: Log Trentlin [4015]: coin +36 silver
+Wed Nov 18 21:37:11 2026 :: Log Trentlin [4015]: coin +24 gold
+Wed Nov 18 21:37:11 2026 :: Log Trentlin [4015]: coin +56 platinum
+Wed Nov 18 21:37:11 2026 :: Log Trentlin [4015]: w
+Wed Nov 18 21:37:11 2026 :: Log Trentlin [-]: arrived (-) from 4015
+Wed Nov 18 21:37:11 2026 :: Log Trentlin [-]: k tr
+Wed Nov 18 21:37:11 2026 :: Log Trentlin [-]: killed a treasure goblin
+Wed Nov 18 21:37:11 2026 :: Treasure goblin: slain by Trentlin in room 4014 (The tunnel, moria.are) after 13 flights, dropping 2390p 35g 36s 80c.
+Wed Nov 18 21:37:11 2026 :: Log Trentlin [4014]: coin +2390 platinum
+Wed Nov 18 21:37:11 2026 :: Log Trentlin [4014]: coin +37 silver
+Wed Nov 18 21:37:11 2026 :: Log Trentlin [4014]: coin +93 copper
+Wed Nov 18 21:37:11 2026 :: Log Trentlin [4014]: coin +35 gold
+Wed Nov 18 21:37:18 2026 :: Log Trentlin [4014]: get all
+Wed Nov 18 21:37:19 2026 :: Log Trentlin [4014]: drop co
+Wed Nov 18 21:37:20 2026 :: Log Trentlin [4014]: l in co
+Wed Nov 18 21:37:22 2026 :: Log Trentlin [4014]: get bra
+Wed Nov 18 21:37:25 2026 :: Log Trentlin [4014]: drop bra
+Wed Nov 18 21:37:25 2026 :: Log Trentlin [4014]: sca
+Wed Nov 18 21:37:27 2026 :: Log Trentlin [4014]: ex
+Wed Nov 18 21:37:28 2026 :: Log Trentlin [4014]: w
+Wed Nov 18 21:37:28 2026 :: Log Trentlin [4013]: arrived (The tunnel) from 4014
+Wed Nov 18 21:37:29 2026 :: Log Trentlin [4013]: w
+Wed Nov 18 21:37:29 2026 :: Log Trentlin [4012]: arrived (The tunnel) from 4013
+Wed Nov 18 21:37:30 2026 :: Log Trentlin [4012]: n
+Wed Nov 18 21:37:30 2026 :: Log Trentlin [4016]: arrived (The large cave) from 4012
+Wed Nov 18 21:37:31 2026 :: Log Trentlin [4016]: ex
+Wed Nov 18 21:37:33 2026 :: Log Trentlin [4016]: s
+Wed Nov 18 21:37:33 2026 :: Log Trentlin [4012]: arrived (The tunnel) from 4016
+Wed Nov 18 21:37:33 2026 :: Log Trentlin [4012]: s
+Wed Nov 18 21:37:34 2026 :: Log Trentlin [4012]: e
+Wed Nov 18 21:37:34 2026 :: Log Trentlin [4013]: arrived (The tunnel) from 4012
+Wed Nov 18 21:37:34 2026 :: Log Trentlin [4013]: e
+Wed Nov 18 21:37:34 2026 :: Log Trentlin [4014]: arrived (The tunnel) from 4013
+Wed Nov 18 21:37:34 2026 :: Log Trentlin [4014]: e
+Wed Nov 18 21:37:34 2026 :: Log Trentlin [4015]: arrived (The tunnel) from 4014
+Wed Nov 18 21:37:36 2026 :: Log Trentlin [4015]: n
+Wed Nov 18 21:37:36 2026 :: Log Trentlin [4019]: arrived (The tunnel) from 4015
+Wed Nov 18 21:37:37 2026 :: Log Trentlin [4019]: n
+Wed Nov 18 21:37:37 2026 :: Log Trentlin [4026]: arrived (The many tunnels) from 4019
+Wed Nov 18 21:37:38 2026 :: Log Trentlin [4026]: ex
+Wed Nov 18 21:37:39 2026 :: Log Trentlin [4026]: e
+Wed Nov 18 21:37:39 2026 :: Log Trentlin [4027]: arrived (The tunnel) from 4026
+Wed Nov 18 21:37:41 2026 :: Log Trentlin [4027]: get all
+Wed Nov 18 21:37:42 2026 :: Log Trentlin [4027]: reca
+Wed Nov 18 21:37:42 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4027
+Wed Nov 18 21:37:43 2026 :: Log Trentlin [4207]: e
+Wed Nov 18 21:37:43 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Wed Nov 18 21:37:43 2026 :: Log Trentlin [4202]: e
+Wed Nov 18 21:37:43 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Wed Nov 18 21:37:43 2026 :: Log Trentlin [4201]: e
+Wed Nov 18 21:37:43 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Wed Nov 18 21:37:43 2026 :: Log Trentlin [2427]: e
+Wed Nov 18 21:37:44 2026 :: Log Trentlin [2427]: e
+Wed Nov 18 21:37:44 2026 :: Log Trentlin [2427]: e
+Wed Nov 18 21:37:44 2026 :: Log Trentlin [2427]: n
+Wed Nov 18 21:37:44 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Nov 18 21:37:44 2026 :: Log Trentlin [2404]: n
+Wed Nov 18 21:37:44 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Wed Nov 18 21:37:45 2026 :: Log Trentlin [2401]: u
+Wed Nov 18 21:37:45 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Nov 18 21:37:45 2026 :: Log Trentlin [2410]: u
+Wed Nov 18 21:37:45 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Nov 18 21:37:45 2026 :: Log Trentlin [2411]: u
+Wed Nov 18 21:37:45 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Wed Nov 18 21:37:45 2026 :: Log Trentlin [2414]: u
+Wed Nov 18 21:37:45 2026 :: Log Trentlin [2497]: arrived (The Questmaster's Globe, above the Oak) from 2414
+Wed Nov 18 21:37:47 2026 :: Log Trentlin [2497]: aquest complete
+Wed Nov 18 21:37:47 2026 :: Log Trentlin [2497]: copper +140609040
+Wed Nov 18 21:37:47 2026 :: Log Trentlin [2497]: quest complete: 140p 60g 90s 40c, 82 quest points (streak bonus 118%)
+Wed Nov 18 21:37:47 2026 :: Snapshot of Trentlin taken before quest: Trentlin.20261118_213747.quest (PRESTORE Trentlin to see it).

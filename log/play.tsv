@@ -38218,3 +38218,347 @@
 1795037559	cmd	Trentlin	52	16010	pirate.are	standing	53	0	-	east		Southeast Corner of Aft Deck //   You are standing on the aft deck of the ship.  From here, you could see // all the people ashore selling their fresh catch.  The ship rocks slowly	-	+
 1795037559	cmd	Trentlin	52	16010	pirate.are	standing	53	0	-	consider	an	The angry pirate is far below your level. // The angry pirate has about twice your hit points. // The angry pirate could barely scratch you; you would need about 8 rounds to bring him down.	-	+
 1795037560	cmd	Trentlin	52	16010	pirate.are	standing	53	0	-	kill	an	Your punch MUTILATES The angry pirate! // The angry pirate parries your attack. // Your punch ^^^ DESTROYS ^^^ The angry pirate!	-	-
+1795037568	cmd	Trentlin	52	16010	pirate.are	fighting	55	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The angry pirate. // Your fists of fury scratches The angry pirate.	-	+
+1795037579	cmd	Trentlin	52	16010	pirate.are	fighting	55	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The angry pirate. // Your fists of fury decimates The angry pirate!	-	+
+1795037586	cmd	Trentlin	52	16010	pirate.are	fighting	55	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The angry pirate. // Your fists of fury scratches The angry pirate.	-	+
+1795037592	state	Trentlin	52	16010	pirate.are	lvl=52 hp=551/996 mana=1828/2399 mv=253/549 align=375 exp=127352 coin=1886422151 bank=15507882698 qp=73 prac=15 train=20 stash=73/75 remorts=1
+1795037592	cmd	Trentlin	52	16010	pirate.are	fighting	55	0	fight	score		| Name:       Trentlin | Level:      52 | Class:        Monk | // | Played:     41 hours | Sex:      Male | Guild:        Monk | // | Age:        19 years | Race:    Dwarf | Castle:       None |	-	+
+1795037598	cmd	Trentlin	52	16010	pirate.are	fighting	55	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The angry pirate. // Your fists of fury grazes The angry pirate.	-	+
+1795037602	coin	Trentlin	52	16010	pirate.are	+1000000	loot	(violence_update)	corpse of The angry pirate	17395304849
+1795037602	coin	Trentlin	52	16010	pirate.are	+500	loot	(violence_update)	corpse of The angry pirate	17395305349
+1795037602	coin	Trentlin	52	16010	pirate.are	+6	loot	(violence_update)	corpse of The angry pirate	17395305355
+1795037602	coin	Trentlin	52	16010	pirate.are	+20000	loot	(violence_update)	corpse of The angry pirate	17395325355
+1795037607	coin	Trentlin	52	16010	pirate.are	+84	loot	sacrifice	corpse of The angry pirate	17395325439
+1795037607	cmd	Trentlin	52	16010	pirate.are	standing	55	0	-	sacrifice	co	The Gods give you 84 copper coins for your sacrifice.	-	-
+1795037608	cmd	Trentlin	52	16009	pirate.are	standing	55	0	-	west		Aft Deck South //   You are standing on the aft deck of the ship.  From here, you could see // all the people ashore selling their fresh catch.  The ship rocks slowly	-	+
+1795037608	cmd	Trentlin	52	16014	pirate.are	standing	55	0	-	north		Aft Deck //   You are standing on the aft deck of the ship.  The ship sways back and // forth slowly, causing you to feel seasick.  Pirates walk around up here	-	+
+1795037609	cmd	Trentlin	52	16013	pirate.are	standing	55	0	-	west		Center Aft Deck //   You are standing on the aft deck of the ship.  This happens to be the // place from which the captain shouts orders to his crew to get the ship	-	+
+1795037611	cmd	Trentlin	52	16013	pirate.are	standing	55	0	-	consider	cap	The Captain is well above your level. // The Captain has many times your hit points. // Blow for blow, you would need about 73 rounds to bring The Captain down; he would need about 9 rounds for you.	-	+
+1795037619	laid	-	0	0	-	976	herb	42	a marjoram plant	4171	moria.are	scatter
+1795037619	laid	-	0	0	-	977	herb	39	a chervil leaf	4122	moria.are	scatter
+1795037619	laid	-	0	0	-	978	component	58	some pixie dust	25038	mountain.are	scatter
+1795037626	cmd	Trentlin	52	16013	pirate.are	standing	57	0	-	look	ca	The captain is a man in his fifties.  What's left of his hair is slicked // and tied at the back of his head.  He has had much experience in // commanding rowdy pirate crews.  He has a tough, weather-worn face and	-	+
+1795037627	area	Trentlin	52	4207	dresden.are	pirate.are	dresden.are	282	recall
+1795037627	cmd	Trentlin	52	4207	dresden.are	standing	57	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795037630	cmd	Trentlin	52	4208	dresden.are	standing	57	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795037632	cmd	Trentlin	52	4208	dresden.are	standing	57	0	-	stash		Your stash holds 73 of 75 things. //     1) a coiled-snake shield //     2) Arthur's scabbard	-	+
+1795037659	got	Trentlin	52	4208	dresden.are	30680	a suit of demon-scale plate	armor	46	105800000	stash	-
+1795037659	cmd	Trentlin	52	4208	dresden.are	standing	57	15	-	stash	get demon	You take a suit of demon-scale plate out of your stash.	-	-
+1795037663	got	Trentlin	52	4208	dresden.are	3032	Trentlin's level 54 gear	container	0	3100	stash	-
+1795037663	cmd	Trentlin	52	4208	dresden.are	standing	57	6	-	stash	get trent	You take Trentlin's level 54 gear out of your stash.	-	-
+1795037665	cmd	Trentlin	52	4208	dresden.are	standing	57	0	-	compare	demon	A) a suit of demon-scale plate (level 46) // B) some Black velvet robes (level 32), worn // Slot: body.  Your damage comes from weapons.	-	+
+1795037671	cmd	Trentlin	52	4208	dresden.are	standing	57	0	-	wear	demon	You stop using some Black velvet robes. // You wear a suit of demon-scale plate on your body.	-	-
+1795037681	cmd	Trentlin	52	4208	dresden.are	standing	56	10	-	stash	put robes	You put some Black velvet robes away for safe keeping.	-	-
+1795037684	cmd	Trentlin	52	4208	dresden.are	standing	56	0	-	look	in gear	Trentlin's level 54 gear contains: //      Nothing.	-	-
+1795037686	cmd	Trentlin	52	4208	dresden.are	standing	56	0	-	drop	gear	You drop Trentlin's level 54 gear.	-	-
+1795037689	coin	Trentlin	52	4208	dresden.are	+1	loot	sacrifice	-	17395325440
+1795037689	cmd	Trentlin	52	4208	dresden.are	standing	56	0	-	sacrifice	gear	The Gods give you one copper coin for your sacrifice.	-	-
+1795037690	cmd	Trentlin	52	4208	dresden.are	standing	56	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795037693	cmd	Trentlin	52	4208	dresden.are	standing	56	0	-	stash		Your stash holds 72 of 75 things. //     1) some Black velvet robes //     2) a coiled-snake shield	-	+
+1795037694	laid	-	0	0	-	980	herb	38	a foxglove flower	15036	campus.are	scatter
+1795037697	coin	Trentlin	52	4208	dresden.are	-10000000	spent	stash	-	17385325440
+1795037697	achieved	Trentlin	52	4208	dresden.are	stash-expand	10	2344	stash
+1795037697	cmd	Trentlin	52	4208	dresden.are	standing	59	7	-	stash	buy	                    ACHIEVEMENT EARNED // More Shelf Space  +10 points // Buy more room in your stash.	-	+
+1795037702	coin	Trentlin	52	4208	dresden.are	-22500000	spent	stash	-	17362825440
+1795037702	cmd	Trentlin	52	4208	dresden.are	standing	59	7	-	stash	buy	You pay 22p 50g.  Your stash now holds 125.	-	-
+1795037704	coin	Trentlin	52	4208	dresden.are	-40000000	spent	stash	-	17322825440
+1795037704	cmd	Trentlin	52	4208	dresden.are	standing	59	6	-	stash	buy	(Tip: STASH BUY <number> buys several steps at once.) // You pay 40p.  Your stash now holds 150.	-	-
+1795037709	cmd	Trentlin	52	4208	dresden.are	standing	59	0	-	worth		You have 1814 platinum, 94 gold, 27 silver, 42 copper // and 127354 experience (14946 exp to level).	-	-
+1795037716	cmd	Trentlin	52	4207	dresden.are	standing	59	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795037716	cmd	Trentlin	52	4202	dresden.are	standing	59	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795037717	cmd	Trentlin	52	4201	dresden.are	standing	59	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795037717	cmd	Trentlin	52	2427	dresden.are	standing	59	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795037717	cmd	Trentlin	52	2427	dresden.are	standing	59	0	-	east		Alas, you cannot go that way.	-	-
+1795037717	cmd	Trentlin	52	2427	dresden.are	standing	59	0	-	east		Alas, you cannot go that way.	-	-
+1795037718	cmd	Trentlin	52	2427	dresden.are	standing	59	0	-	east		Alas, you cannot go that way.	-	-
+1795037718	cmd	Trentlin	52	2404	dresden.are	standing	59	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795037718	cmd	Trentlin	52	2401	dresden.are	standing	59	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795037719	cmd	Trentlin	52	2410	dresden.are	standing	59	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1795037719	cmd	Trentlin	52	2411	dresden.are	standing	59	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1795037719	cmd	Trentlin	52	2414	dresden.are	standing	59	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1795037720	cmd	Trentlin	52	2497	dresden.are	standing	59	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795037722	quest	Trentlin	52	2497	dresden.are	ordinary	recover	25040	The Crown of Eclipse	59	moria.are	29
+1795037722	cmd	Trentlin	52	2497	dresden.are	standing	59	21	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Trentlin. The realm needs someone of your skill.' // Questor Thews tells you 'Raiders stole The Crown of Eclipse from the realm!'	-	+
+1795037729	cmd	Trentlin	52	2401	dresden.are	standing	59	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1795037730	cmd	Trentlin	52	2404	dresden.are	standing	59	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795037730	cmd	Trentlin	52	2427	dresden.are	standing	59	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795037731	cmd	Trentlin	52	2428	dresden.are	standing	59	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795037731	cmd	Trentlin	52	2429	dresden.are	standing	59	0	-	south		Bridge of the Mermaids. //   Once you reach the center of the bridge you understand how it got its name. // On either side of the bridge there is a statue of a mermaid build into the	-	+
+1795037731	cmd	Trentlin	52	2430	dresden.are	standing	59	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795037731	cmd	Trentlin	52	2431	dresden.are	standing	59	0	-	south		Inside the Southern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795037732	cmd	Trentlin	52	2431	dresden.are	standing	59	0	-	open	south	Ok.	-	-
+1795037732	cmd	Trentlin	52	2432	dresden.are	standing	59	0	-	south		Outside the Southern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1795037732	area	Trentlin	52	3505	midennir.are	dresden.are	midennir.are	105	south
+1795037732	cmd	Trentlin	52	3505	midennir.are	standing	59	0	-	south		The Trail to Miden'nir //   You are in a light forest. A path leads south, but the passage to the // east is easy enough. To the west, smoke can be seen rising above the	-	+
+1795037732	cmd	Trentlin	52	3506	midennir.are	standing	59	0	-	east		The Miden'nir //   You are in a dark forest. To the east, mountains block passage. From // here, only the lighter forest to the west or south offer a way to travel.	-	+
+1795037733	cmd	Trentlin	52	3550	midennir.are	standing	59	0	-	east		At The Foot of The Dark Hills //   You find yourself at the foot of a range of dark hills that streach off to // the north. In the distance you can just make out the tops of mist covered	-	+
+1795037733	area	Trentlin	52	18	connect.are	midennir.are	connect.are	1	north
+1795037733	cmd	Trentlin	52	18	connect.are	standing	59	0	-	north		Entering the hills //   Small hills begin to form here in the northwestern corner of the great forest // of middenir. From here if you look you can see great mountains towering 	-	+
+1795037733	area	Trentlin	52	4000	moria.are	connect.are	moria.are	0	north
+1795037733	cmd	Trentlin	52	4000	moria.are	standing	59	0	-	north		The hills //   You are on a small bewildered path winding its way between the hills in // lack of better things to do. To the south you have a splendid view over the	-	+
+1795037734	cmd	Trentlin	52	4000	moria.are	standing	59	0	-	spells		You know no spells.	-	-
+1795037735	cmd	Trentlin	52	4001	moria.are	standing	59	0	-	north		The hills //   You are surrounded by dark and sinister hills. Although they seemed fairly // small from a distance you now get the feeling that they're closing in on you,	-	+
+1795037736	cmd	Trentlin	52	4002	moria.are	standing	59	0	-	north		End of the path //   At this point the path has had enough. With a terrified shudder it cowers // to the ground, only staying here because you're standing on it. with a slight	-	+
+1795037737	cmd	Trentlin	52	4010	moria.are	standing	59	0	-	north		The cave //   You are in a large cave. The ceiling is lost somewhere above the reach of // your light. The floor, however, is highly illuminated, your light flickering	-	+
+1795037739	cmd	Trentlin	52	4011	moria.are	standing	59	0	-	north		The tunnel //   You squeeze your way through a small, narrow tunnel. The sharp-edged rocks // protruding from the walls threaten to scratch and cut you. 	-	+
+1795037740	cmd	Trentlin	52	4011	moria.are	standing	59	0	-	exits		Obvious exits: // North - The tunnel // South - The cave	-	-
+1795037741	cmd	Trentlin	52	4014	moria.are	standing	59	0	-	north		The tunnel //   You are walking in a narrow tunnel. The walls are only roughly shaped, // sharp rocks protruding everywhere, even from the floor making you stumble in	-	+
+1795037743	cmd	Trentlin	52	4014	moria.are	standing	59	0	-	exits		Obvious exits: // North - The cave // East  - The tunnel	-	+
+1795037744	cmd	Trentlin	52	4015	moria.are	standing	59	0	-	east		The tunnel //   You are in a corner tunnel leading west and north. // [Exits: north west]	-	+
+1795037746	cmd	Trentlin	52	4014	moria.are	standing	59	0	-	west		The tunnel //   You are walking in a narrow tunnel. The walls are only roughly shaped, // sharp rocks protruding everywhere, even from the floor making you stumble in	-	+
+1795037746	rare-seen	Trentlin	52	-	-	goblin	29941	990	arrive
+1795037746	cmd	Trentlin	52	-	-	standing	59	0	-	west		The tunnel //   This tunnel, leading east-west, seems seldom used.  A thick layer of dust // covers the floor, making the air stuffy and dry. 	-	+
+1795037750	rare-acted	Trentlin	52	-	-	goblin	29941	990	fought	4
+1795037750	laid	-	0	0	-	993	coin	3	84 platinum coins	-	-	goblin
+1795037750	laid	-	0	0	-	994	coin	3	36 gold coins	-	-	goblin
+1795037750	laid	-	0	0	-	995	coin	3	54 silver coins	-	-	goblin
+1795037750	laid	-	0	0	-	996	coin	3	24 copper coins	-	-	goblin
+1795037750	cmd	Trentlin	52	4013	moria.are	standing	61	0	-	kill	trea	Your punch ^^^ DESTROYS ^^^ a treasure goblin! // A treasure goblin shrieks as 84 platinum coins spills from a hole in his sack! // A treasure goblin clutches his sack and scurries off west!	-	+
+1795037756	spotted	Trentlin	52	4013	moria.are	996	coin	3	24 copper coins	6	1	goblin	look
+1795037756	spotted	Trentlin	52	4013	moria.are	995	coin	3	54 silver coins	6	1	goblin	look
+1795037756	spotted	Trentlin	52	4013	moria.are	994	coin	3	36 gold coins	6	1	goblin	look
+1795037756	spotted	Trentlin	52	4013	moria.are	993	coin	3	84 platinum coins	6	1	goblin	look
+1795037756	cmd	Trentlin	52	4013	moria.are	standing	61	0	-	look		The tunnel //   This tunnel, leading east-west, seems seldom used.  A thick layer of dust // covers the floor, making the air stuffy and dry. 	-	+
+1795037757	picked	Trentlin	52	4013	moria.are	996	coin	3	24 copper coins	7	1	1	goblin	get
+1795037757	coin	Trentlin	52	4013	moria.are	+24	loot	get	the floor	17322825464
+1795037757	picked	Trentlin	52	4013	moria.are	995	coin	3	54 silver coins	7	1	1	goblin	get
+1795037757	coin	Trentlin	52	4013	moria.are	+5400	loot	get	the floor	17322830864
+1795037757	picked	Trentlin	52	4013	moria.are	994	coin	3	36 gold coins	7	1	1	goblin	get
+1795037757	coin	Trentlin	52	4013	moria.are	+360000	loot	get	the floor	17323190864
+1795037757	picked	Trentlin	52	4013	moria.are	993	coin	3	84 platinum coins	7	1	1	goblin	get
+1795037757	coin	Trentlin	52	4013	moria.are	+84000000	loot	get	the floor	17407190864
+1795037757	cmd	Trentlin	52	4013	moria.are	standing	61	0	-	get	all	You get 24 copper coins. // You get 54 silver coins. // You get 36 gold coins.	-	+
+1795037758	cmd	Trentlin	52	-	-	standing	61	0	-	west		The tunnel //   You are in a part of the tunnel that looks uncannily like the rest except // that it goes in an east-north direction. To the north the tunnel widens into	-	+
+1795037760	laid	-	0	0	-	997	coin	3	84 platinum coins	-	-	goblin
+1795037760	laid	-	0	0	-	998	coin	3	36 gold coins	-	-	goblin
+1795037760	laid	-	0	0	-	999	coin	3	54 silver coins	-	-	goblin
+1795037760	laid	-	0	0	-	1000	coin	3	24 copper coins	-	-	goblin
+1795037760	cmd	Trentlin	52	4012	moria.are	standing	61	0	-	kill	trea	Your punch ^^^ DESTROYS ^^^ a treasure goblin! // A treasure goblin shrieks as 84 platinum coins spills from a hole in his sack! // A treasure goblin clutches his sack and scurries off north!	-	+
+1795037764	picked	Trentlin	52	4012	moria.are	1000	coin	3	24 copper coins	4	-1	0	goblin	get
+1795037764	coin	Trentlin	52	4012	moria.are	+24	loot	get	the floor	17407190888
+1795037764	picked	Trentlin	52	4012	moria.are	999	coin	3	54 silver coins	4	-1	0	goblin	get
+1795037764	coin	Trentlin	52	4012	moria.are	+5400	loot	get	the floor	17407196288
+1795037764	picked	Trentlin	52	4012	moria.are	998	coin	3	36 gold coins	4	-1	0	goblin	get
+1795037764	coin	Trentlin	52	4012	moria.are	+360000	loot	get	the floor	17407556288
+1795037764	picked	Trentlin	52	4012	moria.are	997	coin	3	84 platinum coins	4	-1	0	goblin	get
+1795037764	coin	Trentlin	52	4012	moria.are	+84000000	loot	get	the floor	17491556288
+1795037764	cmd	Trentlin	52	4012	moria.are	standing	61	0	-	get	all	You get 24 copper coins. // You get 54 silver coins. // You get 36 gold coins.	-	+
+1795037766	cmd	Trentlin	52	-	-	standing	61	0	-	north		The large cave //   You are in a large cave, the cave continues east and west, to the south // you notice a small tunnel.	-	+
+1795037767	laid	-	0	0	-	1001	coin	3	98 platinum coins	-	-	goblin
+1795037767	laid	-	0	0	-	1002	coin	3	42 gold coins	-	-	goblin
+1795037767	laid	-	0	0	-	1003	coin	3	63 silver coins	-	-	goblin
+1795037767	laid	-	0	0	-	1004	coin	3	28 copper coins	-	-	goblin
+1795037767	cmd	Trentlin	52	4016	moria.are	standing	61	0	-	kill	trea	Your punch misses a treasure goblin. // Your punch ^^^ DESTROYS ^^^ a treasure goblin! // A treasure goblin shrieks as 98 platinum coins spills from a hole in his sack!	-	+
+1795037772	picked	Trentlin	52	4016	moria.are	1004	coin	3	28 copper coins	5	-1	0	goblin	get
+1795037772	coin	Trentlin	52	4016	moria.are	+28	loot	get	the floor	17491556316
+1795037772	picked	Trentlin	52	4016	moria.are	1003	coin	3	63 silver coins	5	-1	0	goblin	get
+1795037772	coin	Trentlin	52	4016	moria.are	+6300	loot	get	the floor	17491562616
+1795037772	picked	Trentlin	52	4016	moria.are	1002	coin	3	42 gold coins	5	-1	0	goblin	get
+1795037772	coin	Trentlin	52	4016	moria.are	+420000	loot	get	the floor	17491982616
+1795037772	picked	Trentlin	52	4016	moria.are	1001	coin	3	98 platinum coins	5	-1	0	goblin	get
+1795037772	coin	Trentlin	52	4016	moria.are	+98000000	loot	get	the floor	17589982616
+1795037772	cmd	Trentlin	52	4016	moria.are	standing	61	0	-	get	all	You get 28 copper coins. // You get 63 silver coins. // You get 42 gold coins.	-	+
+1795037773	cmd	Trentlin	52	-	-	standing	61	0	-	south		The tunnel //   You are in a part of the tunnel that looks uncannily like the rest except // that it goes in an east-north direction. To the north the tunnel widens into	-	+
+1795037773	cmd	Trentlin	52	-	-	standing	61	0	-	look	trea	A wiry, grey-green goblin no taller than your knee, bent double under a // sack far too big for him.  Coins leak from a dozen holes in it with every // step.  This is a treasure goblin -- rare, quick and a coward to the bone.	-	+
+1795037775	laid	-	0	0	-	1005	coin	3	84 platinum coins	-	-	goblin
+1795037775	laid	-	0	0	-	1006	coin	3	36 gold coins	-	-	goblin
+1795037775	laid	-	0	0	-	1007	coin	3	54 silver coins	-	-	goblin
+1795037775	laid	-	0	0	-	1008	coin	3	24 copper coins	-	-	goblin
+1795037775	cmd	Trentlin	52	4012	moria.are	standing	61	0	-	trip	trea	You trip a treasure goblin and a treasure goblin goes down! // Your trip *** DEVASTATES *** a treasure goblin! // A treasure goblin shrieks as 84 platinum coins spills from a hole in his sack!	-	+
+1795037783	picked	Trentlin	52	4012	moria.are	1008	coin	3	24 copper coins	8	-1	0	goblin	get
+1795037783	coin	Trentlin	52	4012	moria.are	+24	loot	get	the floor	17589982640
+1795037783	picked	Trentlin	52	4012	moria.are	1007	coin	3	54 silver coins	8	-1	0	goblin	get
+1795037783	coin	Trentlin	52	4012	moria.are	+5400	loot	get	the floor	17589988040
+1795037783	picked	Trentlin	52	4012	moria.are	1006	coin	3	36 gold coins	8	-1	0	goblin	get
+1795037783	coin	Trentlin	52	4012	moria.are	+360000	loot	get	the floor	17590348040
+1795037783	picked	Trentlin	52	4012	moria.are	1005	coin	3	84 platinum coins	8	-1	0	goblin	get
+1795037783	coin	Trentlin	52	4012	moria.are	+84000000	loot	get	the floor	17674348040
+1795037783	cmd	Trentlin	52	4012	moria.are	standing	61	0	-	get	all	You get 24 copper coins. // You get 54 silver coins. // You get 36 gold coins.	-	+
+1795037784	cmd	Trentlin	52	-	-	standing	61	0	-	east		The tunnel //   This tunnel, leading east-west, seems seldom used.  A thick layer of dust // covers the floor, making the air stuffy and dry. 	-	+
+1795037784	laid	-	0	0	-	1009	coin	3	98 platinum coins	-	-	goblin
+1795037784	laid	-	0	0	-	1010	coin	3	42 gold coins	-	-	goblin
+1795037784	laid	-	0	0	-	1011	coin	3	63 silver coins	-	-	goblin
+1795037784	laid	-	0	0	-	1012	coin	3	28 copper coins	-	-	goblin
+1795037784	cmd	Trentlin	52	4013	moria.are	standing	61	0	-	kill	trea	Your punch ^^^ DESTROYS ^^^ a treasure goblin! // A treasure goblin shrieks as 98 platinum coins spills from a hole in his sack! // A treasure goblin clutches his sack and scurries off east!	-	+
+1795037789	picked	Trentlin	52	4013	moria.are	1012	coin	3	28 copper coins	5	-1	0	goblin	get
+1795037789	coin	Trentlin	52	4013	moria.are	+28	loot	get	the floor	17674348068
+1795037789	picked	Trentlin	52	4013	moria.are	1011	coin	3	63 silver coins	5	-1	0	goblin	get
+1795037789	coin	Trentlin	52	4013	moria.are	+6300	loot	get	the floor	17674354368
+1795037789	picked	Trentlin	52	4013	moria.are	1010	coin	3	42 gold coins	5	-1	0	goblin	get
+1795037789	coin	Trentlin	52	4013	moria.are	+420000	loot	get	the floor	17674774368
+1795037789	picked	Trentlin	52	4013	moria.are	1009	coin	3	98 platinum coins	5	-1	0	goblin	get
+1795037789	coin	Trentlin	52	4013	moria.are	+98000000	loot	get	the floor	17772774368
+1795037789	cmd	Trentlin	52	4013	moria.are	standing	61	2	-	get	all	You get 28 copper coins. // You get 63 silver coins. // You get 42 gold coins.	-	+
+1795037789	cmd	Trentlin	52	-	-	standing	61	0	-	east		The tunnel //   You are walking in a narrow tunnel. The walls are only roughly shaped, // sharp rocks protruding everywhere, even from the floor making you stumble in	-	+
+1795037789	laid	-	0	0	-	1013	coin	3	112 platinum coins	-	-	goblin
+1795037789	laid	-	0	0	-	1014	coin	3	48 gold coins	-	-	goblin
+1795037789	laid	-	0	0	-	1015	coin	3	72 silver coins	-	-	goblin
+1795037789	laid	-	0	0	-	1016	coin	3	32 copper coins	-	-	goblin
+1795037789	cmd	Trentlin	52	4014	moria.are	standing	61	0	-	kill	trea	Your punch ^^^ DESTROYS ^^^ a treasure goblin! // A treasure goblin shrieks as 112 platinum coins spills from a hole in his sack! // A treasure goblin clutches his sack and scurries off south!	-	+
+1795037794	picked	Trentlin	52	4014	moria.are	1016	coin	3	32 copper coins	5	-1	0	goblin	get
+1795037794	coin	Trentlin	52	4014	moria.are	+32	loot	get	the floor	17772774400
+1795037794	picked	Trentlin	52	4014	moria.are	1015	coin	3	72 silver coins	5	-1	0	goblin	get
+1795037794	coin	Trentlin	52	4014	moria.are	+7200	loot	get	the floor	17772781600
+1795037794	picked	Trentlin	52	4014	moria.are	1014	coin	3	48 gold coins	5	-1	0	goblin	get
+1795037794	coin	Trentlin	52	4014	moria.are	+480000	loot	get	the floor	17773261600
+1795037794	picked	Trentlin	52	4014	moria.are	1013	coin	3	112 platinum coins	5	-1	0	goblin	get
+1795037794	coin	Trentlin	52	4014	moria.are	+112000000	loot	get	the floor	17885261600
+1795037794	cmd	Trentlin	52	4014	moria.are	standing	64	0	-	get	all	You get 32 copper coins. // You get 72 silver coins. // You get 48 gold coins.	-	+
+1795037794	cmd	Trentlin	52	-	-	standing	64	0	-	south		The tunnel //   You squeeze your way through a small, narrow tunnel. The sharp-edged rocks // protruding from the walls threaten to scratch and cut you. 	-	+
+1795037794	laid	-	0	0	-	1017	coin	3	98 platinum coins	-	-	goblin
+1795037794	laid	-	0	0	-	1018	coin	3	42 gold coins	-	-	goblin
+1795037794	laid	-	0	0	-	1019	coin	3	63 silver coins	-	-	goblin
+1795037794	laid	-	0	0	-	1020	coin	3	28 copper coins	-	-	goblin
+1795037794	cmd	Trentlin	52	4011	moria.are	standing	64	0	-	kill	trea	Your punch ^^^ DESTROYS ^^^ a treasure goblin! // A treasure goblin shrieks as 98 platinum coins spills from a hole in his sack! // A treasure goblin clutches his sack and scurries off north!	-	+
+1795037799	picked	Trentlin	52	4011	moria.are	1020	coin	3	28 copper coins	5	-1	0	goblin	get
+1795037799	coin	Trentlin	52	4011	moria.are	+28	loot	get	the floor	17885261628
+1795037799	picked	Trentlin	52	4011	moria.are	1019	coin	3	63 silver coins	5	-1	0	goblin	get
+1795037799	coin	Trentlin	52	4011	moria.are	+6300	loot	get	the floor	17885267928
+1795037799	picked	Trentlin	52	4011	moria.are	1018	coin	3	42 gold coins	5	-1	0	goblin	get
+1795037799	coin	Trentlin	52	4011	moria.are	+420000	loot	get	the floor	17885687928
+1795037799	picked	Trentlin	52	4011	moria.are	1017	coin	3	98 platinum coins	5	-1	0	goblin	get
+1795037799	coin	Trentlin	52	4011	moria.are	+98000000	loot	get	the floor	17983687928
+1795037799	cmd	Trentlin	52	4011	moria.are	standing	64	0	-	get	all	You get 28 copper coins. // You get 63 silver coins. // You get 42 gold coins.	-	+
+1795037799	cmd	Trentlin	52	-	-	standing	64	0	-	north		The tunnel //   You are walking in a narrow tunnel. The walls are only roughly shaped, // sharp rocks protruding everywhere, even from the floor making you stumble in	-	+
+1795037799	laid	-	0	0	-	1021	coin	3	70 platinum coins	-	-	goblin
+1795037799	laid	-	0	0	-	1022	coin	3	30 gold coins	-	-	goblin
+1795037799	laid	-	0	0	-	1023	coin	3	45 silver coins	-	-	goblin
+1795037799	laid	-	0	0	-	1024	coin	3	20 copper coins	-	-	goblin
+1795037799	cmd	Trentlin	52	4014	moria.are	standing	64	0	-	kill	trea	Your punch ^^^ DESTROYS ^^^ a treasure goblin! // A treasure goblin shrieks as 70 platinum coins spills from a hole in his sack! // A treasure goblin clutches his sack and scurries off north!	-	+
+1795037804	picked	Trentlin	52	4014	moria.are	1024	coin	3	20 copper coins	5	-1	0	goblin	get
+1795037804	coin	Trentlin	52	4014	moria.are	+20	loot	get	the floor	17983687948
+1795037804	picked	Trentlin	52	4014	moria.are	1023	coin	3	45 silver coins	5	-1	0	goblin	get
+1795037804	coin	Trentlin	52	4014	moria.are	+4500	loot	get	the floor	17983692448
+1795037804	picked	Trentlin	52	4014	moria.are	1022	coin	3	30 gold coins	5	-1	0	goblin	get
+1795037804	coin	Trentlin	52	4014	moria.are	+300000	loot	get	the floor	17983992448
+1795037804	picked	Trentlin	52	4014	moria.are	1021	coin	3	70 platinum coins	5	-1	0	goblin	get
+1795037804	coin	Trentlin	52	4014	moria.are	+70000000	loot	get	the floor	18053992448
+1795037804	cmd	Trentlin	52	4014	moria.are	standing	64	0	-	get	all	You get 20 copper coins. // You get 45 silver coins. // You get 30 gold coins.	-	+
+1795037804	cmd	Trentlin	52	-	-	standing	64	0	-	north		The cave //   You are in the south end of a cave, to the south you see a tunnel. You // notice a large pile of bones in the corner.	-	+
+1795037804	laid	-	0	0	-	1025	coin	3	70 platinum coins	-	-	goblin
+1795037804	laid	-	0	0	-	1026	coin	3	30 gold coins	-	-	goblin
+1795037804	laid	-	0	0	-	1027	coin	3	45 silver coins	-	-	goblin
+1795037804	laid	-	0	0	-	1028	coin	3	20 copper coins	-	-	goblin
+1795037804	cmd	Trentlin	52	4018	moria.are	standing	64	0	-	kill	trea	Your punch ^^^ DESTROYS ^^^ a treasure goblin! // A treasure goblin shrieks as 70 platinum coins spills from a hole in his sack! // A treasure goblin clutches his sack and scurries off south!	-	+
+1795037809	picked	Trentlin	52	4018	moria.are	1028	coin	3	20 copper coins	5	-1	0	goblin	get
+1795037809	coin	Trentlin	52	4018	moria.are	+20	loot	get	the floor	18053992468
+1795037809	picked	Trentlin	52	4018	moria.are	1027	coin	3	45 silver coins	5	-1	0	goblin	get
+1795037809	coin	Trentlin	52	4018	moria.are	+4500	loot	get	the floor	18053996968
+1795037809	picked	Trentlin	52	4018	moria.are	1026	coin	3	30 gold coins	5	-1	0	goblin	get
+1795037809	coin	Trentlin	52	4018	moria.are	+300000	loot	get	the floor	18054296968
+1795037809	picked	Trentlin	52	4018	moria.are	1025	coin	3	70 platinum coins	5	-1	0	goblin	get
+1795037809	coin	Trentlin	52	4018	moria.are	+70000000	loot	get	the floor	18124296968
+1795037809	cmd	Trentlin	52	4018	moria.are	standing	64	0	-	get	all	You get 20 copper coins. // You get 45 silver coins. // You get 30 gold coins.	-	+
+1795037809	cmd	Trentlin	52	-	-	standing	64	0	-	south		The tunnel //   You are walking in a narrow tunnel. The walls are only roughly shaped, // sharp rocks protruding everywhere, even from the floor making you stumble in	-	+
+1795037809	laid	-	0	0	-	1029	coin	3	70 platinum coins	-	-	goblin
+1795037809	laid	-	0	0	-	1030	coin	3	30 gold coins	-	-	goblin
+1795037809	laid	-	0	0	-	1031	coin	3	45 silver coins	-	-	goblin
+1795037809	laid	-	0	0	-	1032	coin	3	20 copper coins	-	-	goblin
+1795037809	cmd	Trentlin	52	4014	moria.are	standing	64	0	-	kill	trea	Your punch ^^^ DESTROYS ^^^ a treasure goblin! // A treasure goblin shrieks as 70 platinum coins spills from a hole in his sack! // A treasure goblin clutches his sack and scurries off east!	-	+
+1795037814	picked	Trentlin	52	4014	moria.are	1032	coin	3	20 copper coins	5	-1	0	goblin	get
+1795037814	coin	Trentlin	52	4014	moria.are	+20	loot	get	the floor	18124296988
+1795037814	picked	Trentlin	52	4014	moria.are	1031	coin	3	45 silver coins	5	-1	0	goblin	get
+1795037814	coin	Trentlin	52	4014	moria.are	+4500	loot	get	the floor	18124301488
+1795037814	picked	Trentlin	52	4014	moria.are	1030	coin	3	30 gold coins	5	-1	0	goblin	get
+1795037814	coin	Trentlin	52	4014	moria.are	+300000	loot	get	the floor	18124601488
+1795037814	picked	Trentlin	52	4014	moria.are	1029	coin	3	70 platinum coins	5	-1	0	goblin	get
+1795037814	coin	Trentlin	52	4014	moria.are	+70000000	loot	get	the floor	18194601488
+1795037814	cmd	Trentlin	52	4014	moria.are	standing	64	0	-	get	all	You get 20 copper coins. // You get 45 silver coins. // You get 30 gold coins.	-	+
+1795037814	cmd	Trentlin	52	-	-	standing	64	0	-	east		The tunnel //   You are in a corner tunnel leading west and north. // [Exits: north west]	-	+
+1795037814	laid	-	0	0	-	1033	coin	3	98 platinum coins	-	-	goblin
+1795037814	laid	-	0	0	-	1034	coin	3	42 gold coins	-	-	goblin
+1795037814	laid	-	0	0	-	1035	coin	3	63 silver coins	-	-	goblin
+1795037814	laid	-	0	0	-	1036	coin	3	28 copper coins	-	-	goblin
+1795037814	cmd	Trentlin	52	4015	moria.are	standing	64	0	-	kill	tr	Your punch ^^^ DESTROYS ^^^ a treasure goblin! // A treasure goblin shrieks as 98 platinum coins spills from a hole in his sack! // A treasure goblin clutches his sack and scurries off north!	-	+
+1795037818	picked	Trentlin	52	4015	moria.are	1036	coin	3	28 copper coins	4	-1	0	goblin	get
+1795037818	coin	Trentlin	52	4015	moria.are	+28	loot	get	the floor	18194601516
+1795037818	picked	Trentlin	52	4015	moria.are	1035	coin	3	63 silver coins	4	-1	0	goblin	get
+1795037818	coin	Trentlin	52	4015	moria.are	+6300	loot	get	the floor	18194607816
+1795037818	picked	Trentlin	52	4015	moria.are	1034	coin	3	42 gold coins	4	-1	0	goblin	get
+1795037818	coin	Trentlin	52	4015	moria.are	+420000	loot	get	the floor	18195027816
+1795037818	picked	Trentlin	52	4015	moria.are	1033	coin	3	98 platinum coins	4	-1	0	goblin	get
+1795037818	coin	Trentlin	52	4015	moria.are	+98000000	loot	get	the floor	18293027816
+1795037818	cmd	Trentlin	52	4015	moria.are	standing	64	0	-	get	all	You get 28 copper coins. // You get 63 silver coins. // You get 42 gold coins.	-	+
+1795037819	cmd	Trentlin	52	-	-	standing	64	0	-	north		The tunnel //   You are in a north-south leading tunnel. // [Exits: north south]	-	+
+1795037819	cmd	Trentlin	52	-	-	standing	64	0	-	follow	tr	A treasure goblin is far too slippery to follow.	-	-
+1795037821	laid	-	0	0	-	1037	coin	3	70 platinum coins	-	-	goblin
+1795037821	laid	-	0	0	-	1038	coin	3	30 gold coins	-	-	goblin
+1795037821	laid	-	0	0	-	1039	coin	3	45 silver coins	-	-	goblin
+1795037821	laid	-	0	0	-	1040	coin	3	20 copper coins	-	-	goblin
+1795037821	cmd	Trentlin	52	4019	moria.are	standing	64	0	-	kill	tr	Your punch ^^^ DESTROYS ^^^ a treasure goblin! // A treasure goblin shrieks as 70 platinum coins spills from a hole in his sack! // A treasure goblin clutches his sack and scurries off south!	-	+
+1795037825	picked	Trentlin	52	4019	moria.are	1040	coin	3	20 copper coins	4	-1	0	goblin	get
+1795037825	coin	Trentlin	52	4019	moria.are	+20	loot	get	the floor	18293027836
+1795037825	picked	Trentlin	52	4019	moria.are	1039	coin	3	45 silver coins	4	-1	0	goblin	get
+1795037825	coin	Trentlin	52	4019	moria.are	+4500	loot	get	the floor	18293032336
+1795037825	picked	Trentlin	52	4019	moria.are	1038	coin	3	30 gold coins	4	-1	0	goblin	get
+1795037825	coin	Trentlin	52	4019	moria.are	+300000	loot	get	the floor	18293332336
+1795037825	picked	Trentlin	52	4019	moria.are	1037	coin	3	70 platinum coins	4	-1	0	goblin	get
+1795037825	coin	Trentlin	52	4019	moria.are	+70000000	loot	get	the floor	18363332336
+1795037825	cmd	Trentlin	52	4019	moria.are	standing	64	0	-	get	all	You get 20 copper coins. // You get 45 silver coins. // You get 30 gold coins.	-	+
+1795037825	cmd	Trentlin	52	-	-	standing	64	0	-	south		The tunnel //   You are in a corner tunnel leading west and north. // [Exits: north west]	-	+
+1795037826	laid	-	0	0	-	1041	coin	3	56 platinum coins	-	-	goblin
+1795037826	laid	-	0	0	-	1042	coin	3	24 gold coins	-	-	goblin
+1795037826	laid	-	0	0	-	1043	coin	3	36 silver coins	-	-	goblin
+1795037826	laid	-	0	0	-	1044	coin	3	16 copper coins	-	-	goblin
+1795037826	cmd	Trentlin	52	4015	moria.are	standing	64	0	-	kill	tr	Your punch ^^^ DESTROYS ^^^ a treasure goblin! // A treasure goblin shrieks as 56 platinum coins spills from a hole in his sack! // A treasure goblin clutches his sack and scurries off west!	-	+
+1795037831	picked	Trentlin	52	4015	moria.are	1044	coin	3	16 copper coins	5	-1	0	goblin	get
+1795037831	coin	Trentlin	52	4015	moria.are	+16	loot	get	the floor	18363332352
+1795037831	picked	Trentlin	52	4015	moria.are	1043	coin	3	36 silver coins	5	-1	0	goblin	get
+1795037831	coin	Trentlin	52	4015	moria.are	+3600	loot	get	the floor	18363335952
+1795037831	picked	Trentlin	52	4015	moria.are	1042	coin	3	24 gold coins	5	-1	0	goblin	get
+1795037831	coin	Trentlin	52	4015	moria.are	+240000	loot	get	the floor	18363575952
+1795037831	picked	Trentlin	52	4015	moria.are	1041	coin	3	56 platinum coins	5	-1	0	goblin	get
+1795037831	coin	Trentlin	52	4015	moria.are	+56000000	loot	get	the floor	18419575952
+1795037831	cmd	Trentlin	52	4015	moria.are	standing	64	0	-	get	all	You get 16 copper coins. // You get 36 silver coins. // You get 24 gold coins.	-	+
+1795037831	cmd	Trentlin	52	-	-	standing	64	0	-	west		The tunnel //   You are walking in a narrow tunnel. The walls are only roughly shaped, // sharp rocks protruding everywhere, even from the floor making you stumble in	-	+
+1795037831	achieved	Trentlin	52	-	-	goblin-kills-1	10	2354	kill
+1795037831	achieved	Trentlin	52	-	-	goblin-long-chase	25	2379	kill
+1795037831	coin	Trentlin	52	4014	moria.are	+2390000000	loot	kill	corpse of a treasure goblin	20809575952
+1795037831	coin	Trentlin	52	4014	moria.are	+3700	loot	kill	corpse of a treasure goblin	20809579652
+1795037831	coin	Trentlin	52	4014	moria.are	+93	loot	kill	corpse of a treasure goblin	20809579745
+1795037831	coin	Trentlin	52	4014	moria.are	+350000	loot	kill	corpse of a treasure goblin	20809929745
+1795037831	cmd	Trentlin	52	4014	moria.are	standing	64	2	-	kill	tr	Your punch ^^^ DESTROYS ^^^ a treasure goblin! // A treasure goblin is DEAD!! // You receive 0 experience points.	-	+
+1795037833	laid	-	0	0	-	1047	herb	53	a huckleberry	10167	glitter.are	scatter
+1795037833	laid	-	0	0	-	1048	herb	39	a chervil leaf	10166	glitter.are	scatter
+1795037833	laid	-	0	0	-	1049	component	65	a dragon's scale	26	connect.are	scatter
+1795037838	got	Trentlin	52	4014	moria.are	10	a stinking corpse	npc corpse	5	0	get	the floor
+1795037838	got	Trentlin	52	4014	moria.are	17	the brains of a treasure goblin	food	0	0	get	the floor
+1795037838	cmd	Trentlin	52	4014	moria.are	standing	67	0	-	get	all	You get a stinking corpse. // You get the brains of a treasure goblin.	-	-
+1795037839	cmd	Trentlin	52	4014	moria.are	standing	67	0	-	drop	co	You drop a stinking corpse.	-	-
+1795037840	cmd	Trentlin	52	4014	moria.are	standing	67	0	-	look	in co	A stinking corpse contains: //      Nothing.	-	-
+1795037842	cmd	Trentlin	52	4014	moria.are	standing	67	0	-	get	bra	I see no bra here.	-	-
+1795037845	cmd	Trentlin	52	4014	moria.are	standing	67	0	-	drop	bra	You drop the brains of a treasure goblin.	-	-
+1795037845	cmd	Trentlin	52	4014	moria.are	standing	67	0	-	scan		the african pit adder              -to the far North. // the orc                            -to the East. // the african pit adder              -to the East.	-	+
+1795037847	cmd	Trentlin	52	4014	moria.are	standing	67	0	-	exits		Obvious exits: // North - The cave // East  - The tunnel	-	+
+1795037848	cmd	Trentlin	52	4013	moria.are	standing	67	0	-	west		The tunnel //   This tunnel, leading east-west, seems seldom used.  A thick layer of dust // covers the floor, making the air stuffy and dry. 	-	+
+1795037849	cmd	Trentlin	52	4012	moria.are	standing	67	1	-	west		The tunnel //   You are in a part of the tunnel that looks uncannily like the rest except // that it goes in an east-north direction. To the north the tunnel widens into	-	+
+1795037850	cmd	Trentlin	52	4016	moria.are	standing	67	0	-	north		The large cave //   You are in a large cave, the cave continues east and west, to the south // you notice a small tunnel.	-	+
+1795037851	cmd	Trentlin	52	4016	moria.are	standing	67	0	-	exits		Obvious exits: // East  - The large cave // South - The tunnel	-	+
+1795037853	cmd	Trentlin	52	4012	moria.are	standing	67	0	-	south		The tunnel //   You are in a part of the tunnel that looks uncannily like the rest except // that it goes in an east-north direction. To the north the tunnel widens into	-	+
+1795037853	cmd	Trentlin	52	4012	moria.are	standing	67	0	-	south		Alas, you cannot go that way.	-	-
+1795037854	cmd	Trentlin	52	4013	moria.are	standing	67	0	-	east		The tunnel //   This tunnel, leading east-west, seems seldom used.  A thick layer of dust // covers the floor, making the air stuffy and dry. 	-	+
+1795037854	cmd	Trentlin	52	4014	moria.are	standing	67	0	-	east		The tunnel //   You are walking in a narrow tunnel. The walls are only roughly shaped, // sharp rocks protruding everywhere, even from the floor making you stumble in	-	+
+1795037854	cmd	Trentlin	52	4015	moria.are	standing	67	0	-	east		The tunnel //   You are in a corner tunnel leading west and north. // [Exits: north west]	-	+
+1795037856	cmd	Trentlin	52	4019	moria.are	standing	67	0	-	north		The tunnel //   You are in a north-south leading tunnel. // [Exits: north south]	-	-
+1795037857	cmd	Trentlin	52	4026	moria.are	standing	67	0	-	north		The many tunnels //   You are at the intersection of many tunnels. // [Exits: north east south west]	-	-
+1795037858	cmd	Trentlin	52	4026	moria.are	standing	67	0	-	exits		Obvious exits: // North - The smelly tunnel // East  - The tunnel	-	+
+1795037859	cmd	Trentlin	52	4027	moria.are	standing	67	0	-	east		The tunnel //   You are in a north-south leading tunnel, you also notice a tunnel to // the west. From the north you sense the fresh air!	-	+
+1795037861	got	Trentlin	52	4027	moria.are	25040	The Crown of Eclipse	trash	59	0	get	the floor
+1795037861	cmd	Trentlin	52	4027	moria.are	standing	67	0	-	get	all	You get The Crown of Eclipse.	-	-
+1795037862	area	Trentlin	52	4207	dresden.are	moria.are	dresden.are	129	recall
+1795037862	cmd	Trentlin	52	4207	dresden.are	standing	67	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795037863	cmd	Trentlin	52	4202	dresden.are	standing	67	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795037863	cmd	Trentlin	52	4201	dresden.are	standing	67	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795037863	cmd	Trentlin	52	2427	dresden.are	standing	67	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795037863	cmd	Trentlin	52	2427	dresden.are	standing	67	0	-	east		Alas, you cannot go that way.	-	-
+1795037864	cmd	Trentlin	52	2427	dresden.are	standing	67	0	-	east		Alas, you cannot go that way.	-	-
+1795037864	cmd	Trentlin	52	2427	dresden.are	standing	67	0	-	east		Alas, you cannot go that way.	-	-
+1795037864	cmd	Trentlin	52	2404	dresden.are	standing	67	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795037864	cmd	Trentlin	52	2401	dresden.are	standing	67	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795037865	cmd	Trentlin	52	2410	dresden.are	standing	67	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1795037865	cmd	Trentlin	52	2411	dresden.are	standing	67	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1795037865	cmd	Trentlin	52	2414	dresden.are	standing	67	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1795037865	cmd	Trentlin	52	2497	dresden.are	standing	67	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795037867	coin	Trentlin	52	2497	dresden.are	+140609040	quests	aquest	-	20950538785
+1795037867	outcome	Trentlin	52	2497	dresden.are	quest-complete	success	-	-	ordinary qp=73->73 offered=82 daily=18->18 coin=+140609040 kill=14060904 streak=21 level=52 target=0
+1795037867	cmd	Trentlin	52	2497	dresden.are	standing	67	30	-	aquest	complete	You inform Questor Thews you have completed his quest. // You hand The Crown of Eclipse to Questor Thews. // Questor Thews says 'Well done! I knew you were right for the job.'	success:-	+

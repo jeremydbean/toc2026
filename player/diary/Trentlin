@@ -243,15 +243,19 @@ List spend 6200000 0 buy
 List spend 20000 0 shoot
 End
 Day 2026-11-18
-Played 3751
+Played 4083
 Level 50 52 2
-Exp 10072 20
-Kills 20
+Exp 10074 20
+Kills 22
 Deaths 0
 Close 0
-Quests 4 169
+Quests 5 169
 Dailies 0 0
 List notable 1 0 Gohma
+List notable 1 0 a treasure goblin
+List achv 10 0 More Shelf Space
+List achv 10 0 Follow the Money I
+List achv 25 0 The Chase Is On
 List skill 97 100 enhanced damage
 List skill 84 85 dodge
 List skill 89 93 fists of fury
@@ -260,18 +264,18 @@ List skill 76 78 fast healing
 List skill 76 79 iron skin
 List skill 82 84 second attack
 List area 1192 0 Hyrule
-List area 1191 0 City of Dresden
+List area 1301 0 City of Dresden
 List area 6 0 Mud School
 List area 18 0 Strange Campus
 List area 4 0 Haon Dor
 List area 47 0 New Thalos
 List area 4 0 Continental Drift
 List area 554 0 The HighLands
-List area 9 0 Miden'nir
+List area 10 0 Miden'nir
 List area 38 0 Gnome Village
 List area 154 0 Korzath's Fortress
 List area 169 0 Battleground
-More area 40
+More area 48
 List item 1 0 the Dragon's key
 List item 1 0 a pair of crab-leg greaves
 List item 1 0 a pair of shell vambraces
@@ -279,10 +283,11 @@ List item 1 0 the Red Ring of Hyrule
 List item 1 0 a key of the tower
 List item 1 0 a silver-arrow spear
 List item 3 0 a diamond key
-List earn 221558880 0 loot
-List earn 505110936 0 quests
+List earn 3709683776 0 loot
+List earn 645719976 0 quests
 List earn 38673024 0 interest
 List spend 10000 0 shoot
 List spend 274400000 0 heal
+List spend 72500000 0 stash
 End
 #END
