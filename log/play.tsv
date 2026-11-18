@@ -36769,3 +36769,25 @@
 1794967786	cmd	Trentlin	50	2497	dresden.are	standing	100	5	-	aquest	gamble no	You safely collect 65 quest points.	-	-
 1794967789	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	aquest	info	.-[ Quest Summary ]-------------------------------------------. // | Quest Points: 4969 // | Next Quest  : 5 minutes before you may quest again	-	+
 1794967838	laid	-	0	0	-	1124	component	76	a vial of dragons blood	4510	dresden.are	scatter
+1794967898	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	worth		You have 1609 platinum, 73 gold, 99 silver, 29 copper // and 115998 experience (1302 exp to level).	-	-
+1794967902	laid	-	0	0	-	1125	herb	35	a sprig of angelica	13494	hell.are	scatter
+1794967902	laid	-	0	0	-	1126	herb	45	a sarsaparilla vine	13480	hell.are	scatter
+1794967903	state	Trentlin	50	2497	dresden.are	lvl=50 hp=865/865 mana=1567/2246 mv=334/489 align=410 exp=115998 coin=1609739929 bank=15469209674 qp=4969 prac=7 train=18 stash=69/75 remorts=1
+1794967903	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	score		| Name:       Trentlin | Level:      50 | Class:        Monk | // | Played:     41 hours | Sex:      Male | Guild:        Monk | // | Age:        19 years | Race:    Dwarf | Castle:       None |	-	+
+1794967919	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	help	time	TIME // Syntax: time // Displays the current in-game time of day, the date since the mud was last	-	+
+1794967931	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	time		It is 8 o'clock pm, Day of the Great Gods, 33rd the Month of the Ancient Darkness. // TOC started up at Tue Nov 17 19:04:01 2026 // The system time is Wed Nov 18 02:12:11 2026	-	+
+1794968007	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	group		Trentlin's group: // [50 Monk ] Trentlin          865/ 865 hp 1597/2246 mana  384/ 489 mv 115998 xp	-	-
+1794968013	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	affect		You are affected by: // Skill: 'levitate' for 0 hours.	-	-
+1794968016	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	read	book	You open the Magic Book, and fire crackles along its ancient pages. //          |         ~  T H E   M A G I C   B O O K  ~         | //   Fire crackles along the edges of pages older than the kingdom. Every	-	+
+1794968031	laid	-	0	0	-	1127	herb	35	a sprig of angelica	17013	ag.are	scatter
+1794968031	laid	-	0	0	-	1128	component	80	a glass encased wing of a fairy	5627	tarin.are	scatter
+1794968101	laid	-	0	0	-	1129	herb	39	a chervil leaf	18127	icekeep.are	scatter
+1794968101	laid	-	0	0	-	1130	herb	50	a head of cabbage	18014	icekeep.are	scatter
+1794968101	laid	-	0	0	-	1131	component	77	a vial of medusa eye fluid	17717	landoz.are	scatter
+1794968173	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	look		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794968177	quest	Trentlin	50	2497	dresden.are	rush	kill	1503	a gnome scientist	7	gnome.are	5
+1794968177	cmd	Trentlin	50	2497	dresden.are	standing	100	19	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Trentlin. I have just the task for you.' // Questor Thews tells you 'The criminal known as a gnome scientist has escaped from prison!'	-	+
+1794968179	laid	-	0	0	-	1132	herb	34	an amaranth plant	1641	wyvern.are	scatter
+1794968179	laid	-	0	0	-	1133	herb	48	an alfalfa sprout	1623	wyvern.are	scatter
+1794968179	laid	-	0	0	-	1134	component	65	a dragon's scale	1151	shire.are	scatter
+1794968179	cmd	Trentlin	50	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
