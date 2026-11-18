@@ -316508,3 +316508,5 @@ Wed Nov 18 19:52:00 2026 :: Connection guard: 172.169.250.32 closed before a pas
 Wed Nov 18 19:52:00 2026 :: Sock.sinaddr:  172.169.250.32
 Wed Nov 18 19:52:00 2026 :: Connection guard: 172.169.250.32 closed before a password prompt (strike 2 of 6 in 6 hours).
 Wed Nov 18 19:53:08 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 3 of 6 in 6 hours).
+Wed Nov 18 19:58:12 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 2 of 6 in 6 hours).
+Wed Nov 18 19:59:19 2026 :: Treasure goblin: vanished from room 5236 (A collapsed home, oldthalo.are) (too long in one area).
