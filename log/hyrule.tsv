@@ -307,3 +307,22 @@
 1794967176	enter	Trentlin	50	1	Monk 	30317	over	from=L9 how=up hp=91
 1794967176	leave	Trentlin	50	1	Monk 	30317	over	to=out how=recall secs=0 hp=91
 1794968292	got	Trentlin	51	1	Monk 	2497	out	obj=30386 obj_name=a_silver-arrow_spear type=weapon obj_level=58 how=get
+1795002754	enter	Trentlin	51	1	Monk 	30200	over	from=out how=enter hp=95
+1795002761	seal	Trentlin	51	1	Monk 	30317	over	obj=30509 obj_name=a_cracked_stone_floor dir=5 how=bomb
+1795002764	leave	Trentlin	51	1	Monk 	30317	over	to=L9 how=down secs=10 hp=95
+1795002764	enter	Trentlin	51	1	Monk 	30590	L9	from=over how=down hp=95
+1795002792	flee	Trentlin	51	1	Monk 	30595	L9	foe=32108 foe_name=a_red_wizzrobe guardian=0 foe_hp=69 secs=8 hp=31
+1795002797	leave	Trentlin	51	1	Monk 	30590	L9	to=over how=up secs=33 hp=31
+1795002797	enter	Trentlin	51	1	Monk 	30317	over	from=L9 how=up hp=31
+1795002798	leave	Trentlin	51	1	Monk 	30317	over	to=out how=recall secs=1 hp=31
+1795002830	enter	Trentlin	51	1	Monk 	30200	over	from=out how=enter hp=100
+1795002837	leave	Trentlin	51	1	Monk 	30317	over	to=L9 how=down secs=7 hp=100
+1795002837	enter	Trentlin	51	1	Monk 	30590	L9	from=over how=down hp=100
+1795002872	got	Trentlin	51	1	Monk 	30595	L9	obj=30695 obj_name=four_bombs type=treasure obj_level=1 how=fists
+1795002924	leave	Trentlin	51	1	Monk 	30590	L9	to=over how=up secs=87 hp=67
+1795002924	enter	Trentlin	51	1	Monk 	30317	over	from=L9 how=up hp=67
+1795002925	leave	Trentlin	51	1	Monk 	30317	over	to=out how=recall secs=1 hp=67
+1795002936	enter	Trentlin	51	1	Monk 	30200	over	from=out how=enter hp=100
+1795002942	leave	Trentlin	51	1	Monk 	30317	over	to=L9 how=down secs=6 hp=100
+1795002942	enter	Trentlin	51	1	Monk 	30590	L9	from=over how=down hp=100
+1795002992	cleared	Trentlin	51	1	Monk 	30595	L9	foes=0

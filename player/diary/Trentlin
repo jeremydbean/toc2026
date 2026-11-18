@@ -243,9 +243,9 @@ List spend 6200000 0 buy
 List spend 20000 0 shoot
 End
 Day 2026-11-18
-Played 2006
+Played 2342
 Level 50 51 1
-Exp 36 0
+Exp 44 10
 Kills 6
 Deaths 0
 Close 0
@@ -256,11 +256,11 @@ List skill 97 98 enhanced damage
 List skill 84 85 dodge
 List skill 89 91 fists of fury
 List skill 86 87 parry
-List skill 76 77 fast healing
-List area 574 0 Hyrule
-List area 697 0 City of Dresden
-List area 1 0 Mud School
-List area 3 0 Strange Campus
+List skill 76 78 fast healing
+List area 650 0 Hyrule
+List area 949 0 City of Dresden
+List area 3 0 Mud School
+List area 9 0 Strange Campus
 List area 4 0 Haon Dor
 List area 5 0 New Thalos
 List area 0 0 Continental Drift
@@ -279,6 +279,6 @@ List item 1 0 a diamond key
 List earn 46840053 0 loot
 List earn 256881900 0 quests
 List spend 10000 0 shoot
-List spend 16300000 0 heal
+List spend 47000000 0 heal
 End
 #END
