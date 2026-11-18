@@ -316500,3 +316500,10 @@ Wed Nov 18 19:39:10 2026 :: Treasure goblin: vanished from room 18001 (A small f
 Wed Nov 18 19:42:59 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 6 of 6 in 6 hours).
 Wed Nov 18 19:42:59 2026 :: Connection guard: 5.161.215.244 paused for 24 hours (pause 3 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.215.244 lifts it.
 Wed Nov 18 19:43:14 2026 :: Cartographer: appeared.
+Wed Nov 18 19:48:02 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 4 of 6 in 6 hours).
+Wed Nov 18 19:49:15 2026 :: Treasure goblin: vanished from room 15111 (Hallway, campus.are) (too long in one area).
+Wed Nov 18 19:51:59 2026 :: Sock.sinaddr:  172.169.250.32
+Wed Nov 18 19:52:00 2026 :: EOF encountered on read.
+Wed Nov 18 19:52:00 2026 :: Connection guard: 172.169.250.32 closed before a password prompt (strike 1 of 6 in 6 hours).
+Wed Nov 18 19:52:00 2026 :: Sock.sinaddr:  172.169.250.32
+Wed Nov 18 19:52:00 2026 :: Connection guard: 172.169.250.32 closed before a password prompt (strike 2 of 6 in 6 hours).
