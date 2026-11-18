@@ -316290,3 +316290,5 @@ Wed Nov 18 12:05:47 2026 :: Log Trentlin [4210]: quit
 Wed Nov 18 12:05:47 2026 :: Trentlin has quit.
 Wed Nov 18 12:05:47 2026 :: [QUIT] Player rejoined the real world.
 Wed Nov 18 12:05:57 2026 :: Connection guard: refused 1 connection from 18.116.205.62 (paused; 6 refused in all, pause 2 this week, 385 minutes left).
+Wed Nov 18 12:10:09 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Wed Nov 18 12:11:02 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 21 refused in all, pause 3 this week, 9 minutes left).
