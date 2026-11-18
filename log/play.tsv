@@ -36387,3 +36387,139 @@
 1794966968	cmd	Trentlin	50	30633	hyrule.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a like like! // Your fists of fury ^^^ DESTROYS ^^^ a like like!	-	+
 1794966974	cmd	Trentlin	50	30633	hyrule.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a like like! // Your fists of fury DISEMBOWELS a like like!	-	+
 1794966979	laid	-	0	0	-	1043	herb	42	a marjoram plant	17148	highland.are	scatter
+1794966994	coin	Trentlin	50	30633	hyrule.are	+20000000	loot	(violence_update)	corpse of a like like	16929520572
+1794966994	coin	Trentlin	50	30633	hyrule.are	+37800	loot	(violence_update)	corpse of a like like	16929558372
+1794966994	coin	Trentlin	50	30633	hyrule.are	+147	loot	(violence_update)	corpse of a like like	16929558519
+1794966994	coin	Trentlin	50	30633	hyrule.are	+680000	loot	(violence_update)	corpse of a like like	16930238519
+1794966997	cmd	Trentlin	50	30633	hyrule.are	standing	86	0	-	east		The door is bound shut by an old magic: only its key will open it.	-	-
+1794967001	cmd	Trentlin	50	30633	hyrule.are	standing	86	0	-	look		Level 9: Stair of the Devourers //   Sticky residue coats the floor around a stair that drops into a tunnel // running deep beneath the dungeon, and scraps of chewed leather and bent	-	+
+1794967003	cmd	Trentlin	50	30633	hyrule.are	standing	86	0	-	unlock	east	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794967004	cmd	Trentlin	50	30633	hyrule.are	standing	86	0	-	open	east	Ok.	-	-
+1794967005	cmd	Trentlin	50	30634	hyrule.are	standing	86	0	-	east		Level 9: Blue-Scorched Hall //   Pale bluish scorch marks streak the walls in straight lines, crossing and // recrossing one another where blue-robed sorcerers have stepped through the	-	+
+1794967006	cmd	Trentlin	50	30635	hyrule.are	standing	86	0	-	east		Level 9: Northern Whirl Chamber //   A slow vortex of dust circles the center of this chamber, endlessly turning // in the wake of a great eye and the ring of smaller eyes that swing around	-	+
+1794967010	cmd	Trentlin	50	30627	hyrule.are	standing	86	0	-	south		Level 9: Hall of Quivering Gel //   Little blobs of jelly quiver on every flagstone, leaving sticky trails // behind them and hopping in short bursts toward any warmth. The room smells	-	+
+1794967030	laid	-	0	0	-	1050	herb	34	an amaranth plant	8720	kerofk.are	scatter
+1794967030	laid	-	0	0	-	1051	component	88	a vial of green slime	28047	pyramid.are	scatter
+1794967042	cmd	Trentlin	50	30627	hyrule.are	standing	87	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!	-	-
+1794967042	cmd	Trentlin	50	30628	hyrule.are	standing	87	0	-	east		Level 9: The Cartographer's Vault //   Dust spins in a slow circle across the floor of this sealed eastern vault, // as if stirred by an endless breath, and the walls are scored by the orbit	-	+
+1794967045	cmd	Trentlin	50	30628	hyrule.are	standing	87	0	-	look	in ches	Death Mountain's equipment chest contains: //      (Magical) Ganon's shadow crown //      (Magical) a coat of red-ring mail	-	+
+1794967052	cmd	Trentlin	50	30628	hyrule.are	standing	87	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!	-	-
+1794967053	cmd	Trentlin	50	30636	hyrule.are	standing	87	0	-	north		Level 9: Eastern Gauntlet //   Slime, soot, swallowed shield straps and a lingering cold chill fill this // long chamber, every trace of danger crowded into one place. Rows of blocks	-	+
+1794967070	cmd	Trentlin	50	30636	hyrule.are	standing	87	0	-	bomb	norh	You find no cracked surface to bomb there.	-	-
+1794967072	cmd	Trentlin	50	30636	hyrule.are	standing	87	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!	-	-
+1794967072	cmd	Trentlin	50	30643	hyrule.are	standing	87	0	-	north		Level 9: Northeastern Sanctum //   Scorch marks and a lingering cold presence fill this remote corner room, // set where the eye of the mountain's skull would be. Stone blocks stand in	-	+
+1794967080	laid	-	0	0	-	1060	component	86	an inert gelatinous cube	9935	valhalla.are	scatter
+1794967082	cmd	Trentlin	50	30643	hyrule.are	standing	89	0	-	push	block	You push a movable stone block. // A previously hidden door mysteriously opens. // You hear a strange noise off in the distance.	-	-
+1794967083	cmd	Trentlin	50	30643	hyrule.are	standing	89	0	-	look		Level 9: Northeastern Sanctum //   Scorch marks and a lingering cold presence fill this remote corner room, // set where the eye of the mountain's skull would be. Stone blocks stand in	-	+
+1794967084	cmd	Trentlin	50	30645	hyrule.are	standing	89	0	-	down		Level 9: Red Ring Cellar //   A narrow basement hollowed from the mountain's rock, reached by a ladder // that rises toward the chamber above. The brick walls are warm to the touch,	-	+
+1794967086	got	Trentlin	50	30645	hyrule.are	30579	the Red Ring of Hyrule	armor	58	0	get	the floor
+1794967086	cmd	Trentlin	50	30645	hyrule.are	standing	89	0	-	get	all	You get the Red Ring of Hyrule.	-	-
+1794967087	cmd	Trentlin	50	30645	hyrule.are	standing	89	0	-	compare	ring	A) the Red Ring of Hyrule (level 58) -- can't use: needs level 58 // B) a sapphire ring (level 34), worn // Slot: finger.  Your damage comes from weapons.	-	+
+1794967098	cmd	Trentlin	50	30645	hyrule.are	standing	89	0	-	look		Level 9: Red Ring Cellar //   A narrow basement hollowed from the mountain's rock, reached by a ladder // that rises toward the chamber above. The brick walls are warm to the touch,	-	+
+1794967101	cmd	Trentlin	50	30643	hyrule.are	standing	89	0	-	up		Level 9: Northeastern Sanctum //   Scorch marks and a lingering cold presence fill this remote corner room, // set where the eye of the mountain's skull would be. Stone blocks stand in	-	+
+1794967115	cmd	Trentlin	50	30636	hyrule.are	standing	89	0	-	south		Level 9: Eastern Gauntlet //   Slime, soot, swallowed shield straps and a lingering cold chill fill this // long chamber, every trace of danger crowded into one place. Rows of blocks	-	+
+1794967116	cmd	Trentlin	50	30628	hyrule.are	standing	89	0	-	south		Level 9: The Cartographer's Vault //   Dust spins in a slow circle across the floor of this sealed eastern vault, // as if stirred by an endless breath, and the walls are scored by the orbit	-	+
+1794967116	cmd	Trentlin	50	30627	hyrule.are	standing	89	0	-	west		Level 9: Hall of Quivering Gel //   Little blobs of jelly quiver on every flagstone, leaving sticky trails // behind them and hopping in short bursts toward any warmth. The room smells	-	+
+1794967118	cmd	Trentlin	50	30627	hyrule.are	standing	89	0	-	mount		What do you want to ride?	-	-
+1794967119	cmd	Trentlin	50	30635	hyrule.are	standing	89	0	-	north		Level 9: Northern Whirl Chamber //   A slow vortex of dust circles the center of this chamber, endlessly turning // in the wake of a great eye and the ring of smaller eyes that swing around	-	+
+1794967129	cmd	Trentlin	50	30635	hyrule.are	standing	89	0	-	north		The door is bound shut by an old magic: only its key will open it.	-	-
+1794967134	cmd	Trentlin	50	30635	hyrule.are	standing	89	0	-	unlock	noirth	I see no noirth here.	-	-
+1794967136	cmd	Trentlin	50	30635	hyrule.are	standing	89	0	-	unlock	no	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794967138	cmd	Trentlin	50	30635	hyrule.are	standing	89	0	-	open	no	Ok.	-	-
+1794967138	cmd	Trentlin	50	30642	hyrule.are	standing	89	0	-	north		Level 9: Whispering Hearth Room //   Barely wider than a corridor, this room holds two flickering fires, a worn // patch of floor between them and almost nothing else. A cold draught threads	-	+
+1794967140	cmd	Trentlin	50	30642	hyrule.are	standing	89	0	-	list		A terse old man has nothing to sell, and these words cost nothing: //   "Go to the next room."	-	-
+1794967142	cmd	Trentlin	50	30642	hyrule.are	standing	89	0	-	bomb	west	You set a bomb beside a cracked west wall and dive aside. The blast opens a passage!	-	-
+1794967143	cmd	Trentlin	50	30641	hyrule.are	standing	89	0	-	west		Level 9: Northern Stair of Flame //   Scorch marks blacken the walls around a stair that plunges into a tunnel // leading back toward the dungeon's southern halls, and the dust still holds	-	+
+1794967158	cmd	Trentlin	50	30593	hyrule.are	standing	91	0	-	up		Level 9: Slime-Slick Junction //   The floor of this chamber glistens with a film of greenish ooze that clings // to the boots and smells of rot, and big green blobs split in two when they	-	+
+1794967160	cmd	Trentlin	50	30593	hyrule.are	standing	91	0	-	west		The door is bound shut by an old magic: only its key will open it.	-	-
+1794967164	cmd	Trentlin	50	30641	hyrule.are	standing	91	0	-	down		Level 9: Northern Stair of Flame //   Scorch marks blacken the walls around a stair that plunges into a tunnel // leading back toward the dungeon's southern halls, and the dust still holds	-	+
+1794967166	cmd	Trentlin	50	30642	hyrule.are	standing	91	0	-	east		Level 9: Whispering Hearth Room //   Barely wider than a corridor, this room holds two flickering fires, a worn // patch of floor between them and almost nothing else. A cold draught threads	-	+
+1794967166	cmd	Trentlin	50	30635	hyrule.are	standing	91	0	-	south		Level 9: Northern Whirl Chamber //   A slow vortex of dust circles the center of this chamber, endlessly turning // in the wake of a great eye and the ring of smaller eyes that swing around	-	+
+1794967167	cmd	Trentlin	50	30627	hyrule.are	standing	91	0	-	south		Level 9: Hall of Quivering Gel //   Little blobs of jelly quiver on every flagstone, leaving sticky trails // behind them and hopping in short bursts toward any warmth. The room smells	-	+
+1794967169	cmd	Trentlin	50	30635	hyrule.are	standing	91	0	-	north		Level 9: Northern Whirl Chamber //   A slow vortex of dust circles the center of this chamber, endlessly turning // in the wake of a great eye and the ring of smaller eyes that swing around	-	+
+1794967169	cmd	Trentlin	50	30634	hyrule.are	standing	91	0	-	west		Level 9: Blue-Scorched Hall //   Pale bluish scorch marks streak the walls in straight lines, crossing and // recrossing one another where blue-robed sorcerers have stepped through the	-	+
+1794967171	cmd	Trentlin	50	30633	hyrule.are	standing	91	0	-	west		Level 9: Stair of the Devourers //   Sticky residue coats the floor around a stair that drops into a tunnel // running deep beneath the dungeon, and scraps of chewed leather and bent	-	+
+1794967172	cmd	Trentlin	50	30602	hyrule.are	standing	91	0	-	up		Level 9: The Sealed Sand Hollow //   Every wall of this sandy chamber is solid and doorless, but each shows a // faint web of cracks where the stone has been weakened, waiting for bombs.	-	+
+1794967173	cmd	Trentlin	50	30595	hyrule.are	standing	91	0	-	south		Level 9: Scorched Vestibule //   Blackened rings and starbursts of soot mark the floor and walls, as though // bolts of fire have been hurled here again and again by sorcerers in red and	-	+
+1794967174	cmd	Trentlin	50	30596	hyrule.are	standing	91	0	-	east		Level 9: Mountain Gate Fireside //   Black rock walls swallow most of the light thrown by the iron braziers that // flank a worn patch of floor, and the corners stay dark however the flames	-	+
+1794967174	cmd	Trentlin	50	30590	hyrule.are	standing	91	0	-	south		Level 9: Gate Beneath Spectacle Rock //   Cold air pours down from the mountain's heart into this bare stone // vestibule, carved where the twin crags of Spectacle Rock meet the ground.	-	+
+1794967176	cmd	Trentlin	50	30317	hyrule.are	standing	91	0	-	up		Spectacle Rock //   Two great round boulders stand side by side on the summit, joined by a low // saddle of stone like a giant's pair of spectacles left on the mountaintop.	-	+
+1794967176	area	Trentlin	50	4207	dresden.are	hyrule.are	dresden.are	272	recall
+1794967176	cmd	Trentlin	50	4207	dresden.are	standing	91	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794967178	cmd	Trentlin	50	4208	dresden.are	standing	91	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794967181	coin	Trentlin	50	4208	dresden.are	-500000	spent	heal	-	16929738519
+1794967181	cmd	Trentlin	50	4208	dresden.are	standing	91	0	-	heal	refres	The healer utters the words 'candusima'. // You feel fully refreshed! (5 castings, 50 gold.)	-	-
+1794967185	state	Trentlin	50	4208	dresden.are	lvl=50 hp=791/865 mana=1355/2246 mv=489/489 align=410 exp=115998 coin=1460528845 bank=15469209674 qp=4904 prac=7 train=18 stash=69/75 remorts=1
+1794967185	cmd	Trentlin	50	4208	dresden.are	standing	91	0	-	score		| Name:       Trentlin | Level:      50 | Class:        Monk | // | Played:     40 hours | Sex:      Male | Guild:        Monk | // | Age:        19 years | Race:    Dwarf | Castle:       None |	-	+
+1794967185	cmd	Trentlin	50	4208	dresden.are	standing	91	0	-	affect		You are affected by: // Skill: 'steel fist' modifies damage roll by 14 for 2 hours. // Spell: 'empower' modifies experience by 50 for 1 hours.	-	+
+1794967186	cmd	Trentlin	50	4208	dresden.are	standing	91	0	-	inventory		You are carrying: //      (Magical) the Red Ring of Hyrule //      (Magical) a ruby container of tea	-	+
+1794967193	cmd	Trentlin	50	4208	dresden.are	standing	91	0	-	compare	lion	A) the Heart Guard of the Lion (level 52) -- can't use: needs level 52 // B) the Heart Guard of the Lizard (level 33), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1794967197	cmd	Trentlin	50	4207	dresden.are	standing	91	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794967197	cmd	Trentlin	50	4202	dresden.are	standing	91	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794967198	cmd	Trentlin	50	4201	dresden.are	standing	91	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794967198	spotted	Trentlin	50	2427	dresden.are	983	herb	36	a belladonna plant	16886	2	scatter	arrive
+1794967198	cmd	Trentlin	50	2427	dresden.are	standing	91	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794967198	passed	Trentlin	50	2404	dresden.are	983	herb	36	a belladonna plant	16886	0	2	scatter	2427	left
+1794967198	cmd	Trentlin	50	2404	dresden.are	standing	91	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794967199	cmd	Trentlin	50	2427	dresden.are	standing	91	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794967200	picked	Trentlin	50	2427	dresden.are	983	herb	36	a belladonna plant	16888	2	2	scatter	get
+1794967200	got	Trentlin	50	2427	dresden.are	36	a belladonna plant	herb	0	0	get	the floor
+1794967200	cmd	Trentlin	50	2427	dresden.are	standing	91	0	-	get	all	You get a belladonna plant.	-	-
+1794967202	got	Trentlin	50	2427	dresden.are	74	a pink container of tea	potion	50	1000	brew	-
+1794967202	craft	Trentlin	50	2427	dresden.are	1794967202-1	brew	cure light	pink	36	74	cure light,cure light	50	75	75	made	0	saved
+1794967202	cmd	Trentlin	50	2427	dresden.are	standing	91	14	-	brew	bella	You set about making your herbal brew. // The herbs have brewed, and you pour the liquid into a container.	success:made	-
+1794967205	laid	-	0	0	-	1074	herb	42	a marjoram plant	1360	htower.are	scatter
+1794967205	laid	-	0	0	-	1075	herb	52	an asparagus shoot	1370	htower.are	scatter
+1794967207	cmd	Trentlin	50	2404	dresden.are	standing	92	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794967208	cmd	Trentlin	50	2401	dresden.are	standing	92	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794967209	cmd	Trentlin	50	2410	dresden.are	standing	92	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794967209	cmd	Trentlin	50	2411	dresden.are	standing	92	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794967209	cmd	Trentlin	50	2414	dresden.are	standing	92	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1794967209	cmd	Trentlin	50	2497	dresden.are	standing	92	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794967212	quest	Trentlin	50	2497	dresden.are	ordinary	recover	25043	The Signet of Killuminati	59	highland.are	10
+1794967212	cmd	Trentlin	50	2497	dresden.are	standing	92	15	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Trentlin. I have just the task for you.' // Questor Thews tells you 'Bandits have made off with The Signet of Killuminati!'	-	+
+1794967215	cmd	Trentlin	50	2401	dresden.are	standing	92	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1794967216	cmd	Trentlin	50	2405	dresden.are	standing	92	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1794967217	cmd	Trentlin	50	2433	dresden.are	standing	92	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1794967217	cmd	Trentlin	50	2434	dresden.are	standing	92	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794967217	cmd	Trentlin	50	2435	dresden.are	standing	92	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794967217	cmd	Trentlin	50	2436	dresden.are	standing	92	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794967218	cmd	Trentlin	50	2437	dresden.are	standing	92	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1794967218	cmd	Trentlin	50	2438	dresden.are	standing	92	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1794967218	cmd	Trentlin	50	2438	dresden.are	standing	92	0	-	open	west	Ok.	-	-
+1794967218	cmd	Trentlin	50	2439	dresden.are	standing	92	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1794967219	area	Trentlin	50	6000	haon.are	dresden.are	haon.are	43	west
+1794967219	cmd	Trentlin	50	6000	haon.are	standing	92	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1794967219	cmd	Trentlin	50	6001	haon.are	standing	92	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1794967219	cmd	Trentlin	50	6002	haon.are	standing	92	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1794967219	cmd	Trentlin	50	6003	haon.are	standing	92	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.	-	+
+1794967220	cmd	Trentlin	50	6004	haon.are	standing	92	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains	-	+
+1794967220	cmd	Trentlin	50	6100	haon.are	standing	92	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in	-	+
+1794967220	cmd	Trentlin	50	6101	haon.are	standing	92	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,	-	+
+1794967220	cmd	Trentlin	50	6104	haon.are	standing	92	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel // as if the ancient trees observe you in watchful silence. The path continues	-	+
+1794967221	cmd	Trentlin	50	6105	haon.are	standing	92	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and west.	-	+
+1794967221	cmd	Trentlin	50	6106	haon.are	standing	92	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.	-	+
+1794967221	cmd	Trentlin	50	6117	haon.are	standing	92	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.	-	+
+1794967221	cmd	Trentlin	50	6116	haon.are	standing	92	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously on all sides.  The path continues east and south.	-	+
+1794967222	cmd	Trentlin	50	6115	haon.are	standing	92	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel as // if the ancient trees observe you in watchful silence.  The path continues	-	+
+1794967222	cmd	Trentlin	50	6114	haon.are	standing	92	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead north, east and west.	-	+
+1794967222	cmd	Trentlin	50	6122	haon.are	standing	92	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously all around.  The path continues east and south.	-	+
+1794967222	cmd	Trentlin	50	6123	haon.are	standing	92	0	-	south		A junction on the river bank in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all around.  To the south a dark river flows	-	+
+1794967223	area	Trentlin	50	9774	newthalo.are	haon.are	newthalo.are	4	south
+1794967223	cmd	Trentlin	50	9774	newthalo.are	standing	92	0	-	south		On the Dark River //   The river continues east and west meandering through the woods. You // hear the sounds of wood being chopped far off in the distance.	-	+
+1794967223	cmd	Trentlin	50	9773	newthalo.are	standing	92	0	-	east		On the Dark River //   The river continues east and west meandering through the woods. // [Exits: east south west]	-	-
+1794967223	area	Trentlin	50	57	connect.are	newthalo.are	connect.are	0	south
+1794967223	cmd	Trentlin	50	57	connect.are	standing	92	0	-	south		On the river bank //   You have scampered up to the river bank and are standing on an escarpment,  // watching the dark river meander by.  As you look around, you notice a 	-	+
+1794967223	area	Trentlin	50	17100	highland.are	connect.are	highland.are	0	down
+1794967223	cmd	Trentlin	50	17100	highland.are	standing	92	0	-	down		Entrance to a Valley in the Highlands //   You see before you a path that just stops, appearing not go to any further, // but degenerating into a mysterious bog.  If you dare to enter the bog, it is	-	+
+1794967270	laid	-	0	0	-	1083	component	59	a patch of lycanthrope fur	2329	mahntor.are	scatter
+1794967278	cmd	Trentlin	50	17100	highland.are	standing	94	0	-	look		Entrance to a Valley in the Highlands //   You see before you a path that just stops, appearing not go to any further, // but degenerating into a mysterious bog.  If you dare to enter the bog, it is	-	+
+1794967279	cmd	Trentlin	50	17101	highland.are	standing	94	0	-	north		The Bog //   You are trudging through a dark and gloomy bog.  The darkness is so complete // that you have no sense of direction left.  The mud and mire suck at 	-	+
+1794967280	cmd	Trentlin	50	17102	highland.are	standing	94	0	-	east		The Bog //   You are trudging through a dark and gloomy bog.  The darkness is so complete // that you have no sense of direction left.  The mud and mire suck at 	-	+
+1794967284	cmd	Trentlin	50	17116	highland.are	standing	94	0	-	south		The Bog //   You are trudging through a dark and gloomy bog.  The darkness is so complete // that you have no sense of direction left.  The mud and mire suck at 	-	+
+1794967285	cmd	Trentlin	50	17117	highland.are	standing	94	0	-	east		The Bog //   You are trudging through a dark and gloomy bog.  The darkness is so complete // that you have no sense of direction left.  The mud and mire suck at 	-	+
+1794967285	cmd	Trentlin	50	17119	highland.are	standing	94	0	-	north		A path //   You are relieved to feel yourself on solid ground again.  You find yourself // descending a hill into a large a valley.  In the distance you hear sheep 	-	+
+1794967285	cmd	Trentlin	50	17120	highland.are	standing	94	0	-	north		A path into the valley //   You are walking on a path leading into the valley. You can see the rugged  // landscape.  You also notice the weather must always be rainy in these 	-	+
+1794967285	cmd	Trentlin	50	17121	highland.are	standing	94	0	-	north		A path //   You are approaching a crossroad in the valley. The ground seems more level // here, so you must be coming to the lowest point of the valley.	-	+
+1794967286	cmd	Trentlin	50	17122	highland.are	standing	94	0	-	north		The Crossroads //   The guards here look nasty.  Better not make any trouble. There is a  // roadsign planted in the center of the crossing. To the north you see a lake.	-	+
+1794967289	cmd	Trentlin	50	17122	highland.are	standing	94	0	-	levitate		You slowly rise up off the ground.	-	-
