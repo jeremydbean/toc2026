@@ -5321,3 +5321,4 @@
 1795007041	wizinfo	60	Connection guard: last hour 10 closed without a word, 4 refused, 0 new characters refused, 0 newly paused; 5 addresses paused and 0 refused now, 14 active player addresses.
 1795010641	wizinfo	60	Connection guard: last hour 14 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 5 addresses paused and 0 refused now, 14 active player addresses.
 1795011962	wizinfo	60	Cartographer: appeared in room 13020 (Twin Peaks Vale, lakes.are) (level 7).
+1795015440	wizinfo	60	Connection guard: 3.133.226.214 paused for 48 hours (pause 4 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 3.133.226.214 lifts it.
