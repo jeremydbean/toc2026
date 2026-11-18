@@ -315320,3 +315320,4 @@ Wed Nov 18 03:48:24 2026 :: Connection guard: 3.12.251.153 closed without a word
 Wed Nov 18 03:50:34 2026 :: Connection guard: 192.178.6.197 closed before a password prompt (timed out at the prompt; not counted).
 Wed Nov 18 03:52:12 2026 :: Treasure goblin: vanished from room 15015 (Union Street, campus.are) (too long in one area).
 Wed Nov 18 03:53:29 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 18 03:58:34 2026 :: Connection guard: refused 1 connection from 3.212.128.62 (paused; 3 refused in all, pause 2 this week, 690 minutes left).
