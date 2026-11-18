@@ -316497,3 +316497,6 @@ Wed Nov 18 19:29:05 2026 :: Treasure goblin: vanished from room 5138 (Grand Hall
 Wed Nov 18 19:32:51 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 5 of 6 in 6 hours).
 Wed Nov 18 19:37:54 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 3 of 6 in 6 hours).
 Wed Nov 18 19:39:10 2026 :: Treasure goblin: vanished from room 18001 (A small field, icekeep.are) (too long in one area).
+Wed Nov 18 19:42:59 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 6 of 6 in 6 hours).
+Wed Nov 18 19:42:59 2026 :: Connection guard: 5.161.215.244 paused for 24 hours (pause 3 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.215.244 lifts it.
+Wed Nov 18 19:43:14 2026 :: Cartographer: appeared.
