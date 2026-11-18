@@ -152,7 +152,14 @@ class CreatorLuckTests(unittest.TestCase):
                 patch_player_file(mud, "Zlucky", Room=QUIET_ROOM)
                 with mud.connect(timeout=120) as hero:
                     login(hero, "Zlucky", PW)
-                    hero.expect("The earth heaves under your feet", timeout=60)
+                    # It may land while login is still reading the MOTD
+                    # (login's own sync then swallows it), so look in the
+                    # whole transcript, not only what comes after.
+                    for _ in range(60):
+                        if "The earth heaves under your feet" in hero.transcript:
+                            break
+                        hero.drain(1.0)
+                    self.assertIn("The earth heaves under your feet", hero.transcript)
                     hero.sync("look")
                     self.assertNotIn("keep your footing", hero.transcript)
                     said = god.sync("fate zlucky")
