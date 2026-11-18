@@ -315346,3 +315346,7 @@ Wed Nov 18 04:57:20 2026 :: Cartographer: appeared.
 Wed Nov 18 04:59:30 2026 :: Connection guard: refused 1 connection from 5.161.215.244 (paused; 6 refused in all, pause 2 this week, 167 minutes left).
 Wed Nov 18 05:04:01 2026 :: Connection guard: last hour 6 closed without a word, 6 refused, 0 new characters refused, 0 newly paused; 9 addresses paused and 0 refused now, 14 active player addresses.
 Wed Nov 18 05:04:34 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 5 of 6 in 6 hours).
+Wed Nov 18 05:06:52 2026 :: Sock.sinaddr:  192.178.6.197
+Wed Nov 18 05:09:39 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 2 of 6 in 6 hours).
+Wed Nov 18 05:09:41 2026 :: Treasure goblin: vanished from room 9523 (Inside the West Gate of New Thalos, newthalo.are) (too long in one area).
+Wed Nov 18 05:09:59 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
