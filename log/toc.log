@@ -315294,3 +315294,8 @@ Wed Nov 18 02:47:28 2026 :: Connection guard: 178.156.187.238 paused for 6 hours
 Wed Nov 18 02:51:44 2026 :: Treasure goblin: vanished from room 17700 (Entrance to the Land of Oz, landoz.are) (too long in one area).
 Wed Nov 18 02:52:32 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 2 of 6 in 6 hours).
 Wed Nov 18 02:57:37 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 15 refused in all, pause 3 this week, 562 minutes left).
+Wed Nov 18 03:01:49 2026 :: Treasure goblin: vanished from room 28125 (SPLAT!, azeroth.are) (too long in one area).
+Wed Nov 18 03:02:42 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 3 of 6 in 6 hours).
+Wed Nov 18 03:04:01 2026 :: Connection guard: last hour 10 closed without a word, 5 refused, 0 new characters refused, 1 newly paused; 9 addresses paused and 0 refused now, 14 active player addresses.
+Wed Nov 18 03:05:43 2026 :: Automated backup started.
+Wed Nov 18 03:05:44 2026 :: Automated backup complete.
