@@ -37722,3 +37722,316 @@
 1795036936	cmd	Trentlin	51	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
 1795036959	laid	-	0	0	-	870	herb	34	an amaranth plant	13532	hell.are	scatter
 1795036959	laid	-	0	0	-	871	component	57	a trolls fingernail	5735	mid_ruin.are	scatter
+1795036998	cmd	Trentlin	51	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795036998	cmd	Trentlin	51	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795036998	cmd	Trentlin	51	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795036998	cmd	Trentlin	51	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795036999	cmd	Trentlin	51	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795036999	cmd	Trentlin	51	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795036999	cmd	Trentlin	51	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795037002	cmd	Trentlin	51	2426	dresden.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road	-	+
+1795037003	cmd	Trentlin	51	2426	dresden.are	standing	100	0	-	open	east	Ok.	-	-
+1795037003	area	Trentlin	51	3503	midennir.are	dresden.are	midennir.are	67	run
+1795037003	cmd	Trentlin	51	3502	midennir.are	standing	100	0	-	run	e 3	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance	-	+
+1795037003	area	Trentlin	51	5261	oldthalo.are	midennir.are	oldthalo.are	0	run
+1795037003	cmd	Trentlin	51	5258	oldthalo.are	standing	100	0	-	run	s	The dwarf forest // [Exits: north south southeast] // The dwarf forest	-	+
+1795037003	cmd	Trentlin	51	5258	oldthalo.are	resting	100	0	-	stand		You stand up.	-	-
+1795037004	cmd	Trentlin	51	5203	oldthalo.are	standing	100	0	-	run	w 6	A trail at the end of the dwarf forest // [Exits: east west] // A trail at the end of the dwarf forest	-	+
+1795037004	cmd	Trentlin	51	5209	oldthalo.are	standing	100	0	-	run	n	A Garden Path // [Exits: north south west] // A Side Street	-	+
+1795037004	cmd	Trentlin	51	5209	oldthalo.are	resting	100	0	-	stand		You stand up.	-	-
+1795037004	cmd	Trentlin	51	5224	oldthalo.are	standing	100	0	-	run	w	A back alley // [Exits: east west] // Under the watchtower	-	+
+1795037005	cmd	Trentlin	51	5224	oldthalo.are	resting	100	0	-	stand		You stand up.	-	-
+1795037022	cmd	Trentlin	51	5246	oldthalo.are	standing	100	0	-	up		The north-west watchtower //   You stand atop one of the city watchtowers. The view is magnificent // from here and you can see all the way to the western mountains. No wonder	-	+
+1795037022	area	Trentlin	51	26	connect.are	oldthalo.are	connect.are	19	up
+1795037022	cmd	Trentlin	51	26	connect.are	standing	100	0	-	up		Tower Foyer //   You have reached a small but dusty room at the top of the northwestern watch // tower in oldthalos. The rooms only adornments are a large mirror hanging on	-	+
+1795037022	cmd	Trentlin	51	27	connect.are	standing	100	0	-	enter	mirror	You enter A Mirror // Your stomach flip flops. Everything goes black for a moment. // Tower Foyer	-	+
+1795037023	area	Trentlin	51	5346	mirror.are	connect.are	mirror.are	1	run
+1795037023	cmd	Trentlin	51	5324	mirror.are	standing	100	0	-	run	d	The north-west watchtower // [Exits: down] // Under the watchtower	-	+
+1795037023	cmd	Trentlin	51	5324	mirror.are	resting	100	0	-	stand		You stand up.	-	-
+1795037023	cmd	Trentlin	51	5309	mirror.are	standing	100	0	-	run	e 2	A back alley // [Exits: east west] // A Side Street	-	+
+1795037023	cmd	Trentlin	51	5310	mirror.are	standing	100	0	-	south		A Side Street //   You are in the common section of the city. More buildings made of // clay and stone be dazzles you. Most of these homes are designed so	-	+
+1795037024	cmd	Trentlin	51	5311	mirror.are	standing	100	0	-	south		A Side Street //   This small side street leads away from the garden path to the south. // Around you stand large numbers of commoners' houses.  Many citizens	-	+
+1795037024	cmd	Trentlin	51	5338	mirror.are	standing	100	0	-	run	e	A Public Library // [Exits: east west up] // The Library Addition	-	+
+1795037024	cmd	Trentlin	51	5338	mirror.are	resting	100	0	-	stand		You stand up.	-	-
+1795037027	cmd	Trentlin	51	5338	mirror.are	standing	100	0	-	look		The Library Addition //   There are more shelves and tables here.  Vials of strange potions line a // section of the wall, and books and other items of power line another.  The exit	-	+
+1795037031	refused	Trentlin	51	5338	mirror.are	standing	100	0	-	(unknown)		Huh? Did you mean LIST?	refusal:unknown-command	-
+1795037032	cmd	Trentlin	51	5338	mirror.are	standing	100	0	-	list		An old wizard says 'Sorry, I am closed. Come back tomorrow.'	-	-
+1795037034	cmd	Trentlin	51	5337	mirror.are	standing	100	0	-	west		A Public Library //   This seems to be the tallest structure in the city.  Rows and rows of books // line the 20 foot tall bookcases, and a quiet serenity can be felt by all here.	-	+
+1795037035	cmd	Trentlin	51	5311	mirror.are	standing	100	0	-	west		A Side Street //   This small side street leads away from the garden path to the south. // Around you stand large numbers of commoners' houses.  Many citizens	-	+
+1795037038	cmd	Trentlin	51	5304	mirror.are	standing	100	0	-	south		A Garden Path //   A circular path surrounds a magnificent domed temple in the center // of the city. Flowers grow on the sides of the path and the lush trees are	-	+
+1795037041	cmd	Trentlin	51	5304	mirror.are	standing	100	0	-	kill	city	Your punch *** DEMOLISHES *** an imperial cityguard! // Your punch MANGLES an imperial cityguard!	-	-
+1795037045	cmd	Trentlin	51	5304	mirror.are	fighting	100	16	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes an imperial cityguard. // Your fists of fury scratches an imperial cityguard.	-	+
+1795037054	area	Trentlin	51	9688	newthalo.are	mirror.are	newthalo.are	31	recall
+1795037054	cmd	Trentlin	51	9688	newthalo.are	standing	100	0	-	recall		Something is very wrong! // Small room //   This is secret chamber allowing the Sultan direct access to his harem	-	+
+1795037057	area	Trentlin	51	4207	dresden.are	newthalo.are	dresden.are	3	recall
+1795037057	cmd	Trentlin	51	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795037058	cmd	Trentlin	51	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795037059	cmd	Trentlin	51	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795037059	cmd	Trentlin	51	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795037059	cmd	Trentlin	51	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795037059	cmd	Trentlin	51	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795037060	cmd	Trentlin	51	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795037060	cmd	Trentlin	51	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795037060	cmd	Trentlin	51	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1795037061	cmd	Trentlin	51	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1795037061	cmd	Trentlin	51	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1795037061	cmd	Trentlin	51	2497	dresden.are	standing	100	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795037061	cmd	Trentlin	51	2497	dresden.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1795037063	coin	Trentlin	51	2497	dresden.are	+96533514	quests	aquest	-	17507307018
+1795037063	outcome	Trentlin	51	2497	dresden.are	quest-complete	success	-	-	ordinary qp=73->73 offered=86 daily=18->18 coin=+96533514 kill=13790502 streak=20 level=51 target=-1
+1795037063	cmd	Trentlin	51	2497	dresden.are	standing	100	23	-	aquest	complet	You inform Questor Thews you have completed his quest. // Questor Thews says 'Splendid - you've returned victorious!' // Questor Thews says 'Streak of 21 in a row! A +115% bonus has been added!'	success:-	+
+1795037066	cmd	Trentlin	51	2497	dresden.are	standing	100	8	-	aquest	gamble yes	The dice BETRAY you! Your 86 quest points are lost.	-	-
+1795037067	cmd	Trentlin	51	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795037068	cmd	Trentlin	51	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795037069	coin	Trentlin	51	4208	dresden.are	-900000	spent	heal	-	17506407018
+1795037069	cmd	Trentlin	51	4208	dresden.are	standing	100	0	-	heal	refres	The healer utters the words 'candusima'. // You feel fully refreshed! (9 castings, 90 gold.)	-	-
+1795037077	laid	-	0	0	-	881	herb	53	a huckleberry	25223	mushroom.are	scatter
+1795037077	laid	-	0	0	-	882	herb	44	a sprig of aconite	25268	mushroom.are	scatter
+1795037077	laid	-	0	0	-	883	component	88	a vial of green slime	20161	prison.are	scatter
+1795037080	cmd	Trentlin	51	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795037080	cmd	Trentlin	51	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795037081	cmd	Trentlin	51	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795037081	cmd	Trentlin	51	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795037082	cmd	Trentlin	51	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795037083	cmd	Trentlin	51	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795037083	cmd	Trentlin	51	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1795037083	cmd	Trentlin	51	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1795037083	cmd	Trentlin	51	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1795037084	cmd	Trentlin	51	2422	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1795037084	cmd	Trentlin	51	2423	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1795037084	cmd	Trentlin	51	2424	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1795037084	cmd	Trentlin	51	2425	dresden.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1795037085	cmd	Trentlin	51	2426	dresden.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795037085	cmd	Trentlin	51	2440	dresden.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1795037085	area	Trentlin	51	3503	midennir.are	dresden.are	midennir.are	28	east
+1795037085	cmd	Trentlin	51	3503	midennir.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1795037086	cmd	Trentlin	51	3502	midennir.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1795037086	cmd	Trentlin	51	3525	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  	-	+
+1795037086	cmd	Trentlin	51	3526	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded	-	+
+1795037087	cmd	Trentlin	51	3527	midennir.are	standing	100	0	-	east		The Checkpoint //   You are met by a group of heavily armored knights.  They check you over // for contraband, and then allow you to pass on.  One of the knights cautions to	-	+
+1795037087	cmd	Trentlin	51	3528	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road, just east of a heavily  // guarded checkpoint.  You have covered about half the distance between	-	+
+1795037087	cmd	Trentlin	51	3529	midennir.are	standing	100	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially	-	+
+1795037088	cmd	Trentlin	51	3530	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste	-	+
+1795037088	cmd	Trentlin	51	3531	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your	-	+
+1795037088	cmd	Trentlin	51	3532	midennir.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous	-	+
+1795037089	area	Trentlin	51	42	connect.are	midennir.are	connect.are	4	east
+1795037089	cmd	Trentlin	51	42	connect.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities	-	+
+1795037089	area	Trentlin	51	9669	newthalo.are	connect.are	newthalo.are	0	east
+1795037089	cmd	Trentlin	51	9669	newthalo.are	standing	100	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.	-	+
+1795037090	cmd	Trentlin	51	9523	newthalo.are	standing	100	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1795037090	cmd	Trentlin	51	9524	newthalo.are	standing	100	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1795037091	cmd	Trentlin	51	9525	newthalo.are	standing	100	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1795037091	cmd	Trentlin	51	9526	newthalo.are	standing	100	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1795037091	cmd	Trentlin	51	9509	newthalo.are	standing	100	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1795037091	cmd	Trentlin	51	9506	newthalo.are	standing	100	0	-	east		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle	-	+
+1795037092	cmd	Trentlin	51	9517	newthalo.are	standing	100	0	-	east		The Eastern Market Square //   You stand in the market of New Thalos, the gem of the desert. The // market is the hub of the city; all trade and commerce of any significance is	-	+
+1795037093	cmd	Trentlin	51	9527	newthalo.are	standing	100	0	-	east		East Main Street //   Here on East Main, you smell the odor of freshly slaughtered meat and // hear the pounding of new metal from the armory.  The Square is to	-	+
+1795037094	cmd	Trentlin	51	9517	newthalo.are	standing	100	0	-	west		The Eastern Market Square //   You stand in the market of New Thalos, the gem of the desert. The // market is the hub of the city; all trade and commerce of any significance is	-	+
+1795037094	cmd	Trentlin	51	9506	newthalo.are	standing	100	0	-	west		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle	-	+
+1795037095	cmd	Trentlin	51	9506	newthalo.are	standing	100	0	-	drink		You are no longer thirsty.	-	-
+1795037096	cmd	Trentlin	51	9506	newthalo.are	standing	100	0	-	inventory		You are carrying: //      a plain container of tea //      a silver-arrow spear	-	+
+1795037106	cmd	Trentlin	51	9522	newthalo.are	standing	100	0	-	run	n	The Northern Market Square // [Exits: north east south west] // Sultan's Walk	-	+
+1795037107	cmd	Trentlin	51	9522	newthalo.are	resting	100	0	-	wake		You stand up.	-	-
+1795037108	cmd	Trentlin	51	9522	newthalo.are	standing	100	0	-	open	n	Ok.	-	-
+1795037109	area	Trentlin	51	64	connect.are	newthalo.are	connect.are	20	run
+1795037109	area	Trentlin	51	29001	korzath1.are	connect.are	korzath1.are	0	run
+1795037109	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	run	n	Outside the Northern Gate of New Thalos // [Exits: north south] // On the Plains	-	+
+1795037110	cmd	Trentlin	51	29004	korzath1.are	resting	100	0	-	wake		You stand up.	-	-
+1795037111	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	look		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive	-	+
+1795037115	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	compare	lion	A) the Heart Guard of the Lion (level 52) -- can't use: needs level 52 // B) (Shining) A Precious Starjewel (level 50), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1795037121	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	quaff	plain	You quaff a plain container of tea. // You feel better!	-	-
+1795037128	cmd	Trentlin	51	29004	korzath1.are	standing	100	2	-	iron		Your skin hardens.	-	-
+1795037136	cmd	Trentlin	51	29004	korzath1.are	standing	100	0	-	kill	gua	Your punch *** DEVASTATES *** Guardian Knight! // Your punch wounds Guardian Knight. // Guardian Knight parries your attack.	-	-
+1795037139	cmd	Trentlin	51	29004	korzath1.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures Guardian Knight. // Your fists of fury hits Guardian Knight.	-	+
+1795037140	laid	-	0	0	-	902	herb	43	a sprig of hyssop	28104	azeroth.are	scatter
+1795037140	laid	-	0	0	-	903	herb	35	a sprig of angelica	28117	azeroth.are	scatter
+1795037140	laid	-	0	0	-	904	component	56	a dragons claw	8304	marsh.are	scatter
+1795037144	cmd	Trentlin	51	29004	korzath1.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches Guardian Knight. // Your fists of fury scratches Guardian Knight.	-	+
+1795037153	cmd	Trentlin	51	29004	korzath1.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches Guardian Knight. // Your fists of fury mauls Guardian Knight.	-	+
+1795037159	cmd	Trentlin	51	29004	korzath1.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls Guardian Knight. // Your fists of fury decimates Guardian Knight!	-	+
+1795037161	coin	Trentlin	51	29004	korzath1.are	+3000000	loot	(violence_update)	corpse of Guardian Knight	17509407018
+1795037161	coin	Trentlin	51	29004	korzath1.are	+3400	loot	(violence_update)	corpse of Guardian Knight	17509410418
+1795037161	coin	Trentlin	51	29004	korzath1.are	+40	loot	(violence_update)	corpse of Guardian Knight	17509410458
+1795037161	coin	Trentlin	51	29004	korzath1.are	+670000	loot	(violence_update)	corpse of Guardian Knight	17510080458
+1795037167	got	Trentlin	51	29004	korzath1.are	29003	a diamond key	key	40	1000000	get	corpse of Guardian Knight
+1795037167	cmd	Trentlin	51	29004	korzath1.are	standing	91	0	-	get	key co	You get a diamond key from corpse of Guardian Knight.	-	-
+1795037168	cmd	Trentlin	51	29004	korzath1.are	standing	91	0	-	unlock	n	There is a flash of light as you unlock the door.	-	-
+1795037168	cmd	Trentlin	51	29004	korzath1.are	standing	91	0	-	open	 n	Ok.	-	-
+1795037170	cmd	Trentlin	51	29004	korzath1.are	standing	91	0	-	drop	key	You drop a diamond key.	-	-
+1795037172	cmd	Trentlin	51	29004	korzath1.are	standing	91	0	-	steel		You lost your concentration.	-	-
+1795037174	cmd	Trentlin	51	29004	korzath1.are	standing	91	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1795037178	area	Trentlin	51	29201	korzath2.are	korzath1.are	korzath2.are	69	north
+1795037178	cmd	Trentlin	51	29201	korzath2.are	standing	91	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal	-	+
+1795037180	cmd	Trentlin	51	29201	korzath2.are	standing	91	0	-	scan		You don't see anything near you.	-	-
+1795037180	cmd	Trentlin	51	29202	korzath2.are	standing	91	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that	-	+
+1795037181	cmd	Trentlin	51	29202	korzath2.are	standing	91	0	-	scan		a killer clown                     -to the far West.	-	-
+1795037182	laid	-	0	0	-	908	herb	43	a sprig of hyssop	13485	hell.are	scatter
+1795037182	laid	-	0	0	-	909	herb	51	a piece of kelp	13470	hell.are	scatter
+1795037182	laid	-	0	0	-	910	component	84	a vial of froghemoth saliva	6328	arac.are	scatter
+1795037185	cmd	Trentlin	51	29202	korzath2.are	standing	94	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1795037191	cmd	Trentlin	51	29203	korzath2.are	standing	94	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight	-	+
+1795037192	cmd	Trentlin	51	29204	korzath2.are	standing	94	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it	-	+
+1795037193	cmd	Trentlin	51	29204	korzath2.are	standing	94	0	-	kill	clo	A killer clown parries your attack. // A killer clown parries your attack. // A killer clown dodges your attack.	-	-
+1795037196	cmd	Trentlin	51	29204	korzath2.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches a killer clown. // Your fists of fury MUTILATES a killer clown!	-	+
+1795037204	cmd	Trentlin	51	29204	korzath2.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a killer clown. // Your fists of fury scratches a killer clown.	-	+
+1795037213	cmd	Trentlin	51	29204	korzath2.are	fighting	79	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a killer clown. // Your fists of fury DISMEMBERS a killer clown!	-	+
+1795037233	laid	-	0	0	-	912	component	58	some pixie dust	9115	dylan.are	scatter
+1795037240	cmd	Trentlin	51	29203	korzath2.are	fighting	28	0	fight	flee		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight	-	+
+1795037241	cmd	Trentlin	51	29202	korzath2.are	standing	28	0	-	east		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that	-	+
+1795037242	cmd	Trentlin	51	29202	korzath2.are	standing	28	0	-	east		The door is closed.	-	-
+1795037242	cmd	Trentlin	51	29201	korzath2.are	standing	28	0	-	south		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal	-	+
+1795037243	area	Trentlin	51	29004	korzath1.are	korzath2.are	korzath1.are	65	south
+1795037243	cmd	Trentlin	51	29004	korzath1.are	standing	28	0	-	south		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive	-	+
+1795037243	cmd	Trentlin	51	29003	korzath1.are	standing	28	0	-	south		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in	-	+
+1795037243	cmd	Trentlin	51	29002	korzath1.are	standing	28	0	-	south		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites	-	+
+1795037243	area	Trentlin	51	4207	dresden.are	korzath1.are	dresden.are	0	recall
+1795037243	cmd	Trentlin	51	4207	dresden.are	standing	28	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795037245	cmd	Trentlin	51	4208	dresden.are	standing	28	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795037246	coin	Trentlin	51	4208	dresden.are	-5000000	spent	heal	-	17505080458
+1795037246	coin	Trentlin	51	4208	dresden.are	-5000000	spent	heal	-	17500080458
+1795037246	coin	Trentlin	51	4208	dresden.are	-5000000	spent	heal	-	17495080458
+1795037246	coin	Trentlin	51	4208	dresden.are	-5000000	spent	heal	-	17490080458
+1795037246	coin	Trentlin	51	4208	dresden.are	-5000000	spent	heal	-	17485080458
+1795037246	coin	Trentlin	51	4208	dresden.are	-5000000	spent	heal	-	17480080458
+1795037246	cmd	Trentlin	51	4208	dresden.are	standing	28	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body, and you are whole. (6 castings, 3000 gold.)	-	-
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17479080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17478080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17477080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17476080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17475080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17474080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17473080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17472080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17471080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17470080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17469080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17468080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17467080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17466080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17465080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17464080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17463080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17462080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17461080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17460080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17459080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17458080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17457080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17456080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17455080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17454080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17453080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17452080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17451080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17450080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17449080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17448080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17447080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17446080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17445080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17444080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17443080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17442080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17441080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17440080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17439080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17438080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17437080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17436080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17435080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17434080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17433080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17432080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17431080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17430080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17429080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17428080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17427080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17426080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17425080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17424080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17423080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17422080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17421080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17420080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17419080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17418080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17417080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17416080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17415080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17414080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17413080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17412080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17411080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17410080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17409080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17408080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17407080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17406080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17405080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17404080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17403080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17402080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17401080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17400080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17399080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17398080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17397080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17396080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17395080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17394080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17393080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17392080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17391080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17390080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17389080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17388080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17387080458
+1795037252	coin	Trentlin	51	4208	dresden.are	-1000000	spent	heal	-	17386080458
+1795037252	cmd	Trentlin	51	4208	dresden.are	standing	100	0	-	heal	mana	The healer utters the words 'energizer'. // A warm glow passes through you, and your mind is full. (94 castings, 9400 gold.)	-	-
+1795037255	cmd	Trentlin	51	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795037256	cmd	Trentlin	51	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795037256	cmd	Trentlin	51	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795037256	cmd	Trentlin	51	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795037256	cmd	Trentlin	51	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795037257	cmd	Trentlin	51	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795037257	cmd	Trentlin	51	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795037257	cmd	Trentlin	51	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795037257	cmd	Trentlin	51	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795037258	cmd	Trentlin	51	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795037258	cmd	Trentlin	51	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795037259	cmd	Trentlin	51	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1795037259	cmd	Trentlin	51	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1795037260	cmd	Trentlin	51	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1795037260	cmd	Trentlin	51	2422	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1795037260	cmd	Trentlin	51	2423	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1795037260	cmd	Trentlin	51	2424	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1795037261	cmd	Trentlin	51	2425	dresden.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1795037261	cmd	Trentlin	51	2426	dresden.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795037261	cmd	Trentlin	51	2426	dresden.are	standing	100	0	-	open	east	Ok.	-	-
+1795037261	cmd	Trentlin	51	2440	dresden.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1795037262	area	Trentlin	51	3503	midennir.are	dresden.are	midennir.are	19	east
+1795037262	cmd	Trentlin	51	3503	midennir.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1795037262	cmd	Trentlin	51	3502	midennir.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1795037262	cmd	Trentlin	51	3525	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  	-	+
+1795037262	cmd	Trentlin	51	3526	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded	-	+
+1795037263	cmd	Trentlin	51	3527	midennir.are	standing	100	0	-	east		The Checkpoint //   You are met by a group of heavily armored knights.  They check you over // for contraband, and then allow you to pass on.  One of the knights cautions to	-	+
+1795037263	cmd	Trentlin	51	3528	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road, just east of a heavily  // guarded checkpoint.  You have covered about half the distance between	-	+
+1795037263	cmd	Trentlin	51	3529	midennir.are	standing	100	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially	-	+
+1795037263	cmd	Trentlin	51	3530	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste	-	+
+1795037264	cmd	Trentlin	51	3531	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your	-	+
+1795037264	cmd	Trentlin	51	3532	midennir.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous	-	+
+1795037264	area	Trentlin	51	42	connect.are	midennir.are	connect.are	2	east
+1795037264	cmd	Trentlin	51	42	connect.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities	-	+
+1795037264	area	Trentlin	51	9669	newthalo.are	connect.are	newthalo.are	0	east
+1795037264	cmd	Trentlin	51	9669	newthalo.are	standing	100	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.	-	+
+1795037265	cmd	Trentlin	51	9523	newthalo.are	standing	100	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1795037265	cmd	Trentlin	51	9524	newthalo.are	standing	100	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1795037265	cmd	Trentlin	51	9525	newthalo.are	standing	100	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1795037265	cmd	Trentlin	51	9526	newthalo.are	standing	100	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1795037266	cmd	Trentlin	51	9509	newthalo.are	standing	100	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1795037266	cmd	Trentlin	51	9514	newthalo.are	standing	100	0	-	north		The Northwestern Market Square //   This corner of the market contains some of the most civilized folk in // New Thalos. To the north lies the humble store of the merchant Ahkeem, his	-	+
+1795037266	cmd	Trentlin	51	9515	newthalo.are	standing	100	0	-	east		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the	-	+
+1795037266	cmd	Trentlin	51	9518	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on	-	+
+1795037267	cmd	Trentlin	51	9519	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small	-	+
+1795037267	cmd	Trentlin	51	9520	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you	-	+
