@@ -314145,3 +314145,19 @@ Wed Nov 18 01:00:49 2026 :: Treasure goblin: vanished from room 1448 (The arched
 Wed Nov 18 01:00:55 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 5 of 6 in 6 hours).
 Wed Nov 18 01:04:01 2026 :: Connection guard: last hour 13 closed without a word, 3 refused, 0 new characters refused, 0 newly paused; 9 addresses paused and 0 refused now, 14 active player addresses.
 Wed Nov 18 01:05:59 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 2 of 6 in 6 hours).
+Wed Nov 18 01:06:58 2026 :: Sock.sinaddr:  3.129.187.38
+Wed Nov 18 01:06:58 2026 :: Sock.sinaddr:  3.129.187.38
+Wed Nov 18 01:06:58 2026 :: EOF encountered on read.
+Wed Nov 18 01:06:58 2026 :: Connection guard: 3.129.187.38 closed before a password prompt (strike 1 of 6 in 6 hours).
+Wed Nov 18 01:06:58 2026 :: EOF encountered on read.
+Wed Nov 18 01:06:58 2026 :: Connection guard: 3.129.187.38 closed before a password prompt (strike 2 of 6 in 6 hours).
+Wed Nov 18 01:08:19 2026 :: Connection guard: 45.79.181.251 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 18 01:08:20 2026 :: Connection guard: 45.79.181.251 closed without a word (strike 2 of 6 in 6 hours).
+Wed Nov 18 01:08:22 2026 :: Sock.sinaddr:  3.129.187.38
+Wed Nov 18 01:08:22 2026 :: EOF encountered on read.
+Wed Nov 18 01:08:22 2026 :: Connection guard: 3.129.187.38 closed before a password prompt (strike 3 of 6 in 6 hours).
+Wed Nov 18 01:08:44 2026 :: Connection guard: 3.129.187.38 closed without a word (strike 4 of 6 in 6 hours).
+Wed Nov 18 01:09:58 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Wed Nov 18 01:10:18 2026 :: Connection guard: 3.129.187.38 closed without a word (strike 5 of 6 in 6 hours).
+Wed Nov 18 01:10:53 2026 :: Treasure goblin: vanished from room 28163 (A Field, azeroth.are) (too long in one area).
+Wed Nov 18 01:11:04 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 1 of 6 in 6 hours).
