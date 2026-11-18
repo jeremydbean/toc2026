@@ -286,3 +286,14 @@
 1794966681	leave	Trentlin	50	1	Monk 	30524	L6	to=over how=enter secs=95 hp=91
 1794966681	enter	Trentlin	50	1	Monk 	30282	over	from=L6 how=enter hp=91
 1794966681	crumbled	Trentlin	50	1	Monk 	30282	over	dungeon=6 maps=0 compasses=0 keys=0 guardian_keys=1 why=left how=(hyrule_crumble_update)
+1794966691	seal	Trentlin	50	1	Monk 	30317	over	obj=30509 obj_name=a_cracked_stone_floor dir=5 how=bomb
+1794966691	leave	Trentlin	50	1	Monk 	30317	over	to=L9 how=down secs=10 hp=91
+1794966691	enter	Trentlin	50	1	Monk 	30590	L9	from=over how=down hp=91
+1794966789	seal	Trentlin	50	1	Monk 	30595	L9	obj=30502 obj_name=a_cracked_north_wall dir=0 how=bomb
+1794966882	flee	Trentlin	50	1	Monk 	30633	L9	foe=31158 foe_name=a_like_like guardian=0 foe_hp=23 secs=66 hp=62
+1794966887	leave	Trentlin	50	1	Monk 	30590	L9	to=over how=up secs=196 hp=62
+1794966887	enter	Trentlin	50	1	Monk 	30317	over	from=L9 how=up hp=62
+1794966888	leave	Trentlin	50	1	Monk 	30317	over	to=out how=recall secs=1 hp=62
+1794966904	enter	Trentlin	50	1	Monk 	30200	over	from=out how=enter hp=100
+1794966909	leave	Trentlin	50	1	Monk 	30317	over	to=L9 how=down secs=5 hp=100
+1794966909	enter	Trentlin	50	1	Monk 	30590	L9	from=over how=down hp=100

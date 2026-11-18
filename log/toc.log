@@ -314221,3 +314221,132 @@ Wed Nov 18 01:51:21 2026 :: Log Trentlin [30524]: enter light
 Wed Nov 18 01:51:21 2026 :: Log Trentlin [30282]: arrived (The Dragon's Gate) from 30524
 Wed Nov 18 01:51:25 2026 :: Log Trentlin [30282]: play recorder 9
 Wed Nov 18 01:51:25 2026 :: Log Trentlin [30317]: arrived (Spectacle Rock) from 30282
+Wed Nov 18 01:51:31 2026 :: Log Trentlin [30317]: bomb rock
+Wed Nov 18 01:51:31 2026 :: Log Trentlin [30317]: d
+Wed Nov 18 01:51:31 2026 :: Log Trentlin [30590]: arrived (Level 9: Gate Beneath Spectacle Rock) from 30317
+Wed Nov 18 01:51:37 2026 :: Log Trentlin [30590]: affects off: iron skin
+Wed Nov 18 01:51:40 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 4 of 6 in 6 hours).
+Wed Nov 18 01:52:16 2026 :: Log Trentlin [30590]: n
+Wed Nov 18 01:52:16 2026 :: Log Trentlin [30596]: arrived (Level 9: Mountain Gate Fireside) from 30590
+Wed Nov 18 01:52:17 2026 :: Log Trentlin [30596]: iron
+Wed Nov 18 01:52:24 2026 :: Log Trentlin [30596]: open north
+Wed Nov 18 01:52:25 2026 :: Log Trentlin [30596]: unlock north
+Wed Nov 18 01:52:28 2026 :: Log Trentlin [30596]: n
+Wed Nov 18 01:52:28 2026 :: Log Trentlin [30603]: arrived (Level 9: Gallery of Ooze) from 30596
+Wed Nov 18 01:52:50 2026 :: Log Trentlin [30603]: n
+Wed Nov 18 01:52:50 2026 :: Log Trentlin [30611]: arrived (Level 9: Hall of Blue Flames) from 30603
+Wed Nov 18 01:52:54 2026 :: Log Trentlin [30611]: push block
+Wed Nov 18 01:52:56 2026 :: Log Trentlin [30611]: s
+Wed Nov 18 01:52:56 2026 :: Log Trentlin [30603]: arrived (Level 9: Gallery of Ooze) from 30611
+Wed Nov 18 01:52:57 2026 :: Log Trentlin [30603]: push block
+Wed Nov 18 01:53:04 2026 :: Log Trentlin [30603]: s
+Wed Nov 18 01:53:04 2026 :: Log Trentlin [30596]: arrived (Level 9: Mountain Gate Fireside) from 30603
+Wed Nov 18 01:53:04 2026 :: Log Trentlin [30596]: w
+Wed Nov 18 01:53:04 2026 :: Log Trentlin [30595]: arrived (Level 9: Scorched Vestibule) from 30596
+Wed Nov 18 01:53:05 2026 :: Log Trentlin [30595]: n
+Wed Nov 18 01:53:07 2026 :: Log Trentlin [30595]: open north
+Wed Nov 18 01:53:09 2026 :: Log Trentlin [30595]: bomb north
+Wed Nov 18 01:53:09 2026 :: Log Trentlin [30595]: n
+Wed Nov 18 01:53:09 2026 :: Log Trentlin [30602]: arrived (Level 9: The Sealed Sand Hollow) from 30595
+Wed Nov 18 01:53:12 2026 :: Log Trentlin [30602]: d
+Wed Nov 18 01:53:12 2026 :: Log Trentlin [30633]: arrived (Level 9: Stair of the Devourers) from 30602
+Wed Nov 18 01:53:23 2026 :: Log Trentlin [30633]: e
+Wed Nov 18 01:53:26 2026 :: Log Trentlin [30633]: con l
+Wed Nov 18 01:53:32 2026 :: Log Trentlin [30633]: open east
+Wed Nov 18 01:53:36 2026 :: Log Trentlin [30633]: k l
+Wed Nov 18 01:53:40 2026 :: Log Trentlin [30633]: rem bow
+Wed Nov 18 01:53:40 2026 :: Do_remove: Trentlin : bow
+Wed Nov 18 01:53:42 2026 :: Log Trentlin [30633]: con li
+Wed Nov 18 01:53:44 2026 :: Log Trentlin [30633]: fists
+Wed Nov 18 01:53:50 2026 :: Log Trentlin [30633]: fists
+Wed Nov 18 01:53:59 2026 :: Log Trentlin [30633]: fists
+Wed Nov 18 01:54:05 2026 :: Log Trentlin [30633]: fists
+Wed Nov 18 01:54:20 2026 :: Log Trentlin [30633]: fists
+Wed Nov 18 01:54:26 2026 :: Log Trentlin [30633]: aff
+Wed Nov 18 01:54:31 2026 :: Log Trentlin [30633]: fists
+Wed Nov 18 01:54:36 2026 :: Log Trentlin [30633]: affects off: iron skin
+Wed Nov 18 01:54:37 2026 :: Log Trentlin [30633]: fists
+Wed Nov 18 01:54:42 2026 :: Log Trentlin [30633]: flee
+Wed Nov 18 01:54:42 2026 :: Log Trentlin [30602]: arrived (Level 9: The Sealed Sand Hollow) from 30633
+Wed Nov 18 01:54:45 2026 :: Log Trentlin [30602]: s
+Wed Nov 18 01:54:45 2026 :: Log Trentlin [30595]: arrived (Level 9: Scorched Vestibule) from 30602
+Wed Nov 18 01:54:46 2026 :: Log Trentlin [30595]: e
+Wed Nov 18 01:54:46 2026 :: Log Trentlin [30596]: arrived (Level 9: Mountain Gate Fireside) from 30595
+Wed Nov 18 01:54:46 2026 :: Log Trentlin [30596]: s
+Wed Nov 18 01:54:46 2026 :: Log Trentlin [30590]: arrived (Level 9: Gate Beneath Spectacle Rock) from 30596
+Wed Nov 18 01:54:47 2026 :: Log Trentlin [30590]: u
+Wed Nov 18 01:54:47 2026 :: Log Trentlin [30317]: arrived (Spectacle Rock) from 30590
+Wed Nov 18 01:54:48 2026 :: Log Trentlin [30317]: reca
+Wed Nov 18 01:54:48 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 30317
+Wed Nov 18 01:54:48 2026 :: Log Trentlin [4207]: w
+Wed Nov 18 01:54:48 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Wed Nov 18 01:54:50 2026 :: Log Trentlin [4208]: heal refresh
+Wed Nov 18 01:54:50 2026 :: Log Trentlin [4208]: gold -80
+Wed Nov 18 01:54:53 2026 :: Log Trentlin [4208]: heal refresh
+Wed Nov 18 01:54:53 2026 :: Log Trentlin [4208]: heal refresh
+Wed Nov 18 01:54:54 2026 :: Log Trentlin [4208]: heal refresh
+Wed Nov 18 01:54:54 2026 :: Log Trentlin [4208]: heal heal
+Wed Nov 18 01:54:54 2026 :: Log Trentlin [4208]: gold -500
+Wed Nov 18 01:54:54 2026 :: Log Trentlin [4208]: gold -500
+Wed Nov 18 01:54:54 2026 :: Log Trentlin [4208]: gold -500
+Wed Nov 18 01:55:00 2026 :: Log Trentlin [4208]: east
+Wed Nov 18 01:55:00 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Wed Nov 18 01:55:00 2026 :: Log Trentlin [4207]: up
+Wed Nov 18 01:55:00 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Wed Nov 18 01:55:00 2026 :: Log Trentlin [3700]: up
+Wed Nov 18 01:55:00 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3700
+Wed Nov 18 01:55:01 2026 :: Log Trentlin [3772]: up
+Wed Nov 18 01:55:01 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 3772
+Wed Nov 18 01:55:01 2026 :: Log Trentlin [3795]: enter portal
+Wed Nov 18 01:55:01 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Wed Nov 18 01:55:01 2026 :: Log Trentlin [15000]: east
+Wed Nov 18 01:55:01 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15000
+Wed Nov 18 01:55:01 2026 :: Log Trentlin [15001]: east
+Wed Nov 18 01:55:01 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15001
+Wed Nov 18 01:55:02 2026 :: Log Trentlin [15002]: east
+Wed Nov 18 01:55:02 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Wed Nov 18 01:55:02 2026 :: Log Trentlin [15003]: east
+Wed Nov 18 01:55:02 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15003
+Wed Nov 18 01:55:02 2026 :: Log Trentlin [15004]: north
+Wed Nov 18 01:55:02 2026 :: Log Trentlin [15010]: arrived (University Avenue) from 15004
+Wed Nov 18 01:55:02 2026 :: Log Trentlin [15010]: north
+Wed Nov 18 01:55:02 2026 :: Log Trentlin [15011]: arrived (University Avenue) from 15010
+Wed Nov 18 01:55:03 2026 :: Log Trentlin [15011]: north
+Wed Nov 18 01:55:03 2026 :: Log Trentlin [15012]: arrived (University Avenue) from 15011
+Wed Nov 18 01:55:03 2026 :: Log Trentlin [15012]: north
+Wed Nov 18 01:55:03 2026 :: Log Trentlin [15013]: arrived (University Avenue) from 15012
+Wed Nov 18 01:55:03 2026 :: Log Trentlin [15013]: east
+Wed Nov 18 01:55:03 2026 :: Log Trentlin [15038]: arrived (The Back Hall) from 15013
+Wed Nov 18 01:55:03 2026 :: Log Trentlin [15038]: east
+Wed Nov 18 01:55:03 2026 :: Log Trentlin [15068]: arrived (The Games Room) from 15038
+Wed Nov 18 01:55:04 2026 :: Log Trentlin [15068]: enter cabinet
+Wed Nov 18 01:55:04 2026 :: Log Trentlin [30200]: arrived (The First Quest Begins) from 15068
+Wed Nov 18 01:55:04 2026 :: Log Trentlin [30200]: play recorder 9
+Wed Nov 18 01:55:04 2026 :: Log Trentlin [30317]: arrived (Spectacle Rock) from 30200
+Wed Nov 18 01:55:09 2026 :: Log Trentlin [30317]: d
+Wed Nov 18 01:55:09 2026 :: Log Trentlin [30590]: arrived (Level 9: Gate Beneath Spectacle Rock) from 30317
+Wed Nov 18 01:55:11 2026 :: Log Trentlin [30590]: n
+Wed Nov 18 01:55:11 2026 :: Log Trentlin [30596]: arrived (Level 9: Mountain Gate Fireside) from 30590
+Wed Nov 18 01:55:11 2026 :: Log Trentlin [30596]: w
+Wed Nov 18 01:55:11 2026 :: Log Trentlin [30595]: arrived (Level 9: Scorched Vestibule) from 30596
+Wed Nov 18 01:55:12 2026 :: Log Trentlin [30595]: n
+Wed Nov 18 01:55:12 2026 :: Log Trentlin [30602]: arrived (Level 9: The Sealed Sand Hollow) from 30595
+Wed Nov 18 01:55:13 2026 :: Log Trentlin [30602]: d
+Wed Nov 18 01:55:13 2026 :: Log Trentlin [30633]: arrived (Level 9: Stair of the Devourers) from 30602
+Wed Nov 18 01:55:17 2026 :: Log Trentlin [30633]: fists
+Wed Nov 18 01:55:23 2026 :: Log Trentlin [30633]: fists
+Wed Nov 18 01:55:25 2026 :: Log Trentlin [30633]: killed a like like
+Wed Nov 18 01:55:25 2026 :: Log Trentlin [30633]: coin +20 platinum
+Wed Nov 18 01:55:25 2026 :: Log Trentlin [30633]: coin +378 silver
+Wed Nov 18 01:55:25 2026 :: Log Trentlin [30633]: coin +147 copper
+Wed Nov 18 01:55:25 2026 :: Log Trentlin [30633]: coin +68 gold
+Wed Nov 18 01:55:30 2026 :: Log Trentlin [30633]: iron
+Wed Nov 18 01:55:36 2026 :: Log Trentlin [30633]: steel
+Wed Nov 18 01:55:39 2026 :: Log Trentlin [30633]: steel
+Wed Nov 18 01:55:40 2026 :: Log Trentlin [30633]: steel
+Wed Nov 18 01:55:44 2026 :: Log Trentlin [30633]: k l
+Wed Nov 18 01:55:47 2026 :: Log Trentlin [30633]: fists
+Wed Nov 18 01:55:56 2026 :: Log Trentlin [30633]: fists
+Wed Nov 18 01:56:02 2026 :: Log Trentlin [30633]: fists
+Wed Nov 18 01:56:08 2026 :: Log Trentlin [30633]: fists
+Wed Nov 18 01:56:14 2026 :: Log Trentlin [30633]: fists

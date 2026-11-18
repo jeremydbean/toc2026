@@ -36286,3 +36286,104 @@
 1794966681	cmd	Trentlin	50	30282	hyrule.are	standing	91	0	-	enter	light	You enter the Dragon's returning light // Your stomach flip flops. Everything goes black for a moment. // The Dragon's Gate	-	+
 1794966681	item	Trentlin	50	30282	hyrule.are	30635	the Dragon's key	type=key level=33 worn=0 nested=0 timer=0 cond=100 inside=0	crumbled leaving Level 6
 1794966685	cmd	Trentlin	50	30317	hyrule.are	standing	91	0	-	play	recorder 9	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Spectacle Rock	-	+
+1794966691	cmd	Trentlin	50	30317	hyrule.are	standing	91	0	-	bomb	rock	You set a bomb beside a cracked stone floor and dive aside. The blast opens a passage!	-	-
+1794966691	cmd	Trentlin	50	30590	hyrule.are	standing	91	0	-	down		Level 9: Gate Beneath Spectacle Rock //   Cold air pours down from the mountain's heart into this bare stone // vestibule, carved where the twin crags of Spectacle Rock meet the ground.	-	+
+1794966697	laid	-	0	0	-	1022	herb	46	a juniper berry	17183	highland.are	scatter
+1794966736	cmd	Trentlin	50	30596	hyrule.are	standing	92	0	-	north		Level 9: Mountain Gate Fireside //   Black rock walls swallow most of the light thrown by the iron braziers that // flank a worn patch of floor, and the corners stay dark however the flames	-	+
+1794966737	cmd	Trentlin	50	30596	hyrule.are	standing	92	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.	-	-
+1794966744	cmd	Trentlin	50	30596	hyrule.are	standing	92	0	-	open	north	Ok.	-	-
+1794966745	cmd	Trentlin	50	30596	hyrule.are	standing	92	0	-	unlock	north	It's not closed.	-	-
+1794966748	cmd	Trentlin	50	30603	hyrule.are	standing	92	0	-	north		Level 9: Gallery of Ooze //   Slime coats the lower walls of this long gallery in shining streaks, a // sticky film clings where shields have been swallowed, and a cold, unnatural	-	+
+1794966750	laid	-	0	0	-	1027	component	86	an inert gelatinous cube	3710	school.are	scatter
+1794966770	cmd	Trentlin	50	30611	hyrule.are	standing	94	0	-	north		Level 9: Hall of Blue Flames //   Strange pale scorch marks, more blue than black, streak the walls of this // chamber where blue-robed sorcerers walk straight through stone and cast as	-	+
+1794966774	cmd	Trentlin	50	30611	hyrule.are	standing	94	0	-	push	block	I see no block here.	-	-
+1794966776	cmd	Trentlin	50	30603	hyrule.are	standing	94	0	-	south		Level 9: Gallery of Ooze //   Slime coats the lower walls of this long gallery in shining streaks, a // sticky film clings where shields have been swallowed, and a cold, unnatural	-	+
+1794966777	cmd	Trentlin	50	30603	hyrule.are	standing	94	0	-	push	block	I see no block here.	-	-
+1794966784	cmd	Trentlin	50	30596	hyrule.are	standing	94	0	-	south		Level 9: Mountain Gate Fireside //   Black rock walls swallow most of the light thrown by the iron braziers that // flank a worn patch of floor, and the corners stay dark however the flames	-	+
+1794966784	cmd	Trentlin	50	30595	hyrule.are	standing	94	0	-	west		The shutter opens now that the chamber is clear. // Level 9: Scorched Vestibule //   Blackened rings and starbursts of soot mark the floor and walls, as though	-	+
+1794966785	cmd	Trentlin	50	30595	hyrule.are	standing	94	0	-	north		Alas, you cannot go that way.	-	-
+1794966787	cmd	Trentlin	50	30595	hyrule.are	standing	94	0	-	open	north	I see no north here.	-	-
+1794966789	cmd	Trentlin	50	30595	hyrule.are	standing	94	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!	-	-
+1794966789	cmd	Trentlin	50	30602	hyrule.are	standing	94	0	-	north		Level 9: The Sealed Sand Hollow //   Every wall of this sandy chamber is solid and doorless, but each shows a // faint web of cracks where the stone has been weakened, waiting for bombs.	-	+
+1794966792	cmd	Trentlin	50	30633	hyrule.are	standing	94	0	-	down		Level 9: Stair of the Devourers //   Sticky residue coats the floor around a stair that drops into a tunnel // running deep beneath the dungeon, and scraps of chewed leather and bent	-	+
+1794966803	cmd	Trentlin	50	30633	hyrule.are	standing	94	0	-	east		The door is bound shut by an old magic: only its key will open it.	-	-
+1794966806	cmd	Trentlin	50	30633	hyrule.are	standing	94	0	-	consider	l	A like like is well above your level. // A like like has many times your hit points. // Blow for blow, you would need about 57 rounds to bring a like like down; it would need about 81 rounds for you.	-	+
+1794966810	laid	-	0	0	-	1035	herb	40	a clove	9248	canyon.are	scatter
+1794966810	laid	-	0	0	-	1036	herb	48	an alfalfa sprout	9227	canyon.are	scatter
+1794966810	laid	-	0	0	-	1037	component	76	a vial of dragons blood	1410	htower.are	scatter
+1794966812	cmd	Trentlin	50	30633	hyrule.are	standing	96	0	-	open	east	It's locked.	-	-
+1794966816	cmd	Trentlin	50	30633	hyrule.are	standing	96	0	-	kill	l	A like like dodges your attack. // Your blast misses a like like. // A like like dodges your attack.	-	+
+1794966820	cmd	Trentlin	50	30633	hyrule.are	fighting	96	0	fight	remove	bow	You stop using a short bow.	-	-
+1794966822	cmd	Trentlin	50	30633	hyrule.are	fighting	93	0	fight	consider	li	A like like is well above your level. // A like like has many times your hit points. // Blow for blow, you would need about 16 rounds to bring a like like down; it would need about 80 rounds for you.	-	+
+1794966824	cmd	Trentlin	50	30633	hyrule.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES a like like! // Your fists of fury grazes a like like.	-	+
+1794966830	cmd	Trentlin	50	30633	hyrule.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MANGLES a like like! // Your fists of fury MUTILATES a like like!	-	+
+1794966839	cmd	Trentlin	50	30633	hyrule.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a like like. // Your fists of fury maims a like like!	-	+
+1794966845	cmd	Trentlin	50	30633	hyrule.are	fighting	83	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches a like like. // Your fists of fury wounds a like like.	-	+
+1794966860	cmd	Trentlin	50	30633	hyrule.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes a like like. // Your fists of fury maims a like like!	-	+
+1794966866	cmd	Trentlin	50	30633	hyrule.are	fighting	71	0	fight	affect		You are affected by: // Skill: 'iron skin' grants immunity to blunt for 0 hours. // Skill: 'iron skin' modifies armor class by -25 for 0 hours.	-	+
+1794966871	cmd	Trentlin	50	30633	hyrule.are	fighting	67	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches a like like. // Your fists of fury grazes a like like.	-	+
+1794966876	laid	-	0	0	-	1038	herb	39	a chervil leaf	29492	world.are	scatter
+1794966876	laid	-	0	0	-	1039	component	70	a dragon tooth	15072	campus.are	scatter
+1794966877	cmd	Trentlin	50	30633	hyrule.are	fighting	62	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches a like like. // Your fists of fury devastates a like like!	-	+
+1794966882	cmd	Trentlin	50	30602	hyrule.are	fighting	62	0	fight	flee		Level 9: The Sealed Sand Hollow //   Every wall of this sandy chamber is solid and doorless, but each shows a // faint web of cracks where the stone has been weakened, waiting for bombs.	-	+
+1794966885	cmd	Trentlin	50	30595	hyrule.are	standing	62	0	-	south		Level 9: Scorched Vestibule //   Blackened rings and starbursts of soot mark the floor and walls, as though // bolts of fire have been hurled here again and again by sorcerers in red and	-	+
+1794966886	cmd	Trentlin	50	30596	hyrule.are	standing	62	0	-	east		Level 9: Mountain Gate Fireside //   Black rock walls swallow most of the light thrown by the iron braziers that // flank a worn patch of floor, and the corners stay dark however the flames	-	+
+1794966886	cmd	Trentlin	50	30590	hyrule.are	standing	62	0	-	south		Level 9: Gate Beneath Spectacle Rock //   Cold air pours down from the mountain's heart into this bare stone // vestibule, carved where the twin crags of Spectacle Rock meet the ground.	-	+
+1794966887	cmd	Trentlin	50	30317	hyrule.are	standing	62	0	-	up		Spectacle Rock //   Two great round boulders stand side by side on the summit, joined by a low // saddle of stone like a giant's pair of spectacles left on the mountaintop.	-	+
+1794966888	area	Trentlin	50	4207	dresden.are	hyrule.are	dresden.are	302	recall
+1794966888	cmd	Trentlin	50	4207	dresden.are	standing	62	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794966888	cmd	Trentlin	50	4208	dresden.are	standing	62	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1794966890	coin	Trentlin	50	4208	dresden.are	-800000	spent	heal	-	16903802625
+1794966890	cmd	Trentlin	50	4208	dresden.are	standing	62	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (8 castings, 80 gold.)	-	-
+1794966893	cmd	Trentlin	50	4208	dresden.are	standing	62	0	-	heal	refresh	The healer says 'Your legs are as fresh as I can make them.'	-	-
+1794966893	cmd	Trentlin	50	4208	dresden.are	standing	62	0	-	heal	refresh	The healer says 'Your legs are as fresh as I can make them.'	-	-
+1794966894	cmd	Trentlin	50	4208	dresden.are	standing	62	0	-	heal	refresh	The healer says 'Your legs are as fresh as I can make them.'	-	-
+1794966894	coin	Trentlin	50	4208	dresden.are	-5000000	spent	heal	-	16898802625
+1794966894	coin	Trentlin	50	4208	dresden.are	-5000000	spent	heal	-	16893802625
+1794966894	coin	Trentlin	50	4208	dresden.are	-5000000	spent	heal	-	16888802625
+1794966894	cmd	Trentlin	50	4208	dresden.are	standing	62	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body, and you are whole. (3 castings, 1500 gold.)	-	-
+1794966900	cmd	Trentlin	50	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794966900	area	Trentlin	50	3700	school.are	dresden.are	school.are	12	up
+1794966900	cmd	Trentlin	50	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1794966900	cmd	Trentlin	50	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1794966901	cmd	Trentlin	50	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1794966901	area	Trentlin	50	15000	campus.are	school.are	campus.are	1	enter
+1794966901	cmd	Trentlin	50	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance	-	+
+1794966901	cmd	Trentlin	50	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794966901	cmd	Trentlin	50	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794966902	cmd	Trentlin	50	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1794966902	cmd	Trentlin	50	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1794966902	cmd	Trentlin	50	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794966902	cmd	Trentlin	50	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1794966903	cmd	Trentlin	50	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.	-	+
+1794966903	cmd	Trentlin	50	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There	-	+
+1794966903	cmd	Trentlin	50	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located	-	+
+1794966903	cmd	Trentlin	50	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall	-	+
+1794966904	area	Trentlin	50	30200	hyrule.are	campus.are	hyrule.are	3	enter
+1794966904	cmd	Trentlin	50	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins	-	+
+1794966904	cmd	Trentlin	50	30317	hyrule.are	standing	100	0	-	play	recorder 9	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Spectacle Rock	-	+
+1794966909	cmd	Trentlin	50	30590	hyrule.are	standing	100	0	-	down		Level 9: Gate Beneath Spectacle Rock //   Cold air pours down from the mountain's heart into this bare stone // vestibule, carved where the twin crags of Spectacle Rock meet the ground.	-	+
+1794966911	cmd	Trentlin	50	30596	hyrule.are	standing	100	0	-	north		Level 9: Mountain Gate Fireside //   Black rock walls swallow most of the light thrown by the iron braziers that // flank a worn patch of floor, and the corners stay dark however the flames	-	+
+1794966911	cmd	Trentlin	50	30595	hyrule.are	standing	100	0	-	west		Level 9: Scorched Vestibule //   Blackened rings and starbursts of soot mark the floor and walls, as though // bolts of fire have been hurled here again and again by sorcerers in red and	-	+
+1794966912	cmd	Trentlin	50	30602	hyrule.are	standing	100	0	-	north		Level 9: The Sealed Sand Hollow //   Every wall of this sandy chamber is solid and doorless, but each shows a // faint web of cracks where the stone has been weakened, waiting for bombs.	-	+
+1794966913	cmd	Trentlin	50	30633	hyrule.are	standing	100	0	-	down		Level 9: Stair of the Devourers //   Sticky residue coats the floor around a stair that drops into a tunnel // running deep beneath the dungeon, and scraps of chewed leather and bent	-	+
+1794966917	cmd	Trentlin	50	30633	hyrule.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a like like. // Your fists of fury hits a like like.	-	+
+1794966920	laid	-	0	0	-	1040	herb	50	a head of cabbage	18113	icekeep.are	scatter
+1794966920	laid	-	0	0	-	1041	component	82	a vial of purple worm stinger poison	2059	catacomb.are	scatter
+1794966923	cmd	Trentlin	50	30633	hyrule.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS a like like! // Your fists of fury hits a like like.	-	+
+1794966925	coin	Trentlin	50	30633	hyrule.are	+20000000	loot	(violence_update)	corpse of a like like	16908802625
+1794966925	coin	Trentlin	50	30633	hyrule.are	+37800	loot	(violence_update)	corpse of a like like	16908840425
+1794966925	coin	Trentlin	50	30633	hyrule.are	+147	loot	(violence_update)	corpse of a like like	16908840572
+1794966925	coin	Trentlin	50	30633	hyrule.are	+680000	loot	(violence_update)	corpse of a like like	16909520572
+1794966930	cmd	Trentlin	50	30633	hyrule.are	standing	100	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794966936	cmd	Trentlin	50	30633	hyrule.are	standing	100	0	-	steel		You lost your concentration.	-	-
+1794966939	cmd	Trentlin	50	30633	hyrule.are	standing	100	0	-	steel		You lost your concentration.	-	-
+1794966940	cmd	Trentlin	50	30633	hyrule.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794966944	cmd	Trentlin	50	30633	hyrule.are	standing	100	0	-	kill	l	Your punch ^^^ DESTROYS ^^^ a like like! // A like like parries your attack. // A like like parries your attack.	-	+
+1794966947	cmd	Trentlin	50	30633	hyrule.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a like like! // Your fists of fury *** DEMOLISHES *** a like like!	-	+
+1794966956	cmd	Trentlin	50	30633	hyrule.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES a like like! // Your fists of fury hits a like like.	-	+
+1794966958	skill	Trentlin	50	30633	hyrule.are	enhanced damage	97	98	success	(violence_update)
+1794966962	cmd	Trentlin	50	30633	hyrule.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a like like. // Your fists of fury DISMEMBERS a like like!	-	+
+1794966968	cmd	Trentlin	50	30633	hyrule.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a like like! // Your fists of fury ^^^ DESTROYS ^^^ a like like!	-	+
+1794966974	cmd	Trentlin	50	30633	hyrule.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a like like! // Your fists of fury DISEMBOWELS a like like!	-	+
+1794966979	laid	-	0	0	-	1043	herb	42	a marjoram plant	17148	highland.are	scatter
