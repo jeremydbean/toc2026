@@ -116,9 +116,10 @@ def fight(heroes, limit=600):
     marks = [len(h.transcript) for h in heroes]
     shot = False
     if DUNGEON == 9 and ARROW_FIRST:
-        # Every landed blow of the wielded Silver Arrow takes a tenth of
-        # his health (HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR): ten of them
-        # beat him down, as "Ganon's Fight" in wiki/hyrule-area.md has it.
+        # Every landed blow of the wielded Silver Arrow takes a thirty-fifth
+        # of his health (HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR): thirty-five
+        # of them beat him down, as "Ganon's Fight" in wiki/hyrule-area.md
+        # has it.
         heroes[0].send("wield arrow")
         heroes[0].drain(1.0)
         shot = True

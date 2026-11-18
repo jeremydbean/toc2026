@@ -1318,10 +1318,18 @@ turned a soloist's blows aside was built and taken out the same day).
 Since 2026-11-13 (owner) the sizes are for median players without
 Hermie, measured live with `tools/hyrule_playtest/ganon_group.py` (any
 guardian, any group size; the leader fights Ganon with the Silver Arrow
-wielded, whose landed blows take a tenth of his health): a pair just wins
-the ashen Gleeok, a trio Ganon. (Before, they were the point where
-Hermie-buffed players just won, plus 25%, and Ganon half as hard again
-on 2026-11-03.) His fireballs
+wielded, whose landed blows take a thirty-fifth of his health): a pair
+just wins the ashen Gleeok. **Ganon is sized for three or four of the
+best-geared mortals** (owner, 2026-11-18): copies of their own character
+files -- gear, skills, stats, no staff trust or wizinvis -- buffed by
+Hermie, in throwaway worlds; one thief alone used to win in half a minute.
+See "The Best Mortals Against Ganon" in `wiki/hyrule-area.md`. (Before,
+three median players won, with Hermie until 2026-11-13 and without her
+after.) **CONFUSE is refused by every guardian** (`is_hyrule_guardian`,
+before the mana): its stun left one throwing nothing for game hours. **A
+guardian throws at whoever fights it, seen or not** (`ganon_may_target`:
+only wizinvis staff above it are passed over): blindness, darkness or
+invisibility silenced every volley (`tests/test_ganon_party_tuning.py`). His fireballs
 are spell blows no parry stops, four every four seconds at random members
 of the fight; add fireballs rather than enlarge them, since none may read
 UNSPEAKABLE (over 250) through sanctuary -- and neither may his biggest
@@ -1338,7 +1346,8 @@ fight in one run is played in the relics the first one looted -- only a
 run's first fight measures anything. DIVINE PROTECTION (one of Hermie's
 buffs) spares each buffed player one death at three quarters of their
 health; the tool counts those saves. An instant kill takes a tenth of
-either guardian's health (`hyrule_defies_instant_death`).
+the other guardians' health (`HYRULE_INSTANT_KILL_DIVISOR`) and one Silver
+Arrow blow's share of Ganon's (`hyrule_defies_instant_death`).
 
 **The guardians are sized for players without Hermie** (owner,
 2026-11-13: tuned for players without Hermie's buffs -- she appears only

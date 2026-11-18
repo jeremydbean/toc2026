@@ -1,11 +1,13 @@
 """The last two guardians are sized for groups (owner, 2026-10-28).
 
 The ashen Gleeok, Level 8's guardian, is a fight for two average players
-at the top of the band and Ganon one for three; one may try, and should
-expect to lose. It is balance, not a rule: the numbers are BOSS_STATS and
+at the top of the band; Ganon since 2026-11-18 is one for three or four of
+the best-geared mortals (tests/test_ganon_party_tuning.py); one may try,
+and should expect to lose. It is balance, not a rule: the numbers are BOSS_STATS and
 BOSS_VOLLEYS in scripts/build_hyrule_area.py, played live with
 tools/hyrule_playtest/ganon_group.py (wiki/hyrule-area.md, "Guardian
-Fights"). An instant kill takes a tenth of either's health, so a lucky
+Fights"). An instant kill takes a tenth of the Gleeok's health and one
+Silver Arrow blow's share of Ganon's, so a lucky
 fatality cannot skip a fight meant for a group.
 """
 from __future__ import annotations

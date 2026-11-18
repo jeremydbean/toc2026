@@ -1554,6 +1554,16 @@ void do_confuse( CHAR_DATA *ch, char *argument )
     if ( treasure_goblin_refuses_daze( ch, victim ) )
         return;
 
+    /* Nor Hyrule's guardians: confused they were stunned for hours of game
+       time, threw nothing and barely fought back, so one CONFUSE made
+       Ganon a free kill (simulation, 2026-11-18). Refused before the mana. */
+    if ( IS_NPC(victim) && is_hyrule_guardian( victim ) )
+    {
+        if ( !IS_NPC(ch) )
+            act( "$N's will is too vast to cloud.", ch, NULL, victim, TO_CHAR );
+        return;
+    }
+
     mana_cost = ch->level + 50;
     if ( !IS_NPC(ch) )
     {

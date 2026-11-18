@@ -303,6 +303,8 @@ class HyruleMechanicsSourceTests(unittest.TestCase):
         self.assertIn("hyrule_instant_kill_resisted", raw.split("black_market_cheats_death")[0])
         resisted = c_function(FIGHT_C, "static bool hyrule_instant_kill_resisted(")
         self.assertIn("HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR", resisted)
+        # The other guardians keep a tenth (2026-11-18).
+        self.assertIn("HYRULE_INSTANT_KILL_DIVISOR", resisted)
         self.assertIn("HYRULE_GOHMA_VNUM", c_function(FIGHT_C, "bool hyrule_defies_instant_death("))
         self.assertIn("hyrule_instant_kill_resisted", c_function(FIGHT_C, "void fatality("))
         self.assertIn("hyrule_defies_instant_death", c_function(FIGHT_C, "void do_backstab("))

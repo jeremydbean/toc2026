@@ -512,12 +512,15 @@ worn. IDENTIFY lists them as "Grants haste while worn."
 
 ### Ganon's Fight
 
-Ganon is a fight for three (owner, 2026-10-28): three average players at
-the top of the band should need everything they have, a pair should lose,
-and one may try but should expect to die. Since 2026-11-13 (owner: tuned
-for players without Hermie's buffs) the three are unbuffed; until then they
-were buffed by Hermie. See "Guardian Fights" below for how that was
-measured. The numbers:
+Ganon is a fight for three or four of the best (owner, 2026-11-18: "tweak
+ganon to die to a team of ~3-4 of the highest geared mortals"). Copies of
+the four best-geared mortals' own characters -- their gear, skills and
+stats, with no staff trust -- were played against him in throwaway worlds
+with Hermie's buffs (see "The Best Mortals Against Ganon" below): a party
+of three or four should win, a pair should not, and one may try but should
+expect to die. Before that (2026-11-13, owner) he was sized for three
+median level 59s without Hermie, and before that for three median players
+with her. The numbers:
 
 - **Level 64, 67,500 hit points, armour -40 (-400 in game), average blow 100,
   sanctuary and haste as before; no longer hidden.** The catalog's hide
@@ -526,12 +529,16 @@ measured. The numbers:
   fighters could not even attack him. Level 64 parries and dodges a
   level 59 35% of the time each (`min(30, level) + level - 59`), so about four
   in ten blows land. The armour shaves about 80 off each ordinary blow; the
-  Silver Arrow's tenth of his health is taken after armour, so it is untouched.
+  Silver Arrow's thirty-fifth of his health is taken after armour, so it is
+  untouched.
 - **`spec_ganon` (`src/special.c`) replaces the necromancer's spell list.**
   Every mobile pulse (four seconds) he blinks to another spot in the dark and
-  throws four fireballs of 130-170 (290-385 before 2026-11-13), each at a
-  random player in the fight:
-  anyone fighting him or grouped with someone who is. A fireball is a spell
+  throws four fireballs of 250-305 (130-170 from 2026-11-13, 290-385
+  before), each at a random player in the fight: anyone fighting him or
+  grouped with someone who is, **whether or not he can see them** -- blind,
+  in the dark or facing an invisible fighter, he throws all the same (until
+  2026-11-18 sight decided it, and a kick of dirt silenced him). Only staff
+  wizinvis above his level are passed over. A fireball is a spell
   blow, so parry, dodge and shield block do nothing; sanctuary halves it, the
   Red Ring takes a fifth, the Blue Ring a further tenth, and the Mirror
   Shield three twentieths. His melee is
@@ -540,15 +547,20 @@ measured. The numbers:
 - **Left alone, he heals** -- and since 2026-11-03 so do the guardians of
   Levels 7 and 8. Out of a fight he recovers a tenth of his health
   every pulse, as the NES Ganon is whole again when you come back, so the
-  Silver Arrow's tenths cannot be banked by running out to rest. A collapsed
+  Silver Arrow's thirty-fifths cannot be banked by running out to rest. A collapsed
   Ganon (one hit point, `AFF2_NO_RECOVER`) does not heal: the finishing shot
   still waits.
 
-The silver-arrow rule is unchanged, and it is what fixes the length of the
-fight: ten landed Silver Arrow blows bring him to one hit point whatever his
-hit points are. A level 59 with haste and second and third attack swings about
-3.75 times a round, lands about 1.5 of those through his defences, and so needs
-about seven rounds.
+The silver-arrow rule is what fixes the length of the fight: thirty-five
+landed Silver Arrow blows bring him to one hit point whatever his hit points
+are (ten until 2026-11-18, when one hasted thief landing several a round
+ended him in three rounds). Everybody else's blows weigh on his hit points
+and shorten it.
+
+**CONFUSE does not work on any of Hyrule's guardians** (2026-11-18): it
+stunned one for game hours, in which it threw nothing and barely fought
+back, so one cast made Ganon a free kill. It is refused before the mana is
+spent ("too vast to cloud").
 
 The fireballs were first sized against a hero of 4,000 hit points, then cut
 to 1,400-1,900 by the simulation below -- and nobody met them, because until
@@ -566,7 +578,7 @@ playtests set the numbers above. Every fireball still stays at or under 175
 through sanctuary, so none reads UNSPEAKABLE: the fight got harder by more
 fireballs and more hit points, not bigger ones.
 
-A group wants two Silver Arrows: the arrow's tenth of his health is what ends
+A group wants two Silver Arrows: the arrow's share of his health is what ends
 the fight, and the second arrow halves its length. Both cellars refill at each
 reset, so a group can arm itself over two visits.
 
@@ -683,14 +695,14 @@ a fresh guardian; "used" is the player's health spent in a win):
 | 6 | Gohma | 43 | 2,200 | 34 | the eye 15-20 | won 3 of 6, 56-86% used; lost with 63-558 left | 90-120 s |
 | 7 | ancient Aquamentus | 49 | 2,450 | 38 | 3 fireballs 8-12 | won 5 of 6, 62-82% used | 100-130 s |
 | 8 | ashen Gleeok | 55 | 9,200 | 45 | 4 heads 12-18 | a pair won 3 of 4 (one left at 1-42); alone lost 2 of 2 | 150-185 s |
-| 9 | Ganon | 64 | 67,500 | 100 | 4 fireballs 130-170 | a trio won 3 of 3 (one or two dead each time); a pair lost 2 of 2 | 20-40 s |
+| 9 | Ganon | 64 | 67,500 | 100 | 4 fireballs 130-170 (250-305 since 2026-11-18) | a trio won 3 of 3 (one or two dead each time); a pair lost 2 of 2 | 20-40 s |
 
 Across the first seven that is 34 wins in 45, a little over two in three;
 single guardians sit between three in six and five in six, which six tries
 cannot tell apart from two in three. Ganon's trio at four fireballs of
-140-180 won one of two. Ganon's fight is short because the leader's
-wielded Silver Arrow takes a tenth of his health with each landed blow;
-his fire is what decides it, his hit points barely.
+140-180 won one of two. Ganon's fight was short because the leader's
+wielded Silver Arrow took a tenth of his health with each landed blow;
+since 2026-11-18 it takes a thirty-fifth (see the next section).
 
 Before 2026-11-13 (buffed basis):
 
@@ -743,8 +755,8 @@ The blow stops at +40%: 375 would be 5d59+225, which can roll 520 --
 UNSPEAKABLE through sanctuary. 5d55+210 tops out at 485 (242 through
 sanctuary), and the biggest fireball at 192. The fire, which is the
 fight, is the full half again, by adding a fireball as the owner's rule
-asks. The Silver Arrow still takes a tenth of his health a landed blow,
-so ten of them still end it; the hit points weigh on everybody else's
+asks. The Silver Arrow then took a tenth of his health a landed blow,
+so ten of them ended it; the hit points weigh on everybody else's
 blows.
 
 Played with `tools/hyrule_playtest/ganon_group.py` (median level 59
@@ -772,7 +784,8 @@ it took any "is DEAD!!" for the guardian's, so a member's death ended the
 fight and scored it a win (the old "a buffed pair beat Ganon" came from
 that), and a second fight in one run is played in the relics the first
 looted, so only a run's first fight measures anything. An instant kill
-takes a tenth of either guardian's health (`hyrule_defies_instant_death`),
+takes a tenth of the ashen Gleeok's health and one Silver Arrow blow's
+share of Ganon's (`hyrule_defies_instant_death`),
 so a lucky fatality cannot skip a fight sized for a group.
 
 Hit points climb guardian by guardian to Ganon's, and no guardian's blow
@@ -782,6 +795,41 @@ hits for an eighth of the breather's own hit points. To retune, play the
 fight: `tools/hyrule_playtest/gear_plan.py` builds the gear and
 `tools/hyrule_playtest/playtest.py` plays a dungeon's fights in a throwaway
 server. The simulation in this section's history is a guide, not the answer.
+
+#### The Best Mortals Against Ganon
+
+On 2026-11-18 (owner: "tweak ganon to die to a team of ~3-4 of the
+highest geared mortals") the four best-geared mortals' own character files
+-- Misery (thief), Alaric, Trentlin and Rockcrusher, as the state sync had
+them -- were copied under synthetic names into throwaway worlds, without
+their staff trust, creator flag or wizinvis, and played against a fresh
+Ganon with Hermie's buffs (detects, EMPOWER, defence, combat, bless). The
+thief opens with a backstab and fights with the Silver Arrow wielded,
+using trip, dirt and confuse; the others fight with their own skills.
+Nothing was written to `player/`.
+
+On the numbers then (a tenth an arrow blow, fireballs 130-170) Misery won
+alone in about half a minute: CONFUSE stunned Ganon for game hours, and a
+hasted thief lands several arrow blows a round. Three things changed:
+CONFUSE is refused by every guardian, a guardian throws at whoever fights
+it whether or not it can see them, and the arrow's share and the fire were
+tuned between two settings that missed:
+
+| Arrow share, fireballs | Alone | Pair | Trio | Four |
+| --- | --- | --- | --- | --- |
+| a tenth, 130-170 | won | won | won | won |
+| a fortieth, 280-340 | lost | -- | won 1 of 2 | won 1 of 2, three dead in the win |
+| a thirtieth, 220-270 | lost (Ganon at 6%) | won 2 of 2, nobody dead | won 2 of 2 | won |
+| **a thirty-fifth, 250-305** | **lost 2 of 2 (at 39% and 61%)** | **won 1 of 3 (lost at 78% and 28%)** | **won 2 of 3, two dead each win** | **won 1 of 1, two dead; a second brought him to one hit point and was not finished, the script having left the disarmed arrow on the floor** |
+
+A pair of the very best can still sometimes win, at a cost; three or four
+win most fights and lose members doing it; nobody wins alone. Every
+fireball stays at or under about 152 through sanctuary, so none reads
+UNSPEAKABLE. The tool was a scratch script beside `ganon_group.py`; to
+repeat it, plant a synced file as `plant()` there does for synthetic
+fixtures and drop the `Tru`, `Trust`, `Creator`, `Invi` and `Inco` lines
+and the wizinvis and holylight bits of `Act` -- a staff alt's wizinvis
+made Ganon blind to him and spoiled the first runs.
 
 ### The Triforce
 
@@ -1225,7 +1273,8 @@ Runtime rules add the behaviors the area format cannot express alone:
 - Manhandla's heads decide its volley: as many fireballs as heads, half
   again harder for each head lost, and the last head twice a round.
 - An instant kill -- Farslay, a death ray, a fatality -- is one hard blow
-  (a tenth of the health) to Ganon and Gohma, never their death. Gohma
+  (a tenth of the health; to Ganon a thirty-fifth, one Silver Arrow
+  blow's share) to Ganon and Gohma, never their death. Gohma
   dies only to an arrow (SHOOT with the bow), Ganon only to the Silver
   Arrow; staff SLAY is the override.
 - An arrow at a pols voice and a boomerang at a keese or a gel kill

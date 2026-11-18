@@ -695,7 +695,7 @@ BOSS_VOLLEYS = {
     6: (1, 15, 20),        # Gohma's eye
     7: (3, 8, 12),         # the ancient Aquamentus's fan
     8: (4, 12, 18),        # the ashen Gleeok's four heads
-    9: (4, 130, 170),      # Ganon's fireballs: a fight for three
+    9: (4, 250, 305),      # Ganon's fireballs: a fight for three or four
 }
 GANON_VNUM = 30225
 GANON_ARMOR = -40
@@ -1904,7 +1904,7 @@ The silver metal shines with a light that does not fade.  The Silver Arrow
 requires level 54; any character level 54 or higher can wield and use it, and
 immortal status is not required.
 Against Ganon, normal strikes with the wielded Silver Arrow use full weapon
-mastery and tear away at least one tenth of his full vitality.  Other weapons,
+mastery and tear away at least a thirty-fifth of his full vitality.  Other weapons,
 spells, poison, and lingering effects can wound him, but no normal attack can
 kill him.
 When Ganon collapses at one hit point and flashes bright red, keep the Silver

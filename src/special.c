@@ -513,7 +513,7 @@ bool spec_dominion_ward( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  *     aside most of it: the fireballs are the fight.
  *
  *   - Out of a fight he heals a tenth of his health each pulse, so the
- *     Silver Arrow's tenths cannot be banked by running out to rest and
+ *     Silver Arrow's thirty-fifths cannot be banked by running out to rest and
  *     coming back. Not once he has collapsed: a stunned Ganon (one hit
  *     point and HYRULE_GANON_STUNNED in his hyrule_state -- never a bare
  *     AFF2_NO_RECOVER, which NERVE DAMAGE and NIGHTMARE lay too) stays down
@@ -529,20 +529,29 @@ bool spec_dominion_ward( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  * again (owner, 2026-11-03): four at 290-385 (145-192 through
  * sanctuary) and 67,500 hit points. All of that was for players buffed
  * by Hermie; since 2026-11-13 (owner) he is sized for three median
- * level 59s without her: four at 130-170. Add fireballs rather
+ * level 59s without her: four at 130-170. On 2026-11-18 (owner: "a team
+ * of ~3-4 of the highest geared mortals") copies of the four best-geared
+ * mortals' own characters, buffed by Hermie, were played against him:
+ * one thief with the Silver Arrow won alone in under half a minute. The
+ * arrow's share went from a tenth to a thirty-fifth and the fireballs to
+ * four at 250-305 (at most about 152 through sanctuary). Add fireballs rather
  * than enlarge them: none may read UNSPEAKABLE through sanctuary. See
  * "Ganon's Fight" in wiki/hyrule-area.md.
  */
 #define GANON_FIREBALLS          4
-#define GANON_FIREBALL_MIN    130
-#define GANON_FIREBALL_MAX    170
+#define GANON_FIREBALL_MIN    250
+#define GANON_FIREBALL_MAX    305
 #define GANON_REGEN_DIVISOR     10
 
 static bool ganon_may_target( CHAR_DATA *mob, CHAR_DATA *victim )
 {
     if ( victim == mob || IS_NPC(victim) || victim->in_room != mob->in_room )
 	return false;
-    if ( victim->position <= POS_STUNNED || !can_see( mob, victim ) )
+    /* Whoever is fighting it, seen or not: sight decided this, so a kick of
+       dirt in its eyes, an invisible attacker or one with no light in
+       Ganon's dark chamber was never thrown at (simulation, 2026-11-18).
+       Only staff wizinvis above it are passed over. */
+    if ( victim->position <= POS_STUNNED || wizinvis_hides( victim, mob ) )
 	return false;
     return victim->fighting == mob
 	|| ( mob->fighting != NULL && is_same_group( victim, mob->fighting ) );

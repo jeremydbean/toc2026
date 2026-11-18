@@ -22,14 +22,19 @@
 #define HYRULE_GOHMA_VNUM       30223
 #define HYRULE_GANON_VNUM       30225
 /* Level 8's guardian, a fight for two: an instant kill takes a tenth of
-   its health, as Ganon's (owner, 2026-10-28). */
+   its health (owner, 2026-10-28). */
 #define HYRULE_ASHEN_GLEEOK_VNUM 30316
 /* Level 7's: no instant kill on the last three dungeons' guardians
    either (owner, 2026-11-10). */
 #define HYRULE_ANCIENT_AQUAMENTUS_VNUM 30314
 #define HYRULE_BOW_VNUM         30222
 #define HYRULE_SILVER_ARROW_GANON_SKILL 100
-#define HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR 10
+/* Each landed Silver Arrow blow takes a thirty-fifth of Ganon's health
+   (a tenth until 2026-11-18: one hasted thief ended him in three rounds),
+   and so does an instant kill on him. The other guardians that defy an
+   instant kill still lose a tenth to one (HYRULE_INSTANT_KILL_DIVISOR). */
+#define HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR 35
+#define HYRULE_INSTANT_KILL_DIVISOR 10
 #define HYRULE_LIKE_LIKE_VNUM   30215
 #define HYRULE_BLUE_LIKE_LIKE_VNUM 30332
 #define HYRULE_BUBBLE_VNUM      30304
@@ -406,9 +411,9 @@ static void reform_hyrule_ganon( CHAR_DATA *ch, CHAR_DATA *victim )
 
 /*
  * An instant kill -- a fatality, Farslay, a death ray -- is one hard blow
- * to Ganon or Gohma, never their death: a tenth of their health, as the
- * Silver Arrow's floor is. Ganon brought to one hit point by it is
- * stunned as any blow leaves him, and still wants the Silver Arrow; Gohma
+ * to Ganon or Gohma, never their death: to Ganon one Silver Arrow blow's
+ * share (a thirty-fifth of his health), to the others a tenth. Ganon
+ * brought to one hit point by it is stunned as any blow leaves him, and still wants the Silver Arrow; Gohma
  * still wants an arrow at her eye. Farslay read from anywhere in the world
  * used to stun Ganon outright at full health, and a thief's backstab
  * fatality killed Gohma with no arrow at all. Staff SLAY is the override
@@ -443,7 +448,9 @@ static bool hyrule_instant_kill_resisted( CHAR_DATA *ch, CHAR_DATA *victim )
         return true;
     }
 
-    share = UMAX( 1, victim->max_hit / HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR );
+    share = UMAX( 1, victim->max_hit / ( is_hyrule_ganon(victim)
+                                         ? HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR
+                                         : HYRULE_INSTANT_KILL_DIVISOR ) );
     if ( is_hyrule_ganon(victim) )
     {
         if ( !is_stunned_hyrule_ganon(victim) )
