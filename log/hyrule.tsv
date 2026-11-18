@@ -306,3 +306,4 @@
 1794967176	leave	Trentlin	50	1	Monk 	30590	L9	to=over how=up secs=267 hp=91
 1794967176	enter	Trentlin	50	1	Monk 	30317	over	from=L9 how=up hp=91
 1794967176	leave	Trentlin	50	1	Monk 	30317	over	to=out how=recall secs=0 hp=91
+1794968292	got	Trentlin	51	1	Monk 	2497	out	obj=30386 obj_name=a_silver-arrow_spear type=weapon obj_level=58 how=get
