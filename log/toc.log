@@ -317251,3 +317251,251 @@ Wed Nov 18 21:27:47 2026 :: Log Trentlin [9518]: north
 Wed Nov 18 21:27:47 2026 :: Log Trentlin [9519]: arrived (Sultan's Walk) from 9518
 Wed Nov 18 21:27:47 2026 :: Log Trentlin [9519]: north
 Wed Nov 18 21:27:47 2026 :: Log Trentlin [9520]: arrived (Sultan's Walk) from 9519
+Wed Nov 18 21:27:47 2026 :: Log Trentlin [9520]: north
+Wed Nov 18 21:27:47 2026 :: Log Trentlin [9521]: arrived (Sultan's Walk) from 9520
+Wed Nov 18 21:27:47 2026 :: Log Trentlin [9521]: north
+Wed Nov 18 21:27:47 2026 :: Log Trentlin [9522]: arrived (Inside the Northern Gate of New Thalos) from 9521
+Wed Nov 18 21:27:48 2026 :: Log Trentlin [9522]: open north
+Wed Nov 18 21:27:48 2026 :: Log Trentlin [9522]: north
+Wed Nov 18 21:27:48 2026 :: Log Trentlin [9667]: arrived (Outside the Northern Gate of New Thalos) from 9522
+Wed Nov 18 21:27:48 2026 :: Log Trentlin [9667]: north
+Wed Nov 18 21:27:48 2026 :: Log Trentlin [9781]: arrived (On the Plains) from 9667
+Wed Nov 18 21:27:48 2026 :: Log Trentlin [9781]: north
+Wed Nov 18 21:27:48 2026 :: Log Trentlin [9782]: arrived (On the Plains) from 9781
+Wed Nov 18 21:27:49 2026 :: Log Trentlin [9782]: north
+Wed Nov 18 21:27:49 2026 :: Log Trentlin [9783]: arrived (Edge of the forest) from 9782
+Wed Nov 18 21:27:49 2026 :: Log Trentlin [9783]: north
+Wed Nov 18 21:27:49 2026 :: Log Trentlin [64]: arrived (Misty Clearing) from 9783
+Wed Nov 18 21:27:49 2026 :: Log Trentlin [64]: north
+Wed Nov 18 21:27:49 2026 :: Log Trentlin [29001]: arrived (Entrance to the Fortress) from 64
+Wed Nov 18 21:27:50 2026 :: Log Trentlin [29001]: n
+Wed Nov 18 21:27:50 2026 :: Log Trentlin [29002]: arrived (Inside Korzath's Private Fortress) from 29001
+Wed Nov 18 21:27:50 2026 :: Log Trentlin [29002]: n
+Wed Nov 18 21:27:50 2026 :: Log Trentlin [29003]: arrived (Grand Foyer) from 29002
+Wed Nov 18 21:27:51 2026 :: Log Trentlin [29003]: n
+Wed Nov 18 21:27:51 2026 :: Log Trentlin [29004]: arrived (Center Tunnelway) from 29003
+Wed Nov 18 21:27:51 2026 :: Log Trentlin [29004]: n
+Wed Nov 18 21:27:52 2026 :: Log Trentlin [29004]: get key
+Wed Nov 18 21:27:54 2026 :: Log Trentlin [29004]: unlock n
+Wed Nov 18 21:27:56 2026 :: Log Trentlin [29004]: open  n
+Wed Nov 18 21:27:57 2026 :: Log Trentlin [29004]: drop key
+Wed Nov 18 21:27:57 2026 :: Log Trentlin [29004]: n
+Wed Nov 18 21:27:57 2026 :: Log Trentlin [29201]: arrived (Heroes Hall) from 29004
+Wed Nov 18 21:27:58 2026 :: Log Trentlin [29201]: n
+Wed Nov 18 21:27:58 2026 :: Log Trentlin [29202]: arrived (Hall of Past Heroes) from 29201
+Wed Nov 18 21:27:58 2026 :: Log Trentlin [29202]: sca
+Wed Nov 18 21:28:00 2026 :: Log Trentlin [29202]: w
+Wed Nov 18 21:28:00 2026 :: Log Trentlin [29203]: arrived (Passage to the Maze) from 29202
+Wed Nov 18 21:28:00 2026 :: Log Trentlin [29203]: sca
+Wed Nov 18 21:28:02 2026 :: Log Trentlin [29203]: w
+Wed Nov 18 21:28:02 2026 :: Log Trentlin [29204]: arrived (Twist in the Maze) from 29203
+Wed Nov 18 21:28:03 2026 :: Log Trentlin [29204]: k cl
+Wed Nov 18 21:28:05 2026 :: Log Trentlin [29204]: fists
+Wed Nov 18 21:28:12 2026 :: Log Trentlin [29204]: fists
+Wed Nov 18 21:28:16 2026 :: Log Trentlin [29204]: killed a killer clown
+Wed Nov 18 21:28:16 2026 :: Log Trentlin [29204]: coin +5 platinum
+Wed Nov 18 21:28:16 2026 :: Log Trentlin [29204]: coin +23 silver
+Wed Nov 18 21:28:16 2026 :: Log Trentlin [29204]: coin +31 copper
+Wed Nov 18 21:28:16 2026 :: Log Trentlin [29204]: coin +13 gold
+Wed Nov 18 21:28:20 2026 :: Log Trentlin [29204]: l in co
+Wed Nov 18 21:28:21 2026 :: Log Trentlin [29204]: sac co
+Wed Nov 18 21:28:21 2026 :: Log Trentlin [29204]: coin +118 copper
+Wed Nov 18 21:28:23 2026 :: Log Trentlin [29204]: sca
+Wed Nov 18 21:28:25 2026 :: Log Trentlin [29204]: s
+Wed Nov 18 21:28:25 2026 :: Log Trentlin [29205]: arrived (Twist in the Maze) from 29204
+Wed Nov 18 21:28:25 2026 :: Log Trentlin [29205]: sca
+Wed Nov 18 21:28:28 2026 :: Log Trentlin [29205]: n
+Wed Nov 18 21:28:28 2026 :: Log Trentlin [29204]: arrived (Twist in the Maze) from 29205
+Wed Nov 18 21:28:28 2026 :: Log Trentlin [29204]: e
+Wed Nov 18 21:28:28 2026 :: Log Trentlin [29203]: arrived (Passage to the Maze) from 29204
+Wed Nov 18 21:28:28 2026 :: Log Trentlin [29203]: affects off: iron skin
+Wed Nov 18 21:28:29 2026 :: Log Trentlin [29203]: e
+Wed Nov 18 21:28:29 2026 :: Log Trentlin [29202]: arrived (Hall of Past Heroes) from 29203
+Wed Nov 18 21:28:29 2026 :: Log Trentlin [29202]: s
+Wed Nov 18 21:28:29 2026 :: Log Trentlin [29201]: arrived (Heroes Hall) from 29202
+Wed Nov 18 21:28:29 2026 :: Log Trentlin [29201]: s
+Wed Nov 18 21:28:29 2026 :: Log Trentlin [29004]: arrived (Center Tunnelway) from 29201
+Wed Nov 18 21:28:42 2026 :: Log Trentlin [29004]: iron
+Wed Nov 18 21:28:49 2026 :: Log Trentlin [29004]: s
+Wed Nov 18 21:28:49 2026 :: Log Trentlin [29003]: arrived (Grand Foyer) from 29004
+Wed Nov 18 21:28:49 2026 :: Log Trentlin [29003]: s
+Wed Nov 18 21:28:49 2026 :: Log Trentlin [29002]: arrived (Inside Korzath's Private Fortress) from 29003
+Wed Nov 18 21:28:50 2026 :: Log Trentlin [29002]: s
+Wed Nov 18 21:28:50 2026 :: Log Trentlin [29001]: arrived (Entrance to the Fortress) from 29002
+Wed Nov 18 21:28:50 2026 :: Log Trentlin [29001]: s
+Wed Nov 18 21:28:50 2026 :: Log Trentlin [64]: arrived (Misty Clearing) from 29001
+Wed Nov 18 21:28:51 2026 :: Log Trentlin [64]: s
+Wed Nov 18 21:28:51 2026 :: Log Trentlin [9783]: arrived (Edge of the forest) from 64
+Wed Nov 18 21:28:52 2026 :: Log Trentlin [9783]: s
+Wed Nov 18 21:28:52 2026 :: Log Trentlin [9782]: arrived (On the Plains) from 9783
+Wed Nov 18 21:28:52 2026 :: Log Trentlin [9782]: s
+Wed Nov 18 21:28:52 2026 :: Log Trentlin [9781]: arrived (On the Plains) from 9782
+Wed Nov 18 21:28:53 2026 :: Log Trentlin [9781]: s
+Wed Nov 18 21:28:53 2026 :: Log Trentlin [9667]: arrived (Outside the Northern Gate of New Thalos) from 9781
+Wed Nov 18 21:28:53 2026 :: Log Trentlin [9667]: s
+Wed Nov 18 21:28:53 2026 :: Log Trentlin [9522]: arrived (Inside the Northern Gate of New Thalos) from 9667
+Wed Nov 18 21:28:54 2026 :: Log Trentlin [9522]: s
+Wed Nov 18 21:28:54 2026 :: Log Trentlin [9521]: arrived (Sultan's Walk) from 9522
+Wed Nov 18 21:28:54 2026 :: Log Trentlin [9521]: s
+Wed Nov 18 21:28:54 2026 :: Log Trentlin [9520]: arrived (Sultan's Walk) from 9521
+Wed Nov 18 21:28:54 2026 :: Log Trentlin [9520]: s
+Wed Nov 18 21:28:54 2026 :: Log Trentlin [9519]: arrived (Sultan's Walk) from 9520
+Wed Nov 18 21:28:55 2026 :: Log Trentlin [9519]: s
+Wed Nov 18 21:28:55 2026 :: Log Trentlin [9518]: arrived (Sultan's Walk) from 9519
+Wed Nov 18 21:28:55 2026 :: Log Trentlin [9518]: s
+Wed Nov 18 21:28:55 2026 :: Log Trentlin [9515]: arrived (The Northern Market Square) from 9518
+Wed Nov 18 21:28:56 2026 :: Log Trentlin [9515]: s
+Wed Nov 18 21:28:56 2026 :: Log Trentlin [9506]: arrived (The Center of Market Square) from 9515
+Wed Nov 18 21:28:57 2026 :: Log Trentlin [9506]: e
+Wed Nov 18 21:28:57 2026 :: Log Trentlin [9517]: arrived (The Eastern Market Square) from 9506
+Wed Nov 18 21:28:57 2026 :: Log Trentlin [9517]: e
+Wed Nov 18 21:28:57 2026 :: Log Trentlin [9527]: arrived (East Main Street) from 9517
+Wed Nov 18 21:28:57 2026 :: Log Trentlin [9527]: e
+Wed Nov 18 21:28:57 2026 :: Log Trentlin [9528]: arrived (East Main Street) from 9527
+Wed Nov 18 21:28:58 2026 :: Log Trentlin [9528]: e
+Wed Nov 18 21:28:58 2026 :: Log Trentlin [9529]: arrived (East Main Street) from 9528
+Wed Nov 18 21:28:58 2026 :: Log Trentlin [9529]: e
+Wed Nov 18 21:28:58 2026 :: Log Trentlin [9530]: arrived (East Main Street) from 9529
+Wed Nov 18 21:28:58 2026 :: Log Trentlin [9530]: e
+Wed Nov 18 21:28:58 2026 :: Log Trentlin [9531]: arrived (Inside the Eastern Gate of New Thalos) from 9530
+Wed Nov 18 21:28:58 2026 :: Log Trentlin [9531]: e
+Wed Nov 18 21:28:59 2026 :: Log Trentlin [9531]: e
+Wed Nov 18 21:29:01 2026 :: Log Trentlin [9531]: open e
+Wed Nov 18 21:29:01 2026 :: Log Trentlin [9531]: e
+Wed Nov 18 21:29:01 2026 :: Log Trentlin [9668]: arrived (Outside the Eastern Gate of New Thalos) from 9531
+Wed Nov 18 21:29:01 2026 :: Log Trentlin [9668]: e
+Wed Nov 18 21:29:01 2026 :: Log Trentlin [9790]: arrived (On a road) from 9668
+Wed Nov 18 21:29:01 2026 :: Log Trentlin [9790]: e
+Wed Nov 18 21:29:01 2026 :: Log Trentlin [9791]: arrived (On a road) from 9790
+Wed Nov 18 21:29:02 2026 :: Log Trentlin [9791]: e
+Wed Nov 18 21:29:02 2026 :: Log Trentlin [9792]: arrived (On a road) from 9791
+Wed Nov 18 21:29:02 2026 :: Log Trentlin [9792]: e
+Wed Nov 18 21:29:02 2026 :: Log Trentlin [9793]: arrived (On a road) from 9792
+Wed Nov 18 21:29:03 2026 :: Log Trentlin [9793]: e
+Wed Nov 18 21:29:03 2026 :: Log Trentlin [9794]: arrived (Near the shore) from 9793
+Wed Nov 18 21:29:04 2026 :: Log Trentlin [9794]: e
+Wed Nov 18 21:29:04 2026 :: Log Trentlin [9795]: arrived (On a dock) from 9794
+Wed Nov 18 21:29:04 2026 :: Log Trentlin [9795]: w
+Wed Nov 18 21:29:04 2026 :: Log Trentlin [9794]: arrived (Near the shore) from 9795
+Wed Nov 18 21:29:05 2026 :: Log Trentlin [9794]: n
+Wed Nov 18 21:29:05 2026 :: Log Trentlin [41]: arrived (The new pier) from 9794
+Wed Nov 18 21:29:05 2026 :: Log Trentlin [41]: n
+Wed Nov 18 21:29:05 2026 :: Log Trentlin [16000]: arrived (Beginning of the Pier) from 41
+Wed Nov 18 21:29:05 2026 :: Log Trentlin [16000]: n
+Wed Nov 18 21:29:05 2026 :: Log Trentlin [16001]: arrived (Along the Pier) from 16000
+Wed Nov 18 21:29:06 2026 :: Log Trentlin [16001]: n
+Wed Nov 18 21:29:06 2026 :: Log Trentlin [16002]: arrived (Along the Pier) from 16001
+Wed Nov 18 21:29:06 2026 :: Log Trentlin [16002]: n
+Wed Nov 18 21:29:06 2026 :: Log Trentlin [16003]: arrived (Along the Pier) from 16002
+Wed Nov 18 21:29:07 2026 :: Log Trentlin [16003]: n
+Wed Nov 18 21:29:07 2026 :: Log Trentlin [16004]: arrived (A Turn at the Pier) from 16003
+Wed Nov 18 21:29:08 2026 :: Log Trentlin [16004]: e
+Wed Nov 18 21:29:08 2026 :: Log Trentlin [16005]: arrived (Plankway to the Royal Eagle) from 16004
+Wed Nov 18 21:29:09 2026 :: Log Trentlin [16005]: u
+Wed Nov 18 21:29:09 2026 :: Log Trentlin [16021]: arrived (Entrance to the Royal Eagle - Main Deck) from 16005
+Wed Nov 18 21:29:11 2026 :: Log Trentlin [16021]: k swa
+Wed Nov 18 21:29:14 2026 :: Log Trentlin [16021]: fists
+Wed Nov 18 21:29:20 2026 :: Log Trentlin [16021]: fists
+Wed Nov 18 21:29:25 2026 :: Log Trentlin [16021]: killed The swashbuckler
+Wed Nov 18 21:29:25 2026 :: Log Trentlin [16021]: coin +1 platinum
+Wed Nov 18 21:29:25 2026 :: Log Trentlin [16021]: coin +6 silver
+Wed Nov 18 21:29:25 2026 :: Log Trentlin [16021]: coin +8 copper
+Wed Nov 18 21:29:25 2026 :: Log Trentlin [16021]: coin +3 gold
+Wed Nov 18 21:29:28 2026 :: Log Trentlin [16021]: sca
+Wed Nov 18 21:29:30 2026 :: Log Trentlin [16021]: e
+Wed Nov 18 21:29:30 2026 :: Log Trentlin [16022]: arrived (Main Deck) from 16021
+Wed Nov 18 21:29:30 2026 :: Log Trentlin [16022]: sca
+Wed Nov 18 21:29:31 2026 :: Log Trentlin [16022]: e
+Wed Nov 18 21:29:31 2026 :: Log Trentlin [16023]: arrived (Main Deck) from 16022
+Wed Nov 18 21:29:32 2026 :: Log Trentlin [16023]: sca
+Wed Nov 18 21:29:34 2026 :: Log Trentlin [16023]: s
+Wed Nov 18 21:29:34 2026 :: Log Trentlin [16018]: arrived (Main Deck of the Royal Eagle) from 16023
+Wed Nov 18 21:29:34 2026 :: Connection guard: 54.167.223.174 closed without a word (strike 2 of 6 in 6 hours).
+Wed Nov 18 21:29:34 2026 :: Log Trentlin [16018]: k swa
+Wed Nov 18 21:29:37 2026 :: Log Trentlin [16018]: fists
+Wed Nov 18 21:29:44 2026 :: Log Trentlin [16018]: fists
+Wed Nov 18 21:29:50 2026 :: Log Trentlin [16018]: fists
+Wed Nov 18 21:29:52 2026 :: Log Trentlin [16018]: killed The swashbuckler
+Wed Nov 18 21:29:52 2026 :: Log Trentlin [16018]: coin +1 platinum
+Wed Nov 18 21:29:52 2026 :: Log Trentlin [16018]: coin +6 silver
+Wed Nov 18 21:29:52 2026 :: Log Trentlin [16018]: coin +8 copper
+Wed Nov 18 21:29:52 2026 :: Log Trentlin [16018]: coin +3 gold
+Wed Nov 18 21:29:57 2026 :: Log Trentlin [16018]: sca
+Wed Nov 18 21:29:57 2026 :: Log Trentlin [16018]: wear diplo
+Wed Nov 18 21:29:59 2026 :: Log Trentlin [16018]: n
+Wed Nov 18 21:29:59 2026 :: Log Trentlin [16023]: arrived (Main Deck) from 16018
+Wed Nov 18 21:30:00 2026 :: Log Trentlin [16023]: n
+Wed Nov 18 21:30:00 2026 :: Log Trentlin [16028]: arrived (Main Deck) from 16023
+Wed Nov 18 21:30:01 2026 :: Log Trentlin [16028]: sca
+Wed Nov 18 21:30:02 2026 :: Log Trentlin [16028]: affects off: iron skin
+Wed Nov 18 21:30:03 2026 :: Log Trentlin [16028]: n
+Wed Nov 18 21:30:03 2026 :: Log Trentlin [16033]: arrived (Base of the Mast) from 16028
+Wed Nov 18 21:30:05 2026 :: Log Trentlin [16033]: iron
+Wed Nov 18 21:30:12 2026 :: Log Trentlin [16033]: k swa
+Wed Nov 18 21:30:15 2026 :: Log Trentlin [16033]: fists
+Wed Nov 18 21:30:21 2026 :: Log Trentlin [16033]: fists
+Wed Nov 18 21:30:29 2026 :: Log Trentlin [16033]: fists
+Wed Nov 18 21:30:35 2026 :: Log Trentlin [16033]: fists
+Wed Nov 18 21:30:35 2026 :: Log Trentlin [16033]: level 51 -> 52 (earned)
+Wed Nov 18 21:30:35 2026 :: Trentlin has reached the next level of Heroism!!
+Wed Nov 18 21:30:35 2026 :: Snapshot of Trentlin taken before level: Trentlin.20261118_213035.level (PRESTORE Trentlin to see it).
+Wed Nov 18 21:30:35 2026 :: Log Trentlin [16033]: killed The swashbuckler
+Wed Nov 18 21:30:35 2026 :: Log Trentlin [16033]: coin +1 platinum
+Wed Nov 18 21:30:35 2026 :: Log Trentlin [16033]: coin +6 silver
+Wed Nov 18 21:30:35 2026 :: Log Trentlin [16033]: coin +8 copper
+Wed Nov 18 21:30:35 2026 :: Log Trentlin [16033]: coin +3 gold
+Wed Nov 18 21:30:46 2026 :: Log Trentlin [16033]: i
+Wed Nov 18 21:30:50 2026 :: Log Trentlin [16033]: comp heart
+Wed Nov 18 21:30:57 2026 :: Log Trentlin [16033]: rem starj
+Wed Nov 18 21:30:58 2026 :: Log Trentlin [16033]: rem starj
+Wed Nov 18 21:30:59 2026 :: Log Trentlin [16033]: wear lion
+Wed Nov 18 21:31:00 2026 :: Log Trentlin [16033]: wear lion
+Wed Nov 18 21:31:05 2026 :: Log Trentlin [16033]: stash put starj
+Wed Nov 18 21:31:05 2026 :: Log Trentlin [16033]: stashed (Shining) A Precious Starjewel (vnum 10051)
+Wed Nov 18 21:31:06 2026 :: Log Trentlin [16033]: stash put starj
+Wed Nov 18 21:31:06 2026 :: Log Trentlin [16033]: stashed (Shining) A Precious Starjewel (vnum 10051)
+Wed Nov 18 21:31:08 2026 :: Log Trentlin [16033]: wear lion
+Wed Nov 18 21:31:12 2026 :: Log Trentlin [16033]: comp scabb
+Wed Nov 18 21:31:21 2026 :: Log Trentlin [16033]: stash put scabb
+Wed Nov 18 21:31:21 2026 :: Log Trentlin [16033]: stashed Arthur's scabbard (vnum 721)
+Wed Nov 18 21:31:21 2026 :: Log Trentlin [16033]: i
+Wed Nov 18 21:31:27 2026 :: Log Trentlin [16033]: wear lion
+Wed Nov 18 21:31:31 2026 :: Log Trentlin [16033]: comp sh
+Wed Nov 18 21:31:39 2026 :: Log Trentlin [16033]: i
+Wed Nov 18 21:31:44 2026 :: Log Trentlin [16033]: comp mail
+Wed Nov 18 21:31:49 2026 :: Log Trentlin [16033]: drop mail
+Wed Nov 18 21:31:50 2026 :: Log Trentlin [16033]: sac mail
+Wed Nov 18 21:31:50 2026 :: Log Trentlin [16033]: coin +118 copper
+Wed Nov 18 21:31:51 2026 :: Log Trentlin [16033]: i
+Wed Nov 18 21:31:51 2026 :: Log Trentlin [16033]: affects off: iron skin, steel fist
+Wed Nov 18 21:31:53 2026 :: Log Trentlin [16033]: i
+Wed Nov 18 21:31:57 2026 :: Log Trentlin [16033]: comp lizar
+Wed Nov 18 21:32:00 2026 :: Log Trentlin [16033]: wear lizar
+Wed Nov 18 21:32:01 2026 :: Log Trentlin [16033]: i
+Wed Nov 18 21:32:11 2026 :: Log Trentlin [16033]: comp shield
+Wed Nov 18 21:32:15 2026 :: Log Trentlin [16033]: stash put shield
+Wed Nov 18 21:32:15 2026 :: Log Trentlin [16033]: stashed a coiled-snake shield (vnum 30666)
+Wed Nov 18 21:32:17 2026 :: Log Trentlin [16033]: s
+Wed Nov 18 21:32:17 2026 :: Log Trentlin [16028]: arrived (Main Deck) from 16033
+Wed Nov 18 21:32:17 2026 :: Log Trentlin [16028]: s
+Wed Nov 18 21:32:17 2026 :: Log Trentlin [16023]: arrived (Main Deck) from 16028
+Wed Nov 18 21:32:18 2026 :: Log Trentlin [16023]: e
+Wed Nov 18 21:32:18 2026 :: Log Trentlin [16024]: arrived (Main Deck) from 16023
+Wed Nov 18 21:32:18 2026 :: Log Trentlin [16024]: s
+Wed Nov 18 21:32:18 2026 :: Log Trentlin [16019]: arrived (Main Deck of the Royal Eagle) from 16024
+Wed Nov 18 21:32:19 2026 :: Log Trentlin [16019]: s
+Wed Nov 18 21:32:20 2026 :: Log Trentlin [16019]: e
+Wed Nov 18 21:32:20 2026 :: Log Trentlin [16020]: arrived (Main Deck of the Royal Eagle - Starboard) from 16019
+Wed Nov 18 21:32:21 2026 :: Log Trentlin [16020]: u
+Wed Nov 18 21:32:21 2026 :: Log Trentlin [16015]: arrived (Aft Deck - Starboard Side) from 16020
+Wed Nov 18 21:32:22 2026 :: Log Trentlin [16015]: s
+Wed Nov 18 21:32:22 2026 :: Log Trentlin [16010]: arrived (Southeast Corner of Aft Deck) from 16015
+Wed Nov 18 21:32:23 2026 :: Log Trentlin [16010]: w
+Wed Nov 18 21:32:23 2026 :: Log Trentlin [16009]: arrived (Aft Deck South) from 16010
+Wed Nov 18 21:32:24 2026 :: Log Trentlin [16009]: sca
+Wed Nov 18 21:32:27 2026 :: Log Trentlin [16009]: steel
+Wed Nov 18 21:32:31 2026 :: Log Trentlin [16009]: iron
+Wed Nov 18 21:32:39 2026 :: Log Trentlin [16009]: e
+Wed Nov 18 21:32:39 2026 :: Log Trentlin [16010]: arrived (Southeast Corner of Aft Deck) from 16009
+Wed Nov 18 21:32:39 2026 :: Log Trentlin [16010]: con an
+Wed Nov 18 21:32:40 2026 :: Log Trentlin [16010]: k an
