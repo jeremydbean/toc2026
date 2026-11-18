@@ -317831,3 +317831,6 @@ Wed Nov 18 21:59:21 2026 :: EOF encountered on read.
 Wed Nov 18 21:59:21 2026 :: Connection guard: 198.235.24.118 closed before a password prompt (strike 1 of 6 in 6 hours).
 Wed Nov 18 22:00:03 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 3 of 6 in 6 hours).
 Wed Nov 18 22:05:08 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 2 of 6 in 6 hours).
+Wed Nov 18 22:08:25 2026 :: Treasure goblin: vanished from room 24556 (The Castle Pantry, abyss.are) (too long in one area).
+Wed Nov 18 22:10:02 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Wed Nov 18 22:10:13 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 1 of 6 in 6 hours).
