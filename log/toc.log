@@ -315284,3 +315284,8 @@ Wed Nov 18 02:34:34 2026 :: Connection guard: 192.178.6.195 closed before a pass
 Wed Nov 18 02:36:58 2026 :: Connection guard: 162.216.149.91 closed without a word (strike 1 of 6 in 6 hours).
 Wed Nov 18 02:36:58 2026 :: Connection guard: 162.216.149.91 closed without a word (strike 2 of 6 in 6 hours).
 Wed Nov 18 02:37:18 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 5 of 6 in 6 hours).
+Wed Nov 18 02:41:39 2026 :: Treasure goblin: vanished from room 5104 (3rd House, drow1.are) (too long in one area).
+Wed Nov 18 02:42:23 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 18 02:45:46 2026 :: Sock.sinaddr:  205.210.31.228
+Wed Nov 18 02:45:46 2026 :: EOF encountered on read.
+Wed Nov 18 02:45:46 2026 :: Connection guard: 205.210.31.228 closed before a password prompt (strike 1 of 6 in 6 hours).
