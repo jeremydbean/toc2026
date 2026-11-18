@@ -36658,3 +36658,114 @@
 1794967586	cmd	Trentlin	50	17276	highland.are	standing	100	0	-	south		In the southwestern corner of the foyer //   A faint draught seeps through the stones of the outer wall in this shadowed corner of the foyer. // [Exits: north south]	-	-
 1794967587	cmd	Trentlin	50	17276	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the west side of the foyer // South - In the south of the foyer	-	-
 1794967589	cmd	Trentlin	50	17275	highland.are	standing	100	0	-	north		In the west side of the foyer //   The western wall of the foyer is adorned with faded tapestries depicting highland battles long since fought and forgotten. // [Exits: east south west]	-	-
+1794967590	cmd	Trentlin	50	17275	highland.are	standing	100	0	-	exits		Obvious exits: // East  - In the northwestern corner of the foyer // South - In the center of the foyer	-	+
+1794967595	cmd	Trentlin	50	17274	highland.are	standing	100	0	-	east		In the northwestern corner of the foyer //   Stone pillars rise toward the vaulted ceiling in this corner of the grand foyer. Torchlight flickers across the polished marble floor. // [Exits: north south]	-	-
+1794967596	cmd	Trentlin	50	17274	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the north of the foyer // South - In the west side of the foyer	-	-
+1794967623	cmd	Trentlin	50	17275	highland.are	standing	100	0	-	south		In the west side of the foyer //   The western wall of the foyer is adorned with faded tapestries depicting highland battles long since fought and forgotten. // [Exits: east south west]	-	-
+1794967624	cmd	Trentlin	50	17275	highland.are	standing	100	0	-	exits		Obvious exits: // East  - In the northwestern corner of the foyer // South - In the center of the foyer	-	+
+1794967625	cmd	Trentlin	50	17276	highland.are	standing	100	0	-	west		In the southwestern corner of the foyer //   A faint draught seeps through the stones of the outer wall in this shadowed corner of the foyer. // [Exits: north south]	-	-
+1794967626	cmd	Trentlin	50	17276	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the west side of the foyer // South - In the south of the foyer	-	-
+1794967627	cmd	Trentlin	50	17279	highland.are	standing	100	0	-	south		In the south of the foyer //   To the south, you see some stairs. // [Exits: north east south west]	-	-
+1794967627	cmd	Trentlin	50	17279	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the southeastern corner of the foyer // East  - A flight of stairs	-	+
+1794967629	cmd	Trentlin	50	17280	highland.are	standing	100	0	-	east		A flight of stairs //   You can go up here or north to the foyer. // [Exits: north up]	-	-
+1794967629	cmd	Trentlin	50	17280	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the south of the foyer // Up    - At a flight of stairs	-	-
+1794967632	cmd	Trentlin	50	17284	highland.are	standing	100	0	-	up		At a flight of stairs //   You can go down here to the foyer and to the south is a hallway. // [Exits: south down]	-	-
+1794967633	cmd	Trentlin	50	17284	highland.are	standing	100	0	-	exits		Obvious exits: // South - A hallway on the first floor // Down  - A flight of stairs	-	-
+1794967636	cmd	Trentlin	50	17280	highland.are	standing	100	0	-	down		A flight of stairs //   You can go up here or north to the foyer. // [Exits: north up]	-	-
+1794967636	cmd	Trentlin	50	17280	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the south of the foyer // Up    - At a flight of stairs	-	-
+1794967638	cmd	Trentlin	50	17279	highland.are	standing	100	0	-	north		In the south of the foyer //   To the south, you see some stairs. // [Exits: north east south west]	-	-
+1794967638	cmd	Trentlin	50	17279	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the southeastern corner of the foyer // East  - A flight of stairs	-	+
+1794967641	cmd	Trentlin	50	17280	highland.are	standing	100	0	-	east		A flight of stairs //   You can go up here or north to the foyer. // [Exits: north up]	-	-
+1794967641	cmd	Trentlin	50	17280	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the south of the foyer // Up    - At a flight of stairs	-	-
+1794967645	cmd	Trentlin	50	17284	highland.are	standing	100	0	-	up		At a flight of stairs //   You can go down here to the foyer and to the south is a hallway. // [Exits: south down]	-	-
+1794967646	cmd	Trentlin	50	17284	highland.are	standing	100	0	-	exits		Obvious exits: // South - A hallway on the first floor // Down  - A flight of stairs	-	-
+1794967647	cmd	Trentlin	50	17285	highland.are	standing	100	0	-	south		A hallway on the first floor //   In the hall lies a red carpet. There are tapestries on the walls between // the doors.  All in all, a pleasant hall one would say.	-	+
+1794967647	cmd	Trentlin	50	17285	highland.are	standing	100	0	-	exits		Obvious exits: // North - At a flight of stairs // South - In a hallway.	-	-
+1794967650	cmd	Trentlin	50	17287	highland.are	standing	100	0	-	south		In a hallway. //   There are doors here to the left and to the right.  They appear to be // OPEN.	-	+
+1794967650	cmd	Trentlin	50	17287	highland.are	standing	100	0	-	exits		Obvious exits: // North - A hallway on the first floor // East  - In the Lord's bedroom	-	+
+1794967652	refused	Trentlin	50	17287	highland.are	standing	100	0	-	(unknown)		Huh? Did you mean LEVITATE?	refusal:unknown-command	-
+1794967655	cmd	Trentlin	50	17287	highland.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1794967656	cmd	Trentlin	50	17289	highland.are	standing	100	0	-	south		In a hallway //   A painting picturing an ugly man is on the left and a painting of an even  // uglier  woman is to the right, God almighty these guys are ugly. The notes	-	+
+1794967656	cmd	Trentlin	50	17289	highland.are	standing	100	0	-	exits		Obvious exits: // North - In a hallway. // South - In a hallway	-	-
+1794967657	cmd	Trentlin	50	17291	highland.are	standing	100	0	-	south		In a hallway //   To the left and to the right are doors.  Both seem open. On the door // to the east you see a pentagon and on the door to the west you see	-	+
+1794967658	cmd	Trentlin	50	17291	highland.are	standing	100	0	-	exits		Obvious exits: // North - In a hallway // East  - The Lady's bedroom	-	+
+1794967660	cmd	Trentlin	50	17289	highland.are	standing	100	0	-	north		In a hallway //   A painting picturing an ugly man is on the left and a painting of an even  // uglier  woman is to the right, God almighty these guys are ugly. The notes	-	+
+1794967660	cmd	Trentlin	50	17287	highland.are	standing	100	0	-	north		In a hallway. //   There are doors here to the left and to the right.  They appear to be // OPEN.	-	+
+1794967661	cmd	Trentlin	50	17287	highland.are	standing	100	0	-	exits		Obvious exits: // North - A hallway on the first floor // East  - In the Lord's bedroom	-	+
+1794967665	cmd	Trentlin	50	17285	highland.are	standing	100	0	-	north		A hallway on the first floor //   In the hall lies a red carpet. There are tapestries on the walls between // the doors.  All in all, a pleasant hall one would say.	-	+
+1794967666	cmd	Trentlin	50	17285	highland.are	standing	100	0	-	exits		Obvious exits: // North - At a flight of stairs // South - In a hallway.	-	-
+1794967702	cmd	Trentlin	50	17284	highland.are	standing	100	0	-	north		At a flight of stairs //   You can go down here to the foyer and to the south is a hallway. // [Exits: south down]	-	-
+1794967703	cmd	Trentlin	50	17284	highland.are	standing	100	0	-	exits		Obvious exits: // South - A hallway on the first floor // Down  - A flight of stairs	-	-
+1794967704	laid	-	0	0	-	1112	herb	51	a piece of kelp	4407	dresden.are	scatter
+1794967705	cmd	Trentlin	50	17280	highland.are	standing	100	0	-	down		A flight of stairs //   You can go up here or north to the foyer. // [Exits: north up]	-	-
+1794967705	cmd	Trentlin	50	17280	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the south of the foyer // Up    - At a flight of stairs	-	-
+1794967706	cmd	Trentlin	50	17279	highland.are	standing	100	0	-	north		In the south of the foyer //   To the south, you see some stairs. // [Exits: north east south west]	-	-
+1794967707	cmd	Trentlin	50	17279	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the southeastern corner of the foyer // East  - A flight of stairs	-	+
+1794967715	cmd	Trentlin	50	17283	highland.are	standing	100	0	-	north		In the southeastern corner of the foyer //   The southeastern corner of the foyer is quiet and still. The ancient stones bear the marks of countless years. // [Exits: north south]	-	-
+1794967716	cmd	Trentlin	50	17279	highland.are	standing	100	0	-	north		In the south of the foyer //   To the south, you see some stairs. // [Exits: north east south west]	-	-
+1794967716	cmd	Trentlin	50	17283	highland.are	standing	100	0	-	north		In the southeastern corner of the foyer //   The southeastern corner of the foyer is quiet and still. The ancient stones bear the marks of countless years. // [Exits: north south]	-	-
+1794967717	cmd	Trentlin	50	17283	highland.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794967719	cmd	Trentlin	50	17282	highland.are	standing	100	0	-	south		In the east of the foyer //   The eastern side of the foyer runs along the inner castle wall. Faded banners of the highland lords hang here in rows. // [Exits: north south west]	-	-
+1794967720	cmd	Trentlin	50	17278	highland.are	standing	100	0	-	west		In the center of the foyer //   You stand in the heart of the great foyer. Four stone pillars support the vaulted ceiling high above, and corridors lead off in all directions. // [Exits: north east south west]	-	-
+1794967722	cmd	Trentlin	50	17282	highland.are	standing	100	0	-	north		In the east of the foyer //   The eastern side of the foyer runs along the inner castle wall. Faded banners of the highland lords hang here in rows. // [Exits: north south west]	-	-
+1794967723	cmd	Trentlin	50	17283	highland.are	standing	100	0	-	south		In the southeastern corner of the foyer //   The southeastern corner of the foyer is quiet and still. The ancient stones bear the marks of countless years. // [Exits: north south]	-	-
+1794967724	cmd	Trentlin	50	17283	highland.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794967724	cmd	Trentlin	50	17282	highland.are	standing	100	0	-	south		In the east of the foyer //   The eastern side of the foyer runs along the inner castle wall. Faded banners of the highland lords hang here in rows. // [Exits: north south west]	-	-
+1794967726	cmd	Trentlin	50	17278	highland.are	standing	100	0	-	west		In the center of the foyer //   You stand in the heart of the great foyer. Four stone pillars support the vaulted ceiling high above, and corridors lead off in all directions. // [Exits: north east south west]	-	-
+1794967727	cmd	Trentlin	50	17277	highland.are	standing	100	0	-	west		In the north of the foyer //   To the north, you see stairs. // [Exits: north east south west]	-	-
+1794967728	cmd	Trentlin	50	17277	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the northwestern corner of the foyer // East  - In the northeastern corner of the foyer	-	+
+1794967733	cmd	Trentlin	50	17273	highland.are	standing	100	0	-	west		At a flight of stairs //   You are on the ground floor of the castle. You can go to the foyer // or take the stairs down. 	-	+
+1794967735	cmd	Trentlin	50	17273	highland.are	standing	100	0	-	exits		Obvious exits: // South - In the north of the foyer // Down  - At a flight of stairs	-	-
+1794967737	cmd	Trentlin	50	17272	highland.are	standing	100	0	-	down		At a flight of stairs //   You can go up towards the ground floor of the castle. // [Exits: east up]	-	-
+1794967739	cmd	Trentlin	50	17272	highland.are	standing	100	0	-	exits		Obvious exits: // East  - In a hallway // Up    - At a flight of stairs	-	-
+1794967740	cmd	Trentlin	50	17273	highland.are	standing	100	0	-	up		At a flight of stairs //   You are on the ground floor of the castle. You can go to the foyer // or take the stairs down. 	-	+
+1794967745	cmd	Trentlin	50	17277	highland.are	standing	100	0	-	south		In the north of the foyer //   To the north, you see stairs. // [Exits: north east south west]	-	-
+1794967745	cmd	Trentlin	50	17278	highland.are	standing	100	0	-	south		In the center of the foyer //   You stand in the heart of the great foyer. Four stone pillars support the vaulted ceiling high above, and corridors lead off in all directions. // [Exits: north east south west]	-	-
+1794967745	cmd	Trentlin	50	17279	highland.are	standing	100	0	-	east		In the south of the foyer //   To the south, you see some stairs. // [Exits: north east south west]	-	-
+1794967745	cmd	Trentlin	50	17280	highland.are	standing	100	0	-	east		A flight of stairs //   You can go up here or north to the foyer. // [Exits: north up]	-	-
+1794967747	cmd	Trentlin	50	17280	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the south of the foyer // Up    - At a flight of stairs	-	-
+1794967753	cmd	Trentlin	50	17284	highland.are	standing	100	0	-	up		At a flight of stairs //   You can go down here to the foyer and to the south is a hallway. // [Exits: south down]	-	-
+1794967754	cmd	Trentlin	50	17284	highland.are	standing	100	0	-	exits		Obvious exits: // South - A hallway on the first floor // Down  - A flight of stairs	-	-
+1794967758	cmd	Trentlin	50	17285	highland.are	standing	100	0	-	south		A hallway on the first floor //   In the hall lies a red carpet. There are tapestries on the walls between // the doors.  All in all, a pleasant hall one would say.	-	+
+1794967759	cmd	Trentlin	50	17287	highland.are	standing	100	0	-	south		In a hallway. //   There are doors here to the left and to the right.  They appear to be // OPEN.	-	+
+1794967759	cmd	Trentlin	50	17286	highland.are	standing	100	0	-	west		In an unused room //   Nothing here but cobwebs and dust. // [Exits: east]	-	-
+1794967762	cmd	Trentlin	50	17286	highland.are	standing	100	0	-	open	secret	I see no secret here.	-	-
+1794967763	cmd	Trentlin	50	17287	highland.are	standing	100	0	-	east		In a hallway. //   There are doors here to the left and to the right.  They appear to be // OPEN.	-	+
+1794967763	cmd	Trentlin	50	17288	highland.are	standing	100	0	-	east		In the Lord's bedroom //   This is just a normal bedroom. The Lord of the castle himself appears to  // be absent, so feel free to look around and see how the nobility sleep.	-	+
+1794967764	cmd	Trentlin	50	17287	highland.are	standing	100	0	-	west		In a hallway. //   There are doors here to the left and to the right.  They appear to be // OPEN.	-	+
+1794967764	cmd	Trentlin	50	17289	highland.are	standing	100	0	-	south		In a hallway //   A painting picturing an ugly man is on the left and a painting of an even  // uglier  woman is to the right, God almighty these guys are ugly. The notes	-	+
+1794967765	cmd	Trentlin	50	17291	highland.are	standing	100	0	-	south		In a hallway //   To the left and to the right are doors.  Both seem open. On the door // to the east you see a pentagon and on the door to the west you see	-	+
+1794967765	cmd	Trentlin	50	17290	highland.are	standing	100	1	-	west		A bedroom //   You've entered the cleric's room, but this time the occupant is home.  // The cleric turns around to look at you.  Upon recognizing you as an intruder 	-	+
+1794967767	cmd	Trentlin	50	17291	highland.are	standing	100	0	-	east		In a hallway //   To the left and to the right are doors.  Both seem open. On the door // to the east you see a pentagon and on the door to the west you see	-	+
+1794967767	cmd	Trentlin	50	17292	highland.are	standing	100	0	-	east		The Lady's bedroom //   You entered the bedroom of the Lady of the castle. She has her eyes // fixed on the mirror before her.  God is she awful to look upon! You 	-	+
+1794967768	cmd	Trentlin	50	17291	highland.are	standing	100	0	-	west		In a hallway //   To the left and to the right are doors.  Both seem open. On the door // to the east you see a pentagon and on the door to the west you see	-	+
+1794967769	cmd	Trentlin	50	17293	highland.are	standing	100	0	-	south		In a hallway //   The tapestries here depict battles in long forgotten years in long // forgotten lands for long forgotten causes.	-	+
+1794967769	cmd	Trentlin	50	17294	highland.are	standing	100	0	-	south		A bend in the hallway //   The hallway turns eastwards. Nothing further here but paintings of animals // and plants.  Strangely as you look closer, you notice all the lifeforms are 	-	+
+1794967770	cmd	Trentlin	50	17295	highland.are	standing	100	0	-	east		In a hallway //   In front of you is a flight of stairs. // [Exits: east west]	-	-
+1794967771	cmd	Trentlin	50	17296	highland.are	standing	100	0	-	east		At a flight of stairs //   You can go up here or go west to the hallway. // [Exits: west up]	-	-
+1794967772	laid	-	0	0	-	1119	herb	44	a sprig of aconite	18092	icekeep.are	scatter
+1794967772	laid	-	0	0	-	1120	herb	43	a sprig of hyssop	18089	icekeep.are	scatter
+1794967773	cmd	Trentlin	50	17297	highland.are	standing	100	0	-	up		At a flight of stairs //   You can go down here or continue on to the ante-room. You see a farmer  // waiting in the room.	-	+
+1794967774	cmd	Trentlin	50	17298	highland.are	standing	100	0	-	south		In the Ante-Room //   A bench is here that you can sit on.  Presently only a farmer is sitting on   // it. The farmer doesn't even glance in your direction.	-	+
+1794967776	got	Trentlin	50	17298	highland.are	25043	The Signet of Killuminati	trash	59	0	get	the floor
+1794967776	cmd	Trentlin	50	17298	highland.are	standing	100	0	-	get	all	You get The Signet of Killuminati.	-	-
+1794967777	area	Trentlin	50	4207	dresden.are	highland.are	dresden.are	554	recall
+1794967777	cmd	Trentlin	50	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794967777	cmd	Trentlin	50	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794967777	cmd	Trentlin	50	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1794967778	cmd	Trentlin	50	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1794967778	cmd	Trentlin	50	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794967778	cmd	Trentlin	50	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1794967778	cmd	Trentlin	50	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1794967779	cmd	Trentlin	50	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1794967779	cmd	Trentlin	50	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1794967779	cmd	Trentlin	50	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1794967779	cmd	Trentlin	50	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1794967780	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1794967780	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1794967781	coin	Trentlin	50	2497	dresden.are	+148721100	quests	aquest	-	17078949603
+1794967781	outcome	Trentlin	50	2497	dresden.are	quest-complete	success	-	-	ordinary qp=4904->4904 offered=65 daily=18->18 coin=+148721100 kill=13520100 streak=17 level=50 target=0
+1794967781	cmd	Trentlin	50	2497	dresden.are	standing	100	25	-	aquest	complete	You inform Questor Thews you have completed his quest. // You hand The Signet of Killuminati to Questor Thews. // Questor Thews says 'Well done! I knew you were right for the job.'	success:-	+
+1794967786	cmd	Trentlin	50	2497	dresden.are	standing	100	5	-	aquest	gamble no	You safely collect 65 quest points.	-	-
+1794967789	cmd	Trentlin	50	2497	dresden.are	standing	100	0	-	aquest	info	.-[ Quest Summary ]-------------------------------------------. // | Quest Points: 4969 // | Next Quest  : 5 minutes before you may quest again	-	+
+1794967838	laid	-	0	0	-	1124	component	76	a vial of dragons blood	4510	dresden.are	scatter

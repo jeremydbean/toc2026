@@ -314760,3 +314760,180 @@ Wed Nov 18 02:06:26 2026 :: Log Trentlin [17276]: arrived (In the southwestern c
 Wed Nov 18 02:06:27 2026 :: Log Trentlin [17276]: ex
 Wed Nov 18 02:06:29 2026 :: Log Trentlin [17276]: n
 Wed Nov 18 02:06:29 2026 :: Log Trentlin [17275]: arrived (In the west side of the foyer) from 17276
+Wed Nov 18 02:06:30 2026 :: Log Trentlin [17275]: ex
+Wed Nov 18 02:06:35 2026 :: Log Trentlin [17275]: e
+Wed Nov 18 02:06:35 2026 :: Log Trentlin [17274]: arrived (In the northwestern corner of the foyer) from 17275
+Wed Nov 18 02:06:36 2026 :: Log Trentlin [17274]: ex
+Wed Nov 18 02:06:52 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 18 02:07:03 2026 :: Log Trentlin [17274]: s
+Wed Nov 18 02:07:03 2026 :: Log Trentlin [17275]: arrived (In the west side of the foyer) from 17274
+Wed Nov 18 02:07:04 2026 :: Log Trentlin [17275]: ex
+Wed Nov 18 02:07:05 2026 :: Log Trentlin [17275]: w
+Wed Nov 18 02:07:05 2026 :: Log Trentlin [17276]: arrived (In the southwestern corner of the foyer) from 17275
+Wed Nov 18 02:07:06 2026 :: Log Trentlin [17276]: ex
+Wed Nov 18 02:07:07 2026 :: Log Trentlin [17276]: s
+Wed Nov 18 02:07:07 2026 :: Log Trentlin [17279]: arrived (In the south of the foyer) from 17276
+Wed Nov 18 02:07:07 2026 :: Log Trentlin [17279]: ex
+Wed Nov 18 02:07:09 2026 :: Log Trentlin [17279]: e
+Wed Nov 18 02:07:09 2026 :: Log Trentlin [17280]: arrived (A flight of stairs) from 17279
+Wed Nov 18 02:07:09 2026 :: Log Trentlin [17280]: ex
+Wed Nov 18 02:07:12 2026 :: Log Trentlin [17280]: u
+Wed Nov 18 02:07:12 2026 :: Log Trentlin [17284]: arrived (At a flight of stairs) from 17280
+Wed Nov 18 02:07:13 2026 :: Log Trentlin [17284]: ex
+Wed Nov 18 02:07:16 2026 :: Log Trentlin [17284]: d
+Wed Nov 18 02:07:16 2026 :: Log Trentlin [17280]: arrived (A flight of stairs) from 17284
+Wed Nov 18 02:07:16 2026 :: Log Trentlin [17280]: ex
+Wed Nov 18 02:07:18 2026 :: Log Trentlin [17280]: n
+Wed Nov 18 02:07:18 2026 :: Log Trentlin [17279]: arrived (In the south of the foyer) from 17280
+Wed Nov 18 02:07:18 2026 :: Log Trentlin [17279]: ex
+Wed Nov 18 02:07:21 2026 :: Log Trentlin [17279]: e
+Wed Nov 18 02:07:21 2026 :: Log Trentlin [17280]: arrived (A flight of stairs) from 17279
+Wed Nov 18 02:07:21 2026 :: Log Trentlin [17280]: ex
+Wed Nov 18 02:07:25 2026 :: Log Trentlin [17280]: u
+Wed Nov 18 02:07:25 2026 :: Log Trentlin [17284]: arrived (At a flight of stairs) from 17280
+Wed Nov 18 02:07:26 2026 :: Log Trentlin [17284]: ex
+Wed Nov 18 02:07:27 2026 :: Log Trentlin [17284]: s
+Wed Nov 18 02:07:27 2026 :: Log Trentlin [17285]: arrived (A hallway on the first floor) from 17284
+Wed Nov 18 02:07:27 2026 :: Log Trentlin [17285]: ex
+Wed Nov 18 02:07:29 2026 :: Log Trentlin [17285]: affects off: levitate
+Wed Nov 18 02:07:30 2026 :: Log Trentlin [17285]: s
+Wed Nov 18 02:07:30 2026 :: Log Trentlin [17287]: arrived (In a hallway.) from 17285
+Wed Nov 18 02:07:30 2026 :: Log Trentlin [17287]: ex
+Wed Nov 18 02:07:32 2026 :: Log Trentlin [17287]: (refused) leviate
+Wed Nov 18 02:07:35 2026 :: Log Trentlin [17287]: levitate
+Wed Nov 18 02:07:36 2026 :: Log Trentlin [17287]: s
+Wed Nov 18 02:07:36 2026 :: Log Trentlin [17289]: arrived (In a hallway) from 17287
+Wed Nov 18 02:07:36 2026 :: Log Trentlin [17289]: ex
+Wed Nov 18 02:07:37 2026 :: Log Trentlin [17289]: s
+Wed Nov 18 02:07:37 2026 :: Log Trentlin [17291]: arrived (In a hallway) from 17289
+Wed Nov 18 02:07:38 2026 :: Log Trentlin [17291]: ex
+Wed Nov 18 02:07:40 2026 :: Log Trentlin [17291]: n
+Wed Nov 18 02:07:40 2026 :: Log Trentlin [17289]: arrived (In a hallway) from 17291
+Wed Nov 18 02:07:40 2026 :: Log Trentlin [17289]: n
+Wed Nov 18 02:07:40 2026 :: Log Trentlin [17287]: arrived (In a hallway.) from 17289
+Wed Nov 18 02:07:41 2026 :: Log Trentlin [17287]: ex
+Wed Nov 18 02:07:45 2026 :: Log Trentlin [17287]: n
+Wed Nov 18 02:07:45 2026 :: Log Trentlin [17285]: arrived (A hallway on the first floor) from 17287
+Wed Nov 18 02:07:46 2026 :: Log Trentlin [17285]: ex
+Wed Nov 18 02:08:22 2026 :: Log Trentlin [17285]: n
+Wed Nov 18 02:08:22 2026 :: Log Trentlin [17284]: arrived (At a flight of stairs) from 17285
+Wed Nov 18 02:08:23 2026 :: Log Trentlin [17284]: ex
+Wed Nov 18 02:08:25 2026 :: Log Trentlin [17284]: d
+Wed Nov 18 02:08:25 2026 :: Log Trentlin [17280]: arrived (A flight of stairs) from 17284
+Wed Nov 18 02:08:25 2026 :: Log Trentlin [17280]: ex
+Wed Nov 18 02:08:26 2026 :: Log Trentlin [17280]: n
+Wed Nov 18 02:08:26 2026 :: Log Trentlin [17279]: arrived (In the south of the foyer) from 17280
+Wed Nov 18 02:08:27 2026 :: Log Trentlin [17279]: ex
+Wed Nov 18 02:08:35 2026 :: Log Trentlin [17279]: n
+Wed Nov 18 02:08:35 2026 :: Log Trentlin [17283]: arrived (In the southeastern corner of the foyer) from 17279
+Wed Nov 18 02:08:36 2026 :: Log Trentlin [17283]: n
+Wed Nov 18 02:08:36 2026 :: Log Trentlin [17279]: arrived (In the south of the foyer) from 17283
+Wed Nov 18 02:08:36 2026 :: Log Trentlin [17279]: n
+Wed Nov 18 02:08:36 2026 :: Log Trentlin [17283]: arrived (In the southeastern corner of the foyer) from 17279
+Wed Nov 18 02:08:37 2026 :: Log Trentlin [17283]: w
+Wed Nov 18 02:08:39 2026 :: Log Trentlin [17283]: s
+Wed Nov 18 02:08:39 2026 :: Log Trentlin [17282]: arrived (In the east of the foyer) from 17283
+Wed Nov 18 02:08:40 2026 :: Log Trentlin [17282]: w
+Wed Nov 18 02:08:40 2026 :: Log Trentlin [17278]: arrived (In the center of the foyer) from 17282
+Wed Nov 18 02:08:42 2026 :: Log Trentlin [17278]: n
+Wed Nov 18 02:08:42 2026 :: Log Trentlin [17282]: arrived (In the east of the foyer) from 17278
+Wed Nov 18 02:08:43 2026 :: Log Trentlin [17282]: s
+Wed Nov 18 02:08:43 2026 :: Log Trentlin [17283]: arrived (In the southeastern corner of the foyer) from 17282
+Wed Nov 18 02:08:44 2026 :: Log Trentlin [17283]: w
+Wed Nov 18 02:08:44 2026 :: Log Trentlin [17283]: s
+Wed Nov 18 02:08:44 2026 :: Log Trentlin [17282]: arrived (In the east of the foyer) from 17283
+Wed Nov 18 02:08:46 2026 :: Log Trentlin [17282]: w
+Wed Nov 18 02:08:46 2026 :: Log Trentlin [17278]: arrived (In the center of the foyer) from 17282
+Wed Nov 18 02:08:47 2026 :: Log Trentlin [17278]: w
+Wed Nov 18 02:08:47 2026 :: Log Trentlin [17277]: arrived (In the north of the foyer) from 17278
+Wed Nov 18 02:08:48 2026 :: Log Trentlin [17277]: ex
+Wed Nov 18 02:08:53 2026 :: Log Trentlin [17277]: w
+Wed Nov 18 02:08:53 2026 :: Log Trentlin [17273]: arrived (At a flight of stairs) from 17277
+Wed Nov 18 02:08:55 2026 :: Log Trentlin [17273]: ex
+Wed Nov 18 02:08:57 2026 :: Log Trentlin [17273]: d
+Wed Nov 18 02:08:57 2026 :: Log Trentlin [17272]: arrived (At a flight of stairs) from 17273
+Wed Nov 18 02:08:59 2026 :: Log Trentlin [17272]: ex
+Wed Nov 18 02:09:00 2026 :: Log Trentlin [17272]: u
+Wed Nov 18 02:09:00 2026 :: Log Trentlin [17273]: arrived (At a flight of stairs) from 17272
+Wed Nov 18 02:09:05 2026 :: Log Trentlin [17273]: south
+Wed Nov 18 02:09:05 2026 :: Log Trentlin [17277]: arrived (In the north of the foyer) from 17273
+Wed Nov 18 02:09:05 2026 :: Log Trentlin [17277]: south
+Wed Nov 18 02:09:05 2026 :: Log Trentlin [17278]: arrived (In the center of the foyer) from 17277
+Wed Nov 18 02:09:05 2026 :: Log Trentlin [17278]: east
+Wed Nov 18 02:09:05 2026 :: Log Trentlin [17279]: arrived (In the south of the foyer) from 17278
+Wed Nov 18 02:09:05 2026 :: Log Trentlin [17279]: east
+Wed Nov 18 02:09:05 2026 :: Log Trentlin [17280]: arrived (A flight of stairs) from 17279
+Wed Nov 18 02:09:07 2026 :: Log Trentlin [17280]: ex
+Wed Nov 18 02:09:13 2026 :: Log Trentlin [17280]: u
+Wed Nov 18 02:09:13 2026 :: Log Trentlin [17284]: arrived (At a flight of stairs) from 17280
+Wed Nov 18 02:09:14 2026 :: Log Trentlin [17284]: ex
+Wed Nov 18 02:09:18 2026 :: Log Trentlin [17284]: s
+Wed Nov 18 02:09:18 2026 :: Log Trentlin [17285]: arrived (A hallway on the first floor) from 17284
+Wed Nov 18 02:09:19 2026 :: Log Trentlin [17285]: s
+Wed Nov 18 02:09:19 2026 :: Log Trentlin [17287]: arrived (In a hallway.) from 17285
+Wed Nov 18 02:09:19 2026 :: Log Trentlin [17287]: w
+Wed Nov 18 02:09:19 2026 :: Log Trentlin [17286]: arrived (In an unused room) from 17287
+Wed Nov 18 02:09:22 2026 :: Log Trentlin [17286]: open secret
+Wed Nov 18 02:09:23 2026 :: Log Trentlin [17286]: e
+Wed Nov 18 02:09:23 2026 :: Log Trentlin [17287]: arrived (In a hallway.) from 17286
+Wed Nov 18 02:09:23 2026 :: Log Trentlin [17287]: e
+Wed Nov 18 02:09:23 2026 :: Log Trentlin [17288]: arrived (In the Lord's bedroom) from 17287
+Wed Nov 18 02:09:24 2026 :: Log Trentlin [17288]: w
+Wed Nov 18 02:09:24 2026 :: Log Trentlin [17287]: arrived (In a hallway.) from 17288
+Wed Nov 18 02:09:24 2026 :: Log Trentlin [17287]: s
+Wed Nov 18 02:09:24 2026 :: Log Trentlin [17289]: arrived (In a hallway) from 17287
+Wed Nov 18 02:09:25 2026 :: Log Trentlin [17289]: s
+Wed Nov 18 02:09:25 2026 :: Log Trentlin [17291]: arrived (In a hallway) from 17289
+Wed Nov 18 02:09:25 2026 :: Log Trentlin [17291]: w
+Wed Nov 18 02:09:25 2026 :: Log Trentlin [17290]: arrived (A bedroom) from 17291
+Wed Nov 18 02:09:27 2026 :: Log Trentlin [17290]: e
+Wed Nov 18 02:09:27 2026 :: Log Trentlin [17291]: arrived (In a hallway) from 17290
+Wed Nov 18 02:09:27 2026 :: Log Trentlin [17291]: e
+Wed Nov 18 02:09:27 2026 :: Log Trentlin [17292]: arrived (The Lady's bedroom) from 17291
+Wed Nov 18 02:09:28 2026 :: Log Trentlin [17292]: w
+Wed Nov 18 02:09:28 2026 :: Log Trentlin [17291]: arrived (In a hallway) from 17292
+Wed Nov 18 02:09:29 2026 :: Log Trentlin [17291]: s
+Wed Nov 18 02:09:29 2026 :: Log Trentlin [17293]: arrived (In a hallway) from 17291
+Wed Nov 18 02:09:29 2026 :: Log Trentlin [17293]: s
+Wed Nov 18 02:09:29 2026 :: Log Trentlin [17294]: arrived (A bend in the hallway) from 17293
+Wed Nov 18 02:09:30 2026 :: Log Trentlin [17294]: e
+Wed Nov 18 02:09:30 2026 :: Log Trentlin [17295]: arrived (In a hallway) from 17294
+Wed Nov 18 02:09:31 2026 :: Log Trentlin [17295]: e
+Wed Nov 18 02:09:31 2026 :: Log Trentlin [17296]: arrived (At a flight of stairs) from 17295
+Wed Nov 18 02:09:33 2026 :: Log Trentlin [17296]: u
+Wed Nov 18 02:09:33 2026 :: Log Trentlin [17297]: arrived (At a flight of stairs) from 17296
+Wed Nov 18 02:09:34 2026 :: Log Trentlin [17297]: s
+Wed Nov 18 02:09:34 2026 :: Log Trentlin [17298]: arrived (In the Ante-Room) from 17297
+Wed Nov 18 02:09:36 2026 :: Log Trentlin [17298]: get all
+Wed Nov 18 02:09:37 2026 :: Log Trentlin [17298]: reca
+Wed Nov 18 02:09:37 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 17298
+Wed Nov 18 02:09:37 2026 :: Log Trentlin [4207]: e
+Wed Nov 18 02:09:37 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Wed Nov 18 02:09:37 2026 :: Log Trentlin [4202]: e
+Wed Nov 18 02:09:37 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Wed Nov 18 02:09:38 2026 :: Log Trentlin [4201]: e
+Wed Nov 18 02:09:38 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Wed Nov 18 02:09:38 2026 :: Log Trentlin [2427]: e
+Wed Nov 18 02:09:38 2026 :: Log Trentlin [2427]: e
+Wed Nov 18 02:09:38 2026 :: Log Trentlin [2427]: n
+Wed Nov 18 02:09:38 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Nov 18 02:09:39 2026 :: Log Trentlin [2404]: n
+Wed Nov 18 02:09:39 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Wed Nov 18 02:09:39 2026 :: Log Trentlin [2401]: u
+Wed Nov 18 02:09:39 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Nov 18 02:09:39 2026 :: Log Trentlin [2410]: u
+Wed Nov 18 02:09:39 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Nov 18 02:09:39 2026 :: Log Trentlin [2411]: u
+Wed Nov 18 02:09:39 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Wed Nov 18 02:09:40 2026 :: Log Trentlin [2414]: u
+Wed Nov 18 02:09:40 2026 :: Log Trentlin [2497]: arrived (The Questmaster's Globe, above the Oak) from 2414
+Wed Nov 18 02:09:40 2026 :: Log Trentlin [2497]: u
+Wed Nov 18 02:09:41 2026 :: Log Trentlin [2497]: aquest complete
+Wed Nov 18 02:09:41 2026 :: Log Trentlin [2497]: copper +148721100
+Wed Nov 18 02:09:41 2026 :: Log Trentlin [2497]: quest complete: 148p 72g 11s, 65 quest points (streak bonus 106%)
+Wed Nov 18 02:09:41 2026 :: Snapshot of Trentlin taken before quest: Trentlin.20261118_020941.quest (PRESTORE Trentlin to see it).
+Wed Nov 18 02:09:46 2026 :: Log Trentlin [2497]: aquest gamble no
+Wed Nov 18 02:09:49 2026 :: Log Trentlin [2497]: aquest info
+Wed Nov 18 02:10:03 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Wed Nov 18 02:10:38 2026 :: Log Trentlin [2497]: affects off: steel fist
+Wed Nov 18 02:11:25 2026 :: Treasure goblin: vanished from room 2557 (Commander's Office., limbo.are) (too long in one area).
