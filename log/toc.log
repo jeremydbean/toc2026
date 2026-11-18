@@ -315344,3 +315344,5 @@ Wed Nov 18 04:50:29 2026 :: Connection guard: 147.185.133.42 closed before a pas
 Wed Nov 18 04:54:26 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 3 of 6 in 6 hours).
 Wed Nov 18 04:57:20 2026 :: Cartographer: appeared.
 Wed Nov 18 04:59:30 2026 :: Connection guard: refused 1 connection from 5.161.215.244 (paused; 6 refused in all, pause 2 this week, 167 minutes left).
+Wed Nov 18 05:04:01 2026 :: Connection guard: last hour 6 closed without a word, 6 refused, 0 new characters refused, 0 newly paused; 9 addresses paused and 0 refused now, 14 active player addresses.
+Wed Nov 18 05:04:34 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 5 of 6 in 6 hours).
