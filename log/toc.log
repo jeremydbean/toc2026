@@ -314131,3 +314131,6 @@ Wed Nov 18 00:21:14 2026 :: Cartographer: appeared.
 Wed Nov 18 00:25:20 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 3 of 6 in 6 hours).
 Wed Nov 18 00:30:25 2026 :: Connection guard: refused 1 connection from 3.20.63.178 (paused; 10 refused in all, pause 2 this week, 197 minutes left).
 Wed Nov 18 00:35:30 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 18 00:39:43 2026 :: Connection guard: 64.113.5.73 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 18 00:40:35 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 18 00:40:40 2026 :: Treasure goblin: vanished from room 601 (The Big Intersection, ofcol.are) (too long in one area).
