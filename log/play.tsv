@@ -37021,3 +37021,17 @@
 1794968587	sightings	Trentlin	51	4210	dresden.are	mob	9543:2/0/0 9562:4/0/0 9542:1/0/0 9519:1/0/0 9520:2/0/0 9533:1/0/0 9592:2/0/0 9582:3/0/0 9538:1/0/0 9541:1/0/0 9561:3/0/0 9544:2/0/0 29032:1/1/0 29232:1/1/0
 1794968587	sightings	Trentlin	51	4210	dresden.are	item	30579:1/1 6106:2/0 6105:1/0 25043:1/1 30386:1/1 29003:1/0
 1794968587	session	Trentlin	51	4210	dresden.are	quit	2001s	+1 levels	+1330 exp	+287411953 copper	6 kills	0 deaths	2 quests	637 commands	2 refused	coin: loot 46p 84g 53c, quests 256p 88g 19s, spent 16p 31g	spent on: shoot 1g, heal 16p 30g	exp: capped:kills +951, capped:skilluse +10, skilluse +28
+1795002521	area	Trentlin	51	4210	dresden.are	-	dresden.are	-1	(game loop)
+1795002526	skill	Trentlin	51	4210	dresden.are	fast healing	76	77	success	(char_update)
+1795002526	laid	-	0	0	-	1190	herb	50	a head of cabbage	948	olympus.are	scatter
+1795002526	laid	-	0	0	-	1191	herb	43	a sprig of hyssop	954	olympus.are	scatter
+1795002526	laid	-	0	0	-	1192	component	81	a vial of squid ink	24535	abyss.are	scatter
+1795002541	census	-	0	0	-	herbs=39/150 components=25/100 eggs=0 coin_piles=10	herbs_held=0 components_held=2 players=1	laid=3 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795002593	laid	-	0	0	-	1193	herb	52	an asparagus shoot	17127	highland.are	scatter
+1795002593	laid	-	0	0	-	1194	herb	51	a piece of kelp	17212	highland.are	scatter
+1795002593	laid	-	0	0	-	1195	component	67	a beholder's eye	17116	highland.are	scatter
+1795002667	skill	Trentlin	51	4210	dresden.are	fast healing	77	78	success	(char_update)
+1795002667	laid	-	0	0	-	1196	herb	45	a sarsaparilla vine	25181	underdrk.are	scatter
+1795002667	laid	-	0	0	-	1197	herb	40	a clove	25143	underdrk.are	scatter
+1795002667	laid	-	0	0	-	1198	component	84	a vial of froghemoth saliva	4617	dresden.are	scatter
+1795002667	cleared	-	0	0	-	1198	component	84	a vial of froghemoth saliva	0	0	scatter	mob 4613	(mobile_update)	0	-
