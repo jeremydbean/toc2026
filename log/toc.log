@@ -315351,3 +315351,6 @@ Wed Nov 18 05:09:39 2026 :: Connection guard: 178.156.184.20 closed without a wo
 Wed Nov 18 05:09:41 2026 :: Treasure goblin: vanished from room 9523 (Inside the West Gate of New Thalos, newthalo.are) (too long in one area).
 Wed Nov 18 05:09:59 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Wed Nov 18 05:14:44 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 3 of 6 in 6 hours).
+Wed Nov 18 05:16:52 2026 :: Connection guard: 192.178.6.197 closed before a password prompt (timed out at the prompt; not counted).
+Wed Nov 18 05:19:46 2026 :: Treasure goblin: vanished from room 13490 (Marble Hall, hell.are) (too long in one area).
+Wed Nov 18 05:19:48 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 3 of 6 in 6 hours).
