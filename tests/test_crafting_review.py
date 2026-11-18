@@ -404,7 +404,10 @@ class CraftingLiveTests(unittest.TestCase):
         # it kills only on 12 or more -- about one blast in two; the rest
         # leave the brewer incapacitated, and staff stand them back up at
         # one hit point to try again (CI, 2026-10-27).
-        tries, singed_pairs = 30, 8
+        # Eight pairs failed CI once (2026-11-18): at 46% a try succeeds,
+        # so eight successes in a row is one run in five hundred. Twenty
+        # makes it one in ten million.
+        tries, singed_pairs = 30, 20
         with LiveMud(extra_env={"TOC_FAULT_FILE": "../fault.once"}) as mud:
             make(mud, "Zsinged", Levl=30, Cla=0, Room=HALLS,
                  HMV="300 300 300 300 300 300", HMVP="300 300 300")
