@@ -315384,3 +315384,5 @@ Wed Nov 18 06:30:18 2026 :: Treasure goblin: vanished from room 5027 (The Sands 
 Wed Nov 18 06:30:50 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 6 of 6 in 6 hours).
 Wed Nov 18 06:30:50 2026 :: Connection guard: 18.116.205.62 paused for 12 hours (pause 2 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 18.116.205.62 lifts it.
 Wed Nov 18 06:35:55 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 18 06:40:23 2026 :: Treasure goblin: vanished from room 1817 (The Furnace, haven.are) (too long in one area).
+Wed Nov 18 06:40:59 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 16 refused in all, pause 3 this week, 339 minutes left).
