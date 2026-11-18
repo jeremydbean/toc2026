@@ -315392,3 +315392,8 @@ Wed Nov 18 06:51:08 2026 :: Connection guard: refused 1 connection from 5.161.21
 Wed Nov 18 06:56:12 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 17 refused in all, pause 3 this week, 324 minutes left).
 Wed Nov 18 07:00:32 2026 :: Treasure goblin: vanished from room 5673 (Crown of the trees, tarin.are) (too long in one area).
 Wed Nov 18 07:01:16 2026 :: Connection guard: refused 1 connection from 3.212.128.62 (paused; 6 refused in all, pause 2 this week, 507 minutes left).
+Wed Nov 18 07:04:01 2026 :: Connection guard: last hour 9 closed without a word, 5 refused, 0 new characters refused, 1 newly paused; 10 addresses paused and 0 refused now, 14 active player addresses.
+Wed Nov 18 07:06:19 2026 :: Automated backup started.
+Wed Nov 18 07:06:20 2026 :: Automated backup complete.
+Wed Nov 18 07:06:21 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 18 07:06:27 2026 :: Connection guard: 195.178.110.204 closed without a word (strike 1 of 6 in 6 hours).
