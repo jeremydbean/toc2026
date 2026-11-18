@@ -315281,3 +315281,6 @@ Wed Nov 18 02:27:09 2026 :: Connection guard: refused 1 connection from 3.133.22
 Wed Nov 18 02:31:35 2026 :: Treasure goblin: vanished from room 4067 (The maze, moria.are) (too long in one area).
 Wed Nov 18 02:32:13 2026 :: Connection guard: refused 1 connection from 5.161.215.244 (paused; 5 refused in all, pause 2 this week, 314 minutes left).
 Wed Nov 18 02:34:34 2026 :: Connection guard: 192.178.6.195 closed before a password prompt (timed out at the prompt; not counted).
+Wed Nov 18 02:36:58 2026 :: Connection guard: 162.216.149.91 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 18 02:36:58 2026 :: Connection guard: 162.216.149.91 closed without a word (strike 2 of 6 in 6 hours).
+Wed Nov 18 02:37:18 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 5 of 6 in 6 hours).
