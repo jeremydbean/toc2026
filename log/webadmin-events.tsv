@@ -5307,3 +5307,5 @@
 1794988007	wizinfo	60	Black market: the dealer appeared in room 5748 (Grubby Inn, mid_ruin.are) with 5 items (stock 1794988007), for 30 minutes.
 1794989041	wizinfo	60	Connection guard: last hour 11 closed without a word, 4 refused, 0 new characters refused, 0 newly paused; 7 addresses paused and 0 refused now, 14 active player addresses.
 1794992641	wizinfo	60	Connection guard: last hour 12 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 4 addresses paused and 0 refused now, 14 active player addresses.
+1794994362	wizinfo	60	Cartographer: appeared in room 5101 (City street, drow1.are) (level 17).
+1794994564	wizinfo	60	Connection guard: 35.206.181.201 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.206.181.201 lifts it.

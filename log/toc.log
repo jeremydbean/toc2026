@@ -315456,3 +315456,16 @@ Wed Nov 18 09:20:34 2026 :: Treasure goblin: vanished from room 13285 (Guards Ro
 Wed Nov 18 09:23:30 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 3 of 6 in 6 hours).
 Wed Nov 18 09:28:35 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 1 of 6 in 6 hours).
 Wed Nov 18 09:30:38 2026 :: Treasure goblin: vanished from room 7632 (Library, ultima.are) (too long in one area).
+Wed Nov 18 09:32:42 2026 :: Cartographer: appeared.
+Wed Nov 18 09:33:41 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 2 of 6 in 6 hours).
+Wed Nov 18 09:35:57 2026 :: Connection guard: 35.206.181.201 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 18 09:36:02 2026 :: Connection guard: 35.206.181.201 closed without a word (strike 2 of 6 in 6 hours).
+Wed Nov 18 09:36:03 2026 :: Sock.sinaddr:  35.206.181.201
+Wed Nov 18 09:36:03 2026 :: EOF encountered on read.
+Wed Nov 18 09:36:03 2026 :: Connection guard: 35.206.181.201 closed before a password prompt (strike 3 of 6 in 6 hours).
+Wed Nov 18 09:36:03 2026 :: Connection guard: 35.206.181.201 closed without a word (strike 4 of 6 in 6 hours).
+Wed Nov 18 09:36:03 2026 :: Connection guard: 35.206.181.201 closed without a word (strike 5 of 6 in 6 hours).
+Wed Nov 18 09:36:04 2026 :: Connection guard: 35.206.181.201 closed without a word (strike 6 of 6 in 6 hours).
+Wed Nov 18 09:36:04 2026 :: Connection guard: 35.206.181.201 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.206.181.201 lifts it.
+Wed Nov 18 09:36:04 2026 :: Connection guard: refused 1 connection from 35.206.181.201 (paused; 1 refused in all, pause 1 this week, 360 minutes left).
+Wed Nov 18 09:36:04 2026 :: Connection guard: 35.206.181.201 closed without a word (strike 1 of 6 in 6 hours).
