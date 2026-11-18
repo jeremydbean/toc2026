@@ -2060,8 +2060,19 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
                || wields_object_vnum(ch, OBJ_VNUM_HYRULE_SILVER_ARROW) ) ) )
         {
             victim->hit = 1;
-            act( "$N's armored eye closes; only an arrow can finish the blow.  Wield the bow and SHOOT $M.",
-                 ch, NULL, victim, TO_CHAR );
+            /* Name the bow (players' logs, 2026-11-18): a monk carrying an
+               Eagle archer's bow -- a drop that wants ARCHERY -- and
+               Hyrule's short bow wielded the wrong one for twenty-five
+               minutes and four retreats, being told only "the bow". */
+            if ( wields_object_vnum( ch, HYRULE_BOW_VNUM ) )
+                act( "$N's armored eye closes; only an arrow can finish the blow.  SHOOT $M.",
+                     ch, NULL, victim, TO_CHAR );
+            else if ( hyrule_carries( ch, HYRULE_BOW_VNUM ) )
+                act( "$N's armored eye closes; only an arrow from Hyrule's short bow can finish the blow.  WIELD SHORT BOW and SHOOT $M.",
+                     ch, NULL, victim, TO_CHAR );
+            else
+                act( "$N's armored eye closes; only an arrow from Hyrule's short bow, from Level 1's cellar, can finish the blow.",
+                     ch, NULL, victim, TO_CHAR );
             act( "$N's armored eye closes against $n's finishing blow.",
                  ch, NULL, victim, TO_ROOM );
         }
@@ -6499,6 +6510,17 @@ void do_shoot( CHAR_DATA *ch, char *argument )
     if( !IS_NPC(ch) && chance < 2)
     {
        send_to_char("You need to know archery to shoot.\n\r",ch);
+       /* In Hyrule, say which bow needs none (players' logs, 2026-11-18:
+          an Eagle archer's bow, a drop, was taken for Hyrule's own). */
+       if ( ch->in_room != NULL && IS_HYRULE_ROOM_VNUM( ch->in_room->vnum ) )
+       {
+           if ( hyrule_carries( ch, HYRULE_BOW_VNUM ) )
+               act( "$p needs ARCHERY, but Hyrule's short bow, which you carry, needs none: WIELD SHORT BOW, then SHOOT.",
+                    ch, obj, NULL, TO_CHAR );
+           else
+               act( "$p needs ARCHERY.  Hyrule's own short bow, from Level 1's cellar, needs none.",
+                    ch, obj, NULL, TO_CHAR );
+       }
        return;
     }
 

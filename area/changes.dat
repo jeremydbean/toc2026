@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261118shortbow 2026-11-18
+Gohma's eye now says which bow finishes her: Hyrule's short bow, from Level
+1's cellar, which needs no ARCHERY.  In Hyrule, SHOOT with any other bow
+(an Eagle archer's bow among them) now says so, and whether you carry the
+short bow.
+
 @ 20261118ganon 2026-11-18
 Ganon is now a fight for three or four strong heroes.  The Silver Arrow
 takes a thirty-fifth of his health with each blow instead of a tenth, his
