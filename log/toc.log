@@ -315291,3 +315291,5 @@ Wed Nov 18 02:45:46 2026 :: EOF encountered on read.
 Wed Nov 18 02:45:46 2026 :: Connection guard: 205.210.31.228 closed before a password prompt (strike 1 of 6 in 6 hours).
 Wed Nov 18 02:47:28 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 6 of 6 in 6 hours).
 Wed Nov 18 02:47:28 2026 :: Connection guard: 178.156.187.238 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 178.156.187.238 lifts it.
+Wed Nov 18 02:51:44 2026 :: Treasure goblin: vanished from room 17700 (Entrance to the Land of Oz, landoz.are) (too long in one area).
+Wed Nov 18 02:52:32 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 2 of 6 in 6 hours).
