@@ -315324,3 +315324,5 @@ Wed Nov 18 03:58:34 2026 :: Connection guard: refused 1 connection from 3.212.12
 Wed Nov 18 04:02:17 2026 :: Treasure goblin: vanished from room 7556 (A grey road, astral.are) (too long in one area).
 Wed Nov 18 04:03:39 2026 :: Connection guard: refused 1 connection from 178.156.187.238 (paused; 1 refused in all, pause 1 this week, 284 minutes left).
 Wed Nov 18 04:04:01 2026 :: Connection guard: last hour 13 closed without a word, 2 refused, 0 new characters refused, 1 newly paused; 9 addresses paused and 0 refused now, 14 active player addresses.
+Wed Nov 18 04:08:44 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 2 of 6 in 6 hours).
+Wed Nov 18 04:10:08 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
