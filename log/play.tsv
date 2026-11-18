@@ -36968,3 +36968,56 @@
 1794968484	cmd	Trentlin	51	29004	korzath1.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims Guardian Knight! // Your fists of fury hits Guardian Knight.	-	+
 1794968490	skill	Trentlin	51	29004	korzath1.are	fists of fury	90	91	success	fists
 1794968490	cmd	Trentlin	51	29004	korzath1.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls Guardian Knight. // You have become better at fists of fury!	-	+
+1794968502	coin	Trentlin	51	29004	korzath1.are	+3000000	loot	(violence_update)	corpse of Guardian Knight	17190110522
+1794968502	coin	Trentlin	51	29004	korzath1.are	+3400	loot	(violence_update)	corpse of Guardian Knight	17190113922
+1794968502	coin	Trentlin	51	29004	korzath1.are	+40	loot	(violence_update)	corpse of Guardian Knight	17190113962
+1794968502	coin	Trentlin	51	29004	korzath1.are	+670000	loot	(violence_update)	corpse of Guardian Knight	17190783962
+1794968503	got	Trentlin	51	29004	korzath1.are	29003	a diamond key	key	40	1000000	get	corpse of Guardian Knight
+1794968503	cmd	Trentlin	51	29004	korzath1.are	standing	85	0	-	get	key co	You get a diamond key from corpse of Guardian Knight.	-	-
+1794968507	cmd	Trentlin	51	29004	korzath1.are	standing	85	0	-	unlock	north	There is a flash of light as you unlock the door.	-	-
+1794968508	cmd	Trentlin	51	29004	korzath1.are	standing	85	0	-	open	n	Ok.	-	-
+1794968510	cmd	Trentlin	51	29004	korzath1.are	standing	85	0	-	drop	key	You drop a diamond key.	-	-
+1794968510	area	Trentlin	51	29201	korzath2.are	korzath1.are	korzath2.are	54	north
+1794968510	cmd	Trentlin	51	29201	korzath2.are	standing	85	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal	-	+
+1794968511	cmd	Trentlin	51	29202	korzath2.are	standing	85	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that	-	+
+1794968520	cmd	Trentlin	51	29202	korzath2.are	standing	85	0	-	exits		Obvious exits: // North - Closed door // East  - Closed door	-	+
+1794968521	cmd	Trentlin	51	29202	korzath2.are	standing	85	0	-	scan		a killer clown                     -to the far West.	-	-
+1794968524	cmd	Trentlin	51	29202	korzath2.are	standing	85	0	-	east		The door is closed.	-	-
+1794968526	cmd	Trentlin	51	29202	korzath2.are	standing	85	0	-	open	east	It's locked.	-	-
+1794968527	cmd	Trentlin	51	29203	korzath2.are	standing	85	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight	-	+
+1794968528	cmd	Trentlin	51	29204	korzath2.are	standing	85	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it	-	+
+1794968529	cmd	Trentlin	51	29204	korzath2.are	standing	85	0	-	consider	cl	A killer clown is well above your level. // A killer clown has about twice your hit points. // Blow for blow, you would need about 13 rounds to bring a killer clown down; he would need about 14 rounds for you.	-	+
+1794968534	cmd	Trentlin	51	29204	korzath2.are	standing	85	0	-	iron		Your skin hardens.	-	-
+1794968541	cmd	Trentlin	51	29204	korzath2.are	standing	85	0	-	iron		Your skin is already as hard as iron.	-	-
+1794968543	cmd	Trentlin	51	29204	korzath2.are	standing	85	0	-	steel		You lost your concentration.	-	-
+1794968547	cmd	Trentlin	51	29204	korzath2.are	standing	85	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794968552	cmd	Trentlin	51	29204	korzath2.are	standing	85	0	-	consider	cl	A killer clown is well above your level. // A killer clown has about twice your hit points. // Blow for blow, you would need about 13 rounds to bring a killer clown down; he would need about 14 rounds for you.	-	+
+1794968555	cmd	Trentlin	51	29204	korzath2.are	standing	85	0	-	quaff	pur	You quaff a purple container of tea. // You feel better! // Your muscles surge with heightened power!	-	-
+1794968557	cmd	Trentlin	51	29204	korzath2.are	standing	87	0	-	scan		a killer clown                     -to the East. // a killer clown                     -to the South. // a killer clown                     -to the South.	-	-
+1794968559	cmd	Trentlin	51	29203	korzath2.are	standing	87	0	-	east		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight	-	+
+1794968560	cmd	Trentlin	51	29203	korzath2.are	standing	87	0	-	kill	clo	Your punch DISEMBOWELS a killer clown! // Your punch ^^^ DESTROYS ^^^ a killer clown! // Your punch ^^^ DESTROYS ^^^ a killer clown!	-	-
+1794968563	cmd	Trentlin	51	29203	korzath2.are	fighting	78	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a killer clown. // Your fists of fury DISEMBOWELS a killer clown!	-	+
+1794968566	laid	-	0	0	-	1189	component	80	a glass encased wing of a fairy	29316	korzath2.are	scatter
+1794968568	skill	Trentlin	51	29203	korzath2.are	parry	86	87	success	(violence_update)
+1794968572	cmd	Trentlin	51	29203	korzath2.are	fighting	65	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a killer clown! // Your fists of fury scratches a killer clown.	-	+
+1794968580	cmd	Trentlin	51	29203	korzath2.are	fighting	30	0	fight	flee		A killer clown is overcome with a feeling of despair and flees the battle. // A killer clown walks off to the east. // A killer clown has fled!	-	-
+1794968580	cmd	Trentlin	51	29203	korzath2.are	standing	30	0	-	flee		You aren't fighting anyone.	-	-
+1794968580	cmd	Trentlin	51	29203	korzath2.are	standing	30	0	-	flee		You aren't fighting anyone.	-	-
+1794968581	cmd	Trentlin	51	29203	korzath2.are	standing	30	0	-	flee		You aren't fighting anyone.	-	-
+1794968581	cmd	Trentlin	51	29202	korzath2.are	standing	30	0	-	east		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that	-	+
+1794968582	cmd	Trentlin	51	29202	korzath2.are	standing	30	0	-	east		The door is closed.	-	-
+1794968582	cmd	Trentlin	51	29201	korzath2.are	standing	30	0	-	south		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal	-	+
+1794968582	area	Trentlin	51	29004	korzath1.are	korzath2.are	korzath1.are	72	south
+1794968582	cmd	Trentlin	51	29004	korzath1.are	standing	30	0	-	south		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive	-	+
+1794968582	cmd	Trentlin	51	29003	korzath1.are	standing	30	2	-	south		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in	-	+
+1794968584	area	Trentlin	51	4207	dresden.are	korzath1.are	dresden.are	2	recall
+1794968584	cmd	Trentlin	51	4207	dresden.are	standing	30	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1794968585	cmd	Trentlin	51	4202	dresden.are	standing	30	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794968586	cmd	Trentlin	51	4203	dresden.are	standing	30	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1794968586	cmd	Trentlin	51	4210	dresden.are	standing	30	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1794968586	cmd	Trentlin	51	4210	dresden.are	standing	30	0	-	north		Alas, you cannot go that way.	-	-
+1794968587	cmd	Trentlin	51	4210	dresden.are	standing	30	0	-	sleep		You go to sleep.	-	-
+1794968587	sightings	Trentlin	51	4210	dresden.are	mob	30223:1/1/0 32275:1/0/0 31088:1/0/0 31078:1/0/0 30359:1/0/0 32048:3/0/0 31158:4/2/0 31138:3/0/0 31218:7/0/0 32108:4/0/0 32178:1/0/0 4202:1/0/0 4201:1/0/0 15015:1/0/0 15012:1/0/0 15018:1/0/0 15029:2/0/0 32188:2/0/0 32008:3/0/0 30362:1/0/0 58:1/0/0 201:1/0/0 10:1/0/0 4468:1/0/0 2435:1/0/0 4444:1/0/0 4456:1/0/0 6115:1/0/0 6102:2/0/0 6100:2/0/0 17101:4/0/0 17105:1/0/0 17109:12/0/0 17100:1/0/0 17112:1/1/0 17115:2/0/0 17111:1/0/0 17103:5/0/0 17107:1/0/0 17104:2/0/0 1501:3/0/0 1500:3/0/0 1502:3/0/0 1504:1/0/0 1505:1/0/0 1503:1/1/0 2434:1/0/0 2433:1/0/0 4445:1/0/0 4457:1/0/0
+1794968587	sightings	Trentlin	51	4210	dresden.are	mob	9543:2/0/0 9562:4/0/0 9542:1/0/0 9519:1/0/0 9520:2/0/0 9533:1/0/0 9592:2/0/0 9582:3/0/0 9538:1/0/0 9541:1/0/0 9561:3/0/0 9544:2/0/0 29032:1/1/0 29232:1/1/0
+1794968587	sightings	Trentlin	51	4210	dresden.are	item	30579:1/1 6106:2/0 6105:1/0 25043:1/1 30386:1/1 29003:1/0
+1794968587	session	Trentlin	51	4210	dresden.are	quit	2001s	+1 levels	+1330 exp	+287411953 copper	6 kills	0 deaths	2 quests	637 commands	2 refused	coin: loot 46p 84g 53c, quests 256p 88g 19s, spent 16p 31g	spent on: shoot 1g, heal 16p 30g	exp: capped:kills +951, capped:skilluse +10, skilluse +28

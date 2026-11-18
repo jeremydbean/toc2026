@@ -315215,3 +315215,65 @@ Wed Nov 18 02:21:19 2026 :: Log Trentlin [29004]: fists
 Wed Nov 18 02:21:24 2026 :: Log Trentlin [29004]: fists
 Wed Nov 18 02:21:30 2026 :: Log Trentlin [29004]: fists
 Wed Nov 18 02:21:30 2026 :: Treasure goblin: vanished from room 1379 (A store room, htower.are) (too long in one area).
+Wed Nov 18 02:21:42 2026 :: Log Trentlin [29004]: killed Guardian Knight
+Wed Nov 18 02:21:42 2026 :: Log Trentlin [29004]: coin +3 platinum
+Wed Nov 18 02:21:42 2026 :: Log Trentlin [29004]: coin +34 silver
+Wed Nov 18 02:21:42 2026 :: Log Trentlin [29004]: coin +40 copper
+Wed Nov 18 02:21:42 2026 :: Log Trentlin [29004]: coin +67 gold
+Wed Nov 18 02:21:43 2026 :: Log Trentlin [29004]: get key co
+Wed Nov 18 02:21:47 2026 :: Log Trentlin [29004]: unlock north
+Wed Nov 18 02:21:48 2026 :: Log Trentlin [29004]: open n
+Wed Nov 18 02:21:50 2026 :: Log Trentlin [29004]: drop key
+Wed Nov 18 02:21:50 2026 :: Log Trentlin [29004]: n
+Wed Nov 18 02:21:50 2026 :: Log Trentlin [29201]: arrived (Heroes Hall) from 29004
+Wed Nov 18 02:21:51 2026 :: Log Trentlin [29201]: n
+Wed Nov 18 02:21:51 2026 :: Log Trentlin [29202]: arrived (Hall of Past Heroes) from 29201
+Wed Nov 18 02:22:00 2026 :: Log Trentlin [29202]: ex
+Wed Nov 18 02:22:01 2026 :: Log Trentlin [29202]: sca
+Wed Nov 18 02:22:04 2026 :: Log Trentlin [29202]: e
+Wed Nov 18 02:22:05 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 17 refused in all, pause 3 this week, 298 minutes left).
+Wed Nov 18 02:22:06 2026 :: Log Trentlin [29202]: open east
+Wed Nov 18 02:22:07 2026 :: Log Trentlin [29202]: w
+Wed Nov 18 02:22:07 2026 :: Log Trentlin [29203]: arrived (Passage to the Maze) from 29202
+Wed Nov 18 02:22:08 2026 :: Log Trentlin [29203]: w
+Wed Nov 18 02:22:08 2026 :: Log Trentlin [29204]: arrived (Twist in the Maze) from 29203
+Wed Nov 18 02:22:09 2026 :: Log Trentlin [29204]: con cl
+Wed Nov 18 02:22:14 2026 :: Log Trentlin [29204]: iron
+Wed Nov 18 02:22:21 2026 :: Log Trentlin [29204]: iron
+Wed Nov 18 02:22:23 2026 :: Log Trentlin [29204]: steel
+Wed Nov 18 02:22:27 2026 :: Log Trentlin [29204]: steel
+Wed Nov 18 02:22:32 2026 :: Log Trentlin [29204]: con cl
+Wed Nov 18 02:22:35 2026 :: Log Trentlin [29204]: quaff pur
+Wed Nov 18 02:22:37 2026 :: Log Trentlin [29204]: sca
+Wed Nov 18 02:22:39 2026 :: Log Trentlin [29204]: e
+Wed Nov 18 02:22:39 2026 :: Log Trentlin [29203]: arrived (Passage to the Maze) from 29204
+Wed Nov 18 02:22:40 2026 :: Log Trentlin [29203]: k clo
+Wed Nov 18 02:22:43 2026 :: Log Trentlin [29203]: fists
+Wed Nov 18 02:22:52 2026 :: Log Trentlin [29203]: fists
+Wed Nov 18 02:23:00 2026 :: Log Trentlin [29203]: flee
+Wed Nov 18 02:23:00 2026 :: Log Trentlin [29203]: flee
+Wed Nov 18 02:23:00 2026 :: Log Trentlin [29203]: flee
+Wed Nov 18 02:23:01 2026 :: Log Trentlin [29203]: flee
+Wed Nov 18 02:23:01 2026 :: Log Trentlin [29203]: e
+Wed Nov 18 02:23:01 2026 :: Log Trentlin [29202]: arrived (Hall of Past Heroes) from 29203
+Wed Nov 18 02:23:02 2026 :: Log Trentlin [29202]: e
+Wed Nov 18 02:23:02 2026 :: Log Trentlin [29202]: s
+Wed Nov 18 02:23:02 2026 :: Log Trentlin [29201]: arrived (Heroes Hall) from 29202
+Wed Nov 18 02:23:02 2026 :: Log Trentlin [29201]: s
+Wed Nov 18 02:23:02 2026 :: Log Trentlin [29004]: arrived (Center Tunnelway) from 29201
+Wed Nov 18 02:23:02 2026 :: Log Trentlin [29004]: s
+Wed Nov 18 02:23:02 2026 :: Log Trentlin [29003]: arrived (Grand Foyer) from 29004
+Wed Nov 18 02:23:04 2026 :: Log Trentlin [29003]: reca
+Wed Nov 18 02:23:04 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 29003
+Wed Nov 18 02:23:05 2026 :: Log Trentlin [4207]: e
+Wed Nov 18 02:23:05 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Wed Nov 18 02:23:06 2026 :: Log Trentlin [4202]: n
+Wed Nov 18 02:23:06 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Wed Nov 18 02:23:06 2026 :: Log Trentlin [4203]: n
+Wed Nov 18 02:23:06 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Wed Nov 18 02:23:06 2026 :: Log Trentlin [4210]: n
+Wed Nov 18 02:23:07 2026 :: Log Trentlin [4210]: sleep
+Wed Nov 18 02:23:07 2026 :: Log Trentlin [4210]: quit
+Wed Nov 18 02:23:07 2026 :: Trentlin has quit.
+Wed Nov 18 02:23:07 2026 :: [QUIT] Player rejoined the real world.
+Wed Nov 18 02:24:34 2026 :: Sock.sinaddr:  192.178.6.195
