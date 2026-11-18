@@ -315397,3 +315397,10 @@ Wed Nov 18 07:06:19 2026 :: Automated backup started.
 Wed Nov 18 07:06:20 2026 :: Automated backup complete.
 Wed Nov 18 07:06:21 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 1 of 6 in 6 hours).
 Wed Nov 18 07:06:27 2026 :: Connection guard: 195.178.110.204 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 18 07:09:57 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Wed Nov 18 07:10:26 2026 :: Sock.sinaddr:  45.79.181.251
+Wed Nov 18 07:10:26 2026 :: EOF encountered on read.
+Wed Nov 18 07:10:26 2026 :: Connection guard: 45.79.181.251 closed before a password prompt (strike 1 of 6 in 6 hours).
+Wed Nov 18 07:10:27 2026 :: Connection guard: 45.79.181.251 closed without a word (strike 2 of 6 in 6 hours).
+Wed Nov 18 07:10:37 2026 :: Treasure goblin: vanished from room 29442 (The thick forest, world.are) (too long in one area).
+Wed Nov 18 07:11:26 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 2 of 6 in 6 hours).
