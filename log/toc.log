@@ -316329,3 +316329,12 @@ Wed Nov 18 13:36:22 2026 :: Treasure goblin: vanished from room 7711 (Residence,
 Wed Nov 18 13:37:22 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 3 of 6 in 6 hours).
 Wed Nov 18 13:42:25 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 2 of 6 in 6 hours).
 Wed Nov 18 13:46:27 2026 :: Treasure goblin: vanished from room 642 (The Big Intersection, ofcol.are) (too long in one area).
+Wed Nov 18 13:47:30 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 18 13:49:15 2026 :: Sock.sinaddr:  97.202.254.41
+Wed Nov 18 13:49:15 2026 :: EOF encountered on read.
+Wed Nov 18 13:49:15 2026 :: Connection guard: 97.202.254.41 closed before a password prompt (a player's address; not counted).
+Wed Nov 18 13:49:16 2026 :: Sock.sinaddr:  97.202.254.41
+Wed Nov 18 13:49:16 2026 :: EOF encountered on read.
+Wed Nov 18 13:49:16 2026 :: Connection guard: 97.202.254.41 closed before a password prompt (a player's address; not counted).
+Wed Nov 18 13:50:17 2026 :: Connection guard: 97.202.254.41 closed without a word (a player's address; not counted).
+Wed Nov 18 13:50:17 2026 :: Connection guard: 97.202.254.41 closed without a word (a player's address; not counted).
