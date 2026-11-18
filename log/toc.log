@@ -317836,3 +317836,5 @@ Wed Nov 18 22:10:02 2026 :: Connection guard: 23.31.96.97 closed without a word 
 Wed Nov 18 22:10:13 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 1 of 6 in 6 hours).
 Wed Nov 18 22:15:18 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 2 of 6 in 6 hours).
 Wed Nov 18 22:15:41 2026 :: Connection guard: last hour 15 closed without a word, 0 refused, 0 new characters refused, 1 newly paused; 3 addresses paused and 0 refused now, 14 active player addresses.
+Wed Nov 18 22:18:29 2026 :: Treasure goblin: vanished from room 1707 (Trail in Dark Oak Forest, wyvern.are) (too long in one area).
+Wed Nov 18 22:20:23 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 1 of 6 in 6 hours).
