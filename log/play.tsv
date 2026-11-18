@@ -36244,3 +36244,45 @@
 1794950547	sightings	Trentlin	50	30519	hyrule.are	mob	9101:14/0/0 9103:2/0/0 9104:1/1/0 15015:1/0/0 15012:1/0/0
 1794950547	sightings	Trentlin	50	30519	hyrule.are	item	4446:1/0 4445:1/0 4444:1/0 6011:1/0 30227:4/4 300:1/0 7216:1/1 15:1/0
 1794950547	session	Trentlin	50	30519	hyrule.are	quit	765s	+0 levels	+0 exp	+250859362 copper	14 kills	0 deaths	2 quests	427 commands	2 refused	coin: loot 8p 71g 75s 62c, quests 243p 36g 18s, spent 1p 22g	spent on: heal 1p 20g, shoot 2g	exp: capped:skilluse +16, capped:kills +58
+1794966586	area	Trentlin	50	30519	hyrule.are	-	hyrule.are	-1	(game loop)
+1794966589	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	open	south	It's locked.	-	-
+1794966592	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	unlock	south	*Click* // The small key vanishes into the dungeon lock.	-	-
+1794966593	refused	Trentlin	50	30519	hyrule.are	standing	92	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1794966595	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	open	s	Ok.	-	-
+1794966597	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	iron		You lost your concentration.	-	-
+1794966598	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	iron		You lost your concentration.	-	-
+1794966600	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	iron		Your skin hardens. // Slashing blows cannot hurt you while it lasts.	-	-
+1794966608	cmd	Trentlin	50	30519	hyrule.are	standing	92	0	-	kill	g	Your punch === OBLITERATES === Gohma! // Gohma parries your attack. // Your punch === OBLITERATES === Gohma!	-	-
+1794966611	cmd	Trentlin	50	30519	hyrule.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures Gohma. // Your fists of fury MANGLES Gohma!	-	+
+1794966616	cmd	Trentlin	50	30519	hyrule.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ Gohma! // Your fists of fury *** DEVASTATES *** Gohma!	-	+
+1794966621	laid	-	0	0	-	1017	component	83	a vial of thessalhydra venom	25159	underdrk.are	scatter
+1794966622	cmd	Trentlin	50	30519	hyrule.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ Gohma! // Your fists of fury MUTILATES Gohma!	-	+
+1794966628	cmd	Trentlin	50	30519	hyrule.are	fighting	91	0	fight	wear	bow	You wield a short bow. // A short bow is a mystery to you. Better ask someone how to use it.	-	-
+1794966628	coin	Trentlin	50	30519	hyrule.are	-10000	spent	shoot	-	16903362009
+1794966628	got	Trentlin	50	30519	hyrule.are	30635	the Dragon's key	key	33	0	shoot	-
+1794966628	coin	Trentlin	50	30519	hyrule.are	+200	loot	shoot	corpse of Gohma	16903362209
+1794966628	coin	Trentlin	50	30519	hyrule.are	+338	loot	shoot	corpse of Gohma	16903362547
+1794966628	coin	Trentlin	50	30519	hyrule.are	+1240000	loot	shoot	corpse of Gohma	16904602547
+1794966628	cmd	Trentlin	50	30519	hyrule.are	fighting	91	2	fight	shoot		You draw, aim at Gohma and let an arrow fly. // Your arrow decimates Gohma! // Gohma is DEAD!!	-	+
+1794966635	cmd	Trentlin	50	30519	hyrule.are	standing	91	0	-	look	in co	Corpse of Gohma contains: //      (Magical) a dragon-banner cloak //      (Magical) a pair of shell vambraces	-	+
+1794966642	got	Trentlin	50	30519	hyrule.are	30736	a pair of crab-leg greaves	armor	40	80000000	get	corpse of Gohma
+1794966642	cmd	Trentlin	50	30519	hyrule.are	standing	91	0	-	get	greaves co	You get a pair of crab-leg greaves from corpse of Gohma.	-	-
+1794966646	got	Trentlin	50	30519	hyrule.are	30738	a pair of shell vambraces	armor	40	80000000	get	corpse of Gohma
+1794966646	cmd	Trentlin	50	30519	hyrule.are	standing	91	0	-	get	vam co	You get a pair of shell vambraces from corpse of Gohma.	-	-
+1794966647	cmd	Trentlin	50	30519	hyrule.are	standing	91	0	-	compare	vam	A) a pair of shell vambraces (level 40) // B) titanium arm plates (level 39), worn // Slot: arms.  Your damage comes from weapons.	-	+
+1794966653	cmd	Trentlin	50	30519	hyrule.are	standing	91	0	-	wear	vam	You stop using titanium arm plates. // You wear a pair of shell vambraces on your arms.	-	-
+1794966656	cmd	Trentlin	50	30519	hyrule.are	standing	91	0	-	drop	tita	You drop titanium arm plates.	-	-
+1794966657	coin	Trentlin	50	30519	hyrule.are	+78	loot	sacrifice	-	16904602625
+1794966657	cmd	Trentlin	50	30519	hyrule.are	standing	91	0	-	sacrifice	tita	The Gods give you 78 copper coins for your sacrifice.	-	-
+1794966660	cmd	Trentlin	50	30519	hyrule.are	standing	91	0	-	compare	grea	A) a pair of crab-leg greaves (level 40) // B) nothing -- the slot is empty // Slot: legs.  Your damage comes from weapons.	-	+
+1794966666	cmd	Trentlin	50	30519	hyrule.are	standing	91	0	-	wear	grea	You wear a pair of crab-leg greaves on your legs.	-	-
+1794966667	cmd	Trentlin	50	30519	hyrule.are	standing	91	0	-	look		Level 6: Gohma's Nest //   Shed carapace fragments and deep scuttle marks crisscross the floor of this // lair, and the walls are gouged by great pincers. Broken arrows lie thick	-	+
+1794966670	cmd	Trentlin	50	30519	hyrule.are	standing	91	0	-	unlock	n	There is a flash of light as you unlock the door.	-	-
+1794966672	cmd	Trentlin	50	30519	hyrule.are	standing	91	0	-	open	n	Ok.	-	-
+1794966673	cmd	Trentlin	50	30524	hyrule.are	standing	91	0	-	north		Level 6: Dragon's Glowing Sanctum //   Polished red stone glows with a soft golden light in this sanctum, warming // the dragon carvings along its walls, every one turned toward an iron-banded	-	+
+1794966677	cmd	Trentlin	50	30524	hyrule.are	standing	91	0	-	unlock	ches	*Click*	-	-
+1794966679	cmd	Trentlin	50	30524	hyrule.are	standing	91	0	-	open	ches	Ok.	-	-
+1794966680	cmd	Trentlin	50	30524	hyrule.are	standing	91	0	-	look	in ches	The Dragon's treasure chest contains: //      (Magical) (Glowing) the sixth Triforce shard	-	-
+1794966681	cmd	Trentlin	50	30282	hyrule.are	standing	91	0	-	enter	light	You enter the Dragon's returning light // Your stomach flip flops. Everything goes black for a moment. // The Dragon's Gate	-	+
+1794966681	item	Trentlin	50	30282	hyrule.are	30635	the Dragon's key	type=key level=33 worn=0 nested=0 timer=0 cond=100 inside=0	crumbled leaving Level 6
+1794966685	cmd	Trentlin	50	30317	hyrule.are	standing	91	0	-	play	recorder 9	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // Spectacle Rock	-	+

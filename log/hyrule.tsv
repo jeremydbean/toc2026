@@ -276,3 +276,13 @@
 1794950514	got	Trentlin	50	1	Monk 	30519	L6	obj=30675 obj_name=a_bracer_set_with_an_amber_eye type=armor obj_level=40 how=get
 1794950515	got	Trentlin	50	1	Monk 	30519	L6	obj=30739 obj_name=a_dragon-banner_cloak type=armor obj_level=40 how=get
 1794950547	leave	Trentlin	50	1	Monk 	30519	L6	to=out how=quit secs=151 hp=92
+1794966586	enter	Trentlin	50	1	Monk 	30519	L6	from=out how=(game loop) hp=92
+1794966608	engage	Trentlin	50	1	Monk 	30519	L6	foe=30223 foe_name=Gohma foe_hp=100 foe_max=2208 party=1 levels=50 classes=Monk  hps=92 buffs=ESH
+1794966628	guardian-down	Trentlin	50	1	Monk 	30519	L6	foe=30223 foe_name=Gohma secs=20 foe_max=2208 party=1 levels=50 classes=Monk  hps=91 buffs=ESH
+1794966628	got	Trentlin	50	1	Monk 	30519	L6	obj=30635 obj_name=the_Dragon's_key type=key obj_level=33 how=shoot
+1794966628	cleared	Trentlin	50	1	Monk 	30519	L6	foes=0
+1794966642	got	Trentlin	50	1	Monk 	30519	L6	obj=30736 obj_name=a_pair_of_crab-leg_greaves type=armor obj_level=40 how=get
+1794966646	got	Trentlin	50	1	Monk 	30519	L6	obj=30738 obj_name=a_pair_of_shell_vambraces type=armor obj_level=40 how=get
+1794966681	leave	Trentlin	50	1	Monk 	30524	L6	to=over how=enter secs=95 hp=91
+1794966681	enter	Trentlin	50	1	Monk 	30282	over	from=L6 how=enter hp=91
+1794966681	crumbled	Trentlin	50	1	Monk 	30282	over	dungeon=6 maps=0 compasses=0 keys=0 guardian_keys=1 why=left how=(hyrule_crumble_update)

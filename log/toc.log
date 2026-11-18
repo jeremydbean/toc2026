@@ -314173,3 +314173,51 @@ Wed Nov 18 01:36:26 2026 :: Connection guard: refused 1 connection from 52.22.23
 Wed Nov 18 01:40:03 2026 :: Black market: the dealer vanished from room 8814 (End of the Passageway, kerofk.are) (too long in one area).
 Wed Nov 18 01:41:07 2026 :: Treasure goblin: vanished from room 9650 (The Grand Entrance, newthalo.are) (too long in one area).
 Wed Nov 18 01:41:30 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 18 01:46:36 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 4 of 6 in 6 hours).
+Wed Nov 18 01:49:43 2026 :: Sock.sinaddr:  24.2.118.125
+Wed Nov 18 01:49:43 2026 :: Loading Trentlin's playerfile
+Wed Nov 18 01:49:45 2026 :: Loading Trentlin's playerfile
+Wed Nov 18 01:49:45 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Wed Nov 18 01:49:46 2026 :: Log Trentlin [30519]: arrived (Level 6: Gohma's Nest) from 0
+Wed Nov 18 01:49:49 2026 :: Log Trentlin [30519]: open south
+Wed Nov 18 01:49:52 2026 :: Log Trentlin [30519]: unlock south
+Wed Nov 18 01:49:53 2026 :: Log Trentlin [30519]: (refused) os
+Wed Nov 18 01:49:55 2026 :: Log Trentlin [30519]: open s
+Wed Nov 18 01:49:57 2026 :: Log Trentlin [30519]: iron
+Wed Nov 18 01:49:58 2026 :: Log Trentlin [30519]: iron
+Wed Nov 18 01:50:00 2026 :: Log Trentlin [30519]: iron
+Wed Nov 18 01:50:08 2026 :: Log Trentlin [30519]: k g
+Wed Nov 18 01:50:08 2026 :: Black market: the dealer vanished from room 16022 (Main Deck, pirate.are) (too long in one area).
+Wed Nov 18 01:50:11 2026 :: Log Trentlin [30519]: fists
+Wed Nov 18 01:50:16 2026 :: Log Trentlin [30519]: fists
+Wed Nov 18 01:50:22 2026 :: Log Trentlin [30519]: fists
+Wed Nov 18 01:50:28 2026 :: Log Trentlin [30519]: wear bow
+Wed Nov 18 01:50:28 2026 :: Log Trentlin [30519]: shoot
+Wed Nov 18 01:50:28 2026 :: Log Trentlin [30519]: gold -1
+Wed Nov 18 01:50:28 2026 :: Log Trentlin [30519]: killed Gohma
+Wed Nov 18 01:50:28 2026 :: Log Trentlin [30519]: coin +2 silver
+Wed Nov 18 01:50:28 2026 :: Log Trentlin [30519]: coin +338 copper
+Wed Nov 18 01:50:28 2026 :: Log Trentlin [30519]: coin +124 gold
+Wed Nov 18 01:50:35 2026 :: Log Trentlin [30519]: l in co
+Wed Nov 18 01:50:42 2026 :: Log Trentlin [30519]: get greaves co
+Wed Nov 18 01:50:46 2026 :: Log Trentlin [30519]: get vam co
+Wed Nov 18 01:50:47 2026 :: Log Trentlin [30519]: comp vam
+Wed Nov 18 01:50:52 2026 :: Black market: the dealer left the world from room 13539 (Secondary Control Room, hell.are).
+Wed Nov 18 01:50:53 2026 :: Log Trentlin [30519]: wear vam
+Wed Nov 18 01:50:56 2026 :: Log Trentlin [30519]: drop tita
+Wed Nov 18 01:50:57 2026 :: Log Trentlin [30519]: sac tita
+Wed Nov 18 01:50:57 2026 :: Log Trentlin [30519]: coin +78 copper
+Wed Nov 18 01:51:00 2026 :: Log Trentlin [30519]: comp grea
+Wed Nov 18 01:51:06 2026 :: Log Trentlin [30519]: wear grea
+Wed Nov 18 01:51:07 2026 :: Log Trentlin [30519]: l
+Wed Nov 18 01:51:10 2026 :: Log Trentlin [30519]: unlock n
+Wed Nov 18 01:51:12 2026 :: Log Trentlin [30519]: open n
+Wed Nov 18 01:51:13 2026 :: Log Trentlin [30519]: n
+Wed Nov 18 01:51:13 2026 :: Log Trentlin [30524]: arrived (Level 6: Dragon's Glowing Sanctum) from 30519
+Wed Nov 18 01:51:17 2026 :: Log Trentlin [30524]: unlock ches
+Wed Nov 18 01:51:19 2026 :: Log Trentlin [30524]: open ches
+Wed Nov 18 01:51:20 2026 :: Log Trentlin [30524]: l in ches
+Wed Nov 18 01:51:21 2026 :: Log Trentlin [30524]: enter light
+Wed Nov 18 01:51:21 2026 :: Log Trentlin [30282]: arrived (The Dragon's Gate) from 30524
+Wed Nov 18 01:51:25 2026 :: Log Trentlin [30282]: play recorder 9
+Wed Nov 18 01:51:25 2026 :: Log Trentlin [30317]: arrived (Spectacle Rock) from 30282
