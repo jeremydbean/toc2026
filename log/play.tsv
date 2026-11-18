@@ -37568,3 +37568,157 @@
 1795003547	sightings	Trentlin	51	4210	dresden.are	mob	10:1/0/0 4202:1/0/0 15012:5/0/0 15015:2/0/0 15018:1/0/0 15029:2/0/0 31088:1/0/0 31078:1/0/0 30359:1/0/0 32108:3/3/0 31218:5/4/0 4201:1/0/0 31158:2/1/0 15021:1/0/0 15011:2/0/0 15013:1/0/0 32048:1/0/0 31138:1/0/0 15045:1/0/0 2434:1/0/0 58:1/0/0 201:1/0/0 53:1/0/0 4444:1/0/0 2435:1/0/0 4456:1/0/0 309:1/0/0 18201:7/0/0 18200:4/0/0 18209:1/0/0 18206:1/0/0 18202:1/0/0 18207:1/0/0 18013:6/0/0 18012:7/0/0
 1795003547	sightings	Trentlin	51	4210	dresden.are	item	15:1/0 16:1/0 25043:1/1
 1795003547	session	Trentlin	51	4210	dresden.are	quit	1026s	+0 levels	+8210 exp	+202016518 copper	8 kills	0 deaths	1 quests	400 commands	0 refused	coin: loot 162p 82g 9s 96c, quests 151p 69g 55s 22c, spent 112p 50g	spent on: heal 112p 50g	exp: skilluse +74, flee -10, kills +8146
+1795036811	area	Trentlin	51	4210	dresden.are	-	dresden.are	-1	(game loop)
+1795036824	coin	Trentlin	51	4210	dresden.are	+38673024	bank	interest	bank	17431473504
+1795036824	laid	-	0	0	-	853	herb	46	a juniper berry	792	camelot.are	scatter
+1795036832	refused	Trentlin	51	4210	dresden.are	sleeping	55	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1795036834	refused	Trentlin	51	4210	dresden.are	sleeping	55	0	-	west		In your dreams, or what?	refusal:position	-
+1795036835	refused	Trentlin	51	4210	dresden.are	sleeping	55	0	-	west		In your dreams, or what?	refusal:position	-
+1795036836	cmd	Trentlin	51	4210	dresden.are	sleeping	55	0	-	wake		You wake and stand up.	-	-
+1795036836	cmd	Trentlin	51	4210	dresden.are	standing	55	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1795036837	cmd	Trentlin	51	4203	dresden.are	standing	55	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795036839	cmd	Trentlin	51	4204	dresden.are	standing	55	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795036839	cmd	Trentlin	51	4207	dresden.are	standing	55	0	-	south		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795036840	cmd	Trentlin	51	4208	dresden.are	standing	55	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795036843	coin	Trentlin	51	4208	dresden.are	-5000000	spent	heal	-	17426473504
+1795036843	coin	Trentlin	51	4208	dresden.are	-5000000	spent	heal	-	17421473504
+1795036843	coin	Trentlin	51	4208	dresden.are	-5000000	spent	heal	-	17416473504
+1795036843	coin	Trentlin	51	4208	dresden.are	-5000000	spent	heal	-	17411473504
+1795036843	cmd	Trentlin	51	4208	dresden.are	standing	55	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body, and you are whole. (4 castings, 2000 gold.)	-	-
+1795036847	coin	Trentlin	51	4208	dresden.are	-700000	spent	heal	-	17410773504
+1795036847	cmd	Trentlin	51	4208	dresden.are	standing	100	0	-	heal	refre	The healer utters the words 'candusima'. // You feel fully refreshed! (7 castings, 70 gold.)	-	-
+1795036850	cmd	Trentlin	51	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795036851	cmd	Trentlin	51	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795036851	cmd	Trentlin	51	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795036851	cmd	Trentlin	51	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795036851	cmd	Trentlin	51	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795036852	cmd	Trentlin	51	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795036852	cmd	Trentlin	51	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1795036852	cmd	Trentlin	51	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1795036852	cmd	Trentlin	51	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1795036853	cmd	Trentlin	51	2497	dresden.are	standing	100	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795036853	quest	Trentlin	51	2497	dresden.are	ordinary	kill	5303	an imperial cityguard	17	mirror.are	11
+1795036853	cmd	Trentlin	51	2497	dresden.are	standing	100	14	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Trentlin. The realm needs someone of your skill.' // Questor Thews tells you 'an imperial cityguard threatens the peace of the realm!'	-	+
+1795036855	cmd	Trentlin	51	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1795036857	cmd	Trentlin	51	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1795036857	cmd	Trentlin	51	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1795036857	cmd	Trentlin	51	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1795036857	cmd	Trentlin	51	2422	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1795036858	cmd	Trentlin	51	2423	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1795036858	cmd	Trentlin	51	2424	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1795036858	cmd	Trentlin	51	2425	dresden.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1795036858	cmd	Trentlin	51	2426	dresden.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795036859	cmd	Trentlin	51	2426	dresden.are	standing	100	0	-	open	east	Ok.	-	-
+1795036859	cmd	Trentlin	51	2440	dresden.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1795036859	cmd	Trentlin	51	3908	dresden.are	standing	100	0	-	north		East trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the west the wall towers over you and far to the east you see	-	+
+1795036859	cmd	Trentlin	51	3907	dresden.are	standing	100	0	-	north		East trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the west the wall towers over you and far to the east you see	-	+
+1795036860	cmd	Trentlin	51	3906	dresden.are	standing	100	0	-	north		Northeast corner of dusty trail. //   You are standing outside the northeastern corner of the city wall. // The trail leads west following the north wall and south towards the gate.	-	+
+1795036860	area	Trentlin	51	56	connect.are	dresden.are	connect.are	49	east
+1795036860	cmd	Trentlin	51	56	connect.are	standing	100	0	-	east		Peaceful Path //   Immediately upon setting foot on this path, you are filled with a feeling // of peace and tranquility.  The feeling gets stronger towards the east.	-	+
+1795036860	area	Trentlin	51	8950	grove.are	connect.are	grove.are	0	east
+1795036860	cmd	Trentlin	51	8950	grove.are	standing	100	0	-	east		At the edge of the grove //   You are standing at the entrace of a beautiful grove of trees, and your // heart is filled with pure, peaceful thoughts.  This looks like a safe place	-	+
+1795036860	cmd	Trentlin	51	8951	grove.are	standing	100	0	-	east		Inside the grove //   As you walk among the stately oaks of this grove, you feel at peace and  // in harmony with this beautiful forest.  If only the rest of the lands were	-	+
+1795036861	cmd	Trentlin	51	8904	grove.are	standing	100	0	-	east		The holy grove //   You are standing amidst the ancient oaks and poplars in the holy grove. You // feel calm and relaxed here, as if great burdens have been lifted from Your	-	+
+1795036861	cmd	Trentlin	51	8901	grove.are	standing	100	0	-	north		The holy grove //   You are standing amidst the ancient oaks and poplars in the holy grove. You // can feel a strange sensation of contentedness and relief seeping through You,	-	+
+1795036861	cmd	Trentlin	51	8902	grove.are	standing	100	0	-	east		The holy grove //   You are standing amidst the ancient oaks and poplars in the holy grove. You // feel unusually happy here, as if great burdens have been lifted from Your	-	+
+1795036861	cmd	Trentlin	51	8903	grove.are	standing	100	0	-	east		A clearing in the woods //   You are standing in a clearing in the light woods. Somehow, this place // seems powerfully DIFFERENT from the rest of the forest, as if something is	-	+
+1795036862	area	Trentlin	51	5378	mirror.are	grove.are	mirror.are	2	north
+1795036862	cmd	Trentlin	51	5378	mirror.are	standing	100	0	-	north		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing	-	+
+1795036865	cmd	Trentlin	51	5378	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - A clearing in the woods	-	+
+1795036867	area	Trentlin	51	8903	grove.are	mirror.are	grove.are	5	east
+1795036867	cmd	Trentlin	51	8903	grove.are	standing	100	0	-	east		A clearing in the woods //   You are standing in a clearing in the light woods. Somehow, this place // seems powerfully DIFFERENT from the rest of the forest, as if something is	-	+
+1795036869	cmd	Trentlin	51	8902	grove.are	standing	100	0	-	west		The holy grove //   You are standing amidst the ancient oaks and poplars in the holy grove. You // feel unusually happy here, as if great burdens have been lifted from Your	-	+
+1795036874	cmd	Trentlin	51	8901	grove.are	standing	100	0	-	west		The holy grove //   You are standing amidst the ancient oaks and poplars in the holy grove. You // can feel a strange sensation of contentedness and relief seeping through You,	-	+
+1795036874	cmd	Trentlin	51	8904	grove.are	standing	100	0	-	south		The holy grove //   You are standing amidst the ancient oaks and poplars in the holy grove. You // feel calm and relaxed here, as if great burdens have been lifted from Your	-	+
+1795036874	cmd	Trentlin	51	8951	grove.are	standing	100	0	-	west		Inside the grove //   As you walk among the stately oaks of this grove, you feel at peace and  // in harmony with this beautiful forest.  If only the rest of the lands were	-	+
+1795036875	cmd	Trentlin	51	8950	grove.are	standing	100	0	-	west		At the edge of the grove //   You are standing at the entrace of a beautiful grove of trees, and your // heart is filled with pure, peaceful thoughts.  This looks like a safe place	-	+
+1795036875	area	Trentlin	51	56	connect.are	grove.are	connect.are	8	west
+1795036875	cmd	Trentlin	51	56	connect.are	standing	100	0	-	west		Peaceful Path //   Immediately upon setting foot on this path, you are filled with a feeling // of peace and tranquility.  The feeling gets stronger towards the east.	-	+
+1795036875	area	Trentlin	51	3906	dresden.are	connect.are	dresden.are	0	west
+1795036875	cmd	Trentlin	51	3906	dresden.are	standing	100	0	-	west		Northeast corner of dusty trail. //   You are standing outside the northeastern corner of the city wall. // The trail leads west following the north wall and south towards the gate.	-	+
+1795036875	cmd	Trentlin	51	3907	dresden.are	standing	100	0	-	south		East trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the west the wall towers over you and far to the east you see	-	+
+1795036876	cmd	Trentlin	51	3908	dresden.are	standing	100	0	-	south		East trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the west the wall towers over you and far to the east you see	-	+
+1795036876	cmd	Trentlin	51	2440	dresden.are	standing	100	0	-	south		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1795036876	area	Trentlin	51	3503	midennir.are	dresden.are	midennir.are	1	east
+1795036876	cmd	Trentlin	51	3503	midennir.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1795036876	cmd	Trentlin	51	3502	midennir.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1795036877	area	Trentlin	51	5261	oldthalo.are	midennir.are	oldthalo.are	1	south
+1795036877	cmd	Trentlin	51	5261	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see many stunted trees here.  You don't see any leaves on these barren // trees.  No grass grows on the ground.	-	+
+1795036879	cmd	Trentlin	51	5260	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads north and south.	-	+
+1795036879	cmd	Trentlin	51	5259	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads north and south.	-	+
+1795036880	cmd	Trentlin	51	5258	oldthalo.are	standing	100	0	-	south		The dwarf forest //   You see more stunted trees here.  A side trail leads west from here. // To the east, you THINK you see a trail, but you can never be sure.	-	+
+1795036880	cmd	Trentlin	51	5257	oldthalo.are	standing	100	0	-	west		A trail at the end of the dwarf forest //   A side trail here leads from the dwarf forest.  It is definitely drier // and hotter here.  The trail continues to the west, and to the east, you see	-	+
+1795036881	cmd	Trentlin	51	5256	oldthalo.are	standing	100	0	-	west		A trail at the end of the dwarf forest //   The trail ends here, with short, dry stumps of trees all around you. // To the west, you can see the ruins of a huge city.  Something about it gives	-	+
+1795036881	cmd	Trentlin	51	5200	oldthalo.are	standing	100	0	-	west		The Grand Gate of Thalos //   You stand in the archway of a gigantic stone archway. The two // steel gates have been forced open and have rusted in place. A hollow	-	+
+1795036881	cmd	Trentlin	51	5201	oldthalo.are	standing	100	0	-	west		Main Street //   This was once a magnificent street, but now is in total ruin. The // streets are barren and windswept and the silence is unending.  A dark alley	-	+
+1795036882	cmd	Trentlin	51	5202	oldthalo.are	standing	100	0	-	west		Main Street //   This was once a magnificent street, but now is in total ruin. The // streets are barren and windswept and the silence is unending. On one	-	+
+1795036884	cmd	Trentlin	51	5201	oldthalo.are	standing	100	0	-	east		Main Street //   This was once a magnificent street, but now is in total ruin. The // streets are barren and windswept and the silence is unending.  A dark alley	-	+
+1795036884	cmd	Trentlin	51	5255	oldthalo.are	standing	100	0	-	south		A back alley //   A narrow alley leads north to the main street, and south toward a tall // watchtower.  A ruined building is to the west.	-	+
+1795036884	cmd	Trentlin	51	5253	oldthalo.are	standing	100	0	-	south		A back alley //   A narrow alley leads south to one of the city watchtowers. // [Exits: north south]	-	-
+1795036884	cmd	Trentlin	51	5252	oldthalo.are	standing	100	0	-	south		Under a ruined watchtower //   You stand at the base of a tall watchtower built to protect the city // from invaders. From the looks of things, it did not do a good job.	-	+
+1795036893	cmd	Trentlin	51	5253	oldthalo.are	standing	100	0	-	north		A back alley //   A narrow alley leads south to one of the city watchtowers. // [Exits: north south]	-	-
+1795036893	cmd	Trentlin	51	5255	oldthalo.are	standing	100	0	-	north		A back alley //   A narrow alley leads north to the main street, and south toward a tall // watchtower.  A ruined building is to the west.	-	+
+1795036896	cmd	Trentlin	51	5201	oldthalo.are	standing	100	0	-	north		Main Street //   This was once a magnificent street, but now is in total ruin. The // streets are barren and windswept and the silence is unending.  A dark alley	-	+
+1795036896	cmd	Trentlin	51	5200	oldthalo.are	standing	100	0	-	east		The Grand Gate of Thalos //   You stand in the archway of a gigantic stone archway. The two // steel gates have been forced open and have rusted in place. A hollow	-	+
+1795036896	cmd	Trentlin	51	5256	oldthalo.are	standing	100	0	-	east		A trail at the end of the dwarf forest //   The trail ends here, with short, dry stumps of trees all around you. // To the west, you can see the ruins of a huge city.  Something about it gives	-	+
+1795036896	cmd	Trentlin	51	5257	oldthalo.are	standing	100	0	-	east		A trail at the end of the dwarf forest //   A side trail here leads from the dwarf forest.  It is definitely drier // and hotter here.  The trail continues to the west, and to the east, you see	-	+
+1795036897	cmd	Trentlin	51	5258	oldthalo.are	standing	100	0	-	east		The dwarf forest //   You see more stunted trees here.  A side trail leads west from here. // To the east, you THINK you see a trail, but you can never be sure.	-	+
+1795036897	cmd	Trentlin	51	5259	oldthalo.are	standing	100	0	-	north		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads north and south.	-	+
+1795036897	cmd	Trentlin	51	5260	oldthalo.are	standing	100	0	-	north		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads north and south.	-	+
+1795036897	cmd	Trentlin	51	5261	oldthalo.are	standing	100	0	-	north		The dwarf forest //   You see many stunted trees here.  You don't see any leaves on these barren // trees.  No grass grows on the ground.	-	+
+1795036898	area	Trentlin	51	3502	midennir.are	oldthalo.are	midennir.are	21	north
+1795036898	cmd	Trentlin	51	3502	midennir.are	standing	100	0	-	north		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1795036898	cmd	Trentlin	51	3503	midennir.are	standing	100	0	-	west		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1795036898	area	Trentlin	51	2440	dresden.are	midennir.are	dresden.are	0	west
+1795036898	cmd	Trentlin	51	2440	dresden.are	standing	100	0	-	west		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1795036898	cmd	Trentlin	51	3908	dresden.are	standing	100	0	-	north		East trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the west the wall towers over you and far to the east you see	-	+
+1795036899	cmd	Trentlin	51	3907	dresden.are	standing	100	0	-	north		East trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the west the wall towers over you and far to the east you see	-	+
+1795036899	cmd	Trentlin	51	3906	dresden.are	standing	100	0	-	north		Northeast corner of dusty trail. //   You are standing outside the northeastern corner of the city wall. // The trail leads west following the north wall and south towards the gate.	-	+
+1795036899	area	Trentlin	51	56	connect.are	dresden.are	connect.are	1	east
+1795036899	cmd	Trentlin	51	56	connect.are	standing	100	0	-	east		Peaceful Path //   Immediately upon setting foot on this path, you are filled with a feeling // of peace and tranquility.  The feeling gets stronger towards the east.	-	+
+1795036899	area	Trentlin	51	8950	grove.are	connect.are	grove.are	0	east
+1795036899	cmd	Trentlin	51	8950	grove.are	standing	100	0	-	east		At the edge of the grove //   You are standing at the entrace of a beautiful grove of trees, and your // heart is filled with pure, peaceful thoughts.  This looks like a safe place	-	+
+1795036900	cmd	Trentlin	51	8951	grove.are	standing	100	0	-	east		Inside the grove //   As you walk among the stately oaks of this grove, you feel at peace and  // in harmony with this beautiful forest.  If only the rest of the lands were	-	+
+1795036900	cmd	Trentlin	51	8904	grove.are	standing	100	0	-	east		The holy grove //   You are standing amidst the ancient oaks and poplars in the holy grove. You // feel calm and relaxed here, as if great burdens have been lifted from Your	-	+
+1795036900	cmd	Trentlin	51	8901	grove.are	standing	100	0	-	north		The holy grove //   You are standing amidst the ancient oaks and poplars in the holy grove. You // can feel a strange sensation of contentedness and relief seeping through You,	-	+
+1795036900	cmd	Trentlin	51	8902	grove.are	standing	100	0	-	east		The holy grove //   You are standing amidst the ancient oaks and poplars in the holy grove. You // feel unusually happy here, as if great burdens have been lifted from Your	-	+
+1795036900	laid	-	0	0	-	867	herb	41	a sprig of mistletoe	339	plains.are	scatter
+1795036900	laid	-	0	0	-	868	herb	52	an asparagus shoot	332	plains.are	scatter
+1795036901	cmd	Trentlin	51	8903	grove.are	standing	100	0	-	east		A clearing in the woods //   You are standing in a clearing in the light woods. Somehow, this place // seems powerfully DIFFERENT from the rest of the forest, as if something is	-	+
+1795036901	area	Trentlin	51	5378	mirror.are	grove.are	mirror.are	2	north
+1795036901	cmd	Trentlin	51	5378	mirror.are	standing	100	0	-	north		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing	-	+
+1795036904	cmd	Trentlin	51	5378	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - A clearing in the woods	-	+
+1795036906	cmd	Trentlin	51	5375	mirror.are	standing	100	0	-	north		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing	-	+
+1795036907	cmd	Trentlin	51	5375	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // South - The Void	-	+
+1795036910	cmd	Trentlin	51	5378	mirror.are	standing	100	0	-	south		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing	-	+
+1795036911	cmd	Trentlin	51	5378	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - A clearing in the woods	-	+
+1795036912	cmd	Trentlin	51	5375	mirror.are	standing	100	0	-	west		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing	-	+
+1795036912	cmd	Trentlin	51	5375	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // South - The Void	-	+
+1795036913	cmd	Trentlin	51	5368	mirror.are	standing	100	0	-	west		A clearing in the woods //   You are standing in a clearing in the light woods. Somehow, this place // seems powerfully DIFFERENT from the rest of the forest, as if something is	-	+
+1795036914	cmd	Trentlin	51	5368	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // South - The holy grove	-	+
+1795036916	cmd	Trentlin	51	5375	mirror.are	standing	100	0	-	north		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing	-	+
+1795036916	cmd	Trentlin	51	5375	mirror.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795036918	cmd	Trentlin	51	5376	mirror.are	standing	100	0	-	up		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing	-	+
+1795036919	cmd	Trentlin	51	5376	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - The Void	-	+
+1795036920	cmd	Trentlin	51	5377	mirror.are	standing	100	0	-	west		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing	-	+
+1795036920	cmd	Trentlin	51	5377	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - The Void	-	+
+1795036921	cmd	Trentlin	51	5376	mirror.are	standing	100	0	-	west		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing	-	+
+1795036922	cmd	Trentlin	51	5376	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - The Void	-	+
+1795036922	cmd	Trentlin	51	5376	mirror.are	standing	100	0	-	south		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing	-	+
+1795036923	cmd	Trentlin	51	5376	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - The Void	-	+
+1795036924	cmd	Trentlin	51	5377	mirror.are	standing	100	0	-	east		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing	-	+
+1795036924	cmd	Trentlin	51	5377	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - The Void	-	+
+1795036925	cmd	Trentlin	51	5377	mirror.are	standing	100	0	-	east		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing	-	+
+1795036926	cmd	Trentlin	51	5377	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - The Void	-	+
+1795036927	cmd	Trentlin	51	5378	mirror.are	standing	100	0	-	down		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing	-	+
+1795036928	cmd	Trentlin	51	5378	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - A clearing in the woods	-	+
+1795036929	cmd	Trentlin	51	5375	mirror.are	standing	100	0	-	west		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing	-	+
+1795036930	cmd	Trentlin	51	5375	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // South - The Void	-	+
+1795036931	cmd	Trentlin	51	5368	mirror.are	standing	100	1	-	west		A clearing in the woods //   You are standing in a clearing in the light woods. Somehow, this place // seems powerfully DIFFERENT from the rest of the forest, as if something is	-	+
+1795036932	cmd	Trentlin	51	5368	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // South - The holy grove	-	+
+1795036933	area	Trentlin	51	3821	ratslair.are	mirror.are	ratslair.are	32	recall
+1795036933	cmd	Trentlin	51	3821	ratslair.are	standing	100	0	-	recall		Something is very wrong! // A Bedroom //   You are in a makeshift bedroom.  All you see in this room is a bed made	-	+
+1795036936	area	Trentlin	51	4207	dresden.are	ratslair.are	dresden.are	3	recall
+1795036936	cmd	Trentlin	51	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795036959	laid	-	0	0	-	870	herb	34	an amaranth plant	13532	hell.are	scatter
+1795036959	laid	-	0	0	-	871	component	57	a trolls fingernail	5735	mid_ruin.are	scatter
