@@ -326,3 +326,17 @@
 1795002942	leave	Trentlin	51	1	Monk 	30317	over	to=L9 how=down secs=6 hp=100
 1795002942	enter	Trentlin	51	1	Monk 	30590	L9	from=over how=down hp=100
 1795002992	cleared	Trentlin	51	1	Monk 	30595	L9	foes=0
+1795003120	cleared	Trentlin	51	1	Monk 	30594	L9	foes=0
+1795003135	leave	Trentlin	51	1	Monk 	30590	L9	to=over how=up secs=193 hp=20
+1795003135	enter	Trentlin	51	1	Monk 	30317	over	from=L9 how=up hp=20
+1795003148	leave	Trentlin	51	1	Monk 	30317	over	to=out how=recall secs=13 hp=20
+1795003165	enter	Trentlin	51	1	Monk 	30200	over	from=out how=enter hp=100
+1795003172	leave	Trentlin	51	1	Monk 	30317	over	to=L9 how=down secs=7 hp=100
+1795003172	enter	Trentlin	51	1	Monk 	30590	L9	from=over how=down hp=100
+1795003241	leave	Trentlin	51	1	Monk 	30590	L9	to=over how=up secs=69 hp=25
+1795003241	enter	Trentlin	51	1	Monk 	30317	over	from=L9 how=up hp=25
+1795003242	leave	Trentlin	51	1	Monk 	30317	over	to=out how=recall secs=1 hp=25
+1795003256	enter	Trentlin	51	1	Monk 	30200	over	from=out how=enter hp=100
+1795003263	seal	Trentlin	51	1	Monk 	30317	over	obj=30509 obj_name=a_cracked_stone_floor dir=5 how=bomb
+1795003263	leave	Trentlin	51	1	Monk 	30317	over	to=L9 how=down secs=7 hp=100
+1795003263	enter	Trentlin	51	1	Monk 	30590	L9	from=over how=down hp=100
