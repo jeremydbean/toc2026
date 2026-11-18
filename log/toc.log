@@ -316550,3 +316550,5 @@ Wed Nov 18 20:48:57 2026 :: Connection guard: refused 1 connection from 5.161.21
 Wed Nov 18 20:54:01 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 1 of 6 in 6 hours).
 Wed Nov 18 20:59:06 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 5 of 6 in 6 hours).
 Wed Nov 18 21:04:11 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 2 of 6 in 6 hours).
+Wed Nov 18 21:09:16 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 18 21:09:58 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
