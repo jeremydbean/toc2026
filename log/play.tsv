@@ -36523,3 +36523,138 @@
 1794967285	cmd	Trentlin	50	17121	highland.are	standing	94	0	-	north		A path //   You are approaching a crossroad in the valley. The ground seems more level // here, so you must be coming to the lowest point of the valley.	-	+
 1794967286	cmd	Trentlin	50	17122	highland.are	standing	94	0	-	north		The Crossroads //   The guards here look nasty.  Better not make any trouble. There is a  // roadsign planted in the center of the crossing. To the north you see a lake.	-	+
 1794967289	cmd	Trentlin	50	17122	highland.are	standing	94	0	-	levitate		You slowly rise up off the ground.	-	-
+1794967291	cmd	Trentlin	50	17123	highland.are	standing	94	0	-	east		Path to the southeastern Beacon Tower //   The path is getting steeper and steeper while it continues uphill. Also,  // the terrain is getting more difficult to handle with many big rocks in you	-	+
+1794967293	cmd	Trentlin	50	17122	highland.are	standing	94	0	-	west		The Crossroads //   The guards here look nasty.  Better not make any trouble. There is a  // roadsign planted in the center of the crossing. To the north you see a lake.	-	+
+1794967293	cmd	Trentlin	50	17137	highland.are	standing	94	0	-	north		A muddy path //   The path is getting muddier towards the lake. In front of you, you  can see // a big lake.  You can faintly make out a small island in the middle of the	-	+
+1794967294	cmd	Trentlin	50	17138	highland.are	standing	94	0	-	north		A muddy path //   It's getting more and more muddy.  You wonder if you will ever be able to  // get your boots clean again.  The sound of bagpipes is getting much clearer 	-	+
+1794967295	cmd	Trentlin	50	17139	highland.are	standing	94	0	-	north		Crossroads at the Lake //   You stand on a crossroads in front of you is a lake. A highlander is here. // He says 'Ay mi lads the loch is not safe, turn back lads, much safer.' 	-	+
+1794967295	cmd	Trentlin	50	17140	highland.are	standing	94	0	-	east		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967296	cmd	Trentlin	50	17141	highland.are	standing	94	0	-	east		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967297	cmd	Trentlin	50	17141	highland.are	standing	94	0	-	east		Alas, you cannot go that way.	-	-
+1794967297	cmd	Trentlin	50	17142	highland.are	standing	94	0	-	north		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967298	cmd	Trentlin	50	17143	highland.are	standing	94	0	-	east		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967299	cmd	Trentlin	50	17144	highland.are	standing	94	0	-	north		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967300	cmd	Trentlin	50	17145	highland.are	standing	94	0	-	east		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967301	cmd	Trentlin	50	17146	highland.are	standing	94	0	-	north		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967302	cmd	Trentlin	50	17147	highland.are	standing	94	0	-	north		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967303	spotted	Trentlin	50	17148	highland.are	1043	herb	42	a marjoram plant	324	1	scatter	arrive
+1794967303	cmd	Trentlin	50	17148	highland.are	standing	94	0	-	west		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967306	picked	Trentlin	50	17148	highland.are	1043	herb	42	a marjoram plant	327	3	1	scatter	get
+1794967306	got	Trentlin	50	17148	highland.are	42	a marjoram plant	herb	0	0	get	the floor
+1794967306	cmd	Trentlin	50	17148	highland.are	standing	94	0	-	get	all	You get a marjoram plant.	-	-
+1794967307	craft	Trentlin	50	17148	highland.are	1794967307-2	brew	cure critical	sapphire	42	0	-	0	75	75	failed	0	saved
+1794967307	cmd	Trentlin	50	17148	highland.are	standing	94	16	-	brew	ma	You set about making your herbal brew. // It doesn't taste right. You failed.	failure:failed	-
+1794967313	cmd	Trentlin	50	17149	highland.are	standing	94	0	-	west		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967315	cmd	Trentlin	50	17150	highland.are	standing	94	0	-	north		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967316	cmd	Trentlin	50	17151	highland.are	standing	94	0	-	north		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967317	laid	-	0	0	-	1090	herb	45	a sarsaparilla vine	10284	tritia.are	scatter
+1794967317	laid	-	0	0	-	1091	component	83	a vial of thessalhydra venom	5901	mid_ruin.are	scatter
+1794967318	cmd	Trentlin	50	17152	highland.are	standing	97	0	-	north		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967320	cmd	Trentlin	50	17152	highland.are	standing	97	0	-	steel		You lost your concentration.	-	-
+1794967321	cmd	Trentlin	50	17152	highland.are	standing	97	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1794967348	cmd	Trentlin	50	17153	highland.are	standing	97	0	-	west		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967349	cmd	Trentlin	50	17154	highland.are	standing	97	0	-	north		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967350	cmd	Trentlin	50	17155	highland.are	standing	97	0	-	west		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967352	cmd	Trentlin	50	17156	highland.are	standing	97	0	-	west		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967356	cmd	Trentlin	50	17157	highland.are	standing	97	0	-	west		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967357	cmd	Trentlin	50	17158	highland.are	standing	97	0	-	west		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967359	cmd	Trentlin	50	17159	highland.are	standing	97	0	-	south		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967360	cmd	Trentlin	50	17158	highland.are	standing	97	0	-	north		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967360	cmd	Trentlin	50	17157	highland.are	standing	97	0	-	east		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967361	cmd	Trentlin	50	17156	highland.are	standing	97	0	-	east		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967362	cmd	Trentlin	50	17155	highland.are	standing	97	0	-	east		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967363	cmd	Trentlin	50	17154	highland.are	standing	97	0	-	east		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967381	laid	-	0	0	-	1099	component	88	a vial of green slime	1148	shire.are	scatter
+1794967382	cmd	Trentlin	50	17153	highland.are	standing	99	0	-	south		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967382	cmd	Trentlin	50	17152	highland.are	standing	99	0	-	east		Path along lake //   This path is muddy in the muddiest sense of the word. You still hear // bagpipes and sheep but its quieter now - perhaps, say too quiet.  The birds 	-	+
+1794967383	cmd	Trentlin	50	17185	highland.are	standing	99	0	-	east		A path along a cliff //   Watch out here.  There are mountain goats up the cliff and they will // sometimes kick rocks down.  If one falls on your head you will be history.	-	+
+1794967383	cmd	Trentlin	50	17186	highland.are	standing	99	0	-	east		A path along a cliff //   WATCH IT.  A rock just fell down, missing you by a few centimeters. // [Exits: east west]	-	-
+1794967383	cmd	Trentlin	50	17187	highland.are	standing	99	0	-	east		A steep climb //   A steep hill forces you to exert yourself on the climb.  A feeling of dread  // comes over you but you have no idea where it comes form.	-	+
+1794967383	cmd	Trentlin	50	17187	highland.are	standing	99	0	-	east		Alas, you cannot go that way.	-	-
+1794967385	cmd	Trentlin	50	17188	highland.are	standing	99	0	-	north		On the hill //   You are on a hill - but notice you are on the wrong one. // [Exits: north south]	-	-
+1794967385	cmd	Trentlin	50	17189	highland.are	standing	99	0	-	north		Down hill //   You are walking down the hill with so much speed you will probably // fall over a rock and break a bone if you are not careful.	-	+
+1794967386	cmd	Trentlin	50	17190	highland.are	standing	99	0	-	north		On another path up hill //   Again you must force yourself to great exertion.  The terrain changes // suddenly from some plants and rocks to a barren place.	-	+
+1794967386	cmd	Trentlin	50	17191	highland.are	standing	99	0	-	north		On a hill //   You are again on a hill. This time it's the correct one.  The tower is to  // the east.	-	+
+1794967390	cmd	Trentlin	50	17191	highland.are	standing	99	0	-	open	east	It's locked.	-	-
+1794967390	cmd	Trentlin	50	17191	highland.are	standing	99	0	-	east		The door is closed.	-	-
+1794967393	cmd	Trentlin	50	17191	highland.are	standing	99	0	-	unlock	east	You lack the key: it takes a key of the tower to unlock it.	-	-
+1794967394	coin	Trentlin	50	17191	highland.are	+9900	loot	kill	corpse of The Keeper of the Tower	16929748419
+1794967394	coin	Trentlin	50	17191	highland.are	+84	loot	kill	corpse of The Keeper of the Tower	16929748503
+1794967394	coin	Trentlin	50	17191	highland.are	+480000	loot	kill	corpse of The Keeper of the Tower	16930228503
+1794967394	cmd	Trentlin	50	17191	highland.are	standing	99	1	-	kill	kee	Your punch === OBLITERATES === The Keeper of the Tower! // Your punch <<< ERADICATES >>> The Keeper of the Tower! // The Keeper of the Tower is DEAD!!	-	+
+1794967399	got	Trentlin	50	17191	highland.are	17121	a key of the tower	key	1	0	get	corpse of The Keeper of the Tower
+1794967399	cmd	Trentlin	50	17191	highland.are	standing	99	0	-	get	key co	You get a key of the tower from corpse of The Keeper of the Tower.	-	-
+1794967399	cmd	Trentlin	50	17191	highland.are	standing	99	0	-	unlock	east	*Click*	-	-
+1794967401	cmd	Trentlin	50	17191	highland.are	standing	99	0	-	open	east	Ok.	-	-
+1794967401	cmd	Trentlin	50	17195	highland.are	standing	99	0	-	east		In the northeastern tower //   The Keeper must be a rose lover.  Roses are painted on everything  - the  // plates, the chairs, the bed  - in short, on everything.	-	+
+1794967415	cmd	Trentlin	50	17219	highland.are	standing	99	0	-	down		In the cellar //   A fine mess the keeper made of this room!  How he can find anything here // is a complete mystery.  Food, bottles of  scotch  - everything lies in a 	-	+
+1794967418	cmd	Trentlin	50	17219	highland.are	standing	99	0	-	open	north	Ok.	-	-
+1794967418	cmd	Trentlin	50	17219	highland.are	standing	99	0	-	exits		Obvious exits: // North - Another gangway. // West  - A dead end	-	+
+1794967441	census	-	0	0	-	herbs=20/150 components=17/100 eggs=0 coin_piles=10	herbs_held=0 components_held=2 players=1	laid=20 spotted=2 picked=2 passed=1 cleared=0 rare=0 mobs_seen=71 mobs_fought=4 secs=900
+1794967459	cmd	Trentlin	50	17224	highland.are	standing	100	0	-	north		Another gangway. //   This gangway is finely carved and its smooth.  Must be a master who made it. // [Exits: north south]	-	-
+1794967459	cmd	Trentlin	50	17257	highland.are	standing	100	0	-	north		In a secret gangway //   You can barely see something in front of you so dark is it.  Even with a  // light, it's difficult to look ahead.  But its smooth here so you needn't 	-	+
+1794967460	cmd	Trentlin	50	17258	highland.are	standing	100	0	-	north		In a secret gangway //   You can see a light over a porch to the west. // [Exits: south west]	-	-
+1794967461	cmd	Trentlin	50	17259	highland.are	standing	100	0	-	west		In a secret gangway //   The light brightens but doen't help much yet.  Above you, you think you // hear it raining again.	-	+
+1794967462	cmd	Trentlin	50	17260	highland.are	standing	100	0	-	west		In a secret gangway //   You see better now.  You can even discern a strangely shaped something ahead  // - but as of yet, you can't make anything of it.	-	+
+1794967463	cmd	Trentlin	50	17261	highland.are	standing	100	0	-	west		In a secret gangway //   You can clearly see what is ahead of you now.  You can also see that // the porch is guarded by some creatures. You think you have seen them 	-	+
+1794967464	cmd	Trentlin	50	17262	highland.are	standing	100	0	-	west		At the porch //   You see a porch in front of you. It appears locked but some weird dust  // lies here.  Probably a mage passed here some time back. Maybe this is the 	-	+
+1794967466	cmd	Trentlin	50	17262	highland.are	standing	100	0	-	open	west	Ok.	-	-
+1794967466	cmd	Trentlin	50	17263	highland.are	standing	100	0	-	west		In a sleeping room //   The porch slams shut behind you, so there'll be no going back.  You've // entered the mage's room.  Everywhere are signs of it - potions, dried 	-	+
+1794967469	cmd	Trentlin	50	17265	highland.are	standing	100	0	-	west		In a hallway //   Just another hallway leading from someplace to someplace.  Nothing peculiar // about this one.  The mage was kept here for good reason  - the evil	-	+
+1794967471	cmd	Trentlin	50	17266	highland.are	standing	100	0	-	north		In the hallway //   You notice some noise coming from the north. It appears there is some // kind of party going on - and you want to be there!	-	+
+1794967472	cmd	Trentlin	50	17267	highland.are	standing	100	0	-	north		In the hallway //   A door is to the north.  From behind comes a lot of noise.  It must be a // good party. 	-	+
+1794967473	cmd	Trentlin	50	17267	highland.are	standing	100	0	-	exits		Obvious exits: // North - The guard barracks // South - In the hallway	-	+
+1794967492	cmd	Trentlin	50	17269	highland.are	standing	100	0	-	west		In a hallway //   You are in a hallway.  A bit further on you can see a flight of stairs. // [Exits: east west]	-	-
+1794967493	cmd	Trentlin	50	17270	highland.are	standing	100	0	-	west		In a hallway //   A heavy door is to the north.  From the outside you can't find a clue // about its occupants.	-	+
+1794967493	cmd	Trentlin	50	17272	highland.are	standing	100	0	-	west		At a flight of stairs //   You can go up towards the ground floor of the castle. // [Exits: east up]	-	-
+1794967493	cmd	Trentlin	50	17272	highland.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794967495	cmd	Trentlin	50	17273	highland.are	standing	100	0	-	up		At a flight of stairs //   You are on the ground floor of the castle. You can go to the foyer // or take the stairs down. 	-	+
+1794967496	cmd	Trentlin	50	17277	highland.are	standing	100	0	-	south		In the north of the foyer //   To the north, you see stairs. // [Exits: north east south west]	-	-
+1794967497	cmd	Trentlin	50	17277	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the northwestern corner of the foyer // East  - In the northeastern corner of the foyer	-	+
+1794967511	laid	-	0	0	-	1109	herb	50	a head of cabbage	24387	chess.are	scatter
+1794967511	laid	-	0	0	-	1110	herb	41	a sprig of mistletoe	24386	chess.are	scatter
+1794967516	cmd	Trentlin	50	17273	highland.are	standing	100	0	-	west		At a flight of stairs //   You are on the ground floor of the castle. You can go to the foyer // or take the stairs down. 	-	+
+1794967517	cmd	Trentlin	50	17273	highland.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1794967519	cmd	Trentlin	50	17277	highland.are	standing	100	0	-	south		In the north of the foyer //   To the north, you see stairs. // [Exits: north east south west]	-	-
+1794967520	cmd	Trentlin	50	17277	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the northwestern corner of the foyer // East  - In the northeastern corner of the foyer	-	+
+1794967522	cmd	Trentlin	50	17278	highland.are	standing	100	0	-	south		In the center of the foyer //   You stand in the heart of the great foyer. Four stone pillars support the vaulted ceiling high above, and corridors lead off in all directions. // [Exits: north east south west]	-	-
+1794967522	cmd	Trentlin	50	17278	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the east of the foyer // East  - In the south of the foyer	-	+
+1794967524	cmd	Trentlin	50	17282	highland.are	standing	100	0	-	north		In the east of the foyer //   The eastern side of the foyer runs along the inner castle wall. Faded banners of the highland lords hang here in rows. // [Exits: north south west]	-	-
+1794967526	cmd	Trentlin	50	17281	highland.are	standing	100	0	-	north		In the northeastern corner of the foyer //   A wall-mounted torch casts warm light across the northeastern corner of the foyer, gleaming off the polished stone floor. // [Exits: north east]	-	-
+1794967527	cmd	Trentlin	50	17282	highland.are	standing	100	0	-	north		In the east of the foyer //   The eastern side of the foyer runs along the inner castle wall. Faded banners of the highland lords hang here in rows. // [Exits: north south west]	-	-
+1794967528	cmd	Trentlin	50	17281	highland.are	standing	100	0	-	north		In the northeastern corner of the foyer //   A wall-mounted torch casts warm light across the northeastern corner of the foyer, gleaming off the polished stone floor. // [Exits: north east]	-	-
+1794967529	cmd	Trentlin	50	17282	highland.are	standing	100	0	-	north		In the east of the foyer //   The eastern side of the foyer runs along the inner castle wall. Faded banners of the highland lords hang here in rows. // [Exits: north south west]	-	-
+1794967529	cmd	Trentlin	50	17278	highland.are	standing	100	0	-	west		In the center of the foyer //   You stand in the heart of the great foyer. Four stone pillars support the vaulted ceiling high above, and corridors lead off in all directions. // [Exits: north east south west]	-	-
+1794967530	cmd	Trentlin	50	17277	highland.are	standing	100	0	-	west		In the north of the foyer //   To the north, you see stairs. // [Exits: north east south west]	-	-
+1794967531	cmd	Trentlin	50	17278	highland.are	standing	100	0	-	south		In the center of the foyer //   You stand in the heart of the great foyer. Four stone pillars support the vaulted ceiling high above, and corridors lead off in all directions. // [Exits: north east south west]	-	-
+1794967532	cmd	Trentlin	50	17278	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the east of the foyer // East  - In the south of the foyer	-	+
+1794967535	cmd	Trentlin	50	17277	highland.are	standing	100	0	-	west		In the north of the foyer //   To the north, you see stairs. // [Exits: north east south west]	-	-
+1794967535	cmd	Trentlin	50	17277	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the northwestern corner of the foyer // East  - In the northeastern corner of the foyer	-	+
+1794967546	cmd	Trentlin	50	17273	highland.are	standing	100	0	-	west		At a flight of stairs //   You are on the ground floor of the castle. You can go to the foyer // or take the stairs down. 	-	+
+1794967547	cmd	Trentlin	50	17273	highland.are	standing	100	0	-	exits		Obvious exits: // South - In the north of the foyer // Down  - At a flight of stairs	-	-
+1794967547	cmd	Trentlin	50	17272	highland.are	standing	100	0	-	down		At a flight of stairs //   You can go up towards the ground floor of the castle. // [Exits: east up]	-	-
+1794967548	cmd	Trentlin	50	17272	highland.are	standing	100	0	-	exits		Obvious exits: // East  - In a hallway // Up    - At a flight of stairs	-	-
+1794967549	cmd	Trentlin	50	17270	highland.are	standing	100	0	-	east		In a hallway //   A heavy door is to the north.  From the outside you can't find a clue // about its occupants.	-	+
+1794967550	cmd	Trentlin	50	17270	highland.are	standing	100	0	-	exits		Obvious exits: // North - A guard barracks // East  - In a hallway	-	+
+1794967551	cmd	Trentlin	50	17271	highland.are	standing	100	0	-	north		A guard barracks //   A troop of guards is in here busy with the upkeep of their equipment. // At first they don't notice you,  but then one looks up and screams	-	+
+1794967552	cmd	Trentlin	50	17271	highland.are	standing	100	0	-	exits		Obvious exits: // South - In a hallway	-	-
+1794967552	cmd	Trentlin	50	17270	highland.are	standing	100	0	-	south		In a hallway //   A heavy door is to the north.  From the outside you can't find a clue // about its occupants.	-	+
+1794967553	cmd	Trentlin	50	17272	highland.are	standing	100	0	-	west		At a flight of stairs //   You can go up towards the ground floor of the castle. // [Exits: east up]	-	-
+1794967553	cmd	Trentlin	50	17272	highland.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1794967554	cmd	Trentlin	50	17273	highland.are	standing	100	0	-	up		At a flight of stairs //   You are on the ground floor of the castle. You can go to the foyer // or take the stairs down. 	-	+
+1794967555	cmd	Trentlin	50	17273	highland.are	standing	100	0	-	exits		Obvious exits: // South - In the north of the foyer // Down  - At a flight of stairs	-	-
+1794967556	cmd	Trentlin	50	17277	highland.are	standing	100	0	-	south		In the north of the foyer //   To the north, you see stairs. // [Exits: north east south west]	-	-
+1794967557	cmd	Trentlin	50	17277	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the northwestern corner of the foyer // East  - In the northeastern corner of the foyer	-	+
+1794967559	cmd	Trentlin	50	17278	highland.are	standing	100	0	-	south		In the center of the foyer //   You stand in the heart of the great foyer. Four stone pillars support the vaulted ceiling high above, and corridors lead off in all directions. // [Exits: north east south west]	-	-
+1794967559	cmd	Trentlin	50	17278	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the east of the foyer // East  - In the south of the foyer	-	+
+1794967561	cmd	Trentlin	50	17282	highland.are	standing	100	0	-	north		In the east of the foyer //   The eastern side of the foyer runs along the inner castle wall. Faded banners of the highland lords hang here in rows. // [Exits: north south west]	-	-
+1794967573	cmd	Trentlin	50	17282	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the northeastern corner of the foyer // South - In the southeastern corner of the foyer	-	+
+1794967575	cmd	Trentlin	50	17283	highland.are	standing	100	0	-	south		In the southeastern corner of the foyer //   The southeastern corner of the foyer is quiet and still. The ancient stones bear the marks of countless years. // [Exits: north south]	-	-
+1794967577	cmd	Trentlin	50	17283	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the south of the foyer // South - In the east of the foyer	-	-
+1794967580	cmd	Trentlin	50	17283	highland.are	standing	100	0	-	mount		What do you want to ride?	-	-
+1794967581	laid	-	0	0	-	1111	herb	39	a chervil leaf	9213	canyon.are	scatter
+1794967582	cmd	Trentlin	50	17279	highland.are	standing	100	0	-	north		In the south of the foyer //   To the south, you see some stairs. // [Exits: north east south west]	-	-
+1794967583	cmd	Trentlin	50	17279	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the southeastern corner of the foyer // East  - A flight of stairs	-	+
+1794967586	cmd	Trentlin	50	17276	highland.are	standing	100	0	-	south		In the southwestern corner of the foyer //   A faint draught seeps through the stones of the outer wall in this shadowed corner of the foyer. // [Exits: north south]	-	-
+1794967587	cmd	Trentlin	50	17276	highland.are	standing	100	0	-	exits		Obvious exits: // North - In the west side of the foyer // South - In the south of the foyer	-	-
+1794967589	cmd	Trentlin	50	17275	highland.are	standing	100	0	-	north		In the west side of the foyer //   The western wall of the foyer is adorned with faded tapestries depicting highland battles long since fought and forgotten. // [Exits: east south west]	-	-
