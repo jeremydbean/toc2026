@@ -315539,3 +315539,8 @@ Wed Nov 18 11:21:30 2026 :: Treasure goblin: vanished from room 7612 (House, ult
 Wed Nov 18 11:25:18 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 5 of 6 in 6 hours).
 Wed Nov 18 11:30:23 2026 :: Connection guard: refused 1 connection from 3.212.128.62 (paused; 11 refused in all, pause 2 this week, 238 minutes left).
 Wed Nov 18 11:31:34 2026 :: Treasure goblin: vanished from room 24522 (On the Plains, abyss.are) (too long in one area).
+Wed Nov 18 11:35:28 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 3 of 6 in 6 hours).
+Wed Nov 18 11:35:35 2026 :: Sock.sinaddr:  198.74.56.6
+Wed Nov 18 11:35:36 2026 :: EOF encountered on read.
+Wed Nov 18 11:35:36 2026 :: Connection guard: 198.74.56.6 closed before a password prompt (strike 1 of 6 in 6 hours).
+Wed Nov 18 11:35:36 2026 :: Connection guard: 198.74.56.6 closed without a word (strike 2 of 6 in 6 hours).
