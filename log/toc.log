@@ -315369,3 +315369,6 @@ Wed Nov 18 06:00:04 2026 :: Treasure goblin: vanished from room 9235 (Elemental 
 Wed Nov 18 06:00:25 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 1 of 6 in 6 hours).
 Wed Nov 18 06:04:01 2026 :: Connection guard: last hour 11 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 9 addresses paused and 0 refused now, 14 active player addresses.
 Wed Nov 18 06:05:30 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 2 of 6 in 6 hours).
+Wed Nov 18 06:10:05 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Wed Nov 18 06:10:09 2026 :: Treasure goblin: vanished from room 24596 (A Narrow Tunnel, abyss.are) (too long in one area).
+Wed Nov 18 06:10:34 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 5 of 6 in 6 hours).
