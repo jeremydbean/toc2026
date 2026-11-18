@@ -820,10 +820,12 @@ tuned between two settings that missed:
 | a tenth, 130-170 | won | won | won | won |
 | a fortieth, 280-340 | lost | -- | won 1 of 2 | won 1 of 2, three dead in the win |
 | a thirtieth, 220-270 | lost (Ganon at 6%) | won 2 of 2, nobody dead | won 2 of 2 | won |
-| **a thirty-fifth, 250-305** | **lost 2 of 2 (at 39% and 61%)** | **won 1 of 3 (lost at 78% and 28%)** | **won 2 of 3, two dead each win** | **won 1 of 1, two dead; a second brought him to one hit point and was not finished, the script having left the disarmed arrow on the floor** |
+| **a thirty-fifth, 250-305** | **lost 2 of 2 (at 39% and 61%)** | **won 1 of 3 (lost at 78% and 28%)** | **won 2 of 3, two dead each win** | **won 1 of 3, two dead; in the other two Ganon disarmed the thief and the script never took the arrow up again -- one left him at one hit point, unfinished, the other at 41% with three dead** |
 
 A pair of the very best can still sometimes win, at a cost; three or four
-win most fights and lose members doing it; nobody wins alone. Every
+win most fights and lose members doing it; nobody wins alone. Ganon's
+DISARM matters now that the fight is longer: the arrow-bearer must GET and
+WIELD it again at once (and a second arrow in the group is worth more). Every
 fireball stays at or under about 152 through sanctuary, so none reads
 UNSPEAKABLE. The tool was a scratch script beside `ganon_group.py`; to
 repeat it, plant a synced file as `plant()` there does for synthetic
