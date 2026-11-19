@@ -39210,3 +39210,9 @@
 1795090331	laid	-	0	0	-	1002	component	88	a vial of green slime	3728	school.are	scatter
 1795090333	cmd	Alaric	57	2497	dresden.are	standing	100	1	-	changes		What is new, newest first: // 2026-11-18 //   Gohma's eye now says which bow finishes her: Hyrule's short bow, from Level	-	+
 1795090374	laid	-	0	0	-	1003	herb	42	a marjoram plant	4527	dresden.are	scatter
+1795090429	laid	-	0	0	-	1004	component	68	a gorgon's horn	7567	astral.are	scatter
+1795090439	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1795090441	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1795090442	sightings	Alaric	57	2497	dresden.are	mob	201:1/0/0 4458:1/0/0 2435:2/0/0 2434:1/0/0 4446:1/0/0 4450:1/0/0 4452:1/0/0 7005:2/0/0 7203:4/0/0 7201:1/0/0 7200:1/0/0 25114:1/0/0 25100:1/0/0 25112:1/0/0 25111:5/0/0 25105:1/0/0 2005:5/0/0 2006:2/0/0 2017:1/0/0 2007:3/1/0 2011:2/0/0
+1795090442	sightings	Alaric	57	2497	dresden.are	item	25102:1/0
+1795090442	session	Alaric	57	2497	dresden.are	quit	175s	+0 levels	+0 exp	+216117660 copper	1 kills	0 deaths	1 quests	63 commands	0 refused	coin: loot 33g 68s 64c, quests 215p 78g 7s 96c	spent on: none	exp: none
