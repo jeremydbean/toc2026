@@ -319421,3 +319421,8 @@ Thu Nov 19 14:43:18 2026 :: Treasure goblin: vanished from room 13499 (Blackened
 Thu Nov 19 14:45:06 2026 :: Connection guard: refused 1 connection from 5.161.194.92 (paused; 6 refused in all, pause 3 this week, 831 minutes left).
 Thu Nov 19 14:50:10 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 2 of 6 in 6 hours).
 Thu Nov 19 14:53:23 2026 :: Treasure goblin: vanished from room 28141 (The Battle Field, azeroth.are) (too long in one area).
+Thu Nov 19 14:54:05 2026 :: Connection guard: 172.58.123.1 closed without a word (an MSSP poll; not counted).
+Thu Nov 19 14:55:13 2026 :: Connection guard: refused 1 connection from 178.156.189.113 (paused; 15 refused in all, pause 4 this week, 1977 minutes left).
+Thu Nov 19 14:56:21 2026 :: Sock.sinaddr:  172.58.123.1
+Thu Nov 19 14:56:21 2026 :: Loading Ravagger's playerfile
+Thu Nov 19 14:56:21 2026 :: Closing link to Ravagger.
