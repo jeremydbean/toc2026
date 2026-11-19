@@ -319612,3 +319612,4 @@ Thu Nov 19 19:24:25 2026 :: Connection guard: refused 1 connection from 3.133.22
 Thu Nov 19 19:25:50 2026 :: Connection guard: last hour 11 closed without a word, 2 refused, 0 new characters refused, 1 newly paused; 9 addresses paused and 0 refused now, 14 active player addresses.
 Thu Nov 19 19:29:30 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 5 of 6 in 6 hours).
 Thu Nov 19 19:34:05 2026 :: Treasure goblin: vanished from room 19123 (Common Seating, rome.are) (too long in one area).
+Thu Nov 19 19:34:36 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 1 of 6 in 6 hours).
