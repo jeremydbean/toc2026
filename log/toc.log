@@ -319230,3 +319230,130 @@ Thu Nov 19 12:04:07 2026 :: Trentlin has quit.
 Thu Nov 19 12:04:07 2026 :: [QUIT] Player rejoined the real world.
 Thu Nov 19 12:07:16 2026 :: Black market: the dealer left the world from room 17132 (A path uphill, highland.are).
 Thu Nov 19 12:07:51 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 31 refused in all, pause 4 this week, 1637 minutes left).
+Thu Nov 19 12:10:17 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Thu Nov 19 12:11:06 2026 :: Sock.sinaddr:  208.126.22.104
+Thu Nov 19 12:11:06 2026 :: Loading Alaric's playerfile
+Thu Nov 19 12:11:07 2026 :: Loading Alaric's playerfile
+Thu Nov 19 12:11:07 2026 :: Alaric@208.126.22.104 has connected.
+Thu Nov 19 12:11:07 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 0
+Thu Nov 19 12:11:11 2026 :: Log Alaric [2497]: aq re
+Thu Nov 19 12:11:11 2026 :: Log Alaric [2497]: quest assigned: kill a skeleton (mob 2007, level 11) in catacomb.are, 6 minutes, rush
+Thu Nov 19 12:11:14 2026 :: Log Alaric [2497]: enter door
+Thu Nov 19 12:11:14 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Thu Nov 19 12:11:14 2026 :: Log Alaric [2401]: north
+Thu Nov 19 12:11:14 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Thu Nov 19 12:11:15 2026 :: Log Alaric [2402]: north
+Thu Nov 19 12:11:15 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Thu Nov 19 12:11:15 2026 :: Log Alaric [2415]: east
+Thu Nov 19 12:11:15 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Thu Nov 19 12:11:15 2026 :: Log Alaric [2485]: east
+Thu Nov 19 12:11:15 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2485
+Thu Nov 19 12:11:15 2026 :: Log Alaric [2486]: east
+Thu Nov 19 12:11:15 2026 :: Log Alaric [2487]: arrived (Market Plaza.) from 2486
+Thu Nov 19 12:11:16 2026 :: Log Alaric [2487]: east
+Thu Nov 19 12:11:16 2026 :: Log Alaric [2509]: arrived (Dark Alley.) from 2487
+Thu Nov 19 12:11:16 2026 :: Log Alaric [2509]: north
+Thu Nov 19 12:11:16 2026 :: Log Alaric [2508]: arrived (Dark Alley.) from 2509
+Thu Nov 19 12:11:16 2026 :: Log Alaric [2508]: east
+Thu Nov 19 12:11:16 2026 :: Log Alaric [2507]: arrived (Dark Alley.) from 2508
+Thu Nov 19 12:11:16 2026 :: Log Alaric [2507]: north
+Thu Nov 19 12:11:16 2026 :: Log Alaric [2505]: arrived (Dark Alley.) from 2507
+Thu Nov 19 12:11:17 2026 :: Log Alaric [2505]: north
+Thu Nov 19 12:11:17 2026 :: Log Alaric [2506]: arrived (Dead End.) from 2505
+Thu Nov 19 12:11:17 2026 :: Log Alaric [2506]: open down
+Thu Nov 19 12:11:17 2026 :: Log Alaric [2506]: down
+Thu Nov 19 12:11:17 2026 :: Log Alaric [7030]: arrived (The Quadruple Junction Under the Garbage) from 2506
+Thu Nov 19 12:11:17 2026 :: Log Alaric [7030]: west
+Thu Nov 19 12:11:17 2026 :: Log Alaric [7022]: arrived (The odd room with smooth walls) from 7030
+Thu Nov 19 12:11:18 2026 :: Log Alaric [7022]: down
+Thu Nov 19 12:11:18 2026 :: Log Alaric [7112]: arrived (An odd intersection) from 7022
+Thu Nov 19 12:11:18 2026 :: Log Alaric [7112]: north
+Thu Nov 19 12:11:18 2026 :: Log Alaric [7111]: arrived (The southwestern corner of the ledge) from 7112
+Thu Nov 19 12:11:18 2026 :: Log Alaric [7111]: east
+Thu Nov 19 12:11:18 2026 :: Log Alaric [7115]: arrived (The Broad ledge) from 7111
+Thu Nov 19 12:11:18 2026 :: Log Alaric [7115]: south
+Thu Nov 19 12:11:18 2026 :: Log Alaric [7129]: arrived (The sewer line.) from 7115
+Thu Nov 19 12:11:19 2026 :: Log Alaric [7129]: down
+Thu Nov 19 12:11:19 2026 :: Log Alaric [7221]: arrived (The sewer drain.) from 7129
+Thu Nov 19 12:11:19 2026 :: Log Alaric [7221]: west
+Thu Nov 19 12:11:19 2026 :: Log Alaric [7220]: arrived (A boring drain.) from 7221
+Thu Nov 19 12:11:19 2026 :: Log Alaric [7220]: north
+Thu Nov 19 12:11:19 2026 :: Log Alaric [7219]: arrived (A dry sewer drain.) from 7220
+Thu Nov 19 12:11:19 2026 :: Log Alaric [7219]: east
+Thu Nov 19 12:11:19 2026 :: Log Alaric [7217]: arrived (The half-dry drain.) from 7219
+Thu Nov 19 12:11:20 2026 :: Log Alaric [7217]: north
+Thu Nov 19 12:11:20 2026 :: Log Alaric [7216]: arrived (Under water in the sewer.) from 7217
+Thu Nov 19 12:11:20 2026 :: Log Alaric [7216]: north
+Thu Nov 19 12:11:20 2026 :: Log Alaric [7215]: arrived (The half-wet drain.) from 7216
+Thu Nov 19 12:11:20 2026 :: Log Alaric [7215]: north
+Thu Nov 19 12:11:20 2026 :: Log Alaric [7210]: arrived (The four-way junction.) from 7215
+Thu Nov 19 12:11:20 2026 :: Log Alaric [7210]: west
+Thu Nov 19 12:11:20 2026 :: Log Alaric [7209]: arrived (The crawlway.) from 7210
+Thu Nov 19 12:11:21 2026 :: Log Alaric [7209]: west
+Thu Nov 19 12:11:21 2026 :: Log Alaric [7208]: arrived (The lair entrance.) from 7209
+Thu Nov 19 12:11:21 2026 :: Log Alaric [7208]: open north
+Thu Nov 19 12:11:21 2026 :: Log Alaric [7208]: north
+Thu Nov 19 12:11:21 2026 :: Log Alaric [7204]: arrived (The Lair) from 7208
+Thu Nov 19 12:11:21 2026 :: Log Alaric [7204]: north
+Thu Nov 19 12:11:21 2026 :: Log Alaric [7203]: arrived (The Lair) from 7204
+Thu Nov 19 12:11:22 2026 :: Log Alaric [7203]: north
+Thu Nov 19 12:11:22 2026 :: Log Alaric [7202]: arrived (The Lair) from 7203
+Thu Nov 19 12:11:22 2026 :: Log Alaric [7202]: open north
+Thu Nov 19 12:11:22 2026 :: Log Alaric [7202]: north
+Thu Nov 19 12:11:22 2026 :: Log Alaric [7201]: arrived (The inner Lair) from 7202
+Thu Nov 19 12:11:22 2026 :: Log Alaric [7201]: down
+Thu Nov 19 12:11:22 2026 :: Log Alaric [25171]: arrived (The climb up.) from 7201
+Thu Nov 19 12:11:23 2026 :: Log Alaric [25171]: down
+Thu Nov 19 12:11:23 2026 :: Log Alaric [25170]: arrived (The end of the sloping passage.) from 25171
+Thu Nov 19 12:11:23 2026 :: Log Alaric [25170]: east
+Thu Nov 19 12:11:23 2026 :: Log Alaric [25169]: arrived (The slope steepens.) from 25170
+Thu Nov 19 12:11:23 2026 :: Log Alaric [25169]: east
+Thu Nov 19 12:11:23 2026 :: Log Alaric [25168]: arrived (The slope upwards.) from 25169
+Thu Nov 19 12:11:23 2026 :: Log Alaric [25168]: east
+Thu Nov 19 12:11:23 2026 :: Log Alaric [25167]: arrived (The dark passage.) from 25168
+Thu Nov 19 12:11:24 2026 :: Log Alaric [25167]: east
+Thu Nov 19 12:11:24 2026 :: Log Alaric [25166]: arrived (The Intersection.) from 25167
+Thu Nov 19 12:11:24 2026 :: Log Alaric [25166]: south
+Thu Nov 19 12:11:24 2026 :: Log Alaric [25172]: arrived (The passageway.) from 25166
+Thu Nov 19 12:11:24 2026 :: Log Alaric [25172]: south
+Thu Nov 19 12:11:24 2026 :: Log Alaric [25173]: arrived (At the bottom of the waterfall.) from 25172
+Thu Nov 19 12:11:24 2026 :: Log Alaric [25173]: up
+Thu Nov 19 12:11:24 2026 :: Log Alaric [25174]: arrived (A path upwards.) from 25173
+Thu Nov 19 12:11:25 2026 :: Log Alaric [25174]: up
+Thu Nov 19 12:11:25 2026 :: Log Alaric [25175]: arrived (The hole upwards.) from 25174
+Thu Nov 19 12:11:25 2026 :: Log Alaric [25175]: up
+Thu Nov 19 12:11:25 2026 :: Log Alaric [2043]: arrived (Waterfall of mist) from 25175
+Thu Nov 19 12:11:46 2026 :: Log Alaric [2043]: west
+Thu Nov 19 12:11:46 2026 :: Log Alaric [2042]: arrived (Mist cavern) from 2043
+Thu Nov 19 12:11:47 2026 :: Log Alaric [2042]: north
+Thu Nov 19 12:11:47 2026 :: Log Alaric [2033]: arrived (Misty passageway) from 2042
+Thu Nov 19 12:11:47 2026 :: Log Alaric [2033]: north
+Thu Nov 19 12:11:47 2026 :: Log Alaric [2029]: arrived (Very dark caveway) from 2033
+Thu Nov 19 12:11:47 2026 :: Log Alaric [2029]: east
+Thu Nov 19 12:11:47 2026 :: Log Alaric [2030]: arrived (Deep within the catacombs) from 2029
+Thu Nov 19 12:11:47 2026 :: Log Alaric [2030]: east
+Thu Nov 19 12:11:47 2026 :: Log Alaric [2031]: arrived (Very dark cavern) from 2030
+Thu Nov 19 12:11:48 2026 :: Log Alaric [2031]: south
+Thu Nov 19 12:11:48 2026 :: Log Alaric [2034]: arrived (Intersection of caverns) from 2031
+Thu Nov 19 12:11:48 2026 :: Log Alaric [2034]: east
+Thu Nov 19 12:11:48 2026 :: Log Alaric [2035]: arrived (Entrance to the burial grounds) from 2034
+Thu Nov 19 12:11:48 2026 :: Log Alaric [2035]: east
+Thu Nov 19 12:11:48 2026 :: Log Alaric [2036]: arrived (The burial grounds) from 2035
+Thu Nov 19 12:11:48 2026 :: Log Alaric [2036]: east
+Thu Nov 19 12:11:48 2026 :: Log Alaric [2037]: arrived (The burial grounds) from 2036
+Thu Nov 19 12:11:58 2026 :: Log Alaric [2037]: kill sk
+Thu Nov 19 12:11:58 2026 :: Log Alaric [2037]: killed a skeleton
+Thu Nov 19 12:11:58 2026 :: Log Alaric [2037]: coin +68 silver
+Thu Nov 19 12:11:58 2026 :: Log Alaric [2037]: coin +64 copper
+Thu Nov 19 12:11:58 2026 :: Log Alaric [2037]: coin +33 gold
+Thu Nov 19 12:12:04 2026 :: Log Alaric [2037]: recal
+Thu Nov 19 12:12:04 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 2037
+Thu Nov 19 12:12:04 2026 :: Log Alaric [2497]: aq co
+Thu Nov 19 12:12:04 2026 :: Log Alaric [2497]: copper +215780796
+Thu Nov 19 12:12:04 2026 :: Log Alaric [2497]: quest complete: 215p 78g 7s 96c, 30 quest points, rush (streak bonus 10%)
+Thu Nov 19 12:12:04 2026 :: Snapshot of Alaric taken before quest: Alaric.20261119_121204.quest (PRESTORE Alaric to see it).
+Thu Nov 19 12:12:06 2026 :: Log Alaric [2497]: aq ga no
+Thu Nov 19 12:12:08 2026 :: Log Alaric [2497]: score
+Thu Nov 19 12:12:08 2026 :: Treasure goblin: vanished from room 29085 (Engineering Department, korzath1.are) (too long in one area).
+Thu Nov 19 12:12:13 2026 :: Log Alaric [2497]: changes
+Thu Nov 19 12:12:55 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 1 of 6 in 6 hours).
