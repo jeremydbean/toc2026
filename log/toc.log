@@ -319473,3 +319473,22 @@ Thu Nov 19 16:12:08 2026 :: Black market: stock 1795104728: the Flamberge (9921,
 Thu Nov 19 16:12:08 2026 :: Black market: the dealer appeared with 5 items (stock 1795104728), for 39 minutes.
 Thu Nov 19 16:14:00 2026 :: Treasure goblin: vanished from room 24209 (The High Pews, crypt.are) (too long in one area).
 Thu Nov 19 16:16:35 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 16:20:09 2026 :: Black market: the dealer vanished from room 9173 (Lawn northeast of house., dylan.are) (wandering).
+Thu Nov 19 16:21:01 2026 :: Black market: the dealer vanished from room 28107 (Before the Main Gate, azeroth.are) (wandering).
+Thu Nov 19 16:21:40 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 3 of 6 in 6 hours).
+Thu Nov 19 16:21:47 2026 :: Sock.sinaddr:  108.81.26.245
+Thu Nov 19 16:21:47 2026 :: Loading Killuminati's playerfile
+Thu Nov 19 16:21:48 2026 :: Loading Killuminati's playerfile
+Thu Nov 19 16:21:48 2026 :: Killuminati@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Thu Nov 19 16:21:49 2026 :: Log Killuminati [2401]: arrived (Center of Oak Tree Square.) from 0
+Thu Nov 19 16:21:49 2026 :: Log Killuminati [2401]: (refused) killuminati
+Thu Nov 19 16:21:49 2026 :: Log Killuminati [2401]: (refused) killuminati
+Thu Nov 19 16:21:50 2026 :: Log Killuminati [2401]: /
+Thu Nov 19 16:21:54 2026 :: Log Killuminati [2401]: resetpwd (arguments withheld)
+Thu Nov 19 16:22:02 2026 :: Log Killuminati [2401]: resetpwd (arguments withheld)
+Thu Nov 19 16:22:02 2026 :: Loading Ravagger's playerfile
+Thu Nov 19 16:22:02 2026 :: RESETPWD: Killuminati reset password for Ravagger
+Thu Nov 19 16:22:11 2026 :: Log Killuminati [2401]: resetpwd (arguments withheld)
+Thu Nov 19 16:22:11 2026 :: Loading Storock's playerfile
+Thu Nov 19 16:22:11 2026 :: RESETPWD: Killuminati reset password for Storock
+Thu Nov 19 16:22:13 2026 :: Black market: the dealer vanished from room 24305 (The Slide, chess.are) (wandering).

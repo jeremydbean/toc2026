@@ -39216,3 +39216,6 @@
 1795090442	sightings	Alaric	57	2497	dresden.are	mob	201:1/0/0 4458:1/0/0 2435:2/0/0 2434:1/0/0 4446:1/0/0 4450:1/0/0 4452:1/0/0 7005:2/0/0 7203:4/0/0 7201:1/0/0 7200:1/0/0 25114:1/0/0 25100:1/0/0 25112:1/0/0 25111:5/0/0 25105:1/0/0 2005:5/0/0 2006:2/0/0 2017:1/0/0 2007:3/1/0 2011:2/0/0
 1795090442	sightings	Alaric	57	2497	dresden.are	item	25102:1/0
 1795090442	session	Alaric	57	2497	dresden.are	quit	175s	+0 levels	+0 exp	+216117660 copper	1 kills	0 deaths	1 quests	63 commands	0 refused	coin: loot 33g 68s 64c, quests 215p 78g 7s 96c	spent on: none	exp: none
+1795105364	laid	-	0	0	-	1005	herb	50	a head of cabbage	4205	dresden.are	scatter
+1795105364	laid	-	0	0	-	1006	component	73	a roper's tentacle	5646	tarin.are	scatter
+1795105417	laid	-	0	0	-	1007	component	70	a dragon tooth	1374	htower.are	scatter
