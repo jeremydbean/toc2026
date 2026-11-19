@@ -317960,3 +317960,4 @@ Wed Nov 18 23:51:42 2026 :: Connection guard: 178.156.189.113 closed without a w
 Wed Nov 18 23:51:42 2026 :: Connection guard: 178.156.189.113 paused for 48 hours (pause 4 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 178.156.189.113 lifts it.
 Wed Nov 18 23:56:32 2026 :: Treasure goblin: vanished from room 8010 (Junket Way, mega1.are) (too long in one area).
 Wed Nov 18 23:56:47 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 00:01:52 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 5 of 6 in 6 hours).
