@@ -320510,3 +320510,20 @@ Thu Nov 19 22:27:50 2026 :: Automated backup complete.
 Thu Nov 19 22:32:14 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 3 of 6 in 6 hours).
 Thu Nov 19 22:32:25 2026 :: Treasure goblin: vanished from room 3506 (The Miden'nir, midennir.are) (too long in one area).
 Thu Nov 19 22:34:01 2026 :: Black market: the dealer vanished from room 15058 (The Gym, campus.are) (too long in one area).
+Thu Nov 19 22:36:38 2026 :: Connection guard: 165.22.169.88 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 22:36:38 2026 :: Sock.sinaddr:  165.22.169.88
+Thu Nov 19 22:36:40 2026 :: EOF encountered on read.
+Thu Nov 19 22:36:40 2026 :: Connection guard: 165.22.169.88 closed before a password prompt (strike 2 of 6 in 6 hours).
+Thu Nov 19 22:36:40 2026 :: Sock.sinaddr:  165.22.169.88
+Thu Nov 19 22:36:42 2026 :: EOF encountered on read.
+Thu Nov 19 22:36:42 2026 :: Connection guard: 165.22.169.88 closed before a password prompt (strike 3 of 6 in 6 hours).
+Thu Nov 19 22:36:44 2026 :: Connection guard: 165.22.169.88 closed without a word (strike 4 of 6 in 6 hours).
+Thu Nov 19 22:36:44 2026 :: Sock.sinaddr:  165.22.169.88
+Thu Nov 19 22:36:46 2026 :: EOF encountered on read.
+Thu Nov 19 22:36:46 2026 :: Connection guard: 165.22.169.88 closed before a password prompt (strike 5 of 6 in 6 hours).
+Thu Nov 19 22:36:46 2026 :: Sock.sinaddr:  165.22.169.88
+Thu Nov 19 22:36:50 2026 :: EOF encountered on read.
+Thu Nov 19 22:36:50 2026 :: Connection guard: 165.22.169.88 closed before a password prompt (strike 6 of 6 in 6 hours).
+Thu Nov 19 22:36:50 2026 :: Connection guard: 165.22.169.88 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 165.22.169.88 lifts it.
+Thu Nov 19 22:36:52 2026 :: Connection guard: 165.22.169.88 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 22:37:19 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 1 of 6 in 6 hours).
