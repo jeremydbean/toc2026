@@ -318265,3 +318265,5 @@ Thu Nov 19 08:52:32 2026 :: EOF encountered on read.
 Thu Nov 19 08:52:32 2026 :: Connection guard: 161.35.126.52 closed before a password prompt (strike 2 of 6 in 6 hours).
 Thu Nov 19 08:54:57 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 6 of 6 in 6 hours).
 Thu Nov 19 08:54:57 2026 :: Connection guard: 3.212.128.62 paused for 24 hours (pause 3 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 3.212.128.62 lifts it.
+Thu Nov 19 09:00:01 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 30 refused in all, pause 4 this week, 1824 minutes left).
+Thu Nov 19 09:00:40 2026 :: Treasure goblin: vanished from room 6545 (Coal Room, dwarves.are) (too long in one area).
