@@ -319568,3 +319568,6 @@ Thu Nov 19 18:07:16 2026 :: EOF encountered on read.
 Thu Nov 19 18:07:16 2026 :: Connection guard: 78.128.114.22 closed before a password prompt (strike 1 of 6 in 6 hours).
 Thu Nov 19 18:08:13 2026 :: Connection guard: refused 1 connection from 5.161.194.92 (paused; 7 refused in all, pause 3 this week, 628 minutes left).
 Thu Nov 19 18:08:16 2026 :: Connection guard: refused 11 connections from 78.128.114.22 (since the last line; 12 refused in all, pause 1 this week, 359 minutes left).
+Thu Nov 19 18:10:15 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Thu Nov 19 18:13:18 2026 :: Connection guard: refused 1 connection from 52.87.72.16 (paused; 20 refused in all, pause 3 this week, 202 minutes left).
+Thu Nov 19 18:13:28 2026 :: Treasure goblin: vanished from room 2395 (The main living room, mahntor.are) (too long in one area).
