@@ -39431,3 +39431,9 @@
 1795114175	laid	-	0	0	-	1207	herb	41	a sprig of mistletoe	26700	ashen_wastes.are	scatter
 1795114306	laid	-	0	0	-	1208	component	62	a nightmare's hoof clipping	9970	valhalla.are	scatter
 1795114360	laid	-	0	0	-	1209	herb	41	a sprig of mistletoe	8905	grove.are	scatter
+1795114550	census	-	0	0	-	herbs=143/150 components=78/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=10 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795114605	laid	-	0	0	-	1210	herb	53	a huckleberry	10171	glitter.are	scatter
+1795114734	laid	-	0	0	-	1211	herb	52	an asparagus shoot	2470	dresden.are	scatter
+1795114734	laid	-	0	0	-	1212	herb	42	a marjoram plant	2454	dresden.are	scatter
+1795114734	laid	-	0	0	-	1213	component	65	a dragon's scale	6472	sea.are	scatter
+1795114735	cleared	-	0	0	-	1211	herb	52	an asparagus shoot	1	0	scatter	mob 2435	(mobile_update)	0	-
