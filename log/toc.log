@@ -319435,3 +319435,10 @@ Thu Nov 19 15:02:51 2026 :: Loading Ravagger's playerfile
 Thu Nov 19 15:03:00 2026 :: Closing link to Ravagger.
 Thu Nov 19 15:03:02 2026 :: Sock.sinaddr:  172.58.123.1
 Thu Nov 19 15:03:28 2026 :: Treasure goblin: vanished from room 9619 (Nectar of the Gods, newthalo.are) (too long in one area).
+Thu Nov 19 15:05:23 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 4 of 6 in 6 hours).
+Thu Nov 19 15:06:47 2026 :: Loading Derf's playerfile
+Thu Nov 19 15:07:14 2026 :: Loading Ravagger's playerfile
+Thu Nov 19 15:07:34 2026 :: Closing link to Ravagger.
+Thu Nov 19 15:07:37 2026 :: Sock.sinaddr:  172.58.123.1
+Thu Nov 19 15:08:17 2026 :: EOF encountered on read.
+Thu Nov 19 15:08:17 2026 :: Connection guard: 172.58.123.1 closed before a password prompt (the web client; not counted).
