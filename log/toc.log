@@ -320488,3 +320488,6 @@ Thu Nov 19 21:56:41 2026 :: Connection guard: refused 1 connection from 178.156.
 Thu Nov 19 22:01:46 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 3 of 6 in 6 hours).
 Thu Nov 19 22:04:19 2026 :: Treasure goblin: vanished from room 7682 (Yew Forest, ultima.are) (too long in one area).
 Thu Nov 19 22:06:51 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 37 refused in all, pause 4 this week, 1038 minutes left).
+Thu Nov 19 22:10:12 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Thu Nov 19 22:11:56 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 22:14:24 2026 :: Treasure goblin: vanished from room 10002 (Royal Island., glitter.are) (too long in one area).
