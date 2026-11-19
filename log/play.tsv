@@ -39219,3 +39219,9 @@
 1795105364	laid	-	0	0	-	1005	herb	50	a head of cabbage	4205	dresden.are	scatter
 1795105364	laid	-	0	0	-	1006	component	73	a roper's tentacle	5646	tarin.are	scatter
 1795105417	laid	-	0	0	-	1007	component	70	a dragon tooth	1374	htower.are	scatter
+1795105457	laid	-	0	0	-	1008	herb	34	an amaranth plant	4303	dresden.are	scatter
+1795105457	laid	-	0	0	-	1009	herb	45	a sarsaparilla vine	4437	dresden.are	scatter
+1795105550	census	-	0	0	-	herbs=11/150 components=10/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=5 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795105561	laid	-	0	0	-	1010	herb	38	a foxglove flower	9782	newthalo.are	scatter
+1795105561	laid	-	0	0	-	1011	herb	49	a pomegranate	9591	newthalo.are	scatter
+1795105641	laid	-	0	0	-	1012	herb	48	an alfalfa sprout	24589	abyss.are	scatter
