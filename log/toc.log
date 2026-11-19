@@ -318004,3 +318004,8 @@ Thu Nov 19 01:09:17 2026 :: Cartographer: appeared.
 Thu Nov 19 01:10:03 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Thu Nov 19 01:11:33 2026 :: Treasure goblin: vanished from room 1406 (A bend in the hallway, htower.are) (too long in one area).
 Thu Nov 19 01:12:58 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 4 of 6 in 6 hours).
+Thu Nov 19 01:18:02 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 3 of 6 in 6 hours).
+Thu Nov 19 01:21:38 2026 :: Treasure goblin: vanished from room 7598 (At the door, astral.are) (too long in one area).
+Thu Nov 19 01:22:29 2026 :: Sock.sinaddr:  20.15.133.164
+Thu Nov 19 01:22:29 2026 :: EOF encountered on read.
+Thu Nov 19 01:22:29 2026 :: Connection guard: 20.15.133.164 closed before a password prompt (strike 2 of 6 in 6 hours).
