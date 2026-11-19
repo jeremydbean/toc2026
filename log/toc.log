@@ -320527,3 +320527,9 @@ Thu Nov 19 22:36:50 2026 :: Connection guard: 165.22.169.88 closed before a pass
 Thu Nov 19 22:36:50 2026 :: Connection guard: 165.22.169.88 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 165.22.169.88 lifts it.
 Thu Nov 19 22:36:52 2026 :: Connection guard: 165.22.169.88 closed without a word (strike 1 of 6 in 6 hours).
 Thu Nov 19 22:37:19 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 22:40:10 2026 :: Sock.sinaddr:  195.178.110.35
+Thu Nov 19 22:40:10 2026 :: EOF encountered on read.
+Thu Nov 19 22:40:10 2026 :: Connection guard: 195.178.110.35 closed before a password prompt (strike 3 of 6 in 6 hours).
+Thu Nov 19 22:41:22 2026 :: Black market: the dealer left the world from room 605 (Impy Way, ofcol.are).
+Thu Nov 19 22:42:24 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 22:42:30 2026 :: Treasure goblin: vanished from room 13503 (Halls of Judgement, hell.are) (too long in one area).
