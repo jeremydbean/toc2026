@@ -39306,3 +39306,13 @@
 1795108926	laid	-	0	0	-	1088	herb	36	a belladonna plant	9139	dylan.are	scatter
 1795108978	laid	-	0	0	-	1089	herb	38	a foxglove flower	5327	mirror.are	scatter
 1795109039	laid	-	0	0	-	1090	herb	42	a marjoram plant	24153	coven.are	scatter
+1795109115	laid	-	0	0	-	1091	herb	45	a sarsaparilla vine	3623	dkforest.are	scatter
+1795109115	laid	-	0	0	-	1092	herb	52	an asparagus shoot	3636	dkforest.are	scatter
+1795109115	laid	-	0	0	-	1093	component	62	a nightmare's hoof clipping	6402	sea.are	scatter
+1795109150	census	-	0	0	-	herbs=69/150 components=36/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=20 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795109191	laid	-	0	0	-	1094	component	86	an inert gelatinous cube	4701	dresden.are	scatter
+1795109249	laid	-	0	0	-	1095	herb	47	a sprig of saffron	9116	dylan.are	scatter
+1795109249	laid	-	0	0	-	1096	herb	53	a huckleberry	9169	dylan.are	scatter
+1795109249	laid	-	0	0	-	1097	component	79	a glass container of cobwebs	5123	drow1.are	scatter
+1795109302	laid	-	0	0	-	1098	herb	46	a juniper berry	9207	canyon.are	scatter
+1795109302	laid	-	0	0	-	1099	herb	41	a sprig of mistletoe	9233	canyon.are	scatter
