@@ -317977,3 +317977,21 @@ Thu Nov 19 00:37:46 2026 :: Connection guard: 64.113.5.73 closed without a word 
 Thu Nov 19 00:39:55 2026 :: Treasure goblin: vanished from room 5222 (The tapestry stand, oldthalo.are) (too long in one area).
 Thu Nov 19 00:42:32 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 3 of 6 in 6 hours).
 Thu Nov 19 00:47:38 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 2 of 6 in 6 hours).
+Thu Nov 19 00:48:04 2026 :: Connection guard: 151.243.11.132 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 00:51:12 2026 :: Sock.sinaddr:  58.59.233.167
+Thu Nov 19 00:51:12 2026 :: EOF encountered on read.
+Thu Nov 19 00:51:12 2026 :: Connection guard: 58.59.233.167 closed before a password prompt (strike 1 of 6 in 6 hours).
+Thu Nov 19 00:51:14 2026 :: Sock.sinaddr:  118.81.198.237
+Thu Nov 19 00:51:20 2026 :: EOF encountered on read.
+Thu Nov 19 00:51:20 2026 :: Connection guard: 118.81.198.237 closed before a password prompt (strike 1 of 6 in 6 hours).
+Thu Nov 19 00:51:21 2026 :: Connection guard: 223.83.130.197 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 00:51:22 2026 :: Connection guard: 218.203.113.135 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 00:51:23 2026 :: Connection guard: 1.24.16.20 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 00:51:24 2026 :: Connection guard: 1.83.125.185 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 00:51:24 2026 :: Treasure goblin: vanished from room 13082 (Kids Closet., lakes.are) (too long in one area).
+Thu Nov 19 00:51:28 2026 :: Connection guard: 171.12.10.247 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 00:51:28 2026 :: Sock.sinaddr:  182.119.228.164
+Thu Nov 19 00:51:36 2026 :: EOF encountered on read.
+Thu Nov 19 00:51:36 2026 :: Connection guard: 182.119.228.164 closed before a password prompt (strike 1 of 6 in 6 hours).
+Thu Nov 19 00:51:42 2026 :: Connection guard: 220.250.10.191 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 00:52:42 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 3 of 6 in 6 hours).
