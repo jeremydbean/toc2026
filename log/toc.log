@@ -319499,3 +319499,12 @@ Thu Nov 19 16:26:43 2026 :: Connection guard: 178.156.181.172 closed without a w
 Thu Nov 19 16:27:29 2026 :: Black market: the dealer vanished from room 13036 (Northfields, lakes.are) (wandering).
 Thu Nov 19 16:28:21 2026 :: Black market: the dealer vanished from room 8828 (Passageway, kerofk.are) (wandering).
 Thu Nov 19 16:31:48 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 23 refused in all, pause 4 this week, 2413 minutes left).
+Thu Nov 19 16:34:09 2026 :: Treasure goblin: vanished from room 8729 (Intersection, kerofk.are) (too long in one area).
+Thu Nov 19 16:36:53 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 5 of 6 in 6 hours).
+Thu Nov 19 16:37:10 2026 :: Black market: the dealer vanished from room 5243 (A back alley, oldthalo.are) (wandering).
+Thu Nov 19 16:38:31 2026 :: Sock.sinaddr:  104.28.228.83
+Thu Nov 19 16:38:32 2026 :: EOF encountered on read.
+Thu Nov 19 16:38:32 2026 :: Connection guard: 104.28.228.83 closed before a password prompt (strike 1 of 6 in 6 hours).
+Thu Nov 19 16:38:33 2026 :: Sock.sinaddr:  104.28.228.83
+Thu Nov 19 16:38:33 2026 :: EOF encountered on read.
+Thu Nov 19 16:38:33 2026 :: Connection guard: 104.28.228.83 closed before a password prompt (strike 2 of 6 in 6 hours).
