@@ -319571,3 +319571,4 @@ Thu Nov 19 18:08:16 2026 :: Connection guard: refused 11 connections from 78.128
 Thu Nov 19 18:10:15 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Thu Nov 19 18:13:18 2026 :: Connection guard: refused 1 connection from 52.87.72.16 (paused; 20 refused in all, pause 3 this week, 202 minutes left).
 Thu Nov 19 18:13:28 2026 :: Treasure goblin: vanished from room 2395 (The main living room, mahntor.are) (too long in one area).
+Thu Nov 19 18:18:22 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 24 refused in all, pause 4 this week, 2307 minutes left).
