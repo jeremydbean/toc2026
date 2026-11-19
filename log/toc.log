@@ -319498,3 +319498,4 @@ Thu Nov 19 16:25:50 2026 :: Connection guard: last hour 13 closed without a word
 Thu Nov 19 16:26:43 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 1 of 6 in 6 hours).
 Thu Nov 19 16:27:29 2026 :: Black market: the dealer vanished from room 13036 (Northfields, lakes.are) (wandering).
 Thu Nov 19 16:28:21 2026 :: Black market: the dealer vanished from room 8828 (Passageway, kerofk.are) (wandering).
+Thu Nov 19 16:31:48 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 23 refused in all, pause 4 this week, 2413 minutes left).
