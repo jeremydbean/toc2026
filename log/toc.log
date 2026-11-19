@@ -320539,3 +320539,7 @@ Thu Nov 19 22:52:34 2026 :: Treasure goblin: vanished from room 17778 (The Emera
 Thu Nov 19 22:57:38 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 3 of 6 in 6 hours).
 Thu Nov 19 23:02:39 2026 :: Treasure goblin: vanished from room 1503 (A Road in the Village, gnome.are) (too long in one area).
 Thu Nov 19 23:02:42 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 23:07:47 2026 :: Connection guard: refused 1 connection from 3.212.128.62 (paused; 17 refused in all, pause 3 this week, 588 minutes left).
+Thu Nov 19 23:09:17 2026 :: Sock.sinaddr:  3.129.187.38
+Thu Nov 19 23:09:17 2026 :: EOF encountered on read.
+Thu Nov 19 23:09:17 2026 :: Connection guard: 3.129.187.38 closed before a password prompt (strike 1 of 6 in 6 hours).
