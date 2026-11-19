@@ -318132,3 +318132,5 @@ Thu Nov 19 04:12:57 2026 :: Treasure goblin: vanished from room 20175 (Western e
 Thu Nov 19 04:15:43 2026 :: Connection guard: refused 1 connection from 5.161.215.244 (paused; 11 refused in all, pause 3 this week, 928 minutes left).
 Thu Nov 19 04:20:48 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 1 of 6 in 6 hours).
 Thu Nov 19 04:23:01 2026 :: Treasure goblin: vanished from room 13035 (Northfields, lakes.are) (too long in one area).
+Thu Nov 19 04:25:50 2026 :: Connection guard: last hour 25 closed without a word, 84 refused, 0 new characters refused, 2 newly paused; 9 addresses paused and 0 refused now, 14 active player addresses.
+Thu Nov 19 04:25:53 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 4 of 6 in 6 hours).
