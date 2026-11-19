@@ -319583,3 +319583,7 @@ Thu Nov 19 18:21:02 2026 :: Sock.sinaddr:  20.83.36.88
 Thu Nov 19 18:21:02 2026 :: Connection guard: 20.83.36.88 closed before a password prompt (strike 2 of 6 in 6 hours).
 Thu Nov 19 18:23:26 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 4 of 6 in 6 hours).
 Thu Nov 19 18:23:33 2026 :: Treasure goblin: vanished from room 7591 (A hallway, astral.are) (too long in one area).
+Thu Nov 19 18:25:50 2026 :: Connection guard: last hour 8 closed without a word, 18 refused, 0 new characters refused, 1 newly paused; 8 addresses paused and 0 refused now, 14 active player addresses.
+Thu Nov 19 18:27:37 2026 :: Automated backup started.
+Thu Nov 19 18:27:37 2026 :: Automated backup complete.
+Thu Nov 19 18:28:30 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 4 of 6 in 6 hours).
