@@ -39446,3 +39446,6 @@
 1795115222	laid	-	0	0	-	1220	component	79	a glass container of cobwebs	3791	school.are	scatter
 1795115284	laid	-	0	0	-	1221	component	86	an inert gelatinous cube	24508	abyss.are	scatter
 1795115343	laid	-	0	0	-	1222	component	59	a patch of lycanthrope fur	29409	world.are	scatter
+1795115395	laid	-	0	0	-	1223	component	88	a vial of green slime	5841	mid_ruin.are	scatter
+1795115450	census	-	0	0	-	herbs=150/150 components=84/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=14 spotted=0 picked=0 passed=0 cleared=1 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795115469	laid	-	0	0	-	1224	component	60	a rakshasa's claw	1469	htower.are	scatter
