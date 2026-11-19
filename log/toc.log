@@ -319533,3 +319533,4 @@ Thu Nov 19 17:24:43 2026 :: Connection guard: 66.132.172.131 closed without a wo
 Thu Nov 19 17:25:50 2026 :: Connection guard: last hour 15 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 7 addresses paused and 0 refused now, 14 active player addresses.
 Thu Nov 19 17:25:57 2026 :: Cartographer: appeared.
 Thu Nov 19 17:27:37 2026 :: Connection guard: refused 1 connection from 52.87.72.16 (paused; 18 refused in all, pause 3 this week, 248 minutes left).
+Thu Nov 19 17:32:43 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 1 of 6 in 6 hours).
