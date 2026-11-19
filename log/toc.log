@@ -318177,3 +318177,10 @@ Thu Nov 19 05:53:15 2026 :: EOF encountered on read.
 Thu Nov 19 05:53:15 2026 :: Connection guard: 185.177.72.64 closed before a password prompt (strike 3 of 6 in 6 hours).
 Thu Nov 19 05:53:15 2026 :: Sock.sinaddr:  185.177.72.64
 Thu Nov 19 05:53:16 2026 :: Connection guard: 185.177.72.64 closed before a password prompt (strike 4 of 6 in 6 hours).
+Thu Nov 19 05:53:50 2026 :: Connection guard: 185.177.72.64 closed without a word (strike 5 of 6 in 6 hours).
+Thu Nov 19 05:53:50 2026 :: Connection guard: 185.177.72.64 closed without a word (strike 6 of 6 in 6 hours).
+Thu Nov 19 05:53:50 2026 :: Connection guard: 185.177.72.64 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 185.177.72.64 lifts it.
+Thu Nov 19 05:53:51 2026 :: Connection guard: refused 1 connection from 185.177.72.64 (paused; 1 refused in all, pause 1 this week, 360 minutes left).
+Thu Nov 19 05:53:51 2026 :: Connection guard: 185.177.72.64 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 05:56:00 2026 :: Black market: the dealer vanished from room 24330 (The Black Square, chess.are) (wandering).
+Thu Nov 19 05:57:15 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 26 refused in all, pause 4 this week, 2007 minutes left).
