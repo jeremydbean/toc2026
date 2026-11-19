@@ -291,28 +291,29 @@ List spend 274400000 0 heal
 List spend 72500000 0 stash
 End
 Day 2026-11-19
-Played 588
+Played 830
 Level 52 52 0
-Exp 1598 10
-Kills 4
+Exp 2524 20
+Kills 6
 Deaths 0
 Close 0
 Quests 3 196
 Dailies 0 0
-List area 157 0 City of Dresden
+List area 197 0 City of Dresden
 List area 3 0 Plains of the North
-List area 0 0 Continental Drift
+List area 2 0 Continental Drift
 List area 45 0 Rome
-List area 27 0 Miden'nir
-List area 22 0 New Thalos
-List area 85 0 Korzath's Fortress
-List area 197 0 Battleground
+List area 41 0 Miden'nir
+List area 47 0 New Thalos
+List area 148 0 Korzath's Fortress
+List area 295 0 Battleground
 List area 16 0 Thalos
 List area 20 0 Pirate Ship
 List area 16 0 Mob Factory
-List item 1 0 a diamond key
+List item 2 0 a diamond key
 List earn 590557968 0 quests
-List earn 13938439 0 loot
-List spend 86700000 0 heal
+List earn 22744328 0 loot
+List earn 38769706 0 interest
+List spend 122600000 0 heal
 End
 #END
