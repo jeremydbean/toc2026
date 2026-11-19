@@ -318164,3 +318164,16 @@ Thu Nov 19 05:39:06 2026 :: Treasure goblin: vanished from room 5756 (Overgrown 
 Thu Nov 19 05:40:11 2026 :: Cartographer: appeared.
 Thu Nov 19 05:42:02 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 2 of 6 in 6 hours).
 Thu Nov 19 05:47:07 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 05:49:11 2026 :: Treasure goblin: vanished from room 13201 (Gateway to Solace, solace.are) (too long in one area).
+Thu Nov 19 05:52:10 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 3 of 6 in 6 hours).
+Thu Nov 19 05:53:03 2026 :: Black market: stock 1795067583: a steel bracer (4472, level 38, 35p); The Cloak of Merlin (705, level 48, 75p); a spiked mace (7650, level 43, 39p); battle boots (29236, level 53, 860p); lucky clover (9943, level 5, 15g).
+Thu Nov 19 05:53:03 2026 :: Black market: the dealer appeared with 5 items (stock 1795067583), for 29 minutes.
+Thu Nov 19 05:53:13 2026 :: Connection guard: 185.177.72.64 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 05:53:14 2026 :: Sock.sinaddr:  185.177.72.64
+Thu Nov 19 05:53:14 2026 :: EOF encountered on read.
+Thu Nov 19 05:53:14 2026 :: Connection guard: 185.177.72.64 closed before a password prompt (strike 2 of 6 in 6 hours).
+Thu Nov 19 05:53:15 2026 :: Sock.sinaddr:  185.177.72.64
+Thu Nov 19 05:53:15 2026 :: EOF encountered on read.
+Thu Nov 19 05:53:15 2026 :: Connection guard: 185.177.72.64 closed before a password prompt (strike 3 of 6 in 6 hours).
+Thu Nov 19 05:53:15 2026 :: Sock.sinaddr:  185.177.72.64
+Thu Nov 19 05:53:16 2026 :: Connection guard: 185.177.72.64 closed before a password prompt (strike 4 of 6 in 6 hours).
