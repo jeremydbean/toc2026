@@ -319442,3 +319442,6 @@ Thu Nov 19 15:07:34 2026 :: Closing link to Ravagger.
 Thu Nov 19 15:07:37 2026 :: Sock.sinaddr:  172.58.123.1
 Thu Nov 19 15:08:17 2026 :: EOF encountered on read.
 Thu Nov 19 15:08:17 2026 :: Connection guard: 172.58.123.1 closed before a password prompt (the web client; not counted).
+Thu Nov 19 15:10:26 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Thu Nov 19 15:10:28 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 15:13:32 2026 :: Treasure goblin: vanished from room 7552 (A grey road, astral.are) (too long in one area).
