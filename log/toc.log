@@ -318124,3 +318124,8 @@ Thu Nov 19 03:55:26 2026 :: Connection guard: 3.12.251.153 closed without a word
 Thu Nov 19 04:00:30 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 5 of 6 in 6 hours).
 Thu Nov 19 04:02:52 2026 :: Treasure goblin: vanished from room 7035 (The sewer pipe bend, sewer.are) (too long in one area).
 Thu Nov 19 04:05:34 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 2 of 6 in 6 hours).
+Thu Nov 19 04:10:17 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Thu Nov 19 04:10:39 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 04:11:36 2026 :: Connection guard: refused 1 connection from 35.214.146.42 (paused; 26 refused in all, pause 1 this week, 322 minutes left).
+Thu Nov 19 04:12:36 2026 :: Connection guard: refused 31 connections from 35.214.146.42 (since the last line; 57 refused in all, pause 1 this week, 321 minutes left).
+Thu Nov 19 04:12:57 2026 :: Treasure goblin: vanished from room 20175 (Western end of the yard, prison.are) (too long in one area).
