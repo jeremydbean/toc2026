@@ -319521,3 +319521,5 @@ Thu Nov 19 16:57:09 2026 :: Connection guard: refused 1 connection from 3.133.22
 Thu Nov 19 17:02:14 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 2 of 6 in 6 hours).
 Thu Nov 19 17:04:23 2026 :: Treasure goblin: vanished from room 4125 (The passage, moria.are) (too long in one area).
 Thu Nov 19 17:07:19 2026 :: Connection guard: 54.167.223.174 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 17:10:27 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Thu Nov 19 17:12:23 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 1 of 6 in 6 hours).
