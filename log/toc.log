@@ -318009,3 +318009,5 @@ Thu Nov 19 01:21:38 2026 :: Treasure goblin: vanished from room 7598 (At the doo
 Thu Nov 19 01:22:29 2026 :: Sock.sinaddr:  20.15.133.164
 Thu Nov 19 01:22:29 2026 :: EOF encountered on read.
 Thu Nov 19 01:22:29 2026 :: Connection guard: 20.15.133.164 closed before a password prompt (strike 2 of 6 in 6 hours).
+Thu Nov 19 01:23:07 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 22 refused in all, pause 4 this week, 2281 minutes left).
+Thu Nov 19 01:25:50 2026 :: Connection guard: last hour 20 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 6 addresses paused and 0 refused now, 14 active player addresses.
