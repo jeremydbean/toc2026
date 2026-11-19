@@ -318101,3 +318101,5 @@ Thu Nov 19 03:32:47 2026 :: Connection guard: refused 1 connection from 35.214.1
 Thu Nov 19 03:32:47 2026 :: Connection guard: 35.214.146.42 closed without a word (strike 1 of 6 in 6 hours).
 Thu Nov 19 03:33:47 2026 :: Connection guard: refused 24 connections from 35.214.146.42 (since the last line; 25 refused in all, pause 1 this week, 359 minutes left).
 Thu Nov 19 03:35:11 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 03:40:15 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 4 of 6 in 6 hours).
+Thu Nov 19 03:42:43 2026 :: Treasure goblin: vanished from room 706 (A Fork in the Dirty Trail, camelot.are) (too long in one area).
