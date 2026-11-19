@@ -39243,3 +39243,14 @@
 1795106220	laid	-	0	0	-	1028	herb	39	a chervil leaf	12021	froboz.are	scatter
 1795106292	laid	-	0	0	-	1029	herb	34	an amaranth plant	9413	mobfact.are	scatter
 1795106292	laid	-	0	0	-	1030	component	61	a mummy's wrapping	13066	lakes.are	scatter
+1795106349	laid	-	0	0	-	1031	herb	45	a sarsaparilla vine	15026	campus.are	scatter
+1795106349	laid	-	0	0	-	1032	herb	48	an alfalfa sprout	15132	campus.are	scatter
+1795106349	laid	-	0	0	-	1033	component	80	a glass encased wing of a fairy	7523	astral.are	scatter
+1795106450	census	-	0	0	-	herbs=30/150 components=15/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=24 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795106461	laid	-	0	0	-	1034	herb	44	a sprig of aconite	17700	landoz.are	scatter
+1795106461	laid	-	0	0	-	1035	herb	38	a foxglove flower	17729	landoz.are	scatter
+1795106520	laid	-	0	0	-	1036	component	68	a gorgon's horn	2553	limbo.are	scatter
+1795106563	laid	-	0	0	-	1037	herb	38	a foxglove flower	13063	lakes.are	scatter
+1795106563	laid	-	0	0	-	1038	herb	45	a sarsaparilla vine	13068	lakes.are	scatter
+1795106608	laid	-	0	0	-	1039	herb	45	a sarsaparilla vine	7874	valley.are	scatter
+1795106608	laid	-	0	0	-	1040	component	69	a basilisks tongue	9704	newthalo.are	scatter

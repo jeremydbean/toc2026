@@ -319508,3 +319508,5 @@ Thu Nov 19 16:38:32 2026 :: Connection guard: 104.28.228.83 closed before a pass
 Thu Nov 19 16:38:33 2026 :: Sock.sinaddr:  104.28.228.83
 Thu Nov 19 16:38:33 2026 :: EOF encountered on read.
 Thu Nov 19 16:38:33 2026 :: Connection guard: 104.28.228.83 closed before a password prompt (strike 2 of 6 in 6 hours).
+Thu Nov 19 16:40:08 2026 :: Connection guard: 195.178.110.204 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 19 16:41:58 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 4 of 6 in 6 hours).
