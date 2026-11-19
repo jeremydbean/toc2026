@@ -318226,3 +318226,5 @@ Thu Nov 19 07:10:14 2026 :: Connection guard: 23.31.96.97 closed without a word 
 Thu Nov 19 07:13:27 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 2 of 6 in 6 hours).
 Thu Nov 19 07:18:32 2026 :: Connection guard: refused 1 connection from 52.87.72.16 (paused; 13 refused in all, pause 3 this week, 857 minutes left).
 Thu Nov 19 07:19:53 2026 :: Treasure goblin: vanished from room 7442 (The northern end of the pool, sewer.are) (too long in one area).
+Thu Nov 19 07:23:36 2026 :: Connection guard: 5.161.177.47 closed without a word (strike 4 of 6 in 6 hours).
+Thu Nov 19 07:25:50 2026 :: Connection guard: last hour 10 closed without a word, 5 refused, 0 new characters refused, 0 newly paused; 11 addresses paused and 0 refused now, 14 active player addresses.
