@@ -320478,3 +320478,6 @@ Thu Nov 19 21:30:34 2026 :: Connection guard: 20.81.42.64 closed before a passwo
 Thu Nov 19 21:31:20 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 2 of 6 in 6 hours).
 Thu Nov 19 21:34:05 2026 :: Treasure goblin: vanished from room 646 (Swiftest Way, ofcol.are) (too long in one area).
 Thu Nov 19 21:36:26 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 2 of 6 in 6 hours).
+Thu Nov 19 21:41:30 2026 :: Connection guard: 54.167.223.174 closed without a word (strike 6 of 6 in 6 hours).
+Thu Nov 19 21:41:30 2026 :: Connection guard: 54.167.223.174 paused for 48 hours (pause 4 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 54.167.223.174 lifts it.
+Thu Nov 19 21:44:10 2026 :: Treasure goblin: vanished from room 1579 (The Jail Cell, gnome.are) (too long in one area).
