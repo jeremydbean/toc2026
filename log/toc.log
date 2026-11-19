@@ -319572,3 +319572,14 @@ Thu Nov 19 18:10:15 2026 :: Connection guard: 23.31.96.97 closed without a word 
 Thu Nov 19 18:13:18 2026 :: Connection guard: refused 1 connection from 52.87.72.16 (paused; 20 refused in all, pause 3 this week, 202 minutes left).
 Thu Nov 19 18:13:28 2026 :: Treasure goblin: vanished from room 2395 (The main living room, mahntor.are) (too long in one area).
 Thu Nov 19 18:18:22 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 24 refused in all, pause 4 this week, 2307 minutes left).
+Thu Nov 19 18:19:25 2026 :: Sock.sinaddr:  201.182.156.55
+Thu Nov 19 18:19:25 2026 :: EOF encountered on read.
+Thu Nov 19 18:19:25 2026 :: Connection guard: 201.182.156.55 closed before a password prompt (strike 1 of 6 in 6 hours).
+Thu Nov 19 18:19:26 2026 :: Connection guard: 201.182.156.55 closed without a word (strike 2 of 6 in 6 hours).
+Thu Nov 19 18:21:01 2026 :: Sock.sinaddr:  20.83.36.88
+Thu Nov 19 18:21:02 2026 :: EOF encountered on read.
+Thu Nov 19 18:21:02 2026 :: Connection guard: 20.83.36.88 closed before a password prompt (strike 1 of 6 in 6 hours).
+Thu Nov 19 18:21:02 2026 :: Sock.sinaddr:  20.83.36.88
+Thu Nov 19 18:21:02 2026 :: Connection guard: 20.83.36.88 closed before a password prompt (strike 2 of 6 in 6 hours).
+Thu Nov 19 18:23:26 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 4 of 6 in 6 hours).
+Thu Nov 19 18:23:33 2026 :: Treasure goblin: vanished from room 7591 (A hallway, astral.are) (too long in one area).
