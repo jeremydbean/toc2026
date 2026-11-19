@@ -5403,3 +5403,6 @@
 1795112750	wizinfo	60	Connection guard: last hour 8 closed without a word, 18 refused, 0 new characters refused, 1 newly paused; 8 addresses paused and 0 refused now, 14 active player addresses.
 1795115655	wizinfo	60	Connection guard: 178.156.187.238 paused for 12 hours (pause 2 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 178.156.187.238 lifts it.
 1795116350	wizinfo	60	Connection guard: last hour 11 closed without a word, 2 refused, 0 new characters refused, 1 newly paused; 9 addresses paused and 0 refused now, 14 active player addresses.
+1795118886	wizinfo	60	Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+1795118887	wizinfo	52	Trentlin has entered the game.
+1795118908	wizinfo	65	Trentlin has been touched by an angel.
