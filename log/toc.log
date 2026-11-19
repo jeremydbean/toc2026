@@ -318282,3 +318282,4 @@ Thu Nov 19 09:35:34 2026 :: Connection guard: 34.198.201.66 closed without a wor
 Thu Nov 19 09:40:30 2026 :: Connection guard: 195.178.110.204 closed without a word (strike 1 of 6 in 6 hours).
 Thu Nov 19 09:40:39 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 3 of 6 in 6 hours).
 Thu Nov 19 09:40:58 2026 :: Treasure goblin: vanished from room 24330 (The Black Square, chess.are) (too long in one area).
+Thu Nov 19 09:45:44 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 20 refused in all, pause 4 this week, 2820 minutes left).
