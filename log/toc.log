@@ -318677,3 +318677,532 @@ Thu Nov 19 11:58:24 2026 :: Log Trentlin [29204]: arrived (Twist in the Maze) fr
 Thu Nov 19 11:58:31 2026 :: Log Trentlin [29204]: k cl
 Thu Nov 19 11:58:35 2026 :: Log Trentlin [29204]: fists
 Thu Nov 19 11:58:42 2026 :: Log Trentlin [29204]: fists
+Thu Nov 19 11:58:53 2026 :: Log Trentlin [29204]: flee
+Thu Nov 19 11:58:55 2026 :: Log Trentlin [29204]: e
+Thu Nov 19 11:58:55 2026 :: Log Trentlin [29203]: arrived (Passage to the Maze) from 29204
+Thu Nov 19 11:58:55 2026 :: Log Trentlin [29203]: e
+Thu Nov 19 11:58:55 2026 :: Log Trentlin [29202]: arrived (Hall of Past Heroes) from 29203
+Thu Nov 19 11:58:55 2026 :: Log Trentlin [29202]: e
+Thu Nov 19 11:58:56 2026 :: Log Trentlin [29202]: s
+Thu Nov 19 11:58:56 2026 :: Log Trentlin [29201]: arrived (Heroes Hall) from 29202
+Thu Nov 19 11:58:56 2026 :: Log Trentlin [29201]: s
+Thu Nov 19 11:58:56 2026 :: Log Trentlin [29004]: arrived (Center Tunnelway) from 29201
+Thu Nov 19 11:58:57 2026 :: Log Trentlin [29004]: s
+Thu Nov 19 11:58:57 2026 :: Log Trentlin [29003]: arrived (Grand Foyer) from 29004
+Thu Nov 19 11:58:57 2026 :: Log Trentlin [29003]: s
+Thu Nov 19 11:58:57 2026 :: Log Trentlin [29002]: arrived (Inside Korzath's Private Fortress) from 29003
+Thu Nov 19 11:58:57 2026 :: Log Trentlin [29002]: reca
+Thu Nov 19 11:58:57 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 29002
+Thu Nov 19 11:58:58 2026 :: Log Trentlin [4207]: w
+Thu Nov 19 11:58:58 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Thu Nov 19 11:59:00 2026 :: Log Trentlin [4208]: heal heal
+Thu Nov 19 11:59:00 2026 :: Log Trentlin [4208]: gold -500
+Thu Nov 19 11:59:00 2026 :: Log Trentlin [4208]: gold -500
+Thu Nov 19 11:59:00 2026 :: Log Trentlin [4208]: gold -500
+Thu Nov 19 11:59:00 2026 :: Log Trentlin [4208]: gold -500
+Thu Nov 19 11:59:00 2026 :: Log Trentlin [4208]: gold -500
+Thu Nov 19 11:59:00 2026 :: Log Trentlin [4208]: gold -500
+Thu Nov 19 11:59:00 2026 :: Log Trentlin [4208]: gold -500
+Thu Nov 19 11:59:05 2026 :: Log Trentlin [4208]: east
+Thu Nov 19 11:59:05 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Thu Nov 19 11:59:05 2026 :: Log Trentlin [4207]: east
+Thu Nov 19 11:59:05 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Thu Nov 19 11:59:06 2026 :: Log Trentlin [4202]: east
+Thu Nov 19 11:59:06 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Thu Nov 19 11:59:06 2026 :: Log Trentlin [4201]: north
+Thu Nov 19 11:59:06 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 4201
+Thu Nov 19 11:59:06 2026 :: Log Trentlin [2433]: east
+Thu Nov 19 11:59:06 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2433
+Thu Nov 19 11:59:06 2026 :: Log Trentlin [2405]: east
+Thu Nov 19 11:59:06 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2405
+Thu Nov 19 11:59:07 2026 :: Log Trentlin [2401]: east
+Thu Nov 19 11:59:07 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Thu Nov 19 11:59:07 2026 :: Log Trentlin [2403]: east
+Thu Nov 19 11:59:07 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Thu Nov 19 11:59:07 2026 :: Log Trentlin [2420]: east
+Thu Nov 19 11:59:07 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Thu Nov 19 11:59:07 2026 :: Log Trentlin [2421]: east
+Thu Nov 19 11:59:07 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2421
+Thu Nov 19 11:59:07 2026 :: Black market: the dealer vanished from room 25028 (Inside the Keep, mountain.are) (too long in one area).
+Thu Nov 19 11:59:08 2026 :: Log Trentlin [2422]: east
+Thu Nov 19 11:59:08 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2422
+Thu Nov 19 11:59:08 2026 :: Log Trentlin [2423]: east
+Thu Nov 19 11:59:08 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2423
+Thu Nov 19 11:59:08 2026 :: Log Trentlin [2424]: east
+Thu Nov 19 11:59:08 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Thu Nov 19 11:59:08 2026 :: Log Trentlin [2425]: east
+Thu Nov 19 11:59:08 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Thu Nov 19 11:59:09 2026 :: Log Trentlin [2426]: open east
+Thu Nov 19 11:59:09 2026 :: Log Trentlin [2426]: east
+Thu Nov 19 11:59:09 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Thu Nov 19 11:59:09 2026 :: Log Trentlin [2440]: east
+Thu Nov 19 11:59:09 2026 :: Log Trentlin [3503]: arrived (City Entrance) from 2440
+Thu Nov 19 11:59:09 2026 :: Log Trentlin [3503]: east
+Thu Nov 19 11:59:09 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 3503
+Thu Nov 19 11:59:10 2026 :: Log Trentlin [3502]: east
+Thu Nov 19 11:59:10 2026 :: Log Trentlin [3525]: arrived (Along the Eastern Road) from 3502
+Thu Nov 19 11:59:10 2026 :: Log Trentlin [3525]: east
+Thu Nov 19 11:59:10 2026 :: Log Trentlin [3526]: arrived (Along the Eastern Road) from 3525
+Thu Nov 19 11:59:10 2026 :: Log Trentlin [3526]: east
+Thu Nov 19 11:59:10 2026 :: Log Trentlin [3527]: arrived (The Checkpoint) from 3526
+Thu Nov 19 11:59:10 2026 :: Log Trentlin [3527]: east
+Thu Nov 19 11:59:10 2026 :: Log Trentlin [3528]: arrived (Along the Eastern Road) from 3527
+Thu Nov 19 11:59:11 2026 :: Log Trentlin [3528]: east
+Thu Nov 19 11:59:11 2026 :: Log Trentlin [3529]: arrived (Along the Eastern Road) from 3528
+Thu Nov 19 11:59:11 2026 :: Log Trentlin [3529]: east
+Thu Nov 19 11:59:11 2026 :: Log Trentlin [3530]: arrived (Near the Sands of Sorrow) from 3529
+Thu Nov 19 11:59:11 2026 :: Log Trentlin [3530]: east
+Thu Nov 19 11:59:11 2026 :: Log Trentlin [3531]: arrived (Near the Sands of Sorrow) from 3530
+Thu Nov 19 11:59:11 2026 :: Log Trentlin [3531]: east
+Thu Nov 19 11:59:11 2026 :: Log Trentlin [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Thu Nov 19 11:59:12 2026 :: Log Trentlin [3532]: east
+Thu Nov 19 11:59:12 2026 :: Log Trentlin [42]: arrived (On the Outskirts of New Thalos) from 3532
+Thu Nov 19 11:59:12 2026 :: Log Trentlin [42]: east
+Thu Nov 19 11:59:12 2026 :: Log Trentlin [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Thu Nov 19 11:59:12 2026 :: Log Trentlin [9669]: east
+Thu Nov 19 11:59:12 2026 :: Log Trentlin [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Thu Nov 19 11:59:12 2026 :: Log Trentlin [9523]: east
+Thu Nov 19 11:59:12 2026 :: Log Trentlin [9524]: arrived (West Main Street) from 9523
+Thu Nov 19 11:59:13 2026 :: Log Trentlin [9524]: east
+Thu Nov 19 11:59:13 2026 :: Log Trentlin [9525]: arrived (West Main Street) from 9524
+Thu Nov 19 11:59:13 2026 :: Log Trentlin [9525]: east
+Thu Nov 19 11:59:13 2026 :: Log Trentlin [9526]: arrived (West Main Street) from 9525
+Thu Nov 19 11:59:13 2026 :: Log Trentlin [9526]: east
+Thu Nov 19 11:59:13 2026 :: Log Trentlin [9509]: arrived (The Western Market Square) from 9526
+Thu Nov 19 11:59:13 2026 :: Log Trentlin [9509]: north
+Thu Nov 19 11:59:13 2026 :: Log Trentlin [9514]: arrived (The Northwestern Market Square) from 9509
+Thu Nov 19 11:59:14 2026 :: Log Trentlin [9514]: east
+Thu Nov 19 11:59:14 2026 :: Log Trentlin [9515]: arrived (The Northern Market Square) from 9514
+Thu Nov 19 11:59:14 2026 :: Log Trentlin [9515]: north
+Thu Nov 19 11:59:14 2026 :: Log Trentlin [9518]: arrived (Sultan's Walk) from 9515
+Thu Nov 19 11:59:14 2026 :: Log Trentlin [9518]: north
+Thu Nov 19 11:59:14 2026 :: Log Trentlin [9519]: arrived (Sultan's Walk) from 9518
+Thu Nov 19 11:59:14 2026 :: Log Trentlin [9519]: north
+Thu Nov 19 11:59:14 2026 :: Log Trentlin [9520]: arrived (Sultan's Walk) from 9519
+Thu Nov 19 11:59:15 2026 :: Log Trentlin [9520]: north
+Thu Nov 19 11:59:15 2026 :: Log Trentlin [9521]: arrived (Sultan's Walk) from 9520
+Thu Nov 19 11:59:15 2026 :: Log Trentlin [9521]: north
+Thu Nov 19 11:59:15 2026 :: Log Trentlin [9522]: arrived (Inside the Northern Gate of New Thalos) from 9521
+Thu Nov 19 11:59:15 2026 :: Log Trentlin [9522]: north
+Thu Nov 19 11:59:15 2026 :: Log Trentlin [9667]: arrived (Outside the Northern Gate of New Thalos) from 9522
+Thu Nov 19 11:59:15 2026 :: Log Trentlin [9667]: north
+Thu Nov 19 11:59:15 2026 :: Log Trentlin [9781]: arrived (On the Plains) from 9667
+Thu Nov 19 11:59:16 2026 :: Log Trentlin [9781]: north
+Thu Nov 19 11:59:16 2026 :: Log Trentlin [9782]: arrived (On the Plains) from 9781
+Thu Nov 19 11:59:16 2026 :: Log Trentlin [9782]: north
+Thu Nov 19 11:59:16 2026 :: Log Trentlin [9783]: arrived (Edge of the forest) from 9782
+Thu Nov 19 11:59:16 2026 :: Log Trentlin [9783]: north
+Thu Nov 19 11:59:16 2026 :: Log Trentlin [64]: arrived (Misty Clearing) from 9783
+Thu Nov 19 11:59:16 2026 :: Log Trentlin [64]: north
+Thu Nov 19 11:59:16 2026 :: Log Trentlin [29001]: arrived (Entrance to the Fortress) from 64
+Thu Nov 19 11:59:18 2026 :: Log Trentlin [29001]: n
+Thu Nov 19 11:59:18 2026 :: Log Trentlin [29002]: arrived (Inside Korzath's Private Fortress) from 29001
+Thu Nov 19 11:59:18 2026 :: Log Trentlin [29002]: n
+Thu Nov 19 11:59:18 2026 :: Log Trentlin [29003]: arrived (Grand Foyer) from 29002
+Thu Nov 19 11:59:19 2026 :: Log Trentlin [29003]: n
+Thu Nov 19 11:59:19 2026 :: Log Trentlin [29004]: arrived (Center Tunnelway) from 29003
+Thu Nov 19 11:59:19 2026 :: Log Trentlin [29004]: n
+Thu Nov 19 11:59:19 2026 :: Log Trentlin [29201]: arrived (Heroes Hall) from 29004
+Thu Nov 19 11:59:19 2026 :: Log Trentlin [29201]: n
+Thu Nov 19 11:59:19 2026 :: Log Trentlin [29202]: arrived (Hall of Past Heroes) from 29201
+Thu Nov 19 11:59:19 2026 :: Log Trentlin [29202]: n
+Thu Nov 19 11:59:20 2026 :: Log Trentlin [29202]: n
+Thu Nov 19 11:59:20 2026 :: Log Trentlin [29202]: w
+Thu Nov 19 11:59:20 2026 :: Log Trentlin [29203]: arrived (Passage to the Maze) from 29202
+Thu Nov 19 11:59:20 2026 :: Log Trentlin [29203]: w
+Thu Nov 19 11:59:20 2026 :: Log Trentlin [29204]: arrived (Twist in the Maze) from 29203
+Thu Nov 19 11:59:21 2026 :: Log Trentlin [29204]: w
+Thu Nov 19 11:59:22 2026 :: Log Trentlin [29204]: sca
+Thu Nov 19 11:59:26 2026 :: Log Trentlin [29204]: s
+Thu Nov 19 11:59:26 2026 :: Log Trentlin [29205]: arrived (Twist in the Maze) from 29204
+Thu Nov 19 11:59:26 2026 :: Log Trentlin [29205]: k cl
+Thu Nov 19 11:59:29 2026 :: Log Trentlin [29205]: flee
+Thu Nov 19 11:59:29 2026 :: Log Trentlin [29205]: flee
+Thu Nov 19 11:59:38 2026 :: Log Trentlin [29205]: flee
+Thu Nov 19 11:59:39 2026 :: Log Trentlin [29205]: flee
+Thu Nov 19 11:59:41 2026 :: Log Trentlin [29205]: sca
+Thu Nov 19 11:59:45 2026 :: Log Trentlin [29205]: i
+Thu Nov 19 11:59:51 2026 :: Log Trentlin [29205]: quaff heart
+Thu Nov 19 11:59:58 2026 :: Log Trentlin [29205]: quaff fairy
+Thu Nov 19 12:00:05 2026 :: Log Trentlin [29205]: i
+Thu Nov 19 12:00:08 2026 :: Log Trentlin [29205]: quaff pink
+Thu Nov 19 12:00:09 2026 :: Log Trentlin [29205]: affects off: iron skin
+Thu Nov 19 12:00:13 2026 :: Log Trentlin [29205]: iron
+Thu Nov 19 12:00:14 2026 :: Log Trentlin [29205]: iron
+Thu Nov 19 12:00:22 2026 :: Log Trentlin [29205]: n
+Thu Nov 19 12:00:22 2026 :: Log Trentlin [29204]: arrived (Twist in the Maze) from 29205
+Thu Nov 19 12:00:23 2026 :: Log Trentlin [29204]: k cl
+Thu Nov 19 12:00:26 2026 :: Log Trentlin [29204]: fists
+Thu Nov 19 12:00:33 2026 :: Log Trentlin [29204]: fists
+Thu Nov 19 12:00:41 2026 :: Log Trentlin [29204]: flee
+Thu Nov 19 12:00:41 2026 :: Log Trentlin [29205]: arrived (Twist in the Maze) from 29204
+Thu Nov 19 12:00:43 2026 :: Log Trentlin [29205]: n
+Thu Nov 19 12:00:43 2026 :: Log Trentlin [29204]: arrived (Twist in the Maze) from 29205
+Thu Nov 19 12:00:43 2026 :: Log Trentlin [29204]: e
+Thu Nov 19 12:00:43 2026 :: Log Trentlin [29203]: arrived (Passage to the Maze) from 29204
+Thu Nov 19 12:00:44 2026 :: Log Trentlin [29203]: e
+Thu Nov 19 12:00:44 2026 :: Log Trentlin [29202]: arrived (Hall of Past Heroes) from 29203
+Thu Nov 19 12:00:45 2026 :: Log Trentlin [29202]: s
+Thu Nov 19 12:00:45 2026 :: Log Trentlin [29201]: arrived (Heroes Hall) from 29202
+Thu Nov 19 12:00:45 2026 :: Log Trentlin [29201]: s
+Thu Nov 19 12:00:45 2026 :: Log Trentlin [29004]: arrived (Center Tunnelway) from 29201
+Thu Nov 19 12:00:46 2026 :: Log Trentlin [29004]: s
+Thu Nov 19 12:00:46 2026 :: Log Trentlin [29003]: arrived (Grand Foyer) from 29004
+Thu Nov 19 12:00:46 2026 :: Log Trentlin [29003]: s
+Thu Nov 19 12:00:46 2026 :: Log Trentlin [29002]: arrived (Inside Korzath's Private Fortress) from 29003
+Thu Nov 19 12:00:46 2026 :: Log Trentlin [29002]: reca
+Thu Nov 19 12:00:46 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 29002
+Thu Nov 19 12:00:47 2026 :: Log Trentlin [4207]: w
+Thu Nov 19 12:00:47 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Thu Nov 19 12:00:50 2026 :: Log Trentlin [4208]: heal heal
+Thu Nov 19 12:00:50 2026 :: Log Trentlin [4208]: gold -500
+Thu Nov 19 12:00:50 2026 :: Log Trentlin [4208]: gold -500
+Thu Nov 19 12:00:50 2026 :: Log Trentlin [4208]: gold -500
+Thu Nov 19 12:00:50 2026 :: Log Trentlin [4208]: gold -500
+Thu Nov 19 12:00:50 2026 :: Log Trentlin [4208]: gold -500
+Thu Nov 19 12:00:50 2026 :: Log Trentlin [4208]: gold -500
+Thu Nov 19 12:00:50 2026 :: Log Trentlin [4208]: gold -500
+Thu Nov 19 12:00:54 2026 :: Log Trentlin [4208]: heal ref
+Thu Nov 19 12:00:54 2026 :: Log Trentlin [4208]: gold -80
+Thu Nov 19 12:00:57 2026 :: Log Trentlin [4208]: where hermie
+Thu Nov 19 12:00:58 2026 :: Log Trentlin [4208]: east
+Thu Nov 19 12:00:58 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Thu Nov 19 12:00:58 2026 :: Log Trentlin [4207]: east
+Thu Nov 19 12:00:58 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Thu Nov 19 12:00:58 2026 :: Log Trentlin [4202]: east
+Thu Nov 19 12:00:58 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Thu Nov 19 12:00:58 2026 :: Log Trentlin [4201]: north
+Thu Nov 19 12:00:58 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 4201
+Thu Nov 19 12:00:59 2026 :: Log Trentlin [2433]: east
+Thu Nov 19 12:00:59 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2433
+Thu Nov 19 12:00:59 2026 :: Log Trentlin [2405]: east
+Thu Nov 19 12:00:59 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2405
+Thu Nov 19 12:00:59 2026 :: Log Trentlin [2401]: east
+Thu Nov 19 12:00:59 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Thu Nov 19 12:00:59 2026 :: Log Trentlin [2403]: east
+Thu Nov 19 12:00:59 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Thu Nov 19 12:01:00 2026 :: Log Trentlin [2420]: east
+Thu Nov 19 12:01:00 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Thu Nov 19 12:01:00 2026 :: Log Trentlin [2421]: east
+Thu Nov 19 12:01:00 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2421
+Thu Nov 19 12:01:00 2026 :: Log Trentlin [2422]: east
+Thu Nov 19 12:01:00 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2422
+Thu Nov 19 12:01:00 2026 :: Log Trentlin [2423]: east
+Thu Nov 19 12:01:00 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2423
+Thu Nov 19 12:01:01 2026 :: Log Trentlin [2424]: east
+Thu Nov 19 12:01:01 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Thu Nov 19 12:01:01 2026 :: Log Trentlin [2425]: east
+Thu Nov 19 12:01:01 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Thu Nov 19 12:01:01 2026 :: Log Trentlin [2426]: east
+Thu Nov 19 12:01:01 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Thu Nov 19 12:01:01 2026 :: Log Trentlin [2440]: east
+Thu Nov 19 12:01:01 2026 :: Log Trentlin [3503]: arrived (City Entrance) from 2440
+Thu Nov 19 12:01:02 2026 :: Log Trentlin [3503]: east
+Thu Nov 19 12:01:02 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 3503
+Thu Nov 19 12:01:02 2026 :: Log Trentlin [3502]: east
+Thu Nov 19 12:01:02 2026 :: Log Trentlin [3525]: arrived (Along the Eastern Road) from 3502
+Thu Nov 19 12:01:02 2026 :: Log Trentlin [3525]: east
+Thu Nov 19 12:01:02 2026 :: Log Trentlin [3526]: arrived (Along the Eastern Road) from 3525
+Thu Nov 19 12:01:02 2026 :: Log Trentlin [3526]: east
+Thu Nov 19 12:01:02 2026 :: Log Trentlin [3527]: arrived (The Checkpoint) from 3526
+Thu Nov 19 12:01:03 2026 :: Log Trentlin [3527]: east
+Thu Nov 19 12:01:03 2026 :: Log Trentlin [3528]: arrived (Along the Eastern Road) from 3527
+Thu Nov 19 12:01:03 2026 :: Log Trentlin [3528]: east
+Thu Nov 19 12:01:03 2026 :: Log Trentlin [3529]: arrived (Along the Eastern Road) from 3528
+Thu Nov 19 12:01:03 2026 :: Log Trentlin [3529]: east
+Thu Nov 19 12:01:03 2026 :: Log Trentlin [3530]: arrived (Near the Sands of Sorrow) from 3529
+Thu Nov 19 12:01:03 2026 :: Log Trentlin [3530]: east
+Thu Nov 19 12:01:03 2026 :: Log Trentlin [3531]: arrived (Near the Sands of Sorrow) from 3530
+Thu Nov 19 12:01:04 2026 :: Log Trentlin [3531]: east
+Thu Nov 19 12:01:04 2026 :: Log Trentlin [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Thu Nov 19 12:01:04 2026 :: Log Trentlin [3532]: east
+Thu Nov 19 12:01:04 2026 :: Log Trentlin [42]: arrived (On the Outskirts of New Thalos) from 3532
+Thu Nov 19 12:01:04 2026 :: Log Trentlin [42]: east
+Thu Nov 19 12:01:04 2026 :: Log Trentlin [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Thu Nov 19 12:01:04 2026 :: Log Trentlin [9669]: east
+Thu Nov 19 12:01:04 2026 :: Log Trentlin [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Thu Nov 19 12:01:05 2026 :: Log Trentlin [9523]: east
+Thu Nov 19 12:01:05 2026 :: Log Trentlin [9524]: arrived (West Main Street) from 9523
+Thu Nov 19 12:01:05 2026 :: Log Trentlin [9524]: east
+Thu Nov 19 12:01:05 2026 :: Log Trentlin [9525]: arrived (West Main Street) from 9524
+Thu Nov 19 12:01:05 2026 :: Log Trentlin [9525]: east
+Thu Nov 19 12:01:05 2026 :: Log Trentlin [9526]: arrived (West Main Street) from 9525
+Thu Nov 19 12:01:05 2026 :: Log Trentlin [9526]: east
+Thu Nov 19 12:01:05 2026 :: Log Trentlin [9509]: arrived (The Western Market Square) from 9526
+Thu Nov 19 12:01:06 2026 :: Log Trentlin [9509]: north
+Thu Nov 19 12:01:06 2026 :: Log Trentlin [9514]: arrived (The Northwestern Market Square) from 9509
+Thu Nov 19 12:01:06 2026 :: Log Trentlin [9514]: east
+Thu Nov 19 12:01:06 2026 :: Log Trentlin [9515]: arrived (The Northern Market Square) from 9514
+Thu Nov 19 12:01:06 2026 :: Log Trentlin [9515]: north
+Thu Nov 19 12:01:06 2026 :: Log Trentlin [9518]: arrived (Sultan's Walk) from 9515
+Thu Nov 19 12:01:06 2026 :: Log Trentlin [9518]: north
+Thu Nov 19 12:01:06 2026 :: Log Trentlin [9519]: arrived (Sultan's Walk) from 9518
+Thu Nov 19 12:01:07 2026 :: Log Trentlin [9519]: north
+Thu Nov 19 12:01:07 2026 :: Log Trentlin [9520]: arrived (Sultan's Walk) from 9519
+Thu Nov 19 12:01:07 2026 :: Log Trentlin [9520]: north
+Thu Nov 19 12:01:07 2026 :: Log Trentlin [9521]: arrived (Sultan's Walk) from 9520
+Thu Nov 19 12:01:07 2026 :: Log Trentlin [9521]: north
+Thu Nov 19 12:01:07 2026 :: Log Trentlin [9522]: arrived (Inside the Northern Gate of New Thalos) from 9521
+Thu Nov 19 12:01:07 2026 :: Log Trentlin [9522]: open north
+Thu Nov 19 12:01:08 2026 :: Log Trentlin [9522]: north
+Thu Nov 19 12:01:08 2026 :: Log Trentlin [9667]: arrived (Outside the Northern Gate of New Thalos) from 9522
+Thu Nov 19 12:01:08 2026 :: Log Trentlin [9667]: north
+Thu Nov 19 12:01:08 2026 :: Log Trentlin [9781]: arrived (On the Plains) from 9667
+Thu Nov 19 12:01:08 2026 :: Log Trentlin [9781]: north
+Thu Nov 19 12:01:08 2026 :: Log Trentlin [9782]: arrived (On the Plains) from 9781
+Thu Nov 19 12:01:08 2026 :: Log Trentlin [9782]: north
+Thu Nov 19 12:01:08 2026 :: Log Trentlin [9783]: arrived (Edge of the forest) from 9782
+Thu Nov 19 12:01:09 2026 :: Log Trentlin [9783]: north
+Thu Nov 19 12:01:09 2026 :: Log Trentlin [64]: arrived (Misty Clearing) from 9783
+Thu Nov 19 12:01:09 2026 :: Log Trentlin [64]: north
+Thu Nov 19 12:01:09 2026 :: Log Trentlin [29001]: arrived (Entrance to the Fortress) from 64
+Thu Nov 19 12:01:10 2026 :: Log Trentlin [29001]: n
+Thu Nov 19 12:01:10 2026 :: Log Trentlin [29002]: arrived (Inside Korzath's Private Fortress) from 29001
+Thu Nov 19 12:01:10 2026 :: Log Trentlin [29002]: n
+Thu Nov 19 12:01:10 2026 :: Log Trentlin [29003]: arrived (Grand Foyer) from 29002
+Thu Nov 19 12:01:10 2026 :: Log Trentlin [29003]: n
+Thu Nov 19 12:01:10 2026 :: Log Trentlin [29004]: arrived (Center Tunnelway) from 29003
+Thu Nov 19 12:01:11 2026 :: Log Trentlin [29004]: n
+Thu Nov 19 12:01:11 2026 :: Log Trentlin [29004]: n
+Thu Nov 19 12:01:13 2026 :: Log Trentlin [29004]: get key
+Thu Nov 19 12:01:16 2026 :: Log Trentlin [29004]: unlock n
+Thu Nov 19 12:01:17 2026 :: Log Trentlin [29004]: open n
+Thu Nov 19 12:01:17 2026 :: Log Trentlin [29004]: n
+Thu Nov 19 12:01:17 2026 :: Log Trentlin [29201]: arrived (Heroes Hall) from 29004
+Thu Nov 19 12:01:18 2026 :: Log Trentlin [29201]: n
+Thu Nov 19 12:01:18 2026 :: Log Trentlin [29202]: arrived (Hall of Past Heroes) from 29201
+Thu Nov 19 12:01:18 2026 :: Log Trentlin [29202]: n
+Thu Nov 19 12:01:18 2026 :: Log Trentlin [29202]: n
+Thu Nov 19 12:01:19 2026 :: Log Trentlin [29202]: sca
+Thu Nov 19 12:01:21 2026 :: Log Trentlin [29202]: w
+Thu Nov 19 12:01:21 2026 :: Log Trentlin [29203]: arrived (Passage to the Maze) from 29202
+Thu Nov 19 12:01:22 2026 :: Log Trentlin [29203]: w
+Thu Nov 19 12:01:22 2026 :: Log Trentlin [29204]: arrived (Twist in the Maze) from 29203
+Thu Nov 19 12:01:23 2026 :: Log Trentlin [29204]: k cl
+Thu Nov 19 12:01:24 2026 :: Black market: the dealer vanished from room 2242 (The path continues, draconia.are) (wandering).
+Thu Nov 19 12:01:26 2026 :: Log Trentlin [29204]: fists
+Thu Nov 19 12:01:33 2026 :: Log Trentlin [29204]: fists
+Thu Nov 19 12:01:39 2026 :: Log Trentlin [29204]: fists
+Thu Nov 19 12:01:39 2026 :: Log Trentlin [29204]: killed a killer clown
+Thu Nov 19 12:01:39 2026 :: Log Trentlin [29204]: coin +5 platinum
+Thu Nov 19 12:01:39 2026 :: Log Trentlin [29204]: coin +23 silver
+Thu Nov 19 12:01:39 2026 :: Log Trentlin [29204]: coin +31 copper
+Thu Nov 19 12:01:39 2026 :: Log Trentlin [29204]: coin +13 gold
+Thu Nov 19 12:01:49 2026 :: Log Trentlin [29204]: l in co
+Thu Nov 19 12:01:50 2026 :: Log Trentlin [29204]: sac co
+Thu Nov 19 12:01:50 2026 :: Log Trentlin [29204]: coin +118 copper
+Thu Nov 19 12:01:50 2026 :: Log Trentlin [29204]: sca
+Thu Nov 19 12:01:52 2026 :: Log Trentlin [29204]: s
+Thu Nov 19 12:01:52 2026 :: Log Trentlin [29205]: arrived (Twist in the Maze) from 29204
+Thu Nov 19 12:01:56 2026 :: Log Trentlin [29205]: fists
+Thu Nov 19 12:02:04 2026 :: Log Trentlin [29205]: fists
+Thu Nov 19 12:02:04 2026 :: Treasure goblin: vanished from room 6554 (Bottom of mineshaft, dwarves.are) (too long in one area).
+Thu Nov 19 12:02:10 2026 :: Log Trentlin [29205]: fists
+Thu Nov 19 12:02:17 2026 :: Log Trentlin [29205]: killed a killer clown
+Thu Nov 19 12:02:17 2026 :: Log Trentlin [29205]: coin +5 platinum
+Thu Nov 19 12:02:17 2026 :: Log Trentlin [29205]: coin +23 silver
+Thu Nov 19 12:02:17 2026 :: Log Trentlin [29205]: coin +31 copper
+Thu Nov 19 12:02:17 2026 :: Log Trentlin [29205]: coin +13 gold
+Thu Nov 19 12:02:17 2026 :: Log Trentlin [29205]: fists
+Thu Nov 19 12:02:19 2026 :: Log Trentlin [29205]: sac co
+Thu Nov 19 12:02:19 2026 :: Log Trentlin [29205]: coin +118 copper
+Thu Nov 19 12:02:19 2026 :: Log Trentlin [29205]: n
+Thu Nov 19 12:02:19 2026 :: Log Trentlin [29204]: arrived (Twist in the Maze) from 29205
+Thu Nov 19 12:02:19 2026 :: Log Trentlin [29204]: n
+Thu Nov 19 12:02:20 2026 :: Log Trentlin [29204]: n
+Thu Nov 19 12:02:21 2026 :: Log Trentlin [29204]: e
+Thu Nov 19 12:02:21 2026 :: Log Trentlin [29203]: arrived (Passage to the Maze) from 29204
+Thu Nov 19 12:02:21 2026 :: Log Trentlin [29203]: e
+Thu Nov 19 12:02:21 2026 :: Log Trentlin [29202]: arrived (Hall of Past Heroes) from 29203
+Thu Nov 19 12:02:21 2026 :: Log Trentlin [29202]: e
+Thu Nov 19 12:02:21 2026 :: Log Trentlin [29202]: s
+Thu Nov 19 12:02:21 2026 :: Log Trentlin [29201]: arrived (Heroes Hall) from 29202
+Thu Nov 19 12:02:22 2026 :: Log Trentlin [29201]: s
+Thu Nov 19 12:02:22 2026 :: Log Trentlin [29004]: arrived (Center Tunnelway) from 29201
+Thu Nov 19 12:02:22 2026 :: Log Trentlin [29004]: s
+Thu Nov 19 12:02:22 2026 :: Log Trentlin [29003]: arrived (Grand Foyer) from 29004
+Thu Nov 19 12:02:22 2026 :: Log Trentlin [29003]: s
+Thu Nov 19 12:02:22 2026 :: Log Trentlin [29002]: arrived (Inside Korzath's Private Fortress) from 29003
+Thu Nov 19 12:02:22 2026 :: Log Trentlin [29002]: s
+Thu Nov 19 12:02:22 2026 :: Log Trentlin [29001]: arrived (Entrance to the Fortress) from 29002
+Thu Nov 19 12:02:23 2026 :: Log Trentlin [29001]: s
+Thu Nov 19 12:02:23 2026 :: Log Trentlin [64]: arrived (Misty Clearing) from 29001
+Thu Nov 19 12:02:23 2026 :: Log Trentlin [64]: s
+Thu Nov 19 12:02:23 2026 :: Log Trentlin [9783]: arrived (Edge of the forest) from 64
+Thu Nov 19 12:02:24 2026 :: Log Trentlin [9783]: s
+Thu Nov 19 12:02:24 2026 :: Log Trentlin [9782]: arrived (On the Plains) from 9783
+Thu Nov 19 12:02:24 2026 :: Log Trentlin [9782]: s
+Thu Nov 19 12:02:24 2026 :: Log Trentlin [9781]: arrived (On the Plains) from 9782
+Thu Nov 19 12:02:24 2026 :: Log Trentlin [9781]: s
+Thu Nov 19 12:02:24 2026 :: Log Trentlin [9667]: arrived (Outside the Northern Gate of New Thalos) from 9781
+Thu Nov 19 12:02:24 2026 :: Log Trentlin [9667]: s
+Thu Nov 19 12:02:24 2026 :: Log Trentlin [9522]: arrived (Inside the Northern Gate of New Thalos) from 9667
+Thu Nov 19 12:02:25 2026 :: Log Trentlin [9522]: s
+Thu Nov 19 12:02:25 2026 :: Log Trentlin [9521]: arrived (Sultan's Walk) from 9522
+Thu Nov 19 12:02:25 2026 :: Log Trentlin [9521]: s
+Thu Nov 19 12:02:25 2026 :: Log Trentlin [9520]: arrived (Sultan's Walk) from 9521
+Thu Nov 19 12:02:25 2026 :: Log Trentlin [9520]: s
+Thu Nov 19 12:02:25 2026 :: Log Trentlin [9519]: arrived (Sultan's Walk) from 9520
+Thu Nov 19 12:02:25 2026 :: Log Trentlin [9519]: s
+Thu Nov 19 12:02:25 2026 :: Log Trentlin [9518]: arrived (Sultan's Walk) from 9519
+Thu Nov 19 12:02:26 2026 :: Log Trentlin [9518]: s
+Thu Nov 19 12:02:26 2026 :: Log Trentlin [9515]: arrived (The Northern Market Square) from 9518
+Thu Nov 19 12:02:26 2026 :: Log Trentlin [9515]: s
+Thu Nov 19 12:02:26 2026 :: Log Trentlin [9506]: arrived (The Center of Market Square) from 9515
+Thu Nov 19 12:02:28 2026 :: Log Trentlin [9506]: r w
+Thu Nov 19 12:02:28 2026 :: Log Trentlin [9509]: arrived (The Western Market Square) from 9506
+Thu Nov 19 12:02:28 2026 :: Log Trentlin [9526]: arrived (West Main Street) from 9509
+Thu Nov 19 12:02:28 2026 :: Log Trentlin [9525]: arrived (West Main Street) from 9526
+Thu Nov 19 12:02:28 2026 :: Log Trentlin [9524]: arrived (West Main Street) from 9525
+Thu Nov 19 12:02:28 2026 :: Log Trentlin [9523]: arrived (Inside the West Gate of New Thalos) from 9524
+Thu Nov 19 12:02:29 2026 :: Log Trentlin [9523]: wake
+Thu Nov 19 12:02:30 2026 :: Log Trentlin [9523]: open west
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [9523]: r w
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [9669]: arrived (Outside the West Gate of New Thalos) from 9523
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [42]: arrived (On the Outskirts of New Thalos) from 9669
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [3532]: arrived (On the Outskirts of New Thalos) from 42
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [3531]: arrived (Near the Sands of Sorrow) from 3532
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [3530]: arrived (Near the Sands of Sorrow) from 3531
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [3529]: arrived (Along the Eastern Road) from 3530
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [3528]: arrived (Along the Eastern Road) from 3529
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [3527]: arrived (The Checkpoint) from 3528
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [3526]: arrived (Along the Eastern Road) from 3527
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [3525]: arrived (Along the Eastern Road) from 3526
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 3525
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [3503]: arrived (City Entrance) from 3502
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 3503
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2440
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2426
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2425
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2424
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2423
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2422
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2421
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2420
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2403
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2401
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 2405
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [2434]: arrived (Temple Boulevard.) from 2433
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [2435]: arrived (Temple Boulevard.) from 2434
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [2436]: arrived (Temple Boulevard.) from 2435
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [2437]: arrived (Temple Boulevard.) from 2436
+Thu Nov 19 12:02:31 2026 :: Log Trentlin [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Thu Nov 19 12:02:32 2026 :: Log Trentlin [2438]: wake
+Thu Nov 19 12:02:34 2026 :: Log Trentlin [2438]: open wests
+Thu Nov 19 12:02:34 2026 :: Log Trentlin [2438]: w
+Thu Nov 19 12:02:34 2026 :: Log Trentlin [2438]: w
+Thu Nov 19 12:02:35 2026 :: Log Trentlin [2438]: w
+Thu Nov 19 12:02:39 2026 :: Log Trentlin [2438]: e
+Thu Nov 19 12:02:39 2026 :: Log Trentlin [2437]: arrived (Temple Boulevard.) from 2438
+Thu Nov 19 12:02:39 2026 :: Log Trentlin [2437]: e
+Thu Nov 19 12:02:39 2026 :: Log Trentlin [2436]: arrived (Temple Boulevard.) from 2437
+Thu Nov 19 12:02:39 2026 :: Log Trentlin [2436]: e
+Thu Nov 19 12:02:39 2026 :: Log Trentlin [2435]: arrived (Temple Boulevard.) from 2436
+Thu Nov 19 12:02:40 2026 :: Log Trentlin [2435]: e
+Thu Nov 19 12:02:40 2026 :: Log Trentlin [2434]: arrived (Temple Boulevard.) from 2435
+Thu Nov 19 12:02:40 2026 :: Log Trentlin [2434]: e
+Thu Nov 19 12:02:40 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 2434
+Thu Nov 19 12:02:40 2026 :: Log Trentlin [2433]: e
+Thu Nov 19 12:02:40 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2433
+Thu Nov 19 12:02:41 2026 :: Log Trentlin [2405]: e
+Thu Nov 19 12:02:41 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2405
+Thu Nov 19 12:02:42 2026 :: Log Trentlin [2401]: u
+Thu Nov 19 12:02:42 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Thu Nov 19 12:02:42 2026 :: Log Trentlin [2410]: u
+Thu Nov 19 12:02:42 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Thu Nov 19 12:02:42 2026 :: Log Trentlin [2411]: u
+Thu Nov 19 12:02:42 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Thu Nov 19 12:02:42 2026 :: Log Trentlin [2414]: u
+Thu Nov 19 12:02:42 2026 :: Log Trentlin [2497]: arrived (The Questmaster's Globe, above the Oak) from 2414
+Thu Nov 19 12:02:43 2026 :: Log Trentlin [2497]: u
+Thu Nov 19 12:02:45 2026 :: Log Trentlin [2497]: aquest request
+Thu Nov 19 12:02:45 2026 :: Log Trentlin [2497]: quest assigned: kill The lamia (mob 5201, level 9) in oldthalo.are, 6 minutes, rush
+Thu Nov 19 12:02:46 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 3 of 6 in 6 hours).
+Thu Nov 19 12:02:50 2026 :: Log Trentlin [2497]: enter door
+Thu Nov 19 12:02:50 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2497
+Thu Nov 19 12:02:56 2026 :: Log Trentlin [2401]: east
+Thu Nov 19 12:02:56 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Thu Nov 19 12:02:56 2026 :: Log Trentlin [2403]: east
+Thu Nov 19 12:02:56 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Thu Nov 19 12:02:56 2026 :: Log Trentlin [2420]: east
+Thu Nov 19 12:02:56 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Thu Nov 19 12:02:56 2026 :: Log Trentlin [2421]: east
+Thu Nov 19 12:02:56 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2421
+Thu Nov 19 12:02:57 2026 :: Log Trentlin [2422]: east
+Thu Nov 19 12:02:57 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2422
+Thu Nov 19 12:02:57 2026 :: Log Trentlin [2423]: east
+Thu Nov 19 12:02:57 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2423
+Thu Nov 19 12:02:57 2026 :: Log Trentlin [2424]: east
+Thu Nov 19 12:02:57 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Thu Nov 19 12:02:57 2026 :: Log Trentlin [2425]: east
+Thu Nov 19 12:02:57 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Thu Nov 19 12:02:58 2026 :: Log Trentlin [2426]: open east
+Thu Nov 19 12:02:58 2026 :: Log Trentlin [2426]: east
+Thu Nov 19 12:02:58 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Thu Nov 19 12:02:58 2026 :: Log Trentlin [2440]: east
+Thu Nov 19 12:02:58 2026 :: Log Trentlin [3503]: arrived (City Entrance) from 2440
+Thu Nov 19 12:02:58 2026 :: Log Trentlin [3503]: east
+Thu Nov 19 12:02:58 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 3503
+Thu Nov 19 12:02:59 2026 :: Log Trentlin [3502]: south
+Thu Nov 19 12:02:59 2026 :: Log Trentlin [5261]: arrived (The dwarf forest) from 3502
+Thu Nov 19 12:03:01 2026 :: Log Trentlin [5261]: n
+Thu Nov 19 12:03:01 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 5261
+Thu Nov 19 12:03:18 2026 :: Log Trentlin [3502]: s
+Thu Nov 19 12:03:18 2026 :: Log Trentlin [5261]: arrived (The dwarf forest) from 3502
+Thu Nov 19 12:03:19 2026 :: Log Trentlin [5261]: s
+Thu Nov 19 12:03:19 2026 :: Log Trentlin [5260]: arrived (The dwarf forest) from 5261
+Thu Nov 19 12:03:19 2026 :: Log Trentlin [5260]: s
+Thu Nov 19 12:03:19 2026 :: Log Trentlin [5259]: arrived (The dwarf forest) from 5260
+Thu Nov 19 12:03:20 2026 :: Log Trentlin [5259]: s
+Thu Nov 19 12:03:20 2026 :: Log Trentlin [5258]: arrived (The dwarf forest) from 5259
+Thu Nov 19 12:03:20 2026 :: Log Trentlin [5258]: affects off: iron skin, giant strength
+Thu Nov 19 12:03:21 2026 :: Log Trentlin [5258]: w
+Thu Nov 19 12:03:21 2026 :: Log Trentlin [5257]: arrived (A trail at the end of the dwarf forest) from 5258
+Thu Nov 19 12:03:22 2026 :: Log Trentlin [5257]: w
+Thu Nov 19 12:03:22 2026 :: Log Trentlin [5256]: arrived (A trail at the end of the dwarf forest) from 5257
+Thu Nov 19 12:03:22 2026 :: Log Trentlin [5256]: w
+Thu Nov 19 12:03:22 2026 :: Log Trentlin [5200]: arrived (The Grand Gate of Thalos) from 5256
+Thu Nov 19 12:03:22 2026 :: Log Trentlin [5200]: w
+Thu Nov 19 12:03:22 2026 :: Log Trentlin [5201]: arrived (Main Street) from 5200
+Thu Nov 19 12:03:23 2026 :: Log Trentlin [5201]: w
+Thu Nov 19 12:03:23 2026 :: Log Trentlin [5202]: arrived (Main Street) from 5201
+Thu Nov 19 12:03:24 2026 :: Log Trentlin [5202]: w
+Thu Nov 19 12:03:24 2026 :: Log Trentlin [5203]: arrived (A Garden Path) from 5202
+Thu Nov 19 12:03:25 2026 :: Log Trentlin [5203]: sca
+Thu Nov 19 12:03:26 2026 :: Log Trentlin [5203]: n
+Thu Nov 19 12:03:26 2026 :: Log Trentlin [5204]: arrived (A Garden Path) from 5203
+Thu Nov 19 12:03:28 2026 :: Log Trentlin [5204]: k la
+Thu Nov 19 12:03:28 2026 :: Log Trentlin [5204]: killed The lamia
+Thu Nov 19 12:03:28 2026 :: Log Trentlin [5204]: coin +1 silver
+Thu Nov 19 12:03:28 2026 :: Log Trentlin [5204]: coin +1 copper
+Thu Nov 19 12:03:32 2026 :: Log Trentlin [5204]: reca
+Thu Nov 19 12:03:32 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 5204
+Thu Nov 19 12:03:33 2026 :: Log Trentlin [4207]: e
+Thu Nov 19 12:03:33 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Thu Nov 19 12:03:33 2026 :: Log Trentlin [4202]: e
+Thu Nov 19 12:03:33 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Thu Nov 19 12:03:33 2026 :: Log Trentlin [4201]: e
+Thu Nov 19 12:03:33 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Thu Nov 19 12:03:34 2026 :: Log Trentlin [2427]: e
+Thu Nov 19 12:03:34 2026 :: Log Trentlin [2427]: e
+Thu Nov 19 12:03:34 2026 :: Log Trentlin [2427]: e
+Thu Nov 19 12:03:34 2026 :: Log Trentlin [2427]: e
+Thu Nov 19 12:03:35 2026 :: Log Trentlin [2427]: n
+Thu Nov 19 12:03:35 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Thu Nov 19 12:03:35 2026 :: Log Trentlin [2404]: n
+Thu Nov 19 12:03:35 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Thu Nov 19 12:03:35 2026 :: Log Trentlin [2401]: u
+Thu Nov 19 12:03:35 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Thu Nov 19 12:03:35 2026 :: Log Trentlin [2410]: u
+Thu Nov 19 12:03:35 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Thu Nov 19 12:03:36 2026 :: Log Trentlin [2411]: u
+Thu Nov 19 12:03:36 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Thu Nov 19 12:03:36 2026 :: Log Trentlin [2414]: u
+Thu Nov 19 12:03:36 2026 :: Log Trentlin [2497]: arrived (The Questmaster's Globe, above the Oak) from 2414
+Thu Nov 19 12:03:37 2026 :: Log Trentlin [2497]: aquest complete
+Thu Nov 19 12:03:37 2026 :: Log Trentlin [2497]: copper +281218080
+Thu Nov 19 12:03:37 2026 :: Log Trentlin [2497]: quest complete: 281p 21g 80s 80c, 44 quest points, rush (streak bonus 124%)
+Thu Nov 19 12:03:37 2026 :: Snapshot of Trentlin taken before quest: Trentlin.20261119_120337.quest (PRESTORE Trentlin to see it).
+Thu Nov 19 12:03:40 2026 :: Log Trentlin [2497]: aquest gamble yes
+Thu Nov 19 12:03:42 2026 :: Log Trentlin [2497]: reca
+Thu Nov 19 12:03:42 2026 :: Log Trentlin [16057]: arrived (An Intersection Below Deck) from 2497
