@@ -319387,3 +319387,5 @@ Thu Nov 19 13:13:49 2026 :: Connection guard: 178.156.185.127 closed without a w
 Thu Nov 19 13:18:13 2026 :: Connection guard: 93.174.95.106 closed without a word (strike 1 of 6 in 6 hours).
 Thu Nov 19 13:18:54 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 22 refused in all, pause 4 this week, 2606 minutes left).
 Thu Nov 19 13:22:41 2026 :: Treasure goblin: vanished from room 114 (Smurfy Road, smurf.are) (too long in one area).
+Thu Nov 19 13:23:59 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 4 of 6 in 6 hours).
+Thu Nov 19 13:25:50 2026 :: Connection guard: last hour 15 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 7 addresses paused and 0 refused now, 14 active player addresses.
