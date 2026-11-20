@@ -1,9 +1,9 @@
 #DIARY 1
 Day 2026-11-20
-Played 4822
+Played 5148
 Level 3 6 3
-Exp 6331 25
-Kills 22
+Exp 6773 25
+Kills 25
 Deaths 0
 Close 0
 Quests 0 0
@@ -15,14 +15,16 @@ List achv 5 0 Sleepwalker
 List achv 10 0 Your Move
 List achv 5 0 Out of the Nest
 List achv 5 0 Little Blue Trail
+List achv 15 0 No Stone Unturned I
 List skill 32 33 dagger
+List skill 39 40 kick
 List area 2853 0 Mud School
 List area 1091 0 City of Dresden
 List area 18 0 Limbo
 List area 16 0 Continental Drift
 List area 58 0 Training Dummy Yard
 List area 131 0 The Chessboard
-List area 655 0 Smurf Village
+List area 981 0 Smurf Village
 List item 1 0 a pair of sub issue boots
 List item 2 0 a sub issue bracer
 List item 2 0 a pair of sub issue leggings
@@ -36,7 +38,7 @@ List item 1 0 a key
 List item 1 0 a mud school diploma
 List item 1 0 a silver key
 More item 6
-List earn 10109 0 loot
+List earn 10129 0 loot
 List spend 4 0 buy
 List spend 10000 0 other
 End

@@ -41078,3 +41078,95 @@
 1795149884	cmd	Ravagger	6	107	smurf.are	standing	100	0	-	eat	betr	You do not have that item.	-	-
 1795149885	cmd	Ravagger	6	107	smurf.are	standing	100	0	-	eat	ber	You eat A bunch of smurfberries.	-	-
 1795149888	cmd	Ravagger	6	107	smurf.are	standing	100	0	-	look		Smurfy Road //   Oh boy, another smurfy road!  Smurfy Road goes north and south here.  There // is a smurfy, mushroom home to the west.  A beautiful smurfberry patch is to	-	+
+1795149893	cmd	Ravagger	6	129	smurf.are	standing	100	0	-	west		Smurfette's House //   This house is conveniently next to Papa Smurfs.  Makes it easier for Papa // Smurf to sneak over at night.  I hope he uses protection.  I would hate to	-	+
+1795149896	cmd	Ravagger	6	107	smurf.are	standing	100	0	-	east		Smurfy Road //   Oh boy, another smurfy road!  Smurfy Road goes north and south here.  There // is a smurfy, mushroom home to the west.  A beautiful smurfberry patch is to	-	+
+1795149898	cmd	Ravagger	6	116	smurf.are	standing	100	0	-	east		Smurfberry Patch //   Delicious smurfberries grow here.  You could probably eat a year's worth of // smurfberries in one sitting.  Smurfy Road is back to the west.  Another	-	+
+1795149899	cmd	Ravagger	6	117	smurf.are	standing	100	0	-	north		Smurfberry Patch //   Another patch of smurfberries is growing here.  The smell is driving your // nostrils crazy.  It almost, ALMOST, makes you forget all the singing going	-	+
+1795149903	cmd	Ravagger	6	108	smurf.are	standing	100	0	-	west		Smurfy Road //   Smurfy Road continues to smurf here.  It smurfs to the south and smurfs to // an end to the north.  A smurfberry patch is to the east.  A stone path lies	-	+
+1795149906	cmd	Ravagger	6	113	smurf.are	standing	100	0	-	west		Stone Path //   You are walking along a cute little stone path.  To the south lies Papa // Smurf's house.  A Smurfy house is to the west.  Smurfy road is to the east.	-	+
+1795149912	cmd	Ravagger	6	113	smurf.are	standing	100	0	-	consider	pap	Papa Smurf is a little above your level. // Papa Smurf has about as many hit points as you. // Blow for blow, you would need about 32 rounds to bring Papa Smurf down; he would need about 19 rounds for you.	-	+
+1795149924	cmd	Ravagger	6	123	smurf.are	standing	100	0	-	west		Grumpy Smurf's Home //   This is Grumpy Smurf's home.  He is pissed at you.  Of course, he is pissed // at everyone.  So don't take it bad.  Maybe you'd better leave before he really	-	+
+1795149927	cmd	Ravagger	6	123	smurf.are	standing	100	0	-	consider	gr	Grumpy Smurf is a little below your level. // Grumpy Smurf has a fraction of your hit points. // Grumpy Smurf could barely scratch you; you would need about 4 rounds to bring him down.	-	+
+1795149931	cmd	Ravagger	6	123	smurf.are	standing	100	0	-	kill	gr	Your punch misses Grumpy Smurf. // Your punch grazes Grumpy Smurf.	-	-
+1795149934	coin	Ravagger	6	123	smurf.are	+2	loot	kick	corpse of Grumpy Smurf	9440111
+1795149934	coin	Ravagger	6	123	smurf.are	+6	loot	kick	corpse of Grumpy Smurf	9440117
+1795149934	cmd	Ravagger	6	123	smurf.are	fighting	97	2	fight	kick		Your kick scratches Grumpy Smurf. // Grumpy Smurf is DEAD!! // You receive 160 experience points.	-	+
+1795149943	cmd	Ravagger	6	123	smurf.are	standing	97	0	-	look		Grumpy Smurf's Home //   This is Grumpy Smurf's home.  He is pissed at you.  Of course, he is pissed // at everyone.  So don't take it bad.  Maybe you'd better leave before he really	-	+
+1795149943	cmd	Ravagger	6	123	smurf.are	standing	97	0	-	scan		Papa Smurf                         -to the East.	-	-
+1795149945	cmd	Ravagger	6	123	smurf.are	standing	97	0	-	west		Alas, you cannot go that way.	-	-
+1795149947	cmd	Ravagger	6	123	smurf.are	standing	97	0	-	look		Grumpy Smurf's Home //   This is Grumpy Smurf's home.  He is pissed at you.  Of course, he is pissed // at everyone.  So don't take it bad.  Maybe you'd better leave before he really	-	+
+1795149949	cmd	Ravagger	6	113	smurf.are	standing	97	0	-	east		Stone Path //   You are walking along a cute little stone path.  To the south lies Papa // Smurf's house.  A Smurfy house is to the west.  Smurfy road is to the east.	-	+
+1795149952	cmd	Ravagger	6	125	smurf.are	standing	97	0	-	south		Papa Smurf's Home //   It's the home of the leader of the smurfs.  Papa Smurf has a nicely decorated // home.  He takes pride in his work.  You could get to know him or just squash	-	+
+1795149959	cmd	Ravagger	6	125	smurf.are	standing	97	0	-	south		Alas, you cannot go that way.	-	-
+1795149961	cmd	Ravagger	6	113	smurf.are	standing	97	0	-	north		Stone Path //   You are walking along a cute little stone path.  To the south lies Papa // Smurf's house.  A Smurfy house is to the west.  Smurfy road is to the east.	-	+
+1795149966	cmd	Ravagger	6	108	smurf.are	standing	97	0	-	east		Smurfy Road //   Smurfy Road continues to smurf here.  It smurfs to the south and smurfs to // an end to the north.  A smurfberry patch is to the east.  A stone path lies	-	+
+1795149967	cmd	Ravagger	6	109	smurf.are	standing	100	0	-	north		Smurfy Road //   A smurfy well lies here in the middle of Smurfy Road.  A fence separates // the smurfs from harm to the north.  A berry patch is to the east.  Smurfy	-	+
+1795149974	cmd	Ravagger	6	109	smurf.are	standing	100	0	-	consider	sup	Super Smurf is far above your level. // Super Smurf has many times your hit points. // Blow for blow, you would need over a hundred rounds to bring Super Smurf down; he would need a single round for you.	-	+
+1795149999	cmd	Ravagger	6	109	smurf.are	standing	100	0	-	look	sup	Because Goldeneagle really kick the smurf's butt, they asked their big  // brother Super Smurf to take care of this problem. Now Super Smurf comes // to the rescue! (This mob is not intended for lowbies*)	-	+
+1795150011	cmd	Ravagger	6	109	smurf.are	standing	100	0	-	look		Smurfy Road //   A smurfy well lies here in the middle of Smurfy Road.  A fence separates // the smurfs from harm to the north.  A berry patch is to the east.  Smurfy	-	+
+1795150019	cmd	Ravagger	6	109	smurf.are	standing	100	0	-	drink	well	You are no longer thirsty.	-	-
+1795150021	cmd	Ravagger	6	109	smurf.are	standing	100	0	-	drink	well	You are no longer thirsty.	-	-
+1795150022	cmd	Ravagger	6	109	smurf.are	standing	100	0	-	look		Smurfy Road //   A smurfy well lies here in the middle of Smurfy Road.  A fence separates // the smurfs from harm to the north.  A berry patch is to the east.  Smurfy	-	+
+1795150025	cmd	Ravagger	6	114	smurf.are	standing	100	0	-	west		Smurfy Road //   Yet another part of Smurfy Road.  Hey if you go west its the last // section of Smurfy Road.  You can go back to the smurfy well to the east.	-	+
+1795150027	cmd	Ravagger	6	115	smurf.are	standing	100	0	-	west		Smurfy Road //   The last piece of Smurfy Road.  You can go back to Smurfy Road to the east. // A nice, beautiful, smurfy, mushroom home is to the south.  In the distance to	-	+
+1795150032	cmd	Ravagger	6	124	smurf.are	standing	100	0	-	south		Jokey Smurf's Home //   You pull the top off his house and it explodes in your face.  That Jokey // Smurf, what a kidder.  You can hear his laughter as you wipe the ashes off	-	+
+1795150035	cmd	Ravagger	6	124	smurf.are	standing	100	0	-	kill	jo	Your punch grazes Jokey Smurf. // Your punch grazes Jokey Smurf.	-	-
+1795150038	cmd	Ravagger	6	124	smurf.are	fighting	100	0	fight	kick		Your kick misses Jokey Smurf.	-	-
+1795150041	cmd	Ravagger	6	124	smurf.are	fighting	100	0	fight	kick		Your kick misses Jokey Smurf.	-	-
+1795150044	cmd	Ravagger	6	124	smurf.are	fighting	100	0	fight	kick		Your kick misses Jokey Smurf.	-	-
+1795150047	cmd	Ravagger	6	124	smurf.are	fighting	97	0	fight	kick		Your kick misses Jokey Smurf.	-	-
+1795150049	coin	Ravagger	6	124	smurf.are	+2	loot	(violence_update)	corpse of Jokey Smurf	9440119
+1795150049	coin	Ravagger	6	124	smurf.are	+6	loot	(violence_update)	corpse of Jokey Smurf	9440125
+1795150049	cmd	Ravagger	6	124	smurf.are	standing	97	0	-	kick		You aren't fighting anyone.	-	-
+1795150051	cmd	Ravagger	6	124	smurf.are	standing	97	0	-	look		Jokey Smurf's Home //   You pull the top off his house and it explodes in your face.  That Jokey // Smurf, what a kidder.  You can hear his laughter as you wipe the ashes off	-	+
+1795150054	cmd	Ravagger	6	115	smurf.are	standing	97	0	-	north		Smurfy Road //   The last piece of Smurfy Road.  You can go back to Smurfy Road to the east. // A nice, beautiful, smurfy, mushroom home is to the south.  In the distance to	-	+
+1795150055	cmd	Ravagger	6	126	smurf.are	standing	97	0	-	north		Path to Gargamel's Castle //   You are walking along a path to Gargamel's Castle to the North. // Smurfy Road lies to the south.	-	+
+1795150058	cmd	Ravagger	6	127	smurf.are	standing	97	0	-	north		Outside Gargamel's Castle //   You are standing outside Gargamel's Castle.  You can hear him screaming at // Azreal from inside.  You can also him cursing out those wretched smurfs.	-	+
+1795150060	cmd	Ravagger	6	128	smurf.are	standing	97	0	-	north		Gargamel's Castle //   This is Gargamel's Castle.  His big black kettle is in the middle of the room. // Where else would he put it?  The place has only one room.	-	+
+1795150064	cmd	Ravagger	6	128	smurf.are	standing	97	0	-	consider	gar	Gargamel is a little above your level. // Gargamel has about as many hit points as you. // Blow for blow, you would need about 40 rounds to bring Gargamel down; he would need about 18 rounds for you.	-	+
+1795150067	cmd	Ravagger	6	127	smurf.are	standing	97	0	-	south		Outside Gargamel's Castle //   You are standing outside Gargamel's Castle.  You can hear him screaming at // Azreal from inside.  You can also him cursing out those wretched smurfs.	-	+
+1795150068	cmd	Ravagger	6	126	smurf.are	standing	97	0	-	south		Path to Gargamel's Castle //   You are walking along a path to Gargamel's Castle to the North. // Smurfy Road lies to the south.	-	+
+1795150070	cmd	Ravagger	6	115	smurf.are	standing	97	0	-	south		Smurfy Road //   The last piece of Smurfy Road.  You can go back to Smurfy Road to the east. // A nice, beautiful, smurfy, mushroom home is to the south.  In the distance to	-	+
+1795150071	cmd	Ravagger	6	114	smurf.are	standing	97	0	-	east		Smurfy Road //   Yet another part of Smurfy Road.  Hey if you go west its the last // section of Smurfy Road.  You can go back to the smurfy well to the east.	-	+
+1795150073	cmd	Ravagger	6	109	smurf.are	standing	97	0	-	east		Smurfy Road //   A smurfy well lies here in the middle of Smurfy Road.  A fence separates // the smurfs from harm to the north.  A berry patch is to the east.  Smurfy	-	+
+1795150077	achieved	Ravagger	6	118	smurf.are	explored-1	15	55	east
+1795150077	cmd	Ravagger	6	118	smurf.are	standing	97	0	-	east		                    ACHIEVEMENT EARNED // No Stone Unturned I  +15 points // Walk into every room of an area.	-	+
+1795150086	cmd	Ravagger	6	117	smurf.are	standing	97	0	-	south		Smurfberry Patch //   Another patch of smurfberries is growing here.  The smell is driving your // nostrils crazy.  It almost, ALMOST, makes you forget all the singing going	-	+
+1795150086	cmd	Ravagger	6	116	smurf.are	standing	97	0	-	south		Smurfberry Patch //   Delicious smurfberries grow here.  You could probably eat a year's worth of // smurfberries in one sitting.  Smurfy Road is back to the west.  Another	-	+
+1795150088	cmd	Ravagger	6	116	smurf.are	standing	97	0	-	south		Alas, you cannot go that way.	-	-
+1795150089	cmd	Ravagger	6	107	smurf.are	standing	97	0	-	west		Smurfy Road //   Oh boy, another smurfy road!  Smurfy Road goes north and south here.  There // is a smurfy, mushroom home to the west.  A beautiful smurfberry patch is to	-	+
+1795150090	cmd	Ravagger	6	106	smurf.are	standing	100	0	-	south		Smurfy Road //   You continue to travel down Smurfy Road.  Isn't it just smurfy?  Smurfy road // continues its smurfy path to the smurfy north, smurfy west, and smurfy south.	-	+
+1795150091	cmd	Ravagger	6	105	smurf.are	standing	100	0	-	south		Smurfy Road //   You are way too big to be using this road.  But who cares.  Who's gonna stop // you?  These little blue smurfs?  The singing is growing intense.  Your ears	-	+
+1795150092	cmd	Ravagger	6	104	smurf.are	standing	100	0	-	south		Entrance to Smurf Village //   You stand at the entrance to a tiny village.  You can see across the whole // village easily.  Little blue creatures with white hats and boots and little 	-	+
+1795150092	cmd	Ravagger	6	103	smurf.are	standing	100	0	-	south		Dimly Lit Path //   This section of the road is badly worn and frequently traversed.  Singing is // getting stronger to the north.  The path back to the road lies to the south.	-	+
+1795150093	cmd	Ravagger	6	102	smurf.are	standing	100	0	-	south		Dimly Lit Path //   This section of the road is badly worn and frequently traversed.  There is // faint singing to the north.  The path back to the road lies to the south.	-	+
+1795150094	cmd	Ravagger	6	101	smurf.are	standing	100	0	-	south		Dimly Lit Path //   This path is made of crushed granite with curious blue streaks in it. // The path continues north to a village, or south to the eastern road.	-	+
+1795150095	cmd	Ravagger	6	101	smurf.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1795150100	cmd	Ravagger	6	102	smurf.are	standing	100	0	-	north		Dimly Lit Path //   This section of the road is badly worn and frequently traversed.  There is // faint singing to the north.  The path back to the road lies to the south.	-	+
+1795150102	cmd	Ravagger	6	103	smurf.are	standing	100	0	-	north		Dimly Lit Path //   This section of the road is badly worn and frequently traversed.  Singing is // getting stronger to the north.  The path back to the road lies to the south.	-	+
+1795150104	cmd	Ravagger	6	104	smurf.are	standing	100	0	-	north		Entrance to Smurf Village //   You stand at the entrance to a tiny village.  You can see across the whole // village easily.  Little blue creatures with white hats and boots and little 	-	+
+1795150106	cmd	Ravagger	6	105	smurf.are	standing	100	0	-	north		Smurfy Road //   You are way too big to be using this road.  But who cares.  Who's gonna stop // you?  These little blue smurfs?  The singing is growing intense.  Your ears	-	+
+1795150111	area	Ravagger	6	4207	dresden.are	smurf.are	dresden.are	1003	recall
+1795150111	cmd	Ravagger	6	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795150119	cmd	Ravagger	6	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795150121	cmd	Ravagger	6	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795150123	area	Ravagger	6	3700	school.are	dresden.are	school.are	12	up
+1795150123	cmd	Ravagger	6	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795150125	cmd	Ravagger	6	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795150132	cmd	Ravagger	6	3700	school.are	standing	100	0	-	down		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795150136	cmd	Ravagger	6	3783	school.are	standing	100	0	-	east		A Gigantic Clown Head //   Before you is the largest clowns head you have ever seen, with all the // makeup intact, to include the big red painted on mouth.  This appears	-	+
+1795150138	cmd	Ravagger	6	3700	school.are	standing	100	0	-	west		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795150139	area	Ravagger	6	17	connect.are	school.are	connect.are	16	west
+1795150139	cmd	Ravagger	6	17	connect.are	standing	100	0	-	west		An odd sight //   Standing before you is one of the most incredible things you have EVER seen. // A giant berry the likes you have never seen before sits in the middle of this	-	+
+1795150141	area	Ravagger	6	3700	school.are	connect.are	school.are	2	east
+1795150141	cmd	Ravagger	6	3700	school.are	standing	100	0	-	east		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795150145	cmd	Ravagger	6	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795150151	cmd	Ravagger	6	3241	school.are	standing	100	0	-	north		The Train Cafe. //   It has a nice relaxing atmosphere.  Candles burn on the tables and the // bar giving the Cafe its only light.  The tables are spaced moderately	-	+
+1795150153	cmd	Ravagger	6	3241	school.are	standing	100	0	-	list		[Lv Price] Item // [ 1         2c] a slice of cheesecake. // [ 5        16c] a bowl of grits.	-	+
+1795150162	cmd	Ravagger	6	3772	school.are	standing	100	0	-	south		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795150166	cmd	Ravagger	6	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1795150170	cmd	Ravagger	6	3772	school.are	standing	100	0	-	down		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795150175	cmd	Ravagger	6	3241	school.are	standing	100	0	-	north		The Train Cafe. //   It has a nice relaxing atmosphere.  Candles burn on the tables and the // bar giving the Cafe its only light.  The tables are spaced moderately	-	+
+1795150177	cmd	Ravagger	6	3772	school.are	standing	100	0	-	south		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795150180	cmd	Ravagger	6	3773	school.are	standing	100	0	-	east		Newbie Train Still In The Station //   This is the Newbie Train.  The first stop will be the mob factory. // Please find a seat if you can.  If you must stand, please hold on to the	-	+
+1795150182	cmd	Ravagger	6	3773	school.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-

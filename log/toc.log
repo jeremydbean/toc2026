@@ -322031,3 +322031,152 @@ Fri Nov 20 04:44:32 2026 :: Log Ravagger [107]: coin +2 copper
 Fri Nov 20 04:44:44 2026 :: Log Ravagger [107]: eat betr
 Fri Nov 20 04:44:45 2026 :: Log Ravagger [107]: eat ber
 Fri Nov 20 04:44:48 2026 :: Log Ravagger [107]: l
+Fri Nov 20 04:44:53 2026 :: Log Ravagger [107]: w
+Fri Nov 20 04:44:53 2026 :: Log Ravagger [129]: arrived (Smurfette's House) from 107
+Fri Nov 20 04:44:56 2026 :: Log Ravagger [129]: e
+Fri Nov 20 04:44:56 2026 :: Log Ravagger [107]: arrived (Smurfy Road) from 129
+Fri Nov 20 04:44:58 2026 :: Log Ravagger [107]: e
+Fri Nov 20 04:44:58 2026 :: Log Ravagger [116]: arrived (Smurfberry Patch) from 107
+Fri Nov 20 04:44:59 2026 :: Log Ravagger [116]: n
+Fri Nov 20 04:44:59 2026 :: Log Ravagger [117]: arrived (Smurfberry Patch) from 116
+Fri Nov 20 04:45:03 2026 :: Log Ravagger [117]: w
+Fri Nov 20 04:45:03 2026 :: Log Ravagger [108]: arrived (Smurfy Road) from 117
+Fri Nov 20 04:45:06 2026 :: Log Ravagger [108]: w
+Fri Nov 20 04:45:06 2026 :: Log Ravagger [113]: arrived (Stone Path) from 108
+Fri Nov 20 04:45:12 2026 :: Log Ravagger [113]: con pap
+Fri Nov 20 04:45:24 2026 :: Log Ravagger [113]: w
+Fri Nov 20 04:45:24 2026 :: Log Ravagger [123]: arrived (Grumpy Smurf's Home) from 113
+Fri Nov 20 04:45:27 2026 :: Log Ravagger [123]: con gr
+Fri Nov 20 04:45:31 2026 :: Log Ravagger [123]: k gr
+Fri Nov 20 04:45:34 2026 :: Log Ravagger [123]: kick
+Fri Nov 20 04:45:34 2026 :: Log Ravagger [123]: killed Grumpy Smurf
+Fri Nov 20 04:45:34 2026 :: Log Ravagger [123]: coin +2 copper
+Fri Nov 20 04:45:34 2026 :: Log Ravagger [123]: coin +6 copper
+Fri Nov 20 04:45:43 2026 :: Log Ravagger [123]: l
+Fri Nov 20 04:45:43 2026 :: Log Ravagger [123]: sca
+Fri Nov 20 04:45:45 2026 :: Log Ravagger [123]: w
+Fri Nov 20 04:45:45 2026 :: Treasure goblin: vanished from room 688 (The Hall of the DragonLords, ofcol.are) (too long in one area).
+Fri Nov 20 04:45:47 2026 :: Log Ravagger [123]: l
+Fri Nov 20 04:45:49 2026 :: Log Ravagger [123]: e
+Fri Nov 20 04:45:49 2026 :: Log Ravagger [113]: arrived (Stone Path) from 123
+Fri Nov 20 04:45:52 2026 :: Log Ravagger [113]: s
+Fri Nov 20 04:45:52 2026 :: Log Ravagger [125]: arrived (Papa Smurf's Home) from 113
+Fri Nov 20 04:45:59 2026 :: Log Ravagger [125]: s
+Fri Nov 20 04:46:01 2026 :: Log Ravagger [125]: n
+Fri Nov 20 04:46:01 2026 :: Log Ravagger [113]: arrived (Stone Path) from 125
+Fri Nov 20 04:46:06 2026 :: Log Ravagger [113]: e
+Fri Nov 20 04:46:06 2026 :: Log Ravagger [108]: arrived (Smurfy Road) from 113
+Fri Nov 20 04:46:07 2026 :: Log Ravagger [108]: n
+Fri Nov 20 04:46:07 2026 :: Log Ravagger [109]: arrived (Smurfy Road) from 108
+Fri Nov 20 04:46:14 2026 :: Log Ravagger [109]: con sup
+Fri Nov 20 04:46:39 2026 :: Log Ravagger [109]: l sup
+Fri Nov 20 04:46:51 2026 :: Log Ravagger [109]: l
+Fri Nov 20 04:46:59 2026 :: Log Ravagger [109]: drink well
+Fri Nov 20 04:47:01 2026 :: Log Ravagger [109]: drink well
+Fri Nov 20 04:47:02 2026 :: Log Ravagger [109]: l
+Fri Nov 20 04:47:05 2026 :: Log Ravagger [109]: w
+Fri Nov 20 04:47:05 2026 :: Log Ravagger [114]: arrived (Smurfy Road) from 109
+Fri Nov 20 04:47:07 2026 :: Log Ravagger [114]: w
+Fri Nov 20 04:47:07 2026 :: Log Ravagger [115]: arrived (Smurfy Road) from 114
+Fri Nov 20 04:47:12 2026 :: Log Ravagger [115]: s
+Fri Nov 20 04:47:12 2026 :: Log Ravagger [124]: arrived (Jokey Smurf's Home) from 115
+Fri Nov 20 04:47:15 2026 :: Log Ravagger [124]: k jo
+Fri Nov 20 04:47:18 2026 :: Log Ravagger [124]: kick
+Fri Nov 20 04:47:21 2026 :: Log Ravagger [124]: kick
+Fri Nov 20 04:47:24 2026 :: Log Ravagger [124]: kick
+Fri Nov 20 04:47:27 2026 :: Log Ravagger [124]: kick
+Fri Nov 20 04:47:29 2026 :: Log Ravagger [124]: killed Jokey Smurf
+Fri Nov 20 04:47:29 2026 :: Log Ravagger [124]: coin +2 copper
+Fri Nov 20 04:47:29 2026 :: Log Ravagger [124]: coin +6 copper
+Fri Nov 20 04:47:29 2026 :: Log Ravagger [124]: kick
+Fri Nov 20 04:47:31 2026 :: Log Ravagger [124]: l
+Fri Nov 20 04:47:34 2026 :: Log Ravagger [124]: n
+Fri Nov 20 04:47:34 2026 :: Log Ravagger [115]: arrived (Smurfy Road) from 124
+Fri Nov 20 04:47:35 2026 :: Log Ravagger [115]: n
+Fri Nov 20 04:47:35 2026 :: Log Ravagger [126]: arrived (Path to Gargamel's Castle) from 115
+Fri Nov 20 04:47:38 2026 :: Log Ravagger [126]: n
+Fri Nov 20 04:47:38 2026 :: Log Ravagger [127]: arrived (Outside Gargamel's Castle) from 126
+Fri Nov 20 04:47:40 2026 :: Log Ravagger [127]: n
+Fri Nov 20 04:47:40 2026 :: Log Ravagger [128]: arrived (Gargamel's Castle) from 127
+Fri Nov 20 04:47:44 2026 :: Log Ravagger [128]: con gar
+Fri Nov 20 04:47:47 2026 :: Log Ravagger [128]: s
+Fri Nov 20 04:47:47 2026 :: Log Ravagger [127]: arrived (Outside Gargamel's Castle) from 128
+Fri Nov 20 04:47:48 2026 :: Log Ravagger [127]: s
+Fri Nov 20 04:47:48 2026 :: Log Ravagger [126]: arrived (Path to Gargamel's Castle) from 127
+Fri Nov 20 04:47:50 2026 :: Log Ravagger [126]: s
+Fri Nov 20 04:47:50 2026 :: Log Ravagger [115]: arrived (Smurfy Road) from 126
+Fri Nov 20 04:47:51 2026 :: Log Ravagger [115]: e
+Fri Nov 20 04:47:51 2026 :: Log Ravagger [114]: arrived (Smurfy Road) from 115
+Fri Nov 20 04:47:53 2026 :: Log Ravagger [114]: e
+Fri Nov 20 04:47:53 2026 :: Log Ravagger [109]: arrived (Smurfy Road) from 114
+Fri Nov 20 04:47:57 2026 :: Log Ravagger [109]: e
+Fri Nov 20 04:47:57 2026 :: Log Ravagger [118]: arrived (Smurfberry Patch) from 109
+Fri Nov 20 04:47:59 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 20 04:48:06 2026 :: Log Ravagger [118]: s
+Fri Nov 20 04:48:06 2026 :: Log Ravagger [117]: arrived (Smurfberry Patch) from 118
+Fri Nov 20 04:48:06 2026 :: Log Ravagger [117]: s
+Fri Nov 20 04:48:06 2026 :: Log Ravagger [116]: arrived (Smurfberry Patch) from 117
+Fri Nov 20 04:48:08 2026 :: Log Ravagger [116]: s
+Fri Nov 20 04:48:09 2026 :: Log Ravagger [116]: w
+Fri Nov 20 04:48:09 2026 :: Log Ravagger [107]: arrived (Smurfy Road) from 116
+Fri Nov 20 04:48:10 2026 :: Log Ravagger [107]: s
+Fri Nov 20 04:48:10 2026 :: Log Ravagger [106]: arrived (Smurfy Road) from 107
+Fri Nov 20 04:48:11 2026 :: Log Ravagger [106]: s
+Fri Nov 20 04:48:11 2026 :: Log Ravagger [105]: arrived (Smurfy Road) from 106
+Fri Nov 20 04:48:12 2026 :: Log Ravagger [105]: s
+Fri Nov 20 04:48:12 2026 :: Log Ravagger [104]: arrived (Entrance to Smurf Village) from 105
+Fri Nov 20 04:48:12 2026 :: Log Ravagger [104]: s
+Fri Nov 20 04:48:12 2026 :: Log Ravagger [103]: arrived (Dimly Lit Path) from 104
+Fri Nov 20 04:48:13 2026 :: Log Ravagger [103]: s
+Fri Nov 20 04:48:13 2026 :: Log Ravagger [102]: arrived (Dimly Lit Path) from 103
+Fri Nov 20 04:48:14 2026 :: Log Ravagger [102]: s
+Fri Nov 20 04:48:14 2026 :: Log Ravagger [101]: arrived (Dimly Lit Path) from 102
+Fri Nov 20 04:48:15 2026 :: Log Ravagger [101]: s
+Fri Nov 20 04:48:20 2026 :: Log Ravagger [101]: n
+Fri Nov 20 04:48:20 2026 :: Log Ravagger [102]: arrived (Dimly Lit Path) from 101
+Fri Nov 20 04:48:22 2026 :: Log Ravagger [102]: n
+Fri Nov 20 04:48:22 2026 :: Log Ravagger [103]: arrived (Dimly Lit Path) from 102
+Fri Nov 20 04:48:24 2026 :: Log Ravagger [103]: n
+Fri Nov 20 04:48:24 2026 :: Log Ravagger [104]: arrived (Entrance to Smurf Village) from 103
+Fri Nov 20 04:48:26 2026 :: Log Ravagger [104]: n
+Fri Nov 20 04:48:26 2026 :: Log Ravagger [105]: arrived (Smurfy Road) from 104
+Fri Nov 20 04:48:31 2026 :: Log Ravagger [105]: recall
+Fri Nov 20 04:48:31 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 105
+Fri Nov 20 04:48:39 2026 :: Log Ravagger [4207]: w
+Fri Nov 20 04:48:39 2026 :: Log Ravagger [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Fri Nov 20 04:48:41 2026 :: Log Ravagger [4208]: e
+Fri Nov 20 04:48:41 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4208
+Fri Nov 20 04:48:43 2026 :: Log Ravagger [4207]: u
+Fri Nov 20 04:48:43 2026 :: Log Ravagger [3700]: arrived (Entrance to Mud School) from 4207
+Fri Nov 20 04:48:45 2026 :: Log Ravagger [3700]: u
+Fri Nov 20 04:48:45 2026 :: Log Ravagger [3772]: arrived (Newbie Train Station) from 3700
+Fri Nov 20 04:48:52 2026 :: Log Ravagger [3772]: d
+Fri Nov 20 04:48:52 2026 :: Log Ravagger [3700]: arrived (Entrance to Mud School) from 3772
+Fri Nov 20 04:48:56 2026 :: Log Ravagger [3700]: e
+Fri Nov 20 04:48:56 2026 :: Log Ravagger [3783]: arrived (A Gigantic Clown Head) from 3700
+Fri Nov 20 04:48:58 2026 :: Log Ravagger [3783]: w
+Fri Nov 20 04:48:58 2026 :: Log Ravagger [3700]: arrived (Entrance to Mud School) from 3783
+Fri Nov 20 04:48:59 2026 :: Log Ravagger [3700]: w
+Fri Nov 20 04:48:59 2026 :: Log Ravagger [17]: arrived (An odd sight) from 3700
+Fri Nov 20 04:49:01 2026 :: Log Ravagger [17]: e
+Fri Nov 20 04:49:01 2026 :: Log Ravagger [3700]: arrived (Entrance to Mud School) from 17
+Fri Nov 20 04:49:05 2026 :: Log Ravagger [3700]: u
+Fri Nov 20 04:49:05 2026 :: Log Ravagger [3772]: arrived (Newbie Train Station) from 3700
+Fri Nov 20 04:49:11 2026 :: Log Ravagger [3772]: n
+Fri Nov 20 04:49:11 2026 :: Log Ravagger [3241]: arrived (The Train Cafe.) from 3772
+Fri Nov 20 04:49:13 2026 :: Log Ravagger [3241]: list
+Fri Nov 20 04:49:22 2026 :: Log Ravagger [3241]: s
+Fri Nov 20 04:49:22 2026 :: Log Ravagger [3772]: arrived (Newbie Train Station) from 3241
+Fri Nov 20 04:49:26 2026 :: Log Ravagger [3772]: u
+Fri Nov 20 04:49:26 2026 :: Log Ravagger [3795]: arrived (Strange Blending of Time) from 3772
+Fri Nov 20 04:49:30 2026 :: Log Ravagger [3795]: d
+Fri Nov 20 04:49:30 2026 :: Log Ravagger [3772]: arrived (Newbie Train Station) from 3795
+Fri Nov 20 04:49:35 2026 :: Log Ravagger [3772]: n
+Fri Nov 20 04:49:35 2026 :: Log Ravagger [3241]: arrived (The Train Cafe.) from 3772
+Fri Nov 20 04:49:37 2026 :: Log Ravagger [3241]: s
+Fri Nov 20 04:49:37 2026 :: Log Ravagger [3772]: arrived (Newbie Train Station) from 3241
+Fri Nov 20 04:49:40 2026 :: Log Ravagger [3772]: e
+Fri Nov 20 04:49:40 2026 :: Log Ravagger [3773]: arrived (Newbie Train Still In The Station) from 3772
+Fri Nov 20 04:49:42 2026 :: Log Ravagger [3773]: w
+Fri Nov 20 04:49:45 2026 :: Log Ravagger [3774]: arrived (Newbie Train - Mob Factory Stop) from 3773
+Fri Nov 20 04:49:50 2026 :: Log Ravagger [3775]: arrived (Newbie Train - Gang Land Stop) from 3774
