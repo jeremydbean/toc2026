@@ -1,9 +1,9 @@
 #DIARY 1
 Day 2026-11-20
-Played 5908
+Played 6219
 Level 3 7 4
-Exp 8659 25
-Kills 35
+Exp 9339 25
+Kills 37
 Deaths 0
 Close 0
 Quests 0 0
@@ -17,11 +17,13 @@ List achv 5 0 Out of the Nest
 List achv 5 0 Little Blue Trail
 List achv 15 0 No Stone Unturned I
 List achv 5 0 Well Rested
+List achv 10 0 Exact Change
+More achv 1
 List skill 32 33 dagger
 List skill 39 62 kick
-List area 3434 0 Mud School
-List area 1246 0 City of Dresden
-List area 18 0 Limbo
+List area 3483 0 Mud School
+List area 1372 0 City of Dresden
+List area 154 0 Limbo
 List area 18 0 Continental Drift
 List area 58 0 Training Dummy Yard
 List area 131 0 The Chessboard
@@ -38,8 +40,8 @@ List item 1 0 a pair of sub issue sleeves
 List item 1 0 a key
 List item 1 0 a mud school diploma
 List item 1 0 a silver key
-More item 6
-List earn 10191 0 loot
+More item 10
+List earn 10312 0 loot
 List spend 4 0 buy
 List spend 10000 0 other
 End

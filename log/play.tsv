@@ -41851,3 +41851,73 @@
 1795209923	cmd	Ravagger	7	4208	dresden.are	standing	100	0	-	rest		You rest.	-	-
 1795209950	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=2	laid=0 spotted=1 picked=0 passed=1 cleared=0 rare=0 mobs_seen=22 mobs_fought=11 secs=900
 1795209953	cmd	Ravagger	7	4208	dresden.are	resting	100	0	-	stand		You stand up.	-	-
+1795209973	cmd	Ravagger	7	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795209975	cmd	Ravagger	7	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795209982	cmd	Ravagger	7	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795209983	cmd	Ravagger	7	4203	dresden.are	standing	100	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795209985	cmd	Ravagger	7	4203	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795209987	cmd	Ravagger	7	4202	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795209990	cmd	Ravagger	7	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795209995	cmd	Ravagger	7	2433	dresden.are	standing	100	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1795209997	cmd	Ravagger	7	4201	dresden.are	standing	100	0	-	south		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795209999	cmd	Ravagger	7	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795210001	cmd	Ravagger	7	2428	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795210003	cmd	Ravagger	7	2429	dresden.are	standing	100	0	-	south		Bridge of the Mermaids. //   Once you reach the center of the bridge you understand how it got its name. // On either side of the bridge there is a statue of a mermaid build into the	-	+
+1795210004	cmd	Ravagger	7	2430	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795210021	cmd	Ravagger	7	2430	dresden.are	standing	100	0	-	consider	dr	The drunk is well below your level. // The drunk has about a third of your hit points. // The drunk could barely scratch you; you would need about 3 rounds to bring him down.	-	+
+1795210026	cmd	Ravagger	7	2430	dresden.are	standing	100	0	-	look		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795210027	cmd	Ravagger	7	2429	dresden.are	standing	100	0	-	north		Bridge of the Mermaids. //   Once you reach the center of the bridge you understand how it got its name. // On either side of the bridge there is a statue of a mermaid build into the	-	+
+1795210028	cmd	Ravagger	7	2428	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795210029	cmd	Ravagger	7	2428	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795210037	cmd	Ravagger	7	2429	dresden.are	standing	100	0	-	south		Bridge of the Mermaids. //   Once you reach the center of the bridge you understand how it got its name. // On either side of the bridge there is a statue of a mermaid build into the	-	+
+1795210037	cmd	Ravagger	7	2430	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795210039	cmd	Ravagger	7	2430	dresden.are	standing	100	0	-	se		Alas, you cannot go that way.	-	-
+1795210042	area	Ravagger	7	2562	limbo.are	dresden.are	limbo.are	126	east
+1795210042	achieved	Ravagger	7	2562	limbo.are	visit-pet-shop	5	75	east
+1795210042	cmd	Ravagger	7	2562	limbo.are	standing	100	0	-	east		                    ACHIEVEMENT EARNED // Something Exotic  +5 points // Find the Pet Shop of Exotic Creatures.	-	+
+1795210046	cmd	Ravagger	7	2562	limbo.are	standing	100	0	-	consider	va	The vagabond is a little below your level. // The vagabond has about half your hit points. // The vagabond could barely scratch you; you would need about 7 rounds to bring him down.	-	+
+1795210050	cmd	Ravagger	7	2562	limbo.are	standing	100	0	-	kill	va	Your punch hits the vagabond. // Your punch scratches the vagabond.	-	-
+1795210053	cmd	Ravagger	7	2562	limbo.are	fighting	100	0	fight	kick		Your kick scratches the vagabond.	-	-
+1795210056	cmd	Ravagger	7	2562	limbo.are	fighting	100	0	fight	kick		Your kick misses the vagabond.	-	-
+1795210059	cmd	Ravagger	7	2562	limbo.are	fighting	100	0	fight	kick		Your kick misses the vagabond.	-	-
+1795210061	cmd	Ravagger	7	2562	limbo.are	fighting	96	0	fight	kick		Your kick scratches the vagabond.	-	-
+1795210064	cmd	Ravagger	7	2562	limbo.are	fighting	96	0	fight	kick		Your kick misses the vagabond.	-	-
+1795210068	cmd	Ravagger	7	2562	limbo.are	fighting	96	0	fight	kick		Your kick misses the vagabond.	-	-
+1795210071	cmd	Ravagger	7	2562	limbo.are	fighting	93	0	fight	kick		Your kick grazes the vagabond.	-	-
+1795210074	cmd	Ravagger	7	2562	limbo.are	fighting	92	0	fight	kick		Your kick scratches the vagabond.	-	-
+1795210079	cmd	Ravagger	7	2562	limbo.are	fighting	90	0	fight	kick		Your kick misses the vagabond.	-	-
+1795210086	got	Ravagger	7	2562	limbo.are	3021	a small sword	weapon	5	41000	kick	corpse of the vagabond
+1795210086	got	Ravagger	7	2562	limbo.are	3066	a hard leather jerkin	armor	5	100000	kick	corpse of the vagabond
+1795210086	got	Ravagger	7	2562	limbo.are	3052	a leather bracer	armor	5	5100	kick	corpse of the vagabond
+1795210086	got	Ravagger	7	2562	limbo.are	4446	platemail of valor	armor	40	22000000	kick	corpse of the vagabond
+1795210086	coin	Ravagger	7	2562	limbo.are	+10	loot	kick	corpse of the vagabond	9440308
+1795210086	cmd	Ravagger	7	2562	limbo.are	fighting	87	1	fight	kick		Your kick grazes the vagabond. // The vagabond is DEAD!! // You receive 276 experience points (138 of them rested).	-	+
+1795210121	cmd	Ravagger	7	2562	limbo.are	standing	100	0	-	compare	arm	You do not have that item.	-	-
+1795210123	cmd	Ravagger	7	2562	limbo.are	standing	100	0	-	wear	arm	You do not have that item.	-	-
+1795210128	cmd	Ravagger	7	2562	limbo.are	standing	100	0	-	wear	plate	You must be level 40 to use this object.	-	-
+1795210134	cmd	Ravagger	7	2562	limbo.are	standing	100	0	-	wear	lea	You stop using a sub issue bracer. // You wear a leather bracer around your left wrist.	-	-
+1795210141	cmd	Ravagger	7	2562	limbo.are	standing	100	0	-	drop	sub	You drop a sub issue bracer. // A sub issue bracer burst into flames as it hits the ground.	-	-
+1795210144	cmd	Ravagger	7	2562	limbo.are	standing	100	0	-	drop	sub	You drop a sub issue dagger. // A sub issue dagger burst into flames as it hits the ground.	-	-
+1795210148	cmd	Ravagger	7	2562	limbo.are	standing	100	0	-	drop	sub	You do not have that item.	-	-
+1795210157	cmd	Ravagger	7	2562	limbo.are	standing	100	0	-	wear	jer	You stop using a sub issue vest. // You wear a hard leather jerkin on your body.	-	-
+1795210164	cmd	Ravagger	7	2562	limbo.are	standing	100	0	-	compare	jer	A hard leather jerkin is not something you can wear.	-	-
+1795210171	cmd	Ravagger	7	2562	limbo.are	standing	100	0	-	compare	vest	A) a sub issue vest (level 0) // B) a hard leather jerkin (level 5), worn // Slot: body.  Your damage comes from weapons.	-	+
+1795210195	cmd	Ravagger	7	2562	limbo.are	standing	100	0	-	drop	sub	You drop a sub issue vest. // A sub issue vest burst into flames as it hits the ground.	-	-
+1795210197	cmd	Ravagger	7	2562	limbo.are	standing	100	0	-	look		The Pet Shop of Exotic Creatures. //   This is the pet shop of exotic creatures.  There are a wide variety of // animals and beasts from around the world here.	-	+
+1795210202	cmd	Ravagger	7	2562	limbo.are	standing	100	0	-	list		Pets for sale: // [20]        40p - the Sabertooth Tiger // [24]    57p 60g - the Eagle	-	+
+1795210207	cmd	Ravagger	7	2562	limbo.are	standing	100	0	-	look		The Pet Shop of Exotic Creatures. //   This is the pet shop of exotic creatures.  There are a wide variety of // animals and beasts from around the world here.	-	+
+1795210208	area	Ravagger	7	2430	dresden.are	limbo.are	dresden.are	166	west
+1795210208	cmd	Ravagger	7	2430	dresden.are	standing	100	0	-	west		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795210212	cmd	Ravagger	7	2429	dresden.are	standing	100	0	-	north		Bridge of the Mermaids. //   Once you reach the center of the bridge you understand how it got its name. // On either side of the bridge there is a statue of a mermaid build into the	-	+
+1795210215	cmd	Ravagger	7	2428	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795210218	cmd	Ravagger	7	2429	dresden.are	standing	100	0	-	south		Bridge of the Mermaids. //   Once you reach the center of the bridge you understand how it got its name. // On either side of the bridge there is a statue of a mermaid build into the	-	+
+1795210218	cmd	Ravagger	7	2430	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795210221	cmd	Ravagger	7	2431	dresden.are	standing	100	0	-	south		Inside the Southern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795210223	cmd	Ravagger	7	2430	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795210223	area	Ravagger	7	2550	limbo.are	dresden.are	limbo.are	15	west
+1795210223	cmd	Ravagger	7	2550	limbo.are	standing	100	0	-	west		Entrance to the Mayor's Office. //   The entrance is guarded by two very large guards that stand sentinel, braving // the elements for eternity.  The ensignia of a bald eagle on a white background	-	+
+1795210233	cmd	Ravagger	7	2553	limbo.are	standing	100	0	-	south		Guards Room. //   There are many barrels and chests of food in here.  All of it looks spoiled. // This is where the guards of Dresden hang out when not on duty.	-	+
+1795210238	cmd	Ravagger	7	2554	limbo.are	standing	100	0	-	up		Sergeant's Reception Room. //   This room is decorated with various swords and other ornamental artifacts of // combat.  Tapestries of bloody battles adorn the stone walls.  If you have an	-	+
+1795210242	cmd	Ravagger	7	2553	limbo.are	standing	100	0	-	down		Guards Room. //   There are many barrels and chests of food in here.  All of it looks spoiled. // This is where the guards of Dresden hang out when not on duty.	-	+
+1795210251	cmd	Ravagger	7	2553	limbo.are	standing	100	0	-	north		The door is closed.	-	-
+1795210254	cmd	Ravagger	7	2553	limbo.are	standing	100	0	-	open	n	Ok.	-	-
