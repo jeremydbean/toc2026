@@ -5419,3 +5419,4 @@
 1795130750	wizinfo	60	Connection guard: last hour 16 closed without a word, 2 refused, 0 new characters refused, 1 newly paused; 9 addresses paused and 0 refused now, 14 active player addresses.
 1795134350	wizinfo	60	Connection guard: last hour 11 closed without a word, 5 refused, 0 new characters refused, 0 newly paused; 8 addresses paused and 0 refused now, 14 active player addresses.
 1795134843	wizinfo	60	Connection guard: 3.20.63.178 paused for 24 hours (pause 3 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 3.20.63.178 lifts it.
+1795136599	wizinfo	60	Cartographer: appeared in room 5024 (The Sands of Sorrow, eastern.are) (level 17).
