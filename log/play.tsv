@@ -40034,3 +40034,11 @@
 1795142450	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
 1795143350	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
 1795144250	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795144941	area	Ravagger	3	3241	school.are	-	school.are	-1	(game loop)
+1795144941	achieved	Ravagger	3	3241	school.are	carry-one-platinum	5	5	(game loop)
+1795144972	cmd	Ravagger	3	3241	school.are	standing	98	0	-	look		The Train Cafe. //   It has a nice relaxing atmosphere.  Candles burn on the tables and the // bar giving the Cafe its only light.  The tables are spaced moderately	-	+
+1795144974	cmd	Ravagger	3	3241	school.are	standing	98	0	-	who		[ 3 Human   Monk  ] Ravagger the Seeker of Mystery // Players found: 1	-	-
+1795144984	cmd	Ravagger	3	3241	school.are	standing	98	0	-	where		Players near you: // There's no one around you.	-	-
+1795145005	cmd	Ravagger	3	3241	school.are	standing	98	0	-	help	beginners	A short guide for your first hours.  HELP <word> explains any command; // HELP KEYWORDS lists every topic. // Moving	-	+
+1795145047	state	Ravagger	3	3241	school.are	lvl=3 hp=64/65 mana=108/108 mv=112/112 align=15 exp=7242 coin=9440000 bank=0 qp=0 prac=5 train=0 stash=0/50 remorts=0
+1795145047	cmd	Ravagger	3	3241	school.are	standing	98	0	-	score		| Name:       Ravagger | Level:       3 | Class:        Monk | // | Played:      1 hours | Sex:      Male | Guild:        Monk | // | Age:        17 years | Race:    Human | Castle:       None |	-	+

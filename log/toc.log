@@ -320647,3 +320647,23 @@ Fri Nov 20 03:16:34 2026 :: Connection guard: 18.116.205.62 closed without a wor
 Fri Nov 20 03:19:03 2026 :: Sock.sinaddr:  172.58.123.1
 Fri Nov 20 03:19:03 2026 :: Loading Ravagger's playerfile
 Fri Nov 20 03:19:11 2026 :: Closing link to Ravagger.
+Fri Nov 20 03:19:45 2026 :: Sock.sinaddr:  172.58.123.1
+Fri Nov 20 03:19:54 2026 :: Loading Ravagger's playerfile
+Fri Nov 20 03:20:00 2026 :: Closing link to Ravagger.
+Fri Nov 20 03:20:02 2026 :: Sock.sinaddr:  172.58.123.1
+Fri Nov 20 03:20:10 2026 :: Loading Ravagger's playerfile
+Fri Nov 20 03:20:17 2026 :: Closing link to Ravagger.
+Fri Nov 20 03:20:19 2026 :: Sock.sinaddr:  172.58.123.1
+Fri Nov 20 03:21:24 2026 :: EOF encountered on read.
+Fri Nov 20 03:21:24 2026 :: Connection guard: 172.58.123.1 closed before a password prompt (the web client; not counted).
+Fri Nov 20 03:21:39 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 23 refused in all, pause 4 this week, 2540 minutes left).
+Fri Nov 20 03:21:41 2026 :: Sock.sinaddr:  172.58.123.1
+Fri Nov 20 03:21:41 2026 :: Loading Ravagger's playerfile
+Fri Nov 20 03:21:49 2026 :: Loading Ravagger's playerfile
+Fri Nov 20 03:21:49 2026 :: Ravagger@172.58.123.1 has connected.
+Fri Nov 20 03:22:21 2026 :: Log Ravagger [3241]: arrived (The Train Cafe.) from 0
+Fri Nov 20 03:22:52 2026 :: Log Ravagger [3241]: L
+Fri Nov 20 03:22:54 2026 :: Log Ravagger [3241]: WHO
+Fri Nov 20 03:23:04 2026 :: Log Ravagger [3241]: where
+Fri Nov 20 03:23:25 2026 :: Log Ravagger [3241]: help beginners
+Fri Nov 20 03:24:07 2026 :: Log Ravagger [3241]: score
