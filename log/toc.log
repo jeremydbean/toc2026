@@ -323076,3 +323076,11 @@ Fri Nov 20 19:58:58 2026 :: Connection guard: refused 1 connection from 172.236.
 Fri Nov 20 19:59:29 2026 :: Treasure goblin: vanished from room 20101 (The Prison of Dresden, prison.are) (too long in one area).
 Fri Nov 20 19:59:58 2026 :: Connection guard: refused 32 connections from 172.236.233.65 (since the last line; 33 refused in all, pause 1 this week, 359 minutes left).
 Fri Nov 20 20:02:24 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 20 20:06:11 2026 :: Connection guard: 195.178.110.204 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 20 20:07:27 2026 :: Connection guard: refused 1 connection from 178.156.187.238 (paused; 12 refused in all, pause 3 this week, 1415 minutes left).
+Fri Nov 20 20:08:36 2026 :: Connection guard: 20.161.70.82 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 20 20:08:36 2026 :: Sock.sinaddr:  20.161.70.82
+Fri Nov 20 20:08:36 2026 :: Connection guard: 20.161.70.82 closed before a password prompt (strike 2 of 6 in 6 hours).
+Fri Nov 20 20:08:36 2026 :: Connection guard: 20.161.70.82 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 20 20:09:34 2026 :: Treasure goblin: vanished from room 1355 (A hallway, htower.are) (too long in one area).
+Fri Nov 20 20:10:09 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
