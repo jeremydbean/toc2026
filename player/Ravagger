@@ -2,7 +2,7 @@
 Name Ravagger~
 Id   56640
 Serial 3950626
-LogO 1795148651
+LogO 1795148825
 Vers 4
 Prom ~
 Race human~
@@ -17,18 +17,18 @@ ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble 20261114-season-area-ids 20261116-wrapped-pools~
 Cast none
 Levl 5
-Plyd 8288
+Plyd 8462
 ListRemorts ~
 NumRemorts 0
 Note 0
 SkillDamage 0 8 4
 MeleeRatio 2094 8
 Scro 22
-Room 3734
-HMV  54 64 118 128 81 93
+Room 3759
+HMV  64 64 128 128 93 93
 NewGold 44
 NewPlat 9
-NewCopp 24
+NewCopp 26
 NewSilv 0
 BankCP 0
 IntTime 1795144964
@@ -37,7 +37,7 @@ Dcount 0
 SavedOnce 1
 PkRec 0
 PkGiv 0
-AchKills 9
+AchKills 10
 AchQuests 0
 AchDeaths 0
 AchExplore 0
@@ -52,7 +52,7 @@ Achv visit-chessboard 1795148117
 Achv funny-sleepwalk 1795146863
 AchSet areas 675805239 1028131563 1103516333 1255184829 1674073230 ~
 AchSet rooms 17 2401-2402 2404-2405 2415 2419 2427-2431 2433-2437 2470 2485 3241 3700-3705 3709 3711-3722 3734 3739 3744 3757-3762 3771-3783 3792-3795 4201-4211 4649 4800-4809 24300-24301 ~
-LastOut  1795148651
+LastOut  1795148825
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 0
@@ -90,7 +90,6 @@ Color 14 0
 Color 15 0
 Color 16 0
 Pos  8
-Prac 1
 Trai 1
 Tutorial 0 32780
 Save  -1
@@ -104,7 +103,7 @@ Pnts 40
 TSex 1
 LLev 1
 HMVP 64 128 124
-Cond 0 3 33
+Cond 0 47 29
 Sk 8 'axe'
 Sk 33 'dagger'
 Sk 6 'flail'
@@ -113,7 +112,7 @@ Sk 3 'polearm'
 Sk 7 'spear'
 Sk 3 'sword'
 Sk 15 'whip'
-Sk 1 'dodge'
+Sk 6 'dodge'
 Sk 75 'hand to hand'
 Sk 39 'kick'
 Sk 1 'trip'
@@ -123,7 +122,7 @@ Sk 75 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
-AffD 'armor'   0  54 -20  17          0          0
+AffD 'armor'   0  50 -20  17          0          0
 End
 
 #O
@@ -133,7 +132,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 67 0 0
+Val  0 0 63 0 0
 End
 
 #O
@@ -272,26 +271,6 @@ Vnum 3705
 Nest 0
 Wear 3
 Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3718
-Nest 0
-Wear -1
-Lev  1
-Cost 1
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3718
-Nest 0
-Wear -1
-Lev  1
-Cost 1
 Cond 100
 Repd 0
 End

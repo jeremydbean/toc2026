@@ -40810,3 +40810,70 @@
 1795148686	cmd	Ravagger	5	3783	school.are	standing	100	0	-	east		A Gigantic Clown Head //   Before you is the largest clowns head you have ever seen, with all the // makeup intact, to include the big red painted on mouth.  This appears	-	+
 1795148687	cmd	Ravagger	5	3700	school.are	standing	100	0	-	west		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
 1795148689	cmd	Ravagger	5	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795148690	cmd	Ravagger	5	3773	school.are	standing	100	0	-	east		Newbie Train Still In The Station //   This is the Newbie Train.  The first stop will be the mob factory. // Please find a seat if you can.  If you must stand, please hold on to the	-	+
+1795148693	cmd	Ravagger	5	3773	school.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1795148750	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=2	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=10 mobs_fought=3 secs=900
+1795148758	cmd	Ravagger	5	3772	school.are	standing	98	0	-	eat	bre	You eat a pipeweed bread. // You are no longer hungry.	-	-
+1795148760	cmd	Ravagger	5	3772	school.are	standing	98	0	-	eat	bre	You eat a pipeweed bread. // You are full.	-	-
+1795148761	cmd	Ravagger	5	3772	school.are	standing	98	0	-	look		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795148767	cmd	Ravagger	5	3795	school.are	standing	98	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1795148771	cmd	Ravagger	5	3772	school.are	standing	98	0	-	down		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795148773	cmd	Ravagger	5	3700	school.are	standing	98	0	-	down		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795148777	area	Ravagger	5	17	connect.are	school.are	connect.are	94	west
+1795148777	cmd	Ravagger	5	17	connect.are	standing	98	0	-	west		An odd sight //   Standing before you is one of the most incredible things you have EVER seen. // A giant berry the likes you have never seen before sits in the middle of this	-	+
+1795148779	area	Ravagger	5	3700	school.are	connect.are	school.are	2	east
+1795148779	cmd	Ravagger	5	3700	school.are	standing	98	0	-	east		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795148787	cmd	Ravagger	5	3757	school.are	standing	98	0	-	north		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795148789	cmd	Ravagger	5	3759	school.are	standing	98	0	-	east		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with	-	+
+1795148795	cmd	Ravagger	5	3759	school.are	standing	98	0	-	practice		dodge                1%  recall              75%  dagger              33%   // hand to hand        75%  kick                39%   // You have 1 practice sessions left.	-	-
+1795148804	cmd	Ravagger	5	3759	school.are	standing	98	0	-	practice		dodge                1%  recall              75%  dagger              33%   // hand to hand        75%  kick                39%   // You have 1 practice sessions left.	-	-
+1795148812	cmd	Ravagger	5	3759	school.are	standing	98	0	-	skills		Level  1: dagger              33%      hand to hand        75%       //           recall              75%       // Level  3: kick                39%      	-	+
+1795148818	cmd	Ravagger	5	3759	school.are	standing	98	0	-	practice	dod	You practice dodge.	-	-
+1795148827	cmd	Ravagger	5	3757	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795148828	cmd	Ravagger	5	3758	school.are	standing	100	0	-	west		Eclipse's Training Room //   You are in Eclipse's Training Room.  Around you are all sorts of physical // and mental training tools.  The whole room is filled with magic, holiness, 	-	+
+1795148831	cmd	Ravagger	5	3758	school.are	standing	100	0	-	train		You have 1 training sessions. // You can train: str int wis con hp mana.	-	-
+1795148835	cmd	Ravagger	5	3758	school.are	standing	100	0	-	train	con	Your constitution increases!	-	-
+1795148848	cmd	Ravagger	5	3758	school.are	standing	100	0	-	look		Eclipse's Training Room //   You are in Eclipse's Training Room.  Around you are all sorts of physical // and mental training tools.  The whole room is filled with magic, holiness, 	-	+
+1795148850	cmd	Ravagger	5	3757	school.are	standing	100	0	-	east		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795148852	cmd	Ravagger	5	3700	school.are	standing	100	0	-	south		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795148854	cmd	Ravagger	5	3700	school.are	standing	100	0	-	south		The door is closed.	-	-
+1795148857	cmd	Ravagger	5	3700	school.are	standing	100	0	-	open	s	Ok.	-	-
+1795148858	cmd	Ravagger	5	3744	school.are	standing	100	0	-	south		North Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795148860	cmd	Ravagger	5	3739	school.are	standing	100	0	-	south		Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795148862	cmd	Ravagger	5	3734	school.are	standing	100	0	-	south		Center of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795148864	cmd	Ravagger	5	3729	school.are	standing	100	0	-	south		Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795148865	cmd	Ravagger	5	3722	school.are	standing	100	0	-	south		South Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795148868	cmd	Ravagger	5	3722	school.are	standing	100	0	-	kill	ra	Your punch misses the rabbit. // Your punch misses the rabbit.	-	-
+1795148871	cmd	Ravagger	5	3722	school.are	fighting	100	0	fight	kick		Your kick misses the rabbit.	-	-
+1795148874	refused	Ravagger	5	3722	school.are	fighting	100	0	fight	(unknown)		Huh?	refusal:unknown-command	-
+1795148879	refused	Ravagger	5	3722	school.are	fighting	100	0	fight	(unknown)		Huh?	refusal:unknown-command	-
+1795148882	cmd	Ravagger	5	3722	school.are	fighting	100	0	fight	kick		Your kick misses the rabbit.	-	-
+1795148885	cmd	Ravagger	5	3722	school.are	fighting	100	0	fight	kick		Your kick scratches the rabbit.	-	-
+1795148886	coin	Ravagger	5	3722	school.are	+1	loot	(violence_update)	corpse of the rabbit	9440027
+1795148886	coin	Ravagger	5	3722	school.are	+2	loot	(violence_update)	corpse of the rabbit	9440029
+1795148888	cmd	Ravagger	5	3722	school.are	standing	100	0	-	kick		You aren't fighting anyone.	-	-
+1795148889	cmd	Ravagger	5	3722	school.are	standing	100	0	-	look		South Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795148891	cmd	Ravagger	5	3725	school.are	standing	100	0	-	east		South Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795148894	cmd	Ravagger	5	3725	school.are	standing	100	0	-	kill	fox	Your punch hits the fox. // Your punch scratches the fox.	-	-
+1795148898	cmd	Ravagger	5	3725	school.are	fighting	100	0	fight	kick		Your kick misses the fox.	-	-
+1795148913	coin	Ravagger	5	3725	school.are	+1	loot	(violence_update)	corpse of the fox	9440030
+1795148913	coin	Ravagger	5	3725	school.are	+2	loot	(violence_update)	corpse of the fox	9440032
+1795148923	cmd	Ravagger	5	3725	school.are	standing	100	0	-	look		South Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795148927	cmd	Ravagger	5	3725	school.are	standing	100	0	-	consider	boar	The boar is a little below your level. // The boar has about half your hit points. // The boar could barely scratch you; you would need about 12 rounds to bring him down.	-	+
+1795148932	cmd	Ravagger	5	3730	school.are	standing	100	0	-	north		Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795148935	cmd	Ravagger	5	3730	school.are	standing	100	0	-	kill	bo	Your punch misses the boar. // Your punch misses the boar.	-	-
+1795148937	cmd	Ravagger	5	3730	school.are	fighting	100	0	fight	kick		Your kick scratches the boar.	-	-
+1795148940	cmd	Ravagger	5	3730	school.are	fighting	100	0	fight	kick		Your kick misses the boar.	-	-
+1795148944	cmd	Ravagger	5	3730	school.are	fighting	100	0	fight	kick		Your kick scratches the boar.	-	-
+1795148946	cmd	Ravagger	5	3730	school.are	fighting	100	0	fight	kick		Your kick misses the boar.	-	-
+1795148951	cmd	Ravagger	5	3730	school.are	fighting	100	0	fight	kick		Your kick misses the boar.	-	-
+1795148955	cmd	Ravagger	5	3730	school.are	fighting	95	0	fight	kick		Your kick misses the boar.	-	-
+1795148959	cmd	Ravagger	5	3730	school.are	fighting	100	0	fight	kick		Your kick scratches the boar.	-	-
+1795148964	cmd	Ravagger	5	3730	school.are	fighting	100	0	fight	kick		Your kick misses the boar.	-	-
+1795148964	coin	Ravagger	5	3730	school.are	+1	loot	(violence_update)	corpse of the boar	9440033
+1795148964	coin	Ravagger	5	3730	school.are	+6	loot	(violence_update)	corpse of the boar	9440039
+1795148970	cmd	Ravagger	5	3730	school.are	standing	100	0	-	look		Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795148974	cmd	Ravagger	5	3731	school.are	standing	100	0	-	east		East Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795148976	cmd	Ravagger	5	3731	school.are	standing	100	0	-	kill	l	Your punch scratches the lizard. // Your punch misses the lizard.	-	-
+1795148979	cmd	Ravagger	5	3731	school.are	fighting	100	0	fight	kick		Your kick misses the lizard.	-	-
+1795148983	cmd	Ravagger	5	3731	school.are	fighting	100	0	fight	kick		Your kick misses the lizard.	-	-
