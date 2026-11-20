@@ -322327,3 +322327,4 @@ Fri Nov 20 07:09:18 2026 :: Connection guard: 52.167.144.211 closed before a pas
 Fri Nov 20 07:10:03 2026 :: Treasure goblin: vanished from room 7416 (The treasure room, sewer.are) (too long in one area).
 Fri Nov 20 07:10:05 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 4 of 6 in 6 hours).
 Fri Nov 20 07:10:11 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Fri Nov 20 07:15:10 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 41 refused in all, pause 4 this week, 489 minutes left).
