@@ -322302,3 +322302,11 @@ Fri Nov 20 06:20:45 2026 :: Connection guard: refused 1 connection from 34.1.244
 Fri Nov 20 06:20:45 2026 :: Connection guard: 34.1.244.151 closed without a word (strike 1 of 6 in 6 hours).
 Fri Nov 20 06:21:45 2026 :: Connection guard: refused 24 connections from 34.1.244.151 (since the last line; 25 refused in all, pause 1 this week, 359 minutes left).
 Fri Nov 20 06:24:25 2026 :: Connection guard: refused 1 connection from 178.156.187.238 (paused; 11 refused in all, pause 2 this week, 50 minutes left).
+Fri Nov 20 06:25:50 2026 :: Connection guard: last hour 28 closed without a word, 80 refused, 0 new characters refused, 3 newly paused; 10 addresses paused and 0 refused now, 15 active player addresses.
+Fri Nov 20 06:29:18 2026 :: Automated backup started.
+Fri Nov 20 06:29:19 2026 :: Automated backup complete.
+Fri Nov 20 06:29:21 2026 :: Sock.sinaddr:  103.203.57.26
+Fri Nov 20 06:29:21 2026 :: Connection guard: 103.203.57.26 closed before a password prompt (strike 1 of 6 in 6 hours).
+Fri Nov 20 06:29:21 2026 :: Connection guard: 103.203.57.26 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 20 06:29:30 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 20 06:29:44 2026 :: Treasure goblin: vanished from room 9408 (Mob Factory Cafeteria, mobfact.are) (too long in one area).

@@ -5444,3 +5444,4 @@
 1795155099	wizinfo	60	[ ALL ] Drakk   City of Dresden has been struck by an earthquake.
 1795155126	wizinfo	60	[ ALL ] Drakk   City of Dresden is no longer a disaster area.
 1795155644	wizinfo	60	Connection guard: 34.1.244.151 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 34.1.244.151 lifts it.
+1795155950	wizinfo	60	Connection guard: last hour 28 closed without a word, 80 refused, 0 new characters refused, 3 newly paused; 10 addresses paused and 0 refused now, 15 active player addresses.
