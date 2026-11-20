@@ -322746,3 +322746,4 @@ Fri Nov 20 12:46:46 2026 :: Connection guard: 184.105.139.67 closed before a pas
 Fri Nov 20 12:50:45 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 2 of 6 in 6 hours).
 Fri Nov 20 12:55:51 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 1 of 6 in 6 hours).
 Fri Nov 20 12:56:50 2026 :: Treasure goblin: vanished from room 25023 (Treasure vault, mountain.are) (too long in one area).
+Fri Nov 20 13:00:56 2026 :: Connection guard: refused 1 connection from 5.161.75.7 (paused; 3 refused in all, pause 2 this week, 532 minutes left).
