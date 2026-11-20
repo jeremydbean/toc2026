@@ -1,9 +1,9 @@
 #DIARY 1
 Day 2026-11-20
-Played 1830
+Played 2144
 Level 3 4 1
-Exp 2661 0
-Kills 7
+Exp 3090 0
+Kills 8
 Deaths 0
 Close 0
 Quests 0 0
@@ -11,8 +11,10 @@ Dailies 0 0
 List achv 5 0 Walking Wallet
 List achv 5 0 Back to School
 List achv 5 0 First Blood
+List achv 5 0 Sleepwalker
 List skill 32 33 dagger
-List area 1830 0 Mud School
+List area 1938 0 Mud School
+List area 206 0 City of Dresden
 List item 1 0 a pair of sub issue boots
 List item 2 0 a sub issue bracer
 List item 2 0 a pair of sub issue leggings
@@ -23,7 +25,8 @@ List item 2 0 a sub issue cloak
 List item 1 0 a pair of sub issue gloves
 List item 1 0 a pair of sub issue sleeves
 List item 1 0 a key
-List earn 18 0 loot
+List item 1 0 a mud school diploma
+List earn 25 0 loot
 List spend 4 0 buy
 End
 #END

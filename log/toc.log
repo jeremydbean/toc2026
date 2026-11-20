@@ -321111,3 +321111,147 @@ Fri Nov 20 03:54:39 2026 :: Log Ravagger [3760]: u
 Fri Nov 20 03:54:39 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 3760
 Fri Nov 20 03:54:46 2026 :: Log Ravagger [4207]: w
 Fri Nov 20 03:54:46 2026 :: Log Ravagger [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Fri Nov 20 03:54:52 2026 :: Log Ravagger [4208]: l chest
+Fri Nov 20 03:55:15 2026 :: Log Ravagger [4208]: l in l
+Fri Nov 20 03:55:16 2026 :: Log Ravagger [4208]: affects off: armor
+Fri Nov 20 03:55:18 2026 :: Log Ravagger [4208]: l
+Fri Nov 20 03:55:21 2026 :: Log Ravagger [4208]: l pit
+Fri Nov 20 03:55:22 2026 :: Treasure goblin: vanished from room 7771 (The Altar of Valor, ultima.are) (too long in one area).
+Fri Nov 20 03:55:29 2026 :: Log Ravagger [4208]: l n pit
+Fri Nov 20 03:55:42 2026 :: Log Ravagger [4208]: l
+Fri Nov 20 03:55:45 2026 :: Log Ravagger [4208]: e
+Fri Nov 20 03:55:45 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4208
+Fri Nov 20 03:55:47 2026 :: Log Ravagger [4207]: n
+Fri Nov 20 03:55:47 2026 :: Log Ravagger [4204]: arrived (Halls of Healing.) from 4207
+Fri Nov 20 03:55:49 2026 :: Log Ravagger [4204]: s
+Fri Nov 20 03:55:49 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4204
+Fri Nov 20 03:55:50 2026 :: Log Ravagger [4207]: s
+Fri Nov 20 03:55:50 2026 :: Log Ravagger [4205]: arrived (Halls of Healing.) from 4207
+Fri Nov 20 03:56:02 2026 :: Log Ravagger [4205]: (refused) gs
+Fri Nov 20 03:56:04 2026 :: Log Ravagger [4205]: n
+Fri Nov 20 03:56:04 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4205
+Fri Nov 20 03:56:12 2026 :: Log Ravagger [4207]: scan
+Fri Nov 20 03:56:16 2026 :: Log Ravagger [4207]: w
+Fri Nov 20 03:56:16 2026 :: Log Ravagger [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Fri Nov 20 03:56:27 2026 :: Log Ravagger [4208]: l devota
+Fri Nov 20 03:56:34 2026 :: Log Ravagger [4208]: heal
+Fri Nov 20 03:56:44 2026 :: Log Ravagger [4208]: e
+Fri Nov 20 03:56:44 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4208
+Fri Nov 20 03:56:52 2026 :: Log Ravagger [4207]: l watcher
+Fri Nov 20 03:57:01 2026 :: Log Ravagger [4207]: l
+Fri Nov 20 03:57:06 2026 :: Log Ravagger [4207]: n
+Fri Nov 20 03:57:06 2026 :: Log Ravagger [4204]: arrived (Halls of Healing.) from 4207
+Fri Nov 20 03:57:07 2026 :: Log Ravagger [4204]: s
+Fri Nov 20 03:57:07 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4204
+Fri Nov 20 03:57:09 2026 :: Log Ravagger [4207]: e
+Fri Nov 20 03:57:09 2026 :: Log Ravagger [4202]: arrived (Halls of Healing.) from 4207
+Fri Nov 20 03:57:13 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 20 03:57:13 2026 :: Log Ravagger [4202]: e
+Fri Nov 20 03:57:13 2026 :: Log Ravagger [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Fri Nov 20 03:57:17 2026 :: Log Ravagger [4201]: e
+Fri Nov 20 03:57:17 2026 :: Log Ravagger [2427]: arrived (Main Processional.) from 4201
+Fri Nov 20 03:57:20 2026 :: Log Ravagger [2427]: e
+Fri Nov 20 03:57:24 2026 :: Log Ravagger [2427]: w
+Fri Nov 20 03:57:24 2026 :: Log Ravagger [4201]: arrived (Entrance to the Temple of Devota.) from 2427
+Fri Nov 20 03:57:24 2026 :: Log Ravagger [4201]: w
+Fri Nov 20 03:57:24 2026 :: Log Ravagger [4202]: arrived (Halls of Healing.) from 4201
+Fri Nov 20 03:57:26 2026 :: Log Ravagger [4202]: w
+Fri Nov 20 03:57:26 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4202
+Fri Nov 20 03:57:27 2026 :: Log Ravagger [4207]: n
+Fri Nov 20 03:57:27 2026 :: Log Ravagger [4204]: arrived (Halls of Healing.) from 4207
+Fri Nov 20 03:57:28 2026 :: Log Ravagger [4204]: e
+Fri Nov 20 03:57:28 2026 :: Log Ravagger [4203]: arrived (Halls of Healing.) from 4204
+Fri Nov 20 03:57:30 2026 :: Log Ravagger [4203]: e
+Fri Nov 20 03:57:33 2026 :: Log Ravagger [4203]: n
+Fri Nov 20 03:57:33 2026 :: Log Ravagger [4210]: arrived (Room of Peace and Healing.) from 4203
+Fri Nov 20 03:57:46 2026 :: Log Ravagger [4210]: s
+Fri Nov 20 03:57:46 2026 :: Log Ravagger [4203]: arrived (Halls of Healing.) from 4210
+Fri Nov 20 03:57:46 2026 :: Black market: the dealer vanished from room 7210 (The four-way junction., sewer.are) (wandering).
+Fri Nov 20 03:57:47 2026 :: Log Ravagger [4203]: s
+Fri Nov 20 03:57:47 2026 :: Log Ravagger [4202]: arrived (Halls of Healing.) from 4203
+Fri Nov 20 03:57:49 2026 :: Log Ravagger [4202]: w
+Fri Nov 20 03:57:49 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4202
+Fri Nov 20 03:57:51 2026 :: Log Ravagger [4207]: w
+Fri Nov 20 03:57:51 2026 :: Log Ravagger [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Fri Nov 20 03:57:53 2026 :: Log Ravagger [4208]: e
+Fri Nov 20 03:57:53 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4208
+Fri Nov 20 03:57:54 2026 :: Log Ravagger [4207]: s
+Fri Nov 20 03:57:54 2026 :: Log Ravagger [4205]: arrived (Halls of Healing.) from 4207
+Fri Nov 20 03:57:58 2026 :: Log Ravagger [4205]: s
+Fri Nov 20 03:57:58 2026 :: Log Ravagger [4209]: arrived (Private Prayer Room.) from 4205
+Fri Nov 20 03:58:00 2026 :: Log Ravagger [4209]: w
+Fri Nov 20 03:58:02 2026 :: Log Ravagger [4209]: n
+Fri Nov 20 03:58:02 2026 :: Log Ravagger [4205]: arrived (Halls of Healing.) from 4209
+Fri Nov 20 03:58:03 2026 :: Log Ravagger [4205]: w
+Fri Nov 20 03:58:05 2026 :: Log Ravagger [4205]: w
+Fri Nov 20 03:58:07 2026 :: Log Ravagger [4205]: n
+Fri Nov 20 03:58:07 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4205
+Fri Nov 20 03:58:12 2026 :: Log Ravagger [4207]: w
+Fri Nov 20 03:58:12 2026 :: Log Ravagger [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Fri Nov 20 03:58:14 2026 :: Log Ravagger [4208]: e
+Fri Nov 20 03:58:14 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4208
+Fri Nov 20 03:58:16 2026 :: Log Ravagger [4207]: n
+Fri Nov 20 03:58:16 2026 :: Log Ravagger [4204]: arrived (Halls of Healing.) from 4207
+Fri Nov 20 03:58:21 2026 :: Log Ravagger [4204]: e
+Fri Nov 20 03:58:21 2026 :: Log Ravagger [4203]: arrived (Halls of Healing.) from 4204
+Fri Nov 20 03:58:25 2026 :: Log Ravagger [4203]: s
+Fri Nov 20 03:58:25 2026 :: Log Ravagger [4202]: arrived (Halls of Healing.) from 4203
+Fri Nov 20 03:58:26 2026 :: Log Ravagger [4202]: e
+Fri Nov 20 03:58:26 2026 :: Log Ravagger [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Fri Nov 20 03:58:27 2026 :: Log Ravagger [4201]: e
+Fri Nov 20 03:58:27 2026 :: Log Ravagger [2427]: arrived (Main Processional.) from 4201
+Fri Nov 20 03:58:28 2026 :: Log Ravagger [2427]: s
+Fri Nov 20 03:58:28 2026 :: Log Ravagger [2428]: arrived (Main Processional.) from 2427
+Fri Nov 20 03:58:30 2026 :: Log Ravagger [2428]: s
+Fri Nov 20 03:58:30 2026 :: Log Ravagger [2429]: arrived (Bridge of the Mermaids.) from 2428
+Fri Nov 20 03:58:34 2026 :: Log Ravagger [2429]: s
+Fri Nov 20 03:58:34 2026 :: Log Ravagger [2430]: arrived (Main Processional.) from 2429
+Fri Nov 20 03:58:36 2026 :: Log Ravagger [2430]: w
+Fri Nov 20 03:58:36 2026 :: Log Ravagger [2550]: arrived (Entrance to the Mayor's Office.) from 2430
+Fri Nov 20 03:58:42 2026 :: Log Ravagger [2550]: w
+Fri Nov 20 03:58:47 2026 :: Log Ravagger [2550]: e
+Fri Nov 20 03:58:47 2026 :: Log Ravagger [2430]: arrived (Main Processional.) from 2550
+Fri Nov 20 03:58:48 2026 :: Log Ravagger [2430]: s
+Fri Nov 20 03:58:48 2026 :: Log Ravagger [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Fri Nov 20 03:58:49 2026 :: Log Ravagger [2431]: w
+Fri Nov 20 03:58:49 2026 :: Log Ravagger [2584]: arrived (Wall Road.) from 2431
+Fri Nov 20 03:58:51 2026 :: Log Ravagger [2584]: w
+Fri Nov 20 03:58:51 2026 :: Log Ravagger [2583]: arrived (Wall Road.) from 2584
+Fri Nov 20 03:58:53 2026 :: Log Ravagger [2583]: w
+Fri Nov 20 03:58:55 2026 :: Log Ravagger [2583]: e
+Fri Nov 20 03:58:55 2026 :: Log Ravagger [2584]: arrived (Wall Road.) from 2583
+Fri Nov 20 03:58:56 2026 :: Log Ravagger [2584]: e
+Fri Nov 20 03:58:56 2026 :: Log Ravagger [2431]: arrived (Inside the Southern Gates of Dresden.) from 2584
+Fri Nov 20 03:58:58 2026 :: Log Ravagger [2431]: n
+Fri Nov 20 03:58:58 2026 :: Log Ravagger [2430]: arrived (Main Processional.) from 2431
+Fri Nov 20 03:59:00 2026 :: Log Ravagger [2430]: n
+Fri Nov 20 03:59:00 2026 :: Log Ravagger [2429]: arrived (Bridge of the Mermaids.) from 2430
+Fri Nov 20 03:59:02 2026 :: Log Ravagger [2429]: n
+Fri Nov 20 03:59:02 2026 :: Log Ravagger [2428]: arrived (Main Processional.) from 2429
+Fri Nov 20 03:59:03 2026 :: Log Ravagger [2428]: n
+Fri Nov 20 03:59:03 2026 :: Log Ravagger [2427]: arrived (Main Processional.) from 2428
+Fri Nov 20 03:59:05 2026 :: Log Ravagger [2427]: w
+Fri Nov 20 03:59:05 2026 :: Log Ravagger [4201]: arrived (Entrance to the Temple of Devota.) from 2427
+Fri Nov 20 03:59:12 2026 :: Log Ravagger [4201]: w
+Fri Nov 20 03:59:12 2026 :: Log Ravagger [4202]: arrived (Halls of Healing.) from 4201
+Fri Nov 20 03:59:15 2026 :: Log Ravagger [4202]: w
+Fri Nov 20 03:59:15 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4202
+Fri Nov 20 03:59:17 2026 :: Log Ravagger [4207]: w
+Fri Nov 20 03:59:17 2026 :: Log Ravagger [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Fri Nov 20 03:59:21 2026 :: Log Ravagger [4208]: e
+Fri Nov 20 03:59:21 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4208
+Fri Nov 20 03:59:23 2026 :: Log Ravagger [4207]: s
+Fri Nov 20 03:59:23 2026 :: Log Ravagger [-]: arrived (-) from 4207
+Fri Nov 20 03:59:31 2026 :: Log Ravagger [-]: s
+Fri Nov 20 03:59:31 2026 :: Log Ravagger [4209]: arrived (Private Prayer Room.) from -
+Fri Nov 20 03:59:35 2026 :: Log Ravagger [4209]: e
+Fri Nov 20 03:59:36 2026 :: Log Ravagger [4209]: n
+Fri Nov 20 03:59:36 2026 :: Log Ravagger [-]: arrived (-) from 4209
+Fri Nov 20 03:59:37 2026 :: Log Ravagger [-]: n
+Fri Nov 20 03:59:37 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from -
+Fri Nov 20 03:59:38 2026 :: Log Ravagger [4207]: n
+Fri Nov 20 03:59:38 2026 :: Log Ravagger [4204]: arrived (Halls of Healing.) from 4207
+Fri Nov 20 03:59:39 2026 :: Log Ravagger [4204]: n
+Fri Nov 20 03:59:39 2026 :: Log Ravagger [4211]: arrived (Entrance to the inner Sanctum.) from 4204
+Fri Nov 20 03:59:42 2026 :: Log Ravagger [4211]: n
+Fri Nov 20 03:59:47 2026 :: Log Ravagger [4211]: nw
