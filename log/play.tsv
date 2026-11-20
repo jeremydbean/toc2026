@@ -41760,3 +41760,94 @@
 1795209650	cmd	Ravagger	6	3726	school.are	standing	98	0	-	east		South East Corner of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
 1795209652	cmd	Ravagger	6	3731	school.are	standing	98	0	-	north		East Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
 1795209655	cmd	Ravagger	6	3730	school.are	standing	98	0	-	west		Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209657	cmd	Ravagger	6	3729	school.are	standing	98	0	-	west		Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209658	cmd	Ravagger	6	3734	school.are	standing	98	0	-	north		Center of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209668	cmd	Ravagger	6	3734	school.are	standing	98	0	-	look	si	Those with high bravery or low senses of cautiousness might wish to go below // to the Dungeon.  However, know that there are aggressive monsters down there, // and there is no quick escape back out of here when you are in the dungeon.	-	-
+1795209686	cmd	Ravagger	6	3734	school.are	standing	98	0	-	open	down	Ok.	-	-
+1795209688	cmd	Ravagger	6	3748	school.are	standing	98	0	-	down		The Center of the Dungeon //   You are in the center of a large room.  A faint light from above shows that // the floors are all covered with slime.  A feeling of dread comes over you as	-	+
+1795209691	cmd	Ravagger	6	3748	school.are	standing	98	0	-	consider	wo	The wolf is a little below your level. // The wolf has about half your hit points. // Blow for blow, you would need about 6 rounds to bring the wolf down; he would need over a hundred rounds for you.	-	+
+1795209695	cmd	Ravagger	6	3748	school.are	standing	100	0	-	kill	wo	Your punch misses the wolf. // Your punch scratches the wolf.	-	-
+1795209698	cmd	Ravagger	6	3748	school.are	fighting	96	0	fight	kick		Your kick scratches the wolf.	-	-
+1795209700	cmd	Ravagger	6	3748	school.are	fighting	96	0	fight	kick		Your kick scratches the wolf.	-	-
+1795209703	cmd	Ravagger	6	3748	school.are	fighting	96	0	fight	kick		Your kick misses the wolf.	-	-
+1795209706	cmd	Ravagger	6	3748	school.are	fighting	96	0	fight	kick		Your kick grazes the wolf.	-	-
+1795209710	cmd	Ravagger	6	3748	school.are	fighting	96	0	fight	kick		Your kick scratches the wolf.	-	-
+1795209713	cmd	Ravagger	6	3748	school.are	fighting	96	0	fight	kick		Your kick scratches the wolf.	-	-
+1795209716	cmd	Ravagger	6	3748	school.are	fighting	96	1	fight	kick		Your kick scratches the wolf.	-	-
+1795209719	cmd	Ravagger	6	3748	school.are	fighting	96	0	fight	kick		Your kick misses the wolf.	-	-
+1795209721	cmd	Ravagger	6	3748	school.are	fighting	96	0	fight	kick		Your kick scratches the wolf.	-	-
+1795209724	level	Ravagger	7	3748	school.are	6	7	Monk 	0	15078	-1	(violence_update)
+1795209724	coin	Ravagger	7	3748	school.are	+2	loot	(violence_update)	corpse of the wolf	9440147
+1795209724	coin	Ravagger	7	3748	school.are	+8	loot	(violence_update)	corpse of the wolf	9440155
+1795209724	cmd	Ravagger	7	3748	school.are	standing	81	0	-	kick		You aren't fighting anyone.	-	-
+1795209731	cmd	Ravagger	7	3748	school.are	standing	81	0	-	look		The Center of the Dungeon //   You are in the center of a large room.  A faint light from above shows that // the floors are all covered with slime.  A feeling of dread comes over you as	-	+
+1795209734	cmd	Ravagger	7	3748	school.are	standing	81	0	-	consider	be	The bear is a little below your level. // The bear has about half your hit points. // The bear could barely scratch you; you would need about 9 rounds to bring him down.	-	+
+1795209740	cmd	Ravagger	7	3748	school.are	standing	81	0	-	kill	be	Your punch misses the bear. // Your punch scratches the bear.	-	-
+1795209743	cmd	Ravagger	7	3748	school.are	fighting	90	0	fight	kick		Your kick scratches the bear.	-	-
+1795209746	cmd	Ravagger	7	3748	school.are	fighting	90	0	fight	kick		Your kick scratches the bear.	-	-
+1795209749	cmd	Ravagger	7	3748	school.are	fighting	90	0	fight	kick		Your kick scratches the bear.	-	-
+1795209751	cmd	Ravagger	7	3748	school.are	fighting	90	0	fight	kick		Your kick misses the bear.	-	-
+1795209754	cmd	Ravagger	7	3748	school.are	fighting	90	0	fight	kick		Your kick scratches the bear.	-	-
+1795209757	cmd	Ravagger	7	3748	school.are	fighting	90	0	fight	kick		Your kick scratches the bear.	-	-
+1795209760	skill	Ravagger	7	3748	school.are	kick	58	59	mistake	kick
+1795209760	cmd	Ravagger	7	3748	school.are	fighting	90	0	fight	kick		Your kick misses the bear. // You learn from your mistakes, and your kick skill improves.	-	-
+1795209763	cmd	Ravagger	7	3748	school.are	fighting	85	0	fight	kick		Your kick scratches the bear.	-	-
+1795209763	coin	Ravagger	7	3748	school.are	+3	loot	(violence_update)	corpse of the bear	9440158
+1795209763	coin	Ravagger	7	3748	school.are	+8	loot	(violence_update)	corpse of the bear	9440166
+1795209771	cmd	Ravagger	7	3748	school.are	standing	85	0	-	look		The Center of the Dungeon //   You are in the center of a large room.  A faint light from above shows that // the floors are all covered with slime.  A feeling of dread comes over you as	-	+
+1795209775	cmd	Ravagger	7	3748	school.are	standing	85	0	-	scan		the lizard                         -right above you. // the fox                            -right above you. // the fox                            -right above you.	-	-
+1795209777	cmd	Ravagger	7	3753	school.are	standing	85	0	-	east		The East Wall of the Dungeon //   You are against a wall in the dungeon.  It is quite dark here.  The lack of // any windows in the area explains the smell around you.	-	+
+1795209781	cmd	Ravagger	7	3753	school.are	standing	85	0	-	scan		You don't see anything near you.	-	-
+1795209784	cmd	Ravagger	7	3756	school.are	standing	85	0	-	south		The South East Corner of the Dungeon //   You are against a wall in the dungeon.  It is quite dark here.  The lack of // any windows in the area explains the smell around you.	-	+
+1795209790	cmd	Ravagger	7	3756	school.are	standing	85	0	-	scan		You don't see anything near you.	-	-
+1795209791	cmd	Ravagger	7	3755	school.are	standing	85	0	-	west		The South Wall of the Dungeon //   You are against a wall in the dungeon.  It is quite dark here.  The lack of // any windows in the area explains the smell around you.	-	+
+1795209794	cmd	Ravagger	7	3754	school.are	standing	85	0	-	west		The South West Corner of the Dungeon //   You are against a wall in the dungeon.  It is quite dark here.  The lack of // any windows in the area explains the smell around you.	-	+
+1795209799	cmd	Ravagger	7	3754	school.are	standing	85	0	-	kill	wo	Your punch hits the wolf. // Your punch misses the wolf.	-	-
+1795209802	cmd	Ravagger	7	3754	school.are	fighting	94	0	fight	kick		Your kick scratches the wolf.	-	-
+1795209805	cmd	Ravagger	7	3754	school.are	fighting	94	0	fight	kick		Your kick misses the wolf.	-	-
+1795209808	coin	Ravagger	7	3754	school.are	+2	loot	(violence_update)	corpse of the wolf	9440168
+1795209808	coin	Ravagger	7	3754	school.are	+8	loot	(violence_update)	corpse of the wolf	9440176
+1795209811	cmd	Ravagger	7	3754	school.are	standing	94	0	-	look		The South West Corner of the Dungeon //   You are against a wall in the dungeon.  It is quite dark here.  The lack of // any windows in the area explains the smell around you.	-	+
+1795209814	cmd	Ravagger	7	3752	school.are	standing	94	0	-	north		The West Wall of the Dungeon //   You are against a wall in the dungeon.  It is quite dark here.  The lack of // any windows in the area explains the smell around you.	-	+
+1795209817	cmd	Ravagger	7	3752	school.are	standing	94	0	-	kill	be	Your punch scratches the bear. // Your punch grazes the bear.	-	-
+1795209821	cmd	Ravagger	7	3752	school.are	fighting	94	0	fight	kill	be	You do the best you can!	-	-
+1795209824	cmd	Ravagger	7	3752	school.are	fighting	93	0	fight	kick		Your kick misses the bear.	-	-
+1795209826	cmd	Ravagger	7	3752	school.are	fighting	93	0	fight	kick		Your kick grazes the bear.	-	-
+1795209829	cmd	Ravagger	7	3752	school.are	fighting	93	0	fight	kick		Your kick misses the bear.	-	-
+1795209832	cmd	Ravagger	7	3752	school.are	fighting	93	1	fight	kick		Your kick misses the bear.	-	-
+1795209835	cmd	Ravagger	7	3752	school.are	fighting	93	0	fight	kick		Your kick grazes the bear.	-	-
+1795209838	cmd	Ravagger	7	3752	school.are	fighting	93	0	fight	kick		Your kick misses the bear.	-	-
+1795209842	coin	Ravagger	7	3752	school.are	+3	loot	kick	corpse of the bear	9440179
+1795209842	coin	Ravagger	7	3752	school.are	+8	loot	kick	corpse of the bear	9440187
+1795209842	cmd	Ravagger	7	3752	school.are	fighting	93	2	fight	kick		Your kick scratches the bear. // The bear is DEAD!! // You receive 268 experience points (134 of them rested).	-	+
+1795209847	cmd	Ravagger	7	3752	school.are	standing	93	0	-	look		The West Wall of the Dungeon //   You are against a wall in the dungeon.  It is quite dark here.  The lack of // any windows in the area explains the smell around you.	-	+
+1795209847	cmd	Ravagger	7	3749	school.are	standing	93	0	-	north		The North West Corner of the Dungeon //   You are against a wall in the dungeon.  It is quite dark here.  The lack of // any windows in the area explains the smell around you.	-	+
+1795209852	cmd	Ravagger	7	3749	school.are	fighting	84	0	fight	kick		Your kick misses the beast.	-	-
+1795209855	cmd	Ravagger	7	3749	school.are	fighting	84	0	fight	kick		Your kick scratches the beast.	-	-
+1795209858	cmd	Ravagger	7	3749	school.are	fighting	84	0	fight	kick		Your kick misses the beast.	-	-
+1795209860	skill	Ravagger	7	3749	school.are	kick	59	62	mistake	kick
+1795209860	cmd	Ravagger	7	3749	school.are	fighting	82	0	fight	kick		Your kick misses the beast. // You learn from your mistakes, and your kick skill improves.	-	-
+1795209863	cmd	Ravagger	7	3749	school.are	fighting	82	0	fight	kick		Your kick scratches the beast.	-	-
+1795209866	cmd	Ravagger	7	3749	school.are	fighting	82	0	fight	kick		Your kick scratches the beast.	-	-
+1795209869	cmd	Ravagger	7	3749	school.are	fighting	91	0	fight	kick		Your kick scratches the beast.	-	-
+1795209871	cmd	Ravagger	7	3749	school.are	fighting	91	0	fight	kick		Your kick scratches the beast.	-	-
+1795209874	cmd	Ravagger	7	3749	school.are	fighting	91	0	fight	kick		Your kick misses the beast.	-	-
+1795209877	cmd	Ravagger	7	3749	school.are	fighting	91	0	fight	kick		Your kick scratches the beast.	-	-
+1795209884	cmd	Ravagger	7	3749	school.are	fighting	91	0	fight	kick		Your kick scratches the beast.	-	-
+1795209886	coin	Ravagger	7	3749	school.are	+100	loot	(violence_update)	corpse of the beast	9440287
+1795209886	achieved	Ravagger	7	3749	school.are	four-denominations	10	70	(violence_update)
+1795209886	coin	Ravagger	7	3749	school.are	+1	loot	(violence_update)	corpse of the beast	9440288
+1795209886	coin	Ravagger	7	3749	school.are	+10	loot	(violence_update)	corpse of the beast	9440298
+1795209902	cmd	Ravagger	7	3749	school.are	standing	91	0	-	look		The North West Corner of the Dungeon //   You are against a wall in the dungeon.  It is quite dark here.  The lack of // any windows in the area explains the smell around you.	-	+
+1795209903	cmd	Ravagger	7	3749	school.are	standing	91	0	-	look		The North West Corner of the Dungeon //   You are against a wall in the dungeon.  It is quite dark here.  The lack of // any windows in the area explains the smell around you.	-	+
+1795209904	cmd	Ravagger	7	3750	school.are	standing	91	0	-	east		The North Wall of the Dungeon //   You are against a wall in the dungeon.  It is quite dark here.  The lack of // any windows in the area explains the smell around you.	-	+
+1795209907	cmd	Ravagger	7	3748	school.are	standing	91	0	-	south		The Center of the Dungeon //   You are in the center of a large room.  A faint light from above shows that // the floors are all covered with slime.  A feeling of dread comes over you as	-	+
+1795209910	cmd	Ravagger	7	3748	school.are	standing	91	0	-	open	u	Ok.	-	-
+1795209912	cmd	Ravagger	7	3734	school.are	standing	91	0	-	up		Center of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209915	cmd	Ravagger	7	3760	school.are	standing	100	0	-	up		A Safe Room //   You are in a safe room, away from all the mean rabbits and snails of the Arena. // You can rest here, and go up to go back to the Temple of Devota.	-	+
+1795209916	area	Ravagger	7	4207	dresden.are	school.are	dresden.are	362	up
+1795209916	cmd	Ravagger	7	4207	dresden.are	standing	100	0	-	up		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795209918	cmd	Ravagger	7	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795209923	cmd	Ravagger	7	4208	dresden.are	standing	100	0	-	rest		You rest.	-	-
+1795209950	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=2	laid=0 spotted=1 picked=0 passed=1 cleared=0 rare=0 mobs_seen=22 mobs_fought=11 secs=900
+1795209953	cmd	Ravagger	7	4208	dresden.are	resting	100	0	-	stand		You stand up.	-	-

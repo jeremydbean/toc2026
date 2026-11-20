@@ -1,9 +1,9 @@
 #DIARY 1
 Day 2026-11-20
-Played 5617
-Level 3 6 3
-Exp 6773 25
-Kills 25
+Played 5908
+Level 3 7 4
+Exp 8659 25
+Kills 35
 Deaths 0
 Close 0
 Quests 0 0
@@ -18,8 +18,8 @@ List achv 5 0 Little Blue Trail
 List achv 15 0 No Stone Unturned I
 List achv 5 0 Well Rested
 List skill 32 33 dagger
-List skill 39 40 kick
-List area 3143 0 Mud School
+List skill 39 62 kick
+List area 3434 0 Mud School
 List area 1246 0 City of Dresden
 List area 18 0 Limbo
 List area 18 0 Continental Drift
@@ -39,7 +39,7 @@ List item 1 0 a key
 List item 1 0 a mud school diploma
 List item 1 0 a silver key
 More item 6
-List earn 10129 0 loot
+List earn 10191 0 loot
 List spend 4 0 buy
 List spend 10000 0 other
 End

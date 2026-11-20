@@ -323245,3 +323245,114 @@ Fri Nov 20 21:20:52 2026 :: Log Ravagger [3726]: n
 Fri Nov 20 21:20:52 2026 :: Log Ravagger [3731]: arrived (East Wall of Arena) from 3726
 Fri Nov 20 21:20:55 2026 :: Log Ravagger [3731]: w
 Fri Nov 20 21:20:55 2026 :: Log Ravagger [3730]: arrived (Arena) from 3731
+Fri Nov 20 21:20:57 2026 :: Log Ravagger [3730]: w
+Fri Nov 20 21:20:57 2026 :: Log Ravagger [3729]: arrived (Arena) from 3730
+Fri Nov 20 21:20:58 2026 :: Log Ravagger [3729]: n
+Fri Nov 20 21:20:58 2026 :: Log Ravagger [3734]: arrived (Center of Arena) from 3729
+Fri Nov 20 21:21:08 2026 :: Log Ravagger [3734]: l si
+Fri Nov 20 21:21:26 2026 :: Log Ravagger [3734]: open down
+Fri Nov 20 21:21:28 2026 :: Log Ravagger [3734]: d
+Fri Nov 20 21:21:28 2026 :: Log Ravagger [3748]: arrived (The Center of the Dungeon) from 3734
+Fri Nov 20 21:21:31 2026 :: Log Ravagger [3748]: con wo
+Fri Nov 20 21:21:35 2026 :: Log Ravagger [3748]: k wo
+Fri Nov 20 21:21:38 2026 :: Log Ravagger [3748]: kick
+Fri Nov 20 21:21:40 2026 :: Log Ravagger [3748]: kick
+Fri Nov 20 21:21:43 2026 :: Log Ravagger [3748]: kick
+Fri Nov 20 21:21:46 2026 :: Log Ravagger [3748]: kick
+Fri Nov 20 21:21:50 2026 :: Log Ravagger [3748]: kick
+Fri Nov 20 21:21:53 2026 :: Log Ravagger [3748]: kick
+Fri Nov 20 21:21:56 2026 :: Log Ravagger [3748]: kick
+Fri Nov 20 21:21:59 2026 :: Log Ravagger [3748]: kick
+Fri Nov 20 21:22:01 2026 :: Log Ravagger [3748]: kick
+Fri Nov 20 21:22:04 2026 :: Log Ravagger [3748]: level 6 -> 7 (earned)
+Fri Nov 20 21:22:04 2026 :: Ravagger has achieved level 7!
+Fri Nov 20 21:22:04 2026 :: Snapshot of Ravagger taken before level: Ravagger.20261120_212204.level (PRESTORE Ravagger to see it).
+Fri Nov 20 21:22:04 2026 :: Log Ravagger [3748]: killed the wolf
+Fri Nov 20 21:22:04 2026 :: Log Ravagger [3748]: coin +2 copper
+Fri Nov 20 21:22:04 2026 :: Log Ravagger [3748]: coin +8 copper
+Fri Nov 20 21:22:04 2026 :: Log Ravagger [3748]: kick
+Fri Nov 20 21:22:11 2026 :: Log Ravagger [3748]: l
+Fri Nov 20 21:22:14 2026 :: Log Ravagger [3748]: con be
+Fri Nov 20 21:22:20 2026 :: Log Ravagger [3748]: k be
+Fri Nov 20 21:22:23 2026 :: Log Ravagger [3748]: kick
+Fri Nov 20 21:22:26 2026 :: Log Ravagger [3748]: kick
+Fri Nov 20 21:22:29 2026 :: Log Ravagger [3748]: kick
+Fri Nov 20 21:22:31 2026 :: Log Ravagger [3748]: kick
+Fri Nov 20 21:22:34 2026 :: Log Ravagger [3748]: kick
+Fri Nov 20 21:22:37 2026 :: Log Ravagger [3748]: kick
+Fri Nov 20 21:22:40 2026 :: Log Ravagger [3748]: kick
+Fri Nov 20 21:22:43 2026 :: Log Ravagger [3748]: kick
+Fri Nov 20 21:22:43 2026 :: Log Ravagger [3748]: killed the bear
+Fri Nov 20 21:22:43 2026 :: Log Ravagger [3748]: coin +3 copper
+Fri Nov 20 21:22:43 2026 :: Log Ravagger [3748]: coin +8 copper
+Fri Nov 20 21:22:51 2026 :: Log Ravagger [3748]: l
+Fri Nov 20 21:22:55 2026 :: Log Ravagger [3748]: scan
+Fri Nov 20 21:22:57 2026 :: Log Ravagger [3748]: e
+Fri Nov 20 21:22:57 2026 :: Log Ravagger [3753]: arrived (The East Wall of the Dungeon) from 3748
+Fri Nov 20 21:23:01 2026 :: Log Ravagger [3753]: scan
+Fri Nov 20 21:23:04 2026 :: Log Ravagger [3753]: s
+Fri Nov 20 21:23:04 2026 :: Log Ravagger [3756]: arrived (The South East Corner of the Dungeon) from 3753
+Fri Nov 20 21:23:10 2026 :: Log Ravagger [3756]: scan
+Fri Nov 20 21:23:11 2026 :: Log Ravagger [3756]: w
+Fri Nov 20 21:23:11 2026 :: Log Ravagger [3755]: arrived (The South Wall of the Dungeon) from 3756
+Fri Nov 20 21:23:14 2026 :: Log Ravagger [3755]: w
+Fri Nov 20 21:23:14 2026 :: Log Ravagger [3754]: arrived (The South West Corner of the Dungeon) from 3755
+Fri Nov 20 21:23:19 2026 :: Log Ravagger [3754]: k wo
+Fri Nov 20 21:23:22 2026 :: Log Ravagger [3754]: kick
+Fri Nov 20 21:23:25 2026 :: Log Ravagger [3754]: kick
+Fri Nov 20 21:23:28 2026 :: Log Ravagger [3754]: killed the wolf
+Fri Nov 20 21:23:28 2026 :: Log Ravagger [3754]: coin +2 copper
+Fri Nov 20 21:23:28 2026 :: Log Ravagger [3754]: coin +8 copper
+Fri Nov 20 21:23:31 2026 :: Log Ravagger [3754]: l
+Fri Nov 20 21:23:34 2026 :: Log Ravagger [3754]: n
+Fri Nov 20 21:23:34 2026 :: Log Ravagger [3752]: arrived (The West Wall of the Dungeon) from 3754
+Fri Nov 20 21:23:36 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 20 21:23:37 2026 :: Log Ravagger [3752]: k be
+Fri Nov 20 21:23:41 2026 :: Log Ravagger [3752]: k be
+Fri Nov 20 21:23:44 2026 :: Log Ravagger [3752]: kick
+Fri Nov 20 21:23:46 2026 :: Log Ravagger [3752]: kick
+Fri Nov 20 21:23:49 2026 :: Log Ravagger [3752]: kick
+Fri Nov 20 21:23:52 2026 :: Log Ravagger [3752]: kick
+Fri Nov 20 21:23:55 2026 :: Log Ravagger [3752]: kick
+Fri Nov 20 21:23:58 2026 :: Log Ravagger [3752]: kick
+Fri Nov 20 21:24:02 2026 :: Log Ravagger [3752]: kick
+Fri Nov 20 21:24:02 2026 :: Log Ravagger [3752]: killed the bear
+Fri Nov 20 21:24:02 2026 :: Log Ravagger [3752]: coin +3 copper
+Fri Nov 20 21:24:02 2026 :: Log Ravagger [3752]: coin +8 copper
+Fri Nov 20 21:24:07 2026 :: Log Ravagger [3752]: l
+Fri Nov 20 21:24:07 2026 :: Log Ravagger [3752]: n
+Fri Nov 20 21:24:07 2026 :: Log Ravagger [3749]: arrived (The North West Corner of the Dungeon) from 3752
+Fri Nov 20 21:24:12 2026 :: Log Ravagger [3749]: kick
+Fri Nov 20 21:24:15 2026 :: Log Ravagger [3749]: kick
+Fri Nov 20 21:24:18 2026 :: Log Ravagger [3749]: kick
+Fri Nov 20 21:24:20 2026 :: Log Ravagger [3749]: kick
+Fri Nov 20 21:24:23 2026 :: Log Ravagger [3749]: kick
+Fri Nov 20 21:24:26 2026 :: Log Ravagger [3749]: kick
+Fri Nov 20 21:24:29 2026 :: Log Ravagger [3749]: kick
+Fri Nov 20 21:24:31 2026 :: Log Ravagger [3749]: kick
+Fri Nov 20 21:24:34 2026 :: Log Ravagger [3749]: kick
+Fri Nov 20 21:24:37 2026 :: Log Ravagger [3749]: kick
+Fri Nov 20 21:24:44 2026 :: Log Ravagger [3749]: kick
+Fri Nov 20 21:24:46 2026 :: Log Ravagger [3749]: killed the beast
+Fri Nov 20 21:24:46 2026 :: Log Ravagger [3749]: coin +1 silver
+Fri Nov 20 21:24:46 2026 :: Log Ravagger [3749]: coin +1 copper
+Fri Nov 20 21:24:46 2026 :: Log Ravagger [3749]: coin +10 copper
+Fri Nov 20 21:25:02 2026 :: Log Ravagger [3749]: l
+Fri Nov 20 21:25:03 2026 :: Log Ravagger [3749]: l
+Fri Nov 20 21:25:04 2026 :: Log Ravagger [3749]: e
+Fri Nov 20 21:25:04 2026 :: Log Ravagger [3750]: arrived (The North Wall of the Dungeon) from 3749
+Fri Nov 20 21:25:07 2026 :: Log Ravagger [3750]: s
+Fri Nov 20 21:25:07 2026 :: Log Ravagger [3748]: arrived (The Center of the Dungeon) from 3750
+Fri Nov 20 21:25:10 2026 :: Log Ravagger [3748]: open u
+Fri Nov 20 21:25:12 2026 :: Log Ravagger [3748]: u
+Fri Nov 20 21:25:12 2026 :: Log Ravagger [3734]: arrived (Center of Arena) from 3748
+Fri Nov 20 21:25:15 2026 :: Log Ravagger [3734]: u
+Fri Nov 20 21:25:15 2026 :: Log Ravagger [3760]: arrived (A Safe Room) from 3734
+Fri Nov 20 21:25:16 2026 :: Log Ravagger [3760]: u
+Fri Nov 20 21:25:16 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 3760
+Fri Nov 20 21:25:18 2026 :: Log Ravagger [4207]: w
+Fri Nov 20 21:25:18 2026 :: Log Ravagger [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Fri Nov 20 21:25:23 2026 :: Log Ravagger [4208]: rest
+Fri Nov 20 21:25:35 2026 :: Treasure goblin: vanished from room 18151 (A path around the pond, icekeep.are) (too long in one area).
+Fri Nov 20 21:25:50 2026 :: Connection guard: last hour 9 closed without a word, 4 refused, 0 new characters refused, 0 newly paused; 9 addresses paused and 0 refused now, 15 active player addresses.
+Fri Nov 20 21:25:53 2026 :: Log Ravagger [4208]: stan

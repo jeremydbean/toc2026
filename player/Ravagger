@@ -2,7 +2,7 @@
 Name Ravagger~
 Id   56640
 Serial 3950626
-LogO 1795209576
+LogO 1795209867
 Vers 4
 Prom ~
 Race human~
@@ -16,19 +16,19 @@ PsiKnown ~
 ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble 20261114-season-area-ids 20261116-wrapped-pools~
 Cast none
-Levl 6
-Plyd 10203
+Levl 7
+Plyd 10494
 ListRemorts ~
 NumRemorts 0
 Note 0
-SkillDamage 2 22 6
-MeleeRatio 1745 22
+SkillDamage 5 28 7
+MeleeRatio 1728 28
 Scro 22
-Room 3743
-HMV  77 77 166 166 99 99
+Room 3749
+HMV  83 91 181 206 105 105
 NewGold 44
 NewPlat 9
-NewCopp 125
+NewCopp 187
 NewSilv 0
 BankCP 0
 IntTime 1795144964
@@ -37,7 +37,7 @@ Dcount 0
 SavedOnce 1
 PkRec 0
 PkGiv 0
-AchKills 25
+AchKills 35
 AchQuests 0
 AchDeaths 0
 AchExplore 0
@@ -54,10 +54,10 @@ Achv visit-chessboard 1795148117
 Achv funny-sleepwalk 1795146863
 Achv explored-1 1795150077
 AchSet areas 477615788 675805239 1028131563 1103516333 1255184829 1674073230 ~
-AchSet rooms 17 101-129 2401-2402 2404-2405 2415 2419 2427-2431 2433-2437 2470 2485 3241 3700-3705 3709 3711-3722 3725 3729-3731 3734 3736 3739 3741-3744 3746 3757-3762 3771-3783 3792-3795 4201-4211 4649 4800-4809 24300-24301 ~
+AchSet rooms 17 101-129 2401-2402 2404-2405 2415 2419 2427-2431 2433-2437 2470 2485 3241 3700-3705 3709 3711-3727 3729-3732 3734 3736-3737 3739 3741-3744 3746 3748-3749 3752-3762 3771-3783 3792-3795 4201-4211 4649 4800-4809 24300-24301 ~
 AchSet explored-areas 477615788 ~
-LastOut  1795209576
-Rested 1753 0
+LastOut  1795209867
+Rested 816 0
 Daily 0 0 0 0 0
 SesLogin 1795144941
 SesDur   5460
@@ -67,7 +67,7 @@ SesKill  25
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  13990
+Exp  15876
 Act  65788
 Comm 24608
 Mounted 0
@@ -94,6 +94,8 @@ Color 14 0
 Color 15 0
 Color 16 0
 Pos  8
+Prac 5
+Trai 1
 Tutorial 0 1081356
 Save  -8
 Alig  15
@@ -102,12 +104,12 @@ ACs 63 64 64 79
 Attr 14 13 13 18 18
 AMod 0 8 11 0 10
 Pass $6$0./7Mh0ovRki7ngm$HQ87mfYAI0FYstguo9WpLGn8wZ9OHDyvvRzhdA6XqE1AsXORsTbESrpQGIIVz05.IP3DP.yTp6n/2ZBLSC8tf/~
-Titl  the Student of Form~
+Titl  the Student of Shape~
 Pnts 40
 TSex 1
 LLev 1
-HMVP 77 166 130
-Cond 0 19 38
+HMVP 91 206 136
+Cond 0 14 33
 Sk 8 'axe'
 Sk 33 'dagger'
 Sk 6 'flail'
@@ -118,7 +120,7 @@ Sk 3 'sword'
 Sk 15 'whip'
 Sk 60 'dodge'
 Sk 75 'hand to hand'
-Sk 58 'kick'
+Sk 62 'kick'
 Sk 1 'trip'
 Sk 1 'nerve damage'
 Sk 1 'meditation'
@@ -126,9 +128,9 @@ Sk 75 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
-AffD 'bless'   0  64  -7  24          0          0
-AffD 'bless'   0  64   7  18          0          0
-AffD 'armor'   0  22 -20  17          0          0
+AffD 'bless'   0  59  -7  24          0          0
+AffD 'bless'   0  59   7  18          0          0
+AffD 'armor'   0  17 -20  17          0          0
 End
 
 #O
@@ -138,7 +140,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 35 0 0
+Val  0 0 30 0 0
 End
 
 #O
