@@ -322744,3 +322744,5 @@ Fri Nov 20 12:46:45 2026 :: Sock.sinaddr:  184.105.139.67
 Fri Nov 20 12:46:46 2026 :: EOF encountered on read.
 Fri Nov 20 12:46:46 2026 :: Connection guard: 184.105.139.67 closed before a password prompt (strike 1 of 6 in 6 hours).
 Fri Nov 20 12:50:45 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 20 12:55:51 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 20 12:56:50 2026 :: Treasure goblin: vanished from room 25023 (Treasure vault, mountain.are) (too long in one area).
