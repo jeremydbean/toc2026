@@ -40080,3 +40080,90 @@
 1795145351	cmd	Ravagger	3	3712	school.are	resting	100	0	-	eat	pie	You eat a big pot pie. // You are full.	-	-
 1795145358	cmd	Ravagger	3	3712	school.are	resting	100	0	-	look	map	CITY OF DRESDEN //   (C) Made by Drakk & Soul. //   Sewers	-	+
 1795145376	cmd	Ravagger	3	3712	school.are	resting	100	0	-	look		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795145392	cmd	Ravagger	3	3712	school.are	resting	100	0	-	help		SUMMARY // MOVEMENT                            GROUP // north south east west up down       follow group gtell split	-	+
+1795145410	cmd	Ravagger	3	3712	school.are	resting	100	0	-	equipment		You are using: // <used as light>     (Glowing) a war banner // <worn on body>      a sub issue vest	-	+
+1795145415	cmd	Ravagger	3	3712	school.are	resting	100	0	-	look		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795145416	cmd	Ravagger	3	3714	school.are	resting	100	0	-	west		You stand up. // A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax	-	+
+1795145426	cmd	Ravagger	3	3714	school.are	standing	100	0	-	kill	liz	Your pierce scratches the lizard man. // Your pierce scratches the lizard man.	-	-
+1795145429	cmd	Ravagger	3	3714	school.are	fighting	100	0	fight	kill	liz	You do the best you can!	-	-
+1795145440	cmd	Ravagger	3	3714	school.are	fighting	100	0	fight	kill	liz	You do the best you can!	-	-
+1795145444	achieved	Ravagger	3	3714	school.are	first-kill	5	15	(violence_update)
+1795145444	got	Ravagger	3	3714	school.are	3708	a pair of sub issue boots	armor	0	0	(violence_update)	corpse of the lizard man
+1795145444	got	Ravagger	3	3714	school.are	3713	a sub issue bracer	armor	0	0	(violence_update)	corpse of the lizard man
+1795145444	coin	Ravagger	3	3714	school.are	+2	loot	(violence_update)	corpse of the lizard man	9440002
+1795145446	cmd	Ravagger	3	3714	school.are	standing	100	0	-	kick		You aren't fighting anyone.	-	-
+1795145451	cmd	Ravagger	3	3714	school.are	standing	100	0	-	wear	all	You wear a sub issue bracer around your left wrist. // You wear a pair of sub issue boots on your feet. // You must be level 10 to use this object.	-	-
+1795145455	cmd	Ravagger	3	3714	school.are	standing	100	0	-	wear	all	You must be level 10 to use this object.	-	-
+1795145457	cmd	Ravagger	3	3714	school.are	standing	100	0	-	look		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is east.	-	+
+1795145460	cmd	Ravagger	3	3712	school.are	standing	100	0	-	east		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795145461	cmd	Ravagger	3	3713	school.are	standing	100	0	-	north		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is south.	-	+
+1795145467	cmd	Ravagger	3	3713	school.are	fighting	100	0	fight	kick		Your kick misses the kobold.	-	-
+1795145471	cmd	Ravagger	3	3713	school.are	fighting	100	0	fight	kick		Your kick misses the kobold.	-	-
+1795145474	cmd	Ravagger	3	3713	school.are	fighting	100	0	fight	kick		Your kick misses the kobold.	-	-
+1795145476	cmd	Ravagger	3	3713	school.are	fighting	100	0	fight	kick		Your kick scratches the kobold.	-	-
+1795145479	cmd	Ravagger	3	3713	school.are	fighting	100	0	fight	kick		Your kick misses the kobold.	-	-
+1795145482	cmd	Ravagger	3	3713	school.are	fighting	100	0	fight	kick		Your kick misses the kobold.	-	-
+1795145486	cmd	Ravagger	3	3713	school.are	fighting	100	0	fight	skills		Level  1: dagger              32%      hand to hand        75%       //           recall              75%       // Level  3: kick                 9%      	-	+
+1795145497	cmd	Ravagger	3	3713	school.are	fighting	100	0	fight	kick		Your kick misses the kobold.	-	-
+1795145499	cmd	Ravagger	3	3713	school.are	fighting	97	0	fight	kick		Your kick misses the kobold.	-	-
+1795145502	cmd	Ravagger	3	3713	school.are	fighting	97	0	fight	kick		Your kick misses the kobold.	-	-
+1795145505	cmd	Ravagger	3	3713	school.are	fighting	97	0	fight	kick		Your kick misses the kobold.	-	-
+1795145508	cmd	Ravagger	3	3713	school.are	fighting	97	0	fight	kick		Your kick misses the kobold.	-	-
+1795145511	cmd	Ravagger	3	3713	school.are	fighting	97	0	fight	kick		Your kick misses the kobold.	-	-
+1795145513	cmd	Ravagger	3	3713	school.are	fighting	97	0	fight	kick		Your kick misses the kobold.	-	-
+1795145516	cmd	Ravagger	3	3713	school.are	fighting	97	0	fight	kick		Your kick misses the kobold.	-	-
+1795145519	cmd	Ravagger	3	3713	school.are	fighting	97	0	fight	kick		Your kick misses the kobold.	-	-
+1795145522	cmd	Ravagger	3	3713	school.are	fighting	97	0	fight	kick		Your kick misses the kobold.	-	-
+1795145523	got	Ravagger	3	3713	school.are	3707	a pair of sub issue leggings	armor	0	0	(violence_update)	corpse of the kobold
+1795145523	got	Ravagger	3	3713	school.are	3712	a sub issue belt	armor	0	0	(violence_update)	corpse of the kobold
+1795145523	coin	Ravagger	3	3713	school.are	+2	loot	(violence_update)	corpse of the kobold	9440004
+1795145525	cmd	Ravagger	3	3713	school.are	standing	97	0	-	kick		You aren't fighting anyone.	-	-
+1795145527	cmd	Ravagger	3	3713	school.are	standing	97	0	-	wear	all	You wear a sub issue belt about your waist. // You wear a pair of sub issue leggings on your legs. // You must be level 10 to use this object.	-	-
+1795145531	cmd	Ravagger	3	3713	school.are	standing	97	0	-	east		Alas, you cannot go that way.	-	-
+1795145532	cmd	Ravagger	3	3712	school.are	standing	97	0	-	south		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795145534	cmd	Ravagger	3	3715	school.are	standing	97	0	-	south		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is north.	-	+
+1795145538	cmd	Ravagger	3	3715	school.are	standing	97	0	-	kill	man	Your pierce misses the killer. // Your pierce misses the killer.	-	-
+1795145541	cmd	Ravagger	3	3715	school.are	fighting	97	0	fight	kick		Your kick misses the killer.	-	-
+1795145544	cmd	Ravagger	3	3715	school.are	fighting	97	0	fight	kick		Your kick misses the killer.	-	-
+1795145547	cmd	Ravagger	3	3715	school.are	fighting	97	0	fight	kick		Your kick misses the killer.	-	-
+1795145550	cmd	Ravagger	3	3715	school.are	fighting	97	0	fight	kick		Your kick misses the killer.	-	-
+1795145552	cmd	Ravagger	3	3715	school.are	fighting	97	0	fight	kick		Your kick misses the killer.	-	-
+1795145555	cmd	Ravagger	3	3715	school.are	fighting	97	0	fight	kick		Your kick misses the killer.	-	-
+1795145558	cmd	Ravagger	3	3715	school.are	fighting	97	0	fight	kick		Your kick misses the killer.	-	-
+1795145561	cmd	Ravagger	3	3715	school.are	fighting	97	0	fight	kick		Your kick misses the killer.	-	-
+1795145563	cmd	Ravagger	3	3715	school.are	fighting	97	0	fight	kick		Your kick misses the killer.	-	-
+1795145566	cmd	Ravagger	3	3715	school.are	fighting	100	0	fight	kick		Your kick misses the killer.	-	-
+1795145569	cmd	Ravagger	3	3715	school.are	fighting	100	0	fight	kick		Your kick misses the killer.	-	-
+1795145572	cmd	Ravagger	3	3715	school.are	fighting	100	0	fight	kick		Your kick misses the killer.	-	-
+1795145575	cmd	Ravagger	3	3715	school.are	fighting	100	0	fight	kick		Your kick misses the killer.	-	-
+1795145577	cmd	Ravagger	3	3715	school.are	fighting	100	0	fight	kick		Your kick misses the killer.	-	-
+1795145580	cmd	Ravagger	3	3715	school.are	fighting	100	1	fight	kick		Your kick misses the killer.	-	-
+1795145583	cmd	Ravagger	3	3715	school.are	fighting	100	0	fight	kick		Your kick misses the killer.	-	-
+1795145586	level	Ravagger	4	3715	school.are	3	4	Monk 	0	8618	-1	kick
+1795145586	got	Ravagger	4	3715	school.are	3706	a sub issue helmet	armor	0	0	kick	corpse of the killer
+1795145586	got	Ravagger	4	3715	school.are	3711	a sub issue cape	armor	0	0	kick	corpse of the killer
+1795145586	coin	Ravagger	4	3715	school.are	+2	loot	kick	corpse of the killer	9440006
+1795145586	cmd	Ravagger	4	3715	school.are	fighting	100	23	fight	kick		Your kick scratches the killer. // The killer is DEAD!! // You receive 512 experience points.	-	+
+1795145597	cmd	Ravagger	4	3715	school.are	standing	81	0	-	wear	all	You wear a sub issue cape about your body. // You wear a sub issue helmet on your head. // You must be level 10 to use this object.	-	-
+1795145597	cmd	Ravagger	4	3715	school.are	standing	81	0	-	east		Alas, you cannot go that way.	-	-
+1795145599	cmd	Ravagger	4	3712	school.are	standing	81	0	-	north		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795145604	cmd	Ravagger	4	3716	school.are	standing	81	0	-	east		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is west.	-	+
+1795145608	cmd	Ravagger	4	3716	school.are	standing	81	0	-	kill	gr	Your pierce scratches the gremlin. // Your pierce misses the gremlin.	-	-
+1795145610	cmd	Ravagger	4	3716	school.are	fighting	92	0	fight	kick		Your kick misses the gremlin.	-	-
+1795145613	cmd	Ravagger	4	3716	school.are	fighting	92	0	fight	kick		Your kick misses the gremlin.	-	-
+1795145616	cmd	Ravagger	4	3716	school.are	fighting	92	0	fight	kick		Your kick misses the gremlin.	-	-
+1795145619	cmd	Ravagger	4	3716	school.are	fighting	92	0	fight	kick		Your kick misses the gremlin.	-	-
+1795145621	cmd	Ravagger	4	3716	school.are	fighting	90	0	fight	kick		Your kick misses the gremlin.	-	-
+1795145624	cmd	Ravagger	4	3716	school.are	fighting	90	0	fight	kick		Your kick misses the gremlin.	-	-
+1795145627	cmd	Ravagger	4	3716	school.are	fighting	90	0	fight	kick		Your kick misses the gremlin.	-	-
+1795145630	cmd	Ravagger	4	3716	school.are	fighting	90	0	fight	kick		Your kick misses the gremlin.	-	-
+1795145632	got	Ravagger	4	3716	school.are	3705	a sub issue cloak	armor	0	0	kick	corpse of the gremlin
+1795145632	got	Ravagger	4	3716	school.are	3705	a sub issue cloak	armor	0	0	kick	corpse of the gremlin
+1795145632	coin	Ravagger	4	3716	school.are	+2	loot	kick	corpse of the gremlin	9440008
+1795145632	cmd	Ravagger	4	3716	school.are	fighting	90	2	fight	kick		Your kick scratches the gremlin. // The gremlin is DEAD!! // You receive 266 experience points.	-	+
+1795145635	cmd	Ravagger	4	3716	school.are	standing	90	0	-	kick		You aren't fighting anyone.	-	-
+1795145637	cmd	Ravagger	4	3716	school.are	standing	90	0	-	wear	all	You wear a sub issue cloak around your neck. // You wear a sub issue cloak around your neck. // You must be level 10 to use this object.	-	-
+1795145641	cmd	Ravagger	4	3712	school.are	standing	90	0	-	west		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795145645	cmd	Ravagger	4	3712	school.are	standing	90	0	-	sleep		You go to sleep.	-	-
+1795145676	cmd	Ravagger	4	3712	school.are	sleeping	90	0	-	rest		You wake up and start resting.	-	-
+1795145682	cmd	Ravagger	4	3712	school.are	resting	100	0	-	help		SUMMARY // MOVEMENT                            GROUP // north south east west up down       follow group gtell split	-	+

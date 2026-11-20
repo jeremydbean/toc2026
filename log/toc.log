@@ -320723,3 +320723,96 @@ Fri Nov 20 03:29:03 2026 :: Log Ravagger [3712]: eat bead
 Fri Nov 20 03:29:11 2026 :: Log Ravagger [3712]: eat pie
 Fri Nov 20 03:29:18 2026 :: Log Ravagger [3712]: l map
 Fri Nov 20 03:29:36 2026 :: Log Ravagger [3712]: l
+Fri Nov 20 03:29:52 2026 :: Log Ravagger [3712]: help
+Fri Nov 20 03:30:10 2026 :: Log Ravagger [3712]: eq
+Fri Nov 20 03:30:15 2026 :: Log Ravagger [3712]: l
+Fri Nov 20 03:30:16 2026 :: Log Ravagger [3712]: w
+Fri Nov 20 03:30:16 2026 :: Log Ravagger [3714]: arrived (A Cage) from 3712
+Fri Nov 20 03:30:26 2026 :: Log Ravagger [3714]: kill liz
+Fri Nov 20 03:30:29 2026 :: Log Ravagger [3714]: kill liz
+Fri Nov 20 03:30:40 2026 :: Log Ravagger [3714]: kill liz
+Fri Nov 20 03:30:44 2026 :: Log Ravagger [3714]: killed the lizard man
+Fri Nov 20 03:30:44 2026 :: Log Ravagger [3714]: coin +2 copper
+Fri Nov 20 03:30:46 2026 :: Log Ravagger [3714]: kick
+Fri Nov 20 03:30:51 2026 :: Log Ravagger [3714]: wear all
+Fri Nov 20 03:30:55 2026 :: Log Ravagger [3714]: wear all
+Fri Nov 20 03:30:57 2026 :: Log Ravagger [3714]: l
+Fri Nov 20 03:31:00 2026 :: Log Ravagger [3714]: e
+Fri Nov 20 03:31:00 2026 :: Log Ravagger [3712]: arrived (The Cage Room) from 3714
+Fri Nov 20 03:31:01 2026 :: Log Ravagger [3712]: n
+Fri Nov 20 03:31:01 2026 :: Log Ravagger [3713]: arrived (A Cage) from 3712
+Fri Nov 20 03:31:07 2026 :: Log Ravagger [3713]: kick
+Fri Nov 20 03:31:11 2026 :: Log Ravagger [3713]: kick
+Fri Nov 20 03:31:14 2026 :: Log Ravagger [3713]: kick
+Fri Nov 20 03:31:16 2026 :: Log Ravagger [3713]: kick
+Fri Nov 20 03:31:19 2026 :: Log Ravagger [3713]: kick
+Fri Nov 20 03:31:22 2026 :: Log Ravagger [3713]: kick
+Fri Nov 20 03:31:26 2026 :: Log Ravagger [3713]: skill
+Fri Nov 20 03:31:37 2026 :: Log Ravagger [3713]: kick
+Fri Nov 20 03:31:39 2026 :: Log Ravagger [3713]: kick
+Fri Nov 20 03:31:42 2026 :: Log Ravagger [3713]: kick
+Fri Nov 20 03:31:45 2026 :: Log Ravagger [3713]: kick
+Fri Nov 20 03:31:48 2026 :: Log Ravagger [3713]: kick
+Fri Nov 20 03:31:49 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 20 03:31:51 2026 :: Log Ravagger [3713]: kick
+Fri Nov 20 03:31:53 2026 :: Log Ravagger [3713]: kick
+Fri Nov 20 03:31:56 2026 :: Log Ravagger [3713]: kick
+Fri Nov 20 03:31:59 2026 :: Log Ravagger [3713]: kick
+Fri Nov 20 03:32:02 2026 :: Log Ravagger [3713]: kick
+Fri Nov 20 03:32:03 2026 :: Log Ravagger [3713]: killed the kobold
+Fri Nov 20 03:32:03 2026 :: Log Ravagger [3713]: coin +2 copper
+Fri Nov 20 03:32:05 2026 :: Log Ravagger [3713]: kick
+Fri Nov 20 03:32:07 2026 :: Log Ravagger [3713]: wear all
+Fri Nov 20 03:32:11 2026 :: Log Ravagger [3713]: e
+Fri Nov 20 03:32:12 2026 :: Log Ravagger [3713]: s
+Fri Nov 20 03:32:12 2026 :: Log Ravagger [3712]: arrived (The Cage Room) from 3713
+Fri Nov 20 03:32:14 2026 :: Log Ravagger [3712]: s
+Fri Nov 20 03:32:14 2026 :: Log Ravagger [3715]: arrived (A Cage) from 3712
+Fri Nov 20 03:32:18 2026 :: Log Ravagger [3715]: k man
+Fri Nov 20 03:32:21 2026 :: Log Ravagger [3715]: kick
+Fri Nov 20 03:32:24 2026 :: Log Ravagger [3715]: kick
+Fri Nov 20 03:32:27 2026 :: Log Ravagger [3715]: kick
+Fri Nov 20 03:32:30 2026 :: Log Ravagger [3715]: kick
+Fri Nov 20 03:32:32 2026 :: Log Ravagger [3715]: kick
+Fri Nov 20 03:32:35 2026 :: Log Ravagger [3715]: kick
+Fri Nov 20 03:32:38 2026 :: Log Ravagger [3715]: kick
+Fri Nov 20 03:32:41 2026 :: Log Ravagger [3715]: kick
+Fri Nov 20 03:32:43 2026 :: Log Ravagger [3715]: kick
+Fri Nov 20 03:32:46 2026 :: Log Ravagger [3715]: kick
+Fri Nov 20 03:32:49 2026 :: Log Ravagger [3715]: kick
+Fri Nov 20 03:32:52 2026 :: Log Ravagger [3715]: kick
+Fri Nov 20 03:32:55 2026 :: Log Ravagger [3715]: kick
+Fri Nov 20 03:32:57 2026 :: Log Ravagger [3715]: kick
+Fri Nov 20 03:33:00 2026 :: Log Ravagger [3715]: kick
+Fri Nov 20 03:33:03 2026 :: Log Ravagger [3715]: kick
+Fri Nov 20 03:33:06 2026 :: Log Ravagger [3715]: kick
+Fri Nov 20 03:33:06 2026 :: Log Ravagger [3715]: level 3 -> 4 (earned)
+Fri Nov 20 03:33:06 2026 :: Ravagger has achieved level 4!
+Fri Nov 20 03:33:06 2026 :: Snapshot of Ravagger taken before level: Ravagger.20261120_033306.level (PRESTORE Ravagger to see it).
+Fri Nov 20 03:33:06 2026 :: Log Ravagger [3715]: killed the killer
+Fri Nov 20 03:33:06 2026 :: Log Ravagger [3715]: coin +2 copper
+Fri Nov 20 03:33:17 2026 :: Log Ravagger [3715]: wear all
+Fri Nov 20 03:33:17 2026 :: Log Ravagger [3715]: e
+Fri Nov 20 03:33:19 2026 :: Log Ravagger [3715]: n
+Fri Nov 20 03:33:19 2026 :: Log Ravagger [3712]: arrived (The Cage Room) from 3715
+Fri Nov 20 03:33:24 2026 :: Log Ravagger [3712]: e
+Fri Nov 20 03:33:24 2026 :: Log Ravagger [3716]: arrived (A Cage) from 3712
+Fri Nov 20 03:33:28 2026 :: Log Ravagger [3716]: k gr
+Fri Nov 20 03:33:30 2026 :: Log Ravagger [3716]: kick
+Fri Nov 20 03:33:33 2026 :: Log Ravagger [3716]: kick
+Fri Nov 20 03:33:36 2026 :: Log Ravagger [3716]: kick
+Fri Nov 20 03:33:39 2026 :: Log Ravagger [3716]: kick
+Fri Nov 20 03:33:41 2026 :: Log Ravagger [3716]: kick
+Fri Nov 20 03:33:44 2026 :: Log Ravagger [3716]: kick
+Fri Nov 20 03:33:47 2026 :: Log Ravagger [3716]: kick
+Fri Nov 20 03:33:50 2026 :: Log Ravagger [3716]: kick
+Fri Nov 20 03:33:52 2026 :: Log Ravagger [3716]: kick
+Fri Nov 20 03:33:52 2026 :: Log Ravagger [3716]: killed the gremlin
+Fri Nov 20 03:33:52 2026 :: Log Ravagger [3716]: coin +2 copper
+Fri Nov 20 03:33:55 2026 :: Log Ravagger [3716]: kick
+Fri Nov 20 03:33:57 2026 :: Log Ravagger [3716]: wear all
+Fri Nov 20 03:34:01 2026 :: Log Ravagger [3716]: w
+Fri Nov 20 03:34:01 2026 :: Log Ravagger [3712]: arrived (The Cage Room) from 3716
+Fri Nov 20 03:34:05 2026 :: Log Ravagger [3712]: sleep
+Fri Nov 20 03:34:36 2026 :: Log Ravagger [3712]: rest
+Fri Nov 20 03:34:42 2026 :: Log Ravagger [3712]: help

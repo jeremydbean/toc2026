@@ -2,7 +2,7 @@
 Name Ravagger~
 Id   56640
 Serial 3950626
-LogO 1795145189
+LogO 1795145586
 Vers 4
 Prom ~
 Race human~
@@ -16,17 +16,19 @@ PsiKnown ~
 ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble 20261114-season-area-ids 20261116-wrapped-pools~
 Cast none
-Levl 3
-Plyd 4826
+Levl 4
+Plyd 5223
 ListRemorts ~
 NumRemorts 0
 Note 0
+SkillDamage 0 3 3
+MeleeRatio 1610 3
 Scro 22
-Room 3757
-HMV  42 44 108 108 112 112
+Room 3715
+HMV  44 54 108 118 112 118
 NewGold 944
 NewPlat 0
-NewCopp 0
+NewCopp 4
 NewSilv 0
 BankCP 0
 IntTime 1795144964
@@ -35,18 +37,19 @@ Dcount 0
 SavedOnce 1
 PkRec 0
 PkGiv 0
-AchKills 0
+AchKills 2
 AchQuests 0
 AchDeaths 0
 AchExplore 0
 AchMaps 0
 AchCompass 0
 AchTriforce 0
+Achv first-kill 1795145444
 Achv visit-mud-school 1795145162
 Achv carry-one-platinum 1795144941
 AchSet areas 1103516333 ~
-AchSet rooms 3241 3700 3757 3772 ~
-LastOut  1795145189
+AchSet rooms 3241 3700-3704 3709 3711-3715 3757-3759 3772 ~
+LastOut  1795145586
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 0
@@ -57,7 +60,7 @@ SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  7242
+Exp  8618
 Act  65788
 AfBy 524288
 Comm 24608
@@ -85,22 +88,23 @@ Color 14 0
 Color 15 0
 Color 16 0
 Pos  8
-Prac 5
-Tutorial 0 0
+Prac 6
+Trai 1
+Tutorial 0 32776
 Save  -9
 Alig  15
 Hit   10
 Dam   2
-ACs 75 75 75 79
+ACs 51 50 50 59
 Attr 13 13 13 18 16
-AMod 4 0 0 0 0
+AMod 4 -3 0 0 0
 Pass $6$FCHtQwuH7bv3I5Ey$H5YLjKiWH78mYmDxe/ye7Von84.oKH7iyvZJis9zKAA1f6un4F.9uvkQxqbmiSMx52Rb3SDSEufDXzp/Zc6cc/~
-Titl  the Seeker of Mystery~
+Titl  the Initiate of Form~
 Pnts 40
 TSex 1
 LLev 1
-HMVP 44 108 112
-Cond 0 0 31
+HMVP 54 118 118
+Cond 0 44 25
 Sk 8 'axe'
 Sk 32 'dagger'
 Sk 6 'flail'
@@ -119,11 +123,12 @@ Sk 75 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
-AffD 'giant strength'  62   8   4   1          0          0
-AffD 'shield'  54  16 -20  17          0          0
-AffD 'fly'  55  11   0   0     524288          0
-AffD 'bless'  50  14  -8  24          0          0
-AffD 'bless'  52  14   8  18          0          0
+AffD 'armor'   0  20 -20  17          0          0
+AffD 'giant strength'  60   2   4   1          0          0
+AffD 'shield'  53  10 -20  17          0          0
+AffD 'fly'  55   5   0   0     524288          0
+AffD 'bless'  49   8  -8  24          0          0
+AffD 'bless'  51   8   8  18          0          0
 End
 
 #O
@@ -133,7 +138,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 123 0 0
+Val  0 0 117 0 0
 End
 
 #O
@@ -183,15 +188,6 @@ Repd 0
 End
 
 #O
-Vnum 3009
-Nest 0
-Wear -1
-Cost 500000
-Cond 100
-Repd 0
-End
-
-#O
 Vnum 3718
 Nest 0
 Wear -1
@@ -212,11 +208,38 @@ Repd 0
 End
 
 #O
-Vnum 3718
+Vnum 3708
 Nest 0
-Wear -1
-Lev  1
-Cost 10000
+Wear 8
+Cost 0
+Cond 100
+Repd 0
+Affect -1 0 -1 -3 3 0 0
+End
+
+#O
+Vnum 3713
+Nest 0
+Wear 14
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3707
+Nest 0
+Wear 7
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3712
+Nest 0
+Wear 13
+Cost 0
 Cond 100
 Repd 0
 End
