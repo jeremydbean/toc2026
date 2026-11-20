@@ -320627,3 +320627,4 @@ Fri Nov 20 02:25:47 2026 :: Connection guard: 178.156.181.172 closed without a w
 Fri Nov 20 02:25:50 2026 :: Connection guard: last hour 11 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 9 addresses paused and 0 refused now, 14 active player addresses.
 Fri Nov 20 02:28:27 2026 :: Automated backup started.
 Fri Nov 20 02:28:28 2026 :: Automated backup complete.
+Fri Nov 20 02:30:52 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 4 of 6 in 6 hours).
