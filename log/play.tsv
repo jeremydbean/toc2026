@@ -41421,3 +41421,10 @@
 1795191856	moved	-	0	0	-	1007	component	70	a dragon tooth	86439	0	1374	htower.are	12038	froboz.are
 1795191901	moved	-	0	0	-	1009	herb	45	a sarsaparilla vine	86444	0	4437	dresden.are	5021	eastern.are
 1795191901	moved	-	0	0	-	1008	herb	34	an amaranth plant	86444	0	4303	dresden.are	24369	chess.are
+1795191950	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795191971	moved	-	0	0	-	1011	herb	49	a pomegranate	86410	0	9591	newthalo.are	7590	astral.are
+1795192112	moved	-	0	0	-	1012	herb	48	an alfalfa sprout	86471	0	24589	abyss.are	25173	underdrk.are
+1795192229	moved	-	0	0	-	1016	herb	41	a sprig of mistletoe	86406	0	29024	korzath1.are	9511	newthalo.are
+1795192229	moved	-	0	0	-	1015	herb	38	a foxglove flower	86406	0	29080	korzath1.are	2152	hood.are
+1795192229	moved	-	0	0	-	1014	herb	34	an amaranth plant	86456	0	9547	newthalo.are	25039	mountain.are
+1795192229	moved	-	0	0	-	1013	herb	34	an amaranth plant	86456	0	9574	newthalo.are	5250	oldthalo.are
