@@ -2146,6 +2146,23 @@ void do_affect( CHAR_DATA *ch, char *argument)
 		||   skill_table[paf->type].name == NULL )
 			continue;
 
+		/* Luck says how much and how long, at any level (owner,
+		   2026-11-20: it shows under AFFECTS like a spell). */
+		if ( paf->type == gsn_luck )
+		{
+			if ( paf->duration == -1 )
+				snprintf( buf, sizeof(buf),
+				    "Spell: 'luck' -- %d point%s of luck (at most %d), for good.\n\r",
+				    paf->modifier, paf->modifier == 1 ? "" : "s", LUCK_MAX );
+			else
+				snprintf( buf, sizeof(buf),
+				    "Spell: 'luck' -- %d point%s of luck (at most %d), for %d more hour%s.\n\r",
+				    paf->modifier, paf->modifier == 1 ? "" : "s", LUCK_MAX,
+				    paf->duration, paf->duration == 1 ? "" : "s" );
+			send_to_char( buf, ch );
+			continue;
+		}
+
 		/* Psionics and skills are not spells, and the player who
 		   went looking for one knows the difference. */
 		snprintf(buf, sizeof(buf), "%s: '%s'",

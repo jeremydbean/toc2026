@@ -168,7 +168,11 @@ class HolidayFairLiveTests(unittest.TestCase):
                 self.assertNotIn("The rose blooms", plain(giver.transcript[-400:]))
 
     def test_stpatrick_a_clover_turns_a_kill_into_gold(self) -> None:
-        env = {"TOC_SEASON": "stpatrick", "TOC_HOLIDAY_DROPS": "always"}
+        # A clover is a point of timed luck (owner, 2026-11-20): AFFECTS
+        # shows it, and while it lasts a kill may spill a pot of gold --
+        # TOC_LUCK_ROLLS=always makes every luck roll land, so it does.
+        env = {"TOC_SEASON": "stpatrick", "TOC_HOLIDAY_DROPS": "always",
+               "TOC_LUCK_ROLLS": "always"}
         with LiveMud(extra_env=env, fixtures=True) as mud:
             make(mud, "Zholstaff", Levl=70, Room=SQUARE)
             make(mud, "Zholhero", Levl=20, Room=TEMPLE, HMV="300 300 300 300 300 300")
@@ -178,21 +182,39 @@ class HolidayFairLiveTests(unittest.TestCase):
                 staff.sync("scroll 0")
                 hero.sync("scroll 0")
                 self.assertIn("St. Patrick's Day", hero.sync("holidays"))
+                self.assertNotIn("'luck'", hero.sync("affects"))
 
-                # The first kill drops a clover; eaten, the next kill pays.
+                # The first kill drops a clover; eaten, it is a point of luck.
                 self.assertIn("You get a four-leaf clover",
                               slay_weak_guard(staff, hero, "zholhero"))
                 eaten = plain(hero.sync("eat clover"))
-                self.assertIn("next foe you slay will spill a pot of gold", eaten)
+                self.assertIn("You have 1 point of luck (at most 3) for the next 30 hours", eaten)
+                self.assertIn("Spell: 'luck' -- 1 point of luck (at most 3), for 30 more hours",
+                              plain(hero.sync("affects")))
                 staff.must("purge", "")
                 slain = plain(slay_weak_guard(staff, hero, "zholhero"))
                 self.assertIn("pot of gold tumbles out", slain)
                 self.assertIn("ACHIEVEMENT EARNED Pot of Gold", slain)
                 self.assertRegex(slain, r"You get \d+ (platinum|gold) coins?", slain)
 
-                # Spent: the next kill is an ordinary one.
+                # Nothing spends luck: the next kill spills one too.
                 staff.must("purge", "")
-                self.assertNotIn("pot of gold", plain(slay_weak_guard(staff, hero, "zholhero")))
+                self.assertIn("pot of gold", plain(slay_weak_guard(staff, hero, "zholhero")))
+                self.assertIn("1 point of luck", plain(hero.sync("affects")))
+
+                # Clovers add up to three and start the time again.
+                for _ in range(3):
+                    staff.must("load obj 29822", "")
+                    staff.must("give clover zholhero", "")
+                    hero.sync("eat clover")
+                self.assertIn("Spell: 'luck' -- 3 points of luck (at most 3), for 30 more hours",
+                              plain(hero.sync("affects")))
+
+                # It is saved with them, as a spell is.
+                hero.send("quit")
+                hero.wait_closed()
+            text = (mud.player_dir / "Zholhero").read_text(encoding="latin-1")
+            self.assertRegex(text, r"(?m)^Aff\w* '?luck'?", text[-600:])
 
     def test_lunar_an_envelope_holds_lucky_money(self) -> None:
         env = {"TOC_SEASON": "lunar", "TOC_HOLIDAY_DROPS": "always"}

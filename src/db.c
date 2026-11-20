@@ -233,6 +233,7 @@ int16_t		gsn_baura;
 int16_t		gsn_empower;
 int16_t		gsn_titanic;
 int16_t		gsn_petrify;
+int16_t		gsn_luck;
 /*
  * Locals.
  */

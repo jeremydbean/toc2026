@@ -11,7 +11,11 @@
  *                                  map of its area (where a map can drop)
  * FATE <player> DISASTER <kind>    a sure strike the first time they stand
  *                                  where that kind can reach them
- * FATE <player> CLEAR              nothing fated
+ * FATE <player> LUCK <hours> [<points>]
+ *                                  lucky for that long: the 'luck' affect
+ *                                  a four-leaf clover gives, at <points>
+ *                                  (default LUCK_MAX); LUCK OFF ends it
+ * FATE <player> CLEAR              nothing fated (luck is left alone)
  *
  * Each is spent by the roll it replaces, in the code that makes that roll
  * (recall_travel, the questmaster's contract roll, raw_kill_internal,
@@ -98,6 +102,21 @@ static void fate_show( CHAR_DATA *ch, CHAR_DATA *victim )
         send_to_char( buf, ch );
         any = true;
     }
+    if ( clover_luck( victim ) > 0 )
+    {
+        AFFECT_DATA *paf;
+
+        for ( paf = victim->affected; paf != NULL; paf = paf->next )
+            if ( paf->type == gsn_luck )
+            {
+                snprintf( buf, sizeof(buf), "  They are lucky: %d point%s for %d more hour%s.\n\r",
+                          paf->modifier, paf->modifier == 1 ? "" : "s",
+                          paf->duration, paf->duration == 1 ? "" : "s" );
+                send_to_char( buf, ch );
+                any = true;
+                break;
+            }
+    }
     if ( !any )
         send_to_char( "  Nothing: their dice roll as anybody's do.\n\r", ch );
 }
@@ -179,7 +198,8 @@ void do_fate( CHAR_DATA *ch, char *argument )
     if ( name[0] == '\0' )
     {
         send_to_char( "Syntax: fate <player> [misrecall [<room vnum>] | emergency | rush | map |\n\r"
-                      "                       disaster <kind> | clear]\n\r"
+                      "                       disaster <kind> | luck <hours> [<points>] | luck off |\n\r"
+                      "                       clear]\n\r"
                       "A fate is spent by the roll it replaces and never told to the player.  It is\n\r"
                       "saved until spent, and an offline player's waits for them.\n\r", ch );
         return;
@@ -269,6 +289,43 @@ void do_fate( CHAR_DATA *ch, char *argument )
                   "reach them (never in a shelter, never lethal).\n\r",
                   disaster_kind_word( type ), victim->name );
         send_to_char( buf, ch );
+    }
+    else if ( !str_cmp( what, "luck" ) )
+    {
+        char hours_arg[MAX_INPUT_LENGTH];
+        char points_arg[MAX_INPUT_LENGTH];
+        int hours = 0, points = LUCK_MAX;
+
+        argument = one_argument( argument, hours_arg );
+        one_argument( argument, points_arg );
+        if ( !str_cmp( hours_arg, "off" ) )
+        {
+            luck_remove( victim );
+            fate_note( ch, victim, "no luck (ended)" );
+            snprintf( buf, sizeof(buf), "%s's luck is ended.\n\r", victim->name );
+            send_to_char( buf, ch );
+        }
+        else if ( !parse_int( hours_arg, 1, LUCK_MAX_HOURS, &hours )
+             ||   ( points_arg[0] != '\0' && !parse_int( points_arg, 1, LUCK_MAX, &points ) ) )
+        {
+            snprintf( buf, sizeof(buf), "Syntax: fate <player> luck <hours 1-%d> [<points 1-%d>] | luck off\n\r"
+                      "An hour is a tick, about a minute of play; it counts down only while they play.\n\r",
+                      LUCK_MAX_HOURS, LUCK_MAX );
+            send_to_char( buf, ch );
+            if ( loaded )
+                extract_char( victim, true );
+            return;
+        }
+        else
+        {
+            luck_grant( victim, points, hours, false );
+            snprintf( buf, sizeof(buf), "luck of %d point%s for %d hours", points,
+                      points == 1 ? "" : "s", hours );
+            fate_note( ch, victim, buf );
+            snprintf( buf, sizeof(buf), "%s is lucky: %d point%s for %d hours (AFFECTS shows it to them).\n\r",
+                      victim->name, points, points == 1 ? "" : "s", hours );
+            send_to_char( buf, ch );
+        }
     }
     else if ( !str_prefix( what, "clear" ) && strlen( what ) >= 2 )
     {

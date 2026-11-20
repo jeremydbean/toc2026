@@ -3657,9 +3657,6 @@ void do_eat( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( holiday_eat_refused( ch, obj ) )
-	return;
-
     /* Staff can eat anything, which is how an item is destroyed on the
        spot. Staff by level (is_staff): a mortal given trust eats what
        anybody may (owner, 2026-11-12). */
@@ -7798,6 +7795,16 @@ void add_money(CHAR_DATA *ch, long amount)
 #define SYM_NORM(r)  ((r) < 2 ? 0 : (r))
 #define IS_SEVEN(r)  ((r) < 2)
 
+/* Whether a pull pays anything (the coin back counts): the table in
+   do_slots, read before it pays. */
+static bool slots_pays( int r1, int r2, int r3 )
+{
+    return ( r1 == r2 && r2 == r3 )
+        || ( IS_SEVEN(r1) && IS_SEVEN(r2) && IS_SEVEN(r3) )
+        || SYM_NORM(r1) == SYM_NORM(r2) || SYM_NORM(r2) == SYM_NORM(r3)
+        || SYM_NORM(r1) == SYM_NORM(r3);
+}
+
 static bool in_casino( CHAR_DATA *ch )
 {
     if ( ch->in_room == NULL ) return false;
@@ -7850,6 +7857,7 @@ void do_gamble( CHAR_DATA *ch, char *argument )
     int loser;
     int pick;
     int value;
+    int round;
     int i;
 
     if ( IS_NPC(ch) )
@@ -7883,19 +7891,25 @@ void do_gamble( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    winner = number_range( 0, 2 );
-    loser = ( winner + number_range( 1, 2 ) ) % 3;
-    for ( i = 0; i < 3; i++ )
-        signs[i] = -10;
-    signs[winner] = number_bits( 1 ) ? 50 : 20;
-    signs[3 - winner - loser] = number_bits( 1 ) ? -40 : -10;
-    value = signs[pick];
-
     WAIT_STATE( ch, PULSE_VIOLENCE );
-    snprintf( buf, sizeof(buf),
-              "You turn the %s sign. The three read: %+d   %+d   %+d.\n\r",
-              sides[pick], signs[0], signs[1], signs[2] );
-    send_to_char( buf, ch );
+    for ( round = 0; ; round++ )
+    {
+        winner = number_range( 0, 2 );
+        loser = ( winner + number_range( 1, 2 ) ) % 3;
+        for ( i = 0; i < 3; i++ )
+            signs[i] = -10;
+        signs[winner] = number_bits( 1 ) ? 50 : 20;
+        signs[3 - winner - loser] = number_bits( 1 ) ? -40 : -10;
+        value = signs[pick];
+
+        snprintf( buf, sizeof(buf),
+                  "You turn the %s sign. The three read: %+d   %+d   %+d.\n\r",
+                  sides[pick], signs[0], signs[1], signs[2] );
+        send_to_char( buf, ch );
+        /* Luck turns a losing sign over once more (luck_second_chance). */
+        if ( value > 0 || round > 0 || !luck_second_chance( ch, "the old man's game" ) )
+            break;
+    }
     if ( value > 0 )
     {
         add_money( ch, value );
@@ -7921,6 +7935,7 @@ void do_slots( CHAR_DATA *ch, char *argument )
 
     char buf[MAX_STRING_LENGTH];
     int r1, r2, r3;
+    int round;
     long payout = 0;
     bool jackpot = false;
     const char *result_msg;
@@ -7949,14 +7964,21 @@ void do_slots( CHAR_DATA *ch, char *argument )
        input loop ran. */
     WAIT_STATE( ch, PULSE_VIOLENCE );
 
-    r1 = number_range( 0, NUM_SYM - 1 );
-    r2 = number_range( 0, NUM_SYM - 1 );
-    r3 = number_range( 0, NUM_SYM - 1 );
+    /* Luck spins a losing pull once more (luck_second_chance). */
+    for ( round = 0; ; round++ )
+    {
+        r1 = number_range( 0, NUM_SYM - 1 );
+        r2 = number_range( 0, NUM_SYM - 1 );
+        r3 = number_range( 0, NUM_SYM - 1 );
 
-    snprintf( buf, sizeof(buf),
-        "The reels spin... [ %-6s | %-6s | %-6s ]\n\r",
-        symbols[r1], symbols[r2], symbols[r3] );
-    send_to_char( buf, ch );
+        snprintf( buf, sizeof(buf),
+            "The reels spin... [ %-6s | %-6s | %-6s ]\n\r",
+            symbols[r1], symbols[r2], symbols[r3] );
+        send_to_char( buf, ch );
+        if ( round > 0 || slots_pays( r1, r2, r3 )
+        ||   !luck_second_chance( ch, "the slot machine" ) )
+            break;
+    }
 
     if ( IS_SEVEN(r1) && IS_SEVEN(r2) && IS_SEVEN(r3) )
     {
@@ -8035,6 +8057,7 @@ void do_bet( CHAR_DATA *ch, char *argument )
     char buf[MAX_STRING_LENGTH];
     long amount;
     int die1, die2, total;
+    int round;
     bool pick_hi = false;
     bool confirming = false;
 
@@ -8147,13 +8170,20 @@ void do_bet( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    die1 = number_range( 1, 6 );
-    die2 = number_range( 1, 6 );
-    total = die1 + die2;
+    /* Luck rolls a losing throw once more (luck_second_chance). */
+    for ( round = 0; ; round++ )
+    {
+        die1 = number_range( 1, 6 );
+        die2 = number_range( 1, 6 );
+        total = die1 + die2;
 
-    snprintf( buf, sizeof(buf),
-        "The croupier rolls... [ %d + %d = %d ]\n\r", die1, die2, total );
-    send_to_char( buf, ch );
+        snprintf( buf, sizeof(buf),
+            "The croupier rolls... [ %d + %d = %d ]\n\r", die1, die2, total );
+        send_to_char( buf, ch );
+        if ( round > 0 || ( total > 7 && pick_hi ) || ( total < 7 && !pick_hi )
+        ||   !luck_second_chance( ch, "the throw" ) )
+            break;
+    }
 
     act( "$n places a bet at the dice table.", ch, NULL, NULL, TO_ROOM );
 
@@ -8213,6 +8243,7 @@ void do_roulette( CHAR_DATA *ch, char *argument )
     long amount, net;
     long straight_pick = -1;
     int  spin;
+    int  round;
     bool wins;
     bool straight_bet = false;
     bool confirming = false;
@@ -8344,54 +8375,61 @@ void do_roulette( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    /* --- spin the wheel --- */
-    spin  = number_range( 0, 36 );
-    color = ( spin == 0 ) ? "green" : IS_RED[spin] ? "red" : "black";
+    /* --- spin the wheel --- (luck spins a losing bet once more) */
+    for ( round = 0; ; round++ )
+    {
+        wins = false;
+        net  = amount;
+        spin  = number_range( 0, 36 );
+        color = ( spin == 0 ) ? "green" : IS_RED[spin] ? "red" : "black";
 
-    snprintf( buf, sizeof(buf),
-        "The wheel spins... the ball settles on %d (%s).\n\r", spin, color );
-    send_to_char( buf, ch );
+        snprintf( buf, sizeof(buf),
+            "The wheel spins... the ball settles on %d (%s).\n\r", spin, color );
+        send_to_char( buf, ch );
 
-    /* --- evaluate --- */
-    if ( straight_bet )
-    {
-        if ( spin == straight_pick ) { wins = true; net = 35 * amount; }
-    }
-    else if ( !str_cmp(arg2, "red") )
-    {
-        if ( spin != 0 && IS_RED[spin] ) { wins = true; }
-    }
-    else if ( !str_cmp(arg2, "black") )
-    {
-        if ( spin != 0 && !IS_RED[spin] ) { wins = true; }
-    }
-    else if ( !str_cmp(arg2, "even") )
-    {
-        if ( spin != 0 && spin % 2 == 0 ) { wins = true; }
-    }
-    else if ( !str_cmp(arg2, "odd") )
-    {
-        if ( spin != 0 && spin % 2 != 0 ) { wins = true; }
-    }
-    else if ( !str_cmp(arg2, "low") )
-    {
-        if ( spin >= 1 && spin <= 18 ) { wins = true; }
-    }
-    else if ( !str_cmp(arg2, "high") )
-    {
-        if ( spin >= 19 && spin <= 36 ) { wins = true; }
-    }
-    else if ( !str_prefix(arg2, "first")  || !str_cmp(arg2, "1st") )
-    {
-        if ( spin >= 1 && spin <= 12 ) { wins = true; net = 2 * amount; }
-    }
-    else if ( !str_prefix(arg2, "second") || !str_cmp(arg2, "2nd") )
-    {
-        if ( spin >= 13 && spin <= 24 ) { wins = true; net = 2 * amount; }
-    }
-    else /* third / 3rd */
-    {
-        if ( spin >= 25 && spin <= 36 ) { wins = true; net = 2 * amount; }
+        /* --- evaluate --- */
+        if ( straight_bet )
+        {
+            if ( spin == straight_pick ) { wins = true; net = 35 * amount; }
+        }
+        else if ( !str_cmp(arg2, "red") )
+        {
+            if ( spin != 0 && IS_RED[spin] ) { wins = true; }
+        }
+        else if ( !str_cmp(arg2, "black") )
+        {
+            if ( spin != 0 && !IS_RED[spin] ) { wins = true; }
+        }
+        else if ( !str_cmp(arg2, "even") )
+        {
+            if ( spin != 0 && spin % 2 == 0 ) { wins = true; }
+        }
+        else if ( !str_cmp(arg2, "odd") )
+        {
+            if ( spin != 0 && spin % 2 != 0 ) { wins = true; }
+        }
+        else if ( !str_cmp(arg2, "low") )
+        {
+            if ( spin >= 1 && spin <= 18 ) { wins = true; }
+        }
+        else if ( !str_cmp(arg2, "high") )
+        {
+            if ( spin >= 19 && spin <= 36 ) { wins = true; }
+        }
+        else if ( !str_prefix(arg2, "first")  || !str_cmp(arg2, "1st") )
+        {
+            if ( spin >= 1 && spin <= 12 ) { wins = true; net = 2 * amount; }
+        }
+        else if ( !str_prefix(arg2, "second") || !str_cmp(arg2, "2nd") )
+        {
+            if ( spin >= 13 && spin <= 24 ) { wins = true; net = 2 * amount; }
+        }
+        else /* third / 3rd */
+        {
+            if ( spin >= 25 && spin <= 36 ) { wins = true; net = 2 * amount; }
+        }
+        if ( wins || round > 0 || !luck_second_chance( ch, "the wheel" ) )
+            break;
     }
 
     /* --- settle --- */
@@ -8522,6 +8560,7 @@ void do_poker( CHAR_DATA *ch, char *argument )
     long amount;
     PokerCard hand[5];
     int rank, i;
+    int round;
     bool confirming = false;
 
     if ( IS_NPC(ch) )
@@ -8632,8 +8671,32 @@ void do_poker( CHAR_DATA *ch, char *argument )
 
     add_money( ch, -amount );
 
-    poker_deal( hand );
-    rank = poker_eval( hand );
+    /* Luck deals a losing hand once more (luck_second_chance); the first
+       hand is shown. */
+    for ( round = 0; ; round++ )
+    {
+        poker_deal( hand );
+        rank = poker_eval( hand );
+        if ( rank != -1 || round > 0 )
+            break;
+        {
+            char first[64];
+
+            first[0] = '\0';
+            for ( i = 0; i < 5; i++ )
+            {
+                char card[8];
+                snprintf( card, sizeof(card), "%s%c", PRANK[hand[i].rank], PSUIT[hand[i].suit] );
+                toc_strlcat( first, card, sizeof(first) );
+                if ( i < 4 ) toc_strlcat( first, " ", sizeof(first) );
+            }
+            if ( !luck_roll( ch, LUCK_RETRY_STEP ) )
+                break;
+            snprintf( buf, sizeof(buf), "Your hand: [ %s ] -- nothing.\n\r", first );
+            send_to_char( buf, ch );
+            send_to_char( "{0ALuck is with you: the dealer deals again!{00\n\r", ch );
+        }
+    }
 
     /* Build a readable hand string: "Ac Kc Qc Jc 10c" */
     hand_str[0] = '\0';

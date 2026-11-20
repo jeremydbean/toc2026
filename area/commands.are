@@ -974,18 +974,9 @@ What the holiday treats do:
 
   Red envelope (Lunar)        OPEN it for lucky money
   Red rose (Love)             GIVE it to another player: it blesses you both
-  Clover (St. Patrick's)      EAT it: the next foe you slay spills a pot of
-                              gold.  You hold luck for three kills at most;
-                              a fourth clover is refused.  Luck is lost when
-                              you leave the game.  While you hold it, luck
-                              leans your way, more with each point: an area
-                              map in what you slay, the treasure goblin's
-                              and the black dragon's rarities, rush and
-                              emergency quests, Herbie's visit when you are
-                              badly hurt, a backstab's fatality, the Farslay
-                              rite's odds (a lucky victim's luck pushes
-                              back), fewer misfired recalls, and dodging a
-                              disaster's blow.
+  Clover (St. Patrick's)      EAT it for a point of LUCK (three at most)
+                              for 30 hours; AFFECTS shows it.  Each clover
+                              adds a point and starts the 30 hours again.
   Painted egg (Noblegarden)   hidden around Dresden; OPEN it
   Firework (Midsummer)        DROP it and the whole area sees it
   Festival keg (Brewfest)     DRINK from it, free
@@ -995,7 +986,33 @@ What the holiday treats do:
 Clovers, candy hearts and Hallows End candy are a bite, not a meal: you
 can eat them when full.
 
-See also: HOLIDAYS
+See also: HOLIDAYS, LUCK
+~
+
+0 LUCK~
+Luck is something you have for a while, as a spell is: AFFECTS shows how
+many points (one to three) and how many hours are left.  A four-leaf
+clover on St. Patrick's Day gives a point and 30 hours; the hours count
+down while you play, and luck is saved with you when you leave.
+
+While it lasts, luck leans your way, more with each point:
+
+  - a pot of gold from a kill (one in ten a point)
+  - an area map in what you slay, and the treasure goblin's and the
+    black dragon's rare drops
+  - rush and emergency quests from the questmaster
+  - a second chance when you lose: the quest gamble (AQUEST GAMBLE says
+    your odds), the casino's slots, dice, roulette and poker, and the old
+    man's coin game in Hyrule (one in ten a point)
+  - Herbie's visit when you are badly hurt
+  - a backstab's fatality, and the Farslay rite's odds (a lucky victim's
+    luck pushes back)
+  - fewer misfired recalls, and dodging a disaster's blow
+
+Nothing spends luck: it lasts until its hours run out, or until you die,
+which takes it as it takes any spell.
+
+See also: 'HOLIDAY TREATS', AFFECTS, AQUEST
 ~
 
 0 DISASTERS~
@@ -2624,6 +2641,8 @@ Syntax: fate <player>
         fate <player> rush
         fate <player> map
         fate <player> disaster <kind>
+        fate <player> luck <hours> [<points>]
+        fate <player> luck off
         fate <player> clear
 
 The creator's hand on a player's next roll.  FATE <player> shows what is
@@ -2642,7 +2661,13 @@ fated for them.
   disaster    a sure strike of that kind (no saving throw, never lethal)
               the first time they stand where it can reach them, out of a
               fight and out of any shelter.
-  clear       nothing fated.
+  luck        they are lucky for that many hours (a tick each, about a
+              minute of play; they count down only while they play), at
+              <points> from 1 to 3 (3 if not given): the same 'luck' a
+              four-leaf clover gives, shown in their AFFECTS, and read by
+              every luck roll (HELP LUCK).  It replaces any luck they hold.
+              LUCK OFF ends it.  Unlike the rest, it is not spent by a roll.
+  clear       nothing fated (luck is left as it is).
 
 A fate is spent by the roll it replaces and is never told to the player.
 It is saved until spent, so it waits across logins and reboots, and a

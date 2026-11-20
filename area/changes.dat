@@ -5,6 +5,14 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261120luck 2026-11-20
+Luck is now something you have for a while, like a spell.  A St. Patrick's
+four-leaf clover gives a point of luck (three at most) for 30 hours, and
+AFFECTS shows how much and how long.  Luck now also gives you a second
+chance when you lose the quest gamble, at the casino's slots, dice,
+roulette and poker, and at the old man's coin game in Hyrule; and every
+kill while you are lucky may spill a pot of gold.  HELP LUCK has it all.
+
 @ 20261118shortbow 2026-11-18
 Gohma's eye now says which bow finishes her: Hyrule's short bow, from Level
 1's cellar, which needs no ARCHERY.  In Hyrule, SHOOT with any other bow

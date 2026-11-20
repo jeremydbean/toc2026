@@ -169,6 +169,60 @@ class CreatorLuckTests(unittest.TestCase):
                     self.assertIn("Fate: Zlucky's fated earthquake struck.", log)
 
 
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class LuckAffectTests(unittest.TestCase):
+    def test_fate_luck_shows_in_affects_and_gives_a_second_spin(self) -> None:
+        # Luck is the one timed 'luck' affect (owner, 2026-11-20): the
+        # creator gives it with FATE <player> LUCK, and a losing casino play
+        # is played once more. TOC_LUCK_ROLLS=always makes every luck roll
+        # land, so a losing straight-up roulette bet is spun again.
+        env = {"TOC_LUCK_ROLLS": "always"}
+        with LiveMud(extra_env=env, fixtures=True) as mud:
+            make(mud, "Killuminati", Levl=70, Room=4207)
+            make(mud, "Zluckimpl", Levl=70, Room=4207)
+            make(mud, "Zlucky", Levl=30, Room=4207)
+            with mud.connect(timeout=120) as god, mud.connect(timeout=120) as impl, \
+                    mud.connect(timeout=120) as hero:
+                login(god, "Killuminati", PW)
+                login(impl, "Zluckimpl", PW)
+                login(hero, "Zlucky", PW)
+                self.assertIn("Huh?", impl.sync("fate zlucky luck 20"))
+                self.assertIn("Syntax: fate <player> luck", god.sync("fate zlucky luck soon"))
+                god.must("fate zlucky luck 20 2", "lucky: 2 points for 20 hours")
+                self.assertIn("They are lucky: 2 points for 20 more hours", god.sync("fate zlucky"))
+                self.assertIn("Spell: 'luck' -- 2 points of luck (at most 3), for 20 more hours",
+                              hero.sync("affects"))
+
+                # A losing spin goes again; luck never makes a play cost twice.
+                god.must("set char zlucky gold 100", "")
+                god.must("transfer zlucky 4812", "")
+                hero.sync("look")
+                spun = ""
+                for _ in range(5):
+                    spun = hero.sync("roulette 1 17", timeout=30)
+                    if "Luck is with you: the wheel goes again!" in spun:
+                        break
+                self.assertIn("Luck is with you: the wheel goes again!", spun, spun)
+                self.assertEqual(spun.count("The wheel spins"), 2, spun)
+
+                god.must("fate zlucky luck off", "luck is ended")
+                self.assertNotIn("'luck'", hero.sync("affects"))
+                spun = hero.sync("roulette 1 17", timeout=30)
+                self.assertNotIn("Luck is with you", spun)
+                log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1", errors="replace")
+                self.assertIn("Fate: Killuminati fated Zlucky luck of 2 points for 20 hours.", log)
+                hero.send("quit")
+                self.assertTrue(hero.wait_closed())
+
+            # Offline: given, saved, and in their AFFECTS when they come back.
+            with mud.connect(timeout=120) as god:
+                login(god, "Killuminati", PW)
+                god.must("fate zlucky luck 15", "lucky: 3 points for 15 hours", "waits for them")
+            with mud.connect(timeout=120) as hero:
+                login(hero, "Zlucky", PW)
+                self.assertIn("3 points of luck (at most 3), for 15 more hours", hero.sync("affects"))
+
+
 class CreatorLuckSourceTests(unittest.TestCase):
     def test_commands_are_the_creators(self) -> None:
         interp = (ROOT / "src" / "interp.c").read_text(encoding="utf-8")
@@ -206,6 +260,19 @@ class CreatorLuckSourceTests(unittest.TestCase):
         # Read before the pot of gold spends a point of it.
         self.assertLess(fight.index("kill_luck = clover_luck( ch );"),
                         fight.index("holiday_kill( ch, victim );"))
+
+    def test_luck_is_one_affect_read_everywhere(self) -> None:
+        holiday = (ROOT / "src" / "holiday.c").read_text(encoding="latin-1")
+        luck = holiday[holiday.index("int clover_luck( CHAR_DATA *ch )"):]
+        luck = luck[:luck.index("\n}\n")]
+        self.assertIn("paf->type == gsn_luck", luck)
+        self.assertNotIn("holiday_luck", (ROOT / "src" / "merc.h").read_text(encoding="latin-1"))
+        act_obj = (ROOT / "src" / "act_obj.c").read_text(encoding="latin-1")
+        for game in ("the slot machine", "the throw", "the wheel", "the old man's game"):
+            self.assertIn('luck_second_chance( ch, "%s" )' % game, act_obj)
+        self.assertIn("luck_roll( ch, LUCK_RETRY_STEP )", act_obj)      # poker's redeal
+        quest = (ROOT / "src" / "quest.c").read_text(encoding="latin-1")
+        self.assertIn('chance(50) || luck_second_chance(ch, "the questmaster\'s coin")', quest)
 
     def test_no_public_change_entry(self) -> None:
         changes = (ROOT / "area" / "changes.dat").read_text(encoding="latin-1")

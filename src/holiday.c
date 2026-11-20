@@ -223,9 +223,6 @@ static const HOLIDAY holidays[] =
 #define POT_OF_GOLD_KILLS     5
 #define EGG_COIN_KILLS        2
 
-/* A clover's luck keeps for this many kills at most. */
-#define LUCK_MAX              3
-
 /* The whole area hears a firework at most this often (seconds). */
 #define FIREWORK_AREA_GAP    20
 
@@ -524,24 +521,6 @@ bool holiday_snack( OBJ_DATA *obj )
     return false;
 }
 
-/* do_eat, before anything is eaten: a clover is refused, and kept, when
-   the eater already carries all the luck they can -- it used to be eaten
-   and wasted with a line saying so. True when refused. */
-bool holiday_eat_refused( CHAR_DATA *ch, OBJ_DATA *obj )
-{
-    char buf[MAX_STRING_LENGTH];
-
-    if ( ch == NULL || obj == NULL || obj->pIndexData == NULL || IS_NPC(ch)
-    ||   obj->pIndexData->vnum != OBJ_VNUM_FOUR_LEAF_CLOVER
-    ||   ch->pcdata->holiday_luck < LUCK_MAX )
-        return false;
-    snprintf( buf, sizeof(buf),
-              "You already carry all the luck one person can: %d kills' worth. "
-              "Keep the clover until a pot of gold has spilled.\n\r", LUCK_MAX );
-    send_to_char( buf, ch );
-    return true;
-}
-
 /* do_eat, once the thing is eaten (and gone): what holiday treats do
    besides feed or cast. The character may be gone if a pill's spell
    moved them, so the caller asks first. */
@@ -558,19 +537,20 @@ void holiday_eaten( CHAR_DATA *ch, int vnum )
     case OBJ_VNUM_FOUR_LEAF_CLOVER:
         if ( IS_NPC(ch) )
             return;
-        if ( ch->pcdata->holiday_luck >= LUCK_MAX )
-            return;      /* holiday_eat_refused stops this before the bite */
-        ch->pcdata->holiday_luck++;
+        /* A point of luck, to LUCK_MAX, and the time set afresh: a clover
+           eaten at the most luck there is still renews it. */
+        luck_grant( ch, 1, CLOVER_LUCK_HOURS, true );
         snprintf( buf, sizeof(buf),
-                  "{0AA warm, green luck settles over you. The next foe you slay "
-                  "will spill a pot of gold.{00\n\r"
-                  "You carry luck for %d kill%s (at most %d). It lasts until you "
-                  "leave the game.\n\r"
-                  "While you carry it, luck leans your way: rare drops, rush quests, "
-                  "Herbie, fatalities,\n\r"
-                  "Farslay, recalls and disasters.  HELP 'HOLIDAY TREATS' says how.\n\r",
-                  ch->pcdata->holiday_luck, ch->pcdata->holiday_luck == 1 ? "" : "s",
-                  LUCK_MAX );
+                  "{0AA warm, green luck settles over you.{00\n\r"
+                  "You have %d point%s of luck (at most %d) for the next %d hours: AFFECTS "
+                  "shows it.\n\r"
+                  "While it lasts, luck leans your way: pots of gold and rare drops from "
+                  "your kills,\n\r"
+                  "rush quests, the quest gamble and the casino, Herbie, fatalities, "
+                  "Farslay, recalls\n\r"
+                  "and disasters.  HELP LUCK says how.\n\r",
+                  clover_luck( ch ), clover_luck( ch ) == 1 ? "" : "s", LUCK_MAX,
+                  CLOVER_LUCK_HOURS );
         send_to_char( buf, ch );
         return;
 
@@ -710,22 +690,95 @@ bool holiday_dropped( CHAR_DATA *ch, OBJ_DATA *obj )
     return true;
 }
 
-/* A clover's luck, as the dice read it: the points a player carries (one
-   to LUCK_MAX), or their master's for a charmed pet or servant; 0 for
-   anybody else. While held it bends rare rolls their way (owner,
-   2026-11-17): a map in a kill's corpse (maps.c), the treasure goblin's
-   and the black dragon's rarities, the questmaster's rush and emergency
-   contracts (quest.c), Herbie's visit (special.c), a backstab's fatality
-   and the Farslay rite (the victim's luck pushing back), the recall
-   misfire (act_move.c) and a disaster's blow (disaster.c). The steps are
-   CLOVER_*_STEP in merc.h. Only the pot of gold spends it. */
+/* Luck, as the dice read it: the points of the 'luck' affect a player
+   holds (one to LUCK_MAX), or their master's for a charmed pet or servant;
+   0 for anybody else. While it lasts it bends rare rolls their way (owner,
+   2026-11-17 and 2026-11-20): a map in a kill's corpse (maps.c), a pot of
+   gold from a kill (holiday_kill), the treasure goblin's and the black
+   dragon's rarities, the questmaster's rush and emergency contracts
+   (quest.c), a second chance at a losing quest gamble, casino play or
+   Hyrule coin sign (luck_second_chance), Herbie's visit (special.c), a
+   backstab's fatality and the Farslay rite (the victim's luck pushing
+   back), the recall misfire (act_move.c) and a disaster's blow
+   (disaster.c). The steps are in merc.h. Nothing spends it: it lasts its
+   time. */
 int clover_luck( CHAR_DATA *ch )
 {
+    AFFECT_DATA *paf;
+
     if ( ch != NULL && IS_NPC(ch) && ch->master != NULL && IS_AFFECTED(ch, AFF_CHARM) )
         ch = ch->master;
-    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || gsn_luck <= 0 )
         return 0;
-    return URANGE( 0, ch->pcdata->holiday_luck, LUCK_MAX );
+    for ( paf = ch->affected; paf != NULL; paf = paf->next )
+        if ( paf->type == gsn_luck )
+            return URANGE( 0, paf->modifier, LUCK_MAX );
+    return 0;
+}
+
+/* Gives luck: `points` more (add) or exactly `points`, held to 1 to
+   LUCK_MAX, for `hours` from now (held to LUCK_MAX_HOURS). A spell's
+   affect, with no location: it changes no stat, ticks down in char_update
+   and is saved with the character. */
+void luck_grant( CHAR_DATA *ch, int points, int hours, bool add )
+{
+    AFFECT_DATA *paf;
+    AFFECT_DATA af;
+
+    if ( ch == NULL || IS_NPC(ch) || gsn_luck <= 0 )
+        return;
+    hours = URANGE( 1, hours, LUCK_MAX_HOURS );
+    for ( paf = ch->affected; paf != NULL; paf = paf->next )
+        if ( paf->type == gsn_luck )
+        {
+            paf->modifier = URANGE( 1, ( add ? paf->modifier : 0 ) + points, LUCK_MAX );
+            paf->duration = (sh_int) hours;
+            return;
+        }
+    memset( &af, 0, sizeof(af) );
+    af.type      = gsn_luck;
+    af.level     = (sh_int) UMIN( ch->level, MAX_LEVEL );
+    af.duration  = (sh_int) hours;
+    af.location  = APPLY_NONE;
+    af.modifier  = URANGE( 1, points, LUCK_MAX );
+    af.bitvector = 0;
+    affect_to_char( ch, &af );
+}
+
+void luck_remove( CHAR_DATA *ch )
+{
+    if ( ch != NULL && gsn_luck > 0 )
+        affect_strip( ch, gsn_luck );
+}
+
+/* A luck roll of `step` percent a point. TOC_LUCK_ROLLS=always (tests
+   only) makes every one land while there is any luck. */
+bool luck_roll( CHAR_DATA *ch, int step )
+{
+    int luck = clover_luck( ch );
+    const char *always;
+
+    if ( luck <= 0 )
+        return false;
+    always = getenv( "TOC_LUCK_ROLLS" );
+    if ( always != NULL && !strcmp( always, "always" ) )
+        return true;
+    return number_percent() <= step * luck;
+}
+
+/* A losing roll -- the quest gamble, a casino play, the old man's coin
+   sign -- is played once more, LUCK_RETRY_STEP percent a point (owner,
+   2026-11-20: "it's fine to let a player profit ... a rare effect"). The
+   player is told; `what` names what goes again. */
+bool luck_second_chance( CHAR_DATA *ch, const char *what )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    if ( !luck_roll( ch, LUCK_RETRY_STEP ) )
+        return false;
+    snprintf( buf, sizeof(buf), "{0ALuck is with you: %s goes again!{00\n\r", what );
+    send_to_char( buf, ch );
+    return true;
 }
 
 /* raw_kill, before the corpse is made: a clover's luck turns the kill
@@ -735,10 +788,11 @@ void holiday_kill( CHAR_DATA *ch, CHAR_DATA *victim )
 {
     long gold;
 
+    /* A pot of gold is a chance on every kill while luck lasts,
+       LUCK_POT_STEP percent a point; nothing is spent. */
     if ( ch == NULL || victim == NULL || IS_NPC(ch) || !IS_NPC(victim)
-    ||   ch->pcdata->holiday_luck <= 0 || ch == victim )
+    ||   ch == victim || !luck_roll( ch, LUCK_POT_STEP ) )
         return;
-    ch->pcdata->holiday_luck--;
     gold = black_market_kill_value( victim->level ) * POT_OF_GOLD_KILLS;
     gain_copper( victim, gold );
     act( "{0ELuck is with you: a pot of gold tumbles out of $N's things!{00",

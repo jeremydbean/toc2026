@@ -1283,15 +1283,20 @@ void do_quest(CHAR_DATA *ch, char *argument)
         {
             send_to_char(
 		"{09.-[ Double-or-Nothing Gamble ]-------------------------------.{00\n\r", ch);
+            /* Luck tosses a lost gamble once more: 50%, then half of the
+               rest at LUCK_RETRY_STEP a point (holiday.c). */
+            int win = 50 + 50 * LUCK_RETRY_STEP * clover_luck(ch) / 100;
+
             snprintf(buf, sizeof(buf),
                 "{09|{00 {04Wager:{00 {0D%d{00 quest points\n\r"
-                "{09|{00 {06Win  :{00 {0D%d{00 quest points  {01(50%% chance){00\n\r"
-                "{09|{00 {07Lose :{00 {0D0{00 quest points  {01(50%% chance){00\n\r"
+                "{09|{00 {06Win  :{00 {0D%d{00 quest points  {01(%d%% chance%s){00\n\r"
+                "{09|{00 {07Lose :{00 {0D0{00 quest points  {01(%d%% chance){00\n\r"
                 "{09|{00\n\r"
 		"{09|{00  Type {0DAQUEST GAMBLE YES{00 to risk it all!\n\r"
 		"{09|{00  Type {0DAQUEST GAMBLE NO{00  to collect {0D%d{00 pts safely.\n\r"
 		"{09'---------------------------------------------------------------'{00\n\r",
-                ch->questgamble_pts, ch->questgamble_pts * 2, ch->questgamble_pts);
+                ch->questgamble_pts, ch->questgamble_pts * 2, win,
+                win > 50 ? ", with your luck" : "", 100 - win, ch->questgamble_pts);
             send_to_char(buf, ch);
             return;
         }
@@ -1299,7 +1304,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
         {
             int wagered = ch->questgamble_pts;
             ch->questgamble_pts = 0;
-            if (chance(50))
+            if (chance(50) || luck_second_chance(ch, "the questmaster's coin"))
             {
 		int awarded = add_quest_points(ch, wagered * 2);
 

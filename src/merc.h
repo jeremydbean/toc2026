@@ -298,7 +298,7 @@ typedef enum
  */
 #define MAX_VNUM               1000000
 #define MAX_SOCIALS             512
-#define MAX_SKILL               233
+#define MAX_SKILL               234
 #define TRAIL_LEN               10
 #define MAX_GROUP               58
 #define OBJ_UPDATE_EXTRACT_MAX  4096
@@ -2744,7 +2744,6 @@ struct  pc_data
     int                 fight_melee_permille;
     int                 fight_melee_fights;
     long                pray_after;           /* no PRAY before this: a flee, a fight with a player (memory only) */
-    int                 holiday_luck;         /* four-leaf clovers eaten, not yet spent (memory only) */
     long                rest_xp;              /* rested bonus experience left (rested.c) */
     bool                rest_eligible;        /* quit somewhere they could rest */
     int                 daily_points;         /* daily quest points, apart from quest points */
@@ -3307,6 +3306,7 @@ extern sh_int  gsn_baura;
 extern sh_int  gsn_empower;
 extern sh_int  gsn_titanic;
 extern sh_int  gsn_petrify;
+extern sh_int  gsn_luck;
 
 /* A value narrowed into a 16-bit field, saturated at its ends rather than
    wrapped (strict-warnings sweep, 2026-11-12). Anything that fits is
@@ -4810,11 +4810,27 @@ void        holiday_tick            ( void );
 void        holiday_corpse_drop     ( OBJ_DATA *corpse, CHAR_DATA *victim );
 void        holiday_eaten           ( CHAR_DATA *ch, int vnum );
 bool        holiday_snack           ( OBJ_DATA *obj );
-bool        holiday_eat_refused     ( CHAR_DATA *ch, OBJ_DATA *obj );
 bool        holiday_given           ( CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj );
 bool        holiday_dropped         ( CHAR_DATA *ch, OBJ_DATA *obj );
 void        holiday_kill            ( CHAR_DATA *ch, CHAR_DATA *victim );
 int         clover_luck             ( CHAR_DATA *ch );
+/* Luck is one timed affect, 'luck' (owner, 2026-11-20: "luck as a
+   spell/flag that affects all things where luck is involved"): its
+   modifier is the points held, 1 to LUCK_MAX, and its duration ticks down
+   like any spell's. A four-leaf clover adds a point and sets the time to
+   CLOVER_LUCK_HOURS; the creator's FATE <player> LUCK sets both. Every
+   luck roll reads clover_luck(). */
+#define LUCK_MAX                3
+#define CLOVER_LUCK_HOURS      30
+#define LUCK_MAX_HOURS      10080
+void        luck_grant              ( CHAR_DATA *ch, int points, int hours, bool add );
+void        luck_remove             ( CHAR_DATA *ch );
+bool        luck_roll               ( CHAR_DATA *ch, int step );
+bool        luck_second_chance      ( CHAR_DATA *ch, const char *what );
+/* Percent a point: a pot of gold from a kill, and a second chance at a
+   losing quest gamble, casino play or Hyrule coin sign. */
+#define LUCK_POT_STEP          10
+#define LUCK_RETRY_STEP        10
 /* What each point of clover luck adds (holiday.c): percent to the goblin's
    and the dragon's rarity, to the rush and the emergency contract, and
    points off Herbie's roll (out of 100). A map gets one more roll at the

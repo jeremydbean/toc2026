@@ -3841,6 +3841,16 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
         spell_null,             TAR_IGNORE,             POS_DEAD,
         &gsn_petrify,           SLOT( 0),       0,      0,
         "",                     "The stone crumbles and you move freely again."
+    },
+
+    /* Luck (owner, 2026-11-20): a four-leaf clover's, or the creator's
+       FATE ... LUCK. Only an affect: nobody learns or casts it. */
+    {
+        "luck",
+        { 72, 72, 72, 72, 72, 72 },     { 0, 0, 0, 0, 0, 0 },
+        spell_null,             TAR_IGNORE,             POS_DEAD,
+        &gsn_luck,              SLOT( 0),       0,      0,
+        "",                     "Your luck runs out."
     }
 
 };

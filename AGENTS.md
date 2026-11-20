@@ -1954,20 +1954,33 @@ decoration. Rules the code depends on:
   (single DROP: a firework; each area hears one at most every
   `FIREWORK_AREA_GAP` seconds, on its own clock in `firework_heard[]`,
   so rockets are no way to shout -- a single "last area" let A, B, A
-  broadcast three times; review, 2026-11-02). Clover
-  luck is `pcdata->holiday_luck`, memory only, at most `LUCK_MAX`; a
-  clover past the cap is refused before the bite (`holiday_eat_refused`)
-  and eating one says how much luck is held. **While held it bends the
-  dice** (owner, 2026-11-17): `clover_luck(ch)` (the player's points, a
-  charmed pet's master's) is read by an extra map roll per point in a
-  kill's corpse (`map_corpse_drop_lucky`, the luck read in
-  `raw_kill_internal` before the pot of gold spends a point), the
+  broadcast three times; review, 2026-11-02). **Luck is one timed
+  affect, `luck`** (owner, 2026-11-20: "luck as a spell/flag that affects
+  all things where luck is involved"): a skill-table row at level 72
+  (`gsn_luck`, nobody learns or casts it) whose `modifier` is the points
+  held, 1 to `LUCK_MAX` (3), with a spell's duration in ticks, saved as
+  `AffD 'luck'`, listed by AFFECTS ("Spell: 'luck' -- N points ... for H
+  more hours", at any level), worn off with "Your luck runs out." and
+  lost at death like any spell. The four-leaf clover (29822, eaten; not
+  Valhalla's lucky clovers 9943/9944, which are light-slot gear) adds a
+  point and sets `CLOVER_LUCK_HOURS` (30) through `luck_grant(ch, points,
+  hours, add)`; the creator's FATE <player> LUCK <hours> [points] sets
+  both, online or offline, and LUCK OFF is `luck_remove`. **While it lasts
+  it bends the dice** (owner, 2026-11-17): `clover_luck(ch)` (the
+  affect's points, a charmed pet's master's) is read by an extra map roll
+  per point in a kill's corpse (`map_corpse_drop_lucky`), a pot of gold
+  from any kill (`holiday_kill`, `LUCK_POT_STEP` 10% a point), the
   goblin's and dragon's rarity, the rush and emergency contracts, Herbie,
   a backstab's fatality and the Farslay rite (the victim's luck pushing
-  back), the recall misfire (`recall_misfire_odds`) and a disaster's blow
-  (`disaster_saves`); the steps are `CLOVER_*_STEP` in merc.h. Only the
-  pot of gold spends it. A new luck roll reads `clover_luck` and gets a
-  step there (`tests/test_creator_luck.py`).
+  back), the recall misfire (`recall_misfire_odds`), a disaster's blow
+  (`disaster_saves`) and **a second chance at a loss**
+  (`luck_second_chance`, `LUCK_RETRY_STEP` 10% a point): AQUEST GAMBLE,
+  the casino's slots, dice, roulette and poker, and Hyrule's coin game
+  (owner, 2026-11-20: profit is fine for a rare effect). Nothing spends
+  it. `TOC_LUCK_ROLLS=always` (tests only, `luck_roll`) makes every luck
+  roll land while any is held. A new luck roll reads `clover_luck` (or
+  `luck_roll`) and gets a step in merc.h (`tests/test_creator_luck.py`,
+  `tests/test_holidays.py`).
   `holiday_snack` lets a clover, a candy heart and trick-or-treat candy
   past "too full" -- every new character starts full.
 - **Holiday objects are unlevelled** (level 0), so
@@ -5858,6 +5871,9 @@ Owner, 2026-11-17: whatever is luck, the creator alone (trust 72, `CR`)
 may decide on demand, and nothing of it reaches the public changes list.
 `src/fate.c`: FATE <player> MISRECALL [vnum] | EMERGENCY | RUSH | MAP |
 DISASTER <kind> | CLEAR sets `pcdata->fate_*`, never told to the player,
+and FATE <player> LUCK <hours> [points] | LUCK OFF gives or ends the timed
+`luck` affect (see The Holiday Calendar; not a fate spent by a roll, and
+CLEAR leaves it),
 saved as `Fate <misrecall> <room> <contract> <map> <disaster>` under
 **case 'F'** (written only when one is set, each read into a local and
 held to its range) so it waits across logins; a player not in the game is
