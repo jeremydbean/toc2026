@@ -322810,3 +322810,13 @@ Fri Nov 20 15:25:35 2026 :: Treasure goblin: vanished from room 7035 (The sewer 
 Fri Nov 20 15:25:50 2026 :: Connection guard: last hour 9 closed without a word, 4 refused, 0 new characters refused, 0 newly paused; 6 addresses paused and 0 refused now, 15 active player addresses.
 Fri Nov 20 15:28:16 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 2 of 6 in 6 hours).
 Fri Nov 20 15:33:22 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 20 15:35:40 2026 :: Treasure goblin: vanished from room 2403 (Eastern Oak Tree Square., dresden.are) (too long in one area).
+Fri Nov 20 15:36:31 2026 :: Sock.sinaddr:  91.226.227.109
+Fri Nov 20 15:36:32 2026 :: EOF encountered on read.
+Fri Nov 20 15:36:32 2026 :: Connection guard: 91.226.227.109 closed before a password prompt (strike 1 of 6 in 6 hours).
+Fri Nov 20 15:36:32 2026 :: Connection guard: 91.226.227.109 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 20 15:38:24 2026 :: Connection guard: refused 1 connection from 178.156.189.113 (paused; 26 refused in all, pause 4 this week, 494 minutes left).
+Fri Nov 20 15:39:33 2026 :: Sock.sinaddr:  91.226.227.109
+Fri Nov 20 15:39:34 2026 :: EOF encountered on read.
+Fri Nov 20 15:39:34 2026 :: Connection guard: 91.226.227.109 closed before a password prompt (strike 3 of 6 in 6 hours).
+Fri Nov 20 15:39:34 2026 :: Connection guard: 91.226.227.109 closed without a word (strike 4 of 6 in 6 hours).
