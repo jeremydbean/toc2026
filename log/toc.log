@@ -322738,3 +322738,8 @@ Fri Nov 20 12:30:25 2026 :: Connection guard: 178.156.189.249 closed without a w
 Fri Nov 20 12:35:29 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 1 of 6 in 6 hours).
 Fri Nov 20 12:36:40 2026 :: Treasure goblin: vanished from room 17752 (Munchkin Land, landoz.are) (too long in one area).
 Fri Nov 20 12:40:34 2026 :: Connection guard: refused 1 connection from 178.156.189.113 (paused; 24 refused in all, pause 4 this week, 672 minutes left).
+Fri Nov 20 12:45:39 2026 :: Connection guard: refused 1 connection from 52.22.236.30 (paused; 8 refused in all, pause 3 this week, 1247 minutes left).
+Fri Nov 20 12:46:45 2026 :: Treasure goblin: vanished from room 5715 (Old Main Street, mid_ruin.are) (too long in one area).
+Fri Nov 20 12:46:45 2026 :: Sock.sinaddr:  184.105.139.67
+Fri Nov 20 12:46:46 2026 :: EOF encountered on read.
+Fri Nov 20 12:46:46 2026 :: Connection guard: 184.105.139.67 closed before a password prompt (strike 1 of 6 in 6 hours).
