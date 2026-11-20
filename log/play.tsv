@@ -40167,3 +40167,61 @@
 1795145645	cmd	Ravagger	4	3712	school.are	standing	90	0	-	sleep		You go to sleep.	-	-
 1795145676	cmd	Ravagger	4	3712	school.are	sleeping	90	0	-	rest		You wake up and start resting.	-	-
 1795145682	cmd	Ravagger	4	3712	school.are	resting	100	0	-	help		SUMMARY // MOVEMENT                            GROUP // north south east west up down       follow group gtell split	-	+
+1795145701	cmd	Ravagger	4	3712	school.are	resting	100	0	-	look	adept	He is big and bad.  Don't mess with him. // The adept of Shadizar is in excellent condition.	-	-
+1795145720	cmd	Ravagger	4	3712	school.are	resting	100	0	-	password		(withheld)	-	-
+1795145743	cmd	Ravagger	4	3712	school.are	resting	100	21	-	password		(withheld)	-	-
+1795145752	cmd	Ravagger	4	3712	school.are	resting	100	0	-	look		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795145761	cmd	Ravagger	4	3712	school.are	resting	100	0	-	look	sign	Welcome to the cage room.  The adepts of mud school have captured some // monsters for you to kill.  In the four cages are four monsters of various // types.  Kill them all!	-	+
+1795145788	cmd	Ravagger	4	3712	school.are	resting	100	0	-	buff		There is nobody here offering that.	-	-
+1795145799	cmd	Ravagger	4	3712	school.are	resting	100	0	-	look		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795145807	cmd	Ravagger	4	3794	school.are	resting	100	0	-	ne		You stand up. // The storage room //   This room has a single light in the ceiling above you casting a pale radiance	-	+
+1795145814	cmd	Ravagger	4	3794	school.are	standing	100	0	-	open	jar	The goblin has been let out of a dragon jar!	-	-
+1795145820	cmd	Ravagger	4	3794	school.are	standing	100	0	-	kill	gob	Your pierce misses the goblin. // Your pierce misses the goblin.	-	-
+1795145824	cmd	Ravagger	4	3794	school.are	fighting	100	0	fight	kick		Your kick misses the goblin.	-	-
+1795145827	cmd	Ravagger	4	3794	school.are	fighting	100	0	fight	kick		Your kick misses the goblin.	-	-
+1795145830	cmd	Ravagger	4	3794	school.are	fighting	100	0	fight	kick		Your kick misses the goblin.	-	-
+1795145833	cmd	Ravagger	4	3794	school.are	fighting	100	0	fight	kick		Your kick misses the goblin.	-	-
+1795145836	cmd	Ravagger	4	3794	school.are	fighting	100	0	fight	kick		Your kick misses the goblin.	-	-
+1795145839	cmd	Ravagger	4	3794	school.are	fighting	100	0	fight	kick		Your kick scratches the goblin.	-	-
+1795145841	cmd	Ravagger	4	3794	school.are	fighting	100	0	fight	kick		Your kick scratches the goblin.	-	-
+1795145844	cmd	Ravagger	4	3794	school.are	fighting	100	0	fight	kick		Your kick misses the goblin.	-	-
+1795145847	cmd	Ravagger	4	3794	school.are	fighting	100	0	fight	kick		Your kick misses the goblin.	-	-
+1795145850	cmd	Ravagger	4	3794	school.are	fighting	100	0	fight	kick		Your kick misses the goblin.	-	-
+1795145852	cmd	Ravagger	4	3794	school.are	fighting	100	0	fight	kick		Your kick misses the goblin.	-	-
+1795145855	cmd	Ravagger	4	3794	school.are	fighting	100	0	fight	kick		Your kick misses the goblin.	-	-
+1795145858	cmd	Ravagger	4	3794	school.are	fighting	100	0	fight	kick		Your kick misses the goblin.	-	-
+1795145859	coin	Ravagger	4	3794	school.are	+2	loot	(violence_update)	-	9440010
+1795145861	cmd	Ravagger	4	3794	school.are	standing	100	0	-	kick		You aren't fighting anyone.	-	-
+1795145861	cmd	Ravagger	4	3794	school.are	standing	100	0	-	kick		You aren't fighting anyone.	-	-
+1795145861	cmd	Ravagger	4	3794	school.are	standing	100	0	-	kick		You aren't fighting anyone.	-	-
+1795145861	cmd	Ravagger	4	3794	school.are	standing	100	0	-	kick		You aren't fighting anyone.	-	-
+1795145862	cmd	Ravagger	4	3794	school.are	standing	100	0	-	kick		You aren't fighting anyone.	-	-
+1795145867	cmd	Ravagger	4	3794	school.are	standing	100	0	-	look		The storage room //   This room has a single light in the ceiling above you casting a pale radiance // over the contents of the room.  Some buckets and mops sit in one corner.	-	+
+1795145872	cmd	Ravagger	4	3712	school.are	standing	100	0	-	sw		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795145877	cmd	Ravagger	4	3717	school.are	standing	100	0	-	down		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795145900	cmd	Ravagger	4	3717	school.are	standing	100	0	-	look	sign	By now, you must be hungry and thirsty.  Time to buy groceries! // To the south is a store.  Inside the store, you can use these commands: //     BUY    Buy an item	-	+
+1795145914	cmd	Ravagger	4	3718	school.are	standing	100	0	-	south		The Store in Mud School //   You are in a cramped room.  Stacked neatly on shelves everywhere are items // and packages.  Light fluoresces off the ceiling in soft white tones.  Of	-	+
+1795145916	cmd	Ravagger	4	3718	school.are	standing	100	0	-	list		[Lv Price] Item // [ 0        48c] a hooded brass lantern. // [ 0        48c] a buffalo water skin.	-	+
+1795145926	cmd	Ravagger	4	3718	school.are	standing	100	0	-	buy	bead	The adept of Gravestone tells you 'I don't sell that -- try 'list''.	-	-
+1795145932	coin	Ravagger	4	3718	school.are	-1	spent	buy	the adept of Gravestone	9440009
+1795145932	got	Ravagger	4	3718	school.are	3718	a pipeweed bread	food	1	1	buy	the adept of Gravestone
+1795145932	cmd	Ravagger	4	3718	school.are	standing	100	0	-	buy	bread	You buy a pipeweed bread.	-	-
+1795145932	coin	Ravagger	4	3718	school.are	-1	spent	buy	the adept of Gravestone	9440008
+1795145932	got	Ravagger	4	3718	school.are	3718	a pipeweed bread	food	1	1	buy	the adept of Gravestone
+1795145932	cmd	Ravagger	4	3718	school.are	standing	100	0	-	buy	bread	You buy a pipeweed bread.	-	-
+1795145935	coin	Ravagger	4	3718	school.are	-1	spent	buy	the adept of Gravestone	9440007
+1795145935	got	Ravagger	4	3718	school.are	3718	a pipeweed bread	food	1	1	buy	the adept of Gravestone
+1795145935	cmd	Ravagger	4	3718	school.are	standing	100	0	-	buy	bread	You buy a pipeweed bread.	-	-
+1795145938	cmd	Ravagger	4	3718	school.are	standing	100	0	-	eat	bread	You eat a pipeweed bread. // You are full.	-	-
+1795145943	coin	Ravagger	4	3718	school.are	-1	spent	buy	the adept of Gravestone	9440006
+1795145943	got	Ravagger	4	3718	school.are	3718	a pipeweed bread	food	1	1	buy	the adept of Gravestone
+1795145943	cmd	Ravagger	4	3718	school.are	standing	100	0	-	buy	bre	You buy a pipeweed bread.	-	-
+1795145947	cmd	Ravagger	4	3718	school.are	standing	100	0	-	look		The Store in Mud School //   You are in a cramped room.  Stacked neatly on shelves everywhere are items // and packages.  Light fluoresces off the ceiling in soft white tones.  Of	-	+
+1795145950	cmd	Ravagger	4	3717	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795145956	cmd	Ravagger	4	3761	school.are	standing	100	0	-	west		Entrance to a dark cavern //   This is a dark cavern that seems to have been attached to the mud school // by something destroying the wall to the east.  Rumor has it that wall	-	+
+1795145966	cmd	Ravagger	4	3762	school.are	standing	100	0	-	west		A dark cavern //   This is a dark cavern.  You hear strange noises as things shuffle about // in the darkness.	-	+
+1795145972	cmd	Ravagger	4	3762	school.are	standing	100	0	-	kill	zo	Your pierce misses the zombie. // Your pierce scratches the zombie.	-	-
+1795145975	cmd	Ravagger	4	3762	school.are	fighting	100	0	fight	kick		Your kick misses the zombie.	-	-
+1795145978	cmd	Ravagger	4	3762	school.are	fighting	98	0	fight	kick		Your kick misses the zombie.	-	-
+1795145981	cmd	Ravagger	4	3762	school.are	fighting	98	0	fight	kick		Your kick misses the zombie.	-	-
+1795145983	cmd	Ravagger	4	3762	school.are	fighting	98	0	fight	kick		Your kick misses the zombie.	-	-

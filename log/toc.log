@@ -320816,3 +320816,73 @@ Fri Nov 20 03:34:01 2026 :: Log Ravagger [3712]: arrived (The Cage Room) from 37
 Fri Nov 20 03:34:05 2026 :: Log Ravagger [3712]: sleep
 Fri Nov 20 03:34:36 2026 :: Log Ravagger [3712]: rest
 Fri Nov 20 03:34:42 2026 :: Log Ravagger [3712]: help
+Fri Nov 20 03:35:01 2026 :: Log Ravagger [3712]: l adept
+Fri Nov 20 03:35:13 2026 :: Treasure goblin: vanished from room 7622 (Library, ultima.are) (too long in one area).
+Fri Nov 20 03:35:20 2026 :: Log Ravagger [3712]: password (arguments withheld)
+Fri Nov 20 03:35:43 2026 :: Log Ravagger [3712]: password (arguments withheld)
+Fri Nov 20 03:35:44 2026 :: Log Ravagger [3712]: affects off: giant strength
+Fri Nov 20 03:35:52 2026 :: Log Ravagger [3712]: l
+Fri Nov 20 03:36:01 2026 :: Log Ravagger [3712]: l sign
+Fri Nov 20 03:36:28 2026 :: Log Ravagger [3712]: buff
+Fri Nov 20 03:36:39 2026 :: Log Ravagger [3712]: l
+Fri Nov 20 03:36:47 2026 :: Log Ravagger [3712]: ne
+Fri Nov 20 03:36:47 2026 :: Log Ravagger [3794]: arrived (The storage room) from 3712
+Fri Nov 20 03:36:54 2026 :: Log Ravagger [3794]: open jar
+Fri Nov 20 03:36:54 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 20 03:37:00 2026 :: Log Ravagger [3794]: k gob
+Fri Nov 20 03:37:04 2026 :: Log Ravagger [3794]: kick
+Fri Nov 20 03:37:07 2026 :: Log Ravagger [3794]: kick
+Fri Nov 20 03:37:10 2026 :: Log Ravagger [3794]: kick
+Fri Nov 20 03:37:13 2026 :: Log Ravagger [3794]: kick
+Fri Nov 20 03:37:16 2026 :: Log Ravagger [3794]: kick
+Fri Nov 20 03:37:19 2026 :: Log Ravagger [3794]: kick
+Fri Nov 20 03:37:21 2026 :: Log Ravagger [3794]: kick
+Fri Nov 20 03:37:24 2026 :: Log Ravagger [3794]: kick
+Fri Nov 20 03:37:27 2026 :: Log Ravagger [3794]: kick
+Fri Nov 20 03:37:30 2026 :: Log Ravagger [3794]: kick
+Fri Nov 20 03:37:32 2026 :: Log Ravagger [3794]: kick
+Fri Nov 20 03:37:35 2026 :: Log Ravagger [3794]: kick
+Fri Nov 20 03:37:38 2026 :: Log Ravagger [3794]: kick
+Fri Nov 20 03:37:39 2026 :: Log Ravagger [3794]: killed the goblin
+Fri Nov 20 03:37:39 2026 :: Log Ravagger [3794]: coin +2 copper
+Fri Nov 20 03:37:41 2026 :: Log Ravagger [3794]: kick
+Fri Nov 20 03:37:41 2026 :: Log Ravagger [3794]: kick
+Fri Nov 20 03:37:41 2026 :: Log Ravagger [3794]: kick
+Fri Nov 20 03:37:41 2026 :: Log Ravagger [3794]: kick
+Fri Nov 20 03:37:42 2026 :: Log Ravagger [3794]: kick
+Fri Nov 20 03:37:47 2026 :: Log Ravagger [3794]: l
+Fri Nov 20 03:37:52 2026 :: Log Ravagger [3794]: sw
+Fri Nov 20 03:37:52 2026 :: Log Ravagger [3712]: arrived (The Cage Room) from 3794
+Fri Nov 20 03:37:57 2026 :: Log Ravagger [3712]: d
+Fri Nov 20 03:37:57 2026 :: Log Ravagger [3717]: arrived (A Room in Mud School) from 3712
+Fri Nov 20 03:38:20 2026 :: Log Ravagger [3717]: l sign
+Fri Nov 20 03:38:34 2026 :: Log Ravagger [3717]: s
+Fri Nov 20 03:38:34 2026 :: Log Ravagger [3718]: arrived (The Store in Mud School) from 3717
+Fri Nov 20 03:38:36 2026 :: Log Ravagger [3718]: list
+Fri Nov 20 03:38:46 2026 :: Log Ravagger [3718]: buy bead
+Fri Nov 20 03:38:52 2026 :: Log Ravagger [3718]: buy bread
+Fri Nov 20 03:38:52 2026 :: Log Ravagger [3718]: copper -1
+Fri Nov 20 03:38:52 2026 :: Log Ravagger [3718]: bought a pipeweed bread (vnum 3718) for 1 copper from the adept of Gravestone
+Fri Nov 20 03:38:52 2026 :: Log Ravagger [3718]: buy bread
+Fri Nov 20 03:38:52 2026 :: Log Ravagger [3718]: copper -1
+Fri Nov 20 03:38:52 2026 :: Log Ravagger [3718]: bought a pipeweed bread (vnum 3718) for 1 copper from the adept of Gravestone
+Fri Nov 20 03:38:55 2026 :: Log Ravagger [3718]: buy bread
+Fri Nov 20 03:38:55 2026 :: Log Ravagger [3718]: copper -1
+Fri Nov 20 03:38:55 2026 :: Log Ravagger [3718]: bought a pipeweed bread (vnum 3718) for 1 copper from the adept of Gravestone
+Fri Nov 20 03:38:58 2026 :: Log Ravagger [3718]: eat bread
+Fri Nov 20 03:39:03 2026 :: Log Ravagger [3718]: b bre
+Fri Nov 20 03:39:03 2026 :: Log Ravagger [3718]: copper -1
+Fri Nov 20 03:39:03 2026 :: Log Ravagger [3718]: bought a pipeweed bread (vnum 3718) for 1 copper from the adept of Gravestone
+Fri Nov 20 03:39:07 2026 :: Log Ravagger [3718]: l
+Fri Nov 20 03:39:10 2026 :: Log Ravagger [3718]: n
+Fri Nov 20 03:39:10 2026 :: Log Ravagger [3717]: arrived (A Room in Mud School) from 3718
+Fri Nov 20 03:39:11 2026 :: Log Ravagger [3717]: affects off: fly
+Fri Nov 20 03:39:16 2026 :: Log Ravagger [3717]: w
+Fri Nov 20 03:39:16 2026 :: Log Ravagger [3761]: arrived (Entrance to a dark cavern) from 3717
+Fri Nov 20 03:39:26 2026 :: Log Ravagger [3761]: w
+Fri Nov 20 03:39:26 2026 :: Log Ravagger [3762]: arrived (A dark cavern) from 3761
+Fri Nov 20 03:39:32 2026 :: Log Ravagger [3762]: k zo
+Fri Nov 20 03:39:35 2026 :: Log Ravagger [3762]: kick
+Fri Nov 20 03:39:38 2026 :: Log Ravagger [3762]: kick
+Fri Nov 20 03:39:41 2026 :: Log Ravagger [3762]: kick
+Fri Nov 20 03:39:43 2026 :: Log Ravagger [3762]: kick
