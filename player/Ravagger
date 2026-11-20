@@ -2,7 +2,7 @@
 Name Ravagger~
 Id   56640
 Serial 3950626
-LogO 1795148825
+LogO 1795149152
 Vers 4
 Prom ~
 Race human~
@@ -17,18 +17,18 @@ ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble 20261114-season-area-ids 20261116-wrapped-pools~
 Cast none
 Levl 5
-Plyd 8462
+Plyd 8789
 ListRemorts ~
 NumRemorts 0
 Note 0
-SkillDamage 0 8 4
-MeleeRatio 2094 8
+SkillDamage 1 14 5
+MeleeRatio 2007 14
 Scro 22
-Room 3759
+Room 105
 HMV  64 64 128 128 93 93
 NewGold 44
 NewPlat 9
-NewCopp 26
+NewCopp 54
 NewSilv 0
 BankCP 0
 IntTime 1795144964
@@ -37,7 +37,7 @@ Dcount 0
 SavedOnce 1
 PkRec 0
 PkGiv 0
-AchKills 10
+AchKills 16
 AchQuests 0
 AchDeaths 0
 AchExplore 0
@@ -47,12 +47,13 @@ AchTriforce 0
 Achv level-5 1795148651
 Achv first-kill 1795145444
 Achv visit-mud-school 1795145162
+Achv visit-smurf 1795149108
 Achv carry-one-platinum 1795144941
 Achv visit-chessboard 1795148117
 Achv funny-sleepwalk 1795146863
-AchSet areas 675805239 1028131563 1103516333 1255184829 1674073230 ~
-AchSet rooms 17 2401-2402 2404-2405 2415 2419 2427-2431 2433-2437 2470 2485 3241 3700-3705 3709 3711-3722 3734 3739 3744 3757-3762 3771-3783 3792-3795 4201-4211 4649 4800-4809 24300-24301 ~
-LastOut  1795148825
+AchSet areas 477615788 675805239 1028131563 1103516333 1255184829 1674073230 ~
+AchSet rooms 17 101-105 110 2401-2402 2404-2405 2415 2419 2427-2431 2433-2437 2470 2485 3241 3700-3705 3709 3711-3722 3725 3729-3731 3734 3736 3739 3741 3744 3746 3757-3762 3771-3783 3792-3795 4201-4211 4649 4800-4809 24300-24301 ~
+LastOut  1795149152
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 0
@@ -63,7 +64,7 @@ SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  10790
+Exp  12076
 Act  65788
 Comm 24608
 Mounted 0
@@ -90,20 +91,19 @@ Color 14 0
 Color 15 0
 Color 16 0
 Pos  8
-Trai 1
-Tutorial 0 32780
+Tutorial 0 1081356
 Save  -1
 Alig  15
 ACs 66 64 64 82
-Attr 14 13 13 18 16
-AMod 0 -3 0 0 0
+Attr 14 13 13 18 17
+AMod 0 7 10 0 10
 Pass $6$0./7Mh0ovRki7ngm$HQ87mfYAI0FYstguo9WpLGn8wZ9OHDyvvRzhdA6XqE1AsXORsTbESrpQGIIVz05.IP3DP.yTp6n/2ZBLSC8tf/~
 Titl  the Student of Defense~
 Pnts 40
 TSex 1
 LLev 1
 HMVP 64 128 124
-Cond 0 47 29
+Cond 0 42 24
 Sk 8 'axe'
 Sk 33 'dagger'
 Sk 6 'flail'
@@ -122,7 +122,7 @@ Sk 75 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
-AffD 'armor'   0  50 -20  17          0          0
+AffD 'armor'   0  45 -20  17          0          0
 End
 
 #O
@@ -132,7 +132,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 63 0 0
+Val  0 0 58 0 0
 End
 
 #O
@@ -326,8 +326,18 @@ End
 #O
 Vnum 3715
 Nest 0
-Wear -1
+Wear 17
 Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 102
+Nest 0
+Wear -1
+Lev  2
+Cost 50
 Cond 100
 Repd 0
 End

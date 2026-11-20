@@ -40877,3 +40877,79 @@
 1795148976	cmd	Ravagger	5	3731	school.are	standing	100	0	-	kill	l	Your punch scratches the lizard. // Your punch misses the lizard.	-	-
 1795148979	cmd	Ravagger	5	3731	school.are	fighting	100	0	fight	kick		Your kick misses the lizard.	-	-
 1795148983	cmd	Ravagger	5	3731	school.are	fighting	100	0	fight	kick		Your kick misses the lizard.	-	-
+1795148989	refused	Ravagger	5	3731	school.are	fighting	100	0	fight	(unknown)		Huh?	refusal:unknown-command	-
+1795148992	cmd	Ravagger	5	3731	school.are	fighting	98	0	fight	kick		Your kick misses the lizard.	-	-
+1795148994	coin	Ravagger	5	3731	school.are	+4	loot	(violence_update)	corpse of the lizard	9440043
+1795148994	coin	Ravagger	5	3731	school.are	+4	loot	(violence_update)	corpse of the lizard	9440047
+1795148997	cmd	Ravagger	5	3731	school.are	standing	98	0	-	look		East Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795148999	cmd	Ravagger	5	3736	school.are	standing	98	0	-	north		East Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795149003	cmd	Ravagger	5	3736	school.are	standing	98	0	-	kill	fox	Your punch misses the fox. // Your punch misses the fox.	-	-
+1795149008	cmd	Ravagger	5	3736	school.are	fighting	98	0	fight	kick		Your kick scratches the fox.	-	-
+1795149011	cmd	Ravagger	5	3736	school.are	fighting	98	0	fight	kick		Your kick scratches the fox.	-	-
+1795149012	coin	Ravagger	5	3736	school.are	+1	loot	(violence_update)	corpse of the fox	9440048
+1795149012	coin	Ravagger	5	3736	school.are	+2	loot	(violence_update)	corpse of the fox	9440050
+1795149014	cmd	Ravagger	5	3736	school.are	standing	98	0	-	kick		You aren't fighting anyone.	-	-
+1795149014	cmd	Ravagger	5	3741	school.are	standing	98	0	-	north		East Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795149018	cmd	Ravagger	5	3746	school.are	standing	98	0	-	north		North East Corner of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795149023	cmd	Ravagger	5	3760	school.are	standing	100	0	-	up		A Safe Room //   You are in a safe room, away from all the mean rabbits and snails of the Arena. // You can rest here, and go up to go back to the Temple of Devota.	-	+
+1795149024	area	Ravagger	5	4207	dresden.are	school.are	dresden.are	245	up
+1795149024	cmd	Ravagger	5	4207	dresden.are	standing	100	0	-	up		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795149027	cmd	Ravagger	5	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795149033	cmd	Ravagger	5	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      a silver key //      a mud school diploma	-	+
+1795149042	cmd	Ravagger	5	4208	dresden.are	standing	100	0	-	wear	dip	You hold a mud school diploma in your hands.	-	-
+1795149049	cmd	Ravagger	5	4208	dresden.are	standing	100	0	-	wear	all	You must be level 10 to use this object. // You wield a sub issue dagger. // A sub issue dagger feels a little clumsy in your hands.	-	-
+1795149056	cmd	Ravagger	5	4208	dresden.are	standing	100	0	-	remove	dagger	You stop using a sub issue dagger.	-	-
+1795149065	cmd	Ravagger	5	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795149070	cmd	Ravagger	5	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795149074	cmd	Ravagger	5	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795149079	cmd	Ravagger	5	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795149080	cmd	Ravagger	5	4202	dresden.are	standing	100	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795149081	cmd	Ravagger	5	4207	dresden.are	standing	100	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795149081	cmd	Ravagger	5	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795149093	cmd	Ravagger	5	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795149096	area	Ravagger	5	3700	school.are	dresden.are	school.are	72	up
+1795149096	cmd	Ravagger	5	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795149098	area	Ravagger	5	17	connect.are	school.are	connect.are	2	west
+1795149098	cmd	Ravagger	5	17	connect.are	standing	100	0	-	west		An odd sight //   Standing before you is one of the most incredible things you have EVER seen. // A giant berry the likes you have never seen before sits in the middle of this	-	+
+1795149108	area	Ravagger	5	101	smurf.are	connect.are	smurf.are	10	enter
+1795149108	achieved	Ravagger	5	101	smurf.are	visit-smurf	5	40	enter
+1795149108	cmd	Ravagger	5	101	smurf.are	standing	100	0	-	enter	berry	You enter A Giant Berry // Your stomach flip flops. Everything goes black for a moment. //                     ACHIEVEMENT EARNED	-	+
+1795149110	cmd	Ravagger	5	102	smurf.are	standing	100	0	-	north		Dimly Lit Path //   This section of the road is badly worn and frequently traversed.  There is // faint singing to the north.  The path back to the road lies to the south.	-	+
+1795149117	cmd	Ravagger	5	103	smurf.are	standing	100	0	-	north		Dimly Lit Path //   This section of the road is badly worn and frequently traversed.  Singing is // getting stronger to the north.  The path back to the road lies to the south.	-	+
+1795149118	cmd	Ravagger	5	104	smurf.are	standing	100	0	-	north		Entrance to Smurf Village //   You stand at the entrance to a tiny village.  You can see across the whole // village easily.  Little blue creatures with white hats and boots and little 	-	+
+1795149120	cmd	Ravagger	5	105	smurf.are	standing	100	0	-	north		Smurfy Road //   You are way too big to be using this road.  But who cares.  Who's gonna stop // you?  These little blue smurfs?  The singing is growing intense.  Your ears	-	+
+1795149124	cmd	Ravagger	5	105	smurf.are	standing	100	0	-	consider	sm	A smurf is a little below your level. // A smurf has about a third of your hit points. // A smurf could barely scratch you; you would need about 5 rounds to bring him down.	-	+
+1795149127	cmd	Ravagger	5	110	smurf.are	standing	100	0	-	east		Smurfy Road //   A corner of smurfy road is where you stand.  A smurfy fence blocks passage // to the east or south.  A smurfy home is to the north.  Smurfy Road goes back	-	+
+1795149132	cmd	Ravagger	5	105	smurf.are	standing	100	0	-	west		Smurfy Road //   You are way too big to be using this road.  But who cares.  Who's gonna stop // you?  These little blue smurfs?  The singing is growing intense.  Your ears	-	+
+1795149134	cmd	Ravagger	5	105	smurf.are	standing	100	0	-	kill	sm	Your punch misses a smurf. // Your punch misses a smurf.	-	-
+1795149137	cmd	Ravagger	5	105	smurf.are	fighting	100	0	fight	kick		Your kick misses a smurf.	-	-
+1795149140	cmd	Ravagger	5	105	smurf.are	fighting	100	0	fight	kick		Your kick misses a smurf.	-	-
+1795149142	cmd	Ravagger	5	105	smurf.are	fighting	98	0	fight	kick		Your kick misses a smurf.	-	-
+1795149145	cmd	Ravagger	5	105	smurf.are	fighting	98	0	fight	kick		Your kick misses a smurf.	-	-
+1795149148	cmd	Ravagger	5	105	smurf.are	fighting	96	0	fight	kick		Your kick misses a smurf.	-	-
+1795149151	cmd	Ravagger	5	105	smurf.are	fighting	96	0	fight	kick		Your kick misses a smurf.	-	-
+1795149151	got	Ravagger	5	105	smurf.are	102	a smurf hat	armor	2	50	(violence_update)	corpse of a smurf
+1795149151	coin	Ravagger	5	105	smurf.are	+2	loot	(violence_update)	corpse of a smurf	9440052
+1795149151	coin	Ravagger	5	105	smurf.are	+2	loot	(violence_update)	corpse of a smurf	9440054
+1795149159	cmd	Ravagger	5	105	smurf.are	standing	100	0	-	wear	hat	You stop using a sub issue helmet. // You wear a smurf hat on your head.	-	-
+1795149159	cmd	Ravagger	5	105	smurf.are	standing	100	0	-	wear	hat	You do not have that item.	-	-
+1795149172	cmd	Ravagger	5	105	smurf.are	standing	100	0	-	compare	helmet	A) a sub issue helmet (level 0) // B) a smurf hat (level 2), worn // Slot: head.  Your damage comes from weapons.	-	+
+1795149201	cmd	Ravagger	5	105	smurf.are	standing	100	0	-	wear	helm	You stop using a smurf hat. // You wear a sub issue helmet on your head.	-	-
+1795149206	cmd	Ravagger	5	105	smurf.are	standing	100	0	-	look		Smurfy Road //   You are way too big to be using this road.  But who cares.  Who's gonna stop // you?  These little blue smurfs?  The singing is growing intense.  Your ears	-	+
+1795149208	cmd	Ravagger	5	111	smurf.are	standing	100	0	-	west		Smurfy Road //   Western corner of Smurfy Road.  You can continue to smurf down the road // to the east and north.  You can also smurf into a smurfy home to the south.	-	+
+1795149211	cmd	Ravagger	5	111	smurf.are	standing	100	0	-	kill	sm	Your punch misses a smurf. // Your punch misses a smurf.	-	-
+1795149214	cmd	Ravagger	5	111	smurf.are	fighting	100	0	fight	kick		Your kick misses a smurf.	-	-
+1795149217	cmd	Ravagger	5	111	smurf.are	fighting	100	0	fight	kick		Your kick scratches a smurf.	-	-
+1795149220	cmd	Ravagger	5	111	smurf.are	fighting	100	0	fight	kick		Your kick scratches a smurf.	-	-
+1795149223	cmd	Ravagger	5	111	smurf.are	fighting	100	0	fight	kick		Your kick misses a smurf.	-	-
+1795149225	cmd	Ravagger	5	111	smurf.are	fighting	100	0	fight	kick		Your kick scratches a smurf.	-	-
+1795149228	cmd	Ravagger	5	111	smurf.are	fighting	100	0	fight	kick		Your kick misses a smurf.	-	-
+1795149231	cmd	Ravagger	5	111	smurf.are	fighting	100	0	fight	kick		Your kick scratches a smurf.	-	-
+1795149234	cmd	Ravagger	5	111	smurf.are	fighting	100	0	fight	kick		Your kick scratches a smurf.	-	-
+1795149236	coin	Ravagger	5	111	smurf.are	+2	loot	kick	corpse of a smurf	9440056
+1795149236	coin	Ravagger	5	111	smurf.are	+2	loot	kick	corpse of a smurf	9440058
+1795149236	cmd	Ravagger	5	111	smurf.are	fighting	100	2	fight	kick		Your kick scratches a smurf. // A smurf is DEAD!! // You receive 165 experience points.	-	+
+1795149239	cmd	Ravagger	5	111	smurf.are	standing	100	0	-	kick		You aren't fighting anyone.	-	-
+1795149240	cmd	Ravagger	5	111	smurf.are	standing	100	0	-	look		Smurfy Road //   Western corner of Smurfy Road.  You can continue to smurf down the road // to the east and north.  You can also smurf into a smurfy home to the south.	-	+
+1795149243	cmd	Ravagger	5	121	smurf.are	standing	100	0	-	south		Hefty Smurf's Home //   Hefty is anything but wimpy.  So is his house.  It actually took you a  // couple of minutes to destroy his house.  Better watch out -- he might be	-	+
+1795149248	cmd	Ravagger	5	121	smurf.are	standing	100	0	-	consider	hef	Hefty Smurf is a little below your level. // Hefty Smurf has about a third of your hit points. // Hefty Smurf could barely scratch you; you would need about 6 rounds to bring him down.	-	+

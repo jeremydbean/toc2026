@@ -321784,3 +321784,102 @@ Fri Nov 20 04:29:34 2026 :: Log Ravagger [3731]: arrived (East Wall of Arena) fr
 Fri Nov 20 04:29:36 2026 :: Log Ravagger [3731]: k l
 Fri Nov 20 04:29:39 2026 :: Log Ravagger [3731]: kick
 Fri Nov 20 04:29:43 2026 :: Log Ravagger [3731]: kick
+Fri Nov 20 04:29:49 2026 :: Log Ravagger [3731]: (refused) dodge
+Fri Nov 20 04:29:52 2026 :: Log Ravagger [3731]: kick
+Fri Nov 20 04:29:54 2026 :: Log Ravagger [3731]: killed the lizard
+Fri Nov 20 04:29:54 2026 :: Log Ravagger [3731]: coin +4 copper
+Fri Nov 20 04:29:54 2026 :: Log Ravagger [3731]: coin +4 copper
+Fri Nov 20 04:29:57 2026 :: Log Ravagger [3731]: l
+Fri Nov 20 04:29:59 2026 :: Log Ravagger [3731]: n
+Fri Nov 20 04:29:59 2026 :: Log Ravagger [3736]: arrived (East Wall of Arena) from 3731
+Fri Nov 20 04:30:03 2026 :: Log Ravagger [3736]: k fox
+Fri Nov 20 04:30:08 2026 :: Log Ravagger [3736]: kick
+Fri Nov 20 04:30:11 2026 :: Log Ravagger [3736]: kick
+Fri Nov 20 04:30:12 2026 :: Log Ravagger [3736]: killed the fox
+Fri Nov 20 04:30:12 2026 :: Log Ravagger [3736]: coin +1 copper
+Fri Nov 20 04:30:12 2026 :: Log Ravagger [3736]: coin +2 copper
+Fri Nov 20 04:30:14 2026 :: Log Ravagger [3736]: kick
+Fri Nov 20 04:30:14 2026 :: Log Ravagger [3736]: n
+Fri Nov 20 04:30:14 2026 :: Log Ravagger [3741]: arrived (East Wall of Arena) from 3736
+Fri Nov 20 04:30:18 2026 :: Log Ravagger [3741]: n
+Fri Nov 20 04:30:18 2026 :: Log Ravagger [3746]: arrived (North East Corner of Arena) from 3741
+Fri Nov 20 04:30:23 2026 :: Log Ravagger [3746]: u
+Fri Nov 20 04:30:23 2026 :: Log Ravagger [3760]: arrived (A Safe Room) from 3746
+Fri Nov 20 04:30:24 2026 :: Log Ravagger [3760]: u
+Fri Nov 20 04:30:24 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 3760
+Fri Nov 20 04:30:27 2026 :: Log Ravagger [4207]: w
+Fri Nov 20 04:30:27 2026 :: Log Ravagger [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Fri Nov 20 04:30:33 2026 :: Log Ravagger [4208]: inv
+Fri Nov 20 04:30:42 2026 :: Log Ravagger [4208]: wear dip
+Fri Nov 20 04:30:49 2026 :: Log Ravagger [4208]: wear all
+Fri Nov 20 04:30:56 2026 :: Log Ravagger [4208]: rem dagger
+Fri Nov 20 04:31:05 2026 :: Log Ravagger [4208]: l
+Fri Nov 20 04:31:10 2026 :: Log Ravagger [4208]: e
+Fri Nov 20 04:31:10 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4208
+Fri Nov 20 04:31:14 2026 :: Log Ravagger [4207]: e
+Fri Nov 20 04:31:14 2026 :: Log Ravagger [4202]: arrived (Halls of Healing.) from 4207
+Fri Nov 20 04:31:19 2026 :: Log Ravagger [4202]: e
+Fri Nov 20 04:31:19 2026 :: Log Ravagger [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Fri Nov 20 04:31:20 2026 :: Log Ravagger [4201]: w
+Fri Nov 20 04:31:20 2026 :: Log Ravagger [4202]: arrived (Halls of Healing.) from 4201
+Fri Nov 20 04:31:21 2026 :: Log Ravagger [4202]: w
+Fri Nov 20 04:31:21 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4202
+Fri Nov 20 04:31:21 2026 :: Log Ravagger [4207]: w
+Fri Nov 20 04:31:21 2026 :: Log Ravagger [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Fri Nov 20 04:31:33 2026 :: Log Ravagger [4208]: e
+Fri Nov 20 04:31:33 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4208
+Fri Nov 20 04:31:36 2026 :: Log Ravagger [4207]: u
+Fri Nov 20 04:31:36 2026 :: Log Ravagger [3700]: arrived (Entrance to Mud School) from 4207
+Fri Nov 20 04:31:38 2026 :: Log Ravagger [3700]: w
+Fri Nov 20 04:31:38 2026 :: Log Ravagger [17]: arrived (An odd sight) from 3700
+Fri Nov 20 04:31:48 2026 :: Log Ravagger [17]: ent berry
+Fri Nov 20 04:31:48 2026 :: Log Ravagger [101]: arrived (Dimly Lit Path) from 17
+Fri Nov 20 04:31:50 2026 :: Log Ravagger [101]: n
+Fri Nov 20 04:31:50 2026 :: Log Ravagger [102]: arrived (Dimly Lit Path) from 101
+Fri Nov 20 04:31:57 2026 :: Log Ravagger [102]: n
+Fri Nov 20 04:31:57 2026 :: Log Ravagger [103]: arrived (Dimly Lit Path) from 102
+Fri Nov 20 04:31:58 2026 :: Log Ravagger [103]: n
+Fri Nov 20 04:31:58 2026 :: Log Ravagger [104]: arrived (Entrance to Smurf Village) from 103
+Fri Nov 20 04:32:00 2026 :: Log Ravagger [104]: n
+Fri Nov 20 04:32:00 2026 :: Log Ravagger [105]: arrived (Smurfy Road) from 104
+Fri Nov 20 04:32:04 2026 :: Log Ravagger [105]: con sm
+Fri Nov 20 04:32:07 2026 :: Log Ravagger [105]: e
+Fri Nov 20 04:32:07 2026 :: Log Ravagger [110]: arrived (Smurfy Road) from 105
+Fri Nov 20 04:32:12 2026 :: Log Ravagger [110]: w
+Fri Nov 20 04:32:12 2026 :: Log Ravagger [105]: arrived (Smurfy Road) from 110
+Fri Nov 20 04:32:14 2026 :: Log Ravagger [105]: k sm
+Fri Nov 20 04:32:17 2026 :: Log Ravagger [105]: kick
+Fri Nov 20 04:32:20 2026 :: Log Ravagger [105]: kick
+Fri Nov 20 04:32:22 2026 :: Log Ravagger [105]: kick
+Fri Nov 20 04:32:25 2026 :: Log Ravagger [105]: kick
+Fri Nov 20 04:32:28 2026 :: Log Ravagger [105]: kick
+Fri Nov 20 04:32:31 2026 :: Log Ravagger [105]: kick
+Fri Nov 20 04:32:31 2026 :: Log Ravagger [105]: killed a smurf
+Fri Nov 20 04:32:31 2026 :: Log Ravagger [105]: coin +2 copper
+Fri Nov 20 04:32:31 2026 :: Log Ravagger [105]: coin +2 copper
+Fri Nov 20 04:32:39 2026 :: Log Ravagger [105]: wear hat
+Fri Nov 20 04:32:39 2026 :: Log Ravagger [105]: wear hat
+Fri Nov 20 04:32:46 2026 :: Connection guard: refused 1 connection from 3.20.63.178 (paused; 16 refused in all, pause 3 this week, 1202 minutes left).
+Fri Nov 20 04:32:52 2026 :: Log Ravagger [105]: comp helmet
+Fri Nov 20 04:33:21 2026 :: Log Ravagger [105]: wear helm
+Fri Nov 20 04:33:26 2026 :: Log Ravagger [105]: l
+Fri Nov 20 04:33:28 2026 :: Log Ravagger [105]: w
+Fri Nov 20 04:33:28 2026 :: Log Ravagger [111]: arrived (Smurfy Road) from 105
+Fri Nov 20 04:33:31 2026 :: Log Ravagger [111]: k sm
+Fri Nov 20 04:33:34 2026 :: Log Ravagger [111]: kick
+Fri Nov 20 04:33:37 2026 :: Log Ravagger [111]: kick
+Fri Nov 20 04:33:40 2026 :: Log Ravagger [111]: kick
+Fri Nov 20 04:33:43 2026 :: Log Ravagger [111]: kick
+Fri Nov 20 04:33:45 2026 :: Log Ravagger [111]: kick
+Fri Nov 20 04:33:48 2026 :: Log Ravagger [111]: kick
+Fri Nov 20 04:33:51 2026 :: Log Ravagger [111]: kick
+Fri Nov 20 04:33:54 2026 :: Log Ravagger [111]: kick
+Fri Nov 20 04:33:56 2026 :: Log Ravagger [111]: kick
+Fri Nov 20 04:33:56 2026 :: Log Ravagger [111]: killed a smurf
+Fri Nov 20 04:33:56 2026 :: Log Ravagger [111]: coin +2 copper
+Fri Nov 20 04:33:56 2026 :: Log Ravagger [111]: coin +2 copper
+Fri Nov 20 04:33:59 2026 :: Log Ravagger [111]: kick
+Fri Nov 20 04:34:00 2026 :: Log Ravagger [111]: l
+Fri Nov 20 04:34:03 2026 :: Log Ravagger [111]: s
+Fri Nov 20 04:34:03 2026 :: Log Ravagger [121]: arrived (Hefty Smurf's Home) from 111
+Fri Nov 20 04:34:08 2026 :: Log Ravagger [121]: con hef
