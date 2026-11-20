@@ -40953,3 +40953,43 @@
 1795149240	cmd	Ravagger	5	111	smurf.are	standing	100	0	-	look		Smurfy Road //   Western corner of Smurfy Road.  You can continue to smurf down the road // to the east and north.  You can also smurf into a smurfy home to the south.	-	+
 1795149243	cmd	Ravagger	5	121	smurf.are	standing	100	0	-	south		Hefty Smurf's Home //   Hefty is anything but wimpy.  So is his house.  It actually took you a  // couple of minutes to destroy his house.  Better watch out -- he might be	-	+
 1795149248	cmd	Ravagger	5	121	smurf.are	standing	100	0	-	consider	hef	Hefty Smurf is a little below your level. // Hefty Smurf has about a third of your hit points. // Hefty Smurf could barely scratch you; you would need about 6 rounds to bring him down.	-	+
+1795149413	coin	Ravagger	5	121	smurf.are	-10000	spent	(mobile_update)	-	9430058
+1795149417	cmd	Ravagger	5	121	smurf.are	standing	100	0	-	kill	he	Your punch misses Hefty Smurf. // Your punch misses Hefty Smurf.	-	-
+1795149420	cmd	Ravagger	5	121	smurf.are	fighting	100	0	fight	kill	he	You do the best you can!	-	-
+1795149421	cmd	Ravagger	5	121	smurf.are	fighting	100	0	fight	kick		Your kick misses Hefty Smurf.	-	-
+1795149424	cmd	Ravagger	5	121	smurf.are	fighting	98	0	fight	kick		Your kick misses Hefty Smurf.	-	-
+1795149426	cmd	Ravagger	5	121	smurf.are	fighting	98	0	fight	kick		Your kick misses Hefty Smurf.	-	-
+1795149429	cmd	Ravagger	5	121	smurf.are	fighting	96	0	fight	kick		Your kick misses Hefty Smurf.	-	-
+1795149432	cmd	Ravagger	5	121	smurf.are	fighting	96	0	fight	kick		Your kick scratches Hefty Smurf.	-	-
+1795149435	cmd	Ravagger	5	121	smurf.are	fighting	96	0	fight	kick		Your kick misses Hefty Smurf.	-	-
+1795149437	cmd	Ravagger	5	121	smurf.are	fighting	96	0	fight	kick		Your kick misses Hefty Smurf.	-	-
+1795149440	cmd	Ravagger	5	121	smurf.are	fighting	96	0	fight	kick		Your kick misses Hefty Smurf.	-	-
+1795149443	got	Ravagger	5	121	smurf.are	103	a small axe	weapon	2	20	kick	corpse of Hefty Smurf
+1795149443	coin	Ravagger	5	121	smurf.are	+2	loot	kick	corpse of Hefty Smurf	9430060
+1795149443	coin	Ravagger	5	121	smurf.are	+10000	loot	kick	corpse of Hefty Smurf	9440060
+1795149443	coin	Ravagger	5	121	smurf.are	+6	loot	kick	corpse of Hefty Smurf	9440066
+1795149443	cmd	Ravagger	5	121	smurf.are	fighting	96	2	fight	kick		Your kick scratches Hefty Smurf. // Hefty Smurf is DEAD!! // You receive 487 experience points.	-	+
+1795149446	cmd	Ravagger	5	121	smurf.are	standing	96	0	-	kick		You aren't fighting anyone.	-	-
+1795149448	cmd	Ravagger	5	121	smurf.are	standing	96	0	-	look		Hefty Smurf's Home //   Hefty is anything but wimpy.  So is his house.  It actually took you a  // couple of minutes to destroy his house.  Better watch out -- he might be	-	+
+1795149449	cmd	Ravagger	5	111	smurf.are	standing	96	0	-	north		Smurfy Road //   Western corner of Smurfy Road.  You can continue to smurf down the road // to the east and north.  You can also smurf into a smurfy home to the south.	-	+
+1795149451	cmd	Ravagger	5	105	smurf.are	standing	96	0	-	east		Smurfy Road //   You are way too big to be using this road.  But who cares.  Who's gonna stop // you?  These little blue smurfs?  The singing is growing intense.  Your ears	-	+
+1795149453	cmd	Ravagger	5	110	smurf.are	standing	96	0	-	east		Smurfy Road //   A corner of smurfy road is where you stand.  A smurfy fence blocks passage // to the east or south.  A smurfy home is to the north.  Smurfy Road goes back	-	+
+1795149455	cmd	Ravagger	5	119	smurf.are	standing	96	0	-	north		Brainy Smurf's Home //   You rip the roof of the home to get a good look inside.  You see // many smurfy books.  The print is so small you couldn't even read it	-	+
+1795149459	cmd	Ravagger	5	119	smurf.are	standing	96	0	-	kill	br	Your punch misses Brainy Smurf. // Your punch misses Brainy Smurf.	-	-
+1795149462	cmd	Ravagger	5	119	smurf.are	fighting	95	0	fight	kick		Your kick scratches Brainy Smurf.	-	-
+1795149464	cmd	Ravagger	5	119	smurf.are	fighting	95	0	fight	kick		Your kick misses Brainy Smurf.	-	-
+1795149467	cmd	Ravagger	5	119	smurf.are	fighting	92	0	fight	kick		Your kick scratches Brainy Smurf.	-	-
+1795149470	cmd	Ravagger	5	119	smurf.are	fighting	92	0	fight	kick		Your kick scratches Brainy Smurf.	-	-
+1795149472	level	Ravagger	6	119	smurf.are	5	6	Monk 	0	13051	821	(violence_update)
+1795149472	got	Ravagger	6	119	smurf.are	101	A pair of glasses	armor	2	500	(violence_update)	corpse of Brainy Smurf
+1795149472	coin	Ravagger	6	119	smurf.are	+2	loot	(violence_update)	corpse of Brainy Smurf	9440068
+1795149472	coin	Ravagger	6	119	smurf.are	+6	loot	(violence_update)	corpse of Brainy Smurf	9440074
+1795149473	cmd	Ravagger	6	119	smurf.are	standing	76	0	-	kick		You aren't fighting anyone.	-	-
+1795149480	cmd	Ravagger	6	119	smurf.are	standing	76	0	-	compare	glass	A) A pair of glasses (level 2) // B) a sub issue helmet (level 0), worn // Slot: head.  Your damage comes from weapons.	-	+
+1795149505	cmd	Ravagger	6	119	smurf.are	standing	93	0	-	compare	hat	A) a smurf hat (level 2) // B) a sub issue helmet (level 0), worn // Slot: head.  Your damage comes from weapons.	-	+
+1795149541	cmd	Ravagger	6	119	smurf.are	standing	100	0	-	help	AC	ACCOUNT ACCOUNTS LOGIN // There are no accounts here.  Each character is its own login: its name // and its password.  Make as many characters as you like.	-	+
+1795149547	cmd	Ravagger	6	119	smurf.are	standing	100	0	-	help	armor class	No help on 'armor class'; here is armor: // ARMOR SHIELD 'STONE SKIN' SHROUD 'MAJOR GLOBE' // Syntax: cast armor <character>	-	+
+1795149581	cmd	Ravagger	6	119	smurf.are	standing	100	0	-	look		Brainy Smurf's Home //   You rip the roof of the home to get a good look inside.  You see // many smurfy books.  The print is so small you couldn't even read it	-	+
+1795149584	cmd	Ravagger	6	119	smurf.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1795149586	cmd	Ravagger	6	110	smurf.are	standing	100	0	-	south		Smurfy Road //   A corner of smurfy road is where you stand.  A smurfy fence blocks passage // to the east or south.  A smurfy home is to the north.  Smurfy Road goes back	-	+
+1795149588	cmd	Ravagger	6	105	smurf.are	standing	100	0	-	west		Smurfy Road //   You are way too big to be using this road.  But who cares.  Who's gonna stop // you?  These little blue smurfs?  The singing is growing intense.  Your ears	-	+

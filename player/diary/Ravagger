@@ -1,9 +1,9 @@
 #DIARY 1
 Day 2026-11-20
-Played 4211
-Level 3 5 2
-Exp 4859 25
-Kills 16
+Played 4541
+Level 3 6 3
+Exp 5834 25
+Kills 19
 Deaths 0
 Close 0
 Quests 0 0
@@ -22,7 +22,7 @@ List area 18 0 Limbo
 List area 16 0 Continental Drift
 List area 58 0 Training Dummy Yard
 List area 131 0 The Chessboard
-List area 44 0 Smurf Village
+List area 374 0 Smurf Village
 List item 1 0 a pair of sub issue boots
 List item 2 0 a sub issue bracer
 List item 2 0 a pair of sub issue leggings
@@ -35,8 +35,9 @@ List item 1 0 a pair of sub issue sleeves
 List item 1 0 a key
 List item 1 0 a mud school diploma
 List item 1 0 a silver key
-More item 1
-List earn 58 0 loot
+More item 3
+List earn 10078 0 loot
 List spend 4 0 buy
+List spend 10000 0 other
 End
 #END

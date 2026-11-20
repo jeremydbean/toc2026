@@ -321883,3 +321883,53 @@ Fri Nov 20 04:34:00 2026 :: Log Ravagger [111]: l
 Fri Nov 20 04:34:03 2026 :: Log Ravagger [111]: s
 Fri Nov 20 04:34:03 2026 :: Log Ravagger [121]: arrived (Hefty Smurf's Home) from 111
 Fri Nov 20 04:34:08 2026 :: Log Ravagger [121]: con hef
+Fri Nov 20 04:35:41 2026 :: Treasure goblin: vanished from room 7522 (Wandering the Astral Plane, astral.are) (too long in one area).
+Fri Nov 20 04:36:53 2026 :: Log Ravagger [121]: coin -1 gold
+Fri Nov 20 04:36:57 2026 :: Log Ravagger [121]: k he
+Fri Nov 20 04:37:00 2026 :: Log Ravagger [121]: k he
+Fri Nov 20 04:37:01 2026 :: Log Ravagger [121]: kick
+Fri Nov 20 04:37:04 2026 :: Log Ravagger [121]: kick
+Fri Nov 20 04:37:06 2026 :: Log Ravagger [121]: kick
+Fri Nov 20 04:37:09 2026 :: Log Ravagger [121]: kick
+Fri Nov 20 04:37:12 2026 :: Log Ravagger [121]: kick
+Fri Nov 20 04:37:15 2026 :: Log Ravagger [121]: kick
+Fri Nov 20 04:37:17 2026 :: Log Ravagger [121]: kick
+Fri Nov 20 04:37:20 2026 :: Log Ravagger [121]: kick
+Fri Nov 20 04:37:23 2026 :: Log Ravagger [121]: kick
+Fri Nov 20 04:37:23 2026 :: Log Ravagger [121]: killed Hefty Smurf
+Fri Nov 20 04:37:23 2026 :: Log Ravagger [121]: coin +2 copper
+Fri Nov 20 04:37:23 2026 :: Log Ravagger [121]: coin +1 gold
+Fri Nov 20 04:37:23 2026 :: Log Ravagger [121]: coin +6 copper
+Fri Nov 20 04:37:26 2026 :: Log Ravagger [121]: kick
+Fri Nov 20 04:37:28 2026 :: Log Ravagger [121]: l
+Fri Nov 20 04:37:29 2026 :: Log Ravagger [121]: n
+Fri Nov 20 04:37:29 2026 :: Log Ravagger [111]: arrived (Smurfy Road) from 121
+Fri Nov 20 04:37:31 2026 :: Log Ravagger [111]: e
+Fri Nov 20 04:37:31 2026 :: Log Ravagger [105]: arrived (Smurfy Road) from 111
+Fri Nov 20 04:37:33 2026 :: Log Ravagger [105]: e
+Fri Nov 20 04:37:33 2026 :: Log Ravagger [110]: arrived (Smurfy Road) from 105
+Fri Nov 20 04:37:35 2026 :: Log Ravagger [110]: n
+Fri Nov 20 04:37:35 2026 :: Log Ravagger [119]: arrived (Brainy Smurf's Home) from 110
+Fri Nov 20 04:37:39 2026 :: Log Ravagger [119]: k br
+Fri Nov 20 04:37:42 2026 :: Log Ravagger [119]: kick
+Fri Nov 20 04:37:44 2026 :: Log Ravagger [119]: kick
+Fri Nov 20 04:37:47 2026 :: Log Ravagger [119]: kick
+Fri Nov 20 04:37:49 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 28 refused in all, pause 4 this week, 1687 minutes left).
+Fri Nov 20 04:37:50 2026 :: Log Ravagger [119]: kick
+Fri Nov 20 04:37:52 2026 :: Log Ravagger [119]: level 5 -> 6 (earned)
+Fri Nov 20 04:37:52 2026 :: Ravagger has achieved level 6!
+Fri Nov 20 04:37:52 2026 :: Snapshot of Ravagger taken before level: Ravagger.20261120_043752.level (PRESTORE Ravagger to see it).
+Fri Nov 20 04:37:52 2026 :: Log Ravagger [119]: killed Brainy Smurf
+Fri Nov 20 04:37:52 2026 :: Log Ravagger [119]: coin +2 copper
+Fri Nov 20 04:37:52 2026 :: Log Ravagger [119]: coin +6 copper
+Fri Nov 20 04:37:53 2026 :: Log Ravagger [119]: kick
+Fri Nov 20 04:38:00 2026 :: Log Ravagger [119]: comp glass
+Fri Nov 20 04:38:25 2026 :: Log Ravagger [119]: comp hat
+Fri Nov 20 04:39:01 2026 :: Log Ravagger [119]: help AC
+Fri Nov 20 04:39:07 2026 :: Log Ravagger [119]: help armor class
+Fri Nov 20 04:39:41 2026 :: Log Ravagger [119]: l
+Fri Nov 20 04:39:44 2026 :: Log Ravagger [119]: n
+Fri Nov 20 04:39:46 2026 :: Log Ravagger [119]: s
+Fri Nov 20 04:39:46 2026 :: Log Ravagger [110]: arrived (Smurfy Road) from 119
+Fri Nov 20 04:39:48 2026 :: Log Ravagger [110]: w
+Fri Nov 20 04:39:48 2026 :: Log Ravagger [105]: arrived (Smurfy Road) from 110
