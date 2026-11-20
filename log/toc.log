@@ -320623,3 +320623,7 @@ Fri Nov 20 02:14:36 2026 :: Treasure goblin: vanished from room 15006 (Campus Cr
 Fri Nov 20 02:15:39 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 3 of 6 in 6 hours).
 Fri Nov 20 02:20:42 2026 :: Connection guard: refused 1 connection from 178.156.189.113 (paused; 20 refused in all, pause 4 this week, 1291 minutes left).
 Fri Nov 20 02:24:40 2026 :: Treasure goblin: vanished from room 7407 (Tunnel, sewer.are) (too long in one area).
+Fri Nov 20 02:25:47 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 20 02:25:50 2026 :: Connection guard: last hour 11 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 9 addresses paused and 0 refused now, 14 active player addresses.
+Fri Nov 20 02:28:27 2026 :: Automated backup started.
+Fri Nov 20 02:28:28 2026 :: Automated backup complete.
