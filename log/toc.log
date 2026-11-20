@@ -323618,3 +323618,5 @@ Fri Nov 20 22:09:20 2026 :: Connection guard: refused 1 connection from 178.156.
 Fri Nov 20 22:10:09 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Fri Nov 20 22:10:44 2026 :: EOF encountered on read.
 Fri Nov 20 22:10:44 2026 :: Closing link to Killuminati.
+Fri Nov 20 22:14:23 2026 :: Connection guard: refused 1 connection from 178.156.189.113 (paused; 29 refused in all, pause 4 this week, 98 minutes left).
+Fri Nov 20 22:15:58 2026 :: Treasure goblin: vanished from room 7217 (The half-dry drain., sewer.are) (too long in one area).
