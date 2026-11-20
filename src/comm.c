@@ -1589,7 +1589,21 @@ bool descriptor_hung_up( DESCRIPTOR_DATA *d )
 
     if ( d == NULL || d->descriptor < 0 )
         return true;
+#if defined(MSG_DONTWAIT)
     got = recv( d->descriptor, &c, 1, MSG_PEEK | MSG_DONTWAIT );
+#else
+    /* macOS hides MSG_DONTWAIT under _POSIX_C_SOURCE. Every accepted
+       descriptor is already O_NONBLOCK (new_descriptor), so a plain peek
+       never waits; one that is not is never peeked, and reads as still
+       connected rather than holding the loop. */
+    {
+        int fl = fcntl( d->descriptor, F_GETFL, 0 );
+
+        if ( fl == -1 || ( fl & O_NONBLOCK ) == 0 )
+            return false;
+    }
+    got = recv( d->descriptor, &c, 1, MSG_PEEK );
+#endif
     if ( got == 0 )
         return true;
     if ( got < 0 && errno != EAGAIN && errno != EWOULDBLOCK && errno != EINTR )

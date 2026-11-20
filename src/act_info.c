@@ -3498,6 +3498,27 @@ const char *consider_predict( CHAR_DATA *ch, CHAR_DATA *victim, double *yours,
 }
 
 /*
+ * The line that says CONSIDER counted a creature's own attack beside its
+ * melee: a guardian's volley, Ganon's fireballs, a patra's ring
+ * (guardian_special_expected_per_round, which answers 0 for anything
+ * else, and for a patra whose ring is broken).
+ */
+static void consider_special_line( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    char buf[MAX_STRING_LENGTH];
+    double special = guardian_special_expected_per_round( victim, ch );
+
+    if ( special < 0.5 )
+        return;
+    snprintf( buf, sizeof(buf),
+        hyrule_patra_eyes_left( victim ) > 0 && !is_hyrule_guardian( victim )
+            ? "That counts its ring's lash too: about %ld a round of it lands on you."
+            : "That counts $S own attack too: about %ld a round of it lands on you.",
+        (long) ( special + 0.5 ) );
+    act( buf, ch, NULL, victim, TO_CHAR );
+}
+
+/*
  * What CONSIDER says beyond the level: how the hit points compare, the
  * fight as gear_consider_fight estimates it, one verdict, and what about
  * the foe changes a fight. It replaced a hit point scale in absolute
@@ -3518,7 +3539,6 @@ static void consider_fight( CHAR_DATA *ch, CHAR_DATA *victim )
     double theirs;
     double your_rounds;
     double their_rounds;
-    double special;
     double learned;
     bool caster;
     const char *verdict;
@@ -3564,14 +3584,7 @@ static void consider_fight( CHAR_DATA *ch, CHAR_DATA *victim )
                       theirs_text );
             act( buf, ch, NULL, victim, TO_CHAR );
         }
-        if ( is_hyrule_guardian( victim )
-        &&   ( special = guardian_special_expected_per_round( victim, ch ) ) >= 0.5 )
-        {
-            snprintf( buf, sizeof(buf),
-                "That counts $S own attack too: about %ld a round of it lands on you.",
-                (long) ( special + 0.5 ) );
-            act( buf, ch, NULL, victim, TO_CHAR );
-        }
+        consider_special_line( ch, victim );
         return;
     }
     if ( !strcmp( verdict, "scratch" ) )
@@ -3623,14 +3636,7 @@ static void consider_fight( CHAR_DATA *ch, CHAR_DATA *victim )
             send_to_char( buf, ch );
         }
     }
-    if ( is_hyrule_guardian( victim )
-    &&   ( special = guardian_special_expected_per_round( victim, ch ) ) >= 0.5 )
-    {
-        snprintf( buf, sizeof(buf),
-            "That counts $S own attack too: about %ld a round of it lands on you.",
-            (long) ( special + 0.5 ) );
-        act( buf, ch, NULL, victim, TO_CHAR );
-    }
+    consider_special_line( ch, victim );
 
     if ( IS_AFFECTED( victim, AFF_SANCTUARY ) )
         act( "$N is wrapped in sanctuary: your blows do half.", ch, NULL, victim, TO_CHAR );

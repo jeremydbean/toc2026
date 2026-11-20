@@ -48,10 +48,15 @@ class ConsiderGuardianSourceTests(unittest.TestCase):
         self.assertIn("hyrule_guardian_volley_now(", spec)
         expect = special.split("double guardian_special_expected_per_round(", 1)[1]
         expect = expect.split("\n}\n", 1)[0]
-        for piece in ("hyrule_guardian_volley_now(", "blow_landed_expected(",
+        for piece in ("hyrule_guardian_volley_now(", "guardian_expected_blow(",
                       "PULSE_VIOLENCE / PULSE_MOBILE", "GANON_FIREBALLS",
                       "GANON_FIREBALL_MIN", "GANON_FIREBALL_MAX", "spec_ganon"):
             self.assertIn(piece, expect, piece)
+        # The blow itself is taken through damage()'s steps, in the helper
+        # the guardians and a patra's ring share (2026-11-20).
+        helper = special.split("static double guardian_expected_blow(", 1)[1]
+        helper = helper.split("\n}\n", 1)[0]
+        self.assertIn("blow_landed_expected(", helper)
         gear = (ROOT / "src" / "gear_compare.c").read_text(encoding="latin-1")
         fight = gear.split("void gear_consider_fight(", 1)[1].split("\n}\n", 1)[0]
         self.assertIn("guardian_special_expected_per_round( victim, ch )", fight)

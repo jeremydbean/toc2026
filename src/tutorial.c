@@ -671,6 +671,13 @@ void tutorial_login( CHAR_DATA *ch, bool is_new_character )
         send_to_char( "{0E[Tutorial]{00 Hints are on: TUTORIAL NEXT for one, TUTORIAL OFF to stop.\n\r", ch );
     ch->pcdata->tutorial_last = current_time;
     tut_seed( ch );
+    /* The login's room view came before this banner, so school_now said
+       nothing there; say the station they stand in now, after it (review,
+       2026-11-20: a player who logged in at the entrance and walked on
+       before tutorial_update's next tick never saw step 1). school_now
+       marks it, so it is said once, and leaves an unsafe state -- asleep,
+       paging -- to tutorial_update as before. */
+    school_now( ch );
 }
 
 static bool is_school( ROOM_INDEX_DATA *room )

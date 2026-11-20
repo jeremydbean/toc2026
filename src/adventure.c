@@ -194,11 +194,16 @@ static void adventure_group( CHAR_DATA *ch, DString *out, int *shown )
         CHAR_DATA *wch = d->original != NULL ? d->original : d->character;
 
         if ( d->connected != CON_PLAYING || wch == NULL || wch == ch || IS_NPC(wch)
-        ||   is_staff( wch ) || !online_can_list( ch, wch ) )
+        ||   is_staff( wch ) )
             continue;
+        /* A groupmate is known to them already -- they grouped, and GROUP
+           shows the group -- so one turned invisible is still counted
+           (review, 2026-11-20: the section vanished). Everybody else is
+           counted only as WHO would list them. */
         if ( is_same_group( ch, wch ) )
             mates++;
-        else if ( wch->level >= ch->level - ADVENTURE_NEAR
+        else if ( online_can_list( ch, wch )
+               && wch->level >= ch->level - ADVENTURE_NEAR
                && wch->level <= ch->level + ADVENTURE_NEAR )
             near++;
     }

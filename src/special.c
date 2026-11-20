@@ -873,21 +873,68 @@ bool spec_hyrule_guardian( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
  * stops, taken through damage()'s own steps (blow_landed_expected:
  * sanctuary, armour, a Hyrule ring) and averaged over the range the
  * special rolls from. The volley is the one the fight would throw now
- * (hyrule_guardian_volley_now; Ganon's fireballs). 0 for anything that
- * is not a guardian.
+ * (hyrule_guardian_volley_now; Ganon's fireballs). A patra's ring is
+ * counted too, below. 0 for anything else.
  */
 #define GUARDIAN_EXPECT_SAMPLES 64
+
+/* What one lash of a patra's ring rolls from, with eyes left in it: the
+   special and CONSIDER's model both read it, so they cannot drift. */
+static void patra_ring_range( CHAR_DATA *mob, int eyes, int *lo, int *hi )
+{
+    *lo = UMAX( 1, mob->level * eyes / ( 2 * HYRULE_PATRA_EYES ) );
+    *hi = UMAX( 1, mob->level * eyes / HYRULE_PATRA_EYES );
+}
+
+/* The expected landed blow over [dam_min, dam_max], every value equally
+   likely, as damage() would take it from target. */
+static double guardian_expected_blow( CHAR_DATA *mob, CHAR_DATA *target,
+				      int dam_min, int dam_max, int dam_type )
+{
+    double sum = 0.0;
+    int samples, i;
+
+    samples = UMIN( dam_max - dam_min + 1, GUARDIAN_EXPECT_SAMPLES );
+    if ( samples < 1 )
+	samples = 1;
+    for ( i = 0; i < samples; i++ )
+    {
+	/* Evenly across [dam_min, dam_max], both ends included. */
+	double blow = samples > 1
+	    ? dam_min + (double) ( dam_max - dam_min ) * i / ( samples - 1 )
+	    : (double) dam_min;
+
+	sum += blow_landed_expected( mob, target, blow, dam_type, NULL );
+    }
+    return sum / samples;
+}
+
 double guardian_special_expected_per_round( CHAR_DATA *mob, CHAR_DATA *target )
 {
     const HYRULE_GUARDIAN_VOLLEY *volley;
     CHAR_DATA *rch;
-    double sum = 0.0;
-    int count, dam_min, dam_max, heads, dam_type, samples, i;
+    int count, dam_min, dam_max, heads, dam_type, eyes;
     int targets = 0;
 
     if ( mob == NULL || target == NULL || mob == target || !IS_NPC(mob)
     ||   mob->pIndexData == NULL )
 	return 0.0;
+
+    /* A patra's ring lashes every player fighting it, each its own blow
+       (spec_hyrule_patra): nothing is shared, so target takes a whole lash
+       a pulse, as hard as the eyes left make it, and none once the ring
+       is broken (review, 2026-11-20: CONSIDER warned of the ring and
+       counted none of it). Players only, as the ring strikes; a fight not
+       begun yet is counted as the one CONSIDER asks about. */
+    if ( mob->spec_fun == spec_hyrule_patra )
+    {
+	if ( ( eyes = hyrule_patra_eyes_left( mob ) ) <= 0 || IS_NPC(target)
+	||   target->position <= POS_STUNNED || wizinvis_hides( target, mob ) )
+	    return 0.0;
+	patra_ring_range( mob, eyes, &dam_min, &dam_max );
+	return (double) PULSE_VIOLENCE / PULSE_MOBILE
+	     * guardian_expected_blow( mob, target, dam_min, dam_max, DAM_ENERGY );
+    }
 
     if ( mob->spec_fun == spec_ganon )
     {
@@ -912,19 +959,8 @@ double guardian_special_expected_per_round( CHAR_DATA *mob, CHAR_DATA *target )
 		targets++;
     targets = UMAX( 1, targets );
 
-    samples = UMIN( dam_max - dam_min + 1, GUARDIAN_EXPECT_SAMPLES );
-    if ( samples < 1 )
-	samples = 1;
-    for ( i = 0; i < samples; i++ )
-    {
-	/* Evenly across [dam_min, dam_max], both ends included. */
-	double blow = samples > 1
-	    ? dam_min + (double) ( dam_max - dam_min ) * i / ( samples - 1 )
-	    : (double) dam_min;
-
-	sum += blow_landed_expected( mob, target, blow, dam_type, NULL );
-    }
-    return (double) PULSE_VIOLENCE / PULSE_MOBILE * count * ( sum / samples ) / targets;
+    return (double) PULSE_VIOLENCE / PULSE_MOBILE * count
+	 * guardian_expected_blow( mob, target, dam_min, dam_max, dam_type ) / targets;
 }
 
 /*
@@ -956,6 +992,7 @@ bool spec_hyrule_patra( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     CHAR_DATA *rch_next;
     int sn;
     int eyes;
+    int lo, hi;
     bool struck = false;
 
     UNUSED_PARAM(ch);
@@ -980,10 +1017,8 @@ bool spec_hyrule_patra( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	    act( "The ring of eyes orbiting $n tightens and lashes outward!",
 		 mob, NULL, NULL, TO_ROOM );
 	struck = true;
-	damage( mob, rch,
-		number_range( UMAX( 1, mob->level * eyes / ( 2 * HYRULE_PATRA_EYES ) ),
-			      UMAX( 1, mob->level * eyes / HYRULE_PATRA_EYES ) ),
-		sn, DAM_ENERGY );
+	patra_ring_range( mob, eyes, &lo, &hi );
+	damage( mob, rch, number_range( lo, hi ), sn, DAM_ENERGY );
 	if ( mob->in_room == NULL || mob->position != POS_FIGHTING )
 	    break;
     }

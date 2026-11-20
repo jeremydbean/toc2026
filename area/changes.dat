@@ -5,6 +5,14 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261120fixes 2026-11-20
+CONSIDER on a patra now counts its ring of eyes: how much of the ring's
+lash would land on you each round, and nothing once the ring is broken.
+Every member of a group fighting it takes the whole lash.  ADVENTURE now
+still counts a groupmate who has turned invisible.  With the tutorial on,
+logging in at the Mud School entrance shows its first step even if you
+walk on at once.
+
 @ 20261120luck 2026-11-20
 Luck is now something you have for a while, like a spell.  A St. Patrick's
 four-leaf clover gives a point of luck (three at most) for 30 hours, and

@@ -11,6 +11,12 @@
    game; both builds see them only with these, defined before any header. */
 #define _DEFAULT_SOURCE
 #define _POSIX_C_SOURCE 200809L
+/* macOS hides flock() and LOCK_EX/LOCK_NB (sys/file.h) under
+   _POSIX_C_SOURCE unless asked for its full set; the backups' lock is an
+   flock, held by the shell and everything it starts. */
+#if defined(__APPLE__)
+#define _DARWIN_C_SOURCE
+#endif
 
 #if defined(macintosh)
 #include <types.h>
