@@ -322428,3 +322428,5 @@ Fri Nov 20 11:14:13 2026 :: Connection guard: refused 1 connection from 5.161.75
 Fri Nov 20 11:19:18 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 30 refused in all, pause 4 this week, 1286 minutes left).
 Fri Nov 20 11:21:59 2026 :: Treasure goblin: vanished from room 8788 (A Trashed Room, kerofk.are) (too long in one area).
 Fri Nov 20 11:24:24 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 20 11:25:50 2026 :: Connection guard: last hour 9 closed without a word, 4 refused, 0 new characters refused, 0 newly paused; 10 addresses paused and 0 refused now, 15 active player addresses.
+Fri Nov 20 11:29:29 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 3 of 6 in 6 hours).
