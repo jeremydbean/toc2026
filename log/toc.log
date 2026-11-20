@@ -321552,3 +321552,70 @@ Fri Nov 20 04:14:28 2026 :: Log Ravagger [3778]: arrived (Newbie Train - The Fir
 Fri Nov 20 04:14:33 2026 :: Log Ravagger [3779]: arrived (Newbie Train - The Dwarven Daycare) from 3778
 Fri Nov 20 04:14:38 2026 :: Log Ravagger [3780]: arrived (Newbie Train - The Elemental Canyon) from 3779
 Fri Nov 20 04:14:43 2026 :: Log Ravagger [3781]: arrived (Newbie Train - The Gnomes) from 3780
+Fri Nov 20 04:14:48 2026 :: Log Ravagger [3782]: arrived (Newbie Train - Miden'nir) from 3781
+Fri Nov 20 04:14:53 2026 :: Log Ravagger [3792]: arrived (Newbie Train - New Thalos) from 3782
+Fri Nov 20 04:14:56 2026 :: Connection guard: 35.203.211.138 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 20 04:14:56 2026 :: Connection guard: 35.203.211.138 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 20 04:14:58 2026 :: Log Ravagger [3793]: arrived (Newbie Train - Solace) from 3792
+Fri Nov 20 04:15:03 2026 :: Log Ravagger [3772]: arrived (Newbie Train Station) from 3793
+Fri Nov 20 04:15:11 2026 :: Log Ravagger [3772]: (refused) trainu
+Fri Nov 20 04:15:13 2026 :: Log Ravagger [3772]: u
+Fri Nov 20 04:15:13 2026 :: Log Ravagger [3795]: arrived (Strange Blending of Time) from 3772
+Fri Nov 20 04:15:17 2026 :: Log Ravagger [3795]: n
+Fri Nov 20 04:15:17 2026 :: Log Ravagger [24300]: arrived (The Stone Door) from 3795
+Fri Nov 20 04:15:31 2026 :: Treasure goblin: vanished from room 1313 (Inside the High Tower of Sorcerery, htower.are) (too long in one area).
+Fri Nov 20 04:15:53 2026 :: Log Ravagger [24300]: exam vase
+Fri Nov 20 04:16:00 2026 :: Log Ravagger [24300]: get key
+Fri Nov 20 04:16:08 2026 :: Log Ravagger [24300]: get key vase
+Fri Nov 20 04:16:14 2026 :: Log Ravagger [24300]: unl n
+Fri Nov 20 04:16:17 2026 :: Log Ravagger [24300]: open n
+Fri Nov 20 04:16:19 2026 :: Log Ravagger [24300]: n
+Fri Nov 20 04:16:19 2026 :: Log Ravagger [24301]: arrived (The Smooth Tunnel) from 24300
+Fri Nov 20 04:16:27 2026 :: Log Ravagger [24301]: con troll
+Fri Nov 20 04:16:33 2026 :: Log Ravagger [24301]: kick
+Fri Nov 20 04:16:36 2026 :: Log Ravagger [24301]: kick
+Fri Nov 20 04:16:39 2026 :: Log Ravagger [24301]: kick
+Fri Nov 20 04:16:42 2026 :: Log Ravagger [24301]: kick
+Fri Nov 20 04:16:45 2026 :: Log Ravagger [24301]: kick
+Fri Nov 20 04:16:48 2026 :: Log Ravagger [24301]: kick
+Fri Nov 20 04:16:50 2026 :: Log Ravagger [24301]: kick
+Fri Nov 20 04:16:53 2026 :: Log Ravagger [24301]: kick
+Fri Nov 20 04:16:56 2026 :: Log Ravagger [24301]: kick
+Fri Nov 20 04:16:59 2026 :: Log Ravagger [24301]: kick
+Fri Nov 20 04:17:01 2026 :: Log Ravagger [24301]: kick
+Fri Nov 20 04:17:04 2026 :: Log Ravagger [24301]: kick
+Fri Nov 20 04:17:07 2026 :: Log Ravagger [24301]: kick
+Fri Nov 20 04:17:10 2026 :: Log Ravagger [24301]: s
+Fri Nov 20 04:17:12 2026 :: Log Ravagger [24301]: s
+Fri Nov 20 04:17:12 2026 :: Black market: the dealer vanished from room 1519 (A Small Hut, gnome.are) (too long in one area).
+Fri Nov 20 04:17:15 2026 :: Log Ravagger [24301]: flee
+Fri Nov 20 04:17:21 2026 :: Log Ravagger [24301]: recall
+Fri Nov 20 04:17:26 2026 :: Log Ravagger [24301]: recall
+Fri Nov 20 04:17:28 2026 :: Log Ravagger [24301]: recall
+Fri Nov 20 04:17:28 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 24301
+Fri Nov 20 04:17:31 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 20 04:17:42 2026 :: Log Ravagger [4207]: who
+Fri Nov 20 04:17:50 2026 :: Log Ravagger [4207]: l
+Fri Nov 20 04:17:55 2026 :: Log Ravagger [4207]: scan
+Fri Nov 20 04:17:57 2026 :: Log Ravagger [4207]: w
+Fri Nov 20 04:17:57 2026 :: Log Ravagger [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Fri Nov 20 04:18:01 2026 :: Log Ravagger [4208]: sleep
+Fri Nov 20 04:18:52 2026 :: Log Ravagger [4208]: wake
+Fri Nov 20 04:18:54 2026 :: Log Ravagger [4208]: l
+Fri Nov 20 04:18:58 2026 :: Log Ravagger [4208]: e
+Fri Nov 20 04:18:58 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4208
+Fri Nov 20 04:19:00 2026 :: Log Ravagger [4207]: w
+Fri Nov 20 04:19:00 2026 :: Log Ravagger [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Fri Nov 20 04:19:02 2026 :: Log Ravagger [4208]: e
+Fri Nov 20 04:19:02 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4208
+Fri Nov 20 04:19:04 2026 :: Log Ravagger [4207]: u
+Fri Nov 20 04:19:04 2026 :: Log Ravagger [3700]: arrived (Entrance to Mud School) from 4207
+Fri Nov 20 04:19:20 2026 :: Black market: the dealer vanished from room 24228 (A Cloistered Hall, crypt.are) (wandering).
+Fri Nov 20 04:19:20 2026 :: Log Ravagger [3700]: n
+Fri Nov 20 04:19:20 2026 :: Log Ravagger [3757]: arrived (A Room in Mud School) from 3700
+Fri Nov 20 04:19:25 2026 :: Log Ravagger [3757]: l sign
+Fri Nov 20 04:19:28 2026 :: Log Ravagger [3757]: w
+Fri Nov 20 04:19:28 2026 :: Log Ravagger [3758]: arrived (Eclipse's Training Room) from 3757
+Fri Nov 20 04:19:36 2026 :: Log Ravagger [3758]: l sign
+Fri Nov 20 04:19:42 2026 :: Log Ravagger [3758]: train
+Fri Nov 20 04:19:44 2026 :: Black market: the dealer left the world from room 25257 (Outside the cave., mushroom.are).

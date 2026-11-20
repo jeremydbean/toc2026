@@ -40707,3 +40707,53 @@
 1795148041	cmd	Ravagger	4	3700	school.are	standing	100	0	-	west		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
 1795148042	cmd	Ravagger	4	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
 1795148044	cmd	Ravagger	4	3773	school.are	standing	100	0	-	east		Newbie Train Still In The Station //   This is the Newbie Train.  The first stop will be the mob factory. // Please find a seat if you can.  If you must stand, please hold on to the	-	+
+1795148111	refused	Ravagger	4	3772	school.are	standing	100	0	-	(unknown)		Huh? Did you mean TRAIN?	refusal:unknown-command	-
+1795148113	cmd	Ravagger	4	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1795148117	area	Ravagger	4	24300	chess.are	school.are	chess.are	82	north
+1795148117	achieved	Ravagger	4	24300	chess.are	visit-chessboard	10	30	north
+1795148117	cmd	Ravagger	4	24300	chess.are	standing	100	0	-	north		                    ACHIEVEMENT EARNED // Your Move  +10 points // Reach the stone door of the Chessboard.	-	+
+1795148153	cmd	Ravagger	4	24300	chess.are	standing	100	0	-	examine	vase	The vase is small and painted. // When you look inside, you see: // A painted vase contains:	-	+
+1795148160	cmd	Ravagger	4	24300	chess.are	standing	100	0	-	get	key	I see no key here.	-	-
+1795148168	got	Ravagger	4	24300	chess.are	24301	a silver key	key	1	0	get	a painted vase
+1795148168	cmd	Ravagger	4	24300	chess.are	standing	100	0	-	get	key vase	You get a silver key from a painted vase.	-	-
+1795148174	cmd	Ravagger	4	24300	chess.are	standing	100	0	-	unlock	n	*Click*	-	-
+1795148177	cmd	Ravagger	4	24300	chess.are	standing	100	0	-	open	n	Ok.	-	-
+1795148179	cmd	Ravagger	4	24301	chess.are	standing	100	0	-	north		The Smooth Tunnel //   Looking down at your feet, you are somewhat surprised to find that you  // are walking on a thick woven rug. The walls of the tunnel that you are in 	-	+
+1795148187	cmd	Ravagger	4	24301	chess.are	fighting	94	0	fight	consider	troll	The Tunnel Troll is a little below your level. // The Tunnel Troll has about half your hit points. // Blow for blow, you would need about 20 rounds to bring the Tunnel Troll down; it would need about 46 rounds for you.	-	+
+1795148193	cmd	Ravagger	4	24301	chess.are	fighting	94	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795148196	cmd	Ravagger	4	24301	chess.are	fighting	94	0	fight	kick		Your kick scratches the Tunnel Troll.	-	-
+1795148199	cmd	Ravagger	4	24301	chess.are	fighting	92	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795148202	cmd	Ravagger	4	24301	chess.are	fighting	90	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795148205	cmd	Ravagger	4	24301	chess.are	fighting	88	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795148208	cmd	Ravagger	4	24301	chess.are	fighting	88	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795148210	cmd	Ravagger	4	24301	chess.are	fighting	81	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795148213	cmd	Ravagger	4	24301	chess.are	fighting	79	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795148216	cmd	Ravagger	4	24301	chess.are	fighting	75	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795148219	cmd	Ravagger	4	24301	chess.are	fighting	66	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795148221	cmd	Ravagger	4	24301	chess.are	fighting	66	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795148224	cmd	Ravagger	4	24301	chess.are	fighting	74	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795148227	cmd	Ravagger	4	24301	chess.are	fighting	74	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795148230	refused	Ravagger	4	24301	chess.are	fighting	74	0	fight	south		No way!  You are still fighting!  FLEE to break away.	refusal:position	-
+1795148232	refused	Ravagger	4	24301	chess.are	fighting	74	0	fight	south		No way!  You are still fighting!  FLEE to break away.	refusal:position	-
+1795148235	cmd	Ravagger	4	24301	chess.are	fighting	61	0	fight	flee		PANIC! You couldn't escape!	-	-
+1795148241	cmd	Ravagger	4	24301	chess.are	fighting	53	2	fight	recall		You stumble over the words of your prayer, and nothing happens.	-	-
+1795148246	cmd	Ravagger	4	24301	chess.are	fighting	53	0	fight	recall		You stumble over the words of your prayer, and nothing happens.	-	-
+1795148248	area	Ravagger	4	4207	dresden.are	chess.are	dresden.are	131	recall
+1795148248	cmd	Ravagger	4	4207	dresden.are	fighting	53	0	fight	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795148262	cmd	Ravagger	4	4207	dresden.are	standing	53	0	-	who		[ 4 Human   Monk  ] Ravagger the Initiate of Form // Players found: 1	-	-
+1795148270	cmd	Ravagger	4	4207	dresden.are	standing	53	0	-	look		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795148275	cmd	Ravagger	4	4207	dresden.are	standing	72	0	-	scan		the healer                         -to the West.	-	-
+1795148277	cmd	Ravagger	4	4208	dresden.are	standing	72	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795148281	cmd	Ravagger	4	4208	dresden.are	standing	72	0	-	sleep		You go to sleep.	-	-
+1795148332	cmd	Ravagger	4	4208	dresden.are	sleeping	100	0	-	wake		You wake and stand up.	-	-
+1795148334	cmd	Ravagger	4	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795148338	cmd	Ravagger	4	4207	dresden.are	standing	100	1	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795148340	cmd	Ravagger	4	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795148342	cmd	Ravagger	4	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795148344	area	Ravagger	4	3700	school.are	dresden.are	school.are	96	up
+1795148344	cmd	Ravagger	4	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795148360	cmd	Ravagger	4	3757	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795148365	cmd	Ravagger	4	3757	school.are	standing	100	0	-	look	sign	To find out your attributes, type 'score'.  You can improve your attributes // in Eclipse's Training Room to the west.  You can practice your skills and // spells in Soulcrusher's Guild Room to the east.  You can continue through	-	+
+1795148368	cmd	Ravagger	4	3758	school.are	standing	100	0	-	west		Eclipse's Training Room //   You are in Eclipse's Training Room.  Around you are all sorts of physical // and mental training tools.  The whole room is filled with magic, holiness, 	-	+
+1795148376	cmd	Ravagger	4	3758	school.are	standing	100	0	-	look	sign	Welcome to Eclipse's Training Room.  Here you can train your attributes. // Training spends training sessions, not practices: you start with three and // gain one each level.  Type 'train' while you are in this room to see how	-	+
+1795148382	cmd	Ravagger	4	3758	school.are	standing	100	0	-	train		You have 1 training sessions. // You can train: str int wis con hp mana.	-	-

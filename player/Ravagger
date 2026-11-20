@@ -2,7 +2,7 @@
 Name Ravagger~
 Id   56640
 Serial 3950626
-LogO 1795148005
+LogO 1795148273
 Vers 4
 Prom ~
 Race human~
@@ -17,15 +17,15 @@ ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble 20261114-season-area-ids 20261116-wrapped-pools~
 Cast none
 Levl 4
-Plyd 7642
+Plyd 7910
 ListRemorts ~
 NumRemorts 0
 Note 0
 SkillDamage 0 8 4
 MeleeRatio 2094 8
 Scro 22
-Room 2401
-HMV  54 54 118 118 87 87
+Room 4207
+HMV  39 54 118 118 68 87
 NewGold 44
 NewPlat 9
 NewCopp 21
@@ -47,10 +47,11 @@ AchTriforce 0
 Achv first-kill 1795145444
 Achv visit-mud-school 1795145162
 Achv carry-one-platinum 1795144941
+Achv visit-chessboard 1795148117
 Achv funny-sleepwalk 1795146863
-AchSet areas 675805239 1103516333 1255184829 1674073230 ~
-AchSet rooms 17 2401 2404-2405 2419 2427-2431 2433-2437 3241 3700-3705 3709 3711-3722 3757-3762 3771-3772 3783 3794 4201-4211 4649 4800-4809 ~
-LastOut  1795148005
+AchSet areas 675805239 1028131563 1103516333 1255184829 1674073230 ~
+AchSet rooms 17 2401-2402 2404-2405 2415 2419 2427-2431 2433-2437 2470 2485 3241 3700-3705 3709 3711-3722 3757-3762 3771-3783 3792-3795 4201-4211 4649 4800-4809 24300-24301 ~
+LastOut  1795148273
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 0
@@ -61,7 +62,7 @@ SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  10332
+Exp  10307
 Act  65788
 Comm 24608
 Mounted 0
@@ -102,7 +103,7 @@ Pnts 40
 TSex 1
 LLev 1
 HMVP 54 118 118
-Cond 0 14 44
+Cond 0 9 39
 Sk 8 'axe'
 Sk 33 'dagger'
 Sk 6 'flail'
@@ -130,7 +131,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 78 0 0
+Val  0 0 73 0 0
 End
 
 #O
