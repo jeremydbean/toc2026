@@ -322380,3 +322380,8 @@ Fri Nov 20 09:21:03 2026 :: Treasure goblin: vanished from room 1467 (An antecha
 Fri Nov 20 09:22:28 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 2 of 6 in 6 hours).
 Fri Nov 20 09:25:50 2026 :: Connection guard: last hour 12 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 8 addresses paused and 0 refused now, 15 active player addresses.
 Fri Nov 20 09:27:32 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 20 09:31:08 2026 :: Treasure goblin: vanished from room 13042 (Bedroom, lakes.are) (too long in one area).
+Fri Nov 20 09:32:37 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 6 of 6 in 6 hours).
+Fri Nov 20 09:32:37 2026 :: Connection guard: 52.22.236.30 paused for 24 hours (pause 3 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 52.22.236.30 lifts it.
+Fri Nov 20 09:33:59 2026 :: Connection guard: 85.217.149.32 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 20 09:34:04 2026 :: Cartographer: appeared.
