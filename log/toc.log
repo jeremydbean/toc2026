@@ -323614,3 +323614,7 @@ Fri Nov 20 21:55:49 2026 :: Treasure goblin: vanished from room 2583 (Wall Road.
 Fri Nov 20 21:59:10 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 1 of 6 in 6 hours).
 Fri Nov 20 22:04:16 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 5 of 6 in 6 hours).
 Fri Nov 20 22:05:54 2026 :: Treasure goblin: vanished from room 6129 (A narrow trail through the deep, dark forest, haon.are) (too long in one area).
+Fri Nov 20 22:09:20 2026 :: Connection guard: refused 1 connection from 178.156.189.113 (paused; 28 refused in all, pause 4 this week, 103 minutes left).
+Fri Nov 20 22:10:09 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Fri Nov 20 22:10:44 2026 :: EOF encountered on read.
+Fri Nov 20 22:10:44 2026 :: Closing link to Killuminati.
