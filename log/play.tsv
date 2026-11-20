@@ -41622,3 +41622,8 @@
 1795200000	cleared	-	0	0	-	1567	herb	44	a sprig of aconite	2603	0	moved	mob 2435	(mobile_update)	0	-
 1795200017	moved	-	0	0	-	1199	component	57	a trolls fingernail	86427	0	19119	rome.are	1316	htower.are
 1795200017	laid	-	0	0	-	1624	herb	51	a piece of kelp	3207	school.are	scatter
+1795200050	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=1 spotted=0 picked=0 passed=0 cleared=1 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795200139	moved	-	0	0	-	1201	herb	39	a chervil leaf	86423	0	3625	dkforest.are	5675	tarin.are
+1795200139	moved	-	0	0	-	1200	herb	51	a piece of kelp	86423	0	3639	dkforest.are	4635	dresden.are
+1795200180	moved	-	0	0	-	1202	herb	45	a sarsaparilla vine	86412	0	7551	astral.are	11053	ancala.are
+1795200325	moved	-	0	0	-	1203	component	65	a dragon's scale	86435	0	3645	dkforest.are	7758	ultima.are
