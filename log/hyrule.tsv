@@ -349,3 +349,15 @@
 1795216759	seal	Trentlin	52	1	Monk 	30317	over	obj=30509 obj_name=a_cracked_stone_floor dir=5 how=bomb
 1795216759	leave	Trentlin	52	1	Monk 	30317	over	to=L9 how=down secs=7 hp=100
 1795216759	enter	Trentlin	52	1	Monk 	30590	L9	from=over how=down hp=100
+1795216871	flee	Trentlin	52	1	Monk 	30595	L9	foe=32108 foe_name=a_red_wizzrobe guardian=0 foe_hp=16 secs=33 hp=25
+1795216875	leave	Trentlin	52	1	Monk 	30590	L9	to=over how=up secs=116 hp=25
+1795216875	enter	Trentlin	52	1	Monk 	30317	over	from=L9 how=up hp=25
+1795216876	leave	Trentlin	52	1	Monk 	30317	over	to=out how=recall secs=1 hp=25
+1795216891	enter	Trentlin	52	1	Monk 	30200	over	from=out how=enter hp=100
+1795216896	seal	Trentlin	52	1	Monk 	30317	over	obj=30509 obj_name=a_cracked_stone_floor dir=5 how=bomb
+1795216897	leave	Trentlin	52	1	Monk 	30317	over	to=L9 how=down secs=6 hp=100
+1795216897	enter	Trentlin	52	1	Monk 	30590	L9	from=over how=down hp=100
+1795216906	got	Trentlin	52	1	Monk 	30595	L9	obj=30695 obj_name=four_bombs type=treasure obj_level=1 how=fists
+1795216921	leave	Trentlin	52	1	Monk 	30590	L9	to=over how=up secs=24 hp=71
+1795216921	enter	Trentlin	52	1	Monk 	30317	over	from=L9 how=up hp=71
+1795216923	leave	Trentlin	52	1	Monk 	30317	over	to=out how=recall secs=2 hp=71
