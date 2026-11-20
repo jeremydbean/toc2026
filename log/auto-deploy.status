@@ -1,1 +1,1 @@
-2026-11-20T16:37:29Z waiting for CI on ec2bb3a4 (in_progress) before deploying ce21cf6f
+2026-11-20T16:47:30Z not deploying 6bf67871: CI on ec2bb3a4 says failure; push a fix
