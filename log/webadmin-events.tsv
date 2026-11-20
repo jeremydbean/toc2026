@@ -5485,3 +5485,4 @@
 1795184750	wizinfo	60	Connection guard: last hour 10 closed without a word, 3 refused, 0 new characters refused, 0 newly paused; 7 addresses paused and 0 refused now, 15 active player addresses.
 1795185512	wizinfo	60	Black market: the dealer appeared in room 8001 (Entrance to Mega-City One, mega1.are) with 5 items (stock 1795185512), for 31 minutes.
 1795188350	wizinfo	60	Connection guard: last hour 9 closed without a word, 4 refused, 0 new characters refused, 0 newly paused; 6 addresses paused and 0 refused now, 15 active player addresses.
+1795189329	wizinfo	60	Connection guard: 91.226.227.109 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 91.226.227.109 lifts it.

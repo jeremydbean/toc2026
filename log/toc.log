@@ -322820,3 +322820,9 @@ Fri Nov 20 15:39:33 2026 :: Sock.sinaddr:  91.226.227.109
 Fri Nov 20 15:39:34 2026 :: EOF encountered on read.
 Fri Nov 20 15:39:34 2026 :: Connection guard: 91.226.227.109 closed before a password prompt (strike 3 of 6 in 6 hours).
 Fri Nov 20 15:39:34 2026 :: Connection guard: 91.226.227.109 closed without a word (strike 4 of 6 in 6 hours).
+Fri Nov 20 15:42:09 2026 :: Sock.sinaddr:  91.226.227.109
+Fri Nov 20 15:42:09 2026 :: EOF encountered on read.
+Fri Nov 20 15:42:09 2026 :: Connection guard: 91.226.227.109 closed before a password prompt (strike 5 of 6 in 6 hours).
+Fri Nov 20 15:42:09 2026 :: Connection guard: 91.226.227.109 closed without a word (strike 6 of 6 in 6 hours).
+Fri Nov 20 15:42:09 2026 :: Connection guard: 91.226.227.109 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 91.226.227.109 lifts it.
+Fri Nov 20 15:43:29 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 3 of 6 in 6 hours).
