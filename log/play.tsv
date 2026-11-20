@@ -40993,3 +40993,88 @@
 1795149584	cmd	Ravagger	6	119	smurf.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
 1795149586	cmd	Ravagger	6	110	smurf.are	standing	100	0	-	south		Smurfy Road //   A corner of smurfy road is where you stand.  A smurfy fence blocks passage // to the east or south.  A smurfy home is to the north.  Smurfy Road goes back	-	+
 1795149588	cmd	Ravagger	6	105	smurf.are	standing	100	0	-	west		Smurfy Road //   You are way too big to be using this road.  But who cares.  Who's gonna stop // you?  These little blue smurfs?  The singing is growing intense.  Your ears	-	+
+1795149592	cmd	Ravagger	6	111	smurf.are	standing	100	0	-	west		Smurfy Road //   Western corner of Smurfy Road.  You can continue to smurf down the road // to the east and north.  You can also smurf into a smurfy home to the south.	-	+
+1795149594	cmd	Ravagger	6	112	smurf.are	standing	100	0	-	north		Smurfy Road //   There's no place like smurf.  There's no place like smurf.  Sorry wrong // movie.  A smurfy home is to the west.  Papa Smurf's backyard is to the	-	+
+1795149596	cmd	Ravagger	6	122	smurf.are	standing	100	0	-	west		Sleepy Smurf's Home //   Be vewy vewy quiet.  Sleepy Smurf is probably sleeping.  You see so many // beds you can't even tell if he is here.  Maybe you should quietly go back to	-	+
+1795149599	cmd	Ravagger	6	122	smurf.are	standing	100	0	-	kill	sl	Your punch misses Sleepy Smurf. // Your punch misses Sleepy Smurf.	-	-
+1795149601	cmd	Ravagger	6	122	smurf.are	fighting	100	0	fight	kick		Your kick scratches Sleepy Smurf.	-	-
+1795149604	cmd	Ravagger	6	122	smurf.are	fighting	100	0	fight	kick		Your kick scratches Sleepy Smurf.	-	-
+1795149607	cmd	Ravagger	6	122	smurf.are	fighting	100	0	fight	kick		Your kick scratches Sleepy Smurf.	-	-
+1795149611	cmd	Ravagger	6	122	smurf.are	fighting	100	0	fight	kick		Your kick misses Sleepy Smurf.	-	-
+1795149614	cmd	Ravagger	6	122	smurf.are	fighting	100	0	fight	kick		Your kick scratches Sleepy Smurf.	-	-
+1795149616	coin	Ravagger	6	122	smurf.are	+4	loot	(violence_update)	corpse of Sleepy Smurf	9440078
+1795149616	coin	Ravagger	6	122	smurf.are	+6	loot	(violence_update)	corpse of Sleepy Smurf	9440084
+1795149621	cmd	Ravagger	6	122	smurf.are	standing	100	0	-	look		Sleepy Smurf's Home //   Be vewy vewy quiet.  Sleepy Smurf is probably sleeping.  You see so many // beds you can't even tell if he is here.  Maybe you should quietly go back to	-	+
+1795149624	cmd	Ravagger	6	112	smurf.are	standing	100	0	-	east		Smurfy Road //   There's no place like smurf.  There's no place like smurf.  Sorry wrong // movie.  A smurfy home is to the west.  Papa Smurf's backyard is to the	-	+
+1795149627	cmd	Ravagger	6	111	smurf.are	standing	100	0	-	south		Smurfy Road //   Western corner of Smurfy Road.  You can continue to smurf down the road // to the east and north.  You can also smurf into a smurfy home to the south.	-	+
+1795149628	cmd	Ravagger	6	112	smurf.are	standing	100	0	-	north		Smurfy Road //   There's no place like smurf.  There's no place like smurf.  Sorry wrong // movie.  A smurfy home is to the west.  Papa Smurf's backyard is to the	-	+
+1795149629	cmd	Ravagger	6	106	smurf.are	standing	100	0	-	east		Smurfy Road //   You continue to travel down Smurfy Road.  Isn't it just smurfy?  Smurfy road // continues its smurfy path to the smurfy north, smurfy west, and smurfy south.	-	+
+1795149634	cmd	Ravagger	6	120	smurf.are	standing	100	0	-	east		Handy Smurf's Home //   This home was well built.  Of course, until you ripped it apart, you big  // meanie you.  Tools are all over the place.  Too small for you to use.  Smurfy 	-	+
+1795149638	cmd	Ravagger	6	120	smurf.are	standing	100	0	-	kill	ha	Your punch misses Handy Smurf. // Your punch misses Handy Smurf.	-	-
+1795149641	cmd	Ravagger	6	120	smurf.are	fighting	100	0	fight	kick		Your kick misses Handy Smurf.	-	-
+1795149643	cmd	Ravagger	6	120	smurf.are	fighting	100	0	fight	kick		Your kick scratches Handy Smurf.	-	-
+1795149646	cmd	Ravagger	6	120	smurf.are	fighting	98	0	fight	kick		Your kick scratches Handy Smurf.	-	-
+1795149649	cmd	Ravagger	6	120	smurf.are	fighting	98	0	fight	kick		Your kick scratches Handy Smurf.	-	-
+1795149650	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=2	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=12 mobs_fought=11 secs=900
+1795149652	cmd	Ravagger	6	120	smurf.are	fighting	98	0	fight	kick		Your kick misses Handy Smurf.	-	-
+1795149655	cmd	Ravagger	6	120	smurf.are	fighting	98	0	fight	kick		Your kick misses Handy Smurf.	-	-
+1795149657	cmd	Ravagger	6	120	smurf.are	fighting	98	0	fight	kick		Your kick scratches Handy Smurf.	-	-
+1795149660	cmd	Ravagger	6	120	smurf.are	fighting	98	0	fight	kick		Your kick misses Handy Smurf.	-	-
+1795149663	cmd	Ravagger	6	120	smurf.are	fighting	98	0	fight	kick		Your kick scratches Handy Smurf.	-	-
+1795149668	cmd	Ravagger	6	120	smurf.are	fighting	98	0	fight	kick		Your kick misses Handy Smurf.	-	-
+1795149671	cmd	Ravagger	6	120	smurf.are	fighting	98	0	fight	kick		Your kick misses Handy Smurf.	-	-
+1795149674	cmd	Ravagger	6	120	smurf.are	fighting	98	0	fight	kick		Your kick misses Handy Smurf.	-	-
+1795149676	got	Ravagger	6	120	smurf.are	103	a small axe	weapon	2	20	(violence_update)	corpse of Handy Smurf
+1795149676	coin	Ravagger	6	120	smurf.are	+3	loot	(violence_update)	corpse of Handy Smurf	9440087
+1795149676	coin	Ravagger	6	120	smurf.are	+6	loot	(violence_update)	corpse of Handy Smurf	9440093
+1795149677	cmd	Ravagger	6	120	smurf.are	standing	98	0	-	kick		You aren't fighting anyone.	-	-
+1795149680	cmd	Ravagger	6	120	smurf.are	standing	98	0	-	look		Handy Smurf's Home //   This home was well built.  Of course, until you ripped it apart, you big  // meanie you.  Tools are all over the place.  Too small for you to use.  Smurfy 	-	+
+1795149682	cmd	Ravagger	6	106	smurf.are	standing	98	0	-	west		Smurfy Road //   You continue to travel down Smurfy Road.  Isn't it just smurfy?  Smurfy road // continues its smurfy path to the smurfy north, smurfy west, and smurfy south.	-	+
+1795149686	cmd	Ravagger	6	107	smurf.are	standing	98	0	-	north		Smurfy Road //   Oh boy, another smurfy road!  Smurfy Road goes north and south here.  There // is a smurfy, mushroom home to the west.  A beautiful smurfberry patch is to	-	+
+1795149688	cmd	Ravagger	6	129	smurf.are	standing	98	0	-	west		Smurfette's House //   This house is conveniently next to Papa Smurfs.  Makes it easier for Papa // Smurf to sneak over at night.  I hope he uses protection.  I would hate to	-	+
+1795149691	cmd	Ravagger	6	129	smurf.are	standing	98	0	-	kill	sm	Your punch misses Smurfette. // Your punch misses Smurfette.	-	-
+1795149693	cmd	Ravagger	6	129	smurf.are	fighting	98	0	fight	kick		Your kick misses Smurfette.	-	-
+1795149696	cmd	Ravagger	6	129	smurf.are	fighting	98	0	fight	kick		Your kick misses Smurfette.	-	-
+1795149699	cmd	Ravagger	6	129	smurf.are	fighting	98	0	fight	kick		Your kick misses Smurfette.	-	-
+1795149702	got	Ravagger	6	129	smurf.are	104	a small necklace	armor	2	50	kick	corpse of Smurfette
+1795149702	got	Ravagger	6	129	smurf.are	107	a tiny key	key	2	4	kick	corpse of Smurfette
+1795149702	coin	Ravagger	6	129	smurf.are	+6	loot	kick	corpse of Smurfette	9440099
+1795149702	coin	Ravagger	6	129	smurf.are	+6	loot	kick	corpse of Smurfette	9440105
+1795149702	cmd	Ravagger	6	129	smurf.are	fighting	98	1	fight	kick		Your kick scratches Smurfette. // Smurfette is DEAD!! // You receive 170 experience points.	-	+
+1795149705	cmd	Ravagger	6	129	smurf.are	standing	98	0	-	kick		You aren't fighting anyone.	-	-
+1795149710	cmd	Ravagger	6	129	smurf.are	standing	98	0	-	wear	neck	You stop using a sub issue cloak. // You wear a small necklace around your neck.	-	-
+1795149716	cmd	Ravagger	6	129	smurf.are	standing	98	0	-	compare	cloak	A) a sub issue cloak (level 0) // B) a small necklace (level 2), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1795149740	cmd	Ravagger	6	129	smurf.are	standing	100	0	-	wear	ht	You do not have that item.	-	-
+1795149743	cmd	Ravagger	6	129	smurf.are	standing	100	0	-	wear	hat	You stop using a sub issue helmet. // You wear a smurf hat on your head.	-	-
+1795149750	cmd	Ravagger	6	129	smurf.are	standing	100	0	-	drop	helmet	You drop a sub issue helmet. // A sub issue helmet burst into flames as it hits the ground.	-	-
+1795149753	cmd	Ravagger	6	129	smurf.are	standing	100	0	-	inventory		You are carrying: //      a tiny key // ( 2) a small axe	-	+
+1795149763	cmd	Ravagger	6	129	smurf.are	standing	100	0	-	compare	legg	A) a pair of sub issue leggings (level 0) // B) a pair of sub issue leggings (level 0), worn // Slot: legs.  Your damage comes from weapons.	-	+
+1795149772	cmd	Ravagger	6	129	smurf.are	standing	100	0	-	drop	leg	You drop a pair of sub issue leggings. // A pair of sub issue leggings burst into flames as it hits the ground.	-	-
+1795149777	cmd	Ravagger	6	129	smurf.are	standing	100	0	-	drop	cl	You drop a sub issue cloak. // A sub issue cloak burst into flames as it hits the ground.	-	-
+1795149783	cmd	Ravagger	6	129	smurf.are	standing	100	0	-	inventory		You are carrying: //      a tiny key // ( 2) a small axe	-	+
+1795149787	cmd	Ravagger	6	129	smurf.are	standing	100	0	-	compare	gla	A) A pair of glasses (level 2) // B) a smurf hat (level 2), worn // Slot: head.  Your damage comes from weapons.	-	+
+1795149801	cmd	Ravagger	6	129	smurf.are	standing	100	0	-	wear	gla	You stop using a smurf hat. // You wear A pair of glasses on your head.	-	-
+1795149806	cmd	Ravagger	6	129	smurf.are	standing	100	0	-	drop	key	You drop a tiny key.	-	-
+1795149808	cmd	Ravagger	6	129	smurf.are	standing	100	0	-	drop	key	You drop a silver key.	-	-
+1795149814	cmd	Ravagger	6	129	smurf.are	standing	100	0	-	drop	axe	You drop a small axe.	-	-
+1795149815	cmd	Ravagger	6	129	smurf.are	standing	100	0	-	drop	axe	You drop a small axe.	-	-
+1795149819	cmd	Ravagger	6	129	smurf.are	standing	100	0	-	inventory		You are carrying: //      a smurf hat //      a key	-	+
+1795149826	cmd	Ravagger	6	129	smurf.are	standing	100	0	-	look		Smurfette's House //   This house is conveniently next to Papa Smurfs.  Makes it easier for Papa // Smurf to sneak over at night.  I hope he uses protection.  I would hate to	-	+
+1795149828	cmd	Ravagger	6	107	smurf.are	standing	100	0	-	east		Smurfy Road //   Oh boy, another smurfy road!  Smurfy Road goes north and south here.  There // is a smurfy, mushroom home to the west.  A beautiful smurfberry patch is to	-	+
+1795149836	cmd	Ravagger	6	116	smurf.are	standing	100	0	-	east		Smurfberry Patch //   Delicious smurfberries grow here.  You could probably eat a year's worth of // smurfberries in one sitting.  Smurfy Road is back to the west.  Another	-	+
+1795149843	cmd	Ravagger	6	116	smurf.are	standing	100	0	-	kill	sm	Your punch misses a smurf. // Your punch misses a smurf.	-	-
+1795149846	cmd	Ravagger	6	116	smurf.are	fighting	100	0	fight	kick		Your kick misses a smurf.	-	-
+1795149850	cmd	Ravagger	6	116	smurf.are	fighting	100	0	fight	kick		Your kick misses a smurf.	-	-
+1795149853	skill	Ravagger	6	116	smurf.are	kick	39	40	success	kick
+1795149853	cmd	Ravagger	6	116	smurf.are	fighting	100	0	fight	kick		Your kick grazes a smurf. // You have become better at kick!	-	-
+1795149856	cmd	Ravagger	6	116	smurf.are	fighting	100	0	fight	kick		Your kick misses a smurf.	-	-
+1795149859	cmd	Ravagger	6	116	smurf.are	fighting	100	0	fight	kick		Your kick misses a smurf.	-	-
+1795149863	cmd	Ravagger	6	116	smurf.are	fighting	100	0	fight	kick		Your kick scratches a smurf.	-	-
+1795149869	cmd	Ravagger	6	107	smurf.are	standing	100	0	-	west		Smurfy Road //   Oh boy, another smurfy road!  Smurfy Road goes north and south here.  There // is a smurfy, mushroom home to the west.  A beautiful smurfberry patch is to	-	+
+1795149872	got	Ravagger	6	107	smurf.are	100	A bunch of smurfberries	pill	2	50	kill	corpse of a smurf
+1795149872	coin	Ravagger	6	107	smurf.are	+2	loot	kill	corpse of a smurf	9440107
+1795149872	coin	Ravagger	6	107	smurf.are	+2	loot	kill	corpse of a smurf	9440109
+1795149872	cmd	Ravagger	6	107	smurf.are	standing	100	2	-	kill	sm	Your punch misses a smurf. // Your punch scratches a smurf. // A smurf is DEAD!!	-	+
+1795149884	cmd	Ravagger	6	107	smurf.are	standing	100	0	-	eat	betr	You do not have that item.	-	-
+1795149885	cmd	Ravagger	6	107	smurf.are	standing	100	0	-	eat	ber	You eat A bunch of smurfberries.	-	-
+1795149888	cmd	Ravagger	6	107	smurf.are	standing	100	0	-	look		Smurfy Road //   Oh boy, another smurfy road!  Smurfy Road goes north and south here.  There // is a smurfy, mushroom home to the west.  A beautiful smurfberry patch is to	-	+

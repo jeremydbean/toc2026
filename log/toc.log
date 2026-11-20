@@ -321933,3 +321933,101 @@ Fri Nov 20 04:39:46 2026 :: Log Ravagger [119]: s
 Fri Nov 20 04:39:46 2026 :: Log Ravagger [110]: arrived (Smurfy Road) from 119
 Fri Nov 20 04:39:48 2026 :: Log Ravagger [110]: w
 Fri Nov 20 04:39:48 2026 :: Log Ravagger [105]: arrived (Smurfy Road) from 110
+Fri Nov 20 04:39:52 2026 :: Log Ravagger [105]: w
+Fri Nov 20 04:39:52 2026 :: Log Ravagger [111]: arrived (Smurfy Road) from 105
+Fri Nov 20 04:39:54 2026 :: Log Ravagger [111]: n
+Fri Nov 20 04:39:54 2026 :: Log Ravagger [112]: arrived (Smurfy Road) from 111
+Fri Nov 20 04:39:56 2026 :: Log Ravagger [112]: w
+Fri Nov 20 04:39:56 2026 :: Log Ravagger [122]: arrived (Sleepy Smurf's Home) from 112
+Fri Nov 20 04:39:59 2026 :: Log Ravagger [122]: k sl
+Fri Nov 20 04:40:01 2026 :: Log Ravagger [122]: kick
+Fri Nov 20 04:40:04 2026 :: Log Ravagger [122]: kick
+Fri Nov 20 04:40:07 2026 :: Log Ravagger [122]: kick
+Fri Nov 20 04:40:11 2026 :: Log Ravagger [122]: kick
+Fri Nov 20 04:40:14 2026 :: Log Ravagger [122]: kick
+Fri Nov 20 04:40:16 2026 :: Log Ravagger [122]: killed Sleepy Smurf
+Fri Nov 20 04:40:16 2026 :: Log Ravagger [122]: coin +4 copper
+Fri Nov 20 04:40:16 2026 :: Log Ravagger [122]: coin +6 copper
+Fri Nov 20 04:40:21 2026 :: Log Ravagger [122]: l
+Fri Nov 20 04:40:24 2026 :: Log Ravagger [122]: e
+Fri Nov 20 04:40:24 2026 :: Log Ravagger [112]: arrived (Smurfy Road) from 122
+Fri Nov 20 04:40:27 2026 :: Log Ravagger [112]: s
+Fri Nov 20 04:40:27 2026 :: Log Ravagger [111]: arrived (Smurfy Road) from 112
+Fri Nov 20 04:40:28 2026 :: Log Ravagger [111]: n
+Fri Nov 20 04:40:28 2026 :: Log Ravagger [112]: arrived (Smurfy Road) from 111
+Fri Nov 20 04:40:29 2026 :: Log Ravagger [112]: e
+Fri Nov 20 04:40:29 2026 :: Log Ravagger [106]: arrived (Smurfy Road) from 112
+Fri Nov 20 04:40:34 2026 :: Log Ravagger [106]: e
+Fri Nov 20 04:40:34 2026 :: Log Ravagger [120]: arrived (Handy Smurf's Home) from 106
+Fri Nov 20 04:40:38 2026 :: Log Ravagger [120]: k ha
+Fri Nov 20 04:40:41 2026 :: Log Ravagger [120]: kick
+Fri Nov 20 04:40:43 2026 :: Log Ravagger [120]: kick
+Fri Nov 20 04:40:46 2026 :: Log Ravagger [120]: kick
+Fri Nov 20 04:40:49 2026 :: Log Ravagger [120]: kick
+Fri Nov 20 04:40:52 2026 :: Log Ravagger [120]: kick
+Fri Nov 20 04:40:55 2026 :: Log Ravagger [120]: kick
+Fri Nov 20 04:40:57 2026 :: Log Ravagger [120]: kick
+Fri Nov 20 04:41:00 2026 :: Log Ravagger [120]: kick
+Fri Nov 20 04:41:03 2026 :: Log Ravagger [120]: kick
+Fri Nov 20 04:41:08 2026 :: Log Ravagger [120]: kick
+Fri Nov 20 04:41:11 2026 :: Log Ravagger [120]: kick
+Fri Nov 20 04:41:14 2026 :: Log Ravagger [120]: kick
+Fri Nov 20 04:41:16 2026 :: Log Ravagger [120]: killed Handy Smurf
+Fri Nov 20 04:41:16 2026 :: Log Ravagger [120]: coin +3 copper
+Fri Nov 20 04:41:16 2026 :: Log Ravagger [120]: coin +6 copper
+Fri Nov 20 04:41:17 2026 :: Log Ravagger [120]: kick
+Fri Nov 20 04:41:20 2026 :: Log Ravagger [120]: l
+Fri Nov 20 04:41:22 2026 :: Log Ravagger [120]: w
+Fri Nov 20 04:41:22 2026 :: Log Ravagger [106]: arrived (Smurfy Road) from 120
+Fri Nov 20 04:41:26 2026 :: Log Ravagger [106]: n
+Fri Nov 20 04:41:26 2026 :: Log Ravagger [107]: arrived (Smurfy Road) from 106
+Fri Nov 20 04:41:28 2026 :: Log Ravagger [107]: w
+Fri Nov 20 04:41:28 2026 :: Log Ravagger [129]: arrived (Smurfette's House) from 107
+Fri Nov 20 04:41:31 2026 :: Log Ravagger [129]: k sm
+Fri Nov 20 04:41:33 2026 :: Log Ravagger [129]: kick
+Fri Nov 20 04:41:36 2026 :: Log Ravagger [129]: kick
+Fri Nov 20 04:41:39 2026 :: Log Ravagger [129]: kick
+Fri Nov 20 04:41:42 2026 :: Log Ravagger [129]: kick
+Fri Nov 20 04:41:42 2026 :: Log Ravagger [129]: killed Smurfette
+Fri Nov 20 04:41:42 2026 :: Log Ravagger [129]: coin +6 copper
+Fri Nov 20 04:41:42 2026 :: Log Ravagger [129]: coin +6 copper
+Fri Nov 20 04:41:45 2026 :: Log Ravagger [129]: kick
+Fri Nov 20 04:41:50 2026 :: Log Ravagger [129]: wear neck
+Fri Nov 20 04:41:56 2026 :: Log Ravagger [129]: compare cloak
+Fri Nov 20 04:42:20 2026 :: Log Ravagger [129]: wear ht
+Fri Nov 20 04:42:23 2026 :: Log Ravagger [129]: wear hat
+Fri Nov 20 04:42:30 2026 :: Log Ravagger [129]: drop helmet
+Fri Nov 20 04:42:33 2026 :: Log Ravagger [129]: inv
+Fri Nov 20 04:42:43 2026 :: Log Ravagger [129]: compare legg
+Fri Nov 20 04:42:52 2026 :: Log Ravagger [129]: drop leg
+Fri Nov 20 04:42:54 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 20 04:42:57 2026 :: Log Ravagger [129]: drop cl
+Fri Nov 20 04:43:03 2026 :: Log Ravagger [129]: inv 
+Fri Nov 20 04:43:07 2026 :: Log Ravagger [129]: compare gla
+Fri Nov 20 04:43:21 2026 :: Log Ravagger [129]: wear gla
+Fri Nov 20 04:43:26 2026 :: Log Ravagger [129]: drop key
+Fri Nov 20 04:43:28 2026 :: Log Ravagger [129]: drop key
+Fri Nov 20 04:43:34 2026 :: Log Ravagger [129]: drop axe
+Fri Nov 20 04:43:35 2026 :: Log Ravagger [129]: drop axe
+Fri Nov 20 04:43:39 2026 :: Log Ravagger [129]: inv
+Fri Nov 20 04:43:46 2026 :: Log Ravagger [129]: l
+Fri Nov 20 04:43:48 2026 :: Log Ravagger [129]: e
+Fri Nov 20 04:43:48 2026 :: Log Ravagger [107]: arrived (Smurfy Road) from 129
+Fri Nov 20 04:43:56 2026 :: Log Ravagger [107]: e
+Fri Nov 20 04:43:56 2026 :: Log Ravagger [116]: arrived (Smurfberry Patch) from 107
+Fri Nov 20 04:44:03 2026 :: Log Ravagger [116]: k sm
+Fri Nov 20 04:44:06 2026 :: Log Ravagger [116]: kick
+Fri Nov 20 04:44:10 2026 :: Log Ravagger [116]: kick
+Fri Nov 20 04:44:13 2026 :: Log Ravagger [116]: kick
+Fri Nov 20 04:44:16 2026 :: Log Ravagger [116]: kick
+Fri Nov 20 04:44:19 2026 :: Log Ravagger [116]: kick
+Fri Nov 20 04:44:23 2026 :: Log Ravagger [116]: kick
+Fri Nov 20 04:44:29 2026 :: Log Ravagger [116]: w
+Fri Nov 20 04:44:29 2026 :: Log Ravagger [107]: arrived (Smurfy Road) from 116
+Fri Nov 20 04:44:32 2026 :: Log Ravagger [107]: k sm
+Fri Nov 20 04:44:32 2026 :: Log Ravagger [107]: killed a smurf
+Fri Nov 20 04:44:32 2026 :: Log Ravagger [107]: coin +2 copper
+Fri Nov 20 04:44:32 2026 :: Log Ravagger [107]: coin +2 copper
+Fri Nov 20 04:44:44 2026 :: Log Ravagger [107]: eat betr
+Fri Nov 20 04:44:45 2026 :: Log Ravagger [107]: eat ber
+Fri Nov 20 04:44:48 2026 :: Log Ravagger [107]: l
