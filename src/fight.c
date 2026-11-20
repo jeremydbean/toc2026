@@ -413,10 +413,11 @@ static void reform_hyrule_ganon( CHAR_DATA *ch, CHAR_DATA *victim )
  * An instant kill -- a fatality, Farslay, a death ray -- is one hard blow
  * to Ganon or Gohma, never their death: to Ganon one Silver Arrow blow's
  * share (a thirty-fifth of his health), to the others a tenth. Ganon
- * brought to one hit point by it is stunned as any blow leaves him, and still wants the Silver Arrow; Gohma
- * still wants an arrow at her eye. Farslay read from anywhere in the world
- * used to stun Ganon outright at full health, and a thief's backstab
- * fatality killed Gohma with no arrow at all. Staff SLAY is the override
+ * brought to one hit point by it is stunned as any blow leaves him, and
+ * still wants the Silver Arrow; Gohma still wants an arrow at her eye.
+ * Farslay read from anywhere in the world used to stun Ganon outright at
+ * full health, and a thief's backstab fatality killed Gohma with no arrow
+ * at all. Staff SLAY is the override
  * (raw_kill_internal's bypass), and a death damage() has already judged
  * by these same rules arrives with the bypass too.
  */
@@ -2050,14 +2051,14 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     if ( IS_NPC(victim) && victim->pIndexData != NULL )
     {
         /* Only an arrow at the open eye finishes her (Gohma_HandleWeapon-
-           Collision, Z_04.asm:8466): SHOOT with the bow or the Silver Arrow
-           wielded. Asking only what was wielded let a sword round, a spell
-           or a bomb finish her for anyone holding a bow. */
+           Collision, Z_04.asm:8466): SHOOT with Hyrule's short bow wielded.
+           Asking only what was wielded let a sword round, a spell or a bomb
+           finish her for anyone holding a bow. The Silver Arrow is Ganon's:
+           SHOOT refuses it at anything else, and its blows are never
+           archery, so it is not asked here (review, 2026-11-20). */
         if ( victim->hit < 1
         &&   victim->pIndexData->vnum == HYRULE_GOHMA_VNUM
-        &&   !( dt == gsn_archery
-             && ( wields_object_vnum(ch, HYRULE_BOW_VNUM)
-               || wields_object_vnum(ch, OBJ_VNUM_HYRULE_SILVER_ARROW) ) ) )
+        &&   !( dt == gsn_archery && wields_object_vnum(ch, HYRULE_BOW_VNUM) ) )
         {
             victim->hit = 1;
             /* Name the bow (players' logs, 2026-11-18): a monk carrying an
@@ -2065,10 +2066,10 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
                Hyrule's short bow wielded the wrong one for twenty-five
                minutes and four retreats, being told only "the bow". */
             if ( wields_object_vnum( ch, HYRULE_BOW_VNUM ) )
-                act( "$N's armored eye closes; only an arrow can finish the blow.  SHOOT $M.",
+                act( "$N's armored eye closes; only an arrow can finish the blow.  SHOOT GOHMA.",
                      ch, NULL, victim, TO_CHAR );
             else if ( hyrule_carries( ch, HYRULE_BOW_VNUM ) )
-                act( "$N's armored eye closes; only an arrow from Hyrule's short bow can finish the blow.  WIELD SHORT BOW and SHOOT $M.",
+                act( "$N's armored eye closes; only an arrow from Hyrule's short bow can finish the blow.  WIELD SHORT BOW and SHOOT GOHMA.",
                      ch, NULL, victim, TO_CHAR );
             else
                 act( "$N's armored eye closes; only an arrow from Hyrule's short bow, from Level 1's cellar, can finish the blow.",
@@ -3804,8 +3805,7 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
         cartographer_slain( ch, victim );
       if ( is_disaster_dragon( victim ) )
         disaster_dragon_slain( ch, victim );
-      /* The killer's clover luck, read before the pot of gold spends a
-         point of it, for the rare drops below. */
+      /* The killer's luck (a pet's master's), for the rare drops below. */
       kill_luck = clover_luck( ch );
       /* A four-leaf clover's pot of gold, into the purse the corpse
          takes its coin from. */

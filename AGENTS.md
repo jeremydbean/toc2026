@@ -1963,22 +1963,27 @@ decoration. Rules the code depends on:
   more hours", at any level), worn off with "Your luck runs out." and
   lost at death like any spell. The four-leaf clover (29822, eaten; not
   Valhalla's lucky clovers 9943/9944, which are light-slot gear) adds a
-  point and sets `CLOVER_LUCK_HOURS` (30) through `luck_grant(ch, points,
-  hours, add)`; the creator's FATE <player> LUCK <hours> [points] sets
-  both, online or offline, and LUCK OFF is `luck_remove`. **While it lasts
+  point and at least `CLOVER_LUCK_HOURS` (30) through `luck_grant(ch,
+  points, hours, add)` -- adding never shortens a longer time (review,
+  2026-11-20) -- while the creator's FATE <player> LUCK <hours> [points]
+  sets both exactly, online or offline, and LUCK OFF is `luck_remove`. **While it lasts
   it bends the dice** (owner, 2026-11-17): `clover_luck(ch)` (the
   affect's points, a charmed pet's master's) is read by an extra map roll
   per point in a kill's corpse (`map_corpse_drop_lucky`), a pot of gold
-  from any kill (`holiday_kill`, `LUCK_POT_STEP` 10% a point), the
+  from any kill (`holiday_kill`, `LUCK_POT_STEP` 10% a point; a charmed
+  pet's kill rolls its master's and credits them), the
   goblin's and dragon's rarity, the rush and emergency contracts, Herbie,
   a backstab's fatality and the Farslay rite (the victim's luck pushing
   back), the recall misfire (`recall_misfire_odds`), a disaster's blow
   (`disaster_saves`) and **a second chance at a loss**
-  (`luck_second_chance`, `LUCK_RETRY_STEP` 10% a point): AQUEST GAMBLE,
-  the casino's slots, dice, roulette and poker, and Hyrule's coin game
-  (owner, 2026-11-20: profit is fine for a rare effect). Nothing spends
-  it. `TOC_LUCK_ROLLS=always` (tests only, `luck_roll`) makes every luck
-  roll land while any is held. A new luck roll reads `clover_luck` (or
+  (`luck_second_chance`, `LUCK_RETRY_STEP` 10% a point): the losing play
+  is played once more and wins or loses on its own -- AQUEST GAMBLE (a
+  second 50/50 toss, `quest_gamble_toss`; the offer shows 57.5% at three
+  points), the casino's slots, dice, roulette and poker, and Hyrule's coin
+  game (owner, 2026-11-20: profit is fine for a rare effect). Nothing
+  spends it. `TOC_LUCK_ROLLS=always` (tests only, `luck_roll`) makes every
+  luck roll land while any is held, and `TOC_GAMBLE_TOSSES` (W/L in order)
+  fixes the questmaster's coin (`tests/test_luck_review.py`). A new luck roll reads `clover_luck` (or
   `luck_roll`) and gets a step in merc.h (`tests/test_creator_luck.py`,
   `tests/test_holidays.py`).
   `holiday_snack` lets a clover, a candy heart and trick-or-treat candy

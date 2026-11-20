@@ -976,7 +976,7 @@ What the holiday treats do:
   Red rose (Love)             GIVE it to another player: it blesses you both
   Clover (St. Patrick's)      EAT it for a point of LUCK (three at most)
                               for 30 hours; AFFECTS shows it.  Each clover
-                              adds a point and starts the 30 hours again.
+                              adds a point and gives at least 30 hours.
   Painted egg (Noblegarden)   hidden around Dresden; OPEN it
   Firework (Midsummer)        DROP it and the whole area sees it
   Festival keg (Brewfest)     DRINK from it, free
@@ -992,18 +992,21 @@ See also: HOLIDAYS, LUCK
 0 LUCK~
 Luck is something you have for a while, as a spell is: AFFECTS shows how
 many points (one to three) and how many hours are left.  A four-leaf
-clover on St. Patrick's Day gives a point and 30 hours; the hours count
-down while you play, and luck is saved with you when you leave.
+clover on St. Patrick's Day gives a point and at least 30 hours (it never
+shortens luck you hold for longer); the hours count down while you play,
+and luck is saved with you when you leave.
 
 While it lasts, luck leans your way, more with each point:
 
-  - a pot of gold from a kill (one in ten a point)
+  - a pot of gold from a kill, yours or your charmed pet's (one in ten a
+    point)
   - an area map in what you slay, and the treasure goblin's and the
     black dragon's rare drops
   - rush and emergency quests from the questmaster
-  - a second chance when you lose: the quest gamble (AQUEST GAMBLE says
-    your odds), the casino's slots, dice, roulette and poker, and the old
-    man's coin game in Hyrule (one in ten a point)
+  - a second chance when you lose (one in ten a point): the losing play
+    is played once more, and wins or loses as any play does -- the quest
+    gamble (AQUEST GAMBLE shows your odds), the casino's slots, dice,
+    roulette and poker, and the old man's coin game in Hyrule
   - Herbie's visit when you are badly hurt
   - a backstab's fatality, and the Farslay rite's odds (a lucky victim's
     luck pushes back)

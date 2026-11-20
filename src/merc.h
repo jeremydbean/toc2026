@@ -4825,6 +4825,7 @@ int         clover_luck             ( CHAR_DATA *ch );
 #define LUCK_MAX_HOURS      10080
 void        luck_grant              ( CHAR_DATA *ch, int points, int hours, bool add );
 void        luck_remove             ( CHAR_DATA *ch );
+int         luck_hours              ( CHAR_DATA *ch );
 bool        luck_roll               ( CHAR_DATA *ch, int step );
 bool        luck_second_chance      ( CHAR_DATA *ch, const char *what );
 /* Percent a point: a pot of gold from a kill, and a second chance at a

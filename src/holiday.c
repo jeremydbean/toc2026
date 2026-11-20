@@ -550,7 +550,7 @@ void holiday_eaten( CHAR_DATA *ch, int vnum )
                   "Farslay, recalls\n\r"
                   "and disasters.  HELP LUCK says how.\n\r",
                   clover_luck( ch ), clover_luck( ch ) == 1 ? "" : "s", LUCK_MAX,
-                  CLOVER_LUCK_HOURS );
+                  luck_hours( ch ) );
         send_to_char( buf, ch );
         return;
 
@@ -717,9 +717,11 @@ int clover_luck( CHAR_DATA *ch )
 }
 
 /* Gives luck: `points` more (add) or exactly `points`, held to 1 to
-   LUCK_MAX, for `hours` from now (held to LUCK_MAX_HOURS). A spell's
-   affect, with no location: it changes no stat, ticks down in char_update
-   and is saved with the character. */
+   LUCK_MAX, for `hours` from now (held to LUCK_MAX_HOURS). Adding never
+   shortens what is held: a clover's 30 hours on top of a creator's longer
+   grant leaves the longer time (review, 2026-11-20); setting (FATE ...
+   LUCK) is exact. A spell's affect, with no location: it changes no stat,
+   ticks down in char_update and is saved with the character. */
 void luck_grant( CHAR_DATA *ch, int points, int hours, bool add )
 {
     AFFECT_DATA *paf;
@@ -732,7 +734,8 @@ void luck_grant( CHAR_DATA *ch, int points, int hours, bool add )
         if ( paf->type == gsn_luck )
         {
             paf->modifier = URANGE( 1, ( add ? paf->modifier : 0 ) + points, LUCK_MAX );
-            paf->duration = (sh_int) hours;
+            if ( !add || paf->duration < hours )
+                paf->duration = (sh_int) hours;
             return;
         }
     memset( &af, 0, sizeof(af) );
@@ -743,6 +746,19 @@ void luck_grant( CHAR_DATA *ch, int points, int hours, bool add )
     af.modifier  = URANGE( 1, points, LUCK_MAX );
     af.bitvector = 0;
     affect_to_char( ch, &af );
+}
+
+/* The hours of luck left, or 0. */
+int luck_hours( CHAR_DATA *ch )
+{
+    AFFECT_DATA *paf;
+
+    if ( ch == NULL || gsn_luck <= 0 )
+        return 0;
+    for ( paf = ch->affected; paf != NULL; paf = paf->next )
+        if ( paf->type == gsn_luck )
+            return paf->duration;
+    return 0;
 }
 
 void luck_remove( CHAR_DATA *ch )
@@ -786,20 +802,33 @@ bool luck_second_chance( CHAR_DATA *ch, const char *what )
    out with the rest of its coin. */
 void holiday_kill( CHAR_DATA *ch, CHAR_DATA *victim )
 {
+    CHAR_DATA *who;
     long gold;
 
-    /* A pot of gold is a chance on every kill while luck lasts,
-       LUCK_POT_STEP percent a point; nothing is spent. */
-    if ( ch == NULL || victim == NULL || IS_NPC(ch) || !IS_NPC(victim)
-    ||   ch == victim || !luck_roll( ch, LUCK_POT_STEP ) )
+    /* A charmed pet's or servant's kill is its master's, as its experience
+       and clover_luck() are (review, 2026-11-20): the master's luck rolls,
+       and the master is told and credited. A pot of gold is a chance on
+       every kill while luck lasts, LUCK_POT_STEP percent a point; nothing
+       is spent. */
+    if ( ch == NULL || victim == NULL || !IS_NPC(victim) || ch == victim )
+        return;
+    who = ch;
+    if ( IS_NPC(ch) )
+    {
+        if ( !IS_AFFECTED(ch, AFF_CHARM) || ch->master == NULL || IS_NPC(ch->master)
+        ||   ch->master == victim )
+            return;
+        who = ch->master;
+    }
+    if ( !luck_roll( ch, LUCK_POT_STEP ) )
         return;
     gold = black_market_kill_value( victim->level ) * POT_OF_GOLD_KILLS;
     gain_copper( victim, gold );
     act( "{0ELuck is with you: a pot of gold tumbles out of $N's things!{00",
-         ch, NULL, victim, TO_CHAR );
-    act( "A pot of gold tumbles out of $N's things!", ch, NULL, victim, TO_ROOM );
-    if ( !is_staff( ch ) )
-        achievement_record_event( ch, ACHIEVEMENT_EVENT_HOLIDAY_GOLD, true );
+         who, NULL, victim, TO_CHAR );
+    act( "A pot of gold tumbles out of $N's things!", who, NULL, victim, TO_ROOM );
+    if ( !is_staff( who ) )
+        achievement_record_event( who, ACHIEVEMENT_EVENT_HOLIDAY_GOLD, true );
 }
 
 

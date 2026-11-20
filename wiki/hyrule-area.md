@@ -1256,7 +1256,9 @@ Runtime rules add the behaviors the area format cannot express alone:
   a sealed exit with players about, because its puzzle object only returns
   with an `O` reset when the area is empty (`reset_area` in `src/db.c`).
 - Dodongo takes bomb damage.
-- Gohma requires a bow or Silver Arrow for the finishing hit.
+- Gohma requires Hyrule's short bow for the finishing hit (SHOOT GOHMA with
+  it wielded). The Silver Arrow is Ganon's alone: SHOOT refuses it at
+  anything else (2026-11-20).
 - Ganon can be wounded by ordinary weapons, spells, poison, and lingering
   damage, but those effects and normal weapon attacks cannot kill him. Against
   Ganon only, normal Silver Arrow strikes use full weapon mastery and deal at

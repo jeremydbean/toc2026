@@ -356,11 +356,16 @@ class BalanceLiveTests(unittest.TestCase):
 
                 # A pet's kill: credited to its master.
                 staff.must(f"load mob {SPARRING_GUARD}", "You create")
-                for _ in range(12):
+                # Charm is a roll: try until it holds, and say so if it
+                # never does -- twelve tries once all missed in CI
+                # (2026-11-20), and the kill was then the player's own.
+                for _ in range(40):
+                    staff.must("restore zbaltwo", "")
                     two.sync("cast 'charm person' guard", timeout=60)
                     staff.sync("peace")
                     if "Master: Zbaltwo" in staff.must("stat mob guard", "Vnum:"):
                         break
+                self.assertIn("Master: Zbaltwo", staff.must("stat mob guard", "Vnum:"))
                 staff.must("set char guard damroll 300", "")
                 staff.must("set char guard hitroll 300", "")
                 frail_guard()

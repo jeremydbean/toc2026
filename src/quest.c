@@ -373,6 +373,19 @@ static int quest_abort_rest( CHAR_DATA *ch )
     return ch->level >= 50 ? 7 : 15;
 }
 
+/* One toss of the questmaster's coin. TOC_GAMBLE_TOSSES (tests only) is a
+   string of W and L read one toss at a time, so a test can play a loss, a
+   lucky retoss and its outcome; past its end, or unset, the coin is fair. */
+static bool quest_gamble_toss( void )
+{
+    static int next = 0;
+    const char *tosses = getenv( "TOC_GAMBLE_TOSSES" );
+
+    if ( tosses != NULL && tosses[next] != '\0' )
+        return tosses[next++] == 'W';
+    return chance( 50 );
+}
+
 /* The points a gamble offer holds, collected safely: AQUEST GAMBLE NO, or
    at once for a player who said AQUEST GAMBLE NEVER. */
 static void quest_gamble_collect( CHAR_DATA *ch, bool save )
@@ -1283,20 +1296,22 @@ void do_quest(CHAR_DATA *ch, char *argument)
         {
             send_to_char(
 		"{09.-[ Double-or-Nothing Gamble ]-------------------------------.{00\n\r", ch);
-            /* Luck tosses a lost gamble once more: 50%, then half of the
-               rest at LUCK_RETRY_STEP a point (holiday.c). */
-            int win = 50 + 50 * LUCK_RETRY_STEP * clover_luck(ch) / 100;
+            /* Luck tosses a lost gamble once more (holiday.c): a loss
+               (half) is retossed at LUCK_RETRY_STEP a point, and the
+               retoss wins half the time -- in tenths of a percent. */
+            int win = 500 + 25 * LUCK_RETRY_STEP * clover_luck(ch) / 10;
 
             snprintf(buf, sizeof(buf),
                 "{09|{00 {04Wager:{00 {0D%d{00 quest points\n\r"
-                "{09|{00 {06Win  :{00 {0D%d{00 quest points  {01(%d%% chance%s){00\n\r"
-                "{09|{00 {07Lose :{00 {0D0{00 quest points  {01(%d%% chance){00\n\r"
+                "{09|{00 {06Win  :{00 {0D%d{00 quest points  {01(%d.%d%% chance%s){00\n\r"
+                "{09|{00 {07Lose :{00 {0D0{00 quest points  {01(%d.%d%% chance){00\n\r"
                 "{09|{00\n\r"
 		"{09|{00  Type {0DAQUEST GAMBLE YES{00 to risk it all!\n\r"
 		"{09|{00  Type {0DAQUEST GAMBLE NO{00  to collect {0D%d{00 pts safely.\n\r"
 		"{09'---------------------------------------------------------------'{00\n\r",
-                ch->questgamble_pts, ch->questgamble_pts * 2, win,
-                win > 50 ? ", with your luck" : "", 100 - win, ch->questgamble_pts);
+                ch->questgamble_pts, ch->questgamble_pts * 2, win / 10, win % 10,
+                win > 500 ? ", with your luck" : "", ( 1000 - win ) / 10, ( 1000 - win ) % 10,
+                ch->questgamble_pts);
             send_to_char(buf, ch);
             return;
         }
@@ -1304,7 +1319,13 @@ void do_quest(CHAR_DATA *ch, char *argument)
         {
             int wagered = ch->questgamble_pts;
             ch->questgamble_pts = 0;
-            if (chance(50) || luck_second_chance(ch, "the questmaster's coin"))
+            /* A loss, if luck holds, is tossed once more: a second 50/50,
+               not a win (review, 2026-11-20). */
+            bool won = quest_gamble_toss();
+
+            if (!won && luck_second_chance(ch, "the questmaster's coin"))
+                won = quest_gamble_toss();
+            if (won)
             {
 		int awarded = add_quest_points(ch, wagered * 2);
 

@@ -272,7 +272,11 @@ class CreatorLuckSourceTests(unittest.TestCase):
             self.assertIn('luck_second_chance( ch, "%s" )' % game, act_obj)
         self.assertIn("luck_roll( ch, LUCK_RETRY_STEP )", act_obj)      # poker's redeal
         quest = (ROOT / "src" / "quest.c").read_text(encoding="latin-1")
-        self.assertIn('chance(50) || luck_second_chance(ch, "the questmaster\'s coin")', quest)
+        # A lucky gamble is a second toss, never a win by itself (review,
+        # 2026-11-20; tests/test_luck_review.py plays it).
+        self.assertIn('if (!won && luck_second_chance(ch, "the questmaster\'s coin"))\n'
+                      '                won = quest_gamble_toss();', quest)
+        self.assertNotIn('chance(50) || luck_second_chance', quest)
 
     def test_no_public_change_entry(self) -> None:
         changes = (ROOT / "area" / "changes.dat").read_text(encoding="latin-1")
