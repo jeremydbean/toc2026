@@ -31,14 +31,33 @@ if [ "${#missing[@]}" -gt 0 ]; then
         printf '#!/bin/sh\nexit 101\n' | sudo tee /usr/sbin/policy-rc.d >/dev/null
         sudo chmod 755 /usr/sbin/policy-rc.d
     fi
+    # A slow mirror (2026-11-20: 15 MB at 52 kB/s, nearly five minutes)
+    # ran the old 300 s timeout out while dpkg was configuring; timeout
+    # killed apt-get but its dpkg child kept the lock, and the retry then
+    # met "dpkg was interrupted, you must manually run 'sudo dpkg
+    # --configure -a'". So the limit is generous, and before a retry every
+    # dpkg and apt still running is waited out and an interrupted dpkg is
+    # finished.
+    settle_dpkg() {
+        local waited=0
+        while pgrep -x dpkg >/dev/null || pgrep -x apt-get >/dev/null \
+              || pgrep -f unattended-upgrade >/dev/null; do
+            [ "$waited" -ge 600 ] && break
+            sleep 2
+            waited=$(( waited + 2 ))
+        done
+        sudo DEBIAN_FRONTEND=noninteractive dpkg --configure -a || true
+    }
     apt=(sudo apt-get install -y --no-install-recommends -o Acquire::Retries=3
-         -o DPkg::Lock::Timeout=180)
-    if DEBIAN_FRONTEND=noninteractive timeout 300 "${apt[@]}" "${missing[@]}"; then
+         -o DPkg::Lock::Timeout=600)
+    if DEBIAN_FRONTEND=noninteractive timeout 900 "${apt[@]}" "${missing[@]}"; then
         how="installed ${missing[*]} from the image's package lists"
     else
+        settle_dpkg
         DEBIAN_FRONTEND=noninteractive timeout 300 sudo apt-get update -o Acquire::Retries=3 \
-            -o DPkg::Lock::Timeout=180
-        DEBIAN_FRONTEND=noninteractive timeout 300 "${apt[@]}" "${missing[@]}"
+            -o DPkg::Lock::Timeout=600
+        settle_dpkg
+        DEBIAN_FRONTEND=noninteractive timeout 900 "${apt[@]}" "${missing[@]}"
         how="refreshed the package lists and installed ${missing[*]}"
     fi
 fi
