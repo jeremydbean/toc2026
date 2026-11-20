@@ -345,3 +345,7 @@
 1795003445	enter	Trentlin	51	1	Monk 	30317	over	from=L9 how=up hp=29
 1795003446	leave	Trentlin	51	1	Monk 	30317	over	to=out how=recall secs=1 hp=29
 1795037659	got	Trentlin	52	1	Monk 	4208	out	obj=30680 obj_name=a_suit_of_demon-scale_plate type=armor obj_level=46 how=stash
+1795216752	enter	Trentlin	52	1	Monk 	30200	over	from=out how=enter hp=100
+1795216759	seal	Trentlin	52	1	Monk 	30317	over	obj=30509 obj_name=a_cracked_stone_floor dir=5 how=bomb
+1795216759	leave	Trentlin	52	1	Monk 	30317	over	to=L9 how=down secs=7 hp=100
+1795216759	enter	Trentlin	52	1	Monk 	30590	L9	from=over how=down hp=100
