@@ -323112,3 +323112,10 @@ Fri Nov 20 20:53:11 2026 :: Connection guard: 3.212.128.62 closed without a word
 Fri Nov 20 20:58:14 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 3 of 6 in 6 hours).
 Fri Nov 20 21:03:18 2026 :: Connection guard: refused 1 connection from 178.156.187.238 (paused; 13 refused in all, pause 3 this week, 1359 minutes left).
 Fri Nov 20 21:05:26 2026 :: Treasure goblin: vanished from room 25152 (The passage in between., underdrk.are) (too long in one area).
+Fri Nov 20 21:08:21 2026 :: Connection guard: refused 1 connection from 178.156.187.238 (paused; 14 refused in all, pause 3 this week, 1354 minutes left).
+Fri Nov 20 21:08:39 2026 :: Sock.sinaddr:  138.91.106.142
+Fri Nov 20 21:08:40 2026 :: EOF encountered on read.
+Fri Nov 20 21:08:40 2026 :: Connection guard: 138.91.106.142 closed before a password prompt (strike 1 of 6 in 6 hours).
+Fri Nov 20 21:08:40 2026 :: Sock.sinaddr:  138.91.106.142
+Fri Nov 20 21:08:40 2026 :: Connection guard: 138.91.106.142 closed before a password prompt (strike 2 of 6 in 6 hours).
+Fri Nov 20 21:10:05 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
