@@ -40305,3 +40305,67 @@
 1795146273	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
 1795146280	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
 1795146284	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146289	cmd	Ravagger	4	3720	school.are	fighting	98	0	fight	kick		Your kick misses the clown.	-	-
+1795146295	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146298	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146302	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146304	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146307	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146311	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146313	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146316	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146320	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146322	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146324	got	Ravagger	4	3720	school.are	3709	a pair of sub issue gloves	armor	0	0	(violence_update)	corpse of the clown
+1795146324	got	Ravagger	4	3720	school.are	3710	a pair of sub issue sleeves	armor	0	0	(violence_update)	corpse of the clown
+1795146324	got	Ravagger	4	3720	school.are	3714	a key	key	0	0	(violence_update)	corpse of the clown
+1795146324	got	Ravagger	4	3720	school.are	3713	a sub issue bracer	armor	0	0	(violence_update)	corpse of the clown
+1795146324	coin	Ravagger	4	3720	school.are	+4	loot	(violence_update)	corpse of the clown	9440014
+1795146331	cmd	Ravagger	4	3720	school.are	standing	100	0	-	wear	all	You wear a sub issue bracer around your right wrist. // You wear a pair of sub issue sleeves on your arms. // You wear a pair of sub issue gloves on your hands.	-	+
+1795146338	cmd	Ravagger	4	3720	school.are	standing	100	0	-	look		The Darkened Room //   This room was purposefully darkened so that you would need to hold on to a // light source to go through.  The walls are, of course, blank, and white.	-	+
+1795146340	cmd	Ravagger	4	3719	school.are	standing	100	0	-	south		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795146353	cmd	Ravagger	4	3719	school.are	standing	100	0	-	unlock	east	*Click*	-	-
+1795146358	cmd	Ravagger	4	3719	school.are	standing	100	0	-	open	e	Ok.	-	-
+1795146360	cmd	Ravagger	4	3721	school.are	standing	100	0	-	east		The End of Mud School! //   This is a very bright room, with a marble pedestal in the center.  Behind // the pedestal stands a person cloaked in Silver.  Tapestries flow from every	-	+
+1795146372	cmd	Ravagger	4	3721	school.are	standing	100	0	-	look	sign	You have graduated from Mud School!  Take your diploma...if you can. // Go 'NORTH' from here to visit our arena.  There are plenty of low-level // monsters, but DON'T attack other players.	-	+
+1795146394	cmd	Ravagger	4	3721	school.are	standing	100	0	-	look		The End of Mud School! //   This is a very bright room, with a marble pedestal in the center.  Behind // the pedestal stands a person cloaked in Silver.  Tapestries flow from every	-	+
+1795146402	cmd	Ravagger	4	3721	school.are	standing	100	0	-	get	all	I see nothing here.	-	-
+1795146404	cmd	Ravagger	4	3721	school.are	standing	100	0	-	look		The End of Mud School! //   This is a very bright room, with a marble pedestal in the center.  Behind // the pedestal stands a person cloaked in Silver.  Tapestries flow from every	-	+
+1795146417	cmd	Ravagger	4	3721	school.are	standing	100	0	-	look	sign	You have graduated from Mud School!  Take your diploma...if you can. // Go 'NORTH' from here to visit our arena.  There are plenty of low-level // monsters, but DON'T attack other players.	-	+
+1795146434	cmd	Ravagger	4	3721	school.are	standing	100	0	-	look		The End of Mud School! //   This is a very bright room, with a marble pedestal in the center.  Behind // the pedestal stands a person cloaked in Silver.  Tapestries flow from every	-	+
+1795146448	cmd	Ravagger	4	3721	school.are	standing	100	0	-	consider	gob	The educated goblin is about your level. // The educated goblin has about half your hit points. // The educated goblin could barely scratch you; you would need over a hundred rounds to bring it down.	-	+
+1795146457	cmd	Ravagger	4	3721	school.are	standing	100	0	-	kill	gob	Your pierce misses the educated goblin. // Your pierce misses the educated goblin.	-	-
+1795146460	cmd	Ravagger	4	3721	school.are	fighting	100	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146464	cmd	Ravagger	4	3721	school.are	fighting	100	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146467	cmd	Ravagger	4	3721	school.are	fighting	100	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146470	cmd	Ravagger	4	3721	school.are	fighting	100	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146473	cmd	Ravagger	4	3721	school.are	fighting	88	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146475	cmd	Ravagger	4	3721	school.are	fighting	88	0	fight	kick		Your kick scratches the educated goblin.	-	-
+1795146478	cmd	Ravagger	4	3721	school.are	fighting	88	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146481	cmd	Ravagger	4	3721	school.are	fighting	88	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146485	cmd	Ravagger	4	3721	school.are	fighting	88	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146488	cmd	Ravagger	4	3721	school.are	fighting	87	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146494	cmd	Ravagger	4	3721	school.are	fighting	98	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146499	cmd	Ravagger	4	3721	school.are	fighting	98	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146502	cmd	Ravagger	4	3721	school.are	fighting	98	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146506	cmd	Ravagger	4	3721	school.are	fighting	98	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146510	cmd	Ravagger	4	3721	school.are	fighting	100	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146515	cmd	Ravagger	4	3721	school.are	fighting	94	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146518	cmd	Ravagger	4	3721	school.are	fighting	94	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146521	cmd	Ravagger	4	3721	school.are	fighting	94	0	fight	kick		Your kick scratches the educated goblin.	-	-
+1795146524	cmd	Ravagger	4	3721	school.are	fighting	94	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146527	cmd	Ravagger	4	3721	school.are	fighting	94	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146530	cmd	Ravagger	4	3721	school.are	fighting	94	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146533	cmd	Ravagger	4	3721	school.are	fighting	94	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146536	cmd	Ravagger	4	3721	school.are	fighting	94	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146539	cmd	Ravagger	4	3721	school.are	fighting	100	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146542	cmd	Ravagger	4	3721	school.are	fighting	100	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146545	cmd	Ravagger	4	3721	school.are	fighting	100	0	fight	quit		No way! You are fighting.	-	-
+1795146551	cmd	Ravagger	4	3721	school.are	fighting	100	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146555	cmd	Ravagger	4	3721	school.are	fighting	100	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146558	cmd	Ravagger	4	3721	school.are	fighting	96	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146565	cmd	Ravagger	4	3721	school.are	fighting	94	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146572	cmd	Ravagger	4	3721	school.are	fighting	85	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146575	cmd	Ravagger	4	3721	school.are	fighting	75	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146579	cmd	Ravagger	4	3721	school.are	fighting	75	0	fight	kick		Your kick misses the educated goblin.	-	-
+1795146584	cmd	Ravagger	4	3721	school.are	fighting	74	0	fight	kick		Your kick misses the educated goblin.	-	-
