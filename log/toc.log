@@ -323018,3 +323018,11 @@ Fri Nov 20 19:01:26 2026 :: Connection guard: refused 1 connection from 5.161.75
 Fri Nov 20 19:02:24 2026 :: Forage: moved 1 herb and 0 components unfound for a day; scattered 0 herbs and 0 components; 150/150 herbs and 100/100 components now on the ground.
 Fri Nov 20 19:03:29 2026 :: Forage: moved 1 herb and 0 components unfound for a day; scattered 0 herbs and 0 components; 150/150 herbs and 100/100 components now on the ground.
 Fri Nov 20 19:04:46 2026 :: Forage: moved 2 herbs and 0 components unfound for a day; scattered 0 herbs and 0 components; 150/150 herbs and 100/100 components now on the ground.
+Fri Nov 20 19:06:30 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 34 refused in all, pause 4 this week, 819 minutes left).
+Fri Nov 20 19:07:02 2026 :: Forage: moved 1 herb and 1 component unfound for a day; scattered 0 herbs and 0 components; 150/150 herbs and 100/100 components now on the ground.
+Fri Nov 20 19:07:18 2026 :: Treasure goblin: vanished from room 9416 (Primary Assembly Line, mobfact.are) (too long in one area).
+Fri Nov 20 19:08:09 2026 :: Forage: moved 0 herbs and 2 components unfound for a day; scattered 0 herbs and 0 components; 150/150 herbs and 100/100 components now on the ground.
+Fri Nov 20 19:08:44 2026 :: Connection guard: 172.236.228.227 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 20 19:08:44 2026 :: Connection guard: 172.236.228.227 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 20 19:09:44 2026 :: Forage: moved 0 herbs and 1 component unfound for a day; scattered 0 herbs and 0 components; 150/150 herbs and 100/100 components now on the ground.
+Fri Nov 20 19:10:15 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
