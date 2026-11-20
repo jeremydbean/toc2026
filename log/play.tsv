@@ -40225,3 +40225,83 @@
 1795145978	cmd	Ravagger	4	3762	school.are	fighting	98	0	fight	kick		Your kick misses the zombie.	-	-
 1795145981	cmd	Ravagger	4	3762	school.are	fighting	98	0	fight	kick		Your kick misses the zombie.	-	-
 1795145983	cmd	Ravagger	4	3762	school.are	fighting	98	0	fight	kick		Your kick misses the zombie.	-	-
+1795145986	cmd	Ravagger	4	3762	school.are	fighting	98	0	fight	kick		Your kick misses the zombie.	-	-
+1795145989	cmd	Ravagger	4	3762	school.are	fighting	98	0	fight	kick		Your kick misses the zombie.	-	-
+1795145992	cmd	Ravagger	4	3762	school.are	fighting	98	0	fight	kick		Your kick misses the zombie.	-	-
+1795145994	cmd	Ravagger	4	3762	school.are	fighting	98	0	fight	kick		Your kick misses the zombie.	-	-
+1795145997	cmd	Ravagger	4	3762	school.are	fighting	98	0	fight	kick		Your kick misses the zombie.	-	-
+1795146000	cmd	Ravagger	4	3762	school.are	fighting	98	0	fight	kick		Your kick misses the zombie.	-	-
+1795146003	cmd	Ravagger	4	3762	school.are	fighting	98	0	fight	kick		Your kick scratches the zombie.	-	-
+1795146005	cmd	Ravagger	4	3762	school.are	fighting	98	0	fight	kick		Your kick scratches the zombie.	-	-
+1795146008	cmd	Ravagger	4	3762	school.are	fighting	98	0	fight	kick		Your kick misses the zombie.	-	-
+1795146011	cmd	Ravagger	4	3762	school.are	fighting	98	0	fight	kick		Your kick misses the zombie.	-	-
+1795146014	cmd	Ravagger	4	3762	school.are	fighting	94	0	fight	kick		Your kick scratches the zombie.	-	-
+1795146016	cmd	Ravagger	4	3762	school.are	fighting	94	0	fight	inventory		You are carrying: // ( 5) a pipeweed bread //      a ring of holding	-	+
+1795146017	cmd	Ravagger	4	3762	school.are	fighting	94	0	fight	kick		Your kick misses the zombie.	-	-
+1795146019	cmd	Ravagger	4	3762	school.are	fighting	94	0	fight	kick		Your kick misses the zombie.	-	-
+1795146022	cmd	Ravagger	4	3762	school.are	fighting	100	0	fight	kick		Your kick misses the zombie.	-	-
+1795146025	cmd	Ravagger	4	3762	school.are	fighting	100	0	fight	kick		Your kick misses the zombie.	-	-
+1795146028	cmd	Ravagger	4	3762	school.are	fighting	100	0	fight	kick		Your kick misses the zombie.	-	-
+1795146030	cmd	Ravagger	4	3762	school.are	fighting	100	0	fight	kick		Your kick misses the zombie.	-	-
+1795146038	cmd	Ravagger	4	3762	school.are	fighting	100	0	fight	kick		Your kick misses the zombie.	-	-
+1795146041	cmd	Ravagger	4	3762	school.are	fighting	100	0	fight	kick		Your kick misses the zombie.	-	-
+1795146046	cmd	Ravagger	4	3762	school.are	fighting	100	0	fight	kick		Your kick misses the zombie.	-	-
+1795146050	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=2	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=11 mobs_fought=6 secs=900
+1795146050	cmd	Ravagger	4	3762	school.are	fighting	100	0	fight	kick		Your kick misses the zombie.	-	-
+1795146055	cmd	Ravagger	4	3762	school.are	fighting	100	0	fight	kick		Your kick misses the zombie.	-	-
+1795146059	cmd	Ravagger	4	3762	school.are	fighting	100	0	fight	kick		Your kick misses the zombie.	-	-
+1795146062	cmd	Ravagger	4	3762	school.are	fighting	100	0	fight	kick		Your kick misses the zombie.	-	-
+1795146065	cmd	Ravagger	4	3762	school.are	fighting	100	0	fight	kick		Your kick misses the zombie.	-	-
+1795146067	cmd	Ravagger	4	3762	school.are	fighting	100	0	fight	kick		Your kick misses the zombie.	-	-
+1795146071	cmd	Ravagger	4	3762	school.are	fighting	100	0	fight	kick		Your kick scratches the zombie.	-	-
+1795146072	skill	Ravagger	4	3762	school.are	dagger	32	33	success	(violence_update)
+1795146072	got	Ravagger	4	3762	school.are	3707	a pair of sub issue leggings	armor	0	0	(violence_update)	corpse of the zombie
+1795146072	coin	Ravagger	4	3762	school.are	+4	loot	(violence_update)	corpse of the zombie	9440010
+1795146081	cmd	Ravagger	4	3762	school.are	standing	100	0	-	wear	all	You must be level 10 to use this object.	-	-
+1795146085	cmd	Ravagger	4	3762	school.are	standing	100	0	-	inventory		You are carrying: //      a pair of sub issue leggings // ( 5) a pipeweed bread	-	+
+1795146093	cmd	Ravagger	4	3762	school.are	standing	100	0	-	look		A dark cavern //   This is a dark cavern.  You hear strange noises as things shuffle about // in the darkness.	-	+
+1795146098	refused	Ravagger	4	3762	school.are	standing	100	0	-	(unknown)		Huh? Did you mean TURN?	refusal:unknown-command	-
+1795146101	cmd	Ravagger	4	3762	school.are	standing	100	0	-	look		A dark cavern //   This is a dark cavern.  You hear strange noises as things shuffle about // in the darkness.	-	+
+1795146105	cmd	Ravagger	4	3761	school.are	standing	100	0	-	east		Entrance to a dark cavern //   This is a dark cavern that seems to have been attached to the mud school // by something destroying the wall to the east.  Rumor has it that wall	-	+
+1795146107	cmd	Ravagger	4	3717	school.are	standing	100	0	-	east		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795146112	cmd	Ravagger	4	3717	school.are	standing	100	0	-	open	east	Ok.	-	-
+1795146114	spotted	Ravagger	4	3719	school.are	1151	component	72	a minotaur's ear	34798	1	scatter	arrive
+1795146114	cmd	Ravagger	4	3719	school.are	standing	100	0	-	east		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795146130	passed	Ravagger	4	3720	school.are	1151	component	72	a minotaur's ear	34814	16	1	scatter	3719	left
+1795146130	cmd	Ravagger	4	3720	school.are	standing	100	0	-	north		The Darkened Room //   This room was purposefully darkened so that you would need to hold on to a // light source to go through.  The walls are, of course, blank, and white.	-	+
+1795146134	cmd	Ravagger	4	3719	school.are	standing	100	0	-	south		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795146139	cmd	Ravagger	4	3719	school.are	standing	100	0	-	open	east	It's locked.	-	-
+1795146142	cmd	Ravagger	4	3720	school.are	standing	100	0	-	north		The Darkened Room //   This room was purposefully darkened so that you would need to hold on to a // light source to go through.  The walls are, of course, blank, and white.	-	+
+1795146149	cmd	Ravagger	4	3720	school.are	standing	100	0	-	consider	clo	The clown is a little below your level. // The clown has about half your hit points. // The clown could barely scratch you; you would need over a hundred rounds to bring it down.	-	+
+1795146161	cmd	Ravagger	4	3720	school.are	standing	100	0	-	kick	clown	You aren't fighting anyone.	-	-
+1795146168	cmd	Ravagger	4	3720	school.are	standing	100	0	-	kill	clown	Your pierce misses the clown. // Your pierce scratches the clown.	-	-
+1795146171	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146174	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146176	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146179	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146183	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146185	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146188	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146193	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146200	cmd	Ravagger	4	3720	school.are	fighting	98	0	fight	kick		Your kick misses the clown.	-	-
+1795146203	cmd	Ravagger	4	3720	school.are	fighting	98	0	fight	kick		Your kick misses the clown.	-	-
+1795146206	cmd	Ravagger	4	3720	school.are	fighting	98	0	fight	kick		Your kick misses the clown.	-	-
+1795146209	cmd	Ravagger	4	3720	school.are	fighting	98	0	fight	kick		Your kick misses the clown.	-	-
+1795146212	cmd	Ravagger	4	3720	school.are	fighting	98	0	fight	kick		Your kick misses the clown.	-	-
+1795146215	cmd	Ravagger	4	3720	school.are	fighting	98	0	fight	kick		Your kick misses the clown.	-	-
+1795146218	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146223	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146227	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146233	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146238	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146241	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146244	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146247	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick scratches the clown.	-	-
+1795146251	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146254	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146259	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick scratches the clown.	-	-
+1795146262	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	quit		No way! You are fighting.	-	-
+1795146266	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick scratches the clown.	-	-
+1795146273	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146280	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-
+1795146284	cmd	Ravagger	4	3720	school.are	fighting	100	0	fight	kick		Your kick misses the clown.	-	-

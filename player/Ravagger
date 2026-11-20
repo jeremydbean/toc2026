@@ -2,7 +2,7 @@
 Name Ravagger~
 Id   56640
 Serial 3950626
-LogO 1795145823
+LogO 1795146145
 Vers 4
 Prom ~
 Race human~
@@ -17,18 +17,18 @@ ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble 20261114-season-area-ids 20261116-wrapped-pools~
 Cast none
 Levl 4
-Plyd 5460
+Plyd 5782
 ListRemorts ~
 NumRemorts 0
 Note 0
-SkillDamage 0 4 4
-MeleeRatio 1572 4
+SkillDamage 0 6 4
+MeleeRatio 1459 6
 Scro 22
-Room 3794
+Room 3720
 HMV  54 54 118 118 118 118
-NewGold 944
-NewPlat 0
-NewCopp 8
+NewGold 44
+NewPlat 9
+NewCopp 10
 NewSilv 0
 BankCP 0
 IntTime 1795144964
@@ -37,7 +37,7 @@ Dcount 0
 SavedOnce 1
 PkRec 0
 PkGiv 0
-AchKills 4
+AchKills 6
 AchQuests 0
 AchDeaths 0
 AchExplore 0
@@ -48,8 +48,8 @@ Achv first-kill 1795145444
 Achv visit-mud-school 1795145162
 Achv carry-one-platinum 1795144941
 AchSet areas 1103516333 ~
-AchSet rooms 3241 3700-3704 3709 3711-3716 3757-3759 3772 3794 ~
-LastOut  1795145823
+AchSet rooms 3241 3700-3704 3709 3711-3720 3757-3759 3761-3762 3772 3794 ~
+LastOut  1795146145
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 0
@@ -60,9 +60,8 @@ SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  8884
+Exp  9475
 Act  65788
-AfBy 524288
 Comm 24608
 Mounted 0
 On_Quest 0
@@ -91,9 +90,9 @@ Pos  8
 Prac 6
 Trai 1
 Tutorial 0 32776
-Save  -9
+Save  -1
 Alig  15
-Hit   10
+Hit   2
 Dam   2
 ACs 48 47 47 62
 Attr 13 13 13 18 16
@@ -104,9 +103,9 @@ Pnts 40
 TSex 1
 LLev 1
 HMVP 54 118 118
-Cond 0 40 21
+Cond 0 44 16
 Sk 8 'axe'
-Sk 32 'dagger'
+Sk 33 'dagger'
 Sk 6 'flail'
 Sk 80 'mace'
 Sk 3 'polearm'
@@ -123,11 +122,8 @@ Sk 75 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
-AffD 'armor'   0  16 -20  17          0          0
-AffD 'shield'  53   6 -20  17          0          0
-AffD 'fly'  54   1   0   0     524288          0
-AffD 'bless'  48   4  -8  24          0          0
-AffD 'bless'  50   4   8  18          0          0
+AffD 'armor'   0  11 -20  17          0          0
+AffD 'shield'  52   1 -20  17          0          0
 End
 
 #O
@@ -137,7 +133,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 113 0 0
+Val  0 0 108 0 0
 End
 
 #O
@@ -275,6 +271,45 @@ End
 Vnum 3705
 Nest 0
 Wear 3
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3718
+Nest 0
+Wear -1
+Lev  1
+Cost 1
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3718
+Nest 0
+Wear -1
+Lev  1
+Cost 1
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3718
+Nest 0
+Wear -1
+Lev  1
+Cost 1
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3707
+Nest 0
+Wear -1
 Cost 0
 Cond 100
 Repd 0

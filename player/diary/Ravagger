@@ -1,9 +1,9 @@
 #DIARY 1
 Day 2026-11-20
-Played 882
+Played 1204
 Level 3 4 1
-Exp 1642 0
-Kills 4
+Exp 2233 0
+Kills 6
 Deaths 0
 Close 0
 Quests 0 0
@@ -11,14 +11,16 @@ Dailies 0 0
 List achv 5 0 Walking Wallet
 List achv 5 0 Back to School
 List achv 5 0 First Blood
-List area 882 0 Mud School
+List skill 32 33 dagger
+List area 1204 0 Mud School
 List item 1 0 a pair of sub issue boots
 List item 1 0 a sub issue bracer
-List item 1 0 a pair of sub issue leggings
+List item 2 0 a pair of sub issue leggings
 List item 1 0 a sub issue belt
 List item 1 0 a sub issue helmet
 List item 1 0 a sub issue cape
 List item 2 0 a sub issue cloak
-List earn 8 0 loot
+List earn 14 0 loot
+List spend 4 0 buy
 End
 #END
