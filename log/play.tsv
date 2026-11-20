@@ -40603,3 +40603,80 @@
 1795147462	cmd	Ravagger	4	4207	dresden.are	standing	92	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
 1795147475	area	Ravagger	4	3700	school.are	dresden.are	school.are	339	up
 1795147475	cmd	Ravagger	4	3700	school.are	standing	92	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795147507	cmd	Ravagger	4	3783	school.are	standing	92	0	-	east		A Gigantic Clown Head //   Before you is the largest clowns head you have ever seen, with all the // makeup intact, to include the big red painted on mouth.  This appears	-	+
+1795147510	cmd	Ravagger	4	3700	school.are	standing	92	0	-	west		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795147511	area	Ravagger	4	17	connect.are	school.are	connect.are	36	west
+1795147511	cmd	Ravagger	4	17	connect.are	standing	92	0	-	west		An odd sight //   Standing before you is one of the most incredible things you have EVER seen. // A giant berry the likes you have never seen before sits in the middle of this	-	+
+1795147515	area	Ravagger	4	3700	school.are	connect.are	school.are	4	east
+1795147515	cmd	Ravagger	4	3700	school.are	standing	92	0	-	east		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795147516	cmd	Ravagger	4	3757	school.are	standing	92	0	-	north		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795147518	cmd	Ravagger	4	3701	school.are	standing	92	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795147526	cmd	Ravagger	4	3702	school.are	standing	92	0	-	west		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795147532	cmd	Ravagger	4	3702	school.are	standing	92	0	-	scan		the adept of Haze                  -to the East.	-	-
+1795147538	cmd	Ravagger	4	3705	school.are	standing	92	0	-	south		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795147541	cmd	Ravagger	4	3702	school.are	standing	92	0	-	north		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795147542	cmd	Ravagger	4	3703	school.are	standing	92	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795147545	cmd	Ravagger	4	3709	school.are	standing	92	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795147548	cmd	Ravagger	4	3711	school.are	standing	92	0	-	west		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795147552	cmd	Ravagger	4	3712	school.are	standing	92	0	-	down		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795147554	cmd	Ravagger	4	3715	school.are	standing	92	0	-	south		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is north.	-	+
+1795147557	cmd	Ravagger	4	3712	school.are	standing	92	0	-	north		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795147560	cmd	Ravagger	4	3712	school.are	standing	92	0	-	up		Alas, you cannot go that way.	-	-
+1795147562	cmd	Ravagger	4	3717	school.are	standing	92	0	-	down		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795147579	cmd	Ravagger	4	3718	school.are	standing	90	0	-	south		The Store in Mud School //   You are in a cramped room.  Stacked neatly on shelves everywhere are items // and packages.  Light fluoresces off the ceiling in soft white tones.  Of	-	+
+1795147585	cmd	Ravagger	4	3718	school.are	standing	90	0	-	list		[Lv Price] Item // [ 0        48c] a hooded brass lantern. // [ 0        48c] a buffalo water skin.	-	+
+1795147592	cmd	Ravagger	4	3717	school.are	standing	90	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795147597	cmd	Ravagger	4	3717	school.are	standing	90	0	-	east		The door is closed.	-	-
+1795147601	cmd	Ravagger	4	3717	school.are	standing	90	0	-	open	east	Ok.	-	-
+1795147603	cmd	Ravagger	4	3719	school.are	standing	90	0	-	east		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795147612	cmd	Ravagger	4	3719	school.are	standing	90	0	-	open	east	It's locked.	-	-
+1795147617	cmd	Ravagger	4	3720	school.are	standing	90	0	-	north		The Darkened Room //   This room was purposefully darkened so that you would need to hold on to a // light source to go through.  The walls are, of course, blank, and white.	-	+
+1795147619	cmd	Ravagger	4	3719	school.are	standing	90	0	-	south		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795147620	cmd	Ravagger	4	3717	school.are	standing	90	0	-	west		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795147624	cmd	Ravagger	4	3761	school.are	standing	90	0	-	west		Entrance to a dark cavern //   This is a dark cavern that seems to have been attached to the mud school // by something destroying the wall to the east.  Rumor has it that wall	-	+
+1795147627	cmd	Ravagger	4	3762	school.are	standing	90	0	-	west		A dark cavern //   This is a dark cavern.  You hear strange noises as things shuffle about // in the darkness.	-	+
+1795147629	cmd	Ravagger	4	3771	school.are	standing	90	0	-	west		Entrance to a dark cavern //   This is a dark cavern.  You hear strange noises as things shuffle about // in the darkness.	-	+
+1795147631	cmd	Ravagger	4	3771	school.are	standing	90	0	-	west		Alas, you cannot go that way.	-	-
+1795147633	cmd	Ravagger	4	3762	school.are	standing	90	0	-	east		A dark cavern //   This is a dark cavern.  You hear strange noises as things shuffle about // in the darkness.	-	+
+1795147636	area	Ravagger	4	4207	dresden.are	school.are	dresden.are	121	recall
+1795147636	cmd	Ravagger	4	4207	dresden.are	standing	90	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795147645	cmd	Ravagger	4	4202	dresden.are	standing	90	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795147646	cmd	Ravagger	4	4201	dresden.are	standing	90	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795147647	cmd	Ravagger	4	2427	dresden.are	standing	90	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795147649	cmd	Ravagger	4	2404	dresden.are	standing	90	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795147652	cmd	Ravagger	4	2404	dresden.are	standing	90	0	-	north		You are too exhausted.	-	-
+1795147654	cmd	Ravagger	4	2404	dresden.are	standing	90	0	-	north		You are too exhausted.	-	-
+1795147658	cmd	Ravagger	4	2404	dresden.are	standing	90	0	-	rest		You rest.	-	-
+1795147660	cmd	Ravagger	4	2404	dresden.are	resting	90	0	-	look	n	Center of Oak Tree Square.	-	-
+1795147669	cmd	Ravagger	4	2404	dresden.are	resting	90	0	-	stand		You stand up.	-	-
+1795147670	cmd	Ravagger	4	2404	dresden.are	standing	90	0	-	north		You are too exhausted.	-	-
+1795147673	cmd	Ravagger	4	2401	dresden.are	standing	90	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795147688	cmd	Ravagger	4	2401	dresden.are	standing	90	0	-	look	sign	This ancient oak tree is a symbol of strength for our city.  The sages say it // was planted at the beginning of time.  Legends say if you bury coins at the // base of the tree you can be granted the favor of the Gods.  Good luck	-	+
+1795147696	cmd	Ravagger	4	2405	dresden.are	standing	90	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1795147705	cmd	Ravagger	4	2433	dresden.are	standing	90	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1795147709	cmd	Ravagger	4	4201	dresden.are	standing	90	0	-	south		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795147717	cmd	Ravagger	4	4202	dresden.are	standing	90	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795147722	cmd	Ravagger	4	4207	dresden.are	standing	90	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795147725	cmd	Ravagger	4	4208	dresden.are	standing	90	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795147729	cmd	Ravagger	4	4207	dresden.are	standing	90	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795147730	cmd	Ravagger	4	4205	dresden.are	standing	90	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795147732	cmd	Ravagger	4	4205	dresden.are	standing	90	0	-	east		You are too exhausted.	-	-
+1795147737	cmd	Ravagger	4	4205	dresden.are	standing	90	0	-	rest		You rest.	-	-
+1795147741	cmd	Ravagger	4	4205	dresden.are	resting	90	0	-	look	west	Nothing special there.	-	-
+1795147745	cmd	Ravagger	4	4205	dresden.are	resting	90	0	-	scan	w	The Watcher                        -to the North.	-	-
+1795147748	cmd	Ravagger	4	4205	dresden.are	resting	90	0	-	look		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795147752	cmd	Ravagger	4	4205	dresden.are	resting	90	0	-	stand		You stand up.	-	-
+1795147754	cmd	Ravagger	4	4206	dresden.are	standing	90	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795147760	cmd	Ravagger	4	4206	dresden.are	standing	90	0	-	drink	fount	You are no longer thirsty.	-	-
+1795147762	cmd	Ravagger	4	4206	dresden.are	standing	90	0	-	drink	fount	You are no longer thirsty.	-	-
+1795147763	cmd	Ravagger	4	4206	dresden.are	standing	90	0	-	drink	fount	You are no longer thirsty.	-	-
+1795147764	cmd	Ravagger	4	4206	dresden.are	standing	90	0	-	drink	fount	You are no longer thirsty.	-	-
+1795147765	cmd	Ravagger	4	4206	dresden.are	standing	90	0	-	drink	fount	You are no longer thirsty.	-	-
+1795147765	cmd	Ravagger	4	4206	dresden.are	standing	90	0	-	drink	fount	You are no longer thirsty.	-	-
+1795147767	cmd	Ravagger	4	4206	dresden.are	standing	90	0	-	look		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795147773	cmd	Ravagger	4	4202	dresden.are	standing	90	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795147778	cmd	Ravagger	4	4201	dresden.are	standing	90	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795147779	cmd	Ravagger	4	2427	dresden.are	standing	90	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795147780	cmd	Ravagger	4	2404	dresden.are	standing	90	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795147781	cmd	Ravagger	4	2401	dresden.are	standing	90	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795147785	cmd	Ravagger	4	4649	dresden.are	standing	90	0	-	down		Entrance to the Hall of Hero's. //   As you reach the end of the staircase you walk into a large chamber. // You notice that the room is several times the size of the tree itself	-	+
