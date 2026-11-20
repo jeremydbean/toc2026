@@ -322777,3 +322777,7 @@ Fri Nov 20 14:15:03 2026 :: Treasure goblin: vanished from room 17769 (Yellow Br
 Fri Nov 20 14:17:08 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 1 of 6 in 6 hours).
 Fri Nov 20 14:22:13 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 25 refused in all, pause 4 this week, 1880 minutes left).
 Fri Nov 20 14:25:07 2026 :: Treasure goblin: vanished from room 10128 (Cook's Kitchen, Quantum Homeshopping Ltd., glitter.are) (too long in one area).
+Fri Nov 20 14:25:50 2026 :: Connection guard: last hour 10 closed without a word, 3 refused, 0 new characters refused, 0 newly paused; 7 addresses paused and 0 refused now, 15 active player addresses.
+Fri Nov 20 14:27:16 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 20 14:29:37 2026 :: Automated backup started.
+Fri Nov 20 14:29:37 2026 :: Automated backup complete.
