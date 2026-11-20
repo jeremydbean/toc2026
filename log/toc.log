@@ -322395,3 +322395,9 @@ Fri Nov 20 09:52:55 2026 :: Connection guard: 5.161.75.7 paused for 12 hours (pa
 Fri Nov 20 09:58:01 2026 :: Connection guard: refused 1 connection from 5.161.75.7 (paused; 1 refused in all, pause 2 this week, 715 minutes left).
 Fri Nov 20 10:01:22 2026 :: Treasure goblin: vanished from room 13080 (Nest Entrance, lakes.are) (too long in one area).
 Fri Nov 20 10:03:06 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 20 10:06:35 2026 :: Sock.sinaddr:  40.77.188.131
+Fri Nov 20 10:06:41 2026 :: EOF encountered on read.
+Fri Nov 20 10:06:41 2026 :: Connection guard: 40.77.188.131 closed before a password prompt (the web client; not counted).
+Fri Nov 20 10:08:10 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 20 10:09:47 2026 :: Cartographer: left room 4151 (The small passage, moria.are) (his visit is over).
+Fri Nov 20 10:10:09 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
