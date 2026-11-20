@@ -318,21 +318,26 @@ List earn 38769706 0 interest
 List spend 168500000 0 heal
 End
 Day 2026-11-20
-Played 194
+Played 244
 Level 52 52 0
 Exp 0 0
-Kills 1
+Kills 2
 Deaths 0
 Close 0
-Quests 1 0
+Quests 2 0
 Dailies 0 0
-List area 132 0 City of Dresden
+List area 158 0 City of Dresden
 List area 1 0 Continental Drift
 List area 31 0 Holy Grove
 List area 19 0 Old Thalos
 List area 0 0 Miden'nir
 List area 11 0 Thalos
-List earn 126548136 0 quests
+List area 2 0 Plains of the North
+List area 1 0 the Upper Argo
+List area 21 0 Gelidia
+List earn 267157176 0 quests
+List earn 23547 0 loot
+List earn 38866631 0 interest
 List spend 16000000 0 heal
 End
 #END
