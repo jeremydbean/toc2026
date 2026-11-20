@@ -321505,3 +321505,50 @@ Fri Nov 20 04:09:41 2026 :: Log Ravagger [2404]: n
 Fri Nov 20 04:09:41 2026 :: Log Ravagger [2401]: arrived (Center of Oak Tree Square.) from 2404
 Fri Nov 20 04:09:45 2026 :: Log Ravagger [2401]: d
 Fri Nov 20 04:09:45 2026 :: Log Ravagger [4649]: arrived (Entrance to the Hall of Hero's.) from 2401
+Fri Nov 20 04:09:50 2026 :: Log Ravagger [4649]: s
+Fri Nov 20 04:09:50 2026 :: Log Ravagger [2419]: arrived (The Training Yard) from 4649
+Fri Nov 20 04:09:57 2026 :: Log Ravagger [2419]: n
+Fri Nov 20 04:09:57 2026 :: Log Ravagger [4649]: arrived (Entrance to the Hall of Hero's.) from 2419
+Fri Nov 20 04:10:11 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Fri Nov 20 04:10:28 2026 :: Log Ravagger [4649]: l plaque
+Fri Nov 20 04:11:09 2026 :: Log Ravagger [4649]: l plaque
+Fri Nov 20 04:12:27 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 20 04:12:30 2026 :: Log Ravagger [4649]: s
+Fri Nov 20 04:12:30 2026 :: Log Ravagger [2419]: arrived (The Training Yard) from 4649
+Fri Nov 20 04:12:54 2026 :: Log Ravagger [2419]: help dummy
+Fri Nov 20 04:13:19 2026 :: Log Ravagger [2419]: l
+Fri Nov 20 04:13:21 2026 :: Log Ravagger [2419]: n
+Fri Nov 20 04:13:21 2026 :: Log Ravagger [4649]: arrived (Entrance to the Hall of Hero's.) from 2419
+Fri Nov 20 04:13:22 2026 :: Log Ravagger [4649]: u
+Fri Nov 20 04:13:22 2026 :: Log Ravagger [2401]: arrived (Center of Oak Tree Square.) from 4649
+Fri Nov 20 04:13:27 2026 :: Log Ravagger [2401]: n
+Fri Nov 20 04:13:27 2026 :: Log Ravagger [2402]: arrived (Northern Oak Tree Square.) from 2401
+Fri Nov 20 04:13:34 2026 :: Log Ravagger [2402]: n
+Fri Nov 20 04:13:34 2026 :: Log Ravagger [2415]: arrived (Main Processional.) from 2402
+Fri Nov 20 04:13:41 2026 :: Log Ravagger [2415]: e
+Fri Nov 20 04:13:41 2026 :: Log Ravagger [2485]: arrived (Market Plaza.) from 2415
+Fri Nov 20 04:13:43 2026 :: Log Ravagger [2485]: w
+Fri Nov 20 04:13:43 2026 :: Log Ravagger [2415]: arrived (Main Processional.) from 2485
+Fri Nov 20 04:13:44 2026 :: Log Ravagger [2415]: w
+Fri Nov 20 04:13:44 2026 :: Log Ravagger [2470]: arrived (Wizards Way.) from 2415
+Fri Nov 20 04:13:47 2026 :: Log Ravagger [2470]: recall
+Fri Nov 20 04:13:51 2026 :: Log Ravagger [2470]: recall
+Fri Nov 20 04:13:51 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 2470
+Fri Nov 20 04:13:55 2026 :: Log Ravagger [4207]: u
+Fri Nov 20 04:13:55 2026 :: Log Ravagger [3700]: arrived (Entrance to Mud School) from 4207
+Fri Nov 20 04:13:58 2026 :: Log Ravagger [3700]: e
+Fri Nov 20 04:13:58 2026 :: Log Ravagger [3783]: arrived (A Gigantic Clown Head) from 3700
+Fri Nov 20 04:14:01 2026 :: Log Ravagger [3783]: w
+Fri Nov 20 04:14:01 2026 :: Log Ravagger [3700]: arrived (Entrance to Mud School) from 3783
+Fri Nov 20 04:14:02 2026 :: Log Ravagger [3700]: u
+Fri Nov 20 04:14:02 2026 :: Log Ravagger [3772]: arrived (Newbie Train Station) from 3700
+Fri Nov 20 04:14:04 2026 :: Log Ravagger [3772]: e
+Fri Nov 20 04:14:04 2026 :: Log Ravagger [3773]: arrived (Newbie Train Still In The Station) from 3772
+Fri Nov 20 04:14:08 2026 :: Log Ravagger [3774]: arrived (Newbie Train - Mob Factory Stop) from 3773
+Fri Nov 20 04:14:13 2026 :: Log Ravagger [3775]: arrived (Newbie Train - Gang Land Stop) from 3774
+Fri Nov 20 04:14:18 2026 :: Log Ravagger [3776]: arrived (Newbie Train - The Shire) from 3775
+Fri Nov 20 04:14:23 2026 :: Log Ravagger [3777]: arrived (Newbie Train - The Rats Lair) from 3776
+Fri Nov 20 04:14:28 2026 :: Log Ravagger [3778]: arrived (Newbie Train - The Fire Newts) from 3777
+Fri Nov 20 04:14:33 2026 :: Log Ravagger [3779]: arrived (Newbie Train - The Dwarven Daycare) from 3778
+Fri Nov 20 04:14:38 2026 :: Log Ravagger [3780]: arrived (Newbie Train - The Elemental Canyon) from 3779
+Fri Nov 20 04:14:43 2026 :: Log Ravagger [3781]: arrived (Newbie Train - The Gnomes) from 3780

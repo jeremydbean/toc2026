@@ -2,7 +2,7 @@
 Name Ravagger~
 Id   56640
 Serial 3950626
-LogO 1795147670
+LogO 1795148005
 Vers 4
 Prom ~
 Race human~
@@ -17,15 +17,15 @@ ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble 20261114-season-area-ids 20261116-wrapped-pools~
 Cast none
 Levl 4
-Plyd 7307
+Plyd 7642
 ListRemorts ~
 NumRemorts 0
 Note 0
 SkillDamage 0 8 4
 MeleeRatio 2094 8
 Scro 22
-Room 2404
-HMV  49 54 118 118 13 87
+Room 2401
+HMV  54 54 118 118 87 87
 NewGold 44
 NewPlat 9
 NewCopp 21
@@ -48,9 +48,9 @@ Achv first-kill 1795145444
 Achv visit-mud-school 1795145162
 Achv carry-one-platinum 1795144941
 Achv funny-sleepwalk 1795146863
-AchSet areas 1103516333 1255184829 1674073230 ~
-AchSet rooms 17 2404 2427-2431 2433-2437 3241 3700-3705 3709 3711-3722 3757-3762 3771-3772 3783 3794 4201-4205 4207-4211 4800-4809 ~
-LastOut  1795147670
+AchSet areas 675805239 1103516333 1255184829 1674073230 ~
+AchSet rooms 17 2401 2404-2405 2419 2427-2431 2433-2437 3241 3700-3705 3709 3711-3722 3757-3762 3771-3772 3783 3794 4201-4211 4649 4800-4809 ~
+LastOut  1795148005
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 0
@@ -102,7 +102,7 @@ Pnts 40
 TSex 1
 LLev 1
 HMVP 54 118 118
-Cond 0 19 0
+Cond 0 14 44
 Sk 8 'axe'
 Sk 33 'dagger'
 Sk 6 'flail'
@@ -130,7 +130,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 83 0 0
+Val  0 0 78 0 0
 End
 
 #O
