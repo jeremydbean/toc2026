@@ -1,9 +1,9 @@
 #DIARY 1
 Day 2026-11-20
-Played 3332
-Level 3 4 1
-Exp 3090 25
-Kills 8
+Played 3710
+Level 3 5 2
+Exp 3573 25
+Kills 9
 Deaths 0
 Close 0
 Quests 0 0
@@ -13,9 +13,10 @@ List achv 5 0 Back to School
 List achv 5 0 First Blood
 List achv 5 0 Sleepwalker
 List achv 10 0 Your Move
+List achv 5 0 Out of the Nest
 List skill 32 33 dagger
-List area 2177 0 Mud School
-List area 944 0 City of Dresden
+List area 2484 0 Mud School
+List area 1015 0 City of Dresden
 List area 18 0 Limbo
 List area 4 0 Continental Drift
 List area 58 0 Training Dummy Yard
@@ -32,7 +33,7 @@ List item 1 0 a pair of sub issue sleeves
 List item 1 0 a key
 List item 1 0 a mud school diploma
 List item 1 0 a silver key
-List earn 25 0 loot
+List earn 28 0 loot
 List spend 4 0 buy
 End
 #END

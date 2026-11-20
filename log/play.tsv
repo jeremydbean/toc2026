@@ -40757,3 +40757,56 @@
 1795148368	cmd	Ravagger	4	3758	school.are	standing	100	0	-	west		Eclipse's Training Room //   You are in Eclipse's Training Room.  Around you are all sorts of physical // and mental training tools.  The whole room is filled with magic, holiness, 	-	+
 1795148376	cmd	Ravagger	4	3758	school.are	standing	100	0	-	look	sign	Welcome to Eclipse's Training Room.  Here you can train your attributes. // Training spends training sessions, not practices: you start with three and // gain one each level.  Type 'train' while you are in this room to see how	-	+
 1795148382	cmd	Ravagger	4	3758	school.are	standing	100	0	-	train		You have 1 training sessions. // You can train: str int wis con hp mana.	-	-
+1795148394	cmd	Ravagger	4	3758	school.are	standing	100	0	-	help	monk	Monks fight with their bare hands and a trained mind.  They start with // hand to hand, dodge, meditation, kick, trip and nerve damage, and learn // their martial arts at the PALMS OF THE CREATOR.  Monks must be human or	-	+
+1795148426	state	Ravagger	4	3758	school.are	lvl=4 hp=54/54 mana=118/118 mv=87/87 align=15 exp=10307 coin=9440021 bank=0 qp=0 prac=6 train=1 stash=0/50 remorts=0
+1795148426	cmd	Ravagger	4	3758	school.are	standing	100	0	-	score		| Name:       Ravagger | Level:       4 | Class:        Monk | // | Played:      2 hours | Sex:      Male | Guild:        Monk | // | Age:        17 years | Race:    Human | Castle:       None |	-	+
+1795148472	cmd	Ravagger	4	3758	school.are	standing	100	0	-	train	str	Your strength increases!	-	-
+1795148475	state	Ravagger	4	3758	school.are	lvl=4 hp=54/54 mana=118/118 mv=87/87 align=15 exp=10307 coin=9440021 bank=0 qp=0 prac=6 train=0 stash=0/50 remorts=0
+1795148475	cmd	Ravagger	4	3758	school.are	standing	100	0	-	score		| Name:       Ravagger | Level:       4 | Class:        Monk | // | Played:      2 hours | Sex:      Male | Guild:        Monk | // | Age:        17 years | Race:    Human | Castle:       None |	-	+
+1795148484	cmd	Ravagger	4	3757	school.are	standing	100	0	-	east		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795148485	cmd	Ravagger	4	3759	school.are	standing	100	0	-	east		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with	-	+
+1795148492	cmd	Ravagger	4	3759	school.are	standing	100	0	-	look	si	It looks like a boring silver key.	-	-
+1795148495	cmd	Ravagger	4	3759	school.are	standing	100	0	-	look	sign	Welcome to Soulcrusher's Guild Room.  Here you will learn your skills and // spells. To find out what skills and spells you can practice and how many // practice sessions you have, type 'practice'.  To practice the specific skill,	-	+
+1795148501	cmd	Ravagger	4	3759	school.are	standing	100	0	-	practice		recall              75%  dagger              33%  hand to hand        75%   // kick                 9%   // You have 6 practice sessions left.	-	-
+1795148508	cmd	Ravagger	4	3759	school.are	standing	100	0	-	skills		Level  1: dagger              33%      hand to hand        75%       //           recall              75%       // Level  3: kick                 9%      	-	+
+1795148515	state	Ravagger	4	3759	school.are	lvl=4 hp=54/54 mana=118/118 mv=87/87 align=15 exp=10307 coin=9440021 bank=0 qp=0 prac=6 train=0 stash=0/50 remorts=0
+1795148515	cmd	Ravagger	4	3759	school.are	standing	100	0	-	score		| Name:       Ravagger | Level:       4 | Class:        Monk | // | Played:      2 hours | Sex:      Male | Guild:        Monk | // | Age:        17 years | Race:    Human | Castle:       None |	-	+
+1795148540	cmd	Ravagger	4	3759	school.are	standing	100	0	-	practice	kick	You practice kick.	-	-
+1795148542	cmd	Ravagger	4	3759	school.are	standing	100	0	-	practice	kick	You practice kick.	-	-
+1795148545	state	Ravagger	4	3759	school.are	lvl=4 hp=54/54 mana=118/118 mv=87/87 align=15 exp=10307 coin=9440021 bank=0 qp=0 prac=4 train=0 stash=0/50 remorts=0
+1795148545	cmd	Ravagger	4	3759	school.are	standing	100	0	-	score		| Name:       Ravagger | Level:       4 | Class:        Monk | // | Played:      2 hours | Sex:      Male | Guild:        Monk | // | Age:        17 years | Race:    Human | Castle:       None |	-	+
+1795148548	cmd	Ravagger	4	3759	school.are	standing	100	0	-	skills		Level  1: dagger              33%      hand to hand        75%       //           recall              75%       // Level  3: kick                19%      	-	+
+1795148562	cmd	Ravagger	4	3759	school.are	standing	100	0	-	practice	kick	You practice kick.	-	-
+1795148567	cmd	Ravagger	4	3759	school.are	standing	100	0	-	practice	kick	You practice kick.	-	-
+1795148570	cmd	Ravagger	4	3759	school.are	standing	100	0	-	look		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with	-	+
+1795148574	cmd	Ravagger	4	3759	school.are	standing	100	0	-	skills		Level  1: dagger              33%      hand to hand        75%       //           recall              75%       // Level  3: kick                29%      	-	+
+1795148580	cmd	Ravagger	4	3759	school.are	standing	100	0	-	practice	kick	You practice kick.	-	-
+1795148581	cmd	Ravagger	4	3759	school.are	standing	100	0	-	practice	kick	You practice kick.	-	-
+1795148582	cmd	Ravagger	4	3759	school.are	standing	100	0	-	practice	kick	(Tip: PRACTICE <skill> <number> or PRACTICE <skill> MAX spends several sessions at once.) // You have no practice sessions left.	-	-
+1795148590	state	Ravagger	4	3759	school.are	lvl=4 hp=54/54 mana=118/118 mv=87/87 align=15 exp=10307 coin=9440021 bank=0 qp=0 prac=0 train=0 stash=0/50 remorts=0
+1795148590	cmd	Ravagger	4	3759	school.are	standing	100	0	-	score		| Name:       Ravagger | Level:       4 | Class:        Monk | // | Played:      2 hours | Sex:      Male | Guild:        Monk | // | Age:        17 years | Race:    Human | Castle:       None |	-	+
+1795148614	cmd	Ravagger	4	3757	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795148618	cmd	Ravagger	4	3700	school.are	standing	100	0	-	south		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795148623	cmd	Ravagger	4	3700	school.are	standing	100	0	-	open	s	Ok.	-	-
+1795148625	cmd	Ravagger	4	3744	school.are	standing	100	0	-	south		North Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795148632	cmd	Ravagger	4	3739	school.are	standing	100	0	-	south		Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795148636	cmd	Ravagger	4	3739	school.are	standing	100	0	-	kill	ra	Your punch grazes the rabbit. // Your punch misses the rabbit.	-	-
+1795148637	coin	Ravagger	4	3739	school.are	+1	loot	(violence_update)	corpse of the rabbit	9440022
+1795148637	coin	Ravagger	4	3739	school.are	+2	loot	(violence_update)	corpse of the rabbit	9440024
+1795148639	cmd	Ravagger	4	3739	school.are	standing	100	0	-	kick		You aren't fighting anyone.	-	-
+1795148641	cmd	Ravagger	4	3739	school.are	standing	100	0	-	look		Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795148643	cmd	Ravagger	4	3739	school.are	standing	100	0	-	scan		the snail                          -to the South. // the boar                           -to the West.	-	-
+1795148648	cmd	Ravagger	4	3734	school.are	standing	100	1	-	south		Center of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795148651	achieved	Ravagger	5	3734	school.are	level-5	5	35	kill
+1795148651	level	Ravagger	5	3734	school.are	4	5	Monk 	0	10790	3065	kill
+1795148651	coin	Ravagger	5	3734	school.are	+1	loot	kill	corpse of the snail	9440025
+1795148651	coin	Ravagger	5	3734	school.are	+1	loot	kill	corpse of the snail	9440026
+1795148651	cmd	Ravagger	5	3734	school.are	standing	100	22	-	kill	sn	Your punch grazes the snail. // The snail is DEAD!! // You receive 227 experience points.	-	+
+1795148676	cmd	Ravagger	5	3760	school.are	standing	100	0	-	up		A Safe Room //   You are in a safe room, away from all the mean rabbits and snails of the Arena. // You can rest here, and go up to go back to the Temple of Devota.	-	+
+1795148679	area	Ravagger	5	4207	dresden.are	school.are	dresden.are	335	up
+1795148679	cmd	Ravagger	5	4207	dresden.are	standing	100	0	-	up		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795148683	area	Ravagger	5	3700	school.are	dresden.are	school.are	4	up
+1795148683	cmd	Ravagger	5	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795148686	cmd	Ravagger	5	3783	school.are	standing	100	0	-	east		A Gigantic Clown Head //   Before you is the largest clowns head you have ever seen, with all the // makeup intact, to include the big red painted on mouth.  This appears	-	+
+1795148687	cmd	Ravagger	5	3700	school.are	standing	100	0	-	west		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795148689	cmd	Ravagger	5	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
