@@ -322389,3 +322389,6 @@ Fri Nov 20 09:37:41 2026 :: Connection guard: refused 1 connection from 52.22.23
 Fri Nov 20 09:41:13 2026 :: Treasure goblin: vanished from room 2333 (Lost in the Mist, mahntor.are) (too long in one area).
 Fri Nov 20 09:42:46 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 5 of 6 in 6 hours).
 Fri Nov 20 09:47:50 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 29 refused in all, pause 4 this week, 1377 minutes left).
+Fri Nov 20 09:51:17 2026 :: Treasure goblin: vanished from room 5224 (Under the watchtower, oldthalo.are) (too long in one area).
+Fri Nov 20 09:52:55 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 6 of 6 in 6 hours).
+Fri Nov 20 09:52:55 2026 :: Connection guard: 5.161.75.7 paused for 12 hours (pause 2 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.75.7 lifts it.
