@@ -323657,3 +323657,5 @@ Fri Nov 20 22:59:54 2026 :: EOF encountered on read.
 Fri Nov 20 22:59:54 2026 :: Connection guard: 141.147.174.253 closed before a password prompt (strike 2 of 6 in 6 hours).
 Fri Nov 20 22:59:57 2026 :: Connection guard: 141.147.174.253 closed without a word (strike 3 of 6 in 6 hours).
 Fri Nov 20 23:00:06 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 20 23:01:56 2026 :: Connection guard: 151.245.151.127 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 20 23:05:11 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 1 of 6 in 6 hours).
