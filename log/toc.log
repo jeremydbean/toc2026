@@ -320582,3 +320582,6 @@ Fri Nov 20 00:23:16 2026 :: Treasure goblin: vanished from room 15196 (Junction,
 Fri Nov 20 00:23:54 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 22 refused in all, pause 4 this week, 2718 minutes left).
 Fri Nov 20 00:25:50 2026 :: Connection guard: last hour 11 closed without a word, 5 refused, 0 new characters refused, 0 newly paused; 8 addresses paused and 0 refused now, 14 active player addresses.
 Fri Nov 20 00:28:58 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 20 00:33:21 2026 :: Treasure goblin: vanished from room 3555 (A Tunnel in the Mountains, midennir.are) (too long in one area).
+Fri Nov 20 00:34:03 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 6 of 6 in 6 hours).
+Fri Nov 20 00:34:03 2026 :: Connection guard: 3.20.63.178 paused for 24 hours (pause 3 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 3.20.63.178 lifts it.
