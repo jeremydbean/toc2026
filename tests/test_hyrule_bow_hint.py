@@ -72,6 +72,11 @@ class BowHintTests(unittest.TestCase):
                 god.must("set char gohma hp 1", "")
                 god.sync("restore gohma")
                 god.sync("goto 4207")
+                # A fixture keeps its creation hit points; Gohma killed one
+                # before its first blow landed in CI. Make it sure of both.
+                god.must("set char zbowhero hp 30000", "")
+                god.must("set char zbowhero hitroll 300", "hitroll set to 300")
+                god.sync("restore zbowhero")
                 god.must("transfer zbowhero %d" % QUIET_ROOM, "")
                 hero.must("remove eagle", "You stop using")
                 hero.sync("look")
