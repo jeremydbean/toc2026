@@ -42019,3 +42019,39 @@
 1795210538	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	wear	sk	You stop using a pair of sub issue leggings. // You wear a long scale mail skirt on your legs.	-	-
 1795210542	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	drink	le	You can't drink from that.	-	-
 1795210551	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	compare	leg	A) a pair of sub issue leggings (level 0) // B) a long scale mail skirt (level 5), worn // Slot: legs.  Your damage comes from weapons.	-	+
+1795210584	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	wear	leg	You stop using a long scale mail skirt. // You wear a pair of sub issue leggings on your legs.	-	-
+1795210589	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	drop	ski	You drop a long scale mail skirt.	-	-
+1795210591	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	drop	ski	You drop a long scale mail skirt.	-	-
+1795210593	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795210602	got	Ravagger	8	4208	dresden.are	3074	a long scale mail skirt	armor	5	1500000	get	the floor
+1795210602	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	get	sk	You get a long scale mail skirt.	-	-
+1795210603	got	Ravagger	8	4208	dresden.are	3074	a long scale mail skirt	armor	5	1500000	get	the floor
+1795210603	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	get	sk	You get a long scale mail skirt.	-	-
+1795210609	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	put	skirt pit	You put a long scale mail skirt in the donation pit.	-	-
+1795210611	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	put	skirt pit	You put a long scale mail skirt in the donation pit.	-	-
+1795210613	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	inventory		You are carrying: // ( 2) a goblin's short sword //      (Glowing) (Humming) platemail of valor	-	+
+1795210626	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	compare	hjat	You do not have that item.	-	-
+1795210630	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	commands	hat	put          run          speedwalk    buy          cast         cc            // -            castle       cgos         channels     donate       exits         // exchange     get          inventory    ignore       kill         look      	-	+
+1795210635	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	compare	hat	A) a smurf hat (level 2) // B) A pair of glasses (level 2), worn // Slot: head.  Your damage comes from weapons.	-	+
+1795210654	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	wear	hat	You stop using A pair of glasses. // You wear a smurf hat on your head.	-	-
+1795210659	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	drop	gla	You drop A pair of glasses.	-	-
+1795210666	got	Ravagger	8	4208	dresden.are	101	A pair of glasses	armor	2	500	get	the floor
+1795210666	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	get	glas	You get A pair of glasses.	-	-
+1795210672	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	put	glas pit	You put A pair of glasses in the donation pit.	-	-
+1795210674	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795210675	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	inventory		You are carrying: // ( 2) a goblin's short sword //      (Glowing) (Humming) platemail of valor	-	+
+1795210683	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	put	sword pit	You put a goblin's short sword in the donation pit.	-	-
+1795210684	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	put	sword pit	You put a goblin's short sword in the donation pit.	-	-
+1795210691	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	look	ring	A small ring with a hinge is here collecting dust. // The a ring of holding is in perfect condition.	-	-
+1795210703	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	look	in ring	A ring of holding contains: //      Nothing.	-	-
+1795210711	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) (Humming) platemail of valor //      a small sword	-	+
+1795210718	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	put	plate pit	You put platemail of valor in the donation pit.	-	-
+1795210724	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	eat	br	You eat a pipeweed bread. // You are no longer hungry.	-	-
+1795210727	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795210728	cmd	Ravagger	8	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795210730	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795210735	cmd	Ravagger	8	4208	dresden.are	standing	100	11	-	save		Saving. Remember that ROM has automatic saving now.	-	-
+1795210746	sightings	Ravagger	8	4208	dresden.are	mob	4201:1/0/0 4202:1/0/0 3709:4/2/0 3713:4/2/0 3711:2/1/0 3712:3/1/0 3710:2/0/0 3716:2/2/0 3715:2/2/0 3714:1/1/1 2431:1/0/0 2430:1/1/0 4460:1/0/0 4458:1/0/0 4444:1/0/0 4456:1/0/0 4473:1/0/0 4468:1/0/0 3501:6/6/6 2435:1/0/0
+1795210746	sightings	Ravagger	8	4208	dresden.are	item	16:1/0 3074:2/2 101:1/1
+1795210746	session	Ravagger	8	4208	dresden.are	quit	1327s	+2 levels	+3760 exp	+231 copper	16 kills	0 deaths	0 quests	313 commands	6 refused	coin: loot 2s 31c	spent on: none	exp: kills +3766, skilluse +24, flee -30
+1795210850	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=15 mobs_fought=7 secs=900
