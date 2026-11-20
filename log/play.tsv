@@ -41677,3 +41677,86 @@
 1795208437	cleared	-	0	0	-	1664	herb	39	a chervil leaf	2917	0	moved	mob 4613	(mobile_update)	0	-
 1795208473	laid	-	0	0	-	1667	herb	37	a sprig of catnip	9692	newthalo.are	scatter
 1795209050	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=1 spotted=0 picked=0 passed=0 cleared=1 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795209419	area	Ravagger	6	4208	dresden.are	-	dresden.are	-1	(game loop)
+1795209419	achieved	Ravagger	6	4208	dresden.are	well-rested	5	60	(game loop)
+1795209428	cmd	Ravagger	6	4208	dresden.are	sleeping	100	0	-	stand		You wake and stand up.	-	-
+1795209430	cmd	Ravagger	6	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795209438	cmd	Ravagger	6	4208	dresden.are	standing	100	0	-	scan		The Watcher                        -to the East.	-	-
+1795209439	state	Ravagger	6	4208	dresden.are	lvl=6 hp=77/77 mana=166/166 mv=94/99 align=15 exp=13990 coin=9440125 bank=0 qp=0 prac=0 train=0 stash=0/50 remorts=0
+1795209439	cmd	Ravagger	6	4208	dresden.are	standing	100	0	-	score		| Name:       Ravagger | Level:       6 | Class:        Monk | // | Played:      2 hours | Sex:      Male | Guild:        Monk | // | Age:        17 years | Race:    Human | Castle:       None |	-	+
+1795209467	refused	Ravagger	6	4208	dresden.are	standing	100	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1795209469	cmd	Ravagger	6	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      a smurf hat // ( 3) a pipeweed bread	-	+
+1795209476	cmd	Ravagger	6	4208	dresden.are	standing	100	0	-	compare	hat	A) a smurf hat (level 2) // B) A pair of glasses (level 2), worn // Slot: head.  Your damage comes from weapons.	-	+
+1795209494	cmd	Ravagger	6	4208	dresden.are	standing	100	0	-	compare	glasses	A pair of glasses is not something you can wear.	-	-
+1795209507	cmd	Ravagger	6	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795209509	cmd	Ravagger	6	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795209513	cmd	Ravagger	6	4205	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795209514	cmd	Ravagger	6	4209	dresden.are	standing	100	0	-	south		Private Prayer Room. //   There are a number of pews for kneeling and a rack of candles in this room. // You feel at ease here as if Devota herself were here to protect you.  You	-	+
+1795209516	cmd	Ravagger	6	4205	dresden.are	standing	100	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795209516	cmd	Ravagger	6	4207	dresden.are	standing	100	0	-	north		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795209518	cmd	Ravagger	6	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795209525	cmd	Ravagger	6	4207	dresden.are	standing	100	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795209527	cmd	Ravagger	6	4205	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795209529	cmd	Ravagger	6	4209	dresden.are	standing	100	0	-	south		Private Prayer Room. //   There are a number of pews for kneeling and a rack of candles in this room. // You feel at ease here as if Devota herself were here to protect you.  You	-	+
+1795209539	cmd	Ravagger	6	4205	dresden.are	standing	100	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795209544	cmd	Ravagger	6	4207	dresden.are	standing	100	0	-	north		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795209545	cmd	Ravagger	6	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795209546	cmd	Ravagger	6	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795209547	cmd	Ravagger	6	2427	dresden.are	standing	100	1	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795209549	cmd	Ravagger	6	4201	dresden.are	standing	100	0	-	west		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795209550	cmd	Ravagger	6	4202	dresden.are	standing	100	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795209551	cmd	Ravagger	6	4207	dresden.are	standing	100	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795209554	area	Ravagger	6	3700	school.are	dresden.are	school.are	135	up
+1795209554	cmd	Ravagger	6	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795209555	cmd	Ravagger	6	3700	school.are	standing	100	0	-	south		The door is closed.	-	-
+1795209557	cmd	Ravagger	6	3700	school.are	standing	100	0	-	open	s	Ok.	-	-
+1795209559	cmd	Ravagger	6	3744	school.are	standing	100	0	-	south		North Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209562	cmd	Ravagger	6	3743	school.are	standing	100	0	-	west		North Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  You can barely see the ceiling.  You feel as if you are being watched	-	+
+1795209563	spotted	Ravagger	6	3742	school.are	1589	herb	52	an asparagus shoot	11116	1	moved	arrive
+1795209563	cmd	Ravagger	6	3742	school.are	standing	100	0	-	west		North West Corner of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209567	cmd	Ravagger	6	3742	school.are	standing	100	0	-	kill	ra	Your punch misses the rabbit. // Your punch misses the rabbit.	-	-
+1795209572	cmd	Ravagger	6	3742	school.are	standing	100	0	-	kick		You aren't fighting anyone.	-	-
+1795209573	passed	Ravagger	6	3743	school.are	1589	herb	52	an asparagus shoot	11126	10	1	moved	3742	left
+1795209573	cmd	Ravagger	6	3743	school.are	standing	100	0	-	east		North Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  You can barely see the ceiling.  You feel as if you are being watched	-	+
+1795209578	cmd	Ravagger	6	3743	school.are	standing	100	0	-	kick	ra	You aren't fighting anyone.	-	-
+1795209581	cmd	Ravagger	6	3743	school.are	standing	100	0	-	kill	ra	Your punch misses the rabbit. // Your punch misses the rabbit.	-	-
+1795209583	coin	Ravagger	6	3743	school.are	+1	loot	(violence_update)	corpse of the rabbit	9440126
+1795209583	coin	Ravagger	6	3743	school.are	+2	loot	(violence_update)	corpse of the rabbit	9440128
+1795209586	cmd	Ravagger	6	3743	school.are	standing	100	0	-	kick		You aren't fighting anyone.	-	-
+1795209586	cmd	Ravagger	6	3742	school.are	standing	100	0	-	west		North West Corner of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209588	coin	Ravagger	6	3742	school.are	+1	loot	kill	corpse of the snail	9440129
+1795209588	coin	Ravagger	6	3742	school.are	+1	loot	kill	corpse of the snail	9440130
+1795209588	cmd	Ravagger	6	3742	school.are	standing	100	1	-	kill	sn	Your punch misses the snail. // Your punch grazes the snail. // The snail is DEAD!!	-	+
+1795209594	coin	Ravagger	6	3742	school.are	+1	loot	kill	corpse of the snail	9440131
+1795209594	coin	Ravagger	6	3742	school.are	+1	loot	kill	corpse of the snail	9440132
+1795209594	cmd	Ravagger	6	3742	school.are	standing	100	2	-	kill	sn	Your punch grazes the snail. // The snail is DEAD!! // You receive 108 experience points (54 of them rested).	-	+
+1795209597	cmd	Ravagger	6	3742	school.are	standing	100	0	-	kill	sn	They aren't here.	-	-
+1795209597	cmd	Ravagger	6	3742	school.are	standing	100	0	-	look		North West Corner of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209598	cmd	Ravagger	6	3737	school.are	standing	100	0	-	south		West Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209603	cmd	Ravagger	6	3737	school.are	standing	100	0	-	kill	ra	Your punch hits the rabbit. // Your punch misses the rabbit.	-	-
+1795209604	coin	Ravagger	6	3737	school.are	+1	loot	(violence_update)	corpse of the rabbit	9440133
+1795209604	coin	Ravagger	6	3737	school.are	+2	loot	(violence_update)	corpse of the rabbit	9440135
+1795209606	cmd	Ravagger	6	3737	school.are	standing	100	0	-	kick		You aren't fighting anyone.	-	-
+1795209606	cmd	Ravagger	6	3732	school.are	standing	100	0	-	south		West Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209609	cmd	Ravagger	6	3732	school.are	standing	100	0	-	kill	bo	Your punch scratches the boar. // Your punch hits the boar.	-	-
+1795209612	cmd	Ravagger	6	3732	school.are	fighting	100	0	fight	kick		Your kick misses the boar.	-	-
+1795209614	cmd	Ravagger	6	3732	school.are	fighting	100	0	fight	kick		Your kick scratches the boar.	-	-
+1795209617	coin	Ravagger	6	3732	school.are	+1	loot	kick	corpse of the boar	9440136
+1795209617	coin	Ravagger	6	3732	school.are	+6	loot	kick	corpse of the boar	9440142
+1795209617	cmd	Ravagger	6	3732	school.are	fighting	100	2	fight	kick		Your kick grazes the boar. // The boar is DEAD!! // You receive 272 experience points (136 of them rested).	-	+
+1795209624	cmd	Ravagger	6	3727	school.are	standing	100	0	-	south		West Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209628	cmd	Ravagger	6	3724	school.are	standing	100	0	-	south		South West Corner of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209630	cmd	Ravagger	6	3723	school.are	standing	100	0	-	east		South Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209633	cmd	Ravagger	6	3722	school.are	standing	100	0	-	east		South Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209634	cmd	Ravagger	6	3725	school.are	standing	100	0	-	east		South Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209635	cmd	Ravagger	6	3726	school.are	standing	100	0	-	east		South East Corner of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209636	cmd	Ravagger	6	3726	school.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1795209638	cmd	Ravagger	6	3725	school.are	standing	100	0	-	west		South Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209640	cmd	Ravagger	6	3725	school.are	standing	100	0	-	kill	fo	Your punch scratches the fox. // Your punch scratches the fox.	-	-
+1795209642	cmd	Ravagger	6	3725	school.are	fighting	100	0	fight	kick		Your kick misses the fox.	-	-
+1795209645	cmd	Ravagger	6	3725	school.are	fighting	98	0	fight	kick		Your kick scratches the fox.	-	-
+1795209646	coin	Ravagger	6	3725	school.are	+1	loot	(violence_update)	corpse of the fox	9440143
+1795209646	coin	Ravagger	6	3725	school.are	+2	loot	(violence_update)	corpse of the fox	9440145
+1795209650	cmd	Ravagger	6	3726	school.are	standing	98	0	-	east		South East Corner of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209652	cmd	Ravagger	6	3731	school.are	standing	98	0	-	north		East Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795209655	cmd	Ravagger	6	3730	school.are	standing	98	0	-	west		Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
