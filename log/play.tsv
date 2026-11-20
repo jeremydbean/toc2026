@@ -41416,3 +41416,8 @@
 1795189250	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
 1795190150	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
 1795191050	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795191792	moved	-	0	0	-	1006	component	73	a roper's tentacle	86428	0	5646	tarin.are	17775	landoz.are
+1795191792	moved	-	0	0	-	1005	herb	50	a head of cabbage	86428	1	4205	dresden.are	17285	highland.are
+1795191856	moved	-	0	0	-	1007	component	70	a dragon tooth	86439	0	1374	htower.are	12038	froboz.are
+1795191901	moved	-	0	0	-	1009	herb	45	a sarsaparilla vine	86444	0	4437	dresden.are	5021	eastern.are
+1795191901	moved	-	0	0	-	1008	herb	34	an amaranth plant	86444	0	4303	dresden.are	24369	chess.are
