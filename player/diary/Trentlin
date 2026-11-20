@@ -318,36 +318,37 @@ List earn 38769706 0 interest
 List spend 168500000 0 heal
 End
 Day 2026-11-20
-Played 1145
+Played 1385
 Level 52 52 0
-Exp 4992 10
-Kills 10
+Exp 5980 10
+Kills 11
 Deaths 0
 Close 0
-Quests 3 0
+Quests 4 186
 Dailies 0 0
 List skill 79 80 iron skin
 List skill 93 94 fists of fury
-List skill 84 85 second attack
+List skill 84 86 second attack
 List skill 77 78 meditation
 List skill 89 90 parry
-List area 293 0 City of Dresden
+List skill 85 86 dodge
+List area 349 0 City of Dresden
 List area 5 0 Continental Drift
 List area 31 0 Holy Grove
 List area 19 0 Old Thalos
-List area 16 0 Miden'nir
+List area 20 0 Miden'nir
 List area 11 0 Thalos
 List area 2 0 Plains of the North
 List area 1 0 the Upper Argo
 List area 21 0 Gelidia
-List area 40 0 New Thalos
-List area 71 0 Korzath's Fortress
-List area 452 0 Battleground
-More area 24
-List item 3 0 a diamond key
-List earn 365583504 0 quests
-List earn 56698230 0 loot
+List area 45 0 New Thalos
+List area 80 0 Korzath's Fortress
+List area 545 0 Battleground
+More area 27
+List item 4 0 a diamond key
+List earn 506192544 0 quests
+List earn 61830561 0 loot
 List earn 38866631 0 interest
-List spend 169400000 0 heal
+List spend 170200000 0 heal
 End
 #END
