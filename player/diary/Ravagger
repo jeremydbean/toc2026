@@ -1,9 +1,9 @@
 #DIARY 1
 Day 2026-11-20
-Played 6219
-Level 3 7 4
-Exp 9339 25
-Kills 37
+Played 6515
+Level 3 8 5
+Exp 10389 55
+Kills 40
 Deaths 0
 Close 0
 Quests 0 0
@@ -20,14 +20,16 @@ List achv 5 0 Well Rested
 List achv 10 0 Exact Change
 More achv 1
 List skill 32 33 dagger
-List skill 39 62 kick
+List skill 39 63 kick
+List skill 60 61 dodge
 List area 3483 0 Mud School
-List area 1372 0 City of Dresden
-List area 154 0 Limbo
+List area 1412 0 City of Dresden
+List area 222 0 Limbo
 List area 18 0 Continental Drift
 List area 58 0 Training Dummy Yard
 List area 131 0 The Chessboard
 List area 1003 0 Smurf Village
+List area 188 0 Miden'nir
 List item 1 0 a pair of sub issue boots
 List item 2 0 a sub issue bracer
 List item 2 0 a pair of sub issue leggings
@@ -40,8 +42,8 @@ List item 1 0 a pair of sub issue sleeves
 List item 1 0 a key
 List item 1 0 a mud school diploma
 List item 1 0 a silver key
-More item 10
-List earn 10312 0 loot
+More item 14
+List earn 10348 0 loot
 List spend 4 0 buy
 List spend 10000 0 other
 End

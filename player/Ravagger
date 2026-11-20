@@ -2,7 +2,7 @@
 Name Ravagger~
 Id   56640
 Serial 3950626
-LogO 1795210178
+LogO 1795210474
 Vers 4
 Prom ~
 Race human~
@@ -16,19 +16,19 @@ PsiKnown ~
 ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble 20261114-season-area-ids 20261116-wrapped-pools~
 Cast none
-Levl 7
-Plyd 10805
+Levl 8
+Plyd 11101
 ListRemorts ~
 NumRemorts 0
 Note 0
-SkillDamage 5 30 7
-MeleeRatio 1562 30
+SkillDamage 5 33 8
+MeleeRatio 1316 33
 Scro 22
-Room 2562
-HMV  91 91 206 206 105 105
+Room 3505
+HMV  52 107 216 247 111 111
 NewGold 44
 NewPlat 9
-NewCopp 208
+NewCopp 244
 NewSilv 1
 BankCP 0
 IntTime 1795144964
@@ -37,7 +37,7 @@ Dcount 0
 SavedOnce 1
 PkRec 0
 PkGiv 0
-AchKills 37
+AchKills 40
 AchQuests 0
 AchDeaths 0
 AchExplore 0
@@ -55,11 +55,11 @@ Achv visit-pet-shop 1795210042
 Achv visit-chessboard 1795148117
 Achv funny-sleepwalk 1795146863
 Achv explored-1 1795150077
-AchSet areas 477615788 675805239 1028131563 1103516333 1255184829 1674073230 ~
-AchSet rooms 17 101-129 2401-2402 2404-2405 2415 2419 2427-2431 2433-2437 2470 2485 3241 3700-3705 3709 3711-3727 3729-3732 3734 3736-3737 3739 3741-3744 3746 3748-3750 3752-3762 3771-3783 3792-3795 4201-4211 4649 4800-4809 24300-24301 ~
+AchSet areas 477615788 675805239 1028131563 1103516333 1255184829 1643837571 1674073230 ~
+AchSet rooms 17 101-129 2401-2402 2404-2405 2415 2419 2427-2437 2470 2485 3241 3505 3507 3510 3585 3700-3705 3709 3711-3727 3729-3732 3734 3736-3737 3739 3741-3744 3746 3748-3750 3752-3762 3771-3783 3792-3795 4201-4211 4649 4800-4809 24300-24301 ~
 AchSet explored-areas 477615788 ~
-LastOut  1795210178
-Rested 476 0
+LastOut  1795210474
+Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1795144941
 SesDur   5460
@@ -69,7 +69,7 @@ SesKill  25
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  16556
+Exp  17576
 Act  65788
 Comm 24608
 Mounted 0
@@ -96,22 +96,22 @@ Color 14 0
 Color 15 0
 Color 16 0
 Pos  8
-Prac 5
-Trai 1
+Prac 9
+Trai 2
 Tutorial 0 1081356
 Save  -8
-Alig  15
+Alig  30
 Hit   7
 ACs 63 57 57 79
 Attr 14 13 13 18 18
 AMod 0 8 11 0 10
 Pass $6$0./7Mh0ovRki7ngm$HQ87mfYAI0FYstguo9WpLGn8wZ9OHDyvvRzhdA6XqE1AsXORsTbESrpQGIIVz05.IP3DP.yTp6n/2ZBLSC8tf/~
-Titl  the Student of Shape~
+Titl  the Student of Size~
 Pnts 40
 TSex 1
 LLev 1
-HMVP 91 206 136
-Cond 0 9 28
+HMVP 107 247 142
+Cond 0 4 23
 Sk 8 'axe'
 Sk 33 'dagger'
 Sk 6 'flail'
@@ -120,9 +120,9 @@ Sk 3 'polearm'
 Sk 7 'spear'
 Sk 3 'sword'
 Sk 15 'whip'
-Sk 60 'dodge'
+Sk 61 'dodge'
 Sk 75 'hand to hand'
-Sk 62 'kick'
+Sk 63 'kick'
 Sk 1 'trip'
 Sk 1 'nerve damage'
 Sk 1 'meditation'
@@ -130,9 +130,9 @@ Sk 75 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
-AffD 'bless'   0  54  -7  24          0          0
-AffD 'bless'   0  54   7  18          0          0
-AffD 'armor'   0  12 -20  17          0          0
+AffD 'bless'   0  49  -7  24          0          0
+AffD 'bless'   0  49   7  18          0          0
+AffD 'armor'   0   7 -20  17          0          0
 End
 
 #O
@@ -142,16 +142,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 25 0 0
-End
-
-#O
-Vnum 3703
-Nest 0
-Wear -1
-Cost 0
-Cond 99
-Repd 0
+Val  0 0 20 0 0
 End
 
 #O
@@ -263,7 +254,7 @@ Vnum 3709
 Nest 0
 Wear 9
 Cost 0
-Cond 100
+Cond 99
 Repd 0
 Affect -1 0 -1 -9 14 0 0
 End
@@ -273,7 +264,7 @@ Vnum 3710
 Nest 0
 Wear 10
 Cost 0
-Cond 99
+Cond 98
 Repd 0
 Affect -1 0 -1 -22 14 0 0
 End
@@ -364,6 +355,47 @@ Lev  40
 Cost 22000000
 Cond 100
 Repd 0
+End
+
+#O
+Vnum 3500
+Nest 0
+Wear -1
+Lev  5
+Cost 10000
+Cond 75
+Repd 0
+End
+
+#O
+Vnum 3074
+Nest 0
+Wear -1
+Lev  5
+Cost 1500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3500
+Nest 0
+Wear -1
+Lev  5
+Cost 10000
+Cond 75
+Repd 0
+End
+
+#O
+Vnum 3074
+Nest 0
+Wear -1
+Lev  5
+Cost 1500000
+Cond 100
+Repd 0
+Affect -1 5 -1 5 21 0 0
 End
 
 #END

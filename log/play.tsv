@@ -41921,3 +41921,101 @@
 1795210242	cmd	Ravagger	7	2553	limbo.are	standing	100	0	-	down		Guards Room. //   There are many barrels and chests of food in here.  All of it looks spoiled. // This is where the guards of Dresden hang out when not on duty.	-	+
 1795210251	cmd	Ravagger	7	2553	limbo.are	standing	100	0	-	north		The door is closed.	-	-
 1795210254	cmd	Ravagger	7	2553	limbo.are	standing	100	0	-	open	n	Ok.	-	-
+1795210257	cmd	Ravagger	7	2550	limbo.are	standing	100	0	-	north		Entrance to the Mayor's Office. //   The entrance is guarded by two very large guards that stand sentinel, braving // the elements for eternity.  The ensignia of a bald eagle on a white background	-	+
+1795210261	area	Ravagger	7	2430	dresden.are	limbo.are	dresden.are	38	east
+1795210261	cmd	Ravagger	7	2430	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795210263	cmd	Ravagger	7	2431	dresden.are	standing	100	0	-	south		Inside the Southern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795210271	cmd	Ravagger	7	2431	dresden.are	standing	100	0	-	south		The gate is closed.	-	-
+1795210276	cmd	Ravagger	7	2431	dresden.are	standing	100	0	-	open	gat	I see no gat here.	-	-
+1795210281	cmd	Ravagger	7	2431	dresden.are	standing	100	0	-	open	s	Ok.	-	-
+1795210283	cmd	Ravagger	7	2432	dresden.are	standing	100	0	-	south		Outside the Southern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1795210286	area	Ravagger	7	3505	midennir.are	dresden.are	midennir.are	25	south
+1795210286	cmd	Ravagger	7	3505	midennir.are	standing	100	0	-	south		The Trail to Miden'nir //   You are in a light forest. A path leads south, but the passage to the // east is easy enough. To the west, smoke can be seen rising above the	-	+
+1795210292	cmd	Ravagger	7	3505	midennir.are	fighting	94	0	fight	kick		Your kick misses the goblin.	-	-
+1795210296	cmd	Ravagger	7	3505	midennir.are	fighting	94	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210299	cmd	Ravagger	7	3505	midennir.are	fighting	94	0	fight	kick		Your kick misses the goblin.	-	-
+1795210302	cmd	Ravagger	7	3505	midennir.are	fighting	85	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210307	cmd	Ravagger	7	3505	midennir.are	fighting	81	0	fight	kick		Your kick misses the goblin.	-	-
+1795210311	cmd	Ravagger	7	3505	midennir.are	fighting	90	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210313	cmd	Ravagger	7	3505	midennir.are	fighting	84	0	fight	kick		Your kick misses the goblin.	-	-
+1795210316	cmd	Ravagger	7	3505	midennir.are	fighting	81	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210320	cmd	Ravagger	7	3505	midennir.are	fighting	76	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210321	skill	Ravagger	7	3505	midennir.are	dodge	60	61	success	(violence_update)
+1795210323	cmd	Ravagger	7	3505	midennir.are	fighting	75	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210324	coin	Ravagger	7	3505	midennir.are	+12	loot	(violence_update)	-	9440320
+1795210330	cmd	Ravagger	7	3505	midennir.are	fighting	75	0	fight	kick		Your kick misses the goblin.	-	-
+1795210334	cmd	Ravagger	7	3505	midennir.are	fighting	74	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210337	cmd	Ravagger	7	3505	midennir.are	fighting	74	0	fight	kick		Your kick misses the goblin.	-	-
+1795210342	cmd	Ravagger	7	3505	midennir.are	fighting	74	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210348	cmd	Ravagger	7	3505	midennir.are	fighting	74	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210353	cmd	Ravagger	7	3505	midennir.are	fighting	80	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210357	cmd	Ravagger	7	3505	midennir.are	fighting	80	0	fight	kick		Your kick misses the goblin.	-	-
+1795210360	cmd	Ravagger	7	3505	midennir.are	fighting	80	0	fight	kick		Your kick misses the goblin.	-	-
+1795210363	cmd	Ravagger	7	3505	midennir.are	fighting	80	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210366	cmd	Ravagger	7	3505	midennir.are	fighting	78	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210369	cmd	Ravagger	7	3505	midennir.are	fighting	78	0	fight	kick		Your kick misses the goblin.	-	-
+1795210375	cmd	Ravagger	7	3505	midennir.are	fighting	70	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210377	cmd	Ravagger	7	3505	midennir.are	fighting	70	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210380	cmd	Ravagger	7	3505	midennir.are	fighting	70	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210383	skill	Ravagger	7	3505	midennir.are	kick	62	63	success	kick
+1795210383	cmd	Ravagger	7	3505	midennir.are	fighting	68	0	fight	kick		Your kick grazes the goblin. // You have become better at kick!	-	-
+1795210386	cmd	Ravagger	7	3505	midennir.are	fighting	68	0	fight	quit		No way! You are fighting.	-	-
+1795210388	level	Ravagger	8	3505	midennir.are	7	8	Monk 	0	17414	664	(violence_update)
+1795210388	got	Ravagger	8	3505	midennir.are	3500	a goblin's short sword	weapon	5	10000	(violence_update)	corpse of the goblin
+1795210388	got	Ravagger	8	3505	midennir.are	3074	a long scale mail skirt	armor	5	1500000	(violence_update)	corpse of the goblin
+1795210388	coin	Ravagger	8	3505	midennir.are	+12	loot	(violence_update)	corpse of the goblin	9440332
+1795210399	cmd	Ravagger	8	3505	midennir.are	fighting	57	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210402	cmd	Ravagger	8	3505	midennir.are	fighting	57	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210404	cmd	Ravagger	8	3505	midennir.are	fighting	65	0	fight	kick		Your kick misses the goblin.	-	-
+1795210407	cmd	Ravagger	8	3505	midennir.are	fighting	65	0	fight	scan		You don't see anything near you.	-	-
+1795210411	cmd	Ravagger	8	3507	midennir.are	fighting	65	0	fight	flee	n	A Burned Cart //   There is a smoldering cart here with arrows sticking in it.   // You can tell that it hasn't been too long since this cart was burned	-	+
+1795210414	cmd	Ravagger	8	3505	midennir.are	standing	65	0	-	north		The Trail to Miden'nir //   You are in a light forest. A path leads south, but the passage to the // east is easy enough. To the west, smoke can be seen rising above the	-	+
+1795210415	refused	Ravagger	8	3505	midennir.are	fighting	65	0	fight	north		No way!  You are still fighting!  FLEE to break away.	refusal:position	-
+1795210420	cmd	Ravagger	8	3505	midennir.are	fighting	65	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210424	cmd	Ravagger	8	3507	midennir.are	fighting	65	0	fight	flee	n	A Burned Cart //   There is a smoldering cart here with arrows sticking in it.   // You can tell that it hasn't been too long since this cart was burned	-	+
+1795210430	refused	Ravagger	8	3507	midennir.are	standing	65	0	-	(unknown)		Huh? Did you mean SCAN?	refusal:unknown-command	-
+1795210443	cmd	Ravagger	8	3585	midennir.are	fighting	56	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210445	refused	Ravagger	8	3585	midennir.are	fighting	56	0	fight	east		No way!  You are still fighting!  FLEE to break away.	refusal:position	-
+1795210447	cmd	Ravagger	8	3585	midennir.are	fighting	56	0	fight	flee		PANIC! You couldn't escape!	-	-
+1795210451	cmd	Ravagger	8	3510	midennir.are	fighting	47	0	fight	flee		A Crossroads //   Here footworn paths meet leading north, south and east. The trees seem to // be closing in on you at this point, and you can barely see the sky	-	+
+1795210456	cmd	Ravagger	8	3507	midennir.are	standing	47	0	-	north		A Burned Cart //   There is a smoldering cart here with arrows sticking in it.   // You can tell that it hasn't been too long since this cart was burned	-	+
+1795210457	cmd	Ravagger	8	3505	midennir.are	standing	47	0	-	north		The Trail to Miden'nir //   You are in a light forest. A path leads south, but the passage to the // east is easy enough. To the west, smoke can be seen rising above the	-	+
+1795210458	refused	Ravagger	8	3505	midennir.are	fighting	47	0	fight	north		No way!  You are still fighting!  FLEE to break away.	refusal:position	-
+1795210461	cmd	Ravagger	8	3505	midennir.are	fighting	47	0	fight	kick		Your kick misses the goblin.	-	-
+1795210463	got	Ravagger	8	3505	midennir.are	3500	a goblin's short sword	weapon	5	10000	(violence_update)	corpse of the goblin
+1795210463	got	Ravagger	8	3505	midennir.are	3074	a long scale mail skirt	armor	5	1500000	(violence_update)	corpse of the goblin
+1795210463	coin	Ravagger	8	3505	midennir.are	+12	loot	(violence_update)	corpse of the goblin	9440344
+1795210465	refused	Ravagger	8	3505	midennir.are	fighting	47	0	fight	north		No way!  You are still fighting!  FLEE to break away.	refusal:position	-
+1795210468	cmd	Ravagger	8	3505	midennir.are	fighting	41	0	fight	kick		Your kick misses the goblin.	-	-
+1795210471	cmd	Ravagger	8	3505	midennir.are	fighting	41	0	fight	kick		Your kick misses the goblin.	-	-
+1795210474	cmd	Ravagger	8	3505	midennir.are	fighting	41	0	fight	kick		Your kick misses the goblin.	-	-
+1795210477	cmd	Ravagger	8	3505	midennir.are	fighting	48	0	fight	kick		Your kick grazes the goblin.	-	-
+1795210479	cmd	Ravagger	8	3505	midennir.are	fighting	48	0	fight	kick		Your kick scratches the goblin.	-	-
+1795210482	cmd	Ravagger	8	3505	midennir.are	fighting	48	0	fight	kick		Your kick misses the goblin.	-	-
+1795210485	coin	Ravagger	8	3505	midennir.are	+12	loot	kick	-	9440356
+1795210485	cmd	Ravagger	8	3505	midennir.are	fighting	48	1	fight	kick		Your kick scratches the goblin. // The goblin is DEAD!! // You receive 174 experience points.	-	+
+1795210488	cmd	Ravagger	8	3505	midennir.are	standing	48	0	-	kick		You aren't fighting anyone.	-	-
+1795210488	area	Ravagger	8	2432	dresden.are	midennir.are	dresden.are	202	north
+1795210488	cmd	Ravagger	8	2432	dresden.are	standing	48	0	-	north		Outside the Southern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1795210490	cmd	Ravagger	8	2431	dresden.are	standing	48	0	-	north		Inside the Southern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795210492	cmd	Ravagger	8	2430	dresden.are	standing	48	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795210493	cmd	Ravagger	8	2429	dresden.are	standing	48	0	-	north		Bridge of the Mermaids. //   Once you reach the center of the bridge you understand how it got its name. // On either side of the bridge there is a statue of a mermaid build into the	-	+
+1795210494	cmd	Ravagger	8	2428	dresden.are	standing	48	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795210495	cmd	Ravagger	8	2427	dresden.are	standing	48	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795210496	cmd	Ravagger	8	2404	dresden.are	standing	48	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795210498	cmd	Ravagger	8	2409	dresden.are	standing	48	0	-	west		Southwestern Oak Tree Square. //   This is the Southwestern corner of Oak Tree Square. // [Exits: north east]	-	-
+1795210499	cmd	Ravagger	8	2409	dresden.are	standing	48	0	-	west		Alas, you cannot go that way.	-	-
+1795210500	cmd	Ravagger	8	2409	dresden.are	standing	48	0	-	west		Alas, you cannot go that way.	-	-
+1795210502	cmd	Ravagger	8	2409	dresden.are	standing	48	0	-	south		Alas, you cannot go that way.	-	-
+1795210504	cmd	Ravagger	8	2405	dresden.are	standing	48	0	-	north		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1795210505	cmd	Ravagger	8	2433	dresden.are	standing	48	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1795210508	cmd	Ravagger	8	4201	dresden.are	standing	48	0	-	south		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795210510	cmd	Ravagger	8	4202	dresden.are	standing	48	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795210511	cmd	Ravagger	8	4207	dresden.are	standing	48	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795210514	cmd	Ravagger	8	4208	dresden.are	standing	48	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795210520	achieved	Ravagger	8	4208	dresden.are	wings-of-mercy	15	90	(mobile_update)
+1795210522	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) a war banner // <worn around neck>  (Glowing) a small necklace	-	+
+1795210532	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	inventory		You are carrying: // ( 2) a long scale mail skirt // ( 2) a goblin's short sword	-	+
+1795210538	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	wear	sk	You stop using a pair of sub issue leggings. // You wear a long scale mail skirt on your legs.	-	-
+1795210542	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	drink	le	You can't drink from that.	-	-
+1795210551	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	compare	leg	A) a pair of sub issue leggings (level 0) // B) a long scale mail skirt (level 5), worn // Slot: legs.  Your damage comes from weapons.	-	+
