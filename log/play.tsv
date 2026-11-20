@@ -40521,3 +40521,85 @@
 1795147179	cmd	Ravagger	4	4211	dresden.are	standing	98	0	-	north		Entrance to the inner Sanctum. //   This door is guarded by a very large warrior dressed in white robes and // wielding a two-handed sword.	-	+
 1795147182	cmd	Ravagger	4	4211	dresden.are	standing	98	0	-	north		The Templar of Devota stands immovable before you blocking your way.	-	-
 1795147187	cmd	Ravagger	4	4211	dresden.are	standing	98	0	-	nw		Alas, you cannot go that way.	-	-
+1795147192	cmd	Ravagger	4	4211	dresden.are	standing	98	0	-	north		The Templar of Devota stands immovable before you blocking your way.	-	-
+1795147194	cmd	Ravagger	4	4204	dresden.are	standing	98	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795147195	cmd	Ravagger	4	4203	dresden.are	standing	98	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795147196	cmd	Ravagger	4	4210	dresden.are	standing	98	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1795147198	cmd	Ravagger	4	4210	dresden.are	standing	98	0	-	north		Alas, you cannot go that way.	-	-
+1795147199	cmd	Ravagger	4	4203	dresden.are	standing	98	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795147201	cmd	Ravagger	4	4203	dresden.are	standing	98	0	-	east		Alas, you cannot go that way.	-	-
+1795147204	cmd	Ravagger	4	4203	dresden.are	standing	98	0	-	east		Alas, you cannot go that way.	-	-
+1795147205	cmd	Ravagger	4	4202	dresden.are	standing	96	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795147206	cmd	Ravagger	4	4201	dresden.are	standing	96	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795147209	cmd	Ravagger	4	2433	dresden.are	standing	96	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1795147212	cmd	Ravagger	4	2434	dresden.are	standing	96	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795147214	cmd	Ravagger	4	2435	dresden.are	standing	96	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795147215	cmd	Ravagger	4	2436	dresden.are	standing	96	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795147218	cmd	Ravagger	4	2437	dresden.are	standing	96	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795147221	cmd	Ravagger	4	4800	dresden.are	standing	96	0	-	south		Another Dimension //   You have somehow left the City of Dresden, and entered another dimension. // To the north you can still make out the streets of Dresden thru the mist,	-	+
+1795147223	cmd	Ravagger	4	4801	dresden.are	standing	96	0	-	south		The passage way //   A long narrow path leads upwards in a small secluded valley. Large but gentle // breezes ruffle the plethora of raiment that you wear, and a playful mist	-	+
+1795147225	cmd	Ravagger	4	4802	dresden.are	standing	96	0	-	south		The narrow entrance //   You have reached the entrance of a narrow box canyon. Standing beside you is // an odd weather worn stone statue, that seems oddly out of place in the	-	+
+1795147229	cmd	Ravagger	4	4803	dresden.are	standing	96	0	-	south		The Palm of the Creator //   A large stone hand rises out of the earth and points skyward...the only place // you find to stand in the room is at the center of the giant stone effigy.	-	+
+1795147242	cmd	Ravagger	4	4804	dresden.are	standing	96	0	-	look	pit	This is where you put money and items to help Doz expand this shrine and // convert more people to the belief of Mota, lord of the gods.	-	-
+1795147244	spotted	Ravagger	4	4806	dresden.are	917	herb	40	a clove	57829	1	scatter	arrive
+1795147244	cmd	Ravagger	4	4806	dresden.are	standing	96	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1795147247	passed	Ravagger	4	4804	dresden.are	917	herb	40	a clove	57832	3	1	scatter	4806	left
+1795147247	cmd	Ravagger	4	4804	dresden.are	standing	96	1	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795147248	cmd	Ravagger	4	4804	dresden.are	standing	96	0	-	south		Alas, you cannot go that way.	-	-
+1795147251	cmd	Ravagger	4	4806	dresden.are	standing	96	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1795147253	cmd	Ravagger	4	4804	dresden.are	standing	96	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795147253	cmd	Ravagger	4	4807	dresden.are	standing	96	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1795147256	cmd	Ravagger	4	4807	dresden.are	standing	96	0	-	north		Alas, you cannot go that way.	-	-
+1795147259	cmd	Ravagger	4	4804	dresden.are	standing	96	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795147260	cmd	Ravagger	4	4805	dresden.are	standing	96	0	-	north		The Masters Place //   Here resides the Master of all the monks, it is he that monks seek for // guidance. Lighted joss sticks fill the room with the sweet perfume of lotus	-	+
+1795147262	cmd	Ravagger	4	4805	dresden.are	standing	96	0	-	west		Alas, you cannot go that way.	-	-
+1795147263	cmd	Ravagger	4	4805	dresden.are	standing	96	0	-	east		Alas, you cannot go that way.	-	-
+1795147264	cmd	Ravagger	4	4805	dresden.are	standing	96	0	-	east		Alas, you cannot go that way.	-	-
+1795147265	refused	Ravagger	4	4805	dresden.are	standing	96	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1795147268	cmd	Ravagger	4	4804	dresden.are	standing	96	0	-	south		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795147270	spotted	Ravagger	4	4808	dresden.are	918	herb	43	a sprig of hyssop	57855	1	scatter	arrive
+1795147270	cmd	Ravagger	4	4808	dresden.are	standing	96	0	-	ne		The Rest Room //   This is a small quiet room set aside for you to put the battle weary road // behind you, comfortable pillows line the floor, and scented joss sticks fill	-	+
+1795147274	cmd	Ravagger	4	4808	dresden.are	standing	96	0	-	south		Alas, you cannot go that way.	-	-
+1795147276	refused	Ravagger	4	4808	dresden.are	standing	96	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1795147278	passed	Ravagger	4	4804	dresden.are	918	herb	43	a sprig of hyssop	57863	8	1	scatter	4808	left
+1795147278	cmd	Ravagger	4	4804	dresden.are	standing	96	0	-	sw		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795147281	cmd	Ravagger	4	4809	dresden.are	standing	96	0	-	nw		Back to the beginning //   As you enter this room a sharp tingling enters your limbs as you begin // to move...the valley drops away from your feet and a white sheet falls in	-	+
+1795147296	cmd	Ravagger	4	4802	dresden.are	standing	96	0	-	south		The narrow entrance //   You have reached the entrance of a narrow box canyon. Standing beside you is // an odd weather worn stone statue, that seems oddly out of place in the	-	+
+1795147297	cmd	Ravagger	4	4803	dresden.are	standing	96	0	-	south		The Palm of the Creator //   A large stone hand rises out of the earth and points skyward...the only place // you find to stand in the room is at the center of the giant stone effigy.	-	+
+1795147308	cmd	Ravagger	4	4804	dresden.are	standing	94	0	-	inventory		You are carrying: //      a mud school diploma //      a key	-	+
+1795147315	cmd	Ravagger	4	4804	dresden.are	standing	94	0	-	inventory		You are carrying: //      a mud school diploma //      a key	-	+
+1795147316	cmd	Ravagger	4	4804	dresden.are	standing	94	0	-	look		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795147319	cmd	Ravagger	4	4806	dresden.are	standing	94	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1795147325	cmd	Ravagger	4	4804	dresden.are	standing	94	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795147329	cmd	Ravagger	4	4805	dresden.are	standing	94	0	-	north		The Masters Place //   Here resides the Master of all the monks, it is he that monks seek for // guidance. Lighted joss sticks fill the room with the sweet perfume of lotus	-	+
+1795147334	cmd	Ravagger	4	4804	dresden.are	standing	94	0	-	south		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795147337	cmd	Ravagger	4	4804	dresden.are	standing	94	0	-	north		You are too exhausted.	-	-
+1795147342	cmd	Ravagger	4	4804	dresden.are	standing	94	0	-	sleep		You are too thirsty to sleep. Drink something first.	-	-
+1795147348	cmd	Ravagger	4	4804	dresden.are	standing	94	0	-	look		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795147350	cmd	Ravagger	4	4804	dresden.are	standing	94	0	-	se		Alas, you cannot go that way.	-	-
+1795147356	cmd	Ravagger	4	4804	dresden.are	standing	94	0	-	drink		Drink what?	-	-
+1795147358	cmd	Ravagger	4	4804	dresden.are	standing	94	0	-	look		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795147361	cmd	Ravagger	4	4804	dresden.are	standing	94	0	-	east		You are too exhausted.	-	-
+1795147363	cmd	Ravagger	4	4804	dresden.are	standing	94	0	-	sleep		You are too thirsty to sleep. Drink something first.	-	-
+1795147365	cmd	Ravagger	4	4804	dresden.are	standing	94	0	-	rest		You rest.	-	-
+1795147369	cmd	Ravagger	4	4804	dresden.are	resting	94	0	-	scan		The Grand Monk                     -to the North. // The Silent Master                  -to the East. // The Master of Movement             -to the West.	-	-
+1795147376	cmd	Ravagger	4	4804	dresden.are	resting	94	0	-	stand		You stand up.	-	-
+1795147377	cmd	Ravagger	4	4806	dresden.are	standing	94	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1795147387	cmd	Ravagger	4	4806	dresden.are	standing	94	0	-	nw		Alas, you cannot go that way.	-	-
+1795147393	cmd	Ravagger	4	4804	dresden.are	standing	94	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795147395	cmd	Ravagger	4	4809	dresden.are	standing	94	0	-	nw		Back to the beginning //   As you enter this room a sharp tingling enters your limbs as you begin // to move...the valley drops away from your feet and a white sheet falls in	-	+
+1795147404	cmd	Ravagger	4	4800	dresden.are	standing	94	0	-	north		Another Dimension //   You have somehow left the City of Dresden, and entered another dimension. // To the north you can still make out the streets of Dresden thru the mist,	-	+
+1795147405	cmd	Ravagger	4	2437	dresden.are	standing	94	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795147409	cmd	Ravagger	4	2436	dresden.are	standing	94	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795147412	cmd	Ravagger	4	2436	dresden.are	standing	94	0	-	east		You are too exhausted.	-	-
+1795147416	cmd	Ravagger	4	2436	dresden.are	standing	94	0	-	rest		You rest.	-	-
+1795147426	cmd	Ravagger	4	2436	dresden.are	resting	94	0	-	stand		You stand up.	-	-
+1795147427	cmd	Ravagger	4	2436	dresden.are	standing	94	0	-	east		You are too exhausted.	-	-
+1795147429	cmd	Ravagger	4	2436	dresden.are	standing	94	0	-	rest		You rest.	-	-
+1795147441	cmd	Ravagger	4	2436	dresden.are	resting	94	0	-	inventory		You are carrying: //      a mud school diploma //      a key	-	+
+1795147448	cmd	Ravagger	4	2436	dresden.are	resting	94	0	-	stand		You stand up.	-	-
+1795147450	cmd	Ravagger	4	2436	dresden.are	standing	94	0	-	east		You are too exhausted.	-	-
+1795147459	cmd	Ravagger	4	2435	dresden.are	standing	92	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795147462	cmd	Ravagger	4	4207	dresden.are	standing	92	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795147475	area	Ravagger	4	3700	school.are	dresden.are	school.are	339	up
+1795147475	cmd	Ravagger	4	3700	school.are	standing	92	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
