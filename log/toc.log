@@ -322385,3 +322385,4 @@ Fri Nov 20 09:32:37 2026 :: Connection guard: 52.22.236.30 closed without a word
 Fri Nov 20 09:32:37 2026 :: Connection guard: 52.22.236.30 paused for 24 hours (pause 3 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 52.22.236.30 lifts it.
 Fri Nov 20 09:33:59 2026 :: Connection guard: 85.217.149.32 closed without a word (strike 1 of 6 in 6 hours).
 Fri Nov 20 09:34:04 2026 :: Cartographer: appeared.
+Fri Nov 20 09:37:41 2026 :: Connection guard: refused 1 connection from 52.22.236.30 (paused; 7 refused in all, pause 3 this week, 1435 minutes left).
