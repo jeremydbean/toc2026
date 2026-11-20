@@ -322781,3 +322781,5 @@ Fri Nov 20 14:25:50 2026 :: Connection guard: last hour 10 closed without a word
 Fri Nov 20 14:27:16 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 3 of 6 in 6 hours).
 Fri Nov 20 14:29:37 2026 :: Automated backup started.
 Fri Nov 20 14:29:37 2026 :: Automated backup complete.
+Fri Nov 20 14:32:20 2026 :: Connection guard: refused 1 connection from 52.22.236.30 (paused; 10 refused in all, pause 3 this week, 1141 minutes left).
+Fri Nov 20 14:35:12 2026 :: Treasure goblin: vanished from room 29445 (The thick forest, world.are) (too long in one area).
