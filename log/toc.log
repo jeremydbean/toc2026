@@ -323620,3 +323620,24 @@ Fri Nov 20 22:10:44 2026 :: EOF encountered on read.
 Fri Nov 20 22:10:44 2026 :: Closing link to Killuminati.
 Fri Nov 20 22:14:23 2026 :: Connection guard: refused 1 connection from 178.156.189.113 (paused; 29 refused in all, pause 4 this week, 98 minutes left).
 Fri Nov 20 22:15:58 2026 :: Treasure goblin: vanished from room 7217 (The half-dry drain., sewer.are) (too long in one area).
+Fri Nov 20 22:18:46 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Fri Nov 20 22:18:50 2026 :: Log WebAdmin: fsave
+Fri Nov 20 22:18:56 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Fri Nov 20 22:19:00 2026 :: Received signal 15; saving players and shutting down.
+Fri Nov 20 22:19:00 2026 :: Normal termination of game.
+Fri Nov 20 22:19:00 2026 ::  INIT OK 
+Fri Nov 20 22:19:00 2026 :: walkto_load: 157 destinations.
+Fri Nov 20 22:19:00 2026 :: changes_load: 361 entries.
+Fri Nov 20 22:19:00 2026 :: Hermie: the restart put no mortal off (0 playing, recorded 50 seconds before the boot; a mortal last played over ten minutes before it); she stays away.
+Fri Nov 20 22:19:00 2026 :: Serials: 962 character files read, 5 with a serial.
+Fri Nov 20 22:19:00 2026 :: Connection guard: 63 addresses remembered from before the boot, 7 paused now.
+Fri Nov 20 22:19:00 2026 :: Login lockout: 1 address remembered from before the boot.
+Fri Nov 20 22:19:00 2026 :: Passwords: SHA-512 crypt self-test passed.
+Fri Nov 20 22:19:00 2026 :: Recovery ledger: 456 records (0 from before the check), 4 requests, 9 players.
+Fri Nov 20 22:19:00 2026 :: ROM is ready to rock on port 9000.
+Fri Nov 20 22:19:00 2026 :: Treasure goblin: appeared.
+Fri Nov 20 22:19:00 2026 :: Automated backup started.
+Fri Nov 20 22:19:00 2026 :: Daily backup started.
+Fri Nov 20 22:19:01 2026 :: Automated backup complete.
+Fri Nov 20 22:19:02 2026 :: Daily backup complete.
+Fri Nov 20 22:19:28 2026 :: Connection guard: refused 1 connection from 52.22.236.30 (paused; 16 refused in all, pause 3 this week, 674 minutes left).
