@@ -320667,3 +320667,59 @@ Fri Nov 20 03:22:54 2026 :: Log Ravagger [3241]: WHO
 Fri Nov 20 03:23:04 2026 :: Log Ravagger [3241]: where
 Fri Nov 20 03:23:25 2026 :: Log Ravagger [3241]: help beginners
 Fri Nov 20 03:24:07 2026 :: Log Ravagger [3241]: score
+Fri Nov 20 03:24:53 2026 :: Log Ravagger [3241]: affects off: armor
+Fri Nov 20 03:24:59 2026 :: Log Ravagger [3241]: l
+Fri Nov 20 03:25:08 2026 :: Treasure goblin: vanished from room 1461 (The chamber of darkness, htower.are) (too long in one area).
+Fri Nov 20 03:25:24 2026 :: Log Ravagger [3241]: buy
+Fri Nov 20 03:25:33 2026 :: Log Ravagger [3241]: look menu
+Fri Nov 20 03:25:36 2026 :: Log Ravagger [3241]: affects off: aid; max hp 65 -> 44; hp 62 -> 44
+Fri Nov 20 03:25:44 2026 :: Log Ravagger [3241]: u
+Fri Nov 20 03:25:47 2026 :: Log Ravagger [3241]: w
+Fri Nov 20 03:25:49 2026 :: Log Ravagger [3241]: l
+Fri Nov 20 03:25:50 2026 :: Connection guard: last hour 7 closed without a word, 6 refused, 0 new characters refused, 0 newly paused; 9 addresses paused and 0 refused now, 15 active player addresses.
+Fri Nov 20 03:25:52 2026 :: Log Ravagger [3241]: s
+Fri Nov 20 03:25:52 2026 :: Log Ravagger [3772]: arrived (Newbie Train Station) from 3241
+Fri Nov 20 03:26:02 2026 :: Log Ravagger [3772]: d
+Fri Nov 20 03:26:02 2026 :: Log Ravagger [3700]: arrived (Entrance to Mud School) from 3772
+Fri Nov 20 03:26:14 2026 :: Log Ravagger [3700]: n
+Fri Nov 20 03:26:14 2026 :: Log Ravagger [3757]: arrived (A Room in Mud School) from 3700
+Fri Nov 20 03:26:22 2026 :: Log Ravagger [3757]: l sign
+Fri Nov 20 03:26:32 2026 :: Log Ravagger [3757]: w
+Fri Nov 20 03:26:32 2026 :: Log Ravagger [3758]: arrived (Eclipse's Training Room) from 3757
+Fri Nov 20 03:26:36 2026 :: Log Ravagger [3758]: train
+Fri Nov 20 03:26:40 2026 :: Log Ravagger [3758]: e
+Fri Nov 20 03:26:40 2026 :: Log Ravagger [3757]: arrived (A Room in Mud School) from 3758
+Fri Nov 20 03:26:41 2026 :: Log Ravagger [3757]: e
+Fri Nov 20 03:26:41 2026 :: Log Ravagger [3759]: arrived (Soulcrusher's Guild Room) from 3757
+Fri Nov 20 03:26:44 2026 :: Connection guard: refused 1 connection from 178.156.187.238 (paused; 8 refused in all, pause 2 this week, 228 minutes left).
+Fri Nov 20 03:26:51 2026 :: Log Ravagger [3759]: l sign
+Fri Nov 20 03:27:02 2026 :: Log Ravagger [3759]: pra
+Fri Nov 20 03:27:21 2026 :: Log Ravagger [3759]: pra
+Fri Nov 20 03:27:23 2026 :: Log Ravagger [3759]: w
+Fri Nov 20 03:27:23 2026 :: Log Ravagger [3757]: arrived (A Room in Mud School) from 3759
+Fri Nov 20 03:27:24 2026 :: Log Ravagger [3757]: n
+Fri Nov 20 03:27:24 2026 :: Log Ravagger [3701]: arrived (A Room in Mud School) from 3757
+Fri Nov 20 03:27:33 2026 :: Log Ravagger [3701]: l plaque
+Fri Nov 20 03:27:46 2026 :: Log Ravagger [3701]: w
+Fri Nov 20 03:27:46 2026 :: Log Ravagger [3702]: arrived (The Center Room) from 3701
+Fri Nov 20 03:27:48 2026 :: Log Ravagger [3702]: w
+Fri Nov 20 03:27:48 2026 :: Log Ravagger [3704]: arrived (A Room in Mud School) from 3702
+Fri Nov 20 03:27:53 2026 :: Log Ravagger [3704]: e
+Fri Nov 20 03:27:53 2026 :: Log Ravagger [3702]: arrived (The Center Room) from 3704
+Fri Nov 20 03:27:54 2026 :: Log Ravagger [3702]: n
+Fri Nov 20 03:27:54 2026 :: Log Ravagger [3703]: arrived (A Room in Mud School) from 3702
+Fri Nov 20 03:28:01 2026 :: Log Ravagger [3703]: n
+Fri Nov 20 03:28:01 2026 :: Log Ravagger [3709]: arrived (A Room in Mud School) from 3703
+Fri Nov 20 03:28:05 2026 :: Log Ravagger [3709]: w
+Fri Nov 20 03:28:05 2026 :: Log Ravagger [3711]: arrived (A Room in Mud School) from 3709
+Fri Nov 20 03:28:08 2026 :: Log Ravagger [3711]: d
+Fri Nov 20 03:28:08 2026 :: Log Ravagger [3712]: arrived (The Cage Room) from 3711
+Fri Nov 20 03:28:20 2026 :: Log Ravagger [3712]: l sign
+Fri Nov 20 03:28:40 2026 :: Log Ravagger [3712]: rest
+Fri Nov 20 03:28:44 2026 :: Log Ravagger [3712]: sleep
+Fri Nov 20 03:28:50 2026 :: Log Ravagger [3712]: inv
+Fri Nov 20 03:28:57 2026 :: Log Ravagger [3712]: eat bread
+Fri Nov 20 03:29:03 2026 :: Log Ravagger [3712]: eat bead
+Fri Nov 20 03:29:11 2026 :: Log Ravagger [3712]: eat pie
+Fri Nov 20 03:29:18 2026 :: Log Ravagger [3712]: l map
+Fri Nov 20 03:29:36 2026 :: Log Ravagger [3712]: l

@@ -40042,3 +40042,41 @@
 1795145005	cmd	Ravagger	3	3241	school.are	standing	98	0	-	help	beginners	A short guide for your first hours.  HELP <word> explains any command; // HELP KEYWORDS lists every topic. // Moving	-	+
 1795145047	state	Ravagger	3	3241	school.are	lvl=3 hp=64/65 mana=108/108 mv=112/112 align=15 exp=7242 coin=9440000 bank=0 qp=0 prac=5 train=0 stash=0/50 remorts=0
 1795145047	cmd	Ravagger	3	3241	school.are	standing	98	0	-	score		| Name:       Ravagger | Level:       3 | Class:        Monk | // | Played:      1 hours | Sex:      Male | Guild:        Monk | // | Age:        17 years | Race:    Human | Castle:       None |	-	+
+1795145099	cmd	Ravagger	3	3241	school.are	standing	96	0	-	look		The Train Cafe. //   It has a nice relaxing atmosphere.  Candles burn on the tables and the // bar giving the Cafe its only light.  The tables are spaced moderately	-	+
+1795145124	cmd	Ravagger	3	3241	school.are	standing	96	2	-	buy		Buy what?	-	-
+1795145133	cmd	Ravagger	3	3241	school.are	standing	96	0	-	look	menu	You do not see that here.	-	-
+1795145144	cmd	Ravagger	3	3241	school.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1795145147	cmd	Ravagger	3	3241	school.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1795145149	cmd	Ravagger	3	3241	school.are	standing	100	0	-	look		The Train Cafe. //   It has a nice relaxing atmosphere.  Candles burn on the tables and the // bar giving the Cafe its only light.  The tables are spaced moderately	-	+
+1795145150	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=2	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=1 mobs_fought=0 secs=900
+1795145152	cmd	Ravagger	3	3772	school.are	standing	100	0	-	south		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795145162	achieved	Ravagger	3	3700	school.are	visit-mud-school	5	10	down
+1795145162	cmd	Ravagger	3	3700	school.are	standing	100	0	-	down		                    ACHIEVEMENT EARNED // Back to School  +5 points // Find the entrance to Mud School.	-	+
+1795145174	cmd	Ravagger	3	3757	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795145182	cmd	Ravagger	3	3757	school.are	standing	100	0	-	look	sign	To find out your attributes, type 'score'.  You can improve your attributes // in Eclipse's Training Room to the west.  You can practice your skills and // spells in Soulcrusher's Guild Room to the east.  You can continue through	-	+
+1795145192	cmd	Ravagger	3	3758	school.are	standing	95	0	-	west		Eclipse's Training Room //   You are in Eclipse's Training Room.  Around you are all sorts of physical // and mental training tools.  The whole room is filled with magic, holiness, 	-	+
+1795145196	cmd	Ravagger	3	3758	school.are	standing	95	0	-	train		You have 0 training sessions. // You can train: str int wis con hp mana.	-	-
+1795145200	cmd	Ravagger	3	3757	school.are	standing	95	0	-	east		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795145201	cmd	Ravagger	3	3759	school.are	standing	95	0	-	east		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with	-	+
+1795145211	cmd	Ravagger	3	3759	school.are	standing	95	0	-	look	sign	Welcome to Soulcrusher's Guild Room.  Here you will learn your skills and // spells. To find out what skills and spells you can practice and how many // practice sessions you have, type 'practice'.  To practice the specific skill,	-	+
+1795145222	cmd	Ravagger	3	3759	school.are	standing	95	0	-	practice		recall              75%  dagger              32%  hand to hand        75%   // kick                 9%   // You have 5 practice sessions left.	-	-
+1795145241	cmd	Ravagger	3	3759	school.are	standing	93	0	-	practice		recall              75%  dagger              32%  hand to hand        75%   // kick                 9%   // You have 5 practice sessions left.	-	-
+1795145243	cmd	Ravagger	3	3757	school.are	standing	93	0	-	west		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795145244	cmd	Ravagger	3	3701	school.are	standing	93	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795145253	cmd	Ravagger	3	3701	school.are	standing	93	0	-	look	plaque	This zone (Mud School) is created by Hatchet for any Merc Mud. // Copyright 1992, 1993.	-	-
+1795145266	cmd	Ravagger	3	3702	school.are	standing	93	0	-	west		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795145268	cmd	Ravagger	3	3704	school.are	standing	93	0	-	west		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795145273	cmd	Ravagger	3	3702	school.are	standing	93	0	-	east		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795145274	cmd	Ravagger	3	3703	school.are	standing	93	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795145281	cmd	Ravagger	3	3709	school.are	standing	93	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795145285	cmd	Ravagger	3	3711	school.are	standing	93	0	-	west		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795145288	cmd	Ravagger	3	3712	school.are	standing	93	0	-	down		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795145300	cmd	Ravagger	3	3712	school.are	standing	93	0	-	look	sign	Welcome to the cage room.  The adepts of mud school have captured some // monsters for you to kill.  In the four cages are four monsters of various // types.  Kill them all!	-	+
+1795145320	cmd	Ravagger	3	3712	school.are	standing	100	0	-	rest		You rest.	-	-
+1795145324	cmd	Ravagger	3	3712	school.are	resting	100	0	-	sleep		You are too hungry to sleep. Eat something first.	-	-
+1795145330	cmd	Ravagger	3	3712	school.are	resting	100	0	-	inventory		You are carrying: // ( 3) a pipeweed bread //      a big pot pie	-	+
+1795145337	cmd	Ravagger	3	3712	school.are	resting	100	0	-	eat	bread	You eat a pipeweed bread. // You are no longer hungry.	-	-
+1795145343	cmd	Ravagger	3	3712	school.are	resting	100	0	-	eat	bead	You do not have that item.	-	-
+1795145351	cmd	Ravagger	3	3712	school.are	resting	100	0	-	eat	pie	You eat a big pot pie. // You are full.	-	-
+1795145358	cmd	Ravagger	3	3712	school.are	resting	100	0	-	look	map	CITY OF DRESDEN //   (C) Made by Drakk & Soul. //   Sewers	-	+
+1795145376	cmd	Ravagger	3	3712	school.are	resting	100	0	-	look		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+

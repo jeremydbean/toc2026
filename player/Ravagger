@@ -2,7 +2,7 @@
 Name Ravagger~
 Id   56640
 Serial 3950626
-LogO 1795144964
+LogO 1795145189
 Vers 4
 Prom ~
 Race human~
@@ -17,13 +17,13 @@ ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble 20261114-season-area-ids 20261116-wrapped-pools~
 Cast none
 Levl 3
-Plyd 4601
+Plyd 4826
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
-Room 3241
-HMV  65 65 108 108 112 112
+Room 3757
+HMV  42 44 108 108 112 112
 NewGold 944
 NewPlat 0
 NewCopp 0
@@ -42,10 +42,11 @@ AchExplore 0
 AchMaps 0
 AchCompass 0
 AchTriforce 0
+Achv visit-mud-school 1795145162
 Achv carry-one-platinum 1795144941
 AchSet areas 1103516333 ~
-AchSet rooms 3241 ~
-LastOut  1795144964
+AchSet rooms 3241 3700 3757 3772 ~
+LastOut  1795145189
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 0
@@ -88,9 +89,9 @@ Prac 5
 Tutorial 0 0
 Save  -9
 Alig  15
-Hit   17
+Hit   10
 Dam   2
-ACs 55 55 55 59
+ACs 75 75 75 79
 Attr 13 13 13 18 16
 AMod 4 0 0 0 0
 Pass $6$FCHtQwuH7bv3I5Ey$H5YLjKiWH78mYmDxe/ye7Von84.oKH7iyvZJis9zKAA1f6un4F.9uvkQxqbmiSMx52Rb3SDSEufDXzp/Zc6cc/~
@@ -99,7 +100,7 @@ Pnts 40
 TSex 1
 LLev 1
 HMVP 44 108 112
-Cond 0 0 36
+Cond 0 0 31
 Sk 8 'axe'
 Sk 32 'dagger'
 Sk 6 'flail'
@@ -118,14 +119,11 @@ Sk 75 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
-AffD 'giant strength'  63  13   4   1          0          0
-AffD 'shield'  55  21 -20  17          0          0
-AffD 'fly'  57  16   0   0     524288          0
-AffD 'bless'  53  19  -8  24          0          0
-AffD 'bless'  55  19   8  18          0          0
-AffD 'armor'  57   2 -20  17          0          0
-AffD 'aid'  66   3   7  18          0          0
-AffD 'aid'  69   3  21  13          0          0
+AffD 'giant strength'  62   8   4   1          0          0
+AffD 'shield'  54  16 -20  17          0          0
+AffD 'fly'  55  11   0   0     524288          0
+AffD 'bless'  50  14  -8  24          0          0
+AffD 'bless'  52  14   8  18          0          0
 End
 
 #O
@@ -135,7 +133,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 128 0 0
+Val  0 0 123 0 0
 End
 
 #O
