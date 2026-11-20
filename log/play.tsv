@@ -41228,3 +41228,145 @@
 1795173050	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
 1795173950	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
 1795174850	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795175750	census	-	0	0	-	herbs=150/150 components=100/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=0 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795175767	moved	-	0	0	-	882	component	71	a goblin's finger	86410	0	29041	korzath1.are	9695	newthalo.are
+1795175767	moved	-	0	0	-	881	herb	40	a clove	86410	0	2310	mahntor.are	29569	lud.are
+1795175821	moved	-	0	0	-	918	herb	43	a sprig of hyssop	86406	1	4808	dresden.are	111	smurf.are
+1795175821	moved	-	0	0	-	917	herb	40	a clove	86406	1	4806	dresden.are	11015	ancala.are
+1795175854	area	Trentlin	52	4210	dresden.are	-	dresden.are	-1	(game loop)
+1795175856	cmd	Trentlin	52	4210	dresden.are	sleeping	67	0	-	wake		You wake and stand up.	-	-
+1795175856	cmd	Trentlin	52	4210	dresden.are	standing	67	0	-	look		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1795175857	cmd	Trentlin	52	4203	dresden.are	standing	67	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795175857	cmd	Trentlin	52	4202	dresden.are	standing	67	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795175857	cmd	Trentlin	52	4206	dresden.are	standing	67	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795175858	cmd	Trentlin	52	4206	dresden.are	standing	67	0	-	east		Alas, you cannot go that way.	-	-
+1795175858	cmd	Trentlin	52	4206	dresden.are	standing	67	0	-	east		Alas, you cannot go that way.	-	-
+1795175859	cmd	Trentlin	52	4202	dresden.are	standing	67	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795175860	cmd	Trentlin	52	4201	dresden.are	standing	67	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795175860	cmd	Trentlin	52	2427	dresden.are	standing	67	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795175861	cmd	Trentlin	52	2404	dresden.are	standing	67	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795175861	cmd	Trentlin	52	2401	dresden.are	standing	67	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795175862	cmd	Trentlin	52	2410	dresden.are	standing	67	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1795175862	cmd	Trentlin	52	2411	dresden.are	standing	67	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1795175862	cmd	Trentlin	52	2414	dresden.are	standing	67	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1795175863	cmd	Trentlin	52	2497	dresden.are	standing	67	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795175863	cmd	Trentlin	52	2497	dresden.are	standing	67	0	-	up		Alas, you cannot go that way.	-	-
+1795175865	quest	Trentlin	52	2497	dresden.are	ordinary	kill	5303	an imperial cityguard	17	mirror.are	30
+1795175865	cmd	Trentlin	52	2497	dresden.are	standing	67	23	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Trentlin. The realm needs someone of your skill.' // Questor Thews tells you 'an imperial cityguard has been declared an outlaw!'	-	+
+1795175866	cmd	Trentlin	52	2401	dresden.are	standing	67	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1795175872	cmd	Trentlin	52	2403	dresden.are	standing	67	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1795175872	cmd	Trentlin	52	2420	dresden.are	standing	67	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1795175872	cmd	Trentlin	52	2421	dresden.are	standing	67	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1795175872	cmd	Trentlin	52	2422	dresden.are	standing	67	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1795175873	cmd	Trentlin	52	2423	dresden.are	standing	67	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1795175873	cmd	Trentlin	52	2424	dresden.are	standing	67	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1795175873	cmd	Trentlin	52	2425	dresden.are	standing	67	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1795175873	cmd	Trentlin	52	2426	dresden.are	standing	67	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795175874	cmd	Trentlin	52	2426	dresden.are	standing	67	0	-	open	east	Ok.	-	-
+1795175874	cmd	Trentlin	52	2440	dresden.are	standing	67	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1795175874	cmd	Trentlin	52	3908	dresden.are	standing	67	0	-	north		East trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the west the wall towers over you and far to the east you see	-	+
+1795175874	cmd	Trentlin	52	3907	dresden.are	standing	67	0	-	north		East trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the west the wall towers over you and far to the east you see	-	+
+1795175875	cmd	Trentlin	52	3906	dresden.are	standing	67	0	-	north		Northeast corner of dusty trail. //   You are standing outside the northeastern corner of the city wall. // The trail leads west following the north wall and south towards the gate.	-	+
+1795175875	area	Trentlin	52	56	connect.are	dresden.are	connect.are	21	east
+1795175875	cmd	Trentlin	52	56	connect.are	standing	67	0	-	east		Peaceful Path //   Immediately upon setting foot on this path, you are filled with a feeling // of peace and tranquility.  The feeling gets stronger towards the east.	-	+
+1795175875	area	Trentlin	52	8950	grove.are	connect.are	grove.are	0	east
+1795175875	cmd	Trentlin	52	8950	grove.are	standing	67	0	-	east		At the edge of the grove //   You are standing at the entrace of a beautiful grove of trees, and your // heart is filled with pure, peaceful thoughts.  This looks like a safe place	-	+
+1795175875	cmd	Trentlin	52	8951	grove.are	standing	67	0	-	east		Inside the grove //   As you walk among the stately oaks of this grove, you feel at peace and  // in harmony with this beautiful forest.  If only the rest of the lands were	-	+
+1795175876	cmd	Trentlin	52	8904	grove.are	standing	67	0	-	east		The holy grove //   You are standing amidst the ancient oaks and poplars in the holy grove. You // feel calm and relaxed here, as if great burdens have been lifted from Your	-	+
+1795175876	cmd	Trentlin	52	8901	grove.are	standing	67	0	-	north		The holy grove //   You are standing amidst the ancient oaks and poplars in the holy grove. You // can feel a strange sensation of contentedness and relief seeping through You,	-	+
+1795175876	cmd	Trentlin	52	8902	grove.are	standing	67	0	-	east		The holy grove //   You are standing amidst the ancient oaks and poplars in the holy grove. You // feel unusually happy here, as if great burdens have been lifted from Your	-	+
+1795175876	cmd	Trentlin	52	8903	grove.are	standing	67	0	-	east		A clearing in the woods //   You are standing in a clearing in the light woods. Somehow, this place // seems powerfully DIFFERENT from the rest of the forest, as if something is	-	+
+1795175877	area	Trentlin	52	5378	mirror.are	grove.are	mirror.are	2	north
+1795175877	cmd	Trentlin	52	5378	mirror.are	standing	67	0	-	north		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing	-	+
+1795175881	area	Trentlin	52	8903	grove.are	mirror.are	grove.are	4	west
+1795175881	cmd	Trentlin	52	8903	grove.are	standing	67	0	-	west		A clearing in the woods //   You are standing in a clearing in the light woods. Somehow, this place // seems powerfully DIFFERENT from the rest of the forest, as if something is	-	+
+1795175885	cmd	Trentlin	52	8906	grove.are	standing	67	0	-	south		The holy grove //   You are standing amidst the ancient oaks and poplars in the holy grove. You // can feel a strange sensation of joy and calm seeping through You, as if great	-	+
+1795175885	cmd	Trentlin	52	8909	grove.are	standing	67	0	-	south		The croquet lawn //   You are standing on a immaculately manicured green lawn, the kind you only // get after 200 years of meticulous work. There is a winding stone path leading	-	+
+1795175886	cmd	Trentlin	52	8909	grove.are	standing	67	0	-	south		The door is closed.	-	-
+1795175889	cmd	Trentlin	52	8909	grove.are	standing	67	0	-	open	south	Ok.	-	-
+1795175889	cmd	Trentlin	52	8910	grove.are	standing	67	0	-	south		The foyer //   You are standing in the foyer of Dragon's mansion. The wide double door to // the croquet lawn is to the north, flanked by large windows. The walls are	-	+
+1795175892	moved	-	0	0	-	939	component	80	a glass encased wing of a fairy	86418	0	1303	htower.are	25289	mushroom.are
+1795175892	cmd	Trentlin	52	8910	grove.are	standing	68	0	-	open	south	Ok.	-	-
+1795175892	cmd	Trentlin	52	8911	grove.are	standing	68	0	-	south		The hallway //   You are in the north end of a connecting hallway, tastefully decorated with // oak paneling and the coat-of-arms of various famous nobles hung on the walls.	-	+
+1795175896	cmd	Trentlin	52	8910	grove.are	standing	68	0	-	north		The foyer //   You are standing in the foyer of Dragon's mansion. The wide double door to // the croquet lawn is to the north, flanked by large windows. The walls are	-	+
+1795175898	cmd	Trentlin	52	8911	grove.are	standing	68	0	-	south		The hallway //   You are in the north end of a connecting hallway, tastefully decorated with // oak paneling and the coat-of-arms of various famous nobles hung on the walls.	-	+
+1795175900	cmd	Trentlin	52	8911	grove.are	standing	68	0	-	open	east	Ok.	-	-
+1795175900	cmd	Trentlin	52	8912	grove.are	standing	68	0	-	east		The blue room //   You are in the blue room, one of the guest rooms in Dragon's mansion. The // walls are (surprise!) blue, and the rest of the room is decorated in similar	-	+
+1795175902	cmd	Trentlin	52	8911	grove.are	standing	68	0	-	west		The hallway //   You are in the north end of a connecting hallway, tastefully decorated with // oak paneling and the coat-of-arms of various famous nobles hung on the walls.	-	+
+1795175904	cmd	Trentlin	52	8911	grove.are	standing	68	0	-	open		Open what?	-	-
+1795175904	cmd	Trentlin	52	8913	grove.are	standing	68	0	-	south		The hallway //   You are standing in the south end of the hallway. There are doors in the // elegant oak-panelled walls to the south, east and west. Many different	-	+
+1795175906	cmd	Trentlin	52	8911	grove.are	standing	68	0	-	north		The hallway //   You are in the north end of a connecting hallway, tastefully decorated with // oak paneling and the coat-of-arms of various famous nobles hung on the walls.	-	+
+1795175907	cmd	Trentlin	52	8910	grove.are	standing	68	0	-	north		The foyer //   You are standing in the foyer of Dragon's mansion. The wide double door to // the croquet lawn is to the north, flanked by large windows. The walls are	-	+
+1795175907	cmd	Trentlin	52	8909	grove.are	standing	68	0	-	north		The croquet lawn //   You are standing on a immaculately manicured green lawn, the kind you only // get after 200 years of meticulous work. There is a winding stone path leading	-	+
+1795175907	cmd	Trentlin	52	8906	grove.are	standing	68	0	-	north		The holy grove //   You are standing amidst the ancient oaks and poplars in the holy grove. You // can feel a strange sensation of joy and calm seeping through You, as if great	-	+
+1795175907	cmd	Trentlin	52	8903	grove.are	standing	68	0	-	north		A clearing in the woods //   You are standing in a clearing in the light woods. Somehow, this place // seems powerfully DIFFERENT from the rest of the forest, as if something is	-	+
+1795175908	area	Trentlin	52	5378	mirror.are	grove.are	mirror.are	27	north
+1795175908	cmd	Trentlin	52	5378	mirror.are	standing	68	0	-	north		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing	-	+
+1795175909	area	Trentlin	52	8903	grove.are	mirror.are	grove.are	1	west
+1795175909	cmd	Trentlin	52	8903	grove.are	standing	68	0	-	west		A clearing in the woods //   You are standing in a clearing in the light woods. Somehow, this place // seems powerfully DIFFERENT from the rest of the forest, as if something is	-	+
+1795175910	cmd	Trentlin	52	8903	grove.are	standing	68	0	-	exits		Obvious exits: // North - The Void // South - The holy grove	-	+
+1795175911	area	Trentlin	52	4207	dresden.are	grove.are	dresden.are	2	recall
+1795175911	cmd	Trentlin	52	4207	dresden.are	standing	68	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795175912	cmd	Trentlin	52	4202	dresden.are	standing	68	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795175912	cmd	Trentlin	52	4201	dresden.are	standing	68	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795175913	cmd	Trentlin	52	2427	dresden.are	standing	68	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795175913	cmd	Trentlin	52	2427	dresden.are	standing	68	0	-	east		Alas, you cannot go that way.	-	-
+1795175914	cmd	Trentlin	52	2404	dresden.are	standing	68	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795175914	cmd	Trentlin	52	2401	dresden.are	standing	68	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795175915	cmd	Trentlin	52	2401	dresden.are	standing	68	0	-	levitate		You are already airborne.	-	-
+1795175942	cmd	Trentlin	52	2426	dresden.are	standing	68	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road	-	+
+1795175943	cmd	Trentlin	52	2426	dresden.are	standing	68	0	-	open	east	It's already open.	-	-
+1795175943	area	Trentlin	52	3503	midennir.are	dresden.are	midennir.are	32	run
+1795175943	cmd	Trentlin	52	3502	midennir.are	standing	68	0	-	run	e 3	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance	-	+
+1795175943	area	Trentlin	52	5261	oldthalo.are	midennir.are	oldthalo.are	0	run
+1795175943	cmd	Trentlin	52	5258	oldthalo.are	standing	68	0	-	run	s	The dwarf forest // [Exits: north south southeast] // The dwarf forest	-	+
+1795175943	cmd	Trentlin	52	5258	oldthalo.are	resting	68	0	-	stand		You stand up.	-	-
+1795175944	cmd	Trentlin	52	5203	oldthalo.are	standing	68	0	-	run	w 6	A trail at the end of the dwarf forest // [Exits: east west] // A trail at the end of the dwarf forest	-	+
+1795175944	cmd	Trentlin	52	5209	oldthalo.are	standing	68	0	-	run	n	A Garden Path // [Exits: north south west] // A Side Street	-	+
+1795175944	cmd	Trentlin	52	5209	oldthalo.are	resting	68	0	-	stand		You stand up.	-	-
+1795175953	cmd	Trentlin	52	5224	oldthalo.are	standing	68	0	-	run	w	A back alley // [Exits: east west] // Under the watchtower	-	+
+1795175954	cmd	Trentlin	52	5224	oldthalo.are	resting	68	0	-	stand		You stand up.	-	-
+1795175954	cmd	Trentlin	52	5246	oldthalo.are	standing	68	0	-	up		The north-west watchtower //   You stand atop one of the city watchtowers. The view is magnificent // from here and you can see all the way to the western mountains. No wonder	-	+
+1795175954	area	Trentlin	52	26	connect.are	oldthalo.are	connect.are	11	up
+1795175954	cmd	Trentlin	52	26	connect.are	standing	68	0	-	up		Tower Foyer //   You have reached a small but dusty room at the top of the northwestern watch // tower in oldthalos. The rooms only adornments are a large mirror hanging on	-	+
+1795175954	cmd	Trentlin	52	27	connect.are	standing	68	0	-	enter	mirror	You enter A Mirror // Your stomach flip flops. Everything goes black for a moment. // Tower Foyer	-	+
+1795175955	area	Trentlin	52	5346	mirror.are	connect.are	mirror.are	1	run
+1795175955	cmd	Trentlin	52	5324	mirror.are	standing	68	0	-	run	d	The north-west watchtower // [Exits: down] // Under the watchtower	-	+
+1795175955	cmd	Trentlin	52	5324	mirror.are	resting	68	0	-	stand		You stand up.	-	-
+1795175955	cmd	Trentlin	52	5309	mirror.are	standing	68	0	-	run	e 2	A back alley // [Exits: east west] // A Side Street	-	+
+1795175955	cmd	Trentlin	52	5310	mirror.are	standing	68	0	-	south		A Side Street //   You are in the common section of the city. More buildings made of // clay and stone be dazzles you. Most of these homes are designed so	-	+
+1795175956	cmd	Trentlin	52	5311	mirror.are	standing	68	0	-	south		A Side Street //   This small side street leads away from the garden path to the south. // Around you stand large numbers of commoners' houses.  Many citizens	-	+
+1795175956	cmd	Trentlin	52	5338	mirror.are	standing	68	0	-	run	e	A Public Library // [Exits: east west up] // The Library Addition	-	+
+1795175956	cmd	Trentlin	52	5338	mirror.are	resting	68	0	-	stand		You stand up.	-	-
+1795175958	cmd	Trentlin	52	5337	mirror.are	standing	68	0	-	west		A Public Library //   This seems to be the tallest structure in the city.  Rows and rows of books // line the 20 foot tall bookcases, and a quiet serenity can be felt by all here.	-	+
+1795175959	cmd	Trentlin	52	5311	mirror.are	standing	68	0	-	west		A Side Street //   This small side street leads away from the garden path to the south. // Around you stand large numbers of commoners' houses.  Many citizens	-	+
+1795175961	cmd	Trentlin	52	5304	mirror.are	standing	68	0	-	south		A Garden Path //   A circular path surrounds a magnificent domed temple in the center // of the city. Flowers grow on the sides of the path and the lush trees are	-	+
+1795175961	cmd	Trentlin	52	5304	mirror.are	standing	68	0	-	scan		the pet lamia                      -to the North. // the pet lamia                      -to the South. // the pet lamia                      -to the far South.	-	-
+1795175963	cmd	Trentlin	52	5304	mirror.are	standing	68	0	-	kill	city	Your punch ^^^ DESTROYS ^^^ an imperial cityguard! // Your punch *** DEVASTATES *** an imperial cityguard! // Your punch misses an imperial cityguard.	-	+
+1795175969	area	Trentlin	52	4207	dresden.are	mirror.are	dresden.are	14	recall
+1795175969	cmd	Trentlin	52	4207	dresden.are	standing	68	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795175969	cmd	Trentlin	52	4208	dresden.are	standing	68	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795175970	coin	Trentlin	52	4208	dresden.are	-1000000	spent	heal	-	21453640111
+1795175970	cmd	Trentlin	52	4208	dresden.are	standing	68	0	-	heal	refres	The healer utters the words 'candusima'. // You feel fully refreshed! (10 castings, 100 gold.)	-	-
+1795175971	moved	-	0	0	-	942	herb	45	a sarsaparilla vine	86419	0	9172	dylan.are	29214	korzath2.are
+1795175971	moved	-	0	0	-	941	herb	53	a huckleberry	86419	0	9167	dylan.are	29251	korzath2.are
+1795175974	cmd	Trentlin	52	4207	dresden.are	standing	69	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795175974	cmd	Trentlin	52	4202	dresden.are	standing	69	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795175974	cmd	Trentlin	52	4201	dresden.are	standing	69	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795175974	cmd	Trentlin	52	2427	dresden.are	standing	69	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795175976	cmd	Trentlin	52	2404	dresden.are	standing	69	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795175976	cmd	Trentlin	52	2401	dresden.are	standing	69	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795175978	cmd	Trentlin	52	2410	dresden.are	standing	69	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1795175978	cmd	Trentlin	52	2411	dresden.are	standing	69	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1795175978	cmd	Trentlin	52	2414	dresden.are	standing	69	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1795175978	cmd	Trentlin	52	2497	dresden.are	standing	69	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795175979	cmd	Trentlin	52	2497	dresden.are	standing	69	0	-	up		Alas, you cannot go that way.	-	-
+1795175979	cmd	Trentlin	52	2497	dresden.are	standing	69	0	-	up		Alas, you cannot go that way.	-	-
+1795175979	cmd	Trentlin	52	2497	dresden.are	standing	69	0	-	up		Alas, you cannot go that way.	-	-
+1795175981	coin	Trentlin	52	2497	dresden.are	+126548136	quests	aquest	-	21580188247
+1795175981	outcome	Trentlin	52	2497	dresden.are	quest-complete	success	-	-	ordinary qp=269->269 offered=36 daily=18->18 coin=+126548136 kill=14060904 streak=25 level=52 target=-1
+1795175981	cmd	Trentlin	52	2497	dresden.are	standing	69	21	-	aquest	complete	You inform Questor Thews you have completed his quest. // Questor Thews says 'Excellent work! The realm is in your debt!' // Questor Thews says 'Streak of 26 in a row! A +130% bonus has been added!'	success:-	+
+1795175984	cmd	Trentlin	52	2497	dresden.are	standing	69	6	-	aquest	gamble yes	The dice BETRAY you! Your 36 quest points are lost.	-	-
+1795175986	state	Trentlin	52	2497	dresden.are	lvl=52 hp=711/1017 mana=1841/2468 mv=539/549 align=377 exp=133530 coin=6033535843 bank=15546652404 qp=269 prac=15 train=20 stash=72/150 remorts=1
+1795175986	cmd	Trentlin	52	2497	dresden.are	standing	69	0	-	score		| Name:       Trentlin | Level:      52 | Class:        Monk | // | Played:     42 hours | Sex:      Male | Guild:        Monk | // | Age:        19 years | Race:    Dwarf | Castle:       None |	-	+
+1795175990	cmd	Trentlin	52	2497	dresden.are	standing	69	0	-	rested		You are rested: your kills earn double experience until 22500 more is spent (150% of a level). // Quitting here would not let you rest -- try a healing room, the Temple, the altar or your recall point. // Each hour away banks 5% of a level	-	+
