@@ -5769,3 +5769,4 @@
 1795203222	info	0	The wind shifts: 0 herbs and 1 spell component nobody found has moved somewhere new.
 1795203298	wizinfo	60	Forage: moved 0 herbs and 1 component unfound for a day; scattered 0 herbs and 0 components; 150/150 herbs and 100/100 components now on the ground.
 1795203298	info	0	The wind shifts: 0 herbs and 1 spell component nobody found has moved somewhere new.
+1795203725	wizinfo	60	Connection guard: 178.156.187.238 paused for 24 hours (pause 3 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 178.156.187.238 lifts it.

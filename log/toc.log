@@ -323051,3 +323051,5 @@ Fri Nov 20 19:33:42 2026 :: Forage: moved 0 herbs and 1 component unfound for a 
 Fri Nov 20 19:34:58 2026 :: Forage: moved 0 herbs and 1 component unfound for a day; scattered 0 herbs and 0 components; 150/150 herbs and 100/100 components now on the ground.
 Fri Nov 20 19:37:00 2026 :: Connection guard: refused 1 connection from 52.22.236.30 (paused; 13 refused in all, pause 3 this week, 836 minutes left).
 Fri Nov 20 19:39:20 2026 :: Treasure goblin: vanished from room 17147 (Path along lake, highland.are) (too long in one area).
+Fri Nov 20 19:42:05 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 6 of 6 in 6 hours).
+Fri Nov 20 19:42:05 2026 :: Connection guard: 178.156.187.238 paused for 24 hours (pause 3 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 178.156.187.238 lifts it.
