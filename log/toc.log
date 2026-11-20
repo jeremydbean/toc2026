@@ -322682,3 +322682,43 @@ Fri Nov 20 11:59:44 2026 :: Log Trentlin [2497]: aquest gamble yes
 Fri Nov 20 11:59:46 2026 :: Log Trentlin [2497]: sco
 Fri Nov 20 11:59:50 2026 :: Log Trentlin [2497]: rested
 Fri Nov 20 11:59:56 2026 :: Connection guard: refused 1 connection from 3.20.63.178 (paused; 23 refused in all, pause 3 this week, 755 minutes left).
+Fri Nov 20 12:00:27 2026 :: Log Trentlin [2497]: enter dor
+Fri Nov 20 12:00:31 2026 :: Log Trentlin [2497]: enter door
+Fri Nov 20 12:00:31 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2497
+Fri Nov 20 12:00:31 2026 :: Log Trentlin [2401]: l
+Fri Nov 20 12:00:32 2026 :: Log Trentlin [2401]: s
+Fri Nov 20 12:00:32 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2401
+Fri Nov 20 12:00:32 2026 :: Log Trentlin [2404]: s
+Fri Nov 20 12:00:32 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 2404
+Fri Nov 20 12:00:32 2026 :: Log Trentlin [2427]: w
+Fri Nov 20 12:00:32 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 2427
+Fri Nov 20 12:00:33 2026 :: Log Trentlin [4201]: w
+Fri Nov 20 12:00:33 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4201
+Fri Nov 20 12:00:33 2026 :: Log Trentlin [4202]: w
+Fri Nov 20 12:00:33 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4202
+Fri Nov 20 12:00:33 2026 :: Log Trentlin [4207]: w
+Fri Nov 20 12:00:33 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Fri Nov 20 12:00:34 2026 :: Log Trentlin [4208]: heal heal
+Fri Nov 20 12:00:34 2026 :: Log Trentlin [4208]: gold -500
+Fri Nov 20 12:00:34 2026 :: Log Trentlin [4208]: gold -500
+Fri Nov 20 12:00:34 2026 :: Log Trentlin [4208]: gold -500
+Fri Nov 20 12:00:39 2026 :: Log Trentlin [4208]: e
+Fri Nov 20 12:00:39 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Fri Nov 20 12:00:39 2026 :: Log Trentlin [4207]: e
+Fri Nov 20 12:00:39 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Fri Nov 20 12:00:40 2026 :: Log Trentlin [4202]: e
+Fri Nov 20 12:00:40 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Fri Nov 20 12:00:40 2026 :: Log Trentlin [4201]: e
+Fri Nov 20 12:00:40 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Fri Nov 20 12:00:41 2026 :: Log Trentlin [2427]: n
+Fri Nov 20 12:00:41 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Fri Nov 20 12:00:41 2026 :: Log Trentlin [2404]: n
+Fri Nov 20 12:00:41 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Fri Nov 20 12:00:43 2026 :: Log Trentlin [2401]: affects off: haste
+Fri Nov 20 12:00:43 2026 :: Forage: moved 2 herbs and 0 components unfound for a day; scattered 0 herbs and 0 components; 150/150 herbs and 100/100 components now on the ground.
+Fri Nov 20 12:00:48 2026 :: Log Trentlin [2401]: quit
+Fri Nov 20 12:00:48 2026 :: Trentlin has quit.
+Fri Nov 20 12:00:48 2026 :: [QUIT] Player rejoined the real world.
+Fri Nov 20 12:03:02 2026 :: Forage: moved 0 herbs and 1 component unfound for a day; scattered 0 herbs and 0 components; 150/150 herbs and 100/100 components now on the ground.
+Fri Nov 20 12:05:01 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 20 12:05:05 2026 :: Forage: moved 0 herbs and 1 component unfound for a day; scattered 0 herbs and 0 components; 150/150 herbs and 100/100 components now on the ground.

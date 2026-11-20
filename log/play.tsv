@@ -41370,3 +41370,28 @@
 1795175986	state	Trentlin	52	2497	dresden.are	lvl=52 hp=711/1017 mana=1841/2468 mv=539/549 align=377 exp=133530 coin=6033535843 bank=15546652404 qp=269 prac=15 train=20 stash=72/150 remorts=1
 1795175986	cmd	Trentlin	52	2497	dresden.are	standing	69	0	-	score		| Name:       Trentlin | Level:      52 | Class:        Monk | // | Played:     42 hours | Sex:      Male | Guild:        Monk | // | Age:        19 years | Race:    Dwarf | Castle:       None |	-	+
 1795175990	cmd	Trentlin	52	2497	dresden.are	standing	69	0	-	rested		You are rested: your kills earn double experience until 22500 more is spent (150% of a level). // Quitting here would not let you rest -- try a healing room, the Temple, the altar or your recall point. // Each hour away banks 5% of a level	-	+
+1795176027	cmd	Trentlin	52	2497	dresden.are	standing	69	0	-	enter	dor	You do not see that here.	-	-
+1795176031	cmd	Trentlin	52	2401	dresden.are	standing	69	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1795176031	cmd	Trentlin	52	2401	dresden.are	standing	69	0	-	look		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795176032	cmd	Trentlin	52	2404	dresden.are	standing	69	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795176032	cmd	Trentlin	52	2427	dresden.are	standing	69	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795176032	cmd	Trentlin	52	4201	dresden.are	standing	69	0	-	west		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795176033	cmd	Trentlin	52	4202	dresden.are	standing	69	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795176033	cmd	Trentlin	52	4207	dresden.are	standing	69	0	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795176033	cmd	Trentlin	52	4208	dresden.are	standing	69	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795176034	coin	Trentlin	52	4208	dresden.are	-5000000	spent	heal	-	21575188247
+1795176034	coin	Trentlin	52	4208	dresden.are	-5000000	spent	heal	-	21570188247
+1795176034	coin	Trentlin	52	4208	dresden.are	-5000000	spent	heal	-	21565188247
+1795176034	cmd	Trentlin	52	4208	dresden.are	standing	69	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body, and you are whole. (3 castings, 1500 gold.)	-	-
+1795176039	cmd	Trentlin	52	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795176039	cmd	Trentlin	52	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795176040	cmd	Trentlin	52	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795176040	cmd	Trentlin	52	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795176041	cmd	Trentlin	52	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795176041	cmd	Trentlin	52	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795176043	moved	-	0	0	-	945	herb	35	a sprig of angelica	86434	0	25276	mushroom.are	17010	ag.are
+1795176043	moved	-	0	0	-	944	herb	47	a sprig of saffron	86434	0	25216	mushroom.are	8842	kerofk.are
+1795176048	sightings	Trentlin	52	2401	dresden.are	mob	4444:1/0/0 4450:1/0/0 201:1/0/0 2434:2/0/0 4459:1/0/0 10:1/0/0 2435:2/0/0 2433:1/0/0 2430:1/0/0 4458:1/0/0 2431:1/0/0 4457:1/0/0 8903:1/0/0 8901:1/0/0 8902:1/0/0 8907:2/0/0 8908:1/0/0 8905:1/0/0 8909:1/0/0 4202:1/0/0 5208:1/0/0 5301:1/0/0 5315:1/0/0 5302:1/0/0 5303:1/1/0 4201:1/0/0
+1795176048	session	Trentlin	52	2401	dresden.are	quit	194s	+0 levels	+0 exp	+110548136 copper	1 kills	0 deaths	1 quests	133 commands	0 refused	coin: quests 126p 54g 81s 36c, spent 16p	spent on: heal 16p	exp: none
+1795176182	moved	-	0	0	-	948	component	60	a rakshasa's claw	86517	0	25033	mountain.are	16029	pirate.are
+1795176305	moved	-	0	0	-	956	component	85	a vial of crushed tarrasque scale	86505	0	12033	froboz.are	1034	uargo.are
