@@ -43824,3 +43824,229 @@
 1795225871	got	Trentlin	53	4208	dresden.are	16033	An assassin's ring	armor	52	24090000	stash	-
 1795225871	cmd	Trentlin	53	4208	dresden.are	standing	66	6	-	stash	get assassin	You take An assassin's ring out of your stash.	-	-
 1795225874	cmd	Trentlin	53	4208	dresden.are	standing	66	5	-	stash	put dagger	You put an assassin's dagger away for safe keeping.	-	-
+1795225878	got	Trentlin	53	4208	dresden.are	10004	the Crystalline Royal Cloak	armor	50	30000000	stash	-
+1795225878	cmd	Trentlin	53	4208	dresden.are	standing	66	11	-	stash	get crystall	You take the Crystalline Royal Cloak out of your stash.	-	-
+1795225878	got	Trentlin	53	4208	dresden.are	10003	the Crystalline Robe of Shielding	armor	50	90000000	stash	-
+1795225878	cmd	Trentlin	53	4208	dresden.are	standing	66	7	-	stash	get crystall	You take the Crystalline Robe of Shielding out of your stash.	-	-
+1795225878	got	Trentlin	53	4208	dresden.are	10000	the Crystalline Sceptre of Commanding	armor	50	60000000	stash	-
+1795225878	cmd	Trentlin	53	4208	dresden.are	standing	66	6	-	stash	get crystall	You take the Crystalline Sceptre of Commanding out of your stash.	-	-
+1795225878	got	Trentlin	53	4208	dresden.are	10006	(Flaming) the Crystalline Dagger of Wonders	weapon	49	40000000	stash	-
+1795225878	cmd	Trentlin	53	4208	dresden.are	standing	66	8	-	stash	get crystall	You take (Flaming) the Crystalline Dagger of Wonders out of your stash.	-	-
+1795225879	got	Trentlin	53	4208	dresden.are	10001	(Flaming) the Crystalline Sword of Justice	weapon	50	40000000	stash	-
+1795225879	cmd	Trentlin	53	4208	dresden.are	standing	66	8	-	stash	get crystall	You take (Flaming) the Crystalline Sword of Justice out of your stash.	-	-
+1795225879	cmd	Trentlin	53	4208	dresden.are	standing	66	0	-	stash	get crystall	There is nothing like that in your stash.  STASH GET takes a name or the number STASH shows.	-	-
+1795225881	cmd	Trentlin	53	4208	dresden.are	standing	66	0	-	inventory		You are carrying: //      (Magical) (Flaming) the Crystalline Sword of Justice //      (Magical) (Flaming) the Crystalline Dagger of Wonders	-	+
+1795225885	cmd	Trentlin	53	4208	dresden.are	standing	66	8	-	stash	put sword	You put (Flaming) the Crystalline Sword of Justice away for safe keeping.	-	-
+1795225888	cmd	Trentlin	53	4208	dresden.are	standing	66	6	-	stash	put dagger	You put (Flaming) the Crystalline Dagger of Wonders away for safe keeping.	-	-
+1795225889	cmd	Trentlin	53	4208	dresden.are	standing	66	0	-	inventory		You are carrying: //      (Magical) (Glowing) the Crystalline Sceptre of Commanding //      (Magical) (Glowing) the Crystalline Robe of Shielding	-	+
+1795225891	cmd	Trentlin	53	4208	dresden.are	standing	66	0	-	compare	scep	A) the Crystalline Sceptre of Commanding (level 50) // B) the Lizard's Heart Container (level 33), worn // Slot: held.  Your damage comes from weapons.	-	+
+1795225902	cmd	Trentlin	53	4208	dresden.are	standing	66	0	-	wear	scep	You stop using the Lizard's Heart Container. // You hold the Crystalline Sceptre of Commanding in your hands.	-	-
+1795225907	cmd	Trentlin	53	4208	dresden.are	standing	72	8	-	stash	put heart	You put the Heart Guard of the Demon away for safe keeping.	-	-
+1795225914	got	Trentlin	53	4208	dresden.are	30382	the Heart Guard of the Demon	armor	46	105800000	stash	-
+1795225914	cmd	Trentlin	53	4208	dresden.are	standing	72	7	-	stash	get demon	You take the Heart Guard of the Demon out of your stash.	-	-
+1795225917	cmd	Trentlin	53	4208	dresden.are	standing	72	6	-	stash	put liza	You put the Lizard's Heart Container away for safe keeping.	-	-
+1795225917	cmd	Trentlin	53	4208	dresden.are	standing	72	0	-	inventory		You are carrying: //      (Magical) the Heart Guard of the Demon //      (Magical) (Glowing) the Crystalline Robe of Shielding	-	+
+1795225920	cmd	Trentlin	53	4208	dresden.are	standing	72	0	-	compare	gaurd	You do not have that item.	-	-
+1795225923	cmd	Trentlin	53	4208	dresden.are	standing	72	0	-	compare	guard	A) the Heart Guard of the Demon (level 46) // B) the Heart Guard of the Lion (level 52), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1795225931	cmd	Trentlin	53	4208	dresden.are	standing	72	12	-	stash	put demon	You put the Heart Guard of the Demon away for safe keeping.	-	-
+1795225932	cmd	Trentlin	53	4208	dresden.are	standing	72	0	-	inventory		You are carrying: //      (Magical) (Glowing) the Crystalline Robe of Shielding //      (Magical) (Glowing) the Crystalline Royal Cloak	-	+
+1795225934	cmd	Trentlin	53	4208	dresden.are	standing	72	0	-	compare	robe	A) the Crystalline Robe of Shielding (level 50) // B) a suit of demon-scale plate (level 46), worn // Slot: body.  Your damage comes from weapons.	-	+
+1795225941	cmd	Trentlin	53	4208	dresden.are	standing	72	0	-	drop	robe	You drop the Crystalline Robe of Shielding.	-	-
+1795225941	laid	-	0	0	-	1081	herb	46	a juniper berry	5922	mid_ruin.are	scatter
+1795225942	coin	Trentlin	53	4208	dresden.are	+100	loot	sacrifice	-	21888331160
+1795225942	cmd	Trentlin	53	4208	dresden.are	standing	76	0	-	sacrifice	robe	The Gods give you 100 copper coins for your sacrifice.	-	-
+1795225943	cmd	Trentlin	53	4208	dresden.are	standing	76	0	-	inventory		You are carrying: //      (Magical) (Glowing) the Crystalline Royal Cloak //      (Humming) An assassin's ring	-	+
+1795225945	cmd	Trentlin	53	4208	dresden.are	standing	76	0	-	compare	cloak	A) the Crystalline Royal Cloak (level 50) // B) the Heart Guard of the Lion (level 52), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1795225955	cmd	Trentlin	53	4208	dresden.are	standing	76	0	-	drop	cloak	You drop the Crystalline Royal Cloak.	-	-
+1795225957	coin	Trentlin	53	4208	dresden.are	+100	loot	sacrifice	-	21888331260
+1795225957	cmd	Trentlin	53	4208	dresden.are	standing	76	0	-	sacrifice	cloak	The Gods give you 100 copper coins for your sacrifice.	-	-
+1795225957	cmd	Trentlin	53	4208	dresden.are	standing	76	0	-	inventory		You are carrying: //      (Humming) An assassin's ring //      (Invis) (Humming) an assassin's cloak	-	+
+1795225959	cmd	Trentlin	53	4208	dresden.are	standing	76	0	-	compare	ring	A) An assassin's ring (level 52) // B) a sapphire ring (level 34), worn // Slot: finger.  Your damage comes from weapons.	-	+
+1795225964	cmd	Trentlin	53	4208	dresden.are	standing	76	0	-	drop	ring	You drop An assassin's ring.	-	-
+1795225965	coin	Trentlin	53	4208	dresden.are	+104	loot	sacrifice	-	21888331364
+1795225965	cmd	Trentlin	53	4208	dresden.are	standing	76	0	-	sacrifice	ring	The Gods give you 104 copper coins for your sacrifice.	-	-
+1795225966	cmd	Trentlin	53	4208	dresden.are	standing	76	0	-	inventory		You are carrying: //      (Invis) (Humming) an assassin's cloak //      a bomb	-	+
+1795225968	cmd	Trentlin	53	4208	dresden.are	standing	76	0	-	compare	cloa	A) an assassin's cloak (level 52) // B) the Heart Guard of the Lion (level 52), worn // Slot: neck.  Your damage comes from weapons.	-	+
+1795225972	cmd	Trentlin	53	4208	dresden.are	standing	76	0	-	drop	cloa	You drop an assassin's cloak.	-	-
+1795225973	coin	Trentlin	53	4208	dresden.are	+104	loot	sacrifice	-	21888331468
+1795225973	cmd	Trentlin	53	4208	dresden.are	standing	76	0	-	sacrifice	cloa	The Gods give you 104 copper coins for your sacrifice.	-	-
+1795225974	cmd	Trentlin	53	4208	dresden.are	standing	76	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795225975	cmd	Trentlin	53	4207	dresden.are	standing	76	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795225975	cmd	Trentlin	53	4202	dresden.are	standing	76	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795225977	cmd	Trentlin	53	4201	dresden.are	standing	76	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795225977	cmd	Trentlin	53	2427	dresden.are	standing	76	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795225978	cmd	Trentlin	53	2427	dresden.are	standing	76	0	-	east		Alas, you cannot go that way.	-	-
+1795225978	cmd	Trentlin	53	2404	dresden.are	standing	76	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795225978	cmd	Trentlin	53	2401	dresden.are	standing	76	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795225979	cmd	Trentlin	53	2410	dresden.are	standing	76	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1795225979	cmd	Trentlin	53	2411	dresden.are	standing	76	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1795225979	cmd	Trentlin	53	2414	dresden.are	standing	76	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1795225981	cmd	Trentlin	53	2414	dresden.are	standing	76	0	-	aquest	request	There is no questmaster here.  Questor Thews is one more climb UP, in the globe above you.	-	-
+1795225981	cmd	Trentlin	53	2497	dresden.are	standing	76	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795225981	cmd	Trentlin	53	2497	dresden.are	standing	76	0	-	up		Alas, you cannot go that way.	-	-
+1795225985	quest	Trentlin	53	2497	dresden.are	ordinary	recover	25043	The Signet of Killuminati	59	kerofk.are	24
+1795225985	cmd	Trentlin	53	2497	dresden.are	standing	76	17	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Trentlin. I have just the task for you.' // Questor Thews tells you 'Bandits have made off with The Signet of Killuminati!'	-	+
+1795225987	cmd	Trentlin	53	2401	dresden.are	standing	76	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1795225990	cmd	Trentlin	53	2405	dresden.are	standing	76	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1795225991	cmd	Trentlin	53	2433	dresden.are	standing	76	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1795225991	cmd	Trentlin	53	2434	dresden.are	standing	76	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795225991	cmd	Trentlin	53	2435	dresden.are	standing	76	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795225991	cmd	Trentlin	53	2436	dresden.are	standing	76	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795225992	cmd	Trentlin	53	2437	dresden.are	standing	76	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795225992	cmd	Trentlin	53	2438	dresden.are	standing	76	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795225992	cmd	Trentlin	53	2438	dresden.are	standing	76	0	-	open	west	Ok.	-	-
+1795225992	cmd	Trentlin	53	2439	dresden.are	standing	76	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1795225993	cmd	Trentlin	53	3900	dresden.are	standing	76	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1795225993	cmd	Trentlin	53	3901	dresden.are	standing	76	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1795225993	cmd	Trentlin	53	3902	dresden.are	standing	76	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1795225993	cmd	Trentlin	53	3903	dresden.are	standing	76	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1795225994	cmd	Trentlin	53	3904	dresden.are	standing	76	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1795225994	area	Trentlin	53	300	plains.are	dresden.are	plains.are	165	north
+1795225994	cmd	Trentlin	53	300	plains.are	standing	76	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1795225994	cmd	Trentlin	53	316	plains.are	standing	76	0	-	west		Grassy plains //   You walk in the grassy plains among the herbs which grow here. The wind is // strong and rough. Far to the north you can see the foothills and further on	-	+
+1795225994	cmd	Trentlin	53	318	plains.are	standing	76	0	-	north		Grassy plains //   You walk in the beautiful grassy plains. The wind is strong and rough. // Far to the north you can see the foothills and further on mountain peaks	-	+
+1795225995	cmd	Trentlin	53	319	plains.are	standing	76	0	-	north		Grassy plains //   You walk in the grassy plains among the herbs which grow here. The wind is // strong and rough. To the north you can see the foothills and just behind	-	+
+1795225995	cmd	Trentlin	53	330	plains.are	standing	76	0	-	north		In front of hut in foothills //   You are standing in the foothills. To the west, well hidden among the small // foothills and pines, you see a small hut. To the north you can see	-	+
+1795225995	cmd	Trentlin	53	323	plains.are	standing	76	0	-	north		The steep foothills //   You walk in the steep foothills. It is rather hard to move here. // To the north you can see a grassy valley with wildflowers. To the west 	-	+
+1795225996	area	Trentlin	53	24	connect.are	plains.are	connect.are	2	west
+1795225996	cmd	Trentlin	53	24	connect.are	standing	76	0	-	west		Crossing the Foothills //   The hills grow steadily steeper as you trudge up the narrow trails.  To the // northwest, the trail degenerates into a narrow series of switchbacks, 	-	+
+1795225996	cmd	Trentlin	53	29	connect.are	standing	76	0	-	north		Steepened Path //   The path suddenly steepens here as you ascend into the mountains. // [Exits: north south]	-	-
+1795225996	area	Trentlin	53	8846	kerofk.are	connect.are	kerofk.are	0	north
+1795225996	cmd	Trentlin	53	8846	kerofk.are	standing	76	0	-	north		Mountain Pass //   The mountains rise up here, the small pass you are on winds // its way up to the north.  The sky seems dark above the mountains,	-	+
+1795226001	laid	-	0	0	-	1088	herb	53	a huckleberry	4332	dresden.are	scatter
+1795226002	cmd	Trentlin	53	8845	kerofk.are	standing	79	0	-	north		Mountain Pass //   You are standing at the apex of the mountain pass, the normal // sky to your west, and the strange night sky to your east.  The edge	-	+
+1795226002	cmd	Trentlin	53	8844	kerofk.are	standing	79	0	-	east		Mountain Pass //   The mountain pass leads up to the west, and downwards to the south. // There seems to be a strange half twilight farther to the west, casting	-	+
+1795226003	cmd	Trentlin	53	8843	kerofk.are	standing	79	0	-	south		Dirt Road //   You are standing in the foothills before the mountains.  A road // leads away under the starry sky to the east, and a mountain pass	-	+
+1795226003	cmd	Trentlin	53	8842	kerofk.are	standing	79	0	-	east		Dirt Road //   The road continues east and west from here.  To the west you see // brightness seeping over and between the mountains.  Eastwards the	-	+
+1795226004	cmd	Trentlin	53	8841	kerofk.are	standing	79	0	-	east		Dirt Road //   The road you stand on forks several directions here, one leading to // the north out of sight in the starlit sky, one leading up a hill to	-	+
+1795226005	cmd	Trentlin	53	8841	kerofk.are	standing	79	0	-	exits		Obvious exits: // North - Dirt Road // East  - View of a City	-	+
+1795226006	cmd	Trentlin	53	8836	kerofk.are	standing	79	0	-	north		Dirt Road //   The road travels north-south here along the side of the mountains. // To the north you see some cultivated fields, and to the south a fork	-	+
+1795226007	cmd	Trentlin	53	8837	kerofk.are	standing	79	0	-	north		Turn in the Road //   The road turns here to the east.  Around you, you see small cultivated  // fields, tended by farmers who seem paranoid and quick.  The vegetables	-	+
+1795226008	cmd	Trentlin	53	8838	kerofk.are	standing	79	0	-	east		A City on the Edge //   From here you see a great walled city from the side.  Only half is  // walled, the other half sprawled directly on the edge of a great cliff 	-	+
+1795226009	cmd	Trentlin	53	8839	kerofk.are	standing	79	0	-	east		Fields near a City //   There are some more small fields here, and more burned out houses. // From the smell of charred wood and the sounds of fresh construction,	-	+
+1795226010	cmd	Trentlin	53	8840	kerofk.are	standing	79	0	-	east		Near a City //   There is small gate to your east where guards let farmers into and // out of the city with their produce.  The walls seem indestructible,	-	+
+1795226011	cmd	Trentlin	53	8839	kerofk.are	standing	79	0	-	west		Fields near a City //   There are some more small fields here, and more burned out houses. // From the smell of charred wood and the sounds of fresh construction,	-	+
+1795226011	cmd	Trentlin	53	8838	kerofk.are	standing	79	0	-	west		A City on the Edge //   From here you see a great walled city from the side.  Only half is  // walled, the other half sprawled directly on the edge of a great cliff 	-	+
+1795226012	cmd	Trentlin	53	8837	kerofk.are	standing	79	0	-	west		Turn in the Road //   The road turns here to the east.  Around you, you see small cultivated  // fields, tended by farmers who seem paranoid and quick.  The vegetables	-	+
+1795226012	cmd	Trentlin	53	8836	kerofk.are	standing	79	0	-	south		Dirt Road //   The road travels north-south here along the side of the mountains. // To the north you see some cultivated fields, and to the south a fork	-	+
+1795226012	cmd	Trentlin	53	8841	kerofk.are	standing	79	0	-	south		Dirt Road //   The road you stand on forks several directions here, one leading to // the north out of sight in the starlit sky, one leading up a hill to	-	+
+1795226012	cmd	Trentlin	53	8841	kerofk.are	standing	79	0	-	south		Alas, you cannot go that way.	-	-
+1795226013	cmd	Trentlin	53	8834	kerofk.are	standing	79	0	-	east		View of a City //   Incredible! From this vantage point you see a huge city to the // east, large enough to hold thousands of people.  Great walls encircle	-	+
+1795226013	cmd	Trentlin	53	8835	kerofk.are	standing	79	0	-	east		Near the City //   You are very near the city now.  There is a great gate to your // east, with guards slowly letting people in and out.  The walls	-	+
+1795226014	cmd	Trentlin	53	8777	kerofk.are	standing	79	0	-	east		Moon Gate //   This is Moon Gate, the main entrance to Kerofk and VERY well // defended.  The guards look at you suspiciously, but let you by with	-	+
+1795226014	cmd	Trentlin	53	8732	kerofk.are	standing	79	0	-	east		Intersection //   You breathe the chill night air and look around at the passing // citizenry just inside one of the city's gates here.  This city sure	-	+
+1795226015	cmd	Trentlin	53	8733	kerofk.are	standing	79	1	-	north		Wall Side Road, South //   All the buildings in this area are semi-destroyed, victims of a // raid or war it seems.  There are some signs of construction about, but	-	+
+1795226016	cmd	Trentlin	53	8734	kerofk.are	standing	79	0	-	north		Intersection //   Center Road starts here, running deep into the heart of Kerofk. // You see all sorts of large buildings down its length, including a big	-	+
+1795226017	cmd	Trentlin	53	8734	kerofk.are	standing	79	0	-	exits		Obvious exits: // North - Wall Side Road, North // East  - Center Road, West	-	+
+1795226019	cmd	Trentlin	53	8738	kerofk.are	standing	79	0	-	east		Center Road, West //   Center Road is lined with grand buildings up and down its entire // length; for instance, a huge temple of XXXXX lies to the south.  Even	-	+
+1795226020	cmd	Trentlin	53	8738	kerofk.are	standing	79	0	-	exits		Obvious exits: // East  - Intersection // South - Temple of XXXXX	-	+
+1795226021	cmd	Trentlin	53	8724	kerofk.are	standing	79	0	-	east		Intersection //   There are just too many people here at the intersection of Center // Road and Business Road!  Too many people, walking around hurriedly.	-	+
+1795226022	cmd	Trentlin	53	8724	kerofk.are	standing	79	0	-	exits		Obvious exits: // North - Business Road, North // East  - Center Road, West	-	+
+1795226025	cmd	Trentlin	53	8730	kerofk.are	standing	79	0	-	south		Business Road, South //   Shops line this road , some open and some closed.  Northwards you // see the intersection of Center Road and Business Road, and	-	+
+1795226025	cmd	Trentlin	53	8730	kerofk.are	standing	79	0	-	exits		Obvious exits: // North - Intersection // South - Intersection	-	+
+1795226026	cmd	Trentlin	53	8729	kerofk.are	standing	79	0	-	south		Intersection //   Moon Gate Road intersects Business Road here, making this a hectic // area as people go about their business.  Along Business Road to the	-	+
+1795226027	cmd	Trentlin	53	8729	kerofk.are	standing	79	0	-	exits		Obvious exits: // North - Business Road, South // East  - Moon Gate Road, West	-	+
+1795226028	cmd	Trentlin	53	8730	kerofk.are	standing	79	0	-	north		Business Road, South //   Shops line this road , some open and some closed.  Northwards you // see the intersection of Center Road and Business Road, and	-	+
+1795226029	cmd	Trentlin	53	8724	kerofk.are	standing	79	0	-	north		Intersection //   There are just too many people here at the intersection of Center // Road and Business Road!  Too many people, walking around hurriedly.	-	+
+1795226029	cmd	Trentlin	53	8723	kerofk.are	standing	79	0	-	north		Business Road, North //   A lovely smell wafts across the street here, coming from the open // doors of the herbalist's shop to your east.  A variety of plants are	-	+
+1795226030	cmd	Trentlin	53	8723	kerofk.are	standing	79	0	-	exits		Obvious exits: // North - Intersection // East  - The Herbalist's Shoppe	-	+
+1795226031	cmd	Trentlin	53	8722	kerofk.are	standing	79	0	-	north		Intersection //   Business Road joins Star Gate Road here.  Small shops line the // street to your south while Star Gate Road continues on its way east	-	+
+1795226031	cmd	Trentlin	53	8722	kerofk.are	standing	79	0	-	exits		Obvious exits: // North - Shrine to the Emperor // East  - Star Gate Road, West	-	+
+1795226032	cmd	Trentlin	53	8723	kerofk.are	standing	79	0	-	south		Business Road, North //   A lovely smell wafts across the street here, coming from the open // doors of the herbalist's shop to your east.  A variety of plants are	-	+
+1795226033	cmd	Trentlin	53	8754	kerofk.are	standing	79	0	-	east		The Herbalist's Shoppe //   A wonderful smell wafts from the inside of this shop as you enter. // What a beautiful place!  Freshly cut flowers decorate every nook and	-	+
+1795226033	cmd	Trentlin	53	8754	kerofk.are	standing	79	0	-	list		[Lv Price] Item // [10        25p] a crown of elder berries. // [15    16p 25g] a betony leaf.	-	+
+1795226036	cmd	Trentlin	53	8723	kerofk.are	standing	79	0	-	west		Business Road, North //   A lovely smell wafts across the street here, coming from the open // doors of the herbalist's shop to your east.  A variety of plants are	-	+
+1795226036	cmd	Trentlin	53	8724	kerofk.are	standing	79	0	-	south		Intersection //   There are just too many people here at the intersection of Center // Road and Business Road!  Too many people, walking around hurriedly.	-	+
+1795226037	cmd	Trentlin	53	8725	kerofk.are	standing	79	0	-	east		Center Road, West //   Center Road is a madhouse of people bumping into other people, // including you!  One of the main attractions here is the Town Hall to	-	+
+1795226038	cmd	Trentlin	53	8725	kerofk.are	standing	79	0	-	exits		Obvious exits: // North - Town Hall--Entrance // East  - Plaza of Kerofk	-	+
+1795226040	cmd	Trentlin	53	8702	kerofk.are	standing	79	0	-	east		Plaza of Kerofk //   This is the center of Kerofk, physically and culturally.  Many // people are here, milling about and standing in line to enter the great	-	+
+1795226041	cmd	Trentlin	53	8702	kerofk.are	standing	79	0	-	exits		Obvious exits: // North - MouseRider's Temple // East  - Center Road, East	-	+
+1795226044	cmd	Trentlin	53	8702	kerofk.are	standing	79	0	-	open	sou	It's locked.	-	-
+1795226044	cmd	Trentlin	53	8702	kerofk.are	standing	79	0	-	exits		Obvious exits: // North - MouseRider's Temple // East  - Center Road, East	-	+
+1795226045	cmd	Trentlin	53	8702	kerofk.are	standing	79	2	-	south		The gates is closed.	-	-
+1795226046	cmd	Trentlin	53	8700	kerofk.are	standing	79	0	-	north		MouseRider's Temple //   The inside of this temple is austere yet majestic.  The pillars of // marble sweep up to the ceiling, melting into the dome overhead without	-	+
+1795226049	cmd	Trentlin	53	8700	kerofk.are	standing	79	0	-	look	mo	MouseRider is the greatest mortal sage ever.  He is also a most // troubled man, knowing things you couldn't even guess at.  You wonder // how he could have all that knowledge and not want power.	-	+
+1795226051	cmd	Trentlin	53	8700	kerofk.are	standing	79	0	-	consider	mo	MouseRider is a little below your level. // MouseRider has several times your hit points. // Blow for blow, you would need about 23 rounds to bring MouseRider down; it would need about 24 rounds for you.	-	+
+1795226058	cmd	Trentlin	53	8700	kerofk.are	standing	79	0	-	exits		Obvious exits: // North - MouseRider's Bedroom // South - Plaza of Kerofk	-	+
+1795226060	cmd	Trentlin	53	8701	kerofk.are	standing	79	0	-	north		MouseRider's Bedroom //   This can hardly be a bedroom--this is a room so spartan surely no // human could spend any time here at all!  There is a small pallet in	-	+
+1795226061	cmd	Trentlin	53	8701	kerofk.are	standing	79	0	-	exits		Obvious exits: // South - MouseRider's Temple	-	-
+1795226061	cmd	Trentlin	53	8700	kerofk.are	standing	79	0	-	south		MouseRider's Temple //   The inside of this temple is austere yet majestic.  The pillars of // marble sweep up to the ceiling, melting into the dome overhead without	-	+
+1795226062	cmd	Trentlin	53	8700	kerofk.are	standing	79	0	-	west		Alas, you cannot go that way.	-	-
+1795226063	area	Trentlin	53	2	limbo.are	kerofk.are	limbo.are	67	ne
+1795226063	cmd	Trentlin	53	2	limbo.are	standing	79	0	-	ne		Limbo //   You are floating in a formless void, detached from all sensation of physical // matter, surrounded by swirling glowing light, which fades into the relative	-	+
+1795226066	area	Trentlin	53	4207	dresden.are	limbo.are	dresden.are	3	recall
+1795226066	cmd	Trentlin	53	4207	dresden.are	standing	79	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795226068	cmd	Trentlin	53	4208	dresden.are	standing	79	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795226070	coin	Trentlin	53	4208	dresden.are	-800000	spent	heal	-	21887531468
+1795226070	cmd	Trentlin	53	4208	dresden.are	standing	79	0	-	heal	refre	The healer utters the words 'candusima'. // You feel fully refreshed! (8 castings, 80 gold.)	-	-
+1795226074	cmd	Trentlin	53	4208	dresden.are	standing	79	0	-	levitate		You slowly rise up off the ground.	-	-
+1795226074	cmd	Trentlin	53	4207	dresden.are	standing	79	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795226074	cmd	Trentlin	53	4202	dresden.are	standing	79	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795226075	cmd	Trentlin	53	4201	dresden.are	standing	79	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795226075	cmd	Trentlin	53	2433	dresden.are	standing	79	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1795226075	cmd	Trentlin	53	2434	dresden.are	standing	82	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795226075	cmd	Trentlin	53	2435	dresden.are	standing	82	1	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795226076	cmd	Trentlin	53	2436	dresden.are	standing	82	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795226076	cmd	Trentlin	53	2437	dresden.are	standing	82	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795226077	cmd	Trentlin	53	2438	dresden.are	standing	82	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795226077	cmd	Trentlin	53	2438	dresden.are	standing	82	0	-	open	west	Ok.	-	-
+1795226077	cmd	Trentlin	53	2439	dresden.are	standing	82	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1795226077	cmd	Trentlin	53	3900	dresden.are	standing	82	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1795226078	cmd	Trentlin	53	3901	dresden.are	standing	82	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1795226078	cmd	Trentlin	53	3902	dresden.are	standing	82	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1795226078	cmd	Trentlin	53	3903	dresden.are	standing	82	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1795226078	cmd	Trentlin	53	3904	dresden.are	standing	82	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1795226079	area	Trentlin	53	300	plains.are	dresden.are	plains.are	13	north
+1795226079	cmd	Trentlin	53	300	plains.are	standing	82	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1795226079	cmd	Trentlin	53	316	plains.are	standing	82	0	-	west		Grassy plains //   You walk in the grassy plains among the herbs which grow here. The wind is // strong and rough. Far to the north you can see the foothills and further on	-	+
+1795226079	cmd	Trentlin	53	318	plains.are	standing	82	0	-	north		Grassy plains //   You walk in the beautiful grassy plains. The wind is strong and rough. // Far to the north you can see the foothills and further on mountain peaks	-	+
+1795226079	cmd	Trentlin	53	319	plains.are	standing	82	0	-	north		Grassy plains //   You walk in the grassy plains among the herbs which grow here. The wind is // strong and rough. To the north you can see the foothills and just behind	-	+
+1795226080	cmd	Trentlin	53	330	plains.are	standing	82	0	-	north		In front of hut in foothills //   You are standing in the foothills. To the west, well hidden among the small // foothills and pines, you see a small hut. To the north you can see	-	+
+1795226080	cmd	Trentlin	53	323	plains.are	standing	82	0	-	north		The steep foothills //   You walk in the steep foothills. It is rather hard to move here. // To the north you can see a grassy valley with wildflowers. To the west 	-	+
+1795226080	area	Trentlin	53	24	connect.are	plains.are	connect.are	1	west
+1795226080	cmd	Trentlin	53	24	connect.are	standing	82	0	-	west		Crossing the Foothills //   The hills grow steadily steeper as you trudge up the narrow trails.  To the // northwest, the trail degenerates into a narrow series of switchbacks, 	-	+
+1795226080	cmd	Trentlin	53	29	connect.are	standing	82	0	-	north		Steepened Path //   The path suddenly steepens here as you ascend into the mountains. // [Exits: north south]	-	-
+1795226081	area	Trentlin	53	8846	kerofk.are	connect.are	kerofk.are	1	north
+1795226081	cmd	Trentlin	53	8846	kerofk.are	standing	82	0	-	north		Mountain Pass //   The mountains rise up here, the small pass you are on winds // its way up to the north.  The sky seems dark above the mountains,	-	+
+1795226131	cmd	Trentlin	53	8845	kerofk.are	standing	82	0	-	north		Mountain Pass //   You are standing at the apex of the mountain pass, the normal // sky to your west, and the strange night sky to your east.  The edge	-	+
+1795226131	cmd	Trentlin	53	8844	kerofk.are	standing	82	0	-	east		Mountain Pass //   The mountain pass leads up to the west, and downwards to the south. // There seems to be a strange half twilight farther to the west, casting	-	+
+1795226132	cmd	Trentlin	53	8843	kerofk.are	standing	82	0	-	south		Dirt Road //   You are standing in the foothills before the mountains.  A road // leads away under the starry sky to the east, and a mountain pass	-	+
+1795226133	cmd	Trentlin	53	8842	kerofk.are	standing	82	0	-	east		Dirt Road //   The road continues east and west from here.  To the west you see // brightness seeping over and between the mountains.  Eastwards the	-	+
+1795226134	cmd	Trentlin	53	8841	kerofk.are	standing	82	0	-	east		Dirt Road //   The road you stand on forks several directions here, one leading to // the north out of sight in the starlit sky, one leading up a hill to	-	+
+1795226135	cmd	Trentlin	53	8836	kerofk.are	standing	82	0	-	north		Dirt Road //   The road travels north-south here along the side of the mountains. // To the north you see some cultivated fields, and to the south a fork	-	+
+1795226135	cmd	Trentlin	53	8837	kerofk.are	standing	82	0	-	north		Turn in the Road //   The road turns here to the east.  Around you, you see small cultivated  // fields, tended by farmers who seem paranoid and quick.  The vegetables	-	+
+1795226137	cmd	Trentlin	53	8838	kerofk.are	standing	82	0	-	east		A City on the Edge //   From here you see a great walled city from the side.  Only half is  // walled, the other half sprawled directly on the edge of a great cliff 	-	+
+1795226137	cmd	Trentlin	53	8839	kerofk.are	standing	82	0	-	east		Fields near a City //   There are some more small fields here, and more burned out houses. // From the smell of charred wood and the sounds of fresh construction,	-	+
+1795226137	cmd	Trentlin	53	8840	kerofk.are	standing	82	0	-	east		Near a City //   There is small gate to your east where guards let farmers into and // out of the city with their produce.  The walls seem indestructible,	-	+
+1795226138	cmd	Trentlin	53	8776	kerofk.are	standing	82	0	-	east		Star Gate //   This small gate seems to be the main entrance for the farmers // entering the city with their produce.  Guards wave everyone through	-	+
+1795226139	cmd	Trentlin	53	8776	kerofk.are	standing	82	0	-	exits		Obvious exits: // East  - Intersection // West  - Near a City	-	-
+1795226139	cmd	Trentlin	53	8736	kerofk.are	standing	82	0	-	east		Intersection //   You enter the city proper with the sounds of the bustling crowds // surrounding you.  Some people seem to be doing their morning business,	-	+
+1795226140	cmd	Trentlin	53	8736	kerofk.are	standing	82	0	-	exits		Obvious exits: // East  - Star Gate Road, West // South - Wall Side Road, North	-	+
+1795226142	cmd	Trentlin	53	8737	kerofk.are	standing	82	0	-	east		Star Gate Road, West //   Kerofk's citizenry walk around, barely noticing as you walk down // this busy street between and through them.  It seems that they're used	-	+
+1795226142	cmd	Trentlin	53	8737	kerofk.are	standing	82	0	-	exits		Obvious exits: // East  - Intersection // West  - Intersection	-	-
+1795226143	cmd	Trentlin	53	8722	kerofk.are	standing	82	0	-	east		Intersection //   Business Road joins Star Gate Road here.  Small shops line the // street to your south while Star Gate Road continues on its way east	-	+
+1795226144	cmd	Trentlin	53	8722	kerofk.are	standing	82	0	-	exits		Obvious exits: // North - Shrine to the Emperor // East  - Star Gate Road, West	-	+
+1795226159	cmd	Trentlin	53	8723	kerofk.are	standing	84	0	-	south		Business Road, North //   A lovely smell wafts across the street here, coming from the open // doors of the herbalist's shop to your east.  A variety of plants are	-	+
+1795226160	cmd	Trentlin	53	8754	kerofk.are	standing	84	0	-	east		The Herbalist's Shoppe //   A wonderful smell wafts from the inside of this shop as you enter. // What a beautiful place!  Freshly cut flowers decorate every nook and	-	+
+1795226160	cmd	Trentlin	53	8754	kerofk.are	standing	84	0	-	east		Alas, you cannot go that way.	-	-
+1795226161	cmd	Trentlin	53	8723	kerofk.are	standing	84	0	-	west		Business Road, North //   A lovely smell wafts across the street here, coming from the open // doors of the herbalist's shop to your east.  A variety of plants are	-	+
+1795226161	cmd	Trentlin	53	8722	kerofk.are	standing	84	0	-	north		Intersection //   Business Road joins Star Gate Road here.  Small shops line the // street to your south while Star Gate Road continues on its way east	-	+
+1795226162	cmd	Trentlin	53	8721	kerofk.are	standing	84	0	-	east		Star Gate Road, West //   The nighttime stars shine down on the establishment to your south, // making all the glitter and metal attached to it shine spectacularly.	-	+
+1795226162	cmd	Trentlin	53	8720	kerofk.are	standing	84	0	-	east		Star Gate Road //   The hustle and bustle of Star Gate Road dies down a little here, // but not by much.  To the north is a large farmer's stand where a lot	-	+
+1795226163	cmd	Trentlin	53	8719	kerofk.are	standing	84	0	-	east		Star Gate Road, East //   Star Gate Road continues on, towards a steep cliff to the east. // Southwards is a rather dingy looking gambling parlor called 'The Red	-	+
+1795226163	cmd	Trentlin	53	8719	kerofk.are	standing	84	0	-	north		Alas, you cannot go that way.	-	-
+1795226164	cmd	Trentlin	53	8717	kerofk.are	standing	84	0	-	east		Intersection //   Star Gate Road and Citizen's Road meet here where many people walk // around and do their business.  Looks like there's some private homes	-	+
+1795226164	cmd	Trentlin	53	8717	kerofk.are	standing	84	0	-	north		Alas, you cannot go that way.	-	-
+1795226165	cmd	Trentlin	53	8719	kerofk.are	standing	84	0	-	west		Star Gate Road, East //   Star Gate Road continues on, towards a steep cliff to the east. // Southwards is a rather dingy looking gambling parlor called 'The Red	-	+
+1795226165	cmd	Trentlin	53	8720	kerofk.are	standing	84	0	-	west		Star Gate Road //   The hustle and bustle of Star Gate Road dies down a little here, // but not by much.  To the north is a large farmer's stand where a lot	-	+
+1795226166	cmd	Trentlin	53	8852	kerofk.are	standing	84	0	-	north		Farmer's Stand //   A few wooden stands here are filled with fruits and vegetables // grown under this endless night sky.  This place seems to get good	-	+
+1795226166	cmd	Trentlin	53	8852	kerofk.are	standing	84	0	-	exits		Obvious exits: // South - Star Gate Road	-	-
+1795226167	cmd	Trentlin	53	8720	kerofk.are	standing	84	0	-	south		Star Gate Road //   The hustle and bustle of Star Gate Road dies down a little here, // but not by much.  To the north is a large farmer's stand where a lot	-	+
+1795226167	cmd	Trentlin	53	8719	kerofk.are	standing	84	0	-	east		Star Gate Road, East //   Star Gate Road continues on, towards a steep cliff to the east. // Southwards is a rather dingy looking gambling parlor called 'The Red	-	+
+1795226168	cmd	Trentlin	53	8717	kerofk.are	standing	84	0	-	east		Intersection //   Star Gate Road and Citizen's Road meet here where many people walk // around and do their business.  Looks like there's some private homes	-	+
+1795226168	cmd	Trentlin	53	8716	kerofk.are	standing	84	0	-	east		Star Gate Road, East //   This area is strangely quiet for such a bustling city.  The stars // shine down as you look around for the source of the silence.  Ah,	-	+
+1795226169	cmd	Trentlin	53	8747	kerofk.are	standing	84	0	-	north		The Bookstore //   Shelves fill this store with books to the brimming.  Tomes on cats, // rats, plates, grates, mages, cages, stages, swords, hoards, dragons,	-	+
+1795226170	cmd	Trentlin	53	8747	kerofk.are	standing	84	0	-	west		The bookcase is closed.	-	-
+1795226172	cmd	Trentlin	53	8747	kerofk.are	standing	84	0	-	open	west	Ok.	-	-
+1795226173	cmd	Trentlin	53	8748	kerofk.are	standing	84	0	-	west		Thieves Guild //   The open hidden panel behind you seems to shed no light in here, // and you find yourself in complete darkness.  You feel the presence of	-	+
+1795226175	cmd	Trentlin	53	8747	kerofk.are	standing	84	0	-	east		The Bookstore //   Shelves fill this store with books to the brimming.  Tomes on cats, // rats, plates, grates, mages, cages, stages, swords, hoards, dragons,	-	+
