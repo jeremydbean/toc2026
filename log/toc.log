@@ -327024,3 +327024,7 @@ Sat Nov 21 08:13:40 2026 :: Connection guard: refused 1 connection from 3.12.251
 Sat Nov 21 08:18:44 2026 :: Connection guard: refused 1 connection from 3.12.251.153 (paused; 3 refused in all, pause 1 this week, 20 minutes left).
 Sat Nov 21 08:19:00 2026 :: Connection guard: last hour 6 closed without a word, 7 refused, 0 new characters refused, 1 newly paused; 6 addresses paused and 0 refused now, 15 active player addresses.
 Sat Nov 21 08:19:40 2026 :: Treasure goblin: vanished from room 2003 (Weapon training area, catacomb.are) (too long in one area).
+Sat Nov 21 08:23:49 2026 :: Connection guard: 3.133.226.214 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 21 08:24:04 2026 :: Cartographer: appeared.
+Sat Nov 21 08:25:52 2026 :: Black market: stock 1795249552: a shape shifting cloak (29055, level 45, 41p); force shield (29240, level 54, 876p); The Blazing sword. (17020, level 53, 860p); British's amulet (7666, level 54, 876p); a slice of Winter Veil yule log (29927, level 0, 2704p).
+Sat Nov 21 08:25:52 2026 :: Black market: the dealer appeared with 5 items (stock 1795249552), for 30 minutes.
