@@ -327114,3 +327114,5 @@ Sat Nov 21 12:07:15 2026 :: Connection guard: 178.156.189.249 closed without a w
 Sat Nov 21 12:10:20 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Sat Nov 21 12:12:20 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 5 of 6 in 6 hours).
 Sat Nov 21 12:16:31 2026 :: Treasure goblin: vanished from room 25277 (The second floor of the tower., mushroom.are) (too long in one area).
+Sat Nov 21 12:17:24 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 4 of 6 in 6 hours).
+Sat Nov 21 12:19:00 2026 :: Connection guard: last hour 11 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 4 addresses paused and 0 refused now, 15 active player addresses.
