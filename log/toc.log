@@ -326866,3 +326866,9 @@ Sat Nov 21 02:08:04 2026 :: Connection guard: 5.161.117.52 closed without a word
 Sat Nov 21 02:10:14 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Sat Nov 21 02:13:09 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 31 refused in all, pause 4 this week, 1169 minutes left).
 Sat Nov 21 02:15:48 2026 :: Treasure goblin: vanished from room 9647 (The Dump, newthalo.are) (too long in one area).
+Sat Nov 21 02:18:14 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 21 02:19:00 2026 :: Connection guard: last hour 15 closed without a word, 20 refused, 0 new characters refused, 1 newly paused; 5 addresses paused and 0 refused now, 15 active player addresses.
+Sat Nov 21 02:19:52 2026 :: Automated backup started.
+Sat Nov 21 02:19:52 2026 :: Automated backup complete.
+Sat Nov 21 02:19:57 2026 :: Connection guard: 195.178.110.204 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 21 02:20:10 2026 :: Connection guard: 170.231.236.98 closed without a word (strike 1 of 6 in 6 hours).
