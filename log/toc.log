@@ -326959,3 +326959,9 @@ Sat Nov 21 05:36:17 2026 :: Connection guard: 5.161.61.238 closed without a word
 Sat Nov 21 05:41:21 2026 :: Connection guard: refused 1 connection from 52.22.236.30 (paused; 20 refused in all, pause 3 this week, 232 minutes left).
 Sat Nov 21 05:44:58 2026 :: Treasure goblin: vanished from room 5217 (The meat stand, oldthalo.are) (too long in one area).
 Sat Nov 21 05:46:26 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 21 05:46:58 2026 :: Cartographer: left room 17006 (Trapped!, ag.are) (his visit is over).
+Sat Nov 21 05:50:23 2026 :: Sock.sinaddr:  165.227.62.247
+Sat Nov 21 05:50:30 2026 :: EOF encountered on read.
+Sat Nov 21 05:50:30 2026 :: Connection guard: 165.227.62.247 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sat Nov 21 05:50:30 2026 :: Connection guard: 165.227.62.247 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 21 05:51:30 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 1 of 6 in 6 hours).
