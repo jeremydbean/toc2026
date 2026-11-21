@@ -327008,3 +327008,8 @@ Sat Nov 21 07:37:53 2026 :: Treasure goblin: vanished from room 24300 (The Stone
 Sat Nov 21 07:38:09 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 4 of 6 in 6 hours).
 Sat Nov 21 07:43:12 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 6 of 6 in 6 hours).
 Sat Nov 21 07:43:12 2026 :: Connection guard: 5.161.215.244 paused for 48 hours (pause 4 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.215.244 lifts it.
+Sat Nov 21 07:47:05 2026 :: Sock.sinaddr:  65.49.1.232
+Sat Nov 21 07:47:05 2026 :: EOF encountered on read.
+Sat Nov 21 07:47:05 2026 :: Connection guard: 65.49.1.232 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sat Nov 21 07:47:58 2026 :: Treasure goblin: vanished from room 13014 (Northfields, lakes.are) (too long in one area).
+Sat Nov 21 07:48:17 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 40 refused in all, pause 4 this week, 57 minutes left).
