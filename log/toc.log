@@ -326936,3 +326936,5 @@ Sat Nov 21 04:35:22 2026 :: Connection guard: 5.161.61.238 closed without a word
 Sat Nov 21 04:40:05 2026 :: Connection guard: 162.216.149.123 closed without a word (strike 1 of 6 in 6 hours).
 Sat Nov 21 04:40:05 2026 :: Connection guard: 162.216.149.123 closed without a word (strike 2 of 6 in 6 hours).
 Sat Nov 21 04:40:27 2026 :: Connection guard: refused 1 connection from 178.156.187.238 (paused; 17 refused in all, pause 3 this week, 902 minutes left).
+Sat Nov 21 04:44:30 2026 :: Treasure goblin: vanished from room 6125 (A small path on the river bank in the deep, dark forest, haon.are) (too long in one area).
+Sat Nov 21 04:45:31 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 38 refused in all, pause 4 this week, 240 minutes left).
