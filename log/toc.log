@@ -326899,3 +326899,8 @@ Sat Nov 21 03:14:06 2026 :: Connection guard: refused 1 connection from 3.12.251
 Sat Nov 21 03:16:16 2026 :: Treasure goblin: vanished from room 8842 (Dirt Road, kerofk.are) (too long in one area).
 Sat Nov 21 03:19:00 2026 :: Connection guard: last hour 12 closed without a word, 2 refused, 0 new characters refused, 1 newly paused; 6 addresses paused and 0 refused now, 15 active player addresses.
 Sat Nov 21 03:19:11 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 21 03:24:16 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 21 03:24:19 2026 :: Sock.sinaddr:  198.235.24.163
+Sat Nov 21 03:24:19 2026 :: EOF encountered on read.
+Sat Nov 21 03:24:19 2026 :: Connection guard: 198.235.24.163 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sat Nov 21 03:26:20 2026 :: Treasure goblin: vanished from room 25211 (Outside the Northern Gate of Nethril., mushroom.are) (too long in one area).
