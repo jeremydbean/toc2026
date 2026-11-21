@@ -327138,3 +327138,7 @@ Sat Nov 21 12:37:40 2026 :: Connection guard: 5.161.177.47 closed without a word
 Sat Nov 21 12:42:45 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 1 of 6 in 6 hours).
 Sat Nov 21 12:44:05 2026 :: Cartographer: appeared.
 Sat Nov 21 12:46:45 2026 :: Treasure goblin: vanished from room 7657 (Justice Row, ultima.are) (too long in one area).
+Sat Nov 21 12:47:50 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 21 12:51:26 2026 :: Sock.sinaddr:  129.150.32.71
+Sat Nov 21 12:51:26 2026 :: EOF encountered on read.
+Sat Nov 21 12:51:26 2026 :: Connection guard: 129.150.32.71 closed before a password prompt (strike 1 of 6 in 6 hours).
