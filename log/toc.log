@@ -327021,3 +327021,6 @@ Sat Nov 21 08:08:35 2026 :: Connection guard: refused 1 connection from 178.156.
 Sat Nov 21 08:09:35 2026 :: Treasure goblin: vanished from room 5121 (City street, drow1.are) (too long in one area).
 Sat Nov 21 08:10:13 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Sat Nov 21 08:13:40 2026 :: Connection guard: refused 1 connection from 3.12.251.153 (paused; 2 refused in all, pause 1 this week, 25 minutes left).
+Sat Nov 21 08:18:44 2026 :: Connection guard: refused 1 connection from 3.12.251.153 (paused; 3 refused in all, pause 1 this week, 20 minutes left).
+Sat Nov 21 08:19:00 2026 :: Connection guard: last hour 6 closed without a word, 7 refused, 0 new characters refused, 1 newly paused; 6 addresses paused and 0 refused now, 15 active player addresses.
+Sat Nov 21 08:19:40 2026 :: Treasure goblin: vanished from room 2003 (Weapon training area, catacomb.are) (too long in one area).
