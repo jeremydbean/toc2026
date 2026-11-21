@@ -326881,3 +326881,6 @@ Sat Nov 21 02:37:17 2026 :: Black market: stock 1795228637: a pirate's ring (160
 Sat Nov 21 02:37:17 2026 :: Black market: the dealer appeared with 5 items (stock 1795228637), for 26 minutes.
 Sat Nov 21 02:38:33 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 6 of 6 in 6 hours).
 Sat Nov 21 02:38:33 2026 :: Connection guard: 3.12.251.153 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 3.12.251.153 lifts it.
+Sat Nov 21 02:43:38 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 21 02:44:10 2026 :: Black market: the dealer vanished from room 6154 (The underground hallway., haon.are) (wandering).
+Sat Nov 21 02:46:02 2026 :: Treasure goblin: vanished from room 20519 (The Altar of Sacrifice, emerald.are) (too long in one area).
