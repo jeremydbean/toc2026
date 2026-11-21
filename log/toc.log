@@ -327118,3 +327118,16 @@ Sat Nov 21 12:17:24 2026 :: Connection guard: 178.156.189.249 closed without a w
 Sat Nov 21 12:19:00 2026 :: Connection guard: last hour 11 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 4 addresses paused and 0 refused now, 15 active player addresses.
 Sat Nov 21 12:22:29 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 1 of 6 in 6 hours).
 Sat Nov 21 12:26:36 2026 :: Treasure goblin: vanished from room 17187 (A steep climb, highland.are) (too long in one area).
+Sat Nov 21 12:27:33 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 21 12:30:52 2026 :: Connection guard: 156.225.1.41 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 21 12:30:54 2026 :: Connection guard: 156.225.1.41 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 21 12:30:56 2026 :: Connection guard: 156.225.1.41 closed without a word (strike 3 of 6 in 6 hours).
+Sat Nov 21 12:30:57 2026 :: Connection guard: 156.225.1.41 closed without a word (strike 4 of 6 in 6 hours).
+Sat Nov 21 12:30:57 2026 :: Sock.sinaddr:  156.225.1.41
+Sat Nov 21 12:30:58 2026 :: EOF encountered on read.
+Sat Nov 21 12:30:58 2026 :: Connection guard: 156.225.1.41 closed before a password prompt (strike 5 of 6 in 6 hours).
+Sat Nov 21 12:30:58 2026 :: Sock.sinaddr:  156.225.1.41
+Sat Nov 21 12:31:08 2026 :: EOF encountered on read.
+Sat Nov 21 12:31:08 2026 :: Connection guard: 156.225.1.41 closed before a password prompt (strike 6 of 6 in 6 hours).
+Sat Nov 21 12:31:08 2026 :: Connection guard: 156.225.1.41 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 156.225.1.41 lifts it.
+Sat Nov 21 12:31:08 2026 :: Connection guard: refused 1 connection from 156.225.1.41 (paused; 1 refused in all, pause 1 this week, 360 minutes left).
