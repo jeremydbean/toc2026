@@ -326978,3 +326978,5 @@ Sat Nov 21 06:16:54 2026 :: Connection guard: 5.161.117.52 closed without a word
 Sat Nov 21 06:19:00 2026 :: Connection guard: last hour 15 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 6 addresses paused and 0 refused now, 15 active player addresses.
 Sat Nov 21 06:20:45 2026 :: Automated backup started.
 Sat Nov 21 06:20:46 2026 :: Automated backup complete.
+Sat Nov 21 06:21:58 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 3 of 6 in 6 hours).
+Sat Nov 21 06:24:52 2026 :: Treasure goblin: vanished from room 24332 (The Black Square, chess.are) (too long in one area).
