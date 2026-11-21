@@ -327073,3 +327073,7 @@ Sat Nov 21 10:10:06 2026 :: Connection guard: 23.31.96.97 closed without a word 
 Sat Nov 21 10:10:27 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 34 refused in all, pause 4 this week, 692 minutes left).
 Sat Nov 21 10:12:03 2026 :: Treasure goblin: vanished from room 25029 (A Marble hallway, mountain.are) (too long in one area).
 Sat Nov 21 10:15:33 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 21 10:19:00 2026 :: Connection guard: last hour 11 closed without a word, 3 refused, 0 new characters refused, 1 newly paused; 4 addresses paused and 0 refused now, 15 active player addresses.
+Sat Nov 21 10:20:36 2026 :: Connection guard: refused 1 connection from 5.161.113.195 (paused; 1 refused in all, pause 1 this week, 315 minutes left).
+Sat Nov 21 10:21:04 2026 :: Automated backup started.
+Sat Nov 21 10:21:05 2026 :: Automated backup complete.
