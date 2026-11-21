@@ -361,3 +361,41 @@
 1795216921	leave	Trentlin	52	1	Monk 	30590	L9	to=over how=up secs=24 hp=71
 1795216921	enter	Trentlin	52	1	Monk 	30317	over	from=L9 how=up hp=71
 1795216923	leave	Trentlin	52	1	Monk 	30317	over	to=out how=recall secs=2 hp=71
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30232 obj_name=a_small_boomerang type=weapon obj_level=4 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30410 obj_name=the_Magical_Boomerang type=weapon obj_level=12 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30595 obj_name=the_Lizard's_Heart_Container type=armor obj_level=33 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30222 obj_name=a_short_bow type=weapon obj_level=6 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30552 obj_name=enemy_bait type=food obj_level=20 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30552 obj_name=enemy_bait type=food obj_level=20 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30414 obj_name=the_Red_Candle type=light obj_level=42 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30543 obj_name=a_quiver_of_arrows type=treasure obj_level=8 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30412 obj_name=the_stepladder type=armor obj_level=22 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30411 obj_name=the_dungeon_raft type=boat obj_level=16 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30385 obj_name=the_Heart_Guard_of_the_Lion type=armor obj_level=52 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30687 obj_name=a_lion-head_girdle type=armor obj_level=52 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30737 obj_name=a_pair_of_pincer_gauntlets type=armor obj_level=40 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30410 obj_name=the_Magical_Boomerang type=weapon obj_level=12 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30413 obj_name=the_Recorder type=armor obj_level=30 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30407 obj_name=the_eighth_Triforce_shard type=treasure obj_level=46 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30406 obj_name=the_seventh_Triforce_shard type=treasure obj_level=40 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30405 obj_name=the_sixth_Triforce_shard type=treasure obj_level=33 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30404 obj_name=the_fifth_Triforce_shard type=treasure obj_level=27 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30403 obj_name=the_fourth_Triforce_shard type=treasure obj_level=20 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30402 obj_name=the_third_Triforce_shard type=treasure obj_level=14 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30219 obj_name=a_wooden_sword type=weapon obj_level=1 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30401 obj_name=the_second_Triforce_shard type=treasure obj_level=8 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30400 obj_name=the_first_Triforce_shard type=treasure obj_level=2 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30686 obj_name=the_four-crowned_lion_shield type=armor obj_level=52 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30415 obj_name=the_Magic_Book type=armor obj_level=48 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30618 obj_name=a_bottled_fairy type=potion obj_level=53 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30618 obj_name=a_bottled_fairy type=potion obj_level=53 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30608 obj_name=a_recovery_heart type=potion obj_level=53 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30385 obj_name=the_Heart_Guard_of_the_Lion type=armor obj_level=52 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30679 obj_name=a_pair_of_pincer-toed_boots type=armor obj_level=40 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30675 obj_name=a_bracer_set_with_an_amber_eye type=armor obj_level=40 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30739 obj_name=a_dragon-banner_cloak type=armor obj_level=40 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30736 obj_name=a_pair_of_crab-leg_greaves type=armor obj_level=40 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30738 obj_name=a_pair_of_shell_vambraces type=armor obj_level=40 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30386 obj_name=a_silver-arrow_spear type=weapon obj_level=58 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30680 obj_name=a_suit_of_demon-scale_plate type=armor obj_level=46 how=get
+1795225511	got	Trentlin	52	1	Monk 	29206	out	obj=30695 obj_name=a_bomb type=treasure obj_level=1 how=get
