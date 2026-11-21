@@ -326913,3 +326913,8 @@ Sat Nov 21 03:46:30 2026 :: Treasure goblin: vanished from room 2918 (Bend in th
 Sat Nov 21 03:49:40 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 4 of 6 in 6 hours).
 Sat Nov 21 03:54:44 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 2 of 6 in 6 hours).
 Sat Nov 21 03:59:49 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 3 of 6 in 6 hours).
+Sat Nov 21 04:04:11 2026 :: Treasure goblin: vanished from room 2574 (Wall Road., limbo.are) (too long in one area).
+Sat Nov 21 04:04:54 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 21 04:05:30 2026 :: Sock.sinaddr:  71.6.146.130
+Sat Nov 21 04:05:36 2026 :: EOF encountered on read.
+Sat Nov 21 04:05:36 2026 :: Connection guard: 71.6.146.130 closed before a password prompt (strike 1 of 6 in 6 hours).
