@@ -465,3 +465,4 @@
 465	1795225466	request	committed	P6adca00b00079e30	Trentlin	death:c6b00f77a01597c	death	-	their save reached the disk	db82186d
 466	1795225809	snapshot	committed	P6adca00b00079e30	Trentlin	-	level	-	Trentlin.20261121_015009.level fnv 6eccc04b 25598 bytes	f16f9c7c
 467	1795225822	corpse	archived	P6adca00b00079e30	Trentlin	c6b00f77a01597c	gone	Trentlin: sacrifice	ended (gone): it is gone; 0 objects left in it	cc4a0228
+468	1795226218	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261121_015658.quest fnv b2f53efd 24968 bytes	332c2032

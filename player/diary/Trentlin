@@ -352,28 +352,30 @@ List earn 38866631 0 interest
 List spend 170200000 0 heal
 End
 Day 2026-11-21
-Played 775
+Played 1054
 Level 52 53 1
 Exp 4326 1273
 Kills 6
 Deaths 1
 Close 0
-Quests 1 0
+Quests 2 126
 Dailies 0 0
 List death 1 0 a killer clown
 List achv 15 0 Frequent Visitor
 List skill 86 87 dodge
-List area 234 0 City of Dresden
-List area 4 0 Plains of the North
-List area 2 0 Continental Drift
+List area 278 0 City of Dresden
+List area 7 0 Plains of the North
+List area 4 0 Continental Drift
 List area 13 0 Rome
-List area 8 0 Miden'nir
-List area 12 0 New Thalos
-List area 106 0 Korzath's Fortress
-List area 396 0 Battleground
-List item 2 0 a diamond key
-List earn 84365424 0 quests
+List area 10 0 Miden'nir
+List area 16 0 New Thalos
+List area 116 0 Korzath's Fortress
+List area 408 0 Battleground
+List area 199 0 Kerofk
+List area 3 0 Limbo
+List item 3 0 a diamond key
+List earn 199015872 0 quests
 List earn 29336197 0 loot
-List spend 116700000 0 heal
+List spend 117500000 0 heal
 End
 #END
