@@ -5815,3 +5815,4 @@
 1795228713	wizinfo	60	Connection guard: 3.12.251.153 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 3.12.251.153 lifts it.
 1795231140	wizinfo	60	Connection guard: last hour 12 closed without a word, 2 refused, 0 new characters refused, 1 newly paused; 6 addresses paused and 0 refused now, 15 active player addresses.
 1795238128	wizinfo	60	Cartographer: appeared in room 17021 (Training room, ag.are) (level 50).
+1795238340	wizinfo	60	Connection guard: last hour 17 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 6 addresses paused and 0 refused now, 15 active player addresses.
