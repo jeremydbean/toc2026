@@ -326933,3 +326933,6 @@ Sat Nov 21 04:25:13 2026 :: Connection guard: 3.212.128.62 closed without a word
 Sat Nov 21 04:30:18 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 3 of 6 in 6 hours).
 Sat Nov 21 04:34:25 2026 :: Treasure goblin: vanished from room 17129 (A path uphill, highland.are) (too long in one area).
 Sat Nov 21 04:35:22 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 5 of 6 in 6 hours).
+Sat Nov 21 04:40:05 2026 :: Connection guard: 162.216.149.123 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 21 04:40:05 2026 :: Connection guard: 162.216.149.123 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 21 04:40:27 2026 :: Connection guard: refused 1 connection from 178.156.187.238 (paused; 17 refused in all, pause 3 this week, 902 minutes left).
