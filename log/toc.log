@@ -325452,3 +325452,6 @@ Sat Nov 21 00:06:09 2026 :: Connection guard: 5.161.113.195 closed without a wor
 Sat Nov 21 00:10:16 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Sat Nov 21 00:11:14 2026 :: Connection guard: refused 1 connection from 178.156.187.238 (paused; 15 refused in all, pause 3 this week, 1171 minutes left).
 Sat Nov 21 00:14:52 2026 :: Treasure goblin: vanished from room 1437 (The entrance to the library, htower.are) (too long in one area).
+Sat Nov 21 00:16:19 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 21 00:18:36 2026 :: Cartographer: left room 9653 (Jail, newthalo.are) (his visit is over).
+Sat Nov 21 00:19:00 2026 :: Connection guard: last hour 13 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 6 addresses paused and 0 refused now, 15 active player addresses.
