@@ -327142,3 +327142,5 @@ Sat Nov 21 12:47:50 2026 :: Connection guard: 5.161.61.238 closed without a word
 Sat Nov 21 12:51:26 2026 :: Sock.sinaddr:  129.150.32.71
 Sat Nov 21 12:51:26 2026 :: EOF encountered on read.
 Sat Nov 21 12:51:26 2026 :: Connection guard: 129.150.32.71 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sat Nov 21 12:52:54 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 21 12:56:50 2026 :: Treasure goblin: vanished from room 7581 (In the temple, astral.are) (too long in one area).
