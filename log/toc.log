@@ -326897,3 +326897,5 @@ Sat Nov 21 03:09:01 2026 :: Connection guard: 5.161.215.244 closed without a wor
 Sat Nov 21 03:10:20 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Sat Nov 21 03:14:06 2026 :: Connection guard: refused 1 connection from 3.12.251.153 (paused; 1 refused in all, pause 1 this week, 325 minutes left).
 Sat Nov 21 03:16:16 2026 :: Treasure goblin: vanished from room 8842 (Dirt Road, kerofk.are) (too long in one area).
+Sat Nov 21 03:19:00 2026 :: Connection guard: last hour 12 closed without a word, 2 refused, 0 new characters refused, 1 newly paused; 6 addresses paused and 0 refused now, 15 active player addresses.
+Sat Nov 21 03:19:11 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 1 of 6 in 6 hours).
