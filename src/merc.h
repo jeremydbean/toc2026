@@ -345,6 +345,11 @@ typedef enum
 #define LEVEL_HERO              (MAX_LEVEL - 19)
 #define HERO_STEP_XP            5000
 
+/* Where a thirsty player can drink: the Halls of Healing's fountain
+   (room 4206) is south then east of the Temple, where RECALL lands. Said
+   by DRINK with nothing to drink and by SLEEP refused for thirst. */
+#define DRINK_WHERE "The Halls of Healing have a fountain: RECALL, then SOUTH and EAST."
+
 #define PULSE_PER_SECOND        4
 #define PULSE_AGGR              ( 1 * PULSE_PER_SECOND)
 #define PULSE_ROOM              ( 1 * PULSE_PER_SECOND)

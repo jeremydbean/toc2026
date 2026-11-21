@@ -4106,8 +4106,22 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
     mob->damage[DICE_NUMBER]= pMobIndex->damage[DICE_NUMBER];
     mob->damage[DICE_TYPE] = pMobIndex->damage[DICE_TYPE];
     mob->dam_type          = pMobIndex->dam_type;
+    /* Area files write a mobile's armour in stock ROM units, which stock
+       ROM's loader multiplied by ten; this one never did, and capped it at
+       the worst a level allows (100 - 6 * level, in the ten-times units)
+       instead. Above about level 16 the cap decides and nothing changed,
+       but below it a builder's poorly armoured beast -- Mud School's
+       educated goblin wrote 8, meaning 80 -- wore armour of 8: a level 4
+       fighter missed seven blows in ten (Ravagger's logs, 2026-11-19;
+       measured live, every class alike). A positive figure is read as its
+       builder meant it, times ten and still under the level's cap; a
+       negative one, and Hyrule's generated figures, stay as they always
+       were, so no mobile is harder to hit than it was. The prototype keeps
+       the file's figure, which the area writer, MSHOW and SET MOB use. */
     for (i = 0; i < 4; i++)
-        mob->armor[i]   = pMobIndex->ac[i];
+        mob->armor[i]   = pMobIndex->ac[i] > 0
+                        ? (int) UMIN( 100L - 6L * pMobIndex->level, 10L * pMobIndex->ac[i] )
+                        : pMobIndex->ac[i];
     mob->off_flags         = pMobIndex->off_flags;
     if(IS_SET(mob->off_flags,OFF_FLAGS2) )
      mob->off_flags2       = pMobIndex->off_flags2;

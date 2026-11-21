@@ -5530,6 +5530,7 @@ void do_flee( CHAR_DATA *ch, char *argument )
     int fled_on;
     static bool despair_answering = false;
     bool despair_held = false;
+    bool despair_others = false;
 
     if ( ( victim = ch->fighting ) == NULL )
     {
@@ -5542,6 +5543,20 @@ void do_flee( CHAR_DATA *ch, char *argument )
     /* The hit points fled on, before the way out can change them. */
     fled_on = ch->hit;
     was_in = ch->in_room;
+    /* Despair drives off one foe. With others on them too it would leave
+       the fleer standing among the rest: Trentlin, at one hit point with
+       five killer clowns on him, typed FLEE, one clown ran, and another
+       killed him (play journal, 2026-11-20). Then the flight is theirs. */
+    {
+	CHAR_DATA *rch;
+
+	for ( rch = was_in->people; rch != NULL; rch = rch->next_in_room )
+	    if ( rch != victim && rch != ch && rch->fighting == ch )
+	    {
+		despair_others = true;
+		break;
+	    }
+    }
     /* Eight tries at a random one of ten directions: about the odds the
        old six tries at eight gave, now that SE and SW can be drawn. */
     for ( attempt = 0; attempt < 8; attempt++ )
@@ -5561,7 +5576,7 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	   opponent's own flight must not answer back with despair of its
 	   own: two fighters who both had it fled into each other, one
 	   do_flee inside the next, for as long as the rolls held. */
-	if( !despair_answering
+	if( !despair_answering && !despair_others
 	&&  (chance = get_skill(ch,gsn_despair) ) > 1
 	&&  skill_roll_landed( ch, number_percent () < chance ) )
 	{

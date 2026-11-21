@@ -3503,6 +3503,10 @@ const char *consider_predict( CHAR_DATA *ch, CHAR_DATA *victim, double *yours,
  * (guardian_special_expected_per_round, which answers 0 for anything
  * else, and for a patra whose ring is broken).
  */
+/* Rounds past which CONSIDER says a fight it expects you to win is long:
+   two minutes, at a round a PULSE_VIOLENCE. */
+#define CONSIDER_LONG_ROUNDS 40
+
 static void consider_special_line( CHAR_DATA *ch, CHAR_DATA *victim )
 {
     char buf[MAX_STRING_LENGTH];
@@ -3612,6 +3616,20 @@ static void consider_fight( CHAR_DATA *ch, CHAR_DATA *victim )
         else                                     msg = "You would almost certainly die.";
     }
     act( msg, ch, NULL, victim, TO_CHAR );
+    /* A win that is a slog: Mud School's educated goblin was "You should win
+       easily" in 158 rounds, and a level 4 fought it for six minutes
+       wondering (Ravagger's logs, 2026-11-19). Said beside the verdict,
+       never instead of it. */
+    if ( your_rounds >= CONSIDER_LONG_ROUNDS
+    &&   ( !strcmp( verdict, "scratch" ) || !strcmp( verdict, "easily" )
+        || !strcmp( verdict, "win" ) || !strcmp( verdict, "narrow" ) ) )
+    {
+        long minutes = (long) ( your_rounds * PULSE_VIOLENCE / PULSE_PER_SECOND / 60.0 + 0.5 );
+
+        snprintf( buf, sizeof(buf), "It would be a long fight, though: about %ld minute%s.",
+                  UMAX( 1, minutes ), minutes == 1 ? "" : "s" );
+        act( buf, ch, NULL, victim, TO_CHAR );
+    }
     /* The prediction, for holding it to the fight that follows. */
     progress_consider( ch, victim, yours, theirs, your_rounds, their_rounds, verdict, caster );
     if ( ( learned = consider_learned_skills( ch ) ) >= 1.0 )

@@ -5,6 +5,17 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261121logfixes 2026-11-21
+DESPAIR now drives off your opponent only when it is the only one fighting
+you: with others on you too, FLEE gets you out yourself.  Lightly armoured
+creatures -- Mud School's among them -- are now as easy to hit as their
+makers meant: a new character landed about one blow in three, and now
+lands about two in three.  CONSIDER says when a fight you should win
+would take minutes.  WEAR names the item you are too young for, a
+fountain says when you have drunk your fill, DRINK and a thirsty SLEEP
+say where the nearest fountain is, DODGE and PARRY typed as commands say
+they work on their own, and STASH GET mentions ALL.<name>.
+
 @ 20261120fixes 2026-11-20
 CONSIDER on a patra now counts its ring of eyes: how much of the ring's
 lash would land on you each round, and nothing once the ring is broken.

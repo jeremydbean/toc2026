@@ -496,7 +496,9 @@ See also: TRACK, WHERE, SCAN
 0 DESPAIR~
 Passive.  Despair: when you try to FLEE, there is a chance (your skill
 percentage) that your opponent loses heart and flees instead, leaving you
-where you stand.  Hyrule's creatures are never driven off this way.
+where you stand.  It works only when that opponent is the only one
+fighting you: with others on you too, you flee yourself.  Hyrule's
+creatures are never driven off this way.
 
   - Every class, from level 25.  Rakar the Weaponsmaster sells it.
 

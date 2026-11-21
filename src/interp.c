@@ -906,6 +906,11 @@ static const struct
     { "trains",  "SCORE shows how many trains you have; TRAIN <stat> [number] spends them "
                  "at a trainer." },
     { "land",    "There is no LAND: flying lasts until its spell wears off." },
+    /* Players' logs, 2026-11-19: DODGE typed twice in a fight. */
+    { "dodge",   "DODGE works on its own in every fight, as often as you know it; "
+                 "PRACTICE DODGE at a trainer to get better at it." },
+    { "parry",   "PARRY works on its own in every fight while you wield a weapon; "
+                 "PRACTICE PARRY at a trainer to get better at it." },
     { NULL,      NULL }
 };
 

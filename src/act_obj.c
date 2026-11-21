@@ -1366,8 +1366,11 @@ void do_stash( CHAR_DATA *ch, char *argument )
 
             if ( obj == NULL )
             {
+                /* ALL.<name> takes every match at once: a player typed
+                   STASH GET CRYSTALL six times for five (2026-11-20). */
                 send_to_char( "There is nothing like that in your stash.  STASH "
-                              "GET takes a name or the number STASH shows.\n\r", ch );
+                              "GET takes a name or the number STASH shows, and\n\r"
+                              "STASH GET ALL.<name> takes every one by that name.\n\r", ch );
                 return;
             }
         }
@@ -3527,7 +3530,10 @@ void do_drink( CHAR_DATA *ch, char *argument )
 
 	if ( obj == NULL )
 	{
-	    send_to_char( "Drink what?\n\r", ch );
+	    /* Where water is: a new character with no drink to hand typed
+	       DRINK, met this, and looked for seven minutes (Ravagger,
+	       2026-11-19). */
+	    send_to_char( "Drink what?  There is no fountain here.  " DRINK_WHERE "\n\r", ch );
 	    return;
 	}
     }
@@ -3561,10 +3567,16 @@ void do_drink( CHAR_DATA *ch, char *argument )
 	break;
 
     case ITEM_FOUNTAIN:
-	if ( !IS_NPC(ch) )
-	    ch->pcdata->condition[COND_THIRST] = 48;
+	/* One drink fills you; it said "no longer thirsty" at every sip, so a
+	   player drank six times to be sure (Ravagger, 2026-11-19). */
 	act( "$n drinks from $p.", ch, obj, NULL, TO_ROOM );
-	send_to_char( "You are no longer thirsty.\n\r", ch );
+	if ( ch->pcdata->condition[COND_THIRST] >= 40 )
+	    act( "You take a sip from $p, but your thirst is already quenched.",
+		 ch, obj, NULL, TO_CHAR );
+	else
+	    act( "You drink your fill from $p.  You are no longer thirsty.",
+		 ch, obj, NULL, TO_CHAR );
+	ch->pcdata->condition[COND_THIRST] = 48;
 	break;
 
     case ITEM_DRINK_CON:
@@ -3834,9 +3846,10 @@ static bool wear_requirements_check( CHAR_DATA *ch, OBJ_DATA *obj, bool speak )
     {
         if ( speak )
         {
-            snprintf( buf, sizeof(buf), "You must be level %d to use this object.\n\r",
-                obj->level );
-            send_to_char( buf, ch );
+            /* Named: WEAR ALL used to say only "this object", and a player
+               typed it six times to learn which (Ravagger, 2026-11-19). */
+            snprintf( buf, sizeof(buf), "You must be level %d to use $p.", obj->level );
+            act( buf, ch, obj, NULL, TO_CHAR );
             act( "$n tries to use $p, but is too inexperienced.",
                 ch, obj, NULL, TO_ROOM );
         }

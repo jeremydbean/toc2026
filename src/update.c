@@ -1198,7 +1198,8 @@ bool hunger_refuses_sleep( CHAR_DATA *ch )
     }
     if ( ch->pcdata->condition[COND_THIRST] == 0 )
     {
-	send_to_char( "You are too thirsty to sleep. Drink something first.\n\r", ch );
+	send_to_char( "You are too thirsty to sleep. Drink something first.\n\r"
+		      DRINK_WHERE "\n\r", ch );
 	return true;
     }
     return false;

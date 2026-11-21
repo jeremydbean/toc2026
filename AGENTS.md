@@ -1137,6 +1137,19 @@ takes two arguments -- so that maze room never scrambles.
 - Explain intentional warning/info findings with evidence instead of adding a
   silent allowlist.
 
+**A mobile's armour is read as its builder wrote it** (players' logs,
+2026-11-21). Area files give armour in stock ROM units, which stock ROM
+multiplied by ten; this loader never did, and caps a prototype at
+`100 - 6 * level` (ten-times units) instead, so from about level 17 the
+cap decides. Below it a positive figure read raw made a beast its builder
+called poorly armoured -- Mud School's educated goblin, 8 meaning 80 --
+hard to hit: a level 4 fighter missed seven blows in ten, every class
+alike. `create_mobile` now gives a live mobile ten times a positive figure,
+still under the cap; a negative figure, and Hyrule's generated ones, are as
+they were, so no mobile is harder to hit than before. The prototype keeps
+the file's figure for the area writer, MSHOW and SET MOB
+(`tests/test_player_frictions_nov21.py`).
+
 **Retiring an object players can hold needs a row in `retired_objects`**
 (`src/save.c`): the retired vnum and what replaces it. Without one,
 `fread_obj` drops the item at the holder's next login with a "bad vnum"
@@ -1237,6 +1250,10 @@ for the recorder). `is_hyrule_guardian()` in `special.c` -- the
 `spec_hyrule_guardian` or `spec_ganon` special -- is what do_flee asks
 before despair answers a flee with the opponent's flight; a new way of
 moving a mobile out of a fight asks it too (`tests/test_guardian_despair.py`).
+**DESPAIR answers only a lone foe** (2026-11-21: Trentlin, at one hit
+point among five killer clowns, fled into the despair of one and died to
+another): with anyone else fighting the fleer, `do_flee` lets them flee
+themselves.
 Since the audit of 2026-11-10 the test is `hyrule_native()` in
 `act_move.c` -- any of Hyrule's own mobiles, charmed or not -- and it is
 asked by DESPAIR, FISTS OF FURY, STEAL and CHARM PERSON. Ask it, not
