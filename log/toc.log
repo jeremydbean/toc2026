@@ -326920,3 +326920,5 @@ Sat Nov 21 04:05:36 2026 :: EOF encountered on read.
 Sat Nov 21 04:05:36 2026 :: Connection guard: 71.6.146.130 closed before a password prompt (strike 1 of 6 in 6 hours).
 Sat Nov 21 04:09:58 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 4 of 6 in 6 hours).
 Sat Nov 21 04:10:08 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Sat Nov 21 04:14:16 2026 :: Treasure goblin: vanished from room 18108 (Inside the smokey tower, icekeep.are) (too long in one area).
+Sat Nov 21 04:15:02 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 4 of 6 in 6 hours).
