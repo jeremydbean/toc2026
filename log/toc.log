@@ -325464,3 +325464,6 @@ Sat Nov 21 00:36:23 2026 :: Connection guard: 64.113.5.73 closed without a word 
 Sat Nov 21 00:36:38 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 3 of 6 in 6 hours).
 Sat Nov 21 00:41:43 2026 :: Connection guard: 3.133.226.214 closed without a word (strike 1 of 6 in 6 hours).
 Sat Nov 21 00:45:06 2026 :: Treasure goblin: vanished from room 7599 (Study of the Sage, astral.are) (too long in one area).
+Sat Nov 21 00:46:46 2026 :: Connection guard: refused 1 connection from 178.156.187.238 (paused; 16 refused in all, pause 3 this week, 1136 minutes left).
+Sat Nov 21 00:47:08 2026 :: Connection guard: 5.226.140.63 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 21 00:48:03 2026 :: Connection guard: 193.176.31.247 closed without a word (strike 1 of 6 in 6 hours).
