@@ -327004,3 +327004,5 @@ Sat Nov 21 07:31:09 2026 :: Sock.sinaddr:  40.77.189.27
 Sat Nov 21 07:31:19 2026 :: EOF encountered on read.
 Sat Nov 21 07:31:19 2026 :: Connection guard: 40.77.189.27 closed before a password prompt (the web client; not counted).
 Sat Nov 21 07:33:04 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 39 refused in all, pause 4 this week, 72 minutes left).
+Sat Nov 21 07:37:53 2026 :: Treasure goblin: vanished from room 24300 (The Stone Door, chess.are) (drifting).
+Sat Nov 21 07:38:09 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 4 of 6 in 6 hours).
