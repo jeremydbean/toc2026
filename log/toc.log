@@ -325474,3 +325474,9 @@ Sat Nov 21 01:02:02 2026 :: Connection guard: refused 1 connection from 5.161.17
 Sat Nov 21 01:05:15 2026 :: Treasure goblin: vanished from room 4163 (The small maze, moria.are) (too long in one area).
 Sat Nov 21 01:07:07 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 5 of 6 in 6 hours).
 Sat Nov 21 01:10:05 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Sat Nov 21 01:11:44 2026 :: Sock.sinaddr:  45.79.181.94
+Sat Nov 21 01:11:45 2026 :: EOF encountered on read.
+Sat Nov 21 01:11:45 2026 :: Connection guard: 45.79.181.94 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sat Nov 21 01:11:45 2026 :: Connection guard: 45.79.181.94 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 21 01:12:12 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 21 01:15:20 2026 :: Treasure goblin: vanished from room 14020 (Main Room, whouse.are) (too long in one area).
