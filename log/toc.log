@@ -325444,3 +325444,7 @@ Fri Nov 20 23:50:54 2026 :: Connection guard: 5.161.194.92 closed without a word
 Fri Nov 20 23:54:43 2026 :: Treasure goblin: vanished from room 24501 (Lost in the Mountains, abyss.are) (too long in one area).
 Fri Nov 20 23:56:00 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 4 of 6 in 6 hours).
 Sat Nov 21 00:01:04 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 21 00:03:23 2026 :: Sock.sinaddr:  147.185.133.223
+Sat Nov 21 00:03:23 2026 :: EOF encountered on read.
+Sat Nov 21 00:03:23 2026 :: Connection guard: 147.185.133.223 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sat Nov 21 00:04:47 2026 :: Treasure goblin: vanished from room 7632 (Library, ultima.are) (too long in one area).
