@@ -51012,3 +51012,8 @@
 1795364717	laid	-	0	0	-	890	herb	35	a sprig of angelica	9629	newthalo.are	scatter
 1795364772	laid	-	0	0	-	891	herb	35	a sprig of angelica	16010	pirate.are	scatter
 1795364772	laid	-	0	0	-	892	component	60	a rakshasa's claw	29204	korzath2.are	scatter
+1795364828	laid	-	0	0	-	893	herb	37	a sprig of catnip	787	camelot.are	scatter
+1795364893	laid	-	0	0	-	894	component	67	a beholder's eye	29513	lud.are	scatter
+1795364971	laid	-	0	0	-	895	component	69	a basilisks tongue	4039	moria.are	scatter
+1795365050	laid	-	0	0	-	896	herb	48	an alfalfa sprout	5327	mirror.are	scatter
+1795365098	census	-	0	0	-	herbs=15/150 components=10/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=21 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
