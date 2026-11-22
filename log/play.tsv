@@ -51345,3 +51345,11 @@
 1795379993	laid	-	0	0	-	963	herb	53	a huckleberry	6391	arac.are	scatter
 1795380072	laid	-	0	0	-	964	herb	47	a sprig of saffron	102	smurf.are	scatter
 1795380072	laid	-	0	0	-	965	herb	49	a pomegranate	114	smurf.are	scatter
+1795380184	laid	-	0	0	-	966	herb	49	a pomegranate	15013	campus.are	scatter
+1795380184	laid	-	0	0	-	967	herb	45	a sarsaparilla vine	15001	campus.are	scatter
+1795380184	laid	-	0	0	-	968	component	56	a dragons claw	29355	voyage.are	scatter
+1795380292	laid	-	0	0	-	969	herb	49	a pomegranate	7015	sewer.are	scatter
+1795380292	laid	-	0	0	-	970	herb	48	an alfalfa sprout	7109	sewer.are	scatter
+1795380362	laid	-	0	0	-	971	herb	50	a head of cabbage	17742	landoz.are	scatter
+1795380362	laid	-	0	0	-	972	herb	51	a piece of kelp	17725	landoz.are	scatter
+1795380413	census	-	0	0	-	herbs=47/150 components=24/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=21 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
