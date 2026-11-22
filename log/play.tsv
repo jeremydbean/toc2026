@@ -51378,3 +51378,6 @@
 1795381313	census	-	0	0	-	herbs=61/150 components=32/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=22 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
 1795381316	laid	-	0	0	-	995	herb	46	a juniper berry	7872	valley.are	scatter
 1795381316	laid	-	0	0	-	996	herb	50	a head of cabbage	7813	valley.are	scatter
+1795381362	laid	-	0	0	-	997	herb	39	a chervil leaf	7773	ultima.are	scatter
+1795381543	laid	-	0	0	-	998	herb	51	a piece of kelp	732	camelot.are	scatter
+1795381543	laid	-	0	0	-	999	component	68	a gorgon's horn	6325	arac.are	scatter
