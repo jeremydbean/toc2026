@@ -368,6 +368,11 @@ class BalanceLiveTests(unittest.TestCase):
                 self.assertIn("Master: Zbaltwo", staff.must("stat mob guard", "Vnum:"))
                 staff.must("set char guard damroll 300", "")
                 staff.must("set char guard hitroll 300", "")
+                # A new character assists by default, and a master assists
+                # its pet: if the pet's first round was parried, Zbaltwo's
+                # assist could land the blow and the kill was the player's
+                # (CI, 2026-11-22). The pet's kill must be the pet's alone.
+                two.must("autoassist", "Autoassist removed")
                 frail_guard()
                 two.send("order 2.guard kill 1.guard")
                 two.expect("is DEAD", timeout=60)
