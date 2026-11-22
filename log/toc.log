@@ -337747,3 +337747,28 @@ Sun Nov 22 19:15:45 2026 :: Connection guard: refused 1 connection from 52.22.23
 Sun Nov 22 19:17:15 2026 :: Treasure goblin: vanished from room 9166 (Front door, dylan.are) (too long in one area).
 Sun Nov 22 19:20:50 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 1 of 6 in 6 hours).
 Sun Nov 22 19:25:54 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 4 of 6 in 6 hours).
+Sun Nov 22 19:27:19 2026 :: Treasure goblin: vanished from room 5900 (Along the Midgaard river, mid_ruin.are) (too long in one area).
+Sun Nov 22 19:30:58 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 2 of 6 in 6 hours).
+Sun Nov 22 19:31:40 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sun Nov 22 19:31:44 2026 :: Log WebAdmin: fsave
+Sun Nov 22 19:31:50 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sun Nov 22 19:31:53 2026 :: Received signal 15; saving players and shutting down.
+Sun Nov 22 19:31:53 2026 :: Normal termination of game.
+Sun Nov 22 19:31:53 2026 ::  INIT OK 
+Sun Nov 22 19:31:53 2026 :: walkto_load: 157 destinations.
+Sun Nov 22 19:31:53 2026 :: changes_load: 365 entries.
+Sun Nov 22 19:31:53 2026 :: Hermie: the restart put no mortal off (0 playing, recorded 54 seconds before the boot; a mortal last played over ten minutes before it); she stays away.
+Sun Nov 22 19:31:53 2026 :: Serials: 962 character files read, 6 with a serial.
+Sun Nov 22 19:31:53 2026 :: Connection guard: 62 addresses remembered from before the boot, 7 paused now.
+Sun Nov 22 19:31:53 2026 :: Login lockout: 1 address remembered from before the boot.
+Sun Nov 22 19:31:53 2026 :: Passwords: SHA-512 crypt self-test passed.
+Sun Nov 22 19:31:53 2026 :: Recovery ledger: 485 records (0 from before the check), 6 requests, 9 players.
+Sun Nov 22 19:31:53 2026 :: ROM is ready to rock on port 9000.
+Sun Nov 22 19:31:53 2026 :: Treasure goblin: appeared.
+Sun Nov 22 19:31:53 2026 :: Automated backup started.
+Sun Nov 22 19:31:53 2026 :: Daily backup started.
+Sun Nov 22 19:31:54 2026 :: Automated backup complete.
+Sun Nov 22 19:31:55 2026 :: Daily backup complete.
+Sun Nov 22 19:34:03 2026 :: Connection guard: 66.132.159.87 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 22 19:34:32 2026 :: Connection guard: 195.178.110.204 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 22 19:36:03 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 54 refused in all, pause 5 this week, 4862 minutes left).
