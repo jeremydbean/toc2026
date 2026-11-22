@@ -337716,3 +337716,6 @@ Sun Nov 22 17:59:37 2026 :: Connection guard: 178.156.185.231 closed without a w
 Sun Nov 22 18:01:37 2026 :: Connection guard: last hour 13 closed without a word, 3 refused, 0 new characters refused, 0 newly paused; 7 addresses paused and 0 refused now, 15 active player addresses.
 Sun Nov 22 18:04:41 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 5 of 6 in 6 hours).
 Sun Nov 22 18:06:42 2026 :: Treasure goblin: vanished from room 6113 (A small path in the deep, dark forest, haon.are) (too long in one area).
+Sun Nov 22 18:06:58 2026 :: Cartographer: appeared.
+Sun Nov 22 18:09:46 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 22 18:10:30 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
