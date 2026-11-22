@@ -140,8 +140,15 @@ class FrictionTests(unittest.TestCase):
                         hero.drain(0.5)
                     return hero.transcript[mark:]
 
-                # Alone with one foe: despair drives it off.
-                said = fight(1)
+                # Alone with one foe: despair drives it off. At 100% the roll
+                # still misses one time in a hundred (number_percent() < 100
+                # fails on a 100), and the fleer then flees themselves: CI
+                # drew it on 2026-11-22. Three fights make that one in a
+                # million; the two-foe case below stays strict.
+                for _ in range(3):
+                    said = fight(1)
+                    if "is overcome with a feeling of despair" in said:
+                        break
                 self.assertIn("is overcome with a feeling of despair", said, said[-1500:])
                 # With a second on them: they flee themselves.
                 said = fight(2)
