@@ -337494,3 +337494,7 @@ Sun Nov 22 14:26:26 2026 :: Connection guard: 178.156.187.238 closed without a w
 Sun Nov 22 14:30:28 2026 :: Connection guard: last hour 11 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 7 addresses paused and 0 refused now, 15 active player addresses.
 Sun Nov 22 14:31:31 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 2 of 6 in 6 hours).
 Sun Nov 22 14:34:27 2026 :: Treasure goblin: vanished from room 9674 (Hall, newthalo.are) (too long in one area).
+Sun Nov 22 14:36:36 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 22 14:41:40 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 22 14:44:32 2026 :: Treasure goblin: vanished from room 20593 (The Dead Moors, emerald.are) (too long in one area).
+Sun Nov 22 14:46:45 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 44 refused in all, pause 5 this week, 5441 minutes left).
