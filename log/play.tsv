@@ -51477,3 +51477,9 @@
 1795385350	laid	-	0	0	-	1081	herb	36	a belladonna plant	2066	catacomb.are	scatter
 1795385350	laid	-	0	0	-	1082	component	63	a phoenix feather	3217	school.are	scatter
 1795385487	laid	-	0	0	-	1083	component	77	a vial of medusa eye fluid	15015	campus.are	scatter
+1795385564	laid	-	0	0	-	1084	herb	46	a juniper berry	2113	hood.are	scatter
+1795385564	laid	-	0	0	-	1085	herb	41	a sprig of mistletoe	2104	hood.are	scatter
+1795385564	laid	-	0	0	-	1086	component	54	eye of newt	10039	glitter.are	scatter
+1795385729	laid	-	0	0	-	1087	herb	50	a head of cabbage	18015	icekeep.are	scatter
+1795385729	laid	-	0	0	-	1088	component	80	a glass encased wing of a fairy	743	camelot.are	scatter
+1795385813	census	-	0	0	-	herbs=121/150 components=66/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=17 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
