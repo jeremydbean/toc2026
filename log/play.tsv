@@ -51490,3 +51490,13 @@
 1795385974	sightings	Alaric	57	2497	dresden.are	mob	201:1/0/0 10:1/0/0 4468:1/0/0 53:1/0/0 4444:1/0/0 2435:1/0/0 4456:1/0/0 309:1/0/0 300:1/0/0 9201:3/0/0 9238:1/0/0 9205:3/0/0 9232:2/0/0 9207:1/0/0 9204:1/0/0 9203:2/0/0 9223:2/0/0 9233:1/0/0 9219:1/0/0 9218:6/0/0 9206:1/0/0 9237:1/0/0 9211:1/0/0 8004:1/0/0 8009:1/1/0 8005:1/1/0 58:1/0/0 6103:2/0/0 11007:1/0/0 11008:2/0/0 11009:1/0/0 11012:1/0/0 11011:1/0/0 11010:1/1/0
 1795385974	sightings	Alaric	57	2497	dresden.are	item	4446:1/0 4444:1/0 301:1/0 304:1/0
 1795385974	session	Alaric	57	2497	dresden.are	quit	8634s	+0 levels	+0 exp	+29525943 copper	3 kills	0 deaths	2 quests	188 commands	0 refused	coin: loot 9g 17s 84c, quests 77p 6g 45s 70c, spent 1p 30g	spent on: heal 1p 30g	exp: none
+1795386340	area	Trentlin	54	4210	dresden.are	-	dresden.are	-1	login
+1795386341	refused	Trentlin	54	4210	dresden.are	sleeping	40	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1795386343	cmd	Trentlin	54	4210	dresden.are	sleeping	40	0	-	note		(withheld)	-	-
+1795386351	cmd	Trentlin	54	4210	dresden.are	sleeping	40	0	-	note		(withheld)	-	-
+1795386376	cmd	Trentlin	54	4210	dresden.are	sleeping	40	0	-	note		(withheld)	-	-
+1795386401	cmd	Trentlin	54	4210	dresden.are	sleeping	40	0	-	note		(withheld)	-	-
+1795386409	coin	Trentlin	54	4210	dresden.are	+39061207	bank	interest	bank	22441274402
+1795386409	laid	-	0	0	-	1093	herb	53	a huckleberry	5333	mirror.are	scatter
+1795386409	laid	-	0	0	-	1094	herb	44	a sprig of aconite	5353	mirror.are	scatter
+1795386409	laid	-	0	0	-	1095	component	69	a basilisks tongue	15152	campus.are	scatter

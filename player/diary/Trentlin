@@ -402,7 +402,7 @@ List spend 292034160 0 devote
 List spend 500000000 0 drop
 End
 Day 2026-11-22
-Played 211
+Played 280
 Level 54 54 0
 Exp 252 0
 Kills 3
@@ -410,7 +410,7 @@ Deaths 0
 Close 0
 Quests 1 0
 Dailies 0 0
-List area 82 0 City of Dresden
+List area 151 0 City of Dresden
 List area 6 0 Haon Dor
 List area 1 0 Continental Drift
 List area 24 0 Crystalmir Lake
@@ -421,6 +421,7 @@ List area 51 0 Battleground
 List item 1 0 a diamond key
 List earn 8809561 0 loot
 List earn 87610248 0 quests
+List earn 39061207 0 interest
 List spend 20400000 0 heal
 End
 #END
