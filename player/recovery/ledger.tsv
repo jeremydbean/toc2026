@@ -491,3 +491,5 @@
 491	1795389666	request	pending	P6adca00b00079e30	Trentlin	death:c6b0378e2018013	death	Trentlin: push	corpse c6b0378e2018013 in room 29498	d8e2002f
 492	1795389666	corpse	created	P6adca00b00079e30	Trentlin	c6b0378e2018013	death	-	made in room 29498 holding 56 objects; death snapshot Trentlin.20261122_232106.death	97b4930b
 493	1795389666	request	committed	P6adca00b00079e30	Trentlin	death:c6b0378e2018013	death	-	their save reached the disk	17265185
+494	1795389811	corpse	archived	P6adca00b00079e30	Trentlin	c6b0378e2018013	gone	Trentlin: sacrifice	ended (gone): it is gone; 0 objects left in it	86ab6a7b
+495	1795389952	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261122_232552.quest fnv d63cda0e 26110 bytes	8e0c8aa2

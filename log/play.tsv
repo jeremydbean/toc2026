@@ -52905,3 +52905,158 @@
 1795389727	cmd	Trentlin	54	29418	world.are	standing	100	0	-	east		Edge of the Woods //   The east-west trail ends here abruptly.  A large colossal tree // blocks any further passage to the east.  The tree reminds you of one	-	+
 1795389729	cmd	Trentlin	54	29497	world.are	standing	100	2	-	climb	tree	You climb up a colossal oak tree., and find yourself in another room. // Treehouse //   This is a silly little wooden treehouse that was probably built	-	+
 1795389731	cmd	Trentlin	54	29498	world.are	standing	100	0	-	up		Haze's Private Study //   This appears to be Haze's private study, his home away from his home // in Valhalla.  A sturdy desk is in the corner of the room.  The walls are	-	+
+1795389733	got	Trentlin	54	29498	world.are	30232	a small boomerang	weapon	4	0	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30410	the Magical Boomerang	weapon	12	36450000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30222	a short bow	weapon	6	25000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	29274	some poison pills	pill	51	10000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30552	enemy bait	food	20	600000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30552	enemy bait	food	20	600000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	717	a white bracer	armor	40	4500000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	29049	Starlight	light	45	15000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30414	the Red Candle	light	42	0	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30543	a quiver of arrows	treasure	8	800000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30412	the stepladder	armor	22	101250000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30411	the dungeon raft	boat	16	61250000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30385	the Heart Guard of the Lion	armor	52	135200000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30687	a lion-head girdle	armor	52	135200000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30737	a pair of pincer gauntlets	armor	40	80000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30410	the Magical Boomerang	weapon	12	36450000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	4619	a great war helmet	armor	25	250000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	29032	a metallic pack	container	29	5000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30413	the Recorder	armor	30	145800000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	3715	a mud school diploma	treasure	0	0	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30407	the eighth Triforce shard	treasure	46	8000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30406	the seventh Triforce shard	treasure	40	7000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30405	the sixth Triforce shard	treasure	33	6000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30404	the fifth Triforce shard	treasure	27	5000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30403	the fourth Triforce shard	treasure	20	4000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30402	the third Triforce shard	treasure	14	3000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30219	a wooden sword	weapon	1	0	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30401	the second Triforce shard	treasure	8	2000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30400	the first Triforce shard	treasure	2	1000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30686	the four-crowned lion shield	armor	52	135200000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30415	the Magic Book	armor	48	0	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30385	the Heart Guard of the Lion	armor	52	135200000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30679	a pair of pincer-toed boots	armor	40	80000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30675	a bracer set with an amber eye	armor	40	80000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30739	a dragon-banner cloak	armor	40	80000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30736	a pair of crab-leg greaves	armor	40	80000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30738	a pair of shell vambraces	armor	40	80000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30386	a silver-arrow spear	weapon	58	168200000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30680	a suit of demon-scale plate	armor	46	105800000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	30695	a bomb	treasure	1	0	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	10000	the Crystalline Sceptre of Commanding	armor	50	60000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	3092	a potion of true sight	potion	0	31000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	3092	a potion of true sight	potion	0	31000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	16047	a grey potion	potion	9	9800	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	16047	a grey potion	potion	9	9800	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	16047	a grey potion	potion	9	9800	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	16047	a grey potion	potion	9	9800	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	16047	a grey potion	potion	9	9800	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	3081	a potion of sanctuary	potion	10	100000000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	3092	a potion of true sight	potion	0	31000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	3092	a potion of true sight	potion	0	31000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	3092	a potion of true sight	potion	0	31000	own-corpse	corpse of Trentlin
+1795389733	got	Trentlin	54	29498	world.are	74	a ruby container of tea	potion	54	1080	own-corpse	corpse of Trentlin
+1795389733	cmd	Trentlin	54	29498	world.are	standing	100	2	-	get	all corpse	You get a small boomerang from corpse of Trentlin. // You get the Magical Boomerang from corpse of Trentlin. // You get a short bow from corpse of Trentlin.	-	+
+1795389735	cmd	Trentlin	54	29498	world.are	standing	100	0	-	quaff	true	You quaff a potion of true sight. // Your eyes tingle. // Your eyes tingle.	-	+
+1795389736	got	Trentlin	54	29498	world.are	911	a sapphire ring	armor	34	26000000	own-corpse	corpse of Trentlin
+1795389736	got	Trentlin	54	29498	world.are	911	a sapphire ring	armor	34	26000000	own-corpse	corpse of Trentlin
+1795389736	got	Trentlin	54	29498	world.are	907	a silver bow	weapon	52	207500000	own-corpse	corpse of Trentlin
+1795389736	cmd	Trentlin	54	29498	world.are	standing	100	0	-	get	all corpse	You get a sapphire ring from corpse of Trentlin. // You get a sapphire ring from corpse of Trentlin. // You get a silver bow from corpse of Trentlin.	-	-
+1795389738	cmd	Trentlin	54	29498	world.are	standing	100	0	-	wear	all	You wield a silver bow. // You are skilled with a silver bow. // You wear a sapphire ring on your left finger.	-	+
+1795389739	cmd	Trentlin	54	29498	world.are	standing	95	0	-	equipment		You are using: // <used as light>     (Magical) the Red Candle // <worn on finger>    (Invis) (Magical) a sapphire ring	-	+
+1795389741	cmd	Trentlin	54	29498	world.are	standing	95	0	-	remove	bow	You stop using a silver bow.	-	-
+1795389744	cmd	Trentlin	54	29498	world.are	standing	95	0	-	hold	scep	You stop using a ruby container of tea. // You hold the Crystalline Sceptre of Commanding in your hands.	-	-
+1795389745	cmd	Trentlin	54	29498	world.are	standing	97	0	-	inventory		You are carrying: //      (Invis) (Magical) a silver bow //      (Magical) a ruby container of tea	-	+
+1795389753	cmd	Trentlin	54	29498	world.are	standing	97	0	-	wear	star	You stop using the Red Candle. // You light Starlight and hold it.	-	-
+1795389753	cmd	Trentlin	54	29498	world.are	standing	97	0	-	look		Haze's Private Study //   This appears to be Haze's private study, his home away from his home // in Valhalla.  A sturdy desk is in the corner of the room.  The walls are	-	+
+1795389755	cmd	Trentlin	54	29498	world.are	standing	97	0	-	look	desk	You do not see that here.	-	-
+1795389757	cmd	Trentlin	54	29498	world.are	standing	97	0	-	look	wall	A number of things are tacked up on the wall: a sheet of paper...and  // there is a diary on the desk.  The is also a little button on the desk.	-	-
+1795389759	cmd	Trentlin	54	29498	world.are	standing	97	0	-	look	paper	You Learn // I recommend getting your heart trampled on to anyone // I recommend walking around naked in your living room	-	+
+1795389772	laid	-	0	0	-	1026	herb	42	a marjoram plant	7418	sewer.are	scatter
+1795389772	laid	-	0	0	-	1027	herb	35	a sprig of angelica	7101	sewer.are	scatter
+1795389772	laid	-	0	0	-	1028	component	84	a vial of froghemoth saliva	13427	hell.are	scatter
+1795389776	cmd	Trentlin	54	29498	world.are	standing	100	0	-	look		Haze's Private Study //   This appears to be Haze's private study, his home away from his home // in Valhalla.  A sturdy desk is in the corner of the room.  The walls are	-	+
+1795389777	cmd	Trentlin	54	29498	world.are	standing	100	0	-	look	wall	A number of things are tacked up on the wall: a sheet of paper...and  // there is a diary on the desk.  The is also a little button on the desk.	-	-
+1795389780	cmd	Trentlin	54	29498	world.are	standing	100	0	-	look	diary	I am now to be a guardian and overseer of the lands here across the // Shaito Sea...the sea that the newcomers have labeled the "Dragon Sea" // I have established this room on a mortal level so that I can better watch	-	+
+1795389802	cmd	Trentlin	54	29498	world.are	standing	100	0	-	look		Haze's Private Study //   This appears to be Haze's private study, his home away from his home // in Valhalla.  A sturdy desk is in the corner of the room.  The walls are	-	+
+1795389811	coin	Trentlin	54	29498	world.are	+108	loot	sacrifice	-	22556444835
+1795389811	cmd	Trentlin	54	29498	world.are	standing	100	10	-	sacrifice	co	The Gods give you 108 copper coins for your sacrifice.	-	-
+1795389813	cmd	Trentlin	54	29498	world.are	standing	100	0	-	look	desk	You do not see that here.	-	-
+1795389815	cmd	Trentlin	54	29498	world.are	standing	100	0	-	open	desk	I see no desk here.	-	-
+1795389816	cmd	Trentlin	54	29497	world.are	standing	100	0	-	down		Treehouse //   This is a silly little wooden treehouse that was probably built // by children who ventured into the woods ages ago to escape the boundaries	-	+
+1795389849	laid	-	0	0	-	1029	herb	50	a head of cabbage	15088	campus.are	scatter
+1795389849	laid	-	0	0	-	1030	herb	47	a sprig of saffron	15225	campus.are	scatter
+1795389910	area	Trentlin	54	4207	dresden.are	world.are	dresden.are	201	recall
+1795389910	cmd	Trentlin	54	4207	dresden.are	standing	100	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795389912	cmd	Trentlin	54	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795389912	cmd	Trentlin	54	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795389912	cmd	Trentlin	54	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795389912	cmd	Trentlin	54	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795389913	cmd	Trentlin	54	2427	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795389913	cmd	Trentlin	54	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795389913	cmd	Trentlin	54	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795389913	cmd	Trentlin	54	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1795389914	cmd	Trentlin	54	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1795389914	cmd	Trentlin	54	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1795389914	cmd	Trentlin	54	2497	dresden.are	standing	100	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795389915	quest	Trentlin	54	2497	dresden.are	ordinary	recover	25042	The Heart of Tifarah	59	ag.are	11
+1795389915	cmd	Trentlin	54	2497	dresden.are	standing	100	22	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Trentlin. The realm needs someone of your skill.' // Questor Thews tells you 'Bandits have made off with The Heart of Tifarah!'	-	+
+1795389918	cmd	Trentlin	54	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1795389921	cmd	Trentlin	54	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1795389921	cmd	Trentlin	54	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1795389921	cmd	Trentlin	54	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795389921	cmd	Trentlin	54	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795389922	cmd	Trentlin	54	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795389922	cmd	Trentlin	54	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795389922	cmd	Trentlin	54	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795389922	cmd	Trentlin	54	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1795389923	cmd	Trentlin	54	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1795389923	area	Trentlin	54	6000	haon.are	dresden.are	haon.are	13	west
+1795389923	cmd	Trentlin	54	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through	-	+
+1795389923	cmd	Trentlin	54	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.	-	+
+1795389923	cmd	Trentlin	54	6002	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads	-	+
+1795389924	cmd	Trentlin	54	6003	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.	-	+
+1795389924	cmd	Trentlin	54	6004	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains	-	+
+1795389924	cmd	Trentlin	54	6100	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in	-	+
+1795389924	cmd	Trentlin	54	6101	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,	-	+
+1795389925	cmd	Trentlin	54	6102	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees that stand close on all sides.  Not a sound is to be heard.. everything	-	+
+1795389925	cmd	Trentlin	54	6103	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are where the dusty trail bends, as to avoid conflict with a colossal // trunk to the west.  Not a sound is to be heard.. everything is ominously	-	+
+1795389925	cmd	Trentlin	54	6150	haon.are	standing	100	0	-	north		The narrow trail. //   This trail looks much spookier than any other thats you have seen.  The usual // animal claw marks and bites on the trees are getting far and few between. The	-	+
+1795389925	cmd	Trentlin	54	6151	haon.are	standing	100	0	-	north		The narrow trail. //   This area of the trail is also very peculiar.  You can see no signs of animal // life what so ever.  The structure of the surrounding trees forces the path to	-	+
+1795389926	area	Trentlin	54	17001	ag.are	haon.are	ag.are	3	north
+1795389926	cmd	Trentlin	54	17001	ag.are	standing	100	0	-	north		The Gates //   Welcome to the assassin's guild of old Midgaard! Its has stood here since the // founding of this city, some two hundred years ago. Its decrepit structure	-	+
+1795389927	cmd	Trentlin	54	17001	ag.are	standing	100	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.	-	-
+1795389927	laid	-	0	0	-	1034	component	64	a manticore's spine	1438	htower.are	scatter
+1795389934	cmd	Trentlin	54	17001	ag.are	standing	100	0	-	open	north	Ok.	-	-
+1795389937	cmd	Trentlin	54	17002	ag.are	standing	100	0	-	north		Entry way //   Dripping....The sound of water assails your ears as you enter this hallway. // Pools of black water collect upon the floor, and the tinge of dust fills the	-	+
+1795389938	cmd	Trentlin	54	17003	ag.are	standing	100	0	-	north		CrossRoads //   This is the central chamber of the guild. Black stone walls, and the tatters // of a once beautiful rug are the rooms only decorations. In the center of the	-	+
+1795389940	cmd	Trentlin	54	17003	ag.are	standing	100	0	-	scan		The Watchman                       -to the far South. // A Journeyman Assassin              -right above you. // A Servant                          -right above you.	-	-
+1795389942	cmd	Trentlin	54	17018	ag.are	standing	100	0	-	up		T-junction //   The second level of the guild looks much like the first, dark moss covered // walls, and the sound of endlessly dripping water. Long hallways lead off	-	+
+1795389946	got	Trentlin	54	17018	ag.are	25042	The Heart of Tifarah	trash	59	0	get	the floor
+1795389946	cmd	Trentlin	54	17018	ag.are	fighting	70	1	fight	get	all	You get The Heart of Tifarah.	-	-
+1795389947	area	Trentlin	54	4207	dresden.are	ag.are	dresden.are	21	recall
+1795389947	cmd	Trentlin	54	4207	dresden.are	fighting	70	0	fight	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795389948	cmd	Trentlin	54	4202	dresden.are	standing	70	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795389948	cmd	Trentlin	54	4201	dresden.are	standing	70	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795389948	cmd	Trentlin	54	2427	dresden.are	standing	70	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795389948	cmd	Trentlin	54	2427	dresden.are	standing	70	0	-	east		Alas, you cannot go that way.	-	-
+1795389949	cmd	Trentlin	54	2427	dresden.are	standing	70	0	-	east		Alas, you cannot go that way.	-	-
+1795389949	cmd	Trentlin	54	2404	dresden.are	standing	70	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795389949	cmd	Trentlin	54	2401	dresden.are	standing	70	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795389949	cmd	Trentlin	54	2410	dresden.are	standing	70	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1795389950	cmd	Trentlin	54	2411	dresden.are	standing	70	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1795389950	cmd	Trentlin	54	2414	dresden.are	standing	70	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1795389950	cmd	Trentlin	54	2497	dresden.are	standing	70	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795389952	coin	Trentlin	54	2497	dresden.are	+43805124	quests	aquest	-	22600249959
+1795389952	outcome	Trentlin	54	2497	dresden.are	quest-complete	success	-	-	ordinary qp=915->915 offered=26 daily=18->18 coin=+43805124 kill=14601708 streak=0 level=54 target=0
+1795389952	cmd	Trentlin	54	2497	dresden.are	standing	70	22	-	aquest	complete	You inform Questor Thews you have completed his quest. // You hand The Heart of Tifarah to Questor Thews. // Questor Thews says 'Well done! I knew you were right for the job.'	success:-	+
+1795389958	cmd	Trentlin	54	2497	dresden.are	standing	70	6	-	aquest	gamble yes	** Fortune SMILES upon you! You WIN 52 quest points! **	-	-
+1795389959	cmd	Trentlin	54	4207	dresden.are	standing	70	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795389961	cmd	Trentlin	54	4208	dresden.are	standing	70	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795389962	cmd	Trentlin	54	4208	dresden.are	standing	70	0	-	sleep		You go to sleep.	-	-
+1795389963	sightings	Trentlin	54	4208	dresden.are	mob	58:1/0/0 201:1/0/0 4202:1/0/0 4201:1/0/0 4468:1/0/0 10:1/0/0 2435:4/0/0 2434:3/0/0 4445:1/0/0 4457:1/0/0 9543:1/0/0 9562:6/0/0 9542:2/0/0 9519:1/0/0 9520:2/0/0 9533:2/0/0 9592:5/0/0 9540:1/0/0 9537:2/0/0 9568:3/0/0 9544:6/0/0 29350:3/0/0 29352:3/0/0 29354:3/0/0 29351:4/0/0 29355:4/0/0 29401:4/0/0 29403:2/0/0 29404:4/0/0 29502:1/1/0 9582:3/0/0 9538:1/0/0 9541:1/0/0 9561:4/0/0 29032:2/1/0 29232:15/6/0 53:1/0/0 4456:1/0/0 6000:1/0/0 6005:1/0/0 6003:2/0/0 13003:1/0/0 13001:1/0/0 29202:3/1/0 29201:3/0/0 29204:1/1/0 4458:1/0/0 4451:1/0/0 2401:1/0/0 29353:4/0/0 29402:5/0/0 2433:1/0/0
+1795389963	sightings	Trentlin	54	4208	dresden.are	mob	6115:1/0/0 17000:1/0/0 17001:1/0/0 17002:2/0/0 17003:1/1/1
+1795389963	sightings	Trentlin	54	4208	dresden.are	item	29360:1/0 29003:2/1 16:1/0 4446:1/0 4445:2/0 4444:1/0 6011:1/0 25039:1/1 14:1/0 13:1/0 17006:1/0 25042:1/1
+1795389963	session	Trentlin	54	4208	dresden.are	quit	1902s	+0 levels	+2435 exp	+169275557 copper	10 kills	1 deaths	3 quests	1208 commands	4 refused	coin: loot 47p 84g 48s 13c, quests 262p 83g 7s 44c, spent 151p 70g	spent on: heal 151p 70g	exp: kills +2442, skilluse +18, recall -25

@@ -340621,3 +340621,142 @@ Sun Nov 22 23:22:09 2026 :: Log Trentlin [29418]: climb tree
 Sun Nov 22 23:22:09 2026 :: Log Trentlin [29497]: arrived (Treehouse) from 29418
 Sun Nov 22 23:22:11 2026 :: Log Trentlin [29497]: u
 Sun Nov 22 23:22:11 2026 :: Log Trentlin [29498]: arrived (Haze's Private Study) from 29497
+Sun Nov 22 23:22:13 2026 :: Log Trentlin [29498]: get all corpse
+Sun Nov 22 23:22:15 2026 :: Log Trentlin [29498]: quaff true
+Sun Nov 22 23:22:16 2026 :: Log Trentlin [29498]: get all corpse
+Sun Nov 22 23:22:18 2026 :: Log Trentlin [29498]: wear all
+Sun Nov 22 23:22:19 2026 :: Log Trentlin [29498]: eq
+Sun Nov 22 23:22:21 2026 :: Log Trentlin [29498]: rem bow
+Sun Nov 22 23:22:24 2026 :: Log Trentlin [29498]: hold scep
+Sun Nov 22 23:22:25 2026 :: Log Trentlin [29498]: i
+Sun Nov 22 23:22:27 2026 :: Cartographer: appeared.
+Sun Nov 22 23:22:33 2026 :: Log Trentlin [29498]: wear star
+Sun Nov 22 23:22:33 2026 :: Log Trentlin [29498]: l
+Sun Nov 22 23:22:35 2026 :: Log Trentlin [29498]: l desk
+Sun Nov 22 23:22:37 2026 :: Log Trentlin [29498]: l wall
+Sun Nov 22 23:22:39 2026 :: Log Trentlin [29498]: l paper
+Sun Nov 22 23:22:56 2026 :: Log Trentlin [29498]: l
+Sun Nov 22 23:22:57 2026 :: Log Trentlin [29498]: l wall
+Sun Nov 22 23:23:00 2026 :: Log Trentlin [29498]: l diary
+Sun Nov 22 23:23:22 2026 :: Log Trentlin [29498]: l
+Sun Nov 22 23:23:31 2026 :: Log Trentlin [29498]: sac co
+Sun Nov 22 23:23:31 2026 :: Log Trentlin [29498]: coin +108 copper
+Sun Nov 22 23:23:31 2026 :: Corpse keeper: Trentlin's corpse c6b0378e2018013 it is gone.
+Sun Nov 22 23:23:33 2026 :: Log Trentlin [29498]: l desk
+Sun Nov 22 23:23:35 2026 :: Log Trentlin [29498]: open desk
+Sun Nov 22 23:23:36 2026 :: Log Trentlin [29498]: d
+Sun Nov 22 23:23:36 2026 :: Log Trentlin [29497]: arrived (Treehouse) from 29498
+Sun Nov 22 23:24:28 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 4 of 6 in 6 hours).
+Sun Nov 22 23:25:10 2026 :: Log Trentlin [29497]: reca
+Sun Nov 22 23:25:10 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 29497
+Sun Nov 22 23:25:12 2026 :: Log Trentlin [4207]: e
+Sun Nov 22 23:25:12 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sun Nov 22 23:25:12 2026 :: Log Trentlin [4202]: e
+Sun Nov 22 23:25:12 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Nov 22 23:25:12 2026 :: Log Trentlin [4201]: e
+Sun Nov 22 23:25:12 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Sun Nov 22 23:25:12 2026 :: Log Trentlin [2427]: e
+Sun Nov 22 23:25:13 2026 :: Log Trentlin [2427]: e
+Sun Nov 22 23:25:13 2026 :: Log Trentlin [2427]: n
+Sun Nov 22 23:25:13 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Nov 22 23:25:13 2026 :: Log Trentlin [2404]: n
+Sun Nov 22 23:25:13 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sun Nov 22 23:25:13 2026 :: Log Trentlin [2401]: u
+Sun Nov 22 23:25:13 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sun Nov 22 23:25:14 2026 :: Log Trentlin [2410]: u
+Sun Nov 22 23:25:14 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Sun Nov 22 23:25:14 2026 :: Log Trentlin [2411]: u
+Sun Nov 22 23:25:14 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Sun Nov 22 23:25:14 2026 :: Log Trentlin [2414]: u
+Sun Nov 22 23:25:14 2026 :: Log Trentlin [2497]: arrived (The Questmaster's Globe, above the Oak) from 2414
+Sun Nov 22 23:25:15 2026 :: Log Trentlin [2497]: aquest request
+Sun Nov 22 23:25:15 2026 :: Log Trentlin [2497]: quest assigned: recover The Heart of Tifarah (obj 25042) in ag.are, 11 minutes, ordinary
+Sun Nov 22 23:25:18 2026 :: Log Trentlin [2497]: enter door
+Sun Nov 22 23:25:18 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sun Nov 22 23:25:21 2026 :: Log Trentlin [2401]: west
+Sun Nov 22 23:25:21 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Nov 22 23:25:21 2026 :: Log Trentlin [2405]: west
+Sun Nov 22 23:25:21 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 2405
+Sun Nov 22 23:25:21 2026 :: Log Trentlin [2433]: west
+Sun Nov 22 23:25:21 2026 :: Log Trentlin [2434]: arrived (Temple Boulevard.) from 2433
+Sun Nov 22 23:25:21 2026 :: Log Trentlin [2434]: west
+Sun Nov 22 23:25:21 2026 :: Log Trentlin [2435]: arrived (Temple Boulevard.) from 2434
+Sun Nov 22 23:25:22 2026 :: Log Trentlin [2435]: west
+Sun Nov 22 23:25:22 2026 :: Log Trentlin [2436]: arrived (Temple Boulevard.) from 2435
+Sun Nov 22 23:25:22 2026 :: Log Trentlin [2436]: west
+Sun Nov 22 23:25:22 2026 :: Log Trentlin [2437]: arrived (Temple Boulevard.) from 2436
+Sun Nov 22 23:25:22 2026 :: Log Trentlin [2437]: west
+Sun Nov 22 23:25:22 2026 :: Log Trentlin [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Nov 22 23:25:22 2026 :: Log Trentlin [2438]: open west
+Sun Nov 22 23:25:23 2026 :: Log Trentlin [2438]: west
+Sun Nov 22 23:25:23 2026 :: Log Trentlin [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Nov 22 23:25:23 2026 :: Log Trentlin [2439]: west
+Sun Nov 22 23:25:23 2026 :: Log Trentlin [6000]: arrived (The edge of the forest) from 2439
+Sun Nov 22 23:25:23 2026 :: Log Trentlin [6000]: west
+Sun Nov 22 23:25:23 2026 :: Log Trentlin [6001]: arrived (A trail through the light forest) from 6000
+Sun Nov 22 23:25:23 2026 :: Log Trentlin [6001]: west
+Sun Nov 22 23:25:23 2026 :: Log Trentlin [6002]: arrived (A trail through the light forest) from 6001
+Sun Nov 22 23:25:24 2026 :: Log Trentlin [6002]: west
+Sun Nov 22 23:25:24 2026 :: Log Trentlin [6003]: arrived (A trail through the dense forest) from 6002
+Sun Nov 22 23:25:24 2026 :: Log Trentlin [6003]: west
+Sun Nov 22 23:25:24 2026 :: Log Trentlin [6004]: arrived (A trail through the dense forest) from 6003
+Sun Nov 22 23:25:24 2026 :: Log Trentlin [6004]: west
+Sun Nov 22 23:25:24 2026 :: Log Trentlin [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Sun Nov 22 23:25:24 2026 :: Log Trentlin [6100]: west
+Sun Nov 22 23:25:24 2026 :: Log Trentlin [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Sun Nov 22 23:25:25 2026 :: Log Trentlin [6101]: west
+Sun Nov 22 23:25:25 2026 :: Log Trentlin [6102]: arrived (A narrow trail through the deep, dark forest) from 6101
+Sun Nov 22 23:25:25 2026 :: Log Trentlin [6102]: west
+Sun Nov 22 23:25:25 2026 :: Log Trentlin [6103]: arrived (A narrow trail through the deep, dark forest) from 6102
+Sun Nov 22 23:25:25 2026 :: Log Trentlin [6103]: north
+Sun Nov 22 23:25:25 2026 :: Log Trentlin [6150]: arrived (The narrow trail.) from 6103
+Sun Nov 22 23:25:25 2026 :: Log Trentlin [6150]: north
+Sun Nov 22 23:25:25 2026 :: Log Trentlin [6151]: arrived (The narrow trail.) from 6150
+Sun Nov 22 23:25:26 2026 :: Log Trentlin [6151]: north
+Sun Nov 22 23:25:26 2026 :: Log Trentlin [17001]: arrived (The Gates) from 6151
+Sun Nov 22 23:25:27 2026 :: Log Trentlin [17001]: iron
+Sun Nov 22 23:25:34 2026 :: Log Trentlin [17001]: open north
+Sun Nov 22 23:25:37 2026 :: Log Trentlin [17001]: north
+Sun Nov 22 23:25:37 2026 :: Log Trentlin [17002]: arrived (Entry way) from 17001
+Sun Nov 22 23:25:38 2026 :: Log Trentlin [17002]: north
+Sun Nov 22 23:25:38 2026 :: Log Trentlin [17003]: arrived (CrossRoads) from 17002
+Sun Nov 22 23:25:40 2026 :: Log Trentlin [17003]: sca
+Sun Nov 22 23:25:42 2026 :: Log Trentlin [17003]: u
+Sun Nov 22 23:25:42 2026 :: Log Trentlin [17018]: arrived (T-junction) from 17003
+Sun Nov 22 23:25:46 2026 :: Log Trentlin [17018]: get all
+Sun Nov 22 23:25:47 2026 :: Log Trentlin [17018]: reca
+Sun Nov 22 23:25:47 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 17018
+Sun Nov 22 23:25:48 2026 :: Log Trentlin [4207]: e
+Sun Nov 22 23:25:48 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sun Nov 22 23:25:48 2026 :: Log Trentlin [4202]: e
+Sun Nov 22 23:25:48 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Nov 22 23:25:48 2026 :: Log Trentlin [4201]: e
+Sun Nov 22 23:25:48 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Sun Nov 22 23:25:48 2026 :: Log Trentlin [2427]: e
+Sun Nov 22 23:25:49 2026 :: Log Trentlin [2427]: e
+Sun Nov 22 23:25:49 2026 :: Log Trentlin [2427]: n
+Sun Nov 22 23:25:49 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Nov 22 23:25:49 2026 :: Log Trentlin [2404]: n
+Sun Nov 22 23:25:49 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sun Nov 22 23:25:49 2026 :: Log Trentlin [2401]: u
+Sun Nov 22 23:25:49 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sun Nov 22 23:25:50 2026 :: Log Trentlin [2410]: u
+Sun Nov 22 23:25:50 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Sun Nov 22 23:25:50 2026 :: Log Trentlin [2411]: u
+Sun Nov 22 23:25:50 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Sun Nov 22 23:25:50 2026 :: Log Trentlin [2414]: u
+Sun Nov 22 23:25:50 2026 :: Log Trentlin [2497]: arrived (The Questmaster's Globe, above the Oak) from 2414
+Sun Nov 22 23:25:52 2026 :: Log Trentlin [2497]: aquest complete
+Sun Nov 22 23:25:52 2026 :: Log Trentlin [2497]: copper +43805124
+Sun Nov 22 23:25:52 2026 :: Log Trentlin [2497]: quest complete: 43p 80g 51s 24c, 26 quest points (streak bonus 0%)
+Sun Nov 22 23:25:52 2026 :: Snapshot of Trentlin taken before quest: Trentlin.20261122_232552.quest (PRESTORE Trentlin to see it).
+Sun Nov 22 23:25:58 2026 :: Log Trentlin [2497]: aquest gamble yes
+Sun Nov 22 23:25:59 2026 :: Log Trentlin [2497]: reca
+Sun Nov 22 23:25:59 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 2497
+Sun Nov 22 23:26:01 2026 :: Log Trentlin [4207]: w
+Sun Nov 22 23:26:01 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Nov 22 23:26:02 2026 :: Log Trentlin [4208]: sleep
+Sun Nov 22 23:26:03 2026 :: Log Trentlin [4208]: quit
+Sun Nov 22 23:26:03 2026 :: Trentlin has quit.
+Sun Nov 22 23:26:03 2026 :: [QUIT] Player rejoined the real world.
+Sun Nov 22 23:26:56 2026 :: Black market: the dealer left the world from room 6552 (Solved the Maze., dwarves.are).

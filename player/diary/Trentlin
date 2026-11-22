@@ -402,32 +402,33 @@ List spend 292034160 0 devote
 List spend 500000000 0 drop
 End
 Day 2026-11-22
-Played 1990
+Played 2287
 Level 54 54 0
-Exp 2712 0
+Exp 2712 25
 Kills 13
 Deaths 1
 Close 0
-Quests 3 445
+Quests 4 497
 Dailies 0 0
 List death 1 0 misadventure
 List achv 15 0 Read the Warning
 List skill 88 89 second attack
 List skill 81 84 kick
-List area 424 0 City of Dresden
-List area 9 0 Haon Dor
+List area 483 0 City of Dresden
+List area 12 0 Haon Dor
 List area 5 0 Continental Drift
 List area 29 0 Crystalmir Lake
-List area 13 0 Miden'nir
-List area 26 0 New Thalos
+List area 16 0 Miden'nir
+List area 31 0 New Thalos
 List area 90 0 Korzath's Fortress
 List area 583 0 Battleground
-List area 625 0 Voyage Across Sea
-List area 116 0 Mid-World
+List area 630 0 Voyage Across Sea
+List area 317 0 Mid-World
 List area 70 0 City Of LUD
+List area 21 0 Assassins Guild
 List item 3 0 a diamond key
-List earn 56654266 0 loot
-List earn 306635868 0 quests
+List earn 56654374 0 loot
+List earn 350440992 0 quests
 List earn 39061207 0 interest
 List spend 172100000 0 heal
 End
