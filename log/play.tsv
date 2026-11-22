@@ -51455,3 +51455,9 @@
 1795384543	laid	-	0	0	-	1064	herb	43	a sprig of hyssop	18075	icekeep.are	scatter
 1795384589	laid	-	0	0	-	1065	herb	51	a piece of kelp	7876	valley.are	scatter
 1795384589	laid	-	0	0	-	1066	component	77	a vial of medusa eye fluid	715	camelot.are	scatter
+1795384685	laid	-	0	0	-	1067	herb	49	a pomegranate	3622	dkforest.are	scatter
+1795384685	laid	-	0	0	-	1068	herb	40	a clove	3629	dkforest.are	scatter
+1795384738	laid	-	0	0	-	1069	herb	53	a huckleberry	28157	azeroth.are	scatter
+1795384738	laid	-	0	0	-	1070	component	72	a minotaur's ear	9206	canyon.are	scatter
+1795384799	laid	-	0	0	-	1071	component	88	a vial of green slime	15154	campus.are	scatter
+1795384913	census	-	0	0	-	herbs=114/150 components=56/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=14 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
