@@ -337922,3 +337922,304 @@ Sun Nov 22 20:09:13 2026 :: Connection guard: 66.132.224.235 closed without a wo
 Sun Nov 22 20:09:25 2026 :: Connection guard: 66.132.224.235 closed without a word (strike 3 of 6 in 6 hours).
 Sun Nov 22 20:10:33 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Sun Nov 22 20:11:36 2026 :: Connection guard: 178.156.184.20 closed without a word (strike 3 of 6 in 6 hours).
+Sun Nov 22 20:12:12 2026 :: Treasure goblin: vanished from room 3901 (West trail around Dresden, dresden.are) (too long in one area).
+Sun Nov 22 20:14:53 2026 :: Log Alaric [2497]: aq re
+Sun Nov 22 20:14:53 2026 :: Log Alaric [2497]: quest assigned: kill the green crystal spider (mob 11010, level 8) in ancala.are, 23 minutes, ordinary
+Sun Nov 22 20:14:56 2026 :: Log Alaric [2497]: wake
+Sun Nov 22 20:15:06 2026 :: Log Alaric [2497]: en do
+Sun Nov 22 20:15:06 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sun Nov 22 20:15:07 2026 :: Log Alaric [2401]: levi
+Sun Nov 22 20:15:08 2026 :: Log Alaric [2401]: r w 7
+Sun Nov 22 20:15:08 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Nov 22 20:15:08 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Nov 22 20:15:08 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Nov 22 20:15:08 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Nov 22 20:15:08 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Nov 22 20:15:08 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Nov 22 20:15:08 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Nov 22 20:15:08 2026 :: Log Alaric [2438]: open gate
+Sun Nov 22 20:15:08 2026 :: Log Alaric [2438]: r w 8
+Sun Nov 22 20:15:08 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Nov 22 20:15:08 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Sun Nov 22 20:15:08 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Sun Nov 22 20:15:08 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Sun Nov 22 20:15:08 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Sun Nov 22 20:15:08 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Sun Nov 22 20:15:08 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Sun Nov 22 20:15:08 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Sun Nov 22 20:15:08 2026 :: Log Alaric [6101]: r s 2
+Sun Nov 22 20:15:08 2026 :: Log Alaric [6104]: arrived (A small path in the deep, dark forest) from 6101
+Sun Nov 22 20:15:08 2026 :: Log Alaric [6105]: arrived (A small path in the deep, dark forest) from 6104
+Sun Nov 22 20:15:09 2026 :: Log Alaric [6105]: w
+Sun Nov 22 20:15:09 2026 :: Log Alaric [6106]: arrived (A junction in the deep, dark forest) from 6105
+Sun Nov 22 20:15:09 2026 :: Log Alaric [6106]: s
+Sun Nov 22 20:15:09 2026 :: Log Alaric [6117]: arrived (A junction in the deep, dark forest) from 6106
+Sun Nov 22 20:15:09 2026 :: Log Alaric [6117]: e
+Sun Nov 22 20:15:09 2026 :: Log Alaric [6118]: arrived (A small path in the deep, dark forest) from 6117
+Sun Nov 22 20:15:09 2026 :: Log Alaric [6118]: r s 2
+Sun Nov 22 20:15:09 2026 :: Log Alaric [6119]: arrived (A small path in the deep, dark forest) from 6118
+Sun Nov 22 20:15:09 2026 :: Log Alaric [6120]: arrived (On the river bank in the deep, dark forest) from 6119
+Sun Nov 22 20:15:10 2026 :: Log Alaric [6120]: r w 3
+Sun Nov 22 20:15:10 2026 :: Log Alaric [6121]: arrived (A dead end path on the river bank in the deep, dark forest) from 6120
+Sun Nov 22 20:15:10 2026 :: Log Alaric [58]: arrived (Eerie Clearing) from 6121
+Sun Nov 22 20:15:10 2026 :: Log Alaric [11057]: arrived (Muddy Riverbank) from 58
+Sun Nov 22 20:15:15 2026 :: Log Alaric [11057]: w
+Sun Nov 22 20:15:15 2026 :: Log Alaric [11000]: arrived (A Wild Valley) from 11057
+Sun Nov 22 20:15:19 2026 :: Log Alaric [11000]: w
+Sun Nov 22 20:15:19 2026 :: Log Alaric [11001]: arrived (Before The Dragon) from 11000
+Sun Nov 22 20:15:20 2026 :: Log Alaric [11001]: w
+Sun Nov 22 20:15:20 2026 :: Log Alaric [11002]: arrived (In The Dragon's Mouth) from 11001
+Sun Nov 22 20:15:21 2026 :: Log Alaric [11002]: w
+Sun Nov 22 20:15:21 2026 :: Log Alaric [11003]: arrived (By Some Stone Tonsils) from 11002
+Sun Nov 22 20:15:22 2026 :: Log Alaric [11003]: w
+Sun Nov 22 20:15:22 2026 :: Log Alaric [11004]: arrived (A Throat Of Stone) from 11003
+Sun Nov 22 20:15:23 2026 :: Log Alaric [11004]: w
+Sun Nov 22 20:15:23 2026 :: Log Alaric [11005]: arrived (Further Down The Dragon's Throat) from 11004
+Sun Nov 22 20:15:24 2026 :: Log Alaric [11005]: w
+Sun Nov 22 20:15:24 2026 :: Log Alaric [11006]: arrived (A Junction) from 11005
+Sun Nov 22 20:15:25 2026 :: Log Alaric [11006]: n
+Sun Nov 22 20:15:25 2026 :: Log Alaric [11007]: arrived (A Stone Tunnel) from 11006
+Sun Nov 22 20:15:27 2026 :: Log Alaric [11007]: ex
+Sun Nov 22 20:15:28 2026 :: Log Alaric [11007]: s
+Sun Nov 22 20:15:28 2026 :: Log Alaric [11006]: arrived (A Junction) from 11007
+Sun Nov 22 20:15:28 2026 :: Log Alaric [11006]: s
+Sun Nov 22 20:15:28 2026 :: Log Alaric [11010]: arrived (A Stone Tunnel) from 11006
+Sun Nov 22 20:15:31 2026 :: Log Alaric [11010]: u
+Sun Nov 22 20:15:31 2026 :: Log Alaric [11011]: arrived (A Dragon Lung) from 11010
+Sun Nov 22 20:15:32 2026 :: Log Alaric [11011]: d
+Sun Nov 22 20:15:32 2026 :: Log Alaric [11010]: arrived (A Stone Tunnel) from 11011
+Sun Nov 22 20:15:32 2026 :: Log Alaric [11010]: n
+Sun Nov 22 20:15:32 2026 :: Log Alaric [11006]: arrived (A Junction) from 11010
+Sun Nov 22 20:15:33 2026 :: Log Alaric [11006]: w
+Sun Nov 22 20:15:33 2026 :: Log Alaric [11055]: arrived (A Stone Tunnel) from 11006
+Sun Nov 22 20:15:34 2026 :: Log Alaric [11055]: w
+Sun Nov 22 20:15:34 2026 :: Log Alaric [11012]: arrived (Ancalador's Stomach) from 11055
+Sun Nov 22 20:15:35 2026 :: Log Alaric [11012]: w
+Sun Nov 22 20:15:35 2026 :: Log Alaric [11013]: arrived (A Wooden Bridge) from 11012
+Sun Nov 22 20:15:37 2026 :: Log Alaric [11013]: d
+Sun Nov 22 20:15:37 2026 :: Log Alaric [11016]: arrived (A Stalagmite Forest) from 11013
+Sun Nov 22 20:15:38 2026 :: Log Alaric [11016]: u
+Sun Nov 22 20:15:39 2026 :: Log Alaric [11016]: recal
+Sun Nov 22 20:15:39 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 11016
+Sun Nov 22 20:15:40 2026 :: Log Alaric [2497]: en do
+Sun Nov 22 20:15:40 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sun Nov 22 20:15:41 2026 :: Log Alaric [2401]: r w 7
+Sun Nov 22 20:15:41 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Nov 22 20:15:41 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Nov 22 20:15:41 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Nov 22 20:15:41 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Nov 22 20:15:41 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Nov 22 20:15:41 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Nov 22 20:15:41 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Nov 22 20:15:42 2026 :: Log Alaric [2438]: open gate
+Sun Nov 22 20:15:42 2026 :: Log Alaric [2438]: r w 8
+Sun Nov 22 20:15:42 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Nov 22 20:15:42 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Sun Nov 22 20:15:42 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Sun Nov 22 20:15:42 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Sun Nov 22 20:15:42 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Sun Nov 22 20:15:42 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Sun Nov 22 20:15:42 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Sun Nov 22 20:15:42 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Sun Nov 22 20:15:42 2026 :: Log Alaric [6101]: r s 2
+Sun Nov 22 20:15:42 2026 :: Log Alaric [6104]: arrived (A small path in the deep, dark forest) from 6101
+Sun Nov 22 20:15:42 2026 :: Log Alaric [6105]: arrived (A small path in the deep, dark forest) from 6104
+Sun Nov 22 20:15:42 2026 :: Log Alaric [6105]: w
+Sun Nov 22 20:15:42 2026 :: Log Alaric [6106]: arrived (A junction in the deep, dark forest) from 6105
+Sun Nov 22 20:15:43 2026 :: Log Alaric [6106]: s
+Sun Nov 22 20:15:43 2026 :: Log Alaric [6117]: arrived (A junction in the deep, dark forest) from 6106
+Sun Nov 22 20:15:43 2026 :: Log Alaric [6117]: e
+Sun Nov 22 20:15:43 2026 :: Log Alaric [6118]: arrived (A small path in the deep, dark forest) from 6117
+Sun Nov 22 20:15:43 2026 :: Log Alaric [6118]: r s 2
+Sun Nov 22 20:15:43 2026 :: Log Alaric [6119]: arrived (A small path in the deep, dark forest) from 6118
+Sun Nov 22 20:15:43 2026 :: Log Alaric [6120]: arrived (On the river bank in the deep, dark forest) from 6119
+Sun Nov 22 20:15:43 2026 :: Log Alaric [6120]: r w 3
+Sun Nov 22 20:15:43 2026 :: Log Alaric [6121]: arrived (A dead end path on the river bank in the deep, dark forest) from 6120
+Sun Nov 22 20:15:43 2026 :: Log Alaric [58]: arrived (Eerie Clearing) from 6121
+Sun Nov 22 20:15:43 2026 :: Log Alaric [11057]: arrived (Muddy Riverbank) from 58
+Sun Nov 22 20:15:45 2026 :: Log Alaric [11057]: w
+Sun Nov 22 20:15:45 2026 :: Log Alaric [11000]: arrived (A Wild Valley) from 11057
+Sun Nov 22 20:15:45 2026 :: Log Alaric [11000]: w
+Sun Nov 22 20:15:45 2026 :: Log Alaric [11001]: arrived (Before The Dragon) from 11000
+Sun Nov 22 20:15:45 2026 :: Log Alaric [11001]: w
+Sun Nov 22 20:15:45 2026 :: Log Alaric [11002]: arrived (In The Dragon's Mouth) from 11001
+Sun Nov 22 20:15:45 2026 :: Log Alaric [11002]: w
+Sun Nov 22 20:15:45 2026 :: Log Alaric [11003]: arrived (By Some Stone Tonsils) from 11002
+Sun Nov 22 20:15:46 2026 :: Log Alaric [11003]: w
+Sun Nov 22 20:15:46 2026 :: Log Alaric [11004]: arrived (A Throat Of Stone) from 11003
+Sun Nov 22 20:15:46 2026 :: Log Alaric [11004]: w
+Sun Nov 22 20:15:46 2026 :: Log Alaric [11005]: arrived (Further Down The Dragon's Throat) from 11004
+Sun Nov 22 20:15:46 2026 :: Log Alaric [11005]: w
+Sun Nov 22 20:15:46 2026 :: Log Alaric [11006]: arrived (A Junction) from 11005
+Sun Nov 22 20:15:46 2026 :: Log Alaric [11006]: w
+Sun Nov 22 20:15:46 2026 :: Log Alaric [11055]: arrived (A Stone Tunnel) from 11006
+Sun Nov 22 20:15:47 2026 :: Log Alaric [11055]: w
+Sun Nov 22 20:15:47 2026 :: Log Alaric [11012]: arrived (Ancalador's Stomach) from 11055
+Sun Nov 22 20:15:47 2026 :: Log Alaric [11012]: w
+Sun Nov 22 20:15:47 2026 :: Log Alaric [11013]: arrived (A Wooden Bridge) from 11012
+Sun Nov 22 20:15:48 2026 :: Log Alaric [11013]: w
+Sun Nov 22 20:15:48 2026 :: Log Alaric [11014]: arrived (A Wooden Bridge) from 11013
+Sun Nov 22 20:15:49 2026 :: Log Alaric [11014]: d
+Sun Nov 22 20:15:49 2026 :: Log Alaric [11016]: arrived (A Stalagmite Forest) from 11014
+Sun Nov 22 20:15:51 2026 :: Log Alaric [11016]: recal
+Sun Nov 22 20:15:51 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 11016
+Sun Nov 22 20:15:53 2026 :: Log Alaric [2497]: en do
+Sun Nov 22 20:15:53 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sun Nov 22 20:15:54 2026 :: Log Alaric [2401]: jump rock
+Sun Nov 22 20:15:54 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Sun Nov 22 20:15:54 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 1607
+Sun Nov 22 20:15:56 2026 :: Log Alaric [4208]: heal ref
+Sun Nov 22 20:15:56 2026 :: Log Alaric [4208]: gold -130
+Sun Nov 22 20:16:01 2026 :: Log Alaric [4208]: r e 4
+Sun Nov 22 20:16:01 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sun Nov 22 20:16:01 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Nov 22 20:16:01 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Nov 22 20:16:01 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sun Nov 22 20:16:01 2026 :: Log Alaric [2427]: n
+Sun Nov 22 20:16:01 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Nov 22 20:16:01 2026 :: Log Alaric [2404]: n
+Sun Nov 22 20:16:01 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sun Nov 22 20:16:01 2026 :: Log Alaric [2401]: r w 7
+Sun Nov 22 20:16:01 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Nov 22 20:16:01 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Nov 22 20:16:01 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Nov 22 20:16:01 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Nov 22 20:16:01 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Nov 22 20:16:01 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Nov 22 20:16:01 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Nov 22 20:16:02 2026 :: Log Alaric [2438]: open gate
+Sun Nov 22 20:16:02 2026 :: Log Alaric [2438]: r w 8
+Sun Nov 22 20:16:02 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Nov 22 20:16:02 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Sun Nov 22 20:16:02 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Sun Nov 22 20:16:02 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Sun Nov 22 20:16:02 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Sun Nov 22 20:16:02 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Sun Nov 22 20:16:02 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Sun Nov 22 20:16:02 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Sun Nov 22 20:16:02 2026 :: Log Alaric [6101]: r s 2
+Sun Nov 22 20:16:02 2026 :: Log Alaric [6104]: arrived (A small path in the deep, dark forest) from 6101
+Sun Nov 22 20:16:02 2026 :: Log Alaric [6105]: arrived (A small path in the deep, dark forest) from 6104
+Sun Nov 22 20:16:02 2026 :: Log Alaric [6105]: w
+Sun Nov 22 20:16:02 2026 :: Log Alaric [6106]: arrived (A junction in the deep, dark forest) from 6105
+Sun Nov 22 20:16:03 2026 :: Log Alaric [6106]: s
+Sun Nov 22 20:16:03 2026 :: Log Alaric [6117]: arrived (A junction in the deep, dark forest) from 6106
+Sun Nov 22 20:16:03 2026 :: Log Alaric [6117]: e
+Sun Nov 22 20:16:03 2026 :: Log Alaric [6118]: arrived (A small path in the deep, dark forest) from 6117
+Sun Nov 22 20:16:03 2026 :: Log Alaric [6118]: r s 2
+Sun Nov 22 20:16:03 2026 :: Log Alaric [6119]: arrived (A small path in the deep, dark forest) from 6118
+Sun Nov 22 20:16:03 2026 :: Log Alaric [6120]: arrived (On the river bank in the deep, dark forest) from 6119
+Sun Nov 22 20:16:03 2026 :: Log Alaric [6120]: r w 3
+Sun Nov 22 20:16:03 2026 :: Log Alaric [6121]: arrived (A dead end path on the river bank in the deep, dark forest) from 6120
+Sun Nov 22 20:16:03 2026 :: Log Alaric [58]: arrived (Eerie Clearing) from 6121
+Sun Nov 22 20:16:03 2026 :: Log Alaric [11057]: arrived (Muddy Riverbank) from 58
+Sun Nov 22 20:16:05 2026 :: Log Alaric [11057]: w
+Sun Nov 22 20:16:05 2026 :: Log Alaric [11000]: arrived (A Wild Valley) from 11057
+Sun Nov 22 20:16:06 2026 :: Log Alaric [11000]: w
+Sun Nov 22 20:16:06 2026 :: Log Alaric [11001]: arrived (Before The Dragon) from 11000
+Sun Nov 22 20:16:06 2026 :: Log Alaric [11001]: w
+Sun Nov 22 20:16:06 2026 :: Log Alaric [11002]: arrived (In The Dragon's Mouth) from 11001
+Sun Nov 22 20:16:06 2026 :: Log Alaric [11002]: w
+Sun Nov 22 20:16:06 2026 :: Log Alaric [11003]: arrived (By Some Stone Tonsils) from 11002
+Sun Nov 22 20:16:06 2026 :: Log Alaric [11003]: w
+Sun Nov 22 20:16:06 2026 :: Log Alaric [11004]: arrived (A Throat Of Stone) from 11003
+Sun Nov 22 20:16:07 2026 :: Log Alaric [11004]: w
+Sun Nov 22 20:16:07 2026 :: Log Alaric [11005]: arrived (Further Down The Dragon's Throat) from 11004
+Sun Nov 22 20:16:07 2026 :: Log Alaric [11005]: w
+Sun Nov 22 20:16:07 2026 :: Log Alaric [11006]: arrived (A Junction) from 11005
+Sun Nov 22 20:16:07 2026 :: Log Alaric [11006]: w
+Sun Nov 22 20:16:07 2026 :: Log Alaric [11055]: arrived (A Stone Tunnel) from 11006
+Sun Nov 22 20:16:07 2026 :: Log Alaric [11055]: w
+Sun Nov 22 20:16:07 2026 :: Log Alaric [11012]: arrived (Ancalador's Stomach) from 11055
+Sun Nov 22 20:16:08 2026 :: Log Alaric [11012]: w
+Sun Nov 22 20:16:08 2026 :: Log Alaric [11013]: arrived (A Wooden Bridge) from 11012
+Sun Nov 22 20:16:08 2026 :: Log Alaric [11013]: w
+Sun Nov 22 20:16:08 2026 :: Log Alaric [11014]: arrived (A Wooden Bridge) from 11013
+Sun Nov 22 20:16:09 2026 :: Log Alaric [11014]: w
+Sun Nov 22 20:16:09 2026 :: Log Alaric [11015]: arrived (A Wooden Bridge) from 11014
+Sun Nov 22 20:16:11 2026 :: Log Alaric [11015]: ex
+Sun Nov 22 20:16:13 2026 :: Log Alaric [11015]: d
+Sun Nov 22 20:16:13 2026 :: Log Alaric [11016]: arrived (A Stalagmite Forest) from 11015
+Sun Nov 22 20:16:16 2026 :: Log Alaric [11016]: recal
+Sun Nov 22 20:16:16 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 11016
+Sun Nov 22 20:16:18 2026 :: Log Alaric [2497]: en do
+Sun Nov 22 20:16:18 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sun Nov 22 20:16:20 2026 :: Log Alaric [2401]: r w 7
+Sun Nov 22 20:16:20 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Nov 22 20:16:20 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Nov 22 20:16:20 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Nov 22 20:16:20 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Nov 22 20:16:20 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Nov 22 20:16:20 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Nov 22 20:16:20 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Nov 22 20:16:20 2026 :: Log Alaric [2438]: open gate
+Sun Nov 22 20:16:20 2026 :: Log Alaric [2438]: r w 8
+Sun Nov 22 20:16:20 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Nov 22 20:16:20 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Sun Nov 22 20:16:20 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Sun Nov 22 20:16:20 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Sun Nov 22 20:16:20 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Sun Nov 22 20:16:20 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Sun Nov 22 20:16:20 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Sun Nov 22 20:16:20 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Sun Nov 22 20:16:21 2026 :: Log Alaric [6101]: r s 2
+Sun Nov 22 20:16:21 2026 :: Log Alaric [6104]: arrived (A small path in the deep, dark forest) from 6101
+Sun Nov 22 20:16:21 2026 :: Log Alaric [6105]: arrived (A small path in the deep, dark forest) from 6104
+Sun Nov 22 20:16:21 2026 :: Log Alaric [6105]: w
+Sun Nov 22 20:16:21 2026 :: Log Alaric [6106]: arrived (A junction in the deep, dark forest) from 6105
+Sun Nov 22 20:16:21 2026 :: Log Alaric [6106]: s
+Sun Nov 22 20:16:21 2026 :: Log Alaric [6117]: arrived (A junction in the deep, dark forest) from 6106
+Sun Nov 22 20:16:21 2026 :: Log Alaric [6117]: e
+Sun Nov 22 20:16:21 2026 :: Log Alaric [6118]: arrived (A small path in the deep, dark forest) from 6117
+Sun Nov 22 20:16:22 2026 :: Log Alaric [6118]: r s 2
+Sun Nov 22 20:16:22 2026 :: Log Alaric [6119]: arrived (A small path in the deep, dark forest) from 6118
+Sun Nov 22 20:16:22 2026 :: Log Alaric [6120]: arrived (On the river bank in the deep, dark forest) from 6119
+Sun Nov 22 20:16:22 2026 :: Log Alaric [6120]: r w 3
+Sun Nov 22 20:16:22 2026 :: Log Alaric [6121]: arrived (A dead end path on the river bank in the deep, dark forest) from 6120
+Sun Nov 22 20:16:22 2026 :: Log Alaric [58]: arrived (Eerie Clearing) from 6121
+Sun Nov 22 20:16:22 2026 :: Log Alaric [11057]: arrived (Muddy Riverbank) from 58
+Sun Nov 22 20:16:23 2026 :: Log Alaric [11057]: w
+Sun Nov 22 20:16:23 2026 :: Log Alaric [11000]: arrived (A Wild Valley) from 11057
+Sun Nov 22 20:16:23 2026 :: Log Alaric [11000]: w
+Sun Nov 22 20:16:23 2026 :: Log Alaric [11001]: arrived (Before The Dragon) from 11000
+Sun Nov 22 20:16:23 2026 :: Log Alaric [11001]: w
+Sun Nov 22 20:16:23 2026 :: Log Alaric [11002]: arrived (In The Dragon's Mouth) from 11001
+Sun Nov 22 20:16:24 2026 :: Log Alaric [11002]: w
+Sun Nov 22 20:16:24 2026 :: Log Alaric [11003]: arrived (By Some Stone Tonsils) from 11002
+Sun Nov 22 20:16:24 2026 :: Log Alaric [11003]: w
+Sun Nov 22 20:16:24 2026 :: Log Alaric [11004]: arrived (A Throat Of Stone) from 11003
+Sun Nov 22 20:16:24 2026 :: Log Alaric [11004]: w
+Sun Nov 22 20:16:24 2026 :: Log Alaric [11005]: arrived (Further Down The Dragon's Throat) from 11004
+Sun Nov 22 20:16:24 2026 :: Log Alaric [11005]: w
+Sun Nov 22 20:16:24 2026 :: Log Alaric [11006]: arrived (A Junction) from 11005
+Sun Nov 22 20:16:25 2026 :: Log Alaric [11006]: w
+Sun Nov 22 20:16:25 2026 :: Log Alaric [11055]: arrived (A Stone Tunnel) from 11006
+Sun Nov 22 20:16:25 2026 :: Log Alaric [11055]: w
+Sun Nov 22 20:16:25 2026 :: Log Alaric [11012]: arrived (Ancalador's Stomach) from 11055
+Sun Nov 22 20:16:25 2026 :: Log Alaric [11012]: w
+Sun Nov 22 20:16:25 2026 :: Log Alaric [11013]: arrived (A Wooden Bridge) from 11012
+Sun Nov 22 20:16:25 2026 :: Log Alaric [11013]: w
+Sun Nov 22 20:16:25 2026 :: Log Alaric [11014]: arrived (A Wooden Bridge) from 11013
+Sun Nov 22 20:16:26 2026 :: Log Alaric [11014]: w
+Sun Nov 22 20:16:26 2026 :: Log Alaric [11015]: arrived (A Wooden Bridge) from 11014
+Sun Nov 22 20:16:27 2026 :: Log Alaric [11015]: w
+Sun Nov 22 20:16:27 2026 :: Log Alaric [11026]: arrived (The End Of The Stomach) from 11015
+Sun Nov 22 20:16:28 2026 :: Log Alaric [11026]: ow
+Sun Nov 22 20:16:29 2026 :: Log Alaric [11026]: ex
+Sun Nov 22 20:16:31 2026 :: Log Alaric [11026]: d
+Sun Nov 22 20:16:31 2026 :: Log Alaric [11022]: arrived (The Acid Forest) from 11026
+Sun Nov 22 20:16:32 2026 :: Log Alaric [11022]: scan
+Sun Nov 22 20:16:34 2026 :: Log Alaric [11022]: w
+Sun Nov 22 20:16:34 2026 :: Log Alaric [11021]: arrived (The Acid Forest) from 11022
+Sun Nov 22 20:16:35 2026 :: Log Alaric [11021]: kill sp
+Sun Nov 22 20:16:35 2026 :: Log Alaric [11021]: killed the green crystal spider
+Sun Nov 22 20:16:35 2026 :: Log Alaric [11021]: coin +1 silver
+Sun Nov 22 20:16:35 2026 :: Log Alaric [11021]: coin +15 copper
+Sun Nov 22 20:16:39 2026 :: Log Alaric [11021]: recal
+Sun Nov 22 20:16:39 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 11021
+Sun Nov 22 20:16:40 2026 :: Log Alaric [2497]: aq co
+Sun Nov 22 20:16:40 2026 :: Log Alaric [2497]: copper +30825828
+Sun Nov 22 20:16:40 2026 :: Log Alaric [2497]: quest complete: 30p 82g 58s 28c, 39 quest points (streak bonus 20%)
+Sun Nov 22 20:16:40 2026 :: Snapshot of Alaric taken before quest: Alaric.20261122_201640.quest (PRESTORE Alaric to see it).
+Sun Nov 22 20:16:40 2026 :: Log Alaric [2497]: aq ga no
+Sun Nov 22 20:16:42 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 48 refused in all, pause 5 this week, 4176 minutes left).

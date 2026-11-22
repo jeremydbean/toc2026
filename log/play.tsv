@@ -51158,3 +51158,153 @@
 1795378250	laid	-	0	0	-	911	herb	44	a sprig of aconite	3757	school.are	scatter
 1795378250	laid	-	0	0	-	912	component	79	a glass container of cobwebs	5006	eastern.are	scatter
 1795378294	laid	-	0	0	-	913	herb	34	an amaranth plant	4708	dresden.are	scatter
+1795378363	laid	-	0	0	-	914	herb	48	an alfalfa sprout	5266	oldthalo.are	scatter
+1795378363	laid	-	0	0	-	915	herb	38	a foxglove flower	5215	oldthalo.are	scatter
+1795378363	laid	-	0	0	-	916	component	61	a mummy's wrapping	2429	dresden.are	scatter
+1795378466	laid	-	0	0	-	917	component	84	a vial of froghemoth saliva	7632	ultima.are	scatter
+1795378493	quest	Alaric	57	2497	dresden.are	ordinary	kill	11010	the green crystal spider	8	ancala.are	23
+1795378493	cmd	Alaric	57	2497	dresden.are	standing	100	20	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Alaric!' // Questor Thews tells you 'A bounty has been posted on the green crystal spider.'	-	+
+1795378496	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1795378506	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1795378507	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	levitate		You slowly rise up off the ground.	-	-
+1795378508	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	run	w 7	Western Oak Tree Square. // [Exits: north east south west] // Temple Boulevard.	-	+
+1795378508	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	open	gate	Ok.	-	-
+1795378508	area	Alaric	57	6000	haon.are	dresden.are	haon.are	1118	run
+1795378508	cmd	Alaric	57	6101	haon.are	standing	100	0	-	run	w 8	Outside the Western Gates of Dresden. // [Exits: north east west] // The edge of the forest	-	+
+1795378508	cmd	Alaric	57	6105	haon.are	standing	100	0	-	run	s 2	A small path in the deep, dark forest // [Exits: north south] // A small path in the deep, dark forest	-	+
+1795378509	cmd	Alaric	57	6106	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.	-	+
+1795378509	cmd	Alaric	57	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.	-	+
+1795378509	cmd	Alaric	57	6118	haon.are	standing	100	0	-	east		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. Ancient, grey // trees loom everywhere.  The path continues south and west.	-	+
+1795378509	cmd	Alaric	57	6120	haon.are	standing	100	0	-	run	s 2	A small path in the deep, dark forest // [Exits: north south] // On the river bank in the deep, dark forest	-	+
+1795378510	area	Alaric	57	58	connect.are	haon.are	connect.are	2	run
+1795378510	area	Alaric	57	11057	ancala.are	connect.are	ancala.are	0	run
+1795378510	cmd	Alaric	57	11057	ancala.are	standing	100	0	-	run	w 3	A dead end path on the river bank in the deep, dark forest // [Exits: east west] // Eerie Clearing	-	+
+1795378515	laid	-	0	0	-	921	herb	40	a clove	25225	mushroom.are	scatter
+1795378515	laid	-	0	0	-	922	component	60	a rakshasa's claw	10120	glitter.are	scatter
+1795378515	cmd	Alaric	57	11000	ancala.are	standing	100	0	-	west		A Wild Valley //   You move slowly through the green vines and thick undergrowth that // cover the valley floor.  It would appear that not many have come here	-	+
+1795378519	cmd	Alaric	57	11001	ancala.are	standing	100	0	-	west		Before The Dragon //   You stand before the Dragon Ancalador.  You can still make out // its petrified form despite the earth that has filled in the crevices	-	+
+1795378520	cmd	Alaric	57	11002	ancala.are	standing	100	0	-	west		In The Dragon's Mouth //   Rows of stone teeth as large as trolls line the walls here.  A // tongue of pitted stone leads west, behind stone molars as large as	-	+
+1795378521	cmd	Alaric	57	11003	ancala.are	standing	100	0	-	west		By Some Stone Tonsils //   You are in the back of the dragon's mouth.  The throat continues // down and something oozes from petrified sinuses above.	-	+
+1795378522	cmd	Alaric	57	11004	ancala.are	standing	100	0	-	west		A Throat Of Stone //   The floor is uneven -- the middle of the passage being lower than // the sides, which rise up to the walls.  The whole passage is slightly	-	+
+1795378523	cmd	Alaric	57	11005	ancala.are	standing	100	0	-	west		Further Down The Dragon's Throat //   The tunnel begins to lose its steepness and merely runs westward // now.  The shapes of what might be petrified muscles line the walls.	-	+
+1795378524	cmd	Alaric	57	11006	ancala.are	standing	100	0	-	west		A Junction //   You are in a four way junction.  The dragon's throat continues east // and west, but by squeezing under some stone flaps you can make out	-	+
+1795378525	cmd	Alaric	57	11007	ancala.are	standing	100	0	-	north		A Stone Tunnel //   This circular passage of stone gradually curves up to a place of // great light and heat.	-	+
+1795378527	cmd	Alaric	57	11007	ancala.are	standing	100	0	-	exits		Obvious exits: // South - A Junction // Up    - A Dragon Lung	-	-
+1795378528	cmd	Alaric	57	11006	ancala.are	standing	100	0	-	south		A Junction //   You are in a four way junction.  The dragon's throat continues east // and west, but by squeezing under some stone flaps you can make out	-	+
+1795378528	cmd	Alaric	57	11010	ancala.are	standing	100	0	-	south		A Stone Tunnel //   This stone passage is lit by a great light and fierce heat from its // far end, which lies above.	-	+
+1795378531	cmd	Alaric	57	11011	ancala.are	standing	100	0	-	up		A Dragon Lung //   The nuclear fires that empowered the dragon with its frightful // breath are here, and though they have been smoldered for so very	-	+
+1795378532	cmd	Alaric	57	11010	ancala.are	standing	100	0	-	down		A Stone Tunnel //   This stone passage is lit by a great light and fierce heat from its // far end, which lies above.	-	+
+1795378532	cmd	Alaric	57	11006	ancala.are	standing	100	0	-	north		A Junction //   You are in a four way junction.  The dragon's throat continues east // and west, but by squeezing under some stone flaps you can make out	-	+
+1795378533	cmd	Alaric	57	11055	ancala.are	standing	100	0	-	west		A Stone Tunnel //   The dragon's throat continues east and west on a path which neither // rises nor falls.  On the south wall, to the dragon's left, a warmth	-	+
+1795378534	cmd	Alaric	57	11012	ancala.are	standing	100	0	-	west		Ancalador's Stomach //   The dragon's throat ends, revealing a huge cavern lit from below by // eerie and diffuse lights of yellow and green.  Even more amazingly, a	-	+
+1795378535	cmd	Alaric	57	11013	ancala.are	standing	100	0	-	west		A Wooden Bridge //   You cannot imagine who would want to build a bridge in this // fantastic cavern.  Large stalagmites sit and rise up while the eerie	-	+
+1795378537	cmd	Alaric	57	11016	ancala.are	standing	100	0	-	down		A Stalagmite Forest //   You take the plunge off of the wooden bridge and find yourself stuck // between several stalagmites.  It hurts to move much, and you cannot see	-	+
+1795378538	cmd	Alaric	57	11016	ancala.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1795378539	area	Alaric	57	2497	dresden.are	ancala.are	dresden.are	29	recall
+1795378539	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795378540	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1795378541	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	run	w 7	Western Oak Tree Square. // [Exits: north east south west] // Temple Boulevard.	-	+
+1795378542	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	open	gate	Ok.	-	-
+1795378542	area	Alaric	57	6000	haon.are	dresden.are	haon.are	3	run
+1795378542	cmd	Alaric	57	6101	haon.are	standing	100	0	-	run	w 8	Outside the Western Gates of Dresden. // [Exits: north east west] // The edge of the forest	-	+
+1795378542	cmd	Alaric	57	6105	haon.are	standing	100	0	-	run	s 2	A small path in the deep, dark forest // [Exits: north south] // A small path in the deep, dark forest	-	+
+1795378542	cmd	Alaric	57	6106	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.	-	+
+1795378543	cmd	Alaric	57	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.	-	+
+1795378543	cmd	Alaric	57	6118	haon.are	standing	100	0	-	east		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. Ancient, grey // trees loom everywhere.  The path continues south and west.	-	+
+1795378543	cmd	Alaric	57	6120	haon.are	standing	100	0	-	run	s 2	A small path in the deep, dark forest // [Exits: north south] // On the river bank in the deep, dark forest	-	+
+1795378543	area	Alaric	57	58	connect.are	haon.are	connect.are	1	run
+1795378543	area	Alaric	57	11057	ancala.are	connect.are	ancala.are	0	run
+1795378543	cmd	Alaric	57	11057	ancala.are	standing	100	0	-	run	w 3	A dead end path on the river bank in the deep, dark forest // [Exits: east west] // Eerie Clearing	-	+
+1795378545	cmd	Alaric	57	11000	ancala.are	standing	100	0	-	west		A Wild Valley //   You move slowly through the green vines and thick undergrowth that // cover the valley floor.  It would appear that not many have come here	-	+
+1795378545	cmd	Alaric	57	11001	ancala.are	standing	100	0	-	west		Before The Dragon //   You stand before the Dragon Ancalador.  You can still make out // its petrified form despite the earth that has filled in the crevices	-	+
+1795378545	cmd	Alaric	57	11002	ancala.are	standing	100	0	-	west		In The Dragon's Mouth //   Rows of stone teeth as large as trolls line the walls here.  A // tongue of pitted stone leads west, behind stone molars as large as	-	+
+1795378545	cmd	Alaric	57	11003	ancala.are	standing	100	0	-	west		By Some Stone Tonsils //   You are in the back of the dragon's mouth.  The throat continues // down and something oozes from petrified sinuses above.	-	+
+1795378546	cmd	Alaric	57	11004	ancala.are	standing	100	0	-	west		A Throat Of Stone //   The floor is uneven -- the middle of the passage being lower than // the sides, which rise up to the walls.  The whole passage is slightly	-	+
+1795378546	cmd	Alaric	57	11005	ancala.are	standing	100	0	-	west		Further Down The Dragon's Throat //   The tunnel begins to lose its steepness and merely runs westward // now.  The shapes of what might be petrified muscles line the walls.	-	+
+1795378546	cmd	Alaric	57	11006	ancala.are	standing	100	0	-	west		A Junction //   You are in a four way junction.  The dragon's throat continues east // and west, but by squeezing under some stone flaps you can make out	-	+
+1795378546	cmd	Alaric	57	11055	ancala.are	standing	100	0	-	west		A Stone Tunnel //   The dragon's throat continues east and west on a path which neither // rises nor falls.  On the south wall, to the dragon's left, a warmth	-	+
+1795378547	cmd	Alaric	57	11012	ancala.are	standing	100	0	-	west		Ancalador's Stomach //   The dragon's throat ends, revealing a huge cavern lit from below by // eerie and diffuse lights of yellow and green.  Even more amazingly, a	-	+
+1795378547	cmd	Alaric	57	11013	ancala.are	standing	100	0	-	west		A Wooden Bridge //   You cannot imagine who would want to build a bridge in this // fantastic cavern.  Large stalagmites sit and rise up while the eerie	-	+
+1795378548	cmd	Alaric	57	11014	ancala.are	standing	100	0	-	west		A Wooden Bridge //   You are in the middle of the wooden bridge.  Large stalagmites rise // around you and the eerie lights continue to dance in the mists below.	-	+
+1795378549	cmd	Alaric	57	11016	ancala.are	standing	100	0	-	down		A Stalagmite Forest //   You take the plunge off of the wooden bridge and find yourself stuck // between several stalagmites.  It hurts to move much, and you cannot see	-	+
+1795378551	area	Alaric	57	2497	dresden.are	ancala.are	dresden.are	8	recall
+1795378551	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795378553	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1795378554	area	Alaric	57	1607	wyvern.are	dresden.are	wyvern.are	3	jump
+1795378554	cmd	Alaric	57	1607	wyvern.are	standing	100	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you	-	+
+1795378554	area	Alaric	57	4208	dresden.are	wyvern.are	dresden.are	0	(room)
+1795378556	coin	Alaric	57	4208	dresden.are	-1300000	spent	heal	-	29667105317
+1795378556	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	heal	ref	The healer utters the words 'candusima'. // You feel fully refreshed! (13 castings, 130 gold.)	-	-
+1795378557	laid	-	0	0	-	927	herb	43	a sprig of hyssop	5062	eastern.are	scatter
+1795378561	cmd	Alaric	57	2427	dresden.are	standing	100	0	-	run	e 4	Before the Altar. // [Exits: north east south west up] // Halls of Healing.	-	+
+1795378561	cmd	Alaric	57	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795378561	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795378561	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	run	w 7	Western Oak Tree Square. // [Exits: north east south west] // Temple Boulevard.	-	+
+1795378562	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	open	gate	It's already open.	-	-
+1795378562	area	Alaric	57	6000	haon.are	dresden.are	haon.are	8	run
+1795378562	cmd	Alaric	57	6101	haon.are	standing	100	0	-	run	w 8	Outside the Western Gates of Dresden. // [Exits: north east west] // The edge of the forest	-	+
+1795378562	cmd	Alaric	57	6105	haon.are	standing	100	0	-	run	s 2	A small path in the deep, dark forest // [Exits: north south] // A small path in the deep, dark forest	-	+
+1795378562	cmd	Alaric	57	6106	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.	-	+
+1795378563	cmd	Alaric	57	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.	-	+
+1795378563	cmd	Alaric	57	6118	haon.are	standing	100	0	-	east		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. Ancient, grey // trees loom everywhere.  The path continues south and west.	-	+
+1795378563	cmd	Alaric	57	6120	haon.are	standing	100	0	-	run	s 2	A small path in the deep, dark forest // [Exits: north south] // On the river bank in the deep, dark forest	-	+
+1795378563	area	Alaric	57	58	connect.are	haon.are	connect.are	1	run
+1795378563	area	Alaric	57	11057	ancala.are	connect.are	ancala.are	0	run
+1795378563	cmd	Alaric	57	11057	ancala.are	standing	100	0	-	run	w 3	A dead end path on the river bank in the deep, dark forest // [Exits: east west] // Eerie Clearing	-	+
+1795378565	cmd	Alaric	57	11000	ancala.are	standing	100	0	-	west		A Wild Valley //   You move slowly through the green vines and thick undergrowth that // cover the valley floor.  It would appear that not many have come here	-	+
+1795378566	cmd	Alaric	57	11001	ancala.are	standing	100	0	-	west		Before The Dragon //   You stand before the Dragon Ancalador.  You can still make out // its petrified form despite the earth that has filled in the crevices	-	+
+1795378566	cmd	Alaric	57	11002	ancala.are	standing	100	0	-	west		In The Dragon's Mouth //   Rows of stone teeth as large as trolls line the walls here.  A // tongue of pitted stone leads west, behind stone molars as large as	-	+
+1795378566	cmd	Alaric	57	11003	ancala.are	standing	100	0	-	west		By Some Stone Tonsils //   You are in the back of the dragon's mouth.  The throat continues // down and something oozes from petrified sinuses above.	-	+
+1795378566	cmd	Alaric	57	11004	ancala.are	standing	100	0	-	west		A Throat Of Stone //   The floor is uneven -- the middle of the passage being lower than // the sides, which rise up to the walls.  The whole passage is slightly	-	+
+1795378567	cmd	Alaric	57	11005	ancala.are	standing	100	0	-	west		Further Down The Dragon's Throat //   The tunnel begins to lose its steepness and merely runs westward // now.  The shapes of what might be petrified muscles line the walls.	-	+
+1795378567	cmd	Alaric	57	11006	ancala.are	standing	100	0	-	west		A Junction //   You are in a four way junction.  The dragon's throat continues east // and west, but by squeezing under some stone flaps you can make out	-	+
+1795378567	cmd	Alaric	57	11055	ancala.are	standing	100	0	-	west		A Stone Tunnel //   The dragon's throat continues east and west on a path which neither // rises nor falls.  On the south wall, to the dragon's left, a warmth	-	+
+1795378567	cmd	Alaric	57	11012	ancala.are	standing	100	0	-	west		Ancalador's Stomach //   The dragon's throat ends, revealing a huge cavern lit from below by // eerie and diffuse lights of yellow and green.  Even more amazingly, a	-	+
+1795378568	cmd	Alaric	57	11013	ancala.are	standing	100	0	-	west		A Wooden Bridge //   You cannot imagine who would want to build a bridge in this // fantastic cavern.  Large stalagmites sit and rise up while the eerie	-	+
+1795378568	cmd	Alaric	57	11014	ancala.are	standing	100	0	-	west		A Wooden Bridge //   You are in the middle of the wooden bridge.  Large stalagmites rise // around you and the eerie lights continue to dance in the mists below.	-	+
+1795378569	cmd	Alaric	57	11015	ancala.are	standing	100	0	-	west		A Wooden Bridge //   The wood here is old and acid eaten, similar to the rest of the // bridge. The deadly stalagmites jut up from below and more of the green	-	+
+1795378571	cmd	Alaric	57	11015	ancala.are	standing	100	0	-	exits		Obvious exits: // East  - A Wooden Bridge // West  - The End Of The Stomach	-	+
+1795378573	cmd	Alaric	57	11016	ancala.are	standing	100	0	-	down		A Stalagmite Forest //   You take the plunge off of the wooden bridge and find yourself stuck // between several stalagmites.  It hurts to move much, and you cannot see	-	+
+1795378576	area	Alaric	57	2497	dresden.are	ancala.are	dresden.are	13	recall
+1795378576	cmd	Alaric	57	2497	dresden.are	standing	100	1	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795378578	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1795378580	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	run	w 7	Western Oak Tree Square. // [Exits: north east south west] // Temple Boulevard.	-	+
+1795378580	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	open	gate	It's already open.	-	-
+1795378580	area	Alaric	57	6000	haon.are	dresden.are	haon.are	4	run
+1795378580	cmd	Alaric	57	6101	haon.are	standing	100	0	-	run	w 8	Outside the Western Gates of Dresden. // [Exits: north east west] // The edge of the forest	-	+
+1795378581	cmd	Alaric	57	6105	haon.are	standing	100	0	-	run	s 2	A small path in the deep, dark forest // [Exits: north south] // A small path in the deep, dark forest	-	+
+1795378581	cmd	Alaric	57	6106	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.	-	+
+1795378581	cmd	Alaric	57	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.	-	+
+1795378581	cmd	Alaric	57	6118	haon.are	standing	100	0	-	east		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. Ancient, grey // trees loom everywhere.  The path continues south and west.	-	+
+1795378582	cmd	Alaric	57	6120	haon.are	standing	100	0	-	run	s 2	A small path in the deep, dark forest // [Exits: north south] // On the river bank in the deep, dark forest	-	+
+1795378582	area	Alaric	57	58	connect.are	haon.are	connect.are	2	run
+1795378582	area	Alaric	57	11057	ancala.are	connect.are	ancala.are	0	run
+1795378582	cmd	Alaric	57	11057	ancala.are	standing	100	0	-	run	w 3	A dead end path on the river bank in the deep, dark forest // [Exits: east west] // Eerie Clearing	-	+
+1795378583	cmd	Alaric	57	11000	ancala.are	standing	100	0	-	west		A Wild Valley //   You move slowly through the green vines and thick undergrowth that // cover the valley floor.  It would appear that not many have come here	-	+
+1795378583	cmd	Alaric	57	11001	ancala.are	standing	100	0	-	west		Before The Dragon //   You stand before the Dragon Ancalador.  You can still make out // its petrified form despite the earth that has filled in the crevices	-	+
+1795378583	cmd	Alaric	57	11002	ancala.are	standing	100	0	-	west		In The Dragon's Mouth //   Rows of stone teeth as large as trolls line the walls here.  A // tongue of pitted stone leads west, behind stone molars as large as	-	+
+1795378584	cmd	Alaric	57	11003	ancala.are	standing	100	0	-	west		By Some Stone Tonsils //   You are in the back of the dragon's mouth.  The throat continues // down and something oozes from petrified sinuses above.	-	+
+1795378584	cmd	Alaric	57	11004	ancala.are	standing	100	0	-	west		A Throat Of Stone //   The floor is uneven -- the middle of the passage being lower than // the sides, which rise up to the walls.  The whole passage is slightly	-	+
+1795378584	cmd	Alaric	57	11005	ancala.are	standing	100	0	-	west		Further Down The Dragon's Throat //   The tunnel begins to lose its steepness and merely runs westward // now.  The shapes of what might be petrified muscles line the walls.	-	+
+1795378584	cmd	Alaric	57	11006	ancala.are	standing	100	0	-	west		A Junction //   You are in a four way junction.  The dragon's throat continues east // and west, but by squeezing under some stone flaps you can make out	-	+
+1795378585	cmd	Alaric	57	11055	ancala.are	standing	100	0	-	west		A Stone Tunnel //   The dragon's throat continues east and west on a path which neither // rises nor falls.  On the south wall, to the dragon's left, a warmth	-	+
+1795378585	cmd	Alaric	57	11012	ancala.are	standing	100	0	-	west		Ancalador's Stomach //   The dragon's throat ends, revealing a huge cavern lit from below by // eerie and diffuse lights of yellow and green.  Even more amazingly, a	-	+
+1795378585	cmd	Alaric	57	11013	ancala.are	standing	100	0	-	west		A Wooden Bridge //   You cannot imagine who would want to build a bridge in this // fantastic cavern.  Large stalagmites sit and rise up while the eerie	-	+
+1795378585	cmd	Alaric	57	11014	ancala.are	standing	100	0	-	west		A Wooden Bridge //   You are in the middle of the wooden bridge.  Large stalagmites rise // around you and the eerie lights continue to dance in the mists below.	-	+
+1795378586	cmd	Alaric	57	11015	ancala.are	standing	100	0	-	west		A Wooden Bridge //   The wood here is old and acid eaten, similar to the rest of the // bridge. The deadly stalagmites jut up from below and more of the green	-	+
+1795378587	cmd	Alaric	57	11026	ancala.are	standing	100	0	-	west		The End Of The Stomach //   The wooden bridge ends here, on a large plateau above the cavern // floor. The plateau overlooks the entire forest of acid and stone	-	+
+1795378588	cmd	Alaric	57	11026	ancala.are	standing	100	0	-	open		It's locked.	-	-
+1795378589	cmd	Alaric	57	11026	ancala.are	standing	100	0	-	exits		Obvious exits: // East  - A Wooden Bridge // West  - Closed door	-	+
+1795378591	cmd	Alaric	57	11022	ancala.are	standing	100	0	-	down		The Acid Forest //   The stalagmites here are large and rainbow-hued, like giants in // jester's garb.  Puddles of weak stomach acid are pooled on the floor.	-	+
+1795378592	cmd	Alaric	57	11022	ancala.are	standing	100	0	-	scan		the green crystal spider           -to the North. // the yellow crystal spider          -to the South. // the green crystal spider           -to the South.	-	+
+1795378594	cmd	Alaric	57	11021	ancala.are	standing	100	0	-	west		The Acid Forest //   You are in the center of the dragons stomach cavern.  A wooden // bridge passes far overhead.  Sharp stalagmites poise here to meet	-	+
+1795378595	coin	Alaric	57	11021	ancala.are	+100	loot	autogold	corpse of the green crystal spider	29667105417
+1795378595	coin	Alaric	57	11021	ancala.are	+15	loot	autogold	corpse of the green crystal spider	29667105432
+1795378595	cmd	Alaric	57	11021	ancala.are	standing	100	15	-	kill	sp	Your punch >>> ANNIHILATES <<< the green crystal spider! [-243] // The green crystal spider is DEAD!! // You have almost finished your QUEST!	-	+
+1795378599	area	Alaric	57	2497	dresden.are	ancala.are	dresden.are	17	recall
+1795378599	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795378600	coin	Alaric	57	2497	dresden.are	+30825828	quests	aquest	-	29697931260
+1795378600	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	ordinary qp=2598->2598 offered=39 daily=4->4 coin=+30825828 kill=15412914 streak=2 level=57 target=-1
+1795378600	cmd	Alaric	57	2497	dresden.are	standing	100	21	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Excellent work! The realm is in your debt!' // Questor Thews says 'Streak of 3 in a row! A +20% bonus has been added!'	success:-	+
+1795378600	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ga no	You safely collect 39 quest points.	-	-
+1795378613	census	-	0	0	-	herbs=18/150 components=12/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=20 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=10 mobs_fought=1 secs=900
