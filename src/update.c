@@ -246,7 +246,9 @@ static bool backup_ensure_dir( const char *path )
  *     passes and tar can list every member, and then renames it over the
  *     name -- the old archive stands until the new one is proven;
  *   - on any failure, a signal included, removes its own temporary file
- *     and says the previous archive was kept.
+ *     and then says the previous archive was kept -- in that order, so a
+ *     reader of the line never finds the temporary still there (CI,
+ *     2026-11-22: the EXIT trap removed it just after the line).
  * The script is fixed text; its date format, message, caller and lock
  * state come in as $1..$4, so nothing in it is built by snprintf.
  */
@@ -265,7 +267,7 @@ static const char backup_script[] =
     "esac\n"
     "tmp=\"${dir}.$name.tar.gz.tmp.$$\"\n"
     "trap 'rm -f \"$tmp\"' EXIT\n"
-    "trap 'say \"[*****] BUG: $3: interrupted; the previous archive is kept.\"; exit 1' HUP INT TERM\n"
+    "trap 'rm -f \"$tmp\"; say \"[*****] BUG: $3: interrupted; the previous archive is kept.\"; exit 1' HUP INT TERM\n"
     "for f in \"$dir\".*.tar.gz.tmp.*; do\n"
     "  [ -f \"$f\" ] || continue\n"
     "  owner=${f##*.}\n"
@@ -283,6 +285,7 @@ static const char backup_script[] =
     "  find \"$dir\" -name '*.tar.gz' -mtime +30 -delete 2>/dev/null\n"
     "  say \"$2\"\n"
     "else\n"
+    "  rm -f \"$tmp\"\n"
     "  say \"[*****] BUG: $3: archive creation failed (tar $rc); the previous archive is kept.\"\n"
     "fi\n";
 
