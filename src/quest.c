@@ -790,6 +790,12 @@ static void quest_daily( CHAR_DATA *ch, char *arg2, char *argument )
  * well earned!" (2026-10-20 channel log). A rush doubles the coin and an
  * emergency multiplies it as it does the points: the quest master
  * promises "double your reward", not double the points.
+ *
+ * Halved on 2026-11-22 (owner: "tweak down the platinum"): a level 53
+ * on a long streak was paid 4-12 and 6-12 kills a quest, twice that on a
+ * rush, and quests had become two thirds of his income -- 1,370 platinum
+ * against 780 from everything he killed in the same hours. The coin is a
+ * side of a quest; the quest points, which the streak raises, are its pay.
  */
 static void complete_automatic_quest_body( CHAR_DATA *ch, CHAR_DATA *questman,
                                            int kills_min, int kills_max )
@@ -1935,7 +1941,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 	{
 	    if (ch->questmob == -1 && ch->countdown > 0)
 	    {
-		complete_automatic_quest(ch, questman, 4, 12);
+		complete_automatic_quest(ch, questman, QUEST_COIN_HUNT_MIN, QUEST_COIN_HUNT_MAX);
 	        return;
 	    }
 	    else if (ch->questobj > 0 && ch->countdown > 0)
@@ -1947,7 +1953,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 		    act("You hand $p to $N.",ch, obj, questman, TO_CHAR);
 		    act("$n hands $p to $N.",ch, obj, questman, TO_ROOM);
 		    remove_automatic_quest_tokens(ch);
-		    complete_automatic_quest(ch, questman, 6, 12);
+		    complete_automatic_quest(ch, questman, QUEST_COIN_RECOVER_MIN, QUEST_COIN_RECOVER_MAX);
 		    return;
 		}
 		else

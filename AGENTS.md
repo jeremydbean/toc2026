@@ -7584,6 +7584,24 @@ between characters. Nothing saved, no object, no stats; it names only rooms
 of an area its owner has walked every counting room of.
 `tests/test_souvenirs.py`.
 
+## Answering Player Reports
+
+Owner, 2026-11-22: "when players report bug reports, reply to them with
+the fixes also". A fix made for a player's BUG, TYPO or IDEA carries its
+reply in the same commit: an entry in `area/bug_replies.dat`,
+`@ <id> <yyyy-mm-dd> <Player>` then the text (a blank line is a
+paragraph break; the next `@` ends it). `bug_replies_post()`
+(`src/bugreply.c`, from `main` after boot, never `--check-area`) posts each
+entry dated within 30 days whose id is on no note yet as a note from the
+Immortals to that player, subject `Re: your report [<id>]`, and logs it
+(`Bug replies: posted ...`); a name that is no character's is skipped and
+logged. The board is the record -- notes never expire and the state sync
+carries `notes.txt` -- so a reply is posted once, at the boot of the
+deploy that ships its fix, and the player sees it as an unread note at
+login. Ids are never reused; say what was wrong, what changed and where
+to read more, in a player's words, and never name another player
+(`tests/test_bug_replies.py`).
+
 ## The Players' Logs Of 2026-11-13
 
 A read of three weeks of logs found these; each is fixed and played by

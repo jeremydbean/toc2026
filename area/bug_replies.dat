@@ -1,0 +1,39 @@
+# Replies to players' BUG, TYPO and IDEA reports (src/bugreply.c).
+# Each entry: '@ <id> <yyyy-mm-dd> <Player>', then the reply; a blank line
+# is a paragraph break, and the next '@' ends it. At every boot an entry
+# dated within 30 days whose id is on no note yet is posted as a note from
+# the Immortals to that player, subject "Re: your report [<id>]". Ids are
+# never changed or reused. Write for the player, in plain words.
+
+@ 20261122-fists-element 2026-11-22 Trentlin
+You reported a journeyman assassin "unaffected" by the first two blows of
+your fists of fury.  Thank you -- it was working as built, but nothing told
+you why.  Each strike of the fury carries its own element (acid,
+lightning, cold, fire, then edged, piercing and plain blows), and the
+journeyman assassin is immune to fire and cold, so those two strikes did
+nothing.
+
+Each strike now names its element as it lands -- "blazing fists of fury",
+"frost-wreathed fists of fury" and so on -- so an immune foe reads as
+immune to that element, not to your fists.  HELP FISTS OF FURY explains it.
+
+@ 20261122-iron-skin 2026-11-22 Trentlin
+You reported being hit by slashing blows while iron skin should have made
+you immune.  Thank you -- iron skin did make you immune to slashing, but it
+lasts only a tick or two (a minute or so of play), and it wore off
+mid-fight.  Your recast then drew no immunity at all, which it does one
+time in four, and did not say so.
+
+Iron skin now says when a cast turns no blow aside, and its wear-off line
+says that blows hurt you as before.  HELP IRON SKIN has the details.
+
+@ 20261122-quest-coin 2026-11-22 Trentlin
+You asked whether 170 platinum for a quest on a 35-quest streak was too
+much.  Thank you -- you were right that quests paid too much coin.  Your
+streak raises only quest points, not coin, but quests were paying four to
+twelve kills' worth of coin at your level (twice that on a rush), and they
+had become most of your income.
+
+Quest coin is now about half that: two to six kills' worth for a hunt,
+three to six for a recovery, still doubled on a rush.  Quest points and
+your streak bonus are unchanged.

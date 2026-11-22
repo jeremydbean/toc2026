@@ -5,6 +5,16 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261122reports 2026-11-22
+FISTS OF FURY now names the element each strike carries as it lands --
+blazing, frost-wreathed, crackling, acid-slick -- so a foe immune to fire
+shrugs off the blazing strike, not your fists.  IRON SKIN says when a cast
+turns no kind of blow aside, and its wear-off says blows hurt you again.
+BUY says it takes a count (BUY 5 POTION) when you buy the same thing three
+times running.  Quests now pay about half the coin they did; quest points
+and streak bonuses are unchanged.  And when you report a bug, a typo or an
+idea that leads to a fix, the reply now comes to you as a note.
+
 @ 20261121logfixes 2026-11-21
 DESPAIR now drives off your opponent only when it is the only one fighting
 you: with others on you too, FLEE gets you out yourself.  Lightly armoured

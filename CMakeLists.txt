@@ -79,6 +79,7 @@ set(SRC_FILES
     src/walkto.c
     src/jail.c
     src/build.c
+    src/bugreply.c
     src/changes.c
     src/diary.c
     src/encounter.c

@@ -3531,7 +3531,7 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
 	{  62, 62, 62, 62, 22, 62 },     { 8, 8, 8, 8, 2, 8},
 	spell_null,             TAR_CHAR_SELF,          POS_RESTING,
 	&gsn_iron_skin,         SLOT( 0),       0,      24,
-	"",                     "Your skin loses its hardness."
+	"",                     "Your skin loses its hardness; blows hurt you as before."
     },
 
     {

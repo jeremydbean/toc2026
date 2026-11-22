@@ -4213,6 +4213,27 @@ base_exp = 200 + 50 * (level_range - 4);
 }
 
 
+/* FISTS OF FURY strikes with a different element each blow (the blow's
+   count is its damage type), and the message names it (owner,
+   2026-11-22): "unaffected by your fists of fury" on a creature immune to
+   fire read as a bug (Trentlin's report, 2026-11-21). Set by
+   do_fists_of_fury around its damage() call only. */
+static const char *fists_noun = NULL;
+
+static const char *fists_element_noun( int dam_type )
+{
+    switch ( dam_type )
+    {
+    case DAM_PIERCE:    return "needle-sharp fists of fury";
+    case DAM_SLASH:     return "knife-edged fists of fury";
+    case DAM_FIRE:      return "blazing fists of fury";
+    case DAM_COLD:      return "frost-wreathed fists of fury";
+    case DAM_LIGHTNING: return "crackling fists of fury";
+    case DAM_ACID:      return "acid-slick fists of fury";
+    default:            return "fists of fury";
+    }
+}
+
 void dam_message( CHAR_DATA *ch, CHAR_DATA *victim,int dam,int dt,bool immune )
 {
     char buf1[256], buf2[256], buf3[256];
@@ -4307,7 +4328,9 @@ void dam_message( CHAR_DATA *ch, CHAR_DATA *victim,int dam,int dt,bool immune )
 				    }
 				    else
 				    {
-					if ( dt >= 0 && dt < MAX_SKILL )
+					if ( dt == gsn_fists_of_fury && fists_noun != NULL )
+	    attack      = fists_noun;
+	else if ( dt >= 0 && dt < MAX_SKILL )
 	    attack      = skill_table[dt].noun_damage;
 	else if ( dt >= TYPE_HIT
 	&& dt <= TYPE_HIT + MAX_DAMAGE_MESSAGE)
@@ -7304,8 +7327,10 @@ void do_fists_of_fury( CHAR_DATA *ch, char *argument )
 	  ROOM_INDEX_DATA *struck_in = ch->in_room;
 
 	  /* damage() is true for any blow that lands, not only a kill. */
+	  fists_noun = fists_element_noun( hit );
 	  damage( ch, victim, number_range(ch->level,ch->level*2),
 		gsn_fists_of_fury, hit );
+	  fists_noun = NULL;
 	  struck = true;
 	  if ( gone_after_blow( victim, struck_in )
 	  ||   gone_after_blow( ch, struck_in ) )
@@ -7585,6 +7610,10 @@ void do_iron_skin( CHAR_DATA *ch, char *argument )
                         : pick == 2 ? "Piercing blows cannot hurt you while it lasts.\n\r"
                         :             "Slashing blows cannot hurt you while it lasts.\n\r", ch );
         }
+        else
+            /* Said, not left silent: a recast that drew no immunity read
+               as the old one still holding (Trentlin, 2026-11-21). */
+            send_to_char( "This time it turns no kind of blow aside; it only thickens your armour.\n\r", ch );
     }
     else
     {

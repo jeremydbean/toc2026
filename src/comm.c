@@ -563,6 +563,7 @@ int main( int argc, char **argv )
     playlog_boot( );        /* the crash recorder, once the world is up */
     spellup_boot_check( );  /* Hermie, if the restart put mortals off */
     player_archive_dormant( );   /* characters not seen in two years */
+    bug_replies_post( );         /* notes answering BUG, TYPO and IDEA */
     player_serial_boot( );       /* every file's serial, before anyone logs in */
     hero_records_backfill( );    /* the plaque's and tablet's fields */
     conn_guard_boot( );     /* players' addresses, read before the loop */

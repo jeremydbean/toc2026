@@ -322,6 +322,13 @@ typedef enum
    one -- five times the points, which is 400% more than the base.
    It is rolled ahead of the rush contract, so the rush chance is
    read against what is left rather than the whole. */
+/* A quest's coin, in kills' worth at the questor's level (quest.c,
+   complete_automatic_quest_body): a hunt, and a recovery. A rush doubles
+   it and an emergency multiplies it by QUEST_EMERGENCY_MULTIPLIER. */
+#define QUEST_COIN_HUNT_MIN      2
+#define QUEST_COIN_HUNT_MAX      6
+#define QUEST_COIN_RECOVER_MIN   3
+#define QUEST_COIN_RECOVER_MAX   6
 #define QUEST_EMERGENCY_CHANCE      5
 #define QUEST_EMERGENCY_MINUTES     5
 #define QUEST_EMERGENCY_MULTIPLIER  5
@@ -4720,6 +4727,7 @@ void    jail_term_text   ( const CHAR_DATA *ch, char *buf, size_t size );
 /* walkto.c */
 void    walkto_load      ( void );
 void    changes_load     ( void );
+void    bug_replies_post ( void );   /* bugreply.c: notes answering reports */
 void    walkto_update    ( void );
 void    fight_lag_update ( void );
 void    fight_ledger_observe ( CHAR_DATA *ch );

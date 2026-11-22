@@ -598,6 +598,11 @@ A monk's fury of unarmed blows: two to five strikes, one more from level
 missed strike ends the fury and makes the victim try to flee.  In a
 fight it defaults to your foe.
 
+Each strike carries its own element, named as it lands: acid-slick,
+crackling (lightning), frost-wreathed, blazing (fire), knife-edged,
+needle-sharp, and a plain blow.  A creature immune to an element is
+unaffected by that strike alone; the rest still land.
+
   - Needs empty hands; needs and costs 30 mana and 15 movement.
   - Six seconds of lag, whether or not a blow lands.
   - Hyrule's creatures will not be driven off; a miss just ends it.
@@ -626,7 +631,9 @@ Syntax: iron skin
 A monk hardens their own skin: armour class improves by 15 plus a fifth
 of your level for one or two ticks.  Three times in four you are also
 immune to one kind of weapon -- blunt, piercing or slashing -- and told
-which; AFFECTS shows it.
+which; the fourth time it says no blow is turned aside.  It lasts only a
+tick or two, a minute or so of play, and says when it wears off; AFFECTS
+shows it.
 
   - Not in a fight; yourself only.
   - Costs 45 mana; a failure costs a few.

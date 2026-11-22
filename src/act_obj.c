@@ -5525,6 +5525,12 @@ void do_buy( CHAR_DATA *ch, char *argument )
     while ( bought < count && buy_one( ch, keeper, argument ) )
 	bought++;
 
+    /* Trentlin bought twelve potions one BUY at a time (2026-11-21): the
+       count BUY takes is said on the third identical purchase, as STASH
+       BUY and PRACTICE say theirs. */
+    if ( bought == 1 && count == 1 && ch->desc != NULL && ch->desc->repeat == 2 )
+	send_to_char( "(Tip: BUY <number> <item> buys several at once.)\n\r", ch );
+
     if ( bought > 0 && bought < count )
     {
 	char buf[MAX_INPUT_LENGTH];
