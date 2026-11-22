@@ -51500,3 +51500,12 @@
 1795386409	laid	-	0	0	-	1093	herb	53	a huckleberry	5333	mirror.are	scatter
 1795386409	laid	-	0	0	-	1094	herb	44	a sprig of aconite	5353	mirror.are	scatter
 1795386409	laid	-	0	0	-	1095	component	69	a basilisks tongue	15152	campus.are	scatter
+1795386435	cmd	Trentlin	54	4210	dresden.are	sleeping	62	0	-	help	fists of fury	'FISTS OF FURY' FISTS // Syntax: fists of fury [victim] //         fists [victim]	-	+
+1795386471	laid	-	0	0	-	1096	herb	34	an amaranth plant	5070	eastern.are	scatter
+1795386471	laid	-	0	0	-	1097	component	65	a dragon's scale	13521	hell.are	scatter
+1795386477	cmd	Trentlin	54	4210	dresden.are	sleeping	78	0	-	help	blinding fists	'BLINDING FISTS' // Syntax: blinding fists [victim] //         blinding [victim]	-	+
+1795386497	cmd	Trentlin	54	4210	dresden.are	sleeping	78	0	-	note		(withheld)	-	-
+1795386502	cmd	Trentlin	54	4210	dresden.are	sleeping	78	0	-	help	iron skin	'IRON SKIN' IRON // Syntax: iron skin //         iron	-	+
+1795386511	refused	Trentlin	54	4210	dresden.are	sleeping	78	0	-	look		In your dreams, or what?	refusal:position	-
+1795386513	cmd	Trentlin	54	4210	dresden.are	sleeping	78	0	-	who		[54 Dwarf   Kngt  ] Trentlin the Knight of the Castle // Players found: 1	-	-
+1795386514	session	Trentlin	54	4210	dresden.are	quit	174s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	12 commands	2 refused	coin: none	spent on: none	exp: none
