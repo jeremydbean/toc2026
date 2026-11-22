@@ -163,9 +163,12 @@ class RareEventAndSkillTests(unittest.TestCase):
             r"UMAX\(1,\s*ch->pcdata->perm_hit - 20\)",
         )
         self.assertIn("URANGE(1, ch->hit - 20, ch->max_hit)", quest_master)
+        # The quest's magic immunity goes through immunity_lift (2026-11-22:
+        # a bare REMOVE_BIT took it from under a baura or worn ward), then
+        # the follow ban and a save, as before.
         self.assertRegex(
             quest_master,
-            r"REMOVE_BIT\(ch->imm_flags, IMM_MAGIC\);\s*"
+            r"immunity_lift\( ch, IMM_MAGIC, NULL \);\s*"
             r"REMOVE_BIT\(ch->act, PLR_NOFOLLOW\);\s*save_char_obj\(ch\);",
         )
 
