@@ -5570,6 +5570,7 @@ void do_flee( CHAR_DATA *ch, char *argument )
     static bool despair_answering = false;
     bool despair_held = false;
     bool despair_others = false;
+    bool despair_tried = false;
 
     if ( ( victim = ch->fighting ) == NULL )
     {
@@ -5615,7 +5616,7 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	   opponent's own flight must not answer back with despair of its
 	   own: two fighters who both had it fled into each other, one
 	   do_flee inside the next, for as long as the rolls held. */
-	if( !despair_answering && !despair_others
+	if( !despair_answering && !despair_others && !despair_tried
 	&&  (chance = get_skill(ch,gsn_despair) ) > 1
 	&&  skill_roll_landed( ch, number_percent () < chance ) )
 	{
@@ -5644,7 +5645,19 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	  despair_answering = true;
 	  do_flee(victim, "");
 	  despair_answering = false;
-	  return;
+	  /* Gone, dead, or the fight over: the despair did its work. A foe
+	     that found no way out -- every exit closed or, for a mobile, into
+	     a NO_MOB room -- is still here and still fighting, and the fleer
+	     used to be left in the fight having been told it ran (play
+	     journal, 2026-11-21: killer clowns in Korzath's maze, twice). Say
+	     so, and the fleer's own flight goes on through the door already
+	     drawn. A miss is not a lie. */
+	  if ( gone_after_blow( victim, was_in ) || ch->fighting != victim
+	  ||   ch->in_room != was_in )
+	      return;
+	  act("But $N finds no way out!", ch, NULL, victim, TO_CHAR);
+	  act("But $N finds no way out!", ch, NULL, victim, TO_NOTVICT);
+	  despair_tried = true;
 	  }
 	}
 

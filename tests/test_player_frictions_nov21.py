@@ -4,6 +4,9 @@
   fleer: Trentlin, at one hit point among five killer clowns, typed FLEE,
   one clown ran, and another killed him. Despair now answers only when
   that foe is the only one fighting them; otherwise they flee themselves.
+  And a foe despair drives off that finds no way out says so, and the
+  fleer's own flight goes on (2026-11-22: it said the foe fled, and the
+  fleer stayed in the fight).
 - A mobile's armour was read without stock ROM's times ten, so a builder's
   poorly armoured beast -- Mud School's educated goblin, 8 meaning 80 --
   wore armour of 8 and a level 4 fighter missed seven blows in ten. A
@@ -24,7 +27,7 @@ import re
 import unittest
 
 from live_mud import (SPARRING_GUARD, LiveMud, create_character, login,
-                      patch_player_file, skip_reason)
+                      patch_player_file, room_of, skip_reason)
 
 SKIP = skip_reason()
 PW = "Zfrpass1"
@@ -154,6 +157,20 @@ class FrictionTests(unittest.TestCase):
                 said = fight(2)
                 self.assertNotIn("despair", said, said[-1500:])
                 self.assertIn("You flee", said, said[-1500:])
+
+                # A foe despair drives off that finds no way out -- its only
+                # exit leads into a NO_MOB room -- stays and fights: the
+                # fleer is told so and their own flight goes on (play
+                # journal, 2026-11-21: killer clowns in Korzath's maze).
+                staff.must(f"set room {QUIET - 1} flags +no_mob", "no_mob")
+                for _ in range(3):
+                    said = fight(1)
+                    if "is overcome with a feeling of despair" in said:
+                        break
+                self.assertIn("is overcome with a feeling of despair", said, said[-1500:])
+                self.assertIn("But a sparring guard finds no way out!", said, said[-1500:])
+                self.assertIn("You flee from combat", said, said[-1500:])
+                self.assertEqual(room_of(staff, "zfrdesp"), QUIET - 1, "the fleer fled")
 
 
 if __name__ == "__main__":
