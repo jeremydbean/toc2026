@@ -338319,3 +338319,25 @@ Sun Nov 22 22:31:53 2026 :: Connection guard: last hour 10 closed without a word
 Sun Nov 22 22:33:17 2026 :: Treasure goblin: vanished from room 15116 (Private Room 207, campus.are) (too long in one area).
 Sun Nov 22 22:33:43 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 2 of 6 in 6 hours).
 Sun Nov 22 22:34:17 2026 :: Connection guard: 139.59.181.152 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 22 22:38:48 2026 :: Connection guard: refused 1 connection from 178.156.185.231 (paused; 4 refused in all, pause 2 this week, 563 minutes left).
+Sun Nov 22 22:41:55 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sun Nov 22 22:41:59 2026 :: Log WebAdmin: fsave
+Sun Nov 22 22:42:05 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sun Nov 22 22:42:08 2026 :: Received signal 15; saving players and shutting down.
+Sun Nov 22 22:42:08 2026 :: Normal termination of game.
+Sun Nov 22 22:42:08 2026 ::  INIT OK 
+Sun Nov 22 22:42:08 2026 :: walkto_load: 157 destinations.
+Sun Nov 22 22:42:08 2026 :: changes_load: 366 entries.
+Sun Nov 22 22:42:08 2026 :: Hermie: the restart put no mortal off (0 playing, recorded 30 seconds before the boot; a mortal last played over ten minutes before it); she stays away.
+Sun Nov 22 22:42:08 2026 :: Serials: 962 character files read, 6 with a serial.
+Sun Nov 22 22:42:08 2026 :: Connection guard: 66 addresses remembered from before the boot, 8 paused now.
+Sun Nov 22 22:42:08 2026 :: Login lockout: 1 address remembered from before the boot.
+Sun Nov 22 22:42:08 2026 :: Passwords: SHA-512 crypt self-test passed.
+Sun Nov 22 22:42:08 2026 :: Recovery ledger: 487 records (0 from before the check), 6 requests, 9 players.
+Sun Nov 22 22:42:08 2026 :: ROM is ready to rock on port 9000.
+Sun Nov 22 22:42:09 2026 :: Treasure goblin: appeared.
+Sun Nov 22 22:42:09 2026 :: Automated backup started.
+Sun Nov 22 22:42:09 2026 :: Daily backup started.
+Sun Nov 22 22:42:09 2026 :: Automated backup complete.
+Sun Nov 22 22:42:10 2026 :: Daily backup complete.
+Sun Nov 22 22:43:53 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 2 of 6 in 6 hours).
