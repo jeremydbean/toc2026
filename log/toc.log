@@ -337686,3 +337686,6 @@ Sun Nov 22 16:53:40 2026 :: Connection guard: 5.161.113.195 closed without a wor
 Sun Nov 22 16:53:49 2026 :: EOF encountered on read.
 Sun Nov 22 16:53:49 2026 :: Closing link to Alaric.
 Sun Nov 22 16:56:09 2026 :: Treasure goblin: vanished from room 4041 (The lion's den, moria.are) (too long in one area).
+Sun Nov 22 16:58:01 2026 :: Black market: the dealer left the world from room 10059 (Center of the throne Room., glitter.are).
+Sun Nov 22 16:58:44 2026 :: Connection guard: refused 1 connection from 5.161.61.238 (paused; 11 refused in all, pause 3 this week, 1070 minutes left).
+Sun Nov 22 17:01:37 2026 :: Connection guard: last hour 9 closed without a word, 5 refused, 0 new characters refused, 0 newly paused; 7 addresses paused and 0 refused now, 15 active player addresses.
