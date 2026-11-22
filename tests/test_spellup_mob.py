@@ -269,20 +269,18 @@ class SpellupMobTests(unittest.TestCase):
             immortal(mud, "Zspelltime")
             with mud.connect(timeout=120) as client:
                 login(client, "Zspelltime", PASSWORD)
-                self.assertIn("Syntax: spellup [minutes]",
-                              run(client, "spellup 0", settle=1.5))
-                self.assertIn("Syntax: spellup [minutes]",
-                              run(client, "spellup 99999", settle=1.5))
-
-                placed = run(client, "spellup 1", settle=2.0)
-                self.assertIn("for 1 minute", placed)
-                self.assertIn("will stay 1 more minute",
-                              run(client, "spellup 1", settle=1.5))
+                # Synced, not a fixed window: on a busy runner a reply
+                # arrived after a 1.5 s drain and read as nothing (CI,
+                # 2026-11-22: "'will stay 1 more minute' not found in ''").
+                client.must("spellup 0", "Syntax: spellup [minutes]")
+                client.must("spellup 99999", "Syntax: spellup [minutes]")
+                client.must("spellup 1", "for 1 minute")
+                client.must("spellup 1", "will stay 1 more minute")
 
                 # A minute is fifteen mobile updates of four seconds each.
                 goodbye = client.drain(75.0)
                 self.assertIn("blows a kiss to the room", goodbye)
-                self.assertNotIn("Hermie", run(client, "look", settle=1.5))
+                self.assertNotIn("Hermie", client.sync("look"))
 
 
 if __name__ == "__main__":
