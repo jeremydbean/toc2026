@@ -65,7 +65,22 @@ ACTIONS: Dict[str, Dict[str, Any]] = {
                        "few seconds; the game is not touched.",
         "danger": False,
     },
+    "status": {
+        "title": "Show the host's health",
+        "description": "Changes nothing: which services and timers are up, the "
+                       "state sync's last result, disk, memory, and the recent "
+                       "journal of the sync, recovery and auto-deployer.",
+        "danger": False,
+    },
 }
+
+# What a request committed to ops/host-requests.txt may ask for (the
+# auto-deployer reads it; see toc-auto-deploy). Never "deploy": a push to
+# main is already a deploy, through CI and the player hold, and a request
+# file must not be a way round either. Nor "auto-deploy", which is the
+# reader itself. toc-auto-deploy's own list is held to this one by
+# tests/test_host_actions.py.
+GIT_ACTIONS = ("state-sync", "state-sync-reclone", "restart-web", "status")
 
 ID_RE = re.compile(r"^[0-9a-f]{32}$")
 REQUEST_NAME = "request"

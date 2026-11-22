@@ -46,6 +46,7 @@ on:
       - 'log/**'
       - 'heroes/**'
       - 'corpse/**'
+      - 'ops/**'
       - 'area/notes.txt'
       - 'area/bugs.txt'
       - 'area/ideas.txt'

@@ -122,6 +122,67 @@ if [ -e "$MAINTENANCE_MARKER" ]; then
     exit 0
 fi
 
+# ------------------------------------------------- the services beside it
+# Owner, 2026-11-22: "build self healing ability into these required tasks
+# and processes that restart them". The game is not the only thing that
+# must stay up: the website, and the timers that save players to GitHub,
+# watch that, deploy, and the website's maintenance helper. Every run,
+# before the game is judged:
+#
+#   * a timer or path unit that is enabled but not active is started
+#     again (a unit disabled on purpose, or not installed here, is left);
+#   * the website, enabled, is started if it is not running, and restarted
+#     if it is running but has not answered its health check on
+#     WEB_FAILS_BEFORE_RESTART runs in a row (a hung process).
+#
+# Held to the same rules as the game: never during a deploy (the lock
+# above) or a maintenance window (the marker above).
+KEEP_UNITS=${TOC_KEEP_UNITS:-"toc-state-sync.timer toc-state-sync-check.timer toc-auto-deploy.timer toc-host-action.path toc-player-backup.timer toc-daily-backup.timer caddy.service"}
+WEB_SERVICE=${TOC_WEB_SERVICE:-toc-web.service}
+WEB_HEALTH_URL=${TOC_WEB_HEALTH_URL:-http://127.0.0.1:9001/api/health}
+WEB_FAIL_FILE="$STATE_DIR/web-health-failures"
+WEB_FAILS_BEFORE_RESTART=${TOC_WEB_FAILS_BEFORE_RESTART:-2}
+
+web_answers()
+{
+    curl --fail --silent --max-time 5 --output /dev/null "$WEB_HEALTH_URL" 2>/dev/null
+}
+
+keep_services_up()
+{
+    for unit in $KEEP_UNITS; do
+        [ "$(systemctl is-enabled "$unit" 2>/dev/null || true)" = enabled ] || continue
+        systemctl is-active --quiet "$unit" && continue
+        log "$unit is enabled but $(systemctl is-active "$unit" 2>/dev/null || true); starting it."
+        systemctl reset-failed "$unit" 2>/dev/null || true
+        systemctl start "$unit" 2>/dev/null || log "could not start $unit."
+    done
+
+    [ "$(systemctl is-enabled "$WEB_SERVICE" 2>/dev/null || true)" = enabled ] || return 0
+    if ! systemctl is-active --quiet "$WEB_SERVICE"; then
+        log "$WEB_SERVICE is not running; starting it."
+        systemctl reset-failed "$WEB_SERVICE" 2>/dev/null || true
+        systemctl start "$WEB_SERVICE" 2>/dev/null || log "could not start $WEB_SERVICE."
+        echo 0 > "$WEB_FAIL_FILE"
+        return 0
+    fi
+    if web_answers; then
+        [ "$(read_number "$WEB_FAIL_FILE")" -eq 0 ] || echo 0 > "$WEB_FAIL_FILE"
+        return 0
+    fi
+    web_fails=$(( $(read_number "$WEB_FAIL_FILE") + 1 ))
+    if [ "$web_fails" -lt "$WEB_FAILS_BEFORE_RESTART" ]; then
+        echo "$web_fails" > "$WEB_FAIL_FILE"
+        log "$WEB_SERVICE did not answer its health check; looking again next run."
+        return 0
+    fi
+    log "$WEB_SERVICE has not answered on $web_fails runs in a row; restarting it."
+    systemctl restart "$WEB_SERVICE" 2>/dev/null || log "could not restart $WEB_SERVICE."
+    echo 0 > "$WEB_FAIL_FILE"
+}
+
+keep_services_up || true
+
 if [ -e "$LIVE_ROOT/area/shutdown.txt" ]; then
     log "in-game shutdown marker present; leaving the service alone."
     exit 0

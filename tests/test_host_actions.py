@@ -267,5 +267,229 @@ class HostActionTests(unittest.TestCase):
         self.assertIn("NoNewPrivileges=true", web_unit)
 
 
+
+AUTO_DEPLOY = ROOT / "deploy" / "windows-vm" / "toc-auto-deploy"
+STATE_SYNC = ROOT / "deploy" / "windows-vm" / "toc-state-sync"
+
+
+def git(*args: str, cwd: Path | None = None) -> str:
+    return subprocess.run(["git", "-c", "user.name=t", "-c", "user.email=t@t", *args],
+                          cwd=cwd, check=True, capture_output=True, text=True).stdout
+
+
+@unittest.skipIf(shutil.which("git") is None, "needs git")
+class GitRequestTests(unittest.TestCase):
+    """ops/host-requests.txt: what a session that can only push may ask for.
+    Runs toc-auto-deploy's own hand-over function against a build tree whose
+    origin/main carries the file."""
+
+    def setUp(self) -> None:
+        self._tmp = tempfile.TemporaryDirectory()
+        self.tmp = Path(self._tmp.name)
+        self.build = self.tmp / "build"
+        self.build.mkdir()
+        git("init", "-q", "-b", "main", cwd=self.build)
+        self.requests = self.tmp / "host-actions"
+        self.results = self.tmp / "results"
+        self.results.mkdir()
+        self.state = self.tmp / "auto-state"
+        self.state.mkdir()
+        self.now = int(time.time())
+        source = AUTO_DEPLOY.read_text()
+        block = source[source.index('HOST_REQUESTS_PATH="${TOC_HOST_REQUESTS_PATH'):
+                       source.index("# How many descriptors the game has")]
+        self.probe = self.tmp / "probe.sh"
+        self.probe.write_text("set -eu\nlogger() { :; }\n" + block + "hand_over_git_requests\n")
+
+    def tearDown(self) -> None:
+        self._tmp.cleanup()
+
+    def publish(self, *lines: str) -> None:
+        ops = self.build / "ops"
+        ops.mkdir(exist_ok=True)
+        (ops / "host-requests.txt").write_text("# header\n" + "".join(f"{l}\n" for l in lines))
+        git("add", "ops", cwd=self.build)
+        git("commit", "-qm", "ask", cwd=self.build)
+        git("update-ref", "refs/remotes/origin/main", "HEAD", cwd=self.build)
+
+    def hand_over(self) -> None:
+        env = dict(os.environ, BUILD=str(self.build), STATE_DIR=str(self.state),
+                   TOC_HOST_ACTION_REQUESTS=str(self.requests),
+                   TOC_HOST_ACTION_RESULTS=str(self.results),
+                   TOC_HOST_ACTION_OWNER=f"{os.getuid()}:{os.getgid()}")
+        done = subprocess.run(["sh", str(self.probe)], env=env, capture_output=True,
+                              text=True, timeout=60)
+        self.assertEqual(done.returncode, 0, done.stderr)
+
+    def request(self) -> str:
+        path = self.requests / "request"
+        return path.read_text() if path.exists() else ""
+
+    def test_the_lists_agree_and_never_deploy(self) -> None:
+        source = AUTO_DEPLOY.read_text()
+        listed = re.search(r'^GIT_HOST_ACTIONS="([^"]+)"', source, re.M).group(1).split()
+        self.assertEqual(set(listed), set(host_actions.GIT_ACTIONS))
+        self.assertTrue(set(listed) <= set(host_actions.ACTIONS))
+        self.assertNotIn("deploy", listed)
+        self.assertNotIn("auto-deploy", listed)
+        # Handed over on the way out, after the deploy lock is let go: the
+        # sync the helper starts skips a run made while a deploy holds it.
+        trap = source.index("trap 'rc=$?; exec 9>&-; hand_over_git_requests")
+        self.assertGreater(trap, source.index('if ! flock -n 9; then'))
+        self.assertLess(trap, source.index('git -C "$BUILD" fetch --quiet origin main'))
+        self.assertTrue((ROOT / "ops" / "host-requests.txt").exists())
+
+    def test_a_new_request_is_handed_over_once(self) -> None:
+        rid = "a" * 32
+        self.publish(f"{rid} status {self.now}")
+        self.hand_over()
+        self.assertEqual(self.request(), f"{rid} status\n")
+        (self.requests / "request").unlink()
+        self.hand_over()
+        self.assertEqual(self.request(), "", "an id runs once")
+        self.assertEqual(list(self.requests.glob(".request.*")), [])
+
+    def test_one_at_a_time_and_never_over_the_websites(self) -> None:
+        first, second = "b" * 32, "c" * 32
+        self.publish(f"{first} state-sync {self.now}", f"{second} restart-web {self.now}")
+        self.requests.mkdir()
+        (self.requests / "request").write_text(f"{'d' * 32} status\n")
+        self.hand_over()
+        self.assertEqual(self.request(), f"{'d' * 32} status\n", "the website's request stands")
+        (self.requests / "request").unlink()
+        self.hand_over()
+        self.assertEqual(self.request(), f"{first} state-sync\n")
+        (self.requests / "request").unlink()
+        self.hand_over()
+        self.assertEqual(self.request(), f"{second} restart-web\n")
+
+    def test_refusals_leave_a_result_and_run_nothing(self) -> None:
+        old, deploy, future, bare, extra = ("1" * 32, "2" * 32, "3" * 32, "4" * 32, "5" * 32)
+        self.publish(f"{old} status {self.now - 7 * 3600}",
+                     f"{deploy} deploy {self.now}",
+                     f"{future} status {self.now + 3600}",
+                     f"{bare} status",
+                     f"{extra} status {self.now} rm",
+                     "not-an-id status 1",
+                     f"{'6' * 32} status {self.now}")
+        for _ in range(6):
+            self.hand_over()
+            if self.request():
+                break
+        self.assertEqual(self.request(), f"{'6' * 32} status\n")
+        for rid in (old, deploy, future, bare, extra):
+            parsed = host_actions.parse_result((self.results / rid).read_text())
+            self.assertEqual(parsed["state"], "refused", rid)
+        self.assertIn("cannot be asked for through GitHub",
+                      (self.results / deploy).read_text())
+
+    def test_nothing_without_the_helper_installed(self) -> None:
+        self.results.rmdir()
+        self.publish(f"{'7' * 32} status {self.now}")
+        self.hand_over()
+        self.assertEqual(self.request(), "")
+
+
+@unittest.skipIf(any(shutil.which(t) is None for t in ("git", "flock", "rsync")),
+                 "needs git, flock and rsync")
+class StateSyncHealingTests(unittest.TestCase):
+    """toc-state-sync repairs what used to need a person: a lock or rebase
+    a killed run left, and a broken clone. And it carries the helper's
+    results back to git. Runs the real script against a local bare repo."""
+
+    def setUp(self) -> None:
+        self._tmp = tempfile.TemporaryDirectory()
+        root = self.root = Path(self._tmp.name)
+        self.bare, seed = root / "remote.git", root / "seed"
+        git("init", "-q", "--bare", "-b", "main", str(self.bare))
+        git("clone", "-q", str(self.bare), str(seed))
+        (seed / "README").write_text("seed\n")
+        git("add", "README", cwd=seed)
+        git("commit", "-qm", "seed", cwd=seed)
+        git("push", "-q", "origin", "HEAD:main", cwd=seed)
+        self.live = root / "live"
+        (self.live / "player").mkdir(parents=True)
+        (self.live / "log").mkdir()
+        self.results = root / "results"
+        self.results.mkdir()
+        self.repo = root / "state"
+        key = root / "key"
+        key.write_text("not a key\n")
+        # A file:// remote, so the clone copies objects rather than
+        # hard-linking the remote's, which breaking the clone would break too.
+        self.env = dict(os.environ, TOC_ROOT=str(self.live), STATE_REPO=str(self.repo),
+                        REMOTE=f"file://{self.bare}", BRANCH="main", GIT_SSH_KEY=str(key),
+                        LOCK_FILE=str(root / "sync.lock"), TOC_DEPLOY_LOCK=str(root / "d.lock"),
+                        TOC_HOST_ACTION_RESULTS=str(self.results))
+
+    def tearDown(self) -> None:
+        self._tmp.cleanup()
+
+    def sync(self, player: str) -> subprocess.CompletedProcess:
+        # A different length each time: rsync's quick check skips a file of
+        # the same size changed within the same second.
+        self.writes = getattr(self, "writes", 0) + 1
+        (self.live / "player" / "Zsync").write_text(
+            f"#PLAYER\nName {player}~\n{'#' * self.writes}\nEnd\n")
+        return subprocess.run(["sh", str(STATE_SYNC)], env=self.env, capture_output=True,
+                              text=True, timeout=120)
+
+    def pushed(self) -> int:
+        log = git("--git-dir", str(self.bare), "log", "--format=%s", "main")
+        return log.count("State sync:")
+
+    def test_results_come_back_to_git_with_addresses_masked(self) -> None:
+        rid = "e" * 32
+        (self.results / rid).write_text(f"id {rid}\naction status\nstate ok\n\npeer 203.0.113.9 ok\n")
+        (self.results / ".x.tmp").write_text("partial\n")
+        done = self.sync("Zone")
+        self.assertEqual(done.returncode, 0, done.stderr)
+        shown = git("--git-dir", str(self.bare), "show", f"main:log/host-actions/{rid}")
+        self.assertIn("peer <address> ok", shown)
+        self.assertNotIn("203.0.113.9", shown)
+        names = git("--git-dir", str(self.bare), "ls-tree", "--name-only", "main", "log/host-actions/")
+        self.assertEqual(names.split(), [f"log/host-actions/{rid}"])
+
+    def test_a_lock_and_a_rebase_a_killed_run_left_are_cleared(self) -> None:
+        self.assertEqual(self.sync("Zone").returncode, 0)
+        (self.repo / ".git" / "index.lock").write_text("")
+        (self.repo / ".git" / "rebase-merge").mkdir()
+        done = self.sync("Ztwo")
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertIn("index.lock", done.stderr)
+        self.assertEqual(self.pushed(), 2, done.stdout + done.stderr)
+
+    def break_clone(self) -> None:
+        for obj in (self.repo / ".git" / "objects").rglob("*"):
+            if obj.is_file() and obj.parent.name not in ("pack", "info"):
+                obj.chmod(0o644)
+                obj.write_bytes(b"")
+
+    def test_a_broken_clone_is_moved_aside_and_made_again(self) -> None:
+        self.assertEqual(self.sync("Zone").returncode, 0)
+        self.break_clone()
+        done = self.sync("Ztwo")
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertIn("moved it to", done.stderr)
+        aside = list(self.root.glob("state.broken-auto-*"))
+        self.assertEqual(len(aside), 1, "the broken clone is kept")
+        self.assertEqual(self.pushed(), 2, done.stdout + done.stderr)
+        # Broken again at once: left for a person, never a clone loop.
+        self.break_clone()
+        again = self.sync("Zthree")
+        self.assertNotEqual(again.returncode, 0)
+        self.assertIn("leaving it for a person", again.stderr)
+        self.assertEqual(len(list(self.root.glob("state.broken-auto-*"))), 1)
+
+    def test_a_remote_that_cannot_be_reached_is_not_a_broken_clone(self) -> None:
+        self.assertEqual(self.sync("Zone").returncode, 0)
+        self.env["REMOTE"] = str(self.root / "nowhere.git")
+        git("remote", "set-url", "origin", str(self.root / "nowhere.git"), cwd=self.repo)
+        done = self.sync("Ztwo")
+        self.assertNotEqual(done.returncode, 0)
+        self.assertIn("not a broken clone", done.stderr)
+        self.assertEqual(list(self.root.glob("state.broken-auto-*")), [])
+
+
 if __name__ == "__main__":
     unittest.main()

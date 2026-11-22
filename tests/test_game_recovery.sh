@@ -247,6 +247,83 @@ check "a running deploy gets no restart" "$(count_calls start)" "0"
 check "a running deploy's tree is not fetched" "$(count_calls fetch)" "0"
 teardown
 
+# 10-14. The services beside the game (keep_services_up). The game is
+# healthy in all of them, so only the supporting units are acted on.
+watchdog_setup() {
+    setup; touch "$WORK/up"
+    cat > "$WORK/bin/systemctl" <<'STUB'
+#!/bin/bash
+unit="${2:-}"
+case "$1" in
+  is-enabled) [ -f "$WORK/enabled-$unit" ] && { echo enabled; exit 0; }
+              echo disabled; exit 1 ;;
+  is-active)
+    [ "${2:-}" = --quiet ] && unit="$3"
+    if [ "$unit" = test-game.service ]; then [ -f "$WORK/up" ] && exit 0 || exit 1; fi
+    if [ -f "$WORK/active-$unit" ]; then [ "${2:-}" = --quiet ] || echo active; exit 0; fi
+    [ "${2:-}" = --quiet ] || echo inactive; exit 3 ;;
+  start) echo "unit-start $unit" >> "$WORK/calls"; touch "$WORK/active-$unit" ;;
+  restart) echo "unit-restart $unit" >> "$WORK/calls" ;;
+  reset-failed) echo "reset $unit" >> "$WORK/calls" ;;
+esac
+exit 0
+STUB
+    cat > "$WORK/bin/curl" <<'STUB'
+#!/bin/bash
+echo curl >> "$WORK/calls"
+[ -f "$WORK/web-answers" ]
+STUB
+    chmod +x "$WORK/bin/systemctl" "$WORK/bin/curl"
+    export TOC_KEEP_UNITS="t-sync.timer t-deploy.timer t-off.timer"
+    export TOC_WEB_SERVICE=t-web.service
+}
+
+# 10. An enabled timer that stopped is started; a disabled one is not.
+watchdog_setup
+touch "$WORK/enabled-t-sync.timer" "$WORK/active-t-deploy.timer" \
+      "$WORK/enabled-t-deploy.timer"
+rc=$(run_recovery)
+check "watchdog run exits cleanly" "$rc" "0"
+check "a stopped enabled timer is started" "$(count_calls 'unit-start t-sync.timer')" "1"
+check "a running timer is left alone" "$(count_calls 'unit-start t-deploy.timer')" "0"
+check "a disabled timer is left alone" "$(count_calls 'unit-start t-off.timer')" "0"
+check "the website, not enabled here, is never probed" "$(count_calls curl)" "0"
+teardown
+
+# 11. The website is enabled and down: started at once.
+watchdog_setup
+touch "$WORK/enabled-t-web.service"
+rc=$(run_recovery)
+check "a stopped website is started" "$(count_calls 'unit-start t-web.service')" "1"
+teardown
+
+# 12. The website runs but does not answer: restarted on the second run
+# in a row, not the first.
+watchdog_setup
+touch "$WORK/enabled-t-web.service" "$WORK/active-t-web.service"
+run_recovery >/dev/null
+check "one missed health check restarts nothing" "$(count_calls 'unit-restart t-web.service')" "0"
+run_recovery >/dev/null
+check "two missed health checks in a row restart it" "$(count_calls 'unit-restart t-web.service')" "1"
+teardown
+
+# 13. A missed check followed by an answer starts the count again.
+watchdog_setup
+touch "$WORK/enabled-t-web.service" "$WORK/active-t-web.service"
+run_recovery >/dev/null
+touch "$WORK/web-answers"; run_recovery >/dev/null
+rm -f "$WORK/web-answers"; run_recovery >/dev/null
+check "an answer in between resets the count" "$(count_calls 'unit-restart t-web.service')" "0"
+teardown
+
+# 14. A maintenance window leaves the supporting units alone too.
+watchdog_setup
+touch "$WORK/enabled-t-sync.timer" "$WORK/enabled-t-web.service"
+rc=$(TOC_MAINTENANCE_MARKER="$WORK/up" run_recovery)
+check "maintenance starts no supporting unit" "$(count_calls unit-start)" "0"
+teardown
+unset TOC_KEEP_UNITS TOC_WEB_SERVICE
+
 echo
 if [ "$failures" -eq 0 ]; then
     echo "ALL PASS (0 failures)"

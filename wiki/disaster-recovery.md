@@ -248,6 +248,7 @@ the admin token:
 | Check for a deploy now | starts `toc-auto-deploy` at once; it still ships only code CI passed and still holds for players |
 | Deploy main now | runs `toc-deploy` (warns and saves players, rolls back by itself if unhealthy); asks you to type DEPLOY |
 | Restart the website | restarts `toc-web` |
+| Show the host's health | changes nothing: services and timers, the sync's last result, disk, memory, recent journals |
 
 Each result -- state, exit status and output -- is listed under the
 buttons. Nothing typed on the page is run: the dashboard (sandboxed, user
@@ -257,6 +258,27 @@ which runs only the actions it names and writes results to
 `/var/lib/toc-host-actions/` (also in the journal: `journalctl -t
 toc-host-action`). `toc-deploy` installs the helper, its units and that
 directory after a healthy deploy; until then the panel says "Not installed".
+
+**From a session that can only push.** Commit a line to
+`ops/host-requests.txt` -- `<32 hex id> <action> <unix time>`, the file's
+header says how -- and push to main. The auto-deployer hands it to the
+same helper within ten minutes (state-sync, state-sync-reclone,
+restart-web and status only; never deploy, which a push already is), and
+the state sync brings the result back as `log/host-actions/<id>` within
+five more. It starts no CI run and no deploy.
+
+### What fixes itself
+
+- The state sync clears a lock or rebase a killed run left, and a clone
+  git calls broken is moved to `state-repo.broken-auto-<stamp>` and
+  cloned afresh -- at most once an hour; broken again sooner, it waits
+  for **Repair the state sync**. A network or GitHub failure is only
+  reported.
+- Every two minutes `toc-game-recovery` starts any enabled toc timer (and
+  the helper's path unit, and caddy) found stopped, starts `toc-web` if it
+  is down, and restarts it after two missed health checks in a row. A
+  maintenance window (`/etc/toc/maintenance`) or a deploy leaves all of it
+  alone, and a unit disabled on purpose stays off.
 
 ## The machine is gone
 

@@ -78,11 +78,74 @@ fi
 
 cd "$STATE_REPO"
 
+# Self-repair (owner, 2026-11-22: the sync failed for a day and nothing
+# fixed it). This run holds the sync's own lock, so no other git here is
+# running: a lock file or a rebase left behind is from a run that was
+# killed (a timeout, the OOM killer, a reboot), and would fail every run
+# after it.
+for stale in .git/index.lock .git/HEAD.lock .git/shallow.lock \
+             ".git/refs/heads/$BRANCH.lock" ".git/refs/remotes/origin/$BRANCH.lock"; do
+    [ -e "$stale" ] && rm -f -- "$stale" && echo "removed $stale, left by a run that was killed" >&2
+done
+if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
+    git rebase --abort 2>/dev/null || rm -rf .git/rebase-merge .git/rebase-apply
+    echo "abandoned a rebase left by a run that was killed" >&2
+fi
+
+# A clone git itself calls broken -- "object file ... is empty" after a
+# crash mid-write, as on 2026-10-01, or a missing object -- is moved aside
+# and made again from GitHub, which holds everything it did but the commit
+# this run is about to make anyway. A fetch that fails for any other reason
+# (the network, GitHub, the key) is only reported: cloning again would not
+# help it. At most once in RECLONE_GAP, so a clone that breaks again at
+# once is left for a person (the website's "Repair the state sync" still
+# works), and only the newest RECLONE_KEEP copies set aside this way are
+# kept; one moved aside by a person is never removed here.
+RECLONE_GAP="${TOC_STATE_RECLONE_GAP:-3600}"
+RECLONE_KEEP=2
+clone_broken() {
+    git rev-parse --verify --quiet HEAD >/dev/null 2>&1 || return 0
+    grep -qiE 'corrupt|is empty|bad object|loose object|index file|not a git repository|unable to read|broken link|missing (blob|tree|commit)|invalid (sha1|object)' "$1" && return 0
+    git fsck --connectivity-only --no-progress >/dev/null 2>&1 || return 0
+    return 1
+}
+reclone() {
+    made=$(cat "$STATE_REPO/.git/toc-recloned" 2>/dev/null || echo 0)
+    case "$made" in ''|*[!0-9]*) made=0 ;; esac
+    age=$(( $(date +%s) - made ))
+    if [ "$age" -lt "$RECLONE_GAP" ]; then
+        echo "the clone is broken again ${age}s after it was made afresh; leaving it for a person" >&2
+        return 1
+    fi
+    cd /
+    aside="$STATE_REPO.broken-auto-$(date -u +%Y%m%d-%H%M%S)"
+    mv "$STATE_REPO" "$aside" || { echo "cannot move the broken clone aside" >&2; return 1; }
+    echo "the clone was broken; moved it to $aside and cloning afresh" >&2
+    git clone --quiet --branch "$BRANCH" "$REMOTE" "$STATE_REPO" || return 1
+    git -C "$STATE_REPO" config user.name "toc state sync"
+    git -C "$STATE_REPO" config user.email "toc@localhost"
+    date +%s > "$STATE_REPO/.git/toc-recloned"
+    ls -1d "$STATE_REPO".broken-auto-* 2>/dev/null | sort -r | tail -n +$((RECLONE_KEEP + 1)) |
+        while read -r old; do rm -rf -- "$old"; done
+    cd "$STATE_REPO"
+}
+
 # Somebody else pushes to this branch too -- a developer, or me from
 # the host. Take their work first and put ours on top, rather than
 # forcing and losing theirs.
-git fetch --quiet origin "$BRANCH"
-git reset --quiet --hard "origin/$BRANCH"
+git_err=$(mktemp)
+if ! { git fetch --quiet origin "$BRANCH" && git reset --quiet --hard "origin/$BRANCH"; } 2>"$git_err"; then
+    cat "$git_err" >&2
+    if clone_broken "$git_err"; then
+        rm -f "$git_err"
+        reclone || exit 1
+    else
+        rm -f "$git_err"
+        echo "could not bring the clone up to date (not a broken clone; the network, GitHub or the key)" >&2
+        exit 1
+    fi
+fi
+rm -f "$git_err"
 
 # Never copy while a deploy holds its lock: a rollback extracting over
 # the live tree could hand us a half-written custom.are. A shared lock,
@@ -108,6 +171,23 @@ for d in $STATE_DIRS; do
     # history is enough and git is already keeping it.
     rsync -a --delete --exclude 'versions/' "$TOC_ROOT/$d/" "$STATE_REPO/$d/"
 done
+
+# The results of the host's maintenance actions (toc-host-action), so a
+# session that can only reach GitHub reads what the one it asked for did
+# (ops/host-requests.txt). After log/'s mirror above, which removes them,
+# so this keeps exactly the results the helper keeps. They name no player,
+# and an IPv4 address in one is masked all the same.
+HOST_ACTION_RESULTS="${TOC_HOST_ACTION_RESULTS:-/var/lib/toc-host-actions}"
+if [ -d "$HOST_ACTION_RESULTS" ] && [ -r "$HOST_ACTION_RESULTS" ]; then
+    mkdir -p "$STATE_REPO/log/host-actions"
+    for f in "$HOST_ACTION_RESULTS"/*; do
+        name=${f##*/}
+        case "$name" in *[!0-9a-f]*) continue ;; esac
+        [ "${#name}" -eq 32 ] && [ -f "$f" ] && [ -r "$f" ] || continue
+        sed -E 's/(^|[^0-9.])([0-9]{1,3}\.){3}[0-9]{1,3}([^0-9.]|$)/\1<address>\3/g' \
+            "$f" > "$STATE_REPO/log/host-actions/$name" || true
+    done
+fi
 
 # Except the milestones (owner, 2026-10-23: nearly impossible to lose a
 # player). A copy of a character taken just before a death, a remort, a

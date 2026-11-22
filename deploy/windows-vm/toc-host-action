@@ -121,6 +121,40 @@ act_restart_web() {
     return $rc
 }
 
+act_status() {
+    # A look, changing nothing: what a person at a shell would check first.
+    # No journal of toc-game or toc-web is shown -- those carry players'
+    # addresses, and a result reaches git through the state sync.
+    echo "== services"
+    for u in toc-game.service toc-web.service caddy.service \
+             toc-state-sync.timer toc-state-sync.service \
+             toc-state-sync-check.timer toc-auto-deploy.timer toc-auto-deploy.service \
+             toc-game-recovery.timer toc-host-action.path toc-player-backup.timer; do
+        printf '%-30s %-10s %s\n' "$u" "$(systemctl is-enabled "$u" 2>/dev/null || true)" \
+            "$(systemctl is-active "$u" 2>/dev/null || true)"
+    done
+    echo "== the state sync's last result: $(systemctl show -p Result --value toc-state-sync.service 2>/dev/null)"
+    [ -f /run/toc-state-sync.status ] && { echo "== toc-state-sync-check says"; cat /run/toc-state-sync.status; echo; }
+    if [ -f "$CURRENT/log/deployed-commit" ]; then
+        echo "== live: $(cat "$CURRENT/log/deployed-commit")"
+    fi
+    [ -f "$CURRENT/log/auto-deploy.status" ] && echo "== auto-deploy: $(cat "$CURRENT/log/auto-deploy.status")"
+    echo "== disk"
+    df -h / /srv 2>/dev/null | awk '!seen[$0]++'
+    echo "== memory"
+    free -m 2>/dev/null || true
+    echo "== uptime: $(uptime 2>/dev/null)"
+    echo "== state sync journal"
+    journal_of -u toc-state-sync.service -n 25
+    echo "== state sync check journal"
+    journal_of -u toc-state-sync-check.service -n 8
+    echo "== recovery journal"
+    journal_of -u toc-game-recovery.service -n 15
+    echo "== auto-deploy journal"
+    journal_of -t toc-auto-deploy -n 15
+    return 0
+}
+
 run_action() {
     case "$1" in
         state-sync)          act_state_sync ;;
@@ -128,6 +162,7 @@ run_action() {
         auto-deploy)         act_auto_deploy ;;
         deploy)              act_deploy ;;
         restart-web)         act_restart_web ;;
+        status)              act_status ;;
         *)                   return 2 ;;
     esac
 }
@@ -164,14 +199,14 @@ if [ "${#id}" -ne 32 ]; then
     exit 0
 fi
 case "$action" in
-    state-sync|state-sync-reclone|auto-deploy|deploy|restart-web) ;;
+    state-sync|state-sync-reclone|auto-deploy|deploy|restart-web|status) ;;
     *)
         note "refused request $id: not an action this helper runs"
         write_result "$id" unknown refused "$now" "$now" 2
         exit 0 ;;
 esac
 
-note "running $action ($id), asked for from the admin website"
+note "running $action ($id), asked for from the admin website or GitHub"
 write_result "$id" "$action" running "$now" 0 ""
 out=$(mktemp) || exit 1
 run_action "$action" > "$out" 2>&1

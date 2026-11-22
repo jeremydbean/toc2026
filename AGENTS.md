@@ -3204,9 +3204,12 @@ is still WAKE.
 
 Owner, 2026-11-22: the state sync failed for a day and the only way to see
 why or fix it was SSH from the desktop; "fixed actions", not a command box.
-The Operations page's **Server maintenance** panel asks for one of five
+The Operations page's **Server maintenance** panel asks for one of six
 actions -- `state-sync`, `state-sync-reclone`, `auto-deploy`, `deploy`,
-`restart-web` -- and lists the results (`wiki/disaster-recovery.md`).
+`restart-web`, `status` (a read-only look: units, disk, memory, the
+sync's, recovery's and auto-deployer's journals, never toc-game's or
+toc-web's, which carry addresses) -- and lists the results
+(`wiki/disaster-recovery.md`).
 
 - **The dashboard never runs anything.** `webadmin/host_actions.py` (behind
   `verify_token`: `GET`/`POST /api/host/actions`) writes one file,
@@ -3239,6 +3242,55 @@ actions -- `state-sync`, `state-sync-reclone`, `auto-deploy`, `deploy`,
   name it, so `toc-auto-deploy` (installed by that deploy, run as root every
   ten minutes) installs it once while the path unit is missing, from the
   build tree at the live commit -- the probe's fallback problem again.
+- **A cloud session asks through git** (owner, 2026-11-22: "embed the
+  ability for you to also run these commands as you need"). Commit a line
+  `<32 hex id> <action> <unix time>` to `ops/host-requests.txt` and push
+  to main; `toc-auto-deploy` reads origin/main's copy on its way out of
+  every run (an EXIT trap, after it lets go of the deploy lock -- the sync
+  the helper starts skips a run made under that lock) and hands the first
+  new id to the helper through the same request file, one a run, never
+  over a request the website made. Only `GIT_HOST_ACTIONS` (state-sync,
+  state-sync-reclone, restart-web, status; `GIT_ACTIONS` in
+  host_actions.py, held together by the test): never `deploy` -- a push
+  is already one, through CI and the player hold -- nor `auto-deploy`,
+  the reader itself. An id is handed over once
+  (`/var/lib/toc-auto-deploy/host-requests-seen`); one asked more than six
+  hours before it is read, or from the future, is refused with a result
+  saying why, so old lines never run on a new host and may be cleared any
+  time. `ops/**` is state to CI and the deployer (`STATE_GLOBS`,
+  `DEPLOY_EXCLUDES`, `deployable()`, `paths-ignore`), so a request starts
+  no CI run and no deploy. **The answer comes back with the state sync** as
+  `log/host-actions/<id>` (IPv4 addresses masked), within about fifteen
+  minutes of the push: read it from `origin/main` after a fetch. While the
+  sync itself is broken no answer comes back -- ask for
+  `state-sync-reclone`, then `status`.
+
+## Self-Healing
+
+Owner, 2026-11-22: "build self healing ability into these required tasks
+and processes that restart them".
+
+- **The state sync repairs itself** (`toc-state-sync`). Under its own
+  lock nothing else runs git in its clone, so a lock file or a rebase it
+  finds was left by a killed run and is removed (index, HEAD, the branch
+  refs). A fetch or reset that fails on a clone git calls broken (no
+  `HEAD`, a corruption message, or `git fsck --connectivity-only` failing)
+  moves the clone to `state-repo.broken-auto-<stamp>` and clones afresh,
+  writing `.git/toc-recloned`; a clone broken again within an hour
+  (`TOC_STATE_RECLONE_GAP`) is left for a person, and only the newest two
+  `broken-auto` copies are kept (one a person moved aside is never
+  removed). Any other failure (network, GitHub, the key) is reported and
+  not recloned.
+- **The recovery timer keeps the services up** (`keep_services_up` in
+  `toc-game-recovery`, every two minutes as root, before the game is
+  judged, under the same deploy lock and maintenance marker): each of
+  `KEEP_UNITS` (the sync, sync-check and auto-deploy timers, the
+  helper's path unit, the backup timers, caddy) that is *enabled* but not
+  active is started -- a unit disabled on purpose, or not installed, is
+  left -- and `toc-web`, enabled, is started if it is down and restarted
+  after two health checks in a row (`/api/health`) went unanswered
+  (`web-health-failures` in `/var/lib/toc`). `tests/test_game_recovery.sh`
+  scenarios 10-14, `tests/test_host_actions.py`'s `StateSyncHealingTests`.
 
 ## Security Facts
 

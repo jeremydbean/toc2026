@@ -468,7 +468,8 @@ class WebAdminApiTests(unittest.TestCase):
                 self.assertTrue(snap["available"])
                 self.assertEqual(snap["busy"], "waiting")
                 self.assertEqual({a["name"] for a in snap["actions"]},
-                                 {"state-sync", "state-sync-reclone", "auto-deploy", "deploy", "restart-web"})
+                                 {"state-sync", "state-sync-reclone", "auto-deploy", "deploy", "restart-web",
+                                  "status"})
 
     def test_host_status_is_opt_in_authenticated_and_read_only(self) -> None:
         headers = {"X-Admin-Token": "secret"}

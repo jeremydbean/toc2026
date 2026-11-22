@@ -1,0 +1,18 @@
+# Maintenance requests for the live host, read by toc-auto-deploy every ten
+# minutes (deploy/windows-vm/toc-auto-deploy, "GIT_HOST_ACTIONS").
+#
+# One request a line:   <32 hex id> <action> <unix time asked>
+#
+#   state-sync          run the state sync now and show its journal
+#   state-sync-reclone  move the sync's clone aside, then sync (clones afresh)
+#   restart-web         restart the dashboard
+#   status              change nothing; show services, disk, journals
+#
+# Make an id with:  python3 -c "import secrets; print(secrets.token_hex(16))"
+# and the time with: date +%s
+#
+# Each id runs once; one is handed over per run. A request more than six
+# hours old when read is refused, so old lines never run on a new host and
+# may be cleared out at any time. The result comes back to git with the
+# state sync as log/host-actions/<id>. Deploying is not here: a push to main
+# is a deploy already.

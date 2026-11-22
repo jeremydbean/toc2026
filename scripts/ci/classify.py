@@ -68,7 +68,7 @@ ORDER = ["state", "docs", "web-ui", "web-backend", "tests", "full"]
 # as validate.yml's paths-ignore. Not deployed (toc-deploy excludes them).
 STATE_GLOBS = [
     "player/**", "gods/**", "log/**", "heroes/**", "corpse/**", "area/built/**",
-    "area/notes.txt", "area/bugs.txt", "area/ideas.txt", "area/typos.txt",
+    "ops/**", "area/notes.txt", "area/bugs.txt", "area/ideas.txt", "area/typos.txt",
     "area/bugs.txt.*", "area/ideas.txt.*", "area/typos.txt.*",
     "area/pkilldata.txt", "area/wizlist.txt", "area/offense.txt",
     "area/relics.txt", "area/not.txt", "area/ban.txt", "area/dpsboard.txt",
@@ -113,8 +113,8 @@ SERIAL_DEFAULT = "test_login_throttle"
 # toc-auto-deploy's deployable(): everything but these is code a deploy
 # carries. tests/test_ci_classify.py holds the two lists together.
 DEPLOY_EXCLUDES = [
-    "player/**", "gods/**", "heroes/**", "log/**", "corpse/**", "notes/**", "wiki/**",
-    "tests/**", ".github/**", "**/*.md", "*.md", "area/notes.txt", "area/bugs.txt*",
+    "player/**", "gods/**", "heroes/**", "log/**", "corpse/**", "ops/**", "notes/**",
+    "wiki/**", "tests/**", ".github/**", "**/*.md", "*.md", "area/notes.txt", "area/bugs.txt*",
     "area/ideas.txt*", "area/typos.txt*", "area/pkilldata.txt", "area/wizlist.txt",
     "area/offense.txt", "area/relics.txt", "area/not.txt",
     "area/ban.txt", "area/dpsboard.txt", "area/built/**",

@@ -123,6 +123,91 @@ if [ "$(id -u)" = 0 ] && [ ! -f "$HOST_ACTION_UNITS/toc-host-action.path" ] &&
     fi
 fi
 
+# Maintenance asked for through GitHub (owner, 2026-11-22: "embed the
+# ability for you to also run these commands as you need"). A session that
+# can only push commits a line to ops/host-requests.txt,
+#
+#     <32 hex id> <action> <unix time asked>
+#
+# and this, which reads main every ten minutes anyway, hands the first new
+# one to toc-host-action exactly as the admin website does -- the same
+# request file, the same helper, the same result in its directory, which
+# the state sync carries back to git as log/host-actions/<id>. Only
+# GIT_HOST_ACTIONS: never "deploy", since a push is already a deploy and a
+# request file must not be a way round CI or the player hold, nor
+# "auto-deploy", which is this. An id is handed over once (the seen list
+# below); a request more than HOST_REQUEST_MAX_AGE old, or from the future,
+# is refused, so old lines left in the file are never run again on a new
+# host. One at a time: the next waits for the next run. It is done on the
+# way out, after the deploy lock is let go, because the state sync the
+# helper starts skips any run made while a deploy holds that lock.
+HOST_REQUESTS_PATH="${TOC_HOST_REQUESTS_PATH:-ops/host-requests.txt}"
+HOST_ACTION_REQUESTS="${TOC_HOST_ACTION_REQUESTS:-/var/lib/toc/host-actions}"
+HOST_ACTION_RESULTS="${TOC_HOST_ACTION_RESULTS:-/var/lib/toc-host-actions}"
+HOST_ACTION_OWNER="${TOC_HOST_ACTION_OWNER:-toc:toc}"
+GIT_HOST_ACTIONS="state-sync state-sync-reclone restart-web status"
+HOST_REQUEST_MAX_AGE="${TOC_HOST_REQUEST_MAX_AGE:-21600}"
+HOST_REQUESTS_SEEN="$STATE_DIR/host-requests-seen"
+
+# refuse_git_request ID WHY: a result saying so, in the helper's format.
+refuse_git_request() {
+    t=$(date +%s)
+    tmp="$HOST_ACTION_RESULTS/.$1.tmp"
+    printf 'id %s\naction unknown\nstate refused\nstarted %s\nfinished %s\nexit 2\n\n%s\n' \
+        "$1" "$t" "$t" "$2" > "$tmp" || return 0
+    chgrp "${HOST_ACTION_OWNER#*:}" "$tmp" 2>/dev/null || true
+    chmod 0640 "$tmp" && mv -f "$tmp" "$HOST_ACTION_RESULTS/$1"
+    echo "$1" >> "$HOST_REQUESTS_SEEN"
+    logger -t toc-auto-deploy "refused GitHub host request $1: $2" 2>/dev/null || true
+}
+
+hand_over_git_requests() {
+    [ -d "$HOST_ACTION_RESULTS" ] || return 0
+    [ -e "$HOST_ACTION_REQUESTS/request" ] && return 0
+    list=$(git -C "$BUILD" show "origin/main:$HOST_REQUESTS_PATH" 2>/dev/null) || return 0
+    touch "$HOST_REQUESTS_SEEN"
+    now=$(date +%s)
+    printf '%s\n' "$list" | head -n 200 | while read -r id action when extra; do
+        case "$id" in ''|'#'*|*[!0-9a-f]*) continue ;; esac
+        [ "${#id}" -eq 32 ] || continue
+        if grep -qxF "$id" "$HOST_REQUESTS_SEEN"; then continue; fi
+        case "$when" in
+            ''|*[!0-9]*) refuse_git_request "$id" "no time asked: write <id> <action> <unix time>"; continue ;;
+        esac
+        if [ "$when" -lt $((now - HOST_REQUEST_MAX_AGE)) ] || [ "$when" -gt $((now + 600)) ]; then
+            refuse_git_request "$id" "asked at $when, too old (or in the future) to run now"
+            continue
+        fi
+        if [ -n "$extra" ]; then
+            refuse_git_request "$id" "more on the line than <id> <action> <time>"
+            continue
+        fi
+        case " $GIT_HOST_ACTIONS " in
+            *" $action "*) ;;
+            *) refuse_git_request "$id" "'$action' cannot be asked for through GitHub (only: $GIT_HOST_ACTIONS)"
+               continue ;;
+        esac
+        if [ ! -d "$HOST_ACTION_REQUESTS" ]; then
+            # The dashboard's directory: toc must still be able to write it.
+            install -d -m 0750 "$HOST_ACTION_REQUESTS" || break
+            chown "$HOST_ACTION_OWNER" "$HOST_ACTION_REQUESTS" 2>/dev/null || true
+        fi
+        tmp="$HOST_ACTION_REQUESTS/.request.$id.tmp"
+        printf '%s %s\n' "$id" "$action" > "$tmp" || break
+        # Linked in whole, and never over a request the website just made;
+        # then this one waits for the next run, unmarked.
+        if ln "$tmp" "$HOST_ACTION_REQUESTS/request" 2>/dev/null; then
+            echo "$id" >> "$HOST_REQUESTS_SEEN"
+            logger -t toc-auto-deploy "handed GitHub host request $id ($action) to toc-host-action" 2>/dev/null || true
+        fi
+        rm -f "$tmp"
+        break
+    done
+    tail -n 500 "$HOST_REQUESTS_SEEN" > "$HOST_REQUESTS_SEEN.tmp" &&
+        mv -f "$HOST_REQUESTS_SEEN.tmp" "$HOST_REQUESTS_SEEN"
+    return 0
+}
+
 # How many descriptors the game has in CON_PLAYING, "down" when nothing
 # listens, or "unknown". Anything else the probe says -- or a probe that
 # is missing or fails -- is "unknown".
@@ -155,6 +240,8 @@ if ! flock -n 9; then
     echo "a deploy is already running"
     exit 0
 fi
+# Every way out of here, with the lock let go first (see GIT_HOST_ACTIONS).
+trap 'rc=$?; exec 9>&-; hand_over_git_requests || true; exit $rc' EXIT
 
 git -C "$BUILD" checkout --quiet -- . 2>/dev/null || true
 git -C "$BUILD" fetch --quiet origin main
@@ -181,7 +268,7 @@ fi
 deployable() {
     git -C "$BUILD" "$@" -- . \
         ':(exclude)player' ':(exclude)gods' ':(exclude)heroes' ':(exclude)log' \
-        ':(exclude)corpse' \
+        ':(exclude)corpse' ':(exclude)ops' \
         ':(exclude)notes' ':(exclude)wiki' ':(exclude)tests' ':(exclude).github' \
         ':(exclude,glob)**/*.md' \
         ':(exclude,glob)area/notes.txt' ':(exclude,glob)area/bugs.txt*' \
