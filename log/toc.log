@@ -337571,3 +337571,95 @@ Sun Nov 22 16:05:16 2026 :: Connection guard: 195.182.16.183 closed before a pas
 Sun Nov 22 16:07:57 2026 :: Connection guard: refused 1 connection from 5.161.61.238 (paused; 9 refused in all, pause 3 this week, 1121 minutes left).
 Sun Nov 22 16:11:01 2026 :: Connection guard: 8.216.6.133 closed without a word (strike 1 of 6 in 6 hours).
 Sun Nov 22 16:11:02 2026 :: Connection guard: 8.216.6.133 closed without a word (strike 2 of 6 in 6 hours).
+Sun Nov 22 16:13:02 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 3 of 6 in 6 hours).
+Sun Nov 22 16:14:37 2026 :: Sock.sinaddr:  208.126.22.104
+Sun Nov 22 16:14:37 2026 :: Loading Alaric's playerfile
+Sun Nov 22 16:14:39 2026 :: Loading Alaric's playerfile
+Sun Nov 22 16:14:39 2026 :: Alaric@208.126.22.104 has connected.
+Sun Nov 22 16:14:40 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 0
+Sun Nov 22 16:14:41 2026 :: Log Alaric [2497]: who
+Sun Nov 22 16:14:43 2026 :: Log Alaric [2497]: changes
+Sun Nov 22 16:15:08 2026 :: Log Alaric [2497]: aq re
+Sun Nov 22 16:15:08 2026 :: Log Alaric [2497]: quest assigned: kill a gang member (mob 2101, level 5) in hood.are, 18 minutes, ordinary
+Sun Nov 22 16:15:10 2026 :: Log Alaric [2497]: enter door
+Sun Nov 22 16:15:10 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sun Nov 22 16:15:11 2026 :: Log Alaric [2401]: east
+Sun Nov 22 16:15:11 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Nov 22 16:15:11 2026 :: Log Alaric [2403]: east
+Sun Nov 22 16:15:11 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sun Nov 22 16:15:11 2026 :: Log Alaric [2420]: east
+Sun Nov 22 16:15:11 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sun Nov 22 16:15:11 2026 :: Log Alaric [2421]: south
+Sun Nov 22 16:15:11 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Sun Nov 22 16:15:12 2026 :: Log Alaric [2441]: east
+Sun Nov 22 16:15:12 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Sun Nov 22 16:15:12 2026 :: Log Alaric [2442]: south
+Sun Nov 22 16:15:12 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Sun Nov 22 16:15:12 2026 :: Log Alaric [2443]: east
+Sun Nov 22 16:15:12 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Sun Nov 22 16:15:12 2026 :: Log Alaric [2444]: east
+Sun Nov 22 16:15:12 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Sun Nov 22 16:15:13 2026 :: Log Alaric [2445]: east
+Sun Nov 22 16:15:13 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Sun Nov 22 16:15:14 2026 :: Log Alaric [2101]: e
+Sun Nov 22 16:15:14 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Sun Nov 22 16:15:14 2026 :: Log Alaric [2102]: e
+Sun Nov 22 16:15:14 2026 :: Log Alaric [2103]: arrived (Along White Dragon Boulevard) from 2102
+Sun Nov 22 16:15:15 2026 :: Log Alaric [2103]: w
+Sun Nov 22 16:15:15 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2103
+Sun Nov 22 16:15:16 2026 :: Log Alaric [2102]: kill ga
+Sun Nov 22 16:15:16 2026 :: Log Alaric [2102]: killed a gang member
+Sun Nov 22 16:15:20 2026 :: Log Alaric [2102]: recal
+Sun Nov 22 16:15:20 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 2102
+Sun Nov 22 16:15:20 2026 :: Log Alaric [2497]: aq co
+Sun Nov 22 16:15:20 2026 :: Log Alaric [2497]: copper +30825828
+Sun Nov 22 16:15:20 2026 :: Log Alaric [2497]: quest complete: 30p 82g 58s 28c, 14 quest points (streak bonus 0%)
+Sun Nov 22 16:15:20 2026 :: Snapshot of Alaric taken before quest: Alaric.20261122_161520.quest (PRESTORE Alaric to see it).
+Sun Nov 22 16:15:20 2026 :: Log Alaric [2497]: aq ga no
+Sun Nov 22 16:15:25 2026 :: Log Alaric [2497]: score
+Sun Nov 22 16:15:26 2026 :: Log Alaric [2497]: wake
+Sun Nov 22 16:15:27 2026 :: Log Alaric [2497]: l
+Sun Nov 22 16:15:28 2026 :: Log Alaric [2497]: en do
+Sun Nov 22 16:15:28 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sun Nov 22 16:15:28 2026 :: Log Alaric [2401]: n
+Sun Nov 22 16:15:28 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Sun Nov 22 16:15:28 2026 :: Log Alaric [2402]: n
+Sun Nov 22 16:15:28 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Sun Nov 22 16:15:30 2026 :: Log Alaric [2415]: e
+Sun Nov 22 16:15:30 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Sun Nov 22 16:15:31 2026 :: Log Alaric [2485]: n
+Sun Nov 22 16:15:31 2026 :: Log Alaric [2482]: arrived (Nomads Tent.) from 2485
+Sun Nov 22 16:15:31 2026 :: Log Alaric [2482]: e
+Sun Nov 22 16:15:31 2026 :: Log Alaric [2483]: arrived (Fountain of Market Plaza.) from 2482
+Sun Nov 22 16:15:31 2026 :: Log Alaric [2483]: e
+Sun Nov 22 16:15:31 2026 :: Log Alaric [2484]: arrived (Market Plaza.) from 2483
+Sun Nov 22 16:15:31 2026 :: Log Alaric [2484]: e
+Sun Nov 22 16:15:31 2026 :: Log Alaric [4]: arrived (The First National Bank of Dresden.) from 2484
+Sun Nov 22 16:15:32 2026 :: Log Alaric [4]: e
+Sun Nov 22 16:15:32 2026 :: Log Alaric [4]: e
+Sun Nov 22 16:15:32 2026 :: Log Alaric [4]: sc
+Sun Nov 22 16:15:39 2026 :: Log Alaric [4]: depos 4000 platinum
+Sun Nov 22 16:15:40 2026 :: Log Alaric [4]: w
+Sun Nov 22 16:15:40 2026 :: Log Alaric [2484]: arrived (Market Plaza.) from 4
+Sun Nov 22 16:15:40 2026 :: Log Alaric [2484]: s
+Sun Nov 22 16:15:40 2026 :: Log Alaric [2487]: arrived (Market Plaza.) from 2484
+Sun Nov 22 16:15:40 2026 :: Log Alaric [2487]: w
+Sun Nov 22 16:15:40 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2487
+Sun Nov 22 16:15:41 2026 :: Log Alaric [2486]: w
+Sun Nov 22 16:15:41 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2486
+Sun Nov 22 16:15:41 2026 :: Log Alaric [2485]: w
+Sun Nov 22 16:15:41 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2485
+Sun Nov 22 16:15:41 2026 :: Log Alaric [2415]: s
+Sun Nov 22 16:15:41 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2415
+Sun Nov 22 16:15:42 2026 :: Log Alaric [2402]: s
+Sun Nov 22 16:15:42 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2402
+Sun Nov 22 16:15:44 2026 :: Log Alaric [2401]: u
+Sun Nov 22 16:15:44 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sun Nov 22 16:15:44 2026 :: Log Alaric [2410]: u
+Sun Nov 22 16:15:44 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Sun Nov 22 16:15:44 2026 :: Log Alaric [2411]: u
+Sun Nov 22 16:15:44 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Sun Nov 22 16:15:44 2026 :: Log Alaric [2414]: u
+Sun Nov 22 16:15:44 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 2414
+Sun Nov 22 16:15:46 2026 :: Log Alaric [2497]: who
+Sun Nov 22 16:15:47 2026 :: Log Alaric [2497]: sc

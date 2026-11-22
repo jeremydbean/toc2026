@@ -50930,3 +50930,68 @@
 1795352275	sightings	Trentlin	54	4210	dresden.are	mob	4468:1/0/0 10:1/0/0 58:1/0/0 2434:6/0/0 4458:3/0/0 201:1/0/0 2435:2/0/0 53:1/0/0 4456:1/0/0 6003:5/0/0 6000:1/0/0 6005:2/0/0 13003:1/0/0 13001:1/0/0 13011:1/1/0 4449:1/0/0 2401:1/0/0 4451:1/0/0 4202:1/0/0 4201:1/0/0 52:1/0/0 2431:1/0/0 4445:1/0/0 4457:1/0/0 9543:2/0/0 9533:3/0/0 9542:3/0/0 9562:4/0/0 9519:1/0/0 9520:2/0/0 9541:1/0/0 9538:1/0/0 9582:3/0/0 9561:6/0/0 9568:1/0/0 9544:2/0/0 29032:1/1/0 29232:1/1/0
 1795352275	sightings	Trentlin	54	4210	dresden.are	item	6011:1/0 29003:1/0 16:1/0
 1795352275	session	Trentlin	54	4210	dresden.are	quit	211s	+0 levels	+252 exp	+76019809 copper	3 kills	0 deaths	1 quests	189 commands	1 refused	coin: loot 8p 80g 95s 61c, quests 87p 61g 2s 48c, spent 20p 40g	spent on: heal 20p 40g	exp: kills +252
+1795364080	area	Alaric	57	2497	dresden.are	-	dresden.are	-1	(game loop)
+1795364081	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1795364083	cmd	Alaric	57	2497	dresden.are	standing	100	1	-	changes		What is new, newest first: // 2026-11-22 //   FISTS OF FURY now names the element each strike carries as it lands --	-	+
+1795364108	quest	Alaric	57	2497	dresden.are	ordinary	kill	2101	a gang member	5	hood.are	18
+1795364108	cmd	Alaric	57	2497	dresden.are	standing	100	23	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Alaric.' // Questor Thews tells you 'a gang member threatens the peace of the realm!'	-	+
+1795364110	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1795364111	cmd	Alaric	57	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1795364111	cmd	Alaric	57	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1795364111	cmd	Alaric	57	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1795364111	cmd	Alaric	57	2441	dresden.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1795364112	cmd	Alaric	57	2442	dresden.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1795364112	cmd	Alaric	57	2443	dresden.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1795364112	cmd	Alaric	57	2444	dresden.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1795364112	cmd	Alaric	57	2445	dresden.are	standing	100	0	-	east		End of River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.	-	+
+1795364113	area	Alaric	57	2101	hood.are	dresden.are	hood.are	33	east
+1795364113	cmd	Alaric	57	2101	hood.are	standing	100	0	-	east		A Dark Alleyway //   The walls of the alleyway have been spray-painted over many times // over the years.  One section of graffiti actually looks legible,	-	+
+1795364114	cmd	Alaric	57	2102	hood.are	standing	100	0	-	east		Beginning of White Dragon Boulevard //   This section of town has been overrun by the Troll gang.  Even the // police stay out of here for fear of being brutalized.  This was once	-	+
+1795364114	cmd	Alaric	57	2103	hood.are	standing	100	0	-	east		Along White Dragon Boulevard //   Everywhere you look you see signs of recent violence.  Patches of blood // lie everywhere and broken sticks and abandoned knives are strewn here	-	+
+1795364115	cmd	Alaric	57	2102	hood.are	standing	100	0	-	west		Beginning of White Dragon Boulevard //   This section of town has been overrun by the Troll gang.  Even the // police stay out of here for fear of being brutalized.  This was once	-	+
+1795364116	cmd	Alaric	57	2102	hood.are	standing	100	9	-	kill	ga	Your punch === OBLITERATES === a gang member! [-135] // A gang member is DEAD!! // You have almost finished your QUEST!	-	+
+1795364119	coin	Alaric	57	2102	hood.are	+63153601	bank	interest	bank	29591249078
+1795364119	laid	-	0	0	-	866	herb	49	a pomegranate	17262	highland.are	scatter
+1795364119	laid	-	0	0	-	867	herb	53	a huckleberry	17148	highland.are	scatter
+1795364119	laid	-	0	0	-	868	component	65	a dragon's scale	5266	oldthalo.are	scatter
+1795364120	area	Alaric	57	2497	dresden.are	hood.are	dresden.are	7	recall
+1795364120	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795364120	coin	Alaric	57	2497	dresden.are	+30825828	quests	aquest	-	29622074906
+1795364120	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	ordinary qp=2568->2568 offered=14 daily=4->4 coin=+30825828 kill=15412914 streak=0 level=57 target=-1
+1795364120	cmd	Alaric	57	2497	dresden.are	standing	100	19	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Here's your 30p 82g 58s 28c - well earned!'	success:-	+
+1795364120	cmd	Alaric	57	2497	dresden.are	standing	100	4	-	aquest	ga no	You safely collect 14 quest points.	-	-
+1795364125	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=491/983 align=1000 exp=252749 coin=4297480814 bank=25324594092 qp=2582 prac=36 train=76 stash=93/350 remorts=3
+1795364125	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    309 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
+1795364126	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1795364127	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795364128	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1795364128	cmd	Alaric	57	2402	dresden.are	standing	100	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1795364128	cmd	Alaric	57	2415	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795364130	cmd	Alaric	57	2485	dresden.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1795364131	cmd	Alaric	57	2482	dresden.are	standing	100	0	-	north		Nomads Tent. //   You enter a large tent where many nomads are selling goods fashioned from the // desert peoples.	-	+
+1795364131	cmd	Alaric	57	2483	dresden.are	standing	100	0	-	east		Fountain of Market Plaza. //   In the center of the plaza is a fountain with a statue of a woman sitting on a // rock surrounded by dolphins facing in all directions.  The water seems to	-	+
+1795364131	cmd	Alaric	57	2484	dresden.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1795364131	area	Alaric	57	4	limbo.are	dresden.are	limbo.are	11	east
+1795364131	cmd	Alaric	57	4	limbo.are	standing	100	0	-	east		The First National Bank of Dresden. //   The first thing you notice upon entering this place is how // white everything seems to be.  The chairs are white, the walls and floor are	-	+
+1795364132	cmd	Alaric	57	4	limbo.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795364132	cmd	Alaric	57	4	limbo.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795364132	state	Alaric	57	4	limbo.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=480/983 align=1000 exp=252749 coin=4297480814 bank=25324594092 qp=2582 prac=36 train=76 stash=93/350 remorts=3
+1795364132	cmd	Alaric	57	4	limbo.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    309 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
+1795364139	cmd	Alaric	57	4	limbo.are	standing	100	7	-	deposit	4000 platinum	You deposit your coins into the bank. // Deposited: 4000 platinum, 0 gold, 0 silver, 0 copper. // New balance: 29324 platinum, 59 gold, 40 silver, 92 copper.	-	-
+1795364140	area	Alaric	57	2484	dresden.are	limbo.are	dresden.are	9	west
+1795364140	cmd	Alaric	57	2484	dresden.are	standing	100	0	-	west		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1795364140	cmd	Alaric	57	2487	dresden.are	standing	100	0	-	south		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1795364140	cmd	Alaric	57	2486	dresden.are	standing	100	0	-	west		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1795364141	cmd	Alaric	57	2485	dresden.are	standing	100	0	-	west		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1795364141	cmd	Alaric	57	2415	dresden.are	standing	100	0	-	west		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795364141	cmd	Alaric	57	2402	dresden.are	standing	100	0	-	south		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1795364142	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	south		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795364144	cmd	Alaric	57	2410	dresden.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1795364144	cmd	Alaric	57	2411	dresden.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1795364144	cmd	Alaric	57	2414	dresden.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1795364144	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795364146	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1795364147	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=456/983 align=1000 exp=252749 coin=297480814 bank=29324594092 qp=2582 prac=36 train=76 stash=93/350 remorts=3
+1795364147	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    309 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
+1795364191	laid	-	0	0	-	875	component	55	a unicorn horn	4114	moria.are	scatter
+1795364198	census	-	0	0	-	herbs=2/150 components=2/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=4 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=19 mobs_fought=1 secs=900
