@@ -51381,3 +51381,16 @@
 1795381362	laid	-	0	0	-	997	herb	39	a chervil leaf	7773	ultima.are	scatter
 1795381543	laid	-	0	0	-	998	herb	51	a piece of kelp	732	camelot.are	scatter
 1795381543	laid	-	0	0	-	999	component	68	a gorgon's horn	6325	arac.are	scatter
+1795381638	laid	-	0	0	-	1000	herb	51	a piece of kelp	1331	htower.are	scatter
+1795381693	laid	-	0	0	-	1001	herb	49	a pomegranate	17115	highland.are	scatter
+1795381693	laid	-	0	0	-	1002	herb	53	a huckleberry	17199	highland.are	scatter
+1795381693	laid	-	0	0	-	1003	component	80	a glass encased wing of a fairy	9352	galaxy.are	scatter
+1795381817	area	Alaric	57	2	limbo.are	dresden.are	limbo.are	3218	(char)
+1795381817	laid	-	0	0	-	1004	herb	38	a foxglove flower	6341	arac.are	scatter
+1795381817	laid	-	0	0	-	1005	herb	52	an asparagus shoot	6305	arac.are	scatter
+1795381817	area	Alaric	57	2497	dresden.are	limbo.are	dresden.are	0	(game loop)
+1795381817	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1795381817	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	worth		You have 373 platinum, 33 gold, 71 silver, 68 copper // and 252749 experience (39551 exp to level).	-	-
+1795381862	laid	-	0	0	-	1006	herb	51	a piece of kelp	761	camelot.are	scatter
+1795381862	laid	-	0	0	-	1007	herb	49	a pomegranate	704	camelot.are	scatter
+1795381862	laid	-	0	0	-	1008	component	78	a vial of demons blood	7809	valley.are	scatter
