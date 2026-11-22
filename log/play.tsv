@@ -52660,3 +52660,248 @@
 1795389426	cmd	Trentlin	54	29360	voyage.are	standing	83	0	-	north		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther	-	+
 1795389428	cmd	Trentlin	54	29361	voyage.are	standing	83	0	-	northeast		Across the Sea //   The ship continues across the sea... //      The wind throws you off balance and you almost trip over something	-	+
 1795389431	cmd	Trentlin	54	29382	voyage.are	standing	83	0	-	down		In the Hull //   The hull has been slightly compromised by the crushing waters of the // sea.  The water only rises above the soles of your feet though but it would	-	+
+1795389440	cmd	Trentlin	54	29382	voyage.are	standing	85	0	-	levitate		You slowly rise up off the ground.	-	-
+1795389441	cmd	Trentlin	54	29361	voyage.are	standing	85	0	-	up		Across the Sea //   The ship continues across the sea... //      The wind throws you off balance and you almost trip over something	-	+
+1795389469	cmd	Trentlin	54	29382	voyage.are	standing	85	0	-	down		In the Hull //   The hull has been slightly compromised by the crushing waters of the // sea.  The water only rises above the soles of your feet though but it would	-	+
+1795389470	cmd	Trentlin	54	29382	voyage.are	standing	85	0	-	east		Alas, you cannot go that way.	-	-
+1795389470	cmd	Trentlin	54	29382	voyage.are	standing	85	0	-	west		Alas, you cannot go that way.	-	-
+1795389472	cmd	Trentlin	54	29382	voyage.are	standing	85	0	-	open	secret	I see no secret here.	-	-
+1795389473	cmd	Trentlin	54	29361	voyage.are	standing	85	0	-	up		Across the Sea //   The ship continues across the sea... //      The wind throws you off balance and you almost trip over something	-	+
+1795389476	cmd	Trentlin	54	29362	voyage.are	standing	85	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind is beginning to die down but the fighting has not.  Sailors,	-	+
+1795389478	cmd	Trentlin	54	29363	voyage.are	standing	85	0	-	southeast		Across the Sea //   The ship continues across the sea... //      The wind is beginning to die down but the fighting has not.  Sailors,	-	+
+1795389480	cmd	Trentlin	54	29364	voyage.are	standing	85	0	-	south		Across the Sea //   The ship continues across the sea... //      The wind is beginning to die down but the fighting has not.  Sailors,	-	+
+1795389481	cmd	Trentlin	54	29365	voyage.are	standing	85	0	-	east		Across the Sea //   The ship continues across the sea... //      Sunlight begins to break through the dark clouds above you.  As you	-	+
+1795389481	cmd	Trentlin	54	29368	voyage.are	standing	85	0	-	west		Across the Sea //   The ship heads back towards the port... //      The wind continues to pick up causing the waters to become less 	-	+
+1795389483	laid	-	0	0	-	1009	herb	51	a piece of kelp	29454	world.are	scatter
+1795389485	cmd	Trentlin	54	29369	voyage.are	standing	88	0	-	north		Across the Sea //   The ship heads back towards the port... //      The wind continues to pick up causing the waters to become less 	-	+
+1795389488	cmd	Trentlin	54	29369	voyage.are	standing	88	0	-	exits		Obvious exits: // East  - Across the Sea // South - Across the Sea	-	+
+1795389494	cmd	Trentlin	54	29370	voyage.are	standing	88	0	-	nw		Across the Sea //   The ship heads back towards the port... //      The wind continues to pick up causing the waters to become less 	-	+
+1795389498	cmd	Trentlin	54	29371	voyage.are	standing	88	0	-	west		Across the Sea //   The ship heads back towards the port... //      The wind throws you off balance and you almost trip over something	-	+
+1795389500	cmd	Trentlin	54	29371	voyage.are	standing	88	0	-	open	down	Ok.	-	-
+1795389501	cmd	Trentlin	54	29382	voyage.are	standing	88	0	-	down		In the Hull //   The hull has been slightly compromised by the crushing waters of the // sea.  The water only rises above the soles of your feet though but it would	-	+
+1795389502	cmd	Trentlin	54	29361	voyage.are	standing	88	0	-	up		Across the Sea //   The ship continues across the sea... //      The wind throws you off balance and you almost trip over something	-	+
+1795389504	cmd	Trentlin	54	29362	voyage.are	standing	88	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind is beginning to die down but the fighting has not.  Sailors,	-	+
+1795389504	cmd	Trentlin	54	29380	voyage.are	standing	88	0	-	east		Across the Sea //   WHOOPS! //      Looks like you turned the ship into the harsh wind blowing over the	-	+
+1795389513	cmd	Trentlin	54	29350	voyage.are	standing	88	0	-	aquest	info	.-[ Quest Status ]--------------------------------------------. // | Type  : Recovery Quest // | Target: Recover The Crown of Eclipse	-	+
+1795389519	cmd	Trentlin	54	29351	voyage.are	standing	88	0	-	east		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you	-	+
+1795389519	cmd	Trentlin	54	29352	voyage.are	standing	88	0	-	east		Rope bridge to the ship //   As you board the bridge you hear a yelp from behind you.  You turn in // time to see a drunken nomad of New Thalos rushing towards you.  Before you	-	+
+1795389519	cmd	Trentlin	54	29353	voyage.are	standing	88	0	-	northeast		Across the Sea //   You board the ship and it begins to pull away from port leaving the // still screaming nomad behind.  The Captain approaches you.	-	+
+1795389519	cmd	Trentlin	54	29354	voyage.are	standing	88	0	-	northeast		Across the Sea //   The ship continues across the sea... //      As the ship moves deeper out to sea you notice the clouds above the sea	-	+
+1795389520	cmd	Trentlin	54	29355	voyage.are	standing	88	0	-	southeast		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 	-	+
+1795389520	cmd	Trentlin	54	29356	voyage.are	standing	88	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 	-	+
+1795389520	cmd	Trentlin	54	29357	voyage.are	standing	88	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 	-	+
+1795389520	cmd	Trentlin	54	29358	voyage.are	standing	88	0	-	southeast		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther	-	+
+1795389523	cmd	Trentlin	54	29359	voyage.are	standing	88	0	-	northeast		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther	-	+
+1795389524	cmd	Trentlin	54	29360	voyage.are	standing	88	0	-	north		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther	-	+
+1795389524	cmd	Trentlin	54	29361	voyage.are	standing	88	0	-	northeast		Across the Sea //   The ship continues across the sea... //      The wind throws you off balance and you almost trip over something	-	+
+1795389524	cmd	Trentlin	54	29362	voyage.are	standing	88	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind is beginning to die down but the fighting has not.  Sailors,	-	+
+1795389524	cmd	Trentlin	54	29363	voyage.are	standing	88	0	-	southeast		Across the Sea //   The ship continues across the sea... //      The wind is beginning to die down but the fighting has not.  Sailors,	-	+
+1795389525	cmd	Trentlin	54	29364	voyage.are	standing	88	1	-	south		Across the Sea //   The ship continues across the sea... //      The wind is beginning to die down but the fighting has not.  Sailors,	-	+
+1795389527	cmd	Trentlin	54	29364	voyage.are	standing	88	0	-	south		Alas, you cannot go that way.	-	-
+1795389529	cmd	Trentlin	54	29365	voyage.are	standing	88	0	-	east		Across the Sea //   The ship continues across the sea... //      Sunlight begins to break through the dark clouds above you.  As you	-	+
+1795389530	cmd	Trentlin	54	29368	voyage.are	standing	90	0	-	west		Across the Sea //   The ship heads back towards the port... //      The wind continues to pick up causing the waters to become less 	-	+
+1795389536	cmd	Trentlin	54	29365	voyage.are	standing	90	0	-	east		Across the Sea //   The ship continues across the sea... //      Sunlight begins to break through the dark clouds above you.  As you	-	+
+1795389538	cmd	Trentlin	54	29368	voyage.are	standing	90	0	-	west		Across the Sea //   The ship heads back towards the port... //      The wind continues to pick up causing the waters to become less 	-	+
+1795389540	cmd	Trentlin	54	29365	voyage.are	standing	90	0	-	east		Across the Sea //   The ship continues across the sea... //      Sunlight begins to break through the dark clouds above you.  As you	-	+
+1795389541	cmd	Trentlin	54	29366	voyage.are	standing	90	0	-	east		Across the Sea //   LAND HO!!! //      The voyage is almost complete!  You can clearly see the coast that ends	-	+
+1795389543	cmd	Trentlin	54	29367	voyage.are	standing	90	0	-	sw		Across the Sea //   The ship heads back towards the port... //      The ship murks back out towards the dark black abyss of the Dragon Sea.	-	+
+1795389546	cmd	Trentlin	54	29380	voyage.are	standing	90	0	-	sw		Across the Sea //   WHOOPS! //      Looks like you turned the ship into the harsh wind blowing over the	-	+
+1795389551	cmd	Trentlin	54	29351	voyage.are	standing	90	0	-	east		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you	-	+
+1795389552	cmd	Trentlin	54	29352	voyage.are	standing	90	0	-	east		Rope bridge to the ship //   As you board the bridge you hear a yelp from behind you.  You turn in // time to see a drunken nomad of New Thalos rushing towards you.  Before you	-	+
+1795389554	cmd	Trentlin	54	29353	voyage.are	standing	90	0	-	northeast		Across the Sea //   You board the ship and it begins to pull away from port leaving the // still screaming nomad behind.  The Captain approaches you.	-	+
+1795389554	cmd	Trentlin	54	29354	voyage.are	standing	90	0	-	northeast		Across the Sea //   The ship continues across the sea... //      As the ship moves deeper out to sea you notice the clouds above the sea	-	+
+1795389554	cmd	Trentlin	54	29355	voyage.are	standing	90	0	-	southeast		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 	-	+
+1795389555	cmd	Trentlin	54	29356	voyage.are	standing	90	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 	-	+
+1795389555	cmd	Trentlin	54	29357	voyage.are	standing	90	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 	-	+
+1795389555	outcome	Trentlin	54	29357	voyage.are	quest-failed	failure	timeout	-	ordinary target=obj:25040 level=59 alive=1 area=voyage.are there=1 streak=42
+1795389555	cmd	Trentlin	54	29358	voyage.are	standing	90	0	-	southeast		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther	-	+
+1795389564	cmd	Trentlin	54	29359	voyage.are	standing	90	0	-	northeast		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther	-	+
+1795389565	cmd	Trentlin	54	29360	voyage.are	standing	90	0	-	north		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther	-	+
+1795389565	cmd	Trentlin	54	29361	voyage.are	standing	90	0	-	northeast		Across the Sea //   The ship continues across the sea... //      The wind throws you off balance and you almost trip over something	-	+
+1795389565	cmd	Trentlin	54	29362	voyage.are	standing	90	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind is beginning to die down but the fighting has not.  Sailors,	-	+
+1795389565	cmd	Trentlin	54	29363	voyage.are	standing	90	0	-	southeast		Across the Sea //   The ship continues across the sea... //      The wind is beginning to die down but the fighting has not.  Sailors,	-	+
+1795389566	cmd	Trentlin	54	29364	voyage.are	standing	90	0	-	south		Across the Sea //   The ship continues across the sea... //      The wind is beginning to die down but the fighting has not.  Sailors,	-	+
+1795389566	cmd	Trentlin	54	29365	voyage.are	standing	90	0	-	east		Across the Sea //   The ship continues across the sea... //      Sunlight begins to break through the dark clouds above you.  As you	-	+
+1795389566	cmd	Trentlin	54	29366	voyage.are	standing	90	0	-	east		Across the Sea //   LAND HO!!! //      The voyage is almost complete!  You can clearly see the coast that ends	-	+
+1795389566	cmd	Trentlin	54	29381	voyage.are	standing	90	0	-	east		On the Beach //   You arrived here on land from a small row boat from the "Dragonfly" // ship to the west.  You can see it anchored safely away from the shore.	-	+
+1795389567	area	Trentlin	54	29401	world.are	voyage.are	world.are	200	south
+1795389567	cmd	Trentlin	54	29401	world.are	standing	90	0	-	south		By the Shore //   The smell of salt water from the sea drifts in with the tide.  You see // various sea shells buried in the sand here, many which you've never seen	-	+
+1795389570	cmd	Trentlin	54	29401	world.are	standing	90	0	-	look	sign	You read the sign: // Mid-World //    Written by Haze for ToC Mud.	-	+
+1795389576	cmd	Trentlin	54	29402	world.are	standing	90	0	-	south		By the Shore //   The beach ends to the south.  A large pile of deadwood stands in the way // making it impossible to travel any farther south.	-	+
+1795389578	cmd	Trentlin	54	29403	world.are	standing	90	0	-	east		On the Beach //   Soft sand surrounds the area for as far as you can see.  To the east is // the beginning of a forest with thick brush growing at the edge of the beach.	-	+
+1795389580	cmd	Trentlin	54	29405	world.are	standing	90	0	-	north		On the Beach //   Soft sand surrounds the area for as far as you can see.  To the east is // the beginning of a forest with thick brush growing at the edge of the beach.	-	+
+1795389580	cmd	Trentlin	54	29406	world.are	standing	90	0	-	east		Inland //   Thick shrubs and bushes are beginning to grow here creating an end // to the beach and the start of a forest.  You can still hear the sounds	-	+
+1795389581	cmd	Trentlin	54	29406	world.are	standing	90	0	-	south		Alas, you cannot go that way.	-	-
+1795389583	cmd	Trentlin	54	29408	world.are	standing	90	0	-	nw		On the Beach //   Soft sand surrounds the area for as far as you can see.  To the east is // the beginning of a forest with thick brush growing at the edge of the beach.	-	+
+1795389585	cmd	Trentlin	54	29411	world.are	standing	90	0	-	north		Sandy plains //   The sand tapers away here as it gives way to the lush green forest. // [Exits: north east south west]	-	-
+1795389586	cmd	Trentlin	54	29429	world.are	standing	90	0	-	north		Edge of the forest //   The beach dissipates here.  You see the beginnings of a forest to the // north.     	-	+
+1795389587	cmd	Trentlin	54	29433	world.are	standing	90	0	-	north		The thick forest //   You can see the thicker part of the forest to the east and north. // [Exits: north east south west]	-	-
+1795389588	cmd	Trentlin	54	29434	world.are	standing	90	0	-	east		The thick forest //   The smells of the forest become stronger as you travel deeper into // the forest.	-	+
+1795389589	cmd	Trentlin	54	29430	world.are	standing	90	0	-	south		The thick forest //   You leave the smells of the beach and sea behind as they are replaced // by the smell of trees and leaves.  The forest grows much thicker here.	-	+
+1795389589	cmd	Trentlin	54	29430	world.are	standing	90	0	-	south		Alas, you cannot go that way.	-	-
+1795389591	cmd	Trentlin	54	29412	world.are	standing	90	0	-	sw		Edge of the Forest //   A mixture of trees and bushes grow here in the forest.  You notice // an east-west trail beginning here.	-	+
+1795389594	cmd	Trentlin	54	29413	world.are	standing	90	0	-	east		East-West trail //   An east-west trail is here.  There are breaks in the path that lead // northeast and south.	-	+
+1795389595	cmd	Trentlin	54	29409	world.are	standing	90	0	-	south		In the Thicket //   Many more bushes are growing here making it difficult to walk around. // You can move to the north or to the south.  There is an oddly shaped bush	-	+
+1795389596	cmd	Trentlin	54	29407	world.are	standing	90	0	-	south		Wooded Plains //   The bushes here create a rough thicket that scrapes you as you move // about.  You can hear the whispering rustle of small bugs crawling along	-	+
+1795389596	laid	-	0	0	-	1012	herb	53	a huckleberry	28127	azeroth.are	scatter
+1795389597	cmd	Trentlin	54	29406	world.are	standing	94	0	-	west		Inland //   Thick shrubs and bushes are beginning to grow here creating an end // to the beach and the start of a forest.  You can still hear the sounds	-	+
+1795389599	cmd	Trentlin	54	29405	world.are	standing	94	0	-	west		On the Beach //   Soft sand surrounds the area for as far as you can see.  To the east is // the beginning of a forest with thick brush growing at the edge of the beach.	-	+
+1795389599	cmd	Trentlin	54	29403	world.are	standing	94	0	-	south		On the Beach //   Soft sand surrounds the area for as far as you can see.  To the east is // the beginning of a forest with thick brush growing at the edge of the beach.	-	+
+1795389599	cmd	Trentlin	54	29404	world.are	standing	94	0	-	east		Inland //   Thick shrubs and bushes are beginning to grow here creating an end // to the beach and the start of a forest.  You can still hear the sounds	-	+
+1795389602	cmd	Trentlin	54	29403	world.are	standing	94	0	-	west		On the Beach //   Soft sand surrounds the area for as far as you can see.  To the east is // the beginning of a forest with thick brush growing at the edge of the beach.	-	+
+1795389602	cmd	Trentlin	54	29405	world.are	standing	94	0	-	north		On the Beach //   Soft sand surrounds the area for as far as you can see.  To the east is // the beginning of a forest with thick brush growing at the edge of the beach.	-	+
+1795389602	cmd	Trentlin	54	29406	world.are	standing	94	0	-	east		Inland //   Thick shrubs and bushes are beginning to grow here creating an end // to the beach and the start of a forest.  You can still hear the sounds	-	+
+1795389603	cmd	Trentlin	54	29407	world.are	standing	94	0	-	east		Wooded Plains //   The bushes here create a rough thicket that scrapes you as you move // about.  You can hear the whispering rustle of small bugs crawling along	-	+
+1795389603	cmd	Trentlin	54	29409	world.are	standing	94	0	-	north		In the Thicket //   Many more bushes are growing here making it difficult to walk around. // You can move to the north or to the south.  There is an oddly shaped bush	-	+
+1795389604	cmd	Trentlin	54	29413	world.are	standing	94	0	-	north		East-West trail //   An east-west trail is here.  There are breaks in the path that lead // northeast and south.	-	+
+1795389604	cmd	Trentlin	54	29414	world.are	standing	94	0	-	east		East-West trail //   The east-west trail is now clearly visible through the foliage. // Tall trees grow all along the path.	-	+
+1795389605	cmd	Trentlin	54	29415	world.are	standing	94	0	-	east		East-West trail //   Another break appears in the trail here.  It opens a path to the south. // [Exits: east south west]	-	+
+1795389607	cmd	Trentlin	54	29419	world.are	standing	94	0	-	south		In the Woods //   You can make your way north or south through the ovegrown thicket here. // [Exits: north south]	-	+
+1795389608	cmd	Trentlin	54	29422	world.are	standing	94	0	-	south		In the Woods //   The forest of trees breaks here and is replaced by mounds of fallen  // leaves.	-	+
+1795389613	cmd	Trentlin	54	29425	world.are	standing	94	0	-	se		In the Woods //   An old path is visible here in the clearing.  It leads east. // [Exits: east northwest]	-	+
+1795389614	cmd	Trentlin	54	29426	world.are	standing	94	0	-	east		In the Woods //   An ancient path can be seen here.  It seems to lead south. // [Exits: north south west]	-	+
+1795389616	cmd	Trentlin	54	29427	world.are	standing	94	0	-	south		In the Woods //   The small path seems to end here.  The fallen trees block any further // passage.  What used to be here?	-	+
+1795389620	cmd	Trentlin	54	29426	world.are	standing	94	0	-	north		In the Woods //   An ancient path can be seen here.  It seems to lead south. // [Exits: north south west]	-	+
+1795389620	cmd	Trentlin	54	29424	world.are	standing	94	0	-	north		In the Woods //   The forest here is no longer as thick as before.  Many trees have // fallen and lie dead next to the yellowish-brown bushes that also ceased	-	+
+1795389621	cmd	Trentlin	54	29423	world.are	standing	94	0	-	west		In the Woods //   This part of the forest looks like it was cleared out by a powerful // mage spell.  The absence of trees allows sunlight to fall on this spot.	-	+
+1795389622	cmd	Trentlin	54	29424	world.are	standing	94	0	-	east		In the Woods //   The forest here is no longer as thick as before.  Many trees have // fallen and lie dead next to the yellowish-brown bushes that also ceased	-	+
+1795389622	cmd	Trentlin	54	29420	world.are	standing	94	0	-	north		In the Woods //   The trail from the north vanishes here under the overgrown foliage. // You can make your way back northeast or south.	-	+
+1795389624	cmd	Trentlin	54	29421	world.are	standing	94	0	-	east		In the Woods //   This is a dead end due to the thick forestry. // [Exits: west]	-	+
+1795389625	cmd	Trentlin	54	29420	world.are	standing	94	0	-	west		In the Woods //   The trail from the north vanishes here under the overgrown foliage. // You can make your way back northeast or south.	-	+
+1795389625	cmd	Trentlin	54	29417	world.are	standing	94	0	-	north		East-West trail //   Trees to the south are separated far enough apart so that you can // squeeze through.  The trail continues east-west.	-	+
+1795389626	cmd	Trentlin	54	29418	world.are	standing	94	0	-	east		Edge of the Woods //   The east-west trail ends here abruptly.  A large colossal tree // blocks any further passage to the east.  The tree reminds you of one	-	+
+1795389627	cmd	Trentlin	54	29417	world.are	standing	94	0	-	west		East-West trail //   Trees to the south are separated far enough apart so that you can // squeeze through.  The trail continues east-west.	-	+
+1795389627	cmd	Trentlin	54	29416	world.are	standing	94	0	-	west		East-West trail //   Large thick trees block off all north and south travel here.  The // trail continues to the east and west.	-	+
+1795389629	cmd	Trentlin	54	29417	world.are	standing	94	0	-	east		East-West trail //   Trees to the south are separated far enough apart so that you can // squeeze through.  The trail continues east-west.	-	+
+1795389629	cmd	Trentlin	54	29418	world.are	standing	94	0	-	east		Edge of the Woods //   The east-west trail ends here abruptly.  A large colossal tree // blocks any further passage to the east.  The tree reminds you of one	-	+
+1795389631	cmd	Trentlin	54	29418	world.are	standing	94	0	-	east		Alas, you cannot go that way.	-	-
+1795389635	cmd	Trentlin	54	29497	world.are	standing	94	0	-	climb	tree	You climb up a colossal oak tree., and find yourself in another room. // Treehouse //   This is a silly little wooden treehouse that was probably built	-	+
+1795389644	cmd	Trentlin	54	29497	world.are	standing	94	0	-	open	circle	You open a secret door.	-	-
+1795389645	cmd	Trentlin	54	29497	world.are	standing	94	0	-	look		Treehouse //   This is a silly little wooden treehouse that was probably built // by children who ventured into the woods ages ago to escape the boundaries	-	+
+1795389646	cmd	Trentlin	54	29498	world.are	standing	94	0	-	up		Haze's Private Study //   This appears to be Haze's private study, his home away from his home // in Valhalla.  A sturdy desk is in the corner of the room.  The walls are	-	+
+1795389650	cmd	Trentlin	54	29497	world.are	standing	94	0	-	down		Treehouse //   This is a silly little wooden treehouse that was probably built // by children who ventured into the woods ages ago to escape the boundaries	-	+
+1795389656	cmd	Trentlin	54	29497	world.are	standing	94	0	-	quaff	true	You quaff a potion of true sight. // Your eyes tingle. // Your eyes tingle.	-	+
+1795389657	cmd	Trentlin	54	29497	world.are	standing	94	0	-	scan		You don't see anything near you.	-	-
+1795389658	cmd	Trentlin	54	29498	world.are	standing	94	0	-	up		Haze's Private Study //   This appears to be Haze's private study, his home away from his home // in Valhalla.  A sturdy desk is in the corner of the room.  The walls are	-	+
+1795389660	cmd	Trentlin	54	29498	world.are	standing	94	0	-	look	wall	A number of things are tacked up on the wall: a sheet of paper...and  // there is a diary on the desk.  The is also a little button on the desk.	-	-
+1795389666	achieved	Trentlin	54	29498	world.are	death-by-puzzle-trap	15	2484	push
+1795389666	death	Trentlin	54	29498	world.are	self	killer_lvl=54 last=2 trip hp_before=527 from=29232 age=881s big=38 kick from=29202 age=935s max_hp=954 foes=0 wimpy=0 dt_room=0 sanct=0 linkdead=0 burst=4 burst_secs=890
+1795389666	area	Trentlin	54	4216	dresden.are	world.are	dresden.are	99	death
+1795389666	cmd	Trentlin	54	4216	dresden.are	standing	94	38	-	push	button	You push a button. // Nothing seems to happen. // All the exits seal themselves off, and the walls close in on you!	-	+
+1795389675	cmd	Trentlin	54	4216	dresden.are	resting	97	0	-	look		Death room. //   Hrm, since you're reading this, guess you died! // Please insert coin(s) to continue.	-	+
+1795389675	laid	-	0	0	-	1020	component	76	a vial of dragons blood	4303	dresden.are	scatter
+1795389677	cmd	Trentlin	54	4216	dresden.are	resting	100	0	-	equipment		You are using: // Nothing.	-	-
+1795389680	cmd	Trentlin	54	4216	dresden.are	resting	100	0	-	inventory		You are carrying: //      Nothing.	-	-
+1795389682	cmd	Trentlin	54	4208	dresden.are	resting	100	0	-	down		You stand up. // Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a	-	+
+1795389683	cmd	Trentlin	54	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795389693	cmd	Trentlin	54	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795389693	cmd	Trentlin	54	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795389693	cmd	Trentlin	54	2433	dresden.are	standing	100	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1795389693	cmd	Trentlin	54	2405	dresden.are	standing	100	0	-	east		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1795389694	cmd	Trentlin	54	2401	dresden.are	standing	100	0	-	east		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795389694	cmd	Trentlin	54	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1795389694	cmd	Trentlin	54	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1795389694	cmd	Trentlin	54	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1795389695	cmd	Trentlin	54	2422	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1795389695	cmd	Trentlin	54	2423	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1795389695	cmd	Trentlin	54	2424	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1795389695	cmd	Trentlin	54	2425	dresden.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1795389696	cmd	Trentlin	54	2426	dresden.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795389696	cmd	Trentlin	54	2426	dresden.are	standing	100	0	-	open	east	Ok.	-	-
+1795389696	cmd	Trentlin	54	2440	dresden.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1795389696	area	Trentlin	54	3503	midennir.are	dresden.are	midennir.are	30	east
+1795389696	cmd	Trentlin	54	3503	midennir.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1795389697	cmd	Trentlin	54	3502	midennir.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1795389697	cmd	Trentlin	54	3525	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  	-	+
+1795389697	cmd	Trentlin	54	3526	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded	-	+
+1795389697	cmd	Trentlin	54	3527	midennir.are	standing	100	0	-	east		The Checkpoint //   You are met by a group of heavily armored knights.  They check you over // for contraband, and then allow you to pass on.  One of the knights cautions to	-	+
+1795389698	cmd	Trentlin	54	3528	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road, just east of a heavily  // guarded checkpoint.  You have covered about half the distance between	-	+
+1795389698	cmd	Trentlin	54	3529	midennir.are	standing	100	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially	-	+
+1795389698	cmd	Trentlin	54	3530	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste	-	+
+1795389698	cmd	Trentlin	54	3531	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your	-	+
+1795389699	cmd	Trentlin	54	3532	midennir.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous	-	+
+1795389699	area	Trentlin	54	42	connect.are	midennir.are	connect.are	3	east
+1795389699	cmd	Trentlin	54	42	connect.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities	-	+
+1795389699	area	Trentlin	54	9669	newthalo.are	connect.are	newthalo.are	0	east
+1795389699	cmd	Trentlin	54	9669	newthalo.are	standing	100	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.	-	+
+1795389699	cmd	Trentlin	54	9523	newthalo.are	standing	100	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1795389700	cmd	Trentlin	54	9524	newthalo.are	standing	100	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1795389700	cmd	Trentlin	54	9525	newthalo.are	standing	100	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1795389700	cmd	Trentlin	54	9526	newthalo.are	standing	100	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1795389700	cmd	Trentlin	54	9509	newthalo.are	standing	100	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1795389701	cmd	Trentlin	54	9506	newthalo.are	standing	100	0	-	east		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle	-	+
+1795389701	cmd	Trentlin	54	9517	newthalo.are	standing	100	0	-	east		The Eastern Market Square //   You stand in the market of New Thalos, the gem of the desert. The // market is the hub of the city; all trade and commerce of any significance is	-	+
+1795389701	cmd	Trentlin	54	9527	newthalo.are	standing	100	0	-	east		East Main Street //   Here on East Main, you smell the odor of freshly slaughtered meat and // hear the pounding of new metal from the armory.  The Square is to	-	+
+1795389701	cmd	Trentlin	54	9528	newthalo.are	standing	100	0	-	east		East Main Street //   You are on East Main Street.  To the North is the beginning of // Guildsman's Row.  To the South is a dark alley.  The road also	-	+
+1795389702	cmd	Trentlin	54	9529	newthalo.are	standing	100	0	-	east		East Main Street //   As you walk by the mercenary guild a cold chill causes you to shiver // uncontrollably. You see some shady looking characters lurking about the	-	+
+1795389702	cmd	Trentlin	54	9530	newthalo.are	standing	100	0	-	east		East Main Street //   The Main street through eastern New Thalos begins here and heads westward // towards the marketplace. One of the main gates can be seen to the east, and	-	+
+1795389702	cmd	Trentlin	54	9531	newthalo.are	standing	100	0	-	east		Inside the Eastern Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazened with the crest of New Thalos, swings easily on	-	+
+1795389702	cmd	Trentlin	54	9531	newthalo.are	standing	100	0	-	open	east	Ok.	-	-
+1795389703	cmd	Trentlin	54	9668	newthalo.are	standing	100	0	-	east		Outside the Eastern Gate of New Thalos //   You stand outside the protective walls of the city. The massive iron gate // sits to the west and the unknown awaits you eastward.	-	+
+1795389703	cmd	Trentlin	54	9790	newthalo.are	standing	100	0	-	east		On a road //   The people of New Thalos take great pride in the services their // city may provide. One of these services is the construction crews	-	+
+1795389703	cmd	Trentlin	54	9791	newthalo.are	standing	100	0	-	east		On a road //   You walk along a well used road with beautiful scenery. To the north // tall pine trees form a wall that goes on for miles. Between the road	-	+
+1795389703	cmd	Trentlin	54	9792	newthalo.are	standing	100	0	-	east		On a road //   The Dragon Sea can be seen to the east now spreading out to unknown // lands. The road continues east and west. To the south you hear the	-	+
+1795389704	cmd	Trentlin	54	9793	newthalo.are	standing	100	0	-	east		On a road //   This is the main land route through the land. Merchants can bring their goods // to the coastline and have them ferried onto ships for export. Travel	-	+
+1795389704	cmd	Trentlin	54	9794	newthalo.are	standing	100	0	-	east		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline	-	+
+1795389704	area	Trentlin	54	41	connect.are	newthalo.are	connect.are	5	north
+1795389704	cmd	Trentlin	54	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 	-	+
+1795389704	area	Trentlin	54	29350	voyage.are	connect.are	voyage.are	0	east
+1795389704	cmd	Trentlin	54	29350	voyage.are	standing	100	0	-	east		Dock before the Sea //   The dock in bustling with activity today.  Sailors scurry about tying // lines and setting up planks to the ships for boarding and deboarding. One	-	+
+1795389705	cmd	Trentlin	54	29351	voyage.are	standing	100	0	-	east		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you	-	+
+1795389705	cmd	Trentlin	54	29352	voyage.are	standing	100	0	-	east		Rope bridge to the ship //   As you board the bridge you hear a yelp from behind you.  You turn in // time to see a drunken nomad of New Thalos rushing towards you.  Before you	-	+
+1795389705	cmd	Trentlin	54	29353	voyage.are	standing	100	0	-	northeast		Across the Sea //   You board the ship and it begins to pull away from port leaving the // still screaming nomad behind.  The Captain approaches you.	-	+
+1795389705	cmd	Trentlin	54	29354	voyage.are	standing	100	0	-	northeast		Across the Sea //   The ship continues across the sea... //      As the ship moves deeper out to sea you notice the clouds above the sea	-	+
+1795389706	cmd	Trentlin	54	29355	voyage.are	standing	100	0	-	southeast		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 	-	+
+1795389706	cmd	Trentlin	54	29356	voyage.are	standing	100	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 	-	+
+1795389706	cmd	Trentlin	54	29357	voyage.are	standing	100	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 	-	+
+1795389706	cmd	Trentlin	54	29358	voyage.are	standing	100	0	-	southeast		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther	-	+
+1795389707	cmd	Trentlin	54	29359	voyage.are	standing	100	0	-	northeast		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther	-	+
+1795389707	cmd	Trentlin	54	29360	voyage.are	standing	100	0	-	north		Across the Sea //   The ship continues across the sea... //      The weather has taken a turn for the worse as the ship travels farther	-	+
+1795389707	cmd	Trentlin	54	29361	voyage.are	standing	100	0	-	northeast		Across the Sea //   The ship continues across the sea... //      The wind throws you off balance and you almost trip over something	-	+
+1795389707	cmd	Trentlin	54	29362	voyage.are	standing	100	0	-	east		Across the Sea //   The ship continues across the sea... //      The wind is beginning to die down but the fighting has not.  Sailors,	-	+
+1795389708	cmd	Trentlin	54	29363	voyage.are	standing	100	0	-	southeast		Across the Sea //   The ship continues across the sea... //      The wind is beginning to die down but the fighting has not.  Sailors,	-	+
+1795389708	cmd	Trentlin	54	29364	voyage.are	standing	100	0	-	south		Across the Sea //   The ship continues across the sea... //      The wind is beginning to die down but the fighting has not.  Sailors,	-	+
+1795389708	cmd	Trentlin	54	29365	voyage.are	standing	100	0	-	east		Across the Sea //   The ship continues across the sea... //      Sunlight begins to break through the dark clouds above you.  As you	-	+
+1795389708	cmd	Trentlin	54	29366	voyage.are	standing	100	0	-	east		Across the Sea //   LAND HO!!! //      The voyage is almost complete!  You can clearly see the coast that ends	-	+
+1795389709	cmd	Trentlin	54	29381	voyage.are	standing	100	0	-	east		On the Beach //   You arrived here on land from a small row boat from the "Dragonfly" // ship to the west.  You can see it anchored safely away from the shore.	-	+
+1795389709	area	Trentlin	54	29410	world.are	voyage.are	world.are	5	north
+1795389709	cmd	Trentlin	54	29410	world.are	standing	100	0	-	north		By the Shore //   The waves wash over this part of the beach.  It continues to stretch // to the north, east, and south.	-	+
+1795389709	cmd	Trentlin	54	29428	world.are	standing	100	0	-	north		Sandy plains //   The beach dissipates here.  You see the beginnings of a forest to the // north.	-	+
+1795389709	cmd	Trentlin	54	29432	world.are	standing	100	0	-	north		Edge of the forest //   You leave the smells of the beach and sea behind as they are replaced // by the smell of trees and leaves.  The forest grows much thicker here.	-	+
+1795389710	cmd	Trentlin	54	29435	world.are	standing	100	0	-	northeast		The thick forest //   This part of the forest is clogged with numerous types of trees, many // of which tower fifty to seventy feet above you.  A path leads east and north.	-	+
+1795389710	cmd	Trentlin	54	29453	world.are	standing	100	0	-	north		The thick forest //   The towering trees above you branch out in so many directions that the // sky is nearly blocked from view.  The path here leads north.	-	+
+1795389710	cmd	Trentlin	54	29450	world.are	standing	100	0	-	north		The thick forest //   The path breaks off into three parts here.  Part of it leads north // while the other parts lead west and south.	-	+
+1795389710	cmd	Trentlin	54	29449	world.are	standing	100	0	-	west		The thick forest //   The path twists and turns through the trees as it leads north. // [Exits: north east]	-	+
+1795389711	cmd	Trentlin	54	29448	world.are	standing	100	0	-	north		The thick forest //   The path here seems to lead northeast. // [Exits: south northeast]	-	+
+1795389711	cmd	Trentlin	54	29495	world.are	standing	100	0	-	northeast		The thick forest //   The tree density isn't as bad here.  You see a trail to the west. // [Exits: west southeast southwest]	-	+
+1795389711	cmd	Trentlin	54	29496	world.are	standing	100	0	-	west		Above the City of Lud //   A large sign is attached to a stake that is planted firmly in the // ground here.  Down below is a city past a rushing river.  A dilapidated	-	+
+1795389714	cmd	Trentlin	54	29495	world.are	standing	100	0	-	east		The thick forest //   The tree density isn't as bad here.  You see a trail to the west. // [Exits: west southeast southwest]	-	+
+1795389714	cmd	Trentlin	54	29448	world.are	standing	100	0	-	southwest		The thick forest //   The path here seems to lead northeast. // [Exits: south northeast]	-	+
+1795389714	cmd	Trentlin	54	29449	world.are	standing	100	0	-	south		The thick forest //   The path twists and turns through the trees as it leads north. // [Exits: north east]	-	+
+1795389715	cmd	Trentlin	54	29450	world.are	standing	100	0	-	east		The thick forest //   The path breaks off into three parts here.  Part of it leads north // while the other parts lead west and south.	-	+
+1795389715	cmd	Trentlin	54	29453	world.are	standing	100	0	-	south		The thick forest //   The towering trees above you branch out in so many directions that the // sky is nearly blocked from view.  The path here leads north.	-	+
+1795389715	cmd	Trentlin	54	29435	world.are	standing	100	0	-	south		The thick forest //   This part of the forest is clogged with numerous types of trees, many // of which tower fifty to seventy feet above you.  A path leads east and north.	-	+
+1795389715	cmd	Trentlin	54	29433	world.are	standing	100	0	-	south		The thick forest //   You can see the thicker part of the forest to the east and north. // [Exits: north east south west]	-	-
+1795389716	cmd	Trentlin	54	29434	world.are	standing	100	0	-	east		The thick forest //   The smells of the forest become stronger as you travel deeper into // the forest.	-	+
+1795389716	cmd	Trentlin	54	29430	world.are	standing	100	0	-	south		The thick forest //   You leave the smells of the beach and sea behind as they are replaced // by the smell of trees and leaves.  The forest grows much thicker here.	-	+
+1795389716	cmd	Trentlin	54	29412	world.are	standing	100	0	-	southwest		Edge of the Forest //   A mixture of trees and bushes grow here in the forest.  You notice // an east-west trail beginning here.	-	+
+1795389716	cmd	Trentlin	54	29413	world.are	standing	100	0	-	east		East-West trail //   An east-west trail is here.  There are breaks in the path that lead // northeast and south.	-	+
+1795389717	cmd	Trentlin	54	29414	world.are	standing	100	0	-	east		East-West trail //   The east-west trail is now clearly visible through the foliage. // Tall trees grow all along the path.	-	+
+1795389717	cmd	Trentlin	54	29415	world.are	standing	100	0	-	east		East-West trail //   Another break appears in the trail here.  It opens a path to the south. // [Exits: east south west]	-	+
+1795389717	cmd	Trentlin	54	29419	world.are	standing	100	0	-	south		In the Woods //   You can make your way north or south through the ovegrown thicket here. // [Exits: north south]	-	+
+1795389717	cmd	Trentlin	54	29422	world.are	standing	100	0	-	south		In the Woods //   The forest of trees breaks here and is replaced by mounds of fallen  // leaves.	-	+
+1795389718	cmd	Trentlin	54	29425	world.are	standing	100	0	-	southeast		In the Woods //   An old path is visible here in the clearing.  It leads east. // [Exits: east northwest]	-	+
+1795389718	cmd	Trentlin	54	29426	world.are	standing	100	0	-	east		In the Woods //   An ancient path can be seen here.  It seems to lead south. // [Exits: north south west]	-	+
+1795389719	refused	Trentlin	54	29426	world.are	standing	100	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1795389719	cmd	Trentlin	54	29426	world.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795389721	cmd	Trentlin	54	29424	world.are	standing	100	0	-	north		In the Woods //   The forest here is no longer as thick as before.  Many trees have // fallen and lie dead next to the yellowish-brown bushes that also ceased	-	+
+1795389721	laid	-	0	0	-	1025	herb	41	a sprig of mistletoe	9625	newthalo.are	scatter
+1795389721	cmd	Trentlin	54	29424	world.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795389723	cmd	Trentlin	54	29420	world.are	standing	100	0	-	north		In the Woods //   The trail from the north vanishes here under the overgrown foliage. // You can make your way back northeast or south.	-	+
+1795389724	cmd	Trentlin	54	29421	world.are	standing	100	0	-	east		In the Woods //   This is a dead end due to the thick forestry. // [Exits: west]	-	+
+1795389725	cmd	Trentlin	54	29421	world.are	standing	100	0	-	climb	tree	I see no tree here.	-	-
+1795389726	cmd	Trentlin	54	29420	world.are	standing	100	0	-	west		In the Woods //   The trail from the north vanishes here under the overgrown foliage. // You can make your way back northeast or south.	-	+
+1795389726	cmd	Trentlin	54	29417	world.are	standing	100	0	-	north		East-West trail //   Trees to the south are separated far enough apart so that you can // squeeze through.  The trail continues east-west.	-	+
+1795389727	cmd	Trentlin	54	29418	world.are	standing	100	0	-	east		Edge of the Woods //   The east-west trail ends here abruptly.  A large colossal tree // blocks any further passage to the east.  The tree reminds you of one	-	+
+1795389729	cmd	Trentlin	54	29497	world.are	standing	100	2	-	climb	tree	You climb up a colossal oak tree., and find yourself in another room. // Treehouse //   This is a silly little wooden treehouse that was probably built	-	+
+1795389731	cmd	Trentlin	54	29498	world.are	standing	100	0	-	up		Haze's Private Study //   This appears to be Haze's private study, his home away from his home // in Valhalla.  A sturdy desk is in the corner of the room.  The walls are	-	+

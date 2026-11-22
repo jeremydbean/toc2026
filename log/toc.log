@@ -340171,3 +340171,453 @@ Sun Nov 22 23:17:08 2026 :: Log Trentlin [29360]: northeast
 Sun Nov 22 23:17:08 2026 :: Log Trentlin [29361]: arrived (Across the Sea) from 29360
 Sun Nov 22 23:17:11 2026 :: Log Trentlin [29361]: d
 Sun Nov 22 23:17:11 2026 :: Log Trentlin [29382]: arrived (In the Hull) from 29361
+Sun Nov 22 23:17:17 2026 :: Log Trentlin [29382]: affects off: levitate
+Sun Nov 22 23:17:19 2026 :: Treasure goblin: vanished from room 7415 (The blind end room, sewer.are) (too long in one area).
+Sun Nov 22 23:17:20 2026 :: Log Trentlin [29382]: levitate
+Sun Nov 22 23:17:21 2026 :: Log Trentlin [29382]: u
+Sun Nov 22 23:17:21 2026 :: Log Trentlin [29361]: arrived (Across the Sea) from 29382
+Sun Nov 22 23:17:49 2026 :: Log Trentlin [29361]: d
+Sun Nov 22 23:17:49 2026 :: Log Trentlin [29382]: arrived (In the Hull) from 29361
+Sun Nov 22 23:17:50 2026 :: Log Trentlin [29382]: e
+Sun Nov 22 23:17:50 2026 :: Log Trentlin [29382]: w
+Sun Nov 22 23:17:52 2026 :: Log Trentlin [29382]: open secret
+Sun Nov 22 23:17:53 2026 :: Log Trentlin [29382]: u
+Sun Nov 22 23:17:53 2026 :: Log Trentlin [29361]: arrived (Across the Sea) from 29382
+Sun Nov 22 23:17:56 2026 :: Log Trentlin [29361]: east
+Sun Nov 22 23:17:56 2026 :: Log Trentlin [29362]: arrived (Across the Sea) from 29361
+Sun Nov 22 23:17:58 2026 :: Log Trentlin [29362]: southeast
+Sun Nov 22 23:17:58 2026 :: Log Trentlin [29363]: arrived (Across the Sea) from 29362
+Sun Nov 22 23:18:00 2026 :: Log Trentlin [29363]: south
+Sun Nov 22 23:18:00 2026 :: Log Trentlin [29364]: arrived (Across the Sea) from 29363
+Sun Nov 22 23:18:01 2026 :: Log Trentlin [29364]: east
+Sun Nov 22 23:18:01 2026 :: Log Trentlin [29365]: arrived (Across the Sea) from 29364
+Sun Nov 22 23:18:01 2026 :: Log Trentlin [29365]: west
+Sun Nov 22 23:18:01 2026 :: Log Trentlin [29368]: arrived (Across the Sea) from 29365
+Sun Nov 22 23:18:05 2026 :: Log Trentlin [29368]: n
+Sun Nov 22 23:18:05 2026 :: Log Trentlin [29369]: arrived (Across the Sea) from 29368
+Sun Nov 22 23:18:08 2026 :: Log Trentlin [29369]: ex
+Sun Nov 22 23:18:14 2026 :: Log Trentlin [29369]: nw
+Sun Nov 22 23:18:14 2026 :: Log Trentlin [29370]: arrived (Across the Sea) from 29369
+Sun Nov 22 23:18:18 2026 :: Log Trentlin [29370]: w
+Sun Nov 22 23:18:18 2026 :: Log Trentlin [29371]: arrived (Across the Sea) from 29370
+Sun Nov 22 23:18:20 2026 :: Log Trentlin [29371]: open down
+Sun Nov 22 23:18:21 2026 :: Log Trentlin [29371]: d
+Sun Nov 22 23:18:21 2026 :: Log Trentlin [29382]: arrived (In the Hull) from 29371
+Sun Nov 22 23:18:22 2026 :: Log Trentlin [29382]: u
+Sun Nov 22 23:18:22 2026 :: Log Trentlin [29361]: arrived (Across the Sea) from 29382
+Sun Nov 22 23:18:24 2026 :: Log Trentlin [29361]: e
+Sun Nov 22 23:18:24 2026 :: Log Trentlin [29362]: arrived (Across the Sea) from 29361
+Sun Nov 22 23:18:24 2026 :: Log Trentlin [29362]: e
+Sun Nov 22 23:18:24 2026 :: Log Trentlin [29380]: arrived (Across the Sea) from 29362
+Sun Nov 22 23:18:29 2026 :: Log Trentlin [29350]: arrived (Dock before the Sea) from 29380
+Sun Nov 22 23:18:33 2026 :: Log Trentlin [29350]: aquest info
+Sun Nov 22 23:18:39 2026 :: Log Trentlin [29350]: east
+Sun Nov 22 23:18:39 2026 :: Log Trentlin [29351]: arrived (Along the Dock) from 29350
+Sun Nov 22 23:18:39 2026 :: Log Trentlin [29351]: east
+Sun Nov 22 23:18:39 2026 :: Log Trentlin [29352]: arrived (Rope bridge to the ship) from 29351
+Sun Nov 22 23:18:39 2026 :: Log Trentlin [29352]: northeast
+Sun Nov 22 23:18:39 2026 :: Log Trentlin [29353]: arrived (Across the Sea) from 29352
+Sun Nov 22 23:18:39 2026 :: Log Trentlin [29353]: northeast
+Sun Nov 22 23:18:39 2026 :: Log Trentlin [29354]: arrived (Across the Sea) from 29353
+Sun Nov 22 23:18:40 2026 :: Log Trentlin [29354]: southeast
+Sun Nov 22 23:18:40 2026 :: Log Trentlin [29355]: arrived (Across the Sea) from 29354
+Sun Nov 22 23:18:40 2026 :: Log Trentlin [29355]: east
+Sun Nov 22 23:18:40 2026 :: Log Trentlin [29356]: arrived (Across the Sea) from 29355
+Sun Nov 22 23:18:40 2026 :: Log Trentlin [29356]: east
+Sun Nov 22 23:18:40 2026 :: Log Trentlin [29357]: arrived (Across the Sea) from 29356
+Sun Nov 22 23:18:40 2026 :: Log Trentlin [29357]: southeast
+Sun Nov 22 23:18:40 2026 :: Log Trentlin [29358]: arrived (Across the Sea) from 29357
+Sun Nov 22 23:18:43 2026 :: Black market: the dealer vanished from room 24230 (A Nun's Room, crypt.are) (wandering).
+Sun Nov 22 23:18:43 2026 :: Log Trentlin [29358]: northeast
+Sun Nov 22 23:18:43 2026 :: Log Trentlin [29359]: arrived (Across the Sea) from 29358
+Sun Nov 22 23:18:44 2026 :: Log Trentlin [29359]: north
+Sun Nov 22 23:18:44 2026 :: Log Trentlin [29360]: arrived (Across the Sea) from 29359
+Sun Nov 22 23:18:44 2026 :: Log Trentlin [29360]: northeast
+Sun Nov 22 23:18:44 2026 :: Log Trentlin [29361]: arrived (Across the Sea) from 29360
+Sun Nov 22 23:18:44 2026 :: Log Trentlin [29361]: east
+Sun Nov 22 23:18:44 2026 :: Log Trentlin [29362]: arrived (Across the Sea) from 29361
+Sun Nov 22 23:18:44 2026 :: Log Trentlin [29362]: southeast
+Sun Nov 22 23:18:44 2026 :: Log Trentlin [29363]: arrived (Across the Sea) from 29362
+Sun Nov 22 23:18:45 2026 :: Log Trentlin [29363]: south
+Sun Nov 22 23:18:45 2026 :: Log Trentlin [29364]: arrived (Across the Sea) from 29363
+Sun Nov 22 23:18:47 2026 :: Log Trentlin [29364]: s
+Sun Nov 22 23:18:49 2026 :: Log Trentlin [29364]: e
+Sun Nov 22 23:18:49 2026 :: Log Trentlin [29365]: arrived (Across the Sea) from 29364
+Sun Nov 22 23:18:50 2026 :: Log Trentlin [29365]: w
+Sun Nov 22 23:18:50 2026 :: Log Trentlin [29368]: arrived (Across the Sea) from 29365
+Sun Nov 22 23:18:56 2026 :: Log Trentlin [29368]: e
+Sun Nov 22 23:18:56 2026 :: Log Trentlin [29365]: arrived (Across the Sea) from 29368
+Sun Nov 22 23:18:58 2026 :: Log Trentlin [29365]: w
+Sun Nov 22 23:18:58 2026 :: Log Trentlin [29368]: arrived (Across the Sea) from 29365
+Sun Nov 22 23:19:00 2026 :: Log Trentlin [29368]: e
+Sun Nov 22 23:19:00 2026 :: Log Trentlin [29365]: arrived (Across the Sea) from 29368
+Sun Nov 22 23:19:01 2026 :: Log Trentlin [29365]: e
+Sun Nov 22 23:19:01 2026 :: Log Trentlin [29366]: arrived (Across the Sea) from 29365
+Sun Nov 22 23:19:03 2026 :: Log Trentlin [29366]: sw
+Sun Nov 22 23:19:03 2026 :: Log Trentlin [29367]: arrived (Across the Sea) from 29366
+Sun Nov 22 23:19:06 2026 :: Log Trentlin [29367]: sw
+Sun Nov 22 23:19:06 2026 :: Log Trentlin [29380]: arrived (Across the Sea) from 29367
+Sun Nov 22 23:19:10 2026 :: Log Trentlin [29350]: arrived (Dock before the Sea) from 29380
+Sun Nov 22 23:19:11 2026 :: Log Trentlin [29350]: east
+Sun Nov 22 23:19:11 2026 :: Log Trentlin [29351]: arrived (Along the Dock) from 29350
+Sun Nov 22 23:19:12 2026 :: Log Trentlin [29351]: east
+Sun Nov 22 23:19:12 2026 :: Log Trentlin [29352]: arrived (Rope bridge to the ship) from 29351
+Sun Nov 22 23:19:14 2026 :: Log Trentlin [29352]: northeast
+Sun Nov 22 23:19:14 2026 :: Log Trentlin [29353]: arrived (Across the Sea) from 29352
+Sun Nov 22 23:19:14 2026 :: Log Trentlin [29353]: northeast
+Sun Nov 22 23:19:14 2026 :: Log Trentlin [29354]: arrived (Across the Sea) from 29353
+Sun Nov 22 23:19:14 2026 :: Log Trentlin [29354]: southeast
+Sun Nov 22 23:19:14 2026 :: Log Trentlin [29355]: arrived (Across the Sea) from 29354
+Sun Nov 22 23:19:15 2026 :: Log Trentlin [29355]: east
+Sun Nov 22 23:19:15 2026 :: Log Trentlin [29356]: arrived (Across the Sea) from 29355
+Sun Nov 22 23:19:15 2026 :: Log Trentlin [29356]: east
+Sun Nov 22 23:19:15 2026 :: Log Trentlin [29357]: arrived (Across the Sea) from 29356
+Sun Nov 22 23:19:15 2026 :: Log Trentlin [29357]: southeast
+Sun Nov 22 23:19:15 2026 :: Log Trentlin [29358]: arrived (Across the Sea) from 29357
+Sun Nov 22 23:19:24 2026 :: Log Trentlin [29358]: northeast
+Sun Nov 22 23:19:24 2026 :: Log Trentlin [29359]: arrived (Across the Sea) from 29358
+Sun Nov 22 23:19:25 2026 :: Log Trentlin [29359]: north
+Sun Nov 22 23:19:25 2026 :: Log Trentlin [29360]: arrived (Across the Sea) from 29359
+Sun Nov 22 23:19:25 2026 :: Log Trentlin [29360]: northeast
+Sun Nov 22 23:19:25 2026 :: Log Trentlin [29361]: arrived (Across the Sea) from 29360
+Sun Nov 22 23:19:25 2026 :: Log Trentlin [29361]: east
+Sun Nov 22 23:19:25 2026 :: Log Trentlin [29362]: arrived (Across the Sea) from 29361
+Sun Nov 22 23:19:25 2026 :: Log Trentlin [29362]: southeast
+Sun Nov 22 23:19:25 2026 :: Log Trentlin [29363]: arrived (Across the Sea) from 29362
+Sun Nov 22 23:19:26 2026 :: Log Trentlin [29363]: south
+Sun Nov 22 23:19:26 2026 :: Log Trentlin [29364]: arrived (Across the Sea) from 29363
+Sun Nov 22 23:19:26 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 5 of 6 in 6 hours).
+Sun Nov 22 23:19:26 2026 :: Log Trentlin [29364]: east
+Sun Nov 22 23:19:26 2026 :: Log Trentlin [29365]: arrived (Across the Sea) from 29364
+Sun Nov 22 23:19:26 2026 :: Log Trentlin [29365]: east
+Sun Nov 22 23:19:26 2026 :: Log Trentlin [29366]: arrived (Across the Sea) from 29365
+Sun Nov 22 23:19:26 2026 :: Log Trentlin [29366]: east
+Sun Nov 22 23:19:26 2026 :: Log Trentlin [29381]: arrived (On the Beach) from 29366
+Sun Nov 22 23:19:27 2026 :: Log Trentlin [29381]: s
+Sun Nov 22 23:19:27 2026 :: Log Trentlin [29401]: arrived (By the Shore) from 29381
+Sun Nov 22 23:19:30 2026 :: Log Trentlin [29401]: l sign
+Sun Nov 22 23:19:36 2026 :: Log Trentlin [29401]: s
+Sun Nov 22 23:19:36 2026 :: Log Trentlin [29402]: arrived (By the Shore) from 29401
+Sun Nov 22 23:19:38 2026 :: Log Trentlin [29402]: e
+Sun Nov 22 23:19:38 2026 :: Log Trentlin [29403]: arrived (On the Beach) from 29402
+Sun Nov 22 23:19:40 2026 :: Log Trentlin [29403]: n
+Sun Nov 22 23:19:40 2026 :: Log Trentlin [29405]: arrived (On the Beach) from 29403
+Sun Nov 22 23:19:40 2026 :: Log Trentlin [29405]: e
+Sun Nov 22 23:19:40 2026 :: Log Trentlin [29406]: arrived (Inland) from 29405
+Sun Nov 22 23:19:41 2026 :: Log Trentlin [29406]: s
+Sun Nov 22 23:19:43 2026 :: Log Trentlin [29406]: nw
+Sun Nov 22 23:19:43 2026 :: Log Trentlin [29408]: arrived (On the Beach) from 29406
+Sun Nov 22 23:19:45 2026 :: Log Trentlin [29408]: n
+Sun Nov 22 23:19:45 2026 :: Log Trentlin [29411]: arrived (Sandy plains) from 29408
+Sun Nov 22 23:19:46 2026 :: Log Trentlin [29411]: n
+Sun Nov 22 23:19:46 2026 :: Log Trentlin [29429]: arrived (Edge of the forest) from 29411
+Sun Nov 22 23:19:47 2026 :: Log Trentlin [29429]: n
+Sun Nov 22 23:19:47 2026 :: Log Trentlin [29433]: arrived (The thick forest) from 29429
+Sun Nov 22 23:19:47 2026 :: Black market: the dealer vanished from room 25232 (The Barge on the Underground River., mushroom.are) (wandering).
+Sun Nov 22 23:19:48 2026 :: Log Trentlin [29433]: e
+Sun Nov 22 23:19:48 2026 :: Log Trentlin [29434]: arrived (The thick forest) from 29433
+Sun Nov 22 23:19:49 2026 :: Log Trentlin [29434]: s
+Sun Nov 22 23:19:49 2026 :: Log Trentlin [29430]: arrived (The thick forest) from 29434
+Sun Nov 22 23:19:49 2026 :: Log Trentlin [29430]: s
+Sun Nov 22 23:19:51 2026 :: Log Trentlin [29430]: sw
+Sun Nov 22 23:19:51 2026 :: Log Trentlin [29412]: arrived (Edge of the Forest) from 29430
+Sun Nov 22 23:19:54 2026 :: Log Trentlin [29412]: e
+Sun Nov 22 23:19:54 2026 :: Log Trentlin [29413]: arrived (East-West trail) from 29412
+Sun Nov 22 23:19:55 2026 :: Log Trentlin [29413]: s
+Sun Nov 22 23:19:55 2026 :: Log Trentlin [29409]: arrived (In the Thicket) from 29413
+Sun Nov 22 23:19:56 2026 :: Log Trentlin [29409]: s
+Sun Nov 22 23:19:56 2026 :: Log Trentlin [29407]: arrived (Wooded Plains) from 29409
+Sun Nov 22 23:19:57 2026 :: Log Trentlin [29407]: w
+Sun Nov 22 23:19:57 2026 :: Log Trentlin [29406]: arrived (Inland) from 29407
+Sun Nov 22 23:19:59 2026 :: Log Trentlin [29406]: w
+Sun Nov 22 23:19:59 2026 :: Log Trentlin [29405]: arrived (On the Beach) from 29406
+Sun Nov 22 23:19:59 2026 :: Log Trentlin [29405]: s
+Sun Nov 22 23:19:59 2026 :: Log Trentlin [29403]: arrived (On the Beach) from 29405
+Sun Nov 22 23:19:59 2026 :: Log Trentlin [29403]: e
+Sun Nov 22 23:19:59 2026 :: Log Trentlin [29404]: arrived (Inland) from 29403
+Sun Nov 22 23:20:02 2026 :: Log Trentlin [29404]: w
+Sun Nov 22 23:20:02 2026 :: Log Trentlin [29403]: arrived (On the Beach) from 29404
+Sun Nov 22 23:20:02 2026 :: Log Trentlin [29403]: n
+Sun Nov 22 23:20:02 2026 :: Log Trentlin [29405]: arrived (On the Beach) from 29403
+Sun Nov 22 23:20:02 2026 :: Log Trentlin [29405]: e
+Sun Nov 22 23:20:02 2026 :: Log Trentlin [29406]: arrived (Inland) from 29405
+Sun Nov 22 23:20:03 2026 :: Log Trentlin [29406]: e
+Sun Nov 22 23:20:03 2026 :: Log Trentlin [29407]: arrived (Wooded Plains) from 29406
+Sun Nov 22 23:20:03 2026 :: Log Trentlin [29407]: n
+Sun Nov 22 23:20:03 2026 :: Log Trentlin [29409]: arrived (In the Thicket) from 29407
+Sun Nov 22 23:20:04 2026 :: Log Trentlin [29409]: n
+Sun Nov 22 23:20:04 2026 :: Log Trentlin [29413]: arrived (East-West trail) from 29409
+Sun Nov 22 23:20:04 2026 :: Log Trentlin [29413]: e
+Sun Nov 22 23:20:04 2026 :: Log Trentlin [29414]: arrived (East-West trail) from 29413
+Sun Nov 22 23:20:05 2026 :: Log Trentlin [29414]: e
+Sun Nov 22 23:20:05 2026 :: Log Trentlin [29415]: arrived (East-West trail) from 29414
+Sun Nov 22 23:20:07 2026 :: Log Trentlin [29415]: s
+Sun Nov 22 23:20:07 2026 :: Log Trentlin [29419]: arrived (In the Woods) from 29415
+Sun Nov 22 23:20:08 2026 :: Log Trentlin [29419]: s
+Sun Nov 22 23:20:08 2026 :: Log Trentlin [29422]: arrived (In the Woods) from 29419
+Sun Nov 22 23:20:13 2026 :: Log Trentlin [29422]: se
+Sun Nov 22 23:20:13 2026 :: Log Trentlin [29425]: arrived (In the Woods) from 29422
+Sun Nov 22 23:20:14 2026 :: Log Trentlin [29425]: e
+Sun Nov 22 23:20:14 2026 :: Log Trentlin [29426]: arrived (In the Woods) from 29425
+Sun Nov 22 23:20:16 2026 :: Log Trentlin [29426]: s
+Sun Nov 22 23:20:16 2026 :: Log Trentlin [29427]: arrived (In the Woods) from 29426
+Sun Nov 22 23:20:20 2026 :: Log Trentlin [29427]: n
+Sun Nov 22 23:20:20 2026 :: Log Trentlin [29426]: arrived (In the Woods) from 29427
+Sun Nov 22 23:20:20 2026 :: Log Trentlin [29426]: n
+Sun Nov 22 23:20:20 2026 :: Log Trentlin [29424]: arrived (In the Woods) from 29426
+Sun Nov 22 23:20:21 2026 :: Log Trentlin [29424]: w
+Sun Nov 22 23:20:21 2026 :: Log Trentlin [29423]: arrived (In the Woods) from 29424
+Sun Nov 22 23:20:22 2026 :: Log Trentlin [29423]: e
+Sun Nov 22 23:20:22 2026 :: Log Trentlin [29424]: arrived (In the Woods) from 29423
+Sun Nov 22 23:20:22 2026 :: Log Trentlin [29424]: n
+Sun Nov 22 23:20:22 2026 :: Log Trentlin [29420]: arrived (In the Woods) from 29424
+Sun Nov 22 23:20:24 2026 :: Log Trentlin [29420]: e
+Sun Nov 22 23:20:24 2026 :: Log Trentlin [29421]: arrived (In the Woods) from 29420
+Sun Nov 22 23:20:25 2026 :: Log Trentlin [29421]: w
+Sun Nov 22 23:20:25 2026 :: Log Trentlin [29420]: arrived (In the Woods) from 29421
+Sun Nov 22 23:20:25 2026 :: Log Trentlin [29420]: n
+Sun Nov 22 23:20:25 2026 :: Log Trentlin [29417]: arrived (East-West trail) from 29420
+Sun Nov 22 23:20:26 2026 :: Log Trentlin [29417]: e
+Sun Nov 22 23:20:26 2026 :: Log Trentlin [29418]: arrived (Edge of the Woods) from 29417
+Sun Nov 22 23:20:27 2026 :: Log Trentlin [29418]: w
+Sun Nov 22 23:20:27 2026 :: Log Trentlin [29417]: arrived (East-West trail) from 29418
+Sun Nov 22 23:20:27 2026 :: Log Trentlin [29417]: w
+Sun Nov 22 23:20:27 2026 :: Log Trentlin [29416]: arrived (East-West trail) from 29417
+Sun Nov 22 23:20:29 2026 :: Log Trentlin [29416]: e
+Sun Nov 22 23:20:29 2026 :: Log Trentlin [29417]: arrived (East-West trail) from 29416
+Sun Nov 22 23:20:29 2026 :: Log Trentlin [29417]: e
+Sun Nov 22 23:20:29 2026 :: Log Trentlin [29418]: arrived (Edge of the Woods) from 29417
+Sun Nov 22 23:20:31 2026 :: Log Trentlin [29418]: e
+Sun Nov 22 23:20:35 2026 :: Log Trentlin [29418]: climb tree
+Sun Nov 22 23:20:35 2026 :: Log Trentlin [29497]: arrived (Treehouse) from 29418
+Sun Nov 22 23:20:44 2026 :: Log Trentlin [29497]: open circle
+Sun Nov 22 23:20:45 2026 :: Log Trentlin [29497]: l
+Sun Nov 22 23:20:46 2026 :: Log Trentlin [29497]: u
+Sun Nov 22 23:20:46 2026 :: Log Trentlin [29498]: arrived (Haze's Private Study) from 29497
+Sun Nov 22 23:20:50 2026 :: Log Trentlin [29498]: d
+Sun Nov 22 23:20:50 2026 :: Log Trentlin [29497]: arrived (Treehouse) from 29498
+Sun Nov 22 23:20:56 2026 :: Log Trentlin [29497]: quaff true
+Sun Nov 22 23:20:57 2026 :: Log Trentlin [29497]: sca
+Sun Nov 22 23:20:58 2026 :: Log Trentlin [29497]: u
+Sun Nov 22 23:20:58 2026 :: Log Trentlin [29498]: arrived (Haze's Private Study) from 29497
+Sun Nov 22 23:21:00 2026 :: Log Trentlin [29498]: l wall
+Sun Nov 22 23:21:06 2026 :: Log Trentlin [29498]: push button
+Sun Nov 22 23:21:06 2026 :: Snapshot of Trentlin taken before death: Trentlin.20261122_232106.death (PRESTORE Trentlin to see it).
+Sun Nov 22 23:21:06 2026 :: Log Trentlin [29498]: died to Trentlin
+Sun Nov 22 23:21:06 2026 :: Log Trentlin [29498]: killed Trentlin
+Sun Nov 22 23:21:06 2026 :: Log Trentlin [4216]: arrived (Death room.) from 29498
+Sun Nov 22 23:21:15 2026 :: Log Trentlin [4216]: l
+Sun Nov 22 23:21:17 2026 :: Log Trentlin [4216]: eq
+Sun Nov 22 23:21:20 2026 :: Log Trentlin [4216]: i
+Sun Nov 22 23:21:22 2026 :: Log Trentlin [4216]: d
+Sun Nov 22 23:21:22 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4216
+Sun Nov 22 23:21:23 2026 :: Log Trentlin [4208]: e
+Sun Nov 22 23:21:23 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Sun Nov 22 23:21:28 2026 :: Sock.sinaddr:  52.167.144.54
+Sun Nov 22 23:21:28 2026 :: EOF encountered on read.
+Sun Nov 22 23:21:28 2026 :: Connection guard: 52.167.144.54 closed before a password prompt (strike 3 of 6 in 6 hours).
+Sun Nov 22 23:21:32 2026 :: Sock.sinaddr:  52.167.144.216
+Sun Nov 22 23:21:32 2026 :: EOF encountered on read.
+Sun Nov 22 23:21:32 2026 :: Connection guard: 52.167.144.216 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sun Nov 22 23:21:33 2026 :: Log Trentlin [4207]: east
+Sun Nov 22 23:21:33 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sun Nov 22 23:21:33 2026 :: Log Trentlin [4202]: east
+Sun Nov 22 23:21:33 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Nov 22 23:21:33 2026 :: Log Trentlin [4201]: north
+Sun Nov 22 23:21:33 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 4201
+Sun Nov 22 23:21:33 2026 :: Log Trentlin [2433]: east
+Sun Nov 22 23:21:33 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2433
+Sun Nov 22 23:21:34 2026 :: Log Trentlin [2405]: east
+Sun Nov 22 23:21:34 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2405
+Sun Nov 22 23:21:34 2026 :: Log Trentlin [2401]: east
+Sun Nov 22 23:21:34 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Nov 22 23:21:34 2026 :: Log Trentlin [2403]: east
+Sun Nov 22 23:21:34 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Sun Nov 22 23:21:34 2026 :: Log Trentlin [2420]: east
+Sun Nov 22 23:21:34 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Sun Nov 22 23:21:35 2026 :: Log Trentlin [2421]: east
+Sun Nov 22 23:21:35 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2421
+Sun Nov 22 23:21:35 2026 :: Log Trentlin [2422]: east
+Sun Nov 22 23:21:35 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2422
+Sun Nov 22 23:21:35 2026 :: Log Trentlin [2423]: east
+Sun Nov 22 23:21:35 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2423
+Sun Nov 22 23:21:35 2026 :: Log Trentlin [2424]: east
+Sun Nov 22 23:21:35 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sun Nov 22 23:21:36 2026 :: Log Trentlin [2425]: east
+Sun Nov 22 23:21:36 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sun Nov 22 23:21:36 2026 :: Log Trentlin [2426]: open east
+Sun Nov 22 23:21:36 2026 :: Log Trentlin [2426]: east
+Sun Nov 22 23:21:36 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sun Nov 22 23:21:36 2026 :: Log Trentlin [2440]: east
+Sun Nov 22 23:21:36 2026 :: Log Trentlin [3503]: arrived (City Entrance) from 2440
+Sun Nov 22 23:21:37 2026 :: Log Trentlin [3503]: east
+Sun Nov 22 23:21:37 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 3503
+Sun Nov 22 23:21:37 2026 :: Log Trentlin [3502]: east
+Sun Nov 22 23:21:37 2026 :: Log Trentlin [3525]: arrived (Along the Eastern Road) from 3502
+Sun Nov 22 23:21:37 2026 :: Log Trentlin [3525]: east
+Sun Nov 22 23:21:37 2026 :: Log Trentlin [3526]: arrived (Along the Eastern Road) from 3525
+Sun Nov 22 23:21:37 2026 :: Log Trentlin [3526]: east
+Sun Nov 22 23:21:37 2026 :: Log Trentlin [3527]: arrived (The Checkpoint) from 3526
+Sun Nov 22 23:21:38 2026 :: Log Trentlin [3527]: east
+Sun Nov 22 23:21:38 2026 :: Log Trentlin [3528]: arrived (Along the Eastern Road) from 3527
+Sun Nov 22 23:21:38 2026 :: Log Trentlin [3528]: east
+Sun Nov 22 23:21:38 2026 :: Log Trentlin [3529]: arrived (Along the Eastern Road) from 3528
+Sun Nov 22 23:21:38 2026 :: Log Trentlin [3529]: east
+Sun Nov 22 23:21:38 2026 :: Log Trentlin [3530]: arrived (Near the Sands of Sorrow) from 3529
+Sun Nov 22 23:21:38 2026 :: Log Trentlin [3530]: east
+Sun Nov 22 23:21:38 2026 :: Log Trentlin [3531]: arrived (Near the Sands of Sorrow) from 3530
+Sun Nov 22 23:21:39 2026 :: Log Trentlin [3531]: east
+Sun Nov 22 23:21:39 2026 :: Log Trentlin [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Sun Nov 22 23:21:39 2026 :: Log Trentlin [3532]: east
+Sun Nov 22 23:21:39 2026 :: Log Trentlin [42]: arrived (On the Outskirts of New Thalos) from 3532
+Sun Nov 22 23:21:39 2026 :: Log Trentlin [42]: east
+Sun Nov 22 23:21:39 2026 :: Log Trentlin [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Sun Nov 22 23:21:39 2026 :: Log Trentlin [9669]: east
+Sun Nov 22 23:21:39 2026 :: Log Trentlin [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Sun Nov 22 23:21:40 2026 :: Log Trentlin [9523]: east
+Sun Nov 22 23:21:40 2026 :: Log Trentlin [9524]: arrived (West Main Street) from 9523
+Sun Nov 22 23:21:40 2026 :: Log Trentlin [9524]: east
+Sun Nov 22 23:21:40 2026 :: Log Trentlin [9525]: arrived (West Main Street) from 9524
+Sun Nov 22 23:21:40 2026 :: Log Trentlin [9525]: east
+Sun Nov 22 23:21:40 2026 :: Log Trentlin [9526]: arrived (West Main Street) from 9525
+Sun Nov 22 23:21:40 2026 :: Log Trentlin [9526]: east
+Sun Nov 22 23:21:40 2026 :: Log Trentlin [9509]: arrived (The Western Market Square) from 9526
+Sun Nov 22 23:21:41 2026 :: Log Trentlin [9509]: east
+Sun Nov 22 23:21:41 2026 :: Log Trentlin [9506]: arrived (The Center of Market Square) from 9509
+Sun Nov 22 23:21:41 2026 :: Log Trentlin [9506]: east
+Sun Nov 22 23:21:41 2026 :: Log Trentlin [9517]: arrived (The Eastern Market Square) from 9506
+Sun Nov 22 23:21:41 2026 :: Log Trentlin [9517]: east
+Sun Nov 22 23:21:41 2026 :: Log Trentlin [9527]: arrived (East Main Street) from 9517
+Sun Nov 22 23:21:41 2026 :: Log Trentlin [9527]: east
+Sun Nov 22 23:21:41 2026 :: Log Trentlin [9528]: arrived (East Main Street) from 9527
+Sun Nov 22 23:21:42 2026 :: Log Trentlin [9528]: east
+Sun Nov 22 23:21:42 2026 :: Log Trentlin [9529]: arrived (East Main Street) from 9528
+Sun Nov 22 23:21:42 2026 :: Log Trentlin [9529]: east
+Sun Nov 22 23:21:42 2026 :: Log Trentlin [9530]: arrived (East Main Street) from 9529
+Sun Nov 22 23:21:42 2026 :: Log Trentlin [9530]: east
+Sun Nov 22 23:21:42 2026 :: Log Trentlin [9531]: arrived (Inside the Eastern Gate of New Thalos) from 9530
+Sun Nov 22 23:21:42 2026 :: Log Trentlin [9531]: open east
+Sun Nov 22 23:21:43 2026 :: Log Trentlin [9531]: east
+Sun Nov 22 23:21:43 2026 :: Log Trentlin [9668]: arrived (Outside the Eastern Gate of New Thalos) from 9531
+Sun Nov 22 23:21:43 2026 :: Log Trentlin [9668]: east
+Sun Nov 22 23:21:43 2026 :: Log Trentlin [9790]: arrived (On a road) from 9668
+Sun Nov 22 23:21:43 2026 :: Log Trentlin [9790]: east
+Sun Nov 22 23:21:43 2026 :: Log Trentlin [9791]: arrived (On a road) from 9790
+Sun Nov 22 23:21:43 2026 :: Log Trentlin [9791]: east
+Sun Nov 22 23:21:43 2026 :: Log Trentlin [9792]: arrived (On a road) from 9791
+Sun Nov 22 23:21:44 2026 :: Log Trentlin [9792]: east
+Sun Nov 22 23:21:44 2026 :: Log Trentlin [9793]: arrived (On a road) from 9792
+Sun Nov 22 23:21:44 2026 :: Log Trentlin [9793]: east
+Sun Nov 22 23:21:44 2026 :: Log Trentlin [9794]: arrived (Near the shore) from 9793
+Sun Nov 22 23:21:44 2026 :: Log Trentlin [9794]: north
+Sun Nov 22 23:21:44 2026 :: Log Trentlin [41]: arrived (The new pier) from 9794
+Sun Nov 22 23:21:44 2026 :: Log Trentlin [41]: east
+Sun Nov 22 23:21:44 2026 :: Log Trentlin [29350]: arrived (Dock before the Sea) from 41
+Sun Nov 22 23:21:45 2026 :: Log Trentlin [29350]: east
+Sun Nov 22 23:21:45 2026 :: Log Trentlin [29351]: arrived (Along the Dock) from 29350
+Sun Nov 22 23:21:45 2026 :: Log Trentlin [29351]: east
+Sun Nov 22 23:21:45 2026 :: Log Trentlin [29352]: arrived (Rope bridge to the ship) from 29351
+Sun Nov 22 23:21:45 2026 :: Log Trentlin [29352]: northeast
+Sun Nov 22 23:21:45 2026 :: Log Trentlin [29353]: arrived (Across the Sea) from 29352
+Sun Nov 22 23:21:45 2026 :: Log Trentlin [29353]: northeast
+Sun Nov 22 23:21:45 2026 :: Log Trentlin [29354]: arrived (Across the Sea) from 29353
+Sun Nov 22 23:21:46 2026 :: Log Trentlin [29354]: southeast
+Sun Nov 22 23:21:46 2026 :: Log Trentlin [29355]: arrived (Across the Sea) from 29354
+Sun Nov 22 23:21:46 2026 :: Log Trentlin [29355]: east
+Sun Nov 22 23:21:46 2026 :: Log Trentlin [29356]: arrived (Across the Sea) from 29355
+Sun Nov 22 23:21:46 2026 :: Log Trentlin [29356]: east
+Sun Nov 22 23:21:46 2026 :: Log Trentlin [29357]: arrived (Across the Sea) from 29356
+Sun Nov 22 23:21:46 2026 :: Log Trentlin [29357]: southeast
+Sun Nov 22 23:21:46 2026 :: Log Trentlin [29358]: arrived (Across the Sea) from 29357
+Sun Nov 22 23:21:47 2026 :: Log Trentlin [29358]: northeast
+Sun Nov 22 23:21:47 2026 :: Log Trentlin [29359]: arrived (Across the Sea) from 29358
+Sun Nov 22 23:21:47 2026 :: Log Trentlin [29359]: north
+Sun Nov 22 23:21:47 2026 :: Log Trentlin [29360]: arrived (Across the Sea) from 29359
+Sun Nov 22 23:21:47 2026 :: Log Trentlin [29360]: northeast
+Sun Nov 22 23:21:47 2026 :: Log Trentlin [29361]: arrived (Across the Sea) from 29360
+Sun Nov 22 23:21:47 2026 :: Log Trentlin [29361]: east
+Sun Nov 22 23:21:47 2026 :: Log Trentlin [29362]: arrived (Across the Sea) from 29361
+Sun Nov 22 23:21:48 2026 :: Log Trentlin [29362]: southeast
+Sun Nov 22 23:21:48 2026 :: Log Trentlin [29363]: arrived (Across the Sea) from 29362
+Sun Nov 22 23:21:48 2026 :: Log Trentlin [29363]: south
+Sun Nov 22 23:21:48 2026 :: Log Trentlin [29364]: arrived (Across the Sea) from 29363
+Sun Nov 22 23:21:48 2026 :: Log Trentlin [29364]: east
+Sun Nov 22 23:21:48 2026 :: Log Trentlin [29365]: arrived (Across the Sea) from 29364
+Sun Nov 22 23:21:48 2026 :: Log Trentlin [29365]: east
+Sun Nov 22 23:21:48 2026 :: Log Trentlin [29366]: arrived (Across the Sea) from 29365
+Sun Nov 22 23:21:49 2026 :: Log Trentlin [29366]: east
+Sun Nov 22 23:21:49 2026 :: Log Trentlin [29381]: arrived (On the Beach) from 29366
+Sun Nov 22 23:21:49 2026 :: Log Trentlin [29381]: north
+Sun Nov 22 23:21:49 2026 :: Log Trentlin [29410]: arrived (By the Shore) from 29381
+Sun Nov 22 23:21:49 2026 :: Log Trentlin [29410]: north
+Sun Nov 22 23:21:49 2026 :: Log Trentlin [29428]: arrived (Sandy plains) from 29410
+Sun Nov 22 23:21:49 2026 :: Log Trentlin [29428]: north
+Sun Nov 22 23:21:49 2026 :: Log Trentlin [29432]: arrived (Edge of the forest) from 29428
+Sun Nov 22 23:21:50 2026 :: Log Trentlin [29432]: northeast
+Sun Nov 22 23:21:50 2026 :: Log Trentlin [29435]: arrived (The thick forest) from 29432
+Sun Nov 22 23:21:50 2026 :: Log Trentlin [29435]: north
+Sun Nov 22 23:21:50 2026 :: Log Trentlin [29453]: arrived (The thick forest) from 29435
+Sun Nov 22 23:21:50 2026 :: Log Trentlin [29453]: north
+Sun Nov 22 23:21:50 2026 :: Log Trentlin [29450]: arrived (The thick forest) from 29453
+Sun Nov 22 23:21:50 2026 :: Log Trentlin [29450]: west
+Sun Nov 22 23:21:50 2026 :: Log Trentlin [29449]: arrived (The thick forest) from 29450
+Sun Nov 22 23:21:51 2026 :: Log Trentlin [29449]: north
+Sun Nov 22 23:21:51 2026 :: Log Trentlin [29448]: arrived (The thick forest) from 29449
+Sun Nov 22 23:21:51 2026 :: Log Trentlin [29448]: northeast
+Sun Nov 22 23:21:51 2026 :: Log Trentlin [29495]: arrived (The thick forest) from 29448
+Sun Nov 22 23:21:51 2026 :: Log Trentlin [29495]: west
+Sun Nov 22 23:21:51 2026 :: Log Trentlin [29496]: arrived (Above the City of Lud) from 29495
+Sun Nov 22 23:21:54 2026 :: Log Trentlin [29496]: east
+Sun Nov 22 23:21:54 2026 :: Log Trentlin [29495]: arrived (The thick forest) from 29496
+Sun Nov 22 23:21:54 2026 :: Log Trentlin [29495]: southwest
+Sun Nov 22 23:21:54 2026 :: Log Trentlin [29448]: arrived (The thick forest) from 29495
+Sun Nov 22 23:21:54 2026 :: Log Trentlin [29448]: south
+Sun Nov 22 23:21:54 2026 :: Log Trentlin [29449]: arrived (The thick forest) from 29448
+Sun Nov 22 23:21:55 2026 :: Log Trentlin [29449]: east
+Sun Nov 22 23:21:55 2026 :: Log Trentlin [29450]: arrived (The thick forest) from 29449
+Sun Nov 22 23:21:55 2026 :: Log Trentlin [29450]: south
+Sun Nov 22 23:21:55 2026 :: Log Trentlin [29453]: arrived (The thick forest) from 29450
+Sun Nov 22 23:21:55 2026 :: Log Trentlin [29453]: south
+Sun Nov 22 23:21:55 2026 :: Log Trentlin [29435]: arrived (The thick forest) from 29453
+Sun Nov 22 23:21:55 2026 :: Log Trentlin [29435]: south
+Sun Nov 22 23:21:55 2026 :: Log Trentlin [29433]: arrived (The thick forest) from 29435
+Sun Nov 22 23:21:56 2026 :: Log Trentlin [29433]: east
+Sun Nov 22 23:21:56 2026 :: Log Trentlin [29434]: arrived (The thick forest) from 29433
+Sun Nov 22 23:21:56 2026 :: Log Trentlin [29434]: south
+Sun Nov 22 23:21:56 2026 :: Log Trentlin [29430]: arrived (The thick forest) from 29434
+Sun Nov 22 23:21:56 2026 :: Log Trentlin [29430]: southwest
+Sun Nov 22 23:21:56 2026 :: Log Trentlin [29412]: arrived (Edge of the Forest) from 29430
+Sun Nov 22 23:21:56 2026 :: Log Trentlin [29412]: east
+Sun Nov 22 23:21:56 2026 :: Log Trentlin [29413]: arrived (East-West trail) from 29412
+Sun Nov 22 23:21:57 2026 :: Log Trentlin [29413]: east
+Sun Nov 22 23:21:57 2026 :: Log Trentlin [29414]: arrived (East-West trail) from 29413
+Sun Nov 22 23:21:57 2026 :: Log Trentlin [29414]: east
+Sun Nov 22 23:21:57 2026 :: Log Trentlin [29415]: arrived (East-West trail) from 29414
+Sun Nov 22 23:21:57 2026 :: Log Trentlin [29415]: south
+Sun Nov 22 23:21:57 2026 :: Log Trentlin [29419]: arrived (In the Woods) from 29415
+Sun Nov 22 23:21:57 2026 :: Log Trentlin [29419]: south
+Sun Nov 22 23:21:57 2026 :: Log Trentlin [29422]: arrived (In the Woods) from 29419
+Sun Nov 22 23:21:58 2026 :: Log Trentlin [29422]: southeast
+Sun Nov 22 23:21:58 2026 :: Log Trentlin [29425]: arrived (In the Woods) from 29422
+Sun Nov 22 23:21:58 2026 :: Log Trentlin [29425]: east
+Sun Nov 22 23:21:58 2026 :: Log Trentlin [29426]: arrived (In the Woods) from 29425
+Sun Nov 22 23:21:59 2026 :: Log Trentlin [29426]: (refused) ssn
+Sun Nov 22 23:21:59 2026 :: Log Trentlin [29426]: e
+Sun Nov 22 23:22:01 2026 :: Log Trentlin [29426]: n
+Sun Nov 22 23:22:01 2026 :: Log Trentlin [29424]: arrived (In the Woods) from 29426
+Sun Nov 22 23:22:01 2026 :: Log Trentlin [29424]: e
+Sun Nov 22 23:22:03 2026 :: Log Trentlin [29424]: n
+Sun Nov 22 23:22:03 2026 :: Log Trentlin [29420]: arrived (In the Woods) from 29424
+Sun Nov 22 23:22:04 2026 :: Log Trentlin [29420]: e
+Sun Nov 22 23:22:04 2026 :: Log Trentlin [29421]: arrived (In the Woods) from 29420
+Sun Nov 22 23:22:05 2026 :: Log Trentlin [29421]: climb tree
+Sun Nov 22 23:22:06 2026 :: Log Trentlin [29421]: w
+Sun Nov 22 23:22:06 2026 :: Log Trentlin [29420]: arrived (In the Woods) from 29421
+Sun Nov 22 23:22:06 2026 :: Log Trentlin [29420]: n
+Sun Nov 22 23:22:06 2026 :: Log Trentlin [29417]: arrived (East-West trail) from 29420
+Sun Nov 22 23:22:07 2026 :: Log Trentlin [29417]: e
+Sun Nov 22 23:22:07 2026 :: Log Trentlin [29418]: arrived (Edge of the Woods) from 29417
+Sun Nov 22 23:22:09 2026 :: Log Trentlin [29418]: climb tree
+Sun Nov 22 23:22:09 2026 :: Log Trentlin [29497]: arrived (Treehouse) from 29418
+Sun Nov 22 23:22:11 2026 :: Log Trentlin [29497]: u
+Sun Nov 22 23:22:11 2026 :: Log Trentlin [29498]: arrived (Haze's Private Study) from 29497

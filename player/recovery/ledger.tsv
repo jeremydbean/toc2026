@@ -487,3 +487,7 @@
 487	1795378600	snapshot	committed	P6adc9d850001b1ba	Alaric	-	quest	-	Alaric.20261122_201640.quest fnv 4779049f 33690 bytes	a53ef9ae
 488	1795388197	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261122_225637.quest fnv 644d41ef 26150 bytes	ec66978c
 489	1795388595	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261122_230315.quest fnv ad11d1c5 26093 bytes	526104a0
+490	1795389666	snapshot	committed	P6adca00b00079e30	Trentlin	-	death	-	Trentlin.20261122_232106.death fnv 8bad155a 26208 bytes	ef4a2065
+491	1795389666	request	pending	P6adca00b00079e30	Trentlin	death:c6b0378e2018013	death	Trentlin: push	corpse c6b0378e2018013 in room 29498	d8e2002f
+492	1795389666	corpse	created	P6adca00b00079e30	Trentlin	c6b0378e2018013	death	-	made in room 29498 holding 56 objects; death snapshot Trentlin.20261122_232106.death	97b4930b
+493	1795389666	request	committed	P6adca00b00079e30	Trentlin	death:c6b0378e2018013	death	-	their save reached the disk	17265185
