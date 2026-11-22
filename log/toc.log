@@ -338285,3 +338285,10 @@ Sun Nov 22 22:08:19 2026 :: Connection guard: 3.149.57.90 closed without a word 
 Sun Nov 22 22:10:17 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Sun Nov 22 22:13:08 2026 :: Treasure goblin: vanished from room 18043 (A long hallway, icekeep.are) (too long in one area).
 Sun Nov 22 22:13:23 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 46 refused in all, pause 5 this week, 4994 minutes left).
+Sun Nov 22 22:17:39 2026 :: Sock.sinaddr:  52.167.144.25
+Sun Nov 22 22:17:40 2026 :: EOF encountered on read.
+Sun Nov 22 22:17:40 2026 :: Connection guard: 52.167.144.25 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sun Nov 22 22:18:29 2026 :: Connection guard: refused 1 connection from 52.22.236.30 (paused; 32 refused in all, pause 4 this week, 2307 minutes left).
+Sun Nov 22 22:19:34 2026 :: Log Alaric [2497]: quit
+Sun Nov 22 22:19:34 2026 :: Alaric has quit.
+Sun Nov 22 22:19:34 2026 :: [QUIT] Player rejoined the real world.
