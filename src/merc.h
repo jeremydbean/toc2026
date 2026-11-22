@@ -4309,6 +4309,11 @@ OBJ_DATA *get_manipulation_here( CHAR_DATA *ch, char *arg );
 void    affect_to_char  ( CHAR_DATA *ch, AFFECT_DATA *paf );
 void    affect_to_obj   ( OBJ_DATA *obj, AFFECT_DATA *paf );
 void    affect_remove   ( CHAR_DATA *ch, AFFECT_DATA *paf );
+/* What grants a character each immunity now: race or prototype, immunity
+   affects (`leaving` passed over once), worn gear, the Hero Quest. */
+long    immunity_sources ( CHAR_DATA *ch, const AFFECT_DATA *leaving );
+void    immunity_lift   ( CHAR_DATA *ch, long bits, const AFFECT_DATA *leaving );
+void    immunity_rebuild ( CHAR_DATA *ch );
 void    affect_remove_obj (OBJ_DATA *obj, AFFECT_DATA *paf );
 void    affect_strip    ( CHAR_DATA *ch, int sn );
 bool    is_affected     ( CHAR_DATA *ch, int sn );

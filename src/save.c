@@ -3300,6 +3300,17 @@ read_done:
     /* A sentence from before JailInfo, or none (jail.c). */
     if ( found )
         jail_load_fixup( ch );
+    /* Immunities: imm_flags is never saved, and the loader linked the
+       saved affects and worn objects without applying them, so every
+       source gives its immunity again here (handler.c; review,
+       2026-11-22: an iron skin and the Hero Quest came back immune to
+       nothing). A pet's affects were linked the same way. */
+    if ( found )
+    {
+        immunity_rebuild( ch );
+        if ( ch->pet != NULL )
+            immunity_rebuild( ch->pet );
+    }
     /* And tutorial bits this build has no step or station for. */
     if ( found )
         tutorial_load_fixup( ch );

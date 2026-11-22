@@ -1490,12 +1490,13 @@ static int unequip_leaving;
  * What still gives a bit: the character's own -- a player's race (imm_flags
  * is never saved; a login is the race plus the affects), a mobile's
  * prototype -- any other affect, and anything worn, as equip_char applies
- * it. `leaving` is the affect going: affect_remove asks while it is still
- * linked, so one occurrence of that pointer is passed over; unequip_char
- * asks after the object is off, so a worn twin sharing its prototype's
- * affect is still counted.
+ * it, and the Hero Quest (on_quest: magic). `leaving` is the affect going:
+ * affect_remove asks while it is still linked, so one occurrence of that
+ * pointer is passed over; unequip_char asks after the object is off, so a
+ * worn twin sharing its prototype's affect is still counted.
+ * immunity_sources is that list, and immunity_rebuild sets it at load.
  */
-static void immunity_lift( CHAR_DATA *ch, long bits, const AFFECT_DATA *leaving )
+long immunity_sources( CHAR_DATA *ch, const AFFECT_DATA *leaving )
 {
     long still = 0;
     bool skipped = false;
@@ -1506,6 +1507,9 @@ static void immunity_lift( CHAR_DATA *ch, long bits, const AFFECT_DATA *leaving 
         still |= ch->pIndexData != NULL ? ch->pIndexData->imm_flags : 0;
     else if ( ch->race >= 0 && race_table[ch->race].name != NULL )
         still |= race_table[ch->race].imm;
+    /* The Hero Quest (special.c): immune to magic while it lasts. */
+    if ( !IS_NPC(ch) && ch->pcdata != NULL && ch->pcdata->on_quest )
+        still |= IMM_MAGIC;
     for ( af = ch->affected; af != NULL; af = af->next )
     {
         if ( af == leaving && !skipped )
@@ -1527,7 +1531,27 @@ static void immunity_lift( CHAR_DATA *ch, long bits, const AFFECT_DATA *leaving 
             if ( af->location == APPLY_IMMUNITY )
                 still |= (long)(unsigned short) af->modifier;
     }
-    REMOVE_BIT( ch->imm_flags, bits & ~still );
+    return still;
+}
+
+void immunity_lift( CHAR_DATA *ch, long bits, const AFFECT_DATA *leaving )
+{
+    REMOVE_BIT( ch->imm_flags, bits & ~immunity_sources( ch, leaving ) );
+}
+
+/*
+ * At load, every source gives its immunity again (review, 2026-11-22). A
+ * player's imm_flags is never saved, and fread_char links saved affects
+ * straight onto the character, never through affect_modify, and puts worn
+ * objects on without equip_char -- so an iron skin that had drawn slashing
+ * came back from a reconnect listed by AFFECTS and immune to nothing, and
+ * the Hero Quest's magic was gone. Only adds: what the loader already set
+ * (the race's) stays.
+ */
+void immunity_rebuild( CHAR_DATA *ch )
+{
+    if ( ch != NULL )
+        SET_BIT( ch->imm_flags, immunity_sources( ch, NULL ) );
 }
 
 void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd )

@@ -5255,7 +5255,19 @@ skin), and a baura's magic immunity from under a standing dominion shield.
 `affect_remove` asks while the affect is still linked (one occurrence of
 it is passed over); `unequip_char` after the object is off. A new source
 of immunity is counted there too (`tests/test_review_nov22.py`, the iron
-statue, fixture mob 32701).
+statue, fixture mob 32701). **`immunity_sources(ch, leaving)` is that list**
+-- race or prototype, every `APPLY_IMMUNITY` affect, worn gear, and the
+Hero Quest (`on_quest`: magic) -- and **`immunity_rebuild` gives every
+source its bit again at load** (end of `load_char_obj`, the pet too): a
+player's `imm_flags` is never saved and the loader links affects and worn
+objects without applying them, so an iron skin that had drawn slashing, or
+the Hero Quest's magic, came back from a reconnect immune to nothing
+(review of 32d65755). The quest's two endings ask `immunity_lift( ch,
+IMM_MAGIC, NULL )` after clearing `on_quest`, never a bare REMOVE_BIT. A
+new source of immunity goes into `immunity_sources`
+(`tests/test_immunity_reload.py`). The Hero Quest itself is out of play:
+its commands are commented out of the command table and no reset places
+its master (mob 7551).
 
 `set skill <char> all` skips abilities no class can reach, which is what
 kept these two out of players' skill lists.
@@ -7659,14 +7671,30 @@ reaches GitHub. `src/logtrim.c`: past `log_trim_limit()` (`GAME_LOG_MAX`,
 `log_file_keep_tail` (asked every 256 lines by `log_string`, every 64 events
 by `write_web_admin_event`), and every line cut is first counted into
 `log/toc-summary.tsv` -- `day, source, kind, key, count`, kinds login,
-commands, level, quest, death, bug, anomaly, memory, event, guard, other.
-A key never holds an address or host name (guard and address lines are
-counted with key `-`; logins keep the name before the `@`), and digits in
-it are `#`. The tail is copied aside first and the summary written second,
-so a summary that does not land cuts nothing and a copy that fails sums
-nothing; a failed cut is not tried again for `LOG_TRIM_RETRY_SECS` (ten
-minutes), and `log_string` sets its handle NULL before trimming, since a
-failed commit logs through it (`tests/test_review_nov22.py`). The full lines stay
+commands (typed commands, socials and refusals only), level, quest (by
+area file), death, kill, watch (the watch log's other events -- arrivals,
+coin, items, alignment, affects, the Oracle -- by a fixed word:
+`watch_event_word`), bug, anomaly, memory, event, guard, other (review of
+32d65755: every watch-log line was a "command", arrivals most of all, and
+"killed X" a death). **A key never holds an address, host name, path or
+mail address** (`summary_safe_key`: digits are `#`, any word with `.`,
+`@`, `/`, `\`, `=` or an inner `:` is `*`; address and connection lines,
+`input spamming`/`input overflow` included, are `guard` with key `-`,
+asked before BUG; logins keep the name before the `@`) -- a host's
+`input spamming!` line had kept its host name. **A trim is idempotent**:
+the tail is copied aside, then the cut lines are written as one batch
+ending in `#batch <source> <dev> <inode> <bytes> <fnv64> <epoch>`, flushed
+to disk, and only then is the copy renamed over the log. A rename refused
+or a crash after the batch leaves the log whole, and the next trim, finding
+the marker naming the same inode whose first `<bytes>` still check, sums
+only what follows; rows no marker closes are a batch cut short, cut off
+before the next batch and never counted by readers (`summary_rows`). A
+failure before the batch lands sums and cuts nothing; a failed cut waits
+`LOG_TRIM_RETRY_SECS` (ten minutes; `TOC_LOG_TRIM_RETRY_SECS` for tests),
+and `log_string` sets its handle NULL before trimming, since a failed
+commit logs through it. Fault points `logtrim-commit`, `logtrim-crash`,
+`logtrim-torn` (`tests/test_log_trim_recovery.py`, which holds each cut
+line to once: still in the log or in one closed batch). The full lines stay
 in git's history. `tools/log_report.py` reads the file (`summary_rows`,
 "summed from trimmed logs"). `toc-state-sync-check` also warns staff of any
 committed file past `BIG_FILE_MB` (50) and of memory under a tenth of the

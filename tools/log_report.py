@@ -535,16 +535,22 @@ def merge_sittings(rows):
 def summary_rows(text: str, since) -> list:
     """log/toc-summary.tsv: what src/logtrim.c cut from toc.log and the
     dashboard's event log, summed per day -- (day, source, kind, key, count)
-    for days on or after since. Comment lines and malformed rows are left out."""
-    out = []
+    for days on or after since. Each trim's rows end with a "#batch" line;
+    rows no such line closes are a batch a crash cut short (the next trim
+    cuts them off) and are left out, as are comments and malformed rows."""
+    out, pending = [], []
     first = since.strftime("%Y-%m-%d")
     for raw in text.splitlines():
+        if raw.startswith("#batch\t"):
+            out.extend(pending)
+            pending = []
+            continue
         if raw.startswith("#"):
             continue
         f = raw.split("\t")
         if len(f) != 5 or not f[4].isdigit() or f[0] < first:
             continue
-        out.append((f[0], f[1], f[2], f[3], int(f[4])))
+        pending.append((f[0], f[1], f[2], f[3], int(f[4])))
     return out
 
 

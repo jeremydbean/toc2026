@@ -337,7 +337,9 @@ class ReportHeadingTests(unittest.TestCase):
         self.assertEqual([(r[1], r[2], r[3]) for r in log_report.player_reports(play, since)],
                          [("bug", "Zed", "something broke")])
         summary = ("# header\n2026-11-19\ttoc\tbug\told\t2\n"
-                   "2026-11-21\ttoc\tbug\tnew #\t3\nbroken line\n")
+                   "2026-11-21\ttoc\tbug\tnew #\t3\nbroken line\n"
+                   "#batch\ttoc\t1\t2\t3\t00ff\t4\n"
+                   "2026-11-21\ttoc\tbug\ttorn\t9\n")
         self.assertEqual(log_report.summary_rows(summary, since),
                          [("2026-11-21", "toc", "bug", "new #", 3)])
         source = (ROOT / "tools" / "log_report.py").read_text()

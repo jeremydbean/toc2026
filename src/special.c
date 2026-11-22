@@ -3388,6 +3388,8 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
      snprintf(buf, sizeof(buf),"%s has embarked on a Hero Quest.", ch->name);
      send_info(buf);
      ch->pcdata->on_quest = true;
+     /* A source immunity_sources counts, so it is given again at every
+        login (immunity_rebuild) and outlives a magic ward wearing off. */
      SET_BIT(ch->imm_flags, IMM_MAGIC);
 
      /* assign quest items, give first clue */
@@ -3468,7 +3470,8 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	  send_info(buf);
 	  ch->level = 51;
 	  advance_level(ch,false);
- 	  REMOVE_BIT(ch->imm_flags, IMM_MAGIC);
+	  /* Off only if nothing else gives it (on_quest is false now). */
+	  immunity_lift( ch, IMM_MAGIC, NULL );
 	  REMOVE_BIT(ch->act, PLR_NOFOLLOW);
 	  save_char_obj(ch);
 	  return true;
@@ -3585,7 +3588,9 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
      free_string(ch->pcdata->title);
      ch->pcdata->title = str_dup(" has not lived up to the challenge!");
      ch->pcdata->title_custom = false;   /* a level-up may replace it */
-     REMOVE_BIT(ch->imm_flags, IMM_MAGIC);
+     /* Off only if nothing else gives it (on_quest is false now): a
+        baura or a worn ward keeps it (review, 2026-11-22). */
+     immunity_lift( ch, IMM_MAGIC, NULL );
      REMOVE_BIT(ch->act, PLR_NOFOLLOW);
      save_char_obj(ch);
      return true;

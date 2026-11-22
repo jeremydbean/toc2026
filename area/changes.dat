@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261122immunerelog 2026-11-22
+An immunity a spell gave you now survives logging out and back in.  An
+iron skin that had made you immune to slashing came back from a reconnect
+still listed by AFFECTS but immune to nothing; it is immune as it should
+be now, until it wears off.
+
 @ 20261122saves 2026-11-22
 HELP SAVES (or HELP SAVING THROW) explains saving throws: how the chance
 to shrug off a spell is reckoned and what improves it.  HELP JUG finds
