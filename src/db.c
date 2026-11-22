@@ -6461,18 +6461,24 @@ void log_string( const char *str )
             since_check = 0;
             if ( size > log_trim_limit( ) )
             {
-                bool cut;
+                int cut;
 
+                /* NULL while it is closed: a failed cut says so through
+                   bug() and log_string, which must find no handle rather
+                   than write through a closed one. */
                 fclose( log_fp );
+                log_fp = NULL;
                 cut = log_file_keep_tail( GAME_LOG_FILE, log_trim_limit( ) / 2, LOG_DIGEST_GAME );
                 log_fp = fopen( GAME_LOG_FILE, "a" );
                 if ( log_fp != NULL )
-                {
                     setvbuf( log_fp, NULL, _IOLBF, 0 );
+                if ( log_fp != NULL && cut != LOG_TRIM_SKIPPED )
+                {
                     fprintf( log_fp, "%s :: Log: toc.log %s at %ld bytes; the older "
                              "lines are summed in log/toc-summary.tsv and kept in "
                              "git's history.\n", strtime,
-                             cut ? "trimmed to its newest half" : "could not be trimmed",
+                             cut == LOG_TRIM_CUT ? "trimmed to its newest half"
+                             : "could not be trimmed (tried again in ten minutes)",
                              size );
                 }
             }

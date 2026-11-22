@@ -385,13 +385,22 @@ static bool digest_write( DIGEST *dg )
 
 /*
  * Keep a log's newest `keep` bytes, from the start of a line, after summing
- * every line cut into LOG_SUMMARY_FILE. The tail is copied aside and
- * renamed in (temp_file_commit), so a full disk or a crash keeps the old
- * file whole; a summary that did not land cuts nothing. True when the file
- * was cut. Never calls log_string (log_string calls it).
+ * every line cut into LOG_SUMMARY_FILE. The tail is copied aside first, then
+ * the cut lines summed, then the copy renamed in (temp_file_commit), so a
+ * full disk or a crash keeps the old file whole, a summary that did not land
+ * cuts nothing, and a copy that failed sums nothing (the next try would count
+ * the same lines again). A failure is not tried again for
+ * LOG_TRIM_RETRY_SECS: the callers ask every few hundred lines, and a cut
+ * that cannot work (a log directory gone read-only, a summary that is not a
+ * file) would otherwise read the whole log and say it failed each time.
+ * Answers LOG_TRIM_CUT, LOG_TRIM_FAILED, or LOG_TRIM_SKIPPED when there was
+ * nothing to cut or a failure is being waited out. A failed commit says so
+ * through log_string, so log_string closes its own handle and sets it NULL
+ * before calling this.
  */
-bool log_file_keep_tail( const char *path, long keep, int digest )
+int log_file_keep_tail( const char *path, long keep, int digest )
 {
+    static time_t failed_at[2];
     char temp[512];
     char line[MAX_STRING_LENGTH];
     char block[65536];
@@ -399,29 +408,70 @@ bool log_file_keep_tail( const char *path, long keep, int digest )
     FILE *in, *out;
     DIGEST dg;
     long target;
+    long tail_at = -1;
     size_t n;
     bool whole = true;
+    bool copied = true;
+    int slot = digest == LOG_DIGEST_EVENTS ? 1 : 0;
+    time_t now = time( NULL );
 
+    if ( failed_at[slot] != 0 && now >= failed_at[slot]
+    &&   now - failed_at[slot] < LOG_TRIM_RETRY_SECS )
+        return LOG_TRIM_SKIPPED;
     if ( keep <= 0 || !toc_path_join( temp, sizeof(temp), path, "", ".tmp" ) )
-        return false;
+        return LOG_TRIM_SKIPPED;
     if ( stat( path, &st ) != 0 || !S_ISREG( st.st_mode ) || (long) st.st_size <= keep )
-        return false;
+        return LOG_TRIM_SKIPPED;
+    failed_at[slot] = now;          /* cleared below once the cut lands */
     if ( ( in = fopen( path, "rb" ) ) == NULL )
-        return false;
+        return LOG_TRIM_FAILED;
     target = (long) st.st_size - keep;
 
+    /* Where the kept tail starts: the first line beginning at or past the
+       target. */
+    while ( fgets( line, sizeof(line), in ) != NULL )
+    {
+        size_t len = strlen( line );
+
+        if ( len > 0 && line[len - 1] == '\n' && ftell( in ) >= target )
+        {
+            tail_at = ftell( in );
+            break;
+        }
+    }
+    if ( ferror( in ) || tail_at < 0 || ( out = fopen( temp, "wb" ) ) == NULL )
+    {
+        fclose( in );
+        return LOG_TRIM_FAILED;
+    }
+    while ( ( n = fread( block, 1, sizeof(block), in ) ) > 0 )
+        if ( fwrite( block, 1, n, out ) != n )
+        {
+            copied = false;
+            break;
+        }
+    if ( !copied || ferror( in ) || fflush( out ) != 0 || ferror( out ) )
+    {
+        fclose( in );
+        fclose( out );
+        remove( temp );
+        return LOG_TRIM_FAILED;
+    }
+
+    /* The lines before the tail, each counted once: a line longer than the
+       buffer is counted from its first piece and the rest passed over. */
     dg.rows = calloc( DIGEST_SLOTS, sizeof(DIGEST_ROW) );
     dg.overflow = 0;
     dg.source = digest == LOG_DIGEST_EVENTS ? "events" : "toc";
-    if ( dg.rows == NULL )
+    if ( dg.rows == NULL || fseek( in, 0L, SEEK_SET ) != 0 )
     {
+        free( dg.rows );
         fclose( in );
-        return false;
+        fclose( out );
+        remove( temp );
+        return LOG_TRIM_FAILED;
     }
-
-    /* The lines before the cut, each counted once: a line longer than the
-       buffer is counted from its first piece and the rest passed over. */
-    while ( fgets( line, sizeof(line), in ) != NULL )
+    while ( ftell( in ) < tail_at && fgets( line, sizeof(line), in ) != NULL )
     {
         size_t len = strlen( line );
         bool ends = len > 0 && line[len - 1] == '\n';
@@ -432,32 +482,19 @@ bool log_file_keep_tail( const char *path, long keep, int digest )
             digest_line( &dg, digest, line );
         }
         whole = ends;
-        if ( ends && ftell( in ) >= target )
-            break;
     }
     if ( ferror( in ) || !digest_write( &dg ) )
     {
         free( dg.rows );
         fclose( in );
-        return false;
-    }
-    free( dg.rows );
-
-    if ( ( out = fopen( temp, "wb" ) ) == NULL )
-    {
-        fclose( in );
-        return false;
-    }
-    while ( ( n = fread( block, 1, sizeof(block), in ) ) > 0 )
-        if ( fwrite( block, 1, n, out ) != n )
-            break;
-    if ( ferror( in ) )
-    {
-        fclose( in );
         fclose( out );
         remove( temp );
-        return false;
+        return LOG_TRIM_FAILED;
     }
+    free( dg.rows );
     fclose( in );
-    return temp_file_commit( out, temp, path );
+    if ( !temp_file_commit( out, temp, path ) )
+        return LOG_TRIM_FAILED;
+    failed_at[slot] = 0;
+    return LOG_TRIM_CUT;
 }

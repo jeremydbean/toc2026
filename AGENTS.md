@@ -7652,7 +7652,11 @@ by `write_web_admin_event`), and every line cut is first counted into
 commands, level, quest, death, bug, anomaly, memory, event, guard, other.
 A key never holds an address or host name (guard and address lines are
 counted with key `-`; logins keep the name before the `@`), and digits in
-it are `#`. A summary that does not land cuts nothing. The full lines stay
+it are `#`. The tail is copied aside first and the summary written second,
+so a summary that does not land cuts nothing and a copy that fails sums
+nothing; a failed cut is not tried again for `LOG_TRIM_RETRY_SECS` (ten
+minutes), and `log_string` sets its handle NULL before trimming, since a
+failed commit logs through it (`tests/test_review_nov22.py`). The full lines stay
 in git's history. `tools/log_report.py` reads the file (`summary_rows`,
 "summed from trimmed logs"). `toc-state-sync-check` also warns staff of any
 committed file past `BIG_FILE_MB` (50) and of memory under a tenth of the

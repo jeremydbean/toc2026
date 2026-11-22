@@ -3805,7 +3805,11 @@ void    write_web_admin_event ( const char *channel, const char *message,
 #define LOG_DIGEST_GAME         0       /* toc.log: "<ctime> :: text" */
 #define LOG_DIGEST_EVENTS       1       /* webadmin-events.tsv: epoch, channel, level, text */
 long    log_trim_limit          ( void );
-bool    log_file_keep_tail      ( const char *path, long keep, int digest );
+#define LOG_TRIM_SKIPPED        0       /* nothing to cut, or waiting after a failure */
+#define LOG_TRIM_CUT            1
+#define LOG_TRIM_FAILED         (-1)
+#define LOG_TRIM_RETRY_SECS     600     /* a failed cut is not tried again sooner */
+int     log_file_keep_tail      ( const char *path, long keep, int digest );
 
 #define LOGIN_JOURNAL_FILE      "../log/logins.tsv"
 #define CHANNEL_JOURNAL_FILE    "../log/channels.tsv"

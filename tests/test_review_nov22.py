@@ -295,6 +295,39 @@ class LogTrimTests(unittest.TestCase):
         self.assertNotRegex(summary, r"192\.0\.2", "no address in the summary")
         self.assertIn("lines are summed in log/toc-summary.tsv", toc)
 
+    def test_a_trim_that_cannot_land_waits_and_cuts_nothing(self) -> None:
+        # The summary is a directory, so every cut fails before anything is
+        # renamed. It used to be tried again (the whole log read, a notice
+        # written) every 256 lines -- under the test limit, every line.
+        limit = 65536
+        with LiveMud(extra_env={"TOC_LOG_TRIM_BYTES": str(limit)}) as mud:
+            logs = mud.root / "log"
+            (logs / "toc-summary.tsv").mkdir()
+            stamp = "Sat Nov 21 10:00:00 2026"
+            with open(logs / "toc.log", "a", encoding="latin-1") as fp:
+                for n in range(2000):
+                    fp.write(f"{stamp} :: Log Zrvsome [4207]: look {n}\n")
+            make(mud, "Zrvwaiter", Levl=10, Room=TEMPLE)
+            with mud.connect(timeout=120) as hero:
+                login(hero, "Zrvwaiter", PW)
+                for _ in range(5):
+                    hero.sync("look")
+                hero.send("quit")
+                hero.wait_closed()
+            toc = (logs / "toc.log").read_text(encoding="latin-1", errors="replace")
+        self.assertGreater(len(toc), limit, "nothing was cut")
+        self.assertIn("Log Zrvsome [4207]: look 0", toc, "the oldest lines are kept")
+        self.assertEqual(toc.count("could not be trimmed"), 1,
+                         "one failure said once, then waited out")
+        self.assertNotIn("trimmed to its newest half", toc)
+
+    def test_the_log_handle_is_let_go_before_a_trim(self) -> None:
+        # A failed commit says so through log_string; with the handle closed
+        # and not cleared, that wrote through a freed FILE.
+        source = (ROOT / "src" / "db.c").read_text(encoding="latin-1")
+        at = source.index("cut = log_file_keep_tail( GAME_LOG_FILE")
+        self.assertIn("log_fp = NULL;", source[at - 300:at])
+
 
 class ReportHeadingTests(unittest.TestCase):
     def test_player_reports_and_summaries_are_read(self) -> None:
