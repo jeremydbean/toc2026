@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261122saves 2026-11-22
+HELP SAVES (or HELP SAVING THROW) explains saving throws: how the chance
+to shrug off a spell is reckoned and what improves it.  HELP JUG finds
+the page on drinking, and DRINK of a potion says to QUAFF it.
+
 @ 20261122despair 2026-11-22
 When DESPAIR drives your opponent off but it finds no way out, you are
 told so -- "But it finds no way out!" -- and your own flight goes on

@@ -402,11 +402,24 @@ def main() -> int:
     for player, count in per_player.most_common():
         print(f"  {player:<14} {count} commands")
 
-    print(f"\n== bugs ({sum(len(v) for v in bugs.values())})")
+    # Player reports first, under their own heading: the game's BUG: lines
+    # below were headed "bugs (0)" while three players' BUG reports sat far
+    # down in the play journal section (review, 2026-11-22).
+    reports = player_reports(git_show(args.ref, "log/play.tsv"), since, args.player)
+    print(f"\n== player reports: BUG, TYPO and IDEA typed by players ({len(reports)})")
+    for when, kind, player, text in reports[-20:]:
+        print(f"  {when:%m-%d %H:%M} {kind.upper():<5} {player:<12} {clean(text)[:200]}")
+    if not reports:
+        print("  (none)")
+
+    print(f"\n== game BUG: lines in log/toc.log, not player reports "
+          f"({sum(len(v) for v in bugs.values())})")
     for message, hits in sorted(bugs.items(), key=lambda kv: -len(kv[1]))[:20]:
         print(f"  x{len(hits):<4} {clean(message)}  (first {hits[0][0]:%m-%d %H:%M})")
         for before in hits[0][1][-3:]:
             print(f"         before: {before[:110]}")
+
+    summary_report(args, since)
 
     print("\n== refused commands")
     for player, words in sorted(unknown.items()):
@@ -517,6 +530,55 @@ def merge_sittings(rows):
             open_at[r[2]] = (start, len(merged))
         merged.append(r)
     return [r for r in merged if r is not None]
+
+
+def summary_rows(text: str, since) -> list:
+    """log/toc-summary.tsv: what src/logtrim.c cut from toc.log and the
+    dashboard's event log, summed per day -- (day, source, kind, key, count)
+    for days on or after since. Comment lines and malformed rows are left out."""
+    out = []
+    first = since.strftime("%Y-%m-%d")
+    for raw in text.splitlines():
+        if raw.startswith("#"):
+            continue
+        f = raw.split("\t")
+        if len(f) != 5 or not f[4].isdigit() or f[0] < first:
+            continue
+        out.append((f[0], f[1], f[2], f[3], int(f[4])))
+    return out
+
+
+def summary_report(args, since) -> None:
+    rows = summary_rows(git_show(args.ref, "log/toc-summary.tsv"), since)
+    if not rows:
+        return
+    days = sorted({r[0] for r in rows})
+    print(f"\n== summed from trimmed logs ({days[0]} to {days[-1]}; log/toc-summary.tsv)")
+    totals = defaultdict(Counter)
+    for day, source, kind, key, count in rows:
+        if args.player and kind in ("login", "commands", "level") and key.lower() != args.player.lower():
+            continue
+        totals[f"{source} {kind}"][key] += count
+    for kind, keys in sorted(totals.items()):
+        top = ", ".join(f"{clean(k)} x{n}" for k, n in keys.most_common(6))
+        print(f"  {kind:<16} {sum(keys.values()):>7}  {top[:180]}")
+
+
+def player_reports(text: str, since, player=None) -> list:
+    """BUG, TYPO and IDEA rows from log/play.tsv: (when, kind, player, text).
+
+    The journal's `report` row is epoch, report, name, level, room, area,
+    then the kind, the text, hit points and the last commands."""
+    out = []
+    for raw in text.splitlines():
+        f = raw.split("\t")
+        if len(f) < 8 or f[1] != "report" or not f[0].isdigit():
+            continue
+        when = datetime.fromtimestamp(int(f[0]), timezone.utc)
+        if when < since or (player and f[2].lower() != player.lower()):
+            continue
+        out.append((when, f[6], f[2], f[7]))
+    return out
 
 
 def journal_report(args, since, buffs=None) -> None:

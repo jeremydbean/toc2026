@@ -1480,6 +1480,56 @@ static int unequip_leaving;
 /*
  * Apply or remove an affect to a character.
  */
+/*
+ * An immunity an affect or a worn object gave goes when that source does --
+ * but only the bits nothing else still gives (review, 2026-11-22). It was a
+ * bare REMOVE_BIT, so an iron skin that drew piercing took a mobile's own
+ * piercing immunity with it for good when it wore off (mobiles cast iron
+ * skin too), a baura falling under a standing dominion shield took the
+ * shield's magic immunity, and a ring of immunity taken off took its twin's.
+ * What still gives a bit: the character's own -- a player's race (imm_flags
+ * is never saved; a login is the race plus the affects), a mobile's
+ * prototype -- any other affect, and anything worn, as equip_char applies
+ * it. `leaving` is the affect going: affect_remove asks while it is still
+ * linked, so one occurrence of that pointer is passed over; unequip_char
+ * asks after the object is off, so a worn twin sharing its prototype's
+ * affect is still counted.
+ */
+static void immunity_lift( CHAR_DATA *ch, long bits, const AFFECT_DATA *leaving )
+{
+    long still = 0;
+    bool skipped = false;
+    AFFECT_DATA *af;
+    OBJ_DATA *obj;
+
+    if ( IS_NPC(ch) )
+        still |= ch->pIndexData != NULL ? ch->pIndexData->imm_flags : 0;
+    else if ( ch->race >= 0 && race_table[ch->race].name != NULL )
+        still |= race_table[ch->race].imm;
+    for ( af = ch->affected; af != NULL; af = af->next )
+    {
+        if ( af == leaving && !skipped )
+        {
+            skipped = true;
+            continue;
+        }
+        if ( af->location == APPLY_IMMUNITY )
+            still |= (long)(unsigned short) af->modifier;
+    }
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    {
+        if ( obj->wear_loc == WEAR_NONE )
+            continue;
+        for ( af = obj->pIndexData->affected; af != NULL; af = af->next )
+            if ( af->location == APPLY_IMMUNITY )
+                still |= (long)(unsigned short) af->modifier;
+        for ( af = obj->affected; af != NULL; af = af->next )
+            if ( af->location == APPLY_IMMUNITY )
+                still |= (long)(unsigned short) af->modifier;
+    }
+    REMOVE_BIT( ch->imm_flags, bits & ~still );
+}
+
 void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd )
 {
     OBJ_DATA *wield;
@@ -1552,7 +1602,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd )
     case APPLY_SAVING_SPELL:  ch->saving_throw          += mod; break;
     case APPLY_IMMUNITY:
 	if (fAdd) SET_BIT(ch->imm_flags, (long)(unsigned short)paf->modifier);
-	else      REMOVE_BIT(ch->imm_flags, (long)(unsigned short)paf->modifier);
+	else      immunity_lift( ch, (long)(unsigned short)paf->modifier, paf );
 	break;
     }
 

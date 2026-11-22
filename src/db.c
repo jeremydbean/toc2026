@@ -6442,8 +6442,41 @@ void log_string( const char *str )
 
     if ( log_fp != NULL )
     {
+        static int since_check = 0;
+
         /* Line buffered at open, so the newline already flushes it. */
         fprintf( log_fp, "%s :: %s\n", strtime, str );
+
+        /* Kept to its newest half past log_trim_limit() (review,
+           2026-11-22): it only ever grew -- 23 MB by Nov 22, two and a half
+           a week -- and the state sync commits it whole, and GitHub refuses
+           any push holding a file over 100 MB: every player save would have
+           stopped reaching GitHub with nothing saying why, the way the full
+           disk stopped them that morning. What is cut is in git's history. */
+        /* Asked every 256 lines; every line under a test's small limit. */
+        if ( ++since_check >= ( log_trim_limit( ) < GAME_LOG_MAX ? 1 : 256 ) )
+        {
+            long size = ftell( log_fp );
+
+            since_check = 0;
+            if ( size > log_trim_limit( ) )
+            {
+                bool cut;
+
+                fclose( log_fp );
+                cut = log_file_keep_tail( GAME_LOG_FILE, log_trim_limit( ) / 2, LOG_DIGEST_GAME );
+                log_fp = fopen( GAME_LOG_FILE, "a" );
+                if ( log_fp != NULL )
+                {
+                    setvbuf( log_fp, NULL, _IOLBF, 0 );
+                    fprintf( log_fp, "%s :: Log: toc.log %s at %ld bytes; the older "
+                             "lines are summed in log/toc-summary.tsv and kept in "
+                             "git's history.\n", strtime,
+                             cut ? "trimmed to its newest half" : "could not be trimmed",
+                             size );
+                }
+            }
+        }
     }
 
     return;

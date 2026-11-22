@@ -5235,7 +5235,17 @@ builder can put it on a mobile.
 These two used to set `imm_flags` from a sweep in `update.c` that ran when
 any unrelated affect expired and tested "still affected" rather than "no
 longer affected" -- it would have stripped the immunity while the ward was
-standing, had anything ever granted one.
+standing, had anything ever granted one. **And it lifts only what nothing
+else still gives** (review, 2026-11-22): `immunity_lift` in `handler.c`
+keeps every bit the race (a player's `imm_flags` is never saved: a login is
+the race plus the affects), a mobile's prototype, another affect or a worn
+object still grants. The bare `REMOVE_BIT` it replaced took a mobile's own
+piercing immunity for good when its iron skin wore off (mobiles cast iron
+skin), and a baura's magic immunity from under a standing dominion shield.
+`affect_remove` asks while the affect is still linked (one occurrence of
+it is passed over); `unequip_char` after the object is off. A new source
+of immunity is counted there too (`tests/test_review_nov22.py`, the iron
+statue, fixture mob 32701).
 
 `set skill <char> all` skips abilities no class can reach, which is what
 kept these two out of players' skill lists.
@@ -7620,7 +7630,34 @@ carries `notes.txt` -- so a reply is posted once, at the boot of the
 deploy that ships its fix, and the player sees it as an unread note at
 login. Ids are never reused; say what was wrong, what changed and where
 to read more, in a player's words, and never name another player
-(`tests/test_bug_replies.py`).
+(`tests/test_bug_replies.py`). **A reply is posted only once there is no
+note from the Immortals to that player with exactly its subject**
+(`bug_reply_posted`, review 2026-11-22: any note whose subject held the
+"[id]" -- a player's own -- kept it from ever going out), the date is read
+strictly (`holiday_parse_date`: no Feb 31), an entry dated more than a day
+ahead waits for its day, and no character may be named Immortals
+(`check_parse_name`).
+
+## The Logs Are Bounded, And What Is Cut Is Summed
+
+Review and owner, 2026-11-22 ("compress by moving to a summary of useful
+data"). `log/toc.log` and `log/webadmin-events.tsv` only ever grew -- toc.log
+23 MB by then, about 2.5 MB a week -- and the state sync commits both whole;
+GitHub refuses a push holding any file over 100 MB, after which no save
+reaches GitHub. `src/logtrim.c`: past `log_trim_limit()` (`GAME_LOG_MAX`,
+32 MB; `TOC_LOG_TRIM_BYTES` for tests) each is cut to its newest half by
+`log_file_keep_tail` (asked every 256 lines by `log_string`, every 64 events
+by `write_web_admin_event`), and every line cut is first counted into
+`log/toc-summary.tsv` -- `day, source, kind, key, count`, kinds login,
+commands, level, quest, death, bug, anomaly, memory, event, guard, other.
+A key never holds an address or host name (guard and address lines are
+counted with key `-`; logins keep the name before the `@`), and digits in
+it are `#`. A summary that does not land cuts nothing. The full lines stay
+in git's history. `tools/log_report.py` reads the file (`summary_rows`,
+"summed from trimmed logs"). `toc-state-sync-check` also warns staff of any
+committed file past `BIG_FILE_MB` (50) and of memory under a tenth of the
+total (`MEMINFO`, `MEM_MIN_AVAIL_MB`), beside the disk warning
+(`tests/test_review_nov22.py`, `tests/test_host_actions.py`).
 
 ## The Players' Logs Of 2026-11-13
 

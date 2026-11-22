@@ -58,6 +58,46 @@ case "$free_mb" in
         fi ;;
 esac
 
+# Memory (review, 2026-11-22: nothing watched it). A game that leaks is
+# killed by the kernel when it runs out and systemd starts it again, so the
+# world comes back -- but everybody is cut off without a word and nobody is
+# told why. Said while available memory is under a tenth of the total or
+# MEM_MIN_AVAIL_MB, whichever is more.
+MEMINFO="${MEMINFO:-/proc/meminfo}"
+MEM_MIN_AVAIL_MB="${MEM_MIN_AVAIL_MB:-256}"
+if [ -r "$MEMINFO" ]; then
+    mem=$(awk '/^MemTotal:/ {t=$2} /^MemAvailable:/ {a=$2} END {if (t && a != "") print int(t/1024), int(a/1024)}' "$MEMINFO")
+    total_mb=${mem% *}
+    avail_mb=${mem#* }
+    case "$total_mb$avail_mb" in
+        ''|*[!0-9]*) ;;
+        *)
+            floor=$((total_mb / 10))
+            [ "$floor" -lt "$MEM_MIN_AVAIL_MB" ] && floor=$MEM_MIN_AVAIL_MB
+            if [ "$avail_mb" -lt "$floor" ]; then
+                echo "MEMORY LOW: ${avail_mb} of ${total_mb} MB available" >&2
+                logger -t toc-state-sync -p daemon.err "memory low: ${avail_mb} of ${total_mb} MB available" 2>/dev/null || true
+                tell_staff "The server is low on memory: ${avail_mb} of ${total_mb} MB available. If it runs out the game is killed and restarted, and everyone is cut off. MEMCHECK in game, and Server maintenance > Show the host's health, say what is using it."
+            fi ;;
+    esac
+fi
+
+# A file the sync commits past half GitHub's limit (review, 2026-11-22:
+# toc.log had grown to 23 MB and nothing trimmed it). GitHub refuses a push
+# holding a file over 100 MB, and then no save reaches GitHub at all. The
+# game trims its logs now (src/logtrim.c); this says so if anything else
+# grows that way.
+BIG_FILE_MB="${BIG_FILE_MB:-50}"
+if [ -d "$STATE_REPO" ]; then
+    big=$(find "$STATE_REPO" -path "$STATE_REPO/.git" -prune -o -type f -size +"${BIG_FILE_MB}"M -print 2>/dev/null \
+          | sed "s|^$STATE_REPO/||" | head -3 | tr '\n' ' ')
+    if [ -n "$big" ]; then
+        echo "FILES NEAR GITHUB'S LIMIT: $big" >&2
+        logger -t toc-state-sync -p daemon.err "files near GitHub's 100 MB limit: $big" 2>/dev/null || true
+        tell_staff "A file the backup commits is over ${BIG_FILE_MB} MB (${big% }). GitHub refuses any over 100 MB, and then no save reaches GitHub."
+    fi
+fi
+
 # A run in progress has no exit time yet -- systemd zeroes it at start --
 # which read as "99999 minutes ago" and announced a dead backup. It is not
 # rare: a deploy restarts both timers in the same second, and a 5- and a

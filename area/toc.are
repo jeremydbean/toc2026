@@ -1233,48 +1233,48 @@ identify           ignore             immortal           immortals
 immune             immunity           info               infravision
 intelligence       interest           inventory          invis
 invisspell         iron               iron skin          issue
-jazair             join               jump               junk
-kalak              keepsake           keepsake trophy    keepsakes
-kick               kill               killer             know alignment
-leaderboard        level              leveling           levitate
-lfg                life-undeath       light spells       lightning bolt
-lightning breath   link               list               listen at door
-locate object      lock               login              look
-looking for group  lore               lost mage          luck
-lucky              lycanthropy        mace               mage
-magic missile      magic user         magical shield     major globe
-maladiction        maladictions       man                mana convert
-map                mapper             mapping            maps
-market             marks              mass healing       mass invis
-mass sanctuary     master             master sword       mastery
-maze               meditation         merc               meteor swarm
-mind blast         mind leech         mindbar            mindblast
-mindleech          money cave         monk               moonbeam
-morgue             morgue of dresden  motd               mount
-move               mudlet             mudlet interface   mudschool
-multiclass         murde              murder             music
-ne                 necromancer        nerve damage       neutral
-neutrality field   new                newbie info        news
-night vision       nightmare          nofol              nofollow
-noloot             north              northeast          northwest
-nosummon           note               notes              nw
-odric              open               options            oracle
-order              outfit             palms              palms of the creator
-paragon            parched            parry              pass door
-password           peek               pet                pets
-phase              pick               pick lock          pkill
-pkilling           plague             play               poison
-poker              polearm            portal             pose
-potion of power    potion of the giant                   power gloves
-power potion       practice           practicelist       pray
-project            prompt             protection evil    protective
-psionic            psionic armor      psionics           psionist trainer
-pstealing          psychic            psychic shield     pull
-push               put                pyrotechnics       quaff
-quest              questing           question           questor
-questpoint         questpoints        qui                quiet
-quit               race               race help          races
-racial trainer     raise dead         rakar
+jazair             join               jug                jump
+junk               kalak              keepsake           keepsake trophy
+keepsakes          kick               kill               killer
+know alignment     leaderboard        level              leveling
+levitate           lfg                life-undeath       light spells
+lightning bolt     lightning breath   link               list
+listen at door     locate object      lock               login
+look               looking for group  lore               lost mage
+luck               lucky              lycanthropy        mace
+mage               magic missile      magic user         magical shield
+major globe        maladiction        maladictions       man
+mana convert       map                mapper             mapping
+maps               market             marks              mass healing
+mass invis         mass sanctuary     master             master sword
+mastery            maze               meditation         merc
+meteor swarm       mind blast         mind leech         mindbar
+mindblast          mindleech          money cave         monk
+moonbeam           morgue             morgue of dresden  motd
+mount              move               mudlet             mudlet interface
+mudschool          multiclass         murde              murder
+music              ne                 necromancer        nerve damage
+neutral            neutrality field   new                newbie info
+news               night vision       nightmare          nofol
+nofollow           noloot             north              northeast
+northwest          nosummon           note               notes
+nw                 odric              open               options
+oracle             order              outfit             palms
+palms of the creator                  paragon            parched
+parry              pass door          password           peek
+pet                pets               phase              pick
+pick lock          pkill              pkilling           plague
+play               poison             poker              polearm
+portal             pose               potion of power    potion of the giant
+power gloves       power potion       practice           practicelist
+pray               project            prompt             protection evil
+protective         psionic            psionic armor      psionics
+psionist trainer   pstealing          psychic            psychic shield
+pull               push               put                pyrotechnics
+quaff              quest              questing           question
+questor            questpoint         questpoints        qui
+quiet              quit               race               race help
+races              racial trainer     raise dead         rakar
 rakar the weaponsmaster               read               recall
 recite             red ring           redeem             refresh
 reissue            relics             remort             remort classes
@@ -1286,7 +1286,8 @@ restore mana       resurrection       ride               riding
 roll               rom                rope trick         roulette
 routelist          routes             rules              run
 ruthless           sacrifice          salir              sanctuary
-saurian            save               say                scan
+saurian            save               save vs            saves
+saving throw       saving throws      say                scan
 school trainer     score              screen reader      screenreader
 scribe             scroll             scroll of farslay  scrolls
 se                 search             second attack      secondary
@@ -1326,15 +1327,16 @@ vile               virtuous           visible            vorpal
 vortex             vulnerability      vulnerable         wake
 walk               walkto             wandering cartographer
 wands              wanted             warrior            water burst
-water spells       weaken             weapon             weapon flag
-weapon flags       weapon mastery     weapons            weaponsmaster
-weaponsmastery     wear               weather            weather group
-weather spells     weatherspells      web                webclient
-west               what next          where              where to hunt
-whip               who                whois              wield
-wimpy              wind spells        wisdom             withdraw
-wizlist            word of recall     world              worth
-xp                 yard               yell               zap
+water spells       waterskin          weaken             weapon
+weapon flag        weapon flags       weapon mastery     weapons
+weaponsmaster      weaponsmastery     wear               weather
+weather group      weather spells     weatherspells      web
+webclient          west               what next          where
+where to hunt      whip               who                whois
+wield              wimpy              wind spells        wisdom
+withdraw           wizlist            word of recall     world
+worth              xp                 yard               yell
+zap
 ~
 
 

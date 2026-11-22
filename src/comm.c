@@ -4479,6 +4479,10 @@ bool check_parse_name( char *name )
      */
     if ( is_name( name, "all auto immortal self someone something the you loner none" ) )
 	return FALSE;
+    /* The sender of the board's replies to players' reports (bugreply.c):
+       a character by that name could sign notes as the staff do. */
+    if ( !str_cmp( name, "immortals" ) )
+	return FALSE;
 
     if (str_cmp(capitalize(name),"Alander") && (!str_prefix("Aland",name)
     || !str_suffix("alander",name)))
@@ -5593,7 +5597,22 @@ void write_web_admin_event(const char *channel, const char *message, int level)
     event_time = current_time > 0 ? current_time : time(NULL);
     fprintf( fp, "%ld\t%s\t%d\t%s\n",
              (long)event_time, channel, level, clean );
-    fclose( fp );
+    {
+        /* Never trimmed before, like toc.log (logtrim.c): cut to its newest
+           half past the limit, what is cut summed in log/toc-summary.tsv. */
+        static int since_check = 0;
+        long size = ++since_check >= ( log_trim_limit( ) < GAME_LOG_MAX ? 1 : 64 )
+                    ? ftell( fp ) : 0;
+
+        fclose( fp );
+        if ( size > 0 )
+        {
+            since_check = 0;
+            if ( size > log_trim_limit( ) )
+                log_file_keep_tail( "../log/webadmin-events.tsv",
+                                    log_trim_limit( ) / 2, LOG_DIGEST_EVENTS );
+        }
+    }
 }
 
 

@@ -25,6 +25,7 @@
 #include <ctype.h>
 #include <time.h>
 #include "merc.h"
+#include "holiday_rules.h"
 
 #define BUG_REPLY_FILE   "bug_replies.dat"
 #define BUG_REPLY_DAYS   30
@@ -57,30 +58,37 @@ static bool bug_reply_id_ok( const char *id )
     return true;
 }
 
+/* The entry's date, at noon UTC, or 0 for one that is not a real date:
+   read exactly (holiday_parse_date), because sscanf's "%4d-%2d-%2d" took
+   2026-02-31 and mktime made it March 3, and took trailing text
+   (review, 2026-11-22). */
 static time_t bug_reply_date( const char *date )
 {
-    struct tm tm;
     int y, m, d;
 
-    if ( sscanf( date, "%4d-%2d-%2d", &y, &m, &d ) != 3
-    ||   y < 2000 || m < 1 || m > 12 || d < 1 || d > 31 )
+    if ( !holiday_parse_date( date, &y, &m, &d ) || y < 2000 )
         return 0;
-    memset( &tm, 0, sizeof(tm) );
-    tm.tm_year = y - 1900;
-    tm.tm_mon = m - 1;
-    tm.tm_mday = d;
-    tm.tm_hour = 12;
-    return mktime( &tm );
+    return (time_t) holiday_days_from_civil( y, m, d ) * 24 * 60 * 60
+         + 12 * 60 * 60;
 }
 
-static bool bug_reply_posted( const char *id )
+/* Posted already: a note from the Immortals to exactly that player with
+   exactly this reply's subject. It was any note whose subject held the
+   tag, so a player's own note titled "[<id>]" -- or anybody's, to
+   anybody -- kept the real reply from ever being posted (review,
+   2026-11-22). */
+static bool bug_reply_posted( const char *id, const char *player )
 {
-    char tag[64];
+    char subject[96];
     NOTE_DATA *pnote;
 
-    snprintf( tag, sizeof(tag), "[%s]", id );
+    snprintf( subject, sizeof(subject), "Re: your report [%s]", id );
     for ( pnote = note_list; pnote != NULL; pnote = pnote->next )
-        if ( pnote->subject != NULL && strstr( pnote->subject, tag ) != NULL )
+        if ( pnote->subject != NULL && pnote->sender != NULL
+        &&   pnote->to_list != NULL
+        &&   !strcmp( pnote->subject, subject )
+        &&   !str_cmp( pnote->sender, BUG_REPLY_SENDER )
+        &&   !str_cmp( pnote->to_list, player ) )
             return true;
     return false;
 }
@@ -139,12 +147,17 @@ static bool bug_reply_entry( const char *id, const char *date, const char *playe
         log_string( buf );
         return false;
     }
+    /* Too old, or not yet: an entry dated ahead waits for its day (a
+       day's grace for the zone it was written in), or it went out before
+       the fix it describes was live. */
     if ( current_time - when > (time_t) BUG_REPLY_DAYS * 24 * 60 * 60
-    ||   bug_reply_posted( id ) )
+    ||   when - current_time > (time_t) 24 * 60 * 60 )
         return false;
 
     toc_strlcpy( name, player, sizeof(name) );
     name[0] = (char) UPPER( name[0] );
+    if ( bug_reply_posted( id, name ) )
+        return false;
     if ( player_file_presence( name ) == PLAYER_FILE_ABSENT )
     {
         snprintf( buf, sizeof(buf), "Bug replies: no character %s for '%s'; skipped.",

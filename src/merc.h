@@ -3797,6 +3797,15 @@ void    write_web_admin_event ( const char *channel, const char *message,
 #define LEVEL_NEWBIE             10
 
 #define GAME_LOG_FILE           "../log/toc.log"
+/* toc.log and the dashboard's event log are cut to their newest half past
+   this (log_string, webadmin_event_log): GitHub refuses a file over 100 MB,
+   and the state sync commits both whole. TOC_LOG_TRIM_BYTES for tests. */
+#define GAME_LOG_MAX            ( 32L * 1024 * 1024 )
+#define LOG_SUMMARY_FILE        "../log/toc-summary.tsv"
+#define LOG_DIGEST_GAME         0       /* toc.log: "<ctime> :: text" */
+#define LOG_DIGEST_EVENTS       1       /* webadmin-events.tsv: epoch, channel, level, text */
+long    log_trim_limit          ( void );
+bool    log_file_keep_tail      ( const char *path, long keep, int digest );
 
 #define LOGIN_JOURNAL_FILE      "../log/logins.tsv"
 #define CHANNEL_JOURNAL_FILE    "../log/channels.tsv"

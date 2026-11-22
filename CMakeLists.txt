@@ -45,6 +45,7 @@ set(SRC_FILES
     src/container.c
     src/corpses.c
     src/db.c
+    src/logtrim.c
     src/disaster.c
     src/dummy.c
     src/dstring.c

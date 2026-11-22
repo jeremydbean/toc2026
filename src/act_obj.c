@@ -3574,7 +3574,14 @@ void do_drink( CHAR_DATA *ch, char *argument )
     switch ( obj->item_type )
     {
     default:
-	send_to_char( "You can't drink from that.\n\r", ch );
+	/* A crafted tea is a potion: "drink tea" was refused in words that
+	   did not say what would work (players' logs, 2026-11-16). */
+	if ( obj->item_type == ITEM_POTION )
+	    act( "$p is a potion: QUAFF it.", ch, obj, NULL, TO_CHAR );
+	else if ( obj->item_type == ITEM_FOOD || obj->item_type == ITEM_PILL )
+	    act( "$p is eaten, not drunk: EAT it.", ch, obj, NULL, TO_CHAR );
+	else
+	    send_to_char( "You can't drink from that.\n\r", ch );
 	break;
 
     case ITEM_FOUNTAIN:

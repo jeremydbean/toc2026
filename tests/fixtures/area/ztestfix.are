@@ -19,6 +19,23 @@ AB 0 0 S
 8 8 1 0
 0 0 M 0
 
+#32701
+iron statue fixture~
+an iron statue~
+An iron statue stands here, born immune to blunt, piercing and slashing blows.
+~
+A test fixture: a sentinel mobile whose prototype is immune to bash,
+pierce and slash, for holding an immunity that wears off against one the
+mobile was born with (tests/test_review_nov22.py).
+~
+human~
+AB 0 0 S
+27 3 27d20+325 25d27+160 5d4+7 17
+-8 -8 -8 -8
+0 EFG 0 0
+8 8 1 0
+0 0 M 0
+
 #0
 
 #OBJECTS

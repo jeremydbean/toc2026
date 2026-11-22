@@ -3187,15 +3187,32 @@ either in the Temple of Devota or in one of the guild halls in Dresden.
 See also: DROP, SACRIFICE, JUNK
 ~
 
-0 DRINK~
+0 DRINK JUG WATERSKIN~
 Syntax: drink <object>
 
-DRINK consumes a liquid from a drink container to quench your thirst.
+DRINK consumes a liquid from a drink container -- a jug, a waterskin, a
+fountain -- to quench your thirst.  A potion is QUAFFed, not drunk.
 Characters who become dehydrated suffer regeneration penalties, and left
 parched they lose hit points each tick and cannot sleep (see HUNGER).  Use
 FILL to refill empty drink containers from a fountain or pool.
 
 See also: EAT, FILL, QUAFF, HUNGER
+~
+
+0 SAVES 'SAVING THROW' 'SAVING THROWS' 'SAVE VS'~
+Most spells cast against you -- and some breath, poison and curses --
+give you a saving throw: a chance to shrug off the effect, or take half
+the damage.  The chance is
+
+    50% + 5% for each level you are above the caster
+        + 5% for each point of your saving throw below zero
+
+kept between 5% and 95%.  Lower is better: a saving throw of -10 is
+fifty points of chance better than 0.  Gear and spells marked "save vs
+spell", "save vs breath" and the like all count toward the one figure,
+and BLESS improves it.  COMPARE shows yours and what an item would change.
+
+See also: SAVE, COMPARE, BLESS
 ~
 
 0 EAT~

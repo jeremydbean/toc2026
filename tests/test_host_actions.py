@@ -558,5 +558,61 @@ class DiskWarningTests(unittest.TestCase):
                              r"^wizinfo\|60\|The server's disk is nearly full: \d+ MB free\.")
 
 
+class MemoryAndBigFileWarningTests(unittest.TestCase):
+    """toc-state-sync-check tells staff when memory runs low and when a file
+    the sync commits nears GitHub's 100 MB limit (review, 2026-11-22)."""
+
+    def run_check(self, root: Path, **extra) -> tuple[subprocess.CompletedProcess, str]:
+        check = ROOT / "deploy" / "windows-vm" / "toc-state-sync-check"
+        stubs = root / "bin"
+        stubs.mkdir(exist_ok=True)
+        (stubs / "systemctl").write_text(
+            "#!/bin/sh\ncase \"$*\" in\n"
+            "  *ActiveState*) echo inactive ;;\n"
+            "  *Result*) echo success ;;\n"
+            "  *Monotonic*) awk '{printf \"%d\", $1 * 1000000}' /proc/uptime ;;\n"
+            "esac\n")
+        (stubs / "logger").write_text("#!/bin/sh\nexit 0\n")
+        for stub in stubs.iterdir():
+            stub.chmod(0o755)
+        queue = root / "webadmin.queue"
+        queue.write_text("")
+        env = dict(os.environ, PATH=f"{stubs}:{os.environ['PATH']}", QUEUE=str(queue),
+                   MARKER=str(root / "status"), STATE_REPO=str(root / "none"),
+                   DISK_PATH=str(root), DISK_MIN_FREE_MB="1")
+        env.update(extra)
+        done = subprocess.run(["sh", str(check)], env=env, capture_output=True,
+                              text=True, timeout=60)
+        return done, queue.read_text()
+
+    def test_low_memory_is_a_wizinfo(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            meminfo = root / "meminfo"
+            meminfo.write_text("MemTotal:       8000000 kB\nMemAvailable:   6000000 kB\n")
+            done, said = self.run_check(root, MEMINFO=str(meminfo))
+            self.assertNotIn("MEMORY LOW", done.stderr)
+            self.assertNotIn("low on memory", said)
+            meminfo.write_text("MemTotal:       8000000 kB\nMemAvailable:    200000 kB\n")
+            done, said = self.run_check(root, MEMINFO=str(meminfo))
+            self.assertIn("MEMORY LOW: 195 of 7812 MB available", done.stderr)
+            self.assertRegex(said, r"wizinfo\|60\|The server is low on memory: 195 of 7812 MB")
+
+    def test_a_file_near_githubs_limit_is_a_wizinfo(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            repo = root / "repo"
+            (repo / "log").mkdir(parents=True)
+            (repo / ".git").mkdir()
+            (repo / ".git" / "huge.pack").write_bytes(b"x" * (3 * 1024 * 1024))
+            (repo / "log" / "small.log").write_bytes(b"x" * 1024)
+            done, said = self.run_check(root, STATE_REPO=str(repo), BIG_FILE_MB="2")
+            self.assertNotIn("GITHUB'S LIMIT", done.stderr, "git's own packs are not committed files")
+            (repo / "log" / "toc.log").write_bytes(b"x" * (3 * 1024 * 1024))
+            done, said = self.run_check(root, STATE_REPO=str(repo), BIG_FILE_MB="2")
+            self.assertIn("FILES NEAR GITHUB'S LIMIT: log/toc.log", done.stderr)
+            self.assertIn("A file the backup commits is over 2 MB (log/toc.log)", said)
+
+
 if __name__ == "__main__":
     unittest.main()
