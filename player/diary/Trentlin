@@ -352,30 +352,75 @@ List earn 38866631 0 interest
 List spend 170200000 0 heal
 End
 Day 2026-11-21
-Played 1054
-Level 52 53 1
-Exp 4326 1273
-Kills 6
-Deaths 1
-Close 0
-Quests 2 126
+Played 10203
+Level 52 54 2
+Exp 29156 4070
+Kills 71
+Deaths 2
+Close 1
+Quests 10 515
 Dailies 0 0
-List death 1 0 a killer clown
+List death 2 0 a killer clown
+List close 1 0 fled near death
 List achv 15 0 Frequent Visitor
-List skill 86 87 dodge
-List area 278 0 City of Dresden
+List achv 60 0 Every Nook and Cranny III
+List achv 15 0 A Varied Recipe Book I
+List skill 86 90 dodge
+List skill 78 79 fast healing
+List skill 94 100 fists of fury
+List skill 90 94 parry
+List skill 86 88 second attack
+List skill 80 81 iron skin
+List skill 78 79 meditation
+List area 1765 0 City of Dresden
 List area 7 0 Plains of the North
-List area 4 0 Continental Drift
+List area 35 0 Continental Drift
 List area 13 0 Rome
-List area 10 0 Miden'nir
-List area 16 0 New Thalos
-List area 116 0 Korzath's Fortress
-List area 408 0 Battleground
+List area 89 0 Miden'nir
+List area 203 0 New Thalos
+List area 539 0 Korzath's Fortress
+List area 4733 0 Battleground
 List area 199 0 Kerofk
 List area 3 0 Limbo
-List item 3 0 a diamond key
-List earn 199015872 0 quests
-List earn 29336197 0 loot
-List spend 117500000 0 heal
+List area 75 0 Haon Dor
+List area 2 0 Crystalmir Lake
+More area 117
+List item 22 0 a diamond key
+List item 1 0 a rib bone belt
+List item 1 0 the Crystalline Sceptre of Commanding
+List item 1 0 the sword of valor
+List item 1 0 a silver bow
+List item 1 0 a brittle key
+List item 1 0 an elven bracelet
+List earn 1482073362 0 quests
+List earn 800507580 0 loot
+List earn 38963797 0 interest
+List spend 1094150000 0 heal
+List spend 496440 0 buy
+List spend 600 0 other
+List spend 292034160 0 devote
+List spend 500000000 0 drop
+End
+Day 2026-11-22
+Played 211
+Level 54 54 0
+Exp 252 0
+Kills 3
+Deaths 0
+Close 0
+Quests 1 0
+Dailies 0 0
+List area 82 0 City of Dresden
+List area 6 0 Haon Dor
+List area 1 0 Continental Drift
+List area 24 0 Crystalmir Lake
+List area 2 0 Miden'nir
+List area 4 0 New Thalos
+List area 41 0 Korzath's Fortress
+List area 51 0 Battleground
+List item 1 0 a diamond key
+List earn 8809561 0 loot
+List earn 87610248 0 quests
+List spend 20400000 0 heal
 End
 #END

@@ -466,3 +466,19 @@
 466	1795225809	snapshot	committed	P6adca00b00079e30	Trentlin	-	level	-	Trentlin.20261121_015009.level fnv 6eccc04b 25598 bytes	f16f9c7c
 467	1795225822	corpse	archived	P6adca00b00079e30	Trentlin	c6b00f77a01597c	gone	Trentlin: sacrifice	ended (gone): it is gone; 0 objects left in it	cc4a0228
 468	1795226218	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261121_015658.quest fnv b2f53efd 24968 bytes	332c2032
+469	1795267501	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261121_132501.quest fnv 040bfe17 24966 bytes	d2c2337e
+470	1795268431	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261121_134031.quest fnv 5434eb22 24582 bytes	6d17d32d
+471	1795283210	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261121_174650.quest fnv 1df462ea 24739 bytes	06a25f93
+472	1795283763	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261121_175603.quest fnv 9dc9c4c5 24774 bytes	6af81042
+473	1795284198	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261121_180318.quest fnv 8440d7a0 24882 bytes	0caa79d7
+474	1795284594	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261121_180954.quest fnv bbebe0ac 24901 bytes	e1da1aa6
+475	1795284694	snapshot	committed	P6adca00b00079e30	Trentlin	-	level	-	Trentlin.20261121_181134.level fnv 17f38bd6 24775 bytes	39f28b3b
+476	1795296999	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261121_213639.quest fnv 8ec2816e 26418 bytes	f04266ea
+477	1795298077	snapshot	committed	P6adca00b00079e30	Trentlin	-	prepenalty	-	Trentlin.20261121_215437.prepenalty fnv 13fc3773 25944 bytes	c2dde428
+478	1795298077	snapshot	committed	P6adca00b00079e30	Trentlin	-	death	-	Trentlin.20261121_215437.death fnv 3b86ca97 25944 bytes	6539db3d
+479	1795298077	request	pending	P6adca00b00079e30	Trentlin	death:c6b02131d01ac2a	death	(violence_update)	corpse c6b02131d01ac2a in room 29207	7d3c5bfe
+480	1795298077	corpse	created	P6adca00b00079e30	Trentlin	c6b02131d01ac2a	death	-	made in room 29207 holding 55 objects; death snapshot Trentlin.20261121_215437.death	5de602e8
+481	1795298077	request	committed	P6adca00b00079e30	Trentlin	death:c6b02131d01ac2a	death	-	their save reached the disk	3472844c
+482	1795298389	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261121_215949.quest fnv ba091091 25773 bytes	ea4cc59e
+483	1795298602	corpse	archived	P6adca00b00079e30	Trentlin	c6b02131d01ac2a	gone	Trentlin: sacrifice	ended (gone): it is gone; 0 objects left in it	911abf2b
+484	1795352121	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261122_125521.quest fnv 08553bce 26092 bytes	88cb1fa3
