@@ -51461,3 +51461,19 @@
 1795384738	laid	-	0	0	-	1070	component	72	a minotaur's ear	9206	canyon.are	scatter
 1795384799	laid	-	0	0	-	1071	component	88	a vial of green slime	15154	campus.are	scatter
 1795384913	census	-	0	0	-	herbs=114/150 components=56/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=14 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795384932	area	Alaric	57	2	limbo.are	dresden.are	limbo.are	3115	(char)
+1795384932	laid	-	0	0	-	1072	herb	52	an asparagus shoot	7740	ultima.are	scatter
+1795384932	laid	-	0	0	-	1073	component	70	a dragon tooth	9949	valhalla.are	scatter
+1795384932	area	Alaric	57	2497	dresden.are	limbo.are	dresden.are	0	(game loop)
+1795384932	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1795384933	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	worth		You have 373 platinum, 33 gold, 71 silver, 68 copper // and 252749 experience (39551 exp to level).	-	-
+1795384975	laid	-	0	0	-	1074	herb	37	a sprig of catnip	4440	dresden.are	scatter
+1795384975	laid	-	0	0	-	1075	herb	44	a sprig of aconite	4428	dresden.are	scatter
+1795384975	laid	-	0	0	-	1076	component	61	a mummy's wrapping	7600	ultima.are	scatter
+1795385045	laid	-	0	0	-	1077	component	76	a vial of dragons blood	15171	campus.are	scatter
+1795385177	laid	-	0	0	-	1078	component	63	a phoenix feather	24005	faerie.are	scatter
+1795385234	laid	-	0	0	-	1079	component	70	a dragon tooth	5657	tarin.are	scatter
+1795385277	laid	-	0	0	-	1080	component	64	a manticore's spine	340	plains.are	scatter
+1795385350	laid	-	0	0	-	1081	herb	36	a belladonna plant	2066	catacomb.are	scatter
+1795385350	laid	-	0	0	-	1082	component	63	a phoenix feather	3217	school.are	scatter
+1795385487	laid	-	0	0	-	1083	component	77	a vial of medusa eye fluid	15015	campus.are	scatter
