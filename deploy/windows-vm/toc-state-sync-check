@@ -21,6 +21,43 @@ mkdir -p "$(dirname "$MARKER")" 2>/dev/null || true
 QUEUE="${QUEUE:-/srv/toc/current/area/webadmin.queue}"
 WIZINFO_LEVEL="${WIZINFO_LEVEL:-60}"    # LEVEL_IMMORTAL
 
+# Tell staff who are in the game. A staff character reading this is the
+# whole point; an error only journald sees is an error nobody sees. On
+# WIZINFO at immortal level, not ANNOUNCE: players can do nothing about a
+# backup and should not be told theirs is failing (owner, 2026-10-04).
+# Appended under the fcntl lock the game takes while it reads and
+# truncates the queue, or a line landing then is lost (as in toc-deploy);
+# without python3 the append is plain and best-effort.
+tell_staff() {
+    [ -f "$QUEUE" ] && [ -w "$QUEUE" ] || return 0
+    line="wizinfo|$WIZINFO_LEVEL|$1"
+    if command -v python3 >/dev/null 2>&1; then
+        python3 -c 'import fcntl, sys
+with open(sys.argv[1], "a", encoding="ascii", errors="replace") as f:
+    fcntl.lockf(f.fileno(), fcntl.LOCK_EX)
+    f.write(sys.argv[2] + "\n")' "$QUEUE" "$line" 2>/dev/null || true
+    else
+        printf '%s\n' "$line" >> "$QUEUE" 2>/dev/null || true
+    fi
+}
+
+# The disk (2026-11-22: it filled -- the sync's and the build tree's git
+# copies had grown to 43 GB of loose objects -- and the first anyone knew
+# was the sync failing a day later, while every save the game made was at
+# risk). Said every check while it is low, as the sync's failure is.
+DISK_PATH="${DISK_PATH:-/srv/toc}"
+DISK_MIN_FREE_MB="${DISK_MIN_FREE_MB:-4096}"
+free_mb=$(df -Pm "$DISK_PATH" 2>/dev/null | awk 'NR==2 {print $4}')
+case "$free_mb" in
+    ''|*[!0-9]*) ;;
+    *)
+        if [ "$free_mb" -lt "$DISK_MIN_FREE_MB" ]; then
+            echo "DISK NEARLY FULL: ${free_mb} MB free on $DISK_PATH" >&2
+            logger -t toc-state-sync -p daemon.err "disk nearly full: ${free_mb} MB free on $DISK_PATH" 2>/dev/null || true
+            tell_staff "The server's disk is nearly full: ${free_mb} MB free. Player saves fail when it fills. The website's Server maintenance > Show the host's health says what is using it."
+        fi ;;
+esac
+
 # A run in progress has no exit time yet -- systemd zeroes it at start --
 # which read as "99999 minutes ago" and announced a dead backup. It is not
 # rare: a deploy restarts both timers in the same second, and a 5- and a
@@ -69,23 +106,6 @@ printf 'FAILING %s %s\n' "$(date -Is)" "$problem" > "$MARKER" 2>/dev/null || tru
 echo "STATE SYNC IS NOT WORKING: $problem" >&2
 logger -t toc-state-sync -p daemon.err "state sync is not working: $problem" 2>/dev/null || true
 
-# Tell staff who are in the game. A staff character reading this is the
-# whole point; an error only journald sees is an error nobody sees. On
-# WIZINFO at immortal level, not ANNOUNCE: players can do nothing about a
-# backup and should not be told theirs is failing (owner, 2026-10-04).
-# Appended under the fcntl lock the game takes while it reads and
-# truncates the queue, or a line landing then is lost (as in toc-deploy);
-# without python3 the append is plain and best-effort.
-if [ -f "$QUEUE" ] && [ -w "$QUEUE" ]; then
-    line="wizinfo|$WIZINFO_LEVEL|Player-state backup to GitHub is not working ($problem). Saves are still on disk but are not leaving this machine."
-    if command -v python3 >/dev/null 2>&1; then
-        python3 -c 'import fcntl, sys
-with open(sys.argv[1], "a", encoding="ascii", errors="replace") as f:
-    fcntl.lockf(f.fileno(), fcntl.LOCK_EX)
-    f.write(sys.argv[2] + "\n")' "$QUEUE" "$line" 2>/dev/null || true
-    else
-        printf '%s\n' "$line" >> "$QUEUE" 2>/dev/null || true
-    fi
-fi
+tell_staff "Player-state backup to GitHub is not working ($problem). Saves are still on disk but are not leaving this machine."
 
 exit 1

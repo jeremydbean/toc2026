@@ -71,7 +71,10 @@ flock -n 9 || { echo "another sync is running"; exit 0; }
 
 if [ ! -d "$STATE_REPO/.git" ]; then
     echo "cloning $REMOTE into $STATE_REPO"
-    git clone --branch "$BRANCH" "$REMOTE" "$STATE_REPO"
+    # Shallow: the sync only ever adds a commit on top of main, and the
+    # history is GitHub's to keep. A full clone took ten minutes of CPU
+    # and its object store grew to 24 GB (2026-11-22).
+    git clone --depth 1 --branch "$BRANCH" "$REMOTE" "$STATE_REPO"
     git -C "$STATE_REPO" config user.name "toc state sync"
     git -C "$STATE_REPO" config user.email "toc@localhost"
 fi
@@ -103,7 +106,10 @@ fi
 # kept; one moved aside by a person is never removed here.
 RECLONE_GAP="${TOC_STATE_RECLONE_GAP:-3600}"
 RECLONE_KEEP=2
+RECLONE_MIN_FREE_MB="${TOC_STATE_RECLONE_MIN_FREE_MB:-2048}"
 clone_broken() {
+    # A full disk fails every write the same way, and is no broken clone.
+    grep -qi 'no space left' "$1" && return 1
     git rev-parse --verify --quiet HEAD >/dev/null 2>&1 || return 0
     grep -qiE 'corrupt|is empty|bad object|loose object|index file|not a git repository|unable to read|broken link|missing (blob|tree|commit)|invalid (sha1|object)' "$1" && return 0
     git fsck --connectivity-only --no-progress >/dev/null 2>&1 || return 0
@@ -117,11 +123,18 @@ reclone() {
         echo "the clone is broken again ${age}s after it was made afresh; leaving it for a person" >&2
         return 1
     fi
+    # Never set a clone aside with no room to make another.
+    free_mb=$(df -Pm "$(dirname "$STATE_REPO")" 2>/dev/null | awk 'NR==2 {print $4}')
+    case "$free_mb" in ''|*[!0-9]*) free_mb=0 ;; esac
+    if [ "$free_mb" -lt "$RECLONE_MIN_FREE_MB" ]; then
+        echo "the clone is broken, but only ${free_mb} MB is free; not cloning afresh" >&2
+        return 1
+    fi
     cd /
     aside="$STATE_REPO.broken-auto-$(date -u +%Y%m%d-%H%M%S)"
     mv "$STATE_REPO" "$aside" || { echo "cannot move the broken clone aside" >&2; return 1; }
     echo "the clone was broken; moved it to $aside and cloning afresh" >&2
-    git clone --quiet --branch "$BRANCH" "$REMOTE" "$STATE_REPO" || return 1
+    git clone --quiet --depth 1 --branch "$BRANCH" "$REMOTE" "$STATE_REPO" || return 1
     git -C "$STATE_REPO" config user.name "toc state sync"
     git -C "$STATE_REPO" config user.email "toc@localhost"
     date +%s > "$STATE_REPO/.git/toc-recloned"
@@ -303,6 +316,22 @@ done
 
 # Copied: let a deploy have the tree back before the slow part, the push.
 exec 8<&-
+
+# Keep the clone packed. Every run writes the changed logs as new loose
+# objects, whole -- the play journal alone is megabytes -- and git's own
+# automatic packing stopped keeping up: the clone reached 24 GB of loose
+# objects and filled the disk (2026-11-22; the repository on GitHub is
+# about 100 MB). Past COMPACT_LOOSE_KB of loose objects it is packed now,
+# here, which takes a minute at most; a gc.log left by a failed automatic
+# run would otherwise stop git trying again for a day.
+COMPACT_LOOSE_KB="${TOC_GIT_COMPACT_KB:-262144}"
+loose_kb=$(git count-objects -v 2>/dev/null | awk '/^size:/ {print $2}')
+case "$loose_kb" in ''|*[!0-9]*) loose_kb=0 ;; esac
+if [ "$loose_kb" -gt "$COMPACT_LOOSE_KB" ]; then
+    rm -f .git/gc.log
+    echo "packing the clone: $((loose_kb / 1024)) MB of loose objects" >&2
+    git gc --quiet --prune=now || echo "git gc failed; the clone keeps growing" >&2
+fi
 
 for d in $STATE_DIRS; do
     [ -d "$STATE_REPO/$d" ] && git add -f -A "$d"

@@ -99,6 +99,8 @@ STUB
     chmod +x "$WORK/bin/"*
     export WORK
     export TOC_DEPLOY_LOCK="$WORK/deploy.lock"
+    # The disk janitor reads the real disk; only its own scenarios let it act.
+    export TOC_DISK_LOW_MB="${TOC_DISK_LOW_MB:-0}" TOC_DISK_LOW_INODE_PCT=0
 }
 
 teardown() { rm -rf "$WORK"; }
@@ -323,6 +325,75 @@ rc=$(TOC_MAINTENANCE_MARKER="$WORK/up" run_recovery)
 check "maintenance starts no supporting unit" "$(count_calls unit-start)" "0"
 teardown
 unset TOC_KEEP_UNITS TOC_WEB_SERVICE
+
+# 15-17. The disk janitor (keep_disk_clear). df, journalctl, apt-get and
+# git are stand-ins; the disk is "low" while $WORK/low exists.
+janitor_setup() {
+    setup; touch "$WORK/up"
+    cat > "$WORK/bin/df" <<'STUB'
+#!/bin/bash
+if [ "$1" = -Pi ]; then
+  printf 'Filesystem Inodes IUsed IFree IUse%% Mounted\n/dev/x 1000 500 500 50%% /\n'
+elif [ -f "$WORK/low" ]; then
+  printf 'Filesystem 1M-blocks Used Available Capacity Mounted\n/dev/x 48000 47900 100 100%% /\n'
+else
+  printf 'Filesystem 1M-blocks Used Available Capacity Mounted\n/dev/x 48000 20000 28000 42%% /\n'
+fi
+STUB
+    for tool in journalctl apt-get; do
+        printf '#!/bin/bash\necho "%s $*" >> "$WORK/calls"\n' "$tool" > "$WORK/bin/$tool"
+    done
+    cat > "$WORK/bin/git" <<'STUB'
+#!/bin/bash
+for a in "$@"; do [ "$a" = gc ] && echo "gc $*" >> "$WORK/calls"; done
+exit 0
+STUB
+    cat > "$WORK/bin/python3" <<'STUB'
+#!/bin/bash
+echo "${@: -1}" >> "$WORK/staff"
+STUB
+    chmod +x "$WORK/bin/"*
+    mkdir -p "$WORK/build/.git" "$WORK/srv/state-repo/.git" \
+             "$WORK/srv/state-repo.broken-auto-20261101" "$WORK/srv/state-repo.broken-auto-20261120" \
+             "$WORK/live/area"
+    touch "$WORK/srv/rollback-code-20261001-000000.tgz" "$WORK/srv/rollback-code-20261002-000000.tgz" \
+          "$WORK/live/area/webadmin.queue"
+    mkdir -p "$WORK/srv/rollback-code-20261121-203027"
+    for n in 1 2 3 4 5 6 7; do touch "$WORK/backups/merc-rollback-2026110${n}T000000Z"; done
+    export TOC_DISK_PATH="$WORK/srv" TOC_STATE_REPO="$WORK/srv/state-repo" TOC_ROLLBACK_DIR="$WORK/srv" \
+           TOC_SYNC_USER=root TOC_SYNC_LOCK="$WORK/no-sync-running" TOC_DISK_LOW_MB=6144 \
+           TOC_DISK_LOW_INODE_PCT=10
+}
+
+# 15. Plenty of room: nothing is touched.
+janitor_setup
+run_recovery >/dev/null
+check "a roomy disk clears nothing" "$(count_calls 'journalctl')$(count_calls ' gc ')" "00"
+check "a roomy disk keeps old rollbacks" "$(ls "$WORK"/srv/*.tgz | wc -l)" "2"
+teardown
+
+# 16. Low: everything that can be made again is cleared, nothing else.
+janitor_setup; touch "$WORK/low"
+rc=$(run_recovery)
+check "janitor run exits cleanly" "$rc" "0"
+check "the journal is trimmed" "$(count_calls 'journalctl --vacuum-size')" "1"
+check "apt's cache is cleaned" "$(count_calls 'apt-get clean')" "1"
+check "both git copies are packed" "$(count_calls ' gc ')" "2"
+check "old tar rollbacks are removed" "$(ls "$WORK"/srv/*.tgz 2>/dev/null | wc -l)" "0"
+check "the current rollback folder stays" "$([ -d "$WORK/srv/rollback-code-20261121-203027" ] && echo kept)" "kept"
+check "only the newest set-aside clone stays" "$(ls -d "$WORK"/srv/state-repo.broken-* | xargs -n1 basename)" "state-repo.broken-auto-20261120"
+check "the sync's clone itself stays" "$([ -d "$WORK/srv/state-repo/.git" ] && echo kept)" "kept"
+check "five saved binaries are kept" "$(ls "$WORK"/backups/merc-rollback-* | wc -l)" "5"
+check "staff are told it is still low" "$(grep -c 'still low and needs a person' "$WORK/staff" 2>/dev/null)" "1"
+teardown
+
+# 17. Low again at once: the gap holds it off, no clearing loop.
+janitor_setup; touch "$WORK/low"
+run_recovery >/dev/null
+run_recovery >/dev/null
+check "a second low run inside the gap clears nothing more" "$(count_calls 'journalctl --vacuum-size')" "1"
+teardown
+unset TOC_DISK_PATH TOC_STATE_REPO TOC_ROLLBACK_DIR TOC_SYNC_USER TOC_SYNC_LOCK TOC_DISK_LOW_MB
 
 echo
 if [ "$failures" -eq 0 ]; then

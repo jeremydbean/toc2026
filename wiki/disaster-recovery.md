@@ -279,6 +279,13 @@ five more. It starts no CI run and no deploy.
   is down, and restarts it after two missed health checks in a row. A
   maintenance window (`/etc/toc/maintenance`) or a deploy leaves all of it
   alone, and a unit disabled on purpose stays off.
+- The disk. The sync's git clone is shallow and packed as it grows, the
+  build tree is packed by the auto-deployer, and when the disk falls below
+  6 GB free the recovery timer clears what can be made again (the journal,
+  apt's cache, the git copies, old rollback archives and set-aside clones,
+  old saved binaries) and tells staff on WIZINFO. Staff are also told every
+  fifteen minutes while less than 4 GB is free. On 2026-11-22 the disk had
+  filled with 43 GB of loose git objects and the sync failed for a day.
 
 ## The machine is gone
 

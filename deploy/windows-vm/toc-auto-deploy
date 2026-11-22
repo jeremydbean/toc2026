@@ -245,6 +245,18 @@ trap 'rc=$?; exec 9>&-; hand_over_git_requests || true; exit $rc' EXIT
 
 git -C "$BUILD" checkout --quiet -- . 2>/dev/null || true
 git -C "$BUILD" fetch --quiet origin main
+# Keep the build tree packed, as the state sync keeps its clone: every
+# fetch brings the state sync's commits -- the logs, whole -- as loose
+# objects, and the tree had grown to 19 GB of them when the disk filled
+# (2026-11-22). Packed here, under the deploy lock, past COMPACT_LOOSE_KB.
+COMPACT_LOOSE_KB="${TOC_GIT_COMPACT_KB:-524288}"
+loose_kb=$(git -C "$BUILD" count-objects -v 2>/dev/null | awk '/^size:/ {print $2}')
+case "$loose_kb" in ''|*[!0-9]*) loose_kb=0 ;; esac
+if [ "$loose_kb" -gt "$COMPACT_LOOSE_KB" ]; then
+    rm -f "$BUILD/.git/gc.log"
+    logger -t toc-auto-deploy "packing the build tree: $((loose_kb / 1024)) MB of loose objects" 2>/dev/null || true
+    git -C "$BUILD" gc --quiet --prune=now || logger -t toc-auto-deploy "git gc failed in the build tree" 2>/dev/null || true
+fi
 target=$(git -C "$BUILD" rev-parse origin/main)
 short=$(git -C "$BUILD" rev-parse --short "$target")
 

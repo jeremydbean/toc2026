@@ -481,6 +481,36 @@ class StateSyncHealingTests(unittest.TestCase):
         self.assertIn("leaving it for a person", again.stderr)
         self.assertEqual(len(list(self.root.glob("state.broken-auto-*"))), 1)
 
+    def test_the_clone_is_shallow_and_kept_packed(self) -> None:
+        """2026-11-22: the clone grew to 24 GB of loose objects and filled
+        the disk. It is cloned shallow now, and packed once its loose
+        objects pass TOC_GIT_COMPACT_KB."""
+        self.assertEqual(self.sync("Zone").returncode, 0)
+        self.assertTrue((self.repo / ".git" / "shallow").exists(), "a shallow clone")
+        self.env["TOC_GIT_COMPACT_KB"] = "0"
+        done = self.sync("Ztwo")
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertIn("packing the clone", done.stderr)
+        # Packed, then the run's own commit adds its few new objects.
+        counts = dict(line.split(": ") for line in
+                      git("count-objects", "-v", cwd=self.repo).splitlines())
+        self.assertGreaterEqual(int(counts["packs"]), 1)
+        self.assertLessEqual(int(counts["count"]), 10)
+        self.assertEqual(self.pushed(), 2)
+
+    def test_no_reclone_onto_a_full_disk(self) -> None:
+        self.assertEqual(self.sync("Zone").returncode, 0)
+        self.break_clone()
+        self.env["TOC_STATE_RECLONE_MIN_FREE_MB"] = str(10 ** 9)
+        done = self.sync("Ztwo")
+        self.assertNotEqual(done.returncode, 0)
+        self.assertIn("not cloning afresh", done.stderr)
+        self.assertEqual(list(self.root.glob("state.broken-auto-*")), [], "nothing set aside")
+        self.assertTrue((self.repo / ".git").is_dir())
+        source = STATE_SYNC.read_text()
+        self.assertIn("grep -qi 'no space left'", source,
+                      "a disk-full error is never read as a broken clone")
+
     def test_a_remote_that_cannot_be_reached_is_not_a_broken_clone(self) -> None:
         self.assertEqual(self.sync("Zone").returncode, 0)
         self.env["REMOTE"] = str(self.root / "nowhere.git")
@@ -489,6 +519,43 @@ class StateSyncHealingTests(unittest.TestCase):
         self.assertNotEqual(done.returncode, 0)
         self.assertIn("not a broken clone", done.stderr)
         self.assertEqual(list(self.root.glob("state.broken-auto-*")), [])
+
+
+
+@unittest.skipIf(shutil.which("sh") is None, "no sh")
+class DiskWarningTests(unittest.TestCase):
+    """toc-state-sync-check tells staff when the disk is nearly full, on
+    its own line, whatever the sync's state (2026-11-22)."""
+
+    def test_a_nearly_full_disk_is_a_wizinfo(self) -> None:
+        check = ROOT / "deploy" / "windows-vm" / "toc-state-sync-check"
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            stubs = root / "bin"
+            stubs.mkdir()
+            (stubs / "systemctl").write_text(
+                "#!/bin/sh\ncase \"$*\" in\n"
+                "  *ActiveState*) echo inactive ;;\n"
+                "  *Result*) echo success ;;\n"
+                "  *Monotonic*) awk '{printf \"%d\", $1 * 1000000}' /proc/uptime ;;\n"
+                "esac\n")
+            (stubs / "logger").write_text("#!/bin/sh\nexit 0\n")
+            for stub in stubs.iterdir():
+                stub.chmod(0o755)
+            queue = root / "webadmin.queue"
+            queue.write_text("")
+            env = dict(os.environ, PATH=f"{stubs}:{os.environ['PATH']}", QUEUE=str(queue),
+                       MARKER=str(root / "status"), STATE_REPO=str(root / "none"),
+                       DISK_PATH=str(root))
+            healthy = subprocess.run(["sh", str(check)], env=dict(env, DISK_MIN_FREE_MB="1"),
+                                     capture_output=True, text=True, timeout=60)
+            self.assertEqual(healthy.returncode, 0, healthy.stderr)
+            self.assertEqual(queue.read_text(), "")
+            low = subprocess.run(["sh", str(check)], env=dict(env, DISK_MIN_FREE_MB=str(10 ** 9)),
+                                 capture_output=True, text=True, timeout=60)
+            self.assertIn("DISK NEARLY FULL", low.stderr)
+            self.assertRegex(queue.read_text(),
+                             r"^wizinfo\|60\|The server's disk is nearly full: \d+ MB free\.")
 
 
 if __name__ == "__main__":

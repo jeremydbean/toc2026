@@ -181,7 +181,126 @@ keep_services_up()
     echo 0 > "$WEB_FAIL_FILE"
 }
 
+# ----------------------------------------------------------------- the disk
+# 2026-11-22: the disk filled. The state sync's git clone and the build
+# tree had grown to 43 GB of loose objects between them (the repository
+# is about 100 MB on GitHub), the sync failed for a day, and every save
+# the game made was at risk. The scripts keep their own clones packed now;
+# this is the net under them. When free space or free inodes fall below
+# DISK_LOW_MB / DISK_LOW_INODE_PCT, at most once in JANITOR_GAP, it clears
+# only what can be made again, cheapest first:
+#
+#   the journal, to JOURNAL_KEEP; apt's package cache; both git copies
+#   packed (each by its owner, the sync's under the sync's own lock);
+#   the old tar rollbacks toc-deploy stopped making on 2026-10-25; all but
+#   the newest clone a repair set aside; all but the newest BINARY_KEEP
+#   binaries a rebuild saved.
+#
+# Never a player file, a snapshot, a corpse, the game's backups/ or a log
+# of the game's. Every run that clears anything says what it freed to the
+# journal and to staff in the game (WIZINFO); if the disk is still low
+# after, it says that needs a person.
+DISK_PATH=${TOC_DISK_PATH:-/srv/toc}
+DISK_LOW_MB=${TOC_DISK_LOW_MB:-6144}
+DISK_LOW_INODE_PCT=${TOC_DISK_LOW_INODE_PCT:-10}
+JANITOR_GAP=${TOC_JANITOR_GAP_SEC:-1800}
+JANITOR_FILE="$STATE_DIR/disk-janitor-last"
+JOURNAL_KEEP=${TOC_JOURNAL_KEEP:-200M}
+STATE_REPO=${TOC_STATE_REPO:-/srv/toc/state-repo}
+SYNC_USER=${TOC_SYNC_USER:-toc}
+SYNC_LOCK=${TOC_SYNC_LOCK:-/run/toc-state-sync/lock}
+ROLLBACK_DIR=${TOC_ROLLBACK_DIR:-/srv/toc}
+BINARY_KEEP=${TOC_BINARY_KEEP:-5}
+QUEUE=${TOC_QUEUE:-$LIVE_ROOT/area/webadmin.queue}
+
+disk_free_mb()
+{
+    df -Pm "$DISK_PATH" 2>/dev/null | awk 'NR==2 {print $4}'
+}
+
+disk_free_inode_pct()
+{
+    df -Pi "$DISK_PATH" 2>/dev/null | awk 'NR==2 {gsub("%", "", $5); if ($5 ~ /^[0-9]+$/) print 100 - $5}'
+}
+
+tell_staff()
+{
+    [ -f "$QUEUE" ] && [ -w "$QUEUE" ] || return 0
+    python3 -c 'import fcntl, sys
+with open(sys.argv[1], "a", encoding="ascii", errors="replace") as f:
+    fcntl.lockf(f.fileno(), fcntl.LOCK_EX)
+    f.write(sys.argv[2] + "\n")' "$QUEUE" "wizinfo|60|$1" 2>/dev/null || true
+}
+
+pack_repo()   # DIR USER
+{
+    [ -d "$1/.git" ] || return 0
+    rm -f "$1/.git/gc.log"
+    # An hour's grace: an object written a moment ago by a fetch or commit
+    # this run does not hold the lock of is never pruned from under it.
+    if [ "$2" = root ] || [ "$(id -u)" -ne 0 ]; then
+        timeout 1800 git -c safe.directory="$1" -C "$1" gc --quiet --prune=1.hour.ago 2>/dev/null
+    else
+        timeout 1800 runuser -u "$2" -- git -C "$1" gc --quiet --prune=1.hour.ago 2>/dev/null
+    fi
+}
+
+keep_disk_clear()
+{
+    free_mb=$(disk_free_mb)
+    inode_pct=$(disk_free_inode_pct)
+    case "$free_mb" in ''|*[!0-9]*) return 0 ;; esac
+    case "$inode_pct" in ''|*[!0-9]*) inode_pct=100 ;; esac
+    if [ "$free_mb" -ge "$DISK_LOW_MB" ] && [ "$inode_pct" -ge "$DISK_LOW_INODE_PCT" ]; then
+        return 0
+    fi
+    last=$(read_number "$JANITOR_FILE")
+    [ $(( $(now) - last )) -ge "$JANITOR_GAP" ] || return 0
+    now > "$JANITOR_FILE"
+    log "the disk is low (${free_mb} MB, ${inode_pct}% of inodes free); clearing what can be made again."
+    done_what=""
+
+    journalctl --vacuum-size="$JOURNAL_KEEP" >/dev/null 2>&1 && done_what="$done_what journal"
+    if command -v apt-get >/dev/null 2>&1; then
+        apt-get clean >/dev/null 2>&1 && done_what="$done_what apt-cache"
+    fi
+    # The sync's clone under the sync's own lock: the lock's directory is
+    # the sync's RuntimeDirectory and exists only while a run is going,
+    # and such a run packs its clone itself.
+    if [ -d "$STATE_REPO/.git" ]; then
+        if [ -e "$SYNC_LOCK" ]; then
+            ( exec 7<"$SYNC_LOCK" && flock -n 7 && pack_repo "$STATE_REPO" "$SYNC_USER" ) &&
+                done_what="$done_what sync-clone"
+        else
+            pack_repo "$STATE_REPO" "$SYNC_USER" && done_what="$done_what sync-clone"
+        fi
+    fi
+    # The build tree under the deploy lock this run already holds.
+    pack_repo "$BUILD_ROOT" root && done_what="$done_what build-tree"
+    tars=0
+    for f in "$ROLLBACK_DIR"/rollback-code-*.tgz; do
+        [ -f "$f" ] && rm -f -- "$f" && tars=$((tars + 1))
+    done
+    [ "$tars" -eq 0 ] || done_what="$done_what old-rollback-tars($tars)"
+    ls -1d "$STATE_REPO".broken-* "$STATE_REPO".corrupt-* 2>/dev/null | sort -r | tail -n +2 |
+        while read -r old; do rm -rf -- "$old"; done
+    ls -1 "$BACKUP_DIR"/merc-rollback-* 2>/dev/null | sort -r | tail -n +$((BINARY_KEEP + 1)) |
+        while read -r old; do rm -f -- "$old"; done
+
+    after_mb=$(disk_free_mb)
+    case "$after_mb" in ''|*[!0-9]*) after_mb=$free_mb ;; esac
+    freed=$(( after_mb - free_mb ))
+    log "cleared:${done_what:- nothing}; freed ${freed} MB, ${after_mb} MB free now."
+    if [ "$after_mb" -lt "$DISK_LOW_MB" ]; then
+        log "the disk is still low after clearing; this needs a person."
+        tell_staff "The server's disk was low; the recovery timer cleared what it could (${freed} MB) and ${after_mb} MB is free. That is still low and needs a person: Server maintenance > Show the host's health."
+    else
+        tell_staff "The server's disk was low (${free_mb} MB free); the recovery timer cleared what can be made again and ${after_mb} MB is free now."
+    fi
+}
+
 keep_services_up || true
+keep_disk_clear || true
 
 if [ -e "$LIVE_ROOT/area/shutdown.txt" ]; then
     log "in-game shutdown marker present; leaving the service alone."

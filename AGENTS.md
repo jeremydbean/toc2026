@@ -3291,6 +3291,26 @@ and processes that restart them".
   after two health checks in a row (`/api/health`) went unanswered
   (`web-health-failures` in `/var/lib/toc`). `tests/test_game_recovery.sh`
   scenarios 10-14, `tests/test_host_actions.py`'s `StateSyncHealingTests`.
+- **The disk never fills again** (2026-11-22: it did. The sync's clone and
+  the build tree held 24 GB and 19 GB of loose git objects -- every five
+  minutes the sync commits the logs whole, and every fetch brings them
+  back as loose objects -- against a repository of about 100 MB on
+  GitHub; the sync failed a day and every save was at risk). Four layers:
+  the sync clones `--depth 1` and packs its clone (`git gc`) once its
+  loose objects pass 256 MB (`TOC_GIT_COMPACT_KB`), after the copy and
+  outside the deploy lock; `toc-auto-deploy` packs the build tree past
+  512 MB under the deploy lock; a reclone is refused below 2 GB free and a
+  "No space left" error is never read as a broken clone; and
+  `keep_disk_clear` in `toc-game-recovery`, below 6 GB or 10% of inodes
+  free, at most once in 30 minutes, clears only what can be made again --
+  the journal to 200 MB, apt's cache, both git copies packed (the sync's
+  by its user, never while a sync runs), the old `rollback-code-*.tgz`,
+  all but the newest set-aside clone, all but the newest five saved
+  binaries -- never a player file, snapshot, corpse, `backups/` or log,
+  and tells staff what it freed, or that the disk is still low and needs
+  a person. `toc-state-sync-check` WIZINFOs below 4 GB free every fifteen
+  minutes whatever else it finds (`tests/test_game_recovery.sh` 15-17,
+  `DiskWarningTests`).
 
 ## Security Facts
 
