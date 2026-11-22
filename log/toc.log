@@ -338262,3 +338262,7 @@ Sun Nov 22 21:32:49 2026 :: Treasure goblin: vanished from room 6392 (The Great 
 Sun Nov 22 21:37:51 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 52 refused in all, pause 5 this week, 4095 minutes left).
 Sun Nov 22 21:42:54 2026 :: Treasure goblin: vanished from room 20106 (A long hallway, prison.are) (too long in one area).
 Sun Nov 22 21:42:55 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 22 21:48:00 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 2 of 6 in 6 hours).
+Sun Nov 22 21:50:13 2026 :: Sock.sinaddr:  18.116.101.220
+Sun Nov 22 21:50:13 2026 :: EOF encountered on read.
+Sun Nov 22 21:50:13 2026 :: Connection guard: 18.116.101.220 closed before a password prompt (strike 1 of 6 in 6 hours).

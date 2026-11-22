@@ -51446,3 +51446,8 @@
 1795383942	laid	-	0	0	-	1056	component	88	a vial of green slime	5911	mid_ruin.are	scatter
 1795383991	laid	-	0	0	-	1057	herb	39	a chervil leaf	7039	sewer.are	scatter
 1795384013	census	-	0	0	-	herbs=106/150 components=50/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=21 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795384041	laid	-	0	0	-	1058	herb	40	a clove	3648	dkforest.are	scatter
+1795384041	laid	-	0	0	-	1059	herb	49	a pomegranate	3625	dkforest.are	scatter
+1795384041	laid	-	0	0	-	1060	component	81	a vial of squid ink	4493	dresden.are	scatter
+1795384244	laid	-	0	0	-	1061	herb	44	a sprig of aconite	12022	froboz.are	scatter
+1795384244	laid	-	0	0	-	1062	component	63	a phoenix feather	7224	sewer.are	scatter
