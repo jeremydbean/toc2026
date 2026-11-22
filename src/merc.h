@@ -307,6 +307,7 @@ typedef enum
 #define MAX_PC_RACE             6
 #define MAX_ALIASES             20
 #define PLAY_RECENT             6     /* commands kept for a BUG report (playlog.c) */
+#define PLAY_BURST_SECS         10    /* the death row's burst: hit points taken in this window */
 #define PLAY_COIN_KINDS         7     /* a session's coin by source (playlog.c) */
 #define PLAY_TALLY_KINDS        8     /* labels in a session's spend and exp tallies */
 #define PLAY_TALLY_NAME         16    /* a tally label, the last slot "other" */
@@ -2828,6 +2829,11 @@ struct  pc_data
     time_t              blow_last_at;
     int                 blow_big_dam, blow_big_dt, blow_big_from;
     time_t              blow_big_at;
+    /* Hit points taken in the ten seconds before the latest blow, for the
+       death row: a death from three foes at once read as one blow of 97 at
+       -8 hit points, with nothing to say where the rest went. Memory only. */
+    time_t              blow_burst_at;
+    long                blow_burst_dam;
     char                play_recent[PLAY_RECENT][96];
     int                 play_recent_next;
     char *              fixes_done;           /* login fixes applied (fixes.c) */
@@ -4382,9 +4388,15 @@ void    hylog_flee          ( CHAR_DATA *ch, CHAR_DATA *foe );
 void    hylog_death         ( CHAR_DATA *killer, CHAR_DATA *victim );
 void    hylog_room_cleared  ( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool foe_died );
 void    hylog_crumbled      ( CHAR_DATA *ch, int dungeon, int maps, int compasses,
-                              int keys, int guardian_keys, bool leaving );
+                              int keys, int guardian_keys, bool leaving,
+                              unsigned of_mask );
 const char *playlog_how     ( CHAR_DATA *ch );
+/* Why something is happening when no command explains it -- a death, a
+   login, a walk, an autoloot -- for the "how" of the journals' rows.
+   Returns the reason it replaces; put that back after. */
+const char *playlog_reason  ( const char *why );
 void    playlog_from        ( const char *where );
+const char *playlog_from_where( void );     /* what playlog_from last named, or "" */
 void    playlog_got         ( CHAR_DATA *ch, OBJ_DATA *obj );
 void    playlog_bank        ( CHAR_DATA *ch, long copper, const char *why );
 void    playlog_level       ( CHAR_DATA *ch, int from, bool is_advance );

@@ -2638,7 +2638,12 @@ void hyrule_guardian_slain( CHAR_DATA *killer, CHAR_DATA *guardian )
         if ( carried_top( rch, key ) != NULL )
             continue;           /* one at a time: the last is unspent */
         obj = create_object( index, index->level );
-        obj_to_char( obj, rch );
+        {
+            const char *was = playlog_reason( "guardian-key" );
+
+            obj_to_char( obj, rch );
+            playlog_reason( was );
+        }
         act( "$p comes to your hand as $N falls: it is yours alone.",
              rch, obj, guardian, TO_CHAR );
     }
@@ -3131,6 +3136,7 @@ static int crumble_sweep( CHAR_DATA *ch, int from, int to, bool leaving )
     OBJ_DATA *gone[CRUMBLE_MAX];
     int kinds[CRUMBLE_MAX];
     int tally[5] = { 0, 0, 0, 0, 0 };
+    unsigned of_mask = 0;
     char buf[MAX_STRING_LENGTH];
     char why[64];
     char line[MAX_STRING_LENGTH];
@@ -3188,6 +3194,12 @@ static int crumble_sweep( CHAR_DATA *ch, int from, int to, bool leaving )
         playlog_obj_gone_as( why );
         for ( i = 0; i < count; i++ )
         {
+            int of_level = kinds[i] == CRUMBLE_BOSSKEY
+                ? guardian_key_level( gone[i]->pIndexData->vnum )
+                : kinds[i] == CRUMBLE_MAP || kinds[i] == CRUMBLE_COMPASS ? gone[i]->value[4] : 0;
+
+            if ( of_level >= 1 && of_level <= 9 )
+                of_mask |= 1u << of_level;
             tally[kinds[i]]++;
             extract_obj( gone[i] );
         }
@@ -3203,7 +3215,7 @@ static int crumble_sweep( CHAR_DATA *ch, int from, int to, bool leaving )
     if ( tally[CRUMBLE_BOSSKEY] > 0 )
         send_to_char( "A guardian's key whose chest has given you its prize has nothing left to open.\n\r", ch );
     hylog_crumbled( ch, from, tally[CRUMBLE_MAP], tally[CRUMBLE_COMPASS],
-                    tally[CRUMBLE_KEY], tally[CRUMBLE_BOSSKEY], leaving );
+                    tally[CRUMBLE_KEY], tally[CRUMBLE_BOSSKEY], leaving, of_mask );
     return total;
 }
 

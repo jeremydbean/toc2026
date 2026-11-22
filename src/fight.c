@@ -281,7 +281,12 @@ static void handle_automatic_corpse_commands( CHAR_DATA *ch )
         return;
 
     if ( IS_SET(ch->act, PLR_AUTOLOOT) && corpse->contains != NULL )
+    {
+        const char *was = playlog_reason( "autoloot" );
+
         do_get( ch, "all corpse" );
+        playlog_reason( was );
+    }
 
     if ( IS_SET(ch->act, PLR_AUTOGOLD)
     &&  !IS_SET(ch->act, PLR_AUTOLOOT)
@@ -291,7 +296,12 @@ static void handle_automatic_corpse_commands( CHAR_DATA *ch )
         {
             coin_next = coin->next_content;
             if ( coin->item_type == ITEM_MONEY )
+            {
+                const char *was = playlog_reason( "autogold" );
+
                 get_obj( ch, coin, corpse );
+                playlog_reason( was );
+            }
         }
     }
 
@@ -3896,7 +3906,13 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
                 fclose( dfp );
             }
         }
-       extract_char( victim, false );
+       {
+	   /* The move to the death room is the death's, whatever was running. */
+	   const char *was = playlog_reason( "death" );
+
+	   extract_char( victim, false );
+	   playlog_reason( was );
+       }
     }
 
     while ( victim->affected )

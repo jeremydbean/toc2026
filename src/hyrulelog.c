@@ -284,7 +284,8 @@ void hylog_seal( CHAR_DATA *ch, OBJ_DATA *obj )
    COMBINE, taken from the stash -- with the command that brought it. */
 void hylog_got( CHAR_DATA *ch, OBJ_DATA *obj )
 {
-    char fields[240], what[80];
+    char fields[320], what[80], from[80];
+    const char *where = playlog_from_where( );
 
     if ( obj == NULL || obj->pIndexData == NULL || ch == NULL || IS_NPC(ch)
     ||   obj->pIndexData->vnum < HYRULE_OBJ_FIRST || obj->pIndexData->vnum > HYRULE_OBJ_LAST
@@ -292,9 +293,13 @@ void hylog_got( CHAR_DATA *ch, OBJ_DATA *obj )
     ||   ch->desc == NULL || ch->desc->connected != CON_PLAYING )
         return;
     hylog_clean( what, sizeof(what), obj->short_descr );
-    snprintf( fields, sizeof(fields), "obj=%d obj_name=%s type=%s obj_level=%d how=%s",
+    /* Where it came from (2026-11-22: a corpse recovered read as a player
+       finding all eight Triforce pieces). A player's corpse is named
+       "corpse of <Name>"; how= says own-corpse when it is theirs. */
+    hylog_clean( from, sizeof(from), where != NULL && where[0] != '\0' ? where : "-" );
+    snprintf( fields, sizeof(fields), "obj=%d obj_name=%s type=%s obj_level=%d how=%s from=%s",
               obj->pIndexData->vnum, what, item_type_name( obj ),
-              obj->level, playlog_how( ch ) );
+              obj->level, playlog_how( ch ), from );
     hylog_write( "got", ch, NULL, fields );
 }
 
@@ -361,10 +366,13 @@ void hylog_flee( CHAR_DATA *ch, CHAR_DATA *foe )
     if ( from == NULL || !IS_HYRULE_ROOM_VNUM( from->vnum ) )
         return;
     hylog_clean( name, sizeof(name), foe->short_descr );
-    snprintf( fields, sizeof(fields), "foe=%d foe_name=%s guardian=%d foe_hp=%d secs=%ld hp=%d",
+    /* foe_hit as well as the percentage: a guardian at 0% may still have
+       a few dozen hit points, and that is the number that matters. */
+    snprintf( fields, sizeof(fields),
+              "foe=%d foe_name=%s guardian=%d foe_hp=%d secs=%ld hp=%d foe_hit=%d foe_max=%d",
               foe->pIndexData->vnum, name, is_hyrule_guardian( foe ) ? 1 : 0,
               pct( foe->hit, foe->max_hit ), fight_secs( foe ),
-              pct( ch->hit, ch->max_hit ) );
+              pct( ch->hit, ch->max_hit ), foe->hit, foe->max_hit );
     hylog_write( "flee", ch, from, fields );
 }
 
@@ -381,13 +389,15 @@ void hylog_death( CHAR_DATA *killer, CHAR_DATA *victim )
     if ( foe == victim || ( foe != NULL && !IS_NPC(foe) ) )
         foe = NULL;
     hylog_clean( name, sizeof(name), foe != NULL ? foe->short_descr : "-" );
-    snprintf( fields, sizeof(fields), "foe=%d foe_name=%s guardian=%d foe_hp=%d secs=%ld how=%s",
+    snprintf( fields, sizeof(fields),
+              "foe=%d foe_name=%s guardian=%d foe_hp=%d secs=%ld how=%s foe_hit=%d foe_max=%d",
               foe != NULL && foe->pIndexData != NULL ? foe->pIndexData->vnum : 0,
               name, is_hyrule_guardian( foe ) ? 1 : 0,
               foe != NULL ? pct( foe->hit, foe->max_hit ) : -1,
               fight_secs( foe ),
               killer == NULL ? "none" : killer == victim ? "self"
-              : IS_NPC(killer) ? "mob" : "player" );
+              : IS_NPC(killer) ? "mob" : "player",
+              foe != NULL ? foe->hit : -1, foe != NULL ? foe->max_hit : -1 );
     hylog_write( "death", victim, NULL, fields );
 }
 
@@ -408,13 +418,23 @@ void hylog_room_cleared( CHAR_DATA *ch, ROOM_INDEX_DATA *room, bool foe_died )
 /* What crumbled because its dungeon was left (hyrule.c): the dungeon
    left (0 for a stray found outside one), and how many of each. */
 void hylog_crumbled( CHAR_DATA *ch, int dungeon, int maps, int compasses,
-                     int keys, int guardian_keys, bool leaving )
+                     int keys, int guardian_keys, bool leaving, unsigned of_mask )
 {
-    char fields[200];
+    char fields[240], of[32];
+    size_t n = 0;
+    int level;
 
+    /* Whose things they were (a map, a compass or a guardian's key names
+       its dungeon; a small key does not): "dungeon" is only where the
+       holder stood, and a Level 1 map crumbling in Level 2 read as a
+       dungeon's own map lost inside it (2026-11-22). */
+    of[0] = '\0';
+    for ( level = 1; level <= 9; level++ )
+        if ( of_mask & ( 1u << level ) )
+            n += (size_t) snprintf( of + n, sizeof(of) - n, "%s%d", n > 0 ? "," : "", level );
     snprintf( fields, sizeof(fields),
-              "dungeon=%d maps=%d compasses=%d keys=%d guardian_keys=%d why=%s how=%s",
+              "dungeon=%d maps=%d compasses=%d keys=%d guardian_keys=%d why=%s how=%s of=%s",
               dungeon, maps, compasses, keys, guardian_keys,
-              leaving ? "left" : "stray", playlog_how( ch ) );
+              leaving ? "left" : "stray", playlog_how( ch ), n > 0 ? of : "-" );
     hylog_write( "crumbled", ch, NULL, fields );
 }

@@ -908,7 +908,12 @@ void walkto_update( void )
             continue;
         }
 
-        walkto_step( ch );
+        {
+            const char *was = playlog_reason( "walkto" );
+
+            walkto_step( ch );
+            playlog_reason( was );
+        }
     }
 }
 

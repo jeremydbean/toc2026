@@ -4311,6 +4311,9 @@ case CON_DEFAULT_CHOICE:
 	       character's name may hold an old diary, set aside here
 	       (diary.c). */
 	    diary_login( ch, is_new_character );
+	    /* Where a login puts them is the login's, in the journals (it
+	       read "(game loop)"). Put back once the pet is placed. */
+	    const char *login_was = playlog_reason( "login" );
 
 	    if ( is_new_character )
 	    {
@@ -4378,6 +4381,7 @@ case CON_DEFAULT_CHOICE:
 	        char_to_room( ch->pet, ch->in_room );
 	        act( "$n has entered the game.", ch->pet, NULL, NULL, TO_ROOM );
 	    }
+	    playlog_reason( login_was );
 	    /* A mount is saved with its saddle but never as ridden (save.c,
 	       fwrite_pet): it comes in beside its owner, saddled, and RIDE
 	       mounts it again. The flag that you are riding was saved too,

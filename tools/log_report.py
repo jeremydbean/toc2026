@@ -849,7 +849,37 @@ def _num(row, key, default=None):
     return int(value) if value.lstrip("-").isdigit() else default
 
 
-def hyrule_summary(rows) -> dict:
+# Taking back what one already had is no gain (2026-11-22: Trentlin's
+# corpse, recovered in the Korzath maze, read as a player finding all eight
+# Triforce pieces at once). The game says so since then (how=own-corpse,
+# own-bag); older rows are known by their source, "corpse of <Name>".
+RECOVERED_HOWS = ("own-corpse", "own-bag")
+
+
+def is_recovery(who: str, how: str, source: str) -> bool:
+    if how in RECOVERED_HOWS:
+        return True
+    source = source.replace("_", " ").strip().lower()
+    return how == "get" and source == f"corpse of {who}".lower()
+
+
+def own_corpse_gets(text: str, since: datetime) -> set:
+    """(epoch second, name, vnum) of the play journal's got rows that took a
+    thing back from its owner's own corpse: what an old Hyrule got row,
+    which named no source, is matched against."""
+    found = set()
+    for raw in text.splitlines():
+        f = raw.split("\t")
+        if len(f) < 13 or f[1] != "got" or not f[0].isdigit():
+            continue
+        if datetime.fromtimestamp(int(f[0]), timezone.utc) < since:
+            continue
+        if is_recovery(f[2], f[11], f[12]):
+            found.add((int(f[0]), f[2], f[6]))
+    return found
+
+
+def hyrule_summary(rows, recovered_gets=frozenset()) -> dict:
     zones: dict = {}
     furthest: dict = {}
     guardians: dict = {}
@@ -861,6 +891,7 @@ def hyrule_summary(rows) -> dict:
     cleared: Counter = Counter()
     deaths: Counter = Counter()
     crumbled: Counter = Counter()
+    recovered: Counter = Counter()
     for r in rows:
         kind, zone, who = r["kind"], r["zone"], r["name"]
         if kind == "enter" and zone in ZONE_ORDER:
@@ -878,6 +909,11 @@ def hyrule_summary(rows) -> dict:
         elif kind == "gate":
             gates[(r.get("dungeon", "?"), r.get("gate", "?"), r.get("need_name", "?"))] += 1
         elif kind == "got":
+            stamp = int(r["when"].timestamp())
+            if (is_recovery(who, r.get("how", ""), r.get("from", ""))
+                    or (stamp, who, r.get("obj", "?")) in recovered_gets):
+                recovered[who] += 1
+                continue
             key = (r.get("obj", "?"), r.get("obj_name", "?"))
             got[key] += 1
             got_how.setdefault(key, Counter())[r.get("how", "?")] += 1
@@ -923,12 +959,12 @@ def hyrule_summary(rows) -> dict:
     return {"zones": zones, "furthest": furthest, "guardians": guardians, "gates": gates,
             "got": got, "got_how": got_how, "claims": claims, "seals": seals,
             "cleared": cleared, "deaths": deaths, "crumbled": crumbled,
-            "characters": len({r["name"] for r in rows})}
+            "recovered": recovered, "characters": len({r["name"] for r in rows})}
 
 
 def hyrule_report(args, since) -> None:
     rows = hyrule_rows(git_show(args.ref, "log/hyrule.tsv"), since)
-    s = hyrule_summary(rows)
+    s = hyrule_summary(rows, own_corpse_gets(git_show(args.ref, "log/play.tsv"), since))
     print(f"\n== hyrule ({s['characters']} characters, {len(rows)} records; log/hyrule.tsv)")
     if not rows:
         print("  (no log/hyrule.tsv records in the window)")
@@ -970,6 +1006,9 @@ def hyrule_report(args, since) -> None:
         print(f"    x{n:<4} {vnum:>6} {name.replace('_', ' ')[:32]:<32} {hows}")
     if not s["got"]:
         print("    (none)")
+    if s["recovered"]:
+        print("  taken back from their own corpse or bag (not counted above):",
+              ", ".join(f"{who} {n}" for who, n in s["recovered"].most_common()))
     print("  claims:", ", ".join(f"{what} {n}" for what, n in s["claims"].most_common()) or "(none)")
     print("  seals opened:", ", ".join(f"{zone} {name.replace('_', ' ')} {n}" for (zone, name), n
                                      in s["seals"].most_common(12)) or "(none)")
@@ -1010,6 +1049,7 @@ def activity_summary(rows) -> dict:
     coin_by_source: Counter = Counter()
     got: Counter = Counter()
     got_how: dict = {}
+    recovered: Counter = Counter()
     levels: dict = {}
     area_secs: Counter = Counter()
     area_visits: Counter = Counter()
@@ -1024,6 +1064,9 @@ def activity_summary(rows) -> dict:
                                int(f[10]) if f[10].lstrip("-").isdigit() else 0))
             coin_by_source[f[7]] += amount
         elif kind == "got" and len(f) >= 13:
+            if is_recovery(who, f[11], f[12]):
+                recovered[who] += 1
+                continue
             key = (f[6], f[7])
             got[key] += 1
             got_how.setdefault(key, Counter())[f[11]] += 1
@@ -1042,7 +1085,7 @@ def activity_summary(rows) -> dict:
             quests[(f[6], f[7])] += 1
     coin_moves.sort(reverse=True)
     return {"coin_moves": coin_moves, "coin_by_source": coin_by_source, "got": got,
-            "got_how": got_how, "levels": levels, "area_secs": area_secs,
+            "got_how": got_how, "recovered": recovered, "levels": levels, "area_secs": area_secs,
             "area_visits": area_visits, "achieved": achieved, "skills": skills,
             "quests": quests}
 
@@ -1066,6 +1109,9 @@ def activity_report(args, since) -> None:
     for (vnum, name), n in s["got"].most_common(15):
         hows = ", ".join(f"{h} {c}" for h, c in s["got_how"][(vnum, name)].most_common(3))
         print(f"    x{n:<4} {vnum:>6} {name.replace('_', ' ')[:30]:<30} {hows}")
+    if s["recovered"]:
+        print("  taken back from their own corpse or bag (not counted above):",
+              ", ".join(f"{who} {n}" for who, n in s["recovered"].most_common()))
     print("  levels gained (character: from->to, minutes the level took):")
     for who, gains in sorted(s["levels"].items()):
         steps = ", ".join(f"{a}->{b}" + (f" {secs // 60}m" if secs >= 0 else "")

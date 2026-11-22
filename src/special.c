@@ -1965,8 +1965,17 @@ bool spec_thief( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
             gold = UMIN(gold, cap);
             if (gold > 0 && can_adjust_coin_balance(mob, gold, coin_type))
             {
+                /* Named in the coin row (2026-11-22: three players' losses
+                   read "spent (mobile_update)" with no thief named). */
+                const char *was = playlog_reason( "stolen" );
+
+                playlog_from( mob->short_descr );
+                playlog_coin_as( "stolen" );
                 adjust_coin_balance(mob, gold, coin_type);
                 adjust_coin_balance(victim, -gold, coin_type);
+                playlog_coin_as( NULL );
+                playlog_from( NULL );
+                playlog_reason( was );
             }
             return true;
 

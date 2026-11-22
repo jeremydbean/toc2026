@@ -498,13 +498,24 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	   things, which the diary does not count as gaining them. */
 	OBJ_DATA *outer = container;
 
+	bool own_bag, own_corpse;
+	const char *was_reason = NULL;
+
 	while ( outer != NULL && outer->in_obj != NULL )
 	    outer = outer->in_obj;
-	diary_own_move( outer != NULL
-	    && ( outer->carried_by == ch
-	      || ( outer->item_type == ITEM_CORPSE_PC && outer->owner != NULL
-	        && ch->name != NULL && !str_cmp( outer->owner, ch->name ) ) ) );
+	own_bag = outer != NULL && outer->carried_by == ch;
+	own_corpse = outer != NULL && outer->item_type == ITEM_CORPSE_PC
+	    && outer->owner != NULL && ch->name != NULL && !str_cmp( outer->owner, ch->name );
+	diary_own_move( own_bag || own_corpse );
+	/* Said in the journals' rows, so taking back one's own corpse is not
+	   read as finding everything in it (2026-11-22). */
+	if ( own_corpse )
+	    was_reason = playlog_reason( "own-corpse" );
+	else if ( own_bag )
+	    was_reason = playlog_reason( "own-bag" );
 	obj_to_char( obj, ch );
+	if ( own_corpse || own_bag )
+	    playlog_reason( was_reason );
 	diary_own_move( false );
 	/* A Hyrule dungeon's map fills in that dungeon on a client's map. */
 	if ( hyrule_is_dungeon_tool( obj ) )

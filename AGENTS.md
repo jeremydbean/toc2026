@@ -4202,6 +4202,26 @@ log says what a player typed; the journal says what happened, in columns
   `how` comes from `playlog_how()`. `tests/test_hyrule_log.py`; the
   report's `== hyrule` section reads it.
 
+- **Every row says why, never an update phase** (2026-11-22: the report
+  listed all eight Triforce pieces as found by one player in one second --
+  they were Trentlin's own, taken back from his corpse -- and a death read
+  "(mobile_update)", a login "(game loop)", a thief's robbery "spent").
+  `playlog_reason(why)` names the cause around the code that moves a thing
+  or coin with no command to explain it, and returns the old reason to put
+  back: `own-corpse` and `own-bag` (get_obj from the character's own corpse
+  or carried container), `autoloot`, `autogold`, `death` (raw_kill's
+  extract), `login`, `walkto`, `guardian-key`, `stolen` (spec_thief, with
+  `playlog_coin_as("stolen")` and `playlog_from` the thief). A phase still
+  shown is written without `_update`. A new way of moving things or coin
+  outside a command names its reason. Hyrule's `got` row carries
+  `from=` (`playlog_from_where`), `flee`/`death` `foe_hit=`/`foe_max=`
+  (the percentage read 0 at 40 hit points), `crumbled` `of=` (whose
+  dungeon's things: `dungeon=` is where the player stood); the play
+  journal's death row `burst=`/`burst_secs=`, what came off in the last
+  `PLAY_BURST_SECS` (10). `log_report.py` counts a corpse or bag taken back
+  apart from what was found, old rows by `from=corpse of <name>` in
+  play.tsv (`own_corpse_gets`, `is_recovery`). `tests/test_log_reasons.py`.
+
 `tools/log_report.py` prints the slowest commands, what the game said no
 with (grouped by command and answer -- the cheapest way to find a command
 that confuses players), **help that did not help** (HELP X, then X refused

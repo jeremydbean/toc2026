@@ -950,12 +950,43 @@ const char *playlog_cause( void )
    ("north", "recall", "play"), "<other>'s" for somebody else's command, or
    the update phase in brackets ("(violence_update)"). For log/hyrule.tsv
    (hyrulelog.c). A hidden command is "-". */
+/*
+ * A reason the code names around something no command explains (2026-11-22:
+ * the Hyrule log said "(mobile_update)" for a death, "(game loop)" for a
+ * login, "(violence_update)" for a guardian's key and an autoloot, and
+ * "get" for a player taking back their own corpse, which read as a player
+ * finding all eight Triforce pieces at once). Scoped by the caller: it
+ * returns the reason it replaces, which the caller puts back.
+ */
+static const char *play_reason = NULL;
+
+const char *playlog_reason( const char *why )
+{
+    const char *old = play_reason;
+
+    play_reason = why;
+    return old;
+}
+
 const char *playlog_how( CHAR_DATA *ch )
 {
     static char how[64];
 
-    if ( !current_set )
-        snprintf( how, sizeof(how), "(%s)", playlog_phase );
+    if ( play_reason != NULL )
+        snprintf( how, sizeof(how), "%s", play_reason );
+    else if ( !current_set )
+    {
+        /* An update phase with no reason given: its name without the
+           "_update" every one of them carries. */
+        size_t n = strlen( playlog_phase );
+
+        char stem[48];
+
+        toc_strlcpy( stem, playlog_phase, sizeof(stem) );
+        if ( n > 7 && n - 7 < sizeof(stem) && !strcmp( playlog_phase + n - 7, "_update" ) )
+            stem[n - 7] = '\0';
+        snprintf( how, sizeof(how), "(%s)", stem );
+    }
     else if ( current_hidden )
         snprintf( how, sizeof(how), "-" );
     else if ( ch != NULL && ch->name != NULL && !str_cmp( ch->name, current_name ) )
@@ -1412,6 +1443,11 @@ void playlog_coin( CHAR_DATA *ch, long amount, long unit, bool pile )
 /* Where the thing a command moves came from -- the container GET takes it
    from, the keeper BUY buys from -- for the coin and got rows this command
    writes. Cleared when the command ends. */
+const char *playlog_from_where( void )
+{
+    return play_from;
+}
+
 void playlog_from( const char *where )
 {
     if ( where == NULL )
@@ -2351,6 +2387,12 @@ void playlog_blow( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
     pc->blow_last_hp = victim->hit + dam;     /* called after the subtraction */
     pc->blow_last_from = blow_from( ch, victim );
     pc->blow_last_at = current_time;
+    if ( pc->blow_burst_at == 0 || current_time - pc->blow_burst_at > PLAY_BURST_SECS )
+    {
+        pc->blow_burst_at = current_time;
+        pc->blow_burst_dam = 0;
+    }
+    pc->blow_burst_dam += dam;
     if ( dam >= pc->blow_big_dam || pc->blow_big_at + 60 < current_time )
     {
         pc->blow_big_dam = dam;
@@ -2399,7 +2441,7 @@ void playlog_death( CHAR_DATA *killer, CHAR_DATA *victim )
     snprintf( fields, sizeof(fields),
               "%s\tkiller_lvl=%d last=%d %s hp_before=%d from=%d age=%lds"
               " big=%d %s from=%d age=%lds max_hp=%d foes=%d wimpy=%d dt_room=%d"
-              " sanct=%d linkdead=%d",
+              " sanct=%d linkdead=%d burst=%ld burst_secs=%ld",
               who, killer != NULL ? killer->level : 0,
               pc->blow_last_dam, pc->blow_last_at > 0 ? blow_noun( pc->blow_last_dt ) : "-",
               pc->blow_last_hp, pc->blow_last_from,
@@ -2410,8 +2452,12 @@ void playlog_death( CHAR_DATA *killer, CHAR_DATA *victim )
               victim->max_hit, foes, victim->wimpy,
               victim->in_room != NULL && IS_SET( victim->in_room->room_flags, ROOM_DT ) ? 1 : 0,
               IS_AFFECTED( victim, AFF_SANCTUARY ) ? 1 : 0,
-              victim->desc == NULL ? 1 : 0 );
+              victim->desc == NULL ? 1 : 0,
+              pc->blow_burst_at > 0 ? pc->blow_burst_dam : 0L,
+              pc->blow_burst_at > 0 ? (long) ( current_time - pc->blow_burst_at ) : -1L );
     journal_write( "death", victim, fields );
+    pc->blow_burst_at = 0;
+    pc->blow_burst_dam = 0;
     pc->blow_last_at = pc->blow_big_at = 0;
     pc->blow_last_dam = pc->blow_big_dam = 0;
 }
