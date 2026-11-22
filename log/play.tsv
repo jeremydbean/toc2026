@@ -51714,3 +51714,144 @@
 1795388229	cmd	Trentlin	54	3529	midennir.are	standing	100	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially	-	+
 1795388230	cmd	Trentlin	54	3530	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste	-	+
 1795388230	cmd	Trentlin	54	3531	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your	-	+
+1795388230	cmd	Trentlin	54	3532	midennir.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous	-	+
+1795388230	area	Trentlin	54	42	connect.are	midennir.are	connect.are	2	east
+1795388230	cmd	Trentlin	54	42	connect.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities	-	+
+1795388231	area	Trentlin	54	9669	newthalo.are	connect.are	newthalo.are	1	east
+1795388231	cmd	Trentlin	54	9669	newthalo.are	standing	100	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.	-	+
+1795388231	cmd	Trentlin	54	9523	newthalo.are	standing	100	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1795388231	cmd	Trentlin	54	9524	newthalo.are	standing	100	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1795388231	cmd	Trentlin	54	9525	newthalo.are	standing	100	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1795388232	cmd	Trentlin	54	9526	newthalo.are	standing	100	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1795388232	cmd	Trentlin	54	9509	newthalo.are	standing	100	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1795388232	cmd	Trentlin	54	9514	newthalo.are	standing	100	0	-	north		The Northwestern Market Square //   This corner of the market contains some of the most civilized folk in // New Thalos. To the north lies the humble store of the merchant Ahkeem, his	-	+
+1795388232	cmd	Trentlin	54	9515	newthalo.are	standing	100	0	-	east		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the	-	+
+1795388233	cmd	Trentlin	54	9518	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on	-	+
+1795388233	laid	-	0	0	-	907	herb	40	a clove	1104	shire.are	scatter
+1795388233	laid	-	0	0	-	908	herb	37	a sprig of catnip	1104	shire.are	scatter
+1795388233	laid	-	0	0	-	909	component	77	a vial of medusa eye fluid	6613	daycare.are	scatter
+1795388233	cmd	Trentlin	54	9519	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small	-	+
+1795388233	cmd	Trentlin	54	9520	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you	-	+
+1795388233	cmd	Trentlin	54	9521	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The main road north from the square continues here, surrounded by the walls // of the palace and the Daemon. To the north you see the heavily guarded gate	-	+
+1795388234	cmd	Trentlin	54	9522	newthalo.are	standing	100	0	-	north		Inside the Northern Gate of New Thalos //   Two large stone towers rise up to greet you with a massive iron gate // swinging between on ornately crafted hinges and emblazened with the crest of	-	+
+1795388234	cmd	Trentlin	54	9522	newthalo.are	standing	100	0	-	open	north	Ok.	-	-
+1795388234	cmd	Trentlin	54	9667	newthalo.are	standing	100	0	-	north		Outside the Northern Gate of New Thalos //   You stand outside the gate of New Thalos. The city lies to the south, and // wilderness to the north.  The Sands of Sorrow continues to the east	-	+
+1795388234	cmd	Trentlin	54	9781	newthalo.are	standing	100	0	-	north		On the Plains //   You stand on an open expanse of grass extending in all directions. To // the south of you stand the might northern gates of New Thalos. East	-	+
+1795388235	cmd	Trentlin	54	9782	newthalo.are	standing	100	0	-	north		On the Plains //   You stand on an open field of grass. The forest to the north is // closer but still a good distance away. To the south a small dirt	-	+
+1795388235	cmd	Trentlin	54	9783	newthalo.are	standing	100	0	-	north		Edge of the forest //   You stand at the edge of a huge forest. The line of trees // continues as far as the eye can see to the east and west. A large	-	+
+1795388235	area	Trentlin	54	64	connect.are	newthalo.are	connect.are	4	north
+1795388235	cmd	Trentlin	54	64	connect.are	standing	100	0	-	north		Misty Clearing //   As you emerge from the forest, your head  slowly begins to  swim, and you // get  the  distinct  feeling  that you are very close to a highly powerful	-	+
+1795388235	area	Trentlin	54	29001	korzath1.are	connect.are	korzath1.are	0	north
+1795388235	cmd	Trentlin	54	29001	korzath1.are	standing	100	0	-	north		Entrance to the Fortress //   You stand before the entrance to Korzath's mighty fortress.  The // fortress is built into the lower side of the mountain here.  The entrance	-	+
+1795388237	cmd	Trentlin	54	29002	korzath1.are	standing	100	0	-	north		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites	-	+
+1795388238	cmd	Trentlin	54	29003	korzath1.are	standing	100	0	-	north		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in	-	+
+1795388238	cmd	Trentlin	54	29004	korzath1.are	standing	100	0	-	north		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive	-	+
+1795388238	cmd	Trentlin	54	29004	korzath1.are	standing	100	0	-	north		The door is closed.	-	-
+1795388238	cmd	Trentlin	54	29004	korzath1.are	standing	100	0	-	north		The door is closed.	-	-
+1795388239	cmd	Trentlin	54	29004	korzath1.are	standing	100	0	-	north		The door is closed.	-	-
+1795388240	cmd	Trentlin	54	29004	korzath1.are	standing	100	0	-	kill	g	Your punch *** DEVASTATES *** Guardian Knight! // Guardian Knight parries your attack.	-	-
+1795388243	cmd	Trentlin	54	29004	korzath1.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your blazing fists of fury maims Guardian Knight! // Your knife-edged fists of fury MUTILATES Guardian Knight!	-	+
+1795388249	cmd	Trentlin	54	29004	korzath1.are	fighting	97	0	fight	fists		You attack in an all consuming fury! // Your crackling fists of fury decimates Guardian Knight! // Your frost-wreathed fists of fury mauls Guardian Knight.	-	+
+1795388255	cmd	Trentlin	54	29004	korzath1.are	fighting	96	0	fight	nerve		You jab Guardian Knight with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls Guardian Knight.	-	-
+1795388258	cmd	Trentlin	54	29004	korzath1.are	fighting	93	0	fight	kick		Your kick misses Guardian Knight.	-	-
+1795388261	cmd	Trentlin	54	29004	korzath1.are	fighting	93	0	fight	kick		Your kick grazes Guardian Knight.	-	-
+1795388263	skill	Trentlin	54	29004	korzath1.are	second attack	88	89	success	(violence)
+1795388263	cmd	Trentlin	54	29004	korzath1.are	fighting	93	0	fight	kick		Your kick scratches Guardian Knight.	-	-
+1795388266	coin	Trentlin	54	29004	korzath1.are	+3000000	loot	autogold	corpse of Guardian Knight	22566462799
+1795388266	coin	Trentlin	54	29004	korzath1.are	+3400	loot	autogold	corpse of Guardian Knight	22566466199
+1795388266	coin	Trentlin	54	29004	korzath1.are	+40	loot	autogold	corpse of Guardian Knight	22566466239
+1795388266	coin	Trentlin	54	29004	korzath1.are	+670000	loot	autogold	corpse of Guardian Knight	22567136239
+1795388268	got	Trentlin	54	29004	korzath1.are	29003	a diamond key	key	40	1000000	get	corpse of Guardian Knight
+1795388268	cmd	Trentlin	54	29004	korzath1.are	standing	93	0	-	get	key co	You get a diamond key from corpse of Guardian Knight.	-	-
+1795388270	cmd	Trentlin	54	29004	korzath1.are	standing	93	0	-	unlock	n	There is a flash of light as you unlock the door.	-	-
+1795388271	cmd	Trentlin	54	29004	korzath1.are	standing	93	0	-	open	n	Ok.	-	-
+1795388272	cmd	Trentlin	54	29004	korzath1.are	standing	93	0	-	drop	key	You drop a diamond key.	-	-
+1795388272	area	Trentlin	54	29201	korzath2.are	korzath1.are	korzath2.are	37	north
+1795388272	cmd	Trentlin	54	29201	korzath2.are	standing	93	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal	-	+
+1795388273	cmd	Trentlin	54	29202	korzath2.are	standing	93	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that	-	+
+1795388273	cmd	Trentlin	54	29202	korzath2.are	standing	93	0	-	north		The door is closed.	-	-
+1795388274	cmd	Trentlin	54	29203	korzath2.are	standing	93	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight	-	+
+1795388276	cmd	Trentlin	54	29203	korzath2.are	standing	93	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.	-	-
+1795388283	cmd	Trentlin	54	29203	korzath2.are	standing	93	0	-	steel		You lost your concentration.	-	-
+1795388283	cmd	Trentlin	54	29204	korzath2.are	standing	93	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it	-	+
+1795388284	cmd	Trentlin	54	29204	korzath2.are	standing	93	0	-	west		Alas, you cannot go that way.	-	-
+1795388285	cmd	Trentlin	54	29204	korzath2.are	standing	93	0	-	kill	cl	A killer clown parries your attack. // A killer clown parries your attack.	-	-
+1795388288	cmd	Trentlin	54	29204	korzath2.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your frost-wreathed fists of fury decimates a killer clown! // Your blazing fists of fury scratches a killer clown.	-	+
+1795388294	cmd	Trentlin	54	29204	korzath2.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your frost-wreathed fists of fury DISMEMBERS a killer clown! // Your blazing fists of fury injures a killer clown.	-	+
+1795388295	laid	-	0	0	-	920	herb	38	a foxglove flower	2477	dresden.are	scatter
+1795388300	cmd	Trentlin	54	29204	korzath2.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your blazing fists of fury scratches a killer clown. // Your knife-edged fists of fury injures a killer clown.	-	+
+1795388307	cmd	Trentlin	54	29204	korzath2.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your frost-wreathed fists of fury hits a killer clown. // Your blazing fists of fury ^^^ DESTROYS ^^^ a killer clown!	-	+
+1795388313	cmd	Trentlin	54	29204	korzath2.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your acid-slick fists of fury hits a killer clown. // Your crackling fists of fury *** DEVASTATES *** a killer clown!	-	+
+1795388319	cmd	Trentlin	54	29204	korzath2.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your acid-slick fists of fury hits a killer clown. // Your crackling fists of fury decimates a killer clown!	-	+
+1795388325	coin	Trentlin	54	29204	korzath2.are	+5000000	loot	autogold	corpse of a killer clown	22572136239
+1795388325	coin	Trentlin	54	29204	korzath2.are	+2300	loot	autogold	corpse of a killer clown	22572138539
+1795388325	coin	Trentlin	54	29204	korzath2.are	+31	loot	autogold	corpse of a killer clown	22572138570
+1795388325	coin	Trentlin	54	29204	korzath2.are	+130000	loot	autogold	corpse of a killer clown	22572268570
+1795388325	cmd	Trentlin	54	29204	korzath2.are	fighting	95	1	fight	fists		You attack in an all consuming fury! // Your blazing fists of fury === OBLITERATES === a killer clown! // A killer clown is DEAD!!	-	+
+1795388333	cmd	Trentlin	54	29204	korzath2.are	standing	95	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1795388337	cmd	Trentlin	54	29205	korzath2.are	standing	95	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of	-	+
+1795388337	cmd	Trentlin	54	29204	korzath2.are	standing	95	0	-	north		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it	-	+
+1795388337	cmd	Trentlin	54	29204	korzath2.are	standing	95	0	-	kill	clo	Your punch *** DEVASTATES *** a killer clown! // Your punch DISEMBOWELS a killer clown!	-	-
+1795388340	cmd	Trentlin	54	29204	korzath2.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your blazing fists of fury injures a killer clown. // Your knife-edged fists of fury injures a killer clown.	-	+
+1795388346	cmd	Trentlin	54	29204	korzath2.are	fighting	95	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes a killer clown.	-	-
+1795388347	cmd	Trentlin	54	29204	korzath2.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your acid-slick fists of fury devastates a killer clown! // Your crackling fists of fury grazes a killer clown.	-	+
+1795388351	laid	-	0	0	-	924	herb	36	a belladonna plant	2430	dresden.are	scatter
+1795388351	laid	-	0	0	-	925	herb	46	a juniper berry	4473	dresden.are	scatter
+1795388351	laid	-	0	0	-	926	component	62	a nightmare's hoof clipping	5807	mid_ruin.are	scatter
+1795388353	cmd	Trentlin	54	29204	korzath2.are	fighting	89	0	fight	nerve		You jab a killer clown with wedged fingers, paralyzing a nerve. // Your nerve pinch MANGLES a killer clown!	-	-
+1795388356	cmd	Trentlin	54	29204	korzath2.are	fighting	89	0	fight	fists		You attack in an all consuming fury! // Your frost-wreathed fists of fury maims a killer clown! // Your blazing fists of fury *** DEVASTATES *** a killer clown!	-	+
+1795388363	cmd	Trentlin	54	29204	korzath2.are	fighting	79	0	fight	fists		You attack in an all consuming fury! // Your frost-wreathed fists of fury decimates a killer clown! // Your blazing fists of fury scratches a killer clown.	-	+
+1795388369	cmd	Trentlin	54	29204	korzath2.are	fighting	74	0	fight	fists		You attack in an all consuming fury! // Your crackling fists of fury MASSACRES a killer clown! // Your frost-wreathed fists of fury decimates a killer clown!	-	+
+1795388371	coin	Trentlin	54	29204	korzath2.are	+5000000	loot	autogold	corpse of a killer clown	22577268570
+1795388371	coin	Trentlin	54	29204	korzath2.are	+2300	loot	autogold	corpse of a killer clown	22577270870
+1795388371	coin	Trentlin	54	29204	korzath2.are	+31	loot	autogold	corpse of a killer clown	22577270901
+1795388371	coin	Trentlin	54	29204	korzath2.are	+130000	loot	autogold	corpse of a killer clown	22577400901
+1795388378	cmd	Trentlin	54	29204	korzath2.are	standing	74	0	-	iron		Your skin hardens. // Blunt blows cannot hurt you while it lasts.	-	-
+1795388385	cmd	Trentlin	54	29205	korzath2.are	standing	74	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of	-	+
+1795388385	cmd	Trentlin	54	29205	korzath2.are	standing	74	0	-	kill	cl	Your punch mauls a killer clown. // A killer clown dodges your attack.	-	-
+1795388388	cmd	Trentlin	54	29205	korzath2.are	fighting	74	0	fight	fists		You attack in an all consuming fury! // Your blazing fists of fury wounds a killer clown. // Your knife-edged fists of fury wounds a killer clown.	-	+
+1795388394	cmd	Trentlin	54	29205	korzath2.are	fighting	74	0	fight	fists		You attack in an all consuming fury! // Your frost-wreathed fists of fury MASSACRES a killer clown! // Your blazing fists of fury scratches a killer clown.	-	+
+1795388399	cmd	Trentlin	54	29205	korzath2.are	fighting	74	0	fight	nerve		You jab a killer clown with wedged fingers, paralyzing a nerve. // Your nerve pinch MASSACRES a killer clown!	-	-
+1795388402	cmd	Trentlin	54	29205	korzath2.are	fighting	74	0	fight	kick		Your kick scratches a killer clown.	-	-
+1795388407	cmd	Trentlin	54	29205	korzath2.are	fighting	74	0	fight	kick		Your kick grazes a killer clown.	-	-
+1795388409	laid	-	0	0	-	928	herb	53	a huckleberry	9156	dylan.are	scatter
+1795388409	laid	-	0	0	-	929	component	81	a vial of squid ink	1115	shire.are	scatter
+1795388412	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	kick		Your kick grazes a killer clown.	-	-
+1795388415	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	kick		Your kick mauls a killer clown.	-	-
+1795388420	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	kick		Your kick misses a killer clown.	-	-
+1795388422	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	fists		You attack in an all consuming fury! // Your acid-slick fists of fury MANGLES a killer clown! // Your crackling fists of fury DISMEMBERS a killer clown!	-	+
+1795388429	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	trip		Your trip misses a killer clown.	-	-
+1795388434	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	trip		Your trip misses a killer clown.	-	-
+1795388438	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	trip		Your trip misses a killer clown.	-	-
+1795388440	coin	Trentlin	54	29205	korzath2.are	+5000000	loot	autogold	corpse of a killer clown	22582400901
+1795388440	coin	Trentlin	54	29205	korzath2.are	+2300	loot	autogold	corpse of a killer clown	22582403201
+1795388440	coin	Trentlin	54	29205	korzath2.are	+31	loot	autogold	corpse of a killer clown	22582403232
+1795388440	coin	Trentlin	54	29205	korzath2.are	+130000	loot	autogold	corpse of a killer clown	22582533232
+1795388444	cmd	Trentlin	54	29205	korzath2.are	standing	75	0	-	look		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of	-	+
+1795388444	cmd	Trentlin	54	29206	korzath2.are	standing	75	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well	-	+
+1795388446	cmd	Trentlin	54	29207	korzath2.are	standing	75	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?	-	+
+1795388447	cmd	Trentlin	54	29206	korzath2.are	standing	75	0	-	north		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well	-	+
+1795388449	cmd	Trentlin	54	29206	korzath2.are	standing	75	0	-	kill	cl	Your punch grazes a killer clown. // A killer clown dodges your attack. // Your punch DISEMBOWELS a killer clown!	-	-
+1795388452	cmd	Trentlin	54	29206	korzath2.are	fighting	75	0	fight	flee		A killer clown is overcome with a feeling of despair and flees the battle. // A killer clown walks off to the west. // A killer clown has fled!	-	-
+1795388452	cmd	Trentlin	54	29206	korzath2.are	standing	75	0	-	flee		You aren't fighting anyone.	-	-
+1795388453	cmd	Trentlin	54	29205	korzath2.are	standing	75	0	-	west		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of	-	+
+1795388454	cmd	Trentlin	54	29205	korzath2.are	standing	75	0	-	kill	clo	A killer clown dodges your attack. // Your punch MUTILATES a killer clown!	-	-
+1795388461	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	fists		You attack in an all consuming fury! // Your blazing fists of fury DISMEMBERS a killer clown! // Your knife-edged fists of fury scratches a killer clown.	-	+
+1795388466	cmd	Trentlin	54	29205	korzath2.are	fighting	76	0	fight	kick		Your kick misses a killer clown.	-	-
+1795388471	cmd	Trentlin	54	29205	korzath2.are	fighting	76	0	fight	kick		Your kick DISMEMBERS a killer clown!	-	-
+1795388475	cmd	Trentlin	54	29205	korzath2.are	fighting	76	0	fight	kick		Your kick scratches a killer clown.	-	-
+1795388482	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	kick		Your kick DISEMBOWELS a killer clown!	-	-
+1795388484	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	kick		Your kick hits a killer clown.	-	-
+1795388489	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	kick		Your kick scratches a killer clown.	-	-
+1795388492	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	kick		Your kick scratches a killer clown.	-	-
+1795388496	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	kick		Your kick scratches a killer clown.	-	-
+1795388503	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	kick		Your kick grazes a killer clown.	-	-
+1795388507	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	kick		Your kick hits a killer clown.	-	-
+1795388510	skill	Trentlin	54	29205	korzath2.are	kick	81	83	mistake	kick
+1795388510	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	kick		Your kick misses a killer clown. // You learn from your mistakes, and your kick skill improves.	-	-
+1795388514	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	kick		Your kick grazes a killer clown.	-	-
+1795388516	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	kick		Your kick wounds a killer clown.	-	-
+1795388520	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	kick		Your kick scratches a killer clown.	-	-
+1795388523	skill	Trentlin	54	29205	korzath2.are	kick	83	84	success	kick
+1795388523	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	kick		Your kick hits a killer clown. // You have become better at kick!	-	-
+1795388527	cmd	Trentlin	54	29205	korzath2.are	fighting	75	0	fight	kick		Your kick wounds a killer clown.	-	-

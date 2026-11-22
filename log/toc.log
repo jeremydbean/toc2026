@@ -338688,3 +338688,167 @@ Sun Nov 22 22:57:10 2026 :: Log Trentlin [3530]: east
 Sun Nov 22 22:57:10 2026 :: Log Trentlin [3531]: arrived (Near the Sands of Sorrow) from 3530
 Sun Nov 22 22:57:10 2026 :: Log Trentlin [3531]: east
 Sun Nov 22 22:57:10 2026 :: Log Trentlin [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Sun Nov 22 22:57:10 2026 :: Log Trentlin [3532]: east
+Sun Nov 22 22:57:10 2026 :: Log Trentlin [42]: arrived (On the Outskirts of New Thalos) from 3532
+Sun Nov 22 22:57:11 2026 :: Log Trentlin [42]: east
+Sun Nov 22 22:57:11 2026 :: Log Trentlin [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Sun Nov 22 22:57:11 2026 :: Log Trentlin [9669]: east
+Sun Nov 22 22:57:11 2026 :: Log Trentlin [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Sun Nov 22 22:57:11 2026 :: Log Trentlin [9523]: east
+Sun Nov 22 22:57:11 2026 :: Log Trentlin [9524]: arrived (West Main Street) from 9523
+Sun Nov 22 22:57:11 2026 :: Log Trentlin [9524]: east
+Sun Nov 22 22:57:11 2026 :: Log Trentlin [9525]: arrived (West Main Street) from 9524
+Sun Nov 22 22:57:12 2026 :: Log Trentlin [9525]: east
+Sun Nov 22 22:57:12 2026 :: Log Trentlin [9526]: arrived (West Main Street) from 9525
+Sun Nov 22 22:57:12 2026 :: Log Trentlin [9526]: east
+Sun Nov 22 22:57:12 2026 :: Log Trentlin [9509]: arrived (The Western Market Square) from 9526
+Sun Nov 22 22:57:12 2026 :: Log Trentlin [9509]: north
+Sun Nov 22 22:57:12 2026 :: Log Trentlin [9514]: arrived (The Northwestern Market Square) from 9509
+Sun Nov 22 22:57:12 2026 :: Log Trentlin [9514]: east
+Sun Nov 22 22:57:12 2026 :: Log Trentlin [9515]: arrived (The Northern Market Square) from 9514
+Sun Nov 22 22:57:13 2026 :: Log Trentlin [9515]: north
+Sun Nov 22 22:57:13 2026 :: Log Trentlin [9518]: arrived (Sultan's Walk) from 9515
+Sun Nov 22 22:57:13 2026 :: Log Trentlin [9518]: affects off: steel fist
+Sun Nov 22 22:57:13 2026 :: Log Trentlin [9518]: north
+Sun Nov 22 22:57:13 2026 :: Log Trentlin [9519]: arrived (Sultan's Walk) from 9518
+Sun Nov 22 22:57:13 2026 :: Log Trentlin [9519]: north
+Sun Nov 22 22:57:13 2026 :: Log Trentlin [9520]: arrived (Sultan's Walk) from 9519
+Sun Nov 22 22:57:13 2026 :: Log Trentlin [9520]: north
+Sun Nov 22 22:57:13 2026 :: Log Trentlin [9521]: arrived (Sultan's Walk) from 9520
+Sun Nov 22 22:57:14 2026 :: Log Trentlin [9521]: north
+Sun Nov 22 22:57:14 2026 :: Log Trentlin [9522]: arrived (Inside the Northern Gate of New Thalos) from 9521
+Sun Nov 22 22:57:14 2026 :: Log Trentlin [9522]: open north
+Sun Nov 22 22:57:14 2026 :: Log Trentlin [9522]: north
+Sun Nov 22 22:57:14 2026 :: Log Trentlin [9667]: arrived (Outside the Northern Gate of New Thalos) from 9522
+Sun Nov 22 22:57:14 2026 :: Log Trentlin [9667]: north
+Sun Nov 22 22:57:14 2026 :: Log Trentlin [9781]: arrived (On the Plains) from 9667
+Sun Nov 22 22:57:15 2026 :: Log Trentlin [9781]: north
+Sun Nov 22 22:57:15 2026 :: Log Trentlin [9782]: arrived (On the Plains) from 9781
+Sun Nov 22 22:57:15 2026 :: Log Trentlin [9782]: north
+Sun Nov 22 22:57:15 2026 :: Log Trentlin [9783]: arrived (Edge of the forest) from 9782
+Sun Nov 22 22:57:15 2026 :: Log Trentlin [9783]: north
+Sun Nov 22 22:57:15 2026 :: Log Trentlin [64]: arrived (Misty Clearing) from 9783
+Sun Nov 22 22:57:15 2026 :: Log Trentlin [64]: north
+Sun Nov 22 22:57:15 2026 :: Log Trentlin [29001]: arrived (Entrance to the Fortress) from 64
+Sun Nov 22 22:57:17 2026 :: Log Trentlin [29001]: n
+Sun Nov 22 22:57:17 2026 :: Log Trentlin [29002]: arrived (Inside Korzath's Private Fortress) from 29001
+Sun Nov 22 22:57:18 2026 :: Log Trentlin [29002]: n
+Sun Nov 22 22:57:18 2026 :: Log Trentlin [29003]: arrived (Grand Foyer) from 29002
+Sun Nov 22 22:57:18 2026 :: Log Trentlin [29003]: n
+Sun Nov 22 22:57:18 2026 :: Log Trentlin [29004]: arrived (Center Tunnelway) from 29003
+Sun Nov 22 22:57:18 2026 :: Log Trentlin [29004]: n
+Sun Nov 22 22:57:18 2026 :: Log Trentlin [29004]: n
+Sun Nov 22 22:57:19 2026 :: Log Trentlin [29004]: n
+Sun Nov 22 22:57:20 2026 :: Log Trentlin [29004]: k g
+Sun Nov 22 22:57:23 2026 :: Log Trentlin [29004]: fists
+Sun Nov 22 22:57:29 2026 :: Log Trentlin [29004]: fists
+Sun Nov 22 22:57:35 2026 :: Log Trentlin [29004]: nerve
+Sun Nov 22 22:57:38 2026 :: Log Trentlin [29004]: kick
+Sun Nov 22 22:57:41 2026 :: Log Trentlin [29004]: kick
+Sun Nov 22 22:57:43 2026 :: Log Trentlin [29004]: kick
+Sun Nov 22 22:57:46 2026 :: Log Trentlin [29004]: killed Guardian Knight
+Sun Nov 22 22:57:46 2026 :: Log Trentlin [29004]: coin +3 platinum
+Sun Nov 22 22:57:46 2026 :: Log Trentlin [29004]: coin +34 silver
+Sun Nov 22 22:57:46 2026 :: Log Trentlin [29004]: coin +40 copper
+Sun Nov 22 22:57:46 2026 :: Log Trentlin [29004]: coin +67 gold
+Sun Nov 22 22:57:48 2026 :: Log Trentlin [29004]: get key co
+Sun Nov 22 22:57:50 2026 :: Log Trentlin [29004]: unlock n
+Sun Nov 22 22:57:51 2026 :: Log Trentlin [29004]: open n
+Sun Nov 22 22:57:52 2026 :: Log Trentlin [29004]: drop key
+Sun Nov 22 22:57:52 2026 :: Log Trentlin [29004]: n
+Sun Nov 22 22:57:52 2026 :: Log Trentlin [29201]: arrived (Heroes Hall) from 29004
+Sun Nov 22 22:57:53 2026 :: Log Trentlin [29201]: n
+Sun Nov 22 22:57:53 2026 :: Log Trentlin [29202]: arrived (Hall of Past Heroes) from 29201
+Sun Nov 22 22:57:53 2026 :: Log Trentlin [29202]: n
+Sun Nov 22 22:57:54 2026 :: Log Trentlin [29202]: w
+Sun Nov 22 22:57:54 2026 :: Log Trentlin [29203]: arrived (Passage to the Maze) from 29202
+Sun Nov 22 22:57:56 2026 :: Log Trentlin [29203]: iron
+Sun Nov 22 22:58:03 2026 :: Log Trentlin [29203]: steel
+Sun Nov 22 22:58:03 2026 :: Log Trentlin [29203]: w
+Sun Nov 22 22:58:03 2026 :: Log Trentlin [29204]: arrived (Twist in the Maze) from 29203
+Sun Nov 22 22:58:04 2026 :: Log Trentlin [29204]: w
+Sun Nov 22 22:58:05 2026 :: Log Trentlin [29204]: k cl
+Sun Nov 22 22:58:08 2026 :: Log Trentlin [29204]: fists
+Sun Nov 22 22:58:14 2026 :: Log Trentlin [29204]: fists
+Sun Nov 22 22:58:20 2026 :: Log Trentlin [29204]: fists
+Sun Nov 22 22:58:27 2026 :: Log Trentlin [29204]: fists
+Sun Nov 22 22:58:33 2026 :: Log Trentlin [29204]: fists
+Sun Nov 22 22:58:39 2026 :: Log Trentlin [29204]: fists
+Sun Nov 22 22:58:45 2026 :: Log Trentlin [29204]: fists
+Sun Nov 22 22:58:45 2026 :: Log Trentlin [29204]: killed a killer clown
+Sun Nov 22 22:58:45 2026 :: Log Trentlin [29204]: coin +5 platinum
+Sun Nov 22 22:58:45 2026 :: Log Trentlin [29204]: coin +23 silver
+Sun Nov 22 22:58:45 2026 :: Log Trentlin [29204]: coin +31 copper
+Sun Nov 22 22:58:45 2026 :: Log Trentlin [29204]: coin +13 gold
+Sun Nov 22 22:58:53 2026 :: Log Trentlin [29204]: steel
+Sun Nov 22 22:58:57 2026 :: Log Trentlin [29204]: s
+Sun Nov 22 22:58:57 2026 :: Log Trentlin [29205]: arrived (Twist in the Maze) from 29204
+Sun Nov 22 22:58:57 2026 :: Log Trentlin [29205]: n
+Sun Nov 22 22:58:57 2026 :: Log Trentlin [29204]: arrived (Twist in the Maze) from 29205
+Sun Nov 22 22:58:57 2026 :: Log Trentlin [29204]: k clo
+Sun Nov 22 22:59:00 2026 :: Log Trentlin [29204]: fists
+Sun Nov 22 22:59:06 2026 :: Log Trentlin [29204]: nerve
+Sun Nov 22 22:59:07 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 5 of 6 in 6 hours).
+Sun Nov 22 22:59:07 2026 :: Log Trentlin [29204]: fists
+Sun Nov 22 22:59:11 2026 :: Log Trentlin [29204]: affects off: iron skin
+Sun Nov 22 22:59:13 2026 :: Log Trentlin [29204]: nerve
+Sun Nov 22 22:59:16 2026 :: Log Trentlin [29204]: fists
+Sun Nov 22 22:59:23 2026 :: Log Trentlin [29204]: fists
+Sun Nov 22 22:59:29 2026 :: Log Trentlin [29204]: fists
+Sun Nov 22 22:59:31 2026 :: Log Trentlin [29204]: killed a killer clown
+Sun Nov 22 22:59:31 2026 :: Log Trentlin [29204]: coin +5 platinum
+Sun Nov 22 22:59:31 2026 :: Log Trentlin [29204]: coin +23 silver
+Sun Nov 22 22:59:31 2026 :: Log Trentlin [29204]: coin +31 copper
+Sun Nov 22 22:59:31 2026 :: Log Trentlin [29204]: coin +13 gold
+Sun Nov 22 22:59:38 2026 :: Log Trentlin [29204]: iron
+Sun Nov 22 22:59:45 2026 :: Log Trentlin [29204]: s
+Sun Nov 22 22:59:45 2026 :: Log Trentlin [29205]: arrived (Twist in the Maze) from 29204
+Sun Nov 22 22:59:45 2026 :: Log Trentlin [29205]: k cl
+Sun Nov 22 22:59:48 2026 :: Log Trentlin [29205]: fists
+Sun Nov 22 22:59:54 2026 :: Log Trentlin [29205]: fists
+Sun Nov 22 22:59:59 2026 :: Log Trentlin [29205]: nerve
+Sun Nov 22 23:00:02 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:00:07 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:00:09 2026 :: Log Trentlin [29205]: affects off: levitate
+Sun Nov 22 23:00:12 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:00:15 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:00:20 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:00:22 2026 :: Log Trentlin [29205]: fists
+Sun Nov 22 23:00:29 2026 :: Log Trentlin [29205]: trip
+Sun Nov 22 23:00:34 2026 :: Log Trentlin [29205]: trip
+Sun Nov 22 23:00:38 2026 :: Log Trentlin [29205]: trip
+Sun Nov 22 23:00:40 2026 :: Log Trentlin [29205]: killed a killer clown
+Sun Nov 22 23:00:40 2026 :: Log Trentlin [29205]: coin +5 platinum
+Sun Nov 22 23:00:40 2026 :: Log Trentlin [29205]: coin +23 silver
+Sun Nov 22 23:00:40 2026 :: Log Trentlin [29205]: coin +31 copper
+Sun Nov 22 23:00:40 2026 :: Log Trentlin [29205]: coin +13 gold
+Sun Nov 22 23:00:44 2026 :: Log Trentlin [29205]: l
+Sun Nov 22 23:00:44 2026 :: Log Trentlin [29205]: e
+Sun Nov 22 23:00:44 2026 :: Log Trentlin [29206]: arrived (Twist in the Maze) from 29205
+Sun Nov 22 23:00:46 2026 :: Log Trentlin [29206]: s
+Sun Nov 22 23:00:46 2026 :: Log Trentlin [29207]: arrived (Twist in the Maze) from 29206
+Sun Nov 22 23:00:47 2026 :: Log Trentlin [29207]: n
+Sun Nov 22 23:00:47 2026 :: Log Trentlin [29206]: arrived (Twist in the Maze) from 29207
+Sun Nov 22 23:00:49 2026 :: Log Trentlin [29206]: k cl
+Sun Nov 22 23:00:52 2026 :: Log Trentlin [29206]: flee
+Sun Nov 22 23:00:52 2026 :: Log Trentlin [29206]: flee
+Sun Nov 22 23:00:53 2026 :: Log Trentlin [29206]: w
+Sun Nov 22 23:00:53 2026 :: Log Trentlin [29205]: arrived (Twist in the Maze) from 29206
+Sun Nov 22 23:00:54 2026 :: Log Trentlin [29205]: k clo
+Sun Nov 22 23:01:01 2026 :: Log Trentlin [29205]: fists
+Sun Nov 22 23:01:06 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:01:11 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:01:15 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:01:22 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:01:24 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:01:29 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:01:32 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:01:36 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:01:43 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:01:47 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:01:50 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:01:54 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:01:56 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:02:00 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:02:03 2026 :: Log Trentlin [29205]: kick
+Sun Nov 22 23:02:07 2026 :: Log Trentlin [29205]: kick
