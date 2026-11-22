@@ -51030,3 +51030,18 @@
 1795365454	laid	-	0	0	-	907	component	73	a roper's tentacle	4489	dresden.are	scatter
 1795365524	laid	-	0	0	-	908	component	64	a manticore's spine	2921	firenewt.are	scatter
 1795365649	laid	-	0	0	-	909	component	56	a dragons claw	11050	ancala.are	scatter
+1795365783	laid	-	0	0	-	910	herb	38	a foxglove flower	24106	coven.are	scatter
+1795365783	laid	-	0	0	-	911	herb	50	a head of cabbage	24126	coven.are	scatter
+1795365783	laid	-	0	0	-	912	component	58	some pixie dust	1135	shire.are	scatter
+1795365975	laid	-	0	0	-	913	component	61	a mummy's wrapping	2157	hood.are	scatter
+1795365998	census	-	0	0	-	herbs=23/150 components=19/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=17 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795366020	laid	-	0	0	-	914	herb	39	a chervil leaf	25125	underdrk.are	scatter
+1795366020	laid	-	0	0	-	915	herb	44	a sprig of aconite	25129	underdrk.are	scatter
+1795366020	laid	-	0	0	-	916	component	78	a vial of demons blood	2406	dresden.are	scatter
+1795366082	laid	-	0	0	-	917	herb	44	a sprig of aconite	8836	kerofk.are	scatter
+1795366082	laid	-	0	0	-	918	component	67	a beholder's eye	9252	canyon.are	scatter
+1795366142	laid	-	0	0	-	919	herb	42	a marjoram plant	13074	lakes.are	scatter
+1795366142	laid	-	0	0	-	920	component	81	a vial of squid ink	10283	tritia.are	scatter
+1795366202	laid	-	0	0	-	921	herb	46	a juniper berry	29369	voyage.are	scatter
+1795366202	laid	-	0	0	-	922	component	64	a manticore's spine	10175	glitter.are	scatter
+1795366275	laid	-	0	0	-	923	component	72	a minotaur's ear	17758	landoz.are	scatter

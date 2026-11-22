@@ -337672,3 +337672,12 @@ Sun Nov 22 16:33:20 2026 :: Black market: the dealer appeared with 5 items (stoc
 Sun Nov 22 16:33:20 2026 :: Connection guard: refused 1 connection from 5.161.61.238 (paused; 10 refused in all, pause 3 this week, 1095 minutes left).
 Sun Nov 22 16:36:00 2026 :: Treasure goblin: vanished from room 2603 (A Small Storage Room., arena.are) (too long in one area).
 Sun Nov 22 16:38:24 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 4 of 6 in 6 hours).
+Sun Nov 22 16:42:44 2026 :: Sock.sinaddr:  199.30.25.131
+Sun Nov 22 16:42:49 2026 :: EOF encountered on read.
+Sun Nov 22 16:42:49 2026 :: Connection guard: 199.30.25.131 closed before a password prompt (the web client; not counted).
+Sun Nov 22 16:43:24 2026 :: Black market: the dealer vanished from room 19123 (Common Seating, rome.are) (too long in one area).
+Sun Nov 22 16:43:29 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 22 16:46:05 2026 :: Treasure goblin: vanished from room 18130 (A trail through the wilderness, icekeep.are) (too long in one area).
+Sun Nov 22 16:47:21 2026 :: Black market: the dealer vanished from room 5339 (A back alley, mirror.are) (wandering).
+Sun Nov 22 16:48:35 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 1 of 6 in 6 hours).
+Sun Nov 22 16:48:57 2026 :: Black market: the dealer vanished from room 649 (Swiftest Way, ofcol.are) (wandering).
