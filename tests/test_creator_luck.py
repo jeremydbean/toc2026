@@ -189,9 +189,12 @@ class LuckAffectTests(unittest.TestCase):
                 self.assertIn("Huh?", impl.sync("fate zlucky luck 20"))
                 self.assertIn("Syntax: fate <player> luck", god.sync("fate zlucky luck soon"))
                 god.must("fate zlucky luck 20 2", "lucky: 2 points for 20 hours")
-                self.assertIn("They are lucky: 2 points for 20 more hours", god.sync("fate zlucky"))
-                self.assertIn("Spell: 'luck' -- 2 points of luck (at most 3), for 20 more hours",
-                              hero.sync("affects"))
+                # A tick can fall between the grant and the look, and takes
+                # an hour off: a slow runner read 14 of 15 (CI, 2026-11-22).
+                self.assertRegex(god.sync("fate zlucky"),
+                                 r"They are lucky: 2 points for (19|20) more hours")
+                self.assertRegex(hero.sync("affects"),
+                                 r"Spell: 'luck' -- 2 points of luck \(at most 3\), for (19|20) more hours")
 
                 # A losing spin goes again; luck never makes a play cost twice.
                 god.must("set char zlucky gold 100", "")
@@ -220,7 +223,8 @@ class LuckAffectTests(unittest.TestCase):
                 god.must("fate zlucky luck 15", "lucky: 3 points for 15 hours", "waits for them")
             with mud.connect(timeout=120) as hero:
                 login(hero, "Zlucky", PW)
-                self.assertIn("3 points of luck (at most 3), for 15 more hours", hero.sync("affects"))
+                self.assertRegex(hero.sync("affects"),
+                                 r"3 points of luck \(at most 3\), for (14|15) more hours")
 
 
 class CreatorLuckSourceTests(unittest.TestCase):
