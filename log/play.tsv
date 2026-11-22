@@ -51052,3 +51052,87 @@
 1795366429	sightings	Alaric	57	2497	dresden.are	item	4446:1/0 4445:1/0
 1795366429	session	Alaric	57	2497	dresden.are	linkdead	2349s	+0 levels	+0 exp	+30825828 copper	1 kills	0 deaths	1 quests	48 commands	0 refused	coin: quests 30p 82g 58s 28c	spent on: none	exp: none
 1795369533	session	Alaric	57	2497	dresden.are	quit	5453s	+0 levels	+0 exp	+30825828 copper	1 kills	0 deaths	1 quests	48 commands	0 refused	coin: quests 30p 82g 58s 28c	spent on: none	exp: none
+1795377340	area	Alaric	57	2497	dresden.are	-	dresden.are	-1	login
+1795377342	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1795377345	quest	Alaric	57	2497	dresden.are	ordinary	kill	8005	a tap	14	mega1.are	12
+1795377345	cmd	Alaric	57	2497	dresden.are	standing	100	25	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Alaric!' // Questor Thews tells you 'A bounty has been posted on a tap.'	-	+
+1795377353	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1795377353	cmd	Alaric	57	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1795377353	cmd	Alaric	57	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1795377353	cmd	Alaric	57	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795377354	cmd	Alaric	57	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795377354	cmd	Alaric	57	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795377354	cmd	Alaric	57	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795377354	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795377355	cmd	Alaric	57	2438	dresden.are	standing	100	0	-	open	west	Ok.	-	-
+1795377355	cmd	Alaric	57	2439	dresden.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1795377355	cmd	Alaric	57	3900	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1795377355	cmd	Alaric	57	3901	dresden.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the	-	+
+1795377356	cmd	Alaric	57	3902	dresden.are	standing	100	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.	-	+
+1795377356	cmd	Alaric	57	3903	dresden.are	standing	100	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1795377356	cmd	Alaric	57	3904	dresden.are	standing	100	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1795377356	area	Alaric	57	300	plains.are	dresden.are	plains.are	16	north
+1795377356	cmd	Alaric	57	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study	-	+
+1795377357	cmd	Alaric	57	315	plains.are	standing	100	0	-	north		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.	-	+
+1795377357	cmd	Alaric	57	318	plains.are	standing	100	0	-	west		Grassy plains //   You walk in the beautiful grassy plains. The wind is strong and rough. // Far to the north you can see the foothills and further on mountain peaks	-	+
+1795377357	cmd	Alaric	57	319	plains.are	standing	100	0	-	north		Grassy plains //   You walk in the grassy plains among the herbs which grow here. The wind is // strong and rough. To the north you can see the foothills and just behind	-	+
+1795377357	cmd	Alaric	57	330	plains.are	standing	100	0	-	north		In front of hut in foothills //   You are standing in the foothills. To the west, well hidden among the small // foothills and pines, you see a small hut. To the north you can see	-	+
+1795377358	cmd	Alaric	57	323	plains.are	standing	100	0	-	north		The steep foothills //   You walk in the steep foothills. It is rather hard to move here. // To the north you can see a grassy valley with wildflowers. To the west 	-	+
+1795377358	area	Alaric	57	24	connect.are	plains.are	connect.are	2	west
+1795377358	cmd	Alaric	57	24	connect.are	standing	100	0	-	west		Crossing the Foothills //   The hills grow steadily steeper as you trudge up the narrow trails.  To the // northwest, the trail degenerates into a narrow series of switchbacks, 	-	+
+1795377358	cmd	Alaric	57	25	connect.are	standing	100	0	-	northwest		The Switchbacks //   You continue climbing a rocky path.  You need to scramble over boulders and // jump crevices to make any progress.  The path twists so often you can never	-	+
+1795377358	area	Alaric	57	9201	canyon.are	connect.are	canyon.are	0	north
+1795377358	cmd	Alaric	57	9201	canyon.are	standing	100	0	-	north		A Mountain Path //   You are on a mountain path which ascends a steep mountainside.  The trail // curves around the mountain so that you cannot really see what lies ahead.	-	+
+1795377359	cmd	Alaric	57	9202	canyon.are	standing	100	0	-	up		A Mountain Path //   You are on a rocky mountain path leading up and around a steep mountainside. // You sense a glow from the area beyond the mountain, which you cannot see yet.	-	+
+1795377359	cmd	Alaric	57	9203	canyon.are	standing	100	0	-	up		Mountainside Tombs //   There are a few stone heaps here and there, the tombs of those who did not // last the arduous journey up the mountain.  Curiously you notice a few	-	+
+1795377359	cmd	Alaric	57	9204	canyon.are	standing	100	0	-	up		A Blind Curve on the Mountain Path. //   This looks like a normal mountain path, but it is NOT!  This section of the // path is habitated by a huge (and of course, man-eating) Cyclops.  The path	-	+
+1795377359	cmd	Alaric	57	9205	canyon.are	standing	100	0	-	up		Vista //   This is a stunning vista overlooking a canyon.  There is a sign here that says: // BEHOLD -- ELEMENTAL CANYON	-	+
+1795377360	cmd	Alaric	57	9206	canyon.are	standing	100	0	-	north		The Overlook //   You see various elemental servants wandering around the canyon.  The noise of // humming coming from the canyon gets louder.  The path makes a steep descent	-	+
+1795377360	cmd	Alaric	57	9207	canyon.are	standing	100	0	-	down		Entrance to Elemental Canyon //   You are awed by the sounds and sights of great powers at works here. // Elemental servants bustle back and forth doing the biddings of the elemental	-	+
+1795377360	cmd	Alaric	57	9209	canyon.are	standing	100	0	-	north		Elemental Gateway //   To the west a path dips and winds among some flowing firepits.  To the // northeast a path goes toward the river.  Beyond toward the northeast and	-	+
+1795377360	cmd	Alaric	57	9208	canyon.are	standing	100	0	-	west		The Floor of the Canyon //   Various elemental forms wander the floor of the canyon.  Some seem to be // going about their business, while others seem to have no business at all.	-	+
+1795377361	cmd	Alaric	57	9211	canyon.are	standing	100	0	-	north		The Floor of the Canyon //   Various elemental forms wander the floor of the canyon.  Some seem to be // going about their business, while others seem to have no business at	-	+
+1795377361	cmd	Alaric	57	9214	canyon.are	standing	100	0	-	north		The Floor of the Canyon //   Various elemental forms wander the floor of the canyon.  Some seem to be // going about their business, while others seem to have no business at	-	+
+1795377361	cmd	Alaric	57	9217	canyon.are	standing	100	0	-	north		The Floor of the Canyon //   Various elemental forms wander the floor of the canyon.  Some seem to be // going about their business, while others seem to have no business at	-	+
+1795377361	cmd	Alaric	57	9253	canyon.are	standing	100	0	-	north		Mesa West //   An electric path starts to the west.  The mesa continues to the east. // Or you can climb down to the canyon floor to the south.	-	+
+1795377362	cmd	Alaric	57	9246	canyon.are	standing	100	0	-	west		Electric Pathway //   The pathway glows and hums because of the electricity pulsing through it. // It seems almost soothing to your weary feet.  To the north there is a	-	+
+1795377362	cmd	Alaric	57	9248	canyon.are	standing	100	0	-	north		The Electric Playground //   Though there is a seemingly carefree atmosphere here, you sense that // something much more important takes place near by.  There is an electric	-	+
+1795377362	cmd	Alaric	57	9250	canyon.are	standing	100	0	-	north		The Electric Playground //   Though there is a seemingly carefree atmosphere here, you sense that // something much more important takes place near by.  The playground is	-	+
+1795377362	cmd	Alaric	57	9251	canyon.are	standing	100	0	-	east		Lightning Causeway //   Up a set of stairs carved into the hill you see intermittent flashes of // lightning.  A continuous hum also comes form that direction.  To the west	-	+
+1795377363	cmd	Alaric	57	9252	canyon.are	standing	100	0	-	up		Lightning Chamber //   There is some sort of control panel here. Apparently the Lightning Ruler // observes and controls electric forces from here.  A set of steps carved into	-	+
+1795377363	area	Alaric	57	28	connect.are	canyon.are	connect.are	5	north
+1795377363	cmd	Alaric	57	28	connect.are	standing	100	0	-	north		Eye of the Storm //   Swirling particles of energy galavant around this room in a continual  // vortex of motion. Here, placed by the great leaders of the elements is one	-	+
+1795377363	area	Alaric	57	8001	mega1.are	connect.are	mega1.are	0	enter
+1795377363	cmd	Alaric	57	8001	mega1.are	standing	100	0	-	enter	portal	You enter A Great Portal // Your stomach flip flops. Everything goes black for a moment. // Entrance to Mega-City One	-	+
+1795377365	cmd	Alaric	57	8002	mega1.are	standing	100	0	-	south		Mahmount Allesh Megway //   You are on one mile of over 13 and a half billion kilometers of // roadway in Mega-City One.  The Megway continues north and south.	-	+
+1795377366	cmd	Alaric	57	8002	mega1.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1795377367	cmd	Alaric	57	8003	mega1.are	standing	100	0	-	south		Intersection of Junket Way and Megway //   The Megway intersects with Junket Way here.  Junket Way is to the east, // the Megway continues north and south, and the Pustule Palace Cafe is	-	+
+1795377368	cmd	Alaric	57	8021	mega1.are	standing	100	0	-	west		Pustule Palace Cafe //   A scabrous hole.  Run by Ernie Ramirez, an ex-perp, it is a meeting place // for the low-life in the area.	-	+
+1795377369	cmd	Alaric	57	8003	mega1.are	standing	100	0	-	east		Intersection of Junket Way and Megway //   The Megway intersects with Junket Way here.  Junket Way is to the east, // the Megway continues north and south, and the Pustule Palace Cafe is	-	+
+1795377370	cmd	Alaric	57	8021	mega1.are	standing	100	0	-	west		Pustule Palace Cafe //   A scabrous hole.  Run by Ernie Ramirez, an ex-perp, it is a meeting place // for the low-life in the area.	-	+
+1795377373	cmd	Alaric	57	8021	mega1.are	standing	100	0	-	kill	er	Your punch <<< ERADICATES >>> Ernie Ramirez! [-160] // Your punch <<< ERADICATES >>> Ernie Ramirez! [-153]	-	-
+1795377373	coin	Alaric	57	8021	mega1.are	+800	loot	autogold	corpse of Ernie Ramirez	29622075706
+1795377373	coin	Alaric	57	8021	mega1.are	+64	loot	autogold	corpse of Ernie Ramirez	29622075770
+1795377373	coin	Alaric	57	8021	mega1.are	+80000	loot	autogold	corpse of Ernie Ramirez	29622155770
+1795377377	cmd	Alaric	57	8021	mega1.are	standing	100	0	-	look	i cor	Corpse of Ernie Ramirez contains: //      a bashball bat //      a stooky gland	-	+
+1795377380	got	Alaric	57	8021	mega1.are	8002	a stooky gland	pill	19	5800000	get	corpse of Ernie Ramirez
+1795377380	cmd	Alaric	57	8021	mega1.are	standing	100	0	-	get	st cor	You get a stooky gland from corpse of Ernie Ramirez.	-	-
+1795377381	cmd	Alaric	57	8003	mega1.are	standing	100	0	-	east		Intersection of Junket Way and Megway //   The Megway intersects with Junket Way here.  Junket Way is to the east, // the Megway continues north and south, and the Pustule Palace Cafe is	-	+
+1795377381	cmd	Alaric	57	8010	mega1.are	standing	100	0	-	east		Junket Way //   Junket Way a small Skedway continues east and west. // [Exits: east west]	-	+
+1795377383	coin	Alaric	57	8010	mega1.are	+800	loot	autogold	corpse of a tap	29622156570
+1795377383	coin	Alaric	57	8010	mega1.are	+5	loot	autogold	corpse of a tap	29622156575
+1795377383	coin	Alaric	57	8010	mega1.are	+10000	loot	autogold	corpse of a tap	29622166575
+1795377383	cmd	Alaric	57	8010	mega1.are	standing	100	9	-	kill	ta	Your punch <<< ERADICATES >>> a tap! [-185] // Your punch >>> ANNIHILATES <<< a tap! [-210] // A tap is DEAD!!	-	+
+1795377388	cmd	Alaric	57	8003	mega1.are	standing	100	0	-	west		Intersection of Junket Way and Megway //   The Megway intersects with Junket Way here.  Junket Way is to the east, // the Megway continues north and south, and the Pustule Palace Cafe is	-	+
+1795377388	cmd	Alaric	57	8002	mega1.are	standing	100	0	-	north		Mahmount Allesh Megway //   You are on one mile of over 13 and a half billion kilometers of // roadway in Mega-City One.  The Megway continues north and south.	-	+
+1795377388	cmd	Alaric	57	8001	mega1.are	standing	100	0	-	north		Entrance to Mega-City One //   A small cobblestone road leads up to the giant gates of a futuristic city. // This seems to be a place not of your time, maybe a little exploring is	-	+
+1795377389	area	Alaric	57	28	connect.are	mega1.are	connect.are	26	enter
+1795377389	cmd	Alaric	57	28	connect.are	standing	100	0	-	enter	po	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // Eye of the Storm	-	+
+1795377390	area	Alaric	57	2497	dresden.are	connect.are	dresden.are	1	recall
+1795377390	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795377391	coin	Alaric	57	2497	dresden.are	+46238742	quests	aquest	-	29668405317
+1795377391	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	ordinary qp=2582->2582 offered=16 daily=4->4 coin=+46238742 kill=15412914 streak=1 level=57 target=-1
+1795377391	cmd	Alaric	57	2497	dresden.are	standing	100	21	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Excellent work! The realm is in your debt!' // Questor Thews says 'Streak of 2 in a row! A +10% bonus has been added!'	success:-	+
+1795377392	laid	-	0	0	-	891	herb	37	a sprig of catnip	20591	emerald.are	scatter
+1795377392	laid	-	0	0	-	892	herb	50	a head of cabbage	20506	emerald.are	scatter
+1795377392	cmd	Alaric	57	2497	dresden.are	standing	100	6	-	aquest	ga no	You safely collect 16 quest points.	-	-
