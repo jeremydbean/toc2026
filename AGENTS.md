@@ -345,7 +345,17 @@ first run of the planned pipeline (Validate run 40241317306, 2026-10-25),
 its eight shards finishing within sixteen seconds of each other (476-492
 s). The split pipeline before it took 11.4 to 14 minutes and 95 to 117
 runner-minutes (runs 40210613754, 40229059412, 40231173630); the single
-job before that, 67 minutes at the median, for 89 runner-minutes. The jobs, all on free `ubuntu-24.04` runners (pinned,
+job before that, 67 minutes at the median, for 89 runner-minutes.
+**By 2026-11-22 it had drifted to 29 minutes** (nightly run 45043970158):
+394 modules against October's 216 -- about 550 module-minutes -- in eight
+shards planned from a `tests/ci_durations.json` last refreshed on Nov 12,
+which knew 218 of them, so the 176 newer ones were costed at the median
+and `test_tutorial` (twelve minutes, twelve boots) ended a shard at 28
+minutes while another finished at 13. The file was refreshed from that run
+and the shards raised to 14 and the sanitizer's to 5 -- 20 jobs at once,
+GitHub's limit for a free account -- planned at about ten minutes each,
+`test_tutorial` the floor. Refresh the file whenever the module count has
+grown by a few dozen, and split a module that passes ten minutes. The jobs, all on free `ubuntu-24.04` runners (pinned,
 like production: `ubuntu-latest` moves to 26) and as parallel as GitHub
 allows:
 
@@ -355,9 +365,9 @@ allows:
 | `quick` | `validate.sh quick`: py_compile, the Mudlet map and seasonal areas `--check`, the area validators, whitespace. Every test job waits for it: a failed preflight launches no matrix (a manual "diagnostic" run overrides that, and the gate still fails) | 12 s |
 | `build` | `validate.sh build`: C17 Make with strict warnings, world load, recovery scenarios, list iterator, smoke; then strict C17 CMake and its world load. Hands `merc` on. | 1 min |
 | `build-sanitize` | ASan/UBSan CMake build, world load and a 45 s idle under them. Hands `bin/rom` on. | 1.5 min |
-| `tests` (x8 at most) | the planned modules but the serial ones, in duration-balanced shards (a partial plan uses as few as fit it), four at a time, against `build`'s binary | 6-8 min |
+| `tests` (x14 at most) | the planned modules but the serial ones, in duration-balanced shards (a partial plan uses as few as fit it), four at a time, against `build`'s binary | 10-12 min |
 | `tests-serial` | `test_login_throttle`, alone, beside the shards | 1 min |
-| `sanitize-tests` (x3) | `SANITIZE_MODULES` against the sanitizer binary, two at a time | 7 min |
+| `sanitize-tests` (x5) | `SANITIZE_MODULES` against the sanitizer binary, two at a time | 9 min |
 | `deploy-gate` | the verdict (below) | 10 s |
 
 A shard still going at fifteen minutes is late; at the job's own

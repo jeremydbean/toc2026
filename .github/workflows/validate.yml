@@ -109,8 +109,8 @@ env:
   # themselves: the login throttle.
   SERIAL_MODULES: test_login_throttle
   # The most normal test shards a run uses; a partial plan uses fewer.
-  SHARDS: 8
-  SANITIZE_SHARDS: 3
+  SHARDS: 14
+  SANITIZE_SHARDS: 5
   PYTHONUNBUFFERED: "1"
   # A full run asked for: the nightly regression, or a manual run with
   # "full" ticked.
