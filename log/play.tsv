@@ -51308,3 +51308,15 @@
 1795378600	cmd	Alaric	57	2497	dresden.are	standing	100	21	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Excellent work! The realm is in your debt!' // Questor Thews says 'Streak of 3 in a row! A +20% bonus has been added!'	success:-	+
 1795378600	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ga no	You safely collect 39 quest points.	-	-
 1795378613	census	-	0	0	-	herbs=18/150 components=12/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=20 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=10 mobs_fought=1 secs=900
+1795378625	laid	-	0	0	-	932	herb	48	an alfalfa sprout	2485	dresden.are	scatter
+1795378625	laid	-	0	0	-	933	component	77	a vial of medusa eye fluid	9681	newthalo.are	scatter
+1795378627	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=271/983 align=1000 exp=252749 coin=373337168 bank=29324594092 qp=2637 prac=36 train=76 stash=93/350 remorts=3
+1795378627	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    311 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
+1795378670	laid	-	0	0	-	934	herb	44	a sprig of aconite	7584	astral.are	scatter
+1795378670	laid	-	0	0	-	935	herb	36	a belladonna plant	7590	astral.are	scatter
+1795378670	laid	-	0	0	-	936	component	54	eye of newt	24358	chess.are	scatter
+1795378740	laid	-	0	0	-	937	herb	46	a juniper berry	7013	sewer.are	scatter
+1795378740	laid	-	0	0	-	938	herb	48	an alfalfa sprout	7116	sewer.are	scatter
+1795378740	laid	-	0	0	-	939	component	63	a phoenix feather	20134	prison.are	scatter
+1795378792	laid	-	0	0	-	940	herb	36	a belladonna plant	9909	valhalla.are	scatter
+1795378792	laid	-	0	0	-	941	herb	53	a huckleberry	9994	valhalla.are	scatter

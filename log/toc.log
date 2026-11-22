@@ -338223,3 +338223,6 @@ Sun Nov 22 20:16:40 2026 :: Log Alaric [2497]: quest complete: 30p 82g 58s 28c, 
 Sun Nov 22 20:16:40 2026 :: Snapshot of Alaric taken before quest: Alaric.20261122_201640.quest (PRESTORE Alaric to see it).
 Sun Nov 22 20:16:40 2026 :: Log Alaric [2497]: aq ga no
 Sun Nov 22 20:16:42 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 48 refused in all, pause 5 this week, 4176 minutes left).
+Sun Nov 22 20:17:07 2026 :: Log Alaric [2497]: sc
+Sun Nov 22 20:19:52 2026 :: Log Alaric [2497]: affects off: levitate
+Sun Nov 22 20:21:46 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 2 of 6 in 6 hours).
