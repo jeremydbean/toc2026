@@ -338249,3 +338249,5 @@ Sun Nov 22 21:10:17 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe,
 Sun Nov 22 21:10:17 2026 :: Log Alaric [2497]: who
 Sun Nov 22 21:10:17 2026 :: Log Alaric [2497]: worth
 Sun Nov 22 21:10:26 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Sun Nov 22 21:12:28 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 56 refused in all, pause 5 this week, 4765 minutes left).
+Sun Nov 22 21:12:40 2026 :: Treasure goblin: vanished from room 111 (Smurfy Road, smurf.are) (too long in one area).
