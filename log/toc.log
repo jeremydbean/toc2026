@@ -337530,3 +337530,8 @@ Sun Nov 22 15:45:45 2026 :: Connection guard: 83.222.8.249 closed before a passw
 Sun Nov 22 15:45:45 2026 :: Connection guard: 83.222.8.249 closed without a word (strike 3 of 6 in 6 hours).
 Sun Nov 22 15:47:40 2026 :: Connection guard: 3.212.128.62 closed without a word (strike 2 of 6 in 6 hours).
 Sun Nov 22 15:48:28 2026 :: Black market: the dealer vanished from room 9530 (East Main Street, newthalo.are) (wandering).
+Sun Nov 22 15:52:44 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 45 refused in all, pause 5 this week, 5375 minutes left).
+Sun Nov 22 15:53:48 2026 :: Black market: the dealer vanished from room 13474 (Meat Locker, hell.are) (wandering).
+Sun Nov 22 15:55:05 2026 :: Treasure goblin: vanished from room 7864 (Along a Windy Trail on the Rim of the Valley, valley.are) (too long in one area).
+Sun Nov 22 15:56:07 2026 :: Sock.sinaddr:  5.188.86.198
+Sun Nov 22 15:56:07 2026 :: Connection guard: 5.188.86.198 closed before a password prompt (strike 1 of 6 in 6 hours).
