@@ -51326,3 +51326,8 @@
 1795379085	laid	-	0	0	-	945	component	61	a mummy's wrapping	5102	drow1.are	scatter
 1795379128	laid	-	0	0	-	946	component	62	a nightmare's hoof clipping	9329	galaxy.are	scatter
 1795379190	laid	-	0	0	-	947	herb	34	an amaranth plant	2490	dresden.are	scatter
+1795379232	laid	-	0	0	-	948	herb	41	a sprig of mistletoe	49	connect.are	scatter
+1795379232	laid	-	0	0	-	949	component	71	a goblin's finger	19122	rome.are	scatter
+1795379484	laid	-	0	0	-	950	herb	47	a sprig of saffron	12033	froboz.are	scatter
+1795379484	laid	-	0	0	-	951	herb	48	an alfalfa sprout	12008	froboz.are	scatter
+1795379513	census	-	0	0	-	herbs=31/150 components=19/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=20 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
