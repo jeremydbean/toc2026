@@ -51420,3 +51420,7 @@
 1795382733	laid	-	0	0	-	1031	component	58	some pixie dust	24369	chess.are	scatter
 1795382799	laid	-	0	0	-	1032	herb	52	an asparagus shoot	25286	mushroom.are	scatter
 1795382799	laid	-	0	0	-	1033	component	65	a dragon's scale	19104	rome.are	scatter
+1795383059	laid	-	0	0	-	1034	herb	51	a piece of kelp	2230	draconia.are	scatter
+1795383059	laid	-	0	0	-	1035	herb	37	a sprig of catnip	2244	draconia.are	scatter
+1795383059	laid	-	0	0	-	1036	component	76	a vial of dragons blood	20544	emerald.are	scatter
+1795383113	census	-	0	0	-	herbs=91/150 components=44/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=24 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
