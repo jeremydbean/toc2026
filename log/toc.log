@@ -337913,3 +337913,5 @@ Sun Nov 22 19:56:31 2026 :: Log Alaric [2497]: copper +46238742
 Sun Nov 22 19:56:31 2026 :: Log Alaric [2497]: quest complete: 46p 23g 87s 42c, 16 quest points (streak bonus 10%)
 Sun Nov 22 19:56:31 2026 :: Snapshot of Alaric taken before quest: Alaric.20261122_195631.quest (PRESTORE Alaric to see it).
 Sun Nov 22 19:56:32 2026 :: Log Alaric [2497]: aq ga no
+Sun Nov 22 20:01:27 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 6 of 6 in 6 hours).
+Sun Nov 22 20:01:27 2026 :: Connection guard: 178.156.185.231 paused for 12 hours (pause 2 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 178.156.185.231 lifts it.

@@ -51136,3 +51136,12 @@
 1795377392	laid	-	0	0	-	891	herb	37	a sprig of catnip	20591	emerald.are	scatter
 1795377392	laid	-	0	0	-	892	herb	50	a head of cabbage	20506	emerald.are	scatter
 1795377392	cmd	Alaric	57	2497	dresden.are	standing	100	6	-	aquest	ga no	You safely collect 16 quest points.	-	-
+1795377467	laid	-	0	0	-	893	herb	46	a juniper berry	5956	mid_ruin.are	scatter
+1795377467	laid	-	0	0	-	894	herb	50	a head of cabbage	5912	mid_ruin.are	scatter
+1795377572	laid	-	0	0	-	895	herb	49	a pomegranate	9678	newthalo.are	scatter
+1795377572	laid	-	0	0	-	896	component	58	some pixie dust	24518	abyss.are	scatter
+1795377639	laid	-	0	0	-	897	herb	35	a sprig of angelica	7537	astral.are	scatter
+1795377639	laid	-	0	0	-	898	herb	36	a belladonna plant	7581	astral.are	scatter
+1795377690	laid	-	0	0	-	899	herb	42	a marjoram plant	6501	dwarves.are	scatter
+1795377690	laid	-	0	0	-	900	component	88	a vial of green slime	17241	highland.are	scatter
+1795377713	census	-	0	0	-	herbs=8/150 components=2/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=10 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=38 mobs_fought=2 secs=900
