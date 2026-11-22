@@ -51045,3 +51045,9 @@
 1795366202	laid	-	0	0	-	921	herb	46	a juniper berry	29369	voyage.are	scatter
 1795366202	laid	-	0	0	-	922	component	64	a manticore's spine	10175	glitter.are	scatter
 1795366275	laid	-	0	0	-	923	component	72	a minotaur's ear	17758	landoz.are	scatter
+1795366333	laid	-	0	0	-	924	herb	42	a marjoram plant	19102	rome.are	scatter
+1795366333	laid	-	0	0	-	925	herb	36	a belladonna plant	19136	rome.are	scatter
+1795366386	laid	-	0	0	-	926	herb	40	a clove	13065	lakes.are	scatter
+1795366429	sightings	Alaric	57	2497	dresden.are	mob	201:1/0/0 2435:1/0/0 2433:2/0/0 2432:1/0/0 52:1/0/0 4448:1/0/0 2430:2/0/0 4459:1/0/0 2101:2/1/0 2107:1/0/0 4458:1/0/0 55:1/0/0 2434:1/0/0 4:1/0/0 4446:1/0/0 58:1/0/0
+1795366429	sightings	Alaric	57	2497	dresden.are	item	4446:1/0 4445:1/0
+1795366429	session	Alaric	57	2497	dresden.are	linkdead	2349s	+0 levels	+0 exp	+30825828 copper	1 kills	0 deaths	1 quests	48 commands	0 refused	coin: quests 30p 82g 58s 28c	spent on: none	exp: none
