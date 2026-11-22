@@ -1,0 +1,185 @@
+#!/bin/sh
+# Run one of a short list of maintenance actions the admin website asked
+# for (owner, 2026-11-22: the state sync had failed for a day, and fixing
+# it needed an SSH session from the desktop).
+#
+# The dashboard runs as toc, sandboxed (NoNewPrivileges, ProtectSystem),
+# and stays that way: it never runs a command. It writes one request file,
+#
+#     /var/lib/toc/host-actions/request      "<32 hex id> <action>"
+#
+# and toc-host-action.path starts this, as root, whenever that file is
+# there. Only the actions named in run_action below can happen; nothing in
+# the request is ever run, passed on or echoed back. The result -- the
+# action, its state, times, exit status and output -- goes to
+# /var/lib/toc-host-actions/<id>, root's directory, readable by group toc,
+# which the dashboard lists. Every request is also logged to the journal
+# (logger -t toc-host-action).
+#
+# Root reads a file in a directory toc owns, so: the request must be a
+# regular file and not a link; only its first line is read, and only to
+# be compared with the list; nothing toc wrote reaches a command line or
+# the result. A request that is not one of ours is deleted and recorded as
+# refused. Results are written aside and renamed in, in root's directory.
+set -u
+
+REQ_DIR="${TOC_HOST_ACTION_REQUESTS:-/var/lib/toc/host-actions}"
+RESULT_DIR="${TOC_HOST_ACTION_RESULTS:-/var/lib/toc-host-actions}"
+RESULT_GROUP="${TOC_HOST_ACTION_GROUP:-toc}"
+STATE_REPO="${STATE_REPO:-/srv/toc/state-repo}"
+CURRENT="${CURRENT:-/srv/toc/current}"
+DEPLOY_BIN="${TOC_DEPLOY_BIN:-/usr/local/sbin/toc-deploy}"
+PATH="${TOC_HOST_ACTION_PATH:-/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin}"
+export PATH
+KEEP=40              # results kept; older ones are removed
+OUTPUT_MAX=65536     # bytes of an action's output kept in its result
+
+REQUEST="$REQ_DIR/request"
+umask 027
+
+note() { logger -t toc-host-action -- "$*" 2>/dev/null || true; }
+
+mkdir -p "$RESULT_DIR" && chmod 0750 "$RESULT_DIR" 2>/dev/null
+chgrp "$RESULT_GROUP" "$RESULT_DIR" 2>/dev/null || true
+
+# write_result ID ACTION STATE STARTED FINISHED EXIT [OUTPUT_FILE]
+write_result() {
+    tmp="$RESULT_DIR/.$1.tmp"
+    {
+        printf 'id %s\naction %s\nstate %s\nstarted %s\nfinished %s\nexit %s\n\n' \
+            "$1" "$2" "$3" "$4" "$5" "$6"
+        if [ -n "${7:-}" ] && [ -f "$7" ]; then
+            tail -c "$OUTPUT_MAX" "$7"
+        fi
+    } > "$tmp" || return 1
+    chgrp "$RESULT_GROUP" "$tmp" 2>/dev/null || true
+    chmod 0640 "$tmp"
+    mv -f "$tmp" "$RESULT_DIR/$1"
+}
+
+journal_of() {
+    journalctl "$@" --no-pager -o short-iso 2>&1 || true
+}
+
+act_state_sync() {
+    echo "== running the state sync"
+    systemctl start toc-state-sync.service
+    rc=$?
+    echo "== systemctl start exited $rc; result: $(systemctl show -p Result --value toc-state-sync.service 2>/dev/null)"
+    echo "== its last journal lines"
+    journal_of -u toc-state-sync.service -n 40
+    return $rc
+}
+
+act_state_sync_reclone() {
+    # The sync clones again when its clone is gone. The old one is kept,
+    # never deleted: move it aside, as wiki/disaster-recovery.md says.
+    systemctl stop toc-state-sync.service 2>/dev/null || true
+    if [ -e "$STATE_REPO" ]; then
+        aside="$STATE_REPO.broken-$(date -u +%Y%m%d-%H%M%S)"
+        if mv "$STATE_REPO" "$aside"; then
+            echo "== moved the old clone aside to $aside (kept; remove it once the sync works)"
+        else
+            echo "== could not move $STATE_REPO aside"
+            return 1
+        fi
+    else
+        echo "== no clone at $STATE_REPO; the sync will make one"
+    fi
+    act_state_sync
+}
+
+act_auto_deploy() {
+    echo "== running the auto-deployer's check now"
+    systemctl start toc-auto-deploy.service
+    rc=$?
+    echo "== systemctl start exited $rc"
+    if [ -f "$CURRENT/log/auto-deploy.status" ]; then
+        echo "== what it decided"
+        cat "$CURRENT/log/auto-deploy.status"
+        echo
+    fi
+    echo "== its last journal lines"
+    journal_of -t toc-auto-deploy -n 20
+    return $rc
+}
+
+act_deploy() {
+    # By hand, toc-deploy ships the branch tip, warning and saving anyone
+    # playing first. Nobody is at a terminal to read a rollback line, so it
+    # rolls back by itself if the new code does not come back healthy, as
+    # the auto-deployer's runs do.
+    echo "== deploying main now"
+    TOC_DEPLOY_ROLLBACK=1 timeout 1500 "$DEPLOY_BIN"
+}
+
+act_restart_web() {
+    echo "== restarting the dashboard; the page reconnects in a few seconds"
+    systemctl restart toc-web.service
+    rc=$?
+    echo "== exited $rc; toc-web is $(systemctl is-active toc-web.service 2>/dev/null)"
+    return $rc
+}
+
+run_action() {
+    case "$1" in
+        state-sync)          act_state_sync ;;
+        state-sync-reclone)  act_state_sync_reclone ;;
+        auto-deploy)         act_auto_deploy ;;
+        deploy)              act_deploy ;;
+        restart-web)         act_restart_web ;;
+        *)                   return 2 ;;
+    esac
+}
+
+prune() {
+    n=0
+    for f in $(ls -1t "$RESULT_DIR" 2>/dev/null); do
+        case "$f" in
+            *[!0-9a-f]*) continue ;;
+        esac
+        n=$((n + 1))
+        [ "$n" -gt "$KEEP" ] && rm -f -- "$RESULT_DIR/$f"
+    done
+}
+
+# One request each start; the path unit starts this again while the file
+# is still there, and the dashboard asks for one action at a time.
+if [ -L "$REQUEST" ] || [ ! -f "$REQUEST" ]; then
+    # Not a regular file (or gone): take it away so the path unit rests.
+    [ -L "$REQUEST" ] && rm -f -- "$REQUEST" && note "refused a request that was a link"
+    exit 0
+fi
+line=$(head -c 100 -- "$REQUEST" 2>/dev/null | head -n 1 | tr -d '\r')
+rm -f -- "$REQUEST"
+
+id=${line%% *}
+action=${line#* }
+now=$(date +%s)
+case "$id" in
+    ''|*[!0-9a-f]*) note "refused a request without a proper id"; exit 0 ;;
+esac
+if [ "${#id}" -ne 32 ]; then
+    note "refused a request without a proper id"
+    exit 0
+fi
+case "$action" in
+    state-sync|state-sync-reclone|auto-deploy|deploy|restart-web) ;;
+    *)
+        note "refused request $id: not an action this helper runs"
+        write_result "$id" unknown refused "$now" "$now" 2
+        exit 0 ;;
+esac
+
+note "running $action ($id), asked for from the admin website"
+write_result "$id" "$action" running "$now" 0 ""
+out=$(mktemp) || exit 1
+run_action "$action" > "$out" 2>&1
+rc=$?
+state=ok
+[ "$rc" -eq 0 ] || state=failed
+write_result "$id" "$action" "$state" "$now" "$(date +%s)" "$rc" "$out"
+rm -f -- "$out"
+note "$action ($id) $state, exit $rc"
+prune
+exit 0

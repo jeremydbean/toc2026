@@ -27,6 +27,7 @@
         terminal: { socket: null, connected: false, failed: false, secretInput: false, history: [], historyIndex: 0 },
         logs: { socket: null, shouldReconnect: false, reconnectTimer: null, page: 1, total: 0 },
         operations: { status: null, backups: [], showAllBackups: false, events: [], page: 1 },
+        hostActions: { snapshot: null, timer: null },
         loginsPage: 1,
         loginsTotal: 0,
         host: { status: null, resourceSamples: [], monitorTimer: null, monitorLoading: false },
@@ -1300,7 +1301,100 @@
             loadOperationalStatus(),
             loadBackups(),
             loadServerActivity(),
+            loadHostActions(),
         ]);
+    }
+
+    // Server maintenance (webadmin/host_actions.py): a fixed list of actions
+    // the root helper toc-host-action runs; the page only asks for one by
+    // name and shows what came back. While one waits or runs it is polled.
+    function hostActionWhen(seconds) {
+        return seconds ? new Date(seconds * 1000).toLocaleString() : "-";
+    }
+
+    function renderHostActions() {
+        const snapshot = state.hostActions.snapshot;
+        const buttons = byId("host-actions-buttons");
+        const results = byId("host-actions-results");
+        if (!snapshot || !snapshot.available) {
+            byId("host-actions-state").textContent = snapshot ? "Not installed" : "Not loaded";
+            buttons.replaceChildren();
+            results.replaceChildren(node("p", {
+                className: "empty-state",
+                text: snapshot
+                    ? "Not installed on this server yet: the next deploy installs it."
+                    : "Not loaded.",
+            }));
+            return;
+        }
+        byId("host-actions-state").textContent = snapshot.busy === "running"
+            ? "An action is running"
+            : snapshot.busy === "waiting" ? "An action is starting" : "Ready";
+        buttons.replaceChildren(...snapshot.actions.map((action) => {
+            const button = node("button", {
+                className: `button ${action.danger ? "button-danger" : "button-secondary"}`,
+                text: action.title,
+                attrs: { type: "button", title: action.description },
+            });
+            button.disabled = Boolean(snapshot.busy);
+            button.addEventListener("click", () => void runHostAction(action));
+            return button;
+        }));
+        if (!snapshot.results.length) {
+            results.replaceChildren(node("p", { className: "empty-state", text: "No actions run yet." }));
+            return;
+        }
+        results.replaceChildren(...snapshot.results.map((result, index) => {
+            const took = result.finished && result.started ? ` in ${formatDuration(result.finished - result.started)}` : "";
+            const summary = node("summary", {
+                text: `${result.title}: ${result.state}${result.exit !== null && result.state !== "running" ? ` (exit ${result.exit})` : ""}, ${hostActionWhen(result.started)}${took}`,
+            });
+            const details = node("details", { className: "host-action-result" }, [
+                summary,
+                node("pre", { text: result.output || "(no output)" }),
+            ]);
+            if (index === 0) details.open = true;
+            return details;
+        }));
+    }
+
+    async function loadHostActions() {
+        if (state.hostActions.timer) {
+            window.clearTimeout(state.hostActions.timer);
+            state.hostActions.timer = null;
+        }
+        try {
+            state.hostActions.snapshot = await api("/api/host/actions", { auth: true });
+        } catch (error) {
+            byId("host-actions-state").textContent = error.message;
+            return;
+        }
+        renderHostActions();
+        if (state.hostActions.snapshot.busy && state.view === "operations") {
+            state.hostActions.timer = window.setTimeout(() => void loadHostActions(), 4000);
+        }
+    }
+
+    async function runHostAction(action) {
+        if (!await ensureAuth()) return;
+        const confirmed = await confirmAction({
+            title: action.title,
+            message: action.description,
+            phrase: action.phrase,
+            danger: Boolean(action.danger),
+        });
+        if (!confirmed) return;
+        try {
+            await api("/api/host/actions", {
+                method: "POST",
+                auth: true,
+                body: { action: action.name, confirm: action.name },
+            });
+            toast(`${action.title}: asked for.`, "success");
+        } catch (error) {
+            toast(error.message, "error");
+        }
+        await loadHostActions();
     }
 
     function setTableLoading(tableId, columnCount) {
@@ -2429,6 +2523,7 @@
             renderBackups();
         });
         byId("activity-refresh").addEventListener("click", () => void loadServerActivity());
+        byId("host-actions-refresh").addEventListener("click", () => void loadHostActions());
         byId("activity-channel").addEventListener("change", renderServerActivity);
         byId("activity-search").addEventListener("input", renderServerActivity);
         byId("announce-form").addEventListener("submit", submitAnnouncement);

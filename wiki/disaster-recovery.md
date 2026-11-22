@@ -235,6 +235,29 @@ list must agree), a full disk, or a corrupt clone at
 `/srv/toc/state-repo` (symptom: `object file ... is empty` -- move the
 clone aside and let the sync re-clone).
 
+### From the website, without SSH
+
+The admin website's **Operations** page has a **Server maintenance**
+panel (2026-11-22) that runs a fixed list of actions on the host, behind
+the admin token:
+
+| Button | What it does |
+| --- | --- |
+| Run the state sync now | starts `toc-state-sync` and shows its last journal lines -- the reason it fails |
+| Repair the state sync | moves `/srv/toc/state-repo` aside to `state-repo.broken-<stamp>` (kept, never deleted) and runs the sync, which clones afresh |
+| Check for a deploy now | starts `toc-auto-deploy` at once; it still ships only code CI passed and still holds for players |
+| Deploy main now | runs `toc-deploy` (warns and saves players, rolls back by itself if unhealthy); asks you to type DEPLOY |
+| Restart the website | restarts `toc-web` |
+
+Each result -- state, exit status and output -- is listed under the
+buttons. Nothing typed on the page is run: the dashboard (sandboxed, user
+`toc`) writes `/var/lib/toc/host-actions/request`, and
+`toc-host-action.path` starts the root helper `/usr/local/sbin/toc-host-action`,
+which runs only the actions it names and writes results to
+`/var/lib/toc-host-actions/` (also in the journal: `journalctl -t
+toc-host-action`). `toc-deploy` installs the helper, its units and that
+directory after a healthy deploy; until then the panel says "Not installed".
+
 ## The machine is gone
 
 This is the one that matters, and it is rehearsed rather than

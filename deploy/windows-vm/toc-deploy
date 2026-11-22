@@ -512,7 +512,7 @@ while [ $n -lt 30 ]; do
         # cannot replace a working one; install(1) writes a new file, so
         # the copy running now is not touched.
         for s in toc-deploy toc-state-sync toc-state-sync-check toc-game-recovery \
-                 toc-auto-deploy toc-game-probe; do
+                 toc-auto-deploy toc-game-probe toc-host-action; do
             if [ -f "$BUILD/deploy/windows-vm/$s" ] &&
                ! cmp -s "$BUILD/deploy/windows-vm/$s" "/usr/local/sbin/$s"; then
                 install -m 0755 "$BUILD/deploy/windows-vm/$s" "/usr/local/sbin/$s" &&
@@ -533,6 +533,25 @@ while [ $n -lt 30 ]; do
         if [ "$units_changed" = 1 ]; then
             systemctl daemon-reload
             systemctl enable --now toc-auto-deploy.timer >/dev/null 2>&1 || true
+        fi
+        # The admin website's maintenance actions (toc-host-action): the
+        # helper's units and its results directory, root's and readable by
+        # group toc. A deploy the website asked for runs inside the
+        # helper's service, so, as above, only the path unit is started.
+        units_changed=0
+        for u in toc-host-action.service toc-host-action.path; do
+            if [ -f "$BUILD/deploy/windows-vm/$u" ] &&
+               ! cmp -s "$BUILD/deploy/windows-vm/$u" "/etc/systemd/system/$u"; then
+                install -m 0644 "$BUILD/deploy/windows-vm/$u" "/etc/systemd/system/$u" &&
+                    printf '   installed %s\n' "$u" && units_changed=1
+            fi
+        done
+        if [ -f /etc/systemd/system/toc-host-action.path ]; then
+            install -d -m 0750 -o root -g toc /var/lib/toc-host-actions 2>/dev/null || true
+            if [ "$units_changed" = 1 ]; then
+                systemctl daemon-reload
+                systemctl enable --now toc-host-action.path >/dev/null 2>&1 || true
+            fi
         fi
         # The game and dashboard units too. Nothing installed them, so a
         # fix to either sat in git: the dashboard's --log-file pointed at a

@@ -432,6 +432,44 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertTrue(status["activity"]["log"]["exists"])
             self.assertTrue(status["activity"]["events"]["exists"])
 
+    def test_host_actions_need_the_token_and_only_name_an_action(self) -> None:
+        # webadmin/host_actions.py and deploy/windows-vm/toc-host-action
+        # (tests/test_host_actions.py plays the helper itself).
+        headers = {"X-Admin-Token": "secret"}
+        with self.webadmin_client() as (_, client, temp_root):
+            requests = temp_root / "host-actions"
+            results = temp_root / "host-results"
+            env = {"TOC_HOST_ACTION_REQUESTS": str(requests),
+                   "TOC_HOST_ACTION_RESULTS": str(results)}
+            with patch.dict(os.environ, env):
+                self.assertEqual(client.get("/api/host/actions").status_code, 403)
+                self.assertEqual(client.post("/api/host/actions",
+                                             json={"action": "deploy", "confirm": "deploy"}).status_code, 403)
+                # Not installed: the snapshot says so and nothing is written.
+                snap = client.get("/api/host/actions", headers=headers)
+                self.assertEqual(snap.status_code, 200)
+                self.assertFalse(snap.json()["available"])
+                self.assertEqual(client.post("/api/host/actions", headers=headers,
+                                             json={"action": "state-sync", "confirm": "state-sync"}).status_code, 503)
+                results.mkdir()
+                self.assertEqual(client.post("/api/host/actions", headers=headers,
+                                             json={"action": "sh -c id", "confirm": "sh -c id"}).status_code, 400)
+                self.assertEqual(client.post("/api/host/actions", headers=headers,
+                                             json={"action": "deploy"}).status_code, 400)
+                self.assertFalse(requests.exists())
+                asked = client.post("/api/host/actions", headers=headers,
+                                    json={"action": "state-sync", "confirm": "state-sync"})
+                self.assertEqual(asked.status_code, 200, asked.text)
+                self.assertEqual((requests / "request").read_text(),
+                                 f"{asked.json()['id']} state-sync\n")
+                self.assertEqual(client.post("/api/host/actions", headers=headers,
+                                             json={"action": "deploy", "confirm": "deploy"}).status_code, 409)
+                snap = client.get("/api/host/actions", headers=headers).json()
+                self.assertTrue(snap["available"])
+                self.assertEqual(snap["busy"], "waiting")
+                self.assertEqual({a["name"] for a in snap["actions"]},
+                                 {"state-sync", "state-sync-reclone", "auto-deploy", "deploy", "restart-web"})
+
     def test_host_status_is_opt_in_authenticated_and_read_only(self) -> None:
         headers = {"X-Admin-Token": "secret"}
         with self.webadmin_client() as (_, client, _):

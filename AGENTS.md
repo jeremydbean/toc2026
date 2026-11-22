@@ -3200,6 +3200,46 @@ is still WAKE.
   filter element that had been removed. The last kind is worse than stale, it
   is broken.
 
+## Server Maintenance From The Website
+
+Owner, 2026-11-22: the state sync failed for a day and the only way to see
+why or fix it was SSH from the desktop; "fixed actions", not a command box.
+The Operations page's **Server maintenance** panel asks for one of five
+actions -- `state-sync`, `state-sync-reclone`, `auto-deploy`, `deploy`,
+`restart-web` -- and lists the results (`wiki/disaster-recovery.md`).
+
+- **The dashboard never runs anything.** `webadmin/host_actions.py` (behind
+  `verify_token`: `GET`/`POST /api/host/actions`) writes one file,
+  `/var/lib/toc/host-actions/request` (`<32 hex id> <action>`, linked in
+  whole with `os.link` so the helper never reads half a line and a second
+  request never replaces the first); `toc-web` stays user `toc`,
+  `NoNewPrivileges`, `ProtectSystem=strict`. One request at a time: 409
+  while one waits or runs (a `running` result older than two hours no
+  longer blocks).
+- **The root helper names the actions.** `deploy/windows-vm/toc-host-action`,
+  started by `toc-host-action.path` (`PathExists=` the request), reads the
+  request only if it is a regular file, not a link, compares its first line
+  with its own list, deletes it, and runs `run_action`'s case -- never
+  anything from the file, which is never echoed either. Results go to
+  `/var/lib/toc-host-actions/<id>` (root's, group `toc`, 0640, written aside
+  and renamed; the newest 40 kept) and `logger -t toc-host-action`. The
+  reclone moves the clone aside, never deletes it; the deploy runs
+  `toc-deploy` with `TOC_DEPLOY_ROLLBACK=1`.
+- **The two lists are one.** `ACTIONS` in host_actions.py and the helper's
+  case list are held together by `tests/test_host_actions.py`, which runs the
+  real helper against stand-in `systemctl`/`journalctl`/`toc-deploy`. Adding
+  an action is adding it to both, with a test; never an action that takes an
+  argument from the request.
+- **Installed by `toc-deploy`** after a healthy deploy (the script, both
+  units, `install -d -m 0750 -o root -g toc /var/lib/toc-host-actions`,
+  `enable --now` the path unit only, since a website deploy runs inside the
+  helper's service) and by `toc-restore`. The feature is on only where that
+  results directory exists; elsewhere the panel says "Not installed". The
+  first deploy to bring it runs the `toc-deploy` before it, which does not
+  name it, so `toc-auto-deploy` (installed by that deploy, run as root every
+  ten minutes) installs it once while the path unit is missing, from the
+  build tree at the live commit -- the probe's fallback problem again.
+
 ## Security Facts
 
 - Game transport is plain Telnet.

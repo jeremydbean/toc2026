@@ -345,6 +345,7 @@ try:
     from webadmin import gear_drops
     from webadmin import changes_index
     from webadmin import hunting
+    from webadmin import host_actions
 except ImportError:
     from area_health import build_area_health
     from area_parser import AreaParser, APPLY_LOCATIONS
@@ -358,6 +359,7 @@ except ImportError:
     import gear_drops
     import changes_index
     import hunting
+    import host_actions
 
 # Default paths
 QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
@@ -3238,6 +3240,29 @@ async def host_status(_: None = Depends(verify_token)) -> Dict[str, Any]:
     if not HOST_STATUS_ENABLED:
         raise HTTPException(status_code=503, detail="Host status is not enabled")
     return await asyncio.to_thread(host_status_snapshot)
+
+
+class HostActionRequest(BaseModel):
+    action: str
+    confirm: str = ""
+
+
+# Maintenance actions (webadmin/host_actions.py): the dashboard asks the
+# root helper toc-host-action for one of a fixed list and reads its result;
+# it never runs a command itself. Both routes need the admin token.
+@app.get("/api/host/actions")
+async def host_actions_status(_: None = Depends(verify_token)) -> Dict[str, Any]:
+    return await asyncio.to_thread(host_actions.snapshot)
+
+
+@app.post("/api/host/actions")
+async def host_action_request(
+    body: HostActionRequest, _: None = Depends(verify_token)
+) -> Dict[str, Any]:
+    try:
+        return await asyncio.to_thread(host_actions.submit, body.action, body.confirm)
+    except host_actions.HostActionError as exc:
+        raise HTTPException(status_code=exc.status, detail=exc.message) from None
 
 
 @app.get("/api/host/resources")

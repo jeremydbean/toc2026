@@ -1,0 +1,11 @@
+[Unit]
+Description=Run a maintenance action the admin website asked for
+Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/disaster-recovery.md
+
+[Service]
+Type=oneshot
+# Root, on purpose: the dashboard stays an unprivileged, sandboxed toc and
+# can only ask for one of the actions toc-host-action names.
+ExecStart=/usr/local/sbin/toc-host-action
+# A deploy builds, validates and waits for the game to answer.
+TimeoutStartSec=1800

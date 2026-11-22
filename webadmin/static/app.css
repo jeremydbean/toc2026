@@ -1344,6 +1344,38 @@ label textarea {
     margin-bottom: 18px;
 }
 
+.host-actions-panel {
+    margin-bottom: 18px;
+}
+
+.host-actions-panel .operation-bar {
+    padding: 14px 16px 0;
+}
+
+.host-actions-results {
+    display: grid;
+    gap: 8px;
+    padding: 0 16px 16px;
+}
+
+.host-action-result summary {
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.host-action-result pre {
+    max-height: 360px;
+    margin: 8px 0 0;
+    overflow: auto;
+    padding: 10px;
+    background: #080a0b;
+    color: #d7e0db;
+    font-size: 0.8rem;
+    line-height: 1.35;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
 .operation-status-grid {
     border-bottom: 1px solid var(--border);
 }

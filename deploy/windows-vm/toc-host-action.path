@@ -1,0 +1,11 @@
+[Unit]
+Description=Watch for a maintenance action the admin website asks for
+Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/disaster-recovery.md
+
+[Path]
+# The dashboard (User=toc, StateDirectory=toc) writes this one file.
+PathExists=/var/lib/toc/host-actions/request
+Unit=toc-host-action.service
+
+[Install]
+WantedBy=multi-user.target

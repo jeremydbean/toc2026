@@ -103,6 +103,26 @@ export GIT_CONFIG_COUNT=1
 export GIT_CONFIG_KEY_0=safe.directory
 export GIT_CONFIG_VALUE_0="$BUILD"
 
+# The admin website's maintenance helper (toc-host-action, 2026-11-22).
+# toc-deploy installs it after a healthy deploy, but the first deploy to
+# bring it is made by the toc-deploy before it, whose install list does not
+# name it -- the probe's problem above. So, once, while it is missing, it
+# is installed from the build tree, which toc-deploy left at the live
+# commit; every later change comes through toc-deploy like the rest.
+HOST_ACTION_SBIN="${TOC_HOST_ACTION_SBIN:-/usr/local/sbin}"
+HOST_ACTION_UNITS="${TOC_HOST_ACTION_UNITS:-/etc/systemd/system}"
+if [ "$(id -u)" = 0 ] && [ ! -f "$HOST_ACTION_UNITS/toc-host-action.path" ] &&
+   [ -f "$BUILD/deploy/windows-vm/toc-host-action.path" ]; then
+    if install -m 0755 "$BUILD/deploy/windows-vm/toc-host-action" "$HOST_ACTION_SBIN/toc-host-action" &&
+       install -m 0644 "$BUILD/deploy/windows-vm/toc-host-action.service" "$HOST_ACTION_UNITS/" &&
+       install -d -m 0750 -o root -g toc /var/lib/toc-host-actions &&
+       install -m 0644 "$BUILD/deploy/windows-vm/toc-host-action.path" "$HOST_ACTION_UNITS/"; then
+        systemctl daemon-reload
+        systemctl enable --now toc-host-action.path >/dev/null 2>&1 || true
+        logger -t toc-auto-deploy "installed the website's maintenance helper (toc-host-action)" 2>/dev/null || true
+    fi
+fi
+
 # How many descriptors the game has in CON_PLAYING, "down" when nothing
 # listens, or "unknown". Anything else the probe says -- or a probe that
 # is missing or fails -- is "unknown".
