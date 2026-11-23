@@ -26,6 +26,21 @@ ROOT = Path(__file__).resolve().parents[1]
 SKIP = skip_reason()
 
 
+def dead_pid() -> int:
+    """A pid no process holds now. The jobs judge a temporary or a lock by
+    `kill -0` of the pid it names, and a fixed one (4242, 999999) belonged
+    to a live process on a busy runner often enough to fail CI: the job
+    then rightly left the "stale" file alone (2026-11-23)."""
+    for pid in range(3_900_000, 4_100_000, 7919):
+        try:
+            os.kill(pid, 0)
+        except ProcessLookupError:
+            return pid
+        except PermissionError:
+            continue
+    raise AssertionError("no free pid found")
+
+
 class BackupSourceTests(unittest.TestCase):
     def test_no_backup_waits_on_the_game_loop(self) -> None:
         code = (ROOT / "src" / "update.c").read_text(encoding="latin-1")
@@ -161,8 +176,8 @@ class BackupFailureTests(unittest.TestCase):
                 # archive is replaced by a proven new one.
                 lock = backups / ".backup.lock"
                 lock.mkdir()
-                (lock / "pid").write_text("999999\n")
-                (backups / ".Zstale.tar.gz.tmp.4242").write_bytes(b"partial")
+                (lock / "pid").write_text(f"{dead_pid()}\n")
+                (backups / f".Zstale.tar.gz.tmp.{dead_pid()}").write_bytes(b"partial")
                 before = daily.stat().st_ino
                 mode.write_text("slow")
                 text = log.read_text(encoding="latin-1")
@@ -213,7 +228,7 @@ class BackupFailureTests(unittest.TestCase):
                 legacy = backups / ".backup.lock"
                 legacy.mkdir()
                 (legacy / "pid").write_text(f"{os.getpid()}\n")
-                dead = backups / ".Zdead.tar.gz.tmp.999999"
+                dead = backups / f".Zdead.tar.gz.tmp.{dead_pid()}"
                 dead.write_bytes(b"partial")
 
                 lockfile = backups / ".backup.flock"
