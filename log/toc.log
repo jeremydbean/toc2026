@@ -344400,3 +344400,4 @@ Mon Nov 23 12:41:16 2026 :: Connection guard: refused 1 connection from 52.87.72
 Mon Nov 23 12:42:08 2026 :: Connection guard: last hour 10 closed without a word, 3 refused, 0 new characters refused, 0 newly paused; 9 addresses paused and 0 refused now, 16 active player addresses.
 Mon Nov 23 12:45:32 2026 :: Treasure goblin: vanished from room 18239 (A small hallway, gelidia.are) (too long in one area).
 Mon Nov 23 12:46:21 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 4 of 6 in 6 hours).
+Mon Nov 23 12:51:26 2026 :: Connection guard: refused 1 connection from 5.161.194.92 (paused; 15 refused in all, pause 4 this week, 2282 minutes left).
