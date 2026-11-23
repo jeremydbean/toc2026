@@ -107,10 +107,17 @@ def world_daggers(mud: LiveMud) -> tuple:
     return in_file, in_corpse, laid, inside
 
 
+# The tick's own saves held off (TOC_FAULT=autowrite), as the other death
+# tests do: these crash seconds after a death, and an autosave in between --
+# likelier since every character saves every minute (2026-11-23) -- would
+# write the settled state and change what is being tested.
+ENV = {"TOC_FAULT_FILE": "../fault.once", "TOC_FAULT": "autowrite"}
+
+
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class DeathTransferTests(unittest.TestCase):
     def test_a_crash_right_after_a_death_never_duplicates(self) -> None:
-        with LiveMud(extra_env={"TOC_FAULT_FILE": "../fault.once"}) as mud:
+        with LiveMud(extra_env=ENV) as mud:
             setup(mud)
             with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as fallen:
                 login(staff, "Zdtstaff", PW)
@@ -130,7 +137,7 @@ class DeathTransferTests(unittest.TestCase):
         self.assertEqual(states, ["pending", "committed"])
 
     def test_a_death_whose_save_failed_is_undone_by_a_crash(self) -> None:
-        with LiveMud(extra_env={"TOC_FAULT_FILE": "../fault.once"}) as mud:
+        with LiveMud(extra_env=ENV) as mud:
             setup(mud)
             with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as fallen:
                 login(staff, "Zdtstaff", PW)
@@ -153,7 +160,7 @@ class DeathTransferTests(unittest.TestCase):
         self.assertIn("the death never reached their file", log)
 
     def test_a_failed_death_save_is_settled_by_the_next_save(self) -> None:
-        with LiveMud(extra_env={"TOC_FAULT_FILE": "../fault.once"}) as mud:
+        with LiveMud(extra_env=ENV) as mud:
             setup(mud)
             with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as fallen:
                 login(staff, "Zdtstaff", PW)

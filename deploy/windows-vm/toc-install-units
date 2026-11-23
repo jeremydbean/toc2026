@@ -34,7 +34,7 @@ set -u
 SRC=${1:?the directory holding the unit files}
 UNIT_DIR=${TOC_UNIT_DIR:-/etc/systemd/system}
 INTRODUCED=${TOC_UNITS_INTRODUCED:-/var/lib/toc/units-introduced}
-UNITS=${TOC_SUPPORT_UNITS:-"toc-state-sync.service toc-state-sync.timer
+UNITS=${TOC_SUPPORT_UNITS:-"toc-state-sync.service toc-state-sync.timer toc-state-sync.path
 toc-state-sync-check.service toc-state-sync-check.timer
 toc-game-recovery.service toc-game-recovery.timer
 toc-auto-deploy.service toc-auto-deploy.timer

@@ -127,7 +127,7 @@ act_status() {
     # addresses, and a result reaches git through the state sync.
     echo "== services"
     for u in toc-game.service toc-web.service caddy.service \
-             toc-state-sync.timer toc-state-sync.service \
+             toc-state-sync.timer toc-state-sync.path toc-state-sync.service \
              toc-state-sync-check.timer toc-auto-deploy.timer toc-auto-deploy.service \
              toc-game-recovery.timer toc-host-action.path \
              toc-heartbeat.timer; do

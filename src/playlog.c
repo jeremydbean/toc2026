@@ -18,7 +18,7 @@
  *   log/crash.log  on a crash, the last CRASH_RING commands and what the
  *                  game loop was doing, written from the signal handler.
  *
- * log/ reaches a public repository every five minutes, so the journal
+ * log/ reaches a public repository within seconds, so the journal
  * keeps the watch log's rules and adds its own: the words of TELL, REPLY
  * and GTELL, and anything after a password command, are never written,
  * and neither is what the game answered them; a room holding the black
@@ -233,7 +233,7 @@ static void play_room( CHAR_DATA *ch, char *room, size_t rsize,
  * toc.log. A trim that fails is not tried again for
  * TELEMETRY_RETRY_SECS, where it used to rescan the whole file every row.
  * Rows cut from the file are not lost to analysis: the state sync commits
- * log/ every five minutes, and a trim comes every `max - keep` rows.
+ * log/ on every run, and a trim comes every `max - keep` rows.
  * ------------------------------------------------------------------ */
 
 #define TELEMETRY_REPORT_SECS   60
@@ -602,7 +602,7 @@ static void journal_write_at( const char *kind, CHAR_DATA *ch, const char *field
     play_clean( name, sizeof(name), ch != NULL ? ch->name : "-" );
     n = snprintf( row, sizeof(row), "%ld\t%s\t%s\t%d\t%s\t%s\t%s\n", (long) current_time,
                   kind, name, ch != NULL ? ch->level : 0, room, area, fields );
-    /* A write a row: the state sync reads the file every five minutes. */
+    /* A write a row: the state sync reads the file on every run. */
     telemetry_append( &journal_log, row, n, sizeof(row) );
     journal_busy = false;
 }

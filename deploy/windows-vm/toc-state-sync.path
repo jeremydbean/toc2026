@@ -1,0 +1,27 @@
+[Unit]
+Description=Push player state to GitHub as soon as a save lands
+Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/disaster-recovery.md
+
+[Path]
+# Owner, 2026-11-23: every save copied off the host within seconds -- to
+# the public repository and, right after, the private mirror -- and on a
+# network or GitHub outage the game plays on while the commits wait, kept
+# and carried forward (toc-state-sync), then pushed when it returns.
+#
+# A save is a write aside and a rename into its directory, which
+# PathChanged= sees on the directory itself (checked on the host,
+# systemd 255: one save starts one run; ten in half a second start one;
+# a write in a subdirectory starts none -- player/versions/ is the timer's).
+PathChanged=/srv/toc/current/player
+PathChanged=/srv/toc/current/gods
+PathChanged=/srv/toc/current/heroes
+PathChanged=/srv/toc/current/corpse/live
+Unit=toc-state-sync.service
+# Generous: a busy minute is dozens of saves, and a trigger limit that is
+# hit stops the watch altogether (toc-ops-summary names a path unit that
+# is not active).
+TriggerLimitIntervalSec=10
+TriggerLimitBurst=500
+
+[Install]
+WantedBy=paths.target

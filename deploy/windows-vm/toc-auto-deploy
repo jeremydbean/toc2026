@@ -4,7 +4,7 @@
 # Run every ten minutes by toc-auto-deploy.timer (owner, 2026-10-05). A
 # cloud session can push to GitHub and nothing else -- it has HTTPS only,
 # no SSH and no key -- so the host comes to GitHub instead: it already
-# talks to it every five minutes for the state sync. Nothing on the
+# talks to it every minute, and on every save, for the state sync. Nothing on the
 # server opens to anything new.
 #
 # It deploys only when all of this holds:

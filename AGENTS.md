@@ -2892,7 +2892,7 @@ shipped world and player files held no such value on 2026-11-12.
 **A bug that left characters wrong is corrected by a login fix, never by
 editing player files** (owner, 2026-10-21: a standard method). The files
 live on the host and the state sync only copies host to git, so an edit
-in the repository is overwritten five minutes later and never read.
+in the repository is overwritten within a minute and never read.
 `src/fixes.c` holds `player_fixes[]`: an id that is never changed or
 reused, a line for the log, and a function. `player_fixes_login()`,
 called from the nanny once the character is in their room, runs each
@@ -3394,7 +3394,7 @@ units were never installed by a deploy. Rules now:
   flag that stays set.
 - **There is no encrypted off-host backup, by decision** (owner,
   2026-11-23). `toc-state-sync` pushes `player/`, `gods/`, `heroes/` and
-  `corpse/` to the public repository in plaintext every five minutes, never
+  `corpse/` to the public repository in plaintext within seconds of a save, never
   force-pushing, so that history is append-only and reaches back a year --
   a strict superset of what the old six-hourly `sync-player-backup.sh`
   archived. The encrypted copy added no secrecy (the same data is already
@@ -3499,6 +3499,23 @@ units were never installed by a deploy. Rules now:
   which must begin `#PLAYER`: a restore drill on every new archive,
   remembered by name, size and mtime in `/var/lib/toc/archive-verified`.
   A damaged newest archive names how old the last whole one is.
+- **Every save reaches GitHub within seconds, and play goes on through an
+  outage** (owner, 2026-11-23: as near zero loss as can be had, the private
+  mirror as the store, the game never held up). `toc-state-sync.path`
+  watches `player/`, `gods/`, `heroes/` and `corpse/live/` with
+  `PathChanged=`, which sees a save's rename into the directory (checked on
+  the host, systemd 255: one save, one run; ten in half a second, one run; a
+  write in a subdirectory, none). The service sleeps three seconds first so
+  a tick's burst goes as one run; a save landing during a run starts none,
+  so `toc-state-sync.timer`, now every minute, catches it -- and
+  `player/versions/`, the boards and the logs. When GitHub or the network
+  is down the runs fail, their commits are kept and carried
+  (`bring_up_to_date`), and the first run that can push sends them all;
+  the game never waits. `TriggerLimitBurst=500`: a trigger limit that is
+  hit stops the watch, and the path unit is in `toc-ops-summary`'s units.
+  With `AUTOSAVE_CYCLE_TICKS` 1, the most a lost host costs is about a
+  minute of a character's play; a per-change journal is what would close
+  that (`wiki/disaster-recovery.md`, "How near zero loss this gets").
 - **Timers are on the wall clock.** `Persistent=` applies only to
   `OnCalendar=`; on an `OnUnitActiveSec` timer it does nothing. The sync,
   its check and the heartbeat use `OnCalendar` with `Persistent=true`.
@@ -3637,7 +3654,10 @@ See `.github/SECURITY.md` for mitigation and reporting procedures.
 
 ## Live State Goes To GitHub
 
-`deploy/windows-vm/toc-state-sync` runs **every five minutes** on
+`deploy/windows-vm/toc-state-sync` runs **within seconds of every save,
+and at least every minute** (2026-11-23: `toc-state-sync.path` starts it
+when a save lands in `player/`, `gods/`, `heroes/` or `corpse/live/`;
+`toc-state-sync.timer` every minute catches the rest) on
 whichever host is running the game and commits `player/`, `gods/`,
 `log/`, the `area/` runtime files and the areas built in game
 (`area/built/`, see In-Game Building) to `main` **in plaintext**. It
@@ -3731,11 +3751,14 @@ running -- systemd zeroes the exit time while one is, which read as
 "99999 minutes ago", and a deploy starts both timers in the same second
 so they collide every fifteen minutes.
 
-**`AUTOSAVE_CYCLE_TICKS` is the other half of the five-minute
-promise.** Syncing every five minutes is pointless if the game only
-writes a character's file every thirty, which is what stock ROM did.
-`char_update` saves each playing character once per cycle, staggered by
-descriptor so a full mud does not write every file in one tick.
+**`AUTOSAVE_CYCLE_TICKS` is the other half of the promise.** A sync
+within seconds of a save is pointless if the game rarely saves -- stock ROM
+wrote a character's file every thirty minutes. `char_update` saves each
+playing character once per cycle. It was 5 (every five minutes, staggered
+by descriptor); since 2026-11-23 it is **1**, every playing character every
+minute, which puts every save in the same tick -- a handful of small
+flushed files a minute at this game's size. Tests that crash seconds after
+an event hold the tick's saves off with `TOC_FAULT=autowrite`.
 
 ## Where This Actually Runs
 
@@ -3863,10 +3886,10 @@ check rather than assume:
   (public, no auth).
 - What is live: `log/deployed-commit` in git (the commit and when), and
   what the auto-deployer last decided and why: `log/auto-deploy.status`.
-  The state sync carries both to GitHub within five minutes, so
+  The state sync carries both to GitHub within a minute, so
   `git fetch` and read `origin/main:log/auto-deploy.status`.
 - Reports: the synced `area/bugs.txt`, `typos.txt`, `ideas.txt` and
-  `log/toc.log` stand in for the host's, up to five minutes stale. They
+  `log/toc.log` stand in for the host's, up to a minute stale. They
   carry player addresses, so filter IPs out of anything printed.
 
 **Give the owner times in Atlanta local time** (America/New_York: EDT,
@@ -4197,7 +4220,7 @@ log says what a player typed; the journal says what happened, in columns
   from N to M rows in X ms", and after a failure waits a minute instead of
   rescanning the file every row. A new telemetry file uses the writer
   (`tests/test_telemetry_writes.py`). Rows a trim cuts are in git: the
-  state sync commits `log/` every five minutes and a trim comes every
+  state sync commits `log/` every minute and a trim comes every
   `max - keep` rows, so no aggregate file is kept.
 - **`interpret()` is now a wrapper** round `interpret_body()`: it times
   the command, snapshots `d->outtop`, and after the body finds the
@@ -5838,7 +5861,7 @@ goblin both.
 does the same at `GOBLIN_AREA_MAX` while nobody is with or after him.
 
 **Logged -- but never where he is now.** `log/` reaches a public
-repository every five minutes, and he stays twenty to forty minutes, so a
+repository within a minute, and he stays twenty to forty minutes, so a
 logged room was a map to him (found in review, 2026-10-20: the synced log
 named his room within minutes). Arrivals (stock size, how long),
 every stock in full (`bm_log_stock`, from `black_market_restock`: each
@@ -6860,7 +6883,7 @@ server could recover the lines.
   **Tells are not in that file and must never be put in it.** They do
   not pass through the shared register, and that separation is the
   whole reason a global channel journal is safe to write: `log/` is
-  committed to a public repository every five minutes, so what lands
+  committed to a public repository within a minute, so what lands
   in there was said to a room full of people. A private message is a
   different feature with different consequences.
 
@@ -8012,7 +8035,7 @@ and Mac ("Connecting and shipping from a new session").
 
 1. The host: `player/`, its snapshots and milestones, corpses, the ledger
    (`wiki/player-backups.md`).
-2. The public repository, every five minutes (`toc-state-sync`),
+2. The public repository, within seconds of every save (`toc-state-sync`),
    append-only, never force-pushed.
 3. The private mirror `jeremydbean/toc2026-player-backups`, `main`: the same
    commit, pushed right after (see "Backups Say How They Went").
@@ -8021,8 +8044,8 @@ and Mac ("Connecting and shipping from a new session").
 There is no encrypted backup and no age key in use; do not add one
 without reading "Backups Say How They Went". What each failure costs, and
 what zero loss would take, is `wiki/disaster-recovery.md` "Recovery
-matrix" and "What zero loss would take" -- the honest figure for losing
-the whole host is about ten minutes of a character's play.
+matrix" and "How near zero loss this gets" -- the honest figure for
+losing the whole host is about a minute of a character's play.
 
 **What watches it.** `toc-ops-summary` every five minutes, served at
 `/api/ops-summary`; a review reads `log/ops-summary.json` first. UptimeRobot,
@@ -8048,12 +8071,13 @@ Mac holds no backup key any more.
   is in `/home/ubuntu/.ssh/authorized_keys` and was not accounted for.
 - No copy is held **off** GitHub yet: losing the account loses both
   repositories. The procedure is documented and rehearsed with synthetic
-  data (`wiki/disaster-recovery.md` "When GitHub is unavailable"); what is
-  missing is a drive mirror kept current and checked on a schedule.
-- Zero loss on losing the whole host would need every save replicated and
-  acknowledged off the host before play continues (`wiki/disaster-recovery.md`
-  "What zero loss would take"); not built. Running the sync every minute
-  instead of five is the cheap step that narrows it.
+  data (`wiki/disaster-recovery.md` "When GitHub is unavailable"). The
+  owner deferred a scheduled mirror (2026-11-23) until an always-on machine
+  is added to hold it; then it is a `git clone --mirror`, an hourly
+  `remote update` and a check of the newest player commit's date.
+- The last minute of unsaved play is not yet covered: a per-change journal
+  would close it (`wiki/disaster-recovery.md` "How near zero loss this
+  gets"). Saves already reach GitHub within seconds.
 - The owner's Windows machine may still run the old encrypted-backup task;
   with "ToCPi" deleted it can no longer push and fails harmlessly. Turning
   it off there is tidy, not urgent.

@@ -9,6 +9,12 @@ Type=oneshot
 User=toc
 Group=toc
 Environment=HOME=/srv/toc
+# A save starts this within a second (toc-state-sync.path); a tick saves
+# every playing character at once, so wait for the burst to land and send
+# it as one run. Saves landing during a run do not start another -- the
+# path unit sees nothing while this is active -- so the timer, every
+# minute, picks them up.
+ExecStartPre=/bin/sleep 3
 # /run is root-owned; this one is ours, and systemd cleans it up.
 RuntimeDirectory=toc-state-sync
 ExecStart=/usr/local/sbin/toc-state-sync

@@ -630,13 +630,41 @@ class StateSyncUnitTests(unittest.TestCase):
         self.assertIn("TOC_SYNC_STATE_DIR=/var/lib/toc-state-sync", unit)
 
     def test_the_timers_are_on_the_wall_clock(self) -> None:
-        for name, every in (("toc-state-sync.timer", "*:00/5:00"),
+        for name, every in (("toc-state-sync.timer", "*:*:00"),
                             ("toc-state-sync-check.timer", "*:07/15:00")):
             timer = (UNITS / name).read_text()
             lines = [line for line in timer.splitlines() if not line.startswith("#")]
             self.assertIn(f"OnCalendar=*-*-* {every}", lines, name)
             self.assertIn("Persistent=true", lines, name)
             self.assertNotIn("OnUnitActiveSec", "\n".join(lines), name)
+
+
+    def test_a_save_starts_a_sync_within_seconds(self) -> None:
+        """Owner, 2026-11-23: every save copied off the host within seconds,
+        the game playing on through an outage. toc-state-sync.path starts the
+        sync when a save is renamed into a state directory (checked on the
+        host: one save, one run; ten in half a second, one run; a write in a
+        subdirectory, none -- the minute timer's), and the service waits a
+        moment so a tick's burst of autosaves goes as one run."""
+        path = (UNITS / "toc-state-sync.path").read_text()
+        watched = [line.split("=", 1)[1] for line in path.splitlines()
+                   if line.startswith("PathChanged=")]
+        self.assertEqual(set(watched), {"/srv/toc/current/player", "/srv/toc/current/gods",
+                                        "/srv/toc/current/heroes",
+                                        "/srv/toc/current/corpse/live"})
+        self.assertIn("Unit=toc-state-sync.service", path)
+        burst = int(next(line.split("=", 1)[1] for line in path.splitlines()
+                         if line.startswith("TriggerLimitBurst=")))
+        self.assertGreaterEqual(burst, 100, "a limit that is hit stops the watch")
+        self.assertIn("WantedBy=paths.target", path)
+        service = (UNITS / "toc-state-sync.service").read_text()
+        self.assertIn("ExecStartPre=/bin/sleep 3", service)
+        # Installed, enabled, kept running and judged like the other units.
+        root = UNITS.parent        # deploy/
+        for where in ("windows-vm/toc-install-units", "windows-vm/toc-ops-summary",
+                      "toc-restore", "windows-vm/toc-game-recovery",
+                      "windows-vm/toc-host-action"):
+            self.assertIn("toc-state-sync.path", (root / where).read_text(), where)
 
 
 if __name__ == "__main__":

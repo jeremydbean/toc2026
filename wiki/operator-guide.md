@@ -318,7 +318,7 @@ came back inside it. Each restore takes its own `before stashrestore`
 copy, and nothing is removed, so a restore that turns out not to have
 been needed leaves duplicates to take out rather than a loss. The
 command's log line reaches `log/toc.log`, and the state sync carries it
-to GitHub within five minutes, so a session without host access can
+to GitHub within a minute, so a session without host access can
 confirm the result.
 
 ## Player Account Incidents

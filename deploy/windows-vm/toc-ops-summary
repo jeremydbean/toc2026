@@ -68,8 +68,9 @@ INODE_MIN_PCT = int(E("TOC_DISK_MIN_INODE_PCT", "10"))
 
 # The timers and path units that must be running, and the services they
 # start (which must at least be loaded from the shipped file).
-TIMERS = ["toc-state-sync.timer", "toc-state-sync-check.timer", "toc-game-recovery.timer",
-          "toc-auto-deploy.timer", "toc-heartbeat.timer", "toc-host-action.path"]
+TIMERS = ["toc-state-sync.timer", "toc-state-sync.path", "toc-state-sync-check.timer",
+          "toc-game-recovery.timer", "toc-auto-deploy.timer", "toc-heartbeat.timer",
+          "toc-host-action.path"]
 SERVICES = ["toc-game.service", "toc-web.service", "toc-state-sync.service",
             "toc-state-sync-check.service", "toc-game-recovery.service",
             "toc-auto-deploy.service", "toc-heartbeat.service", "toc-host-action.service"]

@@ -63,7 +63,8 @@ esac
 exit 0
 """
 
-UNITS = ["toc-state-sync.service", "toc-state-sync.timer", "toc-state-sync-check.service",
+UNITS = ["toc-state-sync.service", "toc-state-sync.timer", "toc-state-sync.path",
+         "toc-state-sync-check.service",
          "toc-state-sync-check.timer", "toc-game-recovery.service", "toc-game-recovery.timer",
          "toc-auto-deploy.service", "toc-auto-deploy.timer", "toc-host-action.service",
          "toc-host-action.path",
@@ -114,7 +115,7 @@ class InstallUnitsTests(unittest.TestCase):
             self.assertTrue((self.host.units / unit).exists(), unit)
         calls = self.host.calls()
         self.assertEqual(calls.count("systemctl daemon-reload"), 1, "one reload")
-        for timer in ("toc-state-sync.timer", "toc-state-sync-check.timer",
+        for timer in ("toc-state-sync.timer", "toc-state-sync.path", "toc-state-sync-check.timer",
                       "toc-game-recovery.timer", "toc-auto-deploy.timer",
                       "toc-heartbeat.timer", "toc-host-action.path"):
             self.assertIn(f"systemctl enable --now {timer}", calls)

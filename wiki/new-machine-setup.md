@@ -84,8 +84,8 @@ git show origin/main:log/auto-deploy.status   # what the auto-deployer last did
 ```
 
 The host also syncs `area/bugs.txt`, `typos.txt`, `ideas.txt`, `notes.txt`
-and `log/toc.log` into the repo every five minutes, so `git show
-origin/main:area/bugs.txt` reads the live reports (up to five minutes stale).
+and `log/toc.log` into the repo every minute, so `git show
+origin/main:area/bugs.txt` reads the live reports (up to a minute stale).
 Those files carry player IP addresses -- filter them out of anything you
 print or paste.
 

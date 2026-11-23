@@ -239,7 +239,7 @@ static void gob_teleport( CHAR_DATA *gob, AREA_DATA *avoid, const char *why )
     char_to_room( gob, to );
     act( "A shimmering rift tears open and $n tumbles out, clutching $s sack.",
          gob, NULL, NULL, TO_ROOM );
-    /* Not where he went: log/ is published every five minutes. */
+    /* Not where he went: log/ is published within seconds. */
     snprintf( line, sizeof(line), "Treasure goblin: vanished from %s (%s).",
               from, why );
     log_string( line );

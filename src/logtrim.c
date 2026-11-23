@@ -4,7 +4,7 @@
  *
  * log/toc.log only ever grew -- 23 MB by Nov 22, about two and a half a
  * week with one or two players on -- and so did log/webadmin-events.tsv.
- * The state sync commits both whole every five minutes, and GitHub refuses
+ * The state sync commits both whole on every run, and GitHub refuses
  * a push holding any file over 100 MB: every player save would have
  * stopped reaching GitHub with nothing saying why, the way the full disk
  * stopped them the morning of Nov 22. So each is cut to its newest half

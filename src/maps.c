@@ -1376,7 +1376,7 @@ bool cartographer_spawn( ROOM_INDEX_DATA *room )
     cart_leaves = current_time + number_range( CART_VISIT_MIN, CART_VISIT_MAX );
     cart_next_step = current_time + number_range( CART_STEP_MIN, CART_STEP_MAX );
 
-    /* Not where: log/ is published every five minutes. */
+    /* Not where: log/ is published within seconds. */
     log_string( "Cartographer: appeared." );
     cart_where( room, where, sizeof(where) );
     snprintf( line, sizeof(line), "Cartographer: appeared in %s (level %d).", where,

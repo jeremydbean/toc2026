@@ -8,6 +8,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 
+- **Every save reaches GitHub within seconds** (owner, 2026-11-23: as near
+  zero loss as can be had). `toc-state-sync.path` starts the sync when a
+  save lands in `player/`, `gods/`, `heroes/` or `corpse/live/`; the run
+  pushes the public repository and then the private mirror. The timer is
+  now every minute, as the backstop. Through a network or GitHub outage
+  the game plays on and the commits queue, kept and carried, until a push
+  succeeds.
+- **Every playing character is saved every minute**
+  (`AUTOSAVE_CYCLE_TICKS` 5 -> 1). Losing the whole host now costs at most
+  about a minute of a character's play, down from about ten. A per-change
+  journal, which would close that minute, is documented and not built.
+- The scheduled off-GitHub mirror is deferred until an always-on machine
+  is added to hold it.
+
 - **Data-safety review (2026-11-23), each defect proven by a test that
   failed on the old code:**
   - *A failed push's commit is never reset away.* The next run reset the

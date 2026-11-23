@@ -154,7 +154,7 @@ mkdir -p /etc/toc /var/log/toc /var/backups/toc
 # than leaving the service layer to be rebuilt by hand -- which is how the
 # Oracle migration left the host until this was fixed.
 for u in toc-game.service toc-web.service \
-         toc-state-sync.service toc-state-sync.timer \
+         toc-state-sync.service toc-state-sync.timer toc-state-sync.path \
          toc-state-sync-check.service toc-state-sync-check.timer \
          toc-game-recovery.service toc-game-recovery.timer \
          toc-auto-deploy.service toc-auto-deploy.timer \
@@ -199,7 +199,7 @@ systemctl daemon-reload || true
 # crash (Restart=always) and after a reboot (enabled). The recovery timer
 # is the backstop if it ever crash-loops past systemd's start limit.
 systemctl enable --now toc-game.service toc-web.service 2>/dev/null || true
-systemctl enable --now toc-state-sync.timer toc-state-sync-check.timer toc-game-recovery.timer 2>/dev/null || true
+systemctl enable --now toc-state-sync.timer toc-state-sync.path toc-state-sync-check.timer toc-game-recovery.timer 2>/dev/null || true
 # The admin website's maintenance actions (deploy/windows-vm/toc-host-action):
 # results in root's directory, readable by the dashboard's group.
 install -d -m 0750 -o root -g toc /var/lib/toc-host-actions 2>/dev/null || true

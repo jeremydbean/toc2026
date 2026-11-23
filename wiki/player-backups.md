@@ -14,7 +14,7 @@ what it does not yet cover, and how long a loss can be.
 | Corpses | every player corpse as it actually is -- room, timer, every object at any depth -- written at the death and within a second of any change | host, `corpse/live/<id>.corpse` | a week in the world; made again exactly after a restart |
 | Corpse history | each corpse as it was made, as it ended (rotted, picked up, purged, restored) and a log of what went in and out, by whose command | host, `corpse/history/<Owner>/` | for ever |
 | Recovery ledger | every restore and its undo copy, every milestone with its checksum, every corpse made and ended, each player's permanent uid | host, `player/recovery/ledger.tsv` | for ever; append-only, never rolled back |
-| Git history | every character file, the ledger and the corpses, every five minutes (`toc-state-sync`) | GitHub, `player/`, `corpse/` | for ever |
+| Git history | every character file, the ledger and the corpses, within seconds of every save and at least every minute (`toc-state-sync`, `toc-state-sync.path`) | GitHub, `player/`, `corpse/` | for ever |
 | Milestones in git | every tagged copy except level and quest ones | GitHub, `player/versions/<Name>/` | for ever (the sync never deletes them) |
 | Private mirror | the same commit as the public sync, plaintext, pushed right after it is verified; never forced | GitHub, private `jeremydbean/toc2026-player-backups`, `main` | for ever, as git history |
 | Hourly copies in git | the newest save snapshot of each finished hour | GitHub, `player/versions/<Name>/` | as the host keeps them -- hourly for a week, then daily for a year; pruned ones stay in git's history |
@@ -178,7 +178,7 @@ which (independent review, 2026-10-23):
 There is no encrypted off-host copy; the owner removed it on 2026-11-23
 (`AGENTS.md`, "Backups Say How They Went"). `toc-state-sync` pushes
 `player/`, `gods/`, `heroes/` and `corpse/` to the public repository in
-plaintext every five minutes and never force-pushes, so that history is
+plaintext within seconds of every save and never force-pushes, so that history is
 append-only and already covers everything the old archive did.
 
 Prove it once, and after any change to the sync, into a scratch directory
@@ -230,8 +230,10 @@ take is the section after it.
   looter's own file is saved on its own schedule, so a crash after the
   corpse's record caught up and before the looter's next save loses what
   they took (a known window, older than the death receipts).
-- **The host lost:** up to five minutes (the state sync), plus anything
-  since the last sync that only the host had. A rebuilt host's PRESTORE
+- **The host lost:** the play since a character's last save -- at most a
+  minute (every character is saved every minute) -- plus the seconds a save
+  takes to reach GitHub (`toc-state-sync.path`), or the whole of a push
+  outage if one was running. A rebuilt host's PRESTORE
   lists the same hourly, daily and milestone copies the lost one did,
   except the current hour's (2026-10-24); a restore drill from GitHub
   alone took under two minutes the same day.

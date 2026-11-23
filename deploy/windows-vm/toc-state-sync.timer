@@ -3,8 +3,13 @@ Description=Push live player state to GitHub
 Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/disaster-recovery.md
 
 [Timer]
-# Every five minutes, so a character who signs out is off the machine
-# within five minutes of doing it.
+# Every minute: the backstop. A save reaches GitHub within seconds on its
+# own (toc-state-sync.path, owner 2026-11-23); this catches what that does
+# not see -- a save landing while a run is already going, a snapshot in
+# player/versions/, a board or report file -- within a minute.
+#
+# It was every five minutes until 2026-11-23, so a character who signed
+# out was off the machine within five minutes.
 #
 # This was briefly widened to fifteen minutes and then to daily, both
 # times trying to quiet CI. That was the wrong lever: a validate per
@@ -16,9 +21,9 @@ Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/disaster-rec
 # service's last activation, so the retry after a failed run leaned on how
 # systemd treats a failed oneshot, and Persistent= does nothing at all for a
 # monotonic timer -- it applies only to OnCalendar=. A calendar timer fires
-# every five minutes whatever the last run did, and Persistent=true then
+# every minute whatever the last run did, and Persistent=true then
 # really runs one missed while the machine was down, at boot.
-OnCalendar=*-*-* *:00/5:00
+OnCalendar=*-*-* *:*:00
 OnBootSec=3min
 Persistent=true
 AccuracySec=30s

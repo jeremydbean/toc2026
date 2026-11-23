@@ -624,7 +624,7 @@ it is left out of the file, and ASAVE says how many it dropped.
 **2. It reaches the repository on its own.** An area made with ANEW lives
 in `area/built/`, with its own list, `area/built/built.lst`, which the game
 loads after the shipped world's `area.lst`. Building never touches
-`area.lst`. Every five minutes the server's state sync commits
+`area.lst`. Every minute the server's state sync commits
 `area/built/` to git along with the player files, so a lost server loses
 at most the last few minutes; a code deploy leaves the live `area/built/`
 exactly as it is, and only fills in a built file the server is missing.

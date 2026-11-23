@@ -634,7 +634,7 @@ static int channel_history_index( const char *name )
  * not come through the shared register below -- each character keeps
  * their own in pcdata->tell_history -- and that separation is the whole
  * reason a global channel journal is safe to write at all.  log/ is
- * committed to a public repository every five minutes; what is in here
+ * committed to a public repository within seconds; what is in here
  * was said to a room full of people, and nothing else may be.
  */
 static void channel_journal_sanitize( char *dest, size_t size,

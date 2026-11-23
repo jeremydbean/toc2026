@@ -527,7 +527,7 @@ fi
 # keeping of them: a copy the host has pruned is removed here too (git's
 # history still holds it), so a rebuilt host's PRESTORE lists the same
 # hourly and daily copies the lost one did. The hour still running is
-# left until it ends, so its copy is not replaced every five minutes.
+# left until it ends, so its copy is not replaced on every run.
 # Tagged copies are the rsync's above and are never touched here.
 if [ -d "$TOC_ROOT/player/versions" ] && ! command -v python3 >/dev/null 2>&1; then
     PARTIAL="${PARTIAL}hourly snapshots skipped: no python3; "
