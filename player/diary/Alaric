@@ -223,16 +223,22 @@ List earn 91784 0 loot
 List spend 1300000 0 heal
 End
 Day 2026-11-23
-Played 49
+Played 258
 Level 57 57 0
 Exp 0 0
-Kills 0
+Kills 3
 Deaths 0
 Close 0
-Quests 0 0
+Quests 1 49
 Dailies 0 0
-List area 49 0 City of Dresden
+List area 70 0 City of Dresden
+List area 10 0 Sewer
+List area 5 0 The Underdark
+List area 105 0 Dwarven Catacombs
+List area 68 0 Dwarven Kingdom
 List earn 73311485 0 interest
+List earn 4286 0 loot
+List earn 92477484 0 quests
 List spend 600 0 buy
 End
 #END

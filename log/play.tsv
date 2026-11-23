@@ -55306,3 +55306,169 @@
 1795402644	cmd	Alaric	57	2068	catacomb.are	standing	100	0	-	south		Unknown passage //   Oh dear you seem to have lost your way.  You look back from whence you // came but there's no exit there anymore.  There are exits in other	-	+
 1795402645	cmd	Alaric	57	2068	catacomb.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
 1795402645	cmd	Alaric	57	2069	catacomb.are	standing	100	0	-	east		Unknown passage //   Oh dear you seem to have lost your way.  You look back from whence you // came but there's no exit there anymore.  There are exits in other	-	+
+1795402653	area	Alaric	57	2497	dresden.are	catacomb.are	dresden.are	48	recall
+1795402653	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795402657	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1795402657	cmd	Alaric	57	2402	dresden.are	standing	100	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1795402658	cmd	Alaric	57	2415	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795402658	cmd	Alaric	57	2485	dresden.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1795402658	cmd	Alaric	57	2486	dresden.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1795402658	cmd	Alaric	57	2487	dresden.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the	-	+
+1795402659	cmd	Alaric	57	2509	dresden.are	standing	100	0	-	east		Dark Alley. //   When you enter the alleyway you are submerged in darkness until your eyes // adjust to the faint light that penetrates from behind and up above.  As you	-	+
+1795402659	cmd	Alaric	57	2508	dresden.are	standing	100	0	-	north		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1795402659	cmd	Alaric	57	2507	dresden.are	standing	100	0	-	east		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1795402659	cmd	Alaric	57	2505	dresden.are	standing	100	0	-	north		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1795402660	cmd	Alaric	57	2506	dresden.are	standing	100	0	-	north		Dead End. //   As you proceed this way down the alley you suddenly come to a dead end! // Scanning your surroundings you see the buildings on all the sides rise at	-	+
+1795402660	area	Alaric	57	7030	sewer.are	dresden.are	sewer.are	7	down
+1795402660	cmd	Alaric	57	7030	sewer.are	standing	100	0	-	down		The Quadruple Junction Under the Garbage //   You are standing in something that reminds you of an entry to an ant hive. // There are enormous concrete pipes leading north, south, east and west. 	-	+
+1795402660	cmd	Alaric	57	7022	sewer.are	standing	100	0	-	west		The odd room with smooth walls //   As you enter you hear a loud click from one of the walls ... and you fall // and fall and fall ...	-	+
+1795402660	cmd	Alaric	57	7112	sewer.are	standing	100	0	-	down		An odd intersection //   You stand in a rather odd intersection of pipes. The pipes actually don't // resemble pipes anymore. They look more like a real stone tunnel, or a	-	+
+1795402661	cmd	Alaric	57	7111	sewer.are	standing	100	0	-	north		The southwestern corner of the ledge //   This seems like a ledge that is a little broader than the one just to the  // north of here. The ledge seems to lead around some sort of Abyss of total 	-	+
+1795402661	cmd	Alaric	57	7115	sewer.are	standing	100	0	-	east		The Broad ledge //   You are standing on a ledge that seems quite a lot larger than the rest  // of the ledges. This one leads to the west and the east, plus it has an exit	-	+
+1795402661	cmd	Alaric	57	7129	sewer.are	standing	100	0	-	south		The sewer line. //   You are in a narrow part of the sewer. Down the sewer continues and to the // north is the ledge.	-	+
+1795402661	cmd	Alaric	57	7221	sewer.are	standing	100	0	-	down		The sewer drain. //   You are in a sewer drain, there is nothing special inhere, except for a  // loud echo.	-	+
+1795402662	cmd	Alaric	57	7220	sewer.are	standing	100	0	-	west		A boring drain. //   You are in yet another sewer drain. // [Exits: north east]	-	-
+1795402662	cmd	Alaric	57	7219	sewer.are	standing	100	0	-	north		A dry sewer drain. //   You are in a dry but dirty sewer drain. The drain continues east and south. // [Exits: east south]	-	-
+1795402662	cmd	Alaric	57	7217	sewer.are	standing	100	0	-	east		The half-dry drain. //   You are in a half-dry sewer drain. To the north the drain runs a little bit // downwards into some water to the east you can see a small hole. To the west	-	+
+1795402662	cmd	Alaric	57	7216	sewer.are	standing	100	0	-	north		Under water in the sewer. //   You swim in some dirty water and is holding you breath. You'll better  // continue before you drown. It is a good thing that you can hold your light	-	+
+1795402663	cmd	Alaric	57	7215	sewer.are	standing	100	0	-	north		The half-wet drain. //   You are in a sewer drain where the floor is covered with water. To the north // it looks more dry, south however the drain runs down into some water.	-	+
+1795402663	cmd	Alaric	57	7210	sewer.are	standing	100	0	-	north		The four-way junction. //   You are in a sewer junction. To the north is a small hole, to the west is a // narrow crawlway and to the east and south the sewer continues.	-	+
+1795402663	cmd	Alaric	57	7209	sewer.are	standing	100	0	-	west		The crawlway. //   You are in a narrow crawlway.  You don't notice anything interesting here. // [Exits: east west]	-	-
+1795402663	cmd	Alaric	57	7208	sewer.are	standing	100	0	-	west		The lair entrance. //   You are in a dry part of the sewer. To the north is a wooden door, you  // can see some slime at the lower part of the door. You also see some skulls	-	+
+1795402664	cmd	Alaric	57	7204	sewer.are	standing	100	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce.	-	+
+1795402664	cmd	Alaric	57	7203	sewer.are	standing	100	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce.	-	+
+1795402664	cmd	Alaric	57	7202	sewer.are	standing	100	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce. To the north 	-	+
+1795402664	cmd	Alaric	57	7201	sewer.are	standing	100	0	-	north		The inner Lair //   You are in a octagonal room with smooth purple stone walls.  The floor is  // made from black stone.  In the western wall you see a large black stone door.	-	+
+1795402665	area	Alaric	57	25171	underdrk.are	sewer.are	underdrk.are	5	down
+1795402665	cmd	Alaric	57	25171	underdrk.are	standing	100	0	-	down		The climb up. //   You can hear something above you talking to itself in the darkness.  The smell // coming from there reminds you of a SEWER.  The rocks in this climb were made	-	+
+1795402665	cmd	Alaric	57	25170	underdrk.are	standing	100	0	-	down		The end of the sloping passage. //   The passage ends here and makes a straight vertical climb upwards into onyx // darkness.  You can also go to the down the slope to the east.	-	+
+1795402665	cmd	Alaric	57	25169	underdrk.are	standing	100	0	-	east		The slope steepens. //   The slope starts to steepen here into a sharper angle. The roaring of the // waterfall now is so far in the distance that dripping water drowns out the	-	+
+1795402665	cmd	Alaric	57	25168	underdrk.are	standing	100	0	-	east		The slope upwards. //   The passageway starts to slope upwards here.  The roaring of the waterfall is // more distant now and you can no longer feel the moisture on your face that	-	+
+1795402666	cmd	Alaric	57	25167	underdrk.are	standing	100	0	-	east		The dark passage. //   It's dark here.  You feel moisture on your face and you can hear a roaring of // a waterfall in the distance.  The passage continues to the east and the west.	-	+
+1795402666	cmd	Alaric	57	25166	underdrk.are	standing	100	0	-	east		The Intersection. //   The dark corridor turns west here and also continues to the south.  The roar // of the waterfall comes from the south and no sounds at all come from the	-	+
+1795402666	cmd	Alaric	57	25172	underdrk.are	standing	100	0	-	south		The passageway. //   The roaring of the waterfall here is almost deafening.  The moisture is making // your armor and clothes damp.  The walls are dripping wet and there is mud on	-	+
+1795402666	cmd	Alaric	57	25173	underdrk.are	standing	100	0	-	south		At the bottom of the waterfall. //   You walk into a huge cavern with water falling out of a hole in the ceiling. // Glowing moss is thriving on the moisture so abundant in this cavern.  There	-	+
+1795402667	cmd	Alaric	57	25174	underdrk.are	standing	100	0	-	up		A path upwards. //   You climb a path that runs up the side of the waterfall.  Ahead of you is a // rock wall that has several good rocks that could be used for climbing.  The	-	+
+1795402667	cmd	Alaric	57	25175	underdrk.are	standing	100	0	-	up		The hole upwards. //   The rocks did make good handholds.  You find yourself above the cavern and // right underneath the hole that the waterfall originates from.  It seems to	-	+
+1795402667	area	Alaric	57	2043	catacomb.are	underdrk.are	catacomb.are	2	up
+1795402667	cmd	Alaric	57	2043	catacomb.are	standing	100	0	-	up		Waterfall of mist //   River of hot mist pour down in a cascade from a hole in the cavern.  It // falls like water down from the heights like a waterfall and creates	-	+
+1795402671	cmd	Alaric	57	2042	catacomb.are	standing	100	0	-	west		Mist cavern //   A warm wind blows in from the east.  The air is still stifling hot in // here despite the breeze.  The mist seems thick enough to be alive. . .	-	+
+1795402671	cmd	Alaric	57	2041	catacomb.are	standing	100	0	-	west		Misty cavern //   The temperature is a pleasant and mild here.  This is due to a warm wind // blowing in from the east and a chilly breeze blowing in from the west.	-	+
+1795402672	cmd	Alaric	57	2040	catacomb.are	standing	100	0	-	west		Misty cavern //   A chilling icy mist swirl about you.  The dampness and warmth has become // bitter cold.  The walls of the cavern are several feet thick with ice	-	+
+1795402672	cmd	Alaric	57	2048	catacomb.are	standing	100	0	-	south		Twisty cavern //   The way twist this way and that and its all you can do to keep your head // from spinning.  The air is very cold here and layers of ice on the wall.	-	+
+1795402672	cmd	Alaric	57	2049	catacomb.are	standing	100	0	-	east		Striped tunnel //   The walls of the tunnels have many brilliant colors in them from the // various veins of crystals running in them.  An odd twinkling comes from	-	+
+1795402672	cmd	Alaric	57	2050	catacomb.are	standing	100	0	-	east		Prism cave //   The roof of this cave peaks over a hundred feet high making it one of // the biggest in the catacombs.  Crystals of every color cast prismatic	-	+
+1795402673	cmd	Alaric	57	2058	catacomb.are	standing	100	0	-	east		Lonely tunnel //   Something indescribable makes you feel lonesome and sad here. Its just // a feeling you get from this tunnel.  The tunnel east and west.	-	+
+1795402673	cmd	Alaric	57	2059	catacomb.are	standing	100	0	-	east		Lonely tunnel //   Something indescribable makes you feel lonesome and sad here. You see a // gate to a burial ground to the north.  This lonesome tunnel sighs along	-	+
+1795402673	cmd	Alaric	57	2054	catacomb.are	standing	100	0	-	north		Southern gate //   A rusty gate here no longer keeps anyone out or in.  You see a lonely // E/W passage to the south.  A little used trail winds east through a	-	+
+1795402673	cmd	Alaric	57	2051	catacomb.are	standing	100	0	-	north		Ruined monument //   A monument to a famous king once stood here. Not much is left to even // signify that it was here at all.  A building of some sort can be entered	-	+
+1795402675	cmd	Alaric	57	2051	catacomb.are	standing	100	0	-	exits		Obvious exits: // North - Desolate ruins // East  - Basement	-	+
+1795402676	cmd	Alaric	57	2045	catacomb.are	standing	100	0	-	north		Desolate ruins //   Several mausoleums used to grace the way here but these have been // defiled. And most have been torn down and burned by looters. Some still	-	+
+1795402677	cmd	Alaric	57	2051	catacomb.are	standing	100	0	-	south		Ruined monument //   A monument to a famous king once stood here. Not much is left to even // signify that it was here at all.  A building of some sort can be entered	-	+
+1795402677	cmd	Alaric	57	2052	catacomb.are	standing	100	0	-	east		Basement //   Its dark and it smells like. ...BATS down here!  All you see is a swirl // of the darkness and lots of scratching bats madly flailing around. A set	-	+
+1795402682	cmd	Alaric	57	2052	catacomb.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795402682	cmd	Alaric	57	2046	catacomb.are	standing	100	0	-	up		Curators place //   The undertaker, the historian and the curator used to be here. Now they // too have joined the legions of the undead.  From the looks of the place	-	+
+1795402685	cmd	Alaric	57	2047	catacomb.are	standing	100	0	-	east		Fresh graves //   Graves of recent casualties lie here.  Even the most recent don't seem to // have been left undisturbed.  You hear sounds of digging in progress	-	+
+1795402687	cmd	Alaric	57	2047	catacomb.are	standing	100	0	-	exits		Obvious exits: // North - New graves // South - Fresh graves	-	+
+1795402690	cmd	Alaric	57	2047	catacomb.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795402691	cmd	Alaric	57	2053	catacomb.are	standing	100	0	-	south		Fresh graves //   The graves here seem very recent.  You notice many signs of digging and // defilement.  There are piles of fresh bodies here awaiting burial.  A	-	+
+1795402692	cmd	Alaric	57	2055	catacomb.are	standing	100	0	-	south		Scene of ghastly horror //   An army of undead creatures of all types are lined up patiently. Their // leader is an evil demonoid necromancer.  His plans to use his army of	-	+
+1795402694	cmd	Alaric	57	2062	catacomb.are	standing	100	0	-	south		Intersection //   To the north you enter the burial grounds.  a trail of blood leads that // direction.  Also you feel an ominous sense of evil magic from there.	-	+
+1795402696	cmd	Alaric	57	2063	catacomb.are	standing	100	0	-	south		Tunnel //   The tunnel heads north and south.  North you see an intersection and // far to the south you sense light and smell a fresh breeze.	-	+
+1795402697	cmd	Alaric	57	2064	catacomb.are	standing	100	0	-	south		Tunnel //   The tunnel slopes noticeably down to the north and you sense the surface // could be reached to the south.	-	+
+1795402698	cmd	Alaric	57	2065	catacomb.are	standing	100	0	-	south		Southern entrance to the catacombs //   Through a trapdoor above you streams light.  Through a doorway to // the south streams darkness.  A message has been scrawled upon the wall	-	+
+1795402701	cmd	Alaric	57	2065	catacomb.are	standing	100	0	-	=		You hero 'ex'	-	-
+1795402703	cmd	Alaric	57	2065	catacomb.are	standing	100	0	-	exits		Obvious exits: // North - Tunnel // Up    - Wine cellar	-	-
+1795402704	area	Alaric	57	6527	dwarves.are	catacomb.are	dwarves.are	37	up
+1795402704	spotted	Alaric	57	6527	dwarves.are	1151	herb	34	an amaranth plant	5689	1	scatter	arrive
+1795402704	cmd	Alaric	57	6527	dwarves.are	standing	100	0	-	up		Wine cellar //   This room smells like wine, and you can only assume it used to be // a wine cellar at one time.	-	+
+1795402704	cmd	Alaric	57	6527	dwarves.are	standing	100	0	-	exits		Obvious exits: // Up    - Closed door // Down  - Southern entrance to the catacombs	-	-
+1795402707	cmd	Alaric	57	6527	dwarves.are	standing	100	0	-	open	up	Ok.	-	-
+1795402708	passed	Alaric	57	6526	dwarves.are	1151	herb	34	an amaranth plant	5693	4	1	scatter	6527	left
+1795402708	cmd	Alaric	57	6526	dwarves.are	standing	100	0	-	up		A store room //   There is a layer of dust on the floor at least 3 inches thick!  It is // probable that not many people have been in here for many months.	-	+
+1795402709	cmd	Alaric	57	6513	dwarves.are	standing	100	0	-	east		Inside the entrance //   Everything here is covered in soot and very grimy.  The path continues // to the east and north, and there is a door to the west.	-	+
+1795402711	cmd	Alaric	57	6513	dwarves.are	standing	100	0	-	open		It's locked.	-	-
+1795402711	cmd	Alaric	57	6513	dwarves.are	standing	100	0	-	exits		Obvious exits: // North - Path // East  - Closed door	-	+
+1795402719	cmd	Alaric	57	6514	dwarves.are	standing	100	0	-	north		Path //   You are on a path in the dwarven village which leads north to the shops // and south to the corner of the area.	-	+
+1795402719	laid	-	0	0	-	1408	herb	40	a clove	24257	crypt.are	scatter
+1795402720	cmd	Alaric	57	6515	dwarves.are	standing	100	0	-	north		Turn in road //   You are on a path that leads to a Hide & Tooth shop to the west, and the // path continues to the south.	-	+
+1795402720	cmd	Alaric	57	6516	dwarves.are	standing	100	0	-	west		Hide & Tooth Shop //   You are in the Hide & Tooth shop.  Here you may buy the finest in Dwarven // weapons and armors. The path continues to the north and east.	-	+
+1795402720	cmd	Alaric	57	6517	dwarves.are	standing	100	0	-	north		Path to the north of shop //   You are on a path to the north of the Hide & Tooth shop.  The path continues // to the north, and there is Granite Head's bakery to the west.	-	+
+1795402721	cmd	Alaric	57	6535	dwarves.are	standing	100	0	-	west		Granite Head's Bakery //   The aroma coming from this room is sensuous.  You can almost taste // the pastries dissolving in your mouth.	-	+
+1795402723	cmd	Alaric	57	6517	dwarves.are	standing	100	0	-	east		Path to the north of shop //   You are on a path to the north of the Hide & Tooth shop.  The path continues // to the north, and there is Granite Head's bakery to the west.	-	+
+1795402723	cmd	Alaric	57	6518	dwarves.are	standing	100	0	-	north		North of Shops //   Here the path bends to the east towards the barracks. To the // south you can see the shops.	-	+
+1795402724	cmd	Alaric	57	6519	dwarves.are	standing	100	0	-	east		Path by Hospital //   Here the path passes by the Hospital to the north.  It continues // to the east to the barracks, and to the west.	-	+
+1795402724	cmd	Alaric	57	6520	dwarves.are	standing	100	0	-	east		Path next to barracks //   Here the path continues west, and east to the barracks. // [Exits: east west]	-	-
+1795402725	cmd	Alaric	57	6521	dwarves.are	standing	100	0	-	east		Entrance to barracks //   Here there is an entrance to the barracks to the south, and // the path continues to the west.	-	+
+1795402727	cmd	Alaric	57	6521	dwarves.are	standing	100	0	-	south		The door is closed.	-	-
+1795402728	cmd	Alaric	57	6521	dwarves.are	standing	100	0	-	open		Ok.	-	-
+1795402728	cmd	Alaric	57	6523	dwarves.are	standing	100	0	-	south		First Barrack room //   Here is the first of two main rooms of barracks.  The // barracks continue to the south, and you can leave the room	-	+
+1795402729	cmd	Alaric	57	6524	dwarves.are	standing	100	0	-	south		Back of Barracks //   Here is the back of the dwarven barracks.  There are rows // of beds here, and there is a stench that is unbearable.	-	+
+1795402730	cmd	Alaric	57	6523	dwarves.are	standing	100	0	-	north		First Barrack room //   Here is the first of two main rooms of barracks.  The // barracks continue to the south, and you can leave the room	-	+
+1795402731	cmd	Alaric	57	6521	dwarves.are	standing	100	0	-	north		Entrance to barracks //   Here there is an entrance to the barracks to the south, and // the path continues to the west.	-	+
+1795402731	cmd	Alaric	57	6520	dwarves.are	standing	100	0	-	west		Path next to barracks //   Here the path continues west, and east to the barracks. // [Exits: east west]	-	-
+1795402732	cmd	Alaric	57	6519	dwarves.are	standing	100	0	-	west		Path by Hospital //   Here the path passes by the Hospital to the north.  It continues // to the east to the barracks, and to the west.	-	+
+1795402732	cmd	Alaric	57	6518	dwarves.are	standing	100	0	-	west		North of Shops //   Here the path bends to the east towards the barracks. To the // south you can see the shops.	-	+
+1795402732	cmd	Alaric	57	6517	dwarves.are	standing	100	0	-	south		Path to the north of shop //   You are on a path to the north of the Hide & Tooth shop.  The path continues // to the north, and there is Granite Head's bakery to the west.	-	+
+1795402732	cmd	Alaric	57	6516	dwarves.are	standing	100	0	-	south		Hide & Tooth Shop //   You are in the Hide & Tooth shop.  Here you may buy the finest in Dwarven // weapons and armors. The path continues to the north and east.	-	+
+1795402733	cmd	Alaric	57	6515	dwarves.are	standing	100	0	-	east		Turn in road //   You are on a path that leads to a Hide & Tooth shop to the west, and the // path continues to the south.	-	+
+1795402733	cmd	Alaric	57	6514	dwarves.are	standing	100	0	-	south		Path //   You are on a path in the dwarven village which leads north to the shops // and south to the corner of the area.	-	+
+1795402733	cmd	Alaric	57	6513	dwarves.are	standing	100	0	-	south		Inside the entrance //   Everything here is covered in soot and very grimy.  The path continues // to the east and north, and there is a door to the west.	-	+
+1795402734	cmd	Alaric	57	6513	dwarves.are	standing	100	0	-	east		The door is closed.	-	-
+1795402735	cmd	Alaric	57	6513	dwarves.are	standing	100	0	-	open		It's locked.	-	-
+1795402735	cmd	Alaric	57	6513	dwarves.are	standing	100	0	-	east		The door is closed.	-	-
+1795402737	cmd	Alaric	57	6513	dwarves.are	standing	100	0	-	unlock	east	You lack the key: it takes a deep green key to unlock it.	-	-
+1795402739	cmd	Alaric	57	6526	dwarves.are	standing	100	0	-	west		A store room //   There is a layer of dust on the floor at least 3 inches thick!  It is // probable that not many people have been in here for many months.	-	+
+1795402740	cmd	Alaric	57	6513	dwarves.are	standing	100	0	-	east		Inside the entrance //   Everything here is covered in soot and very grimy.  The path continues // to the east and north, and there is a door to the west.	-	+
+1795402741	cmd	Alaric	57	6514	dwarves.are	standing	100	0	-	north		Path //   You are on a path in the dwarven village which leads north to the shops // and south to the corner of the area.	-	+
+1795402742	cmd	Alaric	57	6515	dwarves.are	standing	100	0	-	north		Turn in road //   You are on a path that leads to a Hide & Tooth shop to the west, and the // path continues to the south.	-	+
+1795402743	cmd	Alaric	57	6516	dwarves.are	standing	100	0	-	west		Hide & Tooth Shop //   You are in the Hide & Tooth shop.  Here you may buy the finest in Dwarven // weapons and armors. The path continues to the north and east.	-	+
+1795402745	cmd	Alaric	57	6516	dwarves.are	standing	100	0	-	list		[Lv Price] Item // [13    43p 20g] Dwarven gloves. // [ 7    48p 60g] a dwarven golden ring.	-	+
+1795402746	cmd	Alaric	57	6517	dwarves.are	standing	100	0	-	north		Path to the north of shop //   You are on a path to the north of the Hide & Tooth shop.  The path continues // to the north, and there is Granite Head's bakery to the west.	-	+
+1795402748	cmd	Alaric	57	6535	dwarves.are	standing	100	0	-	west		Granite Head's Bakery //   The aroma coming from this room is sensuous.  You can almost taste // the pastries dissolving in your mouth.	-	+
+1795402750	cmd	Alaric	57	6535	dwarves.are	standing	100	0	-	list		[Lv Price] Item // [ 0        65c] a hooded brass lantern. // [ 0     1g 35s] a big pot pie.	-	+
+1795402750	cmd	Alaric	57	6517	dwarves.are	standing	100	0	-	east		Path to the north of shop //   You are on a path to the north of the Hide & Tooth shop.  The path continues // to the north, and there is Granite Head's bakery to the west.	-	+
+1795402751	cmd	Alaric	57	6518	dwarves.are	standing	100	0	-	north		North of Shops //   Here the path bends to the east towards the barracks. To the // south you can see the shops.	-	+
+1795402752	cmd	Alaric	57	6519	dwarves.are	standing	100	0	-	east		Path by Hospital //   Here the path passes by the Hospital to the north.  It continues // to the east to the barracks, and to the west.	-	+
+1795402752	cmd	Alaric	57	6534	dwarves.are	standing	100	0	-	north		Hospital //   You are inside the Dwarven Hospital.  It smells like rubbing // alcohol, and there is blood all over the walls.	-	+
+1795402755	cmd	Alaric	57	6519	dwarves.are	standing	100	0	-	south		Path by Hospital //   Here the path passes by the Hospital to the north.  It continues // to the east to the barracks, and to the west.	-	+
+1795402755	cmd	Alaric	57	6520	dwarves.are	standing	100	0	-	east		Path next to barracks //   Here the path continues west, and east to the barracks. // [Exits: east west]	-	-
+1795402756	cmd	Alaric	57	6521	dwarves.are	standing	100	0	-	east		Entrance to barracks //   Here there is an entrance to the barracks to the south, and // the path continues to the west.	-	+
+1795402757	cmd	Alaric	57	6523	dwarves.are	standing	100	0	-	south		First Barrack room //   Here is the first of two main rooms of barracks.  The // barracks continue to the south, and you can leave the room	-	+
+1795402758	cmd	Alaric	57	6521	dwarves.are	standing	100	0	-	north		Entrance to barracks //   Here there is an entrance to the barracks to the south, and // the path continues to the west.	-	+
+1795402759	coin	Alaric	57	6521	dwarves.are	+1	loot	autogold	corpse of the barracks guard	29771242146
+1795402759	cmd	Alaric	57	6521	dwarves.are	standing	100	2	-	kill	gu	Your punch >>> ANNIHILATES <<< the barracks guard! [-207] // Your punch <<< ERADICATES >>> the barracks guard! [-179] // The barracks guard is DEAD!!	-	+
+1795402763	cmd	Alaric	57	6521	dwarves.are	standing	100	0	-	look	i cor	Corpse of the barracks guard contains: //      a two-handed dwarven axe	-	-
+1795402765	cmd	Alaric	57	6521	dwarves.are	standing	100	0	-	kill	gu	Your punch === OBLITERATES === the barracks guard! [-130] // Your punch <<< ERADICATES >>> the barracks guard! [-156]	-	-
+1795402766	coin	Alaric	57	6521	dwarves.are	+1	loot	autogold	corpse of the barracks guard	29771242147
+1795402769	cmd	Alaric	57	6521	dwarves.are	standing	100	0	-	look	i cor	Corpse of the barracks guard contains: //      a two-handed dwarven axe	-	-
+1795402770	cmd	Alaric	57	6523	dwarves.are	standing	100	0	-	south		First Barrack room //   Here is the first of two main rooms of barracks.  The // barracks continue to the south, and you can leave the room	-	+
+1795402771	cmd	Alaric	57	6524	dwarves.are	standing	100	0	-	south		Back of Barracks //   Here is the back of the dwarven barracks.  There are rows // of beds here, and there is a stench that is unbearable.	-	+
+1795402772	area	Alaric	57	2001	catacomb.are	dwarves.are	catacomb.are	68	down
+1795402772	cmd	Alaric	57	2001	catacomb.are	standing	100	0	-	down		North entrance to the catacombs //   You are almost surprised to see a tunnel leading off to the south // into utter darkness.  The floorboards above you haven't been moved	-	+
+1795402775	cmd	Alaric	57	2002	catacomb.are	standing	100	0	-	south		North/south tunnel //   This part of the catacombs looked roughly hewn and man-made. There is // a large cross painted on the floor of the tunnel.To the south it seems	-	+
+1795402776	cmd	Alaric	57	2007	catacomb.are	standing	100	0	-	south		Intersection //   The tunnel continues to the north and the south, becoming less hewn and // more natural to the south.  A passageway lined with paneling leads west.	-	+
+1795402777	cmd	Alaric	57	2006	catacomb.are	standing	100	0	-	west		Hallway //   The hallway takes on a more indoor look to the west.  To the east it // looks awfully dark.	-	+
+1795402779	cmd	Alaric	57	2005	catacomb.are	standing	100	0	-	west		Junction of hallways //   Training facilities are evident to the west. To the south lies a hallway // which has doors every couple of feet, looks like living quarters of some	-	+
+1795402780	cmd	Alaric	57	2005	catacomb.are	standing	100	0	-	exits		Obvious exits: // East  - Hallway // South - N/S hallway	-	+
+1795402782	cmd	Alaric	57	2010	catacomb.are	standing	100	0	-	south		N/S hallway //   The hallway leads north an south.  A door leads to a templar's room to // the east.  The decoration looks rather sparse here.	-	+
+1795402783	cmd	Alaric	57	2010	catacomb.are	standing	100	0	-	exits		Obvious exits: // North - Junction of hallways // East  - A Middle-aged templar's room	-	+
+1795402784	cmd	Alaric	57	2011	catacomb.are	standing	100	0	-	east		A Middle-aged templar's room //   This is a room furnished in a room becoming a low level templar scribe. // No real amenities but better than a communal sleeping quarters. As far	-	+
+1795402785	cmd	Alaric	57	2010	catacomb.are	standing	100	0	-	west		N/S hallway //   The hallway leads north an south.  A door leads to a templar's room to // the east.  The decoration looks rather sparse here.	-	+
+1795402786	cmd	Alaric	57	2014	catacomb.are	standing	100	0	-	south		N/S hallway //   The hallway continues to become more important-looking as you wander // south.  A room to the east looks rather more pleasant that some of the	-	+
+1795402787	cmd	Alaric	57	2014	catacomb.are	standing	100	0	-	exits		Obvious exits: // North - N/S hallway // East  - Mid-level leader's room	-	+
+1795402788	coin	Alaric	57	2014	catacomb.are	+4200	loot	autogold	corpse of a templar page	29771246347
+1795402788	coin	Alaric	57	2014	catacomb.are	+84	loot	autogold	corpse of a templar page	29771246431
+1795402788	cmd	Alaric	57	2014	catacomb.are	standing	100	16	-	kill	pa	Your punch ^^^ DESTROYS ^^^ a templar page! [-107] // A templar page is DEAD!! // You have almost finished your QUEST!	-	+
+1795402792	area	Alaric	57	2497	dresden.are	catacomb.are	dresden.are	20	recall
+1795402792	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795402792	coin	Alaric	57	2497	dresden.are	+92477484	quests	aquest	-	29863723915
+1795402792	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	ordinary qp=2637->2637 offered=49 daily=4->4 coin=+92477484 kill=15412914 streak=3 level=57 target=-1
+1795402792	cmd	Alaric	57	2497	dresden.are	standing	100	18	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Excellent work! The realm is in your debt!' // Questor Thews says 'Streak of 4 in a row! A +30% bonus has been added!'	success:-	+
+1795402793	cmd	Alaric	57	2497	dresden.are	standing	100	5	-	aquest	ga no	You safely collect 49 quest points.	-	-
+1795402795	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=149/983 align=1000 exp=252749 coin=465818338 bank=29397905577 qp=2686 prac=36 train=76 stash=93/350 remorts=3
+1795402795	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    313 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
+1795402797	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1795402798	sightings	Alaric	57	2497	dresden.are	mob	201:1/0/0 29809:1/0/0 4458:3/0/0 10:1/0/0 4446:1/0/0 4449:1/0/0 4451:1/0/0 2435:1/0/0 4450:1/0/0 2433:2/0/0 4459:2/0/0 4452:1/0/0 7005:2/0/0 7203:4/0/0 7201:1/0/0 7200:1/0/0 25114:1/0/0 25100:1/0/0 25112:1/0/0 25111:5/0/0 25105:1/0/0 2005:8/0/0 2006:2/0/0 2016:1/0/0 2001:6/0/0 2013:1/0/0 2011:2/0/0 2009:1/0/0 2004:4/0/0 2014:1/0/0 2003:2/0/0 6502:2/0/0 6505:1/0/0 6503:1/0/0 6504:1/0/0 6514:2/2/0 6511:6/0/0 6509:1/0/0 6510:2/0/0 2008:2/0/0 2002:1/1/0
+1795402798	sightings	Alaric	57	2497	dresden.are	item	4446:1/0 25102:1/0 2004:1/0 6507:1/0 6513:1/0 6506:1/0
+1795402798	session	Alaric	57	2497	dresden.are	quit	258s	+0 levels	+0 exp	+92481770 copper	3 kills	0 deaths	1 quests	232 commands	0 refused	coin: loot 42s 86c, quests 92p 47g 74s 84c, spent 6s	spent on: buy 6s	exp: none
