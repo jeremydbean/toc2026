@@ -310,5 +310,102 @@ class RenameFailureTests(unittest.TestCase):
                 self.assertIn("did i get that right", name_prompt(mud, "Zchecknew"))
 
 
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class RenameDurabilityTests(unittest.TestCase):
+    """A rename's record and its files must agree, across a restart, at every
+    point a step can fail (review, 2026-11-23). rename_record() wrote and
+    fsynced the line, then could still return false -- the directory sync of
+    a new ledger failing, or the in-memory table failing to grow -- and the
+    caller undid the rename and deleted the new file while the ledger kept
+    "old -> new". After the next restart the old name then led to a file
+    that was gone, and the character's own file answered to no name."""
+
+    def consistent(self, mud: LiveMud, old: str, new: str) -> bool:
+        recorded = f"\t{old}\t{new}" in renames(mud)
+        has_old = (mud.player_dir / old).exists()
+        has_new = (mud.player_dir / new).exists()
+        if recorded:
+            self.assertTrue(has_new and not has_old,
+                            f"ledger says {old} -> {new}, but old={has_old} new={has_new}")
+        else:
+            self.assertTrue(has_old and not has_new,
+                            f"ledger has no {old} -> {new}, but old={has_old} new={has_new}")
+        return recorded
+
+    def rename_failing_at(self, point: str, old: str, new: str, first: str | None = None):
+        import tempfile
+        with tempfile.TemporaryDirectory(prefix="toc-renamedur-") as tmp:
+            fault = Path(tmp) / "fault"
+            with LiveMud(extra_env={"TOC_FAULT_FILE": str(fault)}) as mud:
+                make(mud, "Zdurstaff", Levl=70)
+                make(mud, old, Levl=20)
+                if first:
+                    make(mud, first, Levl=20)
+                with mud.connect(timeout=120) as staff:
+                    login(staff, "Zdurstaff", PW)
+                    staff.sync("scroll 0")
+                    if first:   # a ledger that already exists
+                        with mud.connect(timeout=120) as earlier:
+                            login(earlier, first, PW)
+                            staff.must(f"rename {first.lower()} {first.lower()}x",
+                                       "has been renamed")
+                            earlier.send("quit")
+                            earlier.wait_closed()
+                    with mud.connect(timeout=120) as victim:
+                        login(victim, old, PW)
+                        victim.sync("scroll 0")
+                        fault.write_text(point + "\n")
+                        staff.sync(f"rename {old.lower()} {new.lower()}")
+                        self.assertFalse(fault.exists(), f"the {point} fault never fired")
+                        victim.send("quit")
+                        victim.wait_closed()
+                    staff.send("quit")
+                    staff.wait_closed()
+                recorded = self.consistent(mud, old, new)
+                mud.restart()
+                self.consistent(mud, old, new)
+                # The character answers to the name the ledger gives it.
+                with mud.connect(timeout=120) as back:
+                    login(back, new if recorded else old, PW)
+                    self.assertIn(new if recorded else old, back.sync("score"))
+                    back.send("quit")
+                    back.wait_closed()
+                if recorded:
+                    self.assertIn("password", name_prompt(mud, old),
+                                  "the old name still leads to its character")
+
+    def test_a_new_ledger_whose_directory_sync_fails(self) -> None:
+        self.rename_failing_at("rename-sync-dir", "Zdurold", "Zdurnew")
+
+    def test_a_table_that_cannot_grow_after_the_line_landed(self) -> None:
+        self.rename_failing_at("rename-remember", "Zmemold", "Zmemnew", first="Zmemfirst")
+
+    def test_a_ledger_that_could_not_be_read_is_read_again(self) -> None:
+        """rename_load() marked the ledger loaded before opening it, so one
+        failed read -- EACCES, EIO, too many open files -- left every retired
+        name free for the rest of the boot."""
+        import tempfile
+        with tempfile.TemporaryDirectory(prefix="toc-renameload-") as tmp:
+            fault = Path(tmp) / "fault"
+            with LiveMud(extra_env={"TOC_FAULT_FILE": str(fault)}) as mud:
+                make(mud, "Zloadstaff", Levl=70)
+                make(mud, "Zloadold", Levl=20)
+                with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as victim:
+                    login(staff, "Zloadstaff", PW)
+                    login(victim, "Zloadold", PW)
+                    staff.sync("scroll 0")
+                    staff.must("rename zloadold zloadnew", "has been renamed")
+                    for client in (victim, staff):
+                        client.send("quit")
+                        client.wait_closed()
+                fault.write_text("rename-load\n")
+                mud.restart()
+                # The first read fails; a later one must find the ledger.
+                said = [name_prompt(mud, "Zloadold") for _ in range(2)]
+                self.assertFalse(fault.exists(), "the rename-load fault never fired")
+                self.assertIn("password", said[-1],
+                              f"the retired name was free after a failed read: {said}")
+
 if __name__ == "__main__":
     unittest.main()

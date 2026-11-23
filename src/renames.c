@@ -58,6 +58,7 @@ typedef struct rename_entry
 static RENAME_ENTRY *renames = NULL;
 static int rename_count = 0, rename_cap = 0;
 static bool renames_loaded = false;
+static bool rename_load_warned = false;
 
 
 /* 2 to 12 letters, as a player's name is. */
@@ -103,9 +104,12 @@ static bool rename_remember( long when, const char *old_name, const char *new_na
     return true;
 }
 
-/* Read once, on first use: whole lines only; anything else is skipped and
-   counted. A file that is there and cannot be read is logged -- names it
-   would have retired are then free until it can be. */
+/* Read on first use: whole lines only; anything else is skipped and counted.
+   Marked loaded only when the whole file was read, or there is none: a file
+   that is there and cannot be opened or read is logged once and tried again
+   at the next use. Until 2026-11-23 the flag was set before the open, so one
+   EACCES, EIO or EMFILE at the first lookup freed every retired name for the
+   rest of the boot. Fault point rename-load. */
 static void rename_load( void )
 {
     FILE *fp;
@@ -114,11 +118,21 @@ static void rename_load( void )
 
     if ( renames_loaded )
         return;
-    renames_loaded = true;
-    if ( ( fp = fopen( RENAME_FILE, "r" ) ) == NULL )
+    rename_count = 0;     /* a retry starts from the file, not from a partial read */
+    if ( recovery_fault( "rename-load" ) )
+        fp = NULL, errno = EIO;
+    else
+        fp = fopen( RENAME_FILE, "r" );
+    if ( fp == NULL )
     {
-        if ( errno != ENOENT )
-            bug( "Renames: " RENAME_FILE " could not be read; retired names are not known", 0 );
+        if ( errno == ENOENT )
+        {
+            renames_loaded = true;   /* no ledger: nothing retired yet, and that is known */
+            return;
+        }
+        if ( !rename_load_warned )
+            bug( "Renames: " RENAME_FILE " could not be read; retired names are not known until it can be", 0 );
+        rename_load_warned = true;
         return;
     }
     while ( fgets( line, sizeof(line), fp ) != NULL )
@@ -148,8 +162,17 @@ static void rename_load( void )
         rename_remember( when, old_name, new_name );
     }
     if ( ferror( fp ) )
-        bug( "Renames: a read error in " RENAME_FILE, 0 );
+    {
+        /* What was read stays known; the whole file is read again next time. */
+        if ( !rename_load_warned )
+            bug( "Renames: a read error in " RENAME_FILE "; it will be read again", 0 );
+        rename_load_warned = true;
+        fclose( fp );
+        return;
+    }
     fclose( fp );
+    renames_loaded = true;
+    rename_load_warned = false;
     if ( bad > 0 )
     {
         char buf[MAX_STRING_LENGTH];
@@ -215,9 +238,30 @@ bool rename_retired( const char *name )
 }
 
 /*
- * The rename on the disk, before the old file goes: true only when the line
- * is written whole and flushed. A failure cuts the file back to where it
- * was, and the caller undoes the rename. Fault point rename-record.
+ * A line written and flushed, cut back off: true when the ledger is as it was
+ * before `before`. The caller undoes a rename only when rename_record() says
+ * false, so a false must leave no record on the disk.
+ */
+static bool rename_take_back( off_t before )
+{
+    int fd = open( RENAME_FILE, O_WRONLY );
+    bool ok = fd >= 0 && ftruncate( fd, before ) == 0 && fsync( fd ) == 0;
+
+    if ( fd >= 0 )
+        close( fd );
+    return ok;
+}
+
+/*
+ * The rename on the disk, before the old file goes. True when the ledger
+ * records it; false only when it does not, and then the caller undoes the
+ * rename. A failure before the line is flushed cuts the file back; a failure
+ * after it -- the directory sync of a new ledger, the table failing to grow --
+ * takes the line back off too, and if even that cannot be done the rename is
+ * kept, because the disk keeps it (review, 2026-11-23: these returned false
+ * with the line already flushed, the caller deleted the new file, and after a
+ * restart the old name led to a file that was gone). Fault points
+ * rename-record, rename-sync-dir, rename-remember.
  */
 bool rename_record( const char *old_name, const char *new_name )
 {
@@ -269,9 +313,16 @@ bool rename_record( const char *old_name, const char *new_name )
         return false;
     }
     close( fd );
-    if ( created && !durable_dir_sync( RENAME_FILE ) )
-        return false;
-    return rename_remember( (long) current_time, old_name, new_name );
+    if ( ( created && ( recovery_fault( "rename-sync-dir" ) || !durable_dir_sync( RENAME_FILE ) ) )
+    ||   recovery_fault( "rename-remember" )
+    ||   !rename_remember( (long) current_time, old_name, new_name ) )
+    {
+        if ( rename_take_back( before ) )
+            return false;
+        bug( "Renames: a flushed record could not be taken back; the rename stands", 0 );
+        renames_loaded = false;      /* the table learns it from the disk */
+    }
+    return true;
 }
 
 /*
