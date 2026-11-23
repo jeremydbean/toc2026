@@ -2,7 +2,7 @@
 Name Ravagger~
 Id   56640
 Serial 3950626
-LogO 1795399541
+LogO 1795399836
 Vers 4
 Prom ~
 Race human~
@@ -17,7 +17,7 @@ ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble 20261114-season-area-ids 20261116-wrapped-pools~
 Cast none
 Levl 9
-Plyd 15407
+Plyd 15465
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
@@ -61,16 +61,16 @@ Achv explored-1 1795150077
 AchSet areas 477615788 618042065 675805239 1028131563 1103516333 1255184829 1643837571 1674073230 ~
 AchSet rooms 17 101-129 800-801 805-807 809 814-817 2401-2402 2404-2405 2409 2415-2419 2427-2438 2470 2485 2495-2496 3241 3505 3507 3510 3585 3700-3705 3709 3711-3727 3729-3732 3734 3736-3737 3739 3741-3744 3746 3748-3750 3752-3762 3771-3784 3792-3795 4201-4211 4216 4601 4649 4700 4800-4809 24300-24307 24312-24316 24331-24332 24347 24376 24379 24381-24388 ~
 AchSet explored-areas 477615788 ~
-LastOut  1795399541
+LastOut  1795399836
 Rested 1836 1
 Daily 0 0 0 0 0
-SesLogin 1795395574
-SesDur   3967
-SesExpG  2715
-SesLvlG  1
-SesKill  16
+SesLogin 1795399806
+SesDur   30
+SesExpG  0
+SesLvlG  0
+SesKill  0
 SesPK    0
-SesDead  1
+SesDead  0
 SesQuest 0
 Exp  20465
 Act  65788
@@ -98,7 +98,7 @@ Color 13 0
 Color 14 0
 Color 15 0
 Color 16 0
-Pos  4
+Pos  8
 Prac 9
 Tutorial 0 1081356
 Save  3
@@ -113,7 +113,7 @@ Pnts 40
 TSex 1
 LLev 1
 HMVP 119 287 148
-Cond 0 17 47
+Cond 0 16 46
 Sk 8 'axe'
 Sk 33 'dagger'
 Sk 6 'flail'
@@ -132,7 +132,7 @@ Sk 75 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
-AffD 'armor'   0  31 -20  17          0          0
+AffD 'armor'   0  30 -20  17          0          0
 End
 
 #O
@@ -274,7 +274,7 @@ Wear 0
 Cost 48
 Cond 100
 Repd 0
-Val  0 0 230 0 0
+Val  0 0 229 0 0
 End
 
 #O

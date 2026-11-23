@@ -54939,3 +54939,10 @@
 1795399541	sightings	Ravagger	9	4208	dresden.are	mob	4804:1/0/0
 1795399541	sightings	Ravagger	9	4208	dresden.are	item	4446:1/0 4445:1/0 4444:1/0 24300:1/0 16:4/0 24306:1/0 3021:1/0 24308:1/0 3733:1/0 13:1/0 17:1/0 3714:1/0
 1795399541	session	Ravagger	9	4208	dresden.are	quit	3967s	+1 levels	+2715 exp	-632 copper	16 kills	1 deaths	0 quests	784 commands	6 refused	coin: loot 2s 75c, spent 9s 7c	spent on: buy 9s 7c	exp: kills +2748, skilluse +18, death -51
+1795399806	area	Ravagger	9	4208	dresden.are	-	dresden.are	-1	login
+1795399811	laid	-	0	0	-	1293	herb	39	a chervil leaf	13048	lakes.are	scatter
+1795399811	laid	-	0	0	-	1294	component	59	a patch of lycanthrope fur	8313	marsh.are	scatter
+1795399814	refused	Ravagger	9	4208	dresden.are	sleeping	100	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1795399816	cmd	Ravagger	9	4208	dresden.are	sleeping	100	0	-	stand		You wake and stand up.	-	-
+1795399824	cmd	Ravagger	9	4208	dresden.are	standing	100	0	-	help	spellgroup	Spells are bought in groups with GAIN.  Most groups come in versions // for different buyers: full mages or clerics (class and guild the same), // other classes in that guild, and necromancers.	-	+
+1795399836	session	Ravagger	9	4208	dresden.are	quit	30s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	4 commands	1 refused	coin: none	spent on: none	exp: none

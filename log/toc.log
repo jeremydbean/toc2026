@@ -343345,3 +343345,23 @@ Mon Nov 23 02:05:41 2026 :: Log Ravagger [4208]: quit
 Mon Nov 23 02:05:41 2026 :: Ravagger has quit.
 Mon Nov 23 02:05:41 2026 :: [QUIT] Player rejoined the real world.
 Mon Nov 23 02:06:56 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 02:08:05 2026 :: Sock.sinaddr:  172.58.122.42
+Mon Nov 23 02:08:05 2026 :: Loading Storock's playerfile
+Mon Nov 23 02:08:06 2026 :: Closing link to Storock.
+Mon Nov 23 02:08:38 2026 :: Treasure goblin: vanished from room 5813 (A path in the park, mid_ruin.are) (too long in one area).
+Mon Nov 23 02:08:43 2026 :: Sock.sinaddr:  172.58.122.42
+Mon Nov 23 02:08:43 2026 :: Loading Storock's playerfile
+Mon Nov 23 02:08:43 2026 :: Closing link to Storock.
+Mon Nov 23 02:09:38 2026 :: Sock.sinaddr:  172.58.122.42
+Mon Nov 23 02:09:38 2026 :: Loading Ravagger's playerfile
+Mon Nov 23 02:09:38 2026 :: Loading Ravagger's playerfile
+Mon Nov 23 02:09:38 2026 :: Ravagger@172.58.122.42 has connected.
+Mon Nov 23 02:10:06 2026 :: Log Ravagger [4208]: arrived (Altar of the Temple of Devota.) from 0
+Mon Nov 23 02:10:14 2026 :: Log Ravagger [4208]: (refused) spellgroup
+Mon Nov 23 02:10:16 2026 :: Log Ravagger [4208]: st
+Mon Nov 23 02:10:24 2026 :: Log Ravagger [4208]: help spellgroup
+Mon Nov 23 02:10:36 2026 :: Log Ravagger [4208]: quit
+Mon Nov 23 02:10:36 2026 :: Ravagger has quit.
+Mon Nov 23 02:10:36 2026 :: [QUIT] Player rejoined the real world.
+Mon Nov 23 02:10:38 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Mon Nov 23 02:12:01 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 3 of 6 in 6 hours).
