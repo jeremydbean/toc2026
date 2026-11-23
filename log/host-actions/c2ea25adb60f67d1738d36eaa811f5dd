@@ -1,0 +1,100 @@
+id c2ea25adb60f67d1738d36eaa811f5dd
+action status
+state ok
+started 1795456949
+finished 1795456950
+exit 0
+
+== services
+toc-game.service               enabled    active
+toc-web.service                enabled    active
+caddy.service                  enabled    active
+toc-state-sync.timer           enabled    active
+toc-state-sync.service         static     inactive
+toc-state-sync-check.timer     enabled    active
+toc-auto-deploy.timer          enabled    active
+toc-auto-deploy.service        static     inactive
+toc-game-recovery.timer        enabled    active
+toc-host-action.path           enabled    active
+toc-player-backup.timer        not-found  inactive
+== the state sync's last result: success
+== toc-state-sync-check says
+ok 2026-11-23T17:50:36+00:00 age=2min unpushed=0
+
+== live: 8f548eee2b0fc971b392ca98de6d281a5272651f 2026-11-23T13:13:21Z
+== auto-deploy: 2026-11-23T18:02:29Z waiting for CI on 073669e9a (in_progress) before deploying 662a129d0
+== disk
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda1        48G  5.2G   43G  11% /
+== memory
+               total        used        free      shared  buff/cache   available
+Mem:           23974        1230       20025           5        3038       22744
+Swap:              0           0           0
+== uptime:  18:02:30 up 53 days,  1:13,  0 user,  load average: 0.02, 0.01, 0.00
+== state sync journal
+2026-11-23T17:38:25+00:00 instance-20261001-1125 systemd[1]: Starting toc-state-sync.service - Push live player state to GitHub...
+2026-11-23T17:38:31+00:00 instance-20261001-1125 toc-state-sync[211376]: pushed 3 files (0 characters)
+2026-11-23T17:38:31+00:00 instance-20261001-1125 systemd[1]: toc-state-sync.service: Deactivated successfully.
+2026-11-23T17:38:31+00:00 instance-20261001-1125 systemd[1]: Finished toc-state-sync.service - Push live player state to GitHub.
+2026-11-23T17:38:31+00:00 instance-20261001-1125 systemd[1]: toc-state-sync.service: Consumed 1.433s CPU time.
+2026-11-23T17:43:26+00:00 instance-20261001-1125 systemd[1]: Starting toc-state-sync.service - Push live player state to GitHub...
+2026-11-23T17:43:31+00:00 instance-20261001-1125 toc-state-sync[211790]: pushed 5 files (0 characters)
+2026-11-23T17:43:31+00:00 instance-20261001-1125 systemd[1]: toc-state-sync.service: Deactivated successfully.
+2026-11-23T17:43:31+00:00 instance-20261001-1125 systemd[1]: Finished toc-state-sync.service - Push live player state to GitHub.
+2026-11-23T17:43:31+00:00 instance-20261001-1125 systemd[1]: toc-state-sync.service: Consumed 1.226s CPU time.
+2026-11-23T17:48:26+00:00 instance-20261001-1125 systemd[1]: Starting toc-state-sync.service - Push live player state to GitHub...
+2026-11-23T17:48:31+00:00 instance-20261001-1125 toc-state-sync[212121]: pushed 3 files (0 characters)
+2026-11-23T17:48:31+00:00 instance-20261001-1125 systemd[1]: toc-state-sync.service: Deactivated successfully.
+2026-11-23T17:48:31+00:00 instance-20261001-1125 systemd[1]: Finished toc-state-sync.service - Push live player state to GitHub.
+2026-11-23T17:48:31+00:00 instance-20261001-1125 systemd[1]: toc-state-sync.service: Consumed 1.200s CPU time.
+2026-11-23T17:53:26+00:00 instance-20261001-1125 systemd[1]: Starting toc-state-sync.service - Push live player state to GitHub...
+2026-11-23T17:53:31+00:00 instance-20261001-1125 toc-state-sync[212594]: pushed 5 files (0 characters)
+2026-11-23T17:53:31+00:00 instance-20261001-1125 systemd[1]: toc-state-sync.service: Deactivated successfully.
+2026-11-23T17:53:31+00:00 instance-20261001-1125 systemd[1]: Finished toc-state-sync.service - Push live player state to GitHub.
+2026-11-23T17:53:31+00:00 instance-20261001-1125 systemd[1]: toc-state-sync.service: Consumed 1.249s CPU time.
+2026-11-23T17:58:27+00:00 instance-20261001-1125 systemd[1]: Starting toc-state-sync.service - Push live player state to GitHub...
+2026-11-23T17:58:31+00:00 instance-20261001-1125 toc-state-sync[212928]: pushed 3 files (0 characters)
+2026-11-23T17:58:31+00:00 instance-20261001-1125 systemd[1]: toc-state-sync.service: Deactivated successfully.
+2026-11-23T17:58:31+00:00 instance-20261001-1125 systemd[1]: Finished toc-state-sync.service - Push live player state to GitHub.
+2026-11-23T17:58:31+00:00 instance-20261001-1125 systemd[1]: toc-state-sync.service: Consumed 1.184s CPU time.
+== state sync check journal
+2026-11-23T17:35:35+00:00 instance-20261001-1125 systemd[1]: Starting toc-state-sync-check.service - Check that the player-state backup is still reaching GitHub...
+2026-11-23T17:35:35+00:00 instance-20261001-1125 toc-state-sync-check[211259]: state sync healthy: last run 2 min ago
+2026-11-23T17:35:35+00:00 instance-20261001-1125 systemd[1]: toc-state-sync-check.service: Deactivated successfully.
+2026-11-23T17:35:35+00:00 instance-20261001-1125 systemd[1]: Finished toc-state-sync-check.service - Check that the player-state backup is still reaching GitHub.
+2026-11-23T17:50:36+00:00 instance-20261001-1125 systemd[1]: Starting toc-state-sync-check.service - Check that the player-state backup is still reaching GitHub...
+2026-11-23T17:50:36+00:00 instance-20261001-1125 toc-state-sync-check[212403]: state sync healthy: last run 2 min ago
+2026-11-23T17:50:36+00:00 instance-20261001-1125 systemd[1]: toc-state-sync-check.service: Deactivated successfully.
+2026-11-23T17:50:36+00:00 instance-20261001-1125 systemd[1]: Finished toc-state-sync-check.service - Check that the player-state backup is still reaching GitHub.
+== recovery journal
+2026-11-23T17:53:16+00:00 instance-20261001-1125 systemd[1]: Starting toc-game-recovery.service - Recover the Times of Chaos game server, rebuilding from origin/main if needed...
+2026-11-23T17:53:17+00:00 instance-20261001-1125 systemd[1]: toc-game-recovery.service: Deactivated successfully.
+2026-11-23T17:53:17+00:00 instance-20261001-1125 systemd[1]: Finished toc-game-recovery.service - Recover the Times of Chaos game server, rebuilding from origin/main if needed.
+2026-11-23T17:55:25+00:00 instance-20261001-1125 systemd[1]: Starting toc-game-recovery.service - Recover the Times of Chaos game server, rebuilding from origin/main if needed...
+2026-11-23T17:55:25+00:00 instance-20261001-1125 systemd[1]: toc-game-recovery.service: Deactivated successfully.
+2026-11-23T17:55:25+00:00 instance-20261001-1125 systemd[1]: Finished toc-game-recovery.service - Recover the Times of Chaos game server, rebuilding from origin/main if needed.
+2026-11-23T17:57:37+00:00 instance-20261001-1125 systemd[1]: Starting toc-game-recovery.service - Recover the Times of Chaos game server, rebuilding from origin/main if needed...
+2026-11-23T17:57:37+00:00 instance-20261001-1125 systemd[1]: toc-game-recovery.service: Deactivated successfully.
+2026-11-23T17:57:37+00:00 instance-20261001-1125 systemd[1]: Finished toc-game-recovery.service - Recover the Times of Chaos game server, rebuilding from origin/main if needed.
+2026-11-23T17:59:43+00:00 instance-20261001-1125 systemd[1]: Starting toc-game-recovery.service - Recover the Times of Chaos game server, rebuilding from origin/main if needed...
+2026-11-23T17:59:43+00:00 instance-20261001-1125 systemd[1]: toc-game-recovery.service: Deactivated successfully.
+2026-11-23T17:59:43+00:00 instance-20261001-1125 systemd[1]: Finished toc-game-recovery.service - Recover the Times of Chaos game server, rebuilding from origin/main if needed.
+2026-11-23T18:01:53+00:00 instance-20261001-1125 systemd[1]: Starting toc-game-recovery.service - Recover the Times of Chaos game server, rebuilding from origin/main if needed...
+2026-11-23T18:01:53+00:00 instance-20261001-1125 systemd[1]: toc-game-recovery.service: Deactivated successfully.
+2026-11-23T18:01:53+00:00 instance-20261001-1125 systemd[1]: Finished toc-game-recovery.service - Recover the Times of Chaos game server, rebuilding from origin/main if needed.
+== auto-deploy journal
+2026-11-23T16:02:20+00:00 instance-20261001-1125 toc-auto-deploy[203681]: packing the build tree: 517 MB of loose objects
+2026-11-23T16:02:43+00:00 instance-20261001-1125 toc-auto-deploy[203660]: live at 8f548eee2; main (c6730a23e) differs only in docs, tests or state
+2026-11-23T16:12:21+00:00 instance-20261001-1125 toc-auto-deploy[204416]: live at 8f548eee2; main (3731cac18) differs only in docs, tests or state
+2026-11-23T16:22:21+00:00 instance-20261001-1125 toc-auto-deploy[205196]: live at 8f548eee2; main (00383f893) differs only in docs, tests or state
+2026-11-23T16:32:22+00:00 instance-20261001-1125 toc-auto-deploy[205947]: live at 8f548eee2; main (f91ed0051) differs only in docs, tests or state
+2026-11-23T16:42:23+00:00 instance-20261001-1125 toc-auto-deploy[206699]: live at 8f548eee2; main (5fae57224) differs only in docs, tests or state
+2026-11-23T16:52:23+00:00 instance-20261001-1125 toc-auto-deploy[207468]: live at 8f548eee2; main (57271d21a) differs only in docs, tests or state
+2026-11-23T17:02:24+00:00 instance-20261001-1125 toc-auto-deploy[208650]: live at 8f548eee2; main (8d10d9895) differs only in docs, tests or state
+2026-11-23T17:12:25+00:00 instance-20261001-1125 toc-auto-deploy[209380]: live at 8f548eee2; main (ce2d615f6) differs only in docs, tests or state
+2026-11-23T17:22:25+00:00 instance-20261001-1125 toc-auto-deploy[210180]: live at 8f548eee2; main (592d6744a) differs only in docs, tests or state
+2026-11-23T17:32:26+00:00 instance-20261001-1125 toc-auto-deploy[210940]: live at 8f548eee2; main (e894803eb) differs only in docs, tests or state
+2026-11-23T17:42:32+00:00 instance-20261001-1125 toc-auto-deploy[211679]: waiting for CI on 8524f6e42 (in_progress) before deploying ac684ee05
+2026-11-23T17:52:29+00:00 instance-20261001-1125 toc-auto-deploy[212473]: waiting for CI on 073669e9a (pending) before deploying 073669e9a
+2026-11-23T18:02:29+00:00 instance-20261001-1125 toc-auto-deploy[213256]: waiting for CI on 073669e9a (in_progress) before deploying 662a129d0
+2026-11-23T18:02:29+00:00 instance-20261001-1125 toc-auto-deploy[213334]: handed GitHub host request c2ea25adb60f67d1738d36eaa811f5dd (status) to toc-host-action
