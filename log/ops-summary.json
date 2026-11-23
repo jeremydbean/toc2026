@@ -1,0 +1,171 @@
+{
+ "checks": {
+  "disk": {
+   "free_mb": 43148,
+   "inodes_free_pct": 96,
+   "ok": true
+  },
+  "game": {
+   "ok": true,
+   "players": 0,
+   "state": "answering"
+  },
+  "game_archives": {
+   "count": 269,
+   "newest_min": 9,
+   "ok": true,
+   "total_mb": 462
+  },
+  "private_backup": {
+   "archive_bytes": null,
+   "configured": false,
+   "generations": null,
+   "last_attempt": null,
+   "last_success_min": null,
+   "ok": false,
+   "reason": null,
+   "remote_commit": null,
+   "status": "not-configured"
+  },
+  "public_sync": {
+   "kind": "pushed",
+   "last_attempt": "ok",
+   "last_attempt_min": 0,
+   "last_success_min": 0,
+   "ok": true,
+   "reason": "pushed 1 files (0 characters)",
+   "remote_commit": "00a4ab4b00af"
+  },
+  "recovery": {
+   "exit": "0",
+   "failed_restarts": 0,
+   "last_run_min": 0,
+   "ok": true,
+   "said": "started"
+  },
+  "units": {
+   "ok": true,
+   "units": {
+    "toc-auto-deploy.service": {
+     "active": "inactive",
+     "enabled": "static",
+     "from_shipped_file": true,
+     "load": "loaded",
+     "needs_daemon_reload": false
+    },
+    "toc-auto-deploy.timer": {
+     "active": "active",
+     "enabled": "enabled",
+     "from_shipped_file": true,
+     "load": "loaded",
+     "needs_daemon_reload": false
+    },
+    "toc-game-recovery.service": {
+     "active": "inactive",
+     "enabled": "static",
+     "from_shipped_file": true,
+     "load": "loaded",
+     "needs_daemon_reload": false
+    },
+    "toc-game-recovery.timer": {
+     "active": "active",
+     "enabled": "enabled",
+     "from_shipped_file": true,
+     "load": "loaded",
+     "needs_daemon_reload": false
+    },
+    "toc-game.service": {
+     "active": "active",
+     "enabled": "enabled",
+     "from_shipped_file": true,
+     "load": "loaded",
+     "needs_daemon_reload": false
+    },
+    "toc-heartbeat.service": {
+     "active": "activating",
+     "enabled": "static",
+     "from_shipped_file": true,
+     "load": "loaded",
+     "needs_daemon_reload": false
+    },
+    "toc-heartbeat.timer": {
+     "active": "active",
+     "enabled": "enabled",
+     "from_shipped_file": true,
+     "load": "loaded",
+     "needs_daemon_reload": false
+    },
+    "toc-host-action.path": {
+     "active": "active",
+     "enabled": "enabled",
+     "from_shipped_file": true,
+     "load": "loaded",
+     "needs_daemon_reload": false
+    },
+    "toc-host-action.service": {
+     "active": "inactive",
+     "enabled": "static",
+     "from_shipped_file": true,
+     "load": "loaded",
+     "needs_daemon_reload": false
+    },
+    "toc-player-backup.service": {
+     "active": "inactive",
+     "enabled": "disabled",
+     "from_shipped_file": true,
+     "load": "loaded",
+     "needs_daemon_reload": false
+    },
+    "toc-state-sync-check.service": {
+     "active": "failed",
+     "enabled": "static",
+     "from_shipped_file": true,
+     "load": "loaded",
+     "needs_daemon_reload": false
+    },
+    "toc-state-sync-check.timer": {
+     "active": "active",
+     "enabled": "enabled",
+     "from_shipped_file": true,
+     "load": "loaded",
+     "needs_daemon_reload": false
+    },
+    "toc-state-sync.service": {
+     "active": "inactive",
+     "enabled": "static",
+     "from_shipped_file": true,
+     "load": "loaded",
+     "needs_daemon_reload": false
+    },
+    "toc-state-sync.timer": {
+     "active": "active",
+     "enabled": "enabled",
+     "from_shipped_file": true,
+     "load": "loaded",
+     "needs_daemon_reload": false
+    },
+    "toc-web.service": {
+     "active": "active",
+     "enabled": "enabled",
+     "from_shipped_file": true,
+     "load": "loaded",
+     "needs_daemon_reload": false
+    }
+   }
+  },
+  "web": {
+   "ok": true
+  }
+ },
+ "generated": 1795462983,
+ "generated_utc": "2026-11-23T19:43:03Z",
+ "heartbeat": {
+  "backup_heartbeat": "not-configured",
+  "heartbeat": "not-configured"
+ },
+ "overall": "degraded",
+ "problems": [
+  "private_backup: not configured (no encrypted off-host copy)"
+ ],
+ "schema": 1
+}
