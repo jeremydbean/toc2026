@@ -6119,3 +6119,4 @@
 1795446788	wizinfo	60	Connection guard: last hour 10 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 10 addresses paused and 0 refused now, 16 active player addresses.
 1795448306	wizinfo	60	Cartographer: appeared in room 29117 (Ofcol, korzath1.are) (level 27).
 1795450388	wizinfo	60	Connection guard: last hour 15 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 9 addresses paused and 0 refused now, 16 active player addresses.
+1795451694	wizinfo	60	Connection guard: 5.161.61.238 paused for 48 hours (pause 4 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.61.238 lifts it.

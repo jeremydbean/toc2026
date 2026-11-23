@@ -344522,3 +344522,6 @@ Mon Nov 23 16:19:41 2026 :: Connection guard: 52.15.147.27 closed without a word
 Mon Nov 23 16:24:37 2026 :: Treasure goblin: vanished from room 17771 (Entrance to the Emerald City, landoz.are) (too long in one area).
 Mon Nov 23 16:24:46 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 69 refused in all, pause 5 this week, 3613 minutes left).
 Mon Nov 23 16:29:51 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 5 of 6 in 6 hours).
+Mon Nov 23 16:34:41 2026 :: Treasure goblin: vanished from room 20502 (The Haunted Pine Forest, emerald.are) (too long in one area).
+Mon Nov 23 16:34:54 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 6 of 6 in 6 hours).
+Mon Nov 23 16:34:54 2026 :: Connection guard: 5.161.61.238 paused for 48 hours (pause 4 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.61.238 lifts it.
