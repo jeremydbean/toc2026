@@ -344224,3 +344224,6 @@ Mon Nov 23 05:09:40 2026 :: Connection guard: 5.161.117.52 paused for 6 hours (p
 Mon Nov 23 05:10:24 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Mon Nov 23 05:14:45 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 2 of 6 in 6 hours).
 Mon Nov 23 05:15:22 2026 :: Treasure goblin: vanished from room 11047 (The Macabre Amphitheather, ancala.are) (too long in one area).
+Mon Nov 23 05:19:49 2026 :: Connection guard: refused 1 connection from 5.161.215.244 (paused; 41 refused in all, pause 4 this week, 144 minutes left).
+Mon Nov 23 05:24:54 2026 :: Connection guard: refused 1 connection from 178.156.185.231 (paused; 8 refused in all, pause 2 this week, 157 minutes left).
+Mon Nov 23 05:25:27 2026 :: Treasure goblin: vanished from room 9348 (The Supreme Court, galaxy.are) (too long in one area).
