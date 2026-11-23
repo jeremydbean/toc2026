@@ -6145,3 +6145,4 @@
 1795468320	wizinfo	60	Player-state backup to GitHub is not working (cannot tell whether the clone holds unpushed commits). Saves are still on disk but are not leaving this machine.
 1795468434	wizinfo	60	Hermie: the restart put no mortal off (0 playing, recorded 2 seconds before the boot; a mortal last played over ten minutes before it); she stays away.
 1795468434	wizinfo	60	Treasure goblin: appeared in room 29023 (Captain's Quarters, korzath1.are).
+1795469341	wizinfo	60	Connection guard: 4.227.231.4 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 4.227.231.4 lifts it.
