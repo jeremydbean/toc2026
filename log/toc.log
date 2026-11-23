@@ -344376,3 +344376,5 @@ Mon Nov 23 11:50:28 2026 :: Connection guard: refused 1 connection from 52.87.72
 Mon Nov 23 11:52:32 2026 :: Sock.sinaddr:  205.210.31.183
 Mon Nov 23 11:52:32 2026 :: EOF encountered on read.
 Mon Nov 23 11:52:32 2026 :: Connection guard: 205.210.31.183 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 23 11:53:45 2026 :: Treasure goblin: vanished from room 16031 (Main Deck - Port, pirate.are) (too long in one area).
+Mon Nov 23 11:55:33 2026 :: Connection guard: refused 1 connection from 5.161.194.92 (paused; 14 refused in all, pause 4 this week, 2338 minutes left).
