@@ -344222,3 +344222,5 @@ Mon Nov 23 05:05:18 2026 :: Treasure goblin: vanished from room 13534 (Hallway o
 Mon Nov 23 05:09:40 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 6 of 6 in 6 hours).
 Mon Nov 23 05:09:40 2026 :: Connection guard: 5.161.117.52 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.117.52 lifts it.
 Mon Nov 23 05:10:24 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Mon Nov 23 05:14:45 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 2 of 6 in 6 hours).
+Mon Nov 23 05:15:22 2026 :: Treasure goblin: vanished from room 11047 (The Macabre Amphitheather, ancala.are) (too long in one area).
