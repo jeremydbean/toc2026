@@ -340801,3 +340801,4 @@ Mon Nov 23 00:48:17 2026 :: EOF encountered on read.
 Mon Nov 23 00:48:17 2026 :: Connection guard: 98.70.100.241 closed before a password prompt (strike 2 of 6 in 6 hours).
 Mon Nov 23 00:48:17 2026 :: Connection guard: 98.70.100.241 closed without a word (strike 3 of 6 in 6 hours).
 Mon Nov 23 00:50:48 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 47 refused in all, pause 5 this week, 4837 minutes left).
+Mon Nov 23 00:55:53 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 4 of 6 in 6 hours).
