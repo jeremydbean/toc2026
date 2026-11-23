@@ -48,22 +48,27 @@ List spend 4 0 buy
 List spend 10000 0 other
 End
 Day 2026-11-23
-Played 1287
+Played 1544
 Level 8 8 0
-Exp 0 0
-Kills 0
+Exp 530 0
+Kills 3
 Deaths 0
 Close 0
 Quests 0 0
 Dailies 0 0
 List achv 5 0 Members Only
+List skill 63 64 kick
+List skill 75 76 hand to hand
 List area 947 0 City of Dresden
 List area 230 0 Mud School
 List area 71 0 Social Club
 List area 10 0 Limbo
 List area 3 0 Continental Drift
-List area 26 0 The Chessboard
+List area 283 0 The Chessboard
 List item 1 0 a war banner
+List item 1 0 a silver key
+List item 1 0 a dirty loincloth
+List earn 20 0 loot
 List spend 7 0 buy
 End
 #END

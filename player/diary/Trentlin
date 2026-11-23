@@ -433,30 +433,34 @@ List earn 39061207 0 interest
 List spend 172100000 0 heal
 End
 Day 2026-11-23
-Played 694
+Played 1024
 Level 54 54 0
-Exp 0 20
-Kills 5
+Exp 464 60
+Kills 8
 Deaths 0
 Close 0
-Quests 0 0
+Quests 1 0
 Dailies 0 0
-List area 197 0 City of Dresden
-List area 5 0 Miden'nir
+List skill 81 83 iron skin
+List area 262 0 City of Dresden
+List area 9 0 Miden'nir
 List area 6 0 Thalos
 List area 1 0 Drow City
 List area 8 0 The Underdark
 List area 267 0 The Keep of Mahn-Tor
 List area 0 0 Plains of the North
-List area 8 0 Continental Drift
-List area 9 0 New Thalos
-List area 47 0 Korzath's Fortress
-List area 146 0 Battleground
+List area 9 0 Continental Drift
+List area 18 0 New Thalos
+List area 67 0 Korzath's Fortress
+List area 347 0 Battleground
+List area 0 0 Mud School
+More area 4
 List item 1 0 a multi-colored key ring
-List item 1 0 a diamond key
-List earn 3704644 0 loot
+List item 2 0 a diamond key
+List earn 13969306 0 loot
+List earn 87610248 0 quests
 List spend 600 0 buy
 List spend 70000 0 stolen
-List spend 41200000 0 heal
+List spend 106800000 0 heal
 End
 #END
