@@ -423,7 +423,9 @@ class RestoreStateTests(unittest.TestCase):
 
     def test_toc_restore_never_merges_state_with_its_code_copy(self) -> None:
         source = (ROOT / "deploy" / "toc-restore").read_text()
-        self.assertIn('sh "$BUILD/deploy/toc-restore-state" "$BUILD" "$CURRENT"', source)
+        self.assertTrue('RESTORE_STATE="$(dirname "$0")/toc-restore-state"' in source
+                        and 'sh "$RESTORE_STATE" "$BUILD" "$CURRENT"' in source,
+                        "toc-restore does not lay state down with toc-restore-state")
         for d in ("player", "gods", "heroes", "log", "corpse"):
             self.assertIn(f"--exclude '/{d}/'", source)
         self.assertNotIn('rsync -a "$BUILD/$d/" "$CURRENT/$d/"', source)

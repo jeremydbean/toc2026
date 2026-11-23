@@ -199,10 +199,14 @@ class RestoreGuardTests(unittest.TestCase):
             "git": 'echo "git $*" >> "$STUB_LOG"; case "$*" in *rev-parse*) echo abc1234;; '
                    '*log*) echo 2026-10-22T00:00:00Z;; esac; exit 0',
             "make": 'echo "make $*" >> "$STUB_LOG"; exit 0',
-            "rsync": 'echo "rsync $*" >> "$STUB_LOG"; exit 0',
+            # Logged, then the real one: the state step compares what it
+            # laid down with the checkout (deploy/toc-restore-state), so a
+            # stand-in copy that copies nothing now rightly fails.
+            "rsync": 'echo "rsync $*" >> "$STUB_LOG"; exec "$REAL_RSYNC" "$@"',
         })
         env = dict(os.environ, PATH=f"{tmp / 'bin'}:{os.environ['PATH']}",
-                   TOC_PREFIX=str(prefix), STUB_LOG=str(log))
+                   TOC_PREFIX=str(prefix), STUB_LOG=str(log),
+                   REAL_RSYNC=shutil.which("rsync") or "rsync")
         result = subprocess.run(["sh", str(RESTORE)], env=env, capture_output=True,
                                 text=True, timeout=60)
         return result.returncode, result.stdout + result.stderr, log.read_text()

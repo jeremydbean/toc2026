@@ -113,7 +113,11 @@ rsync -a --exclude '.git/' --exclude '/player/' --exclude '/gods/' --exclude '/h
 # (deploy/toc-restore-state): into a tree that already holds state only
 # with TOC_RESTORE_REPLACE=1, which moves that state aside first, and
 # compared with the checkout before it counts as done.
-TOC_RESTORE_LIVE=$(( 1 - DRILL )) sh "$BUILD/deploy/toc-restore-state" "$BUILD" "$CURRENT"
+# The helper beside this script first: restoring an older commit, from
+# before the helper existed, must still lay its state down this way.
+RESTORE_STATE="$(dirname "$0")/toc-restore-state"
+[ -f "$RESTORE_STATE" ] || RESTORE_STATE="$BUILD/deploy/toc-restore-state"
+TOC_RESTORE_LIVE=$(( 1 - DRILL )) sh "$RESTORE_STATE" "$BUILD" "$CURRENT"
 # corpse/ comes from git too since corpses are written down (corpses.c):
 # the players' corpses lying in the world when the host was lost are made
 # again at boot, and player/recovery/ -- the restore receipts and player

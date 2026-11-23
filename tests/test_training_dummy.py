@@ -704,10 +704,17 @@ class TrainingDummyTests(unittest.TestCase):
         self.assertIn("git add -f -A corpse", sync)
         dirs = dirs + ["corpse"]
 
-        restore = read("deploy", "toc-restore")
-        restored = _re.search(r"for d in ([a-z ]+); do", restore).group(1).split()
+        # The state step lives in deploy/toc-restore-state (2026-11-23),
+        # which toc-restore calls; the code copy must leave these to it.
+        restore_state = read("deploy", "toc-restore-state")
+        restored = _re.search(r'DIRS="([a-z ]+)"', restore_state).group(1).split()
         self.assertEqual(set(restored), set(dirs),
                          "toc-restore does not put back what the sync saves")
+        restore = read("deploy", "toc-restore")
+        self.assertIn("toc-restore-state", restore)
+        for d in dirs:
+            self.assertIn(f"--exclude '/{d}/'", restore,
+                          f"toc-restore's code copy would merge {d}/ into a live tree")
 
         ignored = read(".github", "workflows", "validate.yml")
         for d in dirs:
