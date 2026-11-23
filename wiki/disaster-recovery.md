@@ -218,16 +218,74 @@ that commit, so push a fix or run `toc-deploy` by hand.
 
 ## Are we actually backed up right now?
 
+Read the operations summary first. It judges every backup and self-healing
+job from what the job recorded -- never from systemd's word that a unit
+ran -- and it is in three places, so one of them answers even when another
+is what broke:
+
+```bash
+cat /var/lib/toc/ops-summary.json            # on the host
+curl -s https://timesofchaos.com/api/ops-summary   # anywhere: 200 only when "ok" and fresh
+git show origin/main:log/ops-summary.json    # in git, via the state sync
+```
+
+`"overall": "ok"` and an empty `problems` list is what you want; each
+problem is one line naming the job and why. A `generated_utc` older than a
+quarter hour means `toc-heartbeat.timer` itself has stopped -- and in git,
+that the sync has. The checks (`deploy/windows-vm/toc-ops-summary`, every
+five minutes):
+
+| check | healthy when |
+| --- | --- |
+| `game` | `toc-game-probe` gets a count (the loop runs) |
+| `web` | the dashboard answers `/api/health` |
+| `public_sync` | a verified sync under 20 minutes old, and no refused drop |
+| `private_backup` | a verified encrypted copy under 7 hours old -- **`not-configured` is a problem, never healthy** |
+| `game_archives` | the game's own newest archive in `backups/` under 5 hours old |
+| `disk` | 4 GB and 10% of inodes free |
+| `recovery` | the last `toc-game-recovery` run (every two minutes) ended 0 with no failed restarts |
+| `units` | every support unit loaded from the file the repository ships, its timer active, no daemon-reload outstanding |
+
+For the public sync alone:
+
 ```bash
 cat /run/toc-state-sync.status
+sudo cat /var/lib/toc-state-sync/last-attempt /var/lib/toc-state-sync/last-success
 systemctl list-timers 'toc-state-sync*'
 ```
 
-`ok ... unpushed=0` is what you want. `toc-state-sync` commits
-characters, gods, heroes, the note board, the reports and the logs to
-`main` every five minutes; `toc-state-sync-check` complains every
+`ok ... last_attempt=ok ... unpushed=0` is what you want. `toc-state-sync`
+commits characters, gods, heroes, the note board, the reports and the logs
+to `main` every five minutes; `toc-state-sync-check` complains every
 quarter hour if that stops, to the journal, to that marker file, and
-into the game where staff will see it.
+into the game where staff will see it (WIZINFO).
+
+**How the sync reports itself** (review, 2026-11-23). Its unit used to take
+exit 1 for success and the check judged systemd's `Result`, so a sync
+failing every run read healthy. Now every run writes `last-attempt`
+(`ok`, `nochange`, `skipped` by a deploy, or `failed` and why), and
+`last-success` is written only when GitHub shows the run's commit: a push
+`git ls-remote` then sees, or a run with nothing to commit whose tree
+GitHub already holds. The check judges those: no receipt, a receipt older
+than 20 minutes, or an unpushed count it cannot read is a failure. The
+timers run on the wall clock (`OnCalendar`), so a failed run is tried again
+five minutes later whatever systemd thinks of it.
+
+**A drop it refuses.** A `player/`, `gods/` or `heroes/` that lost more than
+a fifth of its files since the last sync (once it holds ten), or emptied, or
+cannot be read all the way down -- a disk not mounted, a restore half done
+-- is refused before anything is copied: nothing is mirrored with
+`--delete` and nothing is pushed, so GitHub keeps the last good state. The
+check reports it at once. If the drop is meant (old characters purged),
+let it through once:
+
+```bash
+echo "purged the test characters, ticket 12" | sudo -u toc tee /var/lib/toc-state-sync/allow-drop
+```
+
+The reason, the counts and the run are in the commit message and the
+journal; the file is set aside as `allow-drop.used-<epoch>` and ignored once
+it is a day old.
 
 If it is failing, the usual causes are the deploy key
 (`/srv/toc/.ssh/id_ed25519_state_sync` and the repository's deploy key
@@ -350,18 +408,81 @@ Same as "The machine is gone", plus:
 
 ## What survives what
 
-| | Where | How often | Survives a dead disk |
-| --- | --- | --- | --- |
-| Characters, gods, heroes, notes, reports, logs | `main` on GitHub, plaintext | 5 min | yes |
-| Encrypted `player/` snapshot | private backups repo | 6 h | **not wired up on Oracle yet** |
-| Full state tarball | `/var/backups/toc/` | -- | **not wired up on Oracle yet** |
-| Character files on disk | `/srv/toc/current/player` | 5 min per player | no |
+| | Where | How often | Survives a dead disk | Verified by |
+| --- | --- | --- | --- | --- |
+| Characters, gods, heroes, notes, reports, logs | `main` on GitHub, plaintext | 5 min | yes | `last-success` (GitHub shows the commit) |
+| Encrypted `player/` and `corpse/` | private backups repo, 15 generations | 6 h | yes, **once configured** | the archive fetched back and its checksum compared |
+| The game's own archives of `player/` | `/srv/toc/current/backups/` | 4 h and daily | no | gzip and a full listing before the rename |
+| Snapshots of each character | `player/versions/` | every save, milestones | no (the sync carries the tagged ones) | `#END` and a checksum |
 
 The five-minute GitHub sync is the live backup and it is running. The
-encrypted six-hourly snapshot and the daily local tarball ran on the old
-VM and are **not yet set up on Oracle** -- a follow-up. Until they are,
-the GitHub sync is the whole safety net, which is enough to rebuild from
-(that is what "The machine is gone" does) but is plaintext and public.
+encrypted backup's code, units and status are in place (2026-11-23) but it
+needs its credentials, which never go in git -- see "Turning on the
+encrypted backup" in `wiki/player-backups.md`. Until then the operations
+summary says `private_backup: not configured`, and the GitHub sync is the
+whole off-host copy: enough to rebuild from (that is what "The machine is
+gone" does) but plaintext and public.
+
+## Rolling out the 2026-11-23 hardening
+
+A push to main deploys the code but not all of it at once: the
+`toc-deploy` that ships `toc-install-units` is the copy already on the
+host, so the support units go in on the auto-deployer's next run after
+it, from the build tree at the live commit (or on the next deploy). On
+the host, after the deploy:
+
+```bash
+sudo journalctl -t toc-auto-deploy -n 20 --no-pager  # "installed and verified the support units"
+sudo sh /srv/toc/build/deploy/windows-vm/toc-install-units /srv/toc/build/deploy/windows-vm
+systemctl list-timers 'toc-*'                        # OnCalendar times, all active
+systemctl show toc-state-sync.service -p SuccessExitStatus -p FragmentPath  # no "1"
+sudo /usr/local/sbin/toc-ops-summary; cat /var/lib/toc/ops-summary.json
+curl -s -o /dev/null -w '%{http_code}\n' https://timesofchaos.com/api/ready   # 200
+```
+
+Then, by hand, the three things that are credentials or accounts:
+
+1. **The encrypted backup** (`wiki/player-backups.md`): a private
+   repository, a deploy key with write access, an age key pair whose
+   private half stays off the host, `/etc/toc/player-backup.env`; then
+   `sudo systemctl enable --now toc-player-backup.timer`, `sudo systemctl
+   start toc-player-backup.service`, and `sudo cat
+   /var/lib/toc-player-backup/status` must read `ok`.
+2. **The heartbeats**: two checks at a dead-man's-switch service
+   (healthchecks.io's free tier has twenty; a 10-minute period for the
+   host, 7 hours for the backup), their URLs in `/etc/toc/heartbeat.env`
+   (`deploy/heartbeat.env.example`, root, 0600). The next summary says
+   `sent ok`.
+3. **An outside check of the game**: an uptime monitor (or OCI Health
+   Checks, an HTTP monitor on `https://timesofchaos.com/api/ready` --
+   free within the Always Free allowance, which needs an IAM policy for
+   the health-checks service and an alarm topic) that alarms on anything
+   but 200.
+
+Then prove it, once: a restore drill from the private repository into a
+scratch directory (`deploy/restore-player-backup.sh`), never over the live
+tree; and `toc-ops-summary` reading `"overall": "ok"`. Until all of that is
+seen, the hardening is source code and installed units, not a verified
+backup.
+
+## What a review reads first
+
+A session that cannot reach the host reads, in this order:
+
+1. `git show origin/main:log/ops-summary.json` -- the verdict. Its
+   `generated_utc` is the newest moment anything on the host spoke; old,
+   and the sync (or the host) is down.
+2. `git log -1 --format=%cI origin/main -- player` -- when a save last
+   reached GitHub.
+3. `log/auto-deploy.status` and `log/deployed-commit` -- what is live.
+4. A `status` host request (`ops/host-requests.txt`) when the summary is
+   stale: its answer comes back through the sync as
+   `log/host-actions/<id>`, so it cannot help while the sync is the thing
+   that is broken. Then it is the owner's: the heartbeat monitor will have
+   alarmed already.
+
+Staff in the game hear of a failing sync, a failing encrypted backup, a
+low disk and a skipped game backup on WIZINFO -- never ANNOUNCE.
 
 Player state is committed in **plaintext** to a public repository. That
 is deliberate: it is a test environment, the owner would rather lose the

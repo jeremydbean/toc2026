@@ -1,12 +1,16 @@
 [Unit]
-Description=Push an encrypted ToC player snapshot to GitHub every six hours
+Description=Push an encrypted ToC player snapshot every six hours
 
 [Timer]
-# Matches the appliance's cadence. Persistent so a snapshot missed while the
-# host was off is taken once it comes back, rather than waiting a full cycle.
-OnBootSec=15min
-OnUnitActiveSec=6h
-RandomizedDelaySec=15min
+# On the wall clock (review, 2026-11-23): this was OnBootSec plus
+# OnUnitActiveSec with Persistent=true and a comment promising that a
+# snapshot missed while the host was off would be taken when it came back.
+# Persistent= does nothing for a monotonic timer; it applies to OnCalendar=
+# alone. Every six hours, seventeen minutes past (away from the state sync's
+# and the game's own backups on the hour), and a run missed while the
+# machine was down is taken once at boot.
+OnCalendar=*-*-* 00/6:17:00
+RandomizedDelaySec=10min
 Persistent=true
 
 [Install]

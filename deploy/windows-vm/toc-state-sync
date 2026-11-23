@@ -29,6 +29,32 @@ GIT_SSH_KEY="${GIT_SSH_KEY:-/srv/toc/.ssh/id_ed25519_state_sync}"
 # systemd makes this directory for us and gives it to the service user;
 # /run itself is root-owned and the service runs as toc.
 LOCK_FILE="${LOCK_FILE:-/run/toc-state-sync/lock}"
+# What the last run did, and the last run that really finished (review,
+# 2026-11-23: the unit counted exit 1 as success, and the check judged
+# systemd's "success" and a recent exit -- so a sync failing every run
+# looked healthy). Two small files, each written aside and renamed over:
+#
+#   last-attempt  every run: when, ok / nochange / skipped / failed, why
+#   last-success  only a run whose result is on GitHub -- a push GitHub
+#                 then shows, or a no-change run whose tree GitHub holds
+#
+# toc-state-sync-check and toc-ops-summary judge these, never the exit.
+# systemd makes the directory for the service user (StateDirectory=).
+SYNC_STATE_DIR="${TOC_SYNC_STATE_DIR:-/var/lib/toc-state-sync}"
+# Fail closed on a tree that shrank past belief (review, 2026-11-23: an
+# empty or half-mounted player/ would have been mirrored with --delete and
+# pushed over the last good state). player/, gods/ and heroes/ may lose at
+# most MAX_DROP_PCT of their files in one run once they hold GUARD_MIN, and
+# may never go from some to none; corpse/live, whose corpses rot away on
+# their own, only past CORPSE_MAX_DROP_PCT of CORPSE_GUARD_MIN. A drop that
+# is meant (a purge of old characters) is let through once by a reason
+# written to $SYNC_STATE_DIR/allow-drop, under a day old, which the run
+# records in its commit and the journal and then sets aside as used.
+MAX_DROP_PCT="${TOC_SYNC_MAX_DROP_PCT:-20}"
+GUARD_MIN="${TOC_SYNC_GUARD_MIN:-10}"
+CORPSE_MAX_DROP_PCT="${TOC_SYNC_CORPSE_MAX_DROP_PCT:-90}"
+CORPSE_GUARD_MIN="${TOC_SYNC_CORPSE_GUARD_MIN:-50}"
+ALLOW_DROP_MAX_AGE="${TOC_SYNC_ALLOW_DROP_MAX_AGE:-86400}"
 
 export GIT_SSH_COMMAND="ssh -i $GIT_SSH_KEY -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new -o BatchMode=yes"
 
@@ -62,12 +88,72 @@ STATE_FILES="area/notes.txt area/bugs.txt area/ideas.txt area/typos.txt
 REPORT_FILES="area/bugs.txt area/ideas.txt area/typos.txt"
 BUILT_DIR="area/built"
 
-[ -d "$TOC_ROOT/player" ] || { echo "no player dir at $TOC_ROOT" >&2; exit 1; }
-[ -r "$GIT_SSH_KEY" ] || { echo "no deploy key at $GIT_SSH_KEY" >&2; exit 1; }
+# --- the receipts ---------------------------------------------------------
+RESULT=failed
+REASON="stopped before it finished"
+STEP=start
+REMOTE_COMMIT=""
+mkdir -p "$SYNC_STATE_DIR" 2>/dev/null || true
+
+# KEY=VALUE lines from stdin into $SYNC_STATE_DIR/$1, whole or not at all.
+receipt_write() {
+    tmp="$SYNC_STATE_DIR/.$1.tmp.$$"
+    if cat >"$tmp" 2>/dev/null && sync "$tmp" 2>/dev/null && mv -f "$tmp" "$SYNC_STATE_DIR/$1"; then
+        return 0
+    fi
+    rm -f "$tmp" 2>/dev/null
+    echo "could not write $SYNC_STATE_DIR/$1" >&2
+    return 1
+}
+
+# Every way out of this script records the attempt -- a set -e failure
+# too, by the step it was on. A value never holds a newline or a tab.
+on_exit() {
+    code=$?
+    # Another run holds the lock and will record its own attempt.
+    [ "$RESULT" = busy ] && return 0
+    [ "$code" -ne 0 ] && [ "$RESULT" != failed ] && RESULT=failed
+    [ "$RESULT" = failed ] && [ "$REASON" = "stopped before it finished" ] &&
+        REASON="failed during $STEP (exit $code)"
+    printf 'time=%s\ntime_utc=%s\nresult=%s\nreason=%s\nexit=%s\nremote_commit=%s\n' \
+        "$(date +%s)" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$RESULT" \
+        "$(printf '%s' "$REASON" | tr '\t\n' '  ')" "$code" "$REMOTE_COMMIT" |
+        receipt_write last-attempt || true
+    if [ "$RESULT" = failed ]; then
+        logger -t toc-state-sync -p daemon.err "state sync failed: $REASON" 2>/dev/null || true
+    fi
+}
+trap on_exit EXIT
+
+fail() { RESULT=failed; REASON="$1"; echo "$1" >&2; exit 1; }
+skip() { RESULT=skipped; REASON="$1"; echo "$1"; exit 0; }
+
+# The remote shows this commit, or one built on it: then what this run
+# holds is on GitHub. Asked of GitHub itself, never of the clone's idea of
+# the remote.
+remote_holds() {
+    want=$1
+    seen=$(git ls-remote origin "refs/heads/$BRANCH" 2>/dev/null | cut -f1)
+    [ -n "$seen" ] || return 1
+    REMOTE_COMMIT=$seen
+    [ "$seen" = "$want" ] && return 0
+    git fetch --quiet origin "$BRANCH" 2>/dev/null || return 1
+    git merge-base --is-ancestor "$want" "origin/$BRANCH" 2>/dev/null
+}
+
+record_success() {
+    printf 'time=%s\ntime_utc=%s\nkind=%s\nremote_commit=%s\nlocal_commit=%s\nfiles_changed=%s\ncharacters=%s\n' \
+        "$(date +%s)" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$1" "$REMOTE_COMMIT" \
+        "$(git rev-parse HEAD)" "$2" "$3" | receipt_write last-success ||
+        fail "the sync finished but its receipt could not be written"
+}
+
+[ -d "$TOC_ROOT/player" ] || fail "no player dir at $TOC_ROOT"
+[ -r "$GIT_SSH_KEY" ] || fail "no deploy key at $GIT_SSH_KEY"
 
 # One at a time. A sync that overlaps itself fights over the index.
 exec 9>"$LOCK_FILE"
-flock -n 9 || { echo "another sync is running"; exit 0; }
+flock -n 9 || { RESULT=busy; echo "another sync is running"; exit 0; }
 
 if [ ! -d "$STATE_REPO/.git" ]; then
     echo "cloning $REMOTE into $STATE_REPO"
@@ -146,16 +232,16 @@ reclone() {
 # Somebody else pushes to this branch too -- a developer, or me from
 # the host. Take their work first and put ours on top, rather than
 # forcing and losing theirs.
+STEP=fetch
 git_err=$(mktemp)
 if ! { git fetch --quiet origin "$BRANCH" && git reset --quiet --hard "origin/$BRANCH"; } 2>"$git_err"; then
     cat "$git_err" >&2
     if clone_broken "$git_err"; then
         rm -f "$git_err"
-        reclone || exit 1
+        reclone || fail "the clone was broken and could not be made again"
     else
         rm -f "$git_err"
-        echo "could not bring the clone up to date (not a broken clone; the network, GitHub or the key)" >&2
-        exit 1
+        fail "could not bring the clone up to date (not a broken clone; the network, GitHub or the key)"
     fi
 fi
 rm -f "$git_err"
@@ -169,14 +255,64 @@ rm -f "$git_err"
 DEPLOY_LOCK="${TOC_DEPLOY_LOCK:-/run/toc-deploy.lock}"
 if [ -r "$DEPLOY_LOCK" ]; then
     exec 8<"$DEPLOY_LOCK"
-    flock -n -s 8 || { echo "a deploy is running; skipping this sync"; exit 0; }
+    flock -n -s 8 || skip "a deploy is running; skipping this sync"
 elif [ -e "$DEPLOY_LOCK" ]; then
     # A lock that exists but cannot be read cannot be asked: fail closed
     # rather than copy past a deploy that may hold it (review, 2026-10-22).
-    echo "cannot read $DEPLOY_LOCK; skipping this sync" >&2
-    exit 0
+    skip "cannot read $DEPLOY_LOCK; skipping this sync"
 fi
 
+# --- the drop guard (see MAX_DROP_PCT above), before anything is copied ---
+STEP=guard
+# Files under $1, versions/ left out as the copy leaves it out; nothing
+# printed when the tree cannot be read all the way down.
+count_files() {
+    err=$(mktemp)
+    n=$(find "$1" -path "$1/versions" -prune -o -type f -print 2>"$err" | wc -l)
+    if [ -s "$err" ]; then rm -f "$err"; return 1; fi
+    rm -f "$err"
+    printf '%s\n' "$n"
+}
+OVERRIDE="$SYNC_STATE_DIR/allow-drop"
+override_reason=""
+if [ -f "$OVERRIDE" ]; then
+    made=$(stat -c %Y "$OVERRIDE" 2>/dev/null || echo 0)
+    if [ $(( $(date +%s) - made )) -le "$ALLOW_DROP_MAX_AGE" ]; then
+        override_reason=$(head -c 200 "$OVERRIDE" | tr -d '\r' | tr '\t\n' '  ')
+        [ -n "$override_reason" ] || override_reason="(no reason given)"
+    else
+        echo "ignoring $OVERRIDE: older than ${ALLOW_DROP_MAX_AGE}s" >&2
+    fi
+fi
+dropped=""
+guard() {   # DIR MAX_PCT MIN EMPTY_IS_A_DROP
+    [ -d "$STATE_REPO/$1" ] || return 0
+    have=$(count_files "$STATE_REPO/$1") || fail "cannot read the last good copy of $1"
+    [ "$have" -gt 0 ] || return 0
+    if [ ! -d "$TOC_ROOT/$1" ]; then
+        now_n=0
+    else
+        now_n=$(count_files "$TOC_ROOT/$1") || fail "cannot read all of $TOC_ROOT/$1; nothing was copied"
+    fi
+    if [ "$now_n" -eq 0 ] && [ "$4" = yes ]; then
+        dropped="$dropped $1:$have->0"
+    elif [ "$have" -ge "$3" ] && [ $(( now_n * 100 )) -lt $(( have * (100 - $2) )) ]; then
+        dropped="$dropped $1:$have->$now_n"
+    fi
+}
+for d in player gods heroes; do
+    guard "$d" "$MAX_DROP_PCT" "$GUARD_MIN" yes
+done
+guard corpse/live "$CORPSE_MAX_DROP_PCT" "$CORPSE_GUARD_MIN" no
+if [ -n "$dropped" ]; then
+    if [ -z "$override_reason" ]; then
+        fail "refused: the live tree shrank past belief (${dropped# }); nothing was copied or pushed, and GitHub keeps the last good state. If it is meant, write a reason to $OVERRIDE"
+    fi
+    echo "drop allowed by $OVERRIDE (${dropped# }): $override_reason" >&2
+    logger -t toc-state-sync -p daemon.warning "drop allowed by override (${dropped# }): $override_reason" 2>/dev/null || true
+fi
+
+STEP=copy
 for d in $STATE_DIRS; do
     [ -d "$TOC_ROOT/$d" ] || continue
     mkdir -p "$STATE_REPO/$d"
@@ -343,25 +479,46 @@ done
 [ -d "$STATE_REPO/corpse" ] && git add -f -A corpse
 
 if git diff --cached --quiet; then
+    # Nothing changed -- which is a success only if GitHub holds this tree:
+    # the commit the clone was reset to a moment ago, or one built on it.
+    STEP=verify
+    remote_holds "$(git rev-parse HEAD)" ||
+        fail "nothing to commit, but GitHub could not be shown to hold the last state"
+    RESULT=nochange
+    REASON="nothing changed; GitHub holds the state"
+    record_success nochange 0 0
+    [ -n "$override_reason" ] && mv -f "$OVERRIDE" "$OVERRIDE.used-$(date +%s)" 2>/dev/null
     exit 0
 fi
 
+STEP=commit
 changed=$(git diff --cached --name-only | wc -l)
 players=$(git diff --cached --name-only -- player ':(exclude)player/versions' ':(exclude)player/diary' | wc -l)
+override_line=""
+[ -n "$dropped" ] && override_line="
+Drop allowed by override (${dropped# }): $override_reason"
 git commit --quiet -m "State sync: $changed files, $players characters [skip ci]
 
 Automatic. Written by toc-state-sync on the host that is running the
 game, so that an outage cannot cost more than the interval between
-runs."
+runs.$override_line"
 
 # The branch can move under us between the fetch and the push.
+STEP=push
 n=0
 until git push --quiet origin "$BRANCH" 2>/dev/null; do
     n=$((n + 1))
-    [ "$n" -ge 5 ] && { echo "push failed after $n attempts" >&2; exit 1; }
+    [ "$n" -ge 5 ] && fail "push failed after $n attempts"
     sleep $((n * 3))
-    git fetch --quiet origin "$BRANCH"
-    git rebase --quiet "origin/$BRANCH" || { git rebase --abort; exit 1; }
+    git fetch --quiet origin "$BRANCH" || fail "push refused, and the fetch to rebase on failed"
+    git rebase --quiet "origin/$BRANCH" || { git rebase --abort; fail "push refused, and the rebase onto GitHub's branch failed"; }
 done
 
+STEP=verify
+remote_holds "$(git rev-parse HEAD)" ||
+    fail "pushed, but GitHub does not show the commit"
+RESULT=ok
+REASON="pushed $changed files ($players characters)"
+record_success pushed "$changed" "$players"
+[ -n "$override_reason" ] && mv -f "$OVERRIDE" "$OVERRIDE.used-$(date +%s)" 2>/dev/null
 echo "pushed $changed files ($players characters)"

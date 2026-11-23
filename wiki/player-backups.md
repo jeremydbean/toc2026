@@ -17,7 +17,8 @@ what it does not yet cover, and how long a loss can be.
 | Git history | every character file, the ledger and the corpses, every five minutes (`toc-state-sync`) | GitHub, `player/`, `corpse/` | for ever |
 | Milestones in git | every tagged copy except level and quest ones | GitHub, `player/versions/<Name>/` | for ever (the sync never deletes them) |
 | Hourly copies in git | the newest save snapshot of each finished hour | GitHub, `player/versions/<Name>/` | as the host keeps them -- hourly for a week, then daily for a year; pruned ones stay in git's history |
-| Encrypted snapshot | `player/` and `corpse/` in one archive, checked at every stage | a private repository, `toc-player-backup` | the latest only -- see "Not yet" |
+| Encrypted generations | `player/` and `corpse/` in one archive, checked at every stage, encrypted to a key that never lives on the host | a private repository, `toc-player-backup`, every six hours -- once configured (below) | the newest four, the newest of each day for a week and of each week for four weeks |
+| The game's own archives | `player/` as a `.tar.gz`, proven before it replaces anything | host, `backups/` | every four hours and daily; past the newest six, 30 days, within a 4 GB budget |
 
 The stamp is the server's clock (UTC). PRESTORE shows how long ago each copy
 was taken first, then the time with its zone. A second copy of one kind in
@@ -172,6 +173,85 @@ which (independent review, 2026-10-23):
   cannot take another refuses the restore, death or ACCEPT before
   anything moves.
 
+## The encrypted backup
+
+`deploy/sync-player-backup.sh`, installed as `/usr/local/sbin/toc-player-backup`
+and run by `toc-player-backup.timer` at 00:17, 06:17, 12:17 and 18:17 (UTC,
+the host's clock; a run missed while the host was down is taken at boot).
+Rebuilt 2026-11-23: it used to force-push a single archive, so one bad run
+replaced the only encrypted copy.
+
+- **Generations.** The `snapshots` branch holds
+  `archives/<stamp>.tar.gz.age` and a `<stamp>.txt` record each (file
+  counts, both checksums, size), with `latest.txt` naming the newest. Each
+  push is one squashed commit made from the generations the branch holds
+  now, with a lease on the commit read, so a run never pushes over a branch
+  it did not read, and a repository that does not answer is a failure,
+  never an empty branch.
+- **Verified.** A success means GitHub shows the commit and the archive
+  fetched back matches its checksum. A `player/` that lost more than a fifth
+  of its files since the last generation is refused unless
+  `/var/lib/toc-player-backup/allow-drop` gives a reason (used once). An
+  archive over 90 MB is refused (GitHub takes nothing over 100).
+- **It says how it went.** `/var/lib/toc-player-backup/status` is `ok`,
+  `failed` or `not-configured`, beside `last-attempt` and `last-success`;
+  the operations summary reads them, and staff hear of a failure on
+  WIZINFO. Not configured is never healthy.
+
+**What it cannot do.** The host's deploy key can still rewrite the branch,
+so a host taken over could erase every generation. Making copies the host
+cannot erase needs a destination that enforces it: GitHub cannot (each run
+rewrites history; protecting the branch from force pushes would stop
+pruning), so that would be OCI Object Storage with versioning and a
+retention rule, which the host's key cannot shorten. Measured from git's
+own metadata on 2026-11-23, `player/` and `corpse/` are about 9 MB (half of
+it snapshots) before compression, so fifteen generations are well under
+200 MB -- comfortably inside GitHub's limits and inside OCI's Always Free
+20 GB. Moving costs an IAM user or instance principal, the OCI CLI on the
+host and a bucket policy; it is worth it if the archive passes about 25 MB
+or immutability is wanted. `last-success`'s `archive_bytes` says which.
+
+### Turning on the encrypted backup
+
+On the owner's machine, never on the host and never in git:
+
+```bash
+age-keygen -o toc-backup-identity.txt   # keep this file offline: it is the only way back in
+age-keygen -y toc-backup-identity.txt   # the recipient, which goes to the host
+ssh-keygen -t ed25519 -N '' -f toc-backup-deploy -C toc-player-backup
+```
+
+1. Make a private repository (`jeremydbean/toc2026-player-backups`) and add
+   `toc-backup-deploy.pub` as a deploy key **with write access**.
+2. On the host: the private key at
+   `/srv/toc/.ssh/id_ed25519_github_toc_backup` (owner `toc`, mode 0600);
+   the recipient line in `/etc/toc/player-backup-recipient.txt`;
+   `deploy/player-backup.env.example` as `/etc/toc/player-backup.env`
+   (root, 0600); `ssh-keyscan github.com >> /srv/toc/.ssh/known_hosts`.
+3. `sudo systemctl enable --now toc-player-backup.timer` and
+   `sudo systemctl start toc-player-backup.service`, then
+   `sudo cat /var/lib/toc-player-backup/status` must read `ok` and the
+   operations summary `private_backup` must be healthy.
+4. Run the drill below once, on the owner's machine.
+
+### The restore drill
+
+Into a scratch directory, never the live tree:
+
+```bash
+git clone --depth 1 -b snapshots git@github.com:jeremydbean/toc2026-player-backups.git backups
+sh deploy/restore-player-backup.sh backups toc-backup-identity.txt /tmp/drill   # or ... <stamp>
+```
+
+It checks the archive against its record before decrypting, the plaintext
+after, and the file counts after unpacking, and refuses a directory that is
+not empty or the live tree. Then copy the one character you need from
+`/tmp/drill/player/` into place with the game stopped (or log them out
+first), or lay down the whole tree as `toc-restore` would.
+`tests/test_restore_drills.py` plays this, with a synthetic character and a
+key made for the test, from the public sync, the encrypted repository and
+the game's own archive, and logs the character in from each.
+
 ## How long a loss can be
 
 Measured from the code, not promised:
@@ -193,7 +273,8 @@ Measured from the code, not promised:
   except the current hour's (2026-10-24); a restore drill from GitHub
   alone took under two minutes the same day.
 - **The host and GitHub lost together:** everything since the last
-  encrypted archive, if it is installed, up to six hours.
+  encrypted generation, once it is configured, up to six hours and a
+  quarter. Until it is configured, everything.
 
 ## Not yet
 
@@ -219,9 +300,9 @@ These are proposals, not built (handoff review, 2026-10-23):
   chosen stats, with preview, conflicts, escrow for displaced items and a
   compensating undo; and transactional, exactly-once recording of trades
   and other multi-character changes.
-- A private recovery vault apart from the public sync, with immutable
-  versioned copies (the encrypted archive keeps only the latest), and a
-  measured restore drill on a fresh host.
+- Copies the host cannot erase: the encrypted backup keeps generations
+  now (2026-11-23), but in a repository the host's key can rewrite (see
+  "What it cannot do"); and a measured restore drill on a fresh host.
 - Causal gameplay audit events (reason codes, before/after state, output
   capture) beyond the play journal and watch log.
 - Archive receipts held off the host before an action is acknowledged; the

@@ -258,5 +258,128 @@ class BackupFailureTests(unittest.TestCase):
                 legacy.rmdir()
 
 
+def backup_script() -> str:
+    """The shell the game runs, read out of src/update.c's C string."""
+    import ast
+    code = (ROOT / "src" / "update.c").read_text(encoding="latin-1")
+    start = code.index("static const char backup_script[] =")
+    body = code[start:code.index("static void backup_launch(", start)]
+    text = ""
+    for match in re.finditer(r'"((?:[^"\\]|\\.)*)"|(BACKUP_DIR)', body[body.index("=") + 1:]):
+        text += "../backups/" if match.group(2) else ast.literal_eval('"' + match.group(1) + '"')
+    return text
+
+
+class BackupStorageTests(unittest.TestCase):
+    """Review, 2026-11-23: archives expired only after a new one succeeded,
+    so a backup failing for want of room never freed any; nothing checked
+    the room before tar, and nothing told staff. Expiry and the budget now
+    run first and on their own, the newest TOC_BACKUP_KEEP always stay, and
+    a job without room for an archive and a reserve makes none and says so.
+    Runs the game's own script, read from update.c, in a synthetic tree."""
+
+    def setUp(self) -> None:
+        self._tmp = tempfile.TemporaryDirectory()
+        root = self.root = Path(self._tmp.name)
+        for d in ("area", "backups", "log", "player", "bin"):
+            (root / d).mkdir()
+        (root / "player" / "Zstore").write_text("#PLAYER\nName Zstore~\nEnd\n")
+        (root / "area" / "webadmin.queue").write_text("")
+        self.env = dict(os.environ, PATH=f"{root / 'bin'}:{os.environ['PATH']}")
+
+    def tearDown(self) -> None:
+        self._tmp.cleanup()
+
+    def archive(self, name: str, days_old: float, size: int = 4096) -> Path:
+        path = self.root / "backups" / f"{name}.tar.gz"
+        path.write_bytes(os.urandom(size))
+        when = time.time() - days_old * 86400
+        os.utime(path, (when, when))
+        return path
+
+    def stub(self, name: str, text: str) -> None:
+        path = self.root / "bin" / name
+        path.write_text(text)
+        path.chmod(0o755)
+
+    def run_job(self, **env) -> subprocess.CompletedProcess:
+        return subprocess.run(["sh", "-c", backup_script(), "toc-backup", "Znew.%H%M%S",
+                               "Zjob complete.", "do_backup", "held"],
+                              cwd=self.root / "area", env=dict(self.env, **env),
+                              capture_output=True, text=True, timeout=60)
+
+    def names(self) -> list[str]:
+        return sorted(p.name for p in (self.root / "backups").glob("*.tar.gz"))
+
+    def log(self) -> str:
+        path = self.root / "log" / "toc.log"
+        return path.read_text() if path.exists() else ""
+
+    def test_old_archives_expire_even_when_the_new_one_fails(self) -> None:
+        for n in range(10):
+            self.archive(f"Zold{n:02d}", 40 + n)
+        self.stub("tar", "#!/bin/sh\n[ \"$1\" = cfz ] && { printf x > \"$2\"; exit 2; }\nexit 0\n")
+        self.run_job()
+        # The six newest stay, however old; the four past them are gone.
+        self.assertEqual(self.names(), [f"Zold{n:02d}.tar.gz" for n in range(6)])
+        self.assertIn("4 old archive(s) expired", self.log())
+        self.assertIn("archive creation failed (tar 2)", self.log())
+        self.assertIn("wizinfo|60|The game's own player backup failed",
+                      (self.root / "area" / "webadmin.queue").read_text())
+        self.assertEqual([p.name for p in (self.root / "backups").iterdir()
+                          if p.name.startswith(".")], [], "no temporary left")
+
+    def test_recent_archives_are_never_expired_by_age(self) -> None:
+        for n in range(8):
+            self.archive(f"Zrecent{n}", n)
+        self.run_job()
+        self.assertEqual(len(self.names()), 9, self.log())
+        self.assertIn("Zjob complete.", self.log())
+
+    def test_the_budget_takes_the_oldest_but_never_the_newest_kept(self) -> None:
+        for n in range(9):
+            self.archive(f"Zbig{n}", n + 1, size=400 * 1024)
+        self.run_job(TOC_BACKUP_BUDGET_MB="1")
+        names = self.names()
+        self.assertIn("Zbig0.tar.gz", names)
+        self.assertNotIn("Zbig8.tar.gz", names)
+        self.assertGreaterEqual(len([n for n in names if n.startswith("Zbig")]), 5)
+        self.assertIn("Zjob complete.", self.log())
+
+    def fake_df(self, kb: int, inodes: int) -> None:
+        real = shutil.which("df")
+        self.stub("df", "#!/bin/sh\n"
+                  f"if [ \"$1\" = -Pk ]; then echo 'Filesystem 1K-blocks Used Available Use% Mounted';"
+                  f" echo 'fake 100 0 {kb} 1% /'; exit 0; fi\n"
+                  f"if [ \"$1\" = -Pi ]; then echo 'Filesystem Inodes IUsed IFree IUse% Mounted';"
+                  f" echo 'fake 100 0 {inodes} 1% /'; exit 0; fi\n"
+                  f"exec {real} \"$@\"\n")
+
+    def test_no_room_means_no_archive_and_staff_are_told(self) -> None:
+        for n in range(8):
+            self.archive(f"Zfull{n}", n + 1)
+        self.fake_df(kb=10, inodes=10 ** 6)
+        self.run_job()
+        names = self.names()
+        # Everything past the newest six was tried; those six are kept.
+        self.assertEqual(names, [f"Zfull{n}.tar.gz" for n in range(6)])
+        self.assertIn("not enough room for an archive", self.log())
+        self.assertNotIn("Zjob complete.", self.log())
+        self.assertIn("wizinfo|60|The game's own player backup was skipped",
+                      (self.root / "area" / "webadmin.queue").read_text())
+        self.assertTrue((self.root / "player" / "Zstore").exists())
+
+    def test_no_inodes_is_no_room_either(self) -> None:
+        self.fake_df(kb=10 ** 9, inodes=5)
+        self.run_job()
+        self.assertEqual(self.names(), [])
+        self.assertIn("not enough room for an archive", self.log())
+
+    def test_room_enough_makes_the_archive(self) -> None:
+        self.fake_df(kb=10 ** 9, inodes=10 ** 6)
+        self.run_job()
+        self.assertEqual(len(self.names()), 1, self.log())
+
+
 if __name__ == "__main__":
     unittest.main()

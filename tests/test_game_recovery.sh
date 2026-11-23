@@ -393,7 +393,30 @@ run_recovery >/dev/null
 run_recovery >/dev/null
 check "a second low run inside the gap clears nothing more" "$(count_calls 'journalctl --vacuum-size')" "1"
 teardown
-unset TOC_DISK_PATH TOC_STATE_REPO TOC_ROLLBACK_DIR TOC_SYNC_USER TOC_SYNC_LOCK TOC_DISK_LOW_MB
+
+# 18. The game's own archives, by the game's rule (review, 2026-11-23):
+# past the newest six and older than 30 days go when the disk is low; the
+# newest six stay however old; nothing while a backup job holds the lock.
+archives_setup() {
+    janitor_setup; touch "$WORK/low"
+    mkdir -p "$WORK/live/backups"
+    touch "$WORK/live/backups/.backup.flock"
+    for n in 1 2 3 4 5 6 7 8 9; do
+        touch -d "$((40 + n)) days ago" "$WORK/live/backups/Zold.0${n}.tar.gz"
+    done
+    export TOC_GAME_ARCHIVES="$WORK/live/backups"
+}
+archives_setup
+run_recovery >/dev/null
+check "old game archives past the newest six are expired" "$(ls "$WORK"/live/backups/*.tar.gz | wc -l)" "6"
+check "the newest six stay however old" "$(ls "$WORK"/live/backups/ | grep -c 'Zold.0[1-6]')" "6"
+check "the janitor names what it expired" "$(grep -c 'old-game-archives(3)' "$WORK/out")" "1"
+teardown
+archives_setup
+( exec 6<"$WORK/live/backups/.backup.flock"; flock 6; run_recovery >/dev/null )
+check "nothing is expired while a backup job holds the lock" "$(ls "$WORK"/live/backups/*.tar.gz | wc -l)" "9"
+teardown
+unset TOC_DISK_PATH TOC_STATE_REPO TOC_ROLLBACK_DIR TOC_SYNC_USER TOC_SYNC_LOCK TOC_DISK_LOW_MB TOC_GAME_ARCHIVES
 
 echo
 if [ "$failures" -eq 0 ]; then

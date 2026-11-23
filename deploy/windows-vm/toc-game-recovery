@@ -97,6 +97,19 @@ healthy()
 
 install -d -m 0755 "$STATE_DIR"
 
+# How the last run ended, for toc-ops-summary (review, 2026-11-23: a
+# recovery that kept failing was visible only in the journal). Every way out
+# writes it: the exit status and the run's last line of output.
+RECOVERY_LAST="$STATE_DIR/recovery-last"
+last_said="started"
+log() { echo "toc-game-recovery: $*"; last_said=$(printf '%s' "$*" | tr '\t\n' '  ' | cut -c1-200); }
+record_last() {
+    printf 'time=%s\nexit=%s\nsaid=%s\n' "$(date +%s)" "$1" "$last_said" \
+        > "$RECOVERY_LAST.tmp" 2>/dev/null && mv -f "$RECOVERY_LAST.tmp" "$RECOVERY_LAST" 2>/dev/null
+    return 0
+}
+trap 'record_last $?' EXIT
+
 exec 9>"$LOCK_FILE"
 if ! flock -n 9; then
     log "another recovery run holds the lock; skipping."
@@ -245,6 +258,10 @@ pack_repo()   # DIR USER
     fi
 }
 
+GAME_ARCHIVES=${TOC_GAME_ARCHIVES:-$LIVE_ROOT/backups}
+GAME_ARCHIVE_KEEP=${TOC_BACKUP_KEEP:-6}
+GAME_ARCHIVE_DAYS=${TOC_BACKUP_DAYS:-30}
+
 keep_disk_clear()
 {
     free_mb=$(disk_free_mb)
@@ -286,6 +303,22 @@ keep_disk_clear()
         while read -r old; do rm -rf -- "$old"; done
     ls -1 "$BACKUP_DIR"/merc-rollback-* 2>/dev/null | sort -r | tail -n +$((BINARY_KEEP + 1)) |
         while read -r old; do rm -f -- "$old"; done
+    # The game's own archives, by the game's own rule (src/update.c's
+    # backup_script; review, 2026-11-23): past the newest $GAME_ARCHIVE_KEEP
+    # and older than $GAME_ARCHIVE_DAYS days, and only while no backup job
+    # holds the archive lock. Never the newest few, never player/.
+    if [ -d "$GAME_ARCHIVES" ] && [ -e "$GAME_ARCHIVES/.backup.flock" ]; then
+        expired=$(
+            exec 6<"$GAME_ARCHIVES/.backup.flock" && flock -n 6 || exit 0
+            n=0
+            for f in $(ls -1t "$GAME_ARCHIVES" | grep '\.tar\.gz$' | tail -n +$((GAME_ARCHIVE_KEEP + 1))); do
+                if [ -n "$(find "$GAME_ARCHIVES/$f" -mtime +"$GAME_ARCHIVE_DAYS" 2>/dev/null)" ]; then
+                    rm -f -- "$GAME_ARCHIVES/$f" && n=$((n + 1))
+                fi
+            done
+            echo "$n")
+        case "$expired" in ''|0) ;; *) done_what="$done_what old-game-archives($expired)" ;; esac
+    fi
 
     after_mb=$(disk_free_mb)
     case "$after_mb" in ''|*[!0-9]*) after_mb=$free_mb ;; esac

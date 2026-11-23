@@ -123,6 +123,26 @@ if [ "$(id -u)" = 0 ] && [ ! -f "$HOST_ACTION_UNITS/toc-host-action.path" ] &&
     fi
 fi
 
+# The support units and the operations summary (review, 2026-11-23), the
+# same way: the toc-deploy that ships toc-install-units is not the one that
+# runs it, so, once, while the heartbeat's timer is missing, the scripts and
+# every support unit are installed from the build tree at the live commit.
+# toc-install-units keeps a disabled unit disabled and restarts no service.
+if [ "$(id -u)" = 0 ] && [ ! -f "$HOST_ACTION_UNITS/toc-heartbeat.timer" ] &&
+   [ -f "$BUILD/deploy/windows-vm/toc-install-units" ]; then
+    install -m 0755 "$BUILD/deploy/windows-vm/toc-ops-summary" "$HOST_ACTION_SBIN/toc-ops-summary" 2>/dev/null
+    install -m 0755 "$BUILD/deploy/sync-player-backup.sh" "$HOST_ACTION_SBIN/toc-player-backup" 2>/dev/null
+    for s in toc-state-sync toc-state-sync-check toc-game-recovery; do
+        install -m 0755 "$BUILD/deploy/windows-vm/$s" "$HOST_ACTION_SBIN/$s" 2>/dev/null
+    done
+    if TOC_UNIT_DIR="$HOST_ACTION_UNITS" sh "$BUILD/deploy/windows-vm/toc-install-units" \
+           "$BUILD/deploy/windows-vm" >/dev/null 2>&1; then
+        logger -t toc-auto-deploy "installed and verified the support units and toc-ops-summary" 2>/dev/null || true
+    else
+        logger -t toc-auto-deploy -p daemon.err "support units installed but not verified; see toc-ops-summary" 2>/dev/null || true
+    fi
+fi
+
 # Maintenance asked for through GitHub (owner, 2026-11-22: "embed the
 # ability for you to also run these commands as you need"). A session that
 # can only push commits a line to ops/host-requests.txt,

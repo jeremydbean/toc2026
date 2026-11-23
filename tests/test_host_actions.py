@@ -244,9 +244,13 @@ class HostActionTests(unittest.TestCase):
     def test_deploys_install_the_helper(self) -> None:
         deploy = (ROOT / "deploy" / "windows-vm" / "toc-deploy").read_text()
         self.assertIn("toc-auto-deploy toc-game-probe toc-host-action", deploy)
-        self.assertIn("toc-host-action.service toc-host-action.path", deploy)
         self.assertIn("install -d -m 0750 -o root -g toc /var/lib/toc-host-actions", deploy)
-        self.assertIn("systemctl enable --now toc-host-action.path", deploy)
+        # The units go in through toc-install-units, which enables a path
+        # unit it has never introduced (tests/test_ops_units.py plays it).
+        self.assertIn("toc-install-units", deploy)
+        units = (ROOT / "deploy" / "windows-vm" / "toc-install-units").read_text()
+        self.assertIn("toc-host-action.service toc-host-action.path", units)
+        self.assertIn('systemctl enable --now "$u"', units)
         restore = (ROOT / "deploy" / "toc-restore").read_text()
         self.assertIn("toc-host-action.service toc-host-action.path", restore)
         self.assertIn("toc-game-probe toc-host-action", restore)
@@ -522,6 +526,24 @@ class StateSyncHealingTests(unittest.TestCase):
 
 
 
+def healthy_sync_state(root: Path) -> dict:
+    """What toc-state-sync-check reads when the sync is working: a clone
+    with nothing unpushed and fresh receipts (review, 2026-11-23: the check
+    judges these, never systemd's Result). The environment to pass."""
+    bare, clone, receipts = root / "sync-remote.git", root / "sync-clone", root / "sync-state"
+    git("init", "-q", "--bare", "-b", "main", str(bare))
+    git("clone", "-q", str(bare), str(clone))
+    (clone / "README").write_text("x\n")
+    git("add", "README", cwd=clone)
+    git("-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", "x", cwd=clone)
+    git("push", "-q", "-u", "origin", "HEAD:main", cwd=clone)
+    receipts.mkdir()
+    now = int(time.time())
+    (receipts / "last-success").write_text(f"time={now}\nkind=pushed\nremote_commit=abc\n")
+    (receipts / "last-attempt").write_text(f"time={now}\nresult=ok\nreason=pushed\n")
+    return {"STATE_REPO": str(clone), "TOC_SYNC_STATE_DIR": str(receipts)}
+
+
 @unittest.skipIf(shutil.which("sh") is None, "no sh")
 class DiskWarningTests(unittest.TestCase):
     """toc-state-sync-check tells staff when the disk is nearly full, on
@@ -545,8 +567,8 @@ class DiskWarningTests(unittest.TestCase):
             queue = root / "webadmin.queue"
             queue.write_text("")
             env = dict(os.environ, PATH=f"{stubs}:{os.environ['PATH']}", QUEUE=str(queue),
-                       MARKER=str(root / "status"), STATE_REPO=str(root / "none"),
-                       DISK_PATH=str(root))
+                       MARKER=str(root / "status"), DISK_PATH=str(root),
+                       **healthy_sync_state(root))
             healthy = subprocess.run(["sh", str(check)], env=dict(env, DISK_MIN_FREE_MB="1"),
                                      capture_output=True, text=True, timeout=60)
             self.assertEqual(healthy.returncode, 0, healthy.stderr)
@@ -564,6 +586,8 @@ class MemoryAndBigFileWarningTests(unittest.TestCase):
 
     def run_check(self, root: Path, **extra) -> tuple[subprocess.CompletedProcess, str]:
         check = ROOT / "deploy" / "windows-vm" / "toc-state-sync-check"
+        if not (root / "sync-state").exists():
+            self.healthy = healthy_sync_state(root)
         stubs = root / "bin"
         stubs.mkdir(exist_ok=True)
         (stubs / "systemctl").write_text(
@@ -578,8 +602,8 @@ class MemoryAndBigFileWarningTests(unittest.TestCase):
         queue = root / "webadmin.queue"
         queue.write_text("")
         env = dict(os.environ, PATH=f"{stubs}:{os.environ['PATH']}", QUEUE=str(queue),
-                   MARKER=str(root / "status"), STATE_REPO=str(root / "none"),
-                   DISK_PATH=str(root), DISK_MIN_FREE_MB="1")
+                   MARKER=str(root / "status"), DISK_PATH=str(root),
+                   DISK_MIN_FREE_MB="1", **self.healthy)
         env.update(extra)
         done = subprocess.run(["sh", str(check)], env=env, capture_output=True,
                               text=True, timeout=60)

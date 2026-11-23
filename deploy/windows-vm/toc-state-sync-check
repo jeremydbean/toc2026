@@ -112,38 +112,79 @@ while [ "$tries" -lt 60 ]; do
     esac
 done
 
-result=$(systemctl show -p Result --value "$UNIT" 2>/dev/null || echo unknown)
-finished=$(systemctl show -p ExecMainExitTimestampMonotonic --value "$UNIT" 2>/dev/null || echo 0)
-now=$(awk '{printf "%d", $1 * 1000000}' /proc/uptime)
+# Judge the receipts toc-state-sync writes, never systemd's Result or exit
+# time (review, 2026-11-23: the unit took exit 1 for success, and this check
+# then called a sync that failed every run healthy). last-success is written
+# only when GitHub shows the run's commit; anything this cannot read or
+# prove is a problem, never a pass.
+SYNC_STATE_DIR="${TOC_SYNC_STATE_DIR:-/var/lib/toc-state-sync}"
+now_s=$(date +%s)
 
-age_min=99999
-if [ "${finished:-0}" -gt 0 ]; then
-    age_min=$(( (now - finished) / 60000000 ))
-fi
+# One KEY=VALUE from a receipt; nothing when the file or key is missing.
+receipt() {
+    [ -r "$SYNC_STATE_DIR/$1" ] || return 0
+    sed -n "s/^$2=//p" "$SYNC_STATE_DIR/$1" | head -1 | tr -cd 'A-Za-z0-9 ._:/()=,;<>+-'
+}
+minutes_since() {
+    case "$1" in
+        ''|*[!0-9]*) echo unknown ;;
+        *) echo $(( (now_s - $1) / 60 )) ;;
+    esac
+}
 
 problem=""
-[ "$result" != "success" ] && problem="last run reported '$result'"
-[ "$age_min" -gt "$MAX_AGE_MIN" ] && \
-    problem="${problem:+$problem; }last successful run was ${age_min} minutes ago"
+success_time=$(receipt last-success time)
+success_kind=$(receipt last-success kind)
+remote_commit=$(receipt last-success remote_commit)
+attempt_time=$(receipt last-attempt time)
+attempt_result=$(receipt last-attempt result)
+attempt_reason=$(receipt last-attempt reason)
+age_min=$(minutes_since "$success_time")
+attempt_age=$(minutes_since "$attempt_time")
+
+if [ "$age_min" = unknown ]; then
+    problem="no verified sync on record ($SYNC_STATE_DIR/last-success missing or unreadable)"
+elif [ "$age_min" -gt "$MAX_AGE_MIN" ]; then
+    problem="last verified sync was ${age_min} minutes ago"
+elif [ "$age_min" -lt -5 ]; then
+    problem="last verified sync is dated in the future"
+fi
+if [ "$attempt_age" = unknown ]; then
+    problem="${problem:+$problem; }no sync attempt on record"
+elif [ "$attempt_age" -gt "$MAX_AGE_MIN" ]; then
+    problem="${problem:+$problem; }no sync has even been tried for ${attempt_age} minutes"
+fi
+# The drop guard never fixes itself: say so at once, not after 20 minutes.
+case "$attempt_result:$attempt_reason" in
+    failed:refused*) problem="${problem:+$problem; }$attempt_reason" ;;
+esac
 
 # Unpushed commits are the other way this goes wrong: the script runs,
 # commits, and cannot push. That leaves the only copy on a disk that
-# might be the one about to fail.
-unpushed=0
+# might be the one about to fail. A count that cannot be read is not zero.
+unpushed=unknown
 if [ -d "$STATE_REPO/.git" ]; then
-    unpushed=$(git -C "$STATE_REPO" rev-list --count '@{u}..HEAD' 2>/dev/null || echo 0)
-    [ "$unpushed" -gt 0 ] && \
-        problem="${problem:+$problem; }$unpushed commits committed but never pushed"
+    if unpushed=$(git -C "$STATE_REPO" rev-list --count '@{u}..HEAD' 2>/dev/null); then
+        [ "$unpushed" -gt 0 ] && \
+            problem="${problem:+$problem; }$unpushed commits committed but never pushed"
+    else
+        unpushed=unknown
+        problem="${problem:+$problem; }cannot tell whether the clone holds unpushed commits"
+    fi
+else
+    problem="${problem:+$problem; }no state clone at $STATE_REPO"
 fi
 
+detail="age=${age_min}min kind=${success_kind:-none} remote=$(printf '%.12s' "${remote_commit:-none}") last_attempt=${attempt_result:-none} attempt_age=${attempt_age}min unpushed=${unpushed}"
 if [ -z "$problem" ]; then
-    printf 'ok %s age=%smin unpushed=0\n' "$(date -Is)" "$age_min" > "$MARKER" 2>/dev/null || true
-    echo "state sync healthy: last run ${age_min} min ago"
+    printf 'ok %s %s\n' "$(date -Is)" "$detail" > "$MARKER" 2>/dev/null || true
+    echo "state sync healthy: $detail"
     exit 0
 fi
 
-printf 'FAILING %s %s\n' "$(date -Is)" "$problem" > "$MARKER" 2>/dev/null || true
-echo "STATE SYNC IS NOT WORKING: $problem" >&2
+printf 'FAILING %s %s reason=%s problem=%s\n' "$(date -Is)" "$detail" \
+    "${attempt_reason:-none}" "$problem" > "$MARKER" 2>/dev/null || true
+echo "STATE SYNC IS NOT WORKING: $problem (${attempt_reason:-no reason recorded})" >&2
 logger -t toc-state-sync -p daemon.err "state sync is not working: $problem" 2>/dev/null || true
 
 tell_staff "Player-state backup to GitHub is not working ($problem). Saves are still on disk but are not leaving this machine."

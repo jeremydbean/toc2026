@@ -1,0 +1,140 @@
+#!/bin/sh
+# Install the support units the repository ships, reload once, and prove
+# systemd loaded what was installed (review, 2026-11-23).
+#
+#   toc-install-units <directory holding the unit files>
+#
+# toc-deploy installed only the auto-deployer's, the helper's and the game's
+# and dashboard's units, so a fix to the sync's, the check's, the recovery
+# timer's or the backup's unit sat in git while the host ran the old one --
+# SuccessExitStatus=0 1 among them. Called by toc-deploy after a healthy
+# deploy, and by toc-restore.
+#
+# For each unit below whose file differs from the installed one: install,
+# then one daemon-reload (also when a unit is still waiting on one an
+# earlier run could not make), then, for each timer or path unit:
+#   - one this installer has never introduced (none of them are, in
+#     $INTRODUCED) is enabled and started and recorded there -- except
+#     toc-player-backup.timer while the backup is not configured (no
+#     /etc/toc/player-backup.env): left off, said so, and introduced by the
+#     first run that finds it configured. The first run on a host records
+#     every unit already installed as introduced, so what a person set up
+#     or switched off before this existed is theirs;
+#   - one introduced before keeps its enablement: enabled and changed is
+#     restarted, so a changed schedule takes effect; disabled or masked is
+#     left alone, because somebody chose that;
+#   - a .service is never started or restarted here: the oneshots are their
+#     timers' to start, and toc-auto-deploy's and toc-host-action's may be
+#     running this very deploy. toc-game and toc-web are not on the list:
+#     toc-deploy handles them, and never costs players a restart for a unit.
+# Then every unit on the list is checked: loaded from $UNIT_DIR/<name>, no
+# daemon-reload outstanding, and an enabled timer or path unit active.
+#
+# Exit 0 when all of it is verified, 1 when daemon-reload failed, 2 when
+# something is not as installed (each named on stderr).
+set -u
+
+SRC=${1:?the directory holding the unit files}
+UNIT_DIR=${TOC_UNIT_DIR:-/etc/systemd/system}
+BACKUP_ENV=${TOC_BACKUP_ENV:-/etc/toc/player-backup.env}
+INTRODUCED=${TOC_UNITS_INTRODUCED:-/var/lib/toc/units-introduced}
+UNITS=${TOC_SUPPORT_UNITS:-"toc-state-sync.service toc-state-sync.timer
+toc-state-sync-check.service toc-state-sync-check.timer
+toc-game-recovery.service toc-game-recovery.timer
+toc-auto-deploy.service toc-auto-deploy.timer
+toc-host-action.service toc-host-action.path
+toc-player-backup.service toc-player-backup.timer
+toc-heartbeat.service toc-heartbeat.timer"}
+
+# The first run on a host: what is installed already was put there by a
+# person or by toc-restore, and its enablement is theirs.
+if [ ! -f "$INTRODUCED" ]; then
+    mkdir -p "$(dirname "$INTRODUCED")"
+    for u in $UNITS; do
+        [ -f "$UNIT_DIR/$u" ] && echo "$u"
+    done > "$INTRODUCED"
+fi
+introduced() { grep -qx "$1" "$INTRODUCED" 2>/dev/null; }
+
+changed=""
+for u in $UNITS; do
+    [ -f "$SRC/$u" ] || continue
+    cmp -s "$SRC/$u" "$UNIT_DIR/$u" && continue
+    if install -m 0644 "$SRC/$u" "$UNIT_DIR/$u"; then
+        changed="$changed $u"
+        printf '   installed %s\n' "$u"
+    else
+        echo "   COULD NOT INSTALL $u" >&2
+    fi
+done
+
+reload=$changed
+if [ -z "$reload" ]; then
+    for u in $UNITS; do
+        [ -f "$UNIT_DIR/$u" ] || continue
+        if systemctl show "$u" -p NeedDaemonReload 2>/dev/null | grep -qx 'NeedDaemonReload=yes'; then
+            reload=$u
+            break
+        fi
+    done
+fi
+if [ -n "$reload" ]; then
+    systemctl daemon-reload || { echo "   daemon-reload failed; the old units are still loaded" >&2; exit 1; }
+fi
+
+is_changed() { case " $changed " in *" $1 "*) return 0 ;; esac; return 1; }
+
+for u in $UNITS; do
+    [ -f "$UNIT_DIR/$u" ] || continue
+    case "$u" in *.timer|*.path) ;; *) continue ;; esac
+    if ! introduced "$u"; then
+        if [ "$u" = toc-player-backup.timer ] && [ ! -f "$BACKUP_ENV" ]; then
+            printf '   %s installed, not enabled: the encrypted backup is not configured (%s)\n' "$u" "$BACKUP_ENV"
+            continue
+        fi
+        if systemctl enable --now "$u" >/dev/null 2>&1; then
+            printf '   enabled %s\n' "$u"
+            echo "$u" >> "$INTRODUCED"
+        else
+            echo "   COULD NOT ENABLE $u" >&2
+        fi
+    elif is_changed "$u"; then
+        state=$(systemctl is-enabled "$u" 2>/dev/null || true)
+        case "$state" in
+            enabled|enabled-runtime)
+                systemctl restart "$u" >/dev/null 2>&1 &&
+                    printf '   restarted %s\n' "$u" ||
+                    echo "   COULD NOT RESTART $u" >&2 ;;
+            *) printf '   %s left %s, as it was\n' "$u" "${state:-unknown}" ;;
+        esac
+    fi
+done
+
+# --- prove it -------------------------------------------------------------
+bad=0
+for u in $UNITS; do
+    [ -f "$SRC/$u" ] || continue
+    shown=$(systemctl show "$u" -p LoadState -p FragmentPath -p NeedDaemonReload -p ActiveState 2>/dev/null)
+    field() { printf '%s\n' "$shown" | sed -n "s/^$1=//p" | head -1; }
+    if [ "$(field LoadState)" != loaded ] || [ "$(field FragmentPath)" != "$UNIT_DIR/$u" ]; then
+        echo "   NOT VERIFIED $u: loaded from '$(field FragmentPath)' ($(field LoadState))" >&2
+        bad=1
+    elif [ "$(field NeedDaemonReload)" = yes ]; then
+        echo "   NOT VERIFIED $u: changed on disk and not reloaded" >&2
+        bad=1
+    elif ! cmp -s "$SRC/$u" "$UNIT_DIR/$u"; then
+        echo "   NOT VERIFIED $u: the installed file is not the shipped one" >&2
+        bad=1
+    else
+        case "$u" in
+            *.timer|*.path)
+                state=$(systemctl is-enabled "$u" 2>/dev/null || true)
+                if [ "$state" = enabled ] && [ "$(field ActiveState)" != active ]; then
+                    echo "   NOT VERIFIED $u: enabled but $(field ActiveState)" >&2
+                    bad=1
+                fi ;;
+        esac
+    fi
+done
+[ "$bad" -eq 0 ] && echo "   support units verified" && exit 0
+exit 2

@@ -1,0 +1,15 @@
+[Unit]
+Description=Write the operations summary and send the heartbeat every five minutes
+
+[Timer]
+# Three minutes past each sync (they fall on every fifth minute), so the
+# summary reads the sync's newest receipt. On the wall clock: a monitor off
+# the host alarms when the heartbeat stops, so it must not depend on how
+# the last run ended.
+OnCalendar=*-*-* *:03/5:00
+OnBootSec=4min
+Persistent=true
+AccuracySec=30s
+
+[Install]
+WantedBy=timers.target

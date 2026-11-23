@@ -249,8 +249,24 @@ static bool backup_ensure_dir( const char *path )
  *     and then says the previous archive was kept -- in that order, so a
  *     reader of the line never finds the temporary still there (CI,
  *     2026-11-22: the EXIT trap removed it just after the line).
+ * And room is the job's own business, before it writes (review,
+ * 2026-11-23: archives older than 30 days were expired only after a new
+ * one succeeded, so a backup failing for want of room freed nothing and
+ * failed again, and nothing looked at the disk first):
+ *   - expiry runs first, on its own: archives past the newest
+ *     TOC_BACKUP_KEEP (6) and older than TOC_BACKUP_DAYS (30) go, then the
+ *     oldest past those six while all of them hold more than
+ *     TOC_BACKUP_BUDGET_MB (4096). The newest six are never touched, and
+ *     every name there is an archive already proven (the rename is last);
+ *   - then the room: twice the newest archive plus TOC_BACKUP_RESERVE_MB
+ *     (1024) free and TOC_BACKUP_RESERVE_INODES (20000) inodes, or older
+ *     archives past the six go oldest first until there is; without it no
+ *     archive is started, the BUG line says what was free, and staff hear
+ *     it on WIZINFO through the queue (never ANNOUNCE). A failed archive
+ *     is told to staff the same way. Nothing in player/ is ever touched.
  * The script is fixed text; its date format, message, caller and lock
- * state come in as $1..$4, so nothing in it is built by snprintf.
+ * state come in as $1..$4, so nothing in it is built by snprintf, and the
+ * limits from the game's environment.
  */
 #define BACKUP_LOCK_FILE BACKUP_DIR ".backup.flock"
 #define BACKUP_LOCK_WAIT 3600     /* seconds a job waits for its turn */
@@ -260,6 +276,14 @@ static const char backup_script[] =
     "name=$(date \"+$1\")\n"
     "final=\"$dir$name.tar.gz\"\n"
     "say() { printf '%s :: %s\\n' \"$(date '+%a %b %e %T %Y')\" \"$1\" >> ../log/toc.log; }\n"
+    "staff() {\n"
+    "  [ -w webadmin.queue ] || return 0\n"
+    "  command -v python3 >/dev/null 2>&1 || return 0\n"
+    "  python3 -c 'import fcntl, sys\n"
+    "with open(sys.argv[1], \"a\", encoding=\"ascii\", errors=\"replace\") as f:\n"
+    "    fcntl.lockf(f.fileno(), fcntl.LOCK_EX)\n"
+    "    f.write(\"wizinfo|60|\" + sys.argv[2] + \"\\n\")' webadmin.queue \"$1\" 2>/dev/null || true\n"
+    "}\n"
     "case \"$4\" in\n"
     "held) ;;\n"
     "busy) say \"[*****] BUG: $3: another backup held the lock for an hour; this one was not made.\"; exit 1 ;;\n"
@@ -279,14 +303,52 @@ static const char backup_script[] =
     "  owner=$(cat \"$legacy/pid\" 2>/dev/null)\n"
     "  case \"$owner\" in ''|*[!0-9]*) ;; *) kill -0 \"$owner\" 2>/dev/null || { rm -f \"$legacy/pid\"; rmdir \"$legacy\" 2>/dev/null; } ;; esac\n"
     "fi\n"
+    "keep=${TOC_BACKUP_KEEP:-6}\n"
+    "days=${TOC_BACKUP_DAYS:-30}\n"
+    "budget=${TOC_BACKUP_BUDGET_MB:-4096}\n"
+    "reserve=${TOC_BACKUP_RESERVE_MB:-1024}\n"
+    "inodes=${TOC_BACKUP_RESERVE_INODES:-20000}\n"
+    "case \"$keep$days$budget$reserve$inodes\" in *[!0-9]*) keep=6 days=30 budget=4096 reserve=1024 inodes=20000 ;; esac\n"
+    "older() { ls -1t \"$dir\" 2>/dev/null | grep '\\.tar\\.gz$' | sed \"1,${keep}d\"; }\n"
+    "gone=0\n"
+    "for f in $(older); do\n"
+    "  if [ -n \"$(find \"$dir$f\" -mtime +\"$days\" 2>/dev/null)\" ]; then rm -f \"$dir$f\" && gone=$((gone + 1)); fi\n"
+    "done\n"
+    "total() { du -ck \"$dir\"*.tar.gz 2>/dev/null | tail -1 | cut -f1; }\n"
+    "while [ \"$(total)\" -gt $((budget * 1024)) ]; do\n"
+    "  f=$(older | tail -1)\n"
+    "  [ -n \"$f\" ] || break\n"
+    "  rm -f \"$dir$f\" && gone=$((gone + 1))\n"
+    "done\n"
+    "newest=$(ls -1t \"$dir\" 2>/dev/null | grep '\\.tar\\.gz$' | head -1)\n"
+    "size=0\n"
+    "[ -n \"$newest\" ] && size=$(du -k \"$dir$newest\" | cut -f1)\n"
+    "need=$((size * 2 + reserve * 1024))\n"
+    "room() {\n"
+    "  kb=$(df -Pk \"$dir\" | awk 'NR==2 {print $4}')\n"
+    "  ino=$(df -Pi \"$dir\" | awk 'NR==2 {print $4}')\n"
+    "  case \"$kb\" in ''|*[!0-9]*) kb=0 ;; esac\n"
+    "  case \"$ino\" in ''|*[!0-9]*|-) ino=$inodes ;; esac\n"
+    "  [ \"$kb\" -ge \"$need\" ] && [ \"$ino\" -ge \"$inodes\" ]\n"
+    "}\n"
+    "while ! room; do\n"
+    "  f=$(older | tail -1)\n"
+    "  [ -n \"$f\" ] || break\n"
+    "  rm -f \"$dir$f\" && gone=$((gone + 1))\n"
+    "done\n"
+    "[ \"$gone\" -gt 0 ] && say \"Backups: $gone old archive(s) expired; the newest $keep are always kept.\"\n"
+    "if ! room; then\n"
+    "  say \"[*****] BUG: $3: not enough room for an archive (${kb} KB and ${ino} inodes free, ${need} KB and ${inodes} inodes wanted); none was made and the previous archive is kept.\"\n"
+    "  staff \"The game's own player backup was skipped: the disk has ${kb} KB free, ${need} KB wanted. Player saves fail when it fills.\"\n"
+    "  exit 1\n"
+    "fi\n"
     "nice -n 10 tar cfz \"$tmp\" ../player 2>/dev/null; rc=$?\n"
-    "if [ \"$rc\" -le 1 ] && [ -s \"$tmp\" ] && gzip -t \"$tmp\" 2>/dev/null"
-    " && tar tzf \"$tmp\" >/dev/null 2>&1 && mv -f \"$tmp\" \"$final\"; then\n"
-    "  find \"$dir\" -name '*.tar.gz' -mtime +30 -delete 2>/dev/null\n"
+    "if [ \"$rc\" -le 1 ] && [ -s \"$tmp\" ] && gzip -t \"$tmp\" 2>/dev/null && tar tzf \"$tmp\" >/dev/null 2>&1 && mv -f \"$tmp\" \"$final\"; then\n"
     "  say \"$2\"\n"
     "else\n"
     "  rm -f \"$tmp\"\n"
     "  say \"[*****] BUG: $3: archive creation failed (tar $rc); the previous archive is kept.\"\n"
+    "  staff \"The game's own player backup failed (tar $rc); the previous archive is kept.\"\n"
     "fi\n";
 
 static void backup_launch( const char *date_format, const char *done, const char *who )

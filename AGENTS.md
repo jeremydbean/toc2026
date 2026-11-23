@@ -3083,8 +3083,9 @@ parent); STASH TAKE's
   mirrored with `--delete`, so an ended corpse never comes back from git;
   `history/` never deleted); `toc-restore` lays all of it down. The
   encrypted `sync-player-backup.sh` checks tar, its listing and age apart
-  (sh has no pipefail) and carries `corpse/`; it keeps the latest archive
-  only, and is not installed by `toc-deploy`.
+  (sh has no pipefail) and carries `corpse/`; it keeps generations, verifies
+  its push and says `not-configured` without its credentials (see "Backups
+  Say How They Went").
   `tests/test_recovery_ledger.py`, `tests/test_corpse_keep.py`,
   `tests/test_player_backups.py`.
 - **The game loop's pacing, its systemd watchdog ping and every measured
@@ -3351,6 +3352,82 @@ and processes that restart them".
   a person. `toc-state-sync-check` WIZINFOs below 4 GB free every fifteen
   minutes whatever else it finds (`tests/test_game_recovery.sh` 15-17,
   `DiskWarningTests`).
+
+## Backups Say How They Went
+
+Review, 2026-11-23: `toc-state-sync.service` took exit 1 for success
+(`SuccessExitStatus=0 1`) and `toc-state-sync-check` judged systemd's
+`Result` and the exit time, so a sync failing every run read healthy; the
+encrypted backup force-pushed one archive and was never wired on Oracle;
+the game's archives expired only after a new one succeeded; most support
+units were never installed by a deploy. Rules now:
+
+- **A job's own receipt is the truth, never systemd's.** `toc-state-sync`
+  writes `last-attempt` (`ok`, `nochange`, `skipped`, `failed` and why, from
+  an EXIT trap, so a `set -e` death records its step) and `last-success`
+  only when `git ls-remote` shows the run's commit -- a push, or a
+  no-change run whose tree GitHub holds -- under `StateDirectory=`
+  (`/var/lib/toc-state-sync`, `TOC_SYNC_STATE_DIR`), each written aside and
+  renamed. A run that loses the lock to another records nothing; a deploy
+  skip is `skipped` and never a success. `toc-state-sync-check` and
+  `toc-ops-summary` read those: a missing or unreadable receipt, one past
+  20 minutes, or an unpushed count `git rev-list` cannot give is a failure
+  (`tests/test_state_sync_receipts.py`). A new backup job writes the same
+  two receipts and the summary learns to read them.
+- **A tree that shrank past belief is refused before anything is copied**
+  (`toc-state-sync`'s drop guard: `player/`, `gods/`, `heroes/` emptied,
+  unreadable, or down more than `TOC_SYNC_MAX_DROP_PCT` (20) once at
+  `TOC_SYNC_GUARD_MIN` (10) files; `corpse/live`, whose corpses rot, only
+  past 90% of 50), so `--delete` never mirrors a half-mounted disk over
+  GitHub's last good state. The override is a reason in
+  `/var/lib/toc-state-sync/allow-drop`, under a day old, used once,
+  recorded in the commit message and the journal. Never widen it to a
+  flag that stays set.
+- **The encrypted backup** (`deploy/sync-player-backup.sh`, installed as
+  `toc-player-backup`) keeps generations in one squashed commit (newest 4,
+  daily for 7 days, weekly for 4 weeks), pushes with `--force-with-lease`
+  on the commit it read, never pushes when the remote does not answer,
+  fetches its archive back to verify the checksum, refuses a drop the same
+  way (`/var/lib/toc-player-backup/allow-drop`) and an archive past 90 MB,
+  and writes `status`: `ok`, `failed` or `not-configured` (no remote,
+  recipient or key) -- which is never healthy. Its credentials never go in
+  git; `wiki/player-backups.md` says how to set them up, and
+  `deploy/restore-player-backup.sh` restores into a scratch directory only
+  (`tests/test_player_backup_remote.py`, a throwaway age key).
+- **Timers are on the wall clock.** `Persistent=` applies only to
+  `OnCalendar=`; on an `OnUnitActiveSec` timer it does nothing. The sync,
+  its check, the backup and the heartbeat use `OnCalendar` with
+  `Persistent=true`.
+- **The game's archives make room first** (`backup_script` in
+  `src/update.c`): expiry past the newest `TOC_BACKUP_KEEP` (6) and 30
+  days, then the oldest past those six over `TOC_BACKUP_BUDGET_MB` (4096),
+  runs before the archive and whatever it does; without twice the newest
+  archive plus `TOC_BACKUP_RESERVE_MB` free (and the inodes) no archive is
+  started, and staff hear it on WIZINFO. The recovery janitor applies the
+  same rule under the same flock when the disk is low
+  (`tests/test_backup_detached.py` `BackupStorageTests`, recovery
+  scenario 18). The script string must stay under C's 4,095-character
+  literal limit (`-Wpedantic` in CMake).
+- **Every support unit goes through `toc-install-units`**, from
+  `toc-deploy` after a healthy deploy, from `toc-restore`, and once from
+  `toc-auto-deploy` while `toc-heartbeat.timer` is missing: changed units
+  installed, one daemon-reload (also for one an earlier run could not
+  make), a timer or path unit it has never introduced enabled and recorded
+  in `/var/lib/toc/units-introduced` (the first run records what is
+  already there, so a person's choice stands), an introduced one that is
+  disabled left alone, the backup's timer only once configured, no
+  service ever restarted, and every unit proved loaded from the shipped
+  file. A new unit file goes on its list, or `tests/test_ops_units.py`
+  fails.
+- **`toc-ops-summary`** (`toc-heartbeat.timer`, every five minutes)
+  writes the redacted verdict to `/var/lib/toc/ops-summary.json` and
+  `log/ops-summary.json` (so git has it), serves it at the public
+  `/api/ops-summary` (503 unless `ok` and fresh), and fetches the
+  heartbeat URLs in `/etc/toc/heartbeat.env` only when what they vouch for
+  is true (`/fail` otherwise). `/api/ready` is 503 unless the game's loop
+  answers. A review reads `log/ops-summary.json` first
+  (`wiki/disaster-recovery.md` "What a review reads first"). No name,
+  message, secret or address ever goes in it.
 
 ## Security Facts
 

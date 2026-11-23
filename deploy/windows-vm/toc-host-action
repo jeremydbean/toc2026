@@ -129,11 +129,18 @@ act_status() {
     for u in toc-game.service toc-web.service caddy.service \
              toc-state-sync.timer toc-state-sync.service \
              toc-state-sync-check.timer toc-auto-deploy.timer toc-auto-deploy.service \
-             toc-game-recovery.timer toc-host-action.path toc-player-backup.timer; do
+             toc-game-recovery.timer toc-host-action.path toc-player-backup.timer \
+             toc-heartbeat.timer; do
         printf '%-30s %-10s %s\n' "$u" "$(systemctl is-enabled "$u" 2>/dev/null || true)" \
             "$(systemctl is-active "$u" 2>/dev/null || true)"
     done
-    echo "== the state sync's last result: $(systemctl show -p Result --value toc-state-sync.service 2>/dev/null)"
+    # The receipts, never systemd's Result (review, 2026-11-23).
+    for f in /var/lib/toc-state-sync/last-attempt /var/lib/toc-state-sync/last-success \
+             /var/lib/toc-player-backup/status /var/lib/toc-player-backup/last-attempt \
+             /var/lib/toc-player-backup/last-success; do
+        [ -f "$f" ] && { echo "== $f"; cat "$f"; }
+    done
+    [ -f /var/lib/toc/ops-summary.json ] && { echo "== operations summary"; cat /var/lib/toc/ops-summary.json; }
     [ -f /run/toc-state-sync.status ] && { echo "== toc-state-sync-check says"; cat /run/toc-state-sync.status; echo; }
     if [ -f "$CURRENT/log/deployed-commit" ]; then
         echo "== live: $(cat "$CURRENT/log/deployed-commit")"

@@ -12,6 +12,11 @@ Environment=HOME=/srv/toc
 # /run is root-owned; this one is ours, and systemd cleans it up.
 RuntimeDirectory=toc-state-sync
 ExecStart=/usr/local/sbin/toc-state-sync
-# A failed push is not a reason to stop trying; the next timer fires.
-SuccessExitStatus=0 1
+# The receipts (last-attempt, last-success) that toc-state-sync-check and
+# the operations summary read. A failure is a failure (review, 2026-11-23:
+# SuccessExitStatus=0 1 made every failed run read "success"); the timer
+# fires again five minutes later whatever this run's result was.
+StateDirectory=toc-state-sync
+StateDirectoryMode=0750
+Environment=TOC_SYNC_STATE_DIR=/var/lib/toc-state-sync
 TimeoutStartSec=600

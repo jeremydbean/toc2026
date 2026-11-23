@@ -186,20 +186,26 @@ class BackupSourceTests(unittest.TestCase):
                 env = dict(os.environ, TOC_ROOT=str(live), BACKUP_REMOTE=str(bare),
                            AGE_RECIPIENT_FILE=str(root / "recipient"),
                            GIT_SSH_KEY=str(root / "key"), XDG_RUNTIME_DIR=str(root),
+                           TOC_BACKUP_STATE_DIR=str(root / "state"),
                            PATH=f"{bin_dir}:{os.environ['PATH']}")
                 return subprocess.run(["sh", str(script)], env=env, capture_output=True, text=True)
 
             failed = push("exit 1\n")
             failed_refs = subprocess.run(["git", "--git-dir", str(bare), "branch", "--list"],
                                          capture_output=True, text=True).stdout
-            # The stand-in "encrypts" by copying its last argument to -o.
+            # The stand-in "encrypts" by writing age's header line and then
+            # its last argument to -o (the script checks the header).
             done = push('while [ $# -gt 1 ]; do [ "$1" = -o ] && out="$2"; shift; done\n'
-                        'cp "$1" "$out"\n')
-            snap = subprocess.run(["git", "--git-dir", str(bare), "show", "snapshots:snapshot.txt"],
+                        '{ echo age-encryption.org/v1; cat "$1"; } > "$out"\n')
+            latest = subprocess.run(["git", "--git-dir", str(bare), "show", "snapshots:latest.txt"],
+                                    capture_output=True, text=True).stdout
+            archive = latest.split("archive=", 1)[1].split()[0] if "archive=" in latest else "none"
+            snap = subprocess.run(["git", "--git-dir", str(bare), "show",
+                                   "snapshots:" + archive.replace(".tar.gz.age", ".txt")],
                                   capture_output=True, text=True).stdout
             blob = subprocess.run(["git", "--git-dir", str(bare), "show",
-                                   "snapshots:player-latest.tar.gz.age"], capture_output=True).stdout
-            (root / "out.tgz").write_bytes(blob)
+                                   f"snapshots:{archive}"], capture_output=True).stdout
+            (root / "out.tgz").write_bytes(blob.split(b"\n", 1)[1] if b"\n" in blob else b"")
             listing = subprocess.run(["tar", "-tzf", str(root / "out.tgz")],
                                      capture_output=True, text=True).stdout
 

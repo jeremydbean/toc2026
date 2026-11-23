@@ -257,17 +257,23 @@ nonempty file in `backups/`, and an off-host copy when the operation protects a
 major change.
 
 A six-hour off-host layer, `toc-player-backup.timer`
-(`deploy/sync-player-backup.sh`), age-encrypts `player/` before Git
-transport; the recovery private key must remain off the host. Where it is
-installed, check it with:
+(`deploy/sync-player-backup.sh`), age-encrypts `player/` and `corpse/` into
+kept generations before Git transport; the recovery private key must remain
+off the host. Check it with:
 
 ```bash
+sudo cat /var/lib/toc-player-backup/status        # ok, failed or not-configured
+sudo cat /var/lib/toc-player-backup/last-success  # when, which archive, how many generations
 systemctl list-timers toc-player-backup.timer
 sudo journalctl -u toc-player-backup -n 100 --no-pager
 ```
 
-Periodically decrypt and list the archive with the recovery key. A successful
-push alone does not prove the backup can be restored.
+`not-configured` is not a backup. Each success is verified by fetching the
+archive back, but only a decryption proves it can be restored: run the
+drill in `wiki/player-backups.md` (`deploy/restore-player-backup.sh`, into a
+scratch directory) after setting it up and now and then after. The
+operations summary (`wiki/disaster-recovery.md`) judges this and every
+other backup in one place.
 
 ### Player Version Restore
 

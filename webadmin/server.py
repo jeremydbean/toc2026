@@ -25,7 +25,7 @@ from urllib.parse import urlparse
 from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request, Response, WebSocket, WebSocketDisconnect
 from starlette.datastructures import Address
 from starlette.requests import HTTPConnection
-from fastapi.responses import FileResponse, PlainTextResponse
+from fastapi.responses import FileResponse, JSONResponse, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
@@ -37,6 +37,8 @@ _LOCAL_ADMIN_UNLOCK_REQUESTED: bool = (
     os.environ.get("WEB_ADMIN_LOCAL_UNLOCK", "0").strip().lower()
     in {"1", "true", "yes", "on"}
 )
+# toc-ops-summary's redacted verdict (deploy/windows-vm/toc-ops-summary).
+OPS_SUMMARY_PATH: Path = Path(os.getenv("WEB_ADMIN_OPS_SUMMARY", "/var/lib/toc/ops-summary.json"))
 HOST_STATUS_ENABLED: bool = (
     os.environ.get("WEB_ADMIN_HOST_STATUS", "0").strip().lower()
     in {"1", "true", "yes", "on"}
@@ -346,6 +348,7 @@ try:
     from webadmin import changes_index
     from webadmin import hunting
     from webadmin import host_actions
+    from webadmin import ops_status
 except ImportError:
     from area_health import build_area_health
     from area_parser import AreaParser, APPLY_LOCATIONS
@@ -360,6 +363,7 @@ except ImportError:
     import changes_index
     import hunting
     import host_actions
+    import ops_status
 
 # Default paths
 QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
@@ -3228,6 +3232,23 @@ async def changes_list(request: Request, x_admin_token: str = Header(default="")
 async def health() -> dict[str, bool | str]:
     status = await asyncio.to_thread(read_process_health)
     return {"status": "ok", **status}
+
+
+@app.get("/api/ready")
+async def ready() -> JSONResponse:
+    """200 only while the game's loop answers; 503 otherwise. Public, for a
+    monitor off the host (webadmin/ops_status.py)."""
+    code, body = await asyncio.to_thread(
+        ops_status.readiness, lambda: probe_game(timeout=1.5))
+    return JSONResponse(body, status_code=code, headers={"Cache-Control": "no-store"})
+
+
+@app.get("/api/ops-summary")
+async def ops_summary_route() -> JSONResponse:
+    """toc-ops-summary's redacted verdict: 200 when "ok" and fresh, 503
+    otherwise. Public: the same file reaches the public repository."""
+    code, body = await asyncio.to_thread(ops_status.ops_summary, OPS_SUMMARY_PATH)
+    return JSONResponse(body, status_code=code, headers={"Cache-Control": "no-store"})
 
 
 @app.get("/api/admin/status")

@@ -11,8 +11,15 @@ Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/disaster-rec
 # sync is stopped by paths-ignore in the workflow and [skip ci] in the
 # commit, and with those in place the interval costs nothing but
 # history. Frequent is what protects the characters, so frequent it is.
+#
+# On the wall clock (review, 2026-11-23): OnUnitActiveSec counts from the
+# service's last activation, so the retry after a failed run leaned on how
+# systemd treats a failed oneshot, and Persistent= does nothing at all for a
+# monotonic timer -- it applies only to OnCalendar=. A calendar timer fires
+# every five minutes whatever the last run did, and Persistent=true then
+# really runs one missed while the machine was down, at boot.
+OnCalendar=*-*-* *:00/5:00
 OnBootSec=3min
-OnUnitActiveSec=5min
 Persistent=true
 AccuracySec=30s
 

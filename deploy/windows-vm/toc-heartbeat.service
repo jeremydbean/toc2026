@@ -1,0 +1,13 @@
+[Unit]
+Description=Judge the host's backups and self-healing, and tell monitors off the host
+Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/disaster-recovery.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# Root: it reads every unit's state and both backups' receipts. It writes
+# only /var/lib/toc/ops-summary.json and log/ops-summary.json.
+ExecStart=/usr/local/sbin/toc-ops-summary
+# A degraded verdict exits 1, which is the truth; the timer runs it again.
+TimeoutStartSec=120
