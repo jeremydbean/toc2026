@@ -343115,3 +343115,89 @@ Mon Nov 23 01:52:12 2026 :: Log Ravagger [2580]: arrived (Wall Road.) from 2581
 Mon Nov 23 01:52:16 2026 :: Log Ravagger [2580]: con ci
 Mon Nov 23 01:52:18 2026 :: Log Ravagger [2580]: w
 Mon Nov 23 01:52:18 2026 :: Log Ravagger [2579]: arrived (Wall Road.) from 2580
+Mon Nov 23 01:52:24 2026 :: Log Ravagger [2579]: op w
+Mon Nov 23 01:52:25 2026 :: Log Ravagger [2579]: w
+Mon Nov 23 01:52:25 2026 :: Log Ravagger [2569]: arrived (Southwest Guardpost and Watchtower.) from 2579
+Mon Nov 23 01:52:31 2026 :: Log Ravagger [2569]: l sign
+Mon Nov 23 01:52:36 2026 :: Log Ravagger [2569]: op n
+Mon Nov 23 01:52:38 2026 :: Log Ravagger [2569]: n
+Mon Nov 23 01:52:38 2026 :: Log Ravagger [2568]: arrived (Wall Road.) from 2569
+Mon Nov 23 01:52:40 2026 :: Log Ravagger [2568]: n
+Mon Nov 23 01:52:40 2026 :: Log Ravagger [2567]: arrived (Wall Road.) from 2568
+Mon Nov 23 01:52:41 2026 :: Log Ravagger [2567]: n
+Mon Nov 23 01:52:41 2026 :: Log Ravagger [2566]: arrived (Wall Road.) from 2567
+Mon Nov 23 01:52:44 2026 :: Log Ravagger [2566]: n
+Mon Nov 23 01:52:44 2026 :: Log Ravagger [2565]: arrived (Wall Road.) from 2566
+Mon Nov 23 01:52:46 2026 :: Log Ravagger [2565]: n
+Mon Nov 23 01:52:46 2026 :: Log Ravagger [2564]: arrived (Wall Road.) from 2565
+Mon Nov 23 01:52:48 2026 :: Log Ravagger [2564]: n
+Mon Nov 23 01:52:48 2026 :: Log Ravagger [2438]: arrived (Inside the Western Gates of Dresden.) from 2564
+Mon Nov 23 01:52:54 2026 :: Log Ravagger [2438]: e
+Mon Nov 23 01:52:54 2026 :: Log Ravagger [2437]: arrived (Temple Boulevard.) from 2438
+Mon Nov 23 01:52:57 2026 :: Log Ravagger [2437]: w
+Mon Nov 23 01:52:57 2026 :: Log Ravagger [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Mon Nov 23 01:52:58 2026 :: Log Ravagger [2438]: s
+Mon Nov 23 01:52:58 2026 :: Log Ravagger [2564]: arrived (Wall Road.) from 2438
+Mon Nov 23 01:53:00 2026 :: Log Ravagger [2564]: n
+Mon Nov 23 01:53:00 2026 :: Log Ravagger [2438]: arrived (Inside the Western Gates of Dresden.) from 2564
+Mon Nov 23 01:53:01 2026 :: Log Ravagger [2438]: e
+Mon Nov 23 01:53:01 2026 :: Log Ravagger [2437]: arrived (Temple Boulevard.) from 2438
+Mon Nov 23 01:53:03 2026 :: Log Ravagger [2437]: s
+Mon Nov 23 01:53:03 2026 :: Log Ravagger [4800]: arrived (Another Dimension) from 2437
+Mon Nov 23 01:53:06 2026 :: Log Ravagger [4800]: s
+Mon Nov 23 01:53:06 2026 :: Log Ravagger [4801]: arrived (The passage way) from 4800
+Mon Nov 23 01:53:07 2026 :: Log Ravagger [4801]: s
+Mon Nov 23 01:53:07 2026 :: Log Ravagger [4802]: arrived (The narrow entrance) from 4801
+Mon Nov 23 01:53:15 2026 :: Log Ravagger [4802]: pra
+Mon Nov 23 01:53:23 2026 :: Log Ravagger [4802]: s
+Mon Nov 23 01:53:23 2026 :: Log Ravagger [4803]: arrived (The Palm of the Creator) from 4802
+Mon Nov 23 01:53:30 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4803
+Mon Nov 23 01:53:34 2026 :: Log Ravagger [4804]: l pit
+Mon Nov 23 01:53:36 2026 :: Log Ravagger [4804]: i
+Mon Nov 23 01:53:39 2026 :: Log Ravagger [4804]: l
+Mon Nov 23 01:53:41 2026 :: Log Ravagger [4804]: e
+Mon Nov 23 01:53:41 2026 :: Log Ravagger [4806]: arrived (A Small Clearing) from 4804
+Mon Nov 23 01:53:45 2026 :: Log Ravagger [4806]: pra
+Mon Nov 23 01:53:48 2026 :: Log Ravagger [4806]: w
+Mon Nov 23 01:53:48 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4806
+Mon Nov 23 01:53:49 2026 :: Log Ravagger [4804]: w
+Mon Nov 23 01:53:49 2026 :: Log Ravagger [4807]: arrived (The Training room) from 4804
+Mon Nov 23 01:53:51 2026 :: Log Ravagger [4807]: pra
+Mon Nov 23 01:53:58 2026 :: Log Ravagger [4807]: help med
+Mon Nov 23 01:54:21 2026 :: Log Ravagger [4807]: pra med
+Mon Nov 23 01:54:22 2026 :: Log Ravagger [4807]: pra med
+Mon Nov 23 01:54:23 2026 :: Log Ravagger [4807]: pra med
+Mon Nov 23 01:54:29 2026 :: Log Ravagger [4807]: pra
+Mon Nov 23 01:54:33 2026 :: Log Ravagger [4807]: pra med
+Mon Nov 23 01:54:36 2026 :: Log Ravagger [4807]: pra
+Mon Nov 23 01:54:37 2026 :: Log Ravagger [4807]: e
+Mon Nov 23 01:54:37 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4807
+Mon Nov 23 01:54:39 2026 :: Log Ravagger [4804]: ne
+Mon Nov 23 01:54:39 2026 :: Log Ravagger [4808]: arrived (The Rest Room) from 4804
+Mon Nov 23 01:54:41 2026 :: Log Ravagger [4808]: pra
+Mon Nov 23 01:54:48 2026 :: Log Ravagger [4808]: sw
+Mon Nov 23 01:54:48 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4808
+Mon Nov 23 01:54:49 2026 :: Log Ravagger [4804]: e
+Mon Nov 23 01:54:49 2026 :: Log Ravagger [4806]: arrived (A Small Clearing) from 4804
+Mon Nov 23 01:54:53 2026 :: Log Ravagger [4806]: pra
+Mon Nov 23 01:54:56 2026 :: Log Ravagger [4806]: w
+Mon Nov 23 01:54:56 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4806
+Mon Nov 23 01:55:03 2026 :: Log Ravagger [4804]: scan
+Mon Nov 23 01:55:07 2026 :: Log Ravagger [4804]: l
+Mon Nov 23 01:55:08 2026 :: Log Ravagger [4804]: n
+Mon Nov 23 01:55:08 2026 :: Log Ravagger [4805]: arrived (The Masters Place) from 4804
+Mon Nov 23 01:55:11 2026 :: Log Ravagger [4805]: pra
+Mon Nov 23 01:55:21 2026 :: Log Ravagger [4805]: (refused) monk
+Mon Nov 23 01:55:24 2026 :: Log Ravagger [4805]: help monk
+Mon Nov 23 01:55:46 2026 :: Log Ravagger [4805]: help palms
+Mon Nov 23 01:56:11 2026 :: Log Ravagger [4805]: gainlist
+Mon Nov 23 01:56:46 2026 :: Connection guard: refused 1 connection from 52.22.236.30 (paused; 33 refused in all, pause 4 this week, 2089 minutes left).
+Mon Nov 23 01:56:59 2026 :: Log Ravagger [4805]: l
+Mon Nov 23 01:57:07 2026 :: Log Ravagger [4805]: s
+Mon Nov 23 01:57:07 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4805
+Mon Nov 23 01:57:08 2026 :: Log Ravagger [4804]: w
+Mon Nov 23 01:57:08 2026 :: Log Ravagger [4807]: arrived (The Training room) from 4804
+Mon Nov 23 01:57:14 2026 :: Log Ravagger [4807]: e
+Mon Nov 23 01:57:14 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4807
+Mon Nov 23 01:57:16 2026 :: Log Ravagger [4804]: e
+Mon Nov 23 01:57:16 2026 :: Log Ravagger [4806]: arrived (A Small Clearing) from 4804

@@ -54763,3 +54763,66 @@
 1795398736	cmd	Ravagger	9	2580	limbo.are	standing	100	0	-	consider	ci	A citizen of Dresden is about your level. // A citizen of Dresden has about half your hit points. // Blow for blow, you would need about 12 rounds to bring a citizen of Dresden down; she would need about 29 rounds for you.	-	+
 1795398738	cmd	Ravagger	9	2579	limbo.are	standing	100	0	-	west		Wall Road. //   Sunlight shines down on the guard post to the west, as though some God were // blessing the building with their almighty power.	-	+
 1795398739	laid	-	0	0	-	1270	herb	36	a belladonna plant	20598	emerald.are	scatter
+1795398744	cmd	Ravagger	9	2579	limbo.are	standing	100	0	-	open	w	Ok.	-	-
+1795398745	cmd	Ravagger	9	2569	limbo.are	standing	100	0	-	west		Southwest Guardpost and Watchtower. //   This is the Southwest guardpost for Dresden. // It is used as a watch station and coffee break area for the Guards of Dresden.	-	+
+1795398751	cmd	Ravagger	9	2569	limbo.are	standing	100	0	-	look	sign	** WARNING ** // This area is RESTRICTED. // Authorized Personnel Only!	-	+
+1795398756	cmd	Ravagger	9	2569	limbo.are	standing	100	0	-	open	n	Ok.	-	-
+1795398758	cmd	Ravagger	9	2568	limbo.are	standing	100	0	-	north		Wall Road. //   Sunlight shines down on the guard post to the south, as though some God were // blessing the building with their almighty power.	-	+
+1795398760	cmd	Ravagger	9	2567	limbo.are	standing	100	0	-	north		Wall Road. //   A cloud passes over the sun, sinking the alley into darkness.  The hair on // your back begins to stick up, and you shake yet it is not cold.	-	+
+1795398761	cmd	Ravagger	9	2566	limbo.are	standing	100	0	-	north		Wall Road. //   The darkness begins to fade away as you go farther south.  You feel as though // someone is watching you from the shadows.	-	+
+1795398764	cmd	Ravagger	9	2565	limbo.are	standing	100	0	-	north		Wall Road. //   The alley is shrouded in flitting shadows, and the darkness that pervades // this area sends a chill up your spine.	-	+
+1795398766	cmd	Ravagger	9	2564	limbo.are	standing	100	0	-	north		Wall Road. //   The alley is shrouded in flitting shadows, and the darkness that pervades // this area sends a chill up your spine.	-	+
+1795398768	area	Ravagger	9	2438	dresden.are	limbo.are	dresden.are	44	north
+1795398768	cmd	Ravagger	9	2438	dresden.are	standing	100	0	-	north		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795398774	cmd	Ravagger	9	2437	dresden.are	standing	100	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795398777	cmd	Ravagger	9	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795398778	area	Ravagger	9	2564	limbo.are	dresden.are	limbo.are	10	south
+1795398778	cmd	Ravagger	9	2564	limbo.are	standing	100	0	-	south		Wall Road. //   The alley is shrouded in flitting shadows, and the darkness that pervades // this area sends a chill up your spine.	-	+
+1795398780	area	Ravagger	9	2438	dresden.are	limbo.are	dresden.are	2	north
+1795398780	cmd	Ravagger	9	2438	dresden.are	standing	100	0	-	north		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795398781	cmd	Ravagger	9	2437	dresden.are	standing	100	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795398783	cmd	Ravagger	9	4800	dresden.are	standing	100	0	-	south		Another Dimension //   You have somehow left the City of Dresden, and entered another dimension. // To the north you can still make out the streets of Dresden thru the mist,	-	+
+1795398786	cmd	Ravagger	9	4801	dresden.are	standing	100	0	-	south		The passage way //   A long narrow path leads upwards in a small secluded valley. Large but gentle // breezes ruffle the plethora of raiment that you wear, and a playful mist	-	+
+1795398787	cmd	Ravagger	9	4802	dresden.are	standing	100	0	-	south		The narrow entrance //   You have reached the entrance of a narrow box canyon. Standing beside you is // an odd weather worn stone statue, that seems oddly out of place in the	-	+
+1795398795	cmd	Ravagger	9	4802	dresden.are	standing	100	0	-	practice		dagger              33%  flail                6%  whip                15%   // dodge               61%  hand to hand        78%  kick                64%   // meditation           1%  recall              75%  	-	+
+1795398801	laid	-	0	0	-	1274	herb	43	a sprig of hyssop	13079	lakes.are	scatter
+1795398801	laid	-	0	0	-	1275	herb	35	a sprig of angelica	13037	lakes.are	scatter
+1795398803	cmd	Ravagger	9	4803	dresden.are	standing	100	0	-	south		The Palm of the Creator //   A large stone hand rises out of the earth and points skyward...the only place // you find to stand in the room is at the center of the giant stone effigy.	-	+
+1795398814	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	look	pit	This is where you put money and items to help Doz expand this shrine and // convert more people to the belief of Mota, lord of the gods.	-	-
+1795398816	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	inventory		You are carrying: //      a buffalo water skin //      (Glowing) a slice of pumpkin pie	-	+
+1795398819	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	look		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795398821	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1795398825	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	practice		hand to hand        78%  kick                64%  dodge               61%   // You have 13 practice sessions left.	-	-
+1795398828	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795398829	cmd	Ravagger	9	4807	dresden.are	standing	100	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1795398831	cmd	Ravagger	9	4807	dresden.are	standing	100	0	-	practice		meditation           1%   // You have 13 practice sessions left.	-	-
+1795398838	cmd	Ravagger	9	4807	dresden.are	standing	100	0	-	help	med	Passive.  Improves how fast you regain mana while resting or sleeping. // Minimum level by class (GAINLIST shows who sells it): // Mage:6  Cleric:6  Thief:15  Warrior:15  Monk:9  Necromancer:8	-	+
+1795398861	cmd	Ravagger	9	4807	dresden.are	standing	100	0	-	practice	med	You practice meditation.	-	-
+1795398862	cmd	Ravagger	9	4807	dresden.are	standing	100	0	-	practice	med	You practice meditation.	-	-
+1795398863	cmd	Ravagger	9	4807	dresden.are	standing	100	0	-	practice	med	(Tip: PRACTICE <skill> <number> or PRACTICE <skill> MAX spends several sessions at once.) // You practice meditation.	-	-
+1795398869	cmd	Ravagger	9	4807	dresden.are	standing	100	0	-	practice		meditation          43%   // You have 10 practice sessions left.	-	-
+1795398873	cmd	Ravagger	9	4807	dresden.are	standing	100	0	-	practice	med	You practice meditation.	-	-
+1795398876	cmd	Ravagger	9	4807	dresden.are	standing	100	0	-	practice		meditation          57%   // You have 9 practice sessions left.	-	-
+1795398877	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795398879	cmd	Ravagger	9	4808	dresden.are	standing	100	0	-	ne		The Rest Room //   This is a small quiet room set aside for you to put the battle weary road // behind you, comfortable pillows line the floor, and scented joss sticks fill	-	+
+1795398881	cmd	Ravagger	9	4808	dresden.are	standing	100	0	-	practice		dagger              33%  flail                6%  whip                15%   // dodge               61%  hand to hand        78%  kick                64%   // meditation          57%  recall              75%  	-	+
+1795398888	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	sw		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795398889	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1795398893	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	practice		hand to hand        78%  kick                64%  dodge               61%   // You have 9 practice sessions left.	-	-
+1795398896	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795398903	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1795398907	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	look		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795398908	cmd	Ravagger	9	4805	dresden.are	standing	100	0	-	north		The Masters Place //   Here resides the Master of all the monks, it is he that monks seek for // guidance. Lighted joss sticks fill the room with the sweet perfume of lotus	-	+
+1795398911	cmd	Ravagger	9	4805	dresden.are	standing	100	0	-	practice		dagger              33%  flail                6%  whip                15%   // dodge               61%  hand to hand        78%  kick                64%   // meditation          57%  recall              75%  	-	+
+1795398919	laid	-	0	0	-	1277	herb	50	a head of cabbage	16009	pirate.are	scatter
+1795398919	laid	-	0	0	-	1278	herb	43	a sprig of hyssop	16020	pirate.are	scatter
+1795398921	refused	Ravagger	9	4805	dresden.are	standing	100	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1795398924	cmd	Ravagger	9	4805	dresden.are	standing	100	0	-	help	monk	Monks fight with their bare hands and a trained mind.  They start with // hand to hand, dodge, meditation, kick, trip and nerve damage, and learn // their martial arts at the PALMS OF THE CREATOR.  Monks must be human or	-	+
+1795398946	cmd	Ravagger	9	4805	dresden.are	standing	100	0	-	help	palms	The monks' guild hall, reached by a path south of Temple Road near // Dresden's west gate (WALKTO PALM).  Only monks may enter. //   The Silent Master       nerve damage, steel fist, stunning blow, fast	-	+
+1795398971	cmd	Ravagger	9	4805	dresden.are	standing	100	0	-	gainlist		Abilities for a level 9 monk of the monk guild: 15 learned, 19 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):	-	+
+1795399019	cmd	Ravagger	9	4805	dresden.are	standing	100	0	-	look		The Masters Place //   Here resides the Master of all the monks, it is he that monks seek for // guidance. Lighted joss sticks fill the room with the sweet perfume of lotus	-	+
+1795399027	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	south		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795399028	cmd	Ravagger	9	4807	dresden.are	standing	100	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1795399029	census	-	0	0	-	herbs=80/150 components=44/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=22 spotted=1 picked=0 passed=1 cleared=0 rare=0 mobs_seen=25 mobs_fought=3 secs=900
+1795399034	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795399036	cmd	Ravagger	9	4806	dresden.are	standing	100	2	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
