@@ -54560,3 +54560,97 @@
 1795398136	laid	-	0	0	-	1226	herb	44	a sprig of aconite	6308	arac.are	scatter
 1795398136	laid	-	0	0	-	1227	component	56	a dragons claw	13225	solace.are	scatter
 1795398140	cmd	Ravagger	9	3713	school.are	standing	100	0	-	north		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is south.	-	+
+1795398141	cmd	Ravagger	9	3712	school.are	standing	100	0	-	south		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795398142	cmd	Ravagger	9	3714	school.are	standing	100	0	-	west		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is east.	-	+
+1795398144	cmd	Ravagger	9	3712	school.are	standing	100	0	-	east		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795398145	cmd	Ravagger	9	3715	school.are	standing	100	0	-	south		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is north.	-	+
+1795398147	cmd	Ravagger	9	3712	school.are	standing	100	0	-	north		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795398156	cmd	Ravagger	9	3716	school.are	standing	100	0	-	east		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is west.	-	+
+1795398158	cmd	Ravagger	9	3712	school.are	standing	100	0	-	west		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795398160	cmd	Ravagger	9	3717	school.are	standing	100	0	-	down		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795398168	cmd	Ravagger	9	3717	school.are	standing	100	0	-	look	sign	By now, you must be hungry and thirsty.  Time to buy groceries! // To the south is a store.  Inside the store, you can use these commands: //     BUY    Buy an item	-	+
+1795398194	cmd	Ravagger	9	3718	school.are	standing	100	0	-	south		The Store in Mud School //   You are in a cramped room.  Stacked neatly on shelves everywhere are items // and packages.  Light fluoresces off the ceiling in soft white tones.  Of	-	+
+1795398196	cmd	Ravagger	9	3718	school.are	standing	100	0	-	list		[Lv Price] Item // [ 0        48c] a hooded brass lantern. // [ 0        48c] a buffalo water skin.	-	+
+1795398200	coin	Ravagger	9	3718	school.are	-48	spent	buy	the adept of Gravestone	9440559
+1795398200	got	Ravagger	9	3718	school.are	3138	a buffalo water skin	drink container	0	48	buy	the adept of Gravestone
+1795398200	cmd	Ravagger	9	3718	school.are	standing	100	0	-	buy	skin	You buy a buffalo water skin.	-	-
+1795398205	cmd	Ravagger	9	3718	school.are	standing	100	0	-	inventory		You are carrying: //      a buffalo water skin //      (Glowing) a slice of pumpkin pie	-	+
+1795398213	laid	-	0	0	-	1229	herb	47	a sprig of saffron	25015	mountain.are	scatter
+1795398214	cmd	Ravagger	9	3718	school.are	standing	100	0	-	look		The Store in Mud School //   You are in a cramped room.  Stacked neatly on shelves everywhere are items // and packages.  Light fluoresces off the ceiling in soft white tones.  Of	-	+
+1795398215	cmd	Ravagger	9	3717	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795398216	cmd	Ravagger	9	3784	school.are	standing	100	0	-	north		The Hallway //   This is a common school hallway with the UGLY tile floor that most school // administrations seem to love so much.  The lockers on either side of the	-	+
+1795398219	cmd	Ravagger	9	3717	school.are	standing	100	0	-	south		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795398220	cmd	Ravagger	9	3761	school.are	standing	100	0	-	west		It is pitch black ... 	-	-
+1795398222	cmd	Ravagger	9	3717	school.are	standing	100	0	-	east		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795398224	cmd	Ravagger	9	3712	school.are	standing	100	0	-	up		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795398229	cmd	Ravagger	9	3712	school.are	standing	100	0	-	equipment		You are using: // <worn around neck>  a sub issue cloak // <worn around neck>  a sub issue cloak	-	+
+1795398239	cmd	Ravagger	9	3712	school.are	standing	100	0	-	look		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795398241	cmd	Ravagger	9	3714	school.are	standing	100	0	-	west		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is east.	-	+
+1795398243	got	Ravagger	9	3714	school.are	3708	a pair of sub issue boots	armor	0	0	autoloot	corpse of the lizard man
+1795398243	got	Ravagger	9	3714	school.are	3713	a sub issue bracer	armor	0	0	autoloot	corpse of the lizard man
+1795398243	coin	Ravagger	9	3714	school.are	+2	loot	kill	corpse of the lizard man	9440561
+1795398243	cmd	Ravagger	9	3714	school.are	standing	100	2	-	kill	li	Your punch injures the lizard man. // The lizard man is DEAD!! // You receive 30 experience points (15 of them rested).	-	+
+1795398249	cmd	Ravagger	9	3714	school.are	standing	100	0	-	wear	all	You wear a sub issue bracer around your right wrist.	-	-
+1795398255	cmd	Ravagger	9	3712	school.are	standing	100	0	-	east		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795398259	laid	-	0	0	-	1233	component	88	a vial of green slime	780	camelot.are	scatter
+1795398266	cmd	Ravagger	9	3712	school.are	standing	100	0	-	drop	bo	You drop a pair of sub issue boots. // A pair of sub issue boots burst into flames as it hits the ground.	-	-
+1795398267	cmd	Ravagger	9	3712	school.are	standing	100	0	-	look		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795398272	cmd	Ravagger	9	3717	school.are	standing	100	0	-	down		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795398279	cmd	Ravagger	9	3717	school.are	standing	100	0	-	open		Open what?	-	-
+1795398285	cmd	Ravagger	9	3717	school.are	standing	100	0	-	open	e	Ok.	-	-
+1795398288	cmd	Ravagger	9	3719	school.are	standing	100	0	-	east		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795398294	cmd	Ravagger	9	3719	school.are	standing	100	0	-	look	sgn	You do not see that here.	-	-
+1795398296	cmd	Ravagger	9	3719	school.are	standing	100	0	-	look	si	North of you is a dark room.  I hope you still have the lantern!  If not, // you have to back to the store and buy one. // In the room is a monster with a key that you need.  After killing the	-	+
+1795398307	laid	-	0	0	-	1235	herb	48	an alfalfa sprout	17172	highland.are	scatter
+1795398307	laid	-	0	0	-	1236	component	54	eye of newt	1325	htower.are	scatter
+1795398313	cmd	Ravagger	9	3720	school.are	standing	100	0	-	north		It is pitch black ...  // You see glowing red eyes watching YOU!	-	-
+1795398315	cmd	Ravagger	9	3719	school.are	standing	100	0	-	south		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795398316	cmd	Ravagger	9	3719	school.are	standing	100	0	-	dummy		There is no training dummy here.  The yard is down the stairs // in the centre of the Oak Tree Square, then south; WALK DUMMY // in Mudlet takes you there.	-	-
+1795398319	cmd	Ravagger	9	3719	school.are	standing	100	0	-	look		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795398321	cmd	Ravagger	9	3719	school.are	standing	100	0	-	west		The door is closed.	-	-
+1795398324	cmd	Ravagger	9	3719	school.are	standing	100	0	-	open	we	Ok.	-	-
+1795398326	cmd	Ravagger	9	3717	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795398328	cmd	Ravagger	9	3712	school.are	standing	100	0	-	up		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795398329	cmd	Ravagger	9	3713	school.are	standing	100	0	-	north		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is south.	-	+
+1795398331	cmd	Ravagger	9	3712	school.are	standing	100	0	-	south		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795398332	cmd	Ravagger	9	3717	school.are	standing	100	0	-	down		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795398333	cmd	Ravagger	9	3784	school.are	standing	100	0	-	north		The Hallway //   This is a common school hallway with the UGLY tile floor that most school // administrations seem to love so much.  The lockers on either side of the	-	+
+1795398336	cmd	Ravagger	9	3717	school.are	standing	100	0	-	south		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795398338	cmd	Ravagger	9	3718	school.are	standing	100	0	-	south		The Store in Mud School //   You are in a cramped room.  Stacked neatly on shelves everywhere are items // and packages.  Light fluoresces off the ceiling in soft white tones.  Of	-	+
+1795398341	cmd	Ravagger	9	3718	school.are	standing	100	0	-	list		[Lv Price] Item // [ 0        48c] a hooded brass lantern. // [ 0        48c] a buffalo water skin.	-	+
+1795398343	coin	Ravagger	9	3718	school.are	-48	spent	buy	the adept of Gravestone	9440513
+1795398343	got	Ravagger	9	3718	school.are	3031	a hooded brass lantern	light	0	48	buy	the adept of Gravestone
+1795398343	cmd	Ravagger	9	3718	school.are	standing	100	0	-	buy	la	You buy a hooded brass lantern.	-	-
+1795398347	cmd	Ravagger	9	3718	school.are	standing	100	0	-	wear	la	You light a hooded brass lantern and hold it.	-	-
+1795398349	cmd	Ravagger	9	3717	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795398350	cmd	Ravagger	9	3719	school.are	standing	100	0	-	east		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795398351	cmd	Ravagger	9	3719	school.are	standing	100	0	-	east		The door is closed.	-	-
+1795398353	cmd	Ravagger	9	3719	school.are	standing	100	0	-	open	e	It's locked.	-	-
+1795398354	cmd	Ravagger	9	3719	school.are	standing	100	0	-	east		The door is closed.	-	-
+1795398358	cmd	Ravagger	9	3719	school.are	standing	100	0	-	unlock	e	You lack the key: it takes a key to unlock it.	-	-
+1795398362	cmd	Ravagger	9	3719	school.are	standing	100	0	-	inventory		You are carrying: //      a buffalo water skin //      (Glowing) a slice of pumpkin pie	-	+
+1795398364	cmd	Ravagger	9	3717	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795398367	cmd	Ravagger	9	3717	school.are	standing	100	0	-	look	si	By now, you must be hungry and thirsty.  Time to buy groceries! // To the south is a store.  Inside the store, you can use these commands: //     BUY    Buy an item	-	+
+1795398382	cmd	Ravagger	9	3717	school.are	standing	100	0	-	look		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795398385	laid	-	0	0	-	1238	herb	48	an alfalfa sprout	29274	korzath2.are	scatter
+1795398385	laid	-	0	0	-	1239	herb	40	a clove	29310	korzath2.are	scatter
+1795398386	cmd	Ravagger	9	3719	school.are	standing	100	0	-	east		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795398389	cmd	Ravagger	9	3720	school.are	standing	100	0	-	north		The Darkened Room //   This room was purposefully darkened so that you would need to hold on to a // light source to go through.  The walls are, of course, blank, and white.	-	+
+1795398392	got	Ravagger	9	3720	school.are	3709	a pair of sub issue gloves	armor	0	0	autoloot	corpse of the clown
+1795398392	got	Ravagger	9	3720	school.are	3710	a pair of sub issue sleeves	armor	0	0	autoloot	corpse of the clown
+1795398392	got	Ravagger	9	3720	school.are	3714	a key	key	0	0	autoloot	corpse of the clown
+1795398392	got	Ravagger	9	3720	school.are	3713	a sub issue bracer	armor	0	0	autoloot	corpse of the clown
+1795398392	coin	Ravagger	9	3720	school.are	+4	loot	kill	corpse of the clown	9440517
+1795398392	cmd	Ravagger	9	3720	school.are	standing	100	2	-	kill	cl	Your punch injures the clown. // Your punch injures the clown. // The clown is DEAD!!	-	+
+1795398399	cmd	Ravagger	9	3720	school.are	standing	100	0	-	wear	all	You wear a pair of sub issue sleeves on your arms. // You wear a pair of sub issue gloves on your hands.	-	-
+1795398403	cmd	Ravagger	9	3720	school.are	standing	100	0	-	inventory		You are carrying: //      a sub issue bracer //      a key	-	+
+1795398406	cmd	Ravagger	9	3720	school.are	standing	100	0	-	drop	br	You drop a sub issue bracer. // A sub issue bracer burst into flames as it hits the ground.	-	-
+1795398411	cmd	Ravagger	9	3720	school.are	standing	100	0	-	look		The Darkened Room //   This room was purposefully darkened so that you would need to hold on to a // light source to go through.  The walls are, of course, blank, and white.	-	+
+1795398414	cmd	Ravagger	9	3719	school.are	standing	100	0	-	south		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795398417	cmd	Ravagger	9	3719	school.are	standing	100	0	-	open	e	It's locked.	-	-
+1795398422	cmd	Ravagger	9	3719	school.are	standing	100	0	-	unlock	e	*Click*	-	-
+1795398423	cmd	Ravagger	9	3719	school.are	standing	100	0	-	open	e	Ok.	-	-
+1795398426	cmd	Ravagger	9	3721	school.are	standing	100	0	-	east		The End of Mud School! //   This is a very bright room, with a marble pedestal in the center.  Behind // the pedestal stands a person cloaked in Silver.  Tapestries flow from every	-	+
+1795398432	cmd	Ravagger	9	3721	school.are	standing	100	0	-	consider	gob	The educated goblin is well below your level. // The educated goblin has about a third of your hit points. // Blow for blow, you would need about 3 rounds to bring the educated goblin down; it would need over a hundred rounds for you.	-	+
+1795398435	cmd	Ravagger	9	3721	school.are	standing	100	0	-	kill	go	Your punch misses the educated goblin. // Your punch grazes the educated goblin.	-	-
+1795398438	cmd	Ravagger	9	3721	school.are	fighting	100	0	fight	kick		Your kick scratches the educated goblin.	-	-

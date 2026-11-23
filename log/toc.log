@@ -342856,3 +342856,124 @@ Mon Nov 23 01:42:15 2026 :: Log Ravagger [3794]: sw
 Mon Nov 23 01:42:15 2026 :: Log Ravagger [3712]: arrived (The Cage Room) from 3794
 Mon Nov 23 01:42:20 2026 :: Log Ravagger [3712]: n
 Mon Nov 23 01:42:20 2026 :: Log Ravagger [3713]: arrived (A Cage) from 3712
+Mon Nov 23 01:42:21 2026 :: Log Ravagger [3713]: s
+Mon Nov 23 01:42:21 2026 :: Log Ravagger [3712]: arrived (The Cage Room) from 3713
+Mon Nov 23 01:42:22 2026 :: Log Ravagger [3712]: w
+Mon Nov 23 01:42:22 2026 :: Log Ravagger [3714]: arrived (A Cage) from 3712
+Mon Nov 23 01:42:24 2026 :: Log Ravagger [3714]: e
+Mon Nov 23 01:42:24 2026 :: Log Ravagger [3712]: arrived (The Cage Room) from 3714
+Mon Nov 23 01:42:25 2026 :: Log Ravagger [3712]: s
+Mon Nov 23 01:42:25 2026 :: Log Ravagger [3715]: arrived (A Cage) from 3712
+Mon Nov 23 01:42:27 2026 :: Log Ravagger [3715]: n
+Mon Nov 23 01:42:27 2026 :: Log Ravagger [3712]: arrived (The Cage Room) from 3715
+Mon Nov 23 01:42:36 2026 :: Log Ravagger [3712]: e
+Mon Nov 23 01:42:36 2026 :: Log Ravagger [3716]: arrived (A Cage) from 3712
+Mon Nov 23 01:42:38 2026 :: Log Ravagger [3716]: w
+Mon Nov 23 01:42:38 2026 :: Log Ravagger [3712]: arrived (The Cage Room) from 3716
+Mon Nov 23 01:42:40 2026 :: Log Ravagger [3712]: d
+Mon Nov 23 01:42:40 2026 :: Log Ravagger [3717]: arrived (A Room in Mud School) from 3712
+Mon Nov 23 01:42:48 2026 :: Log Ravagger [3717]: l sign
+Mon Nov 23 01:43:14 2026 :: Log Ravagger [3717]: s
+Mon Nov 23 01:43:14 2026 :: Log Ravagger [3718]: arrived (The Store in Mud School) from 3717
+Mon Nov 23 01:43:16 2026 :: Log Ravagger [3718]: list
+Mon Nov 23 01:43:20 2026 :: Log Ravagger [3718]: b skin
+Mon Nov 23 01:43:20 2026 :: Log Ravagger [3718]: copper -48
+Mon Nov 23 01:43:20 2026 :: Log Ravagger [3718]: bought a buffalo water skin (vnum 3138) for 48 copper from the adept of Gravestone
+Mon Nov 23 01:43:25 2026 :: Log Ravagger [3718]: inv
+Mon Nov 23 01:43:34 2026 :: Log Ravagger [3718]: l
+Mon Nov 23 01:43:35 2026 :: Log Ravagger [3718]: n
+Mon Nov 23 01:43:35 2026 :: Log Ravagger [3717]: arrived (A Room in Mud School) from 3718
+Mon Nov 23 01:43:36 2026 :: Log Ravagger [3717]: n
+Mon Nov 23 01:43:36 2026 :: Log Ravagger [3784]: arrived (The Hallway) from 3717
+Mon Nov 23 01:43:39 2026 :: Log Ravagger [3784]: s
+Mon Nov 23 01:43:39 2026 :: Log Ravagger [3717]: arrived (A Room in Mud School) from 3784
+Mon Nov 23 01:43:40 2026 :: Log Ravagger [3717]: w
+Mon Nov 23 01:43:40 2026 :: Log Ravagger [3761]: arrived (Entrance to a dark cavern) from 3717
+Mon Nov 23 01:43:42 2026 :: Log Ravagger [3761]: e
+Mon Nov 23 01:43:42 2026 :: Log Ravagger [3717]: arrived (A Room in Mud School) from 3761
+Mon Nov 23 01:43:44 2026 :: Log Ravagger [3717]: u
+Mon Nov 23 01:43:44 2026 :: Log Ravagger [3712]: arrived (The Cage Room) from 3717
+Mon Nov 23 01:43:49 2026 :: Log Ravagger [3712]: eq
+Mon Nov 23 01:43:59 2026 :: Log Ravagger [3712]: l
+Mon Nov 23 01:44:01 2026 :: Log Ravagger [3712]: w
+Mon Nov 23 01:44:01 2026 :: Log Ravagger [3714]: arrived (A Cage) from 3712
+Mon Nov 23 01:44:03 2026 :: Log Ravagger [3714]: k li
+Mon Nov 23 01:44:03 2026 :: Log Ravagger [3714]: killed the lizard man
+Mon Nov 23 01:44:03 2026 :: Log Ravagger [3714]: coin +2 copper
+Mon Nov 23 01:44:09 2026 :: Log Ravagger [3714]: wear all
+Mon Nov 23 01:44:15 2026 :: Log Ravagger [3714]: e
+Mon Nov 23 01:44:15 2026 :: Log Ravagger [3712]: arrived (The Cage Room) from 3714
+Mon Nov 23 01:44:26 2026 :: Log Ravagger [3712]: drop bo
+Mon Nov 23 01:44:27 2026 :: Log Ravagger [3712]: l
+Mon Nov 23 01:44:32 2026 :: Log Ravagger [3712]: d
+Mon Nov 23 01:44:32 2026 :: Log Ravagger [3717]: arrived (A Room in Mud School) from 3712
+Mon Nov 23 01:44:39 2026 :: Log Ravagger [3717]: ope
+Mon Nov 23 01:44:45 2026 :: Log Ravagger [3717]: op e
+Mon Nov 23 01:44:48 2026 :: Log Ravagger [3717]: e
+Mon Nov 23 01:44:48 2026 :: Log Ravagger [3719]: arrived (A Room in Mud School) from 3717
+Mon Nov 23 01:44:54 2026 :: Log Ravagger [3719]: l sgn
+Mon Nov 23 01:44:56 2026 :: Log Ravagger [3719]: l si
+Mon Nov 23 01:45:13 2026 :: Log Ravagger [3719]: n
+Mon Nov 23 01:45:13 2026 :: Log Ravagger [3720]: arrived (The Darkened Room) from 3719
+Mon Nov 23 01:45:15 2026 :: Log Ravagger [3720]: s
+Mon Nov 23 01:45:15 2026 :: Log Ravagger [3719]: arrived (A Room in Mud School) from 3720
+Mon Nov 23 01:45:16 2026 :: Log Ravagger [3719]: du
+Mon Nov 23 01:45:19 2026 :: Log Ravagger [3719]: l
+Mon Nov 23 01:45:21 2026 :: Log Ravagger [3719]: w
+Mon Nov 23 01:45:24 2026 :: Log Ravagger [3719]: op we
+Mon Nov 23 01:45:26 2026 :: Log Ravagger [3719]: w
+Mon Nov 23 01:45:26 2026 :: Log Ravagger [3717]: arrived (A Room in Mud School) from 3719
+Mon Nov 23 01:45:28 2026 :: Log Ravagger [3717]: u
+Mon Nov 23 01:45:28 2026 :: Log Ravagger [3712]: arrived (The Cage Room) from 3717
+Mon Nov 23 01:45:29 2026 :: Log Ravagger [3712]: n
+Mon Nov 23 01:45:29 2026 :: Log Ravagger [3713]: arrived (A Cage) from 3712
+Mon Nov 23 01:45:31 2026 :: Log Ravagger [3713]: s
+Mon Nov 23 01:45:31 2026 :: Log Ravagger [3712]: arrived (The Cage Room) from 3713
+Mon Nov 23 01:45:32 2026 :: Log Ravagger [3712]: d
+Mon Nov 23 01:45:32 2026 :: Log Ravagger [3717]: arrived (A Room in Mud School) from 3712
+Mon Nov 23 01:45:33 2026 :: Log Ravagger [3717]: n
+Mon Nov 23 01:45:33 2026 :: Log Ravagger [3784]: arrived (The Hallway) from 3717
+Mon Nov 23 01:45:36 2026 :: Log Ravagger [3784]: s
+Mon Nov 23 01:45:36 2026 :: Log Ravagger [3717]: arrived (A Room in Mud School) from 3784
+Mon Nov 23 01:45:38 2026 :: Log Ravagger [3717]: s
+Mon Nov 23 01:45:38 2026 :: Log Ravagger [3718]: arrived (The Store in Mud School) from 3717
+Mon Nov 23 01:45:41 2026 :: Log Ravagger [3718]: list
+Mon Nov 23 01:45:43 2026 :: Log Ravagger [3718]: b la
+Mon Nov 23 01:45:43 2026 :: Log Ravagger [3718]: copper -48
+Mon Nov 23 01:45:43 2026 :: Log Ravagger [3718]: bought a hooded brass lantern (vnum 3031) for 48 copper from the adept of Gravestone
+Mon Nov 23 01:45:47 2026 :: Log Ravagger [3718]: wear la
+Mon Nov 23 01:45:49 2026 :: Log Ravagger [3718]: n
+Mon Nov 23 01:45:49 2026 :: Log Ravagger [3717]: arrived (A Room in Mud School) from 3718
+Mon Nov 23 01:45:50 2026 :: Log Ravagger [3717]: e
+Mon Nov 23 01:45:50 2026 :: Log Ravagger [3719]: arrived (A Room in Mud School) from 3717
+Mon Nov 23 01:45:51 2026 :: Log Ravagger [3719]: e
+Mon Nov 23 01:45:53 2026 :: Log Ravagger [3719]: op e
+Mon Nov 23 01:45:54 2026 :: Log Ravagger [3719]: e
+Mon Nov 23 01:45:58 2026 :: Log Ravagger [3719]: unl e
+Mon Nov 23 01:46:02 2026 :: Log Ravagger [3719]: i
+Mon Nov 23 01:46:04 2026 :: Log Ravagger [3719]: w
+Mon Nov 23 01:46:04 2026 :: Log Ravagger [3717]: arrived (A Room in Mud School) from 3719
+Mon Nov 23 01:46:07 2026 :: Log Ravagger [3717]: l si
+Mon Nov 23 01:46:22 2026 :: Log Ravagger [3717]: l
+Mon Nov 23 01:46:26 2026 :: Log Ravagger [3717]: e
+Mon Nov 23 01:46:26 2026 :: Log Ravagger [3719]: arrived (A Room in Mud School) from 3717
+Mon Nov 23 01:46:29 2026 :: Log Ravagger [3719]: n
+Mon Nov 23 01:46:29 2026 :: Log Ravagger [3720]: arrived (The Darkened Room) from 3719
+Mon Nov 23 01:46:32 2026 :: Log Ravagger [3720]: k cl
+Mon Nov 23 01:46:32 2026 :: Log Ravagger [3720]: killed the clown
+Mon Nov 23 01:46:32 2026 :: Log Ravagger [3720]: coin +4 copper
+Mon Nov 23 01:46:36 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 01:46:39 2026 :: Log Ravagger [3720]: wear all
+Mon Nov 23 01:46:43 2026 :: Log Ravagger [3720]: inv
+Mon Nov 23 01:46:46 2026 :: Log Ravagger [3720]: drop br
+Mon Nov 23 01:46:51 2026 :: Log Ravagger [3720]: l
+Mon Nov 23 01:46:54 2026 :: Log Ravagger [3720]: s
+Mon Nov 23 01:46:54 2026 :: Log Ravagger [3719]: arrived (A Room in Mud School) from 3720
+Mon Nov 23 01:46:57 2026 :: Log Ravagger [3719]: op e
+Mon Nov 23 01:47:02 2026 :: Log Ravagger [3719]: unl e
+Mon Nov 23 01:47:03 2026 :: Log Ravagger [3719]: op e
+Mon Nov 23 01:47:06 2026 :: Log Ravagger [3719]: e
+Mon Nov 23 01:47:06 2026 :: Log Ravagger [3721]: arrived (The End of Mud School!) from 3719
+Mon Nov 23 01:47:12 2026 :: Log Ravagger [3721]: con gob
+Mon Nov 23 01:47:15 2026 :: Log Ravagger [3721]: k go
+Mon Nov 23 01:47:18 2026 :: Log Ravagger [3721]: kick
