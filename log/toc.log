@@ -344558,3 +344558,10 @@ Mon Nov 23 17:40:54 2026 :: Black market: the dealer vanished from room 5114 (Ci
 Mon Nov 23 17:40:57 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 5 of 6 in 6 hours).
 Mon Nov 23 17:44:10 2026 :: Treasure goblin: vanished from room 9423 (Secondary Assembly Line, mobfact.are) (too long in one area).
 Mon Nov 23 17:46:01 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 70 refused in all, pause 5 this week, 3532 minutes left).
+Mon Nov 23 17:49:21 2026 :: Sock.sinaddr:  20.12.242.187
+Mon Nov 23 17:49:22 2026 :: EOF encountered on read.
+Mon Nov 23 17:49:22 2026 :: Connection guard: 20.12.242.187 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 23 17:49:22 2026 :: Sock.sinaddr:  20.12.242.187
+Mon Nov 23 17:49:22 2026 :: Connection guard: 20.12.242.187 closed before a password prompt (strike 2 of 6 in 6 hours).
+Mon Nov 23 17:50:14 2026 :: Black market: the dealer left the world from room 13021 (Prayers Eye Peak, lakes.are).
+Mon Nov 23 17:51:06 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 2 of 6 in 6 hours).
