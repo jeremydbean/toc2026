@@ -5,25 +5,14 @@ Uid P6affbced01c2afdc
 Owned 1
 Room 24388
 Level 9
-Timer 10032
+Timer 10028
 Died 1795397735
-Saved 1795400735
+Saved 1795400983
 Snapshot Ravagger.20261123_013535.death
 State live
 Why -
-Objects 24
+Objects 23
 Vers 4
-End
-
-#O
-Vnum 24303
-Nest 0
-Wear -1
-Lev  1
-Time 4
-Cost 0
-Cond 100
-Repd 0
 End
 
 #O
@@ -52,7 +41,7 @@ Vnum 24301
 Nest 0
 Wear -1
 Lev  1
-Time 19
+Time 15
 Cost 0
 Cond 100
 Repd 0

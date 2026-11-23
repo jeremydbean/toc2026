@@ -2,7 +2,7 @@
 Name Storock~
 Id   58145
 Serial 16163916
-LogO 1795400738
+LogO 1795400897
 Vers 4
 Prom ~
 Race human~
@@ -17,18 +17,18 @@ ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble 20261114-season-area-ids 20261116-wrapped-pools~
 Cast none
 Levl 4
-Plyd 893
+Plyd 1052
 ListRemorts ~
 NumRemorts 0
 Note 0
-SkillDamage 0 5 3
-MeleeRatio 902 5
+SkillDamage 0 7 4
+MeleeRatio 957 7
 Scro 22
-Room 3720
-HMV  31 42 144 166 60 111
+Room 4208
+HMV  21 41 163 166 99 111
 NewGold 0
 NewPlat 0
-NewCopp 13
+NewCopp 38
 NewSilv 0
 BankCP 0
 IntTime 1795317651
@@ -37,7 +37,7 @@ Dcount 0
 SavedOnce 1
 PkRec 0
 PkGiv 0
-AchKills 8
+AchKills 13
 AchQuests 0
 AchDeaths 0
 AchExplore 0
@@ -47,19 +47,19 @@ AchTriforce 0
 Achv first-kill 1795400273
 Achv visit-mud-school 1795400567
 AchSet areas 1103516333 1255184829 1674073230 ~
-AchSet rooms 17 3241 3700-3703 3705 3707-3720 3757-3759 3772-3774 3784 3794-3795 4207-4208 ~
-LastOut  1795400738
-Rested 0 0
+AchSet rooms 17 3241 3700-3703 3705 3707-3722 3729-3730 3735 3740 3745 3757-3760 3772-3774 3784 3794-3795 4207-4208 ~
+LastOut  1795400897
+Rested 0 1
 Daily 0 0 0 0 0
-SesLogin 1790047194
-SesDur   263
-SesExpG  0
-SesLvlG  1
-SesKill  0
+SesLogin 1795400163
+SesDur   734
+SesExpG  9408
+SesLvlG  3
+SesKill  13
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  8038
+Exp  9408
 Act  65788
 Comm 24576
 Mounted 0
@@ -85,24 +85,24 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
+Pos  4
 Prac 9
 Trai 1
-Tutorial 0 32776
+Tutorial 0 1081356
 Save  -4
 Alig  750
 Hit   5
 Dam   2
-ACs 85 83 83 99
+ACs 83 81 81 99
 Attr 13 13 13 13 18
-AMod 0 0 0 0 0
+AMod 0 11 10 0 10
 Pass $6$eWvFcVHXyzoue5NB$3wzYtvaDiMk5RnsdumbDLhikLEvdkcnV.S7qGkWQtuG81er1hW0.66oVEtixA575B2Zok8.tggJTFsTSCd6k4.~
 Titl  the Delver in Spells~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 42 166 118
-Cond 0 43 35
+Cond 0 41 33
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -129,8 +129,8 @@ Sk 50 'recall'
 Gr 'rom basics'
 Gr 'mage basics'
 Gr 'mage default'
-AffD 'bless'   0  30  -3  24          0          0
-AffD 'bless'   0  30   3  18          0          0
+AffD 'bless'   0  28  -3  24          0          0
+AffD 'bless'   0  28   3  18          0          0
 End
 
 #O
@@ -140,7 +140,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 187 0 0
+Val  0 0 185 0 0
 End
 
 #O
@@ -148,7 +148,7 @@ Vnum 3703
 Nest 0
 Wear 5
 Cost 0
-Cond 100
+Cond 99
 Repd 0
 End
 
@@ -202,7 +202,7 @@ Vnum 3713
 Nest 0
 Wear 14
 Cost 0
-Cond 100
+Cond 99
 Repd 0
 End
 
@@ -250,6 +250,35 @@ Cost 0
 Cond 100
 Repd 0
 Affect -1 0 -1 -7 14 0 0
+End
+
+#O
+Vnum 3709
+Nest 0
+Wear 9
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3710
+Nest 0
+Wear 10
+Cost 0
+Cond 99
+Repd 0
+Affect -1 0 -1 1 3 0 0
+Affect -1 0 -1 -1 13 0 0
+End
+
+#O
+Vnum 3715
+Nest 0
+Wear 17
+Cost 0
+Cond 100
+Repd 0
 End
 
 #END

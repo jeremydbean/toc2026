@@ -55185,3 +55185,24 @@
 1795400840	cmd	Storock	4	3729	school.are	standing	73	0	-	kill	ra	Your pierce scratches the rabbit. // Your pierce scratches the rabbit.	-	-
 1795400843	coin	Storock	4	3729	school.are	+2	loot	autoloot	corpse of the rabbit	26
 1795400843	coin	Storock	4	3729	school.are	+2	loot	(violence)	corpse of the rabbit	28
+1795400845	cmd	Storock	4	3730	school.are	standing	70	0	-	east		Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795400848	cmd	Storock	4	3730	school.are	standing	70	0	-	kill	li	Your pierce scratches the lizard. // Your pierce scratches the lizard.	-	-
+1795400864	coin	Storock	4	3730	school.are	+4	loot	autoloot	corpse of the lizard	32
+1795400864	coin	Storock	4	3730	school.are	+4	loot	(violence)	corpse of the lizard	36
+1795400867	cmd	Storock	4	3730	school.are	standing	51	0	-	look		Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795400872	cmd	Storock	4	3735	school.are	standing	51	0	-	north		Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795400876	coin	Storock	4	3735	school.are	+1	loot	autoloot	corpse of the snail	37
+1795400876	coin	Storock	4	3735	school.are	+1	loot	kill	corpse of the snail	38
+1795400876	cmd	Storock	4	3735	school.are	standing	51	1	-	kill	sn	Your pierce scratches the snail. // The snail is DEAD!! // You receive 147 experience points.	-	+
+1795400881	cmd	Storock	4	3740	school.are	standing	51	0	-	north		Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795400881	spotted	Storock	4	3745	school.are	1057	herb	48	an alfalfa sprout	4934	1	scatter	arrive
+1795400881	cmd	Storock	4	3745	school.are	standing	51	0	-	north		North Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795400887	passed	Storock	4	3760	school.are	1057	herb	48	an alfalfa sprout	4940	6	1	scatter	3745	left
+1795400887	cmd	Storock	4	3760	school.are	standing	51	0	-	up		A Safe Room //   You are in a safe room, away from all the mean rabbits and snails of the Arena. // You can rest here, and go up to go back to the Temple of Devota.	-	+
+1795400888	area	Storock	4	4207	dresden.are	school.are	dresden.are	236	up
+1795400888	cmd	Storock	4	4207	dresden.are	standing	51	0	-	up		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795400891	cmd	Storock	4	4208	dresden.are	standing	51	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795400895	cmd	Storock	4	4208	dresden.are	standing	51	0	-	sleep		You go to sleep.	-	-
+1795400897	sightings	Storock	4	4208	dresden.are	mob	3707:1/0/0 3703:2/1/0 3705:2/2/0 3704:2/2/2 3702:2/2/0 3738:1/1/0 3717:1/0/0 4202:1/0/0 4201:1/0/0 3762:1/0/0 3718:1/0/0 3719:1/0/0 3700:1/0/0 3701:1/0/0 3706:1/1/0 3720:2/1/0 3708:1/0/0 3709:1/1/0 3710:1/1/0 3713:1/1/0
+1795400897	sightings	Storock	4	4208	dresden.are	item	3733:1/0 14:1/0 15:2/0 16:1/0 3718:2/2
+1795400897	session	Storock	4	4208	dresden.are	quit	734s	+3 levels	+9408 exp	+38 copper	13 kills	0 deaths	0 quests	175 commands	2 refused	coin: loot 41c, spent 3c	spent on: buy 3c	exp: skilluse +2000, kills +7408

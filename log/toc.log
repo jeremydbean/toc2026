@@ -343664,3 +343664,32 @@ Mon Nov 23 02:27:20 2026 :: Log Storock [3729]: k ra
 Mon Nov 23 02:27:23 2026 :: Log Storock [3729]: killed the rabbit
 Mon Nov 23 02:27:23 2026 :: Log Storock [3729]: coin +2 copper
 Mon Nov 23 02:27:23 2026 :: Log Storock [3729]: coin +2 copper
+Mon Nov 23 02:27:25 2026 :: Log Storock [3729]: e
+Mon Nov 23 02:27:25 2026 :: Log Storock [3730]: arrived (Arena) from 3729
+Mon Nov 23 02:27:28 2026 :: Log Storock [3730]: k li
+Mon Nov 23 02:27:44 2026 :: Log Storock [3730]: killed the lizard
+Mon Nov 23 02:27:44 2026 :: Log Storock [3730]: coin +4 copper
+Mon Nov 23 02:27:44 2026 :: Log Storock [3730]: coin +4 copper
+Mon Nov 23 02:27:47 2026 :: Log Storock [3730]: l
+Mon Nov 23 02:27:52 2026 :: Log Storock [3730]: n
+Mon Nov 23 02:27:52 2026 :: Log Storock [3735]: arrived (Arena) from 3730
+Mon Nov 23 02:27:56 2026 :: Log Storock [3735]: k sn
+Mon Nov 23 02:27:56 2026 :: Log Storock [3735]: killed the snail
+Mon Nov 23 02:27:56 2026 :: Log Storock [3735]: coin +1 copper
+Mon Nov 23 02:27:56 2026 :: Log Storock [3735]: coin +1 copper
+Mon Nov 23 02:28:01 2026 :: Log Storock [3735]: n
+Mon Nov 23 02:28:01 2026 :: Log Storock [3740]: arrived (Arena) from 3735
+Mon Nov 23 02:28:01 2026 :: Log Storock [3740]: n
+Mon Nov 23 02:28:01 2026 :: Log Storock [3745]: arrived (North Wall of Arena) from 3740
+Mon Nov 23 02:28:07 2026 :: Log Storock [3745]: u
+Mon Nov 23 02:28:07 2026 :: Log Storock [3760]: arrived (A Safe Room) from 3745
+Mon Nov 23 02:28:08 2026 :: Log Storock [3760]: u
+Mon Nov 23 02:28:08 2026 :: Log Storock [4207]: arrived (Before the Altar.) from 3760
+Mon Nov 23 02:28:11 2026 :: Log Storock [4207]: w
+Mon Nov 23 02:28:11 2026 :: Log Storock [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Mon Nov 23 02:28:15 2026 :: Log Storock [4208]: sle 
+Mon Nov 23 02:28:17 2026 :: Log Storock [4208]: quit
+Mon Nov 23 02:28:17 2026 :: Storock has quit.
+Mon Nov 23 02:28:17 2026 :: [QUIT] Player rejoined the real world.
+Mon Nov 23 02:28:48 2026 :: Treasure goblin: vanished from room 5636 (Treasure room of Tarin, tarin.are) (too long in one area).
+Mon Nov 23 02:32:19 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 3 of 6 in 6 hours).
