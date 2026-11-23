@@ -92,6 +92,12 @@ RESULT=failed
 REASON="stopped before it finished"
 STEP=start
 REMOTE_COMMIT=""
+# A success that left something behind says so (review, 2026-11-23: an
+# hourly copy that failed was a plain "ok", so monitoring read a partial
+# backup as a whole one). "; "-separated, empty for a whole run.
+PARTIAL=""
+CARRIED=0
+PRESERVE_KEEP="${TOC_SYNC_PRESERVE_KEEP:-20}"
 mkdir -p "$SYNC_STATE_DIR" 2>/dev/null || true
 
 # KEY=VALUE lines from stdin into $SYNC_STATE_DIR/$1, whole or not at all.
@@ -114,9 +120,10 @@ on_exit() {
     [ "$code" -ne 0 ] && [ "$RESULT" != failed ] && RESULT=failed
     [ "$RESULT" = failed ] && [ "$REASON" = "stopped before it finished" ] &&
         REASON="failed during $STEP (exit $code)"
-    printf 'time=%s\ntime_utc=%s\nresult=%s\nreason=%s\nexit=%s\nremote_commit=%s\n' \
+    printf 'time=%s\ntime_utc=%s\nresult=%s\nreason=%s\nexit=%s\nremote_commit=%s\npartial=%s\n' \
         "$(date +%s)" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$RESULT" \
-        "$(printf '%s' "$REASON" | tr '\t\n' '  ')" "$code" "$REMOTE_COMMIT" |
+        "$(printf '%s' "$REASON" | tr '\t\n' '  ')" "$code" "$REMOTE_COMMIT" \
+        "$(printf '%s' "${PARTIAL%; }" | tr '\t\n' '  ')" |
         receipt_write last-attempt || true
     if [ "$RESULT" = failed ]; then
         logger -t toc-state-sync -p daemon.err "state sync failed: $REASON" 2>/dev/null || true
@@ -141,9 +148,10 @@ remote_holds() {
 }
 
 record_success() {
-    printf 'time=%s\ntime_utc=%s\nkind=%s\nremote_commit=%s\nlocal_commit=%s\nfiles_changed=%s\ncharacters=%s\n' \
+    printf 'time=%s\ntime_utc=%s\nkind=%s\nremote_commit=%s\nlocal_commit=%s\nfiles_changed=%s\ncharacters=%s\npartial=%s\n' \
         "$(date +%s)" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$1" "$REMOTE_COMMIT" \
-        "$(git rev-parse HEAD)" "$2" "$3" | receipt_write last-success ||
+        "$(git rev-parse HEAD)" "$2" "$3" \
+        "$(printf '%s' "${PARTIAL%; }" | tr '\t\n' '  ')" | receipt_write last-success ||
         fail "the sync finished but its receipt could not be written"
 }
 
@@ -262,12 +270,51 @@ reclone() {
     cd "$STATE_REPO"
 }
 
+# Commits an earlier run made and could not push are the only copy, off
+# the live tree, of the state they hold (review, 2026-11-23: the reset
+# below threw them away, so a player file then lost or damaged on the host
+# could not be had back from them). Never reset over them: each is kept as
+# a ref in the clone and a bundle beside the receipts, then carried onto
+# GitHub's branch to go with this run's push; only if it cannot be carried
+# cleanly is the clone reset, with the copies kept and the run incomplete.
+# Inside an `if`, so set -e is off here: every failure returns.
+prune_preserved() {
+    git for-each-ref --sort=-refname --format='%(refname)' refs/toc/unpushed/ 2>/dev/null |
+        tail -n +$((PRESERVE_KEEP + 1)) | while read -r ref; do git update-ref -d "$ref"; done
+    ls -1 "$SYNC_STATE_DIR"/unpushed-*.bundle 2>/dev/null | sort -r |
+        tail -n +$((PRESERVE_KEEP + 1)) | while read -r old; do rm -f -- "$old"; done
+}
+bring_up_to_date() {
+    ahead=$(git rev-list --count "origin/$BRANCH..HEAD") || return 1
+    if [ "$ahead" -eq 0 ]; then
+        git reset --quiet --hard "origin/$BRANCH"
+        return
+    fi
+    stamp=$(date -u +%Y%m%d-%H%M%S)
+    kept="refs/toc/unpushed/$stamp"
+    git update-ref "$kept" HEAD || return 1
+    git bundle create "$SYNC_STATE_DIR/unpushed-$stamp.bundle" "origin/$BRANCH..HEAD" >/dev/null 2>&1 ||
+        NOTE="${NOTE}no bundle written for $kept; "
+    # Leftovers of an interrupted copy are made again from the live tree.
+    git reset --quiet --hard HEAD || return 1
+    if git rebase --quiet "origin/$BRANCH" >/dev/null 2>&1; then
+        CARRIED=$ahead
+        NOTE="${NOTE}carrying $ahead unpushed commit(s), kept at $kept; "
+    else
+        git rebase --abort >/dev/null 2>&1 || true
+        git reset --quiet --hard "origin/$BRANCH" || return 1
+        PARTIAL="${PARTIAL}$ahead unpushed commit(s) not carried, kept at $kept; "
+    fi
+    prune_preserved
+}
+
 # Somebody else pushes to this branch too -- a developer, or me from
 # the host. Take their work first and put ours on top, rather than
 # forcing and losing theirs.
 STEP=fetch
+NOTE=""
 git_err=$(mktemp)
-if ! { git fetch --quiet origin "$BRANCH" && git reset --quiet --hard "origin/$BRANCH"; } 2>"$git_err"; then
+if ! { git fetch --quiet origin "$BRANCH" && bring_up_to_date; } 2>"$git_err"; then
     cat "$git_err" >&2
     if clone_broken "$git_err"; then
         rm -f "$git_err"
@@ -278,6 +325,11 @@ if ! { git fetch --quiet origin "$BRANCH" && git reset --quiet --hard "origin/$B
     fi
 fi
 rm -f "$git_err"
+if [ -n "$NOTE" ]; then
+    echo "${NOTE%; }" >&2
+    logger -t toc-state-sync -p daemon.warning "${NOTE%; }" 2>/dev/null || true
+fi
+[ -n "$PARTIAL" ] && logger -t toc-state-sync -p daemon.err "${PARTIAL%; }" 2>/dev/null || true
 
 # Never copy while a deploy holds its lock: a rollback extracting over
 # the live tree could hand us a half-written custom.are. A shared lock,
@@ -339,6 +391,79 @@ for d in player gods heroes; do
     guard "$d" "$MAX_DROP_PCT" "$GUARD_MIN" yes
 done
 guard corpse/live "$CORPSE_MAX_DROP_PCT" "$CORPSE_GUARD_MIN" no
+
+# Each part on its own as well (review, 2026-11-23). player/ held 977
+# files, 934 of them archive/: every active character, the recovery ledger
+# and the diaries together were under the 20% line of the whole, so a
+# missing or half-mounted subtree could leave GitHub's tree unremarked --
+# and toc-restore lays down that tree, not its history. A part that had
+# files and has none is a drop at any size; one of $GUARD_MIN files or more,
+# a drop past $MAX_DROP_PCT.
+judge() {   # LABEL HAVE NOW
+    if [ "$2" -gt 0 ] && [ "$3" -eq 0 ]; then
+        dropped="$dropped $1:$2->0"
+    elif [ "$2" -ge "$GUARD_MIN" ] && [ $(( $3 * 100 )) -lt $(( $2 * (100 - MAX_DROP_PCT) )) ]; then
+        dropped="$dropped $1:$2->$3"
+    fi
+}
+# Characters by name: archiving (player_archive_dormant) moves one from
+# player/ to player/archive/ and a login moves it back, so a name is gone
+# only when it is in neither.
+characters() {   # DIR -> the top-level file names, one a line
+    err=$(mktemp)
+    find "$1" -mindepth 1 -maxdepth 1 -type f -exec basename {} \; 2>"$err" | LC_ALL=C sort -u
+    if [ -s "$err" ]; then rm -f "$err"; return 1; fi
+    rm -f "$err"
+}
+if [ -d "$STATE_REPO/player" ]; then
+    # Into a file, never through a pipe: `fail` in a pipeline runs in a
+    # subshell and would end only that.
+    live_all=$(mktemp)
+    for part in player player/archive; do
+        [ -d "$TOC_ROOT/$part" ] || continue
+        characters "$TOC_ROOT/$part" >> "$live_all" ||
+            fail "cannot read all of $TOC_ROOT/$part; nothing was copied"
+    done
+    LC_ALL=C sort -u -o "$live_all" "$live_all"
+    for part in . archive; do
+        [ -d "$STATE_REPO/player/$part" ] || continue
+        names=$(characters "$STATE_REPO/player/$part") ||
+            fail "cannot read the last good copy of player/$part"
+        # comm, not grep -f: an empty pattern file -- every character gone,
+        # the very case this is for -- gave grep no count at all.
+        have=$(printf '%s\n' "$names" | grep -c . || true)
+        kept=$(printf '%s\n' "$names" | LC_ALL=C comm -12 - "$live_all" | grep -c . || true)
+        have=${have:-0}
+        kept=${kept:-0}
+        [ "$part" = . ] && label="player/*" || label="player/$part"
+        judge "$label" "$have" "$kept"
+    done
+    rm -f "$live_all"
+    for part in "$STATE_REPO"/player/*/; do
+        [ -d "$part" ] || continue
+        name=$(basename "$part")
+        case "$name" in versions|archive) continue ;; esac
+        have=$(count_files "$STATE_REPO/player/$name") ||
+            fail "cannot read the last good copy of player/$name"
+        now_n=0
+        if [ -d "$TOC_ROOT/player/$name" ]; then
+            now_n=$(count_files "$TOC_ROOT/player/$name") ||
+                fail "cannot read all of $TOC_ROOT/player/$name; nothing was copied"
+        fi
+        judge "player/$name" "$have" "$now_n"
+    done
+    # The recovery records only grow -- ledger.tsv (every restore, milestone
+    # and identity), renames.tsv (every retired name): one shorter than its
+    # last good copy was cut, whatever the counts say.
+    for f in "$STATE_REPO"/player/recovery/*.tsv; do
+        [ -f "$f" ] || continue
+        rel=${f#"$STATE_REPO/"}
+        was=$(( $(wc -c < "$f") ))
+        now_b=0
+        [ -f "$TOC_ROOT/$rel" ] && now_b=$(( $(wc -c < "$TOC_ROOT/$rel") ))
+        [ "$now_b" -lt "$was" ] && dropped="$dropped $rel:${was}B->${now_b}B"
+    done
+fi
 if [ -n "$dropped" ]; then
     if [ -z "$override_reason" ]; then
         fail "refused: the live tree shrank past belief (${dropped# }); nothing was copied or pushed, and GitHub keeps the last good state. If it is meant, write a reason to $OVERRIDE"
@@ -404,7 +529,9 @@ fi
 # hourly and daily copies the lost one did. The hour still running is
 # left until it ends, so its copy is not replaced every five minutes.
 # Tagged copies are the rsync's above and are never touched here.
-if [ -d "$TOC_ROOT/player/versions" ] && command -v python3 >/dev/null 2>&1; then
+if [ -d "$TOC_ROOT/player/versions" ] && ! command -v python3 >/dev/null 2>&1; then
+    PARTIAL="${PARTIAL}hourly snapshots skipped: no python3; "
+elif [ -d "$TOC_ROOT/player/versions" ]; then
     python3 - "$TOC_ROOT/player/versions" "$STATE_REPO/player/versions" <<'PY' ||
 import os, re, shutil, sys, time
 src, dst = sys.argv[1], sys.argv[2]
@@ -439,7 +566,13 @@ for name in os.listdir(src):
             if plain.match(f) and f not in keep:
                 os.remove(os.path.join(there, f))
 PY
-    echo "hourly snapshots: copy failed; the rest of the sync carries on" >&2
+    {
+        # The rest of the state still goes -- a failed hourly copy must not
+        # cost the characters their backup -- but the run is not a whole one
+        # and says so (review, 2026-11-23: this was a plain "ok").
+        echo "hourly snapshots: copy failed; the rest of the sync carries on" >&2
+        PARTIAL="${PARTIAL}hourly snapshots not copied; "
+    }
 fi
 
 # Player corpses (corpses.c): live/ is what lies in the world now, and
@@ -513,7 +646,7 @@ done
 [ -d "$STATE_REPO/$BUILT_DIR" ] && git add -f -A "$BUILT_DIR"
 [ -d "$STATE_REPO/corpse" ] && git add -f -A corpse
 
-if git diff --cached --quiet; then
+if git diff --cached --quiet && [ "$CARRIED" -eq 0 ]; then
     # Nothing changed -- which is a success only if GitHub holds this tree:
     # the commit the clone was reset to a moment ago, or one built on it.
     STEP=verify
@@ -533,11 +666,14 @@ players=$(git diff --cached --name-only -- player ':(exclude)player/versions' ':
 override_line=""
 [ -n "$dropped" ] && override_line="
 Drop allowed by override (${dropped# }): $override_reason"
-git commit --quiet -m "State sync: $changed files, $players characters [skip ci]
+# Only the carried commits to push when nothing new changed.
+if ! git diff --cached --quiet; then
+    git commit --quiet -m "State sync: $changed files, $players characters [skip ci]
 
 Automatic. Written by toc-state-sync on the host that is running the
 game, so that an outage cannot cost more than the interval between
 runs.$override_line"
+fi
 
 # The branch can move under us between the fetch and the push.
 STEP=push
@@ -555,6 +691,7 @@ remote_holds "$(git rev-parse HEAD)" ||
     fail "pushed, but GitHub does not show the commit"
 RESULT=ok
 REASON="pushed $changed files ($players characters)"
+[ "$CARRIED" -gt 0 ] && REASON="$REASON and $CARRIED earlier commit(s) a failed push had left"
 record_success pushed "$changed" "$players"
 mirror_push
 [ -n "$override_reason" ] && mv -f "$OVERRIDE" "$OVERRIDE.used-$(date +%s)" 2>/dev/null

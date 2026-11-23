@@ -131,6 +131,156 @@ class StateSyncReceiptTests(unittest.TestCase):
 
     # --- what a run records -------------------------------------------------
 
+    # --- what a failed push leaves behind (review, 2026-11-23) ----------------
+
+    def refuse_pushes(self, refuse: bool = True) -> None:
+        hook = self.bare / "hooks" / "pre-receive"
+        if refuse:
+            hook.write_text("#!/bin/sh\nexit 1\n")
+            hook.chmod(0o755)
+        elif hook.exists():
+            hook.unlink()
+
+    def remote_versions(self, path: str) -> set[str]:
+        commits = git("--git-dir", str(self.bare), "log", "--format=%H", "main", "--", path).split()
+        return {git("--git-dir", str(self.bare), "show", f"{c}:{path}") for c in commits}
+
+    def test_a_commit_a_failed_push_left_reaches_github_on_the_next_run(self) -> None:
+        """A run that commits and cannot push holds the only copy, off the
+        live tree, of that moment. The next run reset the clone to GitHub's
+        branch and threw it away, so a player file then damaged on the host
+        could not be had back from it."""
+        self.assertEqual(self.sync().returncode, 0)
+        self.player("Zfixa", 7)                       # the good state, never pushed
+        good = (self.live / "player" / "Zfixa").read_text()
+        self.refuse_pushes()
+        self.assertEqual(self.sync().returncode, 1)
+        self.refuse_pushes(False)
+        (self.live / "player" / "Zfixa").write_text("#PLAYER\ndamaged\n")   # then lost on the host
+        done = self.sync()
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertIn(good, self.remote_versions("player/Zfixa"),
+                      "the state the failed push held never reached GitHub")
+        self.assertIn("1 earlier commit", self.attempt()["reason"])
+
+    def test_a_commit_that_cannot_be_carried_is_kept_not_reset_away(self) -> None:
+        """Carried forward when it rebases cleanly; when it cannot -- the file
+        changed on GitHub too -- kept as a ref and a bundle before the reset,
+        and the run says it is incomplete."""
+        self.assertEqual(self.sync().returncode, 0)
+        self.player("Zfixa", 7)
+        good = (self.live / "player" / "Zfixa").read_text()
+        self.refuse_pushes()
+        self.assertEqual(self.sync().returncode, 1)
+        self.refuse_pushes(False)
+        other = self.root / "other"                     # somebody changes it on GitHub
+        git("clone", "-q", str(self.bare), str(other))
+        (other / "player").mkdir(exist_ok=True)
+        (other / "player" / "Zfixa").write_text("#PLAYER\nfrom elsewhere\n")
+        git("add", "-f", "player/Zfixa", cwd=other)
+        git("commit", "-qm", "elsewhere", cwd=other)
+        git("push", "-q", "origin", "HEAD:main", cwd=other)
+        done = self.sync()
+        self.assertEqual(done.returncode, 0, done.stderr)
+        bundles = sorted(self.state.glob("unpushed-*.bundle"))
+        self.assertTrue(bundles, "no bundle kept outside the clone")
+        self.assertTrue(git("bundle", "list-heads", str(bundles[-1])).strip(),
+                        "the bundle carries no commit")
+        refs = git("for-each-ref", "--format=%(refname)", "refs/toc/unpushed/", cwd=self.root / "state")
+        self.assertTrue(refs.strip(), "no ref kept in the clone")
+        kept = git("show", f"{refs.split()[0]}:player/Zfixa", cwd=self.root / "state")
+        self.assertEqual(kept, good, "the kept commit does not hold the unpushed state")
+        self.assertIn("not carried", self.success().get("partial", ""))
+
+    # --- the drop guard, part by part (review, 2026-11-23) -------------------
+
+    def lay_out(self) -> None:
+        """A tree shaped like the live one: a large archive, few active
+        characters, diaries and the recovery ledger."""
+        for f in (self.live / "player").iterdir():
+            if f.is_file():
+                f.unlink()
+        for d in ("archive", "diary", "recovery"):
+            (self.live / "player" / d).mkdir(exist_ok=True)
+        for n in range(60):
+            (self.live / "player" / "archive" / f"Zold{n:03d}").write_text("#PLAYER\nEnd\n#END\n")
+        for n in range(5):
+            self.player(f"Zact{chr(97 + n)}", n)
+        for n in range(2):
+            (self.live / "player" / "diary" / f"Zacta{n}").write_text("an entry\n")
+        (self.live / "player" / "recovery" / "ledger.tsv").write_text("1\tmilestone\n2\trestore\n")
+        self.assertEqual(self.sync().returncode, 0)
+
+    def assert_refused(self, why: str) -> None:
+        before = set(self.remote_files())
+        done = self.sync()
+        self.assertEqual(done.returncode, 1, f"{why}: not refused\n{done.stderr}")
+        self.assertTrue(self.attempt()["reason"].startswith("refused"), self.attempt()["reason"])
+        self.assertEqual(set(self.remote_files()), before, f"{why}: GitHub's tree changed")
+
+    def test_every_active_character_gone_is_refused(self) -> None:
+        self.lay_out()
+        for n in range(5):
+            (self.live / "player" / f"Zact{chr(97 + n)}").unlink()   # 5 of 68: 7%
+        self.assert_refused("all active characters gone")
+
+    def test_a_missing_recovery_ledger_is_refused(self) -> None:
+        self.lay_out()
+        shutil.rmtree(self.live / "player" / "recovery")
+        self.assert_refused("the ledger's directory missing")
+
+    def test_a_truncated_ledger_is_refused(self) -> None:
+        self.lay_out()
+        (self.live / "player" / "recovery" / "ledger.tsv").write_text("1\tmilestone\n")
+        self.assert_refused("the ledger shrank")
+
+    def test_an_emptied_mount_point_is_refused(self) -> None:
+        self.lay_out()
+        for f in (self.live / "player" / "diary").iterdir():
+            f.unlink()                                  # a diary mount not there
+        self.assert_refused("the diaries emptied")
+
+    @unittest.skipIf(os.geteuid() == 0, "root reads a directory whatever its mode")
+    def test_an_unreadable_subtree_copies_nothing(self) -> None:
+        self.lay_out()
+        archive = self.live / "player" / "archive"
+        archive.chmod(0)
+        try:
+            before = set(self.remote_files())
+            self.assertEqual(self.sync().returncode, 1)
+            self.assertIn("cannot read", self.attempt()["reason"])
+            self.assertEqual(set(self.remote_files()), before)
+        finally:
+            archive.chmod(0o755)
+
+    def test_archiving_a_character_is_a_move_not_a_loss(self) -> None:
+        self.lay_out()
+        for n in range(4):                              # 4 of 5 active: 80%, but archived
+            name = f"Zact{chr(97 + n)}"
+            (self.live / "player" / name).rename(self.live / "player" / "archive" / name)
+        done = self.sync()
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertIn("player/archive/Zacta", self.remote_files())
+
+    # --- an incomplete run is not a whole one (review, 2026-11-23) ----------
+
+    @unittest.skipIf(os.geteuid() == 0, "root reads a directory whatever its mode")
+    def test_hourly_copies_that_fail_mark_the_success_incomplete(self) -> None:
+        versions = self.live / "player" / "versions" / "Zfixa"
+        versions.mkdir(parents=True)
+        hourly = versions / "Zfixa.20260101_100000"   # one dot: the hourly copy's alone
+        hourly.write_text("#PLAYER\nEnd\n")
+        hourly.chmod(0)
+        try:
+            done = self.sync()
+            self.assertEqual(done.returncode, 0, f"the state itself still goes\n{done.stderr}")
+            self.assertIn("hourly", self.success().get("partial", ""))
+            self.assertIn("hourly", self.attempt().get("partial", ""))
+        finally:
+            hourly.chmod(0o644)
+        self.assertEqual(self.sync().returncode, 0)
+        self.assertEqual(self.success().get("partial", ""), "", "a whole run clears it")
+
     # --- the private mirror (owner, 2026-11-23) ------------------------------
 
     def mirrored(self, remote: str, key: Path | None = None) -> subprocess.CompletedProcess:
@@ -383,8 +533,9 @@ class StateSyncReceiptTests(unittest.TestCase):
         self.assertEqual(done.returncode, 0, done.stderr)
         self.assertIn("drop allowed", done.stderr)
         message = git("--git-dir", str(self.bare), "log", "-1", "--format=%B", "main")
-        self.assertIn("Drop allowed by override (player:12->6): purge of test characters, "
-                      "ticket 12", message)
+        # The parts name themselves beside the whole (review, 2026-11-23).
+        self.assertIn("Drop allowed by override (player:12->6", message)
+        self.assertIn("): purge of test characters, ticket 12", message)
         self.assertFalse(stale.exists(), "used once")
         self.assertEqual(len(list(self.state.glob("allow-drop.used-*"))), 1)
         self.assertNotIn("player/Zfixb", self.remote_files())
