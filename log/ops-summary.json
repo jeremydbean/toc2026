@@ -1,7 +1,7 @@
 {
  "checks": {
   "disk": {
-   "free_mb": 43121,
+   "free_mb": 43114,
    "inodes_free_pct": 96,
    "ok": true
   },
@@ -13,16 +13,16 @@
   "game_archives": {
    "characters": 37,
    "count": 270,
-   "newest_min": 13,
+   "newest_min": 18,
    "ok": true,
    "total_mb": 468,
    "verified": true
   },
   "mirror": {
-   "commit": "da96c7854151",
+   "commit": "620b34b87e01",
    "last_min": 2,
    "ok": true,
-   "reason": "mirror holds da96c7854151",
+   "reason": "mirror holds 620b34b87e01",
    "status": "ok"
   },
   "public_sync": {
@@ -31,13 +31,13 @@
    "last_attempt_min": 2,
    "last_success_min": 2,
    "ok": true,
-   "reason": "pushed 6 files (0 characters)",
-   "remote_commit": "da96c7854151"
+   "reason": "pushed 4 files (0 characters)",
+   "remote_commit": "620b34b87e01"
   },
   "recovery": {
    "exit": "0",
    "failed_restarts": 0,
-   "last_run_min": 0,
+   "last_run_min": 1,
    "ok": true,
    "said": "started"
   },
@@ -45,7 +45,7 @@
    "ok": true,
    "units": {
     "toc-auto-deploy.service": {
-     "active": "inactive",
+     "active": "activating",
      "enabled": "static",
      "from_shipped_file": true,
      "load": "loaded",
@@ -148,8 +148,8 @@
    "ok": true
   }
  },
- "generated": 1795475283,
- "generated_utc": "2026-11-23T23:08:03Z",
+ "generated": 1795475583,
+ "generated_utc": "2026-11-23T23:13:03Z",
  "heartbeat": {
   "heartbeat": "not-configured"
  },

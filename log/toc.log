@@ -344862,3 +344862,11 @@ Mon Nov 23 23:04:09 2026 :: Treasure goblin: vanished from room 2110 (East end o
 Mon Nov 23 23:05:46 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 55 refused in all, pause 5 this week, 3502 minutes left).
 Mon Nov 23 23:07:14 2026 :: Connection guard: 35.203.210.46 closed without a word (strike 1 of 6 in 6 hours).
 Mon Nov 23 23:07:14 2026 :: Connection guard: 35.203.210.46 closed without a word (strike 2 of 6 in 6 hours).
+Mon Nov 23 23:10:17 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Mon Nov 23 23:10:28 2026 :: Connection guard: 8.216.4.124 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 23:10:29 2026 :: Connection guard: 8.216.4.124 closed without a word (strike 2 of 6 in 6 hours).
+Mon Nov 23 23:10:41 2026 :: Sock.sinaddr:  20.15.133.184
+Mon Nov 23 23:10:41 2026 :: EOF encountered on read.
+Mon Nov 23 23:10:41 2026 :: Connection guard: 20.15.133.184 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 23 23:10:51 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 2 of 6 in 6 hours).
+Mon Nov 23 23:14:14 2026 :: Treasure goblin: vanished from room 15103 (Lobby, campus.are) (too long in one area).
