@@ -344150,3 +344150,9 @@ Mon Nov 23 03:02:48 2026 :: Connection guard: 5.161.73.160 closed without a word
 Mon Nov 23 03:07:53 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 1 of 6 in 6 hours).
 Mon Nov 23 03:10:29 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Mon Nov 23 03:12:57 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 03:18:02 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 5 of 6 in 6 hours).
+Mon Nov 23 03:18:21 2026 :: Sock.sinaddr:  40.124.172.8
+Mon Nov 23 03:18:21 2026 :: EOF encountered on read.
+Mon Nov 23 03:18:21 2026 :: Connection guard: 40.124.172.8 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 23 03:18:21 2026 :: Sock.sinaddr:  40.124.172.8
+Mon Nov 23 03:18:21 2026 :: Connection guard: 40.124.172.8 closed before a password prompt (strike 2 of 6 in 6 hours).
