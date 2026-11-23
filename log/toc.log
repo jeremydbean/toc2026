@@ -344432,3 +344432,4 @@ Mon Nov 23 13:13:08 2026 :: Daily backup started.
 Mon Nov 23 13:13:09 2026 :: Automated backup complete.
 Mon Nov 23 13:13:10 2026 :: Daily backup complete.
 Mon Nov 23 13:16:50 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 13:21:55 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 67 refused in all, pause 5 this week, 3796 minutes left).
