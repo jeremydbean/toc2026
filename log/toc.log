@@ -344370,3 +344370,5 @@ Mon Nov 23 11:33:35 2026 :: Treasure goblin: vanished from room 20187 (The Kitch
 Mon Nov 23 11:35:14 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 66 refused in all, pause 5 this week, 3903 minutes left).
 Mon Nov 23 11:40:18 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 1 of 6 in 6 hours).
 Mon Nov 23 11:42:08 2026 :: Connection guard: last hour 8 closed without a word, 5 refused, 0 new characters refused, 0 newly paused; 9 addresses paused and 0 refused now, 16 active player addresses.
+Mon Nov 23 11:43:40 2026 :: Treasure goblin: vanished from room 2222 (The Crypt Ends, draconia.are) (too long in one area).
+Mon Nov 23 11:45:23 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 4 of 6 in 6 hours).
