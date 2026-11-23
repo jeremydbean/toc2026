@@ -344325,3 +344325,4 @@ Mon Nov 23 09:33:34 2026 :: Connection guard: 54.87.112.51 closed without a word
 Mon Nov 23 09:38:38 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 2 of 6 in 6 hours).
 Mon Nov 23 09:42:08 2026 :: Connection guard: last hour 9 closed without a word, 4 refused, 0 new characters refused, 0 newly paused; 10 addresses paused and 0 refused now, 16 active player addresses.
 Mon Nov 23 09:42:44 2026 :: Treasure goblin: vanished from room 5009 (At the foot of the rubble, eastern.are) (too long in one area).
+Mon Nov 23 09:43:43 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 5 of 6 in 6 hours).
