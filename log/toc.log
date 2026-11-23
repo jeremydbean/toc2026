@@ -344800,3 +344800,12 @@ Mon Nov 23 22:10:15 2026 :: Connection guard: 23.31.96.97 closed without a word 
 Mon Nov 23 22:10:16 2026 :: Connection guard: refused 24 connections from 35.214.224.172 (since the last line; 25 refused in all, pause 1 this week, 359 minutes left).
 Mon Nov 23 22:13:54 2026 :: Connection guard: last hour 19 closed without a word, 59 refused, 0 new characters refused, 3 newly paused; 13 addresses paused and 0 refused now, 16 active player addresses.
 Mon Nov 23 22:15:03 2026 :: Connection guard: refused 1 connection from 5.161.194.92 (paused; 17 refused in all, pause 4 this week, 1718 minutes left).
+Mon Nov 23 22:15:21 2026 :: Sock.sinaddr:  3.129.187.38
+Mon Nov 23 22:15:21 2026 :: Connection guard: 3.129.187.38 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 23 22:15:26 2026 :: Treasure goblin: vanished from room 2318 (The hills overlooking the shoreline, mahntor.are) (too long in one area).
+Mon Nov 23 22:16:16 2026 :: Sock.sinaddr:  3.129.187.38
+Mon Nov 23 22:16:16 2026 :: EOF encountered on read.
+Mon Nov 23 22:16:16 2026 :: Connection guard: 3.129.187.38 closed before a password prompt (strike 2 of 6 in 6 hours).
+Mon Nov 23 22:18:33 2026 :: Sock.sinaddr:  3.129.187.38
+Mon Nov 23 22:18:33 2026 :: EOF encountered on read.
+Mon Nov 23 22:18:33 2026 :: Connection guard: 3.129.187.38 closed before a password prompt (strike 3 of 6 in 6 hours).
