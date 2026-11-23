@@ -344590,3 +344590,22 @@ Mon Nov 23 18:41:51 2026 :: Connection guard: 3.20.63.178 closed without a word 
 Mon Nov 23 18:46:56 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 3 of 6 in 6 hours).
 Mon Nov 23 18:48:02 2026 :: Treasure goblin: vanished from room 5213 (A side street, oldthalo.are) (too long in one area).
 Mon Nov 23 18:52:01 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 71 refused in all, pause 5 this week, 3466 minutes left).
+Mon Nov 23 18:56:22 2026 :: Sock.sinaddr:  116.172.201.224
+Mon Nov 23 18:56:22 2026 :: EOF encountered on read.
+Mon Nov 23 18:56:22 2026 :: Connection guard: 116.172.201.224 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 23 18:56:23 2026 :: Sock.sinaddr:  123.145.8.179
+Mon Nov 23 18:56:30 2026 :: EOF encountered on read.
+Mon Nov 23 18:56:30 2026 :: Connection guard: 123.145.8.179 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 23 18:56:36 2026 :: Connection guard: 220.250.11.254 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 18:56:42 2026 :: Connection guard: 1.193.63.199 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 18:56:43 2026 :: Connection guard: 36.106.167.231 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 18:56:52 2026 :: Connection guard: 121.29.84.192 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 18:56:52 2026 :: Sock.sinaddr:  110.179.80.98
+Mon Nov 23 18:57:00 2026 :: EOF encountered on read.
+Mon Nov 23 18:57:00 2026 :: Connection guard: 110.179.80.98 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 23 18:57:05 2026 :: Connection guard: refused 1 connection from 3.212.128.62 (paused; 24 refused in all, pause 4 this week, 1972 minutes left).
+Mon Nov 23 18:57:09 2026 :: Connection guard: 124.31.105.178 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 18:57:09 2026 :: Sock.sinaddr:  1.24.16.29
+Mon Nov 23 18:57:17 2026 :: EOF encountered on read.
+Mon Nov 23 18:57:17 2026 :: Connection guard: 1.24.16.29 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 23 18:58:07 2026 :: Treasure goblin: vanished from room 16050 (Bow of the Royal Eagle, pirate.are) (too long in one area).
