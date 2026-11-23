@@ -344761,3 +344761,20 @@ Mon Nov 23 21:44:34 2026 :: Connection guard: refused 1 connection from 34.198.2
 Mon Nov 23 21:49:39 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 73 refused in all, pause 5 this week, 3288 minutes left).
 Mon Nov 23 21:54:13 2026 :: Treasure goblin: vanished from room 1004 (A sloping path down the hill, uargo.are) (too long in one area).
 Mon Nov 23 21:54:43 2026 :: Connection guard: refused 1 connection from 52.22.236.30 (paused; 36 refused in all, pause 4 this week, 891 minutes left).
+Mon Nov 23 21:58:05 2026 :: Connection guard: 34.1.239.199 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 21:58:10 2026 :: Connection guard: 34.1.239.199 closed without a word (strike 2 of 6 in 6 hours).
+Mon Nov 23 21:58:10 2026 :: Sock.sinaddr:  34.1.239.199
+Mon Nov 23 21:58:10 2026 :: EOF encountered on read.
+Mon Nov 23 21:58:10 2026 :: Connection guard: 34.1.239.199 closed before a password prompt (strike 3 of 6 in 6 hours).
+Mon Nov 23 21:58:11 2026 :: Connection guard: 34.1.239.199 closed without a word (strike 4 of 6 in 6 hours).
+Mon Nov 23 21:58:11 2026 :: Connection guard: 34.1.239.199 closed without a word (strike 5 of 6 in 6 hours).
+Mon Nov 23 21:58:11 2026 :: Connection guard: 34.1.239.199 closed without a word (strike 6 of 6 in 6 hours).
+Mon Nov 23 21:58:11 2026 :: Connection guard: 34.1.239.199 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 34.1.239.199 lifts it.
+Mon Nov 23 21:58:12 2026 :: Connection guard: refused 1 connection from 34.1.239.199 (paused; 1 refused in all, pause 1 this week, 360 minutes left).
+Mon Nov 23 21:58:12 2026 :: Connection guard: 34.1.239.199 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 21:58:17 2026 :: Sock.sinaddr:  192.178.6.196
+Mon Nov 23 21:59:12 2026 :: Connection guard: refused 24 connections from 34.1.239.199 (since the last line; 25 refused in all, pause 1 this week, 359 minutes left).
+Mon Nov 23 21:59:46 2026 :: EOF encountered on read.
+Mon Nov 23 21:59:46 2026 :: Connection guard: 192.178.6.196 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 23 21:59:47 2026 :: Sock.sinaddr:  192.178.6.195
+Mon Nov 23 21:59:48 2026 :: Connection guard: refused 1 connection from 178.156.187.238 (paused; 28 refused in all, pause 4 this week, 2190 minutes left).
