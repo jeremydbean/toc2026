@@ -1,7 +1,7 @@
 {
  "checks": {
   "disk": {
-   "free_mb": 43069,
+   "free_mb": 43055,
    "inodes_free_pct": 96,
    "ok": true
   },
@@ -11,30 +11,19 @@
    "state": "answering"
   },
   "game_archives": {
-   "count": 269,
-   "newest_min": 69,
+   "count": 270,
+   "newest_min": 5,
    "ok": true,
-   "total_mb": 462
-  },
-  "private_backup": {
-   "archive_bytes": null,
-   "configured": false,
-   "generations": null,
-   "last_attempt": null,
-   "last_success_min": null,
-   "ok": false,
-   "reason": null,
-   "remote_commit": null,
-   "status": "not-configured"
+   "total_mb": 465
   },
   "public_sync": {
    "kind": "pushed",
    "last_attempt": "ok",
-   "last_attempt_min": 2,
-   "last_success_min": 2,
+   "last_attempt_min": 4,
+   "last_success_min": 4,
    "ok": true,
-   "reason": "pushed 5 files (0 characters)",
-   "remote_commit": "18a23ed16e02"
+   "reason": "pushed 9 files (0 characters)",
+   "remote_commit": "ddf1ebb16291"
   },
   "recovery": {
    "exit": "0",
@@ -47,7 +36,7 @@
    "ok": true,
    "units": {
     "toc-auto-deploy.service": {
-     "active": "activating",
+     "active": "inactive",
      "enabled": "static",
      "from_shipped_file": true,
      "load": "loaded",
@@ -109,13 +98,6 @@
      "load": "loaded",
      "needs_daemon_reload": false
     },
-    "toc-player-backup.service": {
-     "active": "inactive",
-     "enabled": "disabled",
-     "from_shipped_file": true,
-     "load": "loaded",
-     "needs_daemon_reload": false
-    },
     "toc-state-sync-check.service": {
      "active": "failed",
      "enabled": "static",
@@ -157,15 +139,12 @@
    "ok": true
   }
  },
- "generated": 1795466580,
- "generated_utc": "2026-11-23T20:43:00Z",
+ "generated": 1795466948,
+ "generated_utc": "2026-11-23T20:49:08Z",
  "heartbeat": {
-  "backup_heartbeat": "not-configured",
   "heartbeat": "not-configured"
  },
- "overall": "degraded",
- "problems": [
-  "private_backup: not configured (no encrypted off-host copy)"
- ],
+ "overall": "ok",
+ "problems": [],
  "schema": 1
 }
