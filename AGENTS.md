@@ -1721,7 +1721,15 @@ Rules the code depends on:
   awards (`achievement_party_count`/`_event`) reach the credited player and
   their group in the room, mortals only.
 - **A boss row with a negative auxiliary** matches a death anywhere in that
-  room's area (Prince Starfire is WIMPY).
+  room's area (Prince Starfire is WIMPY). **A Hyrule guardian's row** (its
+  chamber's room) matches a death anywhere in that dungeon's room range
+  (`hyrule_dungeon_gate`; players' logs, 2026-11-23: the ashen Gleeok,
+  driven out by DESPAIR before 2026-11-10, died one room south and its
+  killer had neither the boss row nor the chest's, which asks for it).
+  The login fix `20261123-hyrule-piece-credit`
+  (`achievement_hyrule_piece_credit`) gives the boss and chest rows for
+  every Triforce piece a mortal holds, at any depth or stashed
+  (`tests/test_hyrule_boss_credit.py`).
 - **List views are cut into parts** of `ACHIEVEMENT_PART_BYTES` raw bytes so
   a part, colour converted, fits the pager's 32,000-byte block; a hidden
   achievement not yet earned matches no search.

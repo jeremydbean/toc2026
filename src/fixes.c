@@ -277,6 +277,24 @@ static bool fix_wrapped_pools( CHAR_DATA *ch )
     return true;
 }
 
+/* Hyrule's boss and chest achievements for every Triforce piece held
+   (achievement_hyrule_piece_credit, achievements.c). */
+static bool fix_hyrule_piece_credit( CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+    int given;
+
+    if ( IS_NPC(ch) || ( given = achievement_hyrule_piece_credit( ch ) ) == 0 )
+        return false;
+    snprintf( buf, sizeof(buf), "Hyrule piece credit: %s given %d achievement%s.",
+              ch->name, given, given == 1 ? "" : "s" );
+    log_string( buf );
+    send_to_char( "{0BA correction:{00 the Triforce pieces you hold prove guardians beaten "
+                  "and chests opened that an old bug never credited you for; those "
+                  "achievements are yours now.\n\r", ch );
+    return true;
+}
+
 static const PLAYER_FIX player_fixes[] =
 {
     /* Creation gave every new non-mage the mage's starting groups,
@@ -316,6 +334,12 @@ static const PLAYER_FIX player_fixes[] =
        too: it gives back only what the wrap took. */
     { "20261116-wrapped-pools", "mana or endurance wrapped negative by an old 16-bit store",
       fix_wrapped_pools, true },
+    /* Boss and chest achievements a held Triforce piece proves: a guardian
+       that died outside its chamber gave none, and before 2026-11-13 only
+       the first to open a chest got its row (players' logs, 2026-11-23).
+       Staff skip without marking; the function gives mortals only. */
+    { "20261123-hyrule-piece-credit", "Hyrule boss and chest achievements a held piece proves",
+      fix_hyrule_piece_credit, false },
 };
 
 #define PLAYER_FIX_COUNT ( (int)( sizeof(player_fixes) / sizeof(player_fixes[0]) ) )

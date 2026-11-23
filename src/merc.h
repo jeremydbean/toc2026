@@ -3861,6 +3861,7 @@ void    heal_spell_apply        ( CHAR_DATA *ch, int level, CHAR_DATA *victim );
 void    achievement_record_cure ( CHAR_DATA *ch, CHAR_DATA *victim );
 void    achievement_record_psionic ( CHAR_DATA *ch, int sn );
 void    achievement_record_hyrule_chest ( CHAR_DATA *ch, int dungeon );
+int     achievement_hyrule_piece_credit ( CHAR_DATA *ch );
 void    disaster_dragon_struck ( CHAR_DATA *ch, CHAR_DATA *victim );
 void    achievement_load_count ( CHAR_DATA *ch, const char *name, long value );
 void    achievement_load_set ( CHAR_DATA *ch, FILE *fp );

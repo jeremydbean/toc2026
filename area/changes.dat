@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261123hyrulecredit 2026-11-23
+A Hyrule guardian slain outside its own chamber, anywhere in its dungeon,
+now earns its achievement, and so its chest's.  A guardian driven from its
+chamber used to give neither.  At your next login, every Triforce piece
+you hold gives you the guardian and chest achievements it proves, if an
+old bug kept them from you.
+
 @ 20261123questareas 2026-11-23
 The questmaster no longer sends you to the Keep of Mahn-Tor or the Voyage
 Across Sea.  Every quest sent to either was lost: behind the keep's

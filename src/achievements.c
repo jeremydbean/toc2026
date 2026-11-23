@@ -1654,7 +1654,29 @@ static bool achievement_boss_room_matches(const ACHIEVEMENT_DEFINITION *definiti
     if (room == NULL)
         return false;
     if (definition->auxiliary >= 0)
-        return definition->auxiliary == room->vnum;
+    {
+        int level;
+
+        if (definition->auxiliary == room->vnum)
+            return true;
+        /* A Hyrule guardian counts anywhere in its own dungeon (players'
+           logs, 2026-11-23: the ashen Gleeok, driven from its chamber by
+           DESPAIR before that was stopped, died one room south and its
+           killer had neither the boss nor, since the chest asks for it,
+           the chest). The mobile's vnum is its own, so this names nobody
+           else. */
+        for (level = 1; level <= 9; level++)
+        {
+            const HYRULE_DUNGEON_GATE *gate = hyrule_dungeon_gate(level);
+
+            if (gate != NULL
+                && definition->auxiliary >= gate->first_room
+                && definition->auxiliary <= gate->last_room)
+                return room->vnum >= gate->first_room
+                    && room->vnum <= gate->last_room;
+        }
+        return false;
+    }
     home = get_room_index(-definition->auxiliary);
     return home != NULL && home->area != NULL && home->area == room->area;
 }
@@ -1845,6 +1867,62 @@ void achievement_record_hyrule_chest(CHAR_DATA *ch, int dungeon)
         return;
     achievement_record_event(ch,
         (achievement_event_type)(ACHIEVEMENT_EVENT_HYRULE_CHEST_FIRST + dungeon), true);
+}
+
+/* Which Triforce pieces a list holds, at any depth: bit n-1 for piece n,
+   all nine for The Triforce made whole. */
+static int achievement_pieces_in(const OBJ_DATA *list, int depth)
+{
+    int bits = 0;
+
+    for (; list != NULL && depth < 16; list = list->next_content)
+    {
+        int vnum = list->pIndexData != NULL ? list->pIndexData->vnum : 0;
+
+        if (vnum >= HYRULE_PIECE_FIRST_VNUM && vnum <= HYRULE_PIECE_LAST_VNUM)
+            bits |= 1 << (vnum - HYRULE_PIECE_FIRST_VNUM);
+        else if (vnum == OBJ_VNUM_HYRULE_TRIFORCE)
+            bits |= 0x1ff;
+        bits |= achievement_pieces_in(list->contains, depth + 1);
+    }
+    return bits;
+}
+
+/*
+ * Login fix 20261123-hyrule-piece-credit (fixes.c): a Triforce piece comes
+ * only out of its dungeon's chest, and since 2026-11-10 only with the key
+ * its guardian hands the players it credits, so a piece held -- carried,
+ * worn, nested or stashed -- is the guardian beaten and the chest opened.
+ * Two old faults left holders without the rows for them: a guardian that
+ * died outside its chamber gave no boss row (and the chest asks for the
+ * boss row), and before 2026-11-13 only OPEN of a closed chest counted, so
+ * every keyholder after the first opener went without the chest's. Gives
+ * both rows for each piece held, then the metas they complete. Mortals
+ * only, as every Hyrule row is. Returns how many rows it gave.
+ */
+int achievement_hyrule_piece_credit(CHAR_DATA *ch)
+{
+    int pieces, level, given = 0;
+
+    if (!achievement_is_player(ch) || ACH_STAFF(ch))
+        return 0;
+    pieces = achievement_pieces_in(ch->carrying, 0)
+           | achievement_pieces_in(ch->pcdata->stash, 0);
+    for (level = 1; level <= 9; level++)
+    {
+        char chest[32];
+
+        if (!(pieces & (1 << (level - 1))))
+            continue;
+        if (achievement_unlock(ch, achievement_index_by_key(cohort_hyrule_bosses_v1[level - 1]), true))
+            given++;
+        snprintf(chest, sizeof(chest), "hyrule-chest-%d", level);
+        if (achievement_unlock(ch, achievement_index_by_key(chest), true))
+            given++;
+    }
+    if (given > 0)
+        achievement_check_state(ch, true);
+    return given;
 }
 
 /* Healing another player in a fight with a monster, counted only for
