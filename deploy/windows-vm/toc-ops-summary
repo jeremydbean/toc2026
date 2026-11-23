@@ -213,6 +213,11 @@ def check_units() -> dict:
             bad.append(f"{unit} changed on disk, not reloaded")
         elif unit in TIMERS and state["active"] != "active":
             bad.append(f"{unit} {state['active']}")
+        elif state["active"] == "failed":
+            # A oneshot is "inactive" between runs, which is fine; "failed"
+            # is its last run ending badly. toc-state-sync-check failed every
+            # run for hours on 2026-11-23 while this said units: ok.
+            bad.append(f"{unit} failed on its last run")
     if bad:
         problems.append("units: " + "; ".join(bad))
     return {"ok": not bad, "units": out}

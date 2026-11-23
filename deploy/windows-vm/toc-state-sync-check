@@ -164,13 +164,23 @@ esac
 # might be the one about to fail. A count that cannot be read is not zero.
 unpushed=unknown
 if [ -d "$STATE_REPO/.git" ]; then
-    if unpushed=$(git -C "$STATE_REPO" rev-list --count '@{u}..HEAD' 2>/dev/null); then
+    # This runs as root against a clone toc owns. Under systemd git gets no
+    # HOME, so root's safe.directory never loads and git refuses the
+    # "dubious ownership" -- every run said "cannot tell" for hours on
+    # 2026-11-23 while the sync was healthy, because the reason went to
+    # /dev/null. Name the directory on the command line, and keep git's
+    # reason if it still fails.
+    git_err=$(mktemp 2>/dev/null) || git_err=/dev/null
+    if unpushed=$(git -c safe.directory="$STATE_REPO" -C "$STATE_REPO" \
+                      rev-list --count '@{u}..HEAD' 2>"$git_err"); then
         [ "$unpushed" -gt 0 ] && \
             problem="${problem:+$problem; }$unpushed commits committed but never pushed"
     else
         unpushed=unknown
-        problem="${problem:+$problem; }cannot tell whether the clone holds unpushed commits"
+        why=$(tr '\n' ' ' < "$git_err" 2>/dev/null | cut -c1-120)
+        problem="${problem:+$problem; }cannot tell whether the clone holds unpushed commits${why:+ ($why)}"
     fi
+    [ "$git_err" != /dev/null ] && rm -f "$git_err"
 else
     problem="${problem:+$problem; }no state clone at $STATE_REPO"
 fi

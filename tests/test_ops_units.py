@@ -54,7 +54,8 @@ show) u=$1
           changed=$(stat -c %Y "$UD/$u")000000000; reloaded=$(cat "$SD/reloaded" 2>/dev/null || echo 0)
           if [ -f "$SD/$u.stale" ] || [ "$changed" -gt "$reloaded" ]; then echo NeedDaemonReload=yes; else echo NeedDaemonReload=no; fi
       else echo LoadState=not-found; echo FragmentPath=; echo NeedDaemonReload=no; fi
-      if [ -f "$SD/$u.active" ]; then echo ActiveState=active; else echo ActiveState=inactive; fi
+      if [ -f "$SD/$u.failed" ]; then echo ActiveState=failed
+      elif [ -f "$SD/$u.active" ]; then echo ActiveState=active; else echo ActiveState=inactive; fi
       if [ -f "$SD/$u.enabled" ]; then echo UnitFileState=enabled; else echo UnitFileState=disabled; fi
       exit 0 ;;
 esac
@@ -321,6 +322,18 @@ class OpsSummaryTests(unittest.TestCase):
         joined = "\n".join(out["problems"])
         self.assertIn("toc-heartbeat.timer not installed", joined)
         self.assertIn("toc-state-sync.service changed on disk, not reloaded", joined)
+
+    def test_a_service_whose_last_run_failed_is_named(self) -> None:
+        """A oneshot is "inactive" between runs, which is fine; "failed" is
+        not. toc-state-sync-check failed every run for hours on 2026-11-23
+        while the summary said units: ok."""
+        done, out = self.run_summary()
+        self.assertTrue(out["checks"]["units"]["ok"], out["problems"])
+        (self.host.sd / "toc-state-sync-check.service.failed").write_text("")
+        done, out = self.run_summary()
+        self.assertFalse(out["checks"]["units"]["ok"])
+        self.assertIn("toc-state-sync-check.service failed on its last run",
+                      "\n".join(out["problems"]))
 
 
 class ReadinessTests(unittest.TestCase):

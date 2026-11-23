@@ -388,10 +388,25 @@ class StateSyncReceiptTests(unittest.TestCase):
         self.assertEqual(said.returncode, 1)
         self.assertIn("cannot tell whether the clone holds unpushed commits", marker)
         self.assertIn("unpushed=unknown", marker)
+        # git's own reason is kept, not sent to /dev/null (2026-11-23: a
+        # "dubious ownership" refusal read for hours as "cannot tell").
+        self.assertIn("upstream", marker.lower())
         shutil.rmtree(self.root / "state")
         said, marker, _ = self.check()
         self.assertEqual(said.returncode, 1)
         self.assertIn("no state clone", marker)
+
+
+class StateSyncCheckOwnershipTests(unittest.TestCase):
+    def test_the_count_names_its_clone_as_safe(self) -> None:
+        """The check runs as root (no User=) against a clone toc owns, and
+        under systemd git has no HOME, so root's safe.directory never loads:
+        git refused with "dubious ownership" on every run of 2026-11-23
+        while the sync was healthy. A real uid mismatch needs root to
+        reproduce, so this holds the source to naming the directory."""
+        source = CHECK.read_text()
+        self.assertIn('git -c safe.directory="$STATE_REPO" -C "$STATE_REPO"', source)
+        self.assertNotIn("rev-list --count '@{u}..HEAD' 2>/dev/null", source)
 
 
 class StateSyncUnitTests(unittest.TestCase):
