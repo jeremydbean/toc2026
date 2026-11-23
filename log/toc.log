@@ -344573,3 +344573,5 @@ Mon Nov 23 18:06:20 2026 :: Connection guard: refused 1 connection from 178.156.
 Mon Nov 23 18:10:12 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Mon Nov 23 18:11:25 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 1 of 6 in 6 hours).
 Mon Nov 23 18:13:08 2026 :: Connection guard: last hour 11 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 10 addresses paused and 0 refused now, 16 active player addresses.
+Mon Nov 23 18:14:24 2026 :: Treasure goblin: vanished from room 20124 (Warden's Office, prison.are) (too long in one area).
+Mon Nov 23 18:16:28 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 1 of 6 in 6 hours).
