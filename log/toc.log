@@ -344237,3 +344237,9 @@ Mon Nov 23 05:50:17 2026 :: Connection guard: 178.156.187.238 closed without a w
 Mon Nov 23 05:55:20 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 4 of 6 in 6 hours).
 Mon Nov 23 05:57:13 2026 :: Treasure goblin: vanished from room 332 (The ancient path, plains.are) (too long in one area).
 Mon Nov 23 06:00:23 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 2 of 6 in 6 hours).
+Mon Nov 23 06:05:27 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 2 of 6 in 6 hours).
+Mon Nov 23 06:07:18 2026 :: Treasure goblin: vanished from room 1833 (The Snow-filled Land, haven.are) (too long in one area).
+Mon Nov 23 06:07:39 2026 :: Sock.sinaddr:  143.198.136.192
+Mon Nov 23 06:07:39 2026 :: Connection guard: 143.198.136.192 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 23 06:10:26 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Mon Nov 23 06:10:32 2026 :: Connection guard: refused 1 connection from 52.22.236.30 (paused; 35 refused in all, pause 4 this week, 1835 minutes left).
