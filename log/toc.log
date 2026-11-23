@@ -344587,3 +344587,6 @@ Mon Nov 23 18:36:46 2026 :: Connection guard: 5.161.117.52 closed without a word
 Mon Nov 23 18:38:51 2026 :: Connection guard: refused 1 connection from 112.97.86.190 (paused; 2 refused in all, pause 1 this week, 354 minutes left).
 Mon Nov 23 18:39:51 2026 :: Connection guard: refused 2 connections from 112.97.86.190 (since the last line; 4 refused in all, pause 1 this week, 353 minutes left).
 Mon Nov 23 18:41:51 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 18:46:56 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 3 of 6 in 6 hours).
+Mon Nov 23 18:48:02 2026 :: Treasure goblin: vanished from room 5213 (A side street, oldthalo.are) (too long in one area).
+Mon Nov 23 18:52:01 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 71 refused in all, pause 5 this week, 3466 minutes left).
