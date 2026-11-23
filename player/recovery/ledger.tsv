@@ -501,3 +501,5 @@
 501	1795397735	corpse	created	P6affbced01c2afdc	Ravagger	c6b039867021c00	death	-	made in room 24388 holding 24 objects; death snapshot Ravagger.20261123_013535.death	2783e8f5
 502	1795397735	request	committed	P6affbced01c2afdc	Ravagger	death:c6b039867021c00	death	-	their save reached the disk	321ca1be
 503	1795400163	uid	assign	P6b03a1e301f78668	Storock	-	player	-	first seen since the ledger began	6de32872
+504	1795400306	snapshot	committed	P6b03a1e301f78668	Storock	-	level	-	Storock.20261123_021826.level fnv f3ceab68 2391 bytes	bf0f9c0c
+505	1795400456	snapshot	committed	P6b03a1e301f78668	Storock	-	level	-	Storock.20261123_022056.level fnv f715c987 2892 bytes	5eba0151

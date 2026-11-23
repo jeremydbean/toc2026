@@ -2,7 +2,7 @@
 Name Storock~
 Id   58145
 Serial 16163916
-LogO 1795400194
+LogO 1795400456
 Vers 4
 Prom ~
 Race human~
@@ -16,17 +16,19 @@ PsiKnown ~
 ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble 20261114-season-area-ids 20261116-wrapped-pools~
 Cast none
-Levl 1
-Plyd 349
+Levl 3
+Plyd 611
 ListRemorts ~
 NumRemorts 0
 Note 0
+SkillDamage 0 2 2
+MeleeRatio 963 2
 Scro 22
-Room 3702
-HMV  20 20 100 100 100 100
+Room 3714
+HMV  27 33 121 144 104 112
 NewGold 0
 NewPlat 0
-NewCopp 0
+NewCopp 7
 NewSilv 0
 BankCP 0
 IntTime 1795317651
@@ -35,16 +37,17 @@ Dcount 0
 SavedOnce 1
 PkRec 0
 PkGiv 0
-AchKills 0
+AchKills 5
 AchQuests 0
 AchDeaths 0
 AchExplore 0
 AchMaps 0
 AchCompass 0
 AchTriforce 0
+Achv first-kill 1795400273
 AchSet areas 1103516333 ~
-AchSet rooms 3702 ~
-LastOut  1795400194
+AchSet rooms 3702-3703 3705 3707-3709 3711-3718 3784 3794 ~
+LastOut  1795400456
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1790047194
@@ -55,7 +58,7 @@ SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  0
+Exp  6578
 Act  65788
 Comm 24576
 Mounted 0
@@ -82,23 +85,23 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 5
-Trai 3
-Tutorial 0 0
-Save  -1
+Prac 7
+Trai 5
+Tutorial 0 32776
+Save  -4
 Alig  750
-Hit   2
+Hit   5
 Dam   2
-ACs 95 95 95 99
+ACs 85 84 84 99
 Attr 13 13 13 13 13
 AMod 0 0 0 0 0
 Pass $6$eWvFcVHXyzoue5NB$3wzYtvaDiMk5RnsdumbDLhikLEvdkcnV.S7qGkWQtuG81er1hW0.66oVEtixA575B2Zok8.tggJTFsTSCd6k4.~
-Titl  the Apprentice of Magic~
+Titl  the Scholar of Magic~
 Pnts 0
 TSex 1
 LLev 0
-HMVP 20 100 100
-Cond 0 44 44
+HMVP 33 144 112
+Cond 0 47 39
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -112,7 +115,7 @@ Sk 1 'magic missile'
 Sk 1 'refresh'
 Sk 1 'shield'
 Sk 10 'axe'
-Sk 80 'dagger'
+Sk 81 'dagger'
 Sk 7 'flail'
 Sk 5 'mace'
 Sk 3 'polearm'
@@ -125,6 +128,8 @@ Sk 50 'recall'
 Gr 'rom basics'
 Gr 'mage basics'
 Gr 'mage default'
+AffD 'bless'   0  34  -3  24          0          0
+AffD 'bless'   0  34   3  18          0          0
 End
 
 #O
@@ -134,7 +139,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 196 0 0
+Val  0 0 191 0 0
 End
 
 #O
@@ -160,6 +165,98 @@ Vnum 3701
 Nest 0
 Wear 16
 Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3706
+Nest 0
+Wear 6
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3711
+Nest 0
+Wear 12
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3708
+Nest 0
+Wear 8
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3713
+Nest 0
+Wear 14
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3707
+Nest 0
+Wear 7
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3712
+Nest 0
+Wear 13
+Cost 0
+Cond 99
+Repd 0
+End
+
+#O
+Vnum 3705
+Nest 0
+Wear 4
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3705
+Nest 0
+Wear 3
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3718
+Nest 0
+Wear -1
+Lev  1
+Cost 1
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3718
+Nest 0
+Wear -1
+Lev  1
+Cost 1
 Cond 100
 Repd 0
 End

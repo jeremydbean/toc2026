@@ -54956,3 +54956,121 @@
 1795400235	cmd	Storock	1	3702	school.are	standing	100	0	-	look		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
 1795400240	cmd	Storock	1	3707	school.are	standing	100	0	-	down		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
 1795400242	cmd	Storock	1	3702	school.are	standing	100	0	-	up		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795400246	cmd	Storock	1	3705	school.are	standing	100	0	-	south		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795400249	cmd	Storock	1	3702	school.are	standing	100	0	-	north		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795400252	cmd	Storock	1	3708	school.are	standing	100	0	-	up		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795400255	cmd	Storock	1	3702	school.are	standing	100	0	-	down		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795400257	cmd	Storock	1	3703	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795400258	cmd	Storock	1	3709	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795400260	laid	-	0	0	-	1295	herb	42	a marjoram plant	3831	ratslair.are	scatter
+1795400260	laid	-	0	0	-	1296	component	63	a phoenix feather	1636	wyvern.are	scatter
+1795400261	cmd	Storock	1	3711	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795400263	cmd	Storock	1	3712	school.are	standing	100	0	-	down		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795400267	cmd	Storock	1	3715	school.are	standing	100	0	-	south		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is north.	-	+
+1795400270	skill	Storock	1	3715	school.are	dagger	80	81	success	kill
+1795400270	cmd	Storock	1	3715	school.are	standing	100	0	-	kill	man	You have become better at dagger! // Your pierce scratches the killer. // Your pierce scratches the killer.	-	-
+1795400273	achieved	Storock	1	3715	school.are	first-kill	5	5	(violence)
+1795400273	got	Storock	1	3715	school.are	3706	a sub issue helmet	armor	0	0	autoloot	corpse of the killer
+1795400273	got	Storock	1	3715	school.are	3711	a sub issue cape	armor	0	0	autoloot	corpse of the killer
+1795400273	coin	Storock	1	3715	school.are	+2	loot	(violence)	corpse of the killer	2
+1795400273	cmd	Storock	1	3715	school.are	standing	100	0	-	kill	man	They aren't here.	-	-
+1795400279	cmd	Storock	1	3715	school.are	standing	100	0	-	wear	all	You wear a sub issue cape about your body. // You wear a sub issue helmet on your head.	-	-
+1795400280	cmd	Storock	1	3712	school.are	standing	100	0	-	north		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795400281	cmd	Storock	1	3714	school.are	standing	100	0	-	west		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is east.	-	+
+1795400284	cmd	Storock	1	3714	school.are	standing	100	0	-	kill	lizx	They aren't here.	-	-
+1795400290	cmd	Storock	1	3714	school.are	standing	100	2	-	kill	li	Your pierce misses the lizard man. // Your pierce scratches the lizard man.	-	-
+1795400293	cmd	Storock	1	3714	school.are	fighting	100	0	fight	kill	li	You do the best you can!	-	-
+1795400293	cmd	Storock	1	3714	school.are	fighting	100	0	fight	kill	li	You do the best you can!	-	-
+1795400294	got	Storock	1	3714	school.are	3708	a pair of sub issue boots	armor	0	0	autoloot	corpse of the lizard man
+1795400294	got	Storock	1	3714	school.are	3713	a sub issue bracer	armor	0	0	autoloot	corpse of the lizard man
+1795400294	coin	Storock	1	3714	school.are	+2	loot	(violence)	corpse of the lizard man	4
+1795400294	cmd	Storock	1	3714	school.are	standing	100	0	-	kill	li	They aren't here.	-	-
+1795400297	cmd	Storock	1	3714	school.are	standing	100	0	-	wear	all	You wear a sub issue bracer around your left wrist. // You wear a pair of sub issue boots on your feet.	-	-
+1795400298	cmd	Storock	1	3712	school.are	standing	100	0	-	east		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795400299	cmd	Storock	1	3713	school.are	standing	100	0	-	north		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is south.	-	+
+1795400306	level	Storock	2	3713	school.are	1	2	M	0	4524	-1	(violence)
+1795400306	got	Storock	2	3713	school.are	3707	a pair of sub issue leggings	armor	0	0	autoloot	corpse of the kobold
+1795400306	got	Storock	2	3713	school.are	3712	a sub issue belt	armor	0	0	autoloot	corpse of the kobold
+1795400306	coin	Storock	2	3713	school.are	+2	loot	(violence)	corpse of the kobold	6
+1795400309	cmd	Storock	2	3713	school.are	standing	74	0	-	wear	all	You wear a sub issue belt about your waist. // You wear a pair of sub issue leggings on your legs.	-	-
+1795400311	cmd	Storock	2	3712	school.are	standing	74	0	-	south		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795400312	spotted	Storock	2	3716	school.are	1136	herb	47	a sprig of saffron	3505	2	scatter	arrive
+1795400312	cmd	Storock	2	3716	school.are	standing	74	0	-	east		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is west.	-	+
+1795400314	cmd	Storock	2	3716	school.are	standing	74	0	-	kill	gr	Your pierce scratches the gremlin. // Your pierce misses the gremlin.	-	-
+1795400325	cmd	Storock	2	3716	school.are	fighting	62	0	fight	skills		Level  1: dagger              81%      recall              50%       // Level  2: wands                1%       // Level  3: scrolls            n/a      	-	+
+1795400330	got	Storock	2	3716	school.are	3705	a sub issue cloak	armor	0	0	autoloot	corpse of the gremlin
+1795400330	got	Storock	2	3716	school.are	3705	a sub issue cloak	armor	0	0	autoloot	corpse of the gremlin
+1795400330	coin	Storock	2	3716	school.are	+2	loot	(violence)	corpse of the gremlin	8
+1795400334	cmd	Storock	2	3716	school.are	standing	62	0	-	wear	all	You wear a sub issue cloak around your neck. // You wear a sub issue cloak around your neck.	-	-
+1795400335	laid	-	0	0	-	1307	herb	48	an alfalfa sprout	25201	mushroom.are	scatter
+1795400335	laid	-	0	0	-	1308	herb	44	a sprig of aconite	25285	mushroom.are	scatter
+1795400335	laid	-	0	0	-	1309	component	69	a basilisks tongue	4622	dresden.are	scatter
+1795400335	passed	Storock	2	3712	school.are	1136	herb	47	a sprig of saffron	3528	23	2	scatter	3716	left
+1795400335	cmd	Storock	2	3712	school.are	standing	92	0	-	west		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795400337	cmd	Storock	2	3712	school.are	standing	92	0	-	sleep		You go to sleep.	-	-
+1795400340	refused	Storock	2	3712	school.are	sleeping	92	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1795400342	state	Storock	2	3712	school.are	lvl=2 hp=25/27 mana=107/122 mv=105/106 align=750 exp=5180 coin=8 bank=0 qp=0 prac=6 train=4 stash=0/50 remorts=0
+1795400342	cmd	Storock	2	3712	school.are	sleeping	92	0	-	score		| Name:        Storock | Level:       2 | Class:        Mage | // | Played:      0 hours | Sex:      Male | Guild:        None | // | Age:        17 years | Race:    Human | Castle:       None |	-	+
+1795400378	cmd	Storock	2	3712	school.are	sleeping	100	0	-	stand		You wake and stand up.	-	-
+1795400380	cmd	Storock	2	3712	school.are	standing	100	0	-	look		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795400382	cmd	Storock	2	3794	school.are	standing	100	0	-	ne		The storage room //   This room has a single light in the ceiling above you casting a pale radiance // over the contents of the room.  Some buckets and mops sit in one corner.	-	+
+1795400386	cmd	Storock	2	3794	school.are	standing	100	0	-	open	ja	The goblin has been let out of a dragon jar!	-	-
+1795400388	cmd	Storock	2	3794	school.are	standing	100	0	-	kill	go	Your pierce misses the goblin. // Your pierce scratches the goblin.	-	-
+1795400391	cmd	Storock	2	3794	school.are	fighting	96	0	fight	kick		You better leave the martial arts to fighters.	-	-
+1795400396	coin	Storock	2	3794	school.are	+2	loot	(violence)	-	10
+1795400397	laid	-	0	0	-	1312	herb	44	a sprig of aconite	7670	ultima.are	scatter
+1795400399	cmd	Storock	2	3712	school.are	standing	100	0	-	sw		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795400402	cmd	Storock	2	3716	school.are	standing	100	0	-	east		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is west.	-	+
+1795400405	cmd	Storock	2	3712	school.are	standing	100	0	-	west		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795400416	cmd	Storock	2	3717	school.are	standing	100	0	-	down		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795400417	cmd	Storock	2	3718	school.are	standing	100	0	-	south		The Store in Mud School //   You are in a cramped room.  Stacked neatly on shelves everywhere are items // and packages.  Light fluoresces off the ceiling in soft white tones.  Of	-	+
+1795400420	cmd	Storock	2	3718	school.are	standing	100	0	-	list		[Lv Price] Item // [ 0        48c] a hooded brass lantern. // [ 0        48c] a buffalo water skin.	-	+
+1795400422	cmd	Storock	2	3718	school.are	standing	100	0	-	inventory		You are carrying: //      Nothing.	-	-
+1795400427	coin	Storock	2	3718	school.are	-1	spent	buy	the adept of Gravestone	9
+1795400427	got	Storock	2	3718	school.are	3718	a pipeweed bread	food	1	1	buy	the adept of Gravestone
+1795400427	cmd	Storock	2	3718	school.are	standing	100	0	-	buy	bre	You buy a pipeweed bread.	-	-
+1795400429	coin	Storock	2	3718	school.are	-1	spent	buy	the adept of Gravestone	8
+1795400429	got	Storock	2	3718	school.are	3718	a pipeweed bread	food	1	1	buy	the adept of Gravestone
+1795400429	cmd	Storock	2	3718	school.are	standing	100	2	-	buy	bre	You buy a pipeweed bread.	-	-
+1795400430	coin	Storock	2	3718	school.are	-1	spent	buy	the adept of Gravestone	7
+1795400430	got	Storock	2	3718	school.are	3718	a pipeweed bread	food	1	1	buy	the adept of Gravestone
+1795400430	cmd	Storock	2	3718	school.are	standing	100	0	-	buy	bre	You buy a pipeweed bread. // (Tip: BUY <number> <item> buys several at once.)	-	-
+1795400433	cmd	Storock	2	3718	school.are	standing	100	0	-	eat	br	You eat a pipeweed bread. // You are full.	-	-
+1795400438	cmd	Storock	2	3718	school.are	standing	100	0	-	buy	sk	The adept of Gravestone tells you 'You can't afford to buy a buffalo water skin'.	-	-
+1795400441	cmd	Storock	2	3718	school.are	standing	100	0	-	list		[Lv Price] Item // [ 0        48c] a hooded brass lantern. // [ 0        48c] a buffalo water skin.	-	+
+1795400445	cmd	Storock	2	3718	school.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1795400447	cmd	Storock	2	3717	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795400449	cmd	Storock	2	3784	school.are	standing	100	0	-	north		The Hallway //   This is a common school hallway with the UGLY tile floor that most school // administrations seem to love so much.  The lockers on either side of the	-	+
+1795400450	cmd	Storock	2	3717	school.are	standing	100	0	-	south		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795400451	laid	-	0	0	-	1313	component	80	a glass encased wing of a fairy	4811	casino.are	scatter
+1795400451	cmd	Storock	2	3712	school.are	standing	100	0	-	up		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795400453	cmd	Storock	2	3714	school.are	standing	100	0	-	west		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is east.	-	+
+1795400456	cmd	Storock	2	3714	school.are	standing	100	0	-	kill	li	Your pierce scratches the lizard man. // Your pierce scratches the lizard man.	-	-
+1795400456	level	Storock	3	3714	school.are	2	3	M	0	6578	150	(violence)
+1795400456	got	Storock	3	3714	school.are	3708	a pair of sub issue boots	armor	0	0	autoloot	corpse of the lizard man
+1795400456	got	Storock	3	3714	school.are	3713	a sub issue bracer	armor	0	0	autoloot	corpse of the lizard man
+1795400456	coin	Storock	3	3714	school.are	+2	loot	(violence)	corpse of the lizard man	9
+1795400464	cmd	Storock	3	3712	school.are	standing	81	0	-	east		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795400473	cmd	Storock	3	3713	school.are	standing	81	0	-	north		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is south.	-	+
+1795400475	refused	Storock	3	3713	school.are	fighting	78	0	fight	north		No way!  You are still fighting!  FLEE to break away.	refusal:position	-
+1795400486	got	Storock	3	3713	school.are	3707	a pair of sub issue leggings	armor	0	0	autoloot	corpse of the kobold
+1795400486	got	Storock	3	3713	school.are	3712	a sub issue belt	armor	0	0	autoloot	corpse of the kobold
+1795400486	coin	Storock	3	3713	school.are	+2	loot	(violence)	corpse of the kobold	11
+1795400490	cmd	Storock	3	3712	school.are	standing	66	0	-	south		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795400495	cmd	Storock	3	3715	school.are	standing	66	0	-	south		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is north.	-	+
+1795400498	cmd	Storock	3	3715	school.are	standing	66	0	-	wear	all	You wear a sub issue bracer around your right wrist.	-	-
+1795400503	cmd	Storock	3	3715	school.are	standing	66	0	-	drop	all sub	You drop a sub issue belt. // A sub issue belt burst into flames as it hits the ground. // You drop a pair of sub issue leggings.	-	+
+1795400511	cmd	Storock	3	3715	school.are	standing	66	0	-	look		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is north.	-	+
+1795400514	got	Storock	3	3715	school.are	3718	a pipeweed bread	food	1	1	get	the floor
+1795400514	cmd	Storock	3	3715	school.are	standing	66	0	-	get	br	You get a pipeweed bread.	-	-
+1795400514	got	Storock	3	3715	school.are	3718	a pipeweed bread	food	1	1	get	the floor
+1795400514	cmd	Storock	3	3715	school.are	standing	66	0	-	get	br	You get a pipeweed bread.	-	-
+1795400517	cmd	Storock	3	3715	school.are	standing	66	0	-	equipment		You are using: // <used as light>     (Glowing) a war banner // <worn around neck>  a sub issue cloak	-	+
+1795400519	cmd	Storock	3	3715	school.are	standing	66	0	-	inventory		You are carrying: // ( 2) a pipeweed bread	-	-
+1795400521	cmd	Storock	3	3715	school.are	standing	66	0	-	look		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is north.	-	+
+1795400523	laid	-	0	0	-	1325	component	56	a dragons claw	7766	ultima.are	scatter
+1795400526	cmd	Storock	3	3712	school.are	standing	90	0	-	north		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795400527	cmd	Storock	3	3713	school.are	standing	90	0	-	north		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is south.	-	+
+1795400528	cmd	Storock	3	3712	school.are	standing	90	0	-	south		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795400529	cmd	Storock	3	3716	school.are	standing	90	0	-	east		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is west.	-	+
+1795400532	cmd	Storock	3	3716	school.are	standing	90	0	-	kill	gr	Your pierce scratches the gremlin. // Your pierce misses the gremlin.	-	-
