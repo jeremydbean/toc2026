@@ -1,0 +1,254 @@
+#CORPSE
+Id c6b039867021c00
+Owner Ravagger
+Uid P6affbced01c2afdc
+Owned 1
+Room 24388
+Level 9
+Timer 10080
+Died 1795397735
+Saved 1795397735
+Snapshot Ravagger.20261123_013535.death
+State live
+Why -
+Objects 24
+Vers 4
+End
+
+#O
+Vnum 24303
+Nest 0
+Wear -1
+Lev  1
+Time 52
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 24307
+Nest 0
+Wear -1
+Lev  5
+Cost 20000
+Cond 100
+Repd 0
+Affect -1 5 -1 2 23 0 0
+End
+
+#O
+Vnum 24304
+Nest 0
+Wear -1
+Lev  3
+Cost 120
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 24301
+Nest 0
+Wear -1
+Lev  1
+Time 67
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3718
+Nest 0
+Wear -1
+Lev  1
+Cost 1
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3718
+Nest 0
+Wear -1
+Lev  1
+Cost 1
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3716
+Nest 0
+Wear -1
+Cost 2
+Cond 100
+Repd 0
+Val  0 0 182 0 0
+End
+
+#O
+Vnum 3052
+Nest 0
+Wear -1
+Lev  5
+Cost 5100
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3066
+Nest 0
+Wear -1
+Lev  5
+Cost 100000
+Cond 90
+Repd 0
+End
+
+#O
+Vnum 104
+Nest 0
+Wear -1
+Lev  2
+Cost 50
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 102
+Nest 0
+Wear -1
+Lev  2
+Cost 50
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3715
+Nest 0
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3713
+Nest 0
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3710
+Nest 0
+Wear -1
+Cost 0
+Cond 98
+Repd 0
+Affect -1 0 -1 -22 14 0 0
+End
+
+#O
+Vnum 3709
+Nest 0
+Wear -1
+Cost 0
+Cond 99
+Repd 0
+Affect -1 0 -1 -9 14 0 0
+End
+
+#O
+Vnum 3705
+Nest 0
+Wear -1
+Cost 0
+Cond 99
+Repd 0
+End
+
+#O
+Vnum 3711
+Nest 0
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3707
+Nest 0
+Wear -1
+Cost 0
+Cond 99
+Repd 0
+End
+
+#O
+Vnum 3708
+Nest 0
+Wear -1
+Cost 0
+Cond 99
+Repd 0
+Affect -1 0 -1 -3 3 0 0
+End
+
+#O
+Vnum 3718
+Nest 0
+Wear -1
+Lev  1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3718
+Nest 0
+Wear -1
+Lev  1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 4498
+Nest 0
+Wear -1
+Lev  10
+Cost 800000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3162
+Nest 0
+Wear -1
+Cost 5000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3704
+Nest 0
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#END

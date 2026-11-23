@@ -495,3 +495,8 @@
 495	1795389952	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261122_232552.quest fnv d63cda0e 26110 bytes	8e0c8aa2
 496	1795397218	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261123_012658.quest fnv e1dc7819 26054 bytes	9c42b408
 497	1795397324	snapshot	committed	P6affbced01c2afdc	Ravagger	-	level	-	Ravagger.20261123_012844.level fnv 99dbf34b 4410 bytes	1df2c503
+498	1795397735	snapshot	committed	P6affbced01c2afdc	Ravagger	-	prepenalty	-	Ravagger.20261123_013535.prepenalty fnv eee71d9e 4172 bytes	2e371933
+499	1795397735	snapshot	committed	P6affbced01c2afdc	Ravagger	-	death	-	Ravagger.20261123_013535.death fnv 6685ecfc 4172 bytes	aa6d1491
+500	1795397735	request	pending	P6affbced01c2afdc	Ravagger	death:c6b039867021c00	death	(violence_update)	corpse c6b039867021c00 in room 24388	e10e4a44
+501	1795397735	corpse	created	P6affbced01c2afdc	Ravagger	c6b039867021c00	death	-	made in room 24388 holding 24 objects; death snapshot Ravagger.20261123_013535.death	2783e8f5
+502	1795397735	request	committed	P6affbced01c2afdc	Ravagger	death:c6b039867021c00	death	-	their save reached the disk	321ca1be

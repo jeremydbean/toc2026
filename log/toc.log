@@ -342663,3 +342663,94 @@ Mon Nov 23 01:32:06 2026 :: Log Ravagger [24347]: unl e
 Mon Nov 23 01:32:08 2026 :: Log Ravagger [24347]: op e
 Mon Nov 23 01:32:10 2026 :: Log Ravagger [24347]: e
 Mon Nov 23 01:32:10 2026 :: Log Ravagger [24376]: arrived (The Black Queen's Chamber) from 24347
+Mon Nov 23 01:32:28 2026 :: Log Ravagger [24376]: exa mirr
+Mon Nov 23 01:32:41 2026 :: Log Ravagger [24376]: rest
+Mon Nov 23 01:32:46 2026 :: Log Ravagger [24376]: sleep
+Mon Nov 23 01:32:49 2026 :: Log Ravagger [24376]: eq
+Mon Nov 23 01:32:53 2026 :: Log Ravagger [24376]: i
+Mon Nov 23 01:33:02 2026 :: Log Ravagger [24376]: st
+Mon Nov 23 01:33:05 2026 :: Log Ravagger [24376]: d
+Mon Nov 23 01:33:10 2026 :: Log Ravagger [24376]: op down
+Mon Nov 23 01:33:14 2026 :: Log Ravagger [24376]: l down
+Mon Nov 23 01:33:17 2026 :: Log Ravagger [24376]: d
+Mon Nov 23 01:33:17 2026 :: Log Ravagger [24379]: arrived (The Landing) from 24376
+Mon Nov 23 01:33:25 2026 :: Log Ravagger [24379]: w
+Mon Nov 23 01:33:25 2026 :: Log Ravagger [24381]: arrived (The Dock) from 24379
+Mon Nov 23 01:33:29 2026 :: Log Ravagger [24381]: l n
+Mon Nov 23 01:33:30 2026 :: Log Ravagger [24381]: n
+Mon Nov 23 01:33:30 2026 :: Log Ravagger [24382]: arrived (The Sulking Swan) from 24381
+Mon Nov 23 01:33:35 2026 :: Log Ravagger [24382]: con fish
+Mon Nov 23 01:33:40 2026 :: Log Ravagger [24382]: k fi
+Mon Nov 23 01:33:43 2026 :: Log Ravagger [24382]: kick
+Mon Nov 23 01:33:52 2026 :: Log Ravagger [24382]: kick
+Mon Nov 23 01:33:56 2026 :: Log Ravagger [24382]: killed the flying Fish
+Mon Nov 23 01:33:56 2026 :: Log Ravagger [24382]: coin +6 copper
+Mon Nov 23 01:33:57 2026 :: Log Ravagger [24382]: kick
+Mon Nov 23 01:34:00 2026 :: Log Ravagger [24382]: l
+Mon Nov 23 01:34:04 2026 :: Log Ravagger [24382]: n
+Mon Nov 23 01:34:04 2026 :: Log Ravagger [24383]: arrived (The Underground River) from 24382
+Mon Nov 23 01:34:06 2026 :: Log Ravagger [24383]: n
+Mon Nov 23 01:34:06 2026 :: Log Ravagger [24384]: arrived (Arrival) from 24383
+Mon Nov 23 01:34:08 2026 :: Log Ravagger [24384]: e
+Mon Nov 23 01:34:08 2026 :: Log Ravagger [24385]: arrived (The Second Dock) from 24384
+Mon Nov 23 01:34:14 2026 :: Log Ravagger [24385]: e
+Mon Nov 23 01:34:14 2026 :: Log Ravagger [24386]: arrived (The Entrance Hall) from 24385
+Mon Nov 23 01:34:20 2026 :: Log Ravagger [24386]: n
+Mon Nov 23 01:34:20 2026 :: Log Ravagger [24387]: arrived (The Entrance Hall) from 24386
+Mon Nov 23 01:34:23 2026 :: Log Ravagger [24387]: n
+Mon Nov 23 01:34:23 2026 :: Log Ravagger [24388]: arrived (The Joker's Throne) from 24387
+Mon Nov 23 01:34:26 2026 :: Log Ravagger [24388]: con jo
+Mon Nov 23 01:34:36 2026 :: Log Ravagger [24388]: eat br
+Mon Nov 23 01:34:38 2026 :: Log Ravagger [24388]: rest
+Mon Nov 23 01:34:43 2026 :: Log Ravagger [24388]: sc
+Mon Nov 23 01:34:55 2026 :: Log Ravagger [24388]: l
+Mon Nov 23 01:34:59 2026 :: Log Ravagger [24388]: st
+Mon Nov 23 01:35:02 2026 :: Log Ravagger [24388]: k jo
+Mon Nov 23 01:35:05 2026 :: Log Ravagger [24388]: kick
+Mon Nov 23 01:35:08 2026 :: Log Ravagger [24388]: kick
+Mon Nov 23 01:35:12 2026 :: Log Ravagger [24388]: kick
+Mon Nov 23 01:35:15 2026 :: Log Ravagger [24388]: eq
+Mon Nov 23 01:35:28 2026 :: Log Ravagger [24388]: (refused) kickk
+Mon Nov 23 01:35:30 2026 :: Log Ravagger [24388]: kick
+Mon Nov 23 01:35:35 2026 :: Ravagger killed by the Joker at 24388
+Mon Nov 23 01:35:35 2026 :: Snapshot of Ravagger taken before prepenalty: Ravagger.20261123_013535.prepenalty (PRESTORE Ravagger to see it).
+Mon Nov 23 01:35:35 2026 :: Snapshot of Ravagger taken before death: Ravagger.20261123_013535.death (PRESTORE Ravagger to see it).
+Mon Nov 23 01:35:35 2026 :: Log Ravagger [24388]: died to the Joker
+Mon Nov 23 01:35:35 2026 :: Log Ravagger [4216]: arrived (Death room.) from 24388
+Mon Nov 23 01:35:43 2026 :: Log Ravagger [4216]: l
+Mon Nov 23 01:35:54 2026 :: Log Ravagger [4216]: d
+Mon Nov 23 01:35:54 2026 :: Log Ravagger [4208]: arrived (Altar of the Temple of Devota.) from 4216
+Mon Nov 23 01:36:12 2026 :: Log Ravagger [4208]: rest
+Mon Nov 23 01:36:16 2026 :: Log Ravagger [4208]: eq
+Mon Nov 23 01:36:18 2026 :: Log Ravagger [4208]: i
+Mon Nov 23 01:36:27 2026 :: Connection guard: refused 1 connection from 52.87.72.16 (paused; 28 refused in all, pause 4 this week, 1012 minutes left).
+Mon Nov 23 01:36:57 2026 :: Log Ravagger [4208]: st
+Mon Nov 23 01:36:58 2026 :: Log Ravagger [4208]: e
+Mon Nov 23 01:36:58 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4208
+Mon Nov 23 01:36:59 2026 :: Log Ravagger [4207]: u
+Mon Nov 23 01:36:59 2026 :: Log Ravagger [3700]: arrived (Entrance to Mud School) from 4207
+Mon Nov 23 01:37:00 2026 :: Log Ravagger [3700]: w
+Mon Nov 23 01:37:00 2026 :: Log Ravagger [17]: arrived (An odd sight) from 3700
+Mon Nov 23 01:37:03 2026 :: Log Ravagger [17]: e
+Mon Nov 23 01:37:03 2026 :: Log Ravagger [3700]: arrived (Entrance to Mud School) from 17
+Mon Nov 23 01:37:03 2026 :: Log Ravagger [3700]: u
+Mon Nov 23 01:37:03 2026 :: Log Ravagger [3772]: arrived (Newbie Train Station) from 3700
+Mon Nov 23 01:37:04 2026 :: Log Ravagger [3772]: w
+Mon Nov 23 01:37:07 2026 :: Log Ravagger [3772]: n
+Mon Nov 23 01:37:07 2026 :: Log Ravagger [3241]: arrived (The Train Cafe.) from 3772
+Mon Nov 23 01:37:08 2026 :: Log Ravagger [3241]: w
+Mon Nov 23 01:37:08 2026 :: Log Ravagger [3241]: w
+Mon Nov 23 01:37:14 2026 :: Log Ravagger [3241]: b bre
+Mon Nov 23 01:37:14 2026 :: Log Ravagger [3241]: copper -1
+Mon Nov 23 01:37:14 2026 :: Log Ravagger [3241]: bought a pipeweed bread (vnum 3718) for 1 copper from a waitress
+Mon Nov 23 01:37:15 2026 :: Log Ravagger [3241]: b bre
+Mon Nov 23 01:37:15 2026 :: Log Ravagger [3241]: copper -1
+Mon Nov 23 01:37:15 2026 :: Log Ravagger [3241]: bought a pipeweed bread (vnum 3718) for 1 copper from a waitress
+Mon Nov 23 01:37:15 2026 :: Log Ravagger [3241]: b bre
+Mon Nov 23 01:37:15 2026 :: Log Ravagger [3241]: copper -1
+Mon Nov 23 01:37:15 2026 :: Log Ravagger [3241]: bought a pipeweed bread (vnum 3718) for 1 copper from a waitress
+Mon Nov 23 01:37:16 2026 :: Log Ravagger [3241]: b bre
+Mon Nov 23 01:37:16 2026 :: Log Ravagger [3241]: copper -1
+Mon Nov 23 01:37:16 2026 :: Log Ravagger [3241]: bought a pipeweed bread (vnum 3718) for 1 copper from a waitress
+Mon Nov 23 01:37:18 2026 :: Log Ravagger [3241]: l
+Mon Nov 23 01:37:20 2026 :: Log Ravagger [3241]: list

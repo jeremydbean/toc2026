@@ -54392,3 +54392,90 @@
 1795397526	laid	-	0	0	-	1186	component	84	a vial of froghemoth saliva	18079	icekeep.are	scatter
 1795397528	cmd	Ravagger	9	24347	chess.are	standing	74	0	-	open	e	Ok.	-	-
 1795397530	cmd	Ravagger	9	24376	chess.are	standing	74	0	-	east		The Black Queen's Chamber //   You are in a small chamber, containing only a bed, basin, // mirror and braided rug.  Despite being very small, it looks comfortable 	-	+
+1795397548	cmd	Ravagger	9	24376	chess.are	standing	74	0	-	examine	mirr	The mirror is full of smoke!  As you gaze upon it, a face comes // into focus.  It appears to be a crazily laughing man dressed in // bright clashing clothes.  He looks into your eyes and points downward.	-	+
+1795397561	cmd	Ravagger	9	24376	chess.are	standing	74	0	-	rest		You rest.	-	-
+1795397566	cmd	Ravagger	9	24376	chess.are	resting	74	0	-	sleep		You go to sleep.	-	-
+1795397569	cmd	Ravagger	9	24376	chess.are	sleeping	74	0	-	equipment		You are using: // <used as light>     (Glowing) a war banner // <worn around neck>  (Glowing) a small necklace	-	+
+1795397569	laid	-	0	0	-	1187	herb	35	a sprig of angelica	2119	hood.are	scatter
+1795397569	laid	-	0	0	-	1188	herb	53	a huckleberry	2155	hood.are	scatter
+1795397573	cmd	Ravagger	9	24376	chess.are	sleeping	100	0	-	inventory		You are carrying: //      a queens black key //      a knight's lance	-	+
+1795397582	cmd	Ravagger	9	24376	chess.are	sleeping	100	0	-	stand		You wake and stand up.	-	-
+1795397585	cmd	Ravagger	9	24376	chess.are	standing	100	0	-	down		The trapdoor is closed.	-	-
+1795397590	cmd	Ravagger	9	24376	chess.are	standing	100	0	-	open	down	Ok.	-	-
+1795397594	cmd	Ravagger	9	24376	chess.are	standing	100	0	-	look	down	You find a trapdoor under the bed! // The trapdoor is open.	-	-
+1795397597	cmd	Ravagger	9	24379	chess.are	standing	100	0	-	down		The Landing //   You drop down from the trap-door, and land on soft dirt.  You // seem to be inside some sort of enclave, and you see an underground river	-	+
+1795397605	cmd	Ravagger	9	24381	chess.are	standing	100	0	-	west		The Dock //   As you step onto the dock, it sags crazily and settles more // firmly into the river.  A sudden bright light shines out from upriver,	-	+
+1795397609	cmd	Ravagger	9	24381	chess.are	standing	100	0	-	look	n	Nothing special there.	-	-
+1795397610	cmd	Ravagger	9	24382	chess.are	standing	100	0	-	north		The Sulking Swan //   The sulking swan is a large wooden craft, carved to the exact  // likeness of a swan.  Its wooden sides thump hollowly against the tunnel 	-	+
+1795397615	cmd	Ravagger	9	24382	chess.are	standing	100	0	-	consider	fish	The flying Fish is well below your level. // The flying Fish has about a third of your hit points. // Blow for blow, you would need about 5 rounds to bring the flying Fish down; it would need over a hundred rounds for you.	-	+
+1795397620	cmd	Ravagger	9	24382	chess.are	standing	100	0	-	kill	fi	Your punch misses the flying Fish. // Your punch grazes the flying Fish.	-	-
+1795397623	cmd	Ravagger	9	24382	chess.are	fighting	100	0	fight	kick		Your kick misses the flying Fish.	-	-
+1795397627	laid	-	0	0	-	1190	herb	41	a sprig of mistletoe	1605	wyvern.are	scatter
+1795397627	laid	-	0	0	-	1191	herb	34	an amaranth plant	1623	wyvern.are	scatter
+1795397632	cmd	Ravagger	9	24382	chess.are	fighting	98	0	fight	kick		Your kick misses the flying Fish.	-	-
+1795397636	coin	Ravagger	9	24382	chess.are	+6	loot	(violence)	-	9440601
+1795397637	cmd	Ravagger	9	24382	chess.are	standing	98	0	-	kick		You aren't fighting anyone.	-	-
+1795397640	cmd	Ravagger	9	24382	chess.are	standing	98	0	-	look		The Sulking Swan //   The sulking swan is a large wooden craft, carved to the exact  // likeness of a swan.  Its wooden sides thump hollowly against the tunnel 	-	+
+1795397644	cmd	Ravagger	9	24383	chess.are	standing	98	0	-	north		The Underground River //   You bob along lazily in the strange craft, spinning in complete  // circles at points, but always headed downstream.  In the distance you see 	-	+
+1795397646	cmd	Ravagger	9	24384	chess.are	standing	98	0	-	north		Arrival //   The Sulking Swan heads directly to its berth, lining up alongside  // the wooden platform.  Ropes move of their own accord, rising from the 	-	+
+1795397648	cmd	Ravagger	9	24385	chess.are	standing	98	0	-	east		The Second Dock //   You decide that this dock is much sturdier than the first, and it  // feels quite nice to stand on firm ground again.  The boat is tied to the 	-	+
+1795397654	cmd	Ravagger	9	24386	chess.are	standing	98	0	-	east		The Entrance Hall //   You find yourself standing at the beginning of a giant entrance  // hall.  A fine red carpet leads north, and extravagant silks line the 	-	+
+1795397660	cmd	Ravagger	9	24387	chess.are	standing	98	0	-	north		The Entrance Hall //   You are standing on a fine red carpet, halfway down the length of  // the entrance hall.  There is retreat to the south, and a giant throne to 	-	+
+1795397663	cmd	Ravagger	9	24388	chess.are	standing	98	0	-	north		The Joker's Throne //   You stand before a giant throne, made entirely of fool's gold.   // This seems to be the domain of the Joker- It may be wise to leave him to 	-	+
+1795397666	cmd	Ravagger	9	24388	chess.are	standing	98	0	-	consider	jo	The Joker is a little above your level. // The Joker has about twice your hit points. // Blow for blow, you would need about 26 rounds to bring the Joker down; it would need about 12 rounds for you.	-	+
+1795397676	cmd	Ravagger	9	24388	chess.are	standing	98	0	-	eat	br	You eat a pipeweed bread. // You are full.	-	-
+1795397678	cmd	Ravagger	9	24388	chess.are	standing	98	0	-	rest		You rest.	-	-
+1795397683	state	Ravagger	9	24388	chess.are	lvl=9 hp=117/119 mana=287/287 mv=111/117 align=64 exp=20164 coin=9440601 bank=0 qp=0 prac=13 train=1 stash=0/50 remorts=0
+1795397683	cmd	Ravagger	9	24388	chess.are	resting	98	0	-	score		| Name:       Ravagger | Level:       9 | Class:        Monk | // | Played:      3 hours | Sex:      Male | Guild:        Monk | // | Age:        17 years | Race:    Human | Castle:       None |	-	+
+1795397689	laid	-	0	0	-	1200	herb	45	a sarsaparilla vine	9613	newthalo.are	scatter
+1795397695	cmd	Ravagger	9	24388	chess.are	resting	100	0	-	look		The Joker's Throne //   You stand before a giant throne, made entirely of fool's gold.   // This seems to be the domain of the Joker- It may be wise to leave him to 	-	+
+1795397699	cmd	Ravagger	9	24388	chess.are	resting	100	0	-	stand		You stand up.	-	-
+1795397702	cmd	Ravagger	9	24388	chess.are	standing	100	0	-	kill	jo	Your punch misses the Joker. // The Joker parries your attack.	-	-
+1795397705	cmd	Ravagger	9	24388	chess.are	fighting	93	0	fight	kick		Your kick scratches the Joker.	-	-
+1795397708	cmd	Ravagger	9	24388	chess.are	fighting	93	0	fight	kick		Your kick scratches the Joker.	-	-
+1795397712	cmd	Ravagger	9	24388	chess.are	fighting	77	0	fight	kick		Your kick grazes the Joker.	-	-
+1795397715	cmd	Ravagger	9	24388	chess.are	fighting	53	0	fight	equipment		You are using: // <used as light>     (Glowing) a war banner // <worn around neck>  (Glowing) a small necklace	-	+
+1795397717	skill	Ravagger	9	24388	chess.are	hand to hand	77	78	success	(violence)
+1795397728	refused	Ravagger	9	24388	chess.are	fighting	5	0	fight	(unknown)		Huh? Did you mean KICK?	refusal:unknown-command	-
+1795397730	cmd	Ravagger	9	24388	chess.are	fighting	5	0	fight	kick		Your kick scratches the Joker.	-	-
+1795397735	death	Ravagger	9	24388	chess.are	mob 24318 the Joker	killer_lvl=13 last=26 slap hp_before=-5 from=24318 age=0s big=26 slap from=24318 age=0s max_hp=119 foes=1 wimpy=0 dt_room=0 sanct=0 linkdead=0 burst=38 burst_secs=3
+1795397735	achieved	Ravagger	9	24388	chess.are	first-death	5	100	(violence)
+1795397735	area	Ravagger	9	4216	dresden.are	chess.are	dresden.are	954	death
+1795397743	cmd	Ravagger	9	4216	dresden.are	resting	0	0	-	look		Death room. //   Hrm, since you're reading this, guess you died! // Please insert coin(s) to continue.	-	+
+1795397747	laid	-	0	0	-	1203	herb	40	a clove	15216	campus.are	scatter
+1795397747	laid	-	0	0	-	1204	herb	49	a pomegranate	15231	campus.are	scatter
+1795397747	laid	-	0	0	-	1205	component	80	a glass encased wing of a fairy	7009	sewer.are	scatter
+1795397754	cmd	Ravagger	9	4208	dresden.are	resting	23	0	-	down		You stand up. // Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a	-	+
+1795397772	cmd	Ravagger	9	4208	dresden.are	standing	100	0	-	rest		You rest.	-	-
+1795397776	cmd	Ravagger	9	4208	dresden.are	resting	100	0	-	equipment		You are using: // Nothing.	-	-
+1795397778	cmd	Ravagger	9	4208	dresden.are	resting	100	0	-	inventory		You are carrying: //      Nothing.	-	-
+1795397794	laid	-	0	0	-	1206	herb	47	a sprig of saffron	16067	pirate.are	scatter
+1795397794	laid	-	0	0	-	1207	herb	46	a juniper berry	16046	pirate.are	scatter
+1795397794	laid	-	0	0	-	1208	component	81	a vial of squid ink	14021	whouse.are	scatter
+1795397817	cmd	Ravagger	9	4208	dresden.are	resting	100	0	-	stand		You stand up.	-	-
+1795397818	cmd	Ravagger	9	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795397819	area	Ravagger	9	3700	school.are	dresden.are	school.are	84	up
+1795397819	cmd	Ravagger	9	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795397820	area	Ravagger	9	17	connect.are	school.are	connect.are	1	west
+1795397820	cmd	Ravagger	9	17	connect.are	standing	100	0	-	west		An odd sight //   Standing before you is one of the most incredible things you have EVER seen. // A giant berry the likes you have never seen before sits in the middle of this	-	+
+1795397823	area	Ravagger	9	3700	school.are	connect.are	school.are	3	east
+1795397823	cmd	Ravagger	9	3700	school.are	standing	100	0	-	east		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795397823	cmd	Ravagger	9	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795397824	cmd	Ravagger	9	3772	school.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1795397827	cmd	Ravagger	9	3241	school.are	standing	100	0	-	north		The Train Cafe. //   It has a nice relaxing atmosphere.  Candles burn on the tables and the // bar giving the Cafe its only light.  The tables are spaced moderately	-	+
+1795397828	cmd	Ravagger	9	3241	school.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1795397828	cmd	Ravagger	9	3241	school.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1795397834	coin	Ravagger	9	3241	school.are	-1	spent	buy	a waitress	9440600
+1795397834	got	Ravagger	9	3241	school.are	3718	a pipeweed bread	food	1	1	buy	a waitress
+1795397834	cmd	Ravagger	9	3241	school.are	standing	100	0	-	buy	bre	You buy a pipeweed bread.	-	-
+1795397835	coin	Ravagger	9	3241	school.are	-1	spent	buy	a waitress	9440599
+1795397835	got	Ravagger	9	3241	school.are	3718	a pipeweed bread	food	1	1	buy	a waitress
+1795397835	cmd	Ravagger	9	3241	school.are	standing	100	0	-	buy	bre	You buy a pipeweed bread.	-	-
+1795397835	coin	Ravagger	9	3241	school.are	-1	spent	buy	a waitress	9440598
+1795397835	got	Ravagger	9	3241	school.are	3718	a pipeweed bread	food	1	1	buy	a waitress
+1795397835	cmd	Ravagger	9	3241	school.are	standing	100	0	-	buy	bre	You buy a pipeweed bread. // (Tip: BUY <number> <item> buys several at once.)	-	-
+1795397836	coin	Ravagger	9	3241	school.are	-1	spent	buy	a waitress	9440597
+1795397836	got	Ravagger	9	3241	school.are	3718	a pipeweed bread	food	1	1	buy	a waitress
+1795397836	cmd	Ravagger	9	3241	school.are	standing	100	0	-	buy	bre	You buy a pipeweed bread.	-	-
+1795397838	cmd	Ravagger	9	3241	school.are	standing	100	0	-	look		The Train Cafe. //   It has a nice relaxing atmosphere.  Candles burn on the tables and the // bar giving the Cafe its only light.  The tables are spaced moderately	-	+
+1795397840	cmd	Ravagger	9	3241	school.are	standing	100	0	-	list		[Lv Price] Item // [ 1         2c] a slice of cheesecake. // [ 5        16c] a bowl of grits.	-	+
