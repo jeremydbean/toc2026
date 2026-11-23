@@ -344701,3 +344701,6 @@ Mon Nov 23 20:43:50 2026 :: Daily backup started.
 Mon Nov 23 20:43:51 2026 :: Automated backup complete.
 Mon Nov 23 20:43:52 2026 :: Daily backup complete.
 Mon Nov 23 20:48:45 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 20:53:49 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 72 refused in all, pause 5 this week, 3344 minutes left).
+Mon Nov 23 20:53:55 2026 :: Treasure goblin: vanished from room 29051 (Servant's Quarters, korzath1.are) (too long in one area).
+Mon Nov 23 20:58:53 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 1 of 6 in 6 hours).
