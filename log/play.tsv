@@ -53118,3 +53118,77 @@
 1795395730	cmd	Ravagger	8	3757	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
 1795395732	cmd	Ravagger	8	3758	school.are	standing	100	0	-	west		Eclipse's Training Room //   You are in Eclipse's Training Room.  Around you are all sorts of physical // and mental training tools.  The whole room is filled with magic, holiness, 	-	+
 1795395737	cmd	Ravagger	8	3758	school.are	standing	100	0	-	inventory		You are carrying: //      a small sword // ( 2) a pipeweed bread	-	+
+1795395748	cmd	Ravagger	8	3758	school.are	standing	100	0	-	train		You have 2 training sessions. // You can train: str int wis con hp mana.	-	-
+1795395754	cmd	Ravagger	8	3758	school.are	standing	100	0	-	train	con	Your constitution increases!	-	-
+1795395755	cmd	Ravagger	8	3758	school.are	standing	100	0	-	train	con	Your constitution increases!	-	-
+1795395756	cmd	Ravagger	8	3758	school.are	standing	100	0	-	train	con	(Tip: TRAIN <stat> <number> trains several at once.) // You don't have enough training sessions.	-	-
+1795395758	cmd	Ravagger	8	3757	school.are	standing	100	0	-	east		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795395760	cmd	Ravagger	8	3759	school.are	standing	100	0	-	east		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with	-	+
+1795395763	cmd	Ravagger	8	3759	school.are	standing	100	0	-	practice		dodge               61%  recall              75%  dagger              33%   // hand to hand        75%  kick                63%   // You have 9 practice sessions left.	-	-
+1795395766	cmd	Ravagger	8	3759	school.are	standing	100	0	-	skills		Level  1: dagger              33%      hand to hand        75%       //           recall              75%       // Level  3: kick                63%      	-	+
+1795395789	cmd	Ravagger	8	3759	school.are	standing	100	0	-	look		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with	-	+
+1795395790	cmd	Ravagger	8	3757	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795395794	cmd	Ravagger	8	3700	school.are	standing	100	0	-	south		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795395795	area	Ravagger	8	4207	dresden.are	school.are	dresden.are	105	down
+1795395795	cmd	Ravagger	8	4207	dresden.are	standing	100	0	-	down		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795395800	cmd	Ravagger	8	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795395801	cmd	Ravagger	8	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795395801	cmd	Ravagger	8	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795395802	laid	-	0	0	-	1045	herb	40	a clove	13239	solace.are	scatter
+1795395803	cmd	Ravagger	8	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795395806	cmd	Ravagger	8	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795395807	cmd	Ravagger	8	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1795395808	cmd	Ravagger	8	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1795395809	cmd	Ravagger	8	2434	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795395811	cmd	Ravagger	8	2435	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795395816	cmd	Ravagger	8	2495	dresden.are	standing	100	0	-	south		The Jeweller's Shop //   You are in a small, beautifully furnished room.  The warm light emanating // from the small oil lamps on the walls is reflected in the hard, polished	-	+
+1795395822	cmd	Ravagger	8	2495	dresden.are	standing	100	0	-	list		[Lv Price] Item // [ 5        17g] a ring of protection. // [11  1p 3g 70s] a bar of mithril.	-	+
+1795395827	cmd	Ravagger	8	2435	dresden.are	standing	100	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795395828	cmd	Ravagger	8	2436	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795395836	cmd	Ravagger	8	2436	dresden.are	standing	100	0	-	who		[ 8 Human   Monk  ] Ravagger the Student of Size // Players found: 1	-	-
+1795395837	area	Ravagger	8	800	club.are	dresden.are	club.are	42	south
+1795395837	achieved	Ravagger	8	800	club.are	visit-social-club	5	95	south
+1795395837	cmd	Ravagger	8	800	club.are	standing	100	0	-	south		                    ACHIEVEMENT EARNED // Members Only  +5 points // Step into the Temple Boulevard Social Club.	-	+
+1795395854	cmd	Ravagger	8	814	club.are	standing	100	0	-	south		In an open elevator //   You enter the elevator waiting to ride to the social club.  From up above // you can hear the festivities coming from the club.	-	+
+1795395870	cmd	Ravagger	8	809	club.are	standing	100	0	-	south		The Social Club //   There is a quiet booth here in the corner.  The seats are made of cloth,  // and the lights are dim. You think maybe this is a good place to hide from 	-	+
+1795395873	cmd	Ravagger	8	807	club.are	standing	100	0	-	west		The Bar //   There is a long counter here that has just been polished.  It kinda makes // you want to try to glide a bottle of beer down it.  Behind the counter you	-	+
+1795395880	cmd	Ravagger	8	807	club.are	standing	100	0	-	consider	dron	Dron Kalot is far above your level. // Dron Kalot has many times your hit points. // Blow for blow, you would need over a hundred rounds to bring Dron Kalot down; he would need a single round for you.	-	+
+1795395883	cmd	Ravagger	8	807	club.are	standing	100	0	-	look		The Bar //   There is a long counter here that has just been polished.  It kinda makes // you want to try to glide a bottle of beer down it.  Behind the counter you	-	+
+1795395885	cmd	Ravagger	8	809	club.are	standing	100	0	-	east		The Social Club //   There is a quiet booth here in the corner.  The seats are made of cloth,  // and the lights are dim. You think maybe this is a good place to hide from 	-	+
+1795395886	cmd	Ravagger	8	806	club.are	standing	100	0	-	north		The Social Club //   You laugh when you look up toward the center of the dance floor because you  // can se the DJ dancing away behind his booth.  When you look at the wall, 	-	+
+1795395887	laid	-	0	0	-	1053	herb	35	a sprig of angelica	4484	dresden.are	scatter
+1795395887	laid	-	0	0	-	1054	component	69	a basilisks tongue	1144	shire.are	scatter
+1795395888	cmd	Ravagger	8	805	club.are	standing	100	0	-	north		The Social Club //   This is a pretty crowded corner. It seems as though everyone comes to  // this corner as soon as they walk in. While you stand here, you feel the 	-	+
+1795395890	cmd	Ravagger	8	801	club.are	standing	100	0	-	west		The Social Club //   There is loud music playing. You see people dancing and hear them laughing. // You hear glasses clinking and you know....THIS IS THE PLACE TO PARTY!	-	+
+1795395892	cmd	Ravagger	8	816	club.are	standing	100	0	-	north		In an open elevator //   You are in the elevator waiting to ride to the entrance of the social club. // You can hear the festivities coming from the club.	-	+
+1795395906	cmd	Ravagger	8	800	club.are	standing	100	0	-	north		The Entrance to Temple Blvd. Social Club //   This is the Cloak Check Room.  There is a large counter here where the // cloak clerk stands.  From here you can feel the rhythm of the bass from the	-	+
+1795395908	area	Ravagger	8	2436	dresden.are	club.are	dresden.are	71	north
+1795395908	cmd	Ravagger	8	2436	dresden.are	standing	100	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795395909	cmd	Ravagger	8	2437	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795395914	cmd	Ravagger	8	2438	dresden.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795395915	area	Ravagger	8	2564	limbo.are	dresden.are	limbo.are	7	south
+1795395915	cmd	Ravagger	8	2564	limbo.are	standing	100	0	-	south		Wall Road. //   The alley is shrouded in flitting shadows, and the darkness that pervades // this area sends a chill up your spine.	-	+
+1795395919	cmd	Ravagger	8	2565	limbo.are	standing	100	0	-	south		Wall Road. //   The alley is shrouded in flitting shadows, and the darkness that pervades // this area sends a chill up your spine.	-	+
+1795395924	cmd	Ravagger	8	2564	limbo.are	standing	100	0	-	north		Wall Road. //   The alley is shrouded in flitting shadows, and the darkness that pervades // this area sends a chill up your spine.	-	+
+1795395925	area	Ravagger	8	2438	dresden.are	limbo.are	dresden.are	10	north
+1795395925	cmd	Ravagger	8	2438	dresden.are	standing	100	0	-	north		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795395932	cmd	Ravagger	8	2437	dresden.are	standing	100	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795395935	cmd	Ravagger	8	4800	dresden.are	standing	100	0	-	south		Another Dimension //   You have somehow left the City of Dresden, and entered another dimension. // To the north you can still make out the streets of Dresden thru the mist,	-	+
+1795395941	cmd	Ravagger	8	4801	dresden.are	standing	100	0	-	south		The passage way //   A long narrow path leads upwards in a small secluded valley. Large but gentle // breezes ruffle the plethora of raiment that you wear, and a playful mist	-	+
+1795395944	cmd	Ravagger	8	4802	dresden.are	standing	100	0	-	south		The narrow entrance //   You have reached the entrance of a narrow box canyon. Standing beside you is // an odd weather worn stone statue, that seems oddly out of place in the	-	+
+1795395947	laid	-	0	0	-	1056	herb	47	a sprig of saffron	3750	school.are	scatter
+1795395947	laid	-	0	0	-	1057	herb	48	an alfalfa sprout	3745	school.are	scatter
+1795395950	cmd	Ravagger	8	4803	dresden.are	standing	100	0	-	south		The Palm of the Creator //   A large stone hand rises out of the earth and points skyward...the only place // you find to stand in the room is at the center of the giant stone effigy.	-	+
+1795395961	cmd	Ravagger	8	4804	dresden.are	standing	100	0	-	look	pit	This is where you put money and items to help Doz expand this shrine and // convert more people to the belief of Mota, lord of the gods.	-	-
+1795395968	cmd	Ravagger	8	4804	dresden.are	standing	100	0	-	look	in pit	The donation pit contains: //      Nothing.	-	-
+1795395970	cmd	Ravagger	8	4804	dresden.are	standing	100	0	-	look		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795395972	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1795395979	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	skills		Level  1: dagger              33%      hand to hand        75%       //           recall              75%       // Level  3: kick                63%      	-	+
+1795395986	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	train		You have 0 training sessions. // You can train: str int wis con hp mana.	-	-
+1795395990	laid	-	0	0	-	1059	herb	42	a marjoram plant	10281	tritia.are	scatter
+1795395990	laid	-	0	0	-	1060	component	73	a roper's tentacle	14020	whouse.are	scatter
+1795395990	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	look	man	You do not see that here.	-	-
+1795395995	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	look		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1795396019	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	look	strange	You do not see that here.	-	-
+1795396026	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	train		You have 0 training sessions. // You can train: str int wis con hp mana.	-	-
+1795396032	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	skills		Level  1: dagger              33%      hand to hand        75%       //           recall              75%       // Level  3: kick                63%      	-	+

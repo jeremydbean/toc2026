@@ -48,7 +48,7 @@ List spend 4 0 buy
 List spend 10000 0 other
 End
 Day 2026-11-23
-Played 170
+Played 427
 Level 8 8 0
 Exp 0 0
 Kills 0
@@ -56,7 +56,10 @@ Deaths 0
 Close 0
 Quests 0 0
 Dailies 0 0
-List area 170 0 City of Dresden
-List area 0 0 Mud School
+List achv 5 0 Members Only
+List area 241 0 City of Dresden
+List area 105 0 Mud School
+List area 71 0 Social Club
+List area 10 0 Limbo
 End
 #END

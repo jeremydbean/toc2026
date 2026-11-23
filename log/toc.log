@@ -340875,3 +340875,110 @@ Mon Nov 23 01:02:11 2026 :: Log Ravagger [3757]: affects off: armor
 Mon Nov 23 01:02:12 2026 :: Log Ravagger [3757]: w
 Mon Nov 23 01:02:12 2026 :: Log Ravagger [3758]: arrived (Eclipse's Training Room) from 3757
 Mon Nov 23 01:02:17 2026 :: Log Ravagger [3758]: inv
+Mon Nov 23 01:02:28 2026 :: Log Ravagger [3758]: train
+Mon Nov 23 01:02:34 2026 :: Log Ravagger [3758]: train con
+Mon Nov 23 01:02:35 2026 :: Log Ravagger [3758]: train con
+Mon Nov 23 01:02:36 2026 :: Log Ravagger [3758]: train con
+Mon Nov 23 01:02:38 2026 :: Log Ravagger [3758]: e
+Mon Nov 23 01:02:38 2026 :: Log Ravagger [3757]: arrived (A Room in Mud School) from 3758
+Mon Nov 23 01:02:40 2026 :: Log Ravagger [3757]: e
+Mon Nov 23 01:02:40 2026 :: Log Ravagger [3759]: arrived (Soulcrusher's Guild Room) from 3757
+Mon Nov 23 01:02:43 2026 :: Log Ravagger [3759]: pra
+Mon Nov 23 01:02:46 2026 :: Log Ravagger [3759]: sk
+Mon Nov 23 01:03:09 2026 :: Log Ravagger [3759]: l
+Mon Nov 23 01:03:10 2026 :: Log Ravagger [3759]: w
+Mon Nov 23 01:03:10 2026 :: Log Ravagger [3757]: arrived (A Room in Mud School) from 3759
+Mon Nov 23 01:03:14 2026 :: Log Ravagger [3757]: s
+Mon Nov 23 01:03:14 2026 :: Log Ravagger [3700]: arrived (Entrance to Mud School) from 3757
+Mon Nov 23 01:03:15 2026 :: Log Ravagger [3700]: d
+Mon Nov 23 01:03:15 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 3700
+Mon Nov 23 01:03:20 2026 :: Log Ravagger [4207]: e
+Mon Nov 23 01:03:20 2026 :: Log Ravagger [4202]: arrived (Halls of Healing.) from 4207
+Mon Nov 23 01:03:21 2026 :: Log Ravagger [4202]: e
+Mon Nov 23 01:03:21 2026 :: Log Ravagger [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Mon Nov 23 01:03:21 2026 :: Log Ravagger [4201]: e
+Mon Nov 23 01:03:21 2026 :: Log Ravagger [2427]: arrived (Main Processional.) from 4201
+Mon Nov 23 01:03:23 2026 :: Log Ravagger [2427]: n
+Mon Nov 23 01:03:23 2026 :: Log Ravagger [2404]: arrived (Southern Oak Tree Square.) from 2427
+Mon Nov 23 01:03:26 2026 :: Log Ravagger [2404]: n
+Mon Nov 23 01:03:26 2026 :: Log Ravagger [2401]: arrived (Center of Oak Tree Square.) from 2404
+Mon Nov 23 01:03:27 2026 :: Log Ravagger [2401]: w
+Mon Nov 23 01:03:27 2026 :: Log Ravagger [2405]: arrived (Western Oak Tree Square.) from 2401
+Mon Nov 23 01:03:28 2026 :: Log Ravagger [2405]: w
+Mon Nov 23 01:03:28 2026 :: Log Ravagger [2433]: arrived (Temple Boulevard.) from 2405
+Mon Nov 23 01:03:29 2026 :: Log Ravagger [2433]: w
+Mon Nov 23 01:03:29 2026 :: Log Ravagger [2434]: arrived (Temple Boulevard.) from 2433
+Mon Nov 23 01:03:31 2026 :: Log Ravagger [2434]: w
+Mon Nov 23 01:03:31 2026 :: Log Ravagger [2435]: arrived (Temple Boulevard.) from 2434
+Mon Nov 23 01:03:36 2026 :: Log Ravagger [2435]: s
+Mon Nov 23 01:03:36 2026 :: Log Ravagger [2495]: arrived (The Jeweller's Shop) from 2435
+Mon Nov 23 01:03:42 2026 :: Log Ravagger [2495]: list
+Mon Nov 23 01:03:47 2026 :: Log Ravagger [2495]: n
+Mon Nov 23 01:03:47 2026 :: Log Ravagger [2435]: arrived (Temple Boulevard.) from 2495
+Mon Nov 23 01:03:48 2026 :: Log Ravagger [2435]: w
+Mon Nov 23 01:03:48 2026 :: Log Ravagger [2436]: arrived (Temple Boulevard.) from 2435
+Mon Nov 23 01:03:56 2026 :: Log Ravagger [2436]: who
+Mon Nov 23 01:03:57 2026 :: Log Ravagger [2436]: s
+Mon Nov 23 01:03:57 2026 :: Log Ravagger [800]: arrived (The Entrance to Temple Blvd. Social Club) from 2436
+Mon Nov 23 01:04:14 2026 :: Log Ravagger [800]: s
+Mon Nov 23 01:04:14 2026 :: Log Ravagger [814]: arrived (In an open elevator) from 800
+Mon Nov 23 01:04:19 2026 :: Log Ravagger [815]: arrived (In an elevator) from 814
+Mon Nov 23 01:04:27 2026 :: Log Ravagger [816]: arrived (In an open elevator) from 815
+Mon Nov 23 01:04:30 2026 :: Log Ravagger [816]: s
+Mon Nov 23 01:04:30 2026 :: Log Ravagger [809]: arrived (The Social Club) from 816
+Mon Nov 23 01:04:33 2026 :: Log Ravagger [809]: w
+Mon Nov 23 01:04:33 2026 :: Log Ravagger [807]: arrived (The Bar) from 809
+Mon Nov 23 01:04:40 2026 :: Log Ravagger [807]: con dron
+Mon Nov 23 01:04:43 2026 :: Log Ravagger [807]: l
+Mon Nov 23 01:04:45 2026 :: Log Ravagger [807]: e
+Mon Nov 23 01:04:45 2026 :: Log Ravagger [809]: arrived (The Social Club) from 807
+Mon Nov 23 01:04:46 2026 :: Log Ravagger [809]: n
+Mon Nov 23 01:04:46 2026 :: Log Ravagger [806]: arrived (The Social Club) from 809
+Mon Nov 23 01:04:48 2026 :: Log Ravagger [806]: n
+Mon Nov 23 01:04:48 2026 :: Log Ravagger [805]: arrived (The Social Club) from 806
+Mon Nov 23 01:04:50 2026 :: Log Ravagger [805]: w
+Mon Nov 23 01:04:50 2026 :: Log Ravagger [801]: arrived (The Social Club) from 805
+Mon Nov 23 01:04:52 2026 :: Log Ravagger [801]: n
+Mon Nov 23 01:04:52 2026 :: Log Ravagger [816]: arrived (In an open elevator) from 801
+Mon Nov 23 01:04:56 2026 :: Log Ravagger [817]: arrived (In an elevator) from 816
+Mon Nov 23 01:05:04 2026 :: Log Ravagger [814]: arrived (In an open elevator) from 817
+Mon Nov 23 01:05:06 2026 :: Log Ravagger [814]: n
+Mon Nov 23 01:05:06 2026 :: Log Ravagger [800]: arrived (The Entrance to Temple Blvd. Social Club) from 814
+Mon Nov 23 01:05:08 2026 :: Log Ravagger [800]: n
+Mon Nov 23 01:05:08 2026 :: Log Ravagger [2436]: arrived (Temple Boulevard.) from 800
+Mon Nov 23 01:05:09 2026 :: Log Ravagger [2436]: w
+Mon Nov 23 01:05:09 2026 :: Log Ravagger [2437]: arrived (Temple Boulevard.) from 2436
+Mon Nov 23 01:05:14 2026 :: Log Ravagger [2437]: w
+Mon Nov 23 01:05:14 2026 :: Log Ravagger [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Mon Nov 23 01:05:15 2026 :: Log Ravagger [2438]: s
+Mon Nov 23 01:05:15 2026 :: Log Ravagger [2564]: arrived (Wall Road.) from 2438
+Mon Nov 23 01:05:19 2026 :: Log Ravagger [2564]: s
+Mon Nov 23 01:05:19 2026 :: Log Ravagger [2565]: arrived (Wall Road.) from 2564
+Mon Nov 23 01:05:24 2026 :: Log Ravagger [2565]: n
+Mon Nov 23 01:05:24 2026 :: Log Ravagger [2564]: arrived (Wall Road.) from 2565
+Mon Nov 23 01:05:25 2026 :: Log Ravagger [2564]: n
+Mon Nov 23 01:05:25 2026 :: Log Ravagger [2438]: arrived (Inside the Western Gates of Dresden.) from 2564
+Mon Nov 23 01:05:32 2026 :: Log Ravagger [2438]: e
+Mon Nov 23 01:05:32 2026 :: Log Ravagger [2437]: arrived (Temple Boulevard.) from 2438
+Mon Nov 23 01:05:35 2026 :: Log Ravagger [2437]: s
+Mon Nov 23 01:05:35 2026 :: Log Ravagger [4800]: arrived (Another Dimension) from 2437
+Mon Nov 23 01:05:41 2026 :: Log Ravagger [4800]: s
+Mon Nov 23 01:05:41 2026 :: Log Ravagger [4801]: arrived (The passage way) from 4800
+Mon Nov 23 01:05:44 2026 :: Log Ravagger [4801]: s
+Mon Nov 23 01:05:44 2026 :: Log Ravagger [4802]: arrived (The narrow entrance) from 4801
+Mon Nov 23 01:05:50 2026 :: Log Ravagger [4802]: s
+Mon Nov 23 01:05:50 2026 :: Log Ravagger [4803]: arrived (The Palm of the Creator) from 4802
+Mon Nov 23 01:05:57 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4803
+Mon Nov 23 01:06:01 2026 :: Log Ravagger [4804]: l pit
+Mon Nov 23 01:06:03 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 2 of 6 in 6 hours).
+Mon Nov 23 01:06:08 2026 :: Log Ravagger [4804]: l in pit
+Mon Nov 23 01:06:10 2026 :: Log Ravagger [4804]: l
+Mon Nov 23 01:06:12 2026 :: Log Ravagger [4804]: w
+Mon Nov 23 01:06:12 2026 :: Log Ravagger [4807]: arrived (The Training room) from 4804
+Mon Nov 23 01:06:19 2026 :: Log Ravagger [4807]: sk
+Mon Nov 23 01:06:26 2026 :: Log Ravagger [4807]: train
+Mon Nov 23 01:06:30 2026 :: Log Ravagger [4807]: l man
+Mon Nov 23 01:06:35 2026 :: Log Ravagger [4807]: l
+Mon Nov 23 01:06:59 2026 :: Log Ravagger [4807]: l strange
+Mon Nov 23 01:07:06 2026 :: Log Ravagger [4807]: train
+Mon Nov 23 01:07:12 2026 :: Log Ravagger [4807]: skill
