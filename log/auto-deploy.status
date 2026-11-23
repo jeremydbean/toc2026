@@ -1,1 +1,1 @@
-2026-11-23T20:12:42Z waiting for CI on 8ad1eff4f (in_progress) before deploying 93ddd26f9
+2026-11-23T20:22:43Z not deploying 5e7577957: CI on 8ad1eff4f says failure; push a fix
