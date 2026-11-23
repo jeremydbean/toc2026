@@ -70,6 +70,8 @@ TIMERS = ["toc-state-sync.timer", "toc-state-sync-check.timer", "toc-game-recove
 SERVICES = ["toc-game.service", "toc-web.service", "toc-state-sync.service",
             "toc-state-sync-check.service", "toc-game-recovery.service",
             "toc-auto-deploy.service", "toc-heartbeat.service", "toc-host-action.service"]
+# The unit that runs this script; see check_units.
+SELF_UNIT = "toc-heartbeat.service"
 IPV4 = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
 
 now = int(time.time())
@@ -241,10 +243,13 @@ def check_units() -> dict:
             bad.append(f"{unit} changed on disk, not reloaded")
         elif unit in TIMERS and state["active"] != "active":
             bad.append(f"{unit} {state['active']}")
-        elif state["active"] == "failed":
+        elif state["active"] == "failed" and unit != SELF_UNIT:
             # A oneshot is "inactive" between runs, which is fine; "failed"
             # is its last run ending badly. toc-state-sync-check failed every
-            # run for hours on 2026-11-23 while this said units: ok.
+            # run for hours on 2026-11-23 while this said units: ok. Never
+            # our own unit: this script exits 1 whenever the verdict is
+            # degraded, so judging toc-heartbeat.service by its last run
+            # would keep the summary degraded for ever once it slipped.
             bad.append(f"{unit} failed on its last run")
     if bad:
         problems.append("units: " + "; ".join(bad))

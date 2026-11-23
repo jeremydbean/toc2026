@@ -358,6 +358,15 @@ class OpsSummaryTests(unittest.TestCase):
         self.assertIn("toc-state-sync-check.service failed on its last run",
                       "\n".join(out["problems"]))
 
+    def test_a_degraded_summary_recovers_though_its_own_unit_failed(self) -> None:
+        """toc-ops-summary exits 1 whenever it is degraded, so systemd marks
+        toc-heartbeat.service "failed". Judging that would keep the summary
+        degraded for ever once anything slipped; it is never judged."""
+        (self.host.sd / "toc-heartbeat.service.failed").write_text("")
+        done, out = self.run_summary()
+        self.assertEqual(out["overall"], "ok", out["problems"])
+        self.assertEqual(done.returncode, 0)
+
 
 class ReadinessTests(unittest.TestCase):
 
