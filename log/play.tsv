@@ -53563,3 +53563,378 @@
 1795396638	cmd	Ravagger	8	4205	dresden.are	standing	96	0	-	west		Alas, you cannot go that way.	-	-
 1795396639	cmd	Trentlin	54	2334	mahntor.are	standing	82	0	-	north		Lost in the Mist //   You try to peer through the mist......You see nothing. It swirls about you, // covering you in a damp sheen. There is no sound, all light is eagerly devoured	-	+
 1795396639	cmd	Trentlin	54	2336	mahntor.are	standing	82	0	-	south		Lost in the Mist //   You wander, lost, for what seems an eternity. Then....From nowhere....You see // what appears to be trees and hills to the east. The mist itself thickens to	-	+
+1795396640	cmd	Ravagger	8	4209	dresden.are	standing	96	0	-	south		Private Prayer Room. //   There are a number of pews for kneeling and a rack of candles in this room. // You feel at ease here as if Devota herself were here to protect you.  You	-	+
+1795396641	cmd	Trentlin	54	2336	mahntor.are	standing	82	0	-	exits		Obvious exits: // North - The solid path // East  - Lost in the Mist	-	+
+1795396642	cmd	Trentlin	54	2339	mahntor.are	standing	82	0	-	north		The solid path //   A solid path rises out of the misty swamp. It leads north, into what appears // to be a forested area. The trees, above, allow light and air to penetrate and	-	+
+1795396643	cmd	Trentlin	54	2340	mahntor.are	standing	82	0	-	north		A forested path //   The path here leads north through a thick forest. High bushes and forest // undergrowth line both sides of the trail. Looking north, you see a thin line	-	+
+1795396645	cmd	Trentlin	54	2341	mahntor.are	standing	82	0	-	north		The gate before the Ogre Village //   You stand before a huge pair of crude, wooden gates. They are thrown open. // Looking inside the gates, you see a crude village. Large humanoid creatures	-	+
+1795396645	cmd	Ravagger	8	4205	dresden.are	standing	96	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795396647	cmd	Trentlin	54	2343	mahntor.are	standing	82	0	-	north		Inside the gates //   You stand just north of the gates to the village. Looking around, you see many // crude huts and cooking fires. To the north, you see a huge fire pit. Behind 	-	+
+1795396648	cmd	Ravagger	8	4207	dresden.are	standing	96	0	-	north		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795396649	cmd	Trentlin	54	2346	mahntor.are	standing	82	0	-	north		The firepit before the lodge //   You stand at the edge of a huge firepit. The heat from the burning embers // makes you sweat as you stand here. Large spits above the pit are empty but	-	+
+1795396649	cmd	Ravagger	8	4208	dresden.are	standing	96	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795396651	cmd	Trentlin	54	2348	mahntor.are	standing	82	0	-	north		The entryway to the lodge //   You are at the entry hall to a large lodge. Animal pelts and other trophies // line the walls here. Large chests on either side of the door appear to be	-	+
+1795396651	cmd	Trentlin	54	2349	mahntor.are	standing	82	0	-	north		The throne room //   You stand in a large, crudely decorated throne room. A huge throne adorned // with humanoid skulls sits against the west wall. A crude, blood stained altar	-	+
+1795396652	cmd	Trentlin	54	2350	mahntor.are	standing	82	0	-	north		The chieftain's room //   This appears to be the ogre chieftain's private quarters. A huge pile of furs // is in the far corner. Large chests fill the room. All of them have heavy pad	-	+
+1795396652	cmd	Trentlin	54	2350	mahntor.are	standing	82	0	-	north		Alas, you cannot go that way.	-	-
+1795396652	cmd	Ravagger	8	4207	dresden.are	standing	96	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795396653	area	Ravagger	8	3700	school.are	dresden.are	school.are	728	up
+1795396653	cmd	Ravagger	8	3700	school.are	standing	96	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795396654	cmd	Trentlin	54	2349	mahntor.are	standing	82	0	-	south		The throne room //   You stand in a large, crudely decorated throne room. A huge throne adorned // with humanoid skulls sits against the west wall. A crude, blood stained altar	-	+
+1795396654	cmd	Trentlin	54	2349	mahntor.are	standing	82	0	-	east		Alas, you cannot go that way.	-	-
+1795396654	cmd	Trentlin	54	2349	mahntor.are	standing	82	0	-	east		Alas, you cannot go that way.	-	-
+1795396655	cmd	Trentlin	54	2348	mahntor.are	standing	82	0	-	south		The entryway to the lodge //   You are at the entry hall to a large lodge. Animal pelts and other trophies // line the walls here. Large chests on either side of the door appear to be	-	+
+1795396655	cmd	Trentlin	54	2348	mahntor.are	standing	82	0	-	east		Alas, you cannot go that way.	-	-
+1795396655	cmd	Trentlin	54	2348	mahntor.are	standing	82	0	-	east		Alas, you cannot go that way.	-	-
+1795396655	cmd	Trentlin	54	2348	mahntor.are	standing	82	0	-	east		Alas, you cannot go that way.	-	-
+1795396656	cmd	Trentlin	54	2346	mahntor.are	standing	82	0	-	south		The firepit before the lodge //   You stand at the edge of a huge firepit. The heat from the burning embers // makes you sweat as you stand here. Large spits above the pit are empty but	-	+
+1795396656	cmd	Trentlin	54	2347	mahntor.are	standing	82	0	-	east		The village dump //   The smell here overpowers you. All around you are the rotting remains of the // village's refuse. Partially eaten corpses, rotting food, and other truly	-	+
+1795396656	cmd	Trentlin	54	2347	mahntor.are	standing	82	0	-	east		Alas, you cannot go that way.	-	-
+1795396656	cmd	Trentlin	54	2347	mahntor.are	standing	82	0	-	east		Alas, you cannot go that way.	-	-
+1795396657	cmd	Trentlin	54	2347	mahntor.are	standing	82	0	-	east		Alas, you cannot go that way.	-	-
+1795396657	cmd	Ravagger	8	3772	school.are	standing	96	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795396657	cmd	Trentlin	54	2344	mahntor.are	standing	82	0	-	south		Among the crude huts //   You walk through the crude village. Small huts made of wood and thatch // surround you. Every so often, you can hear grunts and snarls inside the huts.	-	+
+1795396657	cmd	Trentlin	54	2344	mahntor.are	standing	82	0	-	east		Alas, you cannot go that way.	-	-
+1795396658	cmd	Trentlin	54	2344	mahntor.are	standing	82	0	-	east		Alas, you cannot go that way.	-	-
+1795396659	area	Trentlin	54	4207	dresden.are	mahntor.are	dresden.are	61	recall
+1795396659	cmd	Trentlin	54	4207	dresden.are	standing	82	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795396661	cmd	Trentlin	54	4207	dresden.are	standing	82	0	-	drop	key	You drop a red key.	-	-
+1795396661	cmd	Trentlin	54	4207	dresden.are	standing	82	0	-	drop	key	You drop a black key.	-	-
+1795396662	cmd	Trentlin	54	4207	dresden.are	standing	82	0	-	drop	key	You drop a white key.	-	-
+1795396662	cmd	Trentlin	54	4207	dresden.are	standing	82	0	-	drop	key	You drop a brown key.	-	-
+1795396662	cmd	Trentlin	54	4207	dresden.are	standing	82	0	-	drop	key	You drop a yellow key.	-	-
+1795396662	cmd	Trentlin	54	4207	dresden.are	standing	82	0	-	drop	key	You drop a maroon key.	-	-
+1795396663	cmd	Trentlin	54	4207	dresden.are	standing	82	0	-	drop	key	You drop a green key.	-	-
+1795396663	cmd	Trentlin	54	4207	dresden.are	standing	82	0	-	drop	key	You drop a grey key.	-	-
+1795396663	cmd	Trentlin	54	4207	dresden.are	standing	82	0	-	drop	key	You drop a multi-colored key ring.	-	-
+1795396663	cmd	Trentlin	54	4207	dresden.are	standing	82	0	-	drop	key	You do not have that item.	-	-
+1795396666	coin	Trentlin	54	4207	dresden.are	+54	loot	sacrifice	-	22599510123
+1795396666	cmd	Trentlin	54	4207	dresden.are	standing	82	0	-	sacrifice	key	The Gods give you 54 copper coins for your sacrifice.	-	-
+1795396667	coin	Trentlin	54	4207	dresden.are	+52	loot	sacrifice	-	22599510175
+1795396667	cmd	Trentlin	54	4207	dresden.are	standing	82	0	-	sacrifice	key	The Gods give you 52 copper coins for your sacrifice.	-	-
+1795396667	coin	Trentlin	54	4207	dresden.are	+56	loot	sacrifice	-	22599510231
+1795396667	cmd	Trentlin	54	4207	dresden.are	standing	82	0	-	sacrifice	key	The Gods give you 56 copper coins for your sacrifice.	-	-
+1795396667	coin	Trentlin	54	4207	dresden.are	+56	loot	sacrifice	-	22599510287
+1795396667	cmd	Trentlin	54	4207	dresden.are	standing	82	0	-	sacrifice	key	The Gods give you 56 copper coins for your sacrifice.	-	-
+1795396667	coin	Trentlin	54	4207	dresden.are	+56	loot	sacrifice	-	22599510343
+1795396667	cmd	Trentlin	54	4207	dresden.are	standing	82	0	-	sacrifice	key	The Gods give you 56 copper coins for your sacrifice.	-	-
+1795396667	cmd	Ravagger	8	3241	school.are	standing	96	0	-	north		The Train Cafe. //   It has a nice relaxing atmosphere.  Candles burn on the tables and the // bar giving the Cafe its only light.  The tables are spaced moderately	-	+
+1795396668	coin	Trentlin	54	4207	dresden.are	+52	loot	sacrifice	-	22599510395
+1795396668	cmd	Trentlin	54	4207	dresden.are	standing	82	0	-	sacrifice	key	The Gods give you 52 copper coins for your sacrifice.	-	-
+1795396668	coin	Trentlin	54	4207	dresden.are	+56	loot	sacrifice	-	22599510451
+1795396668	cmd	Trentlin	54	4207	dresden.are	standing	82	0	-	sacrifice	key	The Gods give you 56 copper coins for your sacrifice.	-	-
+1795396668	laid	-	0	0	-	1123	herb	47	a sprig of saffron	2319	mahntor.are	scatter
+1795396668	laid	-	0	0	-	1124	herb	50	a head of cabbage	2369	mahntor.are	scatter
+1795396668	coin	Trentlin	54	4207	dresden.are	+56	loot	sacrifice	-	22599510507
+1795396668	cmd	Trentlin	54	4207	dresden.are	standing	85	0	-	sacrifice	key	The Gods give you 56 copper coins for your sacrifice.	-	-
+1795396668	coin	Trentlin	54	4207	dresden.are	+56	loot	sacrifice	-	22599510563
+1795396668	cmd	Trentlin	54	4207	dresden.are	standing	85	0	-	sacrifice	key	The Gods give you 56 copper coins for your sacrifice.	-	-
+1795396669	cmd	Trentlin	54	4207	dresden.are	standing	85	0	-	sacrifice	key	You can't find it.	-	-
+1795396669	cmd	Trentlin	54	4207	dresden.are	standing	85	0	-	sacrifice	key	You can't find it.	-	-
+1795396669	cmd	Trentlin	54	4207	dresden.are	standing	85	0	-	sacrifice	key	You can't find it.	-	-
+1795396669	cmd	Trentlin	54	4207	dresden.are	standing	85	0	-	sacrifice	key	You can't find it.	-	-
+1795396670	cmd	Trentlin	54	4207	dresden.are	standing	85	0	-	sacrifice	key	You can't find it.	-	-
+1795396670	cmd	Ravagger	8	3241	school.are	standing	100	0	-	list		[Lv Price] Item // [ 1         2c] a slice of cheesecake. // [ 5        16c] a bowl of grits.	-	+
+1795396670	cmd	Trentlin	54	4207	dresden.are	standing	85	0	-	sacrifice	key	You can't find it.	-	-
+1795396670	cmd	Trentlin	54	4208	dresden.are	standing	85	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795396672	coin	Trentlin	54	4208	dresden.are	-500000	spent	heal	-	22599010563
+1795396672	cmd	Trentlin	54	4208	dresden.are	standing	85	0	-	heal	ref	The healer utters the words 'candusima'. // You feel fully refreshed! (5 castings, 50 gold.)	-	-
+1795396678	cmd	Trentlin	54	4207	dresden.are	standing	85	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795396678	cmd	Trentlin	54	4202	dresden.are	standing	85	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795396678	cmd	Trentlin	54	4201	dresden.are	standing	85	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795396679	cmd	Trentlin	54	2433	dresden.are	standing	85	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1795396679	cmd	Trentlin	54	2405	dresden.are	standing	85	0	-	east		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1795396679	cmd	Trentlin	54	2401	dresden.are	standing	85	0	-	east		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795396679	cmd	Trentlin	54	2403	dresden.are	standing	85	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1795396680	cmd	Trentlin	54	2420	dresden.are	standing	85	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1795396680	cmd	Trentlin	54	2421	dresden.are	standing	85	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1795396680	cmd	Trentlin	54	2422	dresden.are	standing	85	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1795396680	cmd	Trentlin	54	2423	dresden.are	standing	85	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1795396681	cmd	Trentlin	54	2424	dresden.are	standing	85	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1795396681	cmd	Trentlin	54	2425	dresden.are	standing	85	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1795396681	cmd	Trentlin	54	2426	dresden.are	standing	85	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795396681	cmd	Trentlin	54	2440	dresden.are	standing	85	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1795396682	area	Trentlin	54	3503	midennir.are	dresden.are	midennir.are	23	east
+1795396682	cmd	Trentlin	54	3503	midennir.are	standing	85	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1795396682	cmd	Trentlin	54	3502	midennir.are	standing	85	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1795396682	cmd	Trentlin	54	3525	midennir.are	standing	85	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  	-	+
+1795396682	cmd	Trentlin	54	3526	midennir.are	standing	85	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded	-	+
+1795396683	cmd	Trentlin	54	3527	midennir.are	standing	85	0	-	east		The Checkpoint //   You are met by a group of heavily armored knights.  They check you over // for contraband, and then allow you to pass on.  One of the knights cautions to	-	+
+1795396683	cmd	Trentlin	54	3528	midennir.are	standing	85	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road, just east of a heavily  // guarded checkpoint.  You have covered about half the distance between	-	+
+1795396683	cmd	Trentlin	54	3529	midennir.are	standing	85	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially	-	+
+1795396683	cmd	Trentlin	54	3530	midennir.are	standing	85	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste	-	+
+1795396684	cmd	Trentlin	54	3531	midennir.are	standing	85	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your	-	+
+1795396684	cmd	Trentlin	54	3532	midennir.are	standing	85	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous	-	+
+1795396684	area	Trentlin	54	42	connect.are	midennir.are	connect.are	2	east
+1795396684	cmd	Trentlin	54	42	connect.are	standing	85	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities	-	+
+1795396684	coin	Ravagger	8	3241	school.are	-2	spent	buy	a waitress	9440354
+1795396684	got	Ravagger	8	3241	school.are	3716	a war banner	light	0	2	buy	a waitress
+1795396684	cmd	Ravagger	8	3241	school.are	standing	100	0	-	buy	ban	You buy a war banner.	-	-
+1795396684	area	Trentlin	54	9669	newthalo.are	connect.are	newthalo.are	0	east
+1795396684	cmd	Trentlin	54	9669	newthalo.are	standing	85	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.	-	+
+1795396685	cmd	Trentlin	54	9523	newthalo.are	standing	85	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1795396685	cmd	Trentlin	54	9524	newthalo.are	standing	85	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1795396685	cmd	Trentlin	54	9525	newthalo.are	standing	85	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1795396685	cmd	Trentlin	54	9526	newthalo.are	standing	85	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1795396686	cmd	Trentlin	54	9509	newthalo.are	standing	85	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1795396686	cmd	Trentlin	54	9514	newthalo.are	standing	85	0	-	north		The Northwestern Market Square //   This corner of the market contains some of the most civilized folk in // New Thalos. To the north lies the humble store of the merchant Ahkeem, his	-	+
+1795396686	cmd	Trentlin	54	9515	newthalo.are	standing	85	0	-	east		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the	-	+
+1795396686	cmd	Trentlin	54	9518	newthalo.are	standing	85	0	-	north		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on	-	+
+1795396687	cmd	Trentlin	54	9519	newthalo.are	standing	85	0	-	north		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small	-	+
+1795396687	cmd	Trentlin	54	9520	newthalo.are	standing	85	0	-	north		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you	-	+
+1795396687	cmd	Trentlin	54	9521	newthalo.are	standing	85	0	-	north		Sultan's Walk //   The main road north from the square continues here, surrounded by the walls // of the palace and the Daemon. To the north you see the heavily guarded gate	-	+
+1795396687	cmd	Trentlin	54	9522	newthalo.are	standing	85	0	-	north		Inside the Northern Gate of New Thalos //   Two large stone towers rise up to greet you with a massive iron gate // swinging between on ornately crafted hinges and emblazened with the crest of	-	+
+1795396688	cmd	Trentlin	54	9522	newthalo.are	standing	85	0	-	open	north	Ok.	-	-
+1795396688	cmd	Ravagger	8	3241	school.are	standing	100	0	-	wear	ban	You light a war banner and hold it.	-	-
+1795396688	cmd	Trentlin	54	9667	newthalo.are	standing	85	0	-	north		Outside the Northern Gate of New Thalos //   You stand outside the gate of New Thalos. The city lies to the south, and // wilderness to the north.  The Sands of Sorrow continues to the east	-	+
+1795396688	cmd	Trentlin	54	9781	newthalo.are	standing	85	0	-	north		On the Plains //   You stand on an open expanse of grass extending in all directions. To // the south of you stand the might northern gates of New Thalos. East	-	+
+1795396688	cmd	Trentlin	54	9782	newthalo.are	standing	85	0	-	north		On the Plains //   You stand on an open field of grass. The forest to the north is // closer but still a good distance away. To the south a small dirt	-	+
+1795396689	cmd	Trentlin	54	9783	newthalo.are	standing	85	0	-	north		Edge of the forest //   You stand at the edge of a huge forest. The line of trees // continues as far as the eye can see to the east and west. A large	-	+
+1795396689	area	Trentlin	54	64	connect.are	newthalo.are	connect.are	5	north
+1795396689	cmd	Trentlin	54	64	connect.are	standing	85	0	-	north		Misty Clearing //   As you emerge from the forest, your head  slowly begins to  swim, and you // get  the  distinct  feeling  that you are very close to a highly powerful	-	+
+1795396689	area	Trentlin	54	29001	korzath1.are	connect.are	korzath1.are	0	north
+1795396689	cmd	Trentlin	54	29001	korzath1.are	standing	85	0	-	north		Entrance to the Fortress //   You stand before the entrance to Korzath's mighty fortress.  The // fortress is built into the lower side of the mountain here.  The entrance	-	+
+1795396690	cmd	Trentlin	54	29001	korzath1.are	standing	85	0	-	who		[54 Dwarf   Kngt  ] Trentlin the Knight of the Castle // [ 8 Human   Monk  ] Ravagger the Student of Size // Players found: 2	-	-
+1795396692	cmd	Trentlin	54	29002	korzath1.are	standing	85	0	-	north		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites	-	+
+1795396692	cmd	Trentlin	54	29003	korzath1.are	standing	85	0	-	north		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in	-	+
+1795396692	cmd	Trentlin	54	29004	korzath1.are	standing	85	0	-	north		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive	-	+
+1795396693	cmd	Trentlin	54	29004	korzath1.are	standing	85	0	-	north		The door is closed.	-	-
+1795396693	cmd	Trentlin	54	29004	korzath1.are	standing	85	0	-	north		The door is closed.	-	-
+1795396695	cmd	Trentlin	54	29004	korzath1.are	standing	85	0	-	kill	g	Your punch injures Guardian Knight. // Your punch *** DEVASTATES *** Guardian Knight!	-	-
+1795396697	coin	Ravagger	8	3241	school.are	-1	spent	buy	a waitress	9440353
+1795396697	got	Ravagger	8	3241	school.are	3718	a pipeweed bread	food	1	1	buy	a waitress
+1795396697	cmd	Ravagger	8	3241	school.are	standing	100	0	-	buy	bread	You buy a pipeweed bread.	-	-
+1795396697	cmd	Trentlin	54	29004	korzath1.are	fighting	80	0	fight	fists		You attack in an all consuming fury! // Your frost-wreathed fists of fury maims Guardian Knight! // Your blazing fists of fury scratches Guardian Knight.	-	+
+1795396699	coin	Ravagger	8	3241	school.are	-1	spent	buy	a waitress	9440352
+1795396699	got	Ravagger	8	3241	school.are	3718	a pipeweed bread	food	1	1	buy	a waitress
+1795396699	cmd	Ravagger	8	3241	school.are	standing	100	2	-	buy	bread	You buy a pipeweed bread.	-	-
+1795396702	cmd	Ravagger	8	3241	school.are	standing	100	0	-	east	bre	Alas, you cannot go that way.	-	-
+1795396703	cmd	Trentlin	54	29004	korzath1.are	fighting	70	0	fight	fists		You attack in an all consuming fury! // Your crackling fists of fury injures Guardian Knight. // Your frost-wreathed fists of fury maims Guardian Knight!	-	+
+1795396706	cmd	Ravagger	8	3241	school.are	standing	100	0	-	eat	bre	You eat a pipeweed bread.	-	-
+1795396708	cmd	Ravagger	8	3241	school.are	standing	100	0	-	eat	bre	You eat a pipeweed bread. // You are full.	-	-
+1795396709	cmd	Trentlin	54	29004	korzath1.are	fighting	70	0	fight	fists		You attack in an all consuming fury! // Your crackling fists of fury decimates Guardian Knight! // Your frost-wreathed fists of fury hits Guardian Knight.	-	+
+1795396712	refused	Ravagger	8	3241	school.are	standing	100	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1795396714	cmd	Ravagger	8	3241	school.are	standing	100	0	-	inventory		You are carrying: //      a small sword // ( 2) a pipeweed bread	-	+
+1795396715	cmd	Trentlin	54	29004	korzath1.are	fighting	70	0	fight	fists		You attack in an all consuming fury! // Your frost-wreathed fists of fury decimates Guardian Knight! // Your blazing fists of fury mauls Guardian Knight.	-	+
+1795396717	cmd	Ravagger	8	3241	school.are	standing	100	0	-	buy		Buy what?	-	-
+1795396720	coin	Ravagger	8	3241	school.are	-1	spent	buy	a waitress	9440351
+1795396720	got	Ravagger	8	3241	school.are	3718	a pipeweed bread	food	1	1	buy	a waitress
+1795396720	cmd	Ravagger	8	3241	school.are	standing	100	0	-	buy	br	You buy a pipeweed bread.	-	-
+1795396720	cmd	Trentlin	54	29004	korzath1.are	fighting	70	0	fight	nerve		You jab Guardian Knight with wedged fingers, paralyzing a nerve. // Your nerve pinch maims Guardian Knight!	-	-
+1795396721	coin	Ravagger	8	3241	school.are	-1	spent	buy	a waitress	9440350
+1795396721	got	Ravagger	8	3241	school.are	3718	a pipeweed bread	food	1	1	buy	a waitress
+1795396721	cmd	Ravagger	8	3241	school.are	standing	100	0	-	buy	br	You buy a pipeweed bread.	-	-
+1795396722	coin	Ravagger	8	3241	school.are	-1	spent	buy	a waitress	9440349
+1795396722	got	Ravagger	8	3241	school.are	3718	a pipeweed bread	food	1	1	buy	a waitress
+1795396722	cmd	Ravagger	8	3241	school.are	standing	100	0	-	buy	br	You buy a pipeweed bread. // (Tip: BUY <number> <item> buys several at once.)	-	-
+1795396723	cmd	Trentlin	54	29004	korzath1.are	fighting	70	0	fight	kick		Your kick grazes Guardian Knight.	-	-
+1795396725	cmd	Ravagger	8	3241	school.are	standing	100	0	-	list		[Lv Price] Item // [ 1         2c] a slice of cheesecake. // [ 5        16c] a bowl of grits.	-	+
+1795396726	cmd	Trentlin	54	29004	korzath1.are	fighting	70	0	fight	kick		Your kick scratches Guardian Knight.	-	-
+1795396726	coin	Trentlin	54	29004	korzath1.are	+3000000	loot	autogold	corpse of Guardian Knight	22602010563
+1795396726	coin	Trentlin	54	29004	korzath1.are	+3400	loot	autogold	corpse of Guardian Knight	22602013963
+1795396726	coin	Trentlin	54	29004	korzath1.are	+40	loot	autogold	corpse of Guardian Knight	22602014003
+1795396726	coin	Trentlin	54	29004	korzath1.are	+670000	loot	autogold	corpse of Guardian Knight	22602684003
+1795396731	got	Trentlin	54	29004	korzath1.are	29003	a diamond key	key	40	1000000	get	corpse of Guardian Knight
+1795396731	cmd	Trentlin	54	29004	korzath1.are	standing	70	0	-	get	key co	You get a diamond key from corpse of Guardian Knight.	-	-
+1795396731	cmd	Trentlin	54	29004	korzath1.are	standing	70	0	-	unlock	n	There is a flash of light as you unlock the door.	-	-
+1795396731	cmd	Trentlin	54	29004	korzath1.are	standing	70	0	-	open	n	Ok.	-	-
+1795396734	cmd	Trentlin	54	29004	korzath1.are	standing	70	0	-	drop	key	You drop a diamond key.	-	-
+1795396734	area	Trentlin	54	29201	korzath2.are	korzath1.are	korzath2.are	45	north
+1795396734	cmd	Trentlin	54	29201	korzath2.are	standing	70	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal	-	+
+1795396734	cmd	Trentlin	54	29202	korzath2.are	standing	70	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that	-	+
+1795396735	cmd	Trentlin	54	29202	korzath2.are	standing	70	0	-	north		The door is closed.	-	-
+1795396735	cmd	Trentlin	54	29202	korzath2.are	standing	70	0	-	north		The door is closed.	-	-
+1795396735	laid	-	0	0	-	1130	herb	44	a sprig of aconite	1825	haven.are	scatter
+1795396735	laid	-	0	0	-	1131	herb	52	an asparagus shoot	1808	haven.are	scatter
+1795396735	laid	-	0	0	-	1132	component	88	a vial of green slime	13277	solace.are	scatter
+1795396736	cmd	Ravagger	8	3772	school.are	standing	100	0	-	south		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795396737	cmd	Trentlin	54	29202	korzath2.are	standing	72	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1795396738	cmd	Ravagger	8	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1795396741	cmd	Trentlin	54	29202	korzath2.are	standing	72	0	-	iron		You lost your concentration.	-	-
+1795396742	cmd	Trentlin	54	29202	korzath2.are	standing	72	0	-	iron		Your skin hardens. // Piercing blows cannot hurt you while it lasts.	-	-
+1795396743	cmd	Ravagger	8	3772	school.are	standing	100	0	-	down		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795396749	cmd	Trentlin	54	29203	korzath2.are	standing	72	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight	-	+
+1795396749	cmd	Trentlin	54	29204	korzath2.are	standing	72	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it	-	+
+1795396750	cmd	Trentlin	54	29205	korzath2.are	standing	72	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of	-	+
+1795396752	cmd	Trentlin	54	29205	korzath2.are	standing	72	0	-	kill	clo	Your punch ^^^ DESTROYS ^^^ a killer clown! // A killer clown dodges your attack.	-	-
+1795396752	cmd	Ravagger	8	3700	school.are	standing	100	0	-	down		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795396755	cmd	Trentlin	54	29205	korzath2.are	fighting	72	0	fight	fists		You attack in an all consuming fury! // Your crackling fists of fury scratches a killer clown. // Your frost-wreathed fists of fury DISMEMBERS a killer clown!	-	+
+1795396755	cmd	Ravagger	8	3700	school.are	standing	100	0	-	scan		The Watcher                        -right below you.	-	-
+1795396760	area	Ravagger	8	17	connect.are	school.are	connect.are	107	west
+1795396760	cmd	Ravagger	8	17	connect.are	standing	100	0	-	west		An odd sight //   Standing before you is one of the most incredible things you have EVER seen. // A giant berry the likes you have never seen before sits in the middle of this	-	+
+1795396760	cmd	Trentlin	54	29205	korzath2.are	fighting	67	0	fight	nerve		You jab a killer clown with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a killer clown.	-	-
+1795396763	cmd	Trentlin	54	29205	korzath2.are	fighting	60	0	fight	fists		You attack in an all consuming fury! // Your frost-wreathed fists of fury scratches a killer clown. // Your blazing fists of fury *** DEVASTATES *** a killer clown!	-	+
+1795396763	area	Ravagger	8	3700	school.are	connect.are	school.are	3	east
+1795396763	cmd	Ravagger	8	3700	school.are	standing	100	0	-	east		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795396764	cmd	Ravagger	8	3783	school.are	standing	100	0	-	east		A Gigantic Clown Head //   Before you is the largest clowns head you have ever seen, with all the // makeup intact, to include the big red painted on mouth.  This appears	-	+
+1795396766	cmd	Ravagger	8	3700	school.are	standing	100	0	-	west		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795396769	cmd	Ravagger	8	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795396771	cmd	Ravagger	8	3241	school.are	standing	100	0	-	north		The Train Cafe. //   It has a nice relaxing atmosphere.  Candles burn on the tables and the // bar giving the Cafe its only light.  The tables are spaced moderately	-	+
+1795396772	cmd	Trentlin	54	29205	korzath2.are	fighting	36	0	fight	fists		You attack in an all consuming fury! // Your frost-wreathed fists of fury wounds a killer clown. // Your blazing fists of fury MASSACRES a killer clown!	-	+
+1795396774	cmd	Ravagger	8	3772	school.are	standing	100	0	-	south		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795396777	cmd	Trentlin	54	29205	korzath2.are	fighting	16	0	fight	flee		A killer clown is overcome with a feeling of despair and flees the battle. // A killer clown walks off to the north. // A killer clown has fled!	-	-
+1795396778	cmd	Trentlin	54	29205	korzath2.are	standing	16	0	-	flee		You aren't fighting anyone.	-	-
+1795396778	cmd	Trentlin	54	29205	korzath2.are	standing	16	0	-	flee		You aren't fighting anyone.	-	-
+1795396778	cmd	Trentlin	54	29205	korzath2.are	standing	16	0	-	flee		You aren't fighting anyone.	-	-
+1795396778	cmd	Trentlin	54	29205	korzath2.are	standing	16	0	-	flee		You aren't fighting anyone.	-	-
+1795396779	cmd	Trentlin	54	29205	korzath2.are	standing	16	0	-	flee		You aren't fighting anyone.	-	-
+1795396779	cmd	Ravagger	8	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1795396780	cmd	Trentlin	54	29204	korzath2.are	standing	16	0	-	north		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it	-	+
+1795396780	refused	Trentlin	54	29204	korzath2.are	fighting	11	0	fight	east		No way!  You are still fighting!  FLEE to break away.	refusal:position	-
+1795396781	area	Ravagger	8	24300	chess.are	school.are	chess.are	18	north
+1795396781	cmd	Ravagger	8	24300	chess.are	standing	100	0	-	north		The Stone Door //   You find yourself standing in a dry circular room which is // illuminated by a small brass torch set in the wall.  Flickering	-	+
+1795396781	cmd	Trentlin	54	29203	korzath2.are	fighting	11	0	fight	flee		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight	-	+
+1795396781	cmd	Trentlin	54	29203	korzath2.are	standing	11	0	-	flee		You aren't fighting anyone.	-	-
+1795396782	cmd	Trentlin	54	29203	korzath2.are	standing	11	0	-	flee		You aren't fighting anyone.	-	-
+1795396783	cmd	Trentlin	54	29202	korzath2.are	standing	11	0	-	east		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that	-	+
+1795396783	cmd	Trentlin	54	29202	korzath2.are	standing	11	0	-	east		The door is closed.	-	-
+1795396784	cmd	Trentlin	54	29201	korzath2.are	standing	11	0	-	south		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal	-	+
+1795396784	area	Trentlin	54	29004	korzath1.are	korzath2.are	korzath1.are	50	south
+1795396784	cmd	Trentlin	54	29004	korzath1.are	standing	11	0	-	south		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive	-	+
+1795396784	cmd	Trentlin	54	29003	korzath1.are	standing	11	0	-	south		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in	-	+
+1795396785	cmd	Trentlin	54	29002	korzath1.are	standing	11	0	-	south		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites	-	+
+1795396785	area	Trentlin	54	4207	dresden.are	korzath1.are	dresden.are	1	recall
+1795396785	cmd	Trentlin	54	4207	dresden.are	standing	11	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795396786	cmd	Trentlin	54	4208	dresden.are	standing	11	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795396788	coin	Trentlin	54	4208	dresden.are	-5000000	spent	heal	-	22597684003
+1795396788	coin	Trentlin	54	4208	dresden.are	-5000000	spent	heal	-	22592684003
+1795396788	coin	Trentlin	54	4208	dresden.are	-5000000	spent	heal	-	22587684003
+1795396788	coin	Trentlin	54	4208	dresden.are	-5000000	spent	heal	-	22582684003
+1795396788	coin	Trentlin	54	4208	dresden.are	-5000000	spent	heal	-	22577684003
+1795396788	coin	Trentlin	54	4208	dresden.are	-5000000	spent	heal	-	22572684003
+1795396788	coin	Trentlin	54	4208	dresden.are	-5000000	spent	heal	-	22567684003
+1795396788	coin	Trentlin	54	4208	dresden.are	-5000000	spent	heal	-	22562684003
+1795396788	cmd	Trentlin	54	4208	dresden.are	standing	11	0	-	heal	heal	The healer utters the words 'pzar'. // A warm feeling fills your body, and you are whole. (8 castings, 4000 gold.)	-	-
+1795396793	cmd	Trentlin	54	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795396793	cmd	Trentlin	54	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795396794	cmd	Trentlin	54	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795396794	cmd	Trentlin	54	2433	dresden.are	standing	100	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1795396794	cmd	Trentlin	54	2405	dresden.are	standing	100	0	-	east		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1795396794	cmd	Trentlin	54	2401	dresden.are	standing	100	0	-	east		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795396795	cmd	Trentlin	54	2403	dresden.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.	-	+
+1795396795	cmd	Ravagger	8	24300	chess.are	standing	100	0	-	open	n	It's locked.	-	-
+1795396795	cmd	Trentlin	54	2420	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1795396795	cmd	Trentlin	54	2421	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a	-	+
+1795396795	cmd	Trentlin	54	2422	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.	-	+
+1795396796	cmd	Trentlin	54	2423	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a	-	+
+1795396796	cmd	Trentlin	54	2424	dresden.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.	-	+
+1795396796	cmd	Trentlin	54	2425	dresden.are	standing	100	0	-	east		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.	-	+
+1795396796	cmd	Trentlin	54	2426	dresden.are	standing	100	0	-	east		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795396797	cmd	Trentlin	54	2426	dresden.are	standing	100	0	-	open	east	Ok.	-	-
+1795396797	cmd	Trentlin	54	2440	dresden.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1795396797	area	Trentlin	54	3503	midennir.are	dresden.are	midennir.are	12	east
+1795396797	cmd	Trentlin	54	3503	midennir.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of a large city - Dresden, the capital of this // land. The road leads east into the peace and quiet - and dangers - of the	-	+
+1795396797	cmd	Trentlin	54	3502	midennir.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your	-	+
+1795396798	cmd	Trentlin	54	3525	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  	-	+
+1795396798	cmd	Trentlin	54	3526	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded	-	+
+1795396798	cmd	Trentlin	54	3527	midennir.are	standing	100	0	-	east		The Checkpoint //   You are met by a group of heavily armored knights.  They check you over // for contraband, and then allow you to pass on.  One of the knights cautions to	-	+
+1795396798	cmd	Trentlin	54	3528	midennir.are	standing	100	0	-	east		Along the Eastern Road //   You are walking along a well-travelled road, just east of a heavily  // guarded checkpoint.  You have covered about half the distance between	-	+
+1795396799	cmd	Trentlin	54	3529	midennir.are	standing	100	0	-	east		Along the Eastern Road //   The tempatures are climbing as you near the Sands of Sorrow, a barren // wasteland blasted by arcane powers.  Ahead of you, the road is partially	-	+
+1795396799	cmd	Trentlin	54	3530	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The eastern road is losing ground to the creeping desert here.  You stagger // in the growing heat, and wonder if you have enough water.  The endless waste	-	+
+1795396799	cmd	Trentlin	54	3531	midennir.are	standing	100	0	-	east		Near the Sands of Sorrow //   The road is almost completely swallowed by the desert here.  The heat is // sucking the life from your body, you wonder if it will ever end.  To your	-	+
+1795396799	cmd	Ravagger	8	24300	chess.are	standing	100	0	-	look	in vased	You do not see that here.	-	-
+1795396799	cmd	Trentlin	54	3532	midennir.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  Off to // the east, you see the mighty gates of New Thalos, one of the most prosperous	-	+
+1795396800	area	Trentlin	54	42	connect.are	midennir.are	connect.are	3	east
+1795396800	cmd	Trentlin	54	42	connect.are	standing	100	0	-	east		On the Outskirts of New Thalos //   The sun is hot enough to melt your armor, but salvation is at hand.  To the // east, you see the mighty gates of New Thalos, one of the most prosperous cities	-	+
+1795396800	area	Trentlin	54	9669	newthalo.are	connect.are	newthalo.are	0	east
+1795396800	cmd	Trentlin	54	9669	newthalo.are	standing	100	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.	-	+
+1795396800	cmd	Trentlin	54	9523	newthalo.are	standing	100	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on	-	+
+1795396800	cmd	Trentlin	54	9524	newthalo.are	standing	100	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field	-	+
+1795396801	cmd	Trentlin	54	9525	newthalo.are	standing	100	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into	-	+
+1795396801	cmd	Trentlin	54	9526	newthalo.are	standing	100	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of	-	+
+1795396801	cmd	Trentlin	54	9509	newthalo.are	standing	100	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern	-	+
+1795396801	cmd	Trentlin	54	9514	newthalo.are	standing	100	0	-	north		The Northwestern Market Square //   This corner of the market contains some of the most civilized folk in // New Thalos. To the north lies the humble store of the merchant Ahkeem, his	-	+
+1795396802	cmd	Trentlin	54	9515	newthalo.are	standing	100	0	-	east		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the	-	+
+1795396802	cmd	Trentlin	54	9518	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on	-	+
+1795396802	cmd	Ravagger	8	24300	chess.are	standing	100	0	-	look	in va	A painted vase contains: //      a silver key	-	-
+1795396802	cmd	Trentlin	54	9519	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small	-	+
+1795396802	cmd	Trentlin	54	9520	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you	-	+
+1795396803	cmd	Trentlin	54	9521	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The main road north from the square continues here, surrounded by the walls // of the palace and the Daemon. To the north you see the heavily guarded gate	-	+
+1795396803	cmd	Trentlin	54	9522	newthalo.are	standing	100	0	-	north		Inside the Northern Gate of New Thalos //   Two large stone towers rise up to greet you with a massive iron gate // swinging between on ornately crafted hinges and emblazened with the crest of	-	+
+1795396803	cmd	Trentlin	54	9667	newthalo.are	standing	100	0	-	north		Outside the Northern Gate of New Thalos //   You stand outside the gate of New Thalos. The city lies to the south, and // wilderness to the north.  The Sands of Sorrow continues to the east	-	+
+1795396803	cmd	Trentlin	54	9781	newthalo.are	standing	100	0	-	north		On the Plains //   You stand on an open expanse of grass extending in all directions. To // the south of you stand the might northern gates of New Thalos. East	-	+
+1795396804	cmd	Trentlin	54	9782	newthalo.are	standing	100	0	-	north		On the Plains //   You stand on an open field of grass. The forest to the north is // closer but still a good distance away. To the south a small dirt	-	+
+1795396804	cmd	Trentlin	54	9783	newthalo.are	standing	100	0	-	north		Edge of the forest //   You stand at the edge of a huge forest. The line of trees // continues as far as the eye can see to the east and west. A large	-	+
+1795396804	area	Trentlin	54	64	connect.are	newthalo.are	connect.are	4	north
+1795396804	cmd	Trentlin	54	64	connect.are	standing	100	0	-	north		Misty Clearing //   As you emerge from the forest, your head  slowly begins to  swim, and you // get  the  distinct  feeling  that you are very close to a highly powerful	-	+
+1795396804	area	Trentlin	54	29001	korzath1.are	connect.are	korzath1.are	0	north
+1795396804	cmd	Trentlin	54	29001	korzath1.are	standing	100	0	-	north		Entrance to the Fortress //   You stand before the entrance to Korzath's mighty fortress.  The // fortress is built into the lower side of the mountain here.  The entrance	-	+
+1795396805	area	Trentlin	54	29201	korzath2.are	korzath1.are	korzath2.are	1	run
+1795396805	cmd	Trentlin	54	29202	korzath2.are	standing	100	0	-	run	n	Inside Korzath's Private Fortress // [Exits: north south] // Grand Foyer	-	+
+1795396806	cmd	Trentlin	54	29202	korzath2.are	resting	100	0	-	wake		You stand up.	-	-
+1795396807	cmd	Trentlin	54	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight	-	+
+1795396807	laid	-	0	0	-	1136	herb	47	a sprig of saffron	3716	school.are	scatter
+1795396807	laid	-	0	0	-	1137	herb	52	an asparagus shoot	3738	school.are	scatter
+1795396807	laid	-	0	0	-	1138	component	77	a vial of medusa eye fluid	2404	dresden.are	scatter
+1795396807	cmd	Trentlin	54	29203	korzath2.are	standing	100	0	-	scan		a killer clown                     -to the West. // a killer clown                     -to the West. // a killer clown                     -to the West.	-	-
+1795396808	got	Ravagger	8	24300	chess.are	24301	a silver key	key	1	0	get	a painted vase
+1795396808	cmd	Ravagger	8	24300	chess.are	standing	100	0	-	get	key va	You get a silver key from a painted vase.	-	-
+1795396810	cmd	Trentlin	54	29204	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it	-	+
+1795396810	cmd	Trentlin	54	29204	korzath2.are	standing	100	0	-	kill	clo	Your punch injures a killer clown. // A killer clown parries your attack.	-	-
+1795396813	cmd	Trentlin	54	29204	korzath2.are	fighting	100	0	fight	flee		PANIC! You couldn't escape!	-	-
+1795396813	cmd	Trentlin	54	29203	korzath2.are	fighting	82	0	fight	flee		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight	-	+
+1795396813	cmd	Trentlin	54	29203	korzath2.are	standing	82	0	-	flee		You aren't fighting anyone.	-	-
+1795396816	cmd	Ravagger	8	24300	chess.are	standing	100	0	-	unlock	n	*Click*	-	-
+1795396818	cmd	Ravagger	8	24300	chess.are	standing	100	0	-	open	n	Ok.	-	-
+1795396820	cmd	Ravagger	8	24301	chess.are	standing	100	0	-	north		The Smooth Tunnel //   Looking down at your feet, you are somewhat surprised to find that you  // are walking on a thick woven rug. The walls of the tunnel that you are in 	-	+
+1795396823	cmd	Trentlin	54	29202	korzath2.are	standing	82	0	-	east		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that	-	+
+1795396824	cmd	Ravagger	8	24301	chess.are	fighting	100	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795396825	cmd	Trentlin	54	29202	korzath2.are	standing	82	0	-	inventory		You are carrying: //      a ruby container of tea // ( 4) a potion of true sight	-	+
+1795396827	cmd	Ravagger	8	24301	chess.are	fighting	100	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795396830	cmd	Ravagger	8	24301	chess.are	fighting	100	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795396831	cmd	Trentlin	54	29202	korzath2.are	standing	82	0	-	wear	bow	You can't wield a weapon right now.	-	-
+1795396833	cmd	Ravagger	8	24301	chess.are	fighting	99	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795396836	cmd	Ravagger	8	24301	chess.are	fighting	99	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795396838	cmd	Trentlin	54	29202	korzath2.are	standing	82	0	-	wear	sj	You do not have that item.	-	-
+1795396838	cmd	Ravagger	8	24301	chess.are	fighting	99	0	fight	kick		Your kick scratches the Tunnel Troll.	-	-
+1795396840	cmd	Trentlin	54	29202	korzath2.are	standing	82	0	-	wear	sh	You wear the four-crowned lion shield as a shield.	-	-
+1795396841	cmd	Ravagger	8	24301	chess.are	fighting	97	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795396844	cmd	Ravagger	8	24301	chess.are	fighting	96	0	fight	kick		Your kick misses the Tunnel Troll.	-	-
+1795396844	cmd	Trentlin	54	29202	korzath2.are	standing	80	0	-	who		[54 Dwarf   Kngt  ] Trentlin the Knight of the Castle // [ 8 Human   Monk  ] Ravagger the Student of Size // Players found: 2	-	-
+1795396847	cmd	Ravagger	8	24301	chess.are	fighting	96	0	fight	kick		Your kick scratches the Tunnel Troll.	-	-
+1795396849	got	Ravagger	8	24301	chess.are	24304	a dirty loincloth	armor	3	120	autoloot	corpse of the Tunnel Troll
+1795396849	coin	Ravagger	8	24301	chess.are	+4	loot	(violence)	corpse of the Tunnel Troll	9440353
+1795396849	cmd	Ravagger	8	24301	chess.are	standing	96	0	-	kick		You aren't fighting anyone.	-	-
+1795396850	cmd	Ravagger	8	24301	chess.are	standing	96	0	-	kick		You aren't fighting anyone.	-	-
+1795396850	cmd	Ravagger	8	24301	chess.are	standing	96	0	-	kick		You aren't fighting anyone.	-	-
+1795396850	cmd	Trentlin	54	29203	korzath2.are	standing	80	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight	-	+
+1795396850	cmd	Ravagger	8	24301	chess.are	standing	96	0	-	kick		You aren't fighting anyone.	-	-
+1795396851	cmd	Trentlin	54	29203	korzath2.are	standing	80	0	-	scan		a killer clown                     -to the West. // a killer clown                     -to the West. // a killer clown                     -to the West.	-	-
+1795396852	cmd	Trentlin	54	29202	korzath2.are	standing	80	0	-	east		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that	-	+
+1795396853	cmd	Trentlin	54	29202	korzath2.are	standing	80	0	-	sleep		You go to sleep.	-	-
+1795396857	laid	-	0	0	-	1141	herb	47	a sprig of saffron	10285	tritia.are	scatter
+1795396857	laid	-	0	0	-	1142	component	78	a vial of demons blood	1502	gnome.are	scatter
+1795396861	cmd	Ravagger	8	24301	chess.are	standing	100	0	-	compare	loin	A) a dirty loincloth (level 3) // B) a sub issue belt (level 0), worn // Slot: waist.  Your damage comes from weapons.	-	+
+1795396879	cmd	Ravagger	8	24301	chess.are	standing	100	0	-	wear	cloth	You do not have that item.	-	-
+1795396884	cmd	Ravagger	8	24301	chess.are	standing	100	0	-	wear	loi	You stop using a sub issue belt. // You wear a dirty loincloth about your waist.	-	-
+1795396889	cmd	Ravagger	8	24301	chess.are	standing	100	0	-	drop	belt	You drop a sub issue belt. // A sub issue belt burst into flames as it hits the ground.	-	-
+1795396891	cmd	Ravagger	8	24301	chess.are	standing	100	0	-	look		The Smooth Tunnel //   Looking down at your feet, you are somewhat surprised to find that you  // are walking on a thick woven rug. The walls of the tunnel that you are in 	-	+
+1795396893	cmd	Ravagger	8	24302	chess.are	standing	100	0	-	north		The Furnished Chamber //   This chamber is furnished quite nicely, with a thick woven  // rug beneath your feet, and tapestries along the walls.  There is a	-	+
+1795396895	cmd	Trentlin	54	29202	korzath2.are	sleeping	91	0	-	wake		You wake and stand up.	-	-
+1795396896	cmd	Trentlin	54	29202	korzath2.are	standing	91	0	-	iron		Your skin hardens. // This time it turns no kind of blow aside; it only thickens your armour.	-	-
+1795396901	laid	-	0	0	-	1144	component	71	a goblin's finger	8735	kerofk.are	scatter
+1795396902	cmd	Ravagger	8	24303	chess.are	standing	100	0	-	down		The Stone Staircase //   You find yourself in a rough stone staircase, which winds around // a smooth core of stone, descending deeper into the bowels of the earth.	-	+
+1795396906	cmd	Ravagger	8	24304	chess.are	standing	100	0	-	down		Down..Down..Down.. //   Your descent picks up speed, and you trip over an unseen obstacle // in the stairway!  As you tumble, the stairs start to become narrower and	-	+
+1795396908	cmd	Trentlin	54	29202	korzath2.are	standing	95	0	-	affect		You are affected by: // Skill: 'iron skin' modifies armor class by -25 for 1 hours. // Skill: 'steel fist' modifies damage roll by 15 for 5 hours.	-	+
+1795396911	cmd	Ravagger	8	24305	chess.are	standing	100	0	-	down		The Slide //   You come out of the last spin, and are abruptly deposited on a // slide made of some slick metal.  You descend rapidy, being abruptly slammed	-	+
+1795396911	cmd	Trentlin	54	29203	korzath2.are	standing	95	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight	-	+
+1795396912	cmd	Trentlin	54	29203	korzath2.are	standing	95	0	-	scan		a killer clown                     -to the West. // a killer clown                     -to the West. // a killer clown                     -to the West.	-	-
+1795396913	cmd	Ravagger	8	24306	chess.are	standing	100	0	-	down		The Ledge //   You pop out of the slide, sail through the air for several long // moments, crash into the side of a cavern, and land on a ledge in a	-	+
+1795396914	cmd	Trentlin	54	29204	korzath2.are	standing	95	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it	-	+
+1795396915	cmd	Trentlin	54	29204	korzath2.are	standing	95	0	-	kill	clo	Your punch injures a killer clown. // Your punch ^^^ DESTROYS ^^^ a killer clown!	-	-
+1795396917	cmd	Ravagger	8	24307	chess.are	standing	100	0	-	down		The Ladder //   You are on a simple wooden ladder, which has been bolted by means // of small metal hooks to the cavern wall.  The ledge is above you, and the	-	+
+1795396917	cmd	Trentlin	54	29203	korzath2.are	fighting	83	0	fight	flee		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight	-	+
+1795396918	cmd	Trentlin	54	29203	korzath2.are	standing	83	0	-	flee		You aren't fighting anyone.	-	-
+1795396918	cmd	Trentlin	54	29203	korzath2.are	standing	83	0	-	flee		You aren't fighting anyone.	-	-
+1795396920	cmd	Trentlin	54	29203	korzath2.are	standing	83	0	-	scan		a killer clown                     -to the West. // a killer clown                     -to the West. // a killer clown                     -to the West.	-	-
+1795396924	cmd	Trentlin	54	29204	korzath2.are	standing	83	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it	-	+
+1795396924	cmd	Trentlin	54	29204	korzath2.are	standing	83	0	-	kill	clow	A killer clown dodges your attack. // Your punch injures a killer clown. // A killer clown dodges your attack.	-	-
+1795396927	cmd	Trentlin	54	29204	korzath2.are	fighting	71	0	fight	flee		A killer clown is overcome with a feeling of despair and flees the battle. // A killer clown walks off to the east. // A killer clown has fled!	-	-
+1795396927	cmd	Trentlin	54	29204	korzath2.are	standing	71	0	-	flee		You aren't fighting anyone.	-	-
+1795396927	cmd	Trentlin	54	29204	korzath2.are	standing	71	0	-	flee		You aren't fighting anyone.	-	-
+1795396928	cmd	Ravagger	8	24307	chess.are	standing	100	0	-	look	sign	        *  Chessboard Area    * //         *      Written by     * //         *  Aten of GenericMUD *	-	-
+1795396931	cmd	Trentlin	54	29203	korzath2.are	standing	71	0	-	east		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight	-	+
+1795396932	cmd	Trentlin	54	29203	korzath2.are	standing	71	0	-	kill	clo	A killer clown dodges your attack. // A killer clown parries your attack.	-	-
+1795396933	cmd	Ravagger	8	24312	chess.are	standing	100	0	-	down		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1795396939	cmd	Trentlin	54	29202	korzath2.are	fighting	34	0	fight	flee		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that	-	+
+1795396939	cmd	Trentlin	54	29202	korzath2.are	standing	34	0	-	flee		You aren't fighting anyone.	-	-
