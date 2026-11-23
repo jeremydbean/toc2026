@@ -54479,3 +54479,84 @@
 1795397836	cmd	Ravagger	9	3241	school.are	standing	100	0	-	buy	bre	You buy a pipeweed bread.	-	-
 1795397838	cmd	Ravagger	9	3241	school.are	standing	100	0	-	look		The Train Cafe. //   It has a nice relaxing atmosphere.  Candles burn on the tables and the // bar giving the Cafe its only light.  The tables are spaced moderately	-	+
 1795397840	cmd	Ravagger	9	3241	school.are	standing	100	0	-	list		[Lv Price] Item // [ 1         2c] a slice of cheesecake. // [ 5        16c] a bowl of grits.	-	+
+1795397842	cmd	Ravagger	9	3772	school.are	standing	100	0	-	south		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795397847	cmd	Ravagger	9	3700	school.are	standing	100	0	-	down		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795397849	cmd	Ravagger	9	3757	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795397850	spotted	Ravagger	9	3701	school.are	1003	component	77	a vial of medusa eye fluid	8625	1	scatter	arrive
+1795397850	cmd	Ravagger	9	3701	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795397852	passed	Ravagger	9	3757	school.are	1003	component	77	a vial of medusa eye fluid	8627	2	1	scatter	3701	left
+1795397852	cmd	Ravagger	9	3757	school.are	standing	100	0	-	south		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795397854	cmd	Ravagger	9	3758	school.are	standing	100	0	-	west		Eclipse's Training Room //   You are in Eclipse's Training Room.  Around you are all sorts of physical // and mental training tools.  The whole room is filled with magic, holiness, 	-	+
+1795397860	cmd	Ravagger	9	3758	school.are	standing	100	0	-	train		You have 1 training sessions. // You can train: str int wis con hp mana.	-	-
+1795397864	cmd	Ravagger	9	3758	school.are	standing	100	0	-	look	sig	Welcome to Eclipse's Training Room.  Here you can train your attributes. // Training spends training sessions, not practices: you start with three and // gain one each level.  Type 'train' while you are in this room to see how	-	+
+1795397865	laid	-	0	0	-	1210	herb	51	a piece of kelp	10139	glitter.are	scatter
+1795397888	cmd	Ravagger	9	3758	school.are	standing	100	0	-	train		You have 1 training sessions. // You can train: str int wis con hp mana.	-	-
+1795397892	cmd	Ravagger	9	3758	school.are	standing	100	0	-	train	con	Your constitution increases!	-	-
+1795397895	cmd	Ravagger	9	3757	school.are	standing	100	0	-	east		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795397897	cmd	Ravagger	9	3759	school.are	standing	100	0	-	east		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with	-	+
+1795397898	cmd	Ravagger	9	3759	school.are	standing	100	0	-	practice		dodge               61%  recall              75%  dagger              33%   // hand to hand        78%  kick                64%   // You have 13 practice sessions left.	-	-
+1795397904	cmd	Ravagger	9	3759	school.are	standing	100	0	-	skills		Level  1: dagger              33%      hand to hand        78%       //           recall              75%       // Level  3: kick                64%      	-	+
+1795397907	cmd	Ravagger	9	3759	school.are	standing	100	0	-	look		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with	-	+
+1795397912	cmd	Ravagger	9	3759	school.are	standing	100	0	-	look	sign	Welcome to Soulcrusher's Guild Room.  Here you will learn your skills and // spells. To find out what skills and spells you can practice and how many // practice sessions you have, type 'practice'.  To practice the specific skill,	-	+
+1795397936	cmd	Ravagger	9	3757	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795397940	cmd	Ravagger	9	3701	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795397946	cmd	Ravagger	9	3701	school.are	standing	100	0	-	look	pl	This zone (Mud School) is created by Hatchet for any Merc Mud. // Copyright 1992, 1993.	-	-
+1795397948	cmd	Ravagger	9	3702	school.are	standing	100	0	-	west		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795397955	cmd	Ravagger	9	3705	school.are	standing	100	0	-	south	si	A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795397966	cmd	Ravagger	9	3705	school.are	standing	100	0	-	look	si	Just go north to the central room.	-	-
+1795397968	cmd	Ravagger	9	3702	school.are	standing	100	0	-	north		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795397977	cmd	Ravagger	9	3702	school.are	standing	100	0	-	look	sign	This is the direction practicing room.  The directions you can go in any // room are: north, south, east, west, up, or down.  Of course, not all rooms // have all exits available.	-	+
+1795398002	cmd	Ravagger	9	3704	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795398002	laid	-	0	0	-	1211	herb	36	a belladonna plant	9216	canyon.are	scatter
+1795398005	cmd	Ravagger	9	3702	school.are	standing	100	0	-	east		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795398005	cmd	Ravagger	9	3701	school.are	standing	100	0	-	east		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795398011	cmd	Ravagger	9	3701	school.are	standing	100	0	-	list		You can't do that here.	-	-
+1795398015	cmd	Ravagger	9	3701	school.are	standing	100	0	-	look	pla	This zone (Mud School) is created by Hatchet for any Merc Mud. // Copyright 1992, 1993.	-	-
+1795398018	cmd	Ravagger	9	3702	school.are	standing	100	0	-	west		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795398020	cmd	Ravagger	9	3703	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795398022	cmd	Ravagger	9	3709	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795398030	cmd	Ravagger	9	3709	school.are	standing	100	0	-	look	sign	Welcome to combat training. // The first lesson is knowing whom to fight.  Use the command 'CONSIDER' to // consider killing a monster.  Avoid fighting monsters that will kill you	-	+
+1795398054	cmd	Ravagger	9	3711	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795398057	cmd	Ravagger	9	3712	school.are	standing	100	0	-	down		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795398063	cmd	Ravagger	9	3712	school.are	standing	100	0	-	scan		the kobold                         -to the North. // the gremlin                        -to the East. // the killer                         -to the South.	-	+
+1795398064	laid	-	0	0	-	1213	component	67	a beholder's eye	5606	tarin.are	scatter
+1795398069	cmd	Ravagger	9	3715	school.are	standing	100	0	-	south		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is north.	-	+
+1795398072	got	Ravagger	9	3715	school.are	3706	a sub issue helmet	armor	0	0	autoloot	corpse of the killer
+1795398072	got	Ravagger	9	3715	school.are	3711	a sub issue cape	armor	0	0	autoloot	corpse of the killer
+1795398072	coin	Ravagger	9	3715	school.are	+2	loot	kill	corpse of the killer	9440599
+1795398072	cmd	Ravagger	9	3715	school.are	standing	100	2	-	kill	ma	Your punch hits the killer. // The killer is DEAD!! // You receive 36 experience points (18 of them rested).	-	+
+1795398079	cmd	Ravagger	9	3715	school.are	standing	100	0	-	wear	all	You wear a sub issue cape about your body. // You wear a sub issue helmet on your head.	-	-
+1795398081	cmd	Ravagger	9	3712	school.are	standing	100	0	-	north		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795398082	cmd	Ravagger	9	3714	school.are	standing	100	0	-	west		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is east.	-	+
+1795398085	got	Ravagger	9	3714	school.are	3708	a pair of sub issue boots	armor	0	0	autoloot	corpse of the lizard man
+1795398085	got	Ravagger	9	3714	school.are	3713	a sub issue bracer	armor	0	0	autoloot	corpse of the lizard man
+1795398085	coin	Ravagger	9	3714	school.are	+2	loot	kill	corpse of the lizard man	9440601
+1795398085	cmd	Ravagger	9	3714	school.are	standing	100	2	-	kill	li	Your punch injures the lizard man. // The lizard man is DEAD!! // You receive 30 experience points (15 of them rested).	-	+
+1795398090	cmd	Ravagger	9	3714	school.are	standing	100	0	-	wear	all	You wear a sub issue bracer around your left wrist. // You wear a pair of sub issue boots on your feet.	-	-
+1795398091	cmd	Ravagger	9	3712	school.are	standing	100	0	-	east		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795398093	cmd	Ravagger	9	3713	school.are	standing	100	0	-	north		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is south.	-	+
+1795398096	got	Ravagger	9	3713	school.are	29829	a slice of pumpkin pie	pill	0	200	autoloot	corpse of the kobold
+1795398096	got	Ravagger	9	3713	school.are	3707	a pair of sub issue leggings	armor	0	0	autoloot	corpse of the kobold
+1795398096	got	Ravagger	9	3713	school.are	3712	a sub issue belt	armor	0	0	autoloot	corpse of the kobold
+1795398096	coin	Ravagger	9	3713	school.are	+2	loot	kill	corpse of the kobold	9440603
+1795398096	cmd	Ravagger	9	3713	school.are	standing	100	2	-	kill	ko	Your punch misses the kobold. // Your punch hits the kobold. // The kobold is DEAD!!	-	+
+1795398102	cmd	Ravagger	9	3713	school.are	standing	100	0	-	wear	all	You wear a sub issue belt about your waist. // You wear a pair of sub issue leggings on your legs.	-	-
+1795398103	cmd	Ravagger	9	3712	school.are	standing	100	0	-	south		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795398104	spotted	Ravagger	9	3716	school.are	1136	herb	47	a sprig of saffron	1297	1	scatter	arrive
+1795398104	cmd	Ravagger	9	3716	school.are	standing	100	0	-	east		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is west.	-	+
+1795398107	got	Ravagger	9	3716	school.are	3705	a sub issue cloak	armor	0	0	autoloot	corpse of the gremlin
+1795398107	got	Ravagger	9	3716	school.are	3705	a sub issue cloak	armor	0	0	autoloot	corpse of the gremlin
+1795398107	coin	Ravagger	9	3716	school.are	+2	loot	kill	corpse of the gremlin	9440605
+1795398107	cmd	Ravagger	9	3716	school.are	standing	100	2	-	kill	gr	Your punch hits the gremlin. // The gremlin is DEAD!! // You receive 36 experience points (18 of them rested).	-	+
+1795398113	cmd	Ravagger	9	3716	school.are	standing	100	0	-	wear	all	You wear a sub issue cloak around your neck. // You wear a sub issue cloak around your neck.	-	-
+1795398114	passed	Ravagger	9	3712	school.are	1136	herb	47	a sprig of saffron	1307	10	1	scatter	3716	left
+1795398114	cmd	Ravagger	9	3712	school.are	standing	100	0	-	west		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795398117	cmd	Ravagger	9	3794	school.are	standing	100	0	-	ne		The storage room //   This room has a single light in the ceiling above you casting a pale radiance // over the contents of the room.  Some buckets and mops sit in one corner.	-	+
+1795398121	cmd	Ravagger	9	3794	school.are	standing	100	0	-	open	ja	The goblin has been let out of a dragon jar!	-	-
+1795398124	coin	Ravagger	9	3794	school.are	+2	loot	kill	-	9440607
+1795398124	cmd	Ravagger	9	3794	school.are	standing	100	7	-	kill	gob	Your punch misses the goblin. // Your punch hits the goblin. // The goblin is DEAD!!	-	+
+1795398129	census	-	0	0	-	herbs=63/150 components=39/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=21 spotted=2 picked=0 passed=2 cleared=0 rare=0 mobs_seen=17 mobs_fought=9 secs=900
+1795398135	cmd	Ravagger	9	3712	school.are	standing	100	0	-	sw		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795398136	laid	-	0	0	-	1226	herb	44	a sprig of aconite	6308	arac.are	scatter
+1795398136	laid	-	0	0	-	1227	component	56	a dragons claw	13225	solace.are	scatter
+1795398140	cmd	Ravagger	9	3713	school.are	standing	100	0	-	north		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is south.	-	+
