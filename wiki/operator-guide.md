@@ -409,10 +409,11 @@ and WIZINFO with the counts, and tells players on INFO with no room or area.
 `component` (level 69) lays a round now and runs the same move. A restart lays
 the world afresh, so nothing moves until a day after it.
 
-The questmaster never picks a target in Hyrule, the training yard, Azeroth or
-Descent to Hell. The last two are `quest_unwanted_areas[]` in `src/quest.c`,
-taken out on 2026-11-15 because players abandoned their quests more than any
-other area's; add an area there only on that kind of evidence (the
+The questmaster never picks a target in Hyrule, the training yard, Azeroth,
+Descent to Hell, the Keep of Mahn-Tor or the Voyage Across Sea. The last four
+are `quest_unwanted_areas[]` in `src/quest.c`, taken out on 2026-11-15 and
+2026-11-23 because players lost their quests there more than any other
+area's; add an area there only on that kind of evidence (the
 `quest-failed` outcome rows in `log/play.tsv` name the area), and say so in
 HELP AQUEST.
 

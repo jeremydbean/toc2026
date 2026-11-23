@@ -95,6 +95,13 @@ class DeepReportTests(unittest.TestCase):
             ["3", "death", "Zy", "10", "1", "a.are", "mob 32700 a sparring guard",
              "killer_lvl=20 last=5 hit hp_before=4 from=32700 age=0s big=9 hit from=32700 "
              "age=3s max_hp=60 foes=1 wimpy=0 dt_room=0 sanct=0 linkdead=0"],
+            # A puzzle trap's death: no killer but the victim, and a blow
+            # fifteen minutes old that once read as its cause -- and, old
+            # enough, as a one-blow kill (players' logs, 2026-11-23).
+            ["3", "death", "Zz", "54", "1", "a.are", "self",
+             "killer_lvl=54 last=900 trip hp_before=527 from=29232 age=881s big=900 trip "
+             "from=29232 age=881s max_hp=954 foes=0 wimpy=0 dt_room=0 sanct=0 linkdead=0 "
+             "burst=4 burst_secs=890 cause=puzzle-trap"],
             ["4", "item", "Zx", "10", "1", "a.are", "3701", "a dagger",
              "type=weapon level=1 worn=0 nested=0 timer=0 cond=100 inside=0", "obj_update"],
             ["5", "outcome", "Zx", "10", "1", "a.are", "quest-failed", "failure", "timeout", "-",
@@ -104,7 +111,8 @@ class DeepReportTests(unittest.TestCase):
         self.assertEqual(dict(deep["stalls"]), {"char_update": 1})
         self.assertEqual(deep["stall_ms"], {"char_update": 412})
         self.assertEqual(deep["deaths"]["mob 32700 a sparring guard"], 2)
-        self.assertEqual([d[0] for d in deep["one_blow"]], ["Zx"])
+        self.assertEqual([d[0] for d in deep["one_blow"]], ["Zx"], "never a blow minutes old")
+        self.assertEqual(deep["deaths"]["self (puzzle-trap)"], 1, deep["deaths"])
         self.assertEqual(dict(deep["gone"]), {("obj_update", "a dagger"): 1})
         self.assertEqual(dict(deep["lost"]), {("mob:3011", "timeout"): 1})
         self.assertIn("mob:3011", deep["impossible"])
@@ -174,6 +182,61 @@ class DeepLiveTests(unittest.TestCase):
         self.assertRegex(detail, r"last=\d+ \S+ hp_before=\d+ from=32700 age=\d+s")
         self.assertIn("max_hp=5", detail)
         self.assertIn("foes=1", detail)
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class TrapDeathTests(unittest.TestCase):
+    """A death with no killer says what did it, and names no blow older
+    than the window (players' logs, 2026-11-23: a puzzle trap's death in
+    the journal read "self" with a trip from fifteen minutes before as
+    its last blow). TOC_PLAY_DEATH_BLOW_SECS shortens the window."""
+
+    BUTTON = 29422      # world.are: a manipulation object, value[4] 3, kills the room
+
+    def test_a_puzzle_trap_death_names_the_trap_and_no_old_blow(self) -> None:
+        with LiveMud(fixtures=True, extra_env={"TOC_PLAY_DEATH_BLOW_SECS": "2"}) as mud:
+            make(mud, "Zdeepgod", Levl=70, Room=QUESTMASTER)
+            make(mud, "Zdeeptrap", Levl=30, Room=QUESTMASTER,
+                 HMV="5000 5000 100 100 100 100", HMVP="5000 100 100")
+            with mud.connect(timeout=120) as god, mud.connect(timeout=120) as hero:
+                login(god, "Zdeepgod", PW)
+                login(hero, "Zdeeptrap", PW)
+                god.sync("scroll 0")
+                hero.sync("scroll 0")
+                # A real blow first, so there is an old one to leave out.
+                place_sparring_guard(god, "zdeepgod", SPARRING_FLOOR)
+                god.must("set char guard hitroll 300", "")
+                god.must("set char guard damroll 40", "")
+                god.must(f"transfer zdeeptrap {SPARRING_FLOOR}", "")
+                hero.send("kill guard")
+                deadline = time.time() + 60
+                while time.time() < deadline:
+                    hero.drain(1.0)
+                    stat = god.must("stat zdeeptrap", "Hp:")
+                    if "Hp: 5000/5000" not in stat:
+                        break
+                else:
+                    self.fail("the guard never landed a blow")
+                god.sync("peace")
+                god.sync("purge guard")
+                god.sync("goto 4207")
+                hero.drain(3.5)                     # past the 2 s window
+                god.must(f"at zdeeptrap load obj {self.BUTTON}", "You create")
+                hero.buffer = ""
+                hero.send("push button")
+                hero.expect("You have been KILLED", timeout=60)
+                hero.drain(1.0)
+                for client in (hero, god):
+                    client.send("quit")
+                    client.wait_closed()
+            mine = [r for r in rows(mud) if len(r) > 2 and r[2] == "Zdeeptrap"]
+        deaths = [r for r in mine if r[1] == "death"]
+        self.assertEqual(len(deaths), 1, mine[-10:])
+        self.assertEqual(deaths[0][6], "self")
+        detail = deaths[0][7]
+        self.assertIn("cause=puzzle-trap", detail)
+        self.assertIn("last=0 - hp_before=0 from=0 age=-1s", detail, "no old blow named")
+        self.assertIn("big=0 - from=0 age=-1s", detail)
 
 
 if __name__ == "__main__":

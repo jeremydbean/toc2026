@@ -115,7 +115,7 @@ class AutomaticQuestSystemTests(unittest.TestCase):
         self.assertIn("quest_unwanted_areas[i]", body)
         table = self.quest.split("quest_unwanted_areas[] =")[1].split("};")[0]
         unwanted = re.findall(r'"([a-z0-9_]+\.are)"', table)
-        self.assertEqual(["azeroth.are", "hell.are"], unwanted)
+        self.assertEqual(["azeroth.are", "hell.are", "mahntor.are", "voyage.are"], unwanted)
         listed = (ROOT / "area" / "area.lst").read_text(encoding="latin-1").split()
         for name in unwanted:
             self.assertIn(name, listed)

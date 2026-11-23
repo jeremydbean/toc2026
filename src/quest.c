@@ -2112,11 +2112,20 @@ void quest_area_name( const char *raw, char *out, size_t size )
  * out. No other area lost more than two. Add an area here only on that
  * kind of evidence: tools/log_report.py's quests section, and the
  * quest-failed outcome rows, which name the area.
+ *
+ * 2026-11-23, from the journal since 2026-11-02 (92 quests): the Keep of
+ * Mahn-Tor lost all three sent there (two abandoned, a rush timed out with
+ * its questor searching inside, behind the keep's coloured-key doors), and
+ * the Voyage Across Sea both of its two (one abandoned; one timed out with
+ * its questor ten minutes in the ship's maze, where a wrong heading puts
+ * you back on the dock -- a streak of 42 lost).
  */
 static const char *const quest_unwanted_areas[] =
 {
     "azeroth.are",
     "hell.are",
+    "mahntor.are",
+    "voyage.are",
     NULL
 };
 

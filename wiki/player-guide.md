@@ -752,8 +752,8 @@ out too.
 
 The questmaster never sends you into Hyrule -- it is too large and too new to
 be fair as a quest target, and its dungeons do not let you recall -- nor to the
-Training Dummy Yard, whose dummy cannot die, nor to Azeroth or Descent to Hell,
-the quests players turned down most. Every other area can come up.
+Training Dummy Yard, whose dummy cannot die, nor to Azeroth, Descent to Hell,
+the Keep of Mahn-Tor or the Voyage Across Sea, the quests players lost most. Every other area can come up.
 
 `pkill` controls or reports player-killing state according to the live rules.
 PK commands, theft, hostile spells, charm, grouping, and corpse handling may

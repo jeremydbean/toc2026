@@ -2410,17 +2410,56 @@ void playlog_blow( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
  * recent blow was not a fight -- the biggest blow of the last minute, the
  * maximum, how many foes were on them, wimpy, and the room's death-trap
  * flag. Never a room the journal hides.
+ *
+ * Only blows of the last PLAY_DEATH_BLOW_SECS are named (players' logs,
+ * 2026-11-23: a puzzle trap's death named a "trip" from fifteen minutes
+ * before as its last blow, and an old blow could read as a one-blow
+ * kill); an older one is written as none (0, "-", age -1). The last
+ * field, cause=, is what was running: the victim's command, another's
+ * ("push(another's)"), the reason a caller gave (puzzle-trap) or the
+ * update phase -- so a death with no killer still says what did it.
  */
+static long play_death_blow_secs( void )
+{
+    static long secs = -1;
+
+    if ( secs < 0 )
+    {
+        const char *env = getenv( "TOC_PLAY_DEATH_BLOW_SECS" );
+        long v;
+
+        secs = PLAY_DEATH_BLOW_SECS;
+        if ( env != NULL && parse_long( env, 0, 3600, &v ) )
+            secs = v;
+    }
+    return secs;
+}
+
 void playlog_death( CHAR_DATA *killer, CHAR_DATA *victim )
 {
     char fields[PLAY_LINE];
     char who[64];
+    char cause[64];
     CHAR_DATA *rch;
     PC_DATA *pc;
     int foes = 0;
+    long window;
+    bool last_ok, big_ok, burst_ok;
+    size_t i;
 
     if ( victim == NULL || IS_NPC(victim) || ( pc = victim->pcdata ) == NULL )
         return;
+    window = play_death_blow_secs();
+    last_ok = pc->blow_last_at > 0 && current_time - pc->blow_last_at <= window;
+    big_ok = pc->blow_big_at > 0 && current_time - pc->blow_big_at <= window;
+    burst_ok = pc->blow_burst_at > 0 && current_time - pc->blow_burst_at <= PLAY_BURST_SECS;
+    /* One word: the row's fields are space separated key=value. */
+    toc_strlcpy( cause, playlog_how( victim ), sizeof(cause) );
+    for ( i = 0; cause[i] != '\0'; i++ )
+        if ( isspace( (unsigned char) cause[i] ) || cause[i] == '=' )
+            cause[i] = '_';
+    if ( cause[0] == '\0' )
+        toc_strlcpy( cause, "-", sizeof(cause) );
     if ( killer == NULL )
         toc_strlcpy( who, "none", sizeof(who) );
     else if ( killer == victim )
@@ -2441,20 +2480,21 @@ void playlog_death( CHAR_DATA *killer, CHAR_DATA *victim )
     snprintf( fields, sizeof(fields),
               "%s\tkiller_lvl=%d last=%d %s hp_before=%d from=%d age=%lds"
               " big=%d %s from=%d age=%lds max_hp=%d foes=%d wimpy=%d dt_room=%d"
-              " sanct=%d linkdead=%d burst=%ld burst_secs=%ld",
+              " sanct=%d linkdead=%d burst=%ld burst_secs=%ld cause=%s",
               who, killer != NULL ? killer->level : 0,
-              pc->blow_last_dam, pc->blow_last_at > 0 ? blow_noun( pc->blow_last_dt ) : "-",
-              pc->blow_last_hp, pc->blow_last_from,
-              pc->blow_last_at > 0 ? (long) ( current_time - pc->blow_last_at ) : -1L,
-              pc->blow_big_dam, pc->blow_big_at > 0 ? blow_noun( pc->blow_big_dt ) : "-",
-              pc->blow_big_from,
-              pc->blow_big_at > 0 ? (long) ( current_time - pc->blow_big_at ) : -1L,
+              last_ok ? pc->blow_last_dam : 0, last_ok ? blow_noun( pc->blow_last_dt ) : "-",
+              last_ok ? pc->blow_last_hp : 0, last_ok ? pc->blow_last_from : 0,
+              last_ok ? (long) ( current_time - pc->blow_last_at ) : -1L,
+              big_ok ? pc->blow_big_dam : 0, big_ok ? blow_noun( pc->blow_big_dt ) : "-",
+              big_ok ? pc->blow_big_from : 0,
+              big_ok ? (long) ( current_time - pc->blow_big_at ) : -1L,
               victim->max_hit, foes, victim->wimpy,
               victim->in_room != NULL && IS_SET( victim->in_room->room_flags, ROOM_DT ) ? 1 : 0,
               IS_AFFECTED( victim, AFF_SANCTUARY ) ? 1 : 0,
               victim->desc == NULL ? 1 : 0,
-              pc->blow_burst_at > 0 ? pc->blow_burst_dam : 0L,
-              pc->blow_burst_at > 0 ? (long) ( current_time - pc->blow_burst_at ) : -1L );
+              burst_ok ? pc->blow_burst_dam : 0L,
+              burst_ok ? (long) ( current_time - pc->blow_burst_at ) : -1L,
+              cause );
     journal_write( "death", victim, fields );
     pc->blow_burst_at = 0;
     pc->blow_burst_dam = 0;

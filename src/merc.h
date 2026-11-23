@@ -308,6 +308,7 @@ typedef enum
 #define MAX_ALIASES             20
 #define PLAY_RECENT             6     /* commands kept for a BUG report (playlog.c) */
 #define PLAY_BURST_SECS         10    /* the death row's burst: hit points taken in this window */
+#define PLAY_DEATH_BLOW_SECS    60    /* a death row names only blows this recent (TOC_PLAY_DEATH_BLOW_SECS) */
 #define PLAY_COIN_KINDS         7     /* a session's coin by source (playlog.c) */
 #define PLAY_TALLY_KINDS        8     /* labels in a session's spend and exp tallies */
 #define PLAY_TALLY_NAME         16    /* a tally label, the last slot "other" */

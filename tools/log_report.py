@@ -186,15 +186,23 @@ def deep_summary(rows) -> dict:
             total = int(r[6].rstrip("ms") or 0) if r[6].rstrip("ms").isdigit() else 0
             stall_ms[phase] = max(stall_ms.get(phase, 0), total)
         elif kind == "death" and len(r) > 7:
-            deaths[r[6]] += 1
+            # A death with no killer but themselves, or none, says what was
+            # running (cause=, 2026-11-23): "self (puzzle-trap)".
+            cause = re.search(r"\bcause=(\S+)", r[7])
+            killer = r[6]
+            if killer in ("self", "none") and cause and cause.group(1) != "-":
+                killer = f"{killer} ({cause.group(1)})"
+            deaths[killer] += 1
             words = dict(re.findall(r"(\w+)=(-?\d+)", r[7]))
-            last = re.search(r"last=(\d+)", r[7])
+            last = re.search(r"last=(\d+) \S+ hp_before=(-?\d+) from=-?\d+ age=(-?\d+)s", r[7])
             dam = int(last.group(1)) if last else 0
-            before = int(words.get("hp_before", 0))
+            before = int(last.group(2)) if last else 0
+            age = int(last.group(3)) if last else -1
             top = int(words.get("max_hp", 0))
-            # Killed by one blow from at least half health.
-            if top > 0 and dam >= before and before * 2 >= top:
-                one_blow.append((r[2], r[6], dam, before, top))
+            # Killed by one blow from at least half health -- a blow of the
+            # last minute: rows before 2026-11-23 named older ones too.
+            if top > 0 and 0 <= age <= 60 and dam >= before and before * 2 >= top:
+                one_blow.append((r[2], killer, dam, before, top))
         elif kind == "item" and len(r) > 9:
             gone[(r[9], r[7])] += 1
         elif kind == "outcome" and len(r) > 10 and r[6] == "quest-failed":

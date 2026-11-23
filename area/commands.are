@@ -1725,7 +1725,8 @@ Questor Thews waits in a globe above the great oak: WALKTO SQUARE, then
 UP four times.
 
   - Targets are creatures no higher than your level, in places you may
-    go; never in Hyrule, the training yard, Azeroth or Descent to Hell.
+    go; never in Hyrule, the training yard, Azeroth, Descent to Hell,
+    the Keep of Mahn-Tor or the Voyage Across Sea.
     Your group in the room at the kill shares the credit, and a pet's
     kill counts.
   - A recovery item is bound to you and vanishes when the quest ends.
@@ -4197,6 +4198,24 @@ the guilds and about town.  Wisdom and constitution are the usual first
 choices: more practices and more hit points each level.
 
 See also: PRACTICE, GAIN, ATTRIBUTE
+~
+
+0 TRAINERS GUILDMASTERS~
+Who teaches what, and how to find them:
+
+  walkto trainers       every guildmaster and trainer, by where they stand
+  walkto <name>         walks you to one of them
+  gainlist              what you can still learn, and the trainer selling it
+  gainlist trainers     each trainer you may use and everything they sell
+  practicelist          who can practise the skills you already know
+
+GAIN buys skills and spell groups and PRACTICE raises a skill you already
+hold, each from a trainer who teaches your class and guild.  TRAIN spends
+training sessions on your attributes, hit points and mana.  In Mud School,
+Eclipse trains anybody and the adept practises the basic skills with
+anybody: HELP MUDSCHOOL.
+
+See also: TRAIN, GAIN, PRACTICE, GAINLIST, PRACTICELIST, WALKTO, GUILDS
 ~
 
 0 TUTORIAL~

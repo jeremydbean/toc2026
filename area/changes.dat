@@ -5,6 +5,16 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261123questareas 2026-11-23
+The questmaster no longer sends you to the Keep of Mahn-Tor or the Voyage
+Across Sea.  Every quest sent to either was lost: behind the keep's
+coloured-key doors, or in the ship's maze, where a wrong heading puts you
+back on the dock.
+
+@ 20261123helptrainers 2026-11-23
+HELP TRAINERS (or HELP GUILDMASTERS) says how to find who teaches you:
+WALKTO TRAINERS, GAINLIST, GAINLIST TRAINERS and PRACTICELIST.
+
 @ 20261122immunerelog 2026-11-22
 An immunity a spell gave you now survives logging out and back in.  An
 iron skin that had made you immune to slashing came back from a reconnect

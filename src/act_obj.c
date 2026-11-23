@@ -7128,6 +7128,11 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 
      break;
      case 3:      /* kill everyone in the room! What fun!!!*/
+     {
+       /* The journal's death rows say what killed them: there is no
+          killer but themselves (players' logs, 2026-11-23). */
+       const char *was_reason = playlog_reason( "puzzle-trap" );
+
        which_trap = number_percent ();
 
        /* Send trap trigger message once to the whole room before the kill loop */
@@ -7168,6 +7173,8 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 	send_to_char("You have been KILLED!\n\r",ch);
 	achievement_record_event(ch, ACHIEVEMENT_EVENT_PUZZLE_TRAP, true);
 	raw_kill(ch, ch);
+       playlog_reason( was_reason );
+     }
      break;
    }
      return;

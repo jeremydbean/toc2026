@@ -4039,7 +4039,15 @@ log says what a player typed; the journal says what happened, in columns
   blow (`playlog_blow`, recorded where hit points come off in `damage()`)
   with the hit points before it and its age, the biggest blow of the last
   minute, max hp, foes on them, wimpy, a death-trap room, sanctuary,
-  linkdead. `item`: an object a player held, at any depth, leaving the
+  linkdead, and last `cause=` -- `playlog_how`: the victim's command,
+  another's, a reason (`puzzle-trap`, set around the manipulation trap's
+  kills) or the phase. A blow older than `PLAY_DEATH_BLOW_SECS` (60;
+  `TOC_PLAY_DEATH_BLOW_SECS` for tests) is written as none (`last=0 -
+  hp_before=0 from=0 age=-1s`), and the burst past `PLAY_BURST_SECS` as 0
+  (players' logs, 2026-11-23: a puzzle trap's death named a trip from
+  fifteen minutes before; `TrapDeathTests` in
+  `tests/test_playlog_deep.py`). A new way of killing a player with no
+  killer sets a reason around it. `item`: an object a player held, at any depth, leaving the
   game through `extract_obj` (`playlog_obj_gone`, asked before it is
   taken from its holder) -- vnum, short description, type, level, worn,
   timer, condition, what was inside, and why: the holder's command,
@@ -5153,7 +5161,10 @@ before adding one. **Areas players turn down go in `quest_unwanted_areas[]`**
 beside it (owner, 2026-11-15: "remove the quests in areas players
 consistently abandoned"): Azeroth (four of seventeen quests given up,
 each within twenty seconds) and Descent to Hell (three of four lost) on
-the logs from 2026-09-17; no other area lost more than two. Add one only
+the logs from 2026-09-17; no other area lost more than two. The Keep of
+Mahn-Tor (three of three) and the Voyage Across Sea (two of two, one a
+42-quest streak timed out in the ship's maze) joined them on 2026-11-23.
+Add one only
 on that kind of evidence -- the quest-failed outcome rows name the area --
 and say so in HELP AQUEST (`tests/test_aquest_system.py`).
 
