@@ -140,7 +140,6 @@ for u in toc-game.service toc-web.service \
          toc-game-recovery.service toc-game-recovery.timer \
          toc-auto-deploy.service toc-auto-deploy.timer \
          toc-host-action.service toc-host-action.path \
-         toc-player-backup.service toc-player-backup.timer \
          toc-heartbeat.service toc-heartbeat.timer; do
     [ -f "$BUILD/deploy/windows-vm/$u" ] && install -m 0644 "$BUILD/deploy/windows-vm/$u" /etc/systemd/system/
 done
@@ -148,7 +147,6 @@ for s in toc-deploy toc-state-sync toc-state-sync-check toc-game-recovery toc-au
          toc-game-probe toc-host-action toc-ops-summary; do
     [ -f "$BUILD/deploy/windows-vm/$s" ] && install -m 0755 "$BUILD/deploy/windows-vm/$s" /usr/local/sbin/
 done
-install -m 0755 "$BUILD/deploy/sync-player-backup.sh" /usr/local/sbin/toc-player-backup 2>/dev/null || true
 
 # The dashboard's virtualenv.
 if [ ! -x "$TOC_PREFIX/venv/bin/python" ]; then
@@ -198,11 +196,8 @@ printf '%s %s\n' "$(git -C "$BUILD" rev-parse HEAD)" \
     "$(sha256sum "$TOC_PREFIX/current/merc" 2>/dev/null | cut -d' ' -f1)" \
     > "$TOC_PREFIX/current/.code-revision" 2>/dev/null || true
 systemctl enable --now toc-auto-deploy.timer 2>/dev/null || true
-# The operations summary and heartbeat, always; the encrypted backup only
-# once it is configured (see the note below), so an unconfigured backup
-# is "not configured" and never a timer failing every six hours.
+# The operations summary and heartbeat.
 systemctl enable --now toc-heartbeat.timer 2>/dev/null || true
-[ -f /etc/toc/player-backup.env ] && systemctl enable --now toc-player-backup.timer 2>/dev/null || true
 # Every support unit, proved loaded from what was just installed.
 sh "$BUILD/deploy/windows-vm/toc-install-units" "$BUILD/deploy/windows-vm" ||
     echo "   WARN: support units not verified; run toc-ops-summary" >&2
@@ -219,11 +214,6 @@ cat <<'NOTE'
        /srv/toc/.ssh/id_ed25519_state_sync (owned by toc, mode 600), its
        public half added to the repo as a deploy key with write access.
        Until it is there the game runs but backups do not resume.
-     - the encrypted private backup: see wiki/player-backups.md "Turning
-       on the encrypted backup" (a private repository, its deploy key, an
-       age recipient and /etc/toc/player-backup.env), then
-       systemctl enable --now toc-player-backup.timer. Until then the
-       operations summary says "not configured".
 
    The website comes up on public port 9001 (http). To put it back
    behind Caddy at https://timesofchaos.com on 80 and 443, with the

@@ -64,7 +64,7 @@ exit 0
 UNITS = ["toc-state-sync.service", "toc-state-sync.timer", "toc-state-sync-check.service",
          "toc-state-sync-check.timer", "toc-game-recovery.service", "toc-game-recovery.timer",
          "toc-auto-deploy.service", "toc-auto-deploy.timer", "toc-host-action.service",
-         "toc-host-action.path", "toc-player-backup.service", "toc-player-backup.timer",
+         "toc-host-action.path",
          "toc-heartbeat.service", "toc-heartbeat.timer"]
 
 
@@ -81,7 +81,6 @@ class FakeHost:
         (self.sd / "reloaded").write_text("0\n")
         self.env = dict(os.environ, PATH=f"{self.bin}:{os.environ['PATH']}", SD=str(self.sd),
                         UD=str(self.units), TOC_UNIT_DIR=str(self.units),
-                        TOC_BACKUP_ENV=str(root / "player-backup.env"),
                         TOC_UNITS_INTRODUCED=str(root / "units-introduced"))
         # The game's and dashboard's units, which toc-deploy installs itself.
         for unit in ("toc-game.service", "toc-web.service"):
@@ -117,18 +116,9 @@ class InstallUnitsTests(unittest.TestCase):
                       "toc-game-recovery.timer", "toc-auto-deploy.timer",
                       "toc-heartbeat.timer", "toc-host-action.path"):
             self.assertIn(f"systemctl enable --now {timer}", calls)
-        # Not configured: installed and left off, and said so.
-        self.assertNotIn("systemctl enable --now toc-player-backup.timer", calls)
-        self.assertIn("the encrypted backup is not configured", done.stdout)
         # No service is ever started or restarted here.
         self.assertFalse([c for c in calls if ".service" in c and
                           c.split()[1] in ("start", "restart", "enable")], calls)
-
-    def test_the_backup_timer_is_enabled_once_configured(self) -> None:
-        (self.host.root / "player-backup.env").write_text("BACKUP_REMOTE=x\n")
-        done = self.host.install()
-        self.assertEqual(done.returncode, 0, done.stderr)
-        self.assertIn("systemctl enable --now toc-player-backup.timer", self.host.calls())
 
     def test_a_changed_unit_is_reloaded_and_its_timer_restarted(self) -> None:
         self.assertEqual(self.host.install().returncode, 0)
@@ -168,13 +158,6 @@ class InstallUnitsTests(unittest.TestCase):
         self.assertIn("toc-game-recovery.timer left disabled", done.stdout)
         self.assertFalse([c for c in self.host.calls() if "toc-game-recovery.timer" in c
                           and c.split()[1] in ("enable", "restart", "start")])
-
-    def test_the_backup_timer_is_enabled_by_the_first_run_that_finds_it_configured(self) -> None:
-        self.assertEqual(self.host.install().returncode, 0)
-        self.assertNotIn("systemctl enable --now toc-player-backup.timer", self.host.calls())
-        (self.host.root / "player-backup.env").write_text("BACKUP_REMOTE=x\n")
-        self.assertEqual(self.host.install().returncode, 0)
-        self.assertIn("systemctl enable --now toc-player-backup.timer", self.host.calls())
 
     def test_units_a_person_set_up_before_are_theirs(self) -> None:
         """An existing host: units installed before this existed, one of them
@@ -227,7 +210,6 @@ class InstallUnitsTests(unittest.TestCase):
         self.assertIn('sh "$BUILD/deploy/windows-vm/toc-install-units" "$BUILD/deploy/windows-vm"', restore)
         self.assertIn("toc-install-units", auto)
         self.assertIn("toc-ops-summary", deploy)
-        self.assertIn("/usr/local/sbin/toc-player-backup", deploy)
         # Every unit file the repository ships is on one list or the other.
         shipped = {p.name for p in VM.iterdir() if p.suffix in (".service", ".timer", ".path")}
         listed = set(UNITS) | {"toc-game.service", "toc-web.service"}
@@ -257,8 +239,8 @@ class OpsSummaryTests(unittest.TestCase):
             (self.live / d).mkdir(parents=True)
         (self.live / "area" / "webadmin.queue").write_text("")
         (self.live / "backups" / "Nov.23.tar.gz").write_bytes(b"x")
-        self.sync, self.backup, self.state = root / "sync", root / "backup", root / "lib-toc"
-        for d in (self.sync, self.backup, self.state):
+        self.sync, self.state = root / "sync", root / "lib-toc"
+        for d in (self.sync, self.state):
             d.mkdir()
         now = int(time.time())
         (self.sync / "last-success").write_text(f"time={now}\nkind=pushed\nremote_commit={'a' * 40}\n")
@@ -274,8 +256,7 @@ class OpsSummaryTests(unittest.TestCase):
         self.base = f"http://127.0.0.1:{port}"
         self.env = dict(self.host.env, TOC_LIVE_ROOT=str(self.live),
                         TOC_OPS_SUMMARY=str(root / "ops-summary.json"),
-                        TOC_SYNC_STATE_DIR=str(self.sync), TOC_BACKUP_STATE_DIR=str(self.backup),
-                        TOC_BACKUP_ENV=str(root / "player-backup.env"),
+                        TOC_SYNC_STATE_DIR=str(self.sync),
                         TOC_STATE_DIR=str(self.state), TOC_HEARTBEAT_ENV=str(root / "heartbeat.env"),
                         TOC_GAME_PROBE=str(probe), TOC_WEB_HEALTH_URL=f"{self.base}/api/health",
                         TOC_DISK_PATH=str(root), TOC_DISK_MIN_FREE_MB="1",
@@ -286,54 +267,25 @@ class OpsSummaryTests(unittest.TestCase):
         self.server.server_close()
         self._tmp.cleanup()
 
-    def configure_backup(self, age_min: int = 10) -> None:
-        (self.root / "player-backup.env").write_text("BACKUP_REMOTE=x\n")
-        when = int(time.time()) - age_min * 60
-        (self.backup / "status").write_text("ok\n")
-        (self.backup / "last-success").write_text(
-            f"time={when}\nremote_commit={'b' * 40}\ngenerations=5\narchive_bytes=1234\n")
-        (self.backup / "last-attempt").write_text(f"time={when}\nresult=ok\nreason=pushed\n")
-        (self.host.sd / "toc-player-backup.timer.enabled").write_text("")
-        (self.host.sd / "toc-player-backup.timer.active").write_text("")
-
     def run_summary(self) -> tuple[subprocess.CompletedProcess, dict]:
         done = subprocess.run([sys.executable, str(SUMMARY)], env=self.env,
                               capture_output=True, text=True, timeout=60)
         out = json.loads((self.root / "ops-summary.json").read_text())
         return done, out
 
-    def test_unconfigured_private_backup_is_never_ok(self) -> None:
-        done, out = self.run_summary()
-        self.assertEqual(done.returncode, 1, done.stdout)
-        self.assertEqual(out["overall"], "degraded")
-        self.assertEqual(out["checks"]["private_backup"]["status"], "not-configured")
-        self.assertFalse(out["checks"]["private_backup"]["ok"])
-        self.assertEqual(out["problems"], ["private_backup: not configured (no encrypted off-host copy)"])
-        self.assertTrue(out["checks"]["public_sync"]["ok"])
-        self.assertEqual(out["heartbeat"], {"heartbeat": "not-configured",
-                                            "backup_heartbeat": "not-configured"})
-        # The copy the state sync carries to GitHub.
-        self.assertEqual(json.loads((self.live / "log" / "ops-summary.json").read_text())["overall"],
-                         "degraded")
-
-    def test_all_well_is_ok_and_both_heartbeats_go(self) -> None:
-        self.configure_backup()
-        (self.root / "heartbeat.env").write_text(
-            f'HEARTBEAT_URL="{self.base}/ping/host"\nBACKUP_HEARTBEAT_URL={self.base}/ping/backup\n')
+    def test_all_well_is_ok_and_the_heartbeat_goes(self) -> None:
+        (self.root / "heartbeat.env").write_text(f'HEARTBEAT_URL="{self.base}/ping/host"\n')
         done, out = self.run_summary()
         self.assertEqual(done.returncode, 0, out["problems"])
         self.assertEqual(out["overall"], "ok")
-        self.assertEqual(out["heartbeat"], {"heartbeat": "sent ok", "backup_heartbeat": "sent ok"})
+        self.assertEqual(out["heartbeat"], {"heartbeat": "sent ok"})
         self.assertIn("/ping/host", self.server.seen)  # type: ignore[attr-defined]
-        self.assertIn("/ping/backup", self.server.seen)  # type: ignore[attr-defined]
         code, body = ops_status.ops_summary(self.root / "ops-summary.json")
         self.assertEqual(code, 200)
         self.assertEqual(body["overall"], "ok")
 
     def test_each_failure_is_named_and_the_heartbeat_says_fail(self) -> None:
-        self.configure_backup(age_min=9 * 60)
-        (self.root / "heartbeat.env").write_text(
-            f"HEARTBEAT_URL={self.base}/ping/host\nBACKUP_HEARTBEAT_URL={self.base}/ping/backup\n")
+        (self.root / "heartbeat.env").write_text(f"HEARTBEAT_URL={self.base}/ping/host\n")
         old = int(time.time()) - 3600
         (self.sync / "last-success").write_text(f"time={old}\nkind=pushed\n")
         (self.sync / "last-attempt").write_text(
@@ -348,28 +300,21 @@ class OpsSummaryTests(unittest.TestCase):
         self.assertEqual(done.returncode, 1)
         joined = "\n".join(out["problems"])
         for word in ("game: unknown", "public_sync: last verified sync 60 min ago",
-                     "private_backup: last verified copy 9 h ago", "game_archives: newest is",
+                     "game_archives: newest is",
                      "recovery: last run exited 1", "toc-state-sync.timer inactive"):
             self.assertIn(word, joined)
         self.assertNotIn("203.0.113.7", (self.root / "ops-summary.json").read_text())
         self.assertIn("<address>", joined)
-        self.assertEqual(out["heartbeat"], {"heartbeat": "sent fail", "backup_heartbeat": "sent fail"})
+        self.assertEqual(out["heartbeat"], {"heartbeat": "sent fail"})
         self.assertIn("/ping/host/fail", self.server.seen)  # type: ignore[attr-defined]
-        # Staff hear of the broken private backup, once an hour.
-        queue = (self.live / "area" / "webadmin.queue").read_text()
-        self.assertIn("wizinfo|60|The encrypted off-host player backup is not working", queue)
-        self.run_summary()
-        self.assertEqual((self.live / "area" / "webadmin.queue").read_text(), queue)
 
     def test_a_refused_drop_is_a_problem_at_once(self) -> None:
-        self.configure_backup()
         (self.sync / "last-attempt").write_text(
             f"time={int(time.time())}\nresult=failed\nreason=refused: the live tree shrank\n")
         done, out = self.run_summary()
         self.assertIn("public_sync: refused: the live tree shrank", out["problems"])
 
     def test_an_uninstalled_or_unreloaded_unit_is_named(self) -> None:
-        self.configure_backup()
         (self.host.units / "toc-heartbeat.timer").unlink()
         (self.host.sd / "toc-state-sync.service.stale").write_text("")
         done, out = self.run_summary()
@@ -405,8 +350,8 @@ class ReadinessTests(unittest.TestCase):
             self.assertEqual(ops_status.ops_summary(path, now=now)[0], 503)
 
     def test_only_judges_the_checks_named(self) -> None:
-        """One monitor per concern (2026-11-23): an encrypted backup not yet
-        set up must not hold the sync's monitor red, and staleness always
+        """One monitor per concern (2026-11-23): a check that is failing
+        must not hold another concern's monitor red, and staleness always
         counts."""
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "s.json"
@@ -414,14 +359,14 @@ class ReadinessTests(unittest.TestCase):
             path.write_text(json.dumps({
                 "overall": "degraded", "generated": now,
                 "checks": {"public_sync": {"ok": True}, "disk": {"ok": True},
-                           "private_backup": {"ok": False, "status": "not-configured"}}}))
+                           "game_archives": {"ok": False, "status": "stale"}}}))
             only, error = ops_status.parse_only("public_sync, disk")
             self.assertIsNone(error)
             code, body = ops_status.ops_summary(path, now=now, only=only)
             self.assertEqual((code, body["verdict"], body["failing"]), (200, "ok", []))
-            only, _ = ops_status.parse_only("private_backup")
+            only, _ = ops_status.parse_only("game_archives")
             code, body = ops_status.ops_summary(path, now=now, only=only)
-            self.assertEqual((code, body["failing"]), (503, ["private_backup"]))
+            self.assertEqual((code, body["failing"]), (503, ["game_archives"]))
             # A check the summary does not carry is not a pass.
             only, _ = ops_status.parse_only("recovery")
             self.assertEqual(ops_status.ops_summary(path, now=now, only=only)[0], 503)
@@ -469,9 +414,9 @@ class RouteTests(unittest.TestCase):
                 self.assertEqual((reply.status_code, reply.json()["overall"]), (200, "ok"))
                 path.write_text(json.dumps({"overall": "degraded", "generated": time.time(),
                                             "checks": {"disk": {"ok": True},
-                                                       "private_backup": {"ok": False}}}))
+                                                       "game_archives": {"ok": False}}}))
                 self.assertEqual(client.get("/api/ops-summary?only=disk").status_code, 200)
-                self.assertEqual(client.get("/api/ops-summary?only=private_backup").status_code, 503)
+                self.assertEqual(client.get("/api/ops-summary?only=game_archives").status_code, 503)
                 bad = client.get("/api/ops-summary?only=bogus")
                 self.assertEqual(bad.status_code, 400)
                 self.assertIn("unknown check", bad.json()["error"])

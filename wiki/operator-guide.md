@@ -256,24 +256,21 @@ Verify success in three places: the in-game/log completion message, a new
 nonempty file in `backups/`, and an off-host copy when the operation protects a
 major change.
 
-A six-hour off-host layer, `toc-player-backup.timer`
-(`deploy/sync-player-backup.sh`), age-encrypts `player/` and `corpse/` into
-kept generations before Git transport; the recovery private key must remain
-off the host. Check it with:
+The off-host copy is the public GitHub sync (`toc-state-sync`, every five
+minutes, plaintext, never force-pushed). There is no encrypted off-host
+layer: the owner removed it on 2026-11-23 because it duplicated the sync
+and cost a key that could be lost (`AGENTS.md`, "Backups Say How They
+Went"). Check the sync with:
 
 ```bash
-sudo cat /var/lib/toc-player-backup/status        # ok, failed or not-configured
-sudo cat /var/lib/toc-player-backup/last-success  # when, which archive, how many generations
-systemctl list-timers toc-player-backup.timer
-sudo journalctl -u toc-player-backup -n 100 --no-pager
+sudo cat /var/lib/toc-state-sync/last-attempt     # ok, nochange, skipped or failed, and why
+sudo cat /var/lib/toc-state-sync/last-success     # when, and the commit GitHub holds
+systemctl list-timers toc-state-sync.timer
 ```
 
-`not-configured` is not a backup. Each success is verified by fetching the
-archive back, but only a decryption proves it can be restored: run the
-drill in `wiki/player-backups.md` (`deploy/restore-player-backup.sh`, into a
-scratch directory) after setting it up and now and then after. The
-operations summary (`wiki/disaster-recovery.md`) judges this and every
-other backup in one place.
+Only a restore proves a backup: run the drill in `wiki/player-backups.md`
+now and then. The operations summary (`wiki/disaster-recovery.md`) judges
+this and every other backup in one place.
 
 ### Player Version Restore
 

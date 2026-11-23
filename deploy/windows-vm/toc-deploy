@@ -519,15 +519,9 @@ while [ $n -lt 30 ]; do
                     printf '   installed %s\n' "$s"
             fi
         done
-        # The encrypted backup's script lives one level up, under its old name.
-        if [ -f "$BUILD/deploy/sync-player-backup.sh" ] &&
-           ! cmp -s "$BUILD/deploy/sync-player-backup.sh" /usr/local/sbin/toc-player-backup; then
-            install -m 0755 "$BUILD/deploy/sync-player-backup.sh" /usr/local/sbin/toc-player-backup &&
-                printf '   installed toc-player-backup\n'
-        fi
         # Every support unit -- the sync's, the check's, the recovery
         # timer's, the auto-deployer's (toc-auto-deploy.timer), the
-        # helper's, the encrypted backup's and the heartbeat's -- through
+        # helper's and the heartbeat's -- through
         # one installer that reloads once, keeps a disabled unit disabled,
         # never restarts a service (a deploy run by toc-auto-deploy or the
         # helper is running inside one) and proves what systemd loaded

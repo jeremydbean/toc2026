@@ -287,13 +287,11 @@ area/webadmin.queue
 toc-backups/        what ./toc.sh backup writes: .env and state/ together
 ```
 
-Do not commit real character data, attach it to public issues, or use it as a
-test fixture. Encrypt off-host backups and restrict backup restore access.
-
-`deploy/sync-player-backup.sh` (the `toc-player-backup` timer) implements
-this by encrypting the complete `player/` snapshot with an age public
-recipient before pushing it to a dedicated private backup repository. The
-private recovery key stays off the host and outside Git. The six-hour timer,
+Character data is committed in plaintext to the public repository, and that
+is deliberate (`AGENTS.md`, "Backups Say How They Went"): a test
+environment whose owner would rather lose the secrecy than the characters.
+There is therefore no encrypted off-host backup; one existed until
+2026-11-23 and was removed as redundant. The six-hour timer,
 successful remote push, and a periodic decrypt/list test should all be
 checked; a ciphertext file alone is not proof of restorable data.
 
@@ -870,8 +868,7 @@ API tokens, DNS-01 becomes the better choice.
   log`), `STATE_FILES`, `REPORT_FILES`, `corpse/` and `area/built/`
   [source: `deploy/windows-vm/toc-state-sync`] -- and `log/` reaches a
   public repository, so nothing TLS-related (status files, nginx logs) may
-  be written under `/srv/toc/current`. The encrypted backup
-  (`deploy/sync-player-backup.sh`) and `toc-deploy`'s rsync touch none of
+  be written under `/srv/toc/current`. `toc-deploy`'s rsync touches none of
   `/etc` either.
 - **Disaster recovery**: `deploy/toc-restore` rebuilds the game and its
   units and writes `/etc/toc/web.env`; it does not install nginx or

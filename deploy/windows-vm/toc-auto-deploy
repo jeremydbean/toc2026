@@ -131,7 +131,6 @@ fi
 if [ "$(id -u)" = 0 ] && [ ! -f "$HOST_ACTION_UNITS/toc-heartbeat.timer" ] &&
    [ -f "$BUILD/deploy/windows-vm/toc-install-units" ]; then
     install -m 0755 "$BUILD/deploy/windows-vm/toc-ops-summary" "$HOST_ACTION_SBIN/toc-ops-summary" 2>/dev/null
-    install -m 0755 "$BUILD/deploy/sync-player-backup.sh" "$HOST_ACTION_SBIN/toc-player-backup" 2>/dev/null
     for s in toc-state-sync toc-state-sync-check toc-game-recovery; do
         install -m 0755 "$BUILD/deploy/windows-vm/$s" "$HOST_ACTION_SBIN/$s" 2>/dev/null
     done

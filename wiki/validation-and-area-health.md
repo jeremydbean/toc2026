@@ -245,7 +245,7 @@ The maintained deployment has three backup layers:
 
 - Scheduled/admin archives: `backup` and web-admin backup actions create `backups/*.tar.gz` archives from `player/`, then prune archives older than 30 days.
 - Per-player snapshots: successful saves write snapshots under `player/versions/<Name>/`, throttled by `PLAYER_SNAPSHOT_MIN_INTERVAL` and capped by `PLAYER_VER_MAX`. `prestore` bypasses throttling for its pre-change safety snapshot and atomically replaces the live file.
-- Off-host snapshots: `toc-player-backup.timer` (`deploy/sync-player-backup.sh`)
+- Off-host snapshots: `toc-state-sync.timer` (`deploy/windows-vm/toc-state-sync`)
   age-encrypts the complete player directory before updating its dedicated
   Git remote. Validate both the
   timer/push and an actual decrypt/list operation with the off-device recovery

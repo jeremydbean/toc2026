@@ -14,8 +14,7 @@
 # player addresses, the repository is public, and the transport was
 # never private. This is a test environment and the owner would rather
 # lose the secrecy than the characters. Do not quietly re-encrypt this
-# or move it to a private mirror; the older encrypted six-hourly
-# snapshot in toc-player-backup does that job and is a different thing.
+# or move it to a private mirror.
 #
 # The work happens in a clone of its own. The deployed tree is not a
 # git repository and must not become one: the installer rsyncs over it.

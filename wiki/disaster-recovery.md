@@ -240,7 +240,6 @@ five minutes):
 | `game` | `toc-game-probe` gets a count (the loop runs) |
 | `web` | the dashboard answers `/api/health` |
 | `public_sync` | a verified sync under 20 minutes old, and no refused drop |
-| `private_backup` | a verified encrypted copy under 7 hours old -- **`not-configured` is a problem, never healthy** |
 | `game_archives` | the game's own newest archive in `backups/` under 5 hours old |
 | `disk` | 4 GB and 10% of inodes free |
 | `recovery` | the last `toc-game-recovery` run (every two minutes) ended 0 with no failed restarts |
@@ -415,13 +414,14 @@ Same as "The machine is gone", plus:
 | The game's own archives of `player/` | `/srv/toc/current/backups/` | 4 h and daily | no | gzip and a full listing before the rename |
 | Snapshots of each character | `player/versions/` | every save, milestones | no (the sync carries the tagged ones) | `#END` and a checksum |
 
-The five-minute GitHub sync is the live backup and it is running. The
-encrypted backup's code, units and status are in place (2026-11-23) but it
-needs its credentials, which never go in git -- see "Turning on the
-encrypted backup" in `wiki/player-backups.md`. Until then the operations
-summary says `private_backup: not configured`, and the GitHub sync is the
-whole off-host copy: enough to rebuild from (that is what "The machine is
-gone" does) but plaintext and public.
+The five-minute GitHub sync is the live backup and it is running. It is
+the whole off-host copy, by decision (owner, 2026-11-23): enough to
+rebuild from (that is what "The machine is gone" does) but plaintext and
+public. The encrypted six-hourly backup that used to sit beside it was
+removed -- it archived nothing the sync did not already carry, added no
+secrecy over data that is already public, and cost an age key that could
+be lost. The gap still open is a copy off GitHub, not an encrypted one on
+it (`wiki/player-backups.md`).
 
 ## Rolling out the 2026-11-23 hardening
 
@@ -440,39 +440,31 @@ sudo /usr/local/sbin/toc-ops-summary; cat /var/lib/toc/ops-summary.json
 curl -s -o /dev/null -w '%{http_code}\n' https://timesofchaos.com/api/ready   # 200
 ```
 
-Then, by hand, the three things that are credentials or accounts:
+Then, by hand, the two things that are accounts:
 
-1. **The encrypted backup** (`wiki/player-backups.md`): a private
-   repository, a deploy key with write access, an age key pair whose
-   private half stays off the host, `/etc/toc/player-backup.env`; then
-   `sudo systemctl enable --now toc-player-backup.timer`, `sudo systemctl
-   start toc-player-backup.service`, and `sudo cat
-   /var/lib/toc-player-backup/status` must read `ok`.
-2. **Watching it from outside.** The free way (owner, 2026-11-23:
+1. **Watching it from outside.** The free way (owner, 2026-11-23:
    UptimeRobot, no second service): HTTP monitors that read the verdict --
    `https://timesofchaos.com/api/ops-summary?only=public_sync,game_archives,disk,recovery,units`
-   for the sync, the archives, the disk and self-healing, and
-   `...?only=private_backup` once the encrypted backup is set up. `only`
-   judges just the checks named (any of `game`, `web`, `public_sync`,
-   `private_backup`, `game_archives`, `disk`, `recovery`, `units`; another
-   name is a 400), and a summary older than a quarter hour is a 503
-   whatever it says, so a stopped checker alarms too. Or **the
-   heartbeats**: two checks at a dead-man's-switch service
-   (healthchecks.io's free tier has twenty; a 10-minute period for the
-   host, 7 hours for the backup), their URLs in `/etc/toc/heartbeat.env`
+   for the sync, the archives, the disk and self-healing. `only` judges
+   just the checks named (any of `game`, `web`, `public_sync`,
+   `game_archives`, `disk`, `recovery`, `units`; another name is a 400),
+   and a summary older than a quarter hour is a 503 whatever it says, so a
+   stopped checker alarms too. Or **the heartbeat**: a check at a
+   dead-man's-switch service (healthchecks.io's free tier has twenty; a
+   10-minute period), its URL in `/etc/toc/heartbeat.env`
    (`deploy/heartbeat.env.example`, root, 0600). The next summary says
    `sent ok`.
-3. **An outside check of the game**: an uptime monitor (or OCI Health
+2. **An outside check of the game**: an uptime monitor (or OCI Health
    Checks, an HTTP monitor on `https://timesofchaos.com/api/ready` --
    free within the Always Free allowance, which needs an IAM policy for
    the health-checks service and an alarm topic) that alarms on anything
    but 200.
 
-Then prove it, once: a restore drill from the private repository into a
-scratch directory (`deploy/restore-player-backup.sh`), never over the live
-tree; and `toc-ops-summary` reading `"overall": "ok"`. Until all of that is
-seen, the hardening is source code and installed units, not a verified
-backup.
+Then prove it, once: a restore drill from the public repository into a
+scratch directory (`wiki/player-backups.md`, "Proving a restore works"),
+never over the live tree; and `toc-ops-summary` reading `"overall": "ok"`.
+Until all of that is seen, the hardening is source code and installed
+units, not a verified backup.
 
 ## What a review reads first
 
@@ -490,8 +482,8 @@ A session that cannot reach the host reads, in this order:
    that is broken. Then it is the owner's: the heartbeat monitor will have
    alarmed already.
 
-Staff in the game hear of a failing sync, a failing encrypted backup, a
-low disk and a skipped game backup on WIZINFO -- never ANNOUNCE.
+Staff in the game hear of a failing sync, a low disk and a skipped game
+backup on WIZINFO -- never ANNOUNCE.
 
 Player state is committed in **plaintext** to a public repository. That
 is deliberate: it is a test environment, the owner would rather lose the

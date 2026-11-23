@@ -14,12 +14,9 @@
 # then one daemon-reload (also when a unit is still waiting on one an
 # earlier run could not make), then, for each timer or path unit:
 #   - one this installer has never introduced (none of them are, in
-#     $INTRODUCED) is enabled and started and recorded there -- except
-#     toc-player-backup.timer while the backup is not configured (no
-#     /etc/toc/player-backup.env): left off, said so, and introduced by the
-#     first run that finds it configured. The first run on a host records
-#     every unit already installed as introduced, so what a person set up
-#     or switched off before this existed is theirs;
+#     $INTRODUCED) is enabled and started and recorded there. The first
+#     run on a host records every unit already installed as introduced, so
+#     what a person set up or switched off before this existed is theirs;
 #   - one introduced before keeps its enablement: enabled and changed is
 #     restarted, so a changed schedule takes effect; disabled or masked is
 #     left alone, because somebody chose that;
@@ -36,14 +33,12 @@ set -u
 
 SRC=${1:?the directory holding the unit files}
 UNIT_DIR=${TOC_UNIT_DIR:-/etc/systemd/system}
-BACKUP_ENV=${TOC_BACKUP_ENV:-/etc/toc/player-backup.env}
 INTRODUCED=${TOC_UNITS_INTRODUCED:-/var/lib/toc/units-introduced}
 UNITS=${TOC_SUPPORT_UNITS:-"toc-state-sync.service toc-state-sync.timer
 toc-state-sync-check.service toc-state-sync-check.timer
 toc-game-recovery.service toc-game-recovery.timer
 toc-auto-deploy.service toc-auto-deploy.timer
 toc-host-action.service toc-host-action.path
-toc-player-backup.service toc-player-backup.timer
 toc-heartbeat.service toc-heartbeat.timer"}
 
 # The first run on a host: what is installed already was put there by a
@@ -88,10 +83,6 @@ for u in $UNITS; do
     [ -f "$UNIT_DIR/$u" ] || continue
     case "$u" in *.timer|*.path) ;; *) continue ;; esac
     if ! introduced "$u"; then
-        if [ "$u" = toc-player-backup.timer ] && [ ! -f "$BACKUP_ENV" ]; then
-            printf '   %s installed, not enabled: the encrypted backup is not configured (%s)\n' "$u" "$BACKUP_ENV"
-            continue
-        fi
         if systemctl enable --now "$u" >/dev/null 2>&1; then
             printf '   enabled %s\n' "$u"
             echo "$u" >> "$INTRODUCED"

@@ -150,7 +150,7 @@ fi
 #
 # Held to the same rules as the game: never during a deploy (the lock
 # above) or a maintenance window (the marker above).
-KEEP_UNITS=${TOC_KEEP_UNITS:-"toc-state-sync.timer toc-state-sync-check.timer toc-auto-deploy.timer toc-host-action.path toc-player-backup.timer toc-daily-backup.timer caddy.service"}
+KEEP_UNITS=${TOC_KEEP_UNITS:-"toc-state-sync.timer toc-state-sync-check.timer toc-auto-deploy.timer toc-host-action.path toc-daily-backup.timer caddy.service"}
 WEB_SERVICE=${TOC_WEB_SERVICE:-toc-web.service}
 WEB_HEALTH_URL=${TOC_WEB_HEALTH_URL:-http://127.0.0.1:9001/api/health}
 WEB_FAIL_FILE="$STATE_DIR/web-health-failures"

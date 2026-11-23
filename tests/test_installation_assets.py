@@ -146,7 +146,7 @@ class InstallationAssetsTests(unittest.TestCase):
                      "zStartup", "archive"):
             with self.subTest(path=gone):
                 self.assertFalse((ROOT / gone).exists())
-        for kept in ("deploy/toc-restore", "deploy/sync-player-backup.sh",
+        for kept in ("deploy/toc-restore",
                      "deploy/windows-vm/toc-deploy", "deploy/windows-vm/toc-auto-deploy",
                      "deploy/windows-vm/toc-state-sync"):
             with self.subTest(path=kept):

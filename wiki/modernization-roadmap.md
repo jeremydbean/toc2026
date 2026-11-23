@@ -71,11 +71,11 @@ the top were checked again against the source while this was merged:
 3. **One bad number in one player file stops the whole game.** In
    `src/db.c`, `fread_number` calls `exit(1)`. It is reached from
    `load_char_obj` at that player's name prompt (P8.3).
-4. **The encrypted off-host backup is not versioned.**
-   `deploy/sync-player-backup.sh` says its branch "holds only the latest
-   archive: every push replaces it". Credentials on the host can
-   therefore erase the only encrypted copy. The public state sync stays
-   as the owner set it; this is about the *separate* encrypted copy (V5).
+4. **There is no copy off GitHub.** Both the public state sync and
+   (until 2026-11-23) the encrypted backup lived in one GitHub account, so
+   losing that account loses both. The encrypted copy was removed as
+   redundant; what remains worth building is a mirror or object-storage
+   copy with retention the host's own key cannot shorten (V5).
 5. **The game loop's pacing and its systemd watchdog ping use the wall
    clock** (`game_loop_unix`). A clock stepped back stalls the loop and
    can miss `WatchdogSec` (P7.3).
@@ -1070,7 +1070,7 @@ and Z-named; worlds are disposable (`LiveMud`, temp dirs). "Both builds" means `
 | A5 | A telnet fuzz harness needs **no extraction**: `tests/test_mccp.c` already links `src/telnet_proto.c` alone against `merc.h` with four stubs. A prototype split-invariance harness (gcc ASan/UBSan, 30,000 random inputs with telnet bytes weighted) ran clean in 0.5 s. A netaddr round-trip prototype ran 400,000 inputs clean. | `.../scratchpad/fuzzproto/fuzz_telnet.c`, `fuzz_netaddr.c` | info |
 | A6 | `login_lock_boot` (`src/loginlock.c`) reads with `char line[256]` and on an over-long line `continue`s **without draining it**, so the remainder of that line is parsed as a record of its own. `guard_store_load` (`src/guardstore.c`) drains (`getc` to newline, `bad_lines++`). `recovery_boot` (`src/recovery.c`, `line[MAX_STRING_LENGTH*2]`) does not drain either; an 11-column remainder still needs a matching FNV, a 10-column legacy remainder does not. Neither file is written over-long by the game, so this is a hand-edit/corruption robustness gap, exactly what a fuzz target reports. | source | low |
 | A7 | Play-journal rows `cmd`, `refused`, `death`, `session`, `report`, `anomaly`, `bug` are written with the actor's name even when the actor is wizinvis: `playlog_end` -> `journal_write(kind, ch, ...)`; `play_note` (`src/interp.c:1088`) has no wizinvis test. Only `outcome`, `state`, `craft`, `item` substitute `NULL` (`src/playlog.c:614,638,703,1401`). `log/` is public. Verify on a live fixture before acting; the owner decides whether staff rows belong in the journal at all. | source | medium (invisibility contract) |
-| A8 | The encrypted off-host backup keeps **one** archive and **force-pushes** it (`deploy/sync-player-backup.sh`: `git push --force`, "This branch holds only the latest archive"). The host's deploy key can therefore erase the only encrypted copy, and a bad archive replaces the last good one. `wiki/player-backups.md` "Not yet" already lists a versioned private vault as a proposal. | source, wiki | high for disaster recovery |
+| A8 | The encrypted off-host backup keeps **one** archive and **force-pushes** it (`deploy/sync-player-backup.sh`: `git push --force`, "This branch holds only the latest archive"). The host's deploy key can therefore erase the only encrypted copy, and a bad archive replaces the last good one. `wiki/player-backups.md` "Not yet" already lists a versioned private vault as a proposal. **Resolved 2026-11-23 by removing the encrypted backup**: it archived nothing the public sync did not already carry. | source, wiki | high for disaster recovery |
 | A9 | `toc-daily-backup` is named in `AGENTS.md` and `wiki/new-machine-setup.md:103` but its source is not in the repository (`git grep` finds no script). The in-game archive (`backup_launch`, `src/update.c:268`) tars `../player` only -- not `corpse/` -- onto the same host, 30-day retention, verified only by `gzip -t`/`tar tzf`. | `git grep`, source | medium |
 | A10 | No boot id and no code revision are recorded anywhere the journal can join to. The banner is "ROM is ready to rock on port N" (`src/comm.c:580`); `boot_time_stamp` exists (`comm.c:318`) and is only exported over MSSP. The live revision exists only outside the game (`log/deployed-commit`, `.code-revision`). | source | medium for incidents |
 | A11 | `log/player_addresses.tsv` and `log/logins.tsv` are tracked and synced publicly. This is inside the owner's stated policy; it means every export tool must strip addresses itself (as `tools/log_report.py:clean` does), never rely on the inputs being clean. | `git ls-files log` | policy note |
@@ -1544,7 +1544,6 @@ a command row (3% of the 640-byte line cap). Trim limits unchanged.
 | Recovery ledger | receipts, uids, snapshot checksums | `player/recovery/ledger.tsv` (`src/recovery.c`) | via sync | append-only | boot trims torn tails |
 | Corpse registry | live and ended corpses | `corpse/live`, `corpse/history` (`src/corpses.c`) | via sync | history kept | boot re-lays; `.unreadable` kept |
 | In-game archive | local backup | `backup_launch` (`src/update.c:268`): `tar` of `../player` only, 30 days | **no** | yes (30 d) | `gzip -t`, `tar tzf` only |
-| `toc-player-backup` | encrypted off-host copy | `deploy/sync-player-backup.sh` (age, private repo) | yes | **no** (force-pushed latest) | listing count only |
 | `toc-daily-backup` | unknown | host only (A9) | ? | ? | ? |
 | `tools/audit_players.py`, `player_history.py` | semantic checks / history | `tools/` | -- | -- | read git state; not wired to a drill |
 
@@ -1639,8 +1638,9 @@ a command row (3% of the 640-byte line cap). Trim limits unchanged.
 #### V5. Versioned encrypted off-host backup with independent credentials -- M
 
 - Gap: A8, A9. Replication (the public sync) is not a backup against deletion or corruption that the
-  sync faithfully copies, and the private encrypted copy is latest-only and erasable by the host's
-  own key.
+  sync faithfully copies, and since 2026-11-23 it is the only off-host copy -- in the same GitHub
+  account, erasable by the host's own deploy key. The encrypted private copy this item once built on
+  was removed as redundant; the remaining need is a copy off GitHub.
 - Proposal: `restic` (single static binary, packaged in Ubuntu) from the host to object storage with
   immutable retention:
   - Target: an object store supporting S3 object lock or retention rules (e.g. Oracle Object Storage
@@ -1660,7 +1660,7 @@ a command row (3% of the 640-byte line cap). Trim limits unchanged.
   - Verification: `restic check --read-data-subset=5%` weekly; monthly the drill (V2) restores the
     newest snapshot into a temp dir and verifies it (`--dir` source), recording the restic snapshot
     id in the status line.
-  - Keep `toc-player-backup` (age, private repo) as is or retire it once V5 has a month of verified
+  - `toc-player-backup` was removed on 2026-11-23; V5 now starts from the public sync once it has a month of verified
     history -- owner decision; if kept, stop the force-push by writing dated archives and pruning to
     the last 14 from the desktop (S, independent change).
 - Restoration when the original host is gone (runbook in `wiki/disaster-recovery.md`): new box ->

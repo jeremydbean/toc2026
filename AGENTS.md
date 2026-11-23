@@ -3081,11 +3081,7 @@ parent); STASH TAKE's
   leaves the tree but not git's history; owner, 2026-10-24), and
   `corpse/` (`live/`
   mirrored with `--delete`, so an ended corpse never comes back from git;
-  `history/` never deleted); `toc-restore` lays all of it down. The
-  encrypted `sync-player-backup.sh` checks tar, its listing and age apart
-  (sh has no pipefail) and carries `corpse/`; it keeps generations, verifies
-  its push and says `not-configured` without its credentials (see "Backups
-  Say How They Went").
+  `history/` never deleted); `toc-restore` lays all of it down.
   `tests/test_recovery_ledger.py`, `tests/test_corpse_keep.py`,
   `tests/test_player_backups.py`.
 - **The game loop's pacing, its systemd watchdog ping and every measured
@@ -3357,8 +3353,7 @@ and processes that restart them".
 
 Review, 2026-11-23: `toc-state-sync.service` took exit 1 for success
 (`SuccessExitStatus=0 1`) and `toc-state-sync-check` judged systemd's
-`Result` and the exit time, so a sync failing every run read healthy; the
-encrypted backup force-pushed one archive and was never wired on Oracle;
+`Result` and the exit time, so a sync failing every run read healthy;
 the game's archives expired only after a new one succeeded; most support
 units were never installed by a deploy. Rules now:
 
@@ -3372,8 +3367,7 @@ units were never installed by a deploy. Rules now:
   skip is `skipped` and never a success. `toc-state-sync-check` and
   `toc-ops-summary` read those: a missing or unreadable receipt, one past
   20 minutes, or an unpushed count `git rev-list` cannot give is a failure
-  (`tests/test_state_sync_receipts.py`). A new backup job writes the same
-  two receipts and the summary learns to read them.
+  (`tests/test_state_sync_receipts.py`).
 - **A tree that shrank past belief is refused before anything is copied**
   (`toc-state-sync`'s drop guard: `player/`, `gods/`, `heroes/` emptied,
   unreadable, or down more than `TOC_SYNC_MAX_DROP_PCT` (20) once at
@@ -3383,21 +3377,20 @@ units were never installed by a deploy. Rules now:
   `/var/lib/toc-state-sync/allow-drop`, under a day old, used once,
   recorded in the commit message and the journal. Never widen it to a
   flag that stays set.
-- **The encrypted backup** (`deploy/sync-player-backup.sh`, installed as
-  `toc-player-backup`) keeps generations in one squashed commit (newest 4,
-  daily for 7 days, weekly for 4 weeks), pushes with `--force-with-lease`
-  on the commit it read, never pushes when the remote does not answer,
-  fetches its archive back to verify the checksum, refuses a drop the same
-  way (`/var/lib/toc-player-backup/allow-drop`) and an archive past 90 MB,
-  and writes `status`: `ok`, `failed` or `not-configured` (no remote,
-  recipient or key) -- which is never healthy. Its credentials never go in
-  git; `wiki/player-backups.md` says how to set them up, and
-  `deploy/restore-player-backup.sh` restores into a scratch directory only
-  (`tests/test_player_backup_remote.py`, a throwaway age key).
+- **There is no encrypted off-host backup, by decision** (owner,
+  2026-11-23). `toc-state-sync` pushes `player/`, `gods/`, `heroes/` and
+  `corpse/` to the public repository in plaintext every five minutes, never
+  force-pushing, so that history is append-only and reaches back a year --
+  a strict superset of what the old six-hourly `sync-player-backup.sh`
+  archived. The encrypted copy added no secrecy (the same data is already
+  public), shared one GitHub account with the primary, and cost an age key
+  that could be lost; it was removed with its units, tests and the
+  summary's `private_backup` check. Do not rebuild it without reading this
+  paragraph: the gap worth closing is a copy **off GitHub**, not an
+  encrypted one on it.
 - **Timers are on the wall clock.** `Persistent=` applies only to
   `OnCalendar=`; on an `OnUnitActiveSec` timer it does nothing. The sync,
-  its check, the backup and the heartbeat use `OnCalendar` with
-  `Persistent=true`.
+  its check and the heartbeat use `OnCalendar` with `Persistent=true`.
 - **The game's archives make room first** (`backup_script` in
   `src/update.c`): expiry past the newest `TOC_BACKUP_KEEP` (6) and 30
   days, then the oldest past those six over `TOC_BACKUP_BUDGET_MB` (4096),
@@ -3415,16 +3408,15 @@ units were never installed by a deploy. Rules now:
   make), a timer or path unit it has never introduced enabled and recorded
   in `/var/lib/toc/units-introduced` (the first run records what is
   already there, so a person's choice stands), an introduced one that is
-  disabled left alone, the backup's timer only once configured, no
-  service ever restarted, and every unit proved loaded from the shipped
-  file. A new unit file goes on its list, or `tests/test_ops_units.py`
+  disabled left alone, no service ever restarted, and every unit proved
+  loaded from the shipped file. A new unit file goes on its list, or `tests/test_ops_units.py`
   fails.
 - **`toc-ops-summary`** (`toc-heartbeat.timer`, every five minutes)
   writes the redacted verdict to `/var/lib/toc/ops-summary.json` and
   `log/ops-summary.json` (so git has it), serves it at the public
   `/api/ops-summary` (503 unless `ok` and fresh), and fetches the
-  heartbeat URLs in `/etc/toc/heartbeat.env` only when what they vouch for
-  is true (`/fail` otherwise). `/api/ready` is 503 unless the game's loop
+  heartbeat URL in `/etc/toc/heartbeat.env` only when every check is
+  healthy (`/fail` otherwise). `/api/ready` is 503 unless the game's loop
   answers. A review reads `log/ops-summary.json` first
   (`wiki/disaster-recovery.md` "What a review reads first"). No name,
   message, secret or address ever goes in it.
@@ -3531,8 +3523,8 @@ the Pi died with no warning on 2026-09-29 and its saves survived only
 because the card happened to be readable. Publishing them also means
 somebody cloning the repo to run the game gets a populated world. Do
 not re-encrypt this, move it to a private mirror, or narrow what it
-covers. `toc-player-backup` is the separate, encrypted, six-hourly
-snapshot to a private repo and remains its own thing.
+covers. It is the backup: there is no encrypted off-host copy beside it
+(see "Backups Say How They Went").
 
 Everything it commits is in `.gitignore`, so every `git add` is `-f`.
 That is deliberate, not a bug to tidy up.

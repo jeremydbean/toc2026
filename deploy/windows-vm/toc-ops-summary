@@ -9,9 +9,6 @@ from systemd's word that a unit ran:
   web             the dashboard answers /api/health
   public_sync     toc-state-sync's last-success under 20 minutes old, and
                   what its last attempt said
-  private_backup  toc-player-backup's last-success under 7 hours old -- and
-                  "not-configured" when it has nothing to push to, which is a
-                  problem, never healthy
   game_archives   the newest of the game's own archives (backups/) under
                   5 hours old
   disk            free space and inodes where the game writes
@@ -26,22 +23,16 @@ state sync carries to GitHub -- the first thing a review reads. Nothing in it
 is private: no player, no message, no secret, and every IPv4 address masked.
 
 Off the host: /etc/toc/heartbeat.env (optional, root's, 0600) may name
-HEARTBEAT_URL, fetched when everything but the private backup is healthy,
-and BACKUP_HEARTBEAT_URL, fetched when the private backup's verified copy is
-fresh. A monitor (healthchecks.io, Better Stack, an OCI alarm on a custom
+HEARTBEAT_URL, fetched when every check is healthy. A monitor (healthchecks.io, Better Stack, an OCI alarm on a custom
 metric) alarms when a ping stops coming. When a check fails the URL is
 fetched with HEARTBEAT_FAIL_SUFFIX ("/fail" by default; empty to send
 nothing), so the alarm is at once rather than at the grace period. Missing,
 each is reported "not-configured".
 
-Staff hear of a failing or stale private backup on WIZINFO (never ANNOUNCE),
-at most once an hour; the state sync's own check speaks for the public one.
-
 Exit status: 0 when the verdict is "ok", 1 otherwise.
 """
 from __future__ import annotations
 
-import fcntl
 import json
 import os
 import re
@@ -57,22 +48,17 @@ LIVE = Path(E("TOC_LIVE_ROOT", "/srv/toc/current"))
 OUT = Path(E("TOC_OPS_SUMMARY", "/var/lib/toc/ops-summary.json"))
 COPY = Path(E("TOC_OPS_SUMMARY_COPY", str(LIVE / "log" / "ops-summary.json")))
 SYNC_STATE = Path(E("TOC_SYNC_STATE_DIR", "/var/lib/toc-state-sync"))
-BACKUP_STATE = Path(E("TOC_BACKUP_STATE_DIR", "/var/lib/toc-player-backup"))
-BACKUP_ENV = Path(E("TOC_BACKUP_ENV", "/etc/toc/player-backup.env"))
 RECOVERY_STATE = Path(E("TOC_STATE_DIR", "/var/lib/toc"))
 HEARTBEAT_ENV = Path(E("TOC_HEARTBEAT_ENV", "/etc/toc/heartbeat.env"))
 PROBE = E("TOC_GAME_PROBE", "/usr/local/sbin/toc-game-probe")
 WEB_HEALTH = E("TOC_WEB_HEALTH_URL", "http://127.0.0.1:9001/api/health")
 DISK_PATH = E("TOC_DISK_PATH", "/srv/toc")
-QUEUE = Path(E("TOC_QUEUE", str(LIVE / "area" / "webadmin.queue")))
 UNIT_DIR = Path(E("TOC_UNIT_DIR", "/etc/systemd/system"))
 
 SYNC_MAX_AGE = int(E("TOC_SYNC_MAX_AGE_MIN", "20")) * 60
-BACKUP_MAX_AGE = int(E("TOC_BACKUP_MAX_AGE_MIN", "420")) * 60
 ARCHIVE_MAX_AGE = int(E("TOC_ARCHIVE_MAX_AGE_MIN", "300")) * 60
 DISK_MIN_MB = int(E("TOC_DISK_MIN_FREE_MB", "4096"))
 INODE_MIN_PCT = int(E("TOC_DISK_MIN_INODE_PCT", "10"))
-STAFF_GAP = int(E("TOC_OPS_STAFF_GAP", "3600"))
 
 # The timers and path units that must be running, and the services they
 # start (which must at least be loaded from the shipped file).
@@ -80,8 +66,7 @@ TIMERS = ["toc-state-sync.timer", "toc-state-sync-check.timer", "toc-game-recove
           "toc-auto-deploy.timer", "toc-heartbeat.timer", "toc-host-action.path"]
 SERVICES = ["toc-game.service", "toc-web.service", "toc-state-sync.service",
             "toc-state-sync-check.service", "toc-game-recovery.service",
-            "toc-auto-deploy.service", "toc-heartbeat.service", "toc-host-action.service",
-            "toc-player-backup.service"]
+            "toc-auto-deploy.service", "toc-heartbeat.service", "toc-host-action.service"]
 IPV4 = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
 
 now = int(time.time())
@@ -154,32 +139,6 @@ def check_public_sync() -> dict:
     return out
 
 
-def check_private_backup() -> dict:
-    status = (BACKUP_STATE / "status")
-    word = status.read_text().strip() if status.exists() else ""
-    success, attempt = receipt(BACKUP_STATE / "last-success"), receipt(BACKUP_STATE / "last-attempt")
-    configured = BACKUP_ENV.exists() and word != "not-configured"
-    age = age_of(success.get("time"))
-    out = {"configured": configured, "status": word or "never-run",
-           "last_success_min": minutes(age),
-           "generations": success.get("generations"),
-           "archive_bytes": success.get("archive_bytes"),
-           "remote_commit": (success.get("remote_commit") or "")[:12] or None,
-           "last_attempt": attempt.get("result"),
-           "reason": clean(attempt.get("reason", "")) or None}
-    if not configured:
-        out["ok"] = False
-        out["status"] = "not-configured"
-        problems.append("private_backup: not configured (no encrypted off-host copy)")
-    else:
-        out["ok"] = age is not None and -300 <= age <= BACKUP_MAX_AGE and word == "ok"
-        if not out["ok"]:
-            problems.append("private_backup: " + ("never verified" if age is None
-                                                  else f"last verified copy {age // 3600} h ago")
-                            + (f" ({out['reason']})" if out["reason"] else ""))
-    return out
-
-
 def check_game_archives() -> dict:
     archives = sorted((LIVE / "backups").glob("*.tar.gz"), key=lambda p: p.stat().st_mtime)
     if not archives:
@@ -240,9 +199,7 @@ def systemctl_show(unit: str) -> dict[str, str]:
 def check_units() -> dict:
     out: dict[str, dict] = {}
     bad = []
-    backup_configured = BACKUP_ENV.exists()
-    timers = TIMERS + (["toc-player-backup.timer"] if backup_configured else [])
-    for unit in timers + SERVICES:
+    for unit in TIMERS + SERVICES:
         shown = systemctl_show(unit)
         state = {"load": shown.get("LoadState", "unknown"),
                  "active": shown.get("ActiveState", "unknown"),
@@ -254,7 +211,7 @@ def check_units() -> dict:
             bad.append(f"{unit} not installed")
         elif state["needs_daemon_reload"]:
             bad.append(f"{unit} changed on disk, not reloaded")
-        elif unit in timers and state["active"] != "active":
+        elif unit in TIMERS and state["active"] != "active":
             bad.append(f"{unit} {state['active']}")
     if bad:
         problems.append("units: " + "; ".join(bad))
@@ -264,10 +221,9 @@ def check_units() -> dict:
 def heartbeat(verdicts: dict) -> dict:
     conf = receipt(HEARTBEAT_ENV)
     suffix = conf.get("HEARTBEAT_FAIL_SUFFIX", "/fail")
-    host_ok = all(verdicts[k]["ok"] for k in verdicts if k != "private_backup")
+    host_ok = all(verdict["ok"] for verdict in verdicts.values())
     out = {}
-    for key, ok in (("HEARTBEAT_URL", host_ok),
-                    ("BACKUP_HEARTBEAT_URL", verdicts["private_backup"]["ok"])):
+    for key, ok in (("HEARTBEAT_URL", host_ok),):
         url = conf.get(key, "").strip()
         name = key.lower().replace("_url", "")
         if not url:
@@ -286,24 +242,6 @@ def heartbeat(verdicts: dict) -> dict:
     return out
 
 
-def tell_staff(message: str) -> None:
-    mark = RECOVERY_STATE / "ops-staff-last"
-    try:
-        if now - int(mark.read_text().strip() or 0) < STAFF_GAP:
-            return
-    except (OSError, ValueError):
-        pass
-    if not QUEUE.exists():
-        return
-    try:
-        with open(QUEUE, "a", encoding="ascii", errors="replace") as queue:
-            fcntl.lockf(queue.fileno(), fcntl.LOCK_EX)
-            queue.write(f"wizinfo|60|{message}\n")
-        mark.write_text(f"{now}\n")
-    except OSError:
-        pass
-
-
 def write_atomic(path: Path, text: str) -> bool:
     try:
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -318,14 +256,9 @@ def write_atomic(path: Path, text: str) -> bool:
 
 def main() -> int:
     verdicts = {"game": check_game(), "web": check_web(), "public_sync": check_public_sync(),
-                "private_backup": check_private_backup(), "game_archives": check_game_archives(),
+                "game_archives": check_game_archives(),
                 "disk": check_disk(), "recovery": check_recovery(), "units": check_units()}
     beats = heartbeat(verdicts)
-    backup = verdicts["private_backup"]
-    if backup["configured"] and not backup["ok"]:
-        tell_staff("The encrypted off-host player backup is not working: "
-                   + next(p for p in problems if p.startswith("private_backup")).split(": ", 1)[1]
-                   + ". Saves are still on disk and in the public sync.")
     summary = {"schema": 1, "generated": now,
                "generated_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(now)),
                "overall": "ok" if not problems else "degraded",

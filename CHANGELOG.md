@@ -6,6 +6,23 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## Unreleased
+
+- **Removed the encrypted off-host player backup.** `toc-state-sync`
+  already pushes `player/`, `gods/`, `heroes/` and `corpse/` to the public
+  repository in plaintext every five minutes, never force-pushing, so its
+  history is append-only and a strict superset of what the six-hourly
+  `sync-player-backup.sh` archived. The encrypted copy added no secrecy
+  over data that is already public, shared one GitHub account with the
+  primary, and cost an age key that could be lost. Gone with it:
+  `deploy/sync-player-backup.sh`, `deploy/restore-player-backup.sh`,
+  `deploy/player-backup.env.example`, the `toc-player-backup` units, the
+  summary's `private_backup` check and `BACKUP_HEARTBEAT_URL`, and
+  `tests/test_player_backup_remote.py` and `tests/test_restore_drills.py`.
+  `wiki/player-backups.md` gains a restore drill against the public
+  repository. The gap still open is a copy off GitHub, not an encrypted
+  one on it.
+
 ## [Unreleased]
 
 - **The website moves to https://timesofchaos.com, behind Caddy** (owner,

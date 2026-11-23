@@ -157,71 +157,10 @@ class BackupSourceTests(unittest.TestCase):
         self.assertNotIn("corpse/live/c1.corpse.tmp", tree)
         self.assertIn("corpse/history/Zsynced/c0.carried.corpse", tree)
 
-    def test_the_encrypted_backup_checks_every_stage_and_carries_corpses(self) -> None:
-        """deploy/sync-player-backup.sh: tar, its listing and age are each
-        checked (sh has no pipefail), corpse/ rides along, and a stage that
-        fails pushes nothing. `age` is a stand-in that copies or fails."""
-        for tool in ("git", "flock", "tar", "sha256sum"):
-            if shutil.which(tool) is None:
-                self.skipTest(f"needs {tool}")
-        script = ROOT / "deploy" / "sync-player-backup.sh"
-        with tempfile.TemporaryDirectory() as tmp:
-            root = pathlib.Path(tmp)
-            bare = root / "backup.git"
-            subprocess.run(["git", "init", "--bare", "-q", "-b", "main", str(bare)], check=True)
-            live = root / "live"
-            (live / "player" / "recovery").mkdir(parents=True)
-            (live / "player" / "Zbacked").write_text("#PLAYER\nEnd\n#END\n")
-            (live / "player" / "recovery" / "ledger.tsv").write_text("1\n")
-            (live / "corpse" / "live").mkdir(parents=True)
-            (live / "corpse" / "live" / "c1.corpse").write_text("#CORPSE\n")
-            (root / "recipient").write_text("age1stand-in\n")
-            (root / "key").write_text("not a key\n")
-            bin_dir = root / "bin"
-            bin_dir.mkdir()
-            stub = bin_dir / "age"
-
-            def push(age_body: str):
-                stub.write_text("#!/bin/sh\n" + age_body)
-                stub.chmod(0o755)
-                env = dict(os.environ, TOC_ROOT=str(live), BACKUP_REMOTE=str(bare),
-                           AGE_RECIPIENT_FILE=str(root / "recipient"),
-                           GIT_SSH_KEY=str(root / "key"), XDG_RUNTIME_DIR=str(root),
-                           TOC_BACKUP_STATE_DIR=str(root / "state"),
-                           PATH=f"{bin_dir}:{os.environ['PATH']}")
-                return subprocess.run(["sh", str(script)], env=env, capture_output=True, text=True)
-
-            failed = push("exit 1\n")
-            failed_refs = subprocess.run(["git", "--git-dir", str(bare), "branch", "--list"],
-                                         capture_output=True, text=True).stdout
-            # The stand-in "encrypts" by writing age's header line and then
-            # its last argument to -o (the script checks the header).
-            done = push('while [ $# -gt 1 ]; do [ "$1" = -o ] && out="$2"; shift; done\n'
-                        '{ echo age-encryption.org/v1; cat "$1"; } > "$out"\n')
-            latest = subprocess.run(["git", "--git-dir", str(bare), "show", "snapshots:latest.txt"],
-                                    capture_output=True, text=True).stdout
-            archive = latest.split("archive=", 1)[1].split()[0] if "archive=" in latest else "none"
-            snap = subprocess.run(["git", "--git-dir", str(bare), "show",
-                                   "snapshots:" + archive.replace(".tar.gz.age", ".txt")],
-                                  capture_output=True, text=True).stdout
-            blob = subprocess.run(["git", "--git-dir", str(bare), "show",
-                                   f"snapshots:{archive}"], capture_output=True).stdout
-            (root / "out.tgz").write_bytes(blob.split(b"\n", 1)[1] if b"\n" in blob else b"")
-            listing = subprocess.run(["tar", "-tzf", str(root / "out.tgz")],
-                                     capture_output=True, text=True).stdout
-
-        self.assertNotEqual(failed.returncode, 0)
-        self.assertIn("age failed; nothing was pushed", failed.stderr)
-        self.assertEqual(failed_refs.strip(), "")
-        self.assertEqual(done.returncode, 0, done.stderr)
-        self.assertIn("directories=player corpse", snap)
-        self.assertRegex(snap, r"archive_sha256=[0-9a-f]{64}")
-        self.assertIn("player/recovery/ledger.tsv", listing)
-        self.assertIn("corpse/live/c1.corpse", listing)
-
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class BackupLiveTests(unittest.TestCase):
+
     def test_retention_the_list_and_show(self) -> None:
         with LiveMud() as mud:
             for name, level in (("Zbackstaff", 70), ("Zbacked", 20)):
