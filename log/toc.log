@@ -344534,3 +344534,10 @@ Mon Nov 23 16:55:14 2026 :: Connection guard: refused 1 connection from 178.156.
 Mon Nov 23 17:00:19 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 3 of 6 in 6 hours).
 Mon Nov 23 17:04:55 2026 :: Treasure goblin: vanished from room 1585 (Mess Hall, gnome.are) (too long in one area).
 Mon Nov 23 17:05:24 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 51 refused in all, pause 5 this week, 3862 minutes left).
+Mon Nov 23 17:10:27 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Mon Nov 23 17:10:29 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 4 of 6 in 6 hours).
+Mon Nov 23 17:12:40 2026 :: Black market: stock 1795453960: a pair of leather boots (9918, level 52, 844p); some dragonscales (29221, level 52, 844p); A Miners Tunic (25007, level 50, 811p); a slice of Winter Veil yule log (29927, level 0, 2704p); a pumpkin-lantern charm (29924, level 0, 750p).
+Mon Nov 23 17:12:40 2026 :: Black market: the dealer appeared with 5 items (stock 1795453960), for 37 minutes.
+Mon Nov 23 17:13:08 2026 :: Connection guard: last hour 11 closed without a word, 4 refused, 0 new characters refused, 1 newly paused; 10 addresses paused and 0 refused now, 16 active player addresses.
+Mon Nov 23 17:13:09 2026 :: Automated backup started.
+Mon Nov 23 17:13:09 2026 :: Automated backup complete.
