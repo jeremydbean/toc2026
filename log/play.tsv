@@ -54826,3 +54826,64 @@
 1795399029	census	-	0	0	-	herbs=80/150 components=44/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=22 spotted=1 picked=0 passed=1 cleared=0 rare=0 mobs_seen=25 mobs_fought=3 secs=900
 1795399034	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
 1795399036	cmd	Ravagger	9	4806	dresden.are	standing	100	2	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1795399044	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	practice		hand to hand        78%  kick                64%  dodge               61%   // You have 9 practice sessions left.	-	-
+1795399051	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	look	figure	You do not see that here.	-	-
+1795399056	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	look	man	You do not see that here.	-	-
+1795399056	laid	-	0	0	-	1279	herb	52	an asparagus shoot	4657	dresden.are	scatter
+1795399056	laid	-	0	0	-	1280	herb	36	a belladonna plant	4314	dresden.are	scatter
+1795399056	laid	-	0	0	-	1281	component	63	a phoenix feather	7681	ultima.are	scatter
+1795399063	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	look	small	You do not see that here.	-	-
+1795399075	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	examine	man	You do not see that here.	-	-
+1795399077	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	look		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1795399083	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	look	monk	You do not see that here.	-	-
+1795399087	refused	Ravagger	9	4806	dresden.are	standing	100	0	-	(unknown)		Huh? Did you mean SIT?	refusal:unknown-command	-
+1795399089	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	stand		You are already standing.	-	-
+1795399090	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795399094	cmd	Ravagger	9	4808	dresden.are	standing	100	0	-	ne		The Rest Room //   This is a small quiet room set aside for you to put the battle weary road // behind you, comfortable pillows line the floor, and scented joss sticks fill	-	+
+1795399099	cmd	Ravagger	9	4808	dresden.are	standing	100	0	-	gain		You can't do that here.	-	-
+1795399101	cmd	Ravagger	9	4808	dresden.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1795399102	cmd	Ravagger	9	4804	dresden.are	standing	100	2	-	sw		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795399104	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	get		Get what?	-	-
+1795399105	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	gamble		There is no Hyrule money-making game here.	-	-
+1795399106	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1795399107	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	gamble		There is no Hyrule money-making game here.	-	-
+1795399110	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // steel fist         3     stunning blow      3     fast healing       4     	-	+
+1795399132	laid	-	0	0	-	1282	component	83	a vial of thessalhydra venom	2426	dresden.are	scatter
+1795399133	cmd	Ravagger	9	4806	dresden.are	standing	100	2	-	gain	parry	The Silent Master tells you 'You are not yet ready for that skill.'	-	-
+1795399145	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	gainlist		Abilities for a level 9 monk of the monk guild: 15 learned, 19 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):	-	+
+1795399190	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	look		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1795399193	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795399193	cmd	Ravagger	9	4807	dresden.are	standing	100	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1795399196	cmd	Ravagger	9	4807	dresden.are	standing	100	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // blinding fists     3     crane dance        5     fists of fury      4     	-	+
+1795399203	laid	-	0	0	-	1283	herb	36	a belladonna plant	17100	highland.are	scatter
+1795399208	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795399212	cmd	Ravagger	9	4807	dresden.are	standing	100	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1795399216	cmd	Ravagger	9	4807	dresden.are	standing	100	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // blinding fists     3     crane dance        5     fists of fury      4     	-	+
+1795399225	cmd	Ravagger	9	4807	dresden.are	standing	100	0	-	gain	second	The Master of Movement tells you 'You are not yet ready for that skill.'	-	-
+1795399228	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795399230	cmd	Ravagger	9	4805	dresden.are	standing	100	0	-	north		The Masters Place //   Here resides the Master of all the monks, it is he that monks seek for // guidance. Lighted joss sticks fill the room with the sweet perfume of lotus	-	+
+1795399232	cmd	Ravagger	9	4805	dresden.are	standing	100	0	-	gain		You can't do that here.	-	-
+1795399236	cmd	Ravagger	9	4805	dresden.are	standing	100	0	-	practice		dagger              33%  flail                6%  whip                15%   // dodge               61%  hand to hand        78%  kick                64%   // meditation          57%  recall              75%  	-	+
+1795399249	cmd	Ravagger	9	4805	dresden.are	standing	100	0	-	train		You have 0 training sessions. // You can train: str int wis hp mana.	-	-
+1795399251	cmd	Ravagger	9	4805	dresden.are	standing	100	0	-	look		The Masters Place //   Here resides the Master of all the monks, it is he that monks seek for // guidance. Lighted joss sticks fill the room with the sweet perfume of lotus	-	+
+1795399252	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	south		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795399254	cmd	Ravagger	9	4805	dresden.are	standing	100	0	-	north		The Masters Place //   Here resides the Master of all the monks, it is he that monks seek for // guidance. Lighted joss sticks fill the room with the sweet perfume of lotus	-	+
+1795399255	cmd	Ravagger	9	4805	dresden.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1795399257	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	south		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795399261	cmd	Ravagger	9	4805	dresden.are	standing	100	0	-	north		The Masters Place //   Here resides the Master of all the monks, it is he that monks seek for // guidance. Lighted joss sticks fill the room with the sweet perfume of lotus	-	+
+1795399264	laid	-	0	0	-	1284	herb	35	a sprig of angelica	5689	tarin.are	scatter
+1795399264	laid	-	0	0	-	1285	herb	51	a piece of kelp	5663	tarin.are	scatter
+1795399264	laid	-	0	0	-	1286	component	78	a vial of demons blood	7635	ultima.are	scatter
+1795399265	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	south		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795399266	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1795399267	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1795399274	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // steel fist         3     stunning blow      3     fast healing       4     	-	+
+1795399283	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	gain	steel	The Silent Master tells you 'You are not yet ready for that skill.'	-	-
+1795399299	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	help	spells monk	No help on 'spells monk'; here is spells: // SKILLS SPELLS // Syntax: skills	-	+
+1795399303	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	groups		rom basics           monk basics          monk default          // Creation points: 40	-	-
+1795399314	laid	-	0	0	-	1287	component	56	a dragons claw	1374	htower.are	scatter
+1795399316	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	help	monk basics	Monk basics is a group of abilities: //   hand to hand           // Your class does not buy it.	-	-
+1795399329	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	help	rom basics	Rom basics is a group of abilities: //   recall                 // Your class does not buy it.	-	-
+1795399332	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	look		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1795399334	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // steel fist         3     stunning blow      3     fast healing       4     	-	+
+1795399337	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+

@@ -343201,3 +343201,75 @@ Mon Nov 23 01:57:14 2026 :: Log Ravagger [4807]: e
 Mon Nov 23 01:57:14 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4807
 Mon Nov 23 01:57:16 2026 :: Log Ravagger [4804]: e
 Mon Nov 23 01:57:16 2026 :: Log Ravagger [4806]: arrived (A Small Clearing) from 4804
+Mon Nov 23 01:57:24 2026 :: Log Ravagger [4806]: pra
+Mon Nov 23 01:57:31 2026 :: Log Ravagger [4806]: l figure
+Mon Nov 23 01:57:36 2026 :: Log Ravagger [4806]: l man
+Mon Nov 23 01:57:43 2026 :: Log Ravagger [4806]: l small
+Mon Nov 23 01:57:55 2026 :: Log Ravagger [4806]: examine man
+Mon Nov 23 01:57:57 2026 :: Log Ravagger [4806]: l
+Mon Nov 23 01:58:03 2026 :: Log Ravagger [4806]: l monk
+Mon Nov 23 01:58:07 2026 :: Log Ravagger [4806]: (refused) sgt
+Mon Nov 23 01:58:09 2026 :: Log Ravagger [4806]: st
+Mon Nov 23 01:58:10 2026 :: Log Ravagger [4806]: w
+Mon Nov 23 01:58:10 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4806
+Mon Nov 23 01:58:14 2026 :: Log Ravagger [4804]: ne
+Mon Nov 23 01:58:14 2026 :: Log Ravagger [4808]: arrived (The Rest Room) from 4804
+Mon Nov 23 01:58:19 2026 :: Log Ravagger [4808]: gain
+Mon Nov 23 01:58:21 2026 :: Log Ravagger [4808]: s
+Mon Nov 23 01:58:22 2026 :: Log Ravagger [4808]: sw
+Mon Nov 23 01:58:22 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4808
+Mon Nov 23 01:58:24 2026 :: Log Ravagger [4804]: g
+Mon Nov 23 01:58:25 2026 :: Log Ravagger [4804]: ga
+Mon Nov 23 01:58:26 2026 :: Log Ravagger [4804]: e
+Mon Nov 23 01:58:26 2026 :: Log Ravagger [4806]: arrived (A Small Clearing) from 4804
+Mon Nov 23 01:58:27 2026 :: Log Ravagger [4806]: ga
+Mon Nov 23 01:58:30 2026 :: Log Ravagger [4806]: gain
+Mon Nov 23 01:58:34 2026 :: Treasure goblin: vanished from room 1393 (A hallway, htower.are) (too long in one area).
+Mon Nov 23 01:58:53 2026 :: Log Ravagger [4806]: gain parry
+Mon Nov 23 01:59:05 2026 :: Log Ravagger [4806]: gainlist
+Mon Nov 23 01:59:11 2026 :: Connection guard: 195.178.110.204 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 01:59:50 2026 :: Log Ravagger [4806]: l
+Mon Nov 23 01:59:53 2026 :: Log Ravagger [4806]: w
+Mon Nov 23 01:59:53 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4806
+Mon Nov 23 01:59:53 2026 :: Log Ravagger [4804]: w
+Mon Nov 23 01:59:53 2026 :: Log Ravagger [4807]: arrived (The Training room) from 4804
+Mon Nov 23 01:59:56 2026 :: Log Ravagger [4807]: gain
+Mon Nov 23 02:00:08 2026 :: Log Ravagger [4807]: e
+Mon Nov 23 02:00:08 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4807
+Mon Nov 23 02:00:12 2026 :: Log Ravagger [4804]: w
+Mon Nov 23 02:00:12 2026 :: Log Ravagger [4807]: arrived (The Training room) from 4804
+Mon Nov 23 02:00:16 2026 :: Log Ravagger [4807]: gain
+Mon Nov 23 02:00:25 2026 :: Log Ravagger [4807]: gain second
+Mon Nov 23 02:00:28 2026 :: Log Ravagger [4807]: e
+Mon Nov 23 02:00:28 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4807
+Mon Nov 23 02:00:30 2026 :: Log Ravagger [4804]: n
+Mon Nov 23 02:00:30 2026 :: Log Ravagger [4805]: arrived (The Masters Place) from 4804
+Mon Nov 23 02:00:32 2026 :: Log Ravagger [4805]: gain
+Mon Nov 23 02:00:36 2026 :: Log Ravagger [4805]: pra
+Mon Nov 23 02:00:49 2026 :: Log Ravagger [4805]: tra
+Mon Nov 23 02:00:51 2026 :: Log Ravagger [4805]: l
+Mon Nov 23 02:00:52 2026 :: Log Ravagger [4805]: s
+Mon Nov 23 02:00:52 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4805
+Mon Nov 23 02:00:54 2026 :: Log Ravagger [4804]: n
+Mon Nov 23 02:00:54 2026 :: Log Ravagger [4805]: arrived (The Masters Place) from 4804
+Mon Nov 23 02:00:55 2026 :: Log Ravagger [4805]: n
+Mon Nov 23 02:00:57 2026 :: Log Ravagger [4805]: s
+Mon Nov 23 02:00:57 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4805
+Mon Nov 23 02:01:01 2026 :: Log Ravagger [4804]: n
+Mon Nov 23 02:01:01 2026 :: Log Ravagger [4805]: arrived (The Masters Place) from 4804
+Mon Nov 23 02:01:05 2026 :: Log Ravagger [4805]: s
+Mon Nov 23 02:01:05 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4805
+Mon Nov 23 02:01:06 2026 :: Log Ravagger [4804]: s
+Mon Nov 23 02:01:07 2026 :: Log Ravagger [4804]: e
+Mon Nov 23 02:01:07 2026 :: Log Ravagger [4806]: arrived (A Small Clearing) from 4804
+Mon Nov 23 02:01:14 2026 :: Log Ravagger [4806]: gain
+Mon Nov 23 02:01:23 2026 :: Log Ravagger [4806]: gain steel
+Mon Nov 23 02:01:39 2026 :: Log Ravagger [4806]: help spells monk
+Mon Nov 23 02:01:43 2026 :: Log Ravagger [4806]: groups
+Mon Nov 23 02:01:51 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 3 of 6 in 6 hours).
+Mon Nov 23 02:01:56 2026 :: Log Ravagger [4806]: help monk basics
+Mon Nov 23 02:02:09 2026 :: Log Ravagger [4806]: help rom basics
+Mon Nov 23 02:02:12 2026 :: Log Ravagger [4806]: l
+Mon Nov 23 02:02:14 2026 :: Log Ravagger [4806]: gain
+Mon Nov 23 02:02:17 2026 :: Log Ravagger [4806]: w
+Mon Nov 23 02:02:17 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4806
