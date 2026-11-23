@@ -343523,3 +343523,144 @@ Mon Nov 23 02:22:09 2026 :: Connection guard: 5.161.117.52 closed without a word
 Mon Nov 23 02:22:09 2026 :: Log Storock [3712]: e
 Mon Nov 23 02:22:09 2026 :: Log Storock [3716]: arrived (A Cage) from 3712
 Mon Nov 23 02:22:12 2026 :: Log Storock [3716]: k gr
+Mon Nov 23 02:22:26 2026 :: Log Storock [3716]: killed the gremlin
+Mon Nov 23 02:22:26 2026 :: Log Storock [3716]: coin +2 copper
+Mon Nov 23 02:22:33 2026 :: Log Storock [3716]: drop all
+Mon Nov 23 02:22:38 2026 :: Log Storock [3716]: recall
+Mon Nov 23 02:22:40 2026 :: Log Storock [3716]: recall
+Mon Nov 23 02:22:40 2026 :: Log Storock [4207]: arrived (Before the Altar.) from 3716
+Mon Nov 23 02:22:43 2026 :: Log Storock [4207]: w
+Mon Nov 23 02:22:43 2026 :: Log Storock [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Mon Nov 23 02:22:46 2026 :: Log Storock [4208]: e
+Mon Nov 23 02:22:46 2026 :: Log Storock [4207]: arrived (Before the Altar.) from 4208
+Mon Nov 23 02:22:47 2026 :: Log Storock [4207]: u
+Mon Nov 23 02:22:47 2026 :: Log Storock [3700]: arrived (Entrance to Mud School) from 4207
+Mon Nov 23 02:22:48 2026 :: Log Storock [3700]: u
+Mon Nov 23 02:22:48 2026 :: Log Storock [3772]: arrived (Newbie Train Station) from 3700
+Mon Nov 23 02:22:50 2026 :: Log Storock [3772]: e
+Mon Nov 23 02:22:50 2026 :: Log Storock [3773]: arrived (Newbie Train Still In The Station) from 3772
+Mon Nov 23 02:22:52 2026 :: Log Storock [3773]: w
+Mon Nov 23 02:22:55 2026 :: Log Storock [3774]: arrived (Newbie Train - Mob Factory Stop) from 3773
+Mon Nov 23 02:22:56 2026 :: Log Storock [3774]: recall
+Mon Nov 23 02:22:56 2026 :: Log Storock [4207]: arrived (Before the Altar.) from 3774
+Mon Nov 23 02:22:58 2026 :: Log Storock [4207]: w
+Mon Nov 23 02:22:58 2026 :: Log Storock [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Mon Nov 23 02:23:00 2026 :: Log Storock [4208]: e
+Mon Nov 23 02:23:00 2026 :: Log Storock [4207]: arrived (Before the Altar.) from 4208
+Mon Nov 23 02:23:01 2026 :: Log Storock [4207]: u
+Mon Nov 23 02:23:01 2026 :: Log Storock [3700]: arrived (Entrance to Mud School) from 4207
+Mon Nov 23 02:23:02 2026 :: Log Storock [3700]: u
+Mon Nov 23 02:23:02 2026 :: Log Storock [3772]: arrived (Newbie Train Station) from 3700
+Mon Nov 23 02:23:04 2026 :: Log Storock [3772]: n
+Mon Nov 23 02:23:04 2026 :: Log Storock [3241]: arrived (The Train Cafe.) from 3772
+Mon Nov 23 02:23:06 2026 :: Log Storock [3241]: s
+Mon Nov 23 02:23:06 2026 :: Log Storock [3772]: arrived (Newbie Train Station) from 3241
+Mon Nov 23 02:23:07 2026 :: Log Storock [3772]: w
+Mon Nov 23 02:23:10 2026 :: Log Storock [3772]: u
+Mon Nov 23 02:23:10 2026 :: Log Storock [3795]: arrived (Strange Blending of Time) from 3772
+Mon Nov 23 02:23:14 2026 :: Log Storock [3795]: d
+Mon Nov 23 02:23:14 2026 :: Log Storock [3772]: arrived (Newbie Train Station) from 3795
+Mon Nov 23 02:23:15 2026 :: Log Storock [3772]: d
+Mon Nov 23 02:23:15 2026 :: Log Storock [3700]: arrived (Entrance to Mud School) from 3772
+Mon Nov 23 02:23:17 2026 :: Log Storock [3700]: w
+Mon Nov 23 02:23:17 2026 :: Log Storock [17]: arrived (An odd sight) from 3700
+Mon Nov 23 02:23:19 2026 :: Log Storock [17]: e
+Mon Nov 23 02:23:19 2026 :: Log Storock [3700]: arrived (Entrance to Mud School) from 17
+Mon Nov 23 02:23:22 2026 :: Log Storock [3700]: n
+Mon Nov 23 02:23:22 2026 :: Log Storock [3757]: arrived (A Room in Mud School) from 3700
+Mon Nov 23 02:23:23 2026 :: Log Storock [3757]: w
+Mon Nov 23 02:23:23 2026 :: Log Storock [3758]: arrived (Eclipse's Training Room) from 3757
+Mon Nov 23 02:23:26 2026 :: Log Storock [3758]: train
+Mon Nov 23 02:23:34 2026 :: Log Storock [3758]: tra con
+Mon Nov 23 02:23:35 2026 :: Log Storock [3758]: tra con
+Mon Nov 23 02:23:36 2026 :: Log Storock [3758]: tra con
+Mon Nov 23 02:23:36 2026 :: Log Storock [3758]: tra con
+Mon Nov 23 02:23:38 2026 :: Log Storock [3758]: tra con
+Mon Nov 23 02:23:39 2026 :: Log Storock [3758]: tra con
+Mon Nov 23 02:23:43 2026 :: Log Storock [3758]: e
+Mon Nov 23 02:23:43 2026 :: Log Storock [3757]: arrived (A Room in Mud School) from 3758
+Mon Nov 23 02:23:44 2026 :: Log Storock [3757]: e
+Mon Nov 23 02:23:44 2026 :: Log Storock [3759]: arrived (Soulcrusher's Guild Room) from 3757
+Mon Nov 23 02:23:46 2026 :: Log Storock [3759]: pra
+Mon Nov 23 02:24:02 2026 :: Log Storock [3759]: w
+Mon Nov 23 02:24:02 2026 :: Log Storock [3757]: arrived (A Room in Mud School) from 3759
+Mon Nov 23 02:24:04 2026 :: Log Storock [3757]: d
+Mon Nov 23 02:24:07 2026 :: Log Storock [3757]: s
+Mon Nov 23 02:24:07 2026 :: Log Storock [3700]: arrived (Entrance to Mud School) from 3757
+Mon Nov 23 02:24:09 2026 :: Log Storock [3700]: d
+Mon Nov 23 02:24:09 2026 :: Log Storock [4207]: arrived (Before the Altar.) from 3700
+Mon Nov 23 02:24:12 2026 :: Log Storock [4207]: u
+Mon Nov 23 02:24:12 2026 :: Log Storock [3700]: arrived (Entrance to Mud School) from 4207
+Mon Nov 23 02:24:14 2026 :: Log Storock [3700]: n
+Mon Nov 23 02:24:14 2026 :: Log Storock [3757]: arrived (A Room in Mud School) from 3700
+Mon Nov 23 02:24:16 2026 :: Log Storock [3757]: n
+Mon Nov 23 02:24:16 2026 :: Log Storock [3701]: arrived (A Room in Mud School) from 3757
+Mon Nov 23 02:24:19 2026 :: Log Storock [3701]: w
+Mon Nov 23 02:24:19 2026 :: Log Storock [3702]: arrived (The Center Room) from 3701
+Mon Nov 23 02:24:23 2026 :: Log Storock [3702]: n
+Mon Nov 23 02:24:23 2026 :: Log Storock [3703]: arrived (A Room in Mud School) from 3702
+Mon Nov 23 02:24:25 2026 :: Log Storock [3703]: n
+Mon Nov 23 02:24:25 2026 :: Log Storock [3709]: arrived (A Room in Mud School) from 3703
+Mon Nov 23 02:24:27 2026 :: Log Storock [3709]: d
+Mon Nov 23 02:24:27 2026 :: Log Storock [3710]: arrived (The Amorphous Shapes Cage) from 3709
+Mon Nov 23 02:24:29 2026 :: Log Storock [3710]: u
+Mon Nov 23 02:24:29 2026 :: Log Storock [3709]: arrived (A Room in Mud School) from 3710
+Mon Nov 23 02:24:30 2026 :: Log Storock [3709]: w
+Mon Nov 23 02:24:30 2026 :: Log Storock [3711]: arrived (A Room in Mud School) from 3709
+Mon Nov 23 02:24:32 2026 :: Log Storock [3711]: d
+Mon Nov 23 02:24:32 2026 :: Log Storock [3712]: arrived (The Cage Room) from 3711
+Mon Nov 23 02:24:39 2026 :: Log Storock [3712]: d
+Mon Nov 23 02:24:39 2026 :: Log Storock [3717]: arrived (A Room in Mud School) from 3712
+Mon Nov 23 02:24:40 2026 :: Log Storock [3717]: s
+Mon Nov 23 02:24:40 2026 :: Log Storock [3718]: arrived (The Store in Mud School) from 3717
+Mon Nov 23 02:24:42 2026 :: Log Storock [3718]: list
+Mon Nov 23 02:24:44 2026 :: Log Storock [3718]: i
+Mon Nov 23 02:24:50 2026 :: Log Storock [3718]: b sk
+Mon Nov 23 02:24:53 2026 :: Log Storock [3718]: list
+Mon Nov 23 02:24:55 2026 :: Log Storock [3718]: sc
+Mon Nov 23 02:25:08 2026 :: Log Storock [3718]: u
+Mon Nov 23 02:25:10 2026 :: Log Storock [3718]: n
+Mon Nov 23 02:25:10 2026 :: Log Storock [3717]: arrived (A Room in Mud School) from 3718
+Mon Nov 23 02:25:19 2026 :: Log Storock [3717]: op e
+Mon Nov 23 02:25:20 2026 :: Log Storock [3717]: e
+Mon Nov 23 02:25:20 2026 :: Log Storock [3719]: arrived (A Room in Mud School) from 3717
+Mon Nov 23 02:25:22 2026 :: Log Storock [3719]: n
+Mon Nov 23 02:25:22 2026 :: Log Storock [3720]: arrived (The Darkened Room) from 3719
+Mon Nov 23 02:25:25 2026 :: Log Storock [3720]: k cl
+Mon Nov 23 02:25:38 2026 :: Log Storock [3720]: level 3 -> 4 (earned)
+Mon Nov 23 02:25:38 2026 :: Storock has achieved level 4!
+Mon Nov 23 02:25:38 2026 :: Snapshot of Storock taken before level: Storock.20261123_022538.level (PRESTORE Storock to see it).
+Mon Nov 23 02:25:38 2026 :: Log Storock [3720]: killed the clown
+Mon Nov 23 02:25:38 2026 :: Log Storock [3720]: coin +4 copper
+Mon Nov 23 02:25:42 2026 :: Log Storock [3720]: i
+Mon Nov 23 02:25:51 2026 :: Log Storock [3720]: wear all
+Mon Nov 23 02:26:00 2026 :: Log Storock [3720]: drop sub
+Mon Nov 23 02:26:01 2026 :: Log Storock [3720]: l
+Mon Nov 23 02:26:03 2026 :: Log Storock [3720]: s
+Mon Nov 23 02:26:03 2026 :: Log Storock [3719]: arrived (A Room in Mud School) from 3720
+Mon Nov 23 02:26:04 2026 :: Log Storock [3719]: e
+Mon Nov 23 02:26:06 2026 :: Log Storock [3719]: unl e
+Mon Nov 23 02:26:08 2026 :: Log Storock [3719]: op e
+Mon Nov 23 02:26:09 2026 :: Log Storock [3719]: e
+Mon Nov 23 02:26:09 2026 :: Log Storock [3721]: arrived (The End of Mud School!) from 3719
+Mon Nov 23 02:26:12 2026 :: Log Storock [3721]: k gr
+Mon Nov 23 02:26:15 2026 :: Log Storock [3721]: k gob
+Mon Nov 23 02:26:50 2026 :: Connection guard: 195.96.139.203 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 02:26:56 2026 :: Log Storock [3721]: killed the educated goblin
+Mon Nov 23 02:26:56 2026 :: Log Storock [3721]: coin +1 copper
+Mon Nov 23 02:26:56 2026 :: Log Storock [3721]: coin +6 copper
+Mon Nov 23 02:27:02 2026 :: Log Storock [3721]: wear dip
+Mon Nov 23 02:27:03 2026 :: Log Storock [3721]: l
+Mon Nov 23 02:27:04 2026 :: Connection guard: 195.96.139.186 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 02:27:09 2026 :: Log Storock [3721]: con pr
+Mon Nov 23 02:27:10 2026 :: Log Storock [3721]: l
+Mon Nov 23 02:27:13 2026 :: Log Storock [3721]: op n
+Mon Nov 23 02:27:14 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 60 refused in all, pause 5 this week, 4451 minutes left).
+Mon Nov 23 02:27:14 2026 :: Log Storock [3721]: n
+Mon Nov 23 02:27:14 2026 :: Log Storock [3722]: arrived (South Wall of Arena) from 3721
+Mon Nov 23 02:27:17 2026 :: Log Storock [3722]: n
+Mon Nov 23 02:27:17 2026 :: Log Storock [3729]: arrived (Arena) from 3722
+Mon Nov 23 02:27:20 2026 :: Log Storock [3729]: k ra
+Mon Nov 23 02:27:23 2026 :: Log Storock [3729]: killed the rabbit
+Mon Nov 23 02:27:23 2026 :: Log Storock [3729]: coin +2 copper
+Mon Nov 23 02:27:23 2026 :: Log Storock [3729]: coin +2 copper

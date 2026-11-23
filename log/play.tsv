@@ -55074,3 +55074,114 @@
 1795400528	cmd	Storock	3	3712	school.are	standing	90	0	-	south		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
 1795400529	cmd	Storock	3	3716	school.are	standing	90	0	-	east		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is west.	-	+
 1795400532	cmd	Storock	3	3716	school.are	standing	90	0	-	kill	gr	Your pierce scratches the gremlin. // Your pierce misses the gremlin.	-	-
+1795400546	got	Storock	3	3716	school.are	3705	a sub issue cloak	armor	0	0	autoloot	corpse of the gremlin
+1795400546	got	Storock	3	3716	school.are	3705	a sub issue cloak	armor	0	0	autoloot	corpse of the gremlin
+1795400546	coin	Storock	3	3716	school.are	+2	loot	(violence)	corpse of the gremlin	13
+1795400553	cmd	Storock	3	3716	school.are	standing	90	0	-	drop	all	You drop a sub issue cloak. // A sub issue cloak burst into flames as it hits the ground. // You drop a sub issue cloak.	-	+
+1795400558	cmd	Storock	3	3716	school.are	standing	90	0	-	recall		You stumble over the words of your prayer, and nothing happens.	-	-
+1795400560	area	Storock	3	4207	dresden.are	school.are	dresden.are	397	recall
+1795400560	cmd	Storock	3	4207	dresden.are	standing	90	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795400563	cmd	Storock	3	4208	dresden.are	standing	90	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795400566	cmd	Storock	3	4207	dresden.are	standing	90	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795400567	area	Storock	3	3700	school.are	dresden.are	school.are	7	up
+1795400567	achieved	Storock	3	3700	school.are	visit-mud-school	5	10	up
+1795400567	cmd	Storock	3	3700	school.are	standing	90	0	-	up		                    ACHIEVEMENT EARNED // Back to School  +5 points // Find the entrance to Mud School.	-	+
+1795400568	cmd	Storock	3	3772	school.are	standing	90	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795400570	cmd	Storock	3	3773	school.are	standing	90	0	-	east		Newbie Train Still In The Station //   This is the Newbie Train.  The first stop will be the mob factory. // Please find a seat if you can.  If you must stand, please hold on to the	-	+
+1795400572	cmd	Storock	3	3773	school.are	standing	90	0	-	west		Alas, you cannot go that way.	-	-
+1795400576	area	Storock	3	4207	dresden.are	school.are	dresden.are	9	recall
+1795400576	cmd	Storock	3	4207	dresden.are	standing	90	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795400578	laid	-	0	0	-	1333	herb	40	a clove	10039	glitter.are	scatter
+1795400578	laid	-	0	0	-	1334	component	69	a basilisks tongue	7822	valley.are	scatter
+1795400578	cmd	Storock	3	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795400580	cmd	Storock	3	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795400581	area	Storock	3	3700	school.are	dresden.are	school.are	5	up
+1795400581	cmd	Storock	3	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795400582	cmd	Storock	3	3772	school.are	standing	100	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795400584	cmd	Storock	3	3241	school.are	standing	100	0	-	north		The Train Cafe. //   It has a nice relaxing atmosphere.  Candles burn on the tables and the // bar giving the Cafe its only light.  The tables are spaced moderately	-	+
+1795400586	cmd	Storock	3	3772	school.are	standing	100	0	-	south		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795400587	cmd	Storock	3	3772	school.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1795400590	cmd	Storock	3	3795	school.are	standing	100	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring	-	+
+1795400594	cmd	Storock	3	3772	school.are	standing	100	0	-	down		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax	-	+
+1795400595	cmd	Storock	3	3700	school.are	standing	100	0	-	down		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795400597	area	Storock	3	17	connect.are	school.are	connect.are	16	west
+1795400597	cmd	Storock	3	17	connect.are	standing	100	0	-	west		An odd sight //   Standing before you is one of the most incredible things you have EVER seen. // A giant berry the likes you have never seen before sits in the middle of this	-	+
+1795400599	area	Storock	3	3700	school.are	connect.are	school.are	2	east
+1795400599	cmd	Storock	3	3700	school.are	standing	100	0	-	east		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795400602	cmd	Storock	3	3757	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795400603	cmd	Storock	3	3758	school.are	standing	100	0	-	west		Eclipse's Training Room //   You are in Eclipse's Training Room.  Around you are all sorts of physical // and mental training tools.  The whole room is filled with magic, holiness, 	-	+
+1795400606	cmd	Storock	3	3758	school.are	standing	100	0	-	train		You have 5 training sessions. // You can train: str int wis dex con hp mana.	-	-
+1795400614	cmd	Storock	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!	-	-
+1795400615	cmd	Storock	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!	-	-
+1795400616	cmd	Storock	3	3758	school.are	standing	100	0	-	train	con	(Tip: TRAIN <stat> <number> trains several at once.) // Your constitution increases!	-	-
+1795400616	cmd	Storock	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!	-	-
+1795400618	cmd	Storock	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!	-	-
+1795400619	cmd	Storock	3	3758	school.are	standing	100	0	-	train	con	Your constitution is already at maximum.	-	-
+1795400623	cmd	Storock	3	3757	school.are	standing	100	0	-	east		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795400624	cmd	Storock	3	3759	school.are	standing	100	0	-	east		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with	-	+
+1795400626	cmd	Storock	3	3759	school.are	standing	100	0	-	practice		magic missile        1%  scrolls              1%  wands                1%   // armor                1%  recall              50%  dagger              81%   // You have 7 practice sessions left.	-	-
+1795400642	cmd	Storock	3	3757	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795400644	cmd	Storock	3	3757	school.are	standing	100	0	-	down		Alas, you cannot go that way.	-	-
+1795400647	cmd	Storock	3	3700	school.are	standing	100	0	-	south		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795400649	area	Storock	3	4207	dresden.are	school.are	dresden.are	50	down
+1795400649	cmd	Storock	3	4207	dresden.are	standing	100	0	-	down		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795400652	area	Storock	3	3700	school.are	dresden.are	school.are	3	up
+1795400652	cmd	Storock	3	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795400654	cmd	Storock	3	3757	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795400656	spotted	Storock	3	3701	school.are	1003	component	77	a vial of medusa eye fluid	11431	2	scatter	arrive
+1795400656	cmd	Storock	3	3701	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795400659	passed	Storock	3	3702	school.are	1003	component	77	a vial of medusa eye fluid	11434	3	2	scatter	3701	left
+1795400659	cmd	Storock	3	3702	school.are	standing	100	0	-	west		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795400663	cmd	Storock	3	3703	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795400665	cmd	Storock	3	3709	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795400667	cmd	Storock	3	3710	school.are	standing	100	0	-	down		The Amorphous Shapes Cage //   You are in a smelly cage.  Strangely, the walls are still clean! // You see a sign here.  The only exit is up.	-	+
+1795400669	cmd	Storock	3	3709	school.are	standing	100	0	-	up		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795400670	cmd	Storock	3	3711	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795400672	cmd	Storock	3	3712	school.are	standing	100	0	-	down		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.	-	+
+1795400679	cmd	Storock	3	3717	school.are	standing	100	0	-	down		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795400680	cmd	Storock	3	3718	school.are	standing	100	0	-	south		The Store in Mud School //   You are in a cramped room.  Stacked neatly on shelves everywhere are items // and packages.  Light fluoresces off the ceiling in soft white tones.  Of	-	+
+1795400682	cmd	Storock	3	3718	school.are	standing	100	0	-	list		[Lv Price] Item // [ 0        48c] a hooded brass lantern. // [ 0        48c] a buffalo water skin.	-	+
+1795400684	cmd	Storock	3	3718	school.are	standing	100	0	-	inventory		You are carrying: //      Nothing.	-	-
+1795400690	cmd	Storock	3	3718	school.are	standing	100	0	-	buy	sk	The adept of Gravestone tells you 'You can't afford to buy a buffalo water skin'.	-	-
+1795400693	cmd	Storock	3	3718	school.are	standing	100	0	-	list		[Lv Price] Item // [ 0        48c] a hooded brass lantern. // [ 0        48c] a buffalo water skin.	-	+
+1795400695	laid	-	0	0	-	1336	component	71	a goblin's finger	4531	dresden.are	scatter
+1795400695	state	Storock	3	3718	school.are	lvl=3 hp=33/33 mana=144/144 mv=63/105 align=750 exp=7532 coin=13 bank=0 qp=0 prac=7 train=0 stash=0/50 remorts=0
+1795400695	cmd	Storock	3	3718	school.are	standing	100	0	-	score		| Name:        Storock | Level:       3 | Class:        Mage | // | Played:      0 hours | Sex:      Male | Guild:        None | // | Age:        17 years | Race:    Human | Castle:       None |	-	+
+1795400708	cmd	Storock	3	3718	school.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1795400710	cmd	Storock	3	3717	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed	-	+
+1795400719	cmd	Storock	3	3717	school.are	standing	100	0	-	open	e	Ok.	-	-
+1795400720	cmd	Storock	3	3719	school.are	standing	100	0	-	east		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795400722	cmd	Storock	3	3720	school.are	standing	100	0	-	north		The Darkened Room //   This room was purposefully darkened so that you would need to hold on to a // light source to go through.  The walls are, of course, blank, and white.	-	+
+1795400725	cmd	Storock	3	3720	school.are	standing	100	0	-	kill	cl	Your pierce scratches the clown. // Your pierce misses the clown.	-	-
+1795400738	level	Storock	4	3720	school.are	3	4	M	0	8038	282	(violence)
+1795400738	got	Storock	4	3720	school.are	3709	a pair of sub issue gloves	armor	0	0	autoloot	corpse of the clown
+1795400738	got	Storock	4	3720	school.are	3710	a pair of sub issue sleeves	armor	0	0	autoloot	corpse of the clown
+1795400738	got	Storock	4	3720	school.are	3714	a key	key	0	0	autoloot	corpse of the clown
+1795400738	got	Storock	4	3720	school.are	3713	a sub issue bracer	armor	0	0	autoloot	corpse of the clown
+1795400738	coin	Storock	4	3720	school.are	+4	loot	(violence)	corpse of the clown	17
+1795400742	cmd	Storock	4	3720	school.are	standing	73	0	-	inventory		You are carrying: //      a sub issue bracer //      a key	-	+
+1795400751	cmd	Storock	4	3720	school.are	standing	73	0	-	wear	all	You wear a pair of sub issue sleeves on your arms. // You wear a pair of sub issue gloves on your hands.	-	-
+1795400760	cmd	Storock	4	3720	school.are	standing	75	0	-	drop	sub	You drop a sub issue bracer. // A sub issue bracer burst into flames as it hits the ground.	-	-
+1795400761	cmd	Storock	4	3720	school.are	standing	75	0	-	look		The Darkened Room //   This room was purposefully darkened so that you would need to hold on to a // light source to go through.  The walls are, of course, blank, and white.	-	+
+1795400763	cmd	Storock	4	3719	school.are	standing	100	0	-	south		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795400764	cmd	Storock	4	3719	school.are	standing	100	0	-	east		The door is closed.	-	-
+1795400766	cmd	Storock	4	3719	school.are	standing	100	0	-	unlock	e	*Click*	-	-
+1795400768	cmd	Storock	4	3719	school.are	standing	100	0	-	open	e	Ok.	-	-
+1795400769	cmd	Storock	4	3721	school.are	standing	100	1	-	east		The End of Mud School! //   This is a very bright room, with a marble pedestal in the center.  Behind // the pedestal stands a person cloaked in Silver.  Tapestries flow from every	-	+
+1795400772	cmd	Storock	4	3721	school.are	standing	100	0	-	kill	gr	They aren't here.	-	-
+1795400775	cmd	Storock	4	3721	school.are	standing	100	0	-	kill	gob	Your pierce scratches the educated goblin. // Your pierce scratches the educated goblin.	-	-
+1795400816	got	Storock	4	3721	school.are	3715	a mud school diploma	treasure	0	0	autoloot	corpse of the educated goblin
+1795400816	coin	Storock	4	3721	school.are	+1	loot	autoloot	corpse of the educated goblin	18
+1795400816	coin	Storock	4	3721	school.are	+6	loot	(violence)	corpse of the educated goblin	24
+1795400822	cmd	Storock	4	3721	school.are	standing	43	0	-	wear	dip	You hold a mud school diploma in your hands.	-	-
+1795400823	cmd	Storock	4	3721	school.are	standing	43	0	-	look		The End of Mud School! //   This is a very bright room, with a marble pedestal in the center.  Behind // the pedestal stands a person cloaked in Silver.  Tapestries flow from every	-	+
+1795400829	cmd	Storock	4	3721	school.are	standing	43	0	-	consider	pr	The priestess of Thalia is far above your level. // The priestess of Thalia has many times your hit points. // Blow for blow, you would need over a hundred rounds to bring the priestess of Thalia down; she would need a single round for you	-	+
+1795400829	census	-	0	0	-	herbs=95/150 components=55/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=11 spotted=2 picked=0 passed=2 cleared=0 rare=0 mobs_seen=21 mobs_fought=10 secs=900
+1795400830	cmd	Storock	4	3721	school.are	standing	43	0	-	look		The End of Mud School! //   This is a very bright room, with a marble pedestal in the center.  Behind // the pedestal stands a person cloaked in Silver.  Tapestries flow from every	-	+
+1795400833	cmd	Storock	4	3721	school.are	standing	43	0	-	open	n	Ok.	-	-
+1795400834	cmd	Storock	4	3722	school.are	standing	43	0	-	north		South Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795400837	cmd	Storock	4	3729	school.are	standing	43	0	-	north		Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795400838	laid	-	0	0	-	1345	herb	43	a sprig of hyssop	24135	coven.are	scatter
+1795400840	cmd	Storock	4	3729	school.are	standing	73	0	-	kill	ra	Your pierce scratches the rabbit. // Your pierce scratches the rabbit.	-	-
+1795400843	coin	Storock	4	3729	school.are	+2	loot	autoloot	corpse of the rabbit	26
+1795400843	coin	Storock	4	3729	school.are	+2	loot	(violence)	corpse of the rabbit	28
