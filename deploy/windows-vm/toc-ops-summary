@@ -13,7 +13,8 @@ from systemd's word that a unit ran:
                   the public one, its receipt under 20 minutes old and "ok";
                   "off" (healthy) until it has ever run
   game_archives   the newest of the game's own archives (backups/) under
-                  5 hours old
+                  5 hours old and whole: read through as a restore would,
+                  holding character files that open as character files
   disk            free space and inodes where the game writes
   recovery        how the last toc-game-recovery run ended, and the count of
                   failed restarts it holds
@@ -42,8 +43,10 @@ import re
 import shutil
 import subprocess
 import sys
+import tarfile
 import time
 import urllib.request
+import zlib
 from pathlib import Path
 
 E = os.environ.get
@@ -141,18 +144,47 @@ def check_public_sync() -> dict:
     elif (attempt.get("reason") or "").startswith("refused"):
         out["ok"] = False
         problems.append(f"public_sync: {out['reason']}")
+    elif success.get("partial"):
+        # Pushed, but not all of it (review, 2026-11-23: a failed hourly
+        # copy was a plain "ok"). The state went; something with it did not.
+        out["ok"] = False
+        out["partial"] = clean(success["partial"])
+        problems.append(f"public_sync: pushed, but incomplete ({out['partial']})")
     return out
 
 
+def mirror_configured() -> bool | None:
+    """Whether toc-state-sync.service sets MIRROR_REMOTE (drop-ins included,
+    as systemd merges them); None when systemd could not be asked."""
+    shown = systemctl_show("toc-state-sync.service")
+    if not shown:
+        return None
+    return any(word.startswith("MIRROR_REMOTE=") and len(word) > len("MIRROR_REMOTE=")
+               for word in shown.get("Environment", "").split())
+
+
 def check_mirror() -> dict:
-    """The private mirror (owner, 2026-11-23). Optional, so a host that has
-    never run it is "off" and healthy; once it has a receipt, a failure or a
-    receipt older than the sync's own limit is a problem -- the second copy
-    must not stop quietly. Its own check, so a mirror that fails never makes
-    the public backup look broken."""
+    """The private mirror (owner, 2026-11-23), judged by what the host is
+    configured to do as well as by its receipt. Not configured: "off", and
+    healthy whatever an old receipt says. Configured and the sync has never
+    run: "pending" -- public_sync already names that. Configured, the sync
+    has run, and no receipt: a problem (review, 2026-11-23: a missing
+    receipt read "off" and healthy, so a lost state directory, or a mirror
+    that never ran, silently looked like a mirror nobody wanted). If systemd
+    cannot be asked, the receipt alone decides, as before. Its own check, so
+    a mirror that fails never makes the public backup look broken."""
+    configured = mirror_configured()
     got = receipt(SYNC_STATE / "mirror")
+    if configured is False:
+        return {"ok": True, "status": "off", "configured": False}
     if not got:
-        return {"ok": True, "status": "off"}
+        if configured is None:
+            return {"ok": True, "status": "off", "configured": None}
+        if not receipt(SYNC_STATE / "last-success"):
+            return {"ok": True, "status": "pending", "configured": True}
+        problems.append("mirror: configured, but it has never reported -- "
+                        "a lost receipt, or a mirror that is not running")
+        return {"ok": False, "status": "missing", "configured": True}
     age = age_of(got.get("time"))
     result = got.get("result")
     out = {"status": result or "unknown", "last_min": minutes(age),
@@ -169,18 +201,75 @@ def check_mirror() -> dict:
     return out
 
 
+def verify_archive(path: Path) -> tuple[bool, str, int]:
+    """(whole, why not, character files): a restore drill on one archive.
+    Every member is read through, as extracting it would -- a truncated or
+    damaged archive fails here as gzip -t would -- and each character file
+    (player/<Name>) is opened and must begin "#PLAYER". A well-formed
+    archive of an empty player/ is not a backup. Nothing it reads is kept
+    or printed (review, 2026-11-23: the newest archive was judged by its
+    age alone, so one damaged after it was made still counted)."""
+    chars = bad = 0
+    try:
+        with tarfile.open(path, "r:gz") as tar:
+            for member in tar:
+                name = member.name[3:] if member.name.startswith("../") else member.name
+                parts = name.split("/")
+                if member.isfile() and len(parts) == 2 and parts[0] == "player":
+                    chars += 1
+                    handle = tar.extractfile(member)
+                    if handle is None or handle.read(7) != b"#PLAYER":
+                        bad += 1
+    except (tarfile.TarError, OSError, EOFError, zlib.error) as error:
+        return False, f"unreadable ({type(error).__name__})", chars
+    if chars == 0:
+        return False, "holds no character files", 0
+    if bad:
+        return False, f"{bad} of {chars} character files do not open", chars
+    return True, "", chars
+
+
+ARCHIVE_VERIFIED = RECOVERY_STATE / "archive-verified"
+
+
+def verified(path: Path) -> tuple[bool, str, int]:
+    """verify_archive, remembered by name, size and mtime: an archive is
+    read through once, not every five minutes."""
+    st = path.stat()
+    key = f"{path.name}:{st.st_size}:{int(st.st_mtime)}"
+    seen = receipt(ARCHIVE_VERIFIED)
+    if seen.get("key") == key and seen.get("whole") in ("yes", "no"):
+        return seen["whole"] == "yes", seen.get("why", ""), int(seen.get("characters") or 0)
+    whole, why, chars = verify_archive(path)
+    write_atomic(ARCHIVE_VERIFIED, f"key={key}\nwhole={'yes' if whole else 'no'}\n"
+                                   f"why={why}\ncharacters={chars}\n")
+    return whole, why, chars
+
+
 def check_game_archives() -> dict:
     archives = sorted((LIVE / "backups").glob("*.tar.gz"), key=lambda p: p.stat().st_mtime)
     if not archives:
         problems.append("game_archives: none")
         return {"ok": False, "count": 0}
-    age = now - int(archives[-1].stat().st_mtime)
+    newest = archives[-1]
+    age = now - int(newest.stat().st_mtime)
     total = sum(p.stat().st_size for p in archives)
-    ok = age <= ARCHIVE_MAX_AGE
-    if not ok:
+    whole, why, chars = verified(newest)
+    out = {"count": len(archives), "newest_min": age // 60, "total_mb": total // 1048576,
+           "verified": whole, "characters": chars}
+    if not whole:
+        # How far back a restore from these would have to go.
+        for older in reversed(archives[-6:-1]):
+            if verify_archive(older)[0]:
+                out["last_whole_min"] = (now - int(older.stat().st_mtime)) // 60
+                break
+        back = (f"; the last whole one is {out['last_whole_min'] // 60} h old"
+                if "last_whole_min" in out else "; none of the five before it is whole either")
+        problems.append(f"game_archives: the newest ({newest.name}) {why}{back}")
+    elif age > ARCHIVE_MAX_AGE:
         problems.append(f"game_archives: newest is {age // 3600} h old")
-    return {"ok": ok, "count": len(archives), "newest_min": age // 60,
-            "total_mb": total // 1048576}
+    out["ok"] = whole and age <= ARCHIVE_MAX_AGE
+    return out
 
 
 def check_disk() -> dict:
@@ -219,7 +308,7 @@ def systemctl_show(unit: str) -> dict[str, str]:
     try:
         said = subprocess.run(["systemctl", "show", unit, "-p", "LoadState", "-p", "ActiveState",
                                "-p", "UnitFileState", "-p", "NeedDaemonReload",
-                               "-p", "FragmentPath"],
+                               "-p", "FragmentPath", "-p", "Environment"],
                               capture_output=True, text=True, timeout=15).stdout
     except (OSError, subprocess.TimeoutExpired):
         return {}

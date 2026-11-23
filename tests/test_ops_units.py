@@ -57,6 +57,7 @@ show) u=$1
       if [ -f "$SD/$u.failed" ]; then echo ActiveState=failed
       elif [ -f "$SD/$u.active" ]; then echo ActiveState=active; else echo ActiveState=inactive; fi
       if [ -f "$SD/$u.enabled" ]; then echo UnitFileState=enabled; else echo UnitFileState=disabled; fi
+      if [ -f "$SD/$u.env" ]; then echo "Environment=$(cat "$SD/$u.env")"; else echo Environment=; fi
       exit 0 ;;
 esac
 exit 0
@@ -239,7 +240,7 @@ class OpsSummaryTests(unittest.TestCase):
         for d in ("log", "backups", "area"):
             (self.live / d).mkdir(parents=True)
         (self.live / "area" / "webadmin.queue").write_text("")
-        (self.live / "backups" / "Nov.23.tar.gz").write_bytes(b"x")
+        self.archive("Nov.23.tar.gz")
         self.sync, self.state = root / "sync", root / "lib-toc"
         for d in (self.sync, self.state):
             d.mkdir()
@@ -267,6 +268,35 @@ class OpsSummaryTests(unittest.TestCase):
         self.server.shutdown()
         self.server.server_close()
         self._tmp.cleanup()
+
+    def archive(self, name: str, characters: dict[str, bytes] | None = None,
+                cut: int | None = None) -> Path:
+        """A synthetic game archive, laid out as backup_script's
+        `tar cfz ... ../player`: never a real character."""
+        import io
+        import tarfile
+        if characters is None:
+            characters = {"Zarcha": b"#PLAYER\nName Zarcha~\nEnd\n#END\n"}
+        path = self.live / "backups" / name
+        buf = io.BytesIO()
+        with tarfile.open(fileobj=buf, mode="w:gz") as tar:
+            for who, body in characters.items():
+                info = tarfile.TarInfo(f"player/{who}")
+                info.size = len(body)
+                tar.addfile(info, io.BytesIO(body))
+            info = tarfile.TarInfo("player/recovery/ledger.tsv")
+            info.size = 2
+            tar.addfile(info, io.BytesIO(b"1\n"))
+        data = buf.getvalue()
+        path.write_bytes(data if cut is None else data[:cut])
+        return path
+
+    def mirror(self, configured: bool) -> None:
+        env = self.host.sd / "toc-state-sync.service.env"
+        if configured:
+            env.write_text("TOC_SYNC_STATE_DIR=/x MIRROR_REMOTE=git@example:mirror.git")
+        elif env.exists():
+            env.unlink()
 
     def run_summary(self) -> tuple[subprocess.CompletedProcess, dict]:
         done = subprocess.run([sys.executable, str(SUMMARY)], env=self.env,
@@ -328,10 +358,12 @@ class OpsSummaryTests(unittest.TestCase):
         once it has a receipt, a failure or a stale one is a problem of its
         own, and never makes the public sync look broken."""
         done, out = self.run_summary()
-        self.assertEqual(out["checks"]["mirror"], {"ok": True, "status": "off"})
+        self.assertEqual((out["checks"]["mirror"]["ok"], out["checks"]["mirror"]["status"]),
+                         (True, "off"))
         self.assertEqual(out["overall"], "ok", out["problems"])
         now = int(time.time())
         mirror = self.sync / "mirror"
+        self.mirror(True)
         mirror.write_text(f"time={now}\nresult=ok\nreason=mirror holds abc\ncommit={'c' * 40}\n")
         done, out = self.run_summary()
         self.assertTrue(out["checks"]["mirror"]["ok"], out["problems"])
@@ -345,6 +377,63 @@ class OpsSummaryTests(unittest.TestCase):
         self.assertIn("mirror: last updated 60 min ago", out["problems"])
         only, error = ops_status.parse_only("mirror")
         self.assertIsNone(error, "mirror is a name ?only= accepts")
+
+    def test_the_mirror_is_judged_by_configuration_too(self) -> None:
+        """A missing receipt read "off" and healthy whatever the host was
+        set to do (review, 2026-11-23)."""
+        self.mirror(False)                                  # not wanted: off
+        done, out = self.run_summary()
+        self.assertEqual(out["checks"]["mirror"]["status"], "off")
+        self.assertTrue(out["checks"]["mirror"]["ok"])
+        self.mirror(True)                                   # wanted, sync has run, no receipt
+        done, out = self.run_summary()
+        self.assertEqual(out["checks"]["mirror"]["status"], "missing")
+        self.assertFalse(out["checks"]["mirror"]["ok"])
+        self.assertIn("mirror: configured, but it has never reported", "\n".join(out["problems"]))
+        self.assertTrue(out["checks"]["public_sync"]["ok"], "the public copy is not blamed")
+        (self.sync / "last-success").unlink()               # a fresh install: never synced
+        done, out = self.run_summary()
+        self.assertEqual(out["checks"]["mirror"]["status"], "pending")
+        self.assertTrue(out["checks"]["mirror"]["ok"], "public_sync already names a sync that never ran")
+        self.mirror(False)                                  # turned off with an old receipt left
+        (self.sync / "mirror").write_text(f"time={int(time.time()) - 86400}\nresult=ok\n")
+        done, out = self.run_summary()
+        self.assertEqual(out["checks"]["mirror"]["status"], "off")
+
+    def test_a_partial_success_is_not_a_whole_backup(self) -> None:
+        """An hourly copy that failed, or unpushed commits kept aside, were a
+        plain "ok" to monitoring (review, 2026-11-23)."""
+        now = int(time.time())
+        (self.sync / "last-success").write_text(
+            f"time={now}\nkind=pushed\nremote_commit={'a' * 40}\npartial=hourly snapshots not copied\n")
+        done, out = self.run_summary()
+        self.assertFalse(out["checks"]["public_sync"]["ok"])
+        self.assertIn("public_sync: pushed, but incomplete (hourly snapshots not copied)", out["problems"])
+        (self.sync / "last-success").write_text(f"time={now}\nkind=pushed\npartial=\n")
+        done, out = self.run_summary()
+        self.assertTrue(out["checks"]["public_sync"]["ok"], out["problems"])
+
+    def test_an_archive_is_judged_whole_not_by_its_age(self) -> None:
+        """The newest archive counted by its mtime alone, so one damaged after
+        it was made, or a well-formed archive of nothing, read healthy."""
+        done, out = self.run_summary()
+        self.assertTrue(out["checks"]["game_archives"]["verified"], out["problems"])
+        self.assertEqual(out["checks"]["game_archives"]["characters"], 1)
+        older = self.live / "backups" / "Nov.23.tar.gz"
+        os.utime(older, (time.time() - 3600, time.time() - 3600))
+        cases = {"truncated": dict(cut=60), "empty": dict(characters={}),
+                 "not a character": dict(characters={"Zjunk": b"garbage\n"})}
+        for label, how in cases.items():
+            with self.subTest(label):
+                self.archive("Nov.24.tar.gz", **how)
+                done, out = self.run_summary()
+                self.assertFalse(out["checks"]["game_archives"]["ok"], label)
+                said = "\n".join(out["problems"])
+                self.assertIn("game_archives: the newest (Nov.24.tar.gz)", said)
+                self.assertIn("the last whole one is 1 h old", said, "how far back it goes")
+        self.archive("Nov.24.tar.gz")                       # replaced by a whole one
+        done, out = self.run_summary()
+        self.assertTrue(out["checks"]["game_archives"]["ok"], out["problems"])
 
     def test_a_service_whose_last_run_failed_is_named(self) -> None:
         """A oneshot is "inactive" between runs, which is fine; "failed" is
