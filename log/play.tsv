@@ -54313,3 +54313,82 @@
 1795397231	session	Trentlin	54	4210	dresden.are	quit	1024s	+0 levels	+404 exp	-5290646 copper	8 kills	0 deaths	1 quests	712 commands	2 refused	coin: loot 13p 96g 93s 6c, quests 87p 61g 2s 48c, spent 106p 87g 6s	spent on: buy 6s, stolen 7g, heal 106p 80g	exp: flee -60, skilluse +4, kills +460
 1795397234	cmd	Ravagger	8	24316	chess.are	standing	100	0	-	wear	dip	You stop using a bishop's staff. // You hold a mud school diploma in your hands.	-	-
 1795397236	cmd	Ravagger	8	24316	chess.are	standing	100	0	-	look		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1795397241	cmd	Ravagger	8	24331	chess.are	standing	100	0	-	south		The White Square //   You are standing on a highly polished white marble tile, which // extends about six feet in either direction.	-	+
+1795397247	cmd	Ravagger	8	24331	chess.are	standing	100	0	-	scan		the Black Pawn                     -to the North. // the Black Pawn                     -to the South. // the Black King                     -to the South.	-	+
+1795397250	cmd	Ravagger	8	24332	chess.are	standing	100	0	-	south		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1795397253	cmd	Ravagger	8	24332	chess.are	standing	100	0	-	consider	ki	The Black King is about your level. // The Black King has about as many hit points as you. // Blow for blow, you would need about 17 rounds to bring the Black King down; it would need about 61 rounds for you.	-	+
+1795397262	cmd	Ravagger	8	24332	chess.are	standing	100	0	-	kill	king	Your punch misses the Black King. // Your punch misses the Black King.	-	-
+1795397264	cmd	Ravagger	8	24332	chess.are	fighting	100	0	fight	kick		Your kick grazes the Black King.	-	-
+1795397267	cmd	Ravagger	8	24332	chess.are	fighting	100	0	fight	kick		Your kick misses the Black King.	-	-
+1795397270	cmd	Ravagger	8	24332	chess.are	fighting	100	0	fight	kick		Your kick grazes the Black King.	-	-
+1795397273	cmd	Ravagger	8	24332	chess.are	fighting	100	0	fight	kick		Your kick misses the Black King.	-	-
+1795397275	cmd	Ravagger	8	24332	chess.are	fighting	100	0	fight	kick		Your kick grazes the Black King.	-	-
+1795397278	cmd	Ravagger	8	24332	chess.are	fighting	97	0	fight	kick		Your kick scratches the Black King.	-	-
+1795397281	cmd	Ravagger	8	24332	chess.are	fighting	97	0	fight	kick		Your kick misses the Black King.	-	-
+1795397284	cmd	Ravagger	8	24332	chess.are	fighting	93	0	fight	kick		Your kick grazes the Black King.	-	-
+1795397287	cmd	Ravagger	8	24332	chess.are	fighting	88	0	fight	kick		Your kick grazes the Black King.	-	-
+1795397290	cmd	Ravagger	8	24332	chess.are	fighting	84	0	fight	kick		Your kick grazes the Black King.	-	-
+1795397292	cmd	Ravagger	8	24332	chess.are	fighting	84	0	fight	kick		Your kick scratches the Black King.	-	-
+1795397295	cmd	Ravagger	8	24332	chess.are	fighting	84	0	fight	kick		Your kick scratches the Black King.	-	-
+1795397298	cmd	Ravagger	8	24332	chess.are	fighting	84	0	fight	kick		Your kick misses the Black King.	-	-
+1795397301	cmd	Ravagger	8	24332	chess.are	fighting	84	0	fight	kick		Your kick scratches the Black King.	-	-
+1795397304	cmd	Ravagger	8	24332	chess.are	fighting	84	0	fight	kick		Your kick misses the Black King.	-	-
+1795397307	cmd	Ravagger	8	24332	chess.are	fighting	77	0	fight	kick		Your kick misses the Black King.	-	-
+1795397309	cmd	Ravagger	8	24332	chess.are	fighting	77	0	fight	kick		Your kick scratches the Black King.	-	-
+1795397312	cmd	Ravagger	8	24332	chess.are	fighting	69	0	fight	kick		Your kick scratches the Black King.	-	-
+1795397317	cmd	Ravagger	8	24332	chess.are	fighting	66	0	fight	kick		Your kick misses the Black King.	-	-
+1795397317	laid	-	0	0	-	1175	herb	42	a marjoram plant	17180	highland.are	scatter
+1795397317	laid	-	0	0	-	1176	herb	45	a sarsaparilla vine	17217	highland.are	scatter
+1795397317	laid	-	0	0	-	1177	component	78	a vial of demons blood	7441	sewer.are	scatter
+1795397320	cmd	Ravagger	8	24332	chess.are	fighting	71	0	fight	kick		Your kick misses the Black King.	-	-
+1795397324	level	Ravagger	9	24332	chess.are	8	9	Monk 	0	19554	-1	(violence)
+1795397324	coin	Ravagger	9	24332	chess.are	+100	loot	autoloot	corpse of the Black King	9440493
+1795397324	coin	Ravagger	9	24332	chess.are	+1	loot	autoloot	corpse of the Black King	9440494
+1795397324	cmd	Ravagger	9	24332	chess.are	standing	64	0	-	kick		You aren't fighting anyone.	-	-
+1795397342	cmd	Ravagger	9	24332	chess.are	standing	64	0	-	look	corp	The corpse of the Black King is lying here.	-	-
+1795397346	cmd	Ravagger	9	24332	chess.are	standing	64	0	-	look	in cor	Corpse of the Black King contains: //      a king's shield	-	-
+1795397355	cmd	Ravagger	9	24332	chess.are	standing	64	0	-	get	shield corp	Shield: you can't carry that much weight.	-	-
+1795397359	cmd	Ravagger	9	24332	chess.are	standing	64	0	-	inventory		You are carrying: //      a bishop's staff //      (Glowing) a slice of pumpkin pie	-	+
+1795397364	cmd	Ravagger	9	24332	chess.are	standing	64	0	-	drop	st	You drop a bishop's staff.	-	-
+1795397368	cmd	Ravagger	9	24332	chess.are	standing	64	0	-	drop	lan	You can't let go of a knight's lance.	-	-
+1795397371	cmd	Ravagger	9	24332	chess.are	standing	64	0	-	drop	kee	You do not have that item.	-	-
+1795397376	cmd	Ravagger	9	24332	chess.are	standing	64	0	-	drop	sword	You drop a small sword.	-	-
+1795397382	cmd	Ravagger	9	24332	chess.are	standing	76	0	-	inventory		You are carrying: //      (Glowing) a slice of pumpkin pie //      a knight's lance	-	+
+1795397391	cmd	Ravagger	9	24332	chess.are	standing	76	0	-	get	shield cor	Shield: you can't carry that much weight.	-	-
+1795397395	cmd	Ravagger	9	24332	chess.are	standing	76	0	-	inventory		You are carrying: //      (Glowing) a slice of pumpkin pie //      a knight's lance	-	+
+1795397402	refused	Ravagger	9	24332	chess.are	standing	76	0	-	(unknown)		Huh? Did you mean EAT or WEAR?	refusal:unknown-command	-
+1795397411	cmd	Ravagger	9	24332	chess.are	standing	76	0	-	wear	pie	You can't wear, wield, or hold that.	-	-
+1795397414	cmd	Ravagger	9	24332	chess.are	standing	76	0	-	look	pie	A thick wedge of pumpkin pie with a dollop of cream on top, smelling of // cinnamon and clove.  A slice of this sets anyone up for the day.	-	-
+1795397422	cmd	Ravagger	9	24332	chess.are	standing	76	0	-	eat	pie	You eat a slice of pumpkin pie. // You are already blessed. // You feel better!	-	-
+1795397426	cmd	Ravagger	9	24332	chess.are	standing	85	0	-	look		The Black Square //   You are standing on a highly polished black marble tile, which // extends about six feet in either direction.	-	+
+1795397430	cmd	Ravagger	9	24347	chess.are	standing	85	0	-	south		The White Square //   You are standing on a highly polished white marble tile, which // extends about six feet in either direction.	-	+
+1795397434	cmd	Ravagger	9	24347	chess.are	standing	85	0	-	consider	qu	The Black Queen is about your level. // The Black Queen has about as many hit points as you. // Blow for blow, you would need about 15 rounds to bring the Black Queen down; it would need about 37 rounds for you.	-	+
+1795397446	cmd	Ravagger	9	24347	chess.are	standing	85	0	-	kill	que	Your punch grazes the Black Queen. // The Black Queen dodges your attack.	-	-
+1795397449	laid	-	0	0	-	1182	herb	42	a marjoram plant	1136	shire.are	scatter
+1795397449	laid	-	0	0	-	1183	herb	44	a sprig of aconite	1106	shire.are	scatter
+1795397449	laid	-	0	0	-	1184	component	88	a vial of green slime	5689	tarin.are	scatter
+1795397449	cmd	Ravagger	9	24347	chess.are	fighting	83	0	fight	kill	que	You do the best you can!	-	-
+1795397452	cmd	Ravagger	9	24347	chess.are	fighting	73	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1795397455	cmd	Ravagger	9	24347	chess.are	fighting	73	0	fight	kick		Your kick misses the Black Queen.	-	-
+1795397457	cmd	Ravagger	9	24347	chess.are	fighting	73	0	fight	kick		Your kick misses the Black Queen.	-	-
+1795397460	cmd	Ravagger	9	24347	chess.are	fighting	73	0	fight	kick		Your kick grazes the Black Queen.	-	-
+1795397463	cmd	Ravagger	9	24347	chess.are	fighting	73	0	fight	kick		Your kick misses the Black Queen.	-	-
+1795397466	cmd	Ravagger	9	24347	chess.are	fighting	73	0	fight	kick		Your kick grazes the Black Queen.	-	-
+1795397468	cmd	Ravagger	9	24347	chess.are	fighting	67	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1795397471	cmd	Ravagger	9	24347	chess.are	fighting	67	0	fight	kick		Your kick misses the Black Queen.	-	-
+1795397474	cmd	Ravagger	9	24347	chess.are	fighting	67	0	fight	kick		Your kick misses the Black Queen.	-	-
+1795397477	cmd	Ravagger	9	24347	chess.are	fighting	67	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1795397479	cmd	Ravagger	9	24347	chess.are	fighting	63	0	fight	kick		Your kick scratches the Black Queen.	-	-
+1795397480	got	Ravagger	9	24347	chess.are	24303	a queens black key	key	1	0	autoloot	corpse of the Black Queen
+1795397480	coin	Ravagger	9	24347	chess.are	+100	loot	autoloot	corpse of the Black Queen	9440594
+1795397480	coin	Ravagger	9	24347	chess.are	+1	loot	autoloot	corpse of the Black Queen	9440595
+1795397482	cmd	Ravagger	9	24347	chess.are	standing	63	0	-	kick		You aren't fighting anyone.	-	-
+1795397491	cmd	Ravagger	9	24347	chess.are	standing	63	0	-	look	in corp	Corpse of the Black Queen contains: //      a silvery skin	-	-
+1795397497	cmd	Ravagger	9	24347	chess.are	standing	63	0	-	get	skin corp	Skin: you can't carry that much weight.	-	-
+1795397499	cmd	Ravagger	9	24347	chess.are	standing	63	0	-	inventory		You are carrying: //      a queens black key //      a knight's lance	-	+
+1795397510	cmd	Ravagger	9	24347	chess.are	standing	63	0	-	sacrifice	lance	You can't find it.	-	-
+1795397514	cmd	Ravagger	9	24347	chess.are	standing	63	0	-	drop	lan	You can't let go of a knight's lance.	-	-
+1795397526	cmd	Ravagger	9	24347	chess.are	standing	63	0	-	unlock	e	*Click*	-	-
+1795397526	laid	-	0	0	-	1186	component	84	a vial of froghemoth saliva	18079	icekeep.are	scatter
+1795397528	cmd	Ravagger	9	24347	chess.are	standing	74	0	-	open	e	Ok.	-	-
+1795397530	cmd	Ravagger	9	24376	chess.are	standing	74	0	-	east		The Black Queen's Chamber //   You are in a small chamber, containing only a bed, basin, // mirror and braided rug.  Despite being very small, it looks comfortable 	-	+
