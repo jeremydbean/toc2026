@@ -344396,3 +344396,5 @@ Mon Nov 23 12:31:07 2026 :: Connection guard: 5.161.215.244 closed without a wor
 Mon Nov 23 12:35:27 2026 :: Treasure goblin: vanished from room 5103 (City street, drow1.are) (too long in one area).
 Mon Nov 23 12:36:11 2026 :: Black market: the dealer left the world from room 9677 (Hall, newthalo.are).
 Mon Nov 23 12:36:12 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 3 of 6 in 6 hours).
+Mon Nov 23 12:41:16 2026 :: Connection guard: refused 1 connection from 52.87.72.16 (paused; 36 refused in all, pause 4 this week, 347 minutes left).
+Mon Nov 23 12:42:08 2026 :: Connection guard: last hour 10 closed without a word, 3 refused, 0 new characters refused, 0 newly paused; 9 addresses paused and 0 refused now, 16 active player addresses.
