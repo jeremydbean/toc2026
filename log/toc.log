@@ -344541,3 +344541,7 @@ Mon Nov 23 17:12:40 2026 :: Black market: the dealer appeared with 5 items (stoc
 Mon Nov 23 17:13:08 2026 :: Connection guard: last hour 11 closed without a word, 4 refused, 0 new characters refused, 1 newly paused; 10 addresses paused and 0 refused now, 16 active player addresses.
 Mon Nov 23 17:13:09 2026 :: Automated backup started.
 Mon Nov 23 17:13:09 2026 :: Automated backup complete.
+Mon Nov 23 17:13:28 2026 :: Black market: the dealer vanished from room 5753 (Outside the Broken East Gate of Midgaard, mid_ruin.are) (wandering).
+Mon Nov 23 17:14:16 2026 :: Black market: the dealer vanished from room 1333 (A broom closet, htower.are) (wandering).
+Mon Nov 23 17:15:00 2026 :: Treasure goblin: vanished from room 13279 (East end of Common Room, solace.are) (too long in one area).
+Mon Nov 23 17:15:34 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 4 of 6 in 6 hours).
