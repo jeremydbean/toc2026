@@ -159,13 +159,18 @@ class UntestedPathLiveTests(unittest.TestCase):
                 player.sync("scroll 0")
                 player.send("quit")
                 self.assertTrue(player.wait_closed())
-            make(mud, "Zrenold")
+            # The old name stays its character's (review of 2b6b5826d,
+            # 2026-11-23): it leads to Zrennew's password, never a new
+            # character (tests/test_rename_identity.py plays the rest).
+            with mud.connect(timeout=120) as again:
+                again.expect("by what name", "name:", "what is your name")
+                again.send("Zrenold")
+                self.assertEqual(again.expect("password", "right"), "password")
             kept = int(re.search(r"(?m)^Serial (\d+)$", saved(mud, "Zrennew")).group(1))
-            fresh = int(re.search(r"(?m)^Serial (\d+)$", saved(mud, "Zrenold")).group(1))
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
         self.assertEqual(moved, serial, "the renamed file carries the serial")
         self.assertEqual(kept, serial, "a restart's index finds it under the new name")
-        self.assertNotEqual(fresh, serial, "the old name, made again, is somebody else")
+        self.assertFalse((mud.player_dir / "Zrenold").exists(), "the old name was not made again")
         self.assertNotIn("Zrennew's serial", log)
 
 

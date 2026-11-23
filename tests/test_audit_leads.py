@@ -286,7 +286,8 @@ class StateSyncDeployLockTests(unittest.TestCase):
             lock.write_text("")
             env = dict(os.environ, TOC_ROOT=str(live), STATE_REPO=str(root / "state"),
                        REMOTE=str(bare), BRANCH="main", GIT_SSH_KEY=str(key),
-                       LOCK_FILE=str(root / "sync.lock"), TOC_DEPLOY_LOCK=str(lock))
+                       LOCK_FILE=str(root / "sync.lock"), TOC_DEPLOY_LOCK=str(lock),
+                       TOC_SYNC_STATE_DIR=str(root / "sync-state"))
 
             with open(lock, "w") as held:
                 fcntl.flock(held, fcntl.LOCK_EX)
@@ -319,14 +320,16 @@ class StateSyncDeployLockTests(unittest.TestCase):
             env = dict(os.environ, TOC_ROOT=str(root / "live"), STATE_REPO=str(root / "state"),
                        REMOTE=str(root / "remote.git"), BRANCH="main",
                        GIT_SSH_KEY=str(root / "key"), LOCK_FILE=str(root / "sync.lock"),
-                       TOC_DEPLOY_LOCK=str(lock))
+                       TOC_DEPLOY_LOCK=str(lock), TOC_SYNC_STATE_DIR=str(root / "sync-state"))
             source = script.read_text()
             # The script's own lock block, run alone: the clone and fetch
             # before it need a remote this test does not build.
             block = source[source.index('DEPLOY_LOCK="${TOC_DEPLOY_LOCK'):
-                           source.index('for d in $STATE_DIRS; do')]
+                           source.index('# --- the drop guard')]
             probe = root / "probe.sh"
-            probe.write_text("set -eu\n" + block + 'echo "copied"\n')
+            # skip() is the script's own: a skip writes a receipt and exits 0.
+            helpers = 'RESULT=x; REASON=x; skip() { RESULT=skipped; REASON="$1"; echo "$1"; exit 0; }\n'
+            probe.write_text("set -eu\n" + helpers + block + 'echo "copied"\n')
             result = subprocess.run(["sh", str(probe)], env=env, capture_output=True, text=True)
             lock.chmod(0o600)
 

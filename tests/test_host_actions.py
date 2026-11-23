@@ -424,7 +424,8 @@ class StateSyncHealingTests(unittest.TestCase):
         self.env = dict(os.environ, TOC_ROOT=str(self.live), STATE_REPO=str(self.repo),
                         REMOTE=f"file://{self.bare}", BRANCH="main", GIT_SSH_KEY=str(key),
                         LOCK_FILE=str(root / "sync.lock"), TOC_DEPLOY_LOCK=str(root / "d.lock"),
-                        TOC_HOST_ACTION_RESULTS=str(self.results))
+                        TOC_HOST_ACTION_RESULTS=str(self.results),
+                        TOC_SYNC_STATE_DIR=str(root / "sync-state"))
 
     def tearDown(self) -> None:
         self._tmp.cleanup()

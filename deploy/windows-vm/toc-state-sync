@@ -259,7 +259,9 @@ if [ -r "$DEPLOY_LOCK" ]; then
 elif [ -e "$DEPLOY_LOCK" ]; then
     # A lock that exists but cannot be read cannot be asked: fail closed
     # rather than copy past a deploy that may hold it (review, 2026-10-22).
-    skip "cannot read $DEPLOY_LOCK; skipping this sync"
+    RESULT=skipped; REASON="cannot read $DEPLOY_LOCK; skipping this sync"
+    echo "$REASON" >&2
+    exit 0
 fi
 
 # --- the drop guard (see MAX_DROP_PCT above), before anything is copied ---

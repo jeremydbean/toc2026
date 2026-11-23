@@ -126,7 +126,8 @@ class BackupSourceTests(unittest.TestCase):
             env = dict(os.environ, TOC_ROOT=str(live), STATE_REPO=str(root / "state"),
                        REMOTE=str(bare), BRANCH="main", GIT_SSH_KEY=str(key),
                        LOCK_FILE=str(root / "sync.lock"),
-                       TOC_DEPLOY_LOCK=str(root / "deploy.lock"))
+                       TOC_DEPLOY_LOCK=str(root / "deploy.lock"),
+                       TOC_SYNC_STATE_DIR=str(root / "sync-state"))
             (root / "deploy.lock").write_text("")
             done = subprocess.run(["sh", str(script)], env=env, capture_output=True, text=True)
             tree = subprocess.run(["git", "--git-dir", str(bare), "ls-tree", "-r", "--name-only", "main"],
