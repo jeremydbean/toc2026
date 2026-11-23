@@ -340802,3 +340802,76 @@ Mon Nov 23 00:48:17 2026 :: Connection guard: 98.70.100.241 closed before a pass
 Mon Nov 23 00:48:17 2026 :: Connection guard: 98.70.100.241 closed without a word (strike 3 of 6 in 6 hours).
 Mon Nov 23 00:50:48 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 47 refused in all, pause 5 this week, 4837 minutes left).
 Mon Nov 23 00:55:53 2026 :: Connection guard: 5.161.194.92 closed without a word (strike 4 of 6 in 6 hours).
+Mon Nov 23 00:57:50 2026 :: Sock.sinaddr:  172.58.122.42
+Mon Nov 23 00:57:50 2026 :: Loading Ravagger's playerfile
+Mon Nov 23 00:57:51 2026 :: Loading Ravagger's playerfile
+Mon Nov 23 00:57:51 2026 :: Ravagger@172.58.122.42 has connected.
+Mon Nov 23 00:57:59 2026 :: Log Ravagger [4208]: arrived (Altar of the Temple of Devota.) from 0
+Mon Nov 23 00:58:06 2026 :: Treasure goblin: vanished from room 2577 (Inside Southeast Watchtower., limbo.are) (too long in one area).
+Mon Nov 23 00:58:13 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:19 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:21 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:24 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:27 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:27 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:28 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:31 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:32 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:33 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:34 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:34 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:35 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:36 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:37 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:38 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:39 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:40 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:41 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:46 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:48 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:49 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:50 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:51 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:52 2026 :: Log Ravagger [4208]: note (arguments withheld)
+Mon Nov 23 00:58:53 2026 :: 172.58.122.42 input spamming!
+Mon Nov 23 00:58:53 2026 :: Log Ravagger [4208]: quit
+Mon Nov 23 00:58:53 2026 :: Ravagger has quit.
+Mon Nov 23 00:58:53 2026 :: [QUIT] Player rejoined the real world.
+Mon Nov 23 00:59:29 2026 :: Sock.sinaddr:  172.58.122.42
+Mon Nov 23 00:59:29 2026 :: Loading Ravagger's playerfile
+Mon Nov 23 00:59:29 2026 :: Loading Ravagger's playerfile
+Mon Nov 23 00:59:29 2026 :: Ravagger@172.58.122.42 has connected.
+Mon Nov 23 00:59:34 2026 :: Log Ravagger [4208]: arrived (Altar of the Temple of Devota.) from 0
+Mon Nov 23 00:59:52 2026 :: Log Ravagger [4208]: inv
+Mon Nov 23 00:59:54 2026 :: Log Ravagger [4208]: inv
+Mon Nov 23 01:00:06 2026 :: Log Ravagger [4208]: help
+Mon Nov 23 01:00:44 2026 :: Log Ravagger [4208]: sc
+Mon Nov 23 01:00:55 2026 :: Log Ravagger [4208]: spells
+Mon Nov 23 01:00:58 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 2 of 6 in 6 hours).
+Mon Nov 23 01:01:00 2026 :: Log Ravagger [4208]: eq
+Mon Nov 23 01:01:05 2026 :: Log Ravagger [4208]: l
+Mon Nov 23 01:01:10 2026 :: Log Ravagger [4208]: l in pt
+Mon Nov 23 01:01:15 2026 :: Log Ravagger [4208]: l pit
+Mon Nov 23 01:01:20 2026 :: Log Ravagger [4208]: l in pit
+Mon Nov 23 01:01:24 2026 :: Log Ravagger [4208]: l
+Mon Nov 23 01:01:25 2026 :: Log Ravagger [4208]: e
+Mon Nov 23 01:01:25 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4208
+Mon Nov 23 01:01:30 2026 :: Log Ravagger [4207]: u
+Mon Nov 23 01:01:30 2026 :: Log Ravagger [3700]: arrived (Entrance to Mud School) from 4207
+Mon Nov 23 01:01:35 2026 :: Log Ravagger [3700]: e
+Mon Nov 23 01:01:35 2026 :: Log Ravagger [3783]: arrived (A Gigantic Clown Head) from 3700
+Mon Nov 23 01:01:42 2026 :: Log Ravagger [3783]: w
+Mon Nov 23 01:01:42 2026 :: Log Ravagger [3700]: arrived (Entrance to Mud School) from 3783
+Mon Nov 23 01:01:43 2026 :: Log Ravagger [3700]: n
+Mon Nov 23 01:01:43 2026 :: Log Ravagger [3757]: arrived (A Room in Mud School) from 3700
+Mon Nov 23 01:01:45 2026 :: Log Ravagger [3757]: e
+Mon Nov 23 01:01:45 2026 :: Log Ravagger [3759]: arrived (Soulcrusher's Guild Room) from 3757
+Mon Nov 23 01:01:49 2026 :: Log Ravagger [3759]: sk
+Mon Nov 23 01:01:54 2026 :: Log Ravagger [3759]: sc
+Mon Nov 23 01:02:08 2026 :: Log Ravagger [3759]: l
+Mon Nov 23 01:02:10 2026 :: Log Ravagger [3759]: w
+Mon Nov 23 01:02:10 2026 :: Log Ravagger [3757]: arrived (A Room in Mud School) from 3759
+Mon Nov 23 01:02:11 2026 :: Log Ravagger [3757]: affects off: armor
+Mon Nov 23 01:02:12 2026 :: Log Ravagger [3757]: w
+Mon Nov 23 01:02:12 2026 :: Log Ravagger [3758]: arrived (Eclipse's Training Room) from 3757
+Mon Nov 23 01:02:17 2026 :: Log Ravagger [3758]: inv

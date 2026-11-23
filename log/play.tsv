@@ -53060,3 +53060,61 @@
 1795389963	sightings	Trentlin	54	4208	dresden.are	mob	6115:1/0/0 17000:1/0/0 17001:1/0/0 17002:2/0/0 17003:1/1/1
 1795389963	sightings	Trentlin	54	4208	dresden.are	item	29360:1/0 29003:2/1 16:1/0 4446:1/0 4445:2/0 4444:1/0 6011:1/0 25039:1/1 14:1/0 13:1/0 17006:1/0 25042:1/1
 1795389963	session	Trentlin	54	4208	dresden.are	quit	1902s	+0 levels	+2435 exp	+169275557 copper	10 kills	1 deaths	3 quests	1208 commands	4 refused	coin: loot 47p 84g 48s 13c, quests 262p 83g 7s 44c, spent 151p 70g	spent on: heal 151p 70g	exp: kills +2442, skilluse +18, recall -25
+1795395479	area	Ravagger	8	4208	dresden.are	-	dresden.are	-1	login
+1795395493	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395499	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395501	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395504	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395507	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395507	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395508	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395511	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395512	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395513	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395514	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395514	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395515	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395516	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395517	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395518	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395519	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395520	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395521	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395526	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395528	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395529	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395530	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395531	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395532	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	note		(withheld)	-	-
+1795395533	sightings	Ravagger	8	4208	dresden.are	mob	4201:1/0/0
+1795395533	session	Ravagger	8	4208	dresden.are	quit	54s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	26 commands	0 refused	coin: none	spent on: none	exp: none
+1795395574	area	Ravagger	8	4208	dresden.are	-	dresden.are	-1	login
+1795395578	laid	-	0	0	-	1040	component	57	a trolls fingernail	13264	solace.are	scatter
+1795395592	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      a small sword // ( 2) a pipeweed bread	-	+
+1795395594	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      a small sword // ( 2) a pipeweed bread	-	+
+1795395606	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	help		SUMMARY // MOVEMENT                            GROUP // north south east west up down       follow group gtell split	-	+
+1795395642	laid	-	0	0	-	1041	component	70	a dragon tooth	11018	ancala.are	scatter
+1795395644	state	Ravagger	8	4208	dresden.are	lvl=8 hp=107/107 mana=247/247 mv=111/111 align=35 exp=17750 coin=9440356 bank=0 qp=0 prac=9 train=2 stash=0/50 remorts=0
+1795395644	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	score		| Name:       Ravagger | Level:       8 | Class:        Monk | // | Played:      3 hours | Sex:      Male | Guild:        Monk | // | Age:        17 years | Race:    Human | Castle:       None |	-	+
+1795395655	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	spells		You know no spells.	-	-
+1795395660	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) a war banner // <worn around neck>  (Glowing) a small necklace	-	+
+1795395665	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795395670	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	look	in pt	You do not see that here.	-	-
+1795395675	cmd	Ravagger	8	4208	dresden.are	standing	100	1	-	look	pit	This is where you put money and items to help Doz expand this shrine and // convert more people to the belief of Mota, lord of the gods.	-	-
+1795395680	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	look	in pit	The donation pit contains: //      Nothing.	-	-
+1795395684	cmd	Ravagger	8	4208	dresden.are	standing	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795395685	cmd	Ravagger	8	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795395690	area	Ravagger	8	3700	school.are	dresden.are	school.are	116	up
+1795395690	cmd	Ravagger	8	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795395690	laid	-	0	0	-	1042	herb	39	a chervil leaf	7103	sewer.are	scatter
+1795395695	cmd	Ravagger	8	3783	school.are	standing	100	0	-	east		A Gigantic Clown Head //   Before you is the largest clowns head you have ever seen, with all the // makeup intact, to include the big red painted on mouth.  This appears	-	+
+1795395702	cmd	Ravagger	8	3700	school.are	standing	100	0	-	west		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,	-	+
+1795395703	cmd	Ravagger	8	3757	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795395705	cmd	Ravagger	8	3759	school.are	standing	100	0	-	east		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with	-	+
+1795395709	cmd	Ravagger	8	3759	school.are	standing	100	0	-	skills		Level  1: dagger              33%      hand to hand        75%       //           recall              75%       // Level  3: kick                63%      	-	+
+1795395714	state	Ravagger	8	3759	school.are	lvl=8 hp=107/107 mana=247/247 mv=106/111 align=35 exp=17750 coin=9440356 bank=0 qp=0 prac=9 train=2 stash=0/50 remorts=0
+1795395714	cmd	Ravagger	8	3759	school.are	standing	100	0	-	score		| Name:       Ravagger | Level:       8 | Class:        Monk | // | Played:      3 hours | Sex:      Male | Guild:        Monk | // | Age:        17 years | Race:    Human | Castle:       None |	-	+
+1795395728	cmd	Ravagger	8	3759	school.are	standing	100	0	-	look		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with	-	+
+1795395730	cmd	Ravagger	8	3757	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the	-	+
+1795395732	cmd	Ravagger	8	3758	school.are	standing	100	0	-	west		Eclipse's Training Room //   You are in Eclipse's Training Room.  Around you are all sorts of physical // and mental training tools.  The whole room is filled with magic, holiness, 	-	+
+1795395737	cmd	Ravagger	8	3758	school.are	standing	100	0	-	inventory		You are carrying: //      a small sword // ( 2) a pipeweed bread	-	+
