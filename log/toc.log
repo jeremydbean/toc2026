@@ -344732,3 +344732,4 @@ Mon Nov 23 21:13:55 2026 :: Backups: 2 old archive(s) expired; the newest 6 are 
 Mon Nov 23 21:13:55 2026 :: Automated backup complete.
 Mon Nov 23 21:13:56 2026 :: Daily backup complete.
 Mon Nov 23 21:14:06 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 4 of 6 in 6 hours).
+Mon Nov 23 21:19:11 2026 :: Connection guard: refused 1 connection from 178.156.187.238 (paused; 27 refused in all, pause 4 this week, 2231 minutes left).
