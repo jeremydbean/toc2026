@@ -48,10 +48,10 @@ List spend 4 0 buy
 List spend 10000 0 other
 End
 Day 2026-11-23
-Played 2739
+Played 3046
 Level 8 9 1
-Exp 2608 51
-Kills 14
+Exp 2766 51
+Kills 16
 Deaths 1
 Close 0
 Quests 0 0
@@ -61,8 +61,8 @@ List achv 5 0 Members Only
 List achv 5 0 Not Quite Immortal
 List skill 63 64 kick
 List skill 75 78 hand to hand
-List area 1031 0 City of Dresden
-List area 667 0 Mud School
+List area 1129 0 City of Dresden
+List area 876 0 Mud School
 List area 71 0 Social Club
 List area 10 0 Limbo
 List area 6 0 Continental Drift
@@ -76,11 +76,11 @@ List item 1 0 a queens black key
 List item 1 0 a sub issue helmet
 List item 1 0 a sub issue cape
 List item 2 0 a pair of sub issue boots
-List item 2 0 a sub issue bracer
+List item 3 0 a sub issue bracer
 List item 1 0 a pair of sub issue leggings
 List item 1 0 a sub issue belt
-More item 3
-List earn 264 0 loot
-List spend 59 0 buy
+More item 8
+List earn 275 0 loot
+List spend 107 0 buy
 End
 #END

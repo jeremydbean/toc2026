@@ -342977,3 +342977,141 @@ Mon Nov 23 01:47:06 2026 :: Log Ravagger [3721]: arrived (The End of Mud School!
 Mon Nov 23 01:47:12 2026 :: Log Ravagger [3721]: con gob
 Mon Nov 23 01:47:15 2026 :: Log Ravagger [3721]: k go
 Mon Nov 23 01:47:18 2026 :: Log Ravagger [3721]: kick
+Mon Nov 23 01:47:26 2026 :: Log Ravagger [3721]: kick
+Mon Nov 23 01:47:29 2026 :: Log Ravagger [3721]: kick
+Mon Nov 23 01:47:30 2026 :: Log Ravagger [3721]: killed the educated goblin
+Mon Nov 23 01:47:30 2026 :: Log Ravagger [3721]: coin +1 copper
+Mon Nov 23 01:47:30 2026 :: Log Ravagger [3721]: coin +6 copper
+Mon Nov 23 01:47:36 2026 :: Log Ravagger [3721]: wear dip
+Mon Nov 23 01:47:38 2026 :: Log Ravagger [3721]: l
+Mon Nov 23 01:47:42 2026 :: Log Ravagger [3721]: op n
+Mon Nov 23 01:47:43 2026 :: Log Ravagger [3721]: n
+Mon Nov 23 01:47:43 2026 :: Log Ravagger [3722]: arrived (South Wall of Arena) from 3721
+Mon Nov 23 01:47:47 2026 :: Log Ravagger [3722]: u
+Mon Nov 23 01:47:47 2026 :: Log Ravagger [3760]: arrived (A Safe Room) from 3722
+Mon Nov 23 01:47:48 2026 :: Log Ravagger [3760]: u
+Mon Nov 23 01:47:48 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 3760
+Mon Nov 23 01:47:50 2026 :: Log Ravagger [4207]: w
+Mon Nov 23 01:47:50 2026 :: Log Ravagger [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Mon Nov 23 01:47:52 2026 :: Log Ravagger [4208]: sle
+Mon Nov 23 01:47:54 2026 :: Log Ravagger [4208]: i
+Mon Nov 23 01:47:57 2026 :: Log Ravagger [4208]: eq
+Mon Nov 23 01:48:06 2026 :: Log Ravagger [4208]: st
+Mon Nov 23 01:48:09 2026 :: Log Ravagger [4208]: buff
+Mon Nov 23 01:48:12 2026 :: Log Ravagger [4208]: e
+Mon Nov 23 01:48:12 2026 :: Log Ravagger [4207]: arrived (Before the Altar.) from 4208
+Mon Nov 23 01:48:14 2026 :: Log Ravagger [4207]: buff
+Mon Nov 23 01:48:17 2026 :: Log Ravagger [4207]: list
+Mon Nov 23 01:48:19 2026 :: Log Ravagger [4207]: e
+Mon Nov 23 01:48:19 2026 :: Log Ravagger [4202]: arrived (Halls of Healing.) from 4207
+Mon Nov 23 01:48:21 2026 :: Log Ravagger [4202]: n
+Mon Nov 23 01:48:21 2026 :: Log Ravagger [4203]: arrived (Halls of Healing.) from 4202
+Mon Nov 23 01:48:22 2026 :: Log Ravagger [4203]: n
+Mon Nov 23 01:48:22 2026 :: Log Ravagger [4210]: arrived (Room of Peace and Healing.) from 4203
+Mon Nov 23 01:48:23 2026 :: Log Ravagger [4210]: n
+Mon Nov 23 01:48:24 2026 :: Log Ravagger [4210]: s
+Mon Nov 23 01:48:24 2026 :: Log Ravagger [4203]: arrived (Halls of Healing.) from 4210
+Mon Nov 23 01:48:24 2026 :: Log Ravagger [4203]: s
+Mon Nov 23 01:48:24 2026 :: Log Ravagger [4202]: arrived (Halls of Healing.) from 4203
+Mon Nov 23 01:48:26 2026 :: Log Ravagger [4202]: e
+Mon Nov 23 01:48:26 2026 :: Log Ravagger [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Mon Nov 23 01:48:28 2026 :: Log Ravagger [4201]: e
+Mon Nov 23 01:48:28 2026 :: Log Ravagger [2427]: arrived (Main Processional.) from 4201
+Mon Nov 23 01:48:29 2026 :: Log Ravagger [2427]: n
+Mon Nov 23 01:48:29 2026 :: Log Ravagger [2404]: arrived (Southern Oak Tree Square.) from 2427
+Mon Nov 23 01:48:29 2026 :: Treasure goblin: vanished from room 7399 (On the walls of the Abyss, sewer.are) (too long in one area).
+Mon Nov 23 01:48:31 2026 :: Log Ravagger [2404]: n
+Mon Nov 23 01:48:31 2026 :: Log Ravagger [2401]: arrived (Center of Oak Tree Square.) from 2404
+Mon Nov 23 01:48:41 2026 :: Log Ravagger [2401]: pra
+Mon Nov 23 01:49:13 2026 :: Log Ravagger [2401]: exa table
+Mon Nov 23 01:49:17 2026 :: Log Ravagger [2401]: l in tab
+Mon Nov 23 01:49:26 2026 :: Log Ravagger [2401]: list
+Mon Nov 23 01:49:35 2026 :: Log Ravagger [2401]: b hat
+Mon Nov 23 01:49:35 2026 :: Log Ravagger [2401]: copper -400
+Mon Nov 23 01:49:35 2026 :: Log Ravagger [2401]: bought a pilgrim's hat (vnum 29847) for 400 copper from Goodwife Prudence the cook
+Mon Nov 23 01:49:42 2026 :: Log Ravagger [2401]: compare hat
+Mon Nov 23 01:49:54 2026 :: Log Ravagger [2401]: wear hat
+Mon Nov 23 01:49:58 2026 :: Log Ravagger [2401]: drop hel
+Mon Nov 23 01:50:01 2026 :: Log Ravagger [2401]: i
+Mon Nov 23 01:50:04 2026 :: Log Ravagger [2401]: drop ke
+Mon Nov 23 01:50:06 2026 :: Log Ravagger [2401]: l
+Mon Nov 23 01:50:08 2026 :: Log Ravagger [2401]: list
+Mon Nov 23 01:50:12 2026 :: Log Ravagger [2401]: b tur
+Mon Nov 23 01:50:12 2026 :: Log Ravagger [2401]: copper -400
+Mon Nov 23 01:50:12 2026 :: Log Ravagger [2401]: bought a plate of roast turkey (vnum 29848) for 400 copper from Goodwife Prudence the cook
+Mon Nov 23 01:50:17 2026 :: Log Ravagger [2401]: eat tur
+Mon Nov 23 01:50:23 2026 :: Log Ravagger [2401]: sc
+Mon Nov 23 01:50:25 2026 :: Log Ravagger [2401]: l
+Mon Nov 23 01:50:29 2026 :: Log Ravagger [2401]: d
+Mon Nov 23 01:50:29 2026 :: Log Ravagger [4649]: arrived (Entrance to the Hall of Hero's.) from 2401
+Mon Nov 23 01:50:37 2026 :: Log Ravagger [4649]: (social) lu
+Mon Nov 23 01:50:39 2026 :: Log Ravagger [4649]: u
+Mon Nov 23 01:50:39 2026 :: Log Ravagger [2401]: arrived (Center of Oak Tree Square.) from 4649
+Mon Nov 23 01:50:41 2026 :: Log Ravagger [2401]: w
+Mon Nov 23 01:50:41 2026 :: Log Ravagger [2405]: arrived (Western Oak Tree Square.) from 2401
+Mon Nov 23 01:50:44 2026 :: Log Ravagger [2405]: e
+Mon Nov 23 01:50:44 2026 :: Log Ravagger [2401]: arrived (Center of Oak Tree Square.) from 2405
+Mon Nov 23 01:50:46 2026 :: Log Ravagger [2401]: n
+Mon Nov 23 01:50:46 2026 :: Log Ravagger [2402]: arrived (Northern Oak Tree Square.) from 2401
+Mon Nov 23 01:50:58 2026 :: Log Ravagger [2402]: pr
+Mon Nov 23 01:51:04 2026 :: Log Ravagger [2402]: n
+Mon Nov 23 01:51:04 2026 :: Log Ravagger [2415]: arrived (Main Processional.) from 2402
+Mon Nov 23 01:51:07 2026 :: Log Ravagger [2415]: pr
+Mon Nov 23 01:51:09 2026 :: Log Ravagger [2415]: n
+Mon Nov 23 01:51:09 2026 :: Log Ravagger [2496]: arrived (Main Processional.) from 2415
+Mon Nov 23 01:51:11 2026 :: Log Ravagger [2496]: n
+Mon Nov 23 01:51:11 2026 :: Log Ravagger [2416]: arrived (Main Processional.) from 2496
+Mon Nov 23 01:51:14 2026 :: Log Ravagger [2416]: n
+Mon Nov 23 01:51:14 2026 :: Log Ravagger [2417]: arrived (Main Processional.) from 2416
+Mon Nov 23 01:51:16 2026 :: Log Ravagger [2417]: (refused) nn
+Mon Nov 23 01:51:18 2026 :: Log Ravagger [2417]: n
+Mon Nov 23 01:51:18 2026 :: Log Ravagger [2418]: arrived (Gates to the Palace.) from 2417
+Mon Nov 23 01:51:20 2026 :: Log Ravagger [2418]: n
+Mon Nov 23 01:51:21 2026 :: Log Ravagger [2418]: s
+Mon Nov 23 01:51:21 2026 :: Log Ravagger [2417]: arrived (Main Processional.) from 2418
+Mon Nov 23 01:51:22 2026 :: Log Ravagger [2417]: s
+Mon Nov 23 01:51:22 2026 :: Log Ravagger [2416]: arrived (Main Processional.) from 2417
+Mon Nov 23 01:51:23 2026 :: Log Ravagger [2416]: s
+Mon Nov 23 01:51:23 2026 :: Log Ravagger [2496]: arrived (Main Processional.) from 2416
+Mon Nov 23 01:51:25 2026 :: Log Ravagger [2496]: s
+Mon Nov 23 01:51:25 2026 :: Log Ravagger [2415]: arrived (Main Processional.) from 2496
+Mon Nov 23 01:51:26 2026 :: Log Ravagger [2415]: s
+Mon Nov 23 01:51:26 2026 :: Log Ravagger [2402]: arrived (Northern Oak Tree Square.) from 2415
+Mon Nov 23 01:51:27 2026 :: Log Ravagger [2402]: s
+Mon Nov 23 01:51:27 2026 :: Log Ravagger [2401]: arrived (Center of Oak Tree Square.) from 2402
+Mon Nov 23 01:51:32 2026 :: Log Ravagger [2401]: s
+Mon Nov 23 01:51:32 2026 :: Log Ravagger [2404]: arrived (Southern Oak Tree Square.) from 2401
+Mon Nov 23 01:51:33 2026 :: Log Ravagger [2404]: s
+Mon Nov 23 01:51:33 2026 :: Log Ravagger [2427]: arrived (Main Processional.) from 2404
+Mon Nov 23 01:51:34 2026 :: Log Ravagger [2427]: s
+Mon Nov 23 01:51:34 2026 :: Log Ravagger [2428]: arrived (Main Processional.) from 2427
+Mon Nov 23 01:51:35 2026 :: Log Ravagger [2428]: e
+Mon Nov 23 01:51:36 2026 :: Log Ravagger [2428]: s
+Mon Nov 23 01:51:36 2026 :: Log Ravagger [2429]: arrived (Bridge of the Mermaids.) from 2428
+Mon Nov 23 01:51:39 2026 :: Log Ravagger [2429]: s
+Mon Nov 23 01:51:39 2026 :: Log Ravagger [2430]: arrived (Main Processional.) from 2429
+Mon Nov 23 01:51:41 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 01:51:41 2026 :: Log Ravagger [2430]: e
+Mon Nov 23 01:51:41 2026 :: Log Ravagger [2562]: arrived (The Pet Shop of Exotic Creatures.) from 2430
+Mon Nov 23 01:51:46 2026 :: Log Ravagger [2562]: w
+Mon Nov 23 01:51:46 2026 :: Log Ravagger [2430]: arrived (Main Processional.) from 2562
+Mon Nov 23 01:51:47 2026 :: Log Ravagger [2430]: s
+Mon Nov 23 01:51:47 2026 :: Log Ravagger [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Mon Nov 23 01:51:51 2026 :: Log Ravagger [2431]: w
+Mon Nov 23 01:51:51 2026 :: Log Ravagger [2584]: arrived (Wall Road.) from 2431
+Mon Nov 23 01:51:53 2026 :: Log Ravagger [2584]: w
+Mon Nov 23 01:51:53 2026 :: Log Ravagger [2583]: arrived (Wall Road.) from 2584
+Mon Nov 23 01:52:01 2026 :: Log Ravagger [2583]: n
+Mon Nov 23 01:52:01 2026 :: Log Ravagger [4700]: arrived (Entrance to Dresden Morgue) from 2583
+Mon Nov 23 01:52:02 2026 :: Log Ravagger [4700]: n
+Mon Nov 23 01:52:04 2026 :: Log Ravagger [4700]: s
+Mon Nov 23 01:52:04 2026 :: Log Ravagger [2583]: arrived (Wall Road.) from 4700
+Mon Nov 23 01:52:06 2026 :: Log Ravagger [2583]: s
+Mon Nov 23 01:52:06 2026 :: Log Ravagger [2582]: arrived (Wall Road.) from 2583
+Mon Nov 23 01:52:08 2026 :: Log Ravagger [2582]: s
+Mon Nov 23 01:52:08 2026 :: Log Ravagger [2581]: arrived (Wall Road.) from 2582
+Mon Nov 23 01:52:12 2026 :: Log Ravagger [2581]: w
+Mon Nov 23 01:52:12 2026 :: Log Ravagger [2580]: arrived (Wall Road.) from 2581
+Mon Nov 23 01:52:16 2026 :: Log Ravagger [2580]: con ci
+Mon Nov 23 01:52:18 2026 :: Log Ravagger [2580]: w
+Mon Nov 23 01:52:18 2026 :: Log Ravagger [2579]: arrived (Wall Road.) from 2580

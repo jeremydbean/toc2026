@@ -54654,3 +54654,112 @@
 1795398432	cmd	Ravagger	9	3721	school.are	standing	100	0	-	consider	gob	The educated goblin is well below your level. // The educated goblin has about a third of your hit points. // Blow for blow, you would need about 3 rounds to bring the educated goblin down; it would need over a hundred rounds for you.	-	+
 1795398435	cmd	Ravagger	9	3721	school.are	standing	100	0	-	kill	go	Your punch misses the educated goblin. // Your punch grazes the educated goblin.	-	-
 1795398438	cmd	Ravagger	9	3721	school.are	fighting	100	0	fight	kick		Your kick scratches the educated goblin.	-	-
+1795398443	laid	-	0	0	-	1245	herb	49	a pomegranate	16072	pirate.are	scatter
+1795398443	laid	-	0	0	-	1246	herb	40	a clove	16028	pirate.are	scatter
+1795398446	cmd	Ravagger	9	3721	school.are	fighting	100	0	fight	kick		Your kick grazes the educated goblin.	-	-
+1795398449	cmd	Ravagger	9	3721	school.are	fighting	100	0	fight	kick		Your kick scratches the educated goblin.	-	-
+1795398450	got	Ravagger	9	3721	school.are	3715	a mud school diploma	treasure	0	0	autoloot	corpse of the educated goblin
+1795398450	coin	Ravagger	9	3721	school.are	+1	loot	autoloot	corpse of the educated goblin	9440518
+1795398450	coin	Ravagger	9	3721	school.are	+6	loot	(violence)	corpse of the educated goblin	9440524
+1795398456	cmd	Ravagger	9	3721	school.are	standing	100	0	-	wear	dip	You hold a mud school diploma in your hands.	-	-
+1795398458	cmd	Ravagger	9	3721	school.are	standing	100	0	-	look		The End of Mud School! //   This is a very bright room, with a marble pedestal in the center.  Behind // the pedestal stands a person cloaked in Silver.  Tapestries flow from every	-	+
+1795398462	cmd	Ravagger	9	3721	school.are	standing	100	0	-	open	n	Ok.	-	-
+1795398463	cmd	Ravagger	9	3722	school.are	standing	100	0	-	north		South Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are	-	+
+1795398467	cmd	Ravagger	9	3760	school.are	standing	100	0	-	up		A Safe Room //   You are in a safe room, away from all the mean rabbits and snails of the Arena. // You can rest here, and go up to go back to the Temple of Devota.	-	+
+1795398468	area	Ravagger	9	4207	dresden.are	school.are	dresden.are	645	up
+1795398468	cmd	Ravagger	9	4207	dresden.are	standing	100	0	-	up		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795398470	cmd	Ravagger	9	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795398472	cmd	Ravagger	9	4208	dresden.are	standing	100	0	-	sleep		You go to sleep.	-	-
+1795398474	cmd	Ravagger	9	4208	dresden.are	sleeping	100	0	-	inventory		You are carrying: //      a key //      a buffalo water skin	-	+
+1795398477	cmd	Ravagger	9	4208	dresden.are	sleeping	100	0	-	equipment		You are using: // <used as light>     a hooded brass lantern // <worn around neck>  a sub issue cloak	-	+
+1795398486	cmd	Ravagger	9	4208	dresden.are	sleeping	100	0	-	stand		You wake and stand up.	-	-
+1795398489	cmd	Ravagger	9	4208	dresden.are	standing	100	0	-	buff		There is nobody here offering that.	-	-
+1795398492	cmd	Ravagger	9	4207	dresden.are	standing	100	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795398494	cmd	Ravagger	9	4207	dresden.are	standing	100	0	-	buff		There is nobody here offering that.	-	-
+1795398497	cmd	Ravagger	9	4207	dresden.are	standing	100	0	-	list		You can't do that here.	-	-
+1795398499	cmd	Ravagger	9	4202	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795398501	cmd	Ravagger	9	4203	dresden.are	standing	100	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795398502	cmd	Ravagger	9	4210	dresden.are	standing	100	0	-	north		Room of Peace and Healing. //   There are two cots in this room as well as a wash basin and a few towels. // [Exits: south]	-	-
+1795398503	cmd	Ravagger	9	4210	dresden.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1795398504	cmd	Ravagger	9	4203	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795398504	cmd	Ravagger	9	4202	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795398506	cmd	Ravagger	9	4201	dresden.are	standing	100	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795398508	cmd	Ravagger	9	2427	dresden.are	standing	100	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795398509	cmd	Ravagger	9	2404	dresden.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795398511	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795398514	laid	-	0	0	-	1250	herb	46	a juniper berry	10105	glitter.are	scatter
+1795398514	laid	-	0	0	-	1251	component	77	a vial of medusa eye fluid	2365	mahntor.are	scatter
+1795398521	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	practice		dagger              33%  flail                6%  whip                15%   // You have 13 practice sessions left.	-	-
+1795398553	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	examine	table	Trestle tables pushed end to end and buried under platters: roast turkey, // sweet potatoes, cranberries, cornbread and more pumpkin pie than any town // could eat.  Goodwife Prudence keeps adding to it.  A good meal, she says,	-	+
+1795398557	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	look	in tab	That is not a container.	-	-
+1795398566	laid	-	0	0	-	1252	herb	46	a juniper berry	28027	pyramid.are	scatter
+1795398566	laid	-	0	0	-	1253	herb	46	a juniper berry	28039	pyramid.are	scatter
+1795398566	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	list		[Lv Price] Item // [ 0         2s] a slice of pumpkin pie. // [ 0         4s] a plate of roast turkey.	-	+
+1795398575	coin	Ravagger	9	2401	dresden.are	-400	spent	buy	Goodwife Prudence the cook	9440124
+1795398575	got	Ravagger	9	2401	dresden.are	29847	a pilgrim's hat	armor	0	400	buy	Goodwife Prudence the cook
+1795398575	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	buy	hat	You buy a pilgrim's hat.	-	-
+1795398582	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	compare	hat	A) a pilgrim's hat (level 0) // B) a sub issue helmet (level 0), worn // Slot: head.  Your damage comes from weapons.	-	+
+1795398594	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	wear	hat	You stop using a sub issue helmet. // You wear a pilgrim's hat on your head.	-	-
+1795398598	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	drop	hel	You drop a sub issue helmet. // A sub issue helmet burst into flames as it hits the ground.	-	-
+1795398601	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	inventory		You are carrying: //      a key //      a buffalo water skin	-	+
+1795398604	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	drop	ke	You drop a key.	-	-
+1795398606	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	look		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795398608	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	list		[Lv Price] Item // [ 0         2s] a slice of pumpkin pie. // [ 0         4s] a plate of roast turkey.	-	+
+1795398612	coin	Ravagger	9	2401	dresden.are	-400	spent	buy	Goodwife Prudence the cook	9439724
+1795398612	got	Ravagger	9	2401	dresden.are	29848	a plate of roast turkey	pill	0	400	buy	Goodwife Prudence the cook
+1795398612	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	buy	tur	You buy a plate of roast turkey.	-	-
+1795398617	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	eat	tur	You eat a plate of roast turkey. // Your muscles surge with heightened power! // You feel fully refreshed!	-	-
+1795398618	laid	-	0	0	-	1256	herb	46	a juniper berry	2385	mahntor.are	scatter
+1795398618	laid	-	0	0	-	1257	herb	37	a sprig of catnip	2341	mahntor.are	scatter
+1795398618	laid	-	0	0	-	1258	component	60	a rakshasa's claw	9167	dylan.are	scatter
+1795398623	state	Ravagger	9	2401	dresden.are	lvl=9 hp=119/119 mana=287/287 mv=148/148 align=64 exp=20465 coin=9439724 bank=0 qp=0 prac=13 train=0 stash=0/50 remorts=0
+1795398623	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	score		| Name:       Ravagger | Level:       9 | Class:        Monk | // | Played:      4 hours | Sex:      Male | Guild:        Monk | // | Age:        17 years | Race:    Human | Castle:       None |	-	+
+1795398625	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	look		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795398629	cmd	Ravagger	9	4649	dresden.are	standing	100	0	-	down		Entrance to the Hall of Hero's. //   As you reach the end of the staircase you walk into a large chamber. // You notice that the room is several times the size of the tree itself	-	+
+1795398637	cmd	Ravagger	9	4649	dresden.are	standing	100	0	-	(social)		Your hormones begin to rage.	-	-
+1795398639	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	up		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795398641	cmd	Ravagger	9	2405	dresden.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1795398644	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	east		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795398646	cmd	Ravagger	9	2402	dresden.are	standing	100	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1795398658	cmd	Ravagger	9	2402	dresden.are	standing	100	0	-	practice		dagger              33%  flail                6%  whip                15%   // dodge               61%  hand to hand        78%  kick                64%   // meditation           1%  recall              75%  	-	+
+1795398664	cmd	Ravagger	9	2415	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795398667	cmd	Ravagger	9	2415	dresden.are	standing	100	0	-	practice		dagger              33%  flail                6%  whip                15%   // dodge               61%  hand to hand        78%  kick                64%   // meditation           1%  recall              75%  	-	+
+1795398669	cmd	Ravagger	9	2496	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795398671	cmd	Ravagger	9	2416	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795398674	cmd	Ravagger	9	2417	dresden.are	standing	100	0	-	north		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795398676	refused	Ravagger	9	2417	dresden.are	standing	100	0	-	(unknown)		Huh?	refusal:unknown-command	-
+1795398678	cmd	Ravagger	9	2418	dresden.are	standing	100	0	-	north		Gates to the Palace. //   You are standing before the huge gates that lead into the Palace of Drakkar. // The two burly guards are eyeing you warily.	-	+
+1795398680	cmd	Ravagger	9	2418	dresden.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1795398681	cmd	Ravagger	9	2417	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795398682	cmd	Ravagger	9	2416	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795398683	cmd	Ravagger	9	2496	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795398685	cmd	Ravagger	9	2415	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795398686	cmd	Ravagger	9	2402	dresden.are	standing	100	0	-	south		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1795398687	cmd	Ravagger	9	2401	dresden.are	standing	100	0	-	south		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795398692	cmd	Ravagger	9	2404	dresden.are	standing	100	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795398693	cmd	Ravagger	9	2427	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795398694	cmd	Ravagger	9	2428	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795398695	cmd	Ravagger	9	2428	dresden.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795398696	cmd	Ravagger	9	2429	dresden.are	standing	100	0	-	south		Bridge of the Mermaids. //   Once you reach the center of the bridge you understand how it got its name. // On either side of the bridge there is a statue of a mermaid build into the	-	+
+1795398699	spotted	Ravagger	9	2430	dresden.are	924	herb	36	a belladonna plant	10348	1	scatter	arrive
+1795398699	cmd	Ravagger	9	2430	dresden.are	standing	100	0	-	south		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795398701	area	Ravagger	9	2562	limbo.are	dresden.are	limbo.are	233	east
+1795398701	passed	Ravagger	9	2562	limbo.are	924	herb	36	a belladonna plant	10350	2	1	scatter	2430	left
+1795398701	cmd	Ravagger	9	2562	limbo.are	standing	100	0	-	east		The Pet Shop of Exotic Creatures. //   This is the pet shop of exotic creatures.  There are a wide variety of // animals and beasts from around the world here.	-	+
+1795398706	area	Ravagger	9	2430	dresden.are	limbo.are	dresden.are	5	west
+1795398706	cmd	Ravagger	9	2430	dresden.are	standing	100	0	-	west		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795398707	cmd	Ravagger	9	2431	dresden.are	standing	100	0	-	south		Inside the Southern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with	-	+
+1795398711	area	Ravagger	9	2584	limbo.are	dresden.are	limbo.are	5	west
+1795398711	cmd	Ravagger	9	2584	limbo.are	standing	100	0	-	west		Wall Road. //   The light fights away the last shreds of darkness. // You can see the south gate to the east.	-	+
+1795398713	cmd	Ravagger	9	2583	limbo.are	standing	100	0	-	west		Wall Road. //   The darkness begins to fade away as you go farther east.  You feel as though // someone is watching you from the shadows. To the north is the long abandoned	-	+
+1795398721	area	Ravagger	9	4700	dresden.are	limbo.are	dresden.are	10	north
+1795398721	cmd	Ravagger	9	4700	dresden.are	standing	100	0	-	north		Entrance to Dresden Morgue //   You stand before the entrance to Dresden's Morgue. The favorite hangout of // the area's Necromancy class.	-	+
+1795398722	cmd	Ravagger	9	4700	dresden.are	standing	100	0	-	north		Someone draws its sword and says, 'You will not pass.'	-	-
+1795398724	area	Ravagger	9	2583	limbo.are	dresden.are	limbo.are	3	south
+1795398724	cmd	Ravagger	9	2583	limbo.are	standing	100	2	-	south		Wall Road. //   The darkness begins to fade away as you go farther east.  You feel as though // someone is watching you from the shadows. To the north is the long abandoned	-	+
+1795398726	cmd	Ravagger	9	2582	limbo.are	standing	100	0	-	south		Wall Road. //   The alley is shrouded in flitting shadows, and the darkness that pervades // this area sends a chill up your spine.	-	+
+1795398728	cmd	Ravagger	9	2581	limbo.are	standing	100	0	-	south		Wall Road. //   The alley is shrouded in flitting shadows, and the darkness that pervades // this area sends a chill up your spine.	-	+
+1795398732	cmd	Ravagger	9	2580	limbo.are	standing	100	0	-	west		Wall Road. //   A cloud passes over the sun, sinking the alley into darkness.  The hair on // your back begins to stick up, and you shake yet it is not cold.	-	+
+1795398736	cmd	Ravagger	9	2580	limbo.are	standing	100	0	-	consider	ci	A citizen of Dresden is about your level. // A citizen of Dresden has about half your hit points. // Blow for blow, you would need about 12 rounds to bring a citizen of Dresden down; she would need about 29 rounds for you.	-	+
+1795398738	cmd	Ravagger	9	2579	limbo.are	standing	100	0	-	west		Wall Road. //   Sunlight shines down on the guard post to the west, as though some God were // blessing the building with their almighty power.	-	+
+1795398739	laid	-	0	0	-	1270	herb	36	a belladonna plant	20598	emerald.are	scatter
