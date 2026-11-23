@@ -3405,10 +3405,18 @@ units were never installed by a deploy. Rules now:
   one GitHub account, so this covers the public repository being deleted
   or rewritten, not the account being lost. The mirror was seeded once with
   full history from the owner's Mac, because the host's clone may be
-  shallow and a shallow clone cannot seed an empty remote. The repository's
-  older `snapshots` (Pi) and `snapshots-vm` (Windows VM) branches hold
-  age-encrypted archives from before this; the Pi's cannot be opened with
-  any key the owner still holds (`tests/test_state_sync_receipts.py`
+  shallow and a shallow clone cannot seed an empty remote -- and even then
+  in steps of 1,500 first-parent commits, because GitHub dropped the single
+  118 MB push ("unexpected disconnect while reading sideband packet").
+  **GitHub Actions is disabled on the mirror** (Settings -> Actions ->
+  "Disable actions"): it carries `.github/workflows/`, so with Actions on
+  it ran Validate and the Docker build on private, metered minutes and
+  emailed their failures. Leave it off. `main` is its default branch, so a
+  plain `git clone` gets the state. Its only deploy key is
+  "toc-player-backup"; the older "ToCPi" key (the owner's Windows machine,
+  pushing age-encrypted archives to a `snapshots-vm` branch) and the
+  `snapshots`/`snapshots-vm` branches were deleted on 2026-11-23 once the
+  mirror was proven (`tests/test_state_sync_receipts.py`
   `test_the_private_mirror_gets_the_same_commit`,
   `test_a_mirror_that_moved_is_never_pushed_over`).
 - **Timers are on the wall clock.** `Persistent=` applies only to
@@ -7907,6 +7915,77 @@ A read of three weeks of logs found these; each is fixed and played by
   abused, so it is unchanged.
 - **A third identical TRAIN, PRACTICE or STASH BUY says it takes a
   count** (`d->repeat == 2`).
+
+## Operations Hand-off, 2026-11-23
+
+Where things stood at the end of the 2026-11-23 backup rollout, checked on
+the host and on GitHub rather than inferred. A new session -- Claude or
+Codex -- should read this before touching backups, monitoring or access.
+
+**What is live.** `toc-auto-deploy` ships main itself once Validate's
+`deploy-gate` passes on a push and nobody is playing, then installs the
+support units (`toc-heartbeat.timer` among them). Nothing needs a manual
+deploy. `ssh toc-oracle` reaches the host from the owner's Windows desktop
+and Mac ("Connecting and shipping from a new session").
+
+**Where player data lives -- every copy plaintext, none needs a key:**
+
+1. The host: `player/`, its snapshots and milestones, corpses, the ledger
+   (`wiki/player-backups.md`).
+2. The public repository, every five minutes (`toc-state-sync`),
+   append-only, never force-pushed.
+3. The private mirror `jeremydbean/toc2026-player-backups`, `main`: the same
+   commit, pushed right after (see "Backups Say How They Went").
+4. The game's own `.tar.gz` archives in `backups/`, on the host only.
+
+There is no encrypted backup and no age key in use; do not add one
+without reading "Backups Say How They Went".
+
+**What watches it.** `toc-ops-summary` every five minutes, served at
+`/api/ops-summary`; a review reads `log/ops-summary.json` first. UptimeRobot,
+alerting the owner by e-mail, all HTTP monitors sending HEAD:
+"Times of Chaos game" (`/api/ready`), "Times of Chaos backups"
+(`?only=public_sync,game_archives,disk,recovery,units`) and "Times of
+Chaos mirror" (`?only=mirror`), plus port monitors on `timesofchaos.com`
+and `:9000`. All five were Up at the end of the day.
+
+**Keys.** On the host, `/srv/toc/.ssh/`: `id_ed25519_state_sync`
+(`SHA256:EYHlyx7l+OF/Kmju2Qb1d4bJX/5DRcspxISSdRVgioM`), the public repo's
+deploy key; `id_ed25519_github_mirror`
+(`SHA256:SO0crPNGLGuPvKz3t7ymrUSQkXbdIXpgsoF/kAXetBc`), the mirror's only
+deploy key. Both exist **only** on the host; a rebuilt host needs new
+deploy keys made and added on GitHub, which costs no data. The owner's
+Mac holds no backup key any more.
+
+**Still open, and the owner's:**
+
+- `jeremy-desktop` (`SHA256:rIEuBB+6/lRC7YNqQrMvWvyJP8K8qZxS0l6bykcG8k0`)
+  is in `/home/ubuntu/.ssh/authorized_keys` and was not accounted for.
+- No copy is held **off** GitHub: losing the account loses both
+  repositories. `git clone --mirror` to a drive the owner holds closes it.
+- The owner's Windows machine may still run the old encrypted-backup task;
+  with "ToCPi" deleted it can no longer push and fails harmlessly. Turning
+  it off there is tidy, not urgent.
+- `~/toc-preserved-backup-2026-09-16/` on the Mac is an age archive no key
+  the owner holds opens; `~/toc-age-identity.key` was pasted into a chat
+  and is treated as exposed. Neither matters to recovery.
+
+**What the day taught, as rules above:** HEAD on monitored routes; a root
+job naming its clone with `-c safe.directory`; a failed oneshot is a
+problem but the summary never judges its own unit; a test skipped on macOS
+is not verified. And for the workflow:
+
+- **A push to main delays the deployer and can cancel a run.** Validate
+  cancels an in-flight run on a new push, and `toc-auto-deploy` waits on
+  CI for the newest code commit. While a fix is waiting to deploy, hold
+  further pushes.
+- **Two agents may be pushing to main.** Run `git checkout -- log/`, then
+  fetch and rebase immediately before every push.
+- **`test_progress_log`'s chase test is flaky** (a 30-second live-combat
+  timing test). When it is the only failure and the change does not touch
+  `src/`, re-run the failed jobs; do not change code for it.
+- **Read exit codes, not pipelines.** `git push ... | tail` reported success
+  for a push GitHub had dropped.
 
 ## Completion Standard
 
