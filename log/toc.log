@@ -344158,3 +344158,5 @@ Mon Nov 23 03:18:21 2026 :: Sock.sinaddr:  40.124.172.8
 Mon Nov 23 03:18:21 2026 :: Connection guard: 40.124.172.8 closed before a password prompt (strike 2 of 6 in 6 hours).
 Mon Nov 23 03:23:07 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 5 of 6 in 6 hours).
 Mon Nov 23 03:27:23 2026 :: Treasure goblin: vanished from room 2449 (Second Pier., dresden.are) (drifting).
+Mon Nov 23 03:28:11 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 61 refused in all, pause 5 this week, 4390 minutes left).
+Mon Nov 23 03:30:32 2026 :: Cartographer: left room 24145 (The Outer Circle of Coven, coven.are) (his visit is over).
