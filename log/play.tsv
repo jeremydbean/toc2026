@@ -53275,3 +53275,291 @@
 1795396338	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
 1795396338	cmd	Trentlin	54	5262	oldthalo.are	standing	77	0	-	east		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads east and west.  It looks	-	+
 1795396339	cmd	Trentlin	54	5263	oldthalo.are	standing	77	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns south	-	+
+1795396339	cmd	Trentlin	54	5264	oldthalo.are	standing	77	0	-	south		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns east	-	+
+1795396339	cmd	Trentlin	54	5265	oldthalo.are	standing	77	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads	-	+
+1795396339	cmd	Trentlin	54	5266	oldthalo.are	standing	77	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads	-	+
+1795396340	cmd	Trentlin	54	5267	oldthalo.are	standing	77	0	-	down		A valley in the dark dwarf forest //   You are in a valley in the dark dwarf forest.  Short black grass grows // around you.  There is a small fox hole in a mound of dirt to the west, and	-	+
+1795396343	cmd	Trentlin	54	5267	oldthalo.are	standing	77	0	-	open	hole	You open a secret door.	-	-
+1795396343	cmd	Trentlin	54	5268	oldthalo.are	standing	77	0	-	west		A small ugly cave //   You see a small cave.  Skeletons of many types of creatures litter the area. // Obviously, no fox lives here!  The oppression makes you want to leave and	-	+
+1795396343	cmd	Trentlin	54	5269	oldthalo.are	standing	77	0	-	south		A small ugly cave //   You are in a small ugly cave.  More skeletons lie around.  It is obvious // that the owner doesn't want you here.  The exit north is still visible.	-	+
+1795396343	cmd	Trentlin	54	5270	oldthalo.are	standing	77	0	-	down		Down the path into a dead end //   You are down the path.  There is no obvious exit in this place, exit the // one back up north.  All around you, you see skeletons.	-	+
+1795396344	cmd	Trentlin	54	5270	oldthalo.are	standing	77	0	-	open	secret	You open a secret door.	-	-
+1795396344	area	Trentlin	54	5100	drow1.are	oldthalo.are	drow1.are	6	down
+1795396344	cmd	Trentlin	54	5100	drow1.are	standing	77	0	-	down		City Entrance //   You are at the entrance to a small underground city. A great adamantite // gate lies open to the west allowing entrance into the city.	-	+
+1795396344	cmd	Trentlin	54	5101	drow1.are	standing	77	0	-	west		City street //   You walk along a highly ornate street going north-south. A large gate // lies to the east while a building lies to the west.	-	+
+1795396344	cmd	Trentlin	54	5123	drow1.are	standing	77	0	-	north		City street //   You walk along a highly ornate city street leading west and south. To the // north is a relatively small house.	-	+
+1795396345	area	Trentlin	54	25164	underdrk.are	drow1.are	underdrk.are	1	run
+1795396345	cmd	Trentlin	54	25153	underdrk.are	standing	77	0	-	run	w 11	City street // [Exits: north east south west] // City street	-	+
+1795396345	cmd	Trentlin	54	25152	underdrk.are	standing	77	0	-	north		The passage in between. //   This corridor is dark, but you can see light to the south.  There is no dust // on the ground here.  On a rock by the lighted corridor to the south you can	-	+
+1795396345	cmd	Trentlin	54	25151	underdrk.are	standing	77	0	-	north		The hole in the wall. //   There is a hole in the wall here and the corridor turns to the south.  There // is also a shaft leading upward.  There is no dust on the floor of the	-	+
+1795396345	cmd	Trentlin	54	25185	underdrk.are	standing	77	0	-	up		The ledge. //   The shaft leads up to a shaft and you can see light coming from a hole above // you.  You'd almost be relieved if it wasn't for the shapes coming for you	-	+
+1795396346	area	Trentlin	54	2397	mahntor.are	underdrk.are	mahntor.are	1	up
+1795396346	cmd	Trentlin	54	2397	mahntor.are	standing	77	0	-	up		The end of the guarded hall //   You are at the end of the hall. Colored doors line the walls to the north. To // your west, you see a brown door. To you east, you see a grey door. The hall	-	+
+1795396349	cmd	Trentlin	54	2397	mahntor.are	standing	77	0	-	exits		Obvious exits: // North - The guarded hall // East  - Closed grey	-	+
+1795396350	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	help	guilds	A guild adds a second class's training to your own: a warrior in the // mages' guild learns some magic, for instance.  Full members (a mage in // the mages' guild) get each class's best.	-	+
+1795396352	area	Trentlin	54	25185	underdrk.are	mahntor.are	underdrk.are	6	down
+1795396352	cmd	Trentlin	54	25185	underdrk.are	standing	77	0	-	down		The ledge. //   The shaft leads up to a shaft and you can see light coming from a hole above // you.  You'd almost be relieved if it wasn't for the shapes coming for you	-	+
+1795396354	cmd	Trentlin	54	25151	underdrk.are	standing	77	0	-	down		The hole in the wall. //   There is a hole in the wall here and the corridor turns to the south.  There // is also a shaft leading upward.  There is no dust on the floor of the	-	+
+1795396355	cmd	Trentlin	54	25151	underdrk.are	standing	77	0	-	exits		Obvious exits: // East  - The small corridor. // South - The passage in between.	-	+
+1795396358	cmd	Trentlin	54	25185	underdrk.are	standing	77	0	-	up		The ledge. //   The shaft leads up to a shaft and you can see light coming from a hole above // you.  You'd almost be relieved if it wasn't for the shapes coming for you	-	+
+1795396359	area	Trentlin	54	2397	mahntor.are	underdrk.are	mahntor.are	7	up
+1795396359	cmd	Trentlin	54	2397	mahntor.are	standing	77	0	-	up		The end of the guarded hall //   You are at the end of the hall. Colored doors line the walls to the north. To // your west, you see a brown door. To you east, you see a grey door. The hall	-	+
+1795396361	cmd	Trentlin	54	2397	mahntor.are	standing	77	0	-	open	east	It's locked.	-	-
+1795396362	cmd	Trentlin	54	2397	mahntor.are	standing	77	0	-	east		The grey is closed.	-	-
+1795396364	cmd	Trentlin	54	2397	mahntor.are	standing	77	0	-	open	westy	I see no westy here.	-	-
+1795396365	cmd	Trentlin	54	2397	mahntor.are	standing	77	0	-	open	west	It's locked.	-	-
+1795396366	cmd	Trentlin	54	2397	mahntor.are	standing	77	0	-	west		The brown is closed.	-	-
+1795396368	cmd	Trentlin	54	2392	mahntor.are	standing	77	0	-	north		The guarded hall //   You walk down a quiet hall. The stone walls here are wet with moisture. // Colored doors can be seen in the walls here. To your east, you see a green	-	+
+1795396369	cmd	Trentlin	54	2389	mahntor.are	standing	77	0	-	north		The guarded hall //   You walk down a small, quiet, torch lit hallway. Doors of different colors are // in each wall. To your east, you see a maroon door. To your west, you see a	-	+
+1795396370	cmd	Trentlin	54	2388	mahntor.are	standing	77	0	-	north		The guarded hall //   You walk down a torch lit hallway. It has been carved out of pure stone. It is // very quiet in this hall. You notice rows of colored doors on each wall. To	-	+
+1795396371	cmd	Trentlin	54	2387	mahntor.are	standing	77	0	-	north		The Guard Post //   The hall here has been built into a guard post of sorts. It appears as though // it would be quite easy to defend in times of emergency. Obviously, something	-	+
+1795396373	cmd	Trentlin	54	2387	mahntor.are	standing	77	0	-	consider	r	The Minotaur Ring-Keeper is far below your level. // The Minotaur Ring-Keeper has about as many hit points as you. // Blow for blow, you would need about 4 rounds to bring the Minotaur Ring-Keeper down; he would need over a hundred rounds 	-	+
+1795396375	cmd	Trentlin	54	2382	mahntor.are	standing	77	0	-	north		The Great Hall //   You stand in the great hall of the keep. Huge pillars rise up to the vaulted // ceiling and torch light glimmers off the marble floor here. You are amazed at	-	+
+1795396377	cmd	Trentlin	54	2381	mahntor.are	standing	77	0	-	north		The Grand Hall //   You are in the main hall of the Keep of Mahn-Tor. This hall is huge. The wide // floor of the hall is an expanse of marble. It shimmers in the light thrown	-	+
+1795396384	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	look		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1795396390	item	Ravagger	8	4807	dresden.are	3716	a war banner	type=light level=0 worn=1 nested=0 timer=0 cond=100 inside=0	char_update
+1795396390	laid	-	0	0	-	1076	herb	53	a huckleberry	15200	campus.are	scatter
+1795396395	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	look		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1795396402	state	Ravagger	8	4807	dresden.are	lvl=8 hp=107/107 mana=247/247 mv=111/111 align=35 exp=17750 coin=9440356 bank=0 qp=0 prac=9 train=0 stash=0/50 remorts=0
+1795396402	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	score		| Name:       Ravagger | Level:       8 | Class:        Monk | // | Played:      3 hours | Sex:      Male | Guild:        Monk | // | Age:        17 years | Race:    Human | Castle:       None |	-	+
+1795396410	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	look		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1795396415	cmd	Trentlin	54	2380	mahntor.are	standing	79	0	-	west		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1795396416	cmd	Trentlin	54	2379	mahntor.are	standing	79	0	-	west		The entryway to the Keep of Mahn-Tor //   You are at the entry hall to the huge keep. The high vaulted ceiling is carved // from solid stone. Huge stone pillars rise up from the floor to meet the	-	+
+1795396416	cmd	Trentlin	54	2379	mahntor.are	standing	79	0	-	west		The gate is closed.	-	-
+1795396418	cmd	Trentlin	54	2379	mahntor.are	standing	79	0	-	open	west	It's locked.	-	-
+1795396418	cmd	Trentlin	54	2379	mahntor.are	standing	79	0	-	west		The gate is closed.	-	-
+1795396420	cmd	Trentlin	54	2379	mahntor.are	standing	79	0	-	kill	g	Your punch ^^^ DESTROYS ^^^ the High Minotaur Guard! // Your punch === OBLITERATES === the High Minotaur Guard! // Your punch <<< ERADICATES >>> the High Minotaur Guard!	-	-
+1795396422	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	practice		You have 9 practice sessions left.	-	-
+1795396423	coin	Trentlin	54	2379	mahntor.are	+100	loot	autogold	corpse of the High Minotaur Guard	22600179459
+1795396423	coin	Trentlin	54	2379	mahntor.are	+1	loot	autogold	corpse of the High Minotaur Guard	22600179460
+1795396423	cmd	Trentlin	54	2379	mahntor.are	standing	79	0	-	fists		Who do you want to attack?	-	-
+1795396425	cmd	Trentlin	54	2379	mahntor.are	standing	79	0	-	look	in co	Corpse of the High Minotaur Guard contains: //      a blue steel helm and visor //      a pair of blue steel greaves	-	+
+1795396426	cmd	Trentlin	54	2379	mahntor.are	standing	79	0	-	west		The gate is closed.	-	-
+1795396429	cmd	Trentlin	54	2380	mahntor.are	standing	79	0	-	east		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1795396429	cmd	Trentlin	54	2381	mahntor.are	standing	79	0	-	east		The Grand Hall //   You are in the main hall of the Keep of Mahn-Tor. This hall is huge. The wide // floor of the hall is an expanse of marble. It shimmers in the light thrown	-	+
+1795396430	cmd	Trentlin	54	2382	mahntor.are	standing	79	0	-	south		The Great Hall //   You stand in the great hall of the keep. Huge pillars rise up to the vaulted // ceiling and torch light glimmers off the marble floor here. You are amazed at	-	+
+1795396432	cmd	Trentlin	54	2387	mahntor.are	standing	79	0	-	south		The Guard Post //   The hall here has been built into a guard post of sorts. It appears as though // it would be quite easy to defend in times of emergency. Obviously, something	-	+
+1795396433	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	practicelist		Rakar the weaponsmaster can practice you in: //   axe                    8%  dagger                33%  flail                  6% //   mace                  80%  polearm                3%  spear                  7%	-	+
+1795396434	cmd	Trentlin	54	2387	mahntor.are	standing	79	0	-	kill	r	Your punch *** DEMOLISHES *** the Minotaur Ring-Keeper! // Your punch mauls the Minotaur Ring-Keeper. // Your punch *** DEVASTATES *** the Minotaur Ring-Keeper!	-	-
+1795396437	cmd	Trentlin	54	2387	mahntor.are	fighting	79	0	fight	fists		You attack in an all consuming fury! // Your blazing fists of fury grazes the Minotaur Ring-Keeper. // Your knife-edged fists of fury hits the Minotaur Ring-Keeper.	-	+
+1795396443	cmd	Trentlin	54	2387	mahntor.are	fighting	79	0	fight	fists		You attack in an all consuming fury! // Your blazing fists of fury DISEMBOWELS the Minotaur Ring-Keeper! // Your knife-edged fists of fury wounds the Minotaur Ring-Keeper.	-	+
+1795396450	coin	Trentlin	54	2387	mahntor.are	+200	loot	autogold	corpse of the Minotaur Ring-Keeper	22600179660
+1795396450	coin	Trentlin	54	2387	mahntor.are	+3	loot	autogold	corpse of the Minotaur Ring-Keeper	22600179663
+1795396450	coin	Trentlin	54	2387	mahntor.are	+10000	loot	autogold	corpse of the Minotaur Ring-Keeper	22600189663
+1795396455	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	look		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1795396456	cmd	Ravagger	8	4804	dresden.are	standing	100	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795396462	cmd	Trentlin	54	2387	mahntor.are	standing	81	0	-	look	in co	Corpse of the Minotaur Ring-Keeper contains: //      some huge spiked brass knuckles //      a huge wooden maul	-	+
+1795396462	cmd	Ravagger	8	4806	dresden.are	standing	100	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1795396464	got	Trentlin	54	2387	mahntor.are	2382	a multi-colored key ring	container	27	50000000	get	corpse of the Minotaur Ring-Keeper
+1795396464	cmd	Trentlin	54	2387	mahntor.are	standing	81	0	-	get	ring co	You get a multi-colored key ring from corpse of the Minotaur Ring-Keeper.	-	-
+1795396466	cmd	Ravagger	8	4806	dresden.are	standing	100	0	-	practice		hand to hand        75%  kick                63%  dodge               61%   // You have 9 practice sessions left.	-	-
+1795396467	cmd	Trentlin	54	2387	mahntor.are	standing	81	0	-	look	in ring	A multi-colored key ring contains: //      a grey key //      a green key	-	+
+1795396468	got	Trentlin	54	2387	mahntor.are	2358	a grey key	key	26	1000000	own-bag	a multi-colored key ring
+1795396468	got	Trentlin	54	2387	mahntor.are	2357	a green key	key	28	1000000	own-bag	a multi-colored key ring
+1795396468	got	Trentlin	54	2387	mahntor.are	2356	a maroon key	key	28	1000000	own-bag	a multi-colored key ring
+1795396468	got	Trentlin	54	2387	mahntor.are	2355	a yellow key	key	28	1000000	own-bag	a multi-colored key ring
+1795396468	got	Trentlin	54	2387	mahntor.are	2354	a brown key	key	26	1000000	own-bag	a multi-colored key ring
+1795396468	got	Trentlin	54	2387	mahntor.are	2353	a white key	key	28	1000000	own-bag	a multi-colored key ring
+1795396468	got	Trentlin	54	2387	mahntor.are	2352	a black key	key	28	1000000	own-bag	a multi-colored key ring
+1795396468	got	Trentlin	54	2387	mahntor.are	2351	a red key	key	28	1000000	own-bag	a multi-colored key ring
+1795396468	cmd	Trentlin	54	2387	mahntor.are	standing	81	0	-	get	all ring	You get a grey key from a multi-colored key ring. // You get a green key from a multi-colored key ring. // You get a maroon key from a multi-colored key ring.	-	+
+1795396469	cmd	Trentlin	54	2382	mahntor.are	standing	81	0	-	north		The Great Hall //   You stand in the great hall of the keep. Huge pillars rise up to the vaulted // ceiling and torch light glimmers off the marble floor here. You are amazed at	-	+
+1795396469	cmd	Trentlin	54	2381	mahntor.are	standing	81	0	-	north		The Grand Hall //   You are in the main hall of the Keep of Mahn-Tor. This hall is huge. The wide // floor of the hall is an expanse of marble. It shimmers in the light thrown	-	+
+1795396469	cmd	Trentlin	54	2380	mahntor.are	standing	81	0	-	west		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1795396470	cmd	Trentlin	54	2379	mahntor.are	standing	81	0	-	west		The entryway to the Keep of Mahn-Tor //   You are at the entry hall to the huge keep. The high vaulted ceiling is carved // from solid stone. Huge stone pillars rise up from the floor to meet the	-	+
+1795396470	cmd	Trentlin	54	2379	mahntor.are	standing	81	0	-	west		The gate is closed.	-	-
+1795396470	cmd	Trentlin	54	2379	mahntor.are	standing	81	0	-	west		The gate is closed.	-	-
+1795396470	cmd	Trentlin	54	2379	mahntor.are	standing	81	0	-	west		The gate is closed.	-	-
+1795396472	cmd	Trentlin	54	2379	mahntor.are	standing	81	0	-	unlock	w	You lack the key: it takes the keep key to unlock it.	-	-
+1795396474	cmd	Trentlin	54	2380	mahntor.are	standing	81	0	-	east		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1795396475	cmd	Trentlin	54	2381	mahntor.are	standing	81	0	-	east		The Grand Hall //   You are in the main hall of the Keep of Mahn-Tor. This hall is huge. The wide // floor of the hall is an expanse of marble. It shimmers in the light thrown	-	+
+1795396476	cmd	Trentlin	54	2380	mahntor.are	standing	81	0	-	west		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1795396477	cmd	Trentlin	54	2380	mahntor.are	standing	81	0	-	kill	g	Your punch === OBLITERATES === the High Minotaur Guard! // Your punch <<< ERADICATES >>> the High Minotaur Guard!	-	-
+1795396480	coin	Trentlin	54	2380	mahntor.are	+100	loot	autogold	corpse of the High Minotaur Guard	22600189763
+1795396480	coin	Trentlin	54	2380	mahntor.are	+1	loot	autogold	corpse of the High Minotaur Guard	22600189764
+1795396481	cmd	Trentlin	54	2380	mahntor.are	standing	81	0	-	fists		Who do you want to attack?	-	-
+1795396481	cmd	Ravagger	8	4806	dresden.are	standing	100	0	-	examine	man	You do not see that here.	-	-
+1795396482	cmd	Trentlin	54	2380	mahntor.are	standing	81	0	-	look	in co	Corpse of the High Minotaur Guard contains: //      (Glowing) a slice of pumpkin pie //      a blue steel helm and visor	-	+
+1795396485	cmd	Trentlin	54	2379	mahntor.are	standing	81	0	-	west		The entryway to the Keep of Mahn-Tor //   You are at the entry hall to the huge keep. The high vaulted ceiling is carved // from solid stone. Huge stone pillars rise up from the floor to meet the	-	+
+1795396485	cmd	Trentlin	54	2379	mahntor.are	standing	81	0	-	west		The gate is closed.	-	-
+1795396485	cmd	Ravagger	8	4806	dresden.are	standing	100	0	-	look	man	You do not see that here.	-	-
+1795396485	cmd	Trentlin	54	2379	mahntor.are	standing	81	0	-	west		The gate is closed.	-	-
+1795396486	cmd	Trentlin	54	2380	mahntor.are	standing	81	0	-	east		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1795396487	cmd	Trentlin	54	2380	mahntor.are	standing	81	0	-	get	pie	I see no pie here.	-	-
+1795396488	cmd	Trentlin	54	2381	mahntor.are	standing	81	0	-	east		The Grand Hall //   You are in the main hall of the Keep of Mahn-Tor. This hall is huge. The wide // floor of the hall is an expanse of marble. It shimmers in the light thrown	-	+
+1795396489	cmd	Ravagger	8	4806	dresden.are	standing	100	0	-	train		You have 0 training sessions. // You can train: str int wis con hp mana.	-	-
+1795396489	cmd	Trentlin	54	2381	mahntor.are	standing	81	0	-	get	pie cop	I see no cop here.	-	-
+1795396490	cmd	Trentlin	54	2380	mahntor.are	standing	81	0	-	west		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1795396491	got	Trentlin	54	2380	mahntor.are	29829	a slice of pumpkin pie	pill	0	200	get	corpse of the High Minotaur Guard
+1795396491	cmd	Trentlin	54	2380	mahntor.are	standing	81	0	-	get	pie co	You get a slice of pumpkin pie from corpse of the High Minotaur Guard.	-	-
+1795396492	cmd	Trentlin	54	2380	mahntor.are	standing	81	0	-	eat	pie	You eat a slice of pumpkin pie. // You are already blessed. // You feel better!	-	-
+1795396492	cmd	Trentlin	54	2381	mahntor.are	standing	83	0	-	east		The Grand Hall //   You are in the main hall of the Keep of Mahn-Tor. This hall is huge. The wide // floor of the hall is an expanse of marble. It shimmers in the light thrown	-	+
+1795396493	cmd	Trentlin	54	2383	mahntor.are	standing	83	0	-	east		Standing before the throne //   You stand before the throne of Mahn-Tor. This golden throne is so huge that it // takes up almost the entire wall, stretching far above the floor. Sitting upon	-	+
+1795396493	cmd	Ravagger	8	4806	dresden.are	standing	100	0	-	practice		hand to hand        75%  kick                63%  dodge               61%   // You have 9 practice sessions left.	-	-
+1795396495	cmd	Trentlin	54	2383	mahntor.are	standing	83	0	-	open	east	Ok.	-	-
+1795396496	cmd	Trentlin	54	2385	mahntor.are	standing	83	0	-	east		The secret hallway //   You are in a small, torch lit hall. It leads from east to west. A large gold // door is to the west. To the east, you see a heavy stone door.	-	+
+1795396498	cmd	Trentlin	54	2385	mahntor.are	standing	83	0	-	open	east	It's locked.	-	-
+1795396498	cmd	Trentlin	54	2385	mahntor.are	standing	83	0	-	east		The door is closed.	-	-
+1795396500	cmd	Trentlin	54	2385	mahntor.are	standing	83	0	-	east		The door is closed.	-	-
+1795396502	cmd	Ravagger	8	4804	dresden.are	standing	100	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795396503	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1795396504	cmd	Trentlin	54	2385	mahntor.are	standing	83	0	-	unlock	eas	You lack the key: it takes a runed key to unlock it.	-	-
+1795396504	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	practice		You have 9 practice sessions left.	-	-
+1795396505	cmd	Trentlin	54	2383	mahntor.are	standing	83	0	-	west		Standing before the throne //   You stand before the throne of Mahn-Tor. This golden throne is so huge that it // takes up almost the entire wall, stretching far above the floor. Sitting upon	-	+
+1795396506	cmd	Trentlin	54	2384	mahntor.are	standing	83	0	-	south		The Great Hall //   You are in a great hall. Huge torches light the room and their light shimmers // off the marble floor below you. To the north, you see a huge golden throne.	-	+
+1795396507	cmd	Trentlin	54	2384	mahntor.are	standing	83	0	-	south		Alas, you cannot go that way.	-	-
+1795396507	cmd	Trentlin	54	2382	mahntor.are	standing	83	0	-	west		The Great Hall //   You stand in the great hall of the keep. Huge pillars rise up to the vaulted // ceiling and torch light glimmers off the marble floor here. You are amazed at	-	+
+1795396508	cmd	Trentlin	54	2387	mahntor.are	standing	83	0	-	south		The Guard Post //   The hall here has been built into a guard post of sorts. It appears as though // it would be quite easy to defend in times of emergency. Obviously, something	-	+
+1795396508	laid	-	0	0	-	1085	herb	36	a belladonna plant	2604	arena.are	scatter
+1795396508	laid	-	0	0	-	1086	component	65	a dragon's scale	24248	crypt.are	scatter
+1795396509	cmd	Trentlin	54	2388	mahntor.are	standing	86	0	-	south		The guarded hall //   You walk down a torch lit hallway. It has been carved out of pure stone. It is // very quiet in this hall. You notice rows of colored doors on each wall. To	-	+
+1795396510	cmd	Trentlin	54	2388	mahntor.are	standing	86	0	-	west		The red is closed.	-	-
+1795396513	cmd	Trentlin	54	2388	mahntor.are	standing	86	0	-	unlock	w	*Click*	-	-
+1795396513	cmd	Ravagger	8	4804	dresden.are	standing	100	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795396514	cmd	Trentlin	54	2388	mahntor.are	standing	86	0	-	open	w	Ok.	-	-
+1795396514	cmd	Trentlin	54	2372	mahntor.are	standing	86	0	-	west		Gorak's Training Room //   This room is full of all sorts of weapons and armors. Pieces of old targets // and practice dummies lie all around. The walls are chipped and scored from	-	+
+1795396515	cmd	Ravagger	8	4808	dresden.are	standing	100	0	-	ne		The Rest Room //   This is a small quiet room set aside for you to put the battle weary road // behind you, comfortable pillows line the floor, and scented joss sticks fill	-	+
+1795396518	cmd	Trentlin	54	2372	mahntor.are	standing	86	0	-	consider	g	Gorak is far below your level. // Gorak has about as many hit points as you. // Blow for blow, you would need about 6 rounds to bring Gorak down; he would need over a hundred rounds for you.	-	+
+1795396519	cmd	Ravagger	8	4808	dresden.are	standing	100	0	-	practice		dagger              33%  whip                15%  dodge               61%   // hand to hand        75%  kick                63%  recall              75%   // You have 9 practice sessions left.	-	-
+1795396520	cmd	Trentlin	54	2372	mahntor.are	standing	86	0	-	kill	g	Your punch devastates Gorak! // Your punch *** DEVASTATES *** Gorak!	-	-
+1795396523	cmd	Trentlin	54	2372	mahntor.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your frost-wreathed fists of fury decimates Gorak! // Your blazing fists of fury grazes Gorak.	-	+
+1795396525	cmd	Ravagger	8	4808	dresden.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1795396527	cmd	Ravagger	8	4804	dresden.are	standing	100	0	-	sw		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795396528	cmd	Trentlin	54	2372	mahntor.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your blazing fists of fury devastates Gorak! // Your knife-edged fists of fury injures Gorak.	-	+
+1795396530	cmd	Ravagger	8	4804	dresden.are	standing	100	0	-	look		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795396537	coin	Trentlin	54	2372	mahntor.are	+300	loot	autogold	corpse of Gorak	22600190064
+1795396537	coin	Trentlin	54	2372	mahntor.are	+5	loot	autogold	corpse of Gorak	22600190069
+1795396537	coin	Trentlin	54	2372	mahntor.are	+20000	loot	autogold	corpse of Gorak	22600210069
+1795396538	cmd	Ravagger	8	4804	dresden.are	standing	100	0	-	help	guild masters	No help on 'guild masters'; here is guild: // A guild adds a second class's training to your own: a warrior in the // mages' guild learns some magic, for instance.  Full members (a mage in	-	+
+1795396546	cmd	Trentlin	54	2372	mahntor.are	standing	76	0	-	look	in co	Corpse of Gorak contains: //      (Glowing) a slice of pumpkin pie //      a pair of minotaur combat gloves	-	+
+1795396549	cmd	Trentlin	54	2388	mahntor.are	standing	76	0	-	east		The guarded hall //   You walk down a torch lit hallway. It has been carved out of pure stone. It is // very quiet in this hall. You notice rows of colored doors on each wall. To	-	+
+1795396552	cmd	Trentlin	54	2387	mahntor.are	standing	76	0	-	north		The Guard Post //   The hall here has been built into a guard post of sorts. It appears as though // it would be quite easy to defend in times of emergency. Obviously, something	-	+
+1795396553	cmd	Trentlin	54	2382	mahntor.are	standing	76	0	-	north		The Great Hall //   You stand in the great hall of the keep. Huge pillars rise up to the vaulted // ceiling and torch light glimmers off the marble floor here. You are amazed at	-	+
+1795396553	cmd	Trentlin	54	2381	mahntor.are	standing	76	0	-	north		The Grand Hall //   You are in the main hall of the Keep of Mahn-Tor. This hall is huge. The wide // floor of the hall is an expanse of marble. It shimmers in the light thrown	-	+
+1795396553	cmd	Trentlin	54	2381	mahntor.are	standing	76	0	-	north		Alas, you cannot go that way.	-	-
+1795396553	cmd	Trentlin	54	2383	mahntor.are	standing	76	0	-	east		Standing before the throne //   You stand before the throne of Mahn-Tor. This golden throne is so huge that it // takes up almost the entire wall, stretching far above the floor. Sitting upon	-	+
+1795396554	cmd	Trentlin	54	2385	mahntor.are	standing	76	0	-	east		The secret hallway //   You are in a small, torch lit hall. It leads from east to west. A large gold // door is to the west. To the east, you see a heavy stone door.	-	+
+1795396554	cmd	Trentlin	54	2385	mahntor.are	standing	76	0	-	east		The door is closed.	-	-
+1795396556	cmd	Trentlin	54	2383	mahntor.are	standing	76	0	-	west		Standing before the throne //   You stand before the throne of Mahn-Tor. This golden throne is so huge that it // takes up almost the entire wall, stretching far above the floor. Sitting upon	-	+
+1795396556	cmd	Trentlin	54	2381	mahntor.are	standing	76	0	-	west		The Grand Hall //   You are in the main hall of the Keep of Mahn-Tor. This hall is huge. The wide // floor of the hall is an expanse of marble. It shimmers in the light thrown	-	+
+1795396556	laid	-	0	0	-	1089	herb	36	a belladonna plant	6542	dwarves.are	scatter
+1795396556	laid	-	0	0	-	1090	component	79	a glass container of cobwebs	18208	gelidia.are	scatter
+1795396557	cmd	Trentlin	54	2380	mahntor.are	standing	79	0	-	west		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1795396557	cmd	Trentlin	54	2379	mahntor.are	standing	79	0	-	west		The entryway to the Keep of Mahn-Tor //   You are at the entry hall to the huge keep. The high vaulted ceiling is carved // from solid stone. Huge stone pillars rise up from the floor to meet the	-	+
+1795396557	cmd	Trentlin	54	2379	mahntor.are	standing	79	0	-	west		The gate is closed.	-	-
+1795396558	cmd	Trentlin	54	2380	mahntor.are	standing	79	0	-	east		The Hall //   You are in a huge hall. Large tapestries line the walls and huge statues of // various make and appearance are spread about. The ceiling above supports huge	-	+
+1795396558	cmd	Trentlin	54	2380	mahntor.are	standing	79	0	-	south		Alas, you cannot go that way.	-	-
+1795396559	cmd	Trentlin	54	2380	mahntor.are	standing	79	0	-	south		Alas, you cannot go that way.	-	-
+1795396559	cmd	Trentlin	54	2380	mahntor.are	standing	79	0	-	south		Alas, you cannot go that way.	-	-
+1795396559	area	Trentlin	54	4207	dresden.are	mahntor.are	dresden.are	200	recall
+1795396559	cmd	Trentlin	54	4207	dresden.are	standing	79	0	-	recall		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795396560	cmd	Trentlin	54	4208	dresden.are	standing	79	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795396560	cmd	Ravagger	8	4804	dresden.are	standing	97	0	-	look		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795396563	cmd	Ravagger	8	4808	dresden.are	standing	97	0	-	ne		The Rest Room //   This is a small quiet room set aside for you to put the battle weary road // behind you, comfortable pillows line the floor, and scented joss sticks fill	-	+
+1795396563	coin	Trentlin	54	4208	dresden.are	-700000	spent	heal	-	22599510069
+1795396563	cmd	Trentlin	54	4208	dresden.are	standing	79	0	-	heal	refresh	The healer utters the words 'candusima'. // You feel fully refreshed! (7 castings, 70 gold.)	-	-
+1795396566	cmd	Trentlin	54	4207	dresden.are	standing	79	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795396566	cmd	Ravagger	8	4804	dresden.are	standing	97	0	-	sw		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795396567	cmd	Trentlin	54	4202	dresden.are	standing	79	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795396567	cmd	Trentlin	54	4201	dresden.are	standing	79	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795396567	cmd	Trentlin	54	2427	dresden.are	standing	79	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795396567	cmd	Trentlin	54	2427	dresden.are	standing	79	0	-	east		Alas, you cannot go that way.	-	-
+1795396568	cmd	Trentlin	54	2404	dresden.are	standing	79	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795396568	cmd	Trentlin	54	2401	dresden.are	standing	79	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795396568	cmd	Trentlin	54	2402	dresden.are	standing	79	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.	-	+
+1795396568	cmd	Ravagger	8	4807	dresden.are	standing	97	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1795396569	cmd	Ravagger	8	4804	dresden.are	standing	97	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795396571	cmd	Ravagger	8	4806	dresden.are	standing	97	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1795396574	cmd	Ravagger	8	4806	dresden.are	standing	97	0	-	north		Alas, you cannot go that way.	-	-
+1795396576	cmd	Ravagger	8	4804	dresden.are	standing	97	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795396585	cmd	Ravagger	8	4809	dresden.are	standing	97	0	-	nw		Back to the beginning //   As you enter this room a sharp tingling enters your limbs as you begin // to move...the valley drops away from your feet and a white sheet falls in	-	+
+1795396586	cmd	Trentlin	54	2401	dresden.are	standing	79	0	-	south		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795396588	cmd	Trentlin	54	2438	dresden.are	standing	79	0	-	run	w 7	Western Oak Tree Square. // [Exits: north east south west] // Temple Boulevard.	-	+
+1795396588	cmd	Trentlin	54	2438	dresden.are	standing	79	0	-	open	w	Ok.	-	-
+1795396589	cmd	Trentlin	54	2439	dresden.are	standing	79	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards	-	+
+1795396589	cmd	Trentlin	54	3902	dresden.are	standing	79	0	-	run	n 3	West trail around Dresden // [Exits: north south] // West trail around Dresden	-	+
+1795396589	cmd	Trentlin	54	3903	dresden.are	standing	79	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.	-	+
+1795396589	cmd	Trentlin	54	3904	dresden.are	standing	79	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north	-	+
+1795396590	area	Trentlin	54	300	plains.are	dresden.are	plains.are	31	run
+1795396590	cmd	Trentlin	54	324	plains.are	standing	79	0	-	run	n 5	Path in the plains // [Exits: north east south west] // Gallow hill	-	+
+1795396590	cmd	Trentlin	54	325	plains.are	standing	79	0	-	east		The steep foothills //   You are walking in the steep foothills. It is rather hard to move here. // Further to the north you can see the mountains towering over you.	-	+
+1795396590	cmd	Trentlin	54	326	plains.are	standing	79	0	-	east		The pool in the foothills //   You are standing by a pool in the small foothills. It is clear and cold. // Next to the pool grows an enormous oak tree.  It must stand over a hundred	-	+
+1795396590	area	Trentlin	54	10	connect.are	plains.are	connect.are	0	north
+1795396590	cmd	Trentlin	54	10	connect.are	standing	79	0	-	north		A path upwards //   You have reached a small path that leads upwards into the mountains. Heading // south will once again put you on the northern plains, but by heading upwards	-	+
+1795396593	cmd	Ravagger	8	4800	dresden.are	standing	97	0	-	north		Another Dimension //   You have somehow left the City of Dresden, and entered another dimension. // To the north you can still make out the streets of Dresden thru the mist,	-	+
+1795396595	cmd	Ravagger	8	2437	dresden.are	standing	97	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795396597	cmd	Trentlin	54	11	connect.are	standing	79	0	-	up		Struggling upward //   You begin a very hard climb that seems to go on forever, just as you begin // to lose hope, you see the top of the mountains! Moving quicker, you 	-	+
+1795396597	cmd	Trentlin	54	12	connect.are	standing	79	0	-	up		Breathless //   You reach the top of the mountains, and the view from here is incredible! // A pinkish colored mist covers the land to the north of the mountains, but 	-	+
+1795396597	cmd	Trentlin	54	13	connect.are	standing	79	0	-	north		Downward path //   From here you being your descent into the unknown, make sure to watch your // footing, for one false step could lead to disaster.	-	+
+1795396597	cmd	Ravagger	8	4601	dresden.are	standing	97	0	-	north		Entrance to the Temple of Breas. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795396597	cmd	Trentlin	54	14	connect.are	standing	79	0	-	down		End of the Mountain //   You have reached the end of the mountain path, from here you can begin your // journey thru the lands of mahn-tor, may your journey be well, and keep	-	+
+1795396598	area	Trentlin	54	2300	mahntor.are	connect.are	mahntor.are	8	east
+1795396598	cmd	Trentlin	54	2300	mahntor.are	standing	79	0	-	east		The dark woods //   You are travelling through woods that are as dark as night. The trees above // block all light and wind. The air is stagnant and smells of death and decay.	-	+
+1795396598	cmd	Trentlin	54	2301	mahntor.are	standing	79	0	-	south		The dark woods //   You wearily travel through the darkness of the forest. Huge skeletal trees // line the edges of the path and tower above you. Errant rays of light spear	-	+
+1795396598	cmd	Trentlin	54	2302	mahntor.are	standing	79	0	-	south		The small intersection in the forest //   The forest path splits here in three directions. Small paths lead to the east, // north, and south. The trees above leave a gap which allows light to fill the	-	+
+1795396598	cmd	Trentlin	54	2303	mahntor.are	standing	79	0	-	south		The edge of the forest and hills //   You stand at the edge of a dark forest. A path leads north into the forest and // its deadly darkness and silence. Looking west, you see a path that leads up	-	+
+1795396599	cmd	Trentlin	54	2309	mahntor.are	standing	79	0	-	west		The rocky path //   The path here is very rocky and treacherous. The travelling is rough and you // slip and fall often. Looking south, you see that the path continues into the	-	+
+1795396599	cmd	Trentlin	54	2308	mahntor.are	standing	79	0	-	south		The rocky path //   The path here winds among the low rocky hills. The long trek up and down the // hills begins to tire you greatly. Looking east, you see a small clearing. More	-	+
+1795396599	cmd	Trentlin	54	2307	mahntor.are	standing	79	0	-	east		The bloody intersection //   This is a small intersection. Paths lead east, west, and south. You are struck // by the carnage here when you enter the clearing. There appears to have been a	-	+
+1795396599	cmd	Trentlin	54	2306	mahntor.are	standing	79	0	-	east		A turn in the path //   The forest path turns here towards the north and west. To the north, you see // that the ground has become dank and swampy, while the western path appears	-	+
+1795396600	cmd	Trentlin	54	2305	mahntor.are	standing	79	0	-	north		The dark forest path //   You continue on through darkness and gloom. The path below you has become a // wet quagmire. It is difficult to walk, and you make squishing sounds as you	-	+
+1795396600	cmd	Trentlin	54	2327	mahntor.are	standing	79	0	-	east		The swampy path //   This damp path seems to lead into a deep, dark swamp. The trees above block // out all light and stifle the wind. You smell swamp gas and hear damp squashing	-	+
+1795396600	cmd	Trentlin	54	2328	mahntor.are	standing	79	0	-	east		The swampy path //   You tread lightly in a wet, swampy path. All around you, you see pools of // quicksand and rotting vegetation. Unlike the forest to the west, the swamp is	-	+
+1795396600	cmd	Trentlin	54	2329	mahntor.are	standing	79	0	-	east		The swampy path //   You weave your way through the treacherous swamp. Gas rises all around you and // a damp mist covers the ground, making it impossible to travel safely, without	-	+
+1795396601	cmd	Trentlin	54	2330	mahntor.are	standing	79	0	-	east		The turn in the swampy path //   You come upon a bend in the swampy path. The ground here is fairly sturdy, // as this place is elevated above the rest of the swamp. Looking around, you see	-	+
+1795396601	cmd	Trentlin	54	2331	mahntor.are	standing	79	0	-	south		The swampy path //   You tread lightly through the mirky water and sludge that makes up the path // you follow. To the east, there is a thick wall of mist. You can see nothing	-	+
+1795396601	cmd	Trentlin	54	2335	mahntor.are	standing	79	0	-	east		Lost in the Mist //   You stumble through the marsh here. The swamp seems to have swallowed you up // and denied you exit. This mist is your jailor. You cannot tell where you are.	-	+
+1795396603	cmd	Trentlin	54	2335	mahntor.are	standing	79	0	-	exits		Obvious exits: // North - Lost in the Mist // East  - The swampy path	-	+
+1795396604	cmd	Ravagger	8	4601	dresden.are	standing	97	0	-	north		The Guild Guard stands immovable before you blocking your way.	-	-
+1795396604	cmd	Ravagger	8	4601	dresden.are	standing	97	0	-	north		The Guild Guard stands immovable before you blocking your way.	-	-
+1795396605	cmd	Trentlin	54	2331	mahntor.are	standing	79	0	-	east		The swampy path //   You tread lightly through the mirky water and sludge that makes up the path // you follow. To the east, there is a thick wall of mist. You can see nothing	-	+
+1795396605	outcome	Trentlin	54	2331	mahntor.are	quest-failed	failure	timeout	-	rush target=mob:2307 level=10 alive=5 area=mahntor.are there=1 streak=1
+1795396605	cmd	Trentlin	54	2331	mahntor.are	standing	79	0	-	exits		Obvious exits: // North - The turn in the swampy path // East  - Lost in the Mist	-	-
+1795396606	cmd	Ravagger	8	4601	dresden.are	standing	97	0	-	look		Entrance to the Temple of Breas. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795396608	cmd	Ravagger	8	2437	dresden.are	standing	97	0	-	south		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795396610	cmd	Trentlin	54	2335	mahntor.are	standing	79	0	-	east		Lost in the Mist //   You stumble through the marsh here. The swamp seems to have swallowed you up // and denied you exit. This mist is your jailor. You cannot tell where you are.	-	+
+1795396610	laid	-	0	0	-	1094	herb	53	a huckleberry	1112	shire.are	scatter
+1795396610	laid	-	0	0	-	1095	herb	47	a sprig of saffron	1101	shire.are	scatter
+1795396610	laid	-	0	0	-	1096	component	79	a glass container of cobwebs	18079	icekeep.are	scatter
+1795396611	cmd	Trentlin	54	2333	mahntor.are	standing	82	0	-	north		Lost in the Mist //   You are in a thick misty area. The mist swirls around you, seeming to taunt // you and dare you to escape. You feel a slight electric charge in the mist. It	-	+
+1795396612	cmd	Ravagger	8	2436	dresden.are	standing	96	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795396613	cmd	Trentlin	54	2335	mahntor.are	standing	82	0	-	north		Lost in the Mist //   You stumble through the marsh here. The swamp seems to have swallowed you up // and denied you exit. This mist is your jailor. You cannot tell where you are.	-	+
+1795396613	cmd	Trentlin	54	2333	mahntor.are	standing	82	0	-	north		Lost in the Mist //   You are in a thick misty area. The mist swirls around you, seeming to taunt // you and dare you to escape. You feel a slight electric charge in the mist. It	-	+
+1795396614	cmd	Trentlin	54	2335	mahntor.are	standing	82	0	-	north		Lost in the Mist //   You stumble through the marsh here. The swamp seems to have swallowed you up // and denied you exit. This mist is your jailor. You cannot tell where you are.	-	+
+1795396614	cmd	Ravagger	8	2435	dresden.are	standing	96	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795396614	cmd	Trentlin	54	2337	mahntor.are	standing	82	0	-	south		Lost in the Mist //   You wander through the thick mist. It swirls all about you and makes it hard // to breathe. The ground below you makes a soft squishing sound as you trudge	-	+
+1795396616	cmd	Trentlin	54	2332	mahntor.are	standing	82	0	-	east		Lost in the Mist //   You wander, hopelessly lost. Swirling mist obscures your vision and clouds // your mind. You lose all concept of direction. Small, silent giggles can be	-	+
+1795396616	cmd	Ravagger	8	2434	dresden.are	standing	96	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795396617	cmd	Trentlin	54	2337	mahntor.are	standing	82	0	-	east		Lost in the Mist //   You wander through the thick mist. It swirls all about you and makes it hard // to breathe. The ground below you makes a soft squishing sound as you trudge	-	+
+1795396618	cmd	Trentlin	54	2338	mahntor.are	standing	82	0	-	south		Lost in the Mist //   You wander, lost hopelessly. The mist swirls all about you. You can discern no // direction. You stumble blindly through the mist, oblivious to your	-	+
+1795396618	cmd	Ravagger	8	2433	dresden.are	standing	96	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1795396619	cmd	Trentlin	54	2336	mahntor.are	standing	82	0	-	west		Lost in the Mist //   You wander, lost, for what seems an eternity. Then....From nowhere....You see // what appears to be trees and hills to the east. The mist itself thickens to	-	+
+1795396620	cmd	Trentlin	54	2334	mahntor.are	standing	82	0	-	west		Lost in the Mist //   You try to peer through the mist......You see nothing. It swirls about you, // covering you in a damp sheen. There is no sound, all light is eagerly devoured	-	+
+1795396620	cmd	Ravagger	8	4201	dresden.are	standing	96	0	-	south		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795396622	cmd	Trentlin	54	2332	mahntor.are	standing	82	0	-	east		Lost in the Mist //   You wander, hopelessly lost. Swirling mist obscures your vision and clouds // your mind. You lose all concept of direction. Small, silent giggles can be	-	+
+1795396623	cmd	Trentlin	54	2337	mahntor.are	standing	82	0	-	east		Lost in the Mist //   You wander through the thick mist. It swirls all about you and makes it hard // to breathe. The ground below you makes a soft squishing sound as you trudge	-	+
+1795396624	cmd	Trentlin	54	2332	mahntor.are	standing	82	0	-	east		Lost in the Mist //   You wander, hopelessly lost. Swirling mist obscures your vision and clouds // your mind. You lose all concept of direction. Small, silent giggles can be	-	+
+1795396624	cmd	Trentlin	54	2337	mahntor.are	standing	82	0	-	east		Lost in the Mist //   You wander through the thick mist. It swirls all about you and makes it hard // to breathe. The ground below you makes a soft squishing sound as you trudge	-	+
+1795396624	cmd	Ravagger	8	4202	dresden.are	standing	96	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795396625	cmd	Trentlin	54	2332	mahntor.are	standing	82	0	-	east		Lost in the Mist //   You wander, hopelessly lost. Swirling mist obscures your vision and clouds // your mind. You lose all concept of direction. Small, silent giggles can be	-	+
+1795396625	cmd	Trentlin	54	2337	mahntor.are	standing	82	0	-	east		Lost in the Mist //   You wander through the thick mist. It swirls all about you and makes it hard // to breathe. The ground below you makes a soft squishing sound as you trudge	-	+
+1795396625	cmd	Trentlin	54	2338	mahntor.are	standing	82	0	-	south		Lost in the Mist //   You wander, lost hopelessly. The mist swirls all about you. You can discern no // direction. You stumble blindly through the mist, oblivious to your	-	+
+1795396626	cmd	Ravagger	8	4206	dresden.are	standing	96	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795396626	cmd	Trentlin	54	2337	mahntor.are	standing	82	0	-	south		Lost in the Mist //   You wander through the thick mist. It swirls all about you and makes it hard // to breathe. The ground below you makes a soft squishing sound as you trudge	-	+
+1795396627	cmd	Trentlin	54	2332	mahntor.are	standing	82	0	-	east		Lost in the Mist //   You wander, hopelessly lost. Swirling mist obscures your vision and clouds // your mind. You lose all concept of direction. Small, silent giggles can be	-	+
+1795396627	cmd	Trentlin	54	2337	mahntor.are	standing	82	0	-	east		Lost in the Mist //   You wander through the thick mist. It swirls all about you and makes it hard // to breathe. The ground below you makes a soft squishing sound as you trudge	-	+
+1795396628	cmd	Trentlin	54	2332	mahntor.are	standing	82	0	-	east		Lost in the Mist //   You wander, hopelessly lost. Swirling mist obscures your vision and clouds // your mind. You lose all concept of direction. Small, silent giggles can be	-	+
+1795396629	cmd	Trentlin	54	2334	mahntor.are	standing	82	0	-	west		Lost in the Mist //   You try to peer through the mist......You see nothing. It swirls about you, // covering you in a damp sheen. There is no sound, all light is eagerly devoured	-	+
+1795396631	cmd	Trentlin	54	2334	mahntor.are	standing	82	0	-	exits		Obvious exits: // North - Lost in the Mist // East  - Lost in the Mist	-	+
+1795396631	cmd	Ravagger	8	4206	dresden.are	standing	96	0	-	drink	foun	You drink your fill from a fountain.  You are no longer thirsty.	-	-
+1795396632	cmd	Trentlin	54	2338	mahntor.are	standing	82	0	-	north		Lost in the Mist //   You wander, lost hopelessly. The mist swirls all about you. You can discern no // direction. You stumble blindly through the mist, oblivious to your	-	+
+1795396633	cmd	Trentlin	54	2338	mahntor.are	standing	82	0	-	exits		Obvious exits: // North - Lost in the Mist // East  - Lost in the Mist	-	+
+1795396634	cmd	Trentlin	54	2334	mahntor.are	standing	82	0	-	east		Lost in the Mist //   You try to peer through the mist......You see nothing. It swirls about you, // covering you in a damp sheen. There is no sound, all light is eagerly devoured	-	+
+1795396634	cmd	Trentlin	54	2334	mahntor.are	standing	82	0	-	exits		Obvious exits: // North - Lost in the Mist // East  - Lost in the Mist	-	+
+1795396635	cmd	Ravagger	8	4206	dresden.are	standing	96	0	-	drink	foun	You take a sip from a fountain, but your thirst is already quenched.	-	-
+1795396635	cmd	Trentlin	54	2332	mahntor.are	standing	82	0	-	east		Lost in the Mist //   You wander, hopelessly lost. Swirling mist obscures your vision and clouds // your mind. You lose all concept of direction. Small, silent giggles can be	-	+
+1795396635	cmd	Trentlin	54	2332	mahntor.are	standing	82	0	-	exits		Obvious exits: // North - Lost in the Mist // East  - Lost in the Mist	-	+
+1795396637	cmd	Ravagger	8	4205	dresden.are	standing	96	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795396638	cmd	Ravagger	8	4205	dresden.are	standing	96	0	-	west		Alas, you cannot go that way.	-	-
+1795396639	cmd	Trentlin	54	2334	mahntor.are	standing	82	0	-	north		Lost in the Mist //   You try to peer through the mist......You see nothing. It swirls about you, // covering you in a damp sheen. There is no sound, all light is eagerly devoured	-	+
+1795396639	cmd	Trentlin	54	2336	mahntor.are	standing	82	0	-	south		Lost in the Mist //   You wander, lost, for what seems an eternity. Then....From nowhere....You see // what appears to be trees and hills to the east. The mist itself thickens to	-	+

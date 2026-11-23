@@ -341101,3 +341101,445 @@ Mon Nov 23 01:12:18 2026 :: Log Trentlin [5258]: e
 Mon Nov 23 01:12:18 2026 :: Log Trentlin [5262]: arrived (The dwarf forest) from 5258
 Mon Nov 23 01:12:19 2026 :: Log Trentlin [5262]: e
 Mon Nov 23 01:12:19 2026 :: Log Trentlin [5263]: arrived (The darker dwarf forest) from 5262
+Mon Nov 23 01:12:19 2026 :: Log Trentlin [5263]: s
+Mon Nov 23 01:12:19 2026 :: Log Trentlin [5264]: arrived (The darker dwarf forest) from 5263
+Mon Nov 23 01:12:19 2026 :: Log Trentlin [5264]: e
+Mon Nov 23 01:12:19 2026 :: Log Trentlin [5265]: arrived (The darker dwarf forest) from 5264
+Mon Nov 23 01:12:19 2026 :: Log Trentlin [5265]: e
+Mon Nov 23 01:12:19 2026 :: Log Trentlin [5266]: arrived (The darker dwarf forest) from 5265
+Mon Nov 23 01:12:20 2026 :: Log Trentlin [5266]: d
+Mon Nov 23 01:12:20 2026 :: Log Trentlin [5267]: arrived (A valley in the dark dwarf forest) from 5266
+Mon Nov 23 01:12:23 2026 :: Log Trentlin [5267]: open hole
+Mon Nov 23 01:12:23 2026 :: Log Trentlin [5267]: w
+Mon Nov 23 01:12:23 2026 :: Log Trentlin [5268]: arrived (A small ugly cave) from 5267
+Mon Nov 23 01:12:23 2026 :: Log Trentlin [5268]: s
+Mon Nov 23 01:12:23 2026 :: Log Trentlin [5269]: arrived (A small ugly cave) from 5268
+Mon Nov 23 01:12:23 2026 :: Log Trentlin [5269]: d
+Mon Nov 23 01:12:23 2026 :: Log Trentlin [5270]: arrived (Down the path into a dead end) from 5269
+Mon Nov 23 01:12:24 2026 :: Log Trentlin [5270]: open secret
+Mon Nov 23 01:12:24 2026 :: Log Trentlin [5270]: d
+Mon Nov 23 01:12:24 2026 :: Log Trentlin [5100]: arrived (City Entrance) from 5270
+Mon Nov 23 01:12:24 2026 :: Log Trentlin [5100]: w
+Mon Nov 23 01:12:24 2026 :: Log Trentlin [5101]: arrived (City street) from 5100
+Mon Nov 23 01:12:24 2026 :: Log Trentlin [5101]: n
+Mon Nov 23 01:12:24 2026 :: Log Trentlin [5123]: arrived (City street) from 5101
+Mon Nov 23 01:12:25 2026 :: Log Trentlin [5123]: r w 11
+Mon Nov 23 01:12:25 2026 :: Log Trentlin [5121]: arrived (City street) from 5123
+Mon Nov 23 01:12:25 2026 :: Log Trentlin [5117]: arrived (City street) from 5121
+Mon Nov 23 01:12:25 2026 :: Log Trentlin [5114]: arrived (City street) from 5117
+Mon Nov 23 01:12:25 2026 :: Log Trentlin [25164]: arrived (Before the gates.) from 5114
+Mon Nov 23 01:12:25 2026 :: Log Trentlin [25163]: arrived (The Trade Route.) from 25164
+Mon Nov 23 01:12:25 2026 :: Log Trentlin [25162]: arrived (The Trade Route.) from 25163
+Mon Nov 23 01:12:25 2026 :: Log Trentlin [25161]: arrived (The Trade Route.) from 25162
+Mon Nov 23 01:12:25 2026 :: Log Trentlin [25160]: arrived (The Trade Route.) from 25161
+Mon Nov 23 01:12:25 2026 :: Log Trentlin [25159]: arrived (The Trade Route.) from 25160
+Mon Nov 23 01:12:25 2026 :: Log Trentlin [25158]: arrived (The Trade Route.) from 25159
+Mon Nov 23 01:12:25 2026 :: Log Trentlin [25153]: arrived (The Trade Route.) from 25158
+Mon Nov 23 01:12:25 2026 :: Log Trentlin [25153]: n
+Mon Nov 23 01:12:25 2026 :: Log Trentlin [25152]: arrived (The passage in between.) from 25153
+Mon Nov 23 01:12:25 2026 :: Log Trentlin [25152]: n
+Mon Nov 23 01:12:25 2026 :: Log Trentlin [25151]: arrived (The hole in the wall.) from 25152
+Mon Nov 23 01:12:25 2026 :: Log Trentlin [25151]: u
+Mon Nov 23 01:12:25 2026 :: Log Trentlin [25185]: arrived (The ledge.) from 25151
+Mon Nov 23 01:12:26 2026 :: Log Trentlin [25185]: u
+Mon Nov 23 01:12:26 2026 :: Log Trentlin [2397]: arrived (The end of the guarded hall) from 25185
+Mon Nov 23 01:12:29 2026 :: Log Trentlin [2397]: ex
+Mon Nov 23 01:12:30 2026 :: Log Ravagger [4807]: help guilds
+Mon Nov 23 01:12:32 2026 :: Log Trentlin [2397]: d
+Mon Nov 23 01:12:32 2026 :: Log Trentlin [25185]: arrived (The ledge.) from 2397
+Mon Nov 23 01:12:34 2026 :: Log Trentlin [25185]: d
+Mon Nov 23 01:12:34 2026 :: Log Trentlin [25151]: arrived (The hole in the wall.) from 25185
+Mon Nov 23 01:12:35 2026 :: Log Trentlin [25151]: ex
+Mon Nov 23 01:12:38 2026 :: Log Trentlin [25151]: u
+Mon Nov 23 01:12:38 2026 :: Log Trentlin [25185]: arrived (The ledge.) from 25151
+Mon Nov 23 01:12:39 2026 :: Log Trentlin [25185]: u
+Mon Nov 23 01:12:39 2026 :: Log Trentlin [2397]: arrived (The end of the guarded hall) from 25185
+Mon Nov 23 01:12:41 2026 :: Log Trentlin [2397]: open east
+Mon Nov 23 01:12:42 2026 :: Log Trentlin [2397]: e
+Mon Nov 23 01:12:44 2026 :: Log Trentlin [2397]: open westy
+Mon Nov 23 01:12:45 2026 :: Log Trentlin [2397]: open west
+Mon Nov 23 01:12:46 2026 :: Log Trentlin [2397]: w
+Mon Nov 23 01:12:48 2026 :: Log Trentlin [2397]: n
+Mon Nov 23 01:12:48 2026 :: Log Trentlin [2392]: arrived (The guarded hall) from 2397
+Mon Nov 23 01:12:49 2026 :: Log Trentlin [2392]: n
+Mon Nov 23 01:12:49 2026 :: Log Trentlin [2389]: arrived (The guarded hall) from 2392
+Mon Nov 23 01:12:50 2026 :: Log Trentlin [2389]: n
+Mon Nov 23 01:12:50 2026 :: Log Trentlin [2388]: arrived (The guarded hall) from 2389
+Mon Nov 23 01:12:51 2026 :: Log Trentlin [2388]: n
+Mon Nov 23 01:12:51 2026 :: Log Trentlin [2387]: arrived (The Guard Post) from 2388
+Mon Nov 23 01:12:53 2026 :: Log Trentlin [2387]: con r
+Mon Nov 23 01:12:55 2026 :: Log Trentlin [2387]: n
+Mon Nov 23 01:12:55 2026 :: Log Trentlin [2382]: arrived (The Great Hall) from 2387
+Mon Nov 23 01:12:57 2026 :: Log Trentlin [2382]: n
+Mon Nov 23 01:12:57 2026 :: Log Trentlin [2381]: arrived (The Grand Hall) from 2382
+Mon Nov 23 01:13:04 2026 :: Log Ravagger [4807]: l
+Mon Nov 23 01:13:15 2026 :: Log Ravagger [4807]: l
+Mon Nov 23 01:13:22 2026 :: Log Ravagger [4807]: sc
+Mon Nov 23 01:13:30 2026 :: Log Ravagger [4807]: l
+Mon Nov 23 01:13:35 2026 :: Log Trentlin [2381]: w
+Mon Nov 23 01:13:35 2026 :: Log Trentlin [2380]: arrived (The Hall) from 2381
+Mon Nov 23 01:13:36 2026 :: Log Trentlin [2380]: w
+Mon Nov 23 01:13:36 2026 :: Log Trentlin [2379]: arrived (The entryway to the Keep of Mahn-Tor) from 2380
+Mon Nov 23 01:13:36 2026 :: Log Trentlin [2379]: w
+Mon Nov 23 01:13:38 2026 :: Log Trentlin [2379]: open west
+Mon Nov 23 01:13:38 2026 :: Log Trentlin [2379]: w
+Mon Nov 23 01:13:40 2026 :: Log Trentlin [2379]: k g
+Mon Nov 23 01:13:42 2026 :: Log Ravagger [4807]: pra
+Mon Nov 23 01:13:43 2026 :: Log Trentlin [2379]: killed the High Minotaur Guard
+Mon Nov 23 01:13:43 2026 :: Log Trentlin [2379]: coin +1 silver
+Mon Nov 23 01:13:43 2026 :: Log Trentlin [2379]: coin +1 copper
+Mon Nov 23 01:13:43 2026 :: Log Trentlin [2379]: fists
+Mon Nov 23 01:13:45 2026 :: Log Trentlin [2379]: l in co
+Mon Nov 23 01:13:46 2026 :: Log Trentlin [2379]: w
+Mon Nov 23 01:13:49 2026 :: Log Trentlin [2379]: e
+Mon Nov 23 01:13:49 2026 :: Log Trentlin [2380]: arrived (The Hall) from 2379
+Mon Nov 23 01:13:49 2026 :: Log Trentlin [2380]: e
+Mon Nov 23 01:13:49 2026 :: Log Trentlin [2381]: arrived (The Grand Hall) from 2380
+Mon Nov 23 01:13:50 2026 :: Log Trentlin [2381]: s
+Mon Nov 23 01:13:50 2026 :: Log Trentlin [2382]: arrived (The Great Hall) from 2381
+Mon Nov 23 01:13:52 2026 :: Log Trentlin [2382]: s
+Mon Nov 23 01:13:52 2026 :: Log Trentlin [2387]: arrived (The Guard Post) from 2382
+Mon Nov 23 01:13:53 2026 :: Log Ravagger [4807]: practicelist
+Mon Nov 23 01:13:54 2026 :: Log Trentlin [2387]: k r
+Mon Nov 23 01:13:57 2026 :: Log Trentlin [2387]: fists
+Mon Nov 23 01:14:03 2026 :: Log Trentlin [2387]: fists
+Mon Nov 23 01:14:10 2026 :: Log Trentlin [2387]: killed the Minotaur Ring-Keeper
+Mon Nov 23 01:14:10 2026 :: Log Trentlin [2387]: coin +2 silver
+Mon Nov 23 01:14:10 2026 :: Log Trentlin [2387]: coin +3 copper
+Mon Nov 23 01:14:10 2026 :: Log Trentlin [2387]: coin +1 gold
+Mon Nov 23 01:14:15 2026 :: Log Ravagger [4807]: l
+Mon Nov 23 01:14:16 2026 :: Log Ravagger [4807]: e
+Mon Nov 23 01:14:16 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4807
+Mon Nov 23 01:14:22 2026 :: Log Trentlin [2387]: l in co
+Mon Nov 23 01:14:22 2026 :: Log Ravagger [4804]: e
+Mon Nov 23 01:14:22 2026 :: Log Ravagger [4806]: arrived (A Small Clearing) from 4804
+Mon Nov 23 01:14:24 2026 :: Log Trentlin [2387]: get ring co
+Mon Nov 23 01:14:26 2026 :: Log Ravagger [4806]: pra
+Mon Nov 23 01:14:27 2026 :: Log Trentlin [2387]: l in ring
+Mon Nov 23 01:14:28 2026 :: Log Trentlin [2387]: get all ring
+Mon Nov 23 01:14:29 2026 :: Log Trentlin [2387]: n
+Mon Nov 23 01:14:29 2026 :: Log Trentlin [2382]: arrived (The Great Hall) from 2387
+Mon Nov 23 01:14:29 2026 :: Log Trentlin [2382]: n
+Mon Nov 23 01:14:29 2026 :: Log Trentlin [2381]: arrived (The Grand Hall) from 2382
+Mon Nov 23 01:14:29 2026 :: Log Trentlin [2381]: w
+Mon Nov 23 01:14:29 2026 :: Log Trentlin [2380]: arrived (The Hall) from 2381
+Mon Nov 23 01:14:30 2026 :: Log Trentlin [2380]: w
+Mon Nov 23 01:14:30 2026 :: Log Trentlin [2379]: arrived (The entryway to the Keep of Mahn-Tor) from 2380
+Mon Nov 23 01:14:30 2026 :: Log Trentlin [2379]: w
+Mon Nov 23 01:14:30 2026 :: Log Trentlin [2379]: w
+Mon Nov 23 01:14:30 2026 :: Log Trentlin [2379]: w
+Mon Nov 23 01:14:32 2026 :: Log Trentlin [2379]: unlock w
+Mon Nov 23 01:14:34 2026 :: Log Trentlin [2379]: e
+Mon Nov 23 01:14:34 2026 :: Log Trentlin [2380]: arrived (The Hall) from 2379
+Mon Nov 23 01:14:35 2026 :: Log Trentlin [2380]: e
+Mon Nov 23 01:14:35 2026 :: Log Trentlin [2381]: arrived (The Grand Hall) from 2380
+Mon Nov 23 01:14:36 2026 :: Log Trentlin [2381]: w
+Mon Nov 23 01:14:36 2026 :: Log Trentlin [2380]: arrived (The Hall) from 2381
+Mon Nov 23 01:14:37 2026 :: Log Trentlin [2380]: k g
+Mon Nov 23 01:14:40 2026 :: Log Trentlin [2380]: killed the High Minotaur Guard
+Mon Nov 23 01:14:40 2026 :: Log Trentlin [2380]: coin +1 silver
+Mon Nov 23 01:14:40 2026 :: Log Trentlin [2380]: coin +1 copper
+Mon Nov 23 01:14:41 2026 :: Log Trentlin [2380]: fists
+Mon Nov 23 01:14:41 2026 :: Log Ravagger [4806]: examine man
+Mon Nov 23 01:14:42 2026 :: Log Trentlin [2380]: l in co
+Mon Nov 23 01:14:45 2026 :: Log Trentlin [2380]: w
+Mon Nov 23 01:14:45 2026 :: Log Trentlin [2379]: arrived (The entryway to the Keep of Mahn-Tor) from 2380
+Mon Nov 23 01:14:45 2026 :: Log Trentlin [2379]: w
+Mon Nov 23 01:14:45 2026 :: Log Ravagger [4806]: l man
+Mon Nov 23 01:14:45 2026 :: Log Trentlin [2379]: w
+Mon Nov 23 01:14:46 2026 :: Log Trentlin [2379]: e
+Mon Nov 23 01:14:46 2026 :: Log Trentlin [2380]: arrived (The Hall) from 2379
+Mon Nov 23 01:14:47 2026 :: Log Trentlin [2380]: get pie
+Mon Nov 23 01:14:48 2026 :: Log Trentlin [2380]: e
+Mon Nov 23 01:14:48 2026 :: Log Trentlin [2381]: arrived (The Grand Hall) from 2380
+Mon Nov 23 01:14:49 2026 :: Log Ravagger [4806]: train
+Mon Nov 23 01:14:49 2026 :: Log Trentlin [2381]: get pie cop
+Mon Nov 23 01:14:50 2026 :: Log Trentlin [2381]: w
+Mon Nov 23 01:14:50 2026 :: Log Trentlin [2380]: arrived (The Hall) from 2381
+Mon Nov 23 01:14:51 2026 :: Log Trentlin [2380]: get pie co
+Mon Nov 23 01:14:52 2026 :: Log Trentlin [2380]: eat pie
+Mon Nov 23 01:14:52 2026 :: Log Trentlin [2380]: e
+Mon Nov 23 01:14:52 2026 :: Log Trentlin [2381]: arrived (The Grand Hall) from 2380
+Mon Nov 23 01:14:53 2026 :: Log Trentlin [2381]: e
+Mon Nov 23 01:14:53 2026 :: Log Trentlin [2383]: arrived (Standing before the throne) from 2381
+Mon Nov 23 01:14:53 2026 :: Log Ravagger [4806]: pra
+Mon Nov 23 01:14:55 2026 :: Log Trentlin [2383]: open east
+Mon Nov 23 01:14:56 2026 :: Log Trentlin [2383]: e
+Mon Nov 23 01:14:56 2026 :: Log Trentlin [2385]: arrived (The secret hallway) from 2383
+Mon Nov 23 01:14:58 2026 :: Log Trentlin [2385]: open east
+Mon Nov 23 01:14:58 2026 :: Log Trentlin [2385]: e
+Mon Nov 23 01:15:00 2026 :: Log Trentlin [2385]: e
+Mon Nov 23 01:15:02 2026 :: Log Ravagger [4806]: w
+Mon Nov 23 01:15:02 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4806
+Mon Nov 23 01:15:03 2026 :: Log Ravagger [4804]: w
+Mon Nov 23 01:15:03 2026 :: Log Ravagger [4807]: arrived (The Training room) from 4804
+Mon Nov 23 01:15:04 2026 :: Log Trentlin [2385]: unlock eas
+Mon Nov 23 01:15:04 2026 :: Log Ravagger [4807]: pra
+Mon Nov 23 01:15:05 2026 :: Log Trentlin [2385]: w
+Mon Nov 23 01:15:05 2026 :: Log Trentlin [2383]: arrived (Standing before the throne) from 2385
+Mon Nov 23 01:15:06 2026 :: Log Trentlin [2383]: s
+Mon Nov 23 01:15:06 2026 :: Log Trentlin [2384]: arrived (The Great Hall) from 2383
+Mon Nov 23 01:15:07 2026 :: Log Trentlin [2384]: s
+Mon Nov 23 01:15:07 2026 :: Log Trentlin [2384]: w
+Mon Nov 23 01:15:07 2026 :: Log Trentlin [2382]: arrived (The Great Hall) from 2384
+Mon Nov 23 01:15:08 2026 :: Log Trentlin [2382]: s
+Mon Nov 23 01:15:08 2026 :: Log Trentlin [2387]: arrived (The Guard Post) from 2382
+Mon Nov 23 01:15:09 2026 :: Log Trentlin [2387]: s
+Mon Nov 23 01:15:09 2026 :: Log Trentlin [2388]: arrived (The guarded hall) from 2387
+Mon Nov 23 01:15:10 2026 :: Log Trentlin [2388]: w
+Mon Nov 23 01:15:13 2026 :: Log Trentlin [2388]: unlock w
+Mon Nov 23 01:15:13 2026 :: Log Ravagger [4807]: e
+Mon Nov 23 01:15:13 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4807
+Mon Nov 23 01:15:14 2026 :: Log Trentlin [2388]: open w
+Mon Nov 23 01:15:14 2026 :: Log Trentlin [2388]: w
+Mon Nov 23 01:15:14 2026 :: Log Trentlin [2372]: arrived (Gorak's Training Room) from 2388
+Mon Nov 23 01:15:15 2026 :: Log Ravagger [4804]: ne
+Mon Nov 23 01:15:15 2026 :: Log Ravagger [4808]: arrived (The Rest Room) from 4804
+Mon Nov 23 01:15:18 2026 :: Log Trentlin [2372]: con g
+Mon Nov 23 01:15:19 2026 :: Log Ravagger [4808]: pra
+Mon Nov 23 01:15:20 2026 :: Log Trentlin [2372]: k g
+Mon Nov 23 01:15:23 2026 :: Log Trentlin [2372]: fists
+Mon Nov 23 01:15:25 2026 :: Log Ravagger [4808]: s
+Mon Nov 23 01:15:27 2026 :: Log Ravagger [4808]: sw
+Mon Nov 23 01:15:27 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4808
+Mon Nov 23 01:15:28 2026 :: Log Trentlin [2372]: fists
+Mon Nov 23 01:15:30 2026 :: Log Ravagger [4804]: l
+Mon Nov 23 01:15:37 2026 :: Log Trentlin [2372]: killed Gorak
+Mon Nov 23 01:15:37 2026 :: Log Trentlin [2372]: coin +3 silver
+Mon Nov 23 01:15:37 2026 :: Log Trentlin [2372]: coin +5 copper
+Mon Nov 23 01:15:37 2026 :: Log Trentlin [2372]: coin +2 gold
+Mon Nov 23 01:15:38 2026 :: Log Ravagger [4804]: help guild masters
+Mon Nov 23 01:15:46 2026 :: Log Trentlin [2372]: l in co
+Mon Nov 23 01:15:49 2026 :: Log Trentlin [2372]: e
+Mon Nov 23 01:15:49 2026 :: Log Trentlin [2388]: arrived (The guarded hall) from 2372
+Mon Nov 23 01:15:52 2026 :: Log Trentlin [2388]: n
+Mon Nov 23 01:15:52 2026 :: Log Trentlin [2387]: arrived (The Guard Post) from 2388
+Mon Nov 23 01:15:53 2026 :: Log Trentlin [2387]: n
+Mon Nov 23 01:15:53 2026 :: Log Trentlin [2382]: arrived (The Great Hall) from 2387
+Mon Nov 23 01:15:53 2026 :: Log Trentlin [2382]: n
+Mon Nov 23 01:15:53 2026 :: Log Trentlin [2381]: arrived (The Grand Hall) from 2382
+Mon Nov 23 01:15:53 2026 :: Log Trentlin [2381]: n
+Mon Nov 23 01:15:53 2026 :: Log Trentlin [2381]: e
+Mon Nov 23 01:15:53 2026 :: Log Trentlin [2383]: arrived (Standing before the throne) from 2381
+Mon Nov 23 01:15:54 2026 :: Log Trentlin [2383]: e
+Mon Nov 23 01:15:54 2026 :: Log Trentlin [2385]: arrived (The secret hallway) from 2383
+Mon Nov 23 01:15:54 2026 :: Log Trentlin [2385]: e
+Mon Nov 23 01:15:56 2026 :: Log Trentlin [2385]: w
+Mon Nov 23 01:15:56 2026 :: Log Trentlin [2383]: arrived (Standing before the throne) from 2385
+Mon Nov 23 01:15:56 2026 :: Log Trentlin [2383]: w
+Mon Nov 23 01:15:56 2026 :: Log Trentlin [2381]: arrived (The Grand Hall) from 2383
+Mon Nov 23 01:15:57 2026 :: Log Trentlin [2381]: w
+Mon Nov 23 01:15:57 2026 :: Log Trentlin [2380]: arrived (The Hall) from 2381
+Mon Nov 23 01:15:57 2026 :: Log Trentlin [2380]: w
+Mon Nov 23 01:15:57 2026 :: Log Trentlin [2379]: arrived (The entryway to the Keep of Mahn-Tor) from 2380
+Mon Nov 23 01:15:57 2026 :: Log Trentlin [2379]: w
+Mon Nov 23 01:15:58 2026 :: Log Trentlin [2379]: e
+Mon Nov 23 01:15:58 2026 :: Log Trentlin [2380]: arrived (The Hall) from 2379
+Mon Nov 23 01:15:58 2026 :: Log Trentlin [2380]: s
+Mon Nov 23 01:15:59 2026 :: Log Trentlin [2380]: s
+Mon Nov 23 01:15:59 2026 :: Log Trentlin [2380]: s
+Mon Nov 23 01:15:59 2026 :: Log Trentlin [2380]: reca
+Mon Nov 23 01:15:59 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 2380
+Mon Nov 23 01:16:00 2026 :: Log Trentlin [4207]: w
+Mon Nov 23 01:16:00 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Mon Nov 23 01:16:00 2026 :: Log Ravagger [4804]: l
+Mon Nov 23 01:16:03 2026 :: Log Ravagger [4804]: ne
+Mon Nov 23 01:16:03 2026 :: Log Ravagger [4808]: arrived (The Rest Room) from 4804
+Mon Nov 23 01:16:03 2026 :: Log Trentlin [4208]: heal refresh
+Mon Nov 23 01:16:03 2026 :: Log Trentlin [4208]: gold -70
+Mon Nov 23 01:16:06 2026 :: Log Trentlin [4208]: e
+Mon Nov 23 01:16:06 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Mon Nov 23 01:16:06 2026 :: Log Ravagger [4808]: sw
+Mon Nov 23 01:16:06 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4808
+Mon Nov 23 01:16:07 2026 :: Log Trentlin [4207]: e
+Mon Nov 23 01:16:07 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Mon Nov 23 01:16:07 2026 :: Log Trentlin [4202]: e
+Mon Nov 23 01:16:07 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Mon Nov 23 01:16:07 2026 :: Log Trentlin [4201]: e
+Mon Nov 23 01:16:07 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Mon Nov 23 01:16:07 2026 :: Log Trentlin [2427]: e
+Mon Nov 23 01:16:08 2026 :: Log Trentlin [2427]: n
+Mon Nov 23 01:16:08 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Mon Nov 23 01:16:08 2026 :: Log Trentlin [2404]: n
+Mon Nov 23 01:16:08 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Mon Nov 23 01:16:08 2026 :: Log Trentlin [2401]: n
+Mon Nov 23 01:16:08 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2401
+Mon Nov 23 01:16:08 2026 :: Log Ravagger [4804]: w
+Mon Nov 23 01:16:08 2026 :: Log Ravagger [4807]: arrived (The Training room) from 4804
+Mon Nov 23 01:16:09 2026 :: Log Ravagger [4807]: e
+Mon Nov 23 01:16:09 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4807
+Mon Nov 23 01:16:11 2026 :: Log Ravagger [4804]: e
+Mon Nov 23 01:16:11 2026 :: Log Ravagger [4806]: arrived (A Small Clearing) from 4804
+Mon Nov 23 01:16:11 2026 :: Connection guard: refused 1 connection from 5.161.215.244 (paused; 38 refused in all, pause 4 this week, 388 minutes left).
+Mon Nov 23 01:16:14 2026 :: Log Ravagger [4806]: n
+Mon Nov 23 01:16:16 2026 :: Log Ravagger [4806]: w
+Mon Nov 23 01:16:16 2026 :: Log Ravagger [4804]: arrived (The Quiet Place) from 4806
+Mon Nov 23 01:16:25 2026 :: Log Ravagger [4804]: nw
+Mon Nov 23 01:16:25 2026 :: Log Ravagger [4809]: arrived (Back to the beginning) from 4804
+Mon Nov 23 01:16:26 2026 :: Log Trentlin [2402]: s
+Mon Nov 23 01:16:26 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2402
+Mon Nov 23 01:16:28 2026 :: Log Trentlin [2401]: r w 7
+Mon Nov 23 01:16:28 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2401
+Mon Nov 23 01:16:28 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 2405
+Mon Nov 23 01:16:28 2026 :: Log Trentlin [2434]: arrived (Temple Boulevard.) from 2433
+Mon Nov 23 01:16:28 2026 :: Log Trentlin [2435]: arrived (Temple Boulevard.) from 2434
+Mon Nov 23 01:16:28 2026 :: Log Trentlin [2436]: arrived (Temple Boulevard.) from 2435
+Mon Nov 23 01:16:28 2026 :: Log Trentlin [2437]: arrived (Temple Boulevard.) from 2436
+Mon Nov 23 01:16:28 2026 :: Log Trentlin [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Mon Nov 23 01:16:28 2026 :: Log Trentlin [2438]: open w
+Mon Nov 23 01:16:29 2026 :: Log Trentlin [2438]: w
+Mon Nov 23 01:16:29 2026 :: Log Trentlin [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Mon Nov 23 01:16:29 2026 :: Log Trentlin [2439]: r n 3
+Mon Nov 23 01:16:29 2026 :: Log Trentlin [3900]: arrived (West trail around Dresden) from 2439
+Mon Nov 23 01:16:29 2026 :: Log Trentlin [3901]: arrived (West trail around Dresden) from 3900
+Mon Nov 23 01:16:29 2026 :: Log Trentlin [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Mon Nov 23 01:16:29 2026 :: Log Trentlin [3902]: e
+Mon Nov 23 01:16:29 2026 :: Log Trentlin [3903]: arrived (Dusty trail along north wall.) from 3902
+Mon Nov 23 01:16:29 2026 :: Log Trentlin [3903]: e
+Mon Nov 23 01:16:29 2026 :: Log Trentlin [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Mon Nov 23 01:16:30 2026 :: Log Trentlin [3904]: r n 5
+Mon Nov 23 01:16:30 2026 :: Log Trentlin [300]: arrived (Path in the plains) from 3904
+Mon Nov 23 01:16:30 2026 :: Log Trentlin [315]: arrived (Gallow hill) from 300
+Mon Nov 23 01:16:30 2026 :: Log Trentlin [320]: arrived (Grassy plains) from 315
+Mon Nov 23 01:16:30 2026 :: Log Trentlin [322]: arrived (Grassy foothills) from 320
+Mon Nov 23 01:16:30 2026 :: Log Trentlin [324]: arrived (The steep foothills) from 322
+Mon Nov 23 01:16:30 2026 :: Log Trentlin [324]: e
+Mon Nov 23 01:16:30 2026 :: Log Trentlin [325]: arrived (The steep foothills) from 324
+Mon Nov 23 01:16:30 2026 :: Log Trentlin [325]: e
+Mon Nov 23 01:16:30 2026 :: Log Trentlin [326]: arrived (The pool in the foothills) from 325
+Mon Nov 23 01:16:30 2026 :: Log Trentlin [326]: n
+Mon Nov 23 01:16:30 2026 :: Log Trentlin [10]: arrived (A path upwards) from 326
+Mon Nov 23 01:16:32 2026 :: Log Ravagger [4801]: arrived (The passage way) from 4809
+Mon Nov 23 01:16:33 2026 :: Log Ravagger [4801]: n
+Mon Nov 23 01:16:33 2026 :: Log Ravagger [4800]: arrived (Another Dimension) from 4801
+Mon Nov 23 01:16:35 2026 :: Log Ravagger [4800]: n
+Mon Nov 23 01:16:35 2026 :: Log Ravagger [2437]: arrived (Temple Boulevard.) from 4800
+Mon Nov 23 01:16:37 2026 :: Log Trentlin [10]: u
+Mon Nov 23 01:16:37 2026 :: Log Trentlin [11]: arrived (Struggling upward) from 10
+Mon Nov 23 01:16:37 2026 :: Log Trentlin [11]: u
+Mon Nov 23 01:16:37 2026 :: Log Trentlin [12]: arrived (Breathless) from 11
+Mon Nov 23 01:16:37 2026 :: Log Trentlin [12]: n
+Mon Nov 23 01:16:37 2026 :: Log Trentlin [13]: arrived (Downward path) from 12
+Mon Nov 23 01:16:37 2026 :: Log Ravagger [2437]: n
+Mon Nov 23 01:16:37 2026 :: Log Ravagger [4601]: arrived (Entrance to the Temple of Breas.) from 2437
+Mon Nov 23 01:16:37 2026 :: Log Trentlin [13]: d
+Mon Nov 23 01:16:37 2026 :: Log Trentlin [14]: arrived (End of the Mountain) from 13
+Mon Nov 23 01:16:38 2026 :: Log Trentlin [14]: e
+Mon Nov 23 01:16:38 2026 :: Log Trentlin [2300]: arrived (The dark woods) from 14
+Mon Nov 23 01:16:38 2026 :: Log Trentlin [2300]: s
+Mon Nov 23 01:16:38 2026 :: Log Trentlin [2301]: arrived (The dark woods) from 2300
+Mon Nov 23 01:16:38 2026 :: Log Trentlin [2301]: s
+Mon Nov 23 01:16:38 2026 :: Log Trentlin [2302]: arrived (The small intersection in the forest) from 2301
+Mon Nov 23 01:16:38 2026 :: Log Trentlin [2302]: s
+Mon Nov 23 01:16:38 2026 :: Log Trentlin [2303]: arrived (The edge of the forest and hills) from 2302
+Mon Nov 23 01:16:39 2026 :: Log Trentlin [2303]: w
+Mon Nov 23 01:16:39 2026 :: Log Trentlin [2309]: arrived (The rocky path) from 2303
+Mon Nov 23 01:16:39 2026 :: Log Trentlin [2309]: s
+Mon Nov 23 01:16:39 2026 :: Log Trentlin [2308]: arrived (The rocky path) from 2309
+Mon Nov 23 01:16:39 2026 :: Log Trentlin [2308]: e
+Mon Nov 23 01:16:39 2026 :: Log Trentlin [2307]: arrived (The bloody intersection) from 2308
+Mon Nov 23 01:16:39 2026 :: Log Trentlin [2307]: e
+Mon Nov 23 01:16:39 2026 :: Log Trentlin [2306]: arrived (A turn in the path) from 2307
+Mon Nov 23 01:16:40 2026 :: Log Trentlin [2306]: n
+Mon Nov 23 01:16:40 2026 :: Log Trentlin [2305]: arrived (The dark forest path) from 2306
+Mon Nov 23 01:16:40 2026 :: Log Trentlin [2305]: e
+Mon Nov 23 01:16:40 2026 :: Log Trentlin [2327]: arrived (The swampy path) from 2305
+Mon Nov 23 01:16:40 2026 :: Log Trentlin [2327]: e
+Mon Nov 23 01:16:40 2026 :: Log Trentlin [2328]: arrived (The swampy path) from 2327
+Mon Nov 23 01:16:40 2026 :: Log Trentlin [2328]: e
+Mon Nov 23 01:16:40 2026 :: Log Trentlin [2329]: arrived (The swampy path) from 2328
+Mon Nov 23 01:16:41 2026 :: Log Trentlin [2329]: e
+Mon Nov 23 01:16:41 2026 :: Log Trentlin [2330]: arrived (The turn in the swampy path) from 2329
+Mon Nov 23 01:16:41 2026 :: Log Trentlin [2330]: s
+Mon Nov 23 01:16:41 2026 :: Log Trentlin [2331]: arrived (The swampy path) from 2330
+Mon Nov 23 01:16:41 2026 :: Log Trentlin [2331]: e
+Mon Nov 23 01:16:41 2026 :: Log Trentlin [2335]: arrived (Lost in the Mist) from 2331
+Mon Nov 23 01:16:43 2026 :: Log Trentlin [2335]: ex
+Mon Nov 23 01:16:44 2026 :: Log Ravagger [4601]: n
+Mon Nov 23 01:16:44 2026 :: Log Ravagger [4601]: n
+Mon Nov 23 01:16:45 2026 :: Log Trentlin [2335]: e
+Mon Nov 23 01:16:45 2026 :: Log Trentlin [2331]: arrived (The swampy path) from 2335
+Mon Nov 23 01:16:45 2026 :: Log Trentlin [2331]: ex
+Mon Nov 23 01:16:46 2026 :: Log Ravagger [4601]: l
+Mon Nov 23 01:16:48 2026 :: Log Ravagger [4601]: s
+Mon Nov 23 01:16:48 2026 :: Log Ravagger [2437]: arrived (Temple Boulevard.) from 4601
+Mon Nov 23 01:16:50 2026 :: Log Trentlin [2331]: e
+Mon Nov 23 01:16:50 2026 :: Log Trentlin [2335]: arrived (Lost in the Mist) from 2331
+Mon Nov 23 01:16:50 2026 :: Log Trentlin [2335]: affects off: levitate
+Mon Nov 23 01:16:51 2026 :: Log Trentlin [2335]: n
+Mon Nov 23 01:16:51 2026 :: Log Trentlin [2333]: arrived (Lost in the Mist) from 2335
+Mon Nov 23 01:16:52 2026 :: Log Ravagger [2437]: e
+Mon Nov 23 01:16:52 2026 :: Log Ravagger [2436]: arrived (Temple Boulevard.) from 2437
+Mon Nov 23 01:16:53 2026 :: Log Trentlin [2333]: n
+Mon Nov 23 01:16:53 2026 :: Log Trentlin [2335]: arrived (Lost in the Mist) from 2333
+Mon Nov 23 01:16:53 2026 :: Log Trentlin [2335]: n
+Mon Nov 23 01:16:53 2026 :: Log Trentlin [2333]: arrived (Lost in the Mist) from 2335
+Mon Nov 23 01:16:54 2026 :: Log Trentlin [2333]: n
+Mon Nov 23 01:16:54 2026 :: Log Trentlin [2335]: arrived (Lost in the Mist) from 2333
+Mon Nov 23 01:16:54 2026 :: Log Ravagger [2436]: e
+Mon Nov 23 01:16:54 2026 :: Log Ravagger [2435]: arrived (Temple Boulevard.) from 2436
+Mon Nov 23 01:16:54 2026 :: Log Trentlin [2335]: s
+Mon Nov 23 01:16:54 2026 :: Log Trentlin [2337]: arrived (Lost in the Mist) from 2335
+Mon Nov 23 01:16:56 2026 :: Log Trentlin [2337]: e
+Mon Nov 23 01:16:56 2026 :: Log Trentlin [2332]: arrived (Lost in the Mist) from 2337
+Mon Nov 23 01:16:56 2026 :: Log Ravagger [2435]: e
+Mon Nov 23 01:16:56 2026 :: Log Ravagger [2434]: arrived (Temple Boulevard.) from 2435
+Mon Nov 23 01:16:57 2026 :: Log Trentlin [2332]: e
+Mon Nov 23 01:16:57 2026 :: Log Trentlin [2337]: arrived (Lost in the Mist) from 2332
+Mon Nov 23 01:16:58 2026 :: Log Trentlin [2337]: s
+Mon Nov 23 01:16:58 2026 :: Log Trentlin [2338]: arrived (Lost in the Mist) from 2337
+Mon Nov 23 01:16:58 2026 :: Log Ravagger [2434]: e
+Mon Nov 23 01:16:58 2026 :: Log Ravagger [2433]: arrived (Temple Boulevard.) from 2434
+Mon Nov 23 01:16:59 2026 :: Log Trentlin [2338]: w
+Mon Nov 23 01:16:59 2026 :: Log Trentlin [2336]: arrived (Lost in the Mist) from 2338
+Mon Nov 23 01:17:00 2026 :: Log Trentlin [2336]: w
+Mon Nov 23 01:17:00 2026 :: Log Trentlin [2334]: arrived (Lost in the Mist) from 2336
+Mon Nov 23 01:17:00 2026 :: Log Ravagger [2433]: s
+Mon Nov 23 01:17:00 2026 :: Log Ravagger [4201]: arrived (Entrance to the Temple of Devota.) from 2433
+Mon Nov 23 01:17:02 2026 :: Log Trentlin [2334]: e
+Mon Nov 23 01:17:02 2026 :: Log Trentlin [2332]: arrived (Lost in the Mist) from 2334
+Mon Nov 23 01:17:03 2026 :: Log Trentlin [2332]: e
+Mon Nov 23 01:17:03 2026 :: Log Trentlin [2337]: arrived (Lost in the Mist) from 2332
+Mon Nov 23 01:17:04 2026 :: Log Trentlin [2337]: e
+Mon Nov 23 01:17:04 2026 :: Log Trentlin [2332]: arrived (Lost in the Mist) from 2337
+Mon Nov 23 01:17:04 2026 :: Log Trentlin [2332]: e
+Mon Nov 23 01:17:04 2026 :: Log Trentlin [2337]: arrived (Lost in the Mist) from 2332
+Mon Nov 23 01:17:04 2026 :: Log Ravagger [4201]: w
+Mon Nov 23 01:17:04 2026 :: Log Ravagger [4202]: arrived (Halls of Healing.) from 4201
+Mon Nov 23 01:17:05 2026 :: Log Trentlin [2337]: e
+Mon Nov 23 01:17:05 2026 :: Log Trentlin [2332]: arrived (Lost in the Mist) from 2337
+Mon Nov 23 01:17:05 2026 :: Log Trentlin [2332]: e
+Mon Nov 23 01:17:05 2026 :: Log Trentlin [2337]: arrived (Lost in the Mist) from 2332
+Mon Nov 23 01:17:05 2026 :: Log Trentlin [2337]: s
+Mon Nov 23 01:17:05 2026 :: Log Trentlin [2338]: arrived (Lost in the Mist) from 2337
+Mon Nov 23 01:17:06 2026 :: Log Ravagger [4202]: s
+Mon Nov 23 01:17:06 2026 :: Log Ravagger [4206]: arrived (Halls of Healing.) from 4202
+Mon Nov 23 01:17:06 2026 :: Log Trentlin [2338]: s
+Mon Nov 23 01:17:06 2026 :: Log Trentlin [2337]: arrived (Lost in the Mist) from 2338
+Mon Nov 23 01:17:07 2026 :: Log Trentlin [2337]: e
+Mon Nov 23 01:17:07 2026 :: Log Trentlin [2332]: arrived (Lost in the Mist) from 2337
+Mon Nov 23 01:17:07 2026 :: Log Trentlin [2332]: e
+Mon Nov 23 01:17:07 2026 :: Log Trentlin [2337]: arrived (Lost in the Mist) from 2332
+Mon Nov 23 01:17:08 2026 :: Log Trentlin [2337]: e
+Mon Nov 23 01:17:08 2026 :: Log Trentlin [2332]: arrived (Lost in the Mist) from 2337
+Mon Nov 23 01:17:09 2026 :: Log Trentlin [2332]: w
+Mon Nov 23 01:17:09 2026 :: Log Trentlin [2334]: arrived (Lost in the Mist) from 2332
+Mon Nov 23 01:17:11 2026 :: Log Trentlin [2334]: ex
+Mon Nov 23 01:17:11 2026 :: Log Ravagger [4206]: drink foun
+Mon Nov 23 01:17:12 2026 :: Log Trentlin [2334]: n
+Mon Nov 23 01:17:12 2026 :: Log Trentlin [2338]: arrived (Lost in the Mist) from 2334
+Mon Nov 23 01:17:13 2026 :: Log Trentlin [2338]: ex
+Mon Nov 23 01:17:14 2026 :: Log Trentlin [2338]: e
+Mon Nov 23 01:17:14 2026 :: Log Trentlin [2334]: arrived (Lost in the Mist) from 2338
+Mon Nov 23 01:17:14 2026 :: Log Trentlin [2334]: ex
+Mon Nov 23 01:17:15 2026 :: Log Ravagger [4206]: drink foun
+Mon Nov 23 01:17:15 2026 :: Log Trentlin [2334]: e
+Mon Nov 23 01:17:15 2026 :: Log Trentlin [2332]: arrived (Lost in the Mist) from 2334
+Mon Nov 23 01:17:15 2026 :: Log Trentlin [2332]: ex
+Mon Nov 23 01:17:17 2026 :: Log Ravagger [4206]: w
+Mon Nov 23 01:17:17 2026 :: Log Ravagger [4205]: arrived (Halls of Healing.) from 4206
+Mon Nov 23 01:17:18 2026 :: Log Ravagger [4205]: w
+Mon Nov 23 01:17:19 2026 :: Log Trentlin [2332]: north
+Mon Nov 23 01:17:19 2026 :: Log Trentlin [2334]: arrived (Lost in the Mist) from 2332
+Mon Nov 23 01:17:19 2026 :: Log Trentlin [2334]: south
+Mon Nov 23 01:17:19 2026 :: Log Trentlin [2336]: arrived (Lost in the Mist) from 2334

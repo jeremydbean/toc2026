@@ -433,16 +433,26 @@ List earn 39061207 0 interest
 List spend 172100000 0 heal
 End
 Day 2026-11-23
-Played 125
+Played 403
 Level 54 54 0
 Exp 0 0
-Kills 0
+Kills 4
 Deaths 0
 Close 0
 Quests 0 0
 Dailies 0 0
-List area 125 0 City of Dresden
+List area 162 0 City of Dresden
+List area 0 0 Miden'nir
+List area 6 0 Thalos
+List area 1 0 Drow City
+List area 8 0 The Underdark
+List area 218 0 The Keep of Mahn-Tor
+List area 0 0 Plains of the North
+List area 8 0 Continental Drift
+List item 1 0 a multi-colored key ring
+List earn 30710 0 loot
 List spend 600 0 buy
 List spend 70000 0 stolen
+List spend 700000 0 heal
 End
 #END
