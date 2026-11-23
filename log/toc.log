@@ -344217,3 +344217,5 @@ Mon Nov 23 04:59:31 2026 :: Connection guard: 5.161.113.195 closed without a wor
 Mon Nov 23 04:59:37 2026 :: Sock.sinaddr:  74.82.47.5
 Mon Nov 23 04:59:37 2026 :: EOF encountered on read.
 Mon Nov 23 04:59:37 2026 :: Connection guard: 74.82.47.5 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 23 05:04:36 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 05:05:18 2026 :: Treasure goblin: vanished from room 13534 (Hallway of The Mall from Hell, hell.are) (too long in one area).
