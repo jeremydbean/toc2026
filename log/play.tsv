@@ -53192,3 +53192,86 @@
 1795396019	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	look	strange	You do not see that here.	-	-
 1795396026	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	train		You have 0 training sessions. // You can train: str int wis con hp mana.	-	-
 1795396032	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	skills		Level  1: dagger              33%      hand to hand        75%       //           recall              75%       // Level  3: kick                63%      	-	+
+1795396040	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	look		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1795396056	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	help	skill	SKILLS SPELLS // Syntax: skills // Syntax: spells	-	+
+1795396076	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	help	trainers	No help on that word.	-	-
+1795396079	laid	-	0	0	-	1061	component	57	a trolls fingernail	9628	newthalo.are	scatter
+1795396081	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	help	guilds	A guild adds a second class's training to your own: a warrior in the // mages' guild learns some magic, for instance.  Full members (a mage in // the mages' guild) get each class's best.	-	+
+1795396125	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	consider	man	They're not here.	-	-
+1795396127	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	look		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1795396130	cmd	Ravagger	8	4804	dresden.are	standing	100	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795396131	cmd	Ravagger	8	4806	dresden.are	standing	100	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1795396138	laid	-	0	0	-	1063	herb	45	a sarsaparilla vine	4154	moria.are	scatter
+1795396145	cmd	Ravagger	8	4806	dresden.are	standing	100	0	-	look	hooded	You do not see that here.	-	-
+1795396161	cmd	Ravagger	8	4806	dresden.are	standing	100	0	-	practice		hand to hand        75%  kick                63%  dodge               61%   // You have 9 practice sessions left.	-	-
+1795396172	cmd	Ravagger	8	4806	dresden.are	standing	100	0	-	help	pra	ORACLE PRAY ASK SEER // Syntax: pray //         ask <question>       in her sanctum	-	+
+1795396191	cmd	Ravagger	8	4806	dresden.are	standing	100	0	-	help	practice	PRACTICE // Syntax: practice //         practice <skill|spell> [count|max]	-	+
+1795396199	laid	-	0	0	-	1064	component	62	a nightmare's hoof clipping	9504	newthalo.are	scatter
+1795396199	cmd	Ravagger	8	4806	dresden.are	standing	100	0	-	practicelist		Rakar the weaponsmaster can practice you in: //   axe                    8%  dagger                33%  flail                  6% //   mace                  80%  polearm                3%  spear                  7%	-	+
+1795396207	area	Trentlin	54	4208	dresden.are	-	dresden.are	-1	login
+1795396215	cmd	Trentlin	54	4208	dresden.are	sleeping	70	0	-	wake		You wake and stand up.	-	-
+1795396215	cmd	Trentlin	54	4208	dresden.are	standing	70	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795396217	cmd	Trentlin	54	4207	dresden.are	standing	70	0	-	east		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795396217	cmd	Trentlin	54	4202	dresden.are	standing	70	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795396217	cmd	Trentlin	54	4201	dresden.are	standing	70	0	-	east		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795396217	cmd	Trentlin	54	2427	dresden.are	standing	70	0	-	east		Main Processional. //   You are on a very well made stone road that goes through the center of town. // There is a lot more traffic on this road than on any other you have seen in	-	+
+1795396218	cmd	Trentlin	54	2427	dresden.are	standing	70	0	-	east		Alas, you cannot go that way.	-	-
+1795396219	cmd	Trentlin	54	2404	dresden.are	standing	70	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.	-	+
+1795396219	cmd	Trentlin	54	2401	dresden.are	standing	70	0	-	north		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795396221	cmd	Trentlin	54	2401	dresden.are	standing	70	0	-	list		[Lv Price] Item // [ 0         2s] a slice of pumpkin pie. // [ 0         4s] a plate of roast turkey.	-	+
+1795396225	cmd	Trentlin	54	2401	dresden.are	standing	70	0	-	look	table	Trestle tables pushed end to end and buried under platters: roast turkey, // sweet potatoes, cranberries, cornbread and more pumpkin pie than any town // could eat.  Goodwife Prudence keeps adding to it.  A good meal, she says,	-	+
+1795396228	cmd	Trentlin	54	2401	dresden.are	standing	70	0	-	look	in table	That is not a container.	-	-
+1795396230	cmd	Trentlin	54	2401	dresden.are	standing	70	0	-	eat		Eat what?	-	-
+1795396233	cmd	Trentlin	54	2401	dresden.are	standing	70	0	-	eat	table	You do not have that item.	-	-
+1795396239	cmd	Trentlin	54	2401	dresden.are	standing	70	0	-	sit	table	You sit down.	-	-
+1795396240	cmd	Trentlin	54	2401	dresden.are	sitting	70	0	-	look		Center of Oak Tree Square. //   This is the center of the square.  It is dominated by the trunk of the biggest // oak tree you have ever seen.  It must be at least 10 feet in diameter and one	-	+
+1795396242	cmd	Trentlin	54	2401	dresden.are	sitting	70	0	-	eat	table	You do not have that item.	-	-
+1795396245	cmd	Trentlin	54	2401	dresden.are	sitting	70	0	-	wake		You stand up.	-	-
+1795396247	cmd	Trentlin	54	2401	dresden.are	standing	70	0	-	look	harvest	Trestle tables pushed end to end and buried under platters: roast turkey, // sweet potatoes, cranberries, cornbread and more pumpkin pie than any town // could eat.  Goodwife Prudence keeps adding to it.  A good meal, she says,	-	+
+1795396251	cmd	Trentlin	54	2401	dresden.are	standing	70	0	-	look	in harvest	That is not a container.	-	-
+1795396253	cmd	Ravagger	8	4806	dresden.are	standing	100	0	-	look		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1795396254	cmd	Trentlin	54	2401	dresden.are	standing	70	0	-	look	in table	That is not a container.	-	-
+1795396255	cmd	Trentlin	54	2401	dresden.are	standing	70	0	-	list		[Lv Price] Item // [ 0         2s] a slice of pumpkin pie. // [ 0         4s] a plate of roast turkey.	-	+
+1795396259	coin	Trentlin	54	2401	dresden.are	-400	spent	buy	Goodwife Prudence the cook	22600249559
+1795396259	got	Trentlin	54	2401	dresden.are	29848	a plate of roast turkey	pill	0	400	buy	Goodwife Prudence the cook
+1795396259	cmd	Trentlin	54	2401	dresden.are	standing	70	1	-	buy	turk	You buy a plate of roast turkey.	-	-
+1795396261	cmd	Ravagger	8	4806	dresden.are	standing	100	0	-	question		Q/A channel is now ON.	-	-
+1795396262	cmd	Trentlin	54	2401	dresden.are	standing	70	0	-	eat	turk	You eat a plate of roast turkey. // Your muscles surge with heightened power! // You feel less tired.	-	-
+1795396263	laid	-	0	0	-	1065	herb	51	a piece of kelp	20502	emerald.are	scatter
+1795396263	laid	-	0	0	-	1066	herb	49	a pomegranate	20508	emerald.are	scatter
+1795396264	cmd	Trentlin	54	2401	dresden.are	standing	73	0	-	affect		You are affected by: // Spell: 'giant strength' modifies strength by 1 for 14 hours. // Spell: 'detect invis' for 6 hours.	-	+
+1795396267	cmd	Ravagger	8	4806	dresden.are	standing	100	0	-	question		Q/A channel is now OFF.	-	-
+1795396267	coin	Trentlin	54	2401	dresden.are	-200	spent	buy	Goodwife Prudence the cook	22600249359
+1795396267	got	Trentlin	54	2401	dresden.are	29829	a slice of pumpkin pie	pill	0	200	buy	Goodwife Prudence the cook
+1795396267	cmd	Trentlin	54	2401	dresden.are	standing	73	0	-	buy	pie	You buy a slice of pumpkin pie.	-	-
+1795396268	cmd	Trentlin	54	2401	dresden.are	standing	73	0	-	eat	pie	You eat a slice of pumpkin pie. // You feel righteous. // You feel better!	-	-
+1795396268	cmd	Ravagger	8	4804	dresden.are	standing	100	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795396269	cmd	Trentlin	54	2401	dresden.are	standing	75	0	-	affect		You are affected by: // Spell: 'bless' modifies save vs spell by -1 for 21 hours. // Spell: 'bless' modifies hit roll by 1 for 21 hours.	-	+
+1795396270	cmd	Ravagger	8	4808	dresden.are	standing	100	0	-	ne		The Rest Room //   This is a small quiet room set aside for you to put the battle weary road // behind you, comfortable pillows line the floor, and scented joss sticks fill	-	+
+1795396274	cmd	Ravagger	8	4804	dresden.are	standing	100	0	-	sw		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795396285	cmd	Ravagger	8	4809	dresden.are	standing	100	0	-	nw		Back to the beginning //   As you enter this room a sharp tingling enters your limbs as you begin // to move...the valley drops away from your feet and a white sheet falls in	-	+
+1795396288	cmd	Trentlin	54	2410	dresden.are	standing	75	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little	-	+
+1795396289	cmd	Trentlin	54	2411	dresden.are	standing	75	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze	-	+
+1795396289	cmd	Trentlin	54	2414	dresden.are	standing	75	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by a brilliant light	-	+
+1795396289	cmd	Trentlin	54	2497	dresden.are	standing	75	3	-	up		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795396291	quest	Trentlin	54	2497	dresden.are	rush	kill	2307	the Ogre Villager	10	mahntor.are	6
+1795396291	cmd	Trentlin	54	2497	dresden.are	standing	75	19	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Trentlin.' // Questor Thews tells you 'the Ogre Villager has been declared an outlaw!'	-	+
+1795396294	cmd	Trentlin	54	2401	dresden.are	standing	75	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1795396294	cmd	Ravagger	8	4802	dresden.are	standing	100	0	-	south		The narrow entrance //   You have reached the entrance of a narrow box canyon. Standing beside you is // an odd weather worn stone statue, that seems oddly out of place in the	-	+
+1795396296	cmd	Ravagger	8	4803	dresden.are	standing	100	0	-	south		The Palm of the Creator //   A large stone hand rises out of the earth and points skyward...the only place // you find to stand in the room is at the center of the giant stone effigy.	-	+
+1795396306	coin	Trentlin	54	2401	dresden.are	-70000	spent	stolen	a citizen of Dresden	22600179359
+1795396324	cmd	Trentlin	54	2401	dresden.are	standing	75	0	-	levitate		You slowly rise up off the ground.	-	-
+1795396329	census	-	0	0	-	herbs=30/150 components=22/100 eggs=0 coin_piles=10	herbs_held=0 components_held=6 players=2	laid=15 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=24 mobs_fought=0 secs=900
+1795396332	laid	-	0	0	-	1068	herb	47	a sprig of saffron	15066	campus.are	scatter
+1795396332	laid	-	0	0	-	1069	herb	53	a huckleberry	15002	campus.are	scatter
+1795396332	laid	-	0	0	-	1070	component	68	a gorgon's horn	9314	galaxy.are	scatter
+1795396334	cmd	Ravagger	8	4804	dresden.are	standing	100	0	-	look		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795396337	cmd	Trentlin	54	2426	dresden.are	standing	77	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road	-	+
+1795396338	cmd	Trentlin	54	2426	dresden.are	standing	77	0	-	open	east	Ok.	-	-
+1795396338	area	Trentlin	54	3503	midennir.are	dresden.are	midennir.are	131	run
+1795396338	cmd	Trentlin	54	3502	midennir.are	standing	77	0	-	run	e 3	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance	-	+
+1795396338	area	Trentlin	54	5261	oldthalo.are	midennir.are	oldthalo.are	0	run
+1795396338	cmd	Trentlin	54	5258	oldthalo.are	standing	77	0	-	run	s 4	The dwarf forest // [Exits: north south southeast] // The dwarf forest	-	+
+1795396338	cmd	Ravagger	8	4807	dresden.are	standing	100	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered	-	+
+1795396338	cmd	Trentlin	54	5262	oldthalo.are	standing	77	0	-	east		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads east and west.  It looks	-	+
+1795396339	cmd	Trentlin	54	5263	oldthalo.are	standing	77	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns south	-	+
