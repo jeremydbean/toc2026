@@ -33,6 +33,19 @@ say() { printf '\n== %s\n' "$*"; }
 say "restoring from $REPO ($BRANCH) into $TOC_PREFIX"
 [ "$DRILL" = 1 ] && echo "   rehearsal: nothing outside $TOC_PREFIX is touched"
 
+# A restore under a running game is undone by the game's own saves, and a
+# sync mid-restore pushes a half-laid tree (review, 2026-11-23): refuse
+# before anything is written. A bare box has neither running.
+if [ "$DRILL" = 0 ] && command -v systemctl >/dev/null 2>&1; then
+    for unit in toc-game.service toc-state-sync.timer toc-state-sync.service; do
+        if systemctl is-active --quiet "$unit" 2>/dev/null; then
+            echo "   refusing: $unit is running and would write over the restore." >&2
+            echo "   stop it first: systemctl stop toc-game.service toc-state-sync.timer" >&2
+            exit 2
+        fi
+    done
+fi
+
 # ---------------------------------------------------------------- clone
 say "fetching the repository"
 mkdir -p "$TOC_PREFIX"
@@ -92,20 +105,22 @@ fi
 # --------------------------------------------------------------- install
 say "installing to $CURRENT"
 mkdir -p "$CURRENT"
-rsync -a --exclude '.git/' "$BUILD/" "$CURRENT/"
+# The code; the state is laid down on its own below, never merged in here.
+rsync -a --exclude '.git/' --exclude '/player/' --exclude '/gods/' --exclude '/heroes/' \
+      --exclude '/log/' --exclude '/corpse/' "$BUILD/" "$CURRENT/"
 # These are written by the running game and are not code; they come
-# from the repository on a restore because that is the only copy.
-for d in player gods heroes log corpse; do
-    [ -d "$BUILD/$d" ] && { mkdir -p "$CURRENT/$d"; rsync -a "$BUILD/$d/" "$CURRENT/$d/"; }
-done
+# from the repository on a restore because that is the only copy. Staged
+# (deploy/toc-restore-state): into a tree that already holds state only
+# with TOC_RESTORE_REPLACE=1, which moves that state aside first, and
+# compared with the checkout before it counts as done.
+TOC_RESTORE_LIVE=$(( 1 - DRILL )) sh "$BUILD/deploy/toc-restore-state" "$BUILD" "$CURRENT"
 # corpse/ comes from git too since corpses are written down (corpses.c):
 # the players' corpses lying in the world when the host was lost are made
 # again at boot, and player/recovery/ -- the restore receipts and player
 # identities -- came with player/. backups/ is genuinely empty on a new
 # box; heroes/ is not, and creating it empty here is how a restored game
 # got a blank plaque.
-mkdir -p "$CURRENT/corpse" "$CURRENT/heroes" "$CURRENT/backups"
-echo "   $(ls "$CURRENT/player" | wc -l) characters, $(ls "$CURRENT/heroes" | wc -l) heroes in place"
+echo "   $(find "$CURRENT/player" -mindepth 1 -maxdepth 1 -type f | wc -l) characters, $(ls "$CURRENT/heroes" | wc -l) heroes in place"
 
 # area/shutdown.txt is tracked in git but is a runtime marker: when it
 # exists, toc-game.service's ExecCondition skips the start and the game

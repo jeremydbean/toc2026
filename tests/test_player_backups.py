@@ -297,6 +297,138 @@ class GitRestoreTests(unittest.TestCase):
         self.assertIn("restore:t1", saved)
 
 
+@unittest.skipIf(shutil.which("rsync") is None or shutil.which("diff") is None, "needs rsync and diff")
+class RestoreStateTests(unittest.TestCase):
+    """deploy/toc-restore-state (review, 2026-11-23): toc-restore laid state
+    into an existing tree with `rsync -a` and no --delete, so a restore over
+    a non-empty install kept a character deleted since and a corpse that had
+    ended -- remade at boot, gear and all -- and it never stopped the game,
+    which saves back over a restore. Synthetic characters only."""
+
+    SCRIPT = ROOT / "deploy" / "toc-restore-state"
+
+    def setUp(self) -> None:
+        self._tmp = tempfile.TemporaryDirectory()
+        root = self.root = pathlib.Path(self._tmp.name)
+        self.src, self.dst = root / "checkout", root / "srv" / "current"
+        (self.src / "player" / "recovery").mkdir(parents=True)
+        (self.src / "corpse" / "live").mkdir(parents=True)
+        (self.src / "heroes").mkdir()
+        (self.src / "player" / "Zkept").write_text("#PLAYER\nName Zkept~\nEnd\n#END\n")
+        (self.src / "player" / "recovery" / "ledger.tsv").write_text("1\tmilestone\n")
+        (self.src / "heroes" / "Zkept").write_text("hero\n")
+        self.bin = root / "bin"
+        self.bin.mkdir()
+
+    def tearDown(self) -> None:
+        self._tmp.cleanup()
+
+    def restore(self, **env) -> subprocess.CompletedProcess:
+        return subprocess.run(["sh", str(self.SCRIPT), str(self.src), str(self.dst)],
+                              env=dict(os.environ, PATH=f"{self.bin}:{os.environ['PATH']}", **env),
+                              capture_output=True, text=True, timeout=60)
+
+    def files(self, where: pathlib.Path) -> set[str]:
+        return {str(f.relative_to(where)) for f in where.rglob("*") if f.is_file()}
+
+    def stale_install(self) -> None:
+        (self.dst / "player").mkdir(parents=True)
+        (self.dst / "corpse" / "live").mkdir(parents=True)
+        (self.dst / "backups").mkdir()
+        (self.dst / "player" / "Zkept").write_text("#PLAYER\nName Zkept~\nolder\n")
+        (self.dst / "player" / "Zgone").write_text("#PLAYER\nName Zgone~\n")
+        (self.dst / "corpse" / "live" / "c-ended.corpse").write_text("#CORPSE\n")
+        (self.dst / "backups" / "Nov.23.tar.gz").write_bytes(b"the game's own archive")
+
+    def test_into_an_empty_tree_the_state_is_exactly_the_checkouts(self) -> None:
+        done = self.restore()
+        self.assertEqual(done.returncode, 0, done.stderr)
+        for d in ("player", "corpse", "heroes"):
+            self.assertEqual(self.files(self.dst / d), self.files(self.src / d), d)
+        self.assertIn("compared with the checkout: 1 characters", done.stdout)
+
+    def test_a_tree_that_holds_state_is_refused_and_left_alone(self) -> None:
+        self.stale_install()
+        before = self.files(self.dst)
+        done = self.restore()
+        self.assertEqual(done.returncode, 3, done.stderr)
+        self.assertIn("already holds state", done.stderr)
+        self.assertEqual(self.files(self.dst), before, "nothing touched")
+
+    def test_replacing_moves_the_old_state_aside_and_keeps_nothing_stale(self) -> None:
+        self.stale_install()
+        done = self.restore(TOC_RESTORE_REPLACE="1")
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertEqual(self.files(self.dst / "player"), self.files(self.src / "player"))
+        self.assertFalse((self.dst / "player" / "Zgone").exists(), "a character the backup lacks")
+        self.assertFalse((self.dst / "corpse" / "live" / "c-ended.corpse").exists(),
+                         "an ended corpse would be remade at boot")
+        self.assertEqual((self.dst / "player" / "Zkept").read_text(),
+                         (self.src / "player" / "Zkept").read_text())
+        aside = list((self.root / "srv").glob("pre-restore-*"))
+        self.assertEqual(len(aside), 1, "the old state is kept, not deleted")
+        self.assertTrue((aside[0] / "player" / "Zgone").exists())
+        self.assertTrue((aside[0] / "corpse" / "live" / "c-ended.corpse").exists())
+        self.assertTrue((self.dst / "backups" / "Nov.23.tar.gz").exists(), "backups/ is never touched")
+
+    def test_a_live_restore_refuses_while_the_game_runs(self) -> None:
+        stub = self.bin / "systemctl"
+        stub.write_text('#!/bin/sh\n[ "$1" = is-active ] && [ "$3" = toc-game.service ] && exit 0\nexit 3\n')
+        stub.chmod(0o755)
+        done = self.restore(TOC_RESTORE_LIVE="1")
+        self.assertEqual(done.returncode, 2, done.stderr)
+        self.assertIn("toc-game.service", done.stderr)
+        self.assertFalse(self.dst.exists(), "nothing written")
+        done = self.restore()                           # a drill does not ask
+        self.assertEqual(done.returncode, 0, done.stderr)
+
+    def test_a_mirror_on_a_drive_restores_with_github_gone(self) -> None:
+        """The off-GitHub copy (review, 2026-11-23): both the public
+        repository and the private mirror live in one GitHub account. The
+        documented answer -- `git clone --mirror` to a drive the owner holds,
+        `remote update` to keep it current -- restores with GitHub gone, and
+        toc-restore takes it as REPO=<path>."""
+        git = lambda *a, cwd=None: subprocess.run(
+            ["git", "-c", "user.name=t", "-c", "user.email=t@t", *a],
+            cwd=cwd, check=True, capture_output=True, text=True).stdout
+        github = self.root / "github.git"
+        git("init", "-q", "--bare", "-b", "main", str(github))
+        work = self.root / "work"
+        git("clone", "-q", str(github), str(work))
+        (work / "player").mkdir()
+        (work / "player" / "Zkept").write_text("#PLAYER\nName Zkept~\nv1\n")
+        git("add", "-A", cwd=work)
+        git("commit", "-qm", "v1", cwd=work)
+        git("push", "-q", "origin", "HEAD:main", cwd=work)
+        drive = self.root / "drive" / "toc-mirror.git"
+        git("clone", "-q", "--mirror", str(github), str(drive))          # once
+        (work / "player" / "Zkept").write_text("#PLAYER\nName Zkept~\nv2\n")
+        (work / "player" / "Znew").write_text("#PLAYER\nName Znew~\n")
+        git("add", "-A", cwd=work)
+        git("commit", "-qm", "v2", cwd=work)
+        git("push", "-q", "origin", "HEAD:main", cwd=work)
+        git("--git-dir", str(drive), "remote", "update")                  # thereafter
+        shutil.rmtree(github)                                              # GitHub gone
+        shutil.rmtree(work)
+        checkout = self.root / "restore-checkout"
+        git("clone", "-q", "--branch", "main", str(drive), str(checkout))  # toc-restore's clone, REPO=<drive>
+        self.src = checkout
+        done = self.restore()
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertEqual((self.dst / "player" / "Zkept").read_text(), "#PLAYER\nName Zkept~\nv2\n",
+                         "the latest state, from the drive alone")
+        self.assertTrue((self.dst / "player" / "Znew").exists())
+        # And every earlier state is in the drive's history.
+        self.assertIn("v1", git("--git-dir", str(drive), "log", "-p", "--format=", "main", "--", "player/Zkept"))
+
+    def test_toc_restore_never_merges_state_with_its_code_copy(self) -> None:
+        source = (ROOT / "deploy" / "toc-restore").read_text()
+        self.assertIn('sh "$BUILD/deploy/toc-restore-state" "$BUILD" "$CURRENT"', source)
+        for d in ("player", "gods", "heroes", "log", "corpse"):
+            self.assertIn(f"--exclude '/{d}/'", source)
+        self.assertNotIn('rsync -a "$BUILD/$d/" "$CURRENT/$d/"', source)
+
+
 class PlayerHistoryToolTests(unittest.TestCase):
     def test_the_tool_reads_worn_carried_and_stash_apart(self) -> None:
         import sys

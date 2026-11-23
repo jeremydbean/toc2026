@@ -1,0 +1,83 @@
+#!/bin/sh
+# Lay a checkout's live state -- player gods heroes log corpse -- into a
+# game tree, so that the tree afterwards holds exactly what the checkout
+# holds and nothing else. toc-restore calls it; it can be run on its own.
+#
+#   toc-restore-state SRC DST
+#
+# Review, 2026-11-23: toc-restore copied state into an existing current/
+# with `rsync -a` and no --delete, so a restore over a non-empty install
+# kept every file the backup did not have -- a character deleted since, a
+# corpse that had already ended -- and a stale corpse is made again at
+# boot, its gear with it. It also never stopped the game, which would save
+# its own characters back over the restored files. This is the staged
+# replacement:
+#
+#   - while the game or the state sync can write the target, refuse
+#     (TOC_RESTORE_LIVE=1, which toc-restore sets for the live tree);
+#   - a target that already holds state is refused unless
+#     TOC_RESTORE_REPLACE=1 says otherwise, and then that state is MOVED
+#     aside to <DST>/../pre-restore-<UTC stamp>/, never deleted;
+#   - the checkout's state is laid into empty directories, and the result
+#     is compared with the source, file for file, before it says done.
+#
+# backups/ (the game's own archives) is never touched: it is not in git.
+# Exit 0 done, 1 failed, 2 something is running, 3 the target holds state.
+set -eu
+
+SRC=${1:?usage: toc-restore-state SRC DST}
+DST=${2:?usage: toc-restore-state SRC DST}
+DIRS="player gods heroes log corpse"
+STAMP=$(date -u +%Y%m%d-%H%M%S)
+
+if [ "${TOC_RESTORE_LIVE:-0}" = 1 ] && command -v systemctl >/dev/null 2>&1; then
+    busy=""
+    for unit in toc-game.service toc-state-sync.timer toc-state-sync.service; do
+        systemctl is-active --quiet "$unit" 2>/dev/null && busy="$busy $unit"
+    done
+    if [ -n "$busy" ]; then
+        echo "   refusing: running:$busy -- they would write over the restore." >&2
+        echo "   stop them first: systemctl stop toc-game.service toc-state-sync.timer" >&2
+        exit 2
+    fi
+fi
+
+present=""
+for d in $DIRS; do
+    if [ -d "$DST/$d" ] && [ -n "$(ls -A "$DST/$d" 2>/dev/null)" ]; then
+        present="$present $d"
+    fi
+done
+if [ -n "$present" ]; then
+    aside="$(dirname "$DST")/pre-restore-$STAMP"
+    if [ "${TOC_RESTORE_REPLACE:-0}" != 1 ]; then
+        echo "   refusing: $DST already holds state:$present" >&2
+        echo "   A restore over it would keep files the backup does not have (a" >&2
+        echo "   character deleted since, a corpse that has ended). To replace it," >&2
+        echo "   set TOC_RESTORE_REPLACE=1: it is moved to $aside, not deleted." >&2
+        exit 3
+    fi
+    mkdir -p "$aside"
+    for d in $present; do
+        mv "$DST/$d" "$aside/$d"
+    done
+    echo "   moved the existing$present aside to $aside (nothing deleted)"
+fi
+
+for d in $DIRS; do
+    [ -d "$SRC/$d" ] || continue
+    mkdir -p "$DST/$d"
+    rsync -a "$SRC/$d/" "$DST/$d/"
+done
+mkdir -p "$DST/corpse" "$DST/heroes" "$DST/backups"
+
+# Proven, not assumed: the tree now holds the checkout's state exactly.
+for d in $DIRS; do
+    [ -d "$SRC/$d" ] || continue
+    if ! diff -rq "$SRC/$d" "$DST/$d" >/dev/null 2>&1; then
+        echo "   the restored $d does not match the checkout:" >&2
+        diff -rq "$SRC/$d" "$DST/$d" 2>&1 | head -5 >&2
+        exit 1
+    fi
+done
+echo "   state laid down and compared with the checkout: $(find "$DST/player" -mindepth 1 -maxdepth 1 -type f 2>/dev/null | wc -l | tr -d " ") characters"
