@@ -344267,3 +344267,4 @@ Mon Nov 23 07:08:42 2026 :: Connection guard: 45.79.128.205 closed without a wor
 Mon Nov 23 07:08:43 2026 :: Connection guard: 45.79.128.205 closed without a word (strike 2 of 6 in 6 hours).
 Mon Nov 23 07:10:29 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Mon Nov 23 07:11:25 2026 :: Connection guard: refused 1 connection from 5.161.215.244 (paused; 43 refused in all, pause 4 this week, 32 minutes left).
+Mon Nov 23 07:16:29 2026 :: Connection guard: refused 1 connection from 5.161.117.52 (paused; 7 refused in all, pause 1 this week, 234 minutes left).
