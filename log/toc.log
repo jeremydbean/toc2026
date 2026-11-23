@@ -344510,3 +344510,7 @@ Mon Nov 23 15:54:23 2026 :: Treasure goblin: vanished from room 13274 (Administr
 Mon Nov 23 15:59:21 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 57 refused in all, pause 5 this week, 2994 minutes left).
 Mon Nov 23 16:04:27 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 3 of 6 in 6 hours).
 Mon Nov 23 16:04:27 2026 :: Treasure goblin: vanished from room 7748 (The Dragon Cave, ultima.are) (too long in one area).
+Mon Nov 23 16:09:31 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 2 of 6 in 6 hours).
+Mon Nov 23 16:10:13 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Mon Nov 23 16:11:56 2026 :: Cartographer: left room 29116 (Ofcol, korzath1.are) (his visit is over).
+Mon Nov 23 16:13:08 2026 :: Connection guard: last hour 15 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 9 addresses paused and 0 refused now, 16 active player addresses.
