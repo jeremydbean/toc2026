@@ -344778,3 +344778,7 @@ Mon Nov 23 21:59:46 2026 :: EOF encountered on read.
 Mon Nov 23 21:59:46 2026 :: Connection guard: 192.178.6.196 closed before a password prompt (strike 1 of 6 in 6 hours).
 Mon Nov 23 21:59:47 2026 :: Sock.sinaddr:  192.178.6.195
 Mon Nov 23 21:59:48 2026 :: Connection guard: refused 1 connection from 178.156.187.238 (paused; 28 refused in all, pause 4 this week, 2190 minutes left).
+Mon Nov 23 22:01:16 2026 :: EOF encountered on read.
+Mon Nov 23 22:01:16 2026 :: Connection guard: 192.178.6.195 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 23 22:03:06 2026 :: Cartographer: appeared.
+Mon Nov 23 22:04:53 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 1 of 6 in 6 hours).
