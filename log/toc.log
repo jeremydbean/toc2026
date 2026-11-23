@@ -344609,3 +344609,7 @@ Mon Nov 23 18:57:09 2026 :: Sock.sinaddr:  1.24.16.29
 Mon Nov 23 18:57:17 2026 :: EOF encountered on read.
 Mon Nov 23 18:57:17 2026 :: Connection guard: 1.24.16.29 closed before a password prompt (strike 1 of 6 in 6 hours).
 Mon Nov 23 18:58:07 2026 :: Treasure goblin: vanished from room 16050 (Bow of the Royal Eagle, pirate.are) (too long in one area).
+Mon Nov 23 19:02:10 2026 :: Connection guard: refused 1 connection from 178.156.181.172 (paused; 8 refused in all, pause 1 this week, 30 minutes left).
+Mon Nov 23 19:07:00 2026 :: Connection guard: 106.117.107.62 closed without a word (timed out at the prompt; not counted).
+Mon Nov 23 19:07:15 2026 :: Connection guard: refused 1 connection from 5.161.194.92 (paused; 16 refused in all, pause 4 this week, 1906 minutes left).
+Mon Nov 23 19:08:11 2026 :: Treasure goblin: vanished from room 6103 (A narrow trail through the deep, dark forest, haon.are) (too long in one area).
