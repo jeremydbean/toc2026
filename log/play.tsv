@@ -54887,3 +54887,55 @@
 1795399332	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	look		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
 1795399334	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // steel fist         3     stunning blow      3     fast healing       4     	-	+
 1795399337	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795399343	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	gainlist		Abilities for a level 9 monk of the monk guild: 15 learned, 19 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):	-	+
+1795399355	laid	-	0	0	-	1288	herb	41	a sprig of mistletoe	15080	campus.are	scatter
+1795399367	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	help	gain	GAIN // Syntax: gain list //         gain <skill or group>	-	+
+1795399375	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	help	teachlist	TEACHLIST // Syntax: teachlist // Lists each guildmaster your class and guild may use, and the skills and	-	+
+1795399394	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	help	train	TRAIN // Syntax: train <str|int|wis|dex|con|hp|mana> [count] // At a trainer, spends training sessions: each raises an attribute by one,	-	+
+1795399403	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	help	gain	GAIN // Syntax: gain list //         gain <skill or group>	-	+
+1795399410	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	gain	list	You can't do that here.	-	-
+1795399413	laid	-	0	0	-	1289	herb	35	a sprig of angelica	29040	korzath1.are	scatter
+1795399413	laid	-	0	0	-	1290	herb	43	a sprig of hyssop	29061	korzath1.are	scatter
+1795399413	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	list		You can't do that here.	-	-
+1795399416	state	Ravagger	9	4804	dresden.are	lvl=9 hp=119/119 mana=287/287 mv=148/148 align=64 exp=20465 coin=9439724 bank=0 qp=0 prac=9 train=0 stash=0/50 remorts=0
+1795399416	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	score		| Name:       Ravagger | Level:       9 | Class:        Monk | // | Played:      4 hours | Sex:      Male | Guild:        Monk | // | Age:        17 years | Race:    Human | Castle:       None |	-	+
+1795399426	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	look		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795399428	cmd	Ravagger	9	4806	dresden.are	standing	100	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near	-	+
+1795399431	cmd	Ravagger	9	4804	dresden.are	standing	100	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass	-	+
+1795399433	cmd	Ravagger	9	4809	dresden.are	standing	100	1	-	nw		Back to the beginning //   As you enter this room a sharp tingling enters your limbs as you begin // to move...the valley drops away from your feet and a white sheet falls in	-	+
+1795399446	cmd	Ravagger	9	4800	dresden.are	standing	100	0	-	north		Another Dimension //   You have somehow left the City of Dresden, and entered another dimension. // To the north you can still make out the streets of Dresden thru the mist,	-	+
+1795399448	cmd	Ravagger	9	2437	dresden.are	standing	100	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795399449	cmd	Ravagger	9	2436	dresden.are	standing	100	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795399450	cmd	Ravagger	9	2435	dresden.are	standing	100	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795399451	cmd	Ravagger	9	2434	dresden.are	standing	100	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.	-	+
+1795399452	cmd	Ravagger	9	2433	dresden.are	standing	100	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1795399453	cmd	Ravagger	9	2405	dresden.are	standing	100	0	-	east		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.	-	+
+1795399457	cmd	Ravagger	9	2433	dresden.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of	-	+
+1795399459	cmd	Ravagger	9	4201	dresden.are	standing	100	0	-	south		Entrance to the Temple of Devota. //   You are at the top of a broad stone stairway looking up at the entrance to a // beautiful white marble temple.  There is a plaque above the arched entrance.	-	+
+1795399461	cmd	Ravagger	9	4202	dresden.are	standing	100	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795399463	cmd	Ravagger	9	4207	dresden.are	standing	100	2	-	west		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795399465	cmd	Ravagger	9	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795399471	cmd	Ravagger	9	4208	dresden.are	standing	100	0	-	sleep		You go to sleep.	-	-
+1795399483	cmd	Ravagger	9	4208	dresden.are	resting	100	0	-	drink	bot	You can't find it.	-	-
+1795399484	cmd	Ravagger	9	4208	dresden.are	resting	100	0	-	inventory		You are carrying: //      a buffalo water skin //      (Glowing) a slice of pumpkin pie	-	+
+1795399489	cmd	Ravagger	9	4208	dresden.are	resting	100	0	-	drink	ski	You drink water from a buffalo water skin. // You do not feel thirsty.	-	-
+1795399491	cmd	Ravagger	9	4208	dresden.are	resting	100	0	-	drink	ski	You drink water from a buffalo water skin. // You do not feel thirsty.	-	-
+1795399492	cmd	Ravagger	9	4208	dresden.are	resting	100	0	-	look		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795399494	cmd	Ravagger	9	4207	dresden.are	resting	100	0	-	east		You stand up. // Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota,	-	+
+1795399495	cmd	Ravagger	9	4205	dresden.are	standing	100	0	-	south		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795399497	cmd	Ravagger	9	4206	dresden.are	standing	100	0	-	east		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795399502	cmd	Ravagger	9	4206	dresden.are	standing	100	0	-	fill	ski	You fill a buffalo water skin.	-	-
+1795399503	cmd	Ravagger	9	4205	dresden.are	standing	100	0	-	west		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795399507	cmd	Ravagger	9	4209	dresden.are	standing	100	0	-	south		Private Prayer Room. //   There are a number of pews for kneeling and a rack of candles in this room. // You feel at ease here as if Devota herself were here to protect you.  You	-	+
+1795399512	cmd	Ravagger	9	4205	dresden.are	standing	100	0	-	north		Halls of Healing. //   You are in a large domed room that has murals all over the ceiling depicting // picturesque scenery and women in white robes tending the wounds of soldiers	-	+
+1795399515	cmd	Ravagger	9	4207	dresden.are	standing	100	0	-	north		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795399516	cmd	Ravagger	9	4208	dresden.are	standing	100	0	-	west		Altar of the Temple of Devota. //   The altar is made out of an enormous piece of white marble.  Behind it is a // statue in the likeness of Devota herself looking out into her temple with a	-	+
+1795399519	cmd	Ravagger	9	4208	dresden.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1795399521	cmd	Ravagger	9	4208	dresden.are	standing	100	0	-	inventory		You are carrying: //      a buffalo water skin //      (Glowing) a slice of pumpkin pie	-	+
+1795399528	cmd	Ravagger	9	4208	dresden.are	standing	100	0	-	sleep		You go to sleep.	-	-
+1795399531	cmd	Ravagger	9	4208	dresden.are	sleeping	100	7	-	save		Saving. Remember that ROM has automatic saving now.	-	-
+1795399540	laid	-	0	0	-	1292	herb	36	a belladonna plant	24140	coven.are	scatter
+1795399541	sightings	Ravagger	9	4208	dresden.are	mob	4201:1/0/0 4202:1/0/0 3719:1/0/0 3718:1/0/0 58:1/0/0 29809:1/0/0 4468:5/0/0 4444:1/0/0 2402:1/0/0 802:1/0/0 800:1/0/0 804:1/0/0 803:1/0/0 4456:2/0/0 4801:1/0/0 4803:1/0/0 4802:1/0/0 4600:1/0/0 3762:1/0/0 24300:1/1/1 24301:3/1/0 24303:1/1/0 24307:1/1/0 24305:1/1/0 24311:1/1/0 24309:1/1/0 24313:2/1/0 24315:1/0/0 24314:1/0/0 24317:1/0/0 24316:1/0/0 24318:1/1/0 3700:1/0/0 3707:1/0/0 3703:1/1/0 3705:2/2/0 3704:2/1/0 3702:1/1/0 3738:1/1/0 3717:1/0/0 3706:1/1/0 3708:1/0/0 3720:1/1/0 10:1/0/0 4458:4/0/0 2434:4/0/0 4451:1/0/0 4449:1/0/0 4447:1/0/0 4460:1/0/0 4459:1/0/0 4469:1/0/0
+1795399541	sightings	Ravagger	9	4208	dresden.are	mob	4804:1/0/0
+1795399541	sightings	Ravagger	9	4208	dresden.are	item	4446:1/0 4445:1/0 4444:1/0 24300:1/0 16:4/0 24306:1/0 3021:1/0 24308:1/0 3733:1/0 13:1/0 17:1/0 3714:1/0
+1795399541	session	Ravagger	9	4208	dresden.are	quit	3967s	+1 levels	+2715 exp	-632 copper	16 kills	1 deaths	0 quests	784 commands	6 refused	coin: loot 2s 75c, spent 9s 7c	spent on: buy 9s 7c	exp: kills +2748, skilluse +18, death -51
