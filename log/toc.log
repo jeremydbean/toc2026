@@ -344479,3 +344479,6 @@ Mon Nov 23 14:53:55 2026 :: Treasure goblin: vanished from room 101 (Dimly Lit P
 Mon Nov 23 14:58:23 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 2 of 6 in 6 hours).
 Mon Nov 23 15:03:28 2026 :: Connection guard: 5.161.61.238 closed without a word (strike 3 of 6 in 6 hours).
 Mon Nov 23 15:03:59 2026 :: Treasure goblin: vanished from room 16049 (Bow of the Royal Eagle, pirate.are) (too long in one area).
+Mon Nov 23 15:08:34 2026 :: Connection guard: refused 1 connection from 178.156.181.172 (paused; 6 refused in all, pause 1 this week, 264 minutes left).
+Mon Nov 23 15:10:23 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Mon Nov 23 15:13:08 2026 :: Connection guard: last hour 10 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 10 addresses paused and 0 refused now, 16 active player addresses.
