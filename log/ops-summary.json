@@ -1,7 +1,7 @@
 {
  "checks": {
   "disk": {
-   "free_mb": 43105,
+   "free_mb": 43089,
    "inodes_free_pct": 96,
    "ok": true
   },
@@ -12,32 +12,33 @@
   },
   "game_archives": {
    "characters": 37,
-   "count": 270,
-   "newest_min": 28,
+   "count": 271,
+   "newest_min": 3,
    "ok": true,
-   "total_mb": 468,
+   "total_mb": 471,
    "verified": true
   },
   "mirror": {
-   "commit": "8c4139b10312",
-   "last_min": 2,
+   "commit": "f8ed23f24a5f",
+   "configured": true,
+   "last_min": 0,
    "ok": true,
-   "reason": "mirror holds 8c4139b10312",
+   "reason": "mirror holds f8ed23f24a5f",
    "status": "ok"
   },
   "public_sync": {
    "kind": "pushed",
    "last_attempt": "ok",
-   "last_attempt_min": 2,
-   "last_success_min": 2,
+   "last_attempt_min": 0,
+   "last_success_min": 0,
    "ok": true,
-   "reason": "pushed 4 files (0 characters)",
-   "remote_commit": "8c4139b10312"
+   "reason": "pushed 1 files (0 characters)",
+   "remote_commit": "f8ed23f24a5f"
   },
   "recovery": {
    "exit": "0",
    "failed_restarts": 0,
-   "last_run_min": 0,
+   "last_run_min": 1,
    "ok": true,
    "said": "started"
   },
@@ -45,7 +46,7 @@
    "ok": true,
    "units": {
     "toc-auto-deploy.service": {
-     "active": "activating",
+     "active": "inactive",
      "enabled": "static",
      "from_shipped_file": true,
      "load": "loaded",
@@ -121,8 +122,15 @@
      "load": "loaded",
      "needs_daemon_reload": false
     },
+    "toc-state-sync.path": {
+     "active": "active",
+     "enabled": "enabled",
+     "from_shipped_file": true,
+     "load": "loaded",
+     "needs_daemon_reload": false
+    },
     "toc-state-sync.service": {
-     "active": "inactive",
+     "active": "activating",
      "enabled": "static",
      "from_shipped_file": true,
      "load": "loaded",
@@ -148,8 +156,8 @@
    "ok": true
   }
  },
- "generated": 1795476183,
- "generated_utc": "2026-11-23T23:23:03Z",
+ "generated": 1795476483,
+ "generated_utc": "2026-11-23T23:28:03Z",
  "heartbeat": {
   "heartbeat": "not-configured"
  },
