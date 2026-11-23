@@ -3228,27 +3228,29 @@ async def changes_list(request: Request, x_admin_token: str = Header(default="")
     return {"changes": entries, "total": len(entries), "staff": staff}
 
 
-@app.get("/api/health")
+@app.api_route("/api/health", methods=["GET", "HEAD"])
 async def health() -> dict[str, bool | str]:
     status = await asyncio.to_thread(read_process_health)
     return {"status": "ok", **status}
 
 
-@app.get("/api/ready")
+@app.api_route("/api/ready", methods=["GET", "HEAD"])
 async def ready() -> JSONResponse:
     """200 only while the game's loop answers; 503 otherwise. Public, for a
-    monitor off the host (webadmin/ops_status.py)."""
+    monitor off the host (webadmin/ops_status.py). HEAD is answered too:
+    UptimeRobot and most uptime services send HEAD, and a 405 reads as an
+    outage (2026-11-23)."""
     code, body = await asyncio.to_thread(
         ops_status.readiness, lambda: probe_game(timeout=1.5))
     return JSONResponse(body, status_code=code, headers={"Cache-Control": "no-store"})
 
 
-@app.get("/api/ops-summary")
+@app.api_route("/api/ops-summary", methods=["GET", "HEAD"])
 async def ops_summary_route(only: Optional[str] = Query(None, max_length=200)) -> JSONResponse:
     """toc-ops-summary's redacted verdict: 200 when "ok" and fresh, 503
     otherwise; ?only=public_sync,disk judges just those checks (400 for a
     name the summary does not have). Public: the same file reaches the
-    public repository."""
+    public repository. HEAD is answered too, for monitors that use it."""
     names, error = ops_status.parse_only(only)
     if error:
         return JSONResponse({"error": error, "checks": list(ops_status.CHECK_NAMES)},

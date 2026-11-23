@@ -378,7 +378,8 @@ class ReadinessTests(unittest.TestCase):
 
     def test_the_routes_exist_and_need_no_token(self) -> None:
         server = (ROOT / "webadmin" / "server.py").read_text()
-        for route in ('@app.get("/api/ready")', '@app.get("/api/ops-summary")'):
+        for route in ('@app.api_route("/api/ready", methods=["GET", "HEAD"])',
+                      '@app.api_route("/api/ops-summary", methods=["GET", "HEAD"])'):
             at = server.index(route)
             self.assertNotIn("verify_token", server[at:server.index("\n\n\n", at)])
 
@@ -420,6 +421,21 @@ class RouteTests(unittest.TestCase):
                 bad = client.get("/api/ops-summary?only=bogus")
                 self.assertEqual(bad.status_code, 400)
                 self.assertIn("unknown check", bad.json()["error"])
+
+    def test_head_is_answered_for_the_monitored_routes(self) -> None:
+        """UptimeRobot (and most uptime services) send HEAD. FastAPI does not
+        answer HEAD on a GET route, so these read 405 -- an outage -- while
+        the game was fine (2026-11-23)."""
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "s.json"
+            path.write_text(json.dumps({"overall": "ok", "generated": time.time()}))
+            with patch.object(web_server, "OPS_SUMMARY_PATH", path), \
+                 patch.object(web_server, "probe_game", lambda timeout=1.5: (True, 0)):
+                client = TestClient(web_server.app)
+                for route in ("/api/health", "/api/ready", "/api/ops-summary"):
+                    with self.subTest(route=route):
+                        self.assertNotEqual(client.head(route).status_code, 405, route)
 
 
 if __name__ == "__main__":
