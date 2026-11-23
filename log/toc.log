@@ -344243,3 +344243,5 @@ Mon Nov 23 06:07:39 2026 :: Sock.sinaddr:  143.198.136.192
 Mon Nov 23 06:07:39 2026 :: Connection guard: 143.198.136.192 closed before a password prompt (strike 1 of 6 in 6 hours).
 Mon Nov 23 06:10:26 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Mon Nov 23 06:10:32 2026 :: Connection guard: refused 1 connection from 52.22.236.30 (paused; 35 refused in all, pause 4 this week, 1835 minutes left).
+Mon Nov 23 06:15:37 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 54 refused in all, pause 5 this week, 3577 minutes left).
+Mon Nov 23 06:17:23 2026 :: Treasure goblin: vanished from room 17706 (Clearing in the woods, landoz.are) (too long in one area).
