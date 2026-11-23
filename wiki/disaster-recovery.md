@@ -448,7 +448,16 @@ Then, by hand, the three things that are credentials or accounts:
    `sudo systemctl enable --now toc-player-backup.timer`, `sudo systemctl
    start toc-player-backup.service`, and `sudo cat
    /var/lib/toc-player-backup/status` must read `ok`.
-2. **The heartbeats**: two checks at a dead-man's-switch service
+2. **Watching it from outside.** The free way (owner, 2026-11-23:
+   UptimeRobot, no second service): HTTP monitors that read the verdict --
+   `https://timesofchaos.com/api/ops-summary?only=public_sync,game_archives,disk,recovery,units`
+   for the sync, the archives, the disk and self-healing, and
+   `...?only=private_backup` once the encrypted backup is set up. `only`
+   judges just the checks named (any of `game`, `web`, `public_sync`,
+   `private_backup`, `game_archives`, `disk`, `recovery`, `units`; another
+   name is a 400), and a summary older than a quarter hour is a 503
+   whatever it says, so a stopped checker alarms too. Or **the
+   heartbeats**: two checks at a dead-man's-switch service
    (healthchecks.io's free tier has twenty; a 10-minute period for the
    host, 7 hours for the backup), their URLs in `/etc/toc/heartbeat.env`
    (`deploy/heartbeat.env.example`, root, 0600). The next summary says

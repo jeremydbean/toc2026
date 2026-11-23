@@ -3244,10 +3244,17 @@ async def ready() -> JSONResponse:
 
 
 @app.get("/api/ops-summary")
-async def ops_summary_route() -> JSONResponse:
+async def ops_summary_route(only: Optional[str] = Query(None, max_length=200)) -> JSONResponse:
     """toc-ops-summary's redacted verdict: 200 when "ok" and fresh, 503
-    otherwise. Public: the same file reaches the public repository."""
-    code, body = await asyncio.to_thread(ops_status.ops_summary, OPS_SUMMARY_PATH)
+    otherwise; ?only=public_sync,disk judges just those checks (400 for a
+    name the summary does not have). Public: the same file reaches the
+    public repository."""
+    names, error = ops_status.parse_only(only)
+    if error:
+        return JSONResponse({"error": error, "checks": list(ops_status.CHECK_NAMES)},
+                            status_code=400, headers={"Cache-Control": "no-store"})
+    code, body = await asyncio.to_thread(ops_status.ops_summary, OPS_SUMMARY_PATH,
+                                         only=names)
     return JSONResponse(body, status_code=code, headers={"Cache-Control": "no-store"})
 
 

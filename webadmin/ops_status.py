@@ -24,7 +24,10 @@ import time
 from pathlib import Path
 from typing import Any, Callable, Optional
 
-SUMMARY_MAX_AGE = 900          # three runs of the five-minute timer
+SUMMARY_MAX_AGE = 900
+# The checks toc-ops-summary writes (deploy/windows-vm/toc-ops-summary).
+CHECK_NAMES = ("game", "web", "public_sync", "private_backup", "game_archives",
+               "disk", "recovery", "units")          # three runs of the five-minute timer
 SUMMARY_MAX_BYTES = 64 * 1024
 _IPV4 = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
 
@@ -49,8 +52,27 @@ def _masked(value: Any) -> Any:
     return value
 
 
+def parse_only(raw: Optional[str]) -> tuple[Optional[list[str]], Optional[str]]:
+    """?only=a,b: the checks a monitor asks about, or why it cannot be read.
+    Names are the summary's own check keys; nothing else is accepted."""
+    if raw is None or raw.strip() == "":
+        return None, None
+    names = [name.strip() for name in raw.split(",") if name.strip()]
+    if len(names) > len(CHECK_NAMES):
+        return None, "too many checks named"
+    unknown = [name for name in names if name not in CHECK_NAMES]
+    if unknown:
+        return None, "unknown check: " + ", ".join(sorted(set(unknown)))[:200]
+    return sorted(set(names)), None
+
+
 def ops_summary(path: Path, now: Optional[float] = None,
-                max_age: int = SUMMARY_MAX_AGE) -> tuple[int, dict[str, Any]]:
+                max_age: int = SUMMARY_MAX_AGE,
+                only: Optional[list[str]] = None) -> tuple[int, dict[str, Any]]:
+    """`only` judges just those checks (2026-11-23: one free UptimeRobot
+    monitor per concern, so an encrypted backup not set up yet does not keep
+    the sync's monitor red). Staleness always counts: a summary nobody is
+    writing vouches for nothing."""
     now = time.time() if now is None else now
     try:
         raw = path.read_bytes()
@@ -80,4 +102,12 @@ def ops_summary(path: Path, now: Optional[float] = None,
         data.setdefault("problems", []).append(
             f"the summary is {age // 60} minutes old; toc-heartbeat.timer is not running")
         return 503, data
-    return (200 if data.get("overall") == "ok" else 503), data
+    if only is None:
+        return (200 if data.get("overall") == "ok" else 503), data
+    checks = data.get("checks") if isinstance(data.get("checks"), dict) else {}
+    failing = [name for name in only
+               if not (isinstance(checks.get(name), dict) and checks[name].get("ok") is True)]
+    data["only"] = only
+    data["verdict"] = "ok" if not failing else "degraded"
+    data["failing"] = failing
+    return (200 if not failing else 503), data

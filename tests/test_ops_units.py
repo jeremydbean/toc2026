@@ -404,6 +404,33 @@ class ReadinessTests(unittest.TestCase):
             path.write_text(json.dumps({"overall": "degraded", "generated": now}))
             self.assertEqual(ops_status.ops_summary(path, now=now)[0], 503)
 
+    def test_only_judges_the_checks_named(self) -> None:
+        """One monitor per concern (2026-11-23): an encrypted backup not yet
+        set up must not hold the sync's monitor red, and staleness always
+        counts."""
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "s.json"
+            now = time.time()
+            path.write_text(json.dumps({
+                "overall": "degraded", "generated": now,
+                "checks": {"public_sync": {"ok": True}, "disk": {"ok": True},
+                           "private_backup": {"ok": False, "status": "not-configured"}}}))
+            only, error = ops_status.parse_only("public_sync, disk")
+            self.assertIsNone(error)
+            code, body = ops_status.ops_summary(path, now=now, only=only)
+            self.assertEqual((code, body["verdict"], body["failing"]), (200, "ok", []))
+            only, _ = ops_status.parse_only("private_backup")
+            code, body = ops_status.ops_summary(path, now=now, only=only)
+            self.assertEqual((code, body["failing"]), (503, ["private_backup"]))
+            # A check the summary does not carry is not a pass.
+            only, _ = ops_status.parse_only("recovery")
+            self.assertEqual(ops_status.ops_summary(path, now=now, only=only)[0], 503)
+            only, _ = ops_status.parse_only("public_sync")
+            self.assertEqual(ops_status.ops_summary(path, now=now + 3600, only=only)[0], 503)
+            self.assertEqual(ops_status.ops_summary(path, now=now)[0], 503, "whole verdict unchanged")
+        self.assertIn("unknown check", ops_status.parse_only("public_sync,bogus")[1])
+        self.assertEqual(ops_status.parse_only(""), (None, None))
+
     def test_the_routes_exist_and_need_no_token(self) -> None:
         server = (ROOT / "webadmin" / "server.py").read_text()
         for route in ('@app.get("/api/ready")', '@app.get("/api/ops-summary")'):
@@ -440,6 +467,14 @@ class RouteTests(unittest.TestCase):
                 path.write_text(json.dumps({"overall": "ok", "generated": time.time()}))
                 reply = client.get("/api/ops-summary")
                 self.assertEqual((reply.status_code, reply.json()["overall"]), (200, "ok"))
+                path.write_text(json.dumps({"overall": "degraded", "generated": time.time(),
+                                            "checks": {"disk": {"ok": True},
+                                                       "private_backup": {"ok": False}}}))
+                self.assertEqual(client.get("/api/ops-summary?only=disk").status_code, 200)
+                self.assertEqual(client.get("/api/ops-summary?only=private_backup").status_code, 503)
+                bad = client.get("/api/ops-summary?only=bogus")
+                self.assertEqual(bad.status_code, 400)
+                self.assertIn("unknown check", bad.json()["error"])
 
 
 if __name__ == "__main__":
