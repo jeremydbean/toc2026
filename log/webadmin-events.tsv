@@ -6104,3 +6104,5 @@
 1795420409	wizinfo	60	Black market: the dealer appeared in room 25169 (The slope steepens., underdrk.are) with 5 items (stock 1795420409), for 20 minutes.
 1795423328	wizinfo	60	Connection guard: last hour 11 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 10 addresses paused and 0 refused now, 16 active player addresses.
 1795426928	wizinfo	60	Connection guard: last hour 9 closed without a word, 4 refused, 0 new characters refused, 0 newly paused; 10 addresses paused and 0 refused now, 16 active player addresses.
+1795427934	wizinfo	60	Connection guard: 52.15.147.27 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 52.15.147.27 lifts it.
+1795428025	wizinfo	60	Cartographer: appeared in room 10038 (North end of the hall of commerce., glitter.are) (level 28).
