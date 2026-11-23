@@ -344671,3 +344671,6 @@ Mon Nov 23 20:23:22 2026 :: Connection guard: 18.116.205.62 closed without a wor
 Mon Nov 23 20:24:00 2026 :: Treasure goblin: vanished from room 731 (Inside the Curtain Wall, camelot.are) (too long in one area).
 Mon Nov 23 20:28:25 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 2 of 6 in 6 hours).
 Mon Nov 23 20:29:44 2026 :: Black market: the dealer vanished from room 7112 (An odd intersection, sewer.are) (too long in one area).
+Mon Nov 23 20:33:30 2026 :: Connection guard: refused 1 connection from 34.198.201.66 (paused; 1 refused in all, pause 1 this week, 325 minutes left).
+Mon Nov 23 20:33:36 2026 :: Connection guard: last hour 11 closed without a word, 2 refused, 0 new characters refused, 1 newly paused; 10 addresses paused and 0 refused now, 16 active player addresses.
+Mon Nov 23 20:34:04 2026 :: Treasure goblin: vanished from room 7871 (The Small Valley, valley.are) (too long in one area).
