@@ -9833,6 +9833,20 @@ void do_rename( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    /* A name a rename gave up stays that player's (renames.c) -- unless it
+       is this very character's own old name, given back. */
+    {
+        char now[MAX_INPUT_LENGTH];
+
+        if ( rename_current_name( arg2, now, sizeof(now) )
+        &&   str_cmp( now, victim->name ) )
+        {
+            send_to_char( "That name was given up by a rename and still belongs "
+                          "to that player.\n\r", ch );
+            return;
+        }
+    }
+
     /* Record old save path before changing the name */
     snprintf( old_file, sizeof(old_file), "%s%s", PLAYER_DIR, capitalize(victim->name) );
 
@@ -9862,7 +9876,35 @@ void do_rename( CHAR_DATA *ch, char *argument )
                           "changed; their old file stands.\n\r", ch );
             return;
         }
+
+        /* The rename on the disk before the old file goes (renames.c): the
+           old name then leads only to this character, and the notes and
+           IGNORE lists that name it follow. A record that did not land
+           undoes the rename -- the new file goes, the old one was never
+           touched -- or the old name would be anybody's, with this
+           player's mail still addressed to it (review of 2b6b5826d,
+           2026-11-23). */
+        if ( !rename_record( old_name, victim->name ) )
+        {
+            char new_file[MAX_STRING_LENGTH];
+
+            snprintf( new_file, sizeof(new_file), "%s%s", PLAYER_DIR,
+                      capitalize( victim->name ) );
+            unlink( new_file );
+            player_serial_rename( victim->name, old_name );
+            diary_rename( victim->name, old_name );
+            free_string( victim->name );
+            victim->name = str_dup( old_name );
+            send_to_char( "The rename could not be recorded, so nothing was "
+                          "changed; their old file stands.\n\r", ch );
+            snprintf( buf, sizeof(buf), "RENAME: %s's rename of '%s' undone: the "
+                      "record could not be written.", ch->name, old_name );
+            log_string( buf );
+            return;
+        }
         unlink( old_file );
+        notes_follow_renames( );
+        ignore_follow_renames( );
     }
 
     snprintf( buf, sizeof(buf), "%s has been renamed to %s.\n\r", arg1, arg2 );

@@ -97,6 +97,7 @@ set(SRC_FILES
     src/maps.c
     src/rested.c
     src/recovery.c
+    src/renames.c
     src/recycle.c
     src/memguard.c
     src/memrange.c

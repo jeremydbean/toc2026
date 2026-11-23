@@ -5838,6 +5838,15 @@ cannot be renamed.
 Use with caution - the old player file is deleted and replaced with a new
 one under the new name immediately.
 
+The old name is never anybody else's afterwards. It is recorded with the
+rename, and typing it at the login prompt leads to the renamed character,
+whose password it asks -- so a player who missed the message, or was
+link-dead, still gets in. Notes addressed to the old name or sent under
+it, other players' IGNORE lists and waiting report replies all move to
+the new name. Nobody may make a new character, or be renamed, under an
+old name, except the same character renamed back to it. A rename that
+cannot be recorded is undone and says so.
+
 See also: RESETPWD, PRESTORE
 ~
 

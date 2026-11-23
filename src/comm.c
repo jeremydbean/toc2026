@@ -563,6 +563,7 @@ int main( int argc, char **argv )
     playlog_boot( );        /* the crash recorder, once the world is up */
     spellup_boot_check( );  /* Hermie, if the restart put mortals off */
     player_archive_dormant( );   /* characters not seen in two years */
+    notes_follow_renames( );     /* a rename a crash cut short (renames.c) */
     bug_replies_post( );         /* notes answering BUG, TYPO and IDEA */
     player_serial_boot( );       /* every file's serial, before anyone logs in */
     hero_records_backfill( );    /* the plaque's and tablet's fields */
@@ -3218,7 +3219,7 @@ static bool new_name_still_free( DESCRIPTOR_DATA *d )
     /* A file that is there but cannot be opened is taken, not free: only
        proven absence lets a new character save under the name (review,
        2026-11-09: a mode-000 file was replaced by a level 1). */
-    taken = name_held_elsewhere( d, ch->name );
+    taken = name_held_elsewhere( d, ch->name ) || rename_retired( ch->name );
     if ( !taken )
     {
         presence = player_file_presence( ch->name );
@@ -3653,6 +3654,27 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	{
 	    write_to_buffer( d, "Illegal name, try another.\n\rName: ", 0 );
 	    return;
+	}
+
+	/* A name a rename gave up is that character's still (renames.c):
+	   it leads to them, and the password asked is theirs, so the
+	   renamed player -- link-dead or not -- comes back in, and nobody
+	   else may make a character under it and read their mail (review
+	   of 2b6b5826d, 2026-11-23). Asked before the file is looked at, so
+	   a stale copy left under the old name is never loaded. */
+	{
+	    static char renamed_to[MAX_INPUT_LENGTH];
+
+	    if ( rename_current_name( argument, renamed_to, sizeof(renamed_to) ) )
+	    {
+		if ( player_file_presence( renamed_to ) == PLAYER_FILE_ABSENT
+		&&   !name_held_elsewhere( d, renamed_to ) )
+		{
+		    write_to_buffer( d, "That name is not available, try another.\n\rName: ", 0 );
+		    return;
+		}
+		argument = renamed_to;
+	    }
 	}
 
 	fOld = load_char_obj( d, argument );

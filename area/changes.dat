@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261123renameidentity 2026-11-23 staff
+RENAME now keeps the old name for the renamed character.  Typing the old
+name at the login prompt leads to them (with their own password), nobody
+can make a new character under it, and notes, IGNORE lists and waiting
+report replies move to the new name.  A rename that cannot be recorded is
+undone.  HELP RENAME.
+
 @ 20261123hyrulecredit 2026-11-23
 A Hyrule guardian slain outside its own chamber, anywhere in its dungeon,
 now earns its achievement, and so its chest's.  A guardian driven from its

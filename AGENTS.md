@@ -1542,6 +1542,28 @@ another Id is left nobody's. A serial-bound token follows a RENAME
 a failed save or a crash between them left no file at all. A save that
 fails puts the name, the serial and the diary back and says so
 (`tests/test_rename_durable.py`).
+**An old name stays its character's** (review of 2b6b5826d, 2026-11-23:
+notes are addressed by name, so a new character made under a renamed
+player's old name read their private mail, IGNORE stopped filtering them,
+and a queued report reply was skipped or misdelivered). `src/renames.c`
+appends `<epoch>\t<Old>\t<New>` to `player/recovery/renames.tsv` and
+flushes it after the new file is saved and before the old one is unlinked;
+a record that does not land undoes the rename (the new file goes, the old
+one was never touched; fault point `rename-record`).
+`rename_current_name` follows the record -- the latest line naming a name
+decides, so a rename back gives the name back -- and the name prompt leads
+an old name to the character it became, asking that character's password,
+before the file is looked at (so a stale `<Old>.gz` is never loaded); a
+new character and RENAME may not take a retired name
+(`new_name_still_free`, `rename_retired`). Notes (To line and sender:
+`notes_follow_renames` at the rename, at boot and at NOTE SEND), IGNORE
+lists (`ignore_load` at every load, `ignore_follow_renames` for everyone in
+memory at the rename) and bug replies (`bug_reply_entry`) follow it, so a
+crash between the rename and those writes loses nothing
+(`tests/test_rename_identity.py`). Not yet followed: other players'
+STASH links (`stash_links`, by name) and a lying corpse's owner name
+(`obj->owner`); a new thing keyed by a character's name follows the record
+as these do.
 
 **Ganon's finishing phase is his own marker** (review, 2026-11-10,
 confirmed live). It was `AFF2_NO_RECOVER`, which NERVE DAMAGE and
@@ -6667,7 +6689,9 @@ loop beside its GMCP emit, HISTORY, `is_note_to` (so an ignored player's
 notes leave the board and the numbering stays whole), and by `act_new` for
 messages sent through `act_speech()` -- SAY, EMOTE and POSE -- and nothing
 else: blows, spells and socials still land. A new way of speaking to other
-players asks it too (`tests/test_ignore.py`).
+players asks it too (`tests/test_ignore.py`). A name a RENAME gave up is
+read as the name it became, at load and at IGNORE itself, and the file
+keeps names (see "RENAME saves the new name", above).
 
 ## One-Person Rooms
 

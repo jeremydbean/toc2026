@@ -3645,6 +3645,11 @@ bool    durable_dir_sync      ( const char *path );
 int     durable_commit        ( FILE *fp, const char *temp_path, const char *path );
 void    recovery_reconcile_login ( CHAR_DATA *ch );
 bool    recovery_ensure_dir   ( const char *path );
+/* renames.c: RENAME's record; an old name stays its character's. */
+bool    rename_current_name   ( const char *name, char *out, size_t size );
+bool    rename_retired        ( const char *name );
+bool    rename_record         ( const char *old_name, const char *new_name );
+bool    rename_follow_words   ( const char *list, char *out, size_t size );
 void    recovery_boot         ( void );
 bool    recovery_record       ( const char *event, const char *state,
                                 const char *player, const char *request,
@@ -3744,6 +3749,7 @@ bool    is_psionic_sn   ( int sn );
 void    watch_log       ( CHAR_DATA *ch, const char *fmt, ... );
 bool    room_hides_from_log ( ROOM_INDEX_DATA *room );
 void    save_notes      ( void );
+int     notes_follow_renames ( void );
 void    check_sex       ( CHAR_DATA *ch);
 void    add_follower    ( CHAR_DATA *ch, CHAR_DATA *master );
 void    stop_follower   ( CHAR_DATA *ch );
@@ -3981,6 +3987,7 @@ void    tell_history_add ( CHAR_DATA *ch, const char *line );
 bool    is_ignoring      ( CHAR_DATA *listener, CHAR_DATA *speaker );
 bool    ignore_has_name  ( CHAR_DATA *listener, const char *name );
 void    ignore_load      ( CHAR_DATA *ch, const char *text );
+void    ignore_follow_renames ( void );
 void    psionic_sync_known ( CHAR_DATA *ch );
 bool    normalize_psionic_arguments ( const char *argument, char *output, size_t length, char *invalid );
 /* Dynamic-string aware output helpers. */

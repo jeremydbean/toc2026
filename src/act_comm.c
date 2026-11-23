@@ -1588,8 +1588,11 @@ bool ignore_has_name( CHAR_DATA *listener, const char *name )
 
 
 /* The list as the file gave it, tidied: valid names, capitalised, each
-   once, at most IGNORE_MAX -- the old game's lines held repeats. Called
-   by the loader, so it says nothing. */
+   once, at most IGNORE_MAX -- the old game's lines held repeats. A name a
+   rename gave up becomes the name it went to (renames.c): IGNORE follows
+   the player, and a list saved before the rename stopped filtering them
+   (review of 2b6b5826d, 2026-11-23). Called by the loader, so it says
+   nothing; the file keeps names, as it always has. */
 void ignore_load( CHAR_DATA *ch, const char *text )
 {
     char word[MAX_INPUT_LENGTH];
@@ -1605,10 +1608,15 @@ void ignore_load( CHAR_DATA *ch, const char *text )
          && ignore_next_word( &p, word, sizeof(word) ) )
     {
         char have[MAX_INPUT_LENGTH];
+        char now[MAX_INPUT_LENGTH];
         const char *q = list;
         bool repeat = false;
 
         if ( !ignore_name_ok( word ) )
+            continue;
+        if ( rename_current_name( word, now, sizeof(now) ) )
+            toc_strlcpy( word, now, sizeof(word) );
+        if ( ch->name != NULL && !str_cmp( word, ch->name ) )
             continue;
         while ( ignore_next_word( &q, have, sizeof(have) ) )
             if ( !str_cmp( have, word ) )
@@ -1624,6 +1632,41 @@ void ignore_load( CHAR_DATA *ch, const char *text )
 
     free_string( ch->pcdata->ignore );
     ch->pcdata->ignore = str_dup( list );
+}
+
+
+/* At a rename, every list in memory: the game's players, link-dead ones
+   and those at the login prompts. A list on disk follows at its next
+   load (ignore_load), so nobody's file is opened here. */
+void ignore_follow_renames( void )
+{
+    DESCRIPTOR_DATA *d;
+    CHAR_DATA *wch;
+    LIST_ITERATOR iter;
+
+    FOR_EACH_CHARACTER( iter, wch )
+        if ( !IS_NPC(wch) && wch->pcdata != NULL && wch->pcdata->ignore != NULL
+          && wch->pcdata->ignore[0] != '\0' )
+        {
+            char *was = str_dup( wch->pcdata->ignore );
+
+            ignore_load( wch, was );
+            free_string( was );
+        }
+    for ( d = descriptor_list; d != NULL; d = d->next )
+    {
+        wch = d->character;
+        if ( d->connected == CON_PLAYING || wch == NULL || IS_NPC(wch)
+          || wch->pcdata == NULL || wch->pcdata->ignore == NULL
+          || wch->pcdata->ignore[0] == '\0' )
+            continue;
+        {
+            char *was = str_dup( wch->pcdata->ignore );
+
+            ignore_load( wch, was );
+            free_string( was );
+        }
+    }
 }
 
 
@@ -1727,6 +1770,14 @@ void do_ignore( CHAR_DATA *ch, char *argument )
     {
         send_to_char( "A player's name is two to twelve letters.\n\r", ch );
         return;
+    }
+
+    /* A name a rename gave up is the player it went to (renames.c). */
+    {
+        char now[MAX_INPUT_LENGTH];
+
+        if ( rename_current_name( arg, now, sizeof(now) ) )
+            toc_strlcpy( arg, now, sizeof(arg) );
     }
 
     if ( !str_cmp( arg, rch->name ) )
@@ -2118,6 +2169,54 @@ void save_notes( void )
     }
 
     temp_file_commit( fp, NOTE_FILE ".tmp", NOTE_FILE );
+}
+
+
+/*
+ * A note's names as the characters go by now (renames.c): every name in
+ * its To line that a rename gave up becomes the name it went to, and so
+ * does its sender. Notes are mail addressed by name, and an old name left
+ * on one let whoever took the name next read it, while the renamed player
+ * could not (review of 2b6b5826d, 2026-11-23). True when it changed.
+ */
+static bool note_follow_renames( NOTE_DATA *pnote )
+{
+    char now[MAX_STRING_LENGTH];
+    bool changed = false;
+
+    if ( pnote == NULL )
+        return false;
+    if ( pnote->to_list != NULL
+    &&   rename_follow_words( pnote->to_list, now, sizeof(now) ) )
+    {
+        free_string( pnote->to_list );
+        pnote->to_list = str_dup( now );
+        changed = true;
+    }
+    if ( pnote->sender != NULL
+    &&   rename_current_name( pnote->sender, now, sizeof(now) ) )
+    {
+        free_string( pnote->sender );
+        pnote->sender = str_dup( now );
+        changed = true;
+    }
+    return changed;
+}
+
+/* Every note on the board, and the board saved when one changed: at a
+   rename, and at boot for a rename a crash cut off before this. Returns
+   how many notes changed. */
+int notes_follow_renames( void )
+{
+    NOTE_DATA *pnote;
+    int changed = 0;
+
+    for ( pnote = note_list; pnote != NULL; pnote = pnote->next )
+        if ( note_follow_renames( pnote ) )
+            changed++;
+    if ( changed > 0 )
+        save_notes( );
+    return changed;
 }
 
 
@@ -2664,6 +2763,9 @@ void do_note( CHAR_DATA *ch, char *argument )
 
         pnote = ch->pnote;
         ch->pnote = NULL;
+        /* Addressed to a name a rename gave up: it goes to the character
+           that name became, never to whoever might hold the name next. */
+        note_follow_renames( pnote );
 
         free_string( pnote->date );
         pnote->date       = str_dup( ctime( &current_time ) );

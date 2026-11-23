@@ -156,6 +156,17 @@ static bool bug_reply_entry( const char *id, const char *date, const char *playe
 
     toc_strlcpy( name, player, sizeof(name) );
     name[0] = (char) UPPER( name[0] );
+    /* A player renamed since the reply was written is answered under the
+       name they have now (renames.c): the old one is nobody else's, and
+       the reply posted before the rename was moved to the new name with
+       the rest of the board, so this finds it and posts nothing twice
+       (review of 2b6b5826d, 2026-11-23). */
+    {
+        char now[sizeof(name)];
+
+        if ( rename_current_name( name, now, sizeof(now) ) )
+            toc_strlcpy( name, now, sizeof(name) );
+    }
     if ( bug_reply_posted( id, name ) )
         return false;
     if ( player_file_presence( name ) == PLAYER_FILE_ABSENT )

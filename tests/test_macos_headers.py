@@ -31,17 +31,27 @@ CC = os.environ.get("CC", "cc").split()[-1]
 HIDDEN = ("(defined(_POSIX_C_SOURCE) || defined(_XOPEN_SOURCE)) "
           "&& !defined(_DARWIN_C_SOURCE)")
 
-# glibc's MSG_DONTWAIT is an enum constant as well as a macro, so the
-# constant is renamed while the real header is read, and the name is given
-# back only where Darwin would show it.
+# On a real Mac (__MACH__, which only Darwin's compilers define; the -D
+# below adds __APPLE__ alone) the system header is read as it is: it hides
+# MSG_DONTWAIT itself, and shows it as its own macro under _DARWIN_C_SOURCE.
+# Elsewhere it stands in for Darwin. glibc's MSG_DONTWAIT is an enum
+# constant as well as a macro, so the constant is renamed while the real
+# header is read, and the name is given back only where Darwin would show
+# it. It was given back as glibc's renamed constant on Darwin too, where
+# there is none, so the exposed probe failed on a real Mac (review of
+# 2b6b5826d, 2026-11-23).
 SOCKET_SHIM = """
 #ifndef TOC_DARWIN_SOCKET_SHIM
 #define TOC_DARWIN_SOCKET_SHIM
+#if defined(__MACH__)
+#include_next <sys/socket.h>
+#else
 #define MSG_DONTWAIT glibc_MSG_DONTWAIT
 #include_next <sys/socket.h>
 #undef MSG_DONTWAIT
 #if !(%s)
 #define MSG_DONTWAIT glibc_MSG_DONTWAIT
+#endif
 #endif
 #endif
 """ % HIDDEN
@@ -75,6 +85,37 @@ class MacosHeaderTests(unittest.TestCase):
              "-Werror=implicit-function-declaration", "-Wno-builtin-macro-redefined",
              "-I", str(inc), "-I", str(ROOT / "src"), str(source)],
             capture_output=True, text=True, timeout=180, cwd=ROOT)
+
+    def test_the_socket_shim_reads_real_darwin_headers_as_they_are(self) -> None:
+        """What a Mac's compiler sees, played here: a stand-in "system"
+        <sys/socket.h> shaped like Darwin's (MSG_DONTWAIT a plain macro,
+        shown only under _DARWIN_C_SOURCE) behind the shim, with __MACH__
+        defined. Exposed, MSG_DONTWAIT is Darwin's own value; hidden, it is
+        not there -- never glibc's renamed constant."""
+        with tempfile.TemporaryDirectory() as tmp:
+            shim, system = Path(tmp) / "shim", Path(tmp) / "system"
+            (shim / "sys").mkdir(parents=True)
+            (system / "sys").mkdir(parents=True)
+            (shim / "sys" / "socket.h").write_text(SOCKET_SHIM)
+            (system / "sys" / "socket.h").write_text(
+                "#if !(%s)\n#define MSG_DONTWAIT 0x80\n#endif\n" % HIDDEN)
+            probe = Path(tmp) / "probe.c"
+
+            def build(defines: str) -> subprocess.CompletedProcess:
+                probe.write_text(defines + "#include <sys/socket.h>\n"
+                                 "_Static_assert(MSG_DONTWAIT == 0x80, \"Darwin's value\");\n")
+                return subprocess.run(
+                    [CC, "-std=c17", "-fsyntax-only", "-D__MACH__", "-D__APPLE__",
+                     "-Wno-builtin-macro-redefined", "-nostdinc",
+                     "-I", str(shim), "-isystem", str(system), str(probe)],
+                    capture_output=True, text=True, timeout=60)
+
+            shown = build("#define _POSIX_C_SOURCE 200809L\n#define _DARWIN_C_SOURCE\n")
+            self.assertEqual(shown.returncode, 0, shown.stderr)
+            hidden = build("#define _POSIX_C_SOURCE 200809L\n")
+            self.assertNotEqual(hidden.returncode, 0, "hidden on a Mac too")
+            self.assertIn("MSG_DONTWAIT", hidden.stderr)
+            self.assertNotIn("glibc_MSG_DONTWAIT", shown.stderr + hidden.stderr)
 
     def test_the_shims_hide_what_darwin_hides(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
