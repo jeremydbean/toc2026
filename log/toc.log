@@ -344796,3 +344796,7 @@ Mon Nov 23 22:09:16 2026 :: Connection guard: 35.214.224.172 paused for 6 hours 
 Mon Nov 23 22:09:16 2026 :: Connection guard: refused 1 connection from 35.214.224.172 (paused; 1 refused in all, pause 1 this week, 360 minutes left).
 Mon Nov 23 22:09:16 2026 :: Connection guard: 35.214.224.172 closed without a word (strike 1 of 6 in 6 hours).
 Mon Nov 23 22:09:58 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 53 refused in all, pause 5 this week, 3557 minutes left).
+Mon Nov 23 22:10:15 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Mon Nov 23 22:10:16 2026 :: Connection guard: refused 24 connections from 35.214.224.172 (since the last line; 25 refused in all, pause 1 this week, 359 minutes left).
+Mon Nov 23 22:13:54 2026 :: Connection guard: last hour 19 closed without a word, 59 refused, 0 new characters refused, 3 newly paused; 13 addresses paused and 0 refused now, 16 active player addresses.
+Mon Nov 23 22:15:03 2026 :: Connection guard: refused 1 connection from 5.161.194.92 (paused; 17 refused in all, pause 4 this week, 1718 minutes left).
