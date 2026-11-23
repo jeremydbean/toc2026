@@ -344234,3 +344234,5 @@ Mon Nov 23 05:40:08 2026 :: Connection guard: 52.15.147.27 closed without a word
 Mon Nov 23 05:42:08 2026 :: Connection guard: last hour 13 closed without a word, 4 refused, 0 new characters refused, 2 newly paused; 12 addresses paused and 0 refused now, 16 active player addresses.
 Mon Nov 23 05:45:12 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 3 of 6 in 6 hours).
 Mon Nov 23 05:50:17 2026 :: Connection guard: 178.156.187.238 closed without a word (strike 2 of 6 in 6 hours).
+Mon Nov 23 05:55:20 2026 :: Connection guard: 52.15.147.27 closed without a word (strike 4 of 6 in 6 hours).
+Mon Nov 23 05:57:13 2026 :: Treasure goblin: vanished from room 332 (The ancient path, plains.are) (too long in one area).
