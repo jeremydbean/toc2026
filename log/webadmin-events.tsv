@@ -6130,3 +6130,4 @@
 1795462547	wizinfo	60	Player-state backup to GitHub is not working (no verified sync on record (/var/lib/toc-state-sync/last-success missing or unreadable); no sync attempt on record; cannot tell whether the clone holds unpushed commits). Saves are still on disk but are not leaving this machine.
 1795462961	wizinfo	60	Player-state backup to GitHub is not working (cannot tell whether the clone holds unpushed commits). Saves are still on disk but are not leaving this machine.
 1795463178	wizinfo	60	New summon trap on a wooden chest [object 6005] in Inside the cabin [room 6010], [ 5 10] Diku    Haon Dor.
+1795463522	wizinfo	60	Player-state backup to GitHub is not working (cannot tell whether the clone holds unpushed commits). Saves are still on disk but are not leaving this machine.
