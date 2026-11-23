@@ -343696,3 +343696,6 @@ Mon Nov 23 02:32:19 2026 :: Connection guard: 5.161.75.7 closed without a word (
 Mon Nov 23 02:37:23 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 4 of 6 in 6 hours).
 Mon Nov 23 02:38:52 2026 :: Treasure goblin: vanished from room 1035 (A bushy clearing, uargo.are) (too long in one area).
 Mon Nov 23 02:42:08 2026 :: Connection guard: last hour 14 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 8 addresses paused and 0 refused now, 16 active player addresses.
+Mon Nov 23 02:42:28 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 53 refused in all, pause 5 this week, 3790 minutes left).
+Mon Nov 23 02:42:42 2026 :: Automated backup started.
+Mon Nov 23 02:42:42 2026 :: Automated backup complete.
