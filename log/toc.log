@@ -343699,3 +343699,11 @@ Mon Nov 23 02:42:08 2026 :: Connection guard: last hour 14 closed without a word
 Mon Nov 23 02:42:28 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 53 refused in all, pause 5 this week, 3790 minutes left).
 Mon Nov 23 02:42:42 2026 :: Automated backup started.
 Mon Nov 23 02:42:42 2026 :: Automated backup complete.
+Mon Nov 23 02:47:33 2026 :: Connection guard: 3.149.57.90 closed without a word (strike 5 of 6 in 6 hours).
+Mon Nov 23 02:48:57 2026 :: Treasure goblin: vanished from room 24225 (A Monk's Room, crypt.are) (too long in one area).
+Mon Nov 23 02:51:35 2026 :: Sock.sinaddr:  209.38.110.239
+Mon Nov 23 02:51:38 2026 :: EOF encountered on read.
+Mon Nov 23 02:51:38 2026 :: Connection guard: 209.38.110.239 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 23 02:51:38 2026 :: Sock.sinaddr:  209.38.110.239
+Mon Nov 23 02:51:41 2026 :: EOF encountered on read.
+Mon Nov 23 02:51:41 2026 :: Connection guard: 209.38.110.239 closed before a password prompt (strike 2 of 6 in 6 hours).
