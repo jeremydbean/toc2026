@@ -500,3 +500,4 @@
 500	1795397735	request	pending	P6affbced01c2afdc	Ravagger	death:c6b039867021c00	death	(violence_update)	corpse c6b039867021c00 in room 24388	e10e4a44
 501	1795397735	corpse	created	P6affbced01c2afdc	Ravagger	c6b039867021c00	death	-	made in room 24388 holding 24 objects; death snapshot Ravagger.20261123_013535.death	2783e8f5
 502	1795397735	request	committed	P6affbced01c2afdc	Ravagger	death:c6b039867021c00	death	-	their save reached the disk	321ca1be
+503	1795400163	uid	assign	P6b03a1e301f78668	Storock	-	player	-	first seen since the ledger began	6de32872

@@ -1,10 +1,10 @@
 #PLAYER
 Name Storock~
 Id   58145
-LogO 1790047457
-Vers 3
+Serial 16163916
+LogO 1795400194
+Vers 4
 Prom ~
-Ignoring  ~
 Race human~
 Sex  1
 Cla  0
@@ -12,9 +12,12 @@ Gui  11
 Psionic  0
 PsiGrant 0
 PsiSpec ~
+PsiKnown ~
+ChangesSeen ~
+Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble 20261114-season-area-ids 20261116-wrapped-pools~
 Cast none
 Levl 1
-Plyd 314
+Plyd 349
 ListRemorts ~
 NumRemorts 0
 Note 0
@@ -26,11 +29,10 @@ NewPlat 0
 NewCopp 0
 NewSilv 0
 BankCP 0
-IntTime 1790047251
+IntTime 1795317651
 IntTotal 0
 Dcount 0
 SavedOnce 1
-Corpses	0
 PkRec 0
 PkGiv 0
 AchKills 0
@@ -40,6 +42,11 @@ AchExplore 0
 AchMaps 0
 AchCompass 0
 AchTriforce 0
+AchSet areas 1103516333 ~
+AchSet rooms 3702 ~
+LastOut  1795400194
+Rested 0 0
+Daily 0 0 0 0 0
 SesLogin 1790047194
 SesDur   263
 SesExpG  0
@@ -77,6 +84,7 @@ Color 16 6
 Pos  8
 Prac 5
 Trai 3
+Tutorial 0 0
 Save  -1
 Alig  750
 Hit   2

@@ -54946,3 +54946,13 @@
 1795399816	cmd	Ravagger	9	4208	dresden.are	sleeping	100	0	-	stand		You wake and stand up.	-	-
 1795399824	cmd	Ravagger	9	4208	dresden.are	standing	100	0	-	help	spellgroup	Spells are bought in groups with GAIN.  Most groups come in versions // for different buyers: full mages or clerics (class and guild the same), // other classes in that guild, and necromancers.	-	+
 1795399836	session	Ravagger	9	4208	dresden.are	quit	30s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	4 commands	1 refused	coin: none	spent on: none	exp: none
+1795400163	area	Storock	1	3702	school.are	-	school.are	-1	login
+1795400167	state	Storock	1	3702	school.are	lvl=1 hp=20/20 mana=100/100 mv=100/100 align=750 exp=0 coin=0 bank=0 qp=0 prac=5 train=3 stash=0/50 remorts=0
+1795400167	cmd	Storock	1	3702	school.are	standing	100	0	-	score		| Name:        Storock | Level:       1 | Class:        Mage | // | Played:      0 hours | Sex:      Male | Guild:        None | // | Age:        17 years | Race:    Human | Castle:       None |	-	+
+1795400176	state	Storock	1	3702	school.are	lvl=1 hp=20/20 mana=100/100 mv=100/100 align=750 exp=0 coin=0 bank=0 qp=0 prac=5 train=3 stash=0/50 remorts=0
+1795400176	cmd	Storock	1	3702	school.are	standing	100	0	-	score		| Name:        Storock | Level:       1 | Class:        Mage | // | Played:      0 hours | Sex:      Male | Guild:        None | // | Age:        17 years | Race:    Human | Castle:       None |	-	+
+1795400228	cmd	Storock	1	3702	school.are	standing	100	0	-	inventory		You are carrying: //      Nothing.	-	-
+1795400232	cmd	Storock	1	3702	school.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) a war banner // <worn on body>      a sub issue vest	-	+
+1795400235	cmd	Storock	1	3702	school.are	standing	100	0	-	look		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795400240	cmd	Storock	1	3707	school.are	standing	100	0	-	down		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+
+1795400242	cmd	Storock	1	3702	school.are	standing	100	0	-	up		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a	-	+

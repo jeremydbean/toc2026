@@ -343365,3 +343365,22 @@ Mon Nov 23 02:10:36 2026 :: Ravagger has quit.
 Mon Nov 23 02:10:36 2026 :: [QUIT] Player rejoined the real world.
 Mon Nov 23 02:10:38 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Mon Nov 23 02:12:01 2026 :: Connection guard: 178.156.189.113 closed without a word (strike 3 of 6 in 6 hours).
+Mon Nov 23 02:12:46 2026 :: Sock.sinaddr:  172.58.122.42
+Mon Nov 23 02:12:46 2026 :: Loading Storock's playerfile
+Mon Nov 23 02:12:47 2026 :: Closing link to Storock.
+Mon Nov 23 02:15:39 2026 :: Connection guard: 172.58.122.42 closed without a word (an MSSP poll; not counted).
+Mon Nov 23 02:15:47 2026 :: Sock.sinaddr:  172.58.122.42
+Mon Nov 23 02:15:47 2026 :: Loading Storock's playerfile
+Mon Nov 23 02:15:59 2026 :: Loading Storock's playerfile
+Mon Nov 23 02:15:59 2026 :: Storock@172.58.122.42 has connected.
+Mon Nov 23 02:16:03 2026 :: Log Storock [3702]: arrived (The Center Room) from 0
+Mon Nov 23 02:16:07 2026 :: Log Storock [3702]: sc
+Mon Nov 23 02:16:16 2026 :: Log Storock [3702]: sc
+Mon Nov 23 02:17:05 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 3 of 6 in 6 hours).
+Mon Nov 23 02:17:08 2026 :: Log Storock [3702]: inv
+Mon Nov 23 02:17:12 2026 :: Log Storock [3702]: eq
+Mon Nov 23 02:17:15 2026 :: Log Storock [3702]: l
+Mon Nov 23 02:17:20 2026 :: Log Storock [3702]: d
+Mon Nov 23 02:17:20 2026 :: Log Storock [3707]: arrived (A Room in Mud School) from 3702
+Mon Nov 23 02:17:22 2026 :: Log Storock [3707]: u
+Mon Nov 23 02:17:22 2026 :: Log Storock [3702]: arrived (The Center Room) from 3707
