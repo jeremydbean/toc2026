@@ -344619,3 +344619,5 @@ Mon Nov 23 19:13:08 2026 :: Connection guard: last hour 16 closed without a word
 Mon Nov 23 19:17:23 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 5 of 6 in 6 hours).
 Mon Nov 23 19:18:16 2026 :: Treasure goblin: vanished from room 7407 (Tunnel, sewer.are) (too long in one area).
 Mon Nov 23 19:22:26 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 3 of 6 in 6 hours).
+Mon Nov 23 19:27:30 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 59 refused in all, pause 5 this week, 2785 minutes left).
+Mon Nov 23 19:28:21 2026 :: Treasure goblin: vanished from room 13067 (Underwater, lakes.are) (too long in one area).
