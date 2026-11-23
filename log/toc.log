@@ -344219,3 +344219,6 @@ Mon Nov 23 04:59:37 2026 :: EOF encountered on read.
 Mon Nov 23 04:59:37 2026 :: Connection guard: 74.82.47.5 closed before a password prompt (strike 1 of 6 in 6 hours).
 Mon Nov 23 05:04:36 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 1 of 6 in 6 hours).
 Mon Nov 23 05:05:18 2026 :: Treasure goblin: vanished from room 13534 (Hallway of The Mall from Hell, hell.are) (too long in one area).
+Mon Nov 23 05:09:40 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 6 of 6 in 6 hours).
+Mon Nov 23 05:09:40 2026 :: Connection guard: 5.161.117.52 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 5.161.117.52 lifts it.
+Mon Nov 23 05:10:24 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
