@@ -368,6 +368,8 @@ class OpsSummaryTests(unittest.TestCase):
         mirror.write_text(f"time={now}\nresult=ok\nreason=mirror holds abc\ncommit={'c' * 40}\n")
         done, out = self.run_summary()
         self.assertTrue(out["checks"]["mirror"]["ok"], out["problems"])
+        self.assertIs(out["checks"]["mirror"]["configured"], True,
+                      "what it judged is in the report, receipt or not")
         mirror.write_text(f"time={now}\nresult=failed\nreason=rejected (fetch first)\ncommit={'c' * 40}\n")
         done, out = self.run_summary()
         self.assertFalse(out["checks"]["mirror"]["ok"])

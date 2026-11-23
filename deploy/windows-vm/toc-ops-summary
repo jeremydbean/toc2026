@@ -188,7 +188,7 @@ def check_mirror() -> dict:
         return {"ok": False, "status": "missing", "configured": True}
     age = age_of(got.get("time"))
     result = got.get("result")
-    out = {"status": result or "unknown", "last_min": minutes(age),
+    out = {"status": result or "unknown", "last_min": minutes(age), "configured": configured,
            "commit": (got.get("commit") or "")[:12] or None,
            "reason": clean(got.get("reason", "")) or None}
     fresh = age is not None and -300 <= age <= SYNC_MAX_AGE
