@@ -344333,3 +344333,4 @@ Mon Nov 23 09:58:54 2026 :: Connection guard: 52.15.147.27 closed without a word
 Mon Nov 23 09:58:54 2026 :: Connection guard: 52.15.147.27 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 52.15.147.27 lifts it.
 Mon Nov 23 10:00:25 2026 :: Cartographer: appeared.
 Mon Nov 23 10:02:53 2026 :: Treasure goblin: vanished from room 16028 (Main Deck, pirate.are) (too long in one area).
+Mon Nov 23 10:03:59 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 1 of 6 in 6 hours).
