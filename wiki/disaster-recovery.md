@@ -240,10 +240,11 @@ five minutes):
 | `game` | `toc-game-probe` gets a count (the loop runs) |
 | `web` | the dashboard answers `/api/health` |
 | `public_sync` | a verified sync under 20 minutes old, and no refused drop |
+| `mirror` | the private plaintext mirror holds the sync's commit, its receipt under 20 minutes old; `off` (healthy) until it has ever run |
 | `game_archives` | the game's own newest archive in `backups/` under 5 hours old |
 | `disk` | 4 GB and 10% of inodes free |
 | `recovery` | the last `toc-game-recovery` run (every two minutes) ended 0 with no failed restarts |
-| `units` | every support unit loaded from the file the repository ships, its timer active, no daemon-reload outstanding |
+| `units` | every support unit loaded from the file the repository ships, its timer active, no daemon-reload outstanding, and no unit whose last run `failed` |
 
 For the public sync alone:
 
@@ -445,11 +446,16 @@ Then, by hand, the two things that are accounts:
 1. **Watching it from outside.** The free way (owner, 2026-11-23:
    UptimeRobot, no second service): HTTP monitors that read the verdict --
    `https://timesofchaos.com/api/ops-summary?only=public_sync,game_archives,disk,recovery,units`
-   for the sync, the archives, the disk and self-healing. `only` judges
-   just the checks named (any of `game`, `web`, `public_sync`,
-   `game_archives`, `disk`, `recovery`, `units`; another name is a 400),
+   for the sync, the archives, the disk and self-healing, and
+   `...?only=mirror` for the private mirror. `only` judges just the checks
+   named (any of `game`, `web`, `public_sync`, `mirror`, `game_archives`,
+   `disk`, `recovery`, `units`; another name is a 400),
    and a summary older than a quarter hour is a 503 whatever it says, so a
-   stopped checker alarms too. Or **the heartbeat**: a check at a
+   stopped checker alarms too. These routes answer **HEAD** as well as
+   GET: UptimeRobot sends HEAD, and until 2026-11-23 they returned 405 to
+   it, so both monitors showed a two-hour outage while the game was up.
+   When a monitor and `curl` disagree, the web log names the method. Or
+   **the heartbeat**: a check at a
    dead-man's-switch service (healthchecks.io's free tier has twenty; a
    10-minute period), its URL in `/etc/toc/heartbeat.env`
    (`deploy/heartbeat.env.example`, root, 0600). The next summary says

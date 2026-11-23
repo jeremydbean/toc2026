@@ -16,6 +16,7 @@ what it does not yet cover, and how long a loss can be.
 | Recovery ledger | every restore and its undo copy, every milestone with its checksum, every corpse made and ended, each player's permanent uid | host, `player/recovery/ledger.tsv` | for ever; append-only, never rolled back |
 | Git history | every character file, the ledger and the corpses, every five minutes (`toc-state-sync`) | GitHub, `player/`, `corpse/` | for ever |
 | Milestones in git | every tagged copy except level and quest ones | GitHub, `player/versions/<Name>/` | for ever (the sync never deletes them) |
+| Private mirror | the same commit as the public sync, plaintext, pushed right after it is verified; never forced | GitHub, private `jeremydbean/toc2026-player-backups`, `main` | for ever, as git history |
 | Hourly copies in git | the newest save snapshot of each finished hour | GitHub, `player/versions/<Name>/` | as the host keeps them -- hourly for a week, then daily for a year; pruned ones stay in git's history |
 | The game's own archives | `player/` as a `.tar.gz`, proven before it replaces anything | host, `backups/` | every four hours and daily; past the newest six, 30 days, within a 4 GB budget |
 

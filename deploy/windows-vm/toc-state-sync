@@ -147,6 +147,40 @@ record_success() {
         fail "the sync finished but its receipt could not be written"
 }
 
+# A second, private copy (owner, 2026-11-23): the commit GitHub has just
+# been shown to hold, pushed in plaintext to a private repository. Never
+# forced, so the mirror can only ever be behind the public copy, never
+# different from it. Best effort: a mirror that fails costs this run
+# nothing -- the public push is the backup -- but its receipt says so,
+# the journal says so, and the operations summary reports it. Off unless
+# MIRROR_REMOTE is set (toc-state-sync.service sets it on the live host).
+MIRROR_REMOTE="${MIRROR_REMOTE:-}"
+MIRROR_SSH_KEY="${MIRROR_SSH_KEY:-/srv/toc/.ssh/id_ed25519_github_mirror}"
+mirror_push() {
+    [ -n "$MIRROR_REMOTE" ] || return 0
+    STEP=mirror
+    m_commit=$(git rev-parse HEAD)
+    if [ ! -r "$MIRROR_SSH_KEY" ]; then
+        m_result=failed
+        m_reason="mirror key not readable: $MIRROR_SSH_KEY"
+    elif m_out=$(GIT_SSH_COMMAND="ssh -i $MIRROR_SSH_KEY -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new -o BatchMode=yes" \
+                 git push --quiet "$MIRROR_REMOTE" "$m_commit:refs/heads/$BRANCH" 2>&1); then
+        m_result=ok
+        m_reason="mirror holds $(printf '%.12s' "$m_commit")"
+    else
+        m_result=failed
+        m_reason=$(printf '%s' "$m_out" | tr '\t\n' '  ' | cut -c1-200)
+        [ -n "$m_reason" ] || m_reason="git push to the mirror failed"
+    fi
+    printf 'time=%s\ntime_utc=%s\nresult=%s\nreason=%s\ncommit=%s\n' \
+        "$(date +%s)" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$m_result" "$m_reason" "$m_commit" |
+        receipt_write mirror || true
+    if [ "$m_result" = failed ]; then
+        logger -t toc-state-sync -p daemon.warning "private mirror not updated: $m_reason" 2>/dev/null || true
+    fi
+    return 0
+}
+
 [ -d "$TOC_ROOT/player" ] || fail "no player dir at $TOC_ROOT"
 [ -r "$GIT_SSH_KEY" ] || fail "no deploy key at $GIT_SSH_KEY"
 
@@ -488,6 +522,7 @@ if git diff --cached --quiet; then
     RESULT=nochange
     REASON="nothing changed; GitHub holds the state"
     record_success nochange 0 0
+    mirror_push
     [ -n "$override_reason" ] && mv -f "$OVERRIDE" "$OVERRIDE.used-$(date +%s)" 2>/dev/null
     exit 0
 fi
@@ -521,5 +556,6 @@ remote_holds "$(git rev-parse HEAD)" ||
 RESULT=ok
 REASON="pushed $changed files ($players characters)"
 record_success pushed "$changed" "$players"
+mirror_push
 [ -n "$override_reason" ] && mv -f "$OVERRIDE" "$OVERRIDE.used-$(date +%s)" 2>/dev/null
 echo "pushed $changed files ($players characters)"

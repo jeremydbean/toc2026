@@ -3388,6 +3388,29 @@ units were never installed by a deploy. Rules now:
   summary's `private_backup` check. Do not rebuild it without reading this
   paragraph: the gap worth closing is a copy **off GitHub**, not an
   encrypted one on it.
+- **A private plaintext mirror follows the public push** (owner,
+  2026-11-23). After a run's commit is verified on GitHub -- pushed, or a
+  no-change run -- `toc-state-sync` pushes that same commit to
+  `git@github.com:jeremydbean/toc2026-player-backups.git` `main`, with its
+  own deploy key (`/srv/toc/.ssh/id_ed25519_github_mirror`, toc's, 0600;
+  GitHub deploy key "toc-player-backup",
+  `SHA256:SO0crPNGLGuPvKz3t7ymrUSQkXbdIXpgsoF/kAXetBc`). `MIRROR_REMOTE` is
+  set in `toc-state-sync.service`; unset, the mirror is off. **Never
+  forced**, so it can only be behind the public copy, never different; a
+  mirror that moved is refused, not overwritten. **Best effort**: a mirror
+  failure never fails the run -- the public push is the backup -- but it is
+  written to `/var/lib/toc-state-sync/mirror`, logged, and reported by
+  `toc-ops-summary`'s own `mirror` check (never `public_sync`, so a mirror
+  problem never makes the public copy look broken). Both copies live in
+  one GitHub account, so this covers the public repository being deleted
+  or rewritten, not the account being lost. The mirror was seeded once with
+  full history from the owner's Mac, because the host's clone may be
+  shallow and a shallow clone cannot seed an empty remote. The repository's
+  older `snapshots` (Pi) and `snapshots-vm` (Windows VM) branches hold
+  age-encrypted archives from before this; the Pi's cannot be opened with
+  any key the owner still holds (`tests/test_state_sync_receipts.py`
+  `test_the_private_mirror_gets_the_same_commit`,
+  `test_a_mirror_that_moved_is_never_pushed_over`).
 - **Timers are on the wall clock.** `Persistent=` applies only to
   `OnCalendar=`; on an `OnUnitActiveSec` timer it does nothing. The sync,
   its check and the heartbeat use `OnCalendar` with `Persistent=true`.
@@ -3420,6 +3443,35 @@ units were never installed by a deploy. Rules now:
   answers. A review reads `log/ops-summary.json` first
   (`wiki/disaster-recovery.md` "What a review reads first"). No name,
   message, secret or address ever goes in it.
+- **A monitored route answers HEAD as well as GET** (2026-11-23).
+  UptimeRobot, like most uptime services, sends HEAD, and FastAPI does not
+  answer HEAD on an `@app.get` route: `/api/ready` and `/api/ops-summary`
+  returned 405 to every check, so both monitors reported a two-hour outage
+  while the game was up and `curl` (a GET) said 200. `/api/health`,
+  `/api/ready` and `/api/ops-summary` use
+  `@app.api_route(..., methods=["GET", "HEAD"])`
+  (`tests/test_ops_units.py` `test_head_is_answered_for_the_monitored_routes`).
+  When a monitor disagrees with `curl`, read the web log for the method
+  before blaming the deploy.
+- **A failed oneshot is a problem, and a root job names the clone it reads**
+  (2026-11-23). `toc-state-sync-check.service` has no `User=` and runs as
+  root against `/srv/toc/state-repo`, which `toc` owns; under systemd git
+  gets no `HOME`, never reads root's `safe.directory`, and refuses "dubious
+  ownership". The check sent that to `/dev/null`, failed every run with
+  "cannot tell whether the clone holds unpushed commits" while the sync was
+  healthy, and `toc-ops-summary` -- which only required *timers* to be
+  active -- said `units: ok`. Now the check calls
+  `git -c safe.directory="$STATE_REPO"` and keeps git's reason, and the
+  summary names any unit whose last run `failed`. Any new root job that
+  runs git on a `toc`-owned tree needs the same `-c safe.directory`; a
+  manual `sudo` run will not show the bug, because it has `HOME=/root`.
+  Reproduce with `sudo env -i git ...` or `sudo systemd-run --wait --pipe`.
+- **A test skipped on macOS is not verified.** The receipt, backup and
+  live-game tests need `flock`, `rsync` and the server binary, which a Mac
+  lacks; they skip there and pass vacuously. Run them on the Linux host in
+  a scratch copy (`tar` the `tests/` and `deploy/` files over, run as
+  `ubuntu`, delete after) or let CI run them -- never report one as passing
+  from a skip.
 
 ## Security Facts
 
@@ -3658,6 +3710,19 @@ neither. `~/.ssh/toc-oracle` is a copy readable by the owner's account
 only; the Downloads original is left alone because Codex uses it. If the
 alias is ever missing, `ssh -i /c/Users/JeremyBean/Downloads/oci_game_private_key
 ubuntu@129.159.105.156` from **Git Bash** still works.
+
+**From the owner's Mac (2026-11-23)** the same alias exists in
+`~/.ssh/config`: `HostName timesofchaos.com`, user `ubuntu`, its own key
+`~/.ssh/toc-oracle`, `IdentitiesOnly yes`. A Claude session on the Mac
+reaches the host directly with `ssh toc-oracle`. The two `toc-oracle` keys
+are **different keys with one name**: in `/home/ubuntu/.ssh/authorized_keys`
+the Windows one is `oci-game-server` (`SHA256:yM8U/b0TLTYdTFCRmzIi0VLyDng6jBdF+2iX8s8IkrY`)
+and the Mac one `toc-oracle access from mac`
+(`SHA256:c1FXAdGqqIZ+MnmrdIwGIXzTzBEksopy3RgMLhTe8f0`). A third,
+`jeremy-desktop` (`SHA256:rIEuBB+6/lRC7YNqQrMvWvyJP8K8qZxS0l6bykcG8k0`),
+was not accounted for that day. Connecting by bare host name
+(`ubuntu@timesofchaos.com`) bypasses the alias, offers the default key,
+and is refused -- use the alias.
 
 Three things a new session cannot get past, and should say so rather
 than retry: a chat opened outside `C:\Users\JeremyBean\toc2026` loads

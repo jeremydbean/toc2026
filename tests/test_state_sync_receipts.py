@@ -131,6 +131,64 @@ class StateSyncReceiptTests(unittest.TestCase):
 
     # --- what a run records -------------------------------------------------
 
+    # --- the private mirror (owner, 2026-11-23) ------------------------------
+
+    def mirrored(self, remote: str, key: Path | None = None) -> subprocess.CompletedProcess:
+        env = dict(self.env, MIRROR_REMOTE=remote,
+                   MIRROR_SSH_KEY=str(key if key is not None else self.root / "key"))
+        return subprocess.run(["sh", str(SYNC)], env=env, capture_output=True,
+                              text=True, timeout=120)
+
+    def test_the_private_mirror_gets_the_same_commit(self) -> None:
+        mirror = self.root / "mirror.git"
+        git("clone", "-q", "--bare", str(self.bare), str(mirror))   # seeded, as live
+        done = self.mirrored(f"file://{mirror}")
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertEqual(git("--git-dir", str(mirror), "rev-parse", "main").strip(),
+                         self.remote_main(), "the mirror holds what GitHub holds")
+        got = receipt(self.state / "mirror")
+        self.assertEqual((got["result"], got["commit"]), ("ok", self.remote_main()))
+        # A run with nothing to push still refreshes the mirror's receipt.
+        stamp = got["time"]
+        time.sleep(1.1)
+        self.assertEqual(self.mirrored(f"file://{mirror}").returncode, 0)
+        self.assertEqual(self.attempt()["result"], "nochange")
+        self.assertNotEqual(receipt(self.state / "mirror")["time"], stamp)
+
+    def test_a_mirror_that_fails_costs_the_run_nothing(self) -> None:
+        done = self.mirrored(f"file://{self.root / 'nowhere.git'}")
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertEqual(self.attempt()["result"], "ok", "the public push still counts")
+        self.assertEqual(self.success()["kind"], "pushed", "and its receipt is written")
+        got = receipt(self.state / "mirror")
+        self.assertEqual(got["result"], "failed")
+        self.assertTrue(got["reason"])
+        # No key is a failure the receipt names, not a silent skip.
+        mirror = self.root / "mirror.git"
+        git("clone", "-q", "--bare", str(self.bare), str(mirror))
+        self.player("Zmore")
+        self.assertEqual(self.mirrored(f"file://{mirror}", key=self.root / "no-key").returncode, 0)
+        self.assertIn("mirror key not readable", receipt(self.state / "mirror")["reason"])
+
+    def test_a_mirror_that_moved_is_never_pushed_over(self) -> None:
+        mirror, other = self.root / "mirror.git", self.root / "other"
+        git("clone", "-q", "--bare", str(self.bare), str(mirror))
+        git("clone", "-q", str(mirror), str(other))
+        (other / "elsewhere").write_text("not ours\n")
+        git("add", "elsewhere", cwd=other)
+        git("commit", "-qm", "someone else", cwd=other)
+        git("push", "-q", "origin", "HEAD:main", cwd=other)
+        theirs = git("--git-dir", str(mirror), "rev-parse", "main").strip()
+        done = self.mirrored(f"file://{mirror}")
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertEqual(receipt(self.state / "mirror")["result"], "failed")
+        self.assertEqual(git("--git-dir", str(mirror), "rev-parse", "main").strip(), theirs,
+                         "never forced: the mirror keeps what it had")
+
+    def test_no_mirror_configured_writes_no_mirror_receipt(self) -> None:
+        self.assertEqual(self.sync().returncode, 0)
+        self.assertFalse((self.state / "mirror").exists())
+
     def test_a_push_is_a_success_only_once_github_shows_it(self) -> None:
         done = self.sync()
         self.assertEqual(done.returncode, 0, done.stderr)

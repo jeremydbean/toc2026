@@ -26,7 +26,7 @@ from typing import Any, Callable, Optional
 
 SUMMARY_MAX_AGE = 900          # three runs of the five-minute timer
 # The checks toc-ops-summary writes (deploy/windows-vm/toc-ops-summary).
-CHECK_NAMES = ("game", "web", "public_sync", "game_archives",
+CHECK_NAMES = ("game", "web", "public_sync", "mirror", "game_archives",
                "disk", "recovery", "units")
 SUMMARY_MAX_BYTES = 64 * 1024
 _IPV4 = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")

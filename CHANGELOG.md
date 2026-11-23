@@ -8,6 +8,19 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 
+- **A private plaintext mirror of the state.** `toc-state-sync` pushes
+  each verified commit, unencrypted, to the private
+  `toc2026-player-backups` repository as well, never forced and never
+  failing the run; `toc-ops-summary` gains a `mirror` check
+  (`?only=mirror`). Seeded once with full history.
+- **The monitored routes answer HEAD.** UptimeRobot sends HEAD;
+  `/api/health`, `/api/ready` and `/api/ops-summary` returned 405 to it, so
+  both monitors reported an outage that was not happening.
+- **`toc-state-sync-check` no longer fails every run.** Run as root against
+  a `toc`-owned clone, git refused "dubious ownership" under systemd (no
+  `HOME`); it now passes `-c safe.directory` and keeps git's reason. The
+  operations summary now names any unit whose last run failed.
+
 - **Removed the encrypted off-host player backup.** `toc-state-sync`
   already pushes `player/`, `gods/`, `heroes/` and `corpse/` to the public
   repository in plaintext every five minutes, never force-pushing, so its

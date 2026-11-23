@@ -19,4 +19,9 @@ ExecStart=/usr/local/sbin/toc-state-sync
 StateDirectory=toc-state-sync
 StateDirectoryMode=0750
 Environment=TOC_SYNC_STATE_DIR=/var/lib/toc-state-sync
+# The private plaintext mirror (owner, 2026-11-23): the same commit, pushed
+# after the public one is verified, with its own deploy key
+# (/srv/toc/.ssh/id_ed25519_github_mirror, toc's, 0600). Best effort; its
+# receipt is $TOC_SYNC_STATE_DIR/mirror.
+Environment=MIRROR_REMOTE=git@github.com:jeremydbean/toc2026-player-backups.git
 TimeoutStartSec=600

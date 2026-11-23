@@ -323,6 +323,29 @@ class OpsSummaryTests(unittest.TestCase):
         self.assertIn("toc-heartbeat.timer not installed", joined)
         self.assertIn("toc-state-sync.service changed on disk, not reloaded", joined)
 
+    def test_the_mirror_is_off_until_it_runs_then_must_keep_up(self) -> None:
+        """The private mirror (2026-11-23): never run is "off" and healthy;
+        once it has a receipt, a failure or a stale one is a problem of its
+        own, and never makes the public sync look broken."""
+        done, out = self.run_summary()
+        self.assertEqual(out["checks"]["mirror"], {"ok": True, "status": "off"})
+        self.assertEqual(out["overall"], "ok", out["problems"])
+        now = int(time.time())
+        mirror = self.sync / "mirror"
+        mirror.write_text(f"time={now}\nresult=ok\nreason=mirror holds abc\ncommit={'c' * 40}\n")
+        done, out = self.run_summary()
+        self.assertTrue(out["checks"]["mirror"]["ok"], out["problems"])
+        mirror.write_text(f"time={now}\nresult=failed\nreason=rejected (fetch first)\ncommit={'c' * 40}\n")
+        done, out = self.run_summary()
+        self.assertFalse(out["checks"]["mirror"]["ok"])
+        self.assertTrue(out["checks"]["public_sync"]["ok"], "the public copy is not blamed")
+        self.assertIn("mirror: not updated (rejected (fetch first))", out["problems"])
+        mirror.write_text(f"time={now - 3600}\nresult=ok\nreason=x\ncommit={'c' * 40}\n")
+        done, out = self.run_summary()
+        self.assertIn("mirror: last updated 60 min ago", out["problems"])
+        only, error = ops_status.parse_only("mirror")
+        self.assertIsNone(error, "mirror is a name ?only= accepts")
+
     def test_a_service_whose_last_run_failed_is_named(self) -> None:
         """A oneshot is "inactive" between runs, which is fine; "failed" is
         not. toc-state-sync-check failed every run for hours on 2026-11-23

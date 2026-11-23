@@ -9,6 +9,9 @@ from systemd's word that a unit ran:
   web             the dashboard answers /api/health
   public_sync     toc-state-sync's last-success under 20 minutes old, and
                   what its last attempt said
+  mirror          the private plaintext mirror: the same commit, pushed after
+                  the public one, its receipt under 20 minutes old and "ok";
+                  "off" (healthy) until it has ever run
   game_archives   the newest of the game's own archives (backups/) under
                   5 hours old
   disk            free space and inodes where the game writes
@@ -139,6 +142,31 @@ def check_public_sync() -> dict:
     return out
 
 
+def check_mirror() -> dict:
+    """The private mirror (owner, 2026-11-23). Optional, so a host that has
+    never run it is "off" and healthy; once it has a receipt, a failure or a
+    receipt older than the sync's own limit is a problem -- the second copy
+    must not stop quietly. Its own check, so a mirror that fails never makes
+    the public backup look broken."""
+    got = receipt(SYNC_STATE / "mirror")
+    if not got:
+        return {"ok": True, "status": "off"}
+    age = age_of(got.get("time"))
+    result = got.get("result")
+    out = {"status": result or "unknown", "last_min": minutes(age),
+           "commit": (got.get("commit") or "")[:12] or None,
+           "reason": clean(got.get("reason", "")) or None}
+    fresh = age is not None and -300 <= age <= SYNC_MAX_AGE
+    out["ok"] = result == "ok" and fresh
+    if not out["ok"]:
+        if result != "ok":
+            problems.append("mirror: not updated" + (f" ({out['reason']})" if out["reason"] else ""))
+        else:
+            problems.append("mirror: " + ("never verified" if age is None
+                                          else f"last updated {age // 60} min ago"))
+    return out
+
+
 def check_game_archives() -> dict:
     archives = sorted((LIVE / "backups").glob("*.tar.gz"), key=lambda p: p.stat().st_mtime)
     if not archives:
@@ -261,7 +289,7 @@ def write_atomic(path: Path, text: str) -> bool:
 
 def main() -> int:
     verdicts = {"game": check_game(), "web": check_web(), "public_sync": check_public_sync(),
-                "game_archives": check_game_archives(),
+                "mirror": check_mirror(), "game_archives": check_game_archives(),
                 "disk": check_disk(), "recovery": check_recovery(), "units": check_units()}
     beats = heartbeat(verdicts)
     summary = {"schema": 1, "generated": now,
