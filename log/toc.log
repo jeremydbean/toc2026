@@ -344451,3 +344451,15 @@ Mon Nov 23 13:57:27 2026 :: Connection guard: refused 1 connection from 3.133.22
 Mon Nov 23 14:02:33 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 5 of 6 in 6 hours).
 Mon Nov 23 14:03:31 2026 :: Treasure goblin: vanished from room 29438 (The thick forest, world.are) (too long in one area).
 Mon Nov 23 14:07:37 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 4 of 6 in 6 hours).
+Mon Nov 23 14:10:11 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Mon Nov 23 14:12:16 2026 :: Sock.sinaddr:  44.220.185.120
+Mon Nov 23 14:12:17 2026 :: EOF encountered on read.
+Mon Nov 23 14:12:17 2026 :: Connection guard: 44.220.185.120 closed before a password prompt (strike 1 of 6 in 6 hours).
+Mon Nov 23 14:12:17 2026 :: Sock.sinaddr:  44.220.185.120
+Mon Nov 23 14:12:17 2026 :: EOF encountered on read.
+Mon Nov 23 14:12:17 2026 :: Connection guard: 44.220.185.120 closed before a password prompt (strike 2 of 6 in 6 hours).
+Mon Nov 23 14:12:17 2026 :: Connection guard: 44.220.185.120 closed without a word (strike 3 of 6 in 6 hours).
+Mon Nov 23 14:12:18 2026 :: Connection guard: 44.220.185.120 closed without a word (strike 4 of 6 in 6 hours).
+Mon Nov 23 14:12:23 2026 :: Connection guard: 44.220.185.120 closed without a word (strike 5 of 6 in 6 hours).
+Mon Nov 23 14:12:42 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 1 of 6 in 6 hours).
+Mon Nov 23 14:13:08 2026 :: Connection guard: last hour 17 closed without a word, 2 refused, 0 new characters refused, 1 newly paused; 10 addresses paused and 0 refused now, 16 active player addresses.
