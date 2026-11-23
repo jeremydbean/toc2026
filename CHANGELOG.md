@@ -8,6 +8,34 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 
+- **Data-safety review (2026-11-23), each defect proven by a test that
+  failed on the old code:**
+  - *A failed push's commit is never reset away.* The next run reset the
+    sync's clone over it, so the only off-host copy of that state was lost
+    if the live file was then damaged. Now kept as a ref and a bundle and
+    carried into the next push.
+  - *The drop guard judges each part.* Every active character could vanish
+    under the 20% line of a `player/` that is 95% archive. Characters are
+    now judged by name across `player/` and `player/archive/`, each
+    subtree on its own, and the recovery ledgers may never shrink.
+  - *A partial success says so.* A failed or skipped hourly-snapshot copy
+    was a plain "ok"; receipts carry `partial=` and the summary reports it.
+  - *The mirror check reads the host's configuration*, so a missing receipt
+    on a host that wants the mirror is a problem, not "off".
+  - *Restores are staged.* `deploy/toc-restore-state`: refuses while the
+    game or the sync runs, refuses a tree holding state without
+    `TOC_RESTORE_REPLACE=1`, moves the old state aside, compares the result.
+    Stale characters and ended corpses no longer survive a restore.
+  - *A rename's rollback agrees with its ledger.* A failure after the
+    record was flushed undid the rename but left the record, orphaning the
+    character after a restart; a failed ledger read freed every retired
+    name until a restart. Both fixed in `src/renames.c`.
+  - *Archives are read through.* The summary judged the newest archive by
+    its age; a truncated or empty one now fails, naming the last whole one.
+  - Documented: a recovery matrix, what zero loss would take, and restoring
+    from a drive mirror with GitHub unavailable (rehearsed with synthetic
+    data).
+
 - **A private plaintext mirror of the state.** `toc-state-sync` pushes
   each verified commit, unencrypted, to the private
   `toc2026-player-backups` repository as well, never forced and never

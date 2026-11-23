@@ -239,9 +239,9 @@ five minutes):
 | --- | --- |
 | `game` | `toc-game-probe` gets a count (the loop runs) |
 | `web` | the dashboard answers `/api/health` |
-| `public_sync` | a verified sync under 20 minutes old, and no refused drop |
-| `mirror` | the private plaintext mirror holds the sync's commit, its receipt under 20 minutes old; `off` (healthy) until it has ever run |
-| `game_archives` | the game's own newest archive in `backups/` under 5 hours old |
+| `public_sync` | a verified sync under 20 minutes old, no refused drop, and the last success whole: one that pushed but left something behind (`partial=` in its receipt -- an hourly copy that failed, unpushed commits that could not be carried) is a problem |
+| `mirror` | judged by what the host is configured to do (`MIRROR_REMOTE` in `toc-state-sync.service`, read through systemd) as well as by its receipt: not configured is `off`; configured and the sync never run is `pending`; configured, the sync run, and no receipt is a problem; otherwise the receipt under 20 minutes old and `ok` |
+| `game_archives` | the game's own newest archive in `backups/` under 5 hours old **and whole**: read through member by member as a restore would, holding character files that open with `#PLAYER` (an empty `player/` is not a backup); remembered by name, size and mtime, so each archive is read once. A damaged newest archive names how old the last whole one is |
 | `disk` | 4 GB and 10% of inodes free |
 | `recovery` | the last `toc-game-recovery` run (every two minutes) ended 0 with no failed restarts |
 | `units` | every support unit loaded from the file the repository ships, its timer active, no daemon-reload outstanding, and no unit whose last run `failed` |
@@ -391,6 +391,63 @@ back behind Caddy with `toc-web-proxy` (see "The website" above): it opens
 80 and 443 in iptables itself, but the provider's own firewall (the OCI
 security list) is still yours to open.
 
+### Restoring over an install that is still there
+
+`toc-restore` lays the state down with `deploy/toc-restore-state`, which
+is staged rather than merged (review, 2026-11-23: a restore over a
+non-empty `current/` kept every file the backup did not have -- a
+character deleted since, a corpse that had already ended, which is made
+again at boot with its gear):
+
+- On the live tree it **refuses while `toc-game`, `toc-state-sync.timer`
+  or `toc-state-sync` is running** -- the game would save its own
+  characters back over the restore, and the sync would push a half-laid
+  tree. Stop them first:
+  `sudo systemctl stop toc-game.service toc-state-sync.timer`.
+- A tree that already holds state is **refused** unless
+  `TOC_RESTORE_REPLACE=1` is set; then the existing `player gods heroes
+  log corpse` are **moved** to `/srv/toc/pre-restore-<UTC stamp>/`,
+  never deleted, and the backup is laid into empty directories.
+- The result is compared with the checkout file for file before it says
+  done. `backups/` (the game's own archives) is never touched.
+
+```bash
+sudo systemctl stop toc-game.service toc-state-sync.timer
+sudo TOC_RESTORE_REPLACE=1 sh /srv/toc/build/deploy/toc-restore
+```
+
+### When GitHub is unavailable
+
+Both GitHub copies -- the public repository and the private mirror -- live
+in one GitHub account. Losing the account, or GitHub being down when the
+host is also lost, leaves only a copy held elsewhere. Keep one:
+
+```bash
+git clone --mirror https://github.com/jeremydbean/toc2026.git /Volumes/Drive/toc-mirror.git   # once
+git --git-dir=/Volumes/Drive/toc-mirror.git remote update                                   # regularly
+git --git-dir=/Volumes/Drive/toc-mirror.git log -1 --format=%cI main -- player              # verify: recent?
+```
+
+The last line is the check that it is current: the date of the newest
+commit touching `player/`. Older than the interval `remote update` runs
+at means it has stopped. Restoring from it needs no network at all --
+`toc-restore` takes any git source as `REPO`:
+
+```bash
+git clone /Volumes/Drive/toc-mirror.git /tmp/toc        # the scripts, from the drive
+sudo REPO=/Volumes/Drive/toc-mirror.git sh /tmp/toc/deploy/toc-restore
+```
+
+(Copy the mirror onto the new box first if the drive cannot be attached
+to it.) Rehearsed end to end with synthetic data, GitHub deleted, by
+`tests/test_player_backups.py`
+`test_a_mirror_on_a_drive_restores_with_github_gone`.
+
+**Recommended, not yet in place:** run the `remote update` and the
+date check on a schedule on a machine the owner holds, and alert when the
+date is more than a day old. A copy that is not updated and checked is a
+copy of some past day.
+
 ## Moving to a different machine on purpose
 
 Same as "The machine is gone", plus:
@@ -411,8 +468,9 @@ Same as "The machine is gone", plus:
 | | Where | How often | Survives a dead disk | Verified by |
 | --- | --- | --- | --- | --- |
 | Characters, gods, heroes, notes, reports, logs | `main` on GitHub, plaintext | 5 min | yes | `last-success` (GitHub shows the commit) |
-| Encrypted `player/` and `corpse/` | private backups repo, 15 generations | 6 h | yes, **once configured** | the archive fetched back and its checksum compared |
-| The game's own archives of `player/` | `/srv/toc/current/backups/` | 4 h and daily | no | gzip and a full listing before the rename |
+| The same, a second copy | private `toc2026-player-backups`, `main` | 5 min, right after | yes | the `mirror` receipt; the `mirror` check |
+| The same, held off GitHub | a `git clone --mirror` on a drive the owner holds | as often as `remote update` runs | yes, and survives losing the GitHub account | the newest player commit's date (below) |
+| The game's own archives of `player/` | `/srv/toc/current/backups/` | 4 h and daily | no | gzip and a full listing before the rename; read through again by `toc-ops-summary` |
 | Snapshots of each character | `player/versions/` | every save, milestones | no (the sync carries the tagged ones) | `#END` and a checksum |
 
 The five-minute GitHub sync is the live backup and it is running. It is
@@ -421,8 +479,70 @@ rebuild from (that is what "The machine is gone" does) but plaintext and
 public. The encrypted six-hourly backup that used to sit beside it was
 removed -- it archived nothing the sync did not already carry, added no
 secrecy over data that is already public, and cost an age key that could
-be lost. The gap still open is a copy off GitHub, not an encrypted one on
-it (`wiki/player-backups.md`).
+be lost. A private plaintext mirror now follows each push; a copy held
+off GitHub, on a drive, is the one that survives losing the account
+("When GitHub is unavailable" below).
+
+## Recovery matrix
+
+What each failure costs, measured from the code (2026-11-23). "A
+character's save" is at least every 5 minutes online (`AUTOSAVE_CYCLE_TICKS`
+5 x a 60-second tick), and at every level, quest, death, restore, stash
+change and quit; a save counts only once the file, its rename and the
+directory are flushed to the disk.
+
+| Failure | What it is restored from | Data that can be lost |
+| --- | --- | --- |
+| **Game process crash** | each character's last save on the host; `toc-game-recovery` restarts the game within two minutes | that character's play since its last save: at most ~5 minutes |
+| **Power loss / kernel crash** | the same saves: flushed before they count, so the previous file stands, never a torn one | the same as a crash: at most ~5 minutes of a character's play |
+| **Full disk** | the last good save of each character: a save is written aside and renamed only when whole, so a failed one leaves the old file; the game's archive is skipped and staff told on WIZINFO; `disk` alarms below 4 GB | play after the disk filled, if the game stops before space is freed; nothing already saved |
+| **A corrupt or wrong player file** | `player/versions/` (a snapshot at every save, at most one a minute; milestones before every death, remort, deletion, staff change and restore), git history every 5 minutes, the game's archives | the minute between the last good snapshot and the damage; `PRESTORE <player> <stamp>` |
+| **A failed push** (network, GitHub, the key) | everything is still on the host; each run's commit is kept and carried into the next push (`refs/toc/unpushed/*` and `unpushed-*.bundle`), never reset away | nothing while the host survives; the off-host copy lags by the outage, and `public_sync` goes red after 20 minutes |
+| **The host lost** | the public repository (and the private mirror): the last sync | saves after the last successful push: at most ~5 minutes of sync lag plus ~5 minutes of unsaved play, ~10 minutes of a character's play; longer if a push outage was already running |
+| **GitHub access lost** (the account, or an outage) | the host, untouched; the drive mirror if it is kept | nothing while the host lives. Host and GitHub both lost: back to the drive mirror's last `remote update` -- everything, without one |
+| **A restore onto a host that still has state** | the backup, laid into emptied directories | nothing: the restore refuses while the game or the sync runs, and moves existing state aside (`pre-restore-<stamp>/`) rather than deleting or merging |
+
+The two fault-tolerance windows that remain are the autosave cycle (play
+not yet saved) and the sync interval (saves not yet pushed). Neither is
+zero.
+
+## What zero loss would take
+
+A five-minute asynchronous push cannot promise zero loss when the whole
+host is lost: anything saved after the last push exists only on that
+disk. For an acknowledged save to be durable off the host before play
+continues, three things would have to change:
+
+1. **Every state change saved, not every five minutes.** The autosave
+   cycle is itself a loss window. Zero loss means saving (or journalling)
+   at each change that matters -- a write-ahead journal of character
+   changes, flushed locally, is the cheaper form.
+2. **Each save replicated off the host and acknowledged before it
+   counts.** The game hands each flushed save (or journal entry) to a
+   replicator that writes it to an independent store -- object storage
+   with versioning, or a second machine -- and confirms the remote copy
+   (a checksum read back) before the character's change is treated as
+   saved. The game loop is single-threaded, so this must not block it:
+   the change is queued, the character carries an "unconfirmed" mark,
+   and what depends on it (a trade, a logout, a restore) waits for the
+   confirmation.
+3. **A decision for when the network is down.** There are only two
+   honest answers:
+   - *Durability first*: when the store cannot confirm, stop accepting
+     changes that need it -- refuse logins and hold play (a read-only
+     world) until it can. Nothing is acknowledged that is not off-host.
+   - *Availability first*: keep playing on a growing local journal,
+     marked unconfirmed, and replay it when the network returns. The loss
+     window is then the outage, if the host dies during it.
+   A practical middle bounds the backlog -- say 30 seconds of unconfirmed
+   changes -- past which new sessions are refused and staff alerted.
+
+That is a replication service, a second store, ordering and idempotent
+replay, and tests for each -- substantial for a beta. Cheaper steps that
+narrow the windows without promising zero: run the sync every minute
+instead of every five (most runs are no-change and cheap), and keep the
+drive mirror current. Until then the honest number for losing the whole
+host is about ten minutes of a character's play.
 
 ## Rolling out the 2026-11-23 hardening
 

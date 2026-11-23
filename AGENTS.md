@@ -1549,7 +1549,21 @@ and a queued report reply was skipped or misdelivered). `src/renames.c`
 appends `<epoch>\t<Old>\t<New>` to `player/recovery/renames.tsv` and
 flushes it after the new file is saved and before the old one is unlinked;
 a record that does not land undoes the rename (the new file goes, the old
-one was never touched; fault point `rename-record`).
+one was never touched; fault point `rename-record`). **`rename_record`
+returns false only when the ledger holds no record** (review, 2026-11-23):
+it used to fsync the line and then still fail -- the directory sync of a
+new ledger, the table failing to grow -- and the caller deleted the new
+file while the ledger kept `old -> new`, so after a restart the old name
+led to a file that was gone and the character's own file answered to no
+name. A failure after the flush now takes the line back off
+(`rename_take_back`: truncate, fsync); if even that fails the rename is
+kept, because the disk keeps it (fault points `rename-sync-dir`,
+`rename-remember`). **`rename_load` is marked loaded only once it has read
+the whole file** (or there is none): it set the flag before opening, so
+one `EACCES`/`EIO`/`EMFILE` freed every retired name until a restart; now
+an unreadable ledger is logged once and read again at the next use (fault
+point `rename-load`; `tests/test_rename_identity.py`
+`RenameDurabilityTests`, each restarting the game and logging in).
 `rename_current_name` follows the record -- the latest line naming a name
 decides, so a rename back gives the name back -- and the name prompt leads
 an old name to the character it became, asking that character's password,
@@ -3369,6 +3383,7 @@ units were never installed by a deploy. Rules now:
   20 minutes, or an unpushed count `git rev-list` cannot give is a failure
   (`tests/test_state_sync_receipts.py`).
 - **A tree that shrank past belief is refused before anything is copied**
+  (the whole tree here; each part on its own too, two rules below)
   (`toc-state-sync`'s drop guard: `player/`, `gods/`, `heroes/` emptied,
   unreadable, or down more than `TOC_SYNC_MAX_DROP_PCT` (20) once at
   `TOC_SYNC_GUARD_MIN` (10) files; `corpse/live`, whose corpses rot, only
@@ -3401,7 +3416,13 @@ units were never installed by a deploy. Rules now:
   failure never fails the run -- the public push is the backup -- but it is
   written to `/var/lib/toc-state-sync/mirror`, logged, and reported by
   `toc-ops-summary`'s own `mirror` check (never `public_sync`, so a mirror
-  problem never makes the public copy look broken). Both copies live in
+  problem never makes the public copy look broken). That check judges the
+  host's **configuration** as well as the receipt (review, 2026-11-23: a
+  missing receipt read "off" and healthy, so a lost state directory or a
+  mirror that never ran looked like a mirror nobody wanted): `MIRROR_REMOTE`
+  as systemd reports it for `toc-state-sync.service` -- unset is `off`; set
+  and the sync never run is `pending`; set, the sync run, and no receipt is
+  a problem. If systemd cannot be asked, the receipt alone decides. Both copies live in
   one GitHub account, so this covers the public repository being deleted
   or rewritten, not the account being lost. The mirror was seeded once with
   full history from the owner's Mac, because the host's clone may be
@@ -3419,6 +3440,65 @@ units were never installed by a deploy. Rules now:
   mirror was proven (`tests/test_state_sync_receipts.py`
   `test_the_private_mirror_gets_the_same_commit`,
   `test_a_mirror_that_moved_is_never_pushed_over`).
+- **A commit a failed push left is never reset away** (review,
+  2026-11-23). Each run began `git fetch && git reset --hard origin/main`,
+  so the commit an earlier run made and could not push -- the only copy,
+  off the live tree, of that moment -- was thrown away; a player file then
+  damaged on the host could not be had back. Now `bring_up_to_date` keeps
+  any commit ahead of GitHub as `refs/toc/unpushed/<UTC stamp>` in the
+  clone and `unpushed-<stamp>.bundle` beside the receipts (newest
+  `TOC_SYNC_PRESERVE_KEEP`, 20, of each), then rebases it onto GitHub's
+  branch to go with this run's push -- even a run with nothing new pushes
+  it. Only if it cannot be carried cleanly is the clone reset, with both
+  copies kept and the run marked incomplete. A reclone still moves the
+  broken clone aside rather than deleting it.
+  (`tests/test_state_sync_receipts.py`
+  `test_a_commit_a_failed_push_left_reaches_github_on_the_next_run`,
+  `test_a_commit_that_cannot_be_carried_is_kept_not_reset_away`.)
+- **The drop guard judges each part, not only the whole** (review,
+  2026-11-23). `player/` held 977 files, 934 of them `archive/`: every
+  active character, the recovery ledger and the diaries together were
+  under the 20% line, so a missing or half-mounted subtree could leave
+  GitHub's current tree -- the one `toc-restore` lays down. Now, beside the
+  whole: characters are judged **by name** across `player/` and
+  `player/archive/` (archiving moves one, `player_archive_dormant`, so a
+  move is not a loss; a name in neither is gone), every other subdirectory
+  of `player/` on its own, a part that had files and has none is a drop at
+  any size, and `player/recovery/*.tsv` (the ledgers, append-only) may never
+  get shorter. Counted with `comm` into a file, never `grep -f` (an empty
+  pattern file -- everything gone -- gave no count) and never through a
+  pipe (`fail` in a pipeline ends only a subshell). An unreadable subtree
+  was already refused and still is. A legitimate mass deletion of active
+  characters needs `allow-drop`. (`tests/test_state_sync_receipts.py`, "the
+  drop guard, part by part".)
+- **A success that left something behind says so.** The receipts carry
+  `partial=`: an hourly-snapshot copy that failed, or was skipped because
+  there is no `python3` (that used to be silent), or unpushed commits that
+  could not be carried. The run still pushes -- a failed hourly copy must
+  not cost the characters their backup -- but `toc-ops-summary` reports
+  `public_sync: pushed, but incomplete (...)`. An unreadable
+  `versions/<Name>` directory stops the milestone `rsync` and fails the
+  whole run, loudly, as before.
+- **A restore is staged, never merged** (`deploy/toc-restore-state`,
+  review 2026-11-23). `toc-restore` copied state into an existing
+  `current/` with `rsync -a` and no `--delete`, and never stopped the game:
+  a restore over a live install kept a character deleted since and a corpse
+  that had ended (remade at boot, gear and all), and the game saved over
+  it. Now the code copy excludes the state directories; on the live tree
+  the restore refuses while `toc-game`, `toc-state-sync.timer` or the sync
+  runs; a tree holding state is refused unless `TOC_RESTORE_REPLACE=1`,
+  which **moves** it to `pre-restore-<stamp>/` -- never deletes; the backup
+  goes into empty directories and is compared with the checkout, file for
+  file. `backups/` is never touched. (`tests/test_player_backups.py`
+  `RestoreStateTests`.)
+- **An archive counts when it is whole, not when it is new** (review,
+  2026-11-23). `toc-ops-summary` judged the newest `backups/*.tar.gz` by
+  its mtime alone, so one damaged after the game proved it -- or a
+  well-formed archive of an empty `player/` -- read healthy. Now it reads
+  the newest through, member by member, and opens each `player/<Name>`,
+  which must begin `#PLAYER`: a restore drill on every new archive,
+  remembered by name, size and mtime in `/var/lib/toc/archive-verified`.
+  A damaged newest archive names how old the last whole one is.
 - **Timers are on the wall clock.** `Persistent=` applies only to
   `OnCalendar=`; on an `OnUnitActiveSec` timer it does nothing. The sync,
   its check and the heartbeat use `OnCalendar` with `Persistent=true`.
@@ -7939,7 +8019,10 @@ and Mac ("Connecting and shipping from a new session").
 4. The game's own `.tar.gz` archives in `backups/`, on the host only.
 
 There is no encrypted backup and no age key in use; do not add one
-without reading "Backups Say How They Went".
+without reading "Backups Say How They Went". What each failure costs, and
+what zero loss would take, is `wiki/disaster-recovery.md` "Recovery
+matrix" and "What zero loss would take" -- the honest figure for losing
+the whole host is about ten minutes of a character's play.
 
 **What watches it.** `toc-ops-summary` every five minutes, served at
 `/api/ops-summary`; a review reads `log/ops-summary.json` first. UptimeRobot,
@@ -7947,7 +8030,9 @@ alerting the owner by e-mail, all HTTP monitors sending HEAD:
 "Times of Chaos game" (`/api/ready`), "Times of Chaos backups"
 (`?only=public_sync,game_archives,disk,recovery,units`) and "Times of
 Chaos mirror" (`?only=mirror`), plus port monitors on `timesofchaos.com`
-and `:9000`. All five were Up at the end of the day.
+and `:9000`. All five were Up at the end of the day. The summary also
+reads the newest game archive through, judges the mirror by the host's
+configuration, and names a sync that pushed but was incomplete.
 
 **Keys.** On the host, `/srv/toc/.ssh/`: `id_ed25519_state_sync`
 (`SHA256:EYHlyx7l+OF/Kmju2Qb1d4bJX/5DRcspxISSdRVgioM`), the public repo's
@@ -7961,8 +8046,14 @@ Mac holds no backup key any more.
 
 - `jeremy-desktop` (`SHA256:rIEuBB+6/lRC7YNqQrMvWvyJP8K8qZxS0l6bykcG8k0`)
   is in `/home/ubuntu/.ssh/authorized_keys` and was not accounted for.
-- No copy is held **off** GitHub: losing the account loses both
-  repositories. `git clone --mirror` to a drive the owner holds closes it.
+- No copy is held **off** GitHub yet: losing the account loses both
+  repositories. The procedure is documented and rehearsed with synthetic
+  data (`wiki/disaster-recovery.md` "When GitHub is unavailable"); what is
+  missing is a drive mirror kept current and checked on a schedule.
+- Zero loss on losing the whole host would need every save replicated and
+  acknowledged off the host before play continues (`wiki/disaster-recovery.md`
+  "What zero loss would take"); not built. Running the sync every minute
+  instead of five is the cheap step that narrows it.
 - The owner's Windows machine may still run the old encrypted-backup task;
   with "ToCPi" deleted it can no longer push and fails harmlessly. Turning
   it off there is tidy, not urgent.
@@ -7973,7 +8064,21 @@ Mac holds no backup key any more.
 **What the day taught, as rules above:** HEAD on monitored routes; a root
 job naming its clone with `-c safe.directory`; a failed oneshot is a
 problem but the summary never judges its own unit; a test skipped on macOS
-is not verified. And for the workflow:
+is not verified; a failed push's commit is never reset away; the drop guard
+judges each part; a partial success says so; a restore is staged; an
+archive counts when it is whole; a rename's rollback agrees with its
+ledger. And for the workflow:
+
+- **Prove a defect before fixing it.** Each fix of the day's data-safety
+  review has a test that fails on the old code for the stated reason, and
+  passes after -- and two of those tests first failed for the *wrong*
+  reason (a rename target not online; a fault on a directory that stopped
+  an earlier step), which proves nothing. Read why a test fails.
+- **Run deploy-script tests on the Linux host, not a Mac.** `/bin/sh`,
+  `stat` and `rsync` differ there; copy `tests/` and `deploy/` to a scratch
+  directory on the host, run as `ubuntu`, delete after. The Mac's CMake is
+  broken (an x86_64 cmake against arm64 tools); build both trees on the
+  host.
 
 - **A push to main delays the deployer and can cancel a run.** Validate
   cancels an in-flight run on a new push, and `toc-auto-deploy` waits on

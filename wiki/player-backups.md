@@ -192,14 +192,21 @@ grep -c . /tmp/drill/player/recovery/ledger.tsv
 
 Then copy the one character you need from `/tmp/drill/player/` into place
 with the game stopped (or log them out first), or lay the whole tree down
-as `toc-restore` would. An older state comes from git rather than from a
+as `toc-restore` would -- with `deploy/toc-restore-state`, which refuses a
+tree that already holds state unless `TOC_RESTORE_REPLACE=1`, moves that
+state aside rather than deleting or merging it, and compares the result
+with the checkout (`wiki/disaster-recovery.md` "Restoring over an install
+that is still there"). An older state comes from git rather than from a
 generation: `git -C /tmp/drill log --oneline -- player/<Name>` finds when
 it changed, and `git -C /tmp/drill show <commit>:player/<Name>` prints that
 version.
 
-Because both copies live in one GitHub account, the gap still open is a
-copy **off** GitHub. `git clone --mirror` to a drive you hold closes it
-with nothing to lose but the drive:
+A second copy now follows every push: the private mirror
+`toc2026-player-backups` (`AGENTS.md`, "Backups Say How They Went"). Because
+both copies live in one GitHub account, the gap still open is a copy
+**off** GitHub. `git clone --mirror` to a drive you hold closes it with
+nothing to lose but the drive (restoring from it:
+`wiki/disaster-recovery.md` "When GitHub is unavailable"):
 
 ```bash
 git clone --mirror https://github.com/jeremydbean/toc2026.git ~/toc-mirror.git
@@ -208,7 +215,9 @@ git --git-dir=~/toc-mirror.git remote update     # thereafter
 
 ## How long a loss can be
 
-Measured from the code, not promised:
+Measured from the code, not promised. The full table, failure by failure,
+is `wiki/disaster-recovery.md` "Recovery matrix"; what zero loss would
+take is the section after it.
 
 - **A crash of the game process:** what changed since the player's last
   save. Saves happen at least every autosave cycle and at every level,
@@ -226,8 +235,11 @@ Measured from the code, not promised:
   lists the same hourly, daily and milestone copies the lost one did,
   except the current hour's (2026-10-24); a restore drill from GitHub
   alone took under two minutes the same day.
+- **A failed push:** nothing while the host survives. The commit a failed
+  run made is kept and carried into the next push, never reset away
+  (2026-11-23); only the off-host copy lags.
 - **The host and GitHub lost together:** everything, unless a mirror of
-  the repository is held off GitHub (above). Both copies are in one GitHub
+  the repository is held off GitHub (above). Both GitHub copies are in one
   account, so this is the one window still fully open.
 
 ## Not yet
