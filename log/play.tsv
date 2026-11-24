@@ -55954,3 +55954,6 @@
 1795531429	laid	-	0	0	-	1015	herb	46	a juniper berry	25001	mountain.are	scatter
 1795531429	laid	-	0	0	-	1016	herb	51	a piece of kelp	25018	mountain.are	scatter
 1795531465	census	-	0	0	-	herbs=55/150 components=36/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=19 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795531504	laid	-	0	0	-	1017	herb	35	a sprig of angelica	10057	glitter.are	scatter
+1795531504	laid	-	0	0	-	1018	herb	40	a clove	10121	glitter.are	scatter
+1795531504	laid	-	0	0	-	1019	component	79	a glass container of cobwebs	9579	newthalo.are	scatter
