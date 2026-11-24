@@ -55480,3 +55480,30 @@
 1795486535	cmd	Alaric	57	2497	dresden.are	standing	100	17	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'the giant lizard has been declared an outlaw!'	-	+
 1795486545	coin	Alaric	57	2497	dresden.are	+73494763	bank	interest	bank	29937218678
 1795486545	laid	-	0	0	-	852	herb	44	a sprig of aconite	29324	korzath2.are	scatter
+1795486551	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1795486552	cmd	Alaric	57	2415	dresden.are	standing	100	0	-	run	n 2	Northern Oak Tree Square. // [Exits: north east south west] // Main Processional.	-	+
+1795486552	cmd	Alaric	57	2509	dresden.are	standing	100	0	-	run	e 4	Market Plaza. // [Exits: north east south west] // Market Plaza.	-	+
+1795486552	cmd	Alaric	57	2508	dresden.are	standing	100	0	-	north		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1795486553	cmd	Alaric	57	2507	dresden.are	standing	100	0	-	east		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway	-	+
+1795486553	cmd	Alaric	57	2506	dresden.are	standing	100	0	-	run	n 2	Dark Alley. // [Exits: north east south west] // Dead End.	-	+
+1795486553	cmd	Alaric	57	2506	dresden.are	standing	100	0	-	open	down	Ok.	-	-
+1795486553	area	Alaric	57	7030	sewer.are	dresden.are	sewer.are	23	down
+1795486553	cmd	Alaric	57	7030	sewer.are	standing	100	0	-	down		The Quadruple Junction Under the Garbage //   You are standing in something that reminds you of an entry to an ant hive. // There are enormous concrete pipes leading north, south, east and west. 	-	+
+1795486554	cmd	Alaric	57	7022	sewer.are	standing	100	0	-	west		The odd room with smooth walls //   As you enter you hear a loud click from one of the walls ... and you fall // and fall and fall ...	-	+
+1795486554	cmd	Alaric	57	7112	sewer.are	standing	100	0	-	down		An odd intersection //   You stand in a rather odd intersection of pipes. The pipes actually don't // resemble pipes anymore. They look more like a real stone tunnel, or a	-	+
+1795486554	cmd	Alaric	57	7104	sewer.are	standing	100	0	-	west		A junction in the sewer pipes //   You stand in the middle of what looks like a triple junction of pipes // going east, west and north.	-	+
+1795486554	cmd	Alaric	57	7103	sewer.are	standing	100	0	-	north		A muddy bend in the sewer system //   You are standing in what looks like a bend in the pipe system of the // sewer. The 'floor' is covered completely by mud! This includes covering	-	+
+1795486555	cmd	Alaric	57	7101	sewer.are	standing	100	0	-	west		Under the mudhole //   You stand in a small room with a great big opening in the ceiling. From this // opening there's mud dripping down in large lumps. >YUCK<. You can smell the 	-	+
+1795486555	cmd	Alaric	57	7101	sewer.are	standing	100	0	-	open	ozone	You open a secret door.	-	-
+1795486555	area	Alaric	57	25160	underdrk.are	sewer.are	underdrk.are	2	down
+1795486555	cmd	Alaric	57	25160	underdrk.are	standing	100	0	-	down		The Trade Route. //   The glowing moss that covers the walls gives off more than enough light to see // by.  This huge corridor is used for trade between the different underground	-	+
+1795486555	cmd	Alaric	57	25159	underdrk.are	standing	100	0	-	west		The Trade Route. //   Glowing moss covers the walls of this huge corridor giving off more than // enough light to see by.  The floor is covered in wagon and animal tracks.	-	+
+1795486556	cmd	Alaric	57	25172	underdrk.are	standing	100	0	-	run	s 3	The dim passage. // [Exits: north south] // The Intersection.	-	+
+1795486556	area	Alaric	57	6546	dwarves.are	underdrk.are	dwarves.are	1	up
+1795486556	cmd	Alaric	57	6546	dwarves.are	standing	100	0	-	up		Mine Maze //   You have entered the maze of the mines.  To the east you // can see some inscriptions, and you can exit to the south.	-	+
+1795486559	cmd	Alaric	57	6547	dwarves.are	standing	100	0	-	east		Maze inscription //   You are inside the maze, but not far enough in that you could get lost. // [Exits: north west]	-	-
+1795486560	cmd	Alaric	57	6548	dwarves.are	standing	100	0	-	north		Maze //   You are in a maze. // [Exits: north south]	-	+
+1795486561	cmd	Alaric	57	6549	dwarves.are	standing	100	0	-	north		Maze //   You are in a maze. // [Exits: north west]	-	+
+1795486562	cmd	Alaric	57	6550	dwarves.are	standing	100	0	-	north		Maze //   You are in a maze. // [Exits: south west]	-	-
+1795486563	cmd	Alaric	57	6552	dwarves.are	standing	100	0	-	west		Solved the Maze. //   You have solved the maze.  You can tell by the last few moves // that there is no way that a dumb worker could have figured that	-	+
+1795486565	cmd	Alaric	57	6553	dwarves.are	standing	100	0	-	west		The Mazekeeper's Room //   You have entered the Mazekeeper's room.  There are pictures of // the Queen with darts thrown in it.  Spray-painted on the wall are	-	+

@@ -344992,3 +344992,56 @@ Tue Nov 24 02:15:32 2026 :: Log Alaric [2497]: wake
 Tue Nov 24 02:15:33 2026 :: Log Alaric [2497]: l
 Tue Nov 24 02:15:35 2026 :: Log Alaric [2497]: aq re
 Tue Nov 24 02:15:35 2026 :: Log Alaric [2497]: quest assigned: kill the giant lizard (mob 6505, level 19) in dwarves.are, 5 minutes, rush
+Tue Nov 24 02:15:51 2026 :: Log Alaric [2497]: en do
+Tue Nov 24 02:15:51 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Nov 24 02:15:52 2026 :: Log Alaric [2401]: r n 2
+Tue Nov 24 02:15:52 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Tue Nov 24 02:15:52 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Tue Nov 24 02:15:52 2026 :: Log Alaric [2415]: r e 4
+Tue Nov 24 02:15:52 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Tue Nov 24 02:15:52 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2485
+Tue Nov 24 02:15:52 2026 :: Log Alaric [2487]: arrived (Market Plaza.) from 2486
+Tue Nov 24 02:15:52 2026 :: Log Alaric [2509]: arrived (Dark Alley.) from 2487
+Tue Nov 24 02:15:52 2026 :: Log Alaric [2509]: n
+Tue Nov 24 02:15:52 2026 :: Log Alaric [2508]: arrived (Dark Alley.) from 2509
+Tue Nov 24 02:15:53 2026 :: Log Alaric [2508]: e
+Tue Nov 24 02:15:53 2026 :: Log Alaric [2507]: arrived (Dark Alley.) from 2508
+Tue Nov 24 02:15:53 2026 :: Log Alaric [2507]: r n 2
+Tue Nov 24 02:15:53 2026 :: Log Alaric [2505]: arrived (Dark Alley.) from 2507
+Tue Nov 24 02:15:53 2026 :: Log Alaric [2506]: arrived (Dead End.) from 2505
+Tue Nov 24 02:15:53 2026 :: Log Alaric [2506]: open down
+Tue Nov 24 02:15:53 2026 :: Log Alaric [2506]: d
+Tue Nov 24 02:15:53 2026 :: Log Alaric [7030]: arrived (The Quadruple Junction Under the Garbage) from 2506
+Tue Nov 24 02:15:54 2026 :: Log Alaric [7030]: w
+Tue Nov 24 02:15:54 2026 :: Log Alaric [7022]: arrived (The odd room with smooth walls) from 7030
+Tue Nov 24 02:15:54 2026 :: Log Alaric [7022]: d
+Tue Nov 24 02:15:54 2026 :: Log Alaric [7112]: arrived (An odd intersection) from 7022
+Tue Nov 24 02:15:54 2026 :: Log Alaric [7112]: w
+Tue Nov 24 02:15:54 2026 :: Log Alaric [7104]: arrived (A junction in the sewer pipes) from 7112
+Tue Nov 24 02:15:54 2026 :: Log Alaric [7104]: n
+Tue Nov 24 02:15:54 2026 :: Log Alaric [7103]: arrived (A muddy bend in the sewer system) from 7104
+Tue Nov 24 02:15:55 2026 :: Log Alaric [7103]: w
+Tue Nov 24 02:15:55 2026 :: Log Alaric [7101]: arrived (Under the mudhole) from 7103
+Tue Nov 24 02:15:55 2026 :: Log Alaric [7101]: open ozone
+Tue Nov 24 02:15:55 2026 :: Log Alaric [7101]: d
+Tue Nov 24 02:15:55 2026 :: Log Alaric [25160]: arrived (The Trade Route.) from 7101
+Tue Nov 24 02:15:55 2026 :: Log Alaric [25160]: w
+Tue Nov 24 02:15:55 2026 :: Log Alaric [25159]: arrived (The Trade Route.) from 25160
+Tue Nov 24 02:15:56 2026 :: Log Alaric [25159]: r s 3
+Tue Nov 24 02:15:56 2026 :: Log Alaric [25165]: arrived (The dim passage.) from 25159
+Tue Nov 24 02:15:56 2026 :: Log Alaric [25166]: arrived (The Intersection.) from 25165
+Tue Nov 24 02:15:56 2026 :: Log Alaric [25172]: arrived (The passageway.) from 25166
+Tue Nov 24 02:15:56 2026 :: Log Alaric [25172]: u
+Tue Nov 24 02:15:56 2026 :: Log Alaric [6546]: arrived (Mine Maze) from 25172
+Tue Nov 24 02:15:59 2026 :: Log Alaric [6546]: e
+Tue Nov 24 02:15:59 2026 :: Log Alaric [6547]: arrived (Maze inscription) from 6546
+Tue Nov 24 02:16:00 2026 :: Log Alaric [6547]: n
+Tue Nov 24 02:16:00 2026 :: Log Alaric [6548]: arrived (Maze) from 6547
+Tue Nov 24 02:16:01 2026 :: Log Alaric [6548]: n
+Tue Nov 24 02:16:01 2026 :: Log Alaric [6549]: arrived (Maze) from 6548
+Tue Nov 24 02:16:02 2026 :: Log Alaric [6549]: n
+Tue Nov 24 02:16:02 2026 :: Log Alaric [6550]: arrived (Maze) from 6549
+Tue Nov 24 02:16:03 2026 :: Log Alaric [6550]: w
+Tue Nov 24 02:16:03 2026 :: Log Alaric [6552]: arrived (Solved the Maze.) from 6550
+Tue Nov 24 02:16:05 2026 :: Log Alaric [6552]: w
+Tue Nov 24 02:16:05 2026 :: Log Alaric [6553]: arrived (The Mazekeeper's Room) from 6552
