@@ -345595,3 +345595,4 @@ Tue Nov 24 09:10:15 2026 :: Connection guard: 23.31.96.97 closed without a word 
 Tue Nov 24 09:10:50 2026 :: Connection guard: refused 8 connections from 112.97.86.190 (since the last line; 6 refused in all, pause 2 this week, 720 minutes left).
 Tue Nov 24 09:13:40 2026 :: Treasure goblin: vanished from room 13262 (Dusty road., solace.are) (too long in one area).
 Tue Nov 24 09:14:24 2026 :: Connection guard: last hour 5 closed without a word, 16 refused, 0 new characters refused, 1 newly paused; 12 addresses paused and 0 refused now, 16 active player addresses.
+Tue Nov 24 09:15:02 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 61 refused in all, pause 5 this week, 1958 minutes left).
