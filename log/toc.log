@@ -345638,3 +345638,4 @@ Tue Nov 24 11:04:31 2026 :: Treasure goblin: vanished from room 1353 (A bend in 
 Tue Nov 24 11:06:29 2026 :: Connection guard: refused 1 connection from 5.161.117.52 (paused; 16 refused in all, pause 2 this week, 71 minutes left).
 Tue Nov 24 11:10:19 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Tue Nov 24 11:11:31 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 2 of 6 in 6 hours).
+Tue Nov 24 11:14:24 2026 :: Connection guard: last hour 8 closed without a word, 5 refused, 0 new characters refused, 0 newly paused; 10 addresses paused and 0 refused now, 16 active player addresses.
