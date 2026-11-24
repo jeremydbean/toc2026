@@ -55640,3 +55640,30 @@
 1795486716	cmd	Alaric	57	6508	dwarves.are	standing	100	0	-	south		Narrow north-south path //   This path leads to the north and south.  To the north you can see a // door, and to the south the path continues.	-	+
 1795486717	cmd	Alaric	57	6507	dwarves.are	standing	100	0	-	south		Narrow path //   This path is very narrow, and it continues to the north and west. // [Exits: north west]	-	-
 1795486717	cmd	Alaric	57	6506	dwarves.are	standing	100	0	-	west		Bend in Narrow Path //   This is a narrow path that bends to the east here.  The trees hang over // the path, and it is very overgrown.  The narrow path continues to the	-	+
+1795486718	cmd	Alaric	57	6506	dwarves.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1795486719	cmd	Alaric	57	6506	dwarves.are	standing	100	0	-	exits		Obvious exits: // East  - Narrow path // South - Narrow Path	-	-
+1795486719	cmd	Alaric	57	6504	dwarves.are	standing	100	0	-	south		Narrow Path //   This is a narrow path leading to the Dwarven Kingdom.  It looks less // travelled than the others, and it is very creepy.  The path opens up	-	+
+1795486720	cmd	Alaric	57	6504	dwarves.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1795486721	cmd	Alaric	57	6540	dwarves.are	standing	100	0	-	south		Dark path //   This path is very well worn, and there is an entrance to the mines to the // east, while the path continues to the north and west.	-	+
+1795486721	cmd	Alaric	57	6540	dwarves.are	standing	100	0	-	east		The door is closed.	-	-
+1795486723	cmd	Alaric	57	6540	dwarves.are	standing	100	0	-	open		It's locked.	-	-
+1795486725	coin	Alaric	57	6540	dwarves.are	+1000000	loot	autogold	corpse of the dwarven guard	29940474634
+1795486725	coin	Alaric	57	6540	dwarves.are	+500	loot	autogold	corpse of the dwarven guard	29940475134
+1795486725	coin	Alaric	57	6540	dwarves.are	+6	loot	autogold	corpse of the dwarven guard	29940475140
+1795486725	coin	Alaric	57	6540	dwarves.are	+20000	loot	autogold	corpse of the dwarven guard	29940495140
+1795486725	cmd	Alaric	57	6540	dwarves.are	standing	100	3	-	kill	gu	Your punch <<< ERADICATES >>> the dwarven guard! [-186] // Your punch >>> ANNIHILATES <<< the dwarven guard! [-221] // The dwarven guard is DEAD!!	-	+
+1795486730	cmd	Alaric	57	6540	dwarves.are	standing	100	0	-	get	key cor	I see nothing like that in the cor.	-	-
+1795486730	cmd	Alaric	57	6540	dwarves.are	standing	100	0	-	kill	dw	Your punch >>> ANNIHILATES <<< the dwarven guard! [-202] // Your punch <<< ERADICATES >>> the dwarven guard! [-159]	-	-
+1795486732	coin	Alaric	57	6540	dwarves.are	+1000000	loot	autogold	corpse of the dwarven guard	29941495140
+1795486732	coin	Alaric	57	6540	dwarves.are	+500	loot	autogold	corpse of the dwarven guard	29941495640
+1795486732	coin	Alaric	57	6540	dwarves.are	+6	loot	autogold	corpse of the dwarven guard	29941495646
+1795486732	coin	Alaric	57	6540	dwarves.are	+20000	loot	autogold	corpse of the dwarven guard	29941515646
+1795486733	got	Alaric	57	6540	dwarves.are	6502	a deep green key	key	1	0	get	corpse of the dwarven guard
+1795486733	cmd	Alaric	57	6540	dwarves.are	standing	100	0	-	get	key cor	You get a deep green key from corpse of the dwarven guard.	-	-
+1795486735	cmd	Alaric	57	6540	dwarves.are	standing	100	0	-	unlock	east	*Click*	-	-
+1795486736	cmd	Alaric	57	6540	dwarves.are	standing	100	0	-	open		Ok.	-	-
+1795486737	cmd	Alaric	57	6540	dwarves.are	standing	100	0	-	exits		Obvious exits: // North - Narrow Path // East  - Mine entrance	-	+
+1795486740	cmd	Alaric	57	6541	dwarves.are	standing	100	0	-	east		Mine entrance //   The little path here leads down toward the mines, while the worn path // continues to the west.	-	+
+1795486741	cmd	Alaric	57	6542	dwarves.are	standing	100	0	-	down		Inside the mine //   There are holes everywhere from the places that the workers blew // away the rock to get to whatever they were looking for.  A path leads	-	+
+1795486743	cmd	Alaric	57	6554	dwarves.are	standing	100	0	-	down		Bottom of mineshaft //   You are at the bottom of the mineshaft.  The air here is very sooty, and // it is very hard to breathe.  The mineshaft leads up and east.	-	+
+1795486745	cmd	Alaric	57	6543	dwarves.are	standing	100	0	-	east		Path in the mine //   You are deep inside the mine, and you feel very uncomfortable.  The // path continues to the east, and leads to the mineshaft to the west.	-	+

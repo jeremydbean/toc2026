@@ -345256,3 +345256,38 @@ Tue Nov 24 02:18:37 2026 :: Log Alaric [6508]: s
 Tue Nov 24 02:18:37 2026 :: Log Alaric [6507]: arrived (Narrow path) from 6508
 Tue Nov 24 02:18:37 2026 :: Log Alaric [6507]: w
 Tue Nov 24 02:18:37 2026 :: Log Alaric [6506]: arrived (Bend in Narrow Path) from 6507
+Tue Nov 24 02:18:38 2026 :: Log Alaric [6506]: w
+Tue Nov 24 02:18:39 2026 :: Log Alaric [6506]: ex
+Tue Nov 24 02:18:39 2026 :: Log Alaric [6506]: s
+Tue Nov 24 02:18:39 2026 :: Log Alaric [6504]: arrived (Narrow Path) from 6506
+Tue Nov 24 02:18:40 2026 :: Log Alaric [6504]: w
+Tue Nov 24 02:18:41 2026 :: Log Alaric [6504]: s
+Tue Nov 24 02:18:41 2026 :: Log Alaric [6540]: arrived (Dark path) from 6504
+Tue Nov 24 02:18:41 2026 :: Log Alaric [6540]: e
+Tue Nov 24 02:18:42 2026 :: Connection guard: refused 1 connection from 5.161.117.52 (paused; 10 refused in all, pause 2 this week, 599 minutes left).
+Tue Nov 24 02:18:43 2026 :: Log Alaric [6540]: oe
+Tue Nov 24 02:18:45 2026 :: Log Alaric [6540]: kill gu
+Tue Nov 24 02:18:45 2026 :: Log Alaric [6540]: killed the dwarven guard
+Tue Nov 24 02:18:45 2026 :: Log Alaric [6540]: coin +1 platinum
+Tue Nov 24 02:18:45 2026 :: Log Alaric [6540]: coin +5 silver
+Tue Nov 24 02:18:45 2026 :: Log Alaric [6540]: coin +6 copper
+Tue Nov 24 02:18:45 2026 :: Log Alaric [6540]: coin +2 gold
+Tue Nov 24 02:18:50 2026 :: Log Alaric [6540]: get key cor
+Tue Nov 24 02:18:50 2026 :: Log Alaric [6540]: kill dw
+Tue Nov 24 02:18:52 2026 :: Log Alaric [6540]: killed the dwarven guard
+Tue Nov 24 02:18:52 2026 :: Log Alaric [6540]: coin +1 platinum
+Tue Nov 24 02:18:52 2026 :: Log Alaric [6540]: coin +5 silver
+Tue Nov 24 02:18:52 2026 :: Log Alaric [6540]: coin +6 copper
+Tue Nov 24 02:18:52 2026 :: Log Alaric [6540]: coin +2 gold
+Tue Nov 24 02:18:53 2026 :: Log Alaric [6540]: get key cor
+Tue Nov 24 02:18:55 2026 :: Log Alaric [6540]: unl east
+Tue Nov 24 02:18:56 2026 :: Log Alaric [6540]: oe
+Tue Nov 24 02:18:57 2026 :: Log Alaric [6540]: ex
+Tue Nov 24 02:19:00 2026 :: Log Alaric [6540]: e
+Tue Nov 24 02:19:00 2026 :: Log Alaric [6541]: arrived (Mine entrance) from 6540
+Tue Nov 24 02:19:01 2026 :: Log Alaric [6541]: d
+Tue Nov 24 02:19:01 2026 :: Log Alaric [6542]: arrived (Inside the mine) from 6541
+Tue Nov 24 02:19:03 2026 :: Log Alaric [6542]: d
+Tue Nov 24 02:19:03 2026 :: Log Alaric [6554]: arrived (Bottom of mineshaft) from 6542
+Tue Nov 24 02:19:05 2026 :: Log Alaric [6554]: e
+Tue Nov 24 02:19:05 2026 :: Log Alaric [6543]: arrived (Path in the mine) from 6554
