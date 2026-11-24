@@ -55896,3 +55896,5 @@
 1795528670	laid	-	0	0	-	964	herb	48	an alfalfa sprout	20592	emerald.are	scatter
 1795528670	laid	-	0	0	-	965	component	79	a glass container of cobwebs	15110	campus.are	scatter
 1795528735	laid	-	0	0	-	966	herb	42	a marjoram plant	7401	sewer.are	scatter
+1795528765	census	-	0	0	-	herbs=28/150 components=13/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=28 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795528795	laid	-	0	0	-	967	component	88	a vial of green slime	16082	pirate.are	scatter
