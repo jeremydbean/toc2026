@@ -345744,3 +345744,70 @@ Tue Nov 24 12:18:50 2026 :: Log Alaric [15026]: n
 Tue Nov 24 12:18:50 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15026
 Tue Nov 24 12:18:52 2026 :: Log Alaric [15002]: e
 Tue Nov 24 12:18:52 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15002
+Tue Nov 24 12:19:40 2026 :: Log Alaric [15003]: east
+Tue Nov 24 12:19:40 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15003
+Tue Nov 24 12:19:40 2026 :: Log Alaric [15004]: north
+Tue Nov 24 12:19:40 2026 :: Log Alaric [15010]: arrived (University Avenue) from 15004
+Tue Nov 24 12:19:40 2026 :: Log Alaric [15010]: north
+Tue Nov 24 12:19:40 2026 :: Log Alaric [15011]: arrived (University Avenue) from 15010
+Tue Nov 24 12:19:41 2026 :: Log Alaric [15011]: north
+Tue Nov 24 12:19:41 2026 :: Log Alaric [15012]: arrived (University Avenue) from 15011
+Tue Nov 24 12:19:41 2026 :: Log Alaric [15012]: north
+Tue Nov 24 12:19:41 2026 :: Log Alaric [15013]: arrived (University Avenue) from 15012
+Tue Nov 24 12:19:41 2026 :: Log Alaric [15013]: north
+Tue Nov 24 12:19:41 2026 :: Log Alaric [15024]: arrived (The Ghetto) from 15013
+Tue Nov 24 12:19:41 2026 :: Log Alaric [15024]: north
+Tue Nov 24 12:19:41 2026 :: Log Alaric [15150]: arrived (The Ghetto) from 15024
+Tue Nov 24 12:19:42 2026 :: Log Alaric [15150]: north
+Tue Nov 24 12:19:42 2026 :: Log Alaric [15149]: arrived (The Ghetto) from 15150
+Tue Nov 24 12:19:42 2026 :: Log Alaric [15149]: north
+Tue Nov 24 12:19:42 2026 :: Log Alaric [15148]: arrived (The Ghetto) from 15149
+Tue Nov 24 12:19:42 2026 :: Log Alaric [15148]: north
+Tue Nov 24 12:19:42 2026 :: Log Alaric [15147]: arrived (The Ghetto) from 15148
+Tue Nov 24 12:19:42 2026 :: Log Alaric [15147]: north
+Tue Nov 24 12:19:42 2026 :: Log Alaric [15141]: arrived (The Ghetto Intersection) from 15147
+Tue Nov 24 12:19:43 2026 :: Log Alaric [15141]: north
+Tue Nov 24 12:19:43 2026 :: Log Alaric [15140]: arrived (The Ghetto) from 15141
+Tue Nov 24 12:19:43 2026 :: Log Alaric [15140]: west
+Tue Nov 24 12:19:43 2026 :: Log Alaric [15139]: arrived (Ghetto House) from 15140
+Tue Nov 24 12:19:43 2026 :: Log Alaric [15139]: open north
+Tue Nov 24 12:19:43 2026 :: Log Alaric [15139]: north
+Tue Nov 24 12:19:43 2026 :: Log Alaric [15138]: arrived (Frec House) from 15139
+Tue Nov 24 12:19:44 2026 :: Log Alaric [15138]: open east
+Tue Nov 24 12:19:44 2026 :: Log Alaric [15138]: east
+Tue Nov 24 12:19:44 2026 :: Log Alaric [15136]: arrived (The Ghetto) from 15138
+Tue Nov 24 12:19:44 2026 :: Log Alaric [15136]: north
+Tue Nov 24 12:19:44 2026 :: Log Alaric [15023]: arrived (The Ghetto) from 15136
+Tue Nov 24 12:19:46 2026 :: Log Alaric [15023]: n
+Tue Nov 24 12:19:46 2026 :: Log Alaric [15022]: arrived (The Northen Campus Entrance) from 15023
+Tue Nov 24 12:19:47 2026 :: Log Alaric [15022]: ex
+Tue Nov 24 12:19:50 2026 :: Log Alaric [15022]: s
+Tue Nov 24 12:19:50 2026 :: Log Alaric [15023]: arrived (The Ghetto) from 15022
+Tue Nov 24 12:19:50 2026 :: Log Alaric [15023]: s
+Tue Nov 24 12:19:50 2026 :: Log Alaric [15136]: arrived (The Ghetto) from 15023
+Tue Nov 24 12:19:51 2026 :: Log Alaric [15136]: s
+Tue Nov 24 12:19:51 2026 :: Log Alaric [15136]: s
+Tue Nov 24 12:19:51 2026 :: Log Alaric [15136]: s
+Tue Nov 24 12:19:51 2026 :: Log Alaric [15136]: s
+Tue Nov 24 12:19:55 2026 :: Log Alaric [15136]: west
+Tue Nov 24 12:19:55 2026 :: Log Alaric [15138]: arrived (Frec House) from 15136
+Tue Nov 24 12:19:56 2026 :: Log Alaric [15138]: south
+Tue Nov 24 12:19:56 2026 :: Log Alaric [15139]: arrived (Ghetto House) from 15138
+Tue Nov 24 12:19:56 2026 :: Log Alaric [15139]: east
+Tue Nov 24 12:19:56 2026 :: Log Alaric [15140]: arrived (The Ghetto) from 15139
+Tue Nov 24 12:19:56 2026 :: Log Alaric [15140]: south
+Tue Nov 24 12:19:56 2026 :: Log Alaric [15141]: arrived (The Ghetto Intersection) from 15140
+Tue Nov 24 12:19:56 2026 :: Log Alaric [15141]: south
+Tue Nov 24 12:19:56 2026 :: Log Alaric [15147]: arrived (The Ghetto) from 15141
+Tue Nov 24 12:19:57 2026 :: Log Alaric [15147]: south
+Tue Nov 24 12:19:57 2026 :: Log Alaric [15148]: arrived (The Ghetto) from 15147
+Tue Nov 24 12:19:57 2026 :: Log Alaric [15148]: south
+Tue Nov 24 12:19:57 2026 :: Log Alaric [15149]: arrived (The Ghetto) from 15148
+Tue Nov 24 12:19:57 2026 :: Log Alaric [15149]: south
+Tue Nov 24 12:19:57 2026 :: Log Alaric [15150]: arrived (The Ghetto) from 15149
+Tue Nov 24 12:19:57 2026 :: Log Alaric [15150]: south
+Tue Nov 24 12:19:57 2026 :: Log Alaric [15024]: arrived (The Ghetto) from 15150
+Tue Nov 24 12:19:58 2026 :: Log Alaric [15024]: south
+Tue Nov 24 12:19:58 2026 :: Log Alaric [15013]: arrived (University Avenue) from 15024
+Tue Nov 24 12:19:58 2026 :: Log Alaric [15013]: east
+Tue Nov 24 12:19:58 2026 :: Log Alaric [15038]: arrived (The Back Hall) from 15013
