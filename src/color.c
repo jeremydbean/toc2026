@@ -89,6 +89,8 @@ const struct col_table_type col_table[] =
     { "wizinfo",    COL_WIZINFO,   COLOR_BRIGHT_CYAN, true  },
     { "immtalk",    COL_IMMTALK,   COLOR_BROWN,       true  },
     { "room_name",  COL_ROOM_NAME, COLOR_BROWN,       false },
+    { "better",     COL_BETTER,    COLOR_BRIGHT_GREEN, false },
+    { "worse",      COL_WORSE,     COLOR_BRIGHT_RED,  false },
     { NULL,          0,             COLOR_PLAIN,       false }
 };
 
@@ -392,6 +394,38 @@ void color_close( char *str, size_t size )
       || len + 4 > size )
         return;
     toc_strlcat( str, "{00", size );
+}
+
+/*
+ * The columns str takes on screen: its length less every colour token
+ * ("{0C") and raw marker ("\x02" and its slot byte), which print nothing.
+ * What a table pads by, so a coloured cell lines up with a plain one.
+ */
+size_t color_strlen( const char *str )
+{
+    size_t width = 0;
+    unsigned char slot;
+
+    if ( str == NULL )
+        return 0;
+    while ( *str != '\0' )
+    {
+        if ( *str == '\x02' )
+        {
+            if ( *++str == '\0' )
+                break;
+            str++;
+            continue;
+        }
+        if ( color_token_prefix( *str ) && color_parse_slot( str + 1, &slot ) )
+        {
+            str += 3;
+            continue;
+        }
+        width++;
+        str++;
+    }
+    return width;
 }
 
 void color_append_marker( DString *buf, const CHAR_DATA *recipient, bool allow_color, unsigned char slot )

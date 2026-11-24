@@ -8199,6 +8199,27 @@ the boss is up. Ganon's stunned-at-one-hit-point rule is unchanged.
 - `set char <mob> hp` takes up to 1,000,000,000 now, not 30,000; Ganon has
   67,501 and a maximum below that leaves him whole.
 
+## Boxes And Comparison Colours, 2026-11-24
+
+- **Bordered output goes through `src/textbox.c`** (`tbox_new`, `tbox_rule`,
+  `tbox_row` + `tbox_cell(label, fmt, ...)`, `tbox_text`, `tbox_send`). It
+  sizes columns and the frame from the values, never narrower than 62
+  columns, so no number breaks the border. Rows with the same number of
+  cells share column widths across the whole box. Do not hand-pad a box
+  with printf widths again: a width is only a minimum. SCORE is the user.
+- **Widths are visible widths**: `color_strlen()` (color.c) skips `{XY`
+  tokens and `\x02` markers. Use it wherever a coloured string is padded or
+  wrapped (`gear_list_add` wraps by it).
+- **Colour categories** `better` (COL_BETTER 17, token `{11`) and `worse`
+  (COL_WORSE 18, token `{12`) carry good and bad news; COMPARE uses them via
+  `GEAR_GOOD`/`GEAR_BAD` in `gear_compare.c`. Put colour tokens outside
+  printf field widths. A new category needs a `col_table` row and a
+  `COL_` number up to `COL_MAX`; load sets every category to -1 first so
+  old files get the default, not grey.
+- The other bordered displays (heroes plaque, remort tablet, wizlist art,
+  TOPTEN) hold only names, which are capped at 12 characters, so they were
+  left with fixed widths.
+
 ## Completion Standard
 
 A task is complete only when the requested behavior or documentation is

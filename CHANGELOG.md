@@ -16,6 +16,28 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   times in one live fight. They now heal only when nobody is fighting
   them. `tests/test_guardian_knockdown_regen.py` failed on the old code.
 
+- **COMPARE in colour, and a SCORE box that fits any number (owner,
+  2026-11-24):**
+  - *COMPARE is coloured.* The winner of each row, its lead and the
+    verdict's pick are green; the number that lost is red; on the "A
+    instead of B" line gains are green and losses red (less AC and a lower
+    saving throw count as gains). UPGRADES shows each gain in green. The
+    colours are two new COLOR categories, BETTER and WORSE (bright green
+    and bright red by default), so a player who cannot tell them apart
+    picks others. Colour off or SCREENREADER gets the same words as before.
+  - *A character saved before a colour category existed gets its default.*
+    Every category now starts unset on load; it used to start at slot 0,
+    grey.
+  - *SCORE fits whatever is in it.* Fixed printf widths in a 62-column
+    frame broke on hit points or mana past 99,999 (a field width is only
+    a minimum). The new `src/textbox.c` measures every value, colour codes
+    excluded, sizes each column to its widest entry and the frame to the
+    widest row, and lines up the bars of every row with the same number of
+    cells. The casino totals no longer split onto rows of their own.
+  - Tests: `tests/test_compare_colour.py`, and `tests/test_score_box.py`
+    now checks seven- and ten-digit hit points and mana and a column-aligned
+    box of any width.
+
 - **Restore, rename and sync-lag review (2026-11-24), each defect proven by
   a test that failed on the old code:**
   - *A restore no longer races the sync, the recovery timer or a deploy.*

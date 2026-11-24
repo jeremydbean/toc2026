@@ -2896,6 +2896,16 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 
     ch->pcdata			= alloc_mem( sizeof(*ch->pcdata) );
     *ch->pcdata				= pcdata_zero;
+    /* Every colour category starts unset (-1), so one the file has no
+       Color line for -- a category added since it was saved, as better
+       and worse were on 2026-11-24 -- takes its default from
+       color_update_defaults() below rather than slot 0, grey. */
+    {
+        int col;
+
+        for ( col = 0; col_table[col].name != NULL; col++ )
+            ch->pcdata->col_table[col_table[col].num] = -1;
+    }
 
     SET_CHAR_REF( d, character, ch );
     SET_DESC_REF( ch, desc, d );

@@ -50,6 +50,7 @@ set(SRC_FILES
     src/dummy.c
     src/dstring.c
     src/text_fold.c
+    src/textbox.c
     src/edit.c
     src/fight.c
     src/gear_compare.c

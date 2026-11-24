@@ -1233,11 +1233,28 @@ static OBJ_DATA *gear_find_worn_match( CHAR_DATA *ch,
 /* Saying it                                                           */
 /* ------------------------------------------------------------------ */
 
+/*
+ * Colour (owner, 2026-11-24: "green for good, red for bad"). The better
+ * colour (COL_BETTER, green unless the player chose another) marks the
+ * winner -- the higher number on each row, its edge, the verdict's pick
+ * -- and the worse colour (COL_WORSE, red) the number that lost. The
+ * "A instead of B" line is A's side by its own words: what you gain by
+ * the swap is green, what you give up red (less AC and a lower saving
+ * throw are gains). Tokens, so a player with colour off, or on a screen
+ * reader, gets exactly the text they had before. They go outside every
+ * printf field width: a width counts the token's three bytes.
+ */
+#define GEAR_GOOD   "{11"       /* COL_BETTER */
+#define GEAR_BAD    "{12"       /* COL_WORSE */
+#define GEAR_HI     "{09"       /* COL_HIGHLIGHT */
+#define GEAR_OFF    "{00"
+
 static void gear_send_row( CHAR_DATA *ch, const char *label,
                            double value1, double value2, bool whole )
 {
     char buf[MAX_STRING_LENGTH];
     char edge[32], pct[FORMAT_TENTHS_MAX];
+    const char *col1 = "", *col2 = "", *edge_col = "", *off = "";
     double percent;
 
     /* The edge is shown to 999.9% at most (format_tenths: "%.1f" of a
@@ -1249,27 +1266,36 @@ static void gear_send_row( CHAR_DATA *ch, const char *label,
         percent = (value1 / UMAX( 0.1, value2 ) - 1.0) * 100.0;
         snprintf( edge, sizeof( edge ), "A +%s%%",
                   format_tenths( pct, sizeof(pct), percent, 999.9 ) );
+        col1 = edge_col = GEAR_GOOD;
+        col2 = GEAR_BAD;
+        off = GEAR_OFF;
     }
     else
     {
         percent = (value2 / UMAX( 0.1, value1 ) - 1.0) * 100.0;
         snprintf( edge, sizeof( edge ), "B +%s%%",
                   format_tenths( pct, sizeof(pct), percent, 999.9 ) );
+        col1 = GEAR_BAD;
+        col2 = edge_col = GEAR_GOOD;
+        off = GEAR_OFF;
     }
     if ( whole )
-        snprintf( buf, sizeof( buf ), "  %-16s %9.0f %9.0f   %s\n\r",
-                  label, value1, value2, edge );
+        snprintf( buf, sizeof( buf ), "  %-16s %s%9.0f%s %s%9.0f%s   %s%s%s\n\r",
+                  label, col1, value1, off, col2, value2, off,
+                  edge_col, edge, off );
     else
-        snprintf( buf, sizeof( buf ), "  %-16s %9.1f %9.1f   %s\n\r",
-                  label, value1, value2, edge );
+        snprintf( buf, sizeof( buf ), "  %-16s %s%9.1f%s %s%9.1f%s   %s%s%s\n\r",
+                  label, col1, value1, off, col2, value2, off,
+                  edge_col, edge, off );
     send_to_char( buf, ch );
 }
 
-/* Append a part to a comma list, wrapping before 76 columns. */
+/* Append a part to a comma list, wrapping before 76 columns -- of what
+   shows, not of colour tokens. */
 static void gear_list_add( CHAR_DATA *ch, char *line, size_t size,
                            const char *part, bool *first )
 {
-    if ( !*first && strlen( line ) + strlen( part ) + 2 > 76 )
+    if ( !*first && color_strlen( line ) + color_strlen( part ) + 2 > 76 )
     {
         toc_strlcat( line, ",\n\r", size );
         send_to_char( line, ch );
@@ -1281,14 +1307,18 @@ static void gear_list_add( CHAR_DATA *ch, char *line, size_t size,
     *first = false;
 }
 
+/* "hit +2", the number in the better colour when it helps you: more,
+   or less where less is better (armour class, saving throw). */
 static void gear_list_number( CHAR_DATA *ch, char *line, size_t size,
-                              const char *label, int delta, bool *first )
+                              const char *label, int delta, bool lower_better,
+                              bool *first )
 {
     char part[64];
 
     if ( delta == 0 )
         return;
-    snprintf( part, sizeof( part ), "%s %+d", label, delta );
+    snprintf( part, sizeof( part ), "%s %s%+d" GEAR_OFF, label,
+              (delta < 0) == lower_better ? GEAR_GOOD : GEAR_BAD, delta );
     gear_list_add( ch, line, size, part, first );
 }
 
@@ -1299,7 +1329,8 @@ static void gear_list_flags( CHAR_DATA *ch, char *line, size_t size,
 
     if ( names == NULL || names[0] == '\0' || !str_cmp( names, "none" ) )
         return;
-    snprintf( part, sizeof( part ), "%c%s", sign, names );
+    snprintf( part, sizeof( part ), "%s%c%s" GEAR_OFF,
+              sign == '+' ? GEAR_GOOD : GEAR_BAD, sign, names );
     gear_list_add( ch, line, size, part, first );
 }
 
@@ -1321,31 +1352,37 @@ static void gear_send_changes( CHAR_DATA *ch, OBJ_DATA *obj1, OBJ_DATA *obj2,
         && (obj1->value[1] != obj2->value[1]
             || obj1->value[2] != obj2->value[2]) )
     {
-        snprintf( part, sizeof( part ), "dice %dd%d not %dd%d",
+        /* Better dice average more: n(s+1)/2. */
+        long avg1 = (long) obj1->value[1] * (obj1->value[2] + 1);
+        long avg2 = (long) obj2->value[1] * (obj2->value[2] + 1);
+
+        snprintf( part, sizeof( part ), "dice %s%dd%d" GEAR_OFF " not %dd%d",
+                  avg1 > avg2 ? GEAR_GOOD : avg1 < avg2 ? GEAR_BAD : "",
                   obj1->value[1], obj1->value[2],
                   obj2->value[1], obj2->value[2] );
         gear_list_add( ch, line, sizeof( line ), part, &first );
     }
     gear_list_number( ch, line, sizeof( line ), "hit",
-                      a->hitroll - b->hitroll, &first );
+                      a->hitroll - b->hitroll, false, &first );
     gear_list_number( ch, line, sizeof( line ), "dam",
-                      a->damroll - b->damroll, &first );
+                      a->damroll - b->damroll, false, &first );
     gear_list_number( ch, line, sizeof( line ), "hp",
-                      a->max_hit - b->max_hit, &first );
+                      a->max_hit - b->max_hit, false, &first );
     gear_list_number( ch, line, sizeof( line ), "mana",
-                      a->max_mana - b->max_mana, &first );
+                      a->max_mana - b->max_mana, false, &first );
     gear_list_number( ch, line, sizeof( line ), "move",
-                      a->max_move - b->max_move, &first );
+                      a->max_move - b->max_move, false, &first );
     gear_list_number( ch, line, sizeof( line ), "AC",
-                      a->average_ac - b->average_ac, &first );
+                      a->average_ac - b->average_ac, true, &first );
     gear_list_number( ch, line, sizeof( line ), "save",
-                      a->saving_throw - b->saving_throw, &first );
+                      a->saving_throw - b->saving_throw, true, &first );
     for ( i = 0; i < MAX_STATS; i++ )
         gear_list_number( ch, line, sizeof( line ), stat_names[i],
-                          a->stat[i] - b->stat[i], &first );
+                          a->stat[i] - b->stat[i], false, &first );
     if ( a->exp_bonus != b->exp_bonus )
     {
-        snprintf( part, sizeof( part ), "XP %+d%%",
+        snprintf( part, sizeof( part ), "XP %s%+d%%" GEAR_OFF,
+                  a->exp_bonus > b->exp_bonus ? GEAR_GOOD : GEAR_BAD,
                   a->exp_bonus - b->exp_bonus );
         gear_list_add( ch, line, sizeof( line ), part, &first );
     }
@@ -1475,7 +1512,7 @@ static void gear_send_verdict( CHAR_DATA *ch, const GEAR_PROFILE *profile,
     score = gear_score( profile, a, b, defense );
     if ( fabs( score ) <= GEAR_EVEN )
     {
-        send_to_char( "Verdict: no real difference between them.\n\r", ch );
+        send_to_char( "Verdict: " GEAR_HI "no real difference between them." GEAR_OFF "\n\r", ch );
     }
     else
     {
@@ -1483,7 +1520,7 @@ static void gear_send_verdict( CHAR_DATA *ch, const GEAR_PROFILE *profile,
             gear_describe_gain( profile, a, b, detail, sizeof( detail ) );
         else
             gear_describe_gain( profile, b, a, detail, sizeof( detail ) );
-        snprintf( buf, sizeof( buf ), "Verdict: %c, %s -- %s.\n\r",
+        snprintf( buf, sizeof( buf ), "Verdict: " GEAR_GOOD "%c, %s" GEAR_OFF " -- %s.\n\r",
                   score > 0 ? 'A' : 'B',
                   score > 0 ? obj1->short_descr
                             : obj2 != NULL ? obj2->short_descr : "nothing",
@@ -1495,20 +1532,20 @@ static void gear_send_verdict( CHAR_DATA *ch, const GEAR_PROFILE *profile,
     if ( !usable1 && !usable2 )
     {
         snprintf( buf, sizeof( buf ),
-                  "You cannot use either of them yet (A: %s; B: %s).\n\r",
+                  GEAR_BAD "You cannot use either of them yet" GEAR_OFF " (A: %s; B: %s).\n\r",
                   why1, why2 );
         send_to_char( buf, ch );
     }
     else if ( fabs( score ) > GEAR_EVEN && !winner_usable )
     {
         snprintf( buf, sizeof( buf ),
-                  "You cannot use %c yet (%s): it is the one to wear once you can.\n\r",
+                  GEAR_BAD "You cannot use %c yet" GEAR_OFF " (%s): it is the one to wear once you can.\n\r",
                   score > 0 ? 'A' : 'B', score > 0 ? why1 : why2 );
         send_to_char( buf, ch );
     }
     else if ( !usable1 || !usable2 )
     {
-        snprintf( buf, sizeof( buf ), "You cannot use %c yet (%s).\n\r",
+        snprintf( buf, sizeof( buf ), GEAR_BAD "You cannot use %c yet" GEAR_OFF " (%s).\n\r",
                   usable1 ? 'B' : 'A', usable1 ? why2 : why1 );
         send_to_char( buf, ch );
     }
@@ -1519,10 +1556,11 @@ static void gear_send_item( CHAR_DATA *ch, char label, OBJ_DATA *obj,
 {
     char buf[MAX_STRING_LENGTH];
 
-    snprintf( buf, sizeof( buf ), "%c) %s (level %d)%s%s%s\n\r",
+    snprintf( buf, sizeof( buf ), GEAR_HI "%c)" GEAR_OFF " %s (level %d)%s%s%s\n\r",
               label, obj->short_descr, obj->level,
               obj->wear_loc != WEAR_NONE ? ", worn" : "",
-              usable ? "" : " -- can't use: ", usable ? "" : why );
+              usable ? "" : " -- " GEAR_BAD "can't use:" GEAR_OFF " ",
+              usable ? "" : why );
     send_to_char( buf, ch );
 }
 
@@ -2150,7 +2188,7 @@ static void gear_send_upgrades( CHAR_DATA *ch, const GEAR_PROFILE *profile,
                 toc_strlcat( none, gear_groups[g].name, sizeof( none ) );
                 continue;
             }
-            snprintf( buf, sizeof( buf ), " %-8s %s (L%d): %s\n\r",
+            snprintf( buf, sizeof( buf ), " " GEAR_HI "%-8s" GEAR_OFF " %s (L%d): " GEAR_GOOD "%s" GEAR_OFF "\n\r",
                       gear_groups[g].name, best[g][0].pObj->short_descr,
                       best[g][0].level, best[g][0].gain );
             send_to_char( buf, ch );
@@ -2197,7 +2235,7 @@ static void gear_send_upgrades( CHAR_DATA *ch, const GEAR_PROFILE *profile,
     }
     for ( i = 0; i < found[g]; i++ )
     {
-        snprintf( buf, sizeof( buf ), " %d. %s (L%d): %s\n\r", i + 1,
+        snprintf( buf, sizeof( buf ), " %d. %s (L%d): " GEAR_GOOD "%s" GEAR_OFF "\n\r", i + 1,
                   best[g][i].pObj->short_descr, best[g][i].level,
                   best[g][i].gain );
         send_to_char( buf, ch );
@@ -2592,11 +2630,11 @@ void do_compare( CHAR_DATA *ch, char *argument )
     if ( obj2 != NULL )
         gear_send_item( ch, 'B', obj2, usable2, why2 );
     else
-        send_to_char( "B) nothing -- the slot is empty\n\r", ch );
+        send_to_char( GEAR_HI "B)" GEAR_OFF " nothing -- the slot is empty\n\r", ch );
     snprintf( buf, sizeof( buf ), "Slot: %s.  ", gear_slot_name( slot ) );
     send_to_char( buf, ch );
     gear_send_damage_source( ch, &profile );
-    send_to_char( "                           A         B\n\r", ch );
+    send_to_char( "                           " GEAR_HI "A         B" GEAR_OFF "\n\r", ch );
     if ( profile.spell_share < 1.0 )
         gear_send_row( ch, "Weapon dmg/round", a.melee, b.melee, false );
     if ( profile.spell_share > 0.0 )

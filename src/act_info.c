@@ -1617,407 +1617,247 @@ void do_worth( CHAR_DATA *ch, char *argument )
 }
 
 
-/* One full-width row of the SCORE box: "| text ... |", 62 columns in all
-   as the rest of the sheet. Text too long for the 58 between the bars
-   is cut with "...", so the box never breaks. */
-static void score_box_row( CHAR_DATA *ch, const char *text )
+/* How well an armour class protects, for the line under the numbers. */
+static const char *score_ac_words( int ac )
 {
-    char row[MAX_STRING_LENGTH];
-    char cut[64];
-
-    if ( strlen( text ) > 58 )
-    {
-        snprintf( cut, sizeof(cut), "%.55s...", text );
-        text = cut;
-    }
-    snprintf( row, sizeof(row), "| %-58s |\n\r", text );
-    send_to_char( row, ch );
+    if ( ac >= 101 )  return "hopelessly vulnerable to";
+    if ( ac >= 80 )   return "defenseless against";
+    if ( ac >= 60 )   return "barely protected from";
+    if ( ac >= 40 )   return "slightly armored against";
+    if ( ac >= 20 )   return "somewhat armored against";
+    if ( ac >= 0 )    return "armored against";
+    if ( ac >= -20 )  return "well-armored against";
+    if ( ac >= -40 )  return "very well-armored against";
+    if ( ac >= -60 )  return "heavily armored against";
+    if ( ac >= -80 )  return "superbly armored against";
+    if ( ac >= -100 ) return "almost invulnerable to";
+    return "divinely armored against";
 }
 
+/*
+ * SCORE, one box (owner, 2026-11-02) that fits whatever is in it
+ * (2026-11-24). It was a frame of fixed printf widths, 62 columns, and a
+ * width is only a minimum: hit points past 99,999 in a "%5d" -- a
+ * COLOSSUS, a remort tank -- pushed that row's border out past the rest,
+ * and each overflow found (the bank, the casino totals) was given a row of
+ * its own to stop it. Now textbox.c measures every value first and sizes
+ * the columns and the frame to the widest, so any number fits and every
+ * bar still lines up. The box is never narrower than the old 62.
+ */
 void do_score( CHAR_DATA *ch, char *argument )
 {
-    UNUSED_PARAM(argument);
-
+    static const char *ac_names[4] = { "piercing", "bashing", "slashing", "magic" };
     char buf[MAX_STRING_LENGTH];
-    char kader[MAX_STRING_LENGTH];
-    int i = 0;
+    TEXT_BOX *box;
+    int i;
+
+    UNUSED_PARAM(argument);
 
     if (!IS_NPC(ch))
         achievement_check_state(ch, true);
 
-    snprintf(kader, sizeof(kader),"%60s\n\r",
-    "--------------------------------------------------------------");
-    send_to_char(kader, ch);
-
-    snprintf(buf, sizeof(buf), "| %-6s %13s | %-6s %7d | %-7s %10s |\n\r",
-        "Name:",ch->name,
-        "Level:",ch->level,
-        "Class:",(IS_NPC(ch) ? "Mobile" : capitalize(class_table[ch->class].name)));
-    send_to_char(buf, ch);
-
-    snprintf(buf, sizeof(buf),"| %-7s %6d hours | %-6s %7s | %-8s %9s |\n\r",
-      "Played:",(( ch->played + (int) (current_time - ch->logon) )/3600),
-      "Sex:", (ch->sex == 0 ? "Sexless" :
-                              (ch->sex == 1 ? "Male" : "Female")),
-      "Guild:",
-      IS_NPC(ch) ? "None" : capitalize(get_guildname(ch->pcdata->guild)));
-    send_to_char(buf, ch);
-
-    snprintf(buf, sizeof(buf),
-      "| %-6s %7d years | %-6s %7s | %-8s %9s |\n\r",
-      "Age:", get_age(ch),
-      "Race:", capitalize(race_table[ch->race].name),
-      "Castle:",
-      IS_NPC(ch) ? "None" : capitalize(get_castlename(ch->pcdata->castle)));
-
-    send_to_char(buf, ch);
-    send_to_char(kader, ch);
-
-    snprintf(buf, sizeof(buf), "| %-9s %10ld | %-7s %6d | %-10s %7ld |\n\r",
-        "Exp:",ch->exp,
-        "Pracs:",(IS_NPC(ch) ? 0 : ch->practice),
-        "Given Pks:",(IS_NPC(ch) ? 0 : ch->pcdata->pkills_given));
-    send_to_char(buf, ch);
-
-    snprintf(buf, sizeof(buf), "| %-9s %10ld | %-7s %6d | %-10s %7ld |\n\r",
-        "To Level:",(IS_NPC(ch) ? 0 : next_xp_level(ch) - ch->exp),
-        "Trains:",(IS_NPC(ch) ? 0 : ch->train),
-        "Recvd Pks:",(IS_NPC(ch) ? 0 : ch->pcdata->pkills_received));
-    send_to_char(buf, ch);
-    send_to_char(kader, ch);
-
-
-    snprintf(buf, sizeof(buf), "| %-4s %2d (%2d) | %-5s %5d (%5d) | %-9s %11ld |\n\r",
-            "Str:", ch->perm_stat[STAT_STR], get_curr_stat(ch,STAT_STR),
-            "Hp:" , ch->hit,                 ch->max_hit,
-            "Platinum:", ch->new_platinum);
-    send_to_char(buf, ch);
-
-    snprintf(buf, sizeof(buf), "| %-4s %2d (%2d) | %-5s %5d (%5d) | %-9s %11ld |\n\r",
-            "Int:"  , ch->perm_stat[STAT_INT], get_curr_stat(ch,STAT_INT),
-            "Mana:" , ch->mana,                ch->max_mana,
-            "Gold:",  ch->new_gold);
-    send_to_char(buf, ch);
-
-    snprintf(buf, sizeof(buf), "| %-4s %2d (%2d) | %-5s %5d (%5d) | %-9s %11ld |\n\r",
-            "Wis:"  , ch->perm_stat[STAT_WIS], get_curr_stat(ch,STAT_WIS),
-            "Move:" , ch->move,                ch->max_move,
-            "Silver:", ch->new_silver);
-    send_to_char(buf, ch);
-
-    snprintf(buf, sizeof(buf), "| %-4s %2d (%2d) | %-5s %5s  %5s  | %-9s %11ld |\n\r",
-            "Dex:"  , ch->perm_stat[STAT_DEX], get_curr_stat(ch,STAT_DEX),
-            " " , " ", " ",
-            "Copper:",  ch->new_copper);
-    send_to_char(buf, ch);
-
-    snprintf(buf, sizeof(buf), "| %-4s %2d (%2d) | %-5s %5s  %5s  | %-9s %11s |\n\r",
-            "Con:"  , ch->perm_stat[STAT_CON], get_curr_stat(ch,STAT_CON),
-            " " , " ", " ",
-            "", "");
-    send_to_char(buf, ch);
-
-    /*
-     * The bank gets a full-width row of its own. It used to share the Con row,
-     * where the four denominations needed 9 more columns than the carried-coin
-     * cell beside them even at their minimum field widths, and a balance past
-     * 999 platinum widened it further still -- a real account at 1,078,289
-     * platinum pushed the right border 13 columns past every other row. A
-     * whole row keeps all four denominations and cannot be widened out of the
-     * box: the largest balance a long can hold still leaves room to spare.
-     */
+    if ( (box = tbox_new( )) == NULL )
     {
-        char bank_buf[MAX_INPUT_LENGTH];
+        send_to_char( "Your score sheet cannot be drawn just now.\n\r", ch );
+        return;
+    }
+
+    tbox_rule( box );
+    tbox_row( box );
+    tbox_cell( box, "Name:", "%s", ch->name );
+    tbox_cell( box, "Level:", "%d", ch->level );
+    tbox_cell( box, "Class:", "%s",
+               IS_NPC(ch) ? "Mobile" : capitalize(class_table[ch->class].name) );
+    tbox_row( box );
+    tbox_cell( box, "Played:", "%d hours",
+               ( ch->played + (int) (current_time - ch->logon) ) / 3600 );
+    tbox_cell( box, "Sex:", "%s", ch->sex == 0 ? "Sexless"
+                                 : ch->sex == 1 ? "Male" : "Female" );
+    tbox_cell( box, "Guild:", "%s",
+               IS_NPC(ch) ? "None" : capitalize(get_guildname(ch->pcdata->guild)) );
+    tbox_row( box );
+    tbox_cell( box, "Age:", "%d years", get_age(ch) );
+    tbox_cell( box, "Race:", "%s", capitalize(race_table[ch->race].name) );
+    tbox_cell( box, "Castle:", "%s",
+               IS_NPC(ch) ? "None" : capitalize(get_castlename(ch->pcdata->castle)) );
+    tbox_rule( box );
+
+    tbox_row( box );
+    tbox_cell( box, "Exp:", "%ld", ch->exp );
+    tbox_cell( box, "Pracs:", "%d", IS_NPC(ch) ? 0 : ch->practice );
+    tbox_cell( box, "Given Pks:", "%ld", IS_NPC(ch) ? 0 : ch->pcdata->pkills_given );
+    tbox_row( box );
+    tbox_cell( box, "To Level:", "%ld", IS_NPC(ch) ? 0 : next_xp_level(ch) - ch->exp );
+    tbox_cell( box, "Trains:", "%d", IS_NPC(ch) ? 0 : ch->train );
+    tbox_cell( box, "Recvd Pks:", "%ld", IS_NPC(ch) ? 0 : ch->pcdata->pkills_received );
+    tbox_rule( box );
+
+    tbox_row( box );
+    tbox_cell( box, "Str:", "%d (%d)", ch->perm_stat[STAT_STR], get_curr_stat(ch,STAT_STR) );
+    tbox_cell( box, "Hp:", "%d (%d)", ch->hit, ch->max_hit );
+    tbox_cell( box, "Platinum:", "%ld", ch->new_platinum );
+    tbox_row( box );
+    tbox_cell( box, "Int:", "%d (%d)", ch->perm_stat[STAT_INT], get_curr_stat(ch,STAT_INT) );
+    tbox_cell( box, "Mana:", "%d (%d)", ch->mana, ch->max_mana );
+    tbox_cell( box, "Gold:", "%ld", ch->new_gold );
+    tbox_row( box );
+    tbox_cell( box, "Wis:", "%d (%d)", ch->perm_stat[STAT_WIS], get_curr_stat(ch,STAT_WIS) );
+    tbox_cell( box, "Move:", "%d (%d)", ch->move, ch->max_move );
+    tbox_cell( box, "Silver:", "%ld", ch->new_silver );
+    tbox_row( box );
+    tbox_cell( box, "Dex:", "%d (%d)", ch->perm_stat[STAT_DEX], get_curr_stat(ch,STAT_DEX) );
+    tbox_cell( box, "", "%s", "" );
+    tbox_cell( box, "Copper:", "%ld", ch->new_copper );
+    tbox_row( box );
+    tbox_cell( box, "Con:", "%d (%d)", ch->perm_stat[STAT_CON], get_curr_stat(ch,STAT_CON) );
+    tbox_cell( box, "", "%s", "" );
+    tbox_cell( box, "", "%s", "" );
+
+    /* The bank and what interest has earned, each a row of its own: all
+       four denominations, and a running total, since interest lands while
+       you are offline and its notice scrolls past on login. */
+    {
+        char earned_buf[MAX_INPUT_LENGTH];
         long bank_copper = IS_NPC(ch) ? 0 : ch->pcdata->bank;
         long bank_platinum = bank_copper / COPPER_PER_PLATINUM;
 
         bank_copper %= COPPER_PER_PLATINUM;
-        snprintf(bank_buf, sizeof(bank_buf), "%ldp %ldg %lds %ldc",
-            bank_platinum,
-            bank_copper / COPPER_PER_GOLD,
-            (bank_copper % COPPER_PER_GOLD) / COPPER_PER_SILVER,
-            bank_copper % COPPER_PER_SILVER);
-
-        snprintf(buf, sizeof(buf), "| %-9s %48s |\n\r", "Bank:", bank_buf);
-        send_to_char(buf, ch);
-
-        /* Interest lands while you are offline and the notice scrolls past
-           on login, so the running total is the only way to see what the
-           account has actually earned. */
-        {
-            char earned_buf[MAX_INPUT_LENGTH];
-            long earned = IS_NPC(ch) ? 0 : ch->pcdata->bank_interest_total;
-
-            format_coins( earned, earned_buf, sizeof(earned_buf) );
-            snprintf(buf, sizeof(buf), "| %-9s %48s |\n\r",
-                     "Interest:", earned_buf);
-        }
+        tbox_row( box );
+        tbox_cell( box, "Bank:", "%ldp %ldg %lds %ldc", bank_platinum,
+                   bank_copper / COPPER_PER_GOLD,
+                   (bank_copper % COPPER_PER_GOLD) / COPPER_PER_SILVER,
+                   bank_copper % COPPER_PER_SILVER );
+        format_coins( IS_NPC(ch) ? 0 : ch->pcdata->bank_interest_total,
+                      earned_buf, sizeof(earned_buf) );
+        tbox_row( box );
+        tbox_cell( box, "Interest:", "%s", earned_buf );
     }
-    send_to_char(buf, ch);
-    send_to_char(kader, ch);
+    tbox_rule( box );
 
-    snprintf(buf, sizeof(buf), "| %-11s %8d | %-14s %18ld |\n\r",
-             "Quest Points:", ch->questpoints,
-             "Coins carried:",ch->new_platinum + ch->new_gold +
-                              ch->new_silver + ch->new_copper);
-    send_to_char(buf, ch);
-
+    tbox_row( box );
+    tbox_cell( box, "Quest Points:", "%d", ch->questpoints );
+    tbox_cell( box, "Coins carried:", "%ld", ch->new_platinum + ch->new_gold
+                                           + ch->new_silver + ch->new_copper );
     if (!IS_NPC(ch))
     {
-        snprintf(buf, sizeof(buf), "| %-11s %4d/%-3d | %-14s %18d |\n\r",
-            "Achievements:", achievement_earned_count(ch),
-            achievement_catalog_count(), "Achv points:",
-            achievement_points(ch));
-        send_to_char(buf, ch);
+        tbox_row( box );
+        tbox_cell( box, "Achievements:", "%d/%d", achievement_earned_count(ch),
+                   achievement_catalog_count() );
+        tbox_cell( box, "Achv points:", "%d", achievement_points(ch) );
     }
+    tbox_row( box );
+    tbox_cell( box, "Wimpy Points:", "%d", ch->wimpy );
+    tbox_cell( box, "Items carried:", "%d (%d)", ch->carry_number, can_carry_n(ch) );
+    tbox_row( box );
+    tbox_cell( box, "Alignment:", "%d", ch->alignment );
+    tbox_cell( box, "Encumbrance:", "%d (%d)", query_carry_weight(ch), can_carry_w(ch) );
+    tbox_rule( box );
 
-    snprintf(buf, sizeof(buf), "| %-11s %8d | %-14s %7d (%8d) |\n\r",
-             "Wimpy Points:",ch->wimpy,
-             "Items carried:",ch->carry_number, can_carry_n(ch));
-    send_to_char(buf, ch);
-
-    snprintf(buf, sizeof(buf), "| %-11s %10d | %-14s %7d (%8d) |\n\r",
-             "Alignment:",ch->alignment,
-             "Encumbrance:", query_carry_weight(ch), can_carry_w(ch));
-    send_to_char( buf, ch );
-    send_to_char( kader, ch);
-
-    snprintf(buf, sizeof(buf), "| %-11s  %8d | %-16s %5d %11s|\n\r",
-             "Piercing AC:", GET_AC(ch,AC_PIERCE),
-             "To Hit Bonus:", GET_HITROLL(ch), " ");
-    send_to_char(buf, ch);
-
-    snprintf(buf, sizeof(buf), "| %-11s  %8d | %-16s %5d %11s|\n\r",
-             "Bashing AC: ", GET_AC(ch,AC_BASH),
-             "To Damage Bonus:", GET_DAMROLL(ch), " ");
-    send_to_char(buf, ch);
-
-
-    snprintf(buf, sizeof(buf), "| %-11s  %8d | %-16s %5s %11s|\n\r",
-             "Slashing AC:", GET_AC(ch,AC_SLASH),
-             " ", " ", " ");
-    send_to_char(buf, ch);
-
-    snprintf(buf, sizeof(buf), "| %-11s  %8d | %-16s %5s %11s|\n\r",
-             "Magical AC: ", GET_AC(ch,AC_EXOTIC),
-             " ", " ", " ");
-    send_to_char(buf, ch);
-    send_to_char(kader, ch);
+    tbox_row( box );
+    tbox_cell( box, "Piercing AC:", "%d", GET_AC(ch,AC_PIERCE) );
+    tbox_cell( box, "To Hit Bonus:", "%d", GET_HITROLL(ch) );
+    tbox_row( box );
+    tbox_cell( box, "Bashing AC:", "%d", GET_AC(ch,AC_BASH) );
+    tbox_cell( box, "To Damage Bonus:", "%d", GET_DAMROLL(ch) );
+    tbox_row( box );
+    tbox_cell( box, "Slashing AC:", "%d", GET_AC(ch,AC_SLASH) );
+    tbox_cell( box, "", "%s", "" );
+    tbox_row( box );
+    tbox_cell( box, "Magical AC:", "%d", GET_AC(ch,AC_EXOTIC) );
+    tbox_cell( box, "", "%s", "" );
+    tbox_rule( box );
 
     if ( !IS_NPC(ch) )
     {
-      if (ch->level != get_trust(ch))
-      {  snprintf(buf, sizeof(buf), "| You have been trusted by the gods at level %2d.%13s|\n\r",
-                 get_trust(ch)," ");
-         send_to_char(buf, ch);
-      }
+        bool drunk = ch->pcdata->condition[COND_DRUNK] > 10;
+        bool thirsty = ch->pcdata->condition[COND_THIRST] == 0;
+        bool hungry = ch->pcdata->condition[COND_FULL] == 0;
 
-      if ((ch->pcdata->condition[COND_DRUNK] > 10) &&
-          (ch->pcdata->condition[COND_THIRST] == 0) &&
-          (ch->pcdata->condition[COND_FULL] == 0))
-         snprintf(buf, sizeof(buf), "| You are drunk, thirsty and hungry. %23s|\n\r", " ");
-      else
-      if ((ch->pcdata->condition[COND_DRUNK] > 10) &&
-          (ch->pcdata->condition[COND_THIRST] == 0))
-         snprintf(buf, sizeof(buf),"| You are drunk and thirsty.          %23s|\n\r", " ");
+        if (ch->level != get_trust(ch))
+            tbox_text( box, "You have been trusted by the gods at level %d.",
+                       get_trust(ch) );
 
-      else
-      if ((ch->pcdata->condition[COND_DRUNK] > 10) &&
-          (ch->pcdata->condition[COND_FULL] == 0))
-         snprintf(buf, sizeof(buf),"| You are drunk and hungry.           %23s|\n\r", " ");
-      else
-      if ((ch->pcdata->condition[COND_THIRST] == 0) &&
-          (ch->pcdata->condition[COND_FULL] == 0))
-         snprintf(buf, sizeof(buf),"| You are thirsty and hungry.         %23s|\n\r", " ");
+        if ( drunk || thirsty || hungry )
+            tbox_text( box, "You are %s%s%s%s%s.",
+                drunk ? "drunk" : "",
+                drunk && (thirsty || hungry) ? (thirsty && hungry ? ", " : " and ") : "",
+                thirsty ? "thirsty" : "",
+                thirsty && hungry ? " and " : "",
+                hungry ? "hungry" : "" );
 
-      else
-      if (ch->pcdata->condition[COND_DRUNK] > 10 )
-         snprintf(buf, sizeof(buf),"| You are drunk.                      %23s|\n\r", " " );
-      else
-      if (ch->pcdata->condition[COND_THIRST] == 0 )
-         snprintf(buf, sizeof(buf),"| You are thirsty.                    %23s|\n\r", " " );
-      else
-      if (ch->pcdata->condition[COND_FULL] == 0 )
-         snprintf(buf, sizeof(buf),"| You are hungry.                     %23s|\n\r", " " );
+        if (ch->pcdata->mounted)
+            tbox_text( box, "You are mounted on a steed." );
 
-      if ((ch->pcdata->condition[COND_DRUNK] > 10) ||
-          (ch->pcdata->condition[COND_THIRST] == 0) ||
-          (ch->pcdata->condition[COND_FULL] == 0))
-        send_to_char(buf, ch);
+        /* The alignment tier (alignment.c); ALIGNMENT says the rest. */
+        tbox_text( box, "You are %s.", alignment_tier_name(ch->alignment) );
 
-      if (ch->pcdata->mounted)
-      {  snprintf(buf, sizeof(buf),"| You are mounted on a steed.         %23s|\n\r", " " );
-         send_to_char(buf, ch);
-      }
+        for (i = 0; i < 4; i++)
+            tbox_text( box, "You are %s %s.", score_ac_words( GET_AC(ch,i) ),
+                       ac_names[i] );
+        tbox_rule( box );
 
+        tbox_text( box, "Pkiller: %s  Flags:%s%s%s%s",
+                   ch->pcdata->pk_state == 1 ? "Yes" : "No",
+                   IS_SET(ch->act, PLR_WANTED) ? " WANTED" : "",
+                   IS_SET(ch->act, PLR_JAILED) ? " JAILED" : "",
+                   IS_SET(ch->comm, COMM_WHINE) ? " WHINER" : "",
+                   IS_SET(ch->act, PLR_WANTED) || IS_SET(ch->act, PLR_JAILED)
+                   || IS_SET(ch->comm, COMM_WHINE) ? "" : " none" );
 
-      {
-         /* The alignment tier (alignment.c); ALIGNMENT says the rest. */
-         char tier[16];
-
-         snprintf(tier, sizeof(tier), "%s.", alignment_tier_name(ch->alignment));
-         snprintf(buf, sizeof(buf),"| You are %-9s                           %15s|\n\r",
-              tier, " ");
-      }
-      send_to_char(buf, ch);
-
-      for (i = 0; i < 4; i++)
-      {
-        char * temp;
-
-        switch(i)
+        if ( is_jailed( ch ) )
         {
-            case(AC_PIERCE):    temp = "piercing.";      break;
-            case(AC_BASH):      temp = "bashing. ";      break;
-            case(AC_SLASH):     temp = "slashing.";      break;
-            case(AC_EXOTIC):    temp = "magic.   ";      break;
-            default:            temp = "error.   ";      break;
+            /* The release time and what is left, or "until staff release
+               you": an indefinite sentence used to print the epoch. */
+            jail_term_text( ch, buf, sizeof(buf) );
+            tbox_text( box, "%s", buf );
         }
 
-        send_to_char("| You are ", ch);
-
-        if      (GET_AC(ch,i) >=  101 )
-            snprintf(buf, sizeof(buf),"hopelessly vulnerable to %s %16s|\n\r",temp," ");
-        else if (GET_AC(ch,i) >= 80)
-            snprintf(buf, sizeof(buf),"defenseless against %s      %16s|\n\r",temp," ");
-        else if (GET_AC(ch,i) >= 60)
-            snprintf(buf, sizeof(buf),"barely protected from %s    %16s|\n\r",temp," ");
-        else if (GET_AC(ch,i) >= 40)
-            snprintf(buf, sizeof(buf),"slighty armored against %s  %16s|\n\r",temp," ");
-        else if (GET_AC(ch,i) >= 20)
-            snprintf(buf, sizeof(buf),"somewhat armored against %s %16s|\n\r",temp," ");
-        else if (GET_AC(ch,i) >= 0)
-            snprintf(buf, sizeof(buf),"armored against %s          %16s|\n\r",temp," ");
-        else if (GET_AC(ch,i) >= -20)
-            snprintf(buf, sizeof(buf),"well-armored against %s     %16s|\n\r",temp," ");
-        else if (GET_AC(ch,i) >= -40)
-            snprintf(buf, sizeof(buf),"very well-armored against %s%16s|\n\r",temp," ");
-        else if (GET_AC(ch,i) >= -60)
-            snprintf(buf, sizeof(buf),"heavily armored against %s  %16s|\n\r",temp," ");
-        else if (GET_AC(ch,i) >= -80)
-            snprintf(buf, sizeof(buf),"superbly armored against %s %16s|\n\r",temp," ");
-        else if (GET_AC(ch,i) >= -100)
-            snprintf(buf, sizeof(buf),"almost invulnerable to %s   %16s|\n\r",temp," ");
-        else
-            snprintf(buf, sizeof(buf),"divinely armored against %s %16s|\n\r",temp," ");
-        send_to_char(buf, ch);
-      }
-      send_to_char(kader, ch);
-
-      snprintf(buf, sizeof(buf), "| Pkiller: %3s Flags:",
-             (ch->pcdata->pk_state == 1 ? "Yes" : "No "));
-      {
-        size_t len = strlen(buf);
-        snprintf(buf + len, sizeof(buf) - len, " %6s ",
-                (IS_SET(ch->act, PLR_WANTED) ? "WANTED" : " "));
-      }
-      {
-        size_t len = strlen(buf);
-        snprintf(buf + len, sizeof(buf) - len, " %6s ",
-                (IS_SET(ch->act, PLR_JAILED) ? "JAILED" :  " "));
-      }
-      {
-        size_t len = strlen(buf);
-        snprintf(buf + len, sizeof(buf) - len, " %6s ",
-                (IS_SET(ch->comm,COMM_WHINE) ? "WHINER" : " "));
-      }
-      {
-        size_t len = strlen(buf);
-        snprintf(buf + len, sizeof(buf) - len, "%15s |\n\r"," ");
-      }
-      send_to_char(buf, ch);
-
-
-      if ( is_jailed( ch ) )
-      {
-        /* The release time and what is left, or "until staff release
-           you": an indefinite sentence used to print the epoch. */
-        jail_term_text( ch, buf, sizeof(buf) );
-        score_box_row(ch, buf);
-      }
-
-      if ( ch->pcdata->casino_winnings > 0 || ch->pcdata->casino_losses > 0 )
-      {
-        /* The labels pad to 13, as Quest Points and Achievements do, so
-           the middle bar lines up with theirs. A field width is only a
-           minimum: past eight digits won (or eighteen lost) the row grew
-           past the box (review, 2026-11-03), so then each total takes a
-           full-width row of its own, every digit kept. */
-        char won[32], lost[32];
-
-        snprintf( won, sizeof(won), "%ld", ch->pcdata->casino_winnings );
-        snprintf( lost, sizeof(lost), "%ld", ch->pcdata->casino_losses );
-        if ( strlen( won ) <= 8 && strlen( lost ) <= 18 )
+        /* Lined up with Quest Points: every two-cell row shares its
+           columns. However many digits, it stays one row now. */
+        if ( ch->pcdata->casino_winnings > 0 || ch->pcdata->casino_losses > 0 )
         {
-            snprintf( buf, sizeof(buf), "| %-13s %8s | %-14s %18s |\n\r",
-                "Casino Won:", won, "Casino Lost:", lost );
-            send_to_char( buf, ch );
-        }
-        else
-        {
-            snprintf( buf, sizeof(buf), "Casino Won:  %s", won );
-            score_box_row( ch, buf );
-            snprintf( buf, sizeof(buf), "Casino Lost: %s", lost );
-            score_box_row( ch, buf );
-        }
-      }
-
-      /* The stash, and anybody sharing it. Worth a line here because it
-         is the one store a character owns that is not on their person,
-         so nothing else on this sheet hints that it exists. Inside the
-         box, like everything else on the sheet. */
-      {
-        char shared[MAX_STRING_LENGTH];
-
-        snprintf( buf, sizeof(buf), "Stash: %d of %d used",
-            stash_count( ch ), ch->pcdata->stash_max );
-        score_box_row( ch, buf );
-        stash_link_report( ch, shared, sizeof(shared) );
-        if ( shared[0] != '\0' )
-        {
-            snprintf( buf, sizeof(buf), "Stash shared with: %s", shared );
-            score_box_row( ch, buf );
-        }
-      }
-
-      if ( IS_IMMORTAL(ch))
-      {
-        send_to_char(kader, ch);
-        snprintf(buf, sizeof(buf),"| Holy Light: %5s |",
-               (IS_SET(ch->act,PLR_HOLYLIGHT) ? "On" : "Off"));
-
-        if (IS_SET(ch->act,PLR_WIZINVIS))
-        {
-           size_t len = strlen(buf);
-           snprintf(buf + len, sizeof(buf) - len," Invis level: %3d |", ch->invis_level);
-        }
-        else
-        {
-           size_t len = strlen(buf);
-           snprintf(buf + len, sizeof(buf) - len," Invis level: %3s |", "Off");
+            tbox_row( box );
+            tbox_cell( box, "Casino Won:", "%ld", ch->pcdata->casino_winnings );
+            tbox_cell( box, "Casino Lost:", "%ld", ch->pcdata->casino_losses );
         }
 
-        if (IS_SET(ch->act,PLR_CLOAKED))
+        /* The stash, and anybody sharing it: the one store a character
+           owns that is not on their person, so nothing else on this sheet
+           hints that it exists. */
         {
-           size_t len = strlen(buf);
-           snprintf(buf + len, sizeof(buf) - len," Cloak level: %3d    |\n\r", ch->cloak_level);
-        }
-        else
-        {
-           size_t len = strlen(buf);
-           snprintf(buf + len, sizeof(buf) - len," Cloak level: %3s    |\n\r", "Off");
+            char shared[MAX_STRING_LENGTH];
+
+            tbox_text( box, "Stash: %d of %d used", stash_count( ch ),
+                       ch->pcdata->stash_max );
+            stash_link_report( ch, shared, sizeof(shared) );
+            if ( shared[0] != '\0' )
+                tbox_text( box, "Stash shared with: %s", shared );
         }
 
-        send_to_char(buf, ch);
-      }
-      send_to_char(kader, ch);
-      /* The sheet as numbers, for the play journal: its row keeps only
-         the first lines (review, 2026-11-03). */
-      playlog_state( ch );
+        if ( IS_IMMORTAL(ch) )
+        {
+            tbox_rule( box );
+            tbox_row( box );
+            tbox_cell( box, "Holy Light:", "%s",
+                       IS_SET(ch->act,PLR_HOLYLIGHT) ? "On" : "Off" );
+            if ( IS_SET(ch->act,PLR_WIZINVIS) )
+                tbox_cell( box, "Invis level:", "%d", ch->invis_level );
+            else
+                tbox_cell( box, "Invis level:", "%s", "Off" );
+            if ( IS_SET(ch->act,PLR_CLOAKED) )
+                tbox_cell( box, "Cloak level:", "%d", ch->cloak_level );
+            else
+                tbox_cell( box, "Cloak level:", "%s", "Off" );
+        }
+        tbox_rule( box );
     }
 
-  return;
+    tbox_send( box, ch );
 
+    /* The sheet as numbers, for the play journal: its row keeps only
+       the first lines (review, 2026-11-03). */
+    if ( !IS_NPC(ch) )
+        playlog_state( ch );
 }
 
 /*

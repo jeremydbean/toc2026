@@ -566,7 +566,7 @@ struct  weather_data
 /* 16 was CON_RETRY_PASSWORD, which nothing ever entered. */
 #define CON_COPYOVER_RECOVER            17
 
-#define COL_MAX                  16
+#define COL_MAX                  18
 #define COL_REGULAR              1
 #define COL_GOSSIP               2
 #define COL_SHOUTS               3
@@ -583,6 +583,11 @@ struct  weather_data
 #define COL_WIZINFO              14
 #define COL_IMMTALK              15
 #define COL_ROOM_NAME            16
+/* Good and bad news in a comparison -- COMPARE's "A is better" in one,
+   "B is better" in the other (2026-11-24). Categories, not fixed colours,
+   so a player who cannot tell red from green picks two they can. */
+#define COL_BETTER               17
+#define COL_WORSE                18
 
 struct col_table_type
 {
@@ -4656,6 +4661,20 @@ bool    color_parse_slot    ( const char *str, unsigned char *slot_out );
 bool    color_token_prefix  ( char ch );
 void    color_truncate      ( char *str, size_t max );
 void    color_close         ( char *str, size_t size );
+size_t  color_strlen        ( const char *str );
+
+/* textbox.c: a bordered box sized to what is in it (SCORE). */
+typedef struct text_box TEXT_BOX;
+TEXT_BOX *tbox_new          ( void );
+void    tbox_free           ( TEXT_BOX *box );
+void    tbox_rule           ( TEXT_BOX *box );
+void    tbox_row            ( TEXT_BOX *box );
+void    tbox_cell           ( TEXT_BOX *box, const char *label, const char *fmt, ... )
+                              __attribute__(( format( printf, 3, 4 ) ));
+void    tbox_text           ( TEXT_BOX *box, const char *fmt, ... )
+                              __attribute__(( format( printf, 2, 3 ) ));
+void    tbox_render         ( const TEXT_BOX *box, DString *out );
+void    tbox_send           ( TEXT_BOX *box, CHAR_DATA *ch );
 void    color_append_marker ( DString *buf, const CHAR_DATA *recipient, bool allow_color, unsigned char slot );
 void    color_convert       ( const char *text, const CHAR_DATA *recipient, bool allow_color, DString *out );
 void    reader_simplify     ( DString *text );

@@ -1,4 +1,4 @@
-"""SCORE is one box, 62 columns wide (owner, 2026-11-02).
+"""SCORE is one box (owner, 2026-11-02) that fits what is in it (2026-11-24).
 
 The stash line was printed after the box's closing rule, outside it, and
 the casino row's middle bar sat two columns left of every other row's
@@ -7,6 +7,13 @@ because its labels were padded to 11 where "Quest Points:" and
 a row of exactly the box's width, the stash row is inside, and the last
 line is the closing rule -- for a mortal and for staff, whose sheet adds
 the Holy Light row.
+
+It was 62 columns of fixed printf widths, and a width is only a minimum:
+hit points past 99,999 pushed their row's border out past the rest
+(owner, 2026-11-24). textbox.c now sizes every column and the frame to
+the widest value, so the box is at least 62 wide and every line of it
+the same width, whatever the numbers; the bars between cells line up
+down the whole sheet.
 """
 from __future__ import annotations
 
@@ -17,7 +24,7 @@ from live_mud import LiveMud, create_character, login, patch_player_file, skip_r
 
 SKIP = skip_reason()
 PW = "Zscorepass1"
-WIDTH = 62
+MIN_WIDTH = 62
 
 
 def make(mud: LiveMud, name: str, **fields) -> None:
@@ -41,10 +48,22 @@ def sheet_lines(reply: str) -> list[str]:
 class ScoreBoxLiveTests(unittest.TestCase):
     def check_sheet(self, client) -> list[str]:
         lines = sheet_lines(client.sync("score"))
+        width = len(lines[0])
+        self.assertGreaterEqual(width, MIN_WIDTH, "\n".join(lines))
         wrong = [line for line in lines
-                 if len(line) != WIDTH
+                 if len(line) != width
                  or not (line.startswith("-") or (line.startswith("|") and line.endswith("|")))]
         self.assertEqual(wrong, [], "\n".join(lines))
+        # Rows with the same number of cells share their columns: every
+        # bar sits where the others' do, top to bottom.
+        bars: dict[int, set[tuple[int, ...]]] = {}
+        for line in lines:
+            if line.startswith("|"):
+                where = tuple(i for i, ch in enumerate(line) if ch == "|")
+                bars.setdefault(len(where), set()).add(where)
+        for count, shapes in bars.items():
+            if count > 2:
+                self.assertEqual(len(shapes), 1, "\n".join(lines))
         return lines
 
     def test_every_row_is_inside_the_box_and_aligned(self) -> None:
@@ -68,14 +87,14 @@ class ScoreBoxLiveTests(unittest.TestCase):
 
     def test_large_casino_totals_stay_inside_the_box(self) -> None:
         # A field width is a minimum: nine digits won pushed the row to 63
-        # columns (review, 2026-11-03). Past eight digits won or eighteen
-        # lost, each total takes a full-width row, every digit kept.
+        # columns (review, 2026-11-03). They were split onto rows of their
+        # own; now the box widens instead, every digit kept on one row.
         cases = {
-            "Zscoreeight": (99999999, 123456789012345678, True),     # fits the row
-            "Zscorenine": (100000000, 7, False),                     # nine digits won
-            "Zscorelost": (5, 1234567890123456789, False),           # nineteen lost
-            "Zscoremax": (9223372036854775807, 9223372036854775807, False),
-            "Zscoreten": (1234567890, 0, False),                     # nothing lost yet
+            "Zscoreeight": (99999999, 123456789012345678, True),
+            "Zscorenine": (100000000, 7, True),
+            "Zscorelost": (5, 1234567890123456789, True),
+            "Zscoremax": (9223372036854775807, 9223372036854775807, True),
+            "Zscoreten": (1234567890, 0, True),
         }
         with LiveMud() as mud:
             for name, (won, lost, _) in cases.items():
@@ -94,6 +113,38 @@ class ScoreBoxLiveTests(unittest.TestCase):
                         if one_row:
                             quest = next(line for line in lines if "Quest Points:" in line)
                             self.assertEqual(rows[0].index("|", 1), quest.index("|", 1))
+                        client.sync("color")
+
+    def test_huge_hit_points_mana_and_coins_widen_the_box(self) -> None:
+        # Owner, 2026-11-24: "the score screen struggles to handle large
+        # hp/mana". A "%5d" held 99,999 at most; these pushed the right
+        # border out of line. Synthetic characters only.
+        cases = {
+            "Zscorebig": dict(hmv="1234567 2345678 987654 1987654 123456 223456",
+                              hmvp="2345678 1987654 223456"),
+            "Zscorehuge": dict(hmv="2000000000 2100000000 2000000000 2100000000 "
+                                   "2000000000 2100000000",
+                               hmvp="2100000000 2100000000 2100000000"),
+        }
+        with LiveMud() as mud:
+            for name, kit in cases.items():
+                make(mud, name, Levl=50, HMV=kit["hmv"], HMVP=kit["hmvp"],
+                     BankCP=987654321098765432, QuestPnts=2147483647,
+                     CasinoWon=1, CasinoLost=1)
+            for name in cases:
+                with self.subTest(name=name), mud.connect(timeout=120) as client:
+                    login(client, name, PW)
+                    client.sync("scroll 0")
+                    for colour in ("on", "off"):
+                        lines = self.check_sheet(client)
+                        text = "\n".join(lines)
+                        hp = next(line for line in lines if "Hp:" in line)
+                        mana = next(line for line in lines if "Mana:" in line)
+                        shown = re.search(r"Hp:\s+(\d+) \((\d+)\)", hp)
+                        self.assertIsNotNone(shown, text)
+                        self.assertGreaterEqual(int(shown.group(2)), 100000, text)
+                        self.assertRegex(mana, r"Mana:\s+\d{6,} \(\d{6,}\)", text)
+                        self.assertRegex(text, r"Bank:\s+\d+p \d+g \d+s \d+c")
                         client.sync("color")
 
 

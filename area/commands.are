@@ -2963,7 +2963,8 @@ Syntax:  color
 
 COLOR alone shows whether color is on and the color of each group of
 messages: regular text, gossips, shouts, tells, says, socials, room
-names, damage and the rest.
+names, damage and the rest. BETTER and WORSE are COMPARE's good and bad
+news, green and red unless you pick others.
 
 COLOR ON and COLOR OFF turn color on and off; your choice is kept when
 you log out. COLOR DEFAULT puts every group back to its usual color.
@@ -3100,10 +3101,15 @@ level, skills, stats, race and the rest of what you wear.
     Hyrule's guardians drop (with how often); with a slot, the top five
     and where to get them.
 
+With color on, the winner of each row, its lead and the verdict's pick
+are green, and the number that lost is red.  On the "A instead of B"
+line, what you would gain is green and what you would give up red.
+They are your BETTER and WORSE colors: COLOR BETTER <color> changes one.
+
 The website's Gear Finder ranks the same way by class and level.  To
 settle it by hitting something, see DUMMY.
 
-See also: DUMMY, LORE, EQUIPMENT, SCORE
+See also: DUMMY, LORE, EQUIPMENT, SCORE, COLOR
 ~
 
 0 CONSIDER~
@@ -3952,7 +3958,9 @@ Displays your full character sheet: name, level, class, race, all
 attributes, hit points, mana, movement, armor class, hitroll, damroll,
 experience, gold, remort count, and more.  Attribute scores are shown as
 trained(current) so you can see exactly how much bonus gear and spells
-are contributing.  Only you can see your own SCORE output.
+are contributing.  Only you can see your own SCORE output.  The sheet
+widens to fit: however large a number grows, every row stays inside the
+box and the columns stay lined up.
 
 See also: ATTRIBUTE, AFFECT, WORTH, REPORT
 ~
