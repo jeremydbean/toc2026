@@ -346155,3 +346155,4 @@ Tue Nov 24 17:15:44 2026 :: Treasure goblin: vanished from room 2115 (Bronze Dra
 Tue Nov 24 17:17:09 2026 :: Connection guard: refused 1 connection from 5.161.61.238 (paused; 25 refused in all, pause 4 in 30 days, 1398 minutes left).
 Tue Nov 24 17:17:09 2026 :: Connection guard: 5.161.61.238 is checker-ash1.uptimerobot.com, an uptime monitor (the name leads back to it): its checks are not strikes, and its pause is lifted.
 Tue Nov 24 17:21:54 2026 :: Connection guard: 151.245.151.136 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 24 17:22:14 2026 :: Connection guard: 5.161.177.47 closed without a word (an uptime monitor; not counted).
