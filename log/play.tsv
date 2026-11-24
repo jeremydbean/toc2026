@@ -55472,3 +55472,9 @@
 1795402798	sightings	Alaric	57	2497	dresden.are	mob	201:1/0/0 29809:1/0/0 4458:3/0/0 10:1/0/0 4446:1/0/0 4449:1/0/0 4451:1/0/0 2435:1/0/0 4450:1/0/0 2433:2/0/0 4459:2/0/0 4452:1/0/0 7005:2/0/0 7203:4/0/0 7201:1/0/0 7200:1/0/0 25114:1/0/0 25100:1/0/0 25112:1/0/0 25111:5/0/0 25105:1/0/0 2005:8/0/0 2006:2/0/0 2016:1/0/0 2001:6/0/0 2013:1/0/0 2011:2/0/0 2009:1/0/0 2004:4/0/0 2014:1/0/0 2003:2/0/0 6502:2/0/0 6505:1/0/0 6503:1/0/0 6504:1/0/0 6514:2/2/0 6511:6/0/0 6509:1/0/0 6510:2/0/0 2008:2/0/0 2002:1/1/0
 1795402798	sightings	Alaric	57	2497	dresden.are	item	4446:1/0 25102:1/0 2004:1/0 6507:1/0 6513:1/0 6506:1/0
 1795402798	session	Alaric	57	2497	dresden.are	quit	258s	+0 levels	+0 exp	+92481770 copper	3 kills	0 deaths	1 quests	232 commands	0 refused	coin: loot 42s 86c, quests 92p 47g 74s 84c, spent 6s	spent on: buy 6s	exp: none
+1795486530	area	Alaric	57	2497	dresden.are	-	dresden.are	-1	login
+1795486532	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1795486532	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1795486533	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795486535	quest	Alaric	57	2497	dresden.are	rush	kill	6505	the giant lizard	19	dwarves.are	5
+1795486535	cmd	Alaric	57	2497	dresden.are	standing	100	17	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'the giant lizard has been declared an outlaw!'	-	+
