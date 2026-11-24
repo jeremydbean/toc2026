@@ -345403,3 +345403,5 @@ Tue Nov 24 03:16:07 2026 :: Connection guard: refused 1 connection from 35.210.2
 Tue Nov 24 03:16:07 2026 :: Connection guard: 35.210.239.143 closed without a word (strike 1 of 6 in 6 hours).
 Tue Nov 24 03:17:07 2026 :: Connection guard: refused 24 connections from 35.210.239.143 (since the last line; 25 refused in all, pause 1 this week, 359 minutes left).
 Tue Nov 24 03:19:34 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 74 refused in all, pause 5 this week, 2958 minutes left).
+Tue Nov 24 03:24:39 2026 :: Connection guard: 18.116.205.62 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 24 03:24:57 2026 :: Treasure goblin: vanished from room 4122 (The secret chamber, moria.are) (too long in one area).
