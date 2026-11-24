@@ -55609,3 +55609,34 @@
 1795486683	cmd	Alaric	57	6506	dwarves.are	standing	100	0	-	west		Bend in Narrow Path //   This is a narrow path that bends to the east here.  The trees hang over // the path, and it is very overgrown.  The narrow path continues to the	-	+
 1795486684	cmd	Alaric	57	6507	dwarves.are	standing	100	0	-	east		Narrow path //   This path is very narrow, and it continues to the north and west. // [Exits: north west]	-	-
 1795486684	cmd	Alaric	57	6507	dwarves.are	standing	100	0	-	scan		the giant                          -to the North. // the dwarven guard                  -to the far North. // the dwarven guard                  -to the far North.	-	-
+1795486685	cmd	Alaric	57	6507	dwarves.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795486688	cmd	Alaric	57	6508	dwarves.are	standing	100	0	-	north		Narrow north-south path //   This path leads to the north and south.  To the north you can see a // door, and to the south the path continues.	-	+
+1795486690	cmd	Alaric	57	6509	dwarves.are	standing	100	0	-	north		Door to Kingdom //   Here the path turns to the west.  You can see a door in front of you, // and the path continues to the west and south.	-	+
+1795486692	cmd	Alaric	57	6522	dwarves.are	standing	100	0	-	west		Guard House //   You are in the guard house to the west of the entrance // to the castle.  There are nude posters covering the walls.	-	+
+1795486693	cmd	Alaric	57	6509	dwarves.are	standing	100	0	-	east		Door to Kingdom //   Here the path turns to the west.  You can see a door in front of you, // and the path continues to the west and south.	-	+
+1795486694	cmd	Alaric	57	6509	dwarves.are	standing	100	0	-	north		Alas, you cannot go that way.	-	-
+1795486694	cmd	Alaric	57	6509	dwarves.are	standing	100	0	-	open		It's locked.	-	-
+1795486696	refused	Alaric	57	6509	dwarves.are	standing	100	0	-	(unknown)		Huh? Did you mean KILL?	refusal:unknown-command	-
+1795486697	coin	Alaric	57	6509	dwarves.are	+1000000	loot	autogold	corpse of the dwarven guard	29938433622
+1795486697	coin	Alaric	57	6509	dwarves.are	+500	loot	autogold	corpse of the dwarven guard	29938434122
+1795486697	coin	Alaric	57	6509	dwarves.are	+6	loot	autogold	corpse of the dwarven guard	29938434128
+1795486697	coin	Alaric	57	6509	dwarves.are	+20000	loot	autogold	corpse of the dwarven guard	29938454128
+1795486697	cmd	Alaric	57	6509	dwarves.are	standing	100	2	-	kill	gu	Your punch <<< ERADICATES >>> the dwarven guard! [-174] // Your punch >>> ANNIHILATES <<< the dwarven guard! [-215] // The dwarven guard is DEAD!!	-	+
+1795486701	cmd	Alaric	57	6509	dwarves.are	standing	100	0	-	get	key cor	I see nothing like that in the cor.	-	-
+1795486702	cmd	Alaric	57	6509	dwarves.are	standing	100	0	-	unlock	east	You lack the key: it takes a deep green key to unlock it.	-	-
+1795486702	cmd	Alaric	57	6509	dwarves.are	standing	100	0	-	open		It's locked.	-	-
+1795486704	coin	Alaric	57	6509	dwarves.are	+1000000	loot	autogold	corpse of the dwarven guard	29939454128
+1795486704	coin	Alaric	57	6509	dwarves.are	+500	loot	autogold	corpse of the dwarven guard	29939454628
+1795486704	coin	Alaric	57	6509	dwarves.are	+6	loot	autogold	corpse of the dwarven guard	29939454634
+1795486704	coin	Alaric	57	6509	dwarves.are	+20000	loot	autogold	corpse of the dwarven guard	29939474634
+1795486704	cmd	Alaric	57	6509	dwarves.are	standing	100	2	-	kill	dw	Your punch <<< ERADICATES >>> the dwarven guard! [-184] // Your punch <<< ERADICATES >>> the dwarven guard! [-157] // Your punch <<< ERADICATES >>> the dwarven guard! [-173]	-	+
+1795486709	cmd	Alaric	57	6509	dwarves.are	standing	100	0	-	get	key cor	I see nothing like that in the cor.	-	-
+1795486709	cmd	Alaric	57	6509	dwarves.are	standing	100	0	-	unlock	east	You lack the key: it takes a deep green key to unlock it.	-	-
+1795486710	cmd	Alaric	57	6509	dwarves.are	standing	100	0	-	open		It's locked.	-	-
+1795486712	cmd	Alaric	57	6522	dwarves.are	standing	100	0	-	west		Guard House //   You are in the guard house to the west of the entrance // to the castle.  There are nude posters covering the walls.	-	+
+1795486713	cmd	Alaric	57	6522	dwarves.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1795486715	cmd	Alaric	57	6522	dwarves.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1795486716	cmd	Alaric	57	6509	dwarves.are	standing	100	0	-	east		Door to Kingdom //   Here the path turns to the west.  You can see a door in front of you, // and the path continues to the west and south.	-	+
+1795486716	cmd	Alaric	57	6508	dwarves.are	standing	100	0	-	south		Narrow north-south path //   This path leads to the north and south.  To the north you can see a // door, and to the south the path continues.	-	+
+1795486717	cmd	Alaric	57	6507	dwarves.are	standing	100	0	-	south		Narrow path //   This path is very narrow, and it continues to the north and west. // [Exits: north west]	-	-
+1795486717	cmd	Alaric	57	6506	dwarves.are	standing	100	0	-	west		Bend in Narrow Path //   This is a narrow path that bends to the east here.  The trees hang over // the path, and it is very overgrown.  The narrow path continues to the	-	+

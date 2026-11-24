@@ -345214,3 +345214,45 @@ Tue Nov 24 02:18:03 2026 :: Log Alaric [6506]: arrived (Bend in Narrow Path) fro
 Tue Nov 24 02:18:04 2026 :: Log Alaric [6506]: e
 Tue Nov 24 02:18:04 2026 :: Log Alaric [6507]: arrived (Narrow path) from 6506
 Tue Nov 24 02:18:04 2026 :: Log Alaric [6507]: scan
+Tue Nov 24 02:18:05 2026 :: Log Alaric [6507]: e
+Tue Nov 24 02:18:08 2026 :: Log Alaric [6507]: n
+Tue Nov 24 02:18:08 2026 :: Log Alaric [6508]: arrived (Narrow north-south path) from 6507
+Tue Nov 24 02:18:10 2026 :: Log Alaric [6508]: n
+Tue Nov 24 02:18:10 2026 :: Log Alaric [6509]: arrived (Door to Kingdom) from 6508
+Tue Nov 24 02:18:12 2026 :: Log Alaric [6509]: w
+Tue Nov 24 02:18:12 2026 :: Log Alaric [6522]: arrived (Guard House) from 6509
+Tue Nov 24 02:18:13 2026 :: Log Alaric [6522]: e
+Tue Nov 24 02:18:13 2026 :: Log Alaric [6509]: arrived (Door to Kingdom) from 6522
+Tue Nov 24 02:18:14 2026 :: Log Alaric [6509]: n
+Tue Nov 24 02:18:14 2026 :: Log Alaric [6509]: oe
+Tue Nov 24 02:18:16 2026 :: Log Alaric [6509]: (refused) kjill gu
+Tue Nov 24 02:18:17 2026 :: Log Alaric [6509]: kill gu
+Tue Nov 24 02:18:17 2026 :: Log Alaric [6509]: killed the dwarven guard
+Tue Nov 24 02:18:17 2026 :: Log Alaric [6509]: coin +1 platinum
+Tue Nov 24 02:18:17 2026 :: Log Alaric [6509]: coin +5 silver
+Tue Nov 24 02:18:17 2026 :: Log Alaric [6509]: coin +6 copper
+Tue Nov 24 02:18:17 2026 :: Log Alaric [6509]: coin +2 gold
+Tue Nov 24 02:18:21 2026 :: Log Alaric [6509]: get key cor
+Tue Nov 24 02:18:22 2026 :: Log Alaric [6509]: unl east
+Tue Nov 24 02:18:22 2026 :: Log Alaric [6509]: oe
+Tue Nov 24 02:18:24 2026 :: Log Alaric [6509]: kill dw
+Tue Nov 24 02:18:24 2026 :: Log Alaric [6509]: killed the dwarven guard
+Tue Nov 24 02:18:24 2026 :: Log Alaric [6509]: coin +1 platinum
+Tue Nov 24 02:18:24 2026 :: Log Alaric [6509]: coin +5 silver
+Tue Nov 24 02:18:24 2026 :: Log Alaric [6509]: coin +6 copper
+Tue Nov 24 02:18:24 2026 :: Log Alaric [6509]: coin +2 gold
+Tue Nov 24 02:18:29 2026 :: Log Alaric [6509]: get key cor
+Tue Nov 24 02:18:29 2026 :: Log Alaric [6509]: unl east
+Tue Nov 24 02:18:30 2026 :: Log Alaric [6509]: oe
+Tue Nov 24 02:18:32 2026 :: Log Alaric [6509]: w
+Tue Nov 24 02:18:32 2026 :: Log Alaric [6522]: arrived (Guard House) from 6509
+Tue Nov 24 02:18:33 2026 :: Log Alaric [6522]: w
+Tue Nov 24 02:18:35 2026 :: Log Alaric [6522]: scan
+Tue Nov 24 02:18:36 2026 :: Log Alaric [6522]: e
+Tue Nov 24 02:18:36 2026 :: Log Alaric [6509]: arrived (Door to Kingdom) from 6522
+Tue Nov 24 02:18:36 2026 :: Log Alaric [6509]: s
+Tue Nov 24 02:18:36 2026 :: Log Alaric [6508]: arrived (Narrow north-south path) from 6509
+Tue Nov 24 02:18:37 2026 :: Log Alaric [6508]: s
+Tue Nov 24 02:18:37 2026 :: Log Alaric [6507]: arrived (Narrow path) from 6508
+Tue Nov 24 02:18:37 2026 :: Log Alaric [6507]: w
+Tue Nov 24 02:18:37 2026 :: Log Alaric [6506]: arrived (Bend in Narrow Path) from 6507

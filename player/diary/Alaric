@@ -242,21 +242,24 @@ List earn 92477484 0 quests
 List spend 600 0 buy
 End
 Day 2026-11-24
-Played 132
+Played 182
 Level 57 57 0
 Exp 0 0
-Kills 1
+Kills 3
 Deaths 0
 Close 0
 Quests 0 0
 Dailies 0 0
-List area 54 0 City of Dresden
+List area 57 0 City of Dresden
 List area 4 0 Sewer
 List area 2 0 The Underdark
-List area 72 0 Dwarven Kingdom
+List area 116 0 Dwarven Kingdom
 List area 0 0 Wyvern's Tower
+List area 0 0 Miden'nir
+List area 3 0 Thalos
+List area 0 0 Continental Drift
 List earn 73494763 0 interest
-List earn 1714944 0 loot
+List earn 3755956 0 loot
 List spend 1500000 0 heal
 End
 #END
