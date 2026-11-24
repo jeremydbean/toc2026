@@ -346170,3 +346170,5 @@ Tue Nov 24 17:37:30 2026 :: Connection guard: 178.156.185.231 is checker-ash10.u
 Tue Nov 24 17:42:35 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 1 of 6 in 6 hours).
 Tue Nov 24 17:42:35 2026 :: Connection guard: 5.161.215.244 is checker-ash4.uptimerobot.com, an uptime monitor (the name leads back to it): its checks are not strikes.
 Tue Nov 24 17:45:58 2026 :: Treasure goblin: vanished from room 2066 (Unknown passage, catacomb.are) (too long in one area).
+Tue Nov 24 17:47:40 2026 :: Connection guard: 5.161.73.160 closed without a word (an uptime monitor; not counted).
+Tue Nov 24 17:47:53 2026 :: Sock.sinaddr:  192.178.6.196
