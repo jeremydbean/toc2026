@@ -345387,3 +345387,4 @@ Tue Nov 24 03:05:28 2026 :: Connection guard: refused 24 connections from 35.210
 Tue Nov 24 03:09:27 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 1 of 6 in 6 hours).
 Tue Nov 24 03:10:15 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Tue Nov 24 03:13:41 2026 :: Connection guard: 185.107.80.93 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 24 03:14:24 2026 :: Connection guard: last hour 14 closed without a word, 30 refused, 0 new characters refused, 1 newly paused; 14 addresses paused and 0 refused now, 16 active player addresses.
