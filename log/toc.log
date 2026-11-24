@@ -346207,3 +346207,5 @@ Tue Nov 24 18:36:22 2026 :: Treasure goblin: vanished from room 13256 (Jander's 
 Tue Nov 24 18:38:29 2026 :: Connection guard: 3.133.226.214 closed without a word (an uptime monitor; not counted).
 Tue Nov 24 18:39:02 2026 :: Black market: the dealer vanished from room 15103 (Lobby, campus.are) (wandering).
 Tue Nov 24 18:41:30 2026 :: Black market: the dealer vanished from room 29101 (Metalurgy Plant, korzath1.are) (wandering).
+Tue Nov 24 18:43:34 2026 :: Connection guard: refused 1 connection from 18.116.205.62 (paused; 11 refused in all, pause 3 in 30 days, 1263 minutes left).
+Tue Nov 24 18:43:34 2026 :: Connection guard: 18.116.205.62 is checker-ohi4.uptimerobot.com, an uptime monitor (the name leads back to it): its checks are not strikes, and its pause is lifted.
