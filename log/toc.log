@@ -346336,3 +346336,4 @@ Tue Nov 24 21:56:02 2026 :: Treasure goblin: vanished from room 6313 (Wolf Spide
 Tue Nov 24 22:01:40 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 63 refused in all, pause 5 in 30 days, 2126 minutes left).
 Tue Nov 24 22:01:41 2026 :: Connection guard: 54.167.223.174 is checker-nvi6.uptimerobot.com, an uptime monitor (the name leads back to it): its checks are not strikes, and its pause is lifted.
 Tue Nov 24 22:06:06 2026 :: Treasure goblin: vanished from room 13457 (Construction Area, hell.are) (too long in one area).
+Tue Nov 24 22:10:16 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
