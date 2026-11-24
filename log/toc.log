@@ -345191,3 +345191,26 @@ Tue Nov 24 02:17:48 2026 :: Log Alaric [5273]: e
 Tue Nov 24 02:17:48 2026 :: Log Alaric [5280]: arrived (A dark bend in the forest) from 5273
 Tue Nov 24 02:17:48 2026 :: Log Alaric [5280]: s
 Tue Nov 24 02:17:48 2026 :: Log Alaric [39]: arrived (Dark Path) from 5280
+Tue Nov 24 02:17:48 2026 :: Log Alaric [39]: e
+Tue Nov 24 02:17:48 2026 :: Log Alaric [6500]: arrived (Path to Dwarven Village) from 39
+Tue Nov 24 02:17:48 2026 :: Log Alaric [6500]: n
+Tue Nov 24 02:17:48 2026 :: Log Alaric [6501]: arrived (Path, base of mountain) from 6500
+Tue Nov 24 02:17:49 2026 :: Log Alaric [6501]: n
+Tue Nov 24 02:17:49 2026 :: Log Alaric [6502]: arrived (Path, middle of mountain) from 6501
+Tue Nov 24 02:17:49 2026 :: Log Alaric [6502]: n
+Tue Nov 24 02:17:49 2026 :: Log Alaric [6503]: arrived (Top of mountain) from 6502
+Tue Nov 24 02:17:55 2026 :: Log Alaric [6503]: e
+Tue Nov 24 02:17:55 2026 :: Log Alaric [6540]: arrived (Dark path) from 6503
+Tue Nov 24 02:17:57 2026 :: Log Alaric [6540]: e
+Tue Nov 24 02:17:58 2026 :: Log Alaric [6540]: oe
+Tue Nov 24 02:18:00 2026 :: Log Alaric [6540]: n
+Tue Nov 24 02:18:00 2026 :: Log Alaric [6504]: arrived (Narrow Path) from 6540
+Tue Nov 24 02:18:01 2026 :: Log Alaric [6504]: n
+Tue Nov 24 02:18:01 2026 :: Log Alaric [6506]: arrived (Bend in Narrow Path) from 6504
+Tue Nov 24 02:18:02 2026 :: Log Alaric [6506]: e
+Tue Nov 24 02:18:02 2026 :: Log Alaric [6507]: arrived (Narrow path) from 6506
+Tue Nov 24 02:18:03 2026 :: Log Alaric [6507]: w
+Tue Nov 24 02:18:03 2026 :: Log Alaric [6506]: arrived (Bend in Narrow Path) from 6507
+Tue Nov 24 02:18:04 2026 :: Log Alaric [6506]: e
+Tue Nov 24 02:18:04 2026 :: Log Alaric [6507]: arrived (Narrow path) from 6506
+Tue Nov 24 02:18:04 2026 :: Log Alaric [6507]: scan

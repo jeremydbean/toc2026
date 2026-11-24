@@ -55595,3 +55595,17 @@
 1795486668	cmd	Alaric	57	5280	oldthalo.are	standing	100	0	-	east		A dark bend in the forest //   You are in a dark bend in the forest.  To the west, you see the trail // leading back to the dwarven forest, and to the south, you see a dark and	-	+
 1795486668	area	Alaric	57	39	connect.are	oldthalo.are	connect.are	3	south
 1795486668	cmd	Alaric	57	39	connect.are	standing	100	0	-	south		Dark Path //   Your thoughts wander to past adventures as you trudge down the dismal // path but your progress is suddenly halted by a large dark mountain range	-	+
+1795486668	area	Alaric	57	6500	dwarves.are	connect.are	dwarves.are	0	east
+1795486668	cmd	Alaric	57	6500	dwarves.are	standing	100	0	-	east		Path to Dwarven Village //   All around you are the mountains of the southern range, home of dwarves and  // giants.  You can climb back down the mountains to the west and leave these 	-	+
+1795486668	cmd	Alaric	57	6501	dwarves.are	standing	100	0	-	north		Path, base of mountain //   Now you are at the bottom of a rugged mountain.  The forest around you is // very dense, and it seems very dark to the north.	-	+
+1795486669	cmd	Alaric	57	6502	dwarves.are	standing	100	0	-	north		Path, middle of mountain //   Standing on the middle of the mountain, you can easily see the turning // point to the south, and the top of the mountain is very near to the north.	-	+
+1795486669	cmd	Alaric	57	6503	dwarves.are	standing	100	0	-	north		Top of mountain //   You are now on the top of the mountain.  To the south you see a path // leading down the mountain.  To the east and west you see entrances to	-	+
+1795486675	cmd	Alaric	57	6540	dwarves.are	standing	100	0	-	east		Dark path //   This path is very well worn, and there is an entrance to the mines to the // east, while the path continues to the north and west.	-	+
+1795486677	cmd	Alaric	57	6540	dwarves.are	standing	100	0	-	east		The door is closed.	-	-
+1795486678	cmd	Alaric	57	6540	dwarves.are	standing	100	0	-	open		It's locked.	-	-
+1795486680	cmd	Alaric	57	6504	dwarves.are	standing	100	0	-	north		Narrow Path //   This is a narrow path leading to the Dwarven Kingdom.  It looks less // travelled than the others, and it is very creepy.  The path opens up	-	+
+1795486681	cmd	Alaric	57	6506	dwarves.are	standing	100	0	-	north		Bend in Narrow Path //   This is a narrow path that bends to the east here.  The trees hang over // the path, and it is very overgrown.  The narrow path continues to the	-	+
+1795486682	cmd	Alaric	57	6507	dwarves.are	standing	100	0	-	east		Narrow path //   This path is very narrow, and it continues to the north and west. // [Exits: north west]	-	-
+1795486683	cmd	Alaric	57	6506	dwarves.are	standing	100	0	-	west		Bend in Narrow Path //   This is a narrow path that bends to the east here.  The trees hang over // the path, and it is very overgrown.  The narrow path continues to the	-	+
+1795486684	cmd	Alaric	57	6507	dwarves.are	standing	100	0	-	east		Narrow path //   This path is very narrow, and it continues to the north and west. // [Exits: north west]	-	-
+1795486684	cmd	Alaric	57	6507	dwarves.are	standing	100	0	-	scan		the giant                          -to the North. // the dwarven guard                  -to the far North. // the dwarven guard                  -to the far North.	-	-
