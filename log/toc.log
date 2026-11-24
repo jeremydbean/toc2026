@@ -345866,3 +345866,59 @@ Tue Nov 24 12:21:02 2026 :: Log Alaric [15008]: west
 Tue Nov 24 12:21:02 2026 :: Log Alaric [15028]: arrived (Mary Rotte Cafeteria Entrance) from 15008
 Tue Nov 24 12:21:04 2026 :: Log Alaric [15028]: kill em
 Tue Nov 24 12:21:04 2026 :: Log Alaric [15028]: killed a caf employee
+Tue Nov 24 12:21:10 2026 :: Log Alaric [15028]: east
+Tue Nov 24 12:21:10 2026 :: Log Alaric [15008]: arrived (University Avenue) from 15028
+Tue Nov 24 12:21:10 2026 :: Log Alaric [15008]: north
+Tue Nov 24 12:21:10 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15008
+Tue Nov 24 12:21:11 2026 :: Log Alaric [15004]: west
+Tue Nov 24 12:21:11 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15004
+Tue Nov 24 12:21:11 2026 :: Log Alaric [15003]: west
+Tue Nov 24 12:21:11 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15003
+Tue Nov 24 12:21:11 2026 :: Log Alaric [15002]: west
+Tue Nov 24 12:21:11 2026 :: Log Alaric [15001]: arrived (Campus Crescent) from 15002
+Tue Nov 24 12:21:11 2026 :: Log Alaric [15001]: west
+Tue Nov 24 12:21:11 2026 :: Log Alaric [15000]: arrived (The Eastern Campus Entrance) from 15001
+Tue Nov 24 12:21:12 2026 :: Log Alaric [15000]: enter portal
+Tue Nov 24 12:21:12 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 15000
+Tue Nov 24 12:21:12 2026 :: Log Alaric [3795]: down
+Tue Nov 24 12:21:12 2026 :: Log Alaric [3772]: arrived (Newbie Train Station) from 3795
+Tue Nov 24 12:21:12 2026 :: Log Alaric [3772]: down
+Tue Nov 24 12:21:12 2026 :: Log Alaric [3700]: arrived (Entrance to Mud School) from 3772
+Tue Nov 24 12:21:12 2026 :: Log Alaric [3700]: down
+Tue Nov 24 12:21:12 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 3700
+Tue Nov 24 12:21:13 2026 :: Log Alaric [4207]: east
+Tue Nov 24 12:21:13 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Tue Nov 24 12:21:13 2026 :: Log Alaric [4202]: east
+Tue Nov 24 12:21:13 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Nov 24 12:21:13 2026 :: Log Alaric [4201]: north
+Tue Nov 24 12:21:13 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 4201
+Tue Nov 24 12:21:13 2026 :: Log Alaric [2433]: east
+Tue Nov 24 12:21:13 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2433
+Tue Nov 24 12:21:14 2026 :: Log Alaric [2405]: north
+Tue Nov 24 12:21:14 2026 :: Log Alaric [2406]: arrived (Northwestern Oak Tree Square.) from 2405
+Tue Nov 24 12:21:14 2026 :: Log Alaric [2406]: east
+Tue Nov 24 12:21:14 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2406
+Tue Nov 24 12:21:14 2026 :: Log Alaric [2402]: north
+Tue Nov 24 12:21:14 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Tue Nov 24 12:21:14 2026 :: Log Alaric [2415]: north
+Tue Nov 24 12:21:14 2026 :: Log Alaric [2496]: arrived (Main Processional.) from 2415
+Tue Nov 24 12:21:15 2026 :: Log Alaric [2496]: north
+Tue Nov 24 12:21:15 2026 :: Log Alaric [2416]: arrived (Main Processional.) from 2496
+Tue Nov 24 12:21:15 2026 :: Log Alaric [2416]: west
+Tue Nov 24 12:21:15 2026 :: Log Alaric [2478]: arrived (Fireball Lane.) from 2416
+Tue Nov 24 12:21:15 2026 :: Log Alaric [2478]: west
+Tue Nov 24 12:21:15 2026 :: Log Alaric [2476]: arrived (Fireball Lane.) from 2478
+Tue Nov 24 12:21:15 2026 :: Log Alaric [2476]: north
+Tue Nov 24 12:21:15 2026 :: Log Alaric [2477]: arrived (Maliki's Wands and Things.) from 2476
+Tue Nov 24 12:21:16 2026 :: Black market: the dealer left the world from room 25259 (The pathway south., mushroom.are).
+Tue Nov 24 12:21:17 2026 :: Log Alaric [2477]: recal
+Tue Nov 24 12:21:17 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 2477
+Tue Nov 24 12:21:20 2026 :: Log Alaric [2497]: aq co
+Tue Nov 24 12:21:20 2026 :: Log Alaric [2497]: copper +77064570
+Tue Nov 24 12:21:20 2026 :: Log Alaric [2497]: quest complete: 77p 6g 45s 70c, 52 quest points (streak bonus 50%)
+Tue Nov 24 12:21:20 2026 :: Snapshot of Alaric taken before quest: Alaric.20261124_122120.quest (PRESTORE Alaric to see it).
+Tue Nov 24 12:21:22 2026 :: Log Alaric [2497]: aq ga no
+Tue Nov 24 12:21:23 2026 :: Log Alaric [2497]: score
+Tue Nov 24 12:21:24 2026 :: Log Alaric [2497]: quit
+Tue Nov 24 12:21:24 2026 :: Alaric has quit.
+Tue Nov 24 12:21:24 2026 :: [QUIT] Player rejoined the real world.
