@@ -609,15 +609,16 @@ class PersistenceTests(unittest.TestCase):
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class ScoreLayoutTests(unittest.TestCase):
-    """The score sheet is a fixed-width box; every row must close at 62.
+    """Every row of the score sheet closes at the same column.
 
-    Rows are built from independent snprintf format strings, so a field that
-    is one column out, or a value wider than its field, silently ragged-edges
-    the box. A real account holding 1,078,289 platinum in the bank pushed that
-    row 13 columns past the border.
+    Rows used to be independent snprintf format strings at a fixed 62, so a
+    real account holding 1,078,289 platinum in the bank pushed its row 13
+    columns past the border. Since 2026-11-24 the sheet is built by
+    src/textbox.c and widens to fit its largest value: never narrower than
+    62, and every row the same width as the rest.
     """
 
-    BOX_WIDTH = 62
+    MIN_WIDTH = 62
     NAME, PW = "Zipbox", "harnesspw"
 
     def _score_rows(self, client) -> list:
@@ -659,15 +660,15 @@ class ScoreLayoutTests(unittest.TestCase):
 
                 self.assertGreater(len(rows), 20, "score sheet looks truncated")
 
-                ragged = [
-                    (len(row), row) for row in rows if len(row) != self.BOX_WIDTH
-                ]
+                width = len(rows[0])
+                self.assertGreaterEqual(width, self.MIN_WIDTH)
+                ragged = [(len(row), row) for row in rows if len(row) != width]
                 self.assertEqual(
                     ragged,
                     [],
-                    "rows not %d columns wide:\n%s"
+                    "rows not %d columns wide like the top border:\n%s"
                     % (
-                        self.BOX_WIDTH,
+                        width,
                         "\n".join("  %3d  %s" % item for item in ragged),
                     ),
                 )
