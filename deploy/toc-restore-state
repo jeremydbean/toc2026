@@ -10,34 +10,58 @@
 # kept every file the backup did not have -- a character deleted since, a
 # corpse that had already ended -- and a stale corpse is made again at
 # boot, its gear with it. It also never stopped the game, which would save
-# its own characters back over the restored files. This is the staged
-# replacement:
+# its own characters back over the restored files.
 #
-#   - while the game or the state sync can write the target, refuse
-#     (TOC_RESTORE_LIVE=1, which toc-restore sets for the live tree);
-#   - a target that already holds state is refused unless
-#     TOC_RESTORE_REPLACE=1 says otherwise, and then that state is MOVED
-#     aside to <DST>/../pre-restore-<UTC stamp>/, never deleted;
-#   - the checkout's state is laid into empty directories, and the result
-#     is compared with the source, file for file, before it says done.
+# Review, 2026-11-24: the first version moved the old state aside and then
+# copied the new into the live directories, so for the length of the copy
+# the tree was half laid -- and toc-state-sync.path starts a sync on any
+# change there. A sync landing part way copied 11 characters of 12 (under
+# the drop guard's 20%) and pushed it, deleting the twelfth from GitHub
+# (tests/test_state_sync_receipts.py, reproduced with the real sync). And a
+# copy or a move that failed part way had no way back. Now:
+#
+#   - on the live tree (TOC_RESTORE_LIVE=1) it holds the maintenance lock
+#     every other writer defers to (TOC_DEPLOY_LOCK, /run/toc-deploy.lock):
+#     toc-state-sync -- from its timer or its path unit -- skips while it is
+#     held, toc-auto-deploy waits, and toc-game-recovery neither restarts
+#     the game nor turns a stopped timer back on. A caller already holding
+#     it says so with TOC_DEPLOY_LOCKED=1. The game must be stopped: it is
+#     the one writer the lock does not hold back;
+#   - everything is decided before anything is written: a target that
+#     already holds state is refused unless TOC_RESTORE_REPLACE=1;
+#   - the new state is copied into a staging directory beside the target
+#     and compared with the checkout, file for file -- the live tree is not
+#     touched until it is whole;
+#   - then each directory is swapped in by rename (same filesystem, so a
+#     sync never sees half of one), the old one MOVED to
+#     <DST>/../pre-restore-<UTC stamp>/, never deleted; a rename that fails
+#     puts back everything already swapped.
 #
 # backups/ (the game's own archives) is never touched: it is not in git.
-# Exit 0 done, 1 failed, 2 something is running, 3 the target holds state.
+# Exit 0 done, 1 failed (the target as it was), 2 something is running or
+# the lock is held, 3 the target holds state and replacing was not asked.
 set -eu
 
 SRC=${1:?usage: toc-restore-state SRC DST}
 DST=${2:?usage: toc-restore-state SRC DST}
 DIRS="player gods heroes log corpse"
 STAMP=$(date -u +%Y%m%d-%H%M%S)
+PARENT=$(dirname "$DST")
+LOCK="${TOC_DEPLOY_LOCK:-/run/toc-deploy.lock}"
+LOCK_WAIT="${TOC_RESTORE_LOCK_WAIT:-300}"
 
-if [ "${TOC_RESTORE_LIVE:-0}" = 1 ] && command -v systemctl >/dev/null 2>&1; then
-    busy=""
-    for unit in toc-game.service toc-state-sync.timer toc-state-sync.service; do
-        systemctl is-active --quiet "$unit" 2>/dev/null && busy="$busy $unit"
-    done
-    if [ -n "$busy" ]; then
-        echo "   refusing: running:$busy -- they would write over the restore." >&2
-        echo "   stop them first: systemctl stop toc-game.service toc-state-sync.timer" >&2
+if [ "${TOC_RESTORE_LIVE:-0}" = 1 ]; then
+    if [ "${TOC_DEPLOY_LOCKED:-0}" != 1 ]; then
+        exec 9>"$LOCK"
+        if ! flock -w "$LOCK_WAIT" 9; then
+            echo "   refusing: the maintenance lock ($LOCK) is still held after ${LOCK_WAIT}s -- a deploy?" >&2
+            exit 2
+        fi
+    fi
+    if command -v systemctl >/dev/null 2>&1 &&
+       systemctl is-active --quiet toc-game.service 2>/dev/null; then
+        echo "   refusing: toc-game.service is running and would save over the restore." >&2
+        echo "   stop it first (toc-restore stops it itself, under the lock)." >&2
         exit 2
     fi
 fi
@@ -48,36 +72,69 @@ for d in $DIRS; do
         present="$present $d"
     fi
 done
-if [ -n "$present" ]; then
-    aside="$(dirname "$DST")/pre-restore-$STAMP"
-    if [ "${TOC_RESTORE_REPLACE:-0}" != 1 ]; then
-        echo "   refusing: $DST already holds state:$present" >&2
-        echo "   A restore over it would keep files the backup does not have (a" >&2
-        echo "   character deleted since, a corpse that has ended). To replace it," >&2
-        echo "   set TOC_RESTORE_REPLACE=1: it is moved to $aside, not deleted." >&2
-        exit 3
-    fi
-    mkdir -p "$aside"
-    for d in $present; do
-        mv "$DST/$d" "$aside/$d"
-    done
-    echo "   moved the existing$present aside to $aside (nothing deleted)"
+aside="$PARENT/pre-restore-$STAMP"
+if [ -n "$present" ] && [ "${TOC_RESTORE_REPLACE:-0}" != 1 ]; then
+    echo "   refusing: $DST already holds state:$present" >&2
+    echo "   A restore over it would keep files the backup does not have (a" >&2
+    echo "   character deleted since, a corpse that has ended). To replace it," >&2
+    echo "   set TOC_RESTORE_REPLACE=1: it is moved to $aside, not deleted." >&2
+    exit 3
 fi
 
+# --- stage: the whole new state, copied and proven, beside the target ---
+mkdir -p "$PARENT"
+stage="$PARENT/.$(basename "$DST").state-stage-$STAMP-$$"
+rm -rf "$stage"
+mkdir -p "$stage"
+discard() { rm -rf "$stage"; }
 for d in $DIRS; do
     [ -d "$SRC/$d" ] || continue
-    mkdir -p "$DST/$d"
-    rsync -a "$SRC/$d/" "$DST/$d/"
-done
-mkdir -p "$DST/corpse" "$DST/heroes" "$DST/backups"
-
-# Proven, not assumed: the tree now holds the checkout's state exactly.
-for d in $DIRS; do
-    [ -d "$SRC/$d" ] || continue
-    if ! diff -rq "$SRC/$d" "$DST/$d" >/dev/null 2>&1; then
-        echo "   the restored $d does not match the checkout:" >&2
-        diff -rq "$SRC/$d" "$DST/$d" 2>&1 | head -5 >&2
-        exit 1
+    if ! rsync -a "$SRC/$d/" "$stage/$d/"; then
+        echo "   copying $d into the staging directory failed; $DST is as it was" >&2
+        discard; exit 1
     fi
 done
+for d in $DIRS; do
+    [ -d "$SRC/$d" ] || continue
+    if ! diff -rq "$SRC/$d" "$stage/$d" >/dev/null 2>&1; then
+        echo "   the staged $d does not match the checkout; $DST is as it was:" >&2
+        diff -rq "$SRC/$d" "$stage/$d" 2>&1 | head -5 >&2
+        discard; exit 1
+    fi
+done
+
+# --- swap: rename each directory in, keeping the old; undo on any failure ---
+mkdir -p "$DST"
+moved=""
+placed=""
+undo() {
+    for d in $placed; do
+        mv "$DST/$d" "$stage/$d" 2>/dev/null || rm -rf "$DST/$d"
+    done
+    for d in $moved; do
+        mv "$aside/$d" "$DST/$d" || echo "   could not put $d back: it is at $aside/$d" >&2
+    done
+    discard
+    rmdir "$aside" 2>/dev/null || true
+}
+for d in $DIRS; do
+    if [ -e "$DST/$d" ]; then
+        mkdir -p "$aside"
+        if ! mv "$DST/$d" "$aside/$d"; then
+            echo "   moving the old $d aside failed; putting back what was swapped" >&2
+            undo; exit 1
+        fi
+        moved="$moved $d"
+    fi
+    if [ -d "$stage/$d" ]; then
+        if ! mv "$stage/$d" "$DST/$d"; then
+            echo "   moving the new $d in failed; putting back what was swapped" >&2
+            undo; exit 1
+        fi
+        placed="$placed $d"
+    fi
+done
+rm -rf "$stage"
+mkdir -p "$DST/corpse" "$DST/heroes" "$DST/backups"
+[ -n "$moved" ] && echo "   moved the existing$moved aside to $aside (nothing deleted)"
 echo "   state laid down and compared with the checkout: $(find "$DST/player" -mindepth 1 -maxdepth 1 -type f 2>/dev/null | wc -l | tr -d " ") characters"

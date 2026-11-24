@@ -375,11 +375,81 @@ class RestoreStateTests(unittest.TestCase):
         stub = self.bin / "systemctl"
         stub.write_text('#!/bin/sh\n[ "$1" = is-active ] && [ "$3" = toc-game.service ] && exit 0\nexit 3\n')
         stub.chmod(0o755)
-        done = self.restore(TOC_RESTORE_LIVE="1")
+        done = self.restore(TOC_RESTORE_LIVE="1", TOC_DEPLOY_LOCKED="1")
         self.assertEqual(done.returncode, 2, done.stderr)
         self.assertIn("toc-game.service", done.stderr)
         self.assertFalse(self.dst.exists(), "nothing written")
         done = self.restore()                           # a drill does not ask
+        self.assertEqual(done.returncode, 0, done.stderr)
+
+    # --- a restore that fails part way leaves the tree as it was (2026-11-24) --
+
+    def stub(self, name: str, body: str) -> None:
+        real = shutil.which(name)
+        path = self.bin / name
+        path.write_text(f"#!/bin/sh\n{body}\nexec {real} \"$@\"\n")
+        path.chmod(0o755)
+
+    def assert_untouched(self, before: dict[str, str], done) -> None:
+        self.assertEqual(done.returncode, 1, done.stdout + done.stderr)
+        self.assertEqual({k: (self.dst / k).read_text() for k in before}, before)
+        self.assertEqual(self.files(self.dst), set(before), "the tree is exactly as it was")
+        self.assertEqual(list((self.root / "srv").glob(".*stage*")), [], "the staging tree is cleared")
+        self.assertEqual(list((self.root / "srv").glob("pre-restore-*")), [], "nothing left aside")
+
+    def snapshot(self) -> dict[str, str]:
+        return {f: (self.dst / f).read_bytes().decode("latin-1") for f in self.files(self.dst)}
+
+    def test_a_copy_that_fails_leaves_the_tree_as_it_was(self) -> None:
+        self.stale_install()
+        before = self.snapshot()
+        self.stub("rsync", 'case "$*" in */corpse/*) exit 23 ;; esac')
+        self.assert_untouched(before, self.restore(TOC_RESTORE_REPLACE="1"))
+
+    def test_a_copy_that_does_not_match_leaves_the_tree_as_it_was(self) -> None:
+        self.stale_install()
+        before = self.snapshot()
+        # A copy that "succeeds" but lands a different character file.
+        real = shutil.which("rsync")
+        (self.bin / "rsync").write_text(
+            f'#!/bin/sh\n{real} "$@" || exit $?\n'
+            'for a in "$@"; do last="$a"; done\n'
+            'case "$last" in */player/) echo torn > "${last}Zkept" ;; esac\n')
+        (self.bin / "rsync").chmod(0o755)
+        done = self.restore(TOC_RESTORE_REPLACE="1")
+        self.assertIn("does not match the checkout", done.stderr)
+        self.assert_untouched(before, done)
+
+    def test_a_swap_that_fails_part_way_puts_back_what_was_swapped(self) -> None:
+        self.stale_install()
+        (self.dst / "heroes").mkdir()
+        (self.dst / "heroes" / "Zold").write_text("an old plaque\n")
+        before = self.snapshot()
+        # player/ and gods/ are already swapped when heroes/ will not move in.
+        self.stub("mv", 'for a in "$@"; do last="$a"; done\n'
+                        'case "$1:$last" in *stage*/heroes:*/current/heroes) exit 1 ;; esac')
+        done = self.restore(TOC_RESTORE_REPLACE="1")
+        self.assertIn("putting back what was swapped", done.stderr)
+        self.assert_untouched(before, done)
+
+    @unittest.skipIf(shutil.which("flock") is None, "needs flock (util-linux)")
+    def test_a_live_restore_waits_for_the_maintenance_lock_and_gives_up(self) -> None:
+        lock = self.root / "deploy.lock"
+        lock.write_text("")
+        holder = subprocess.Popen(["flock", str(lock), "sleep", "30"])
+        try:
+            time.sleep(0.3)
+            (self.bin / "systemctl").write_text("#!/bin/sh\nexit 3\n")
+            (self.bin / "systemctl").chmod(0o755)
+            done = self.restore(TOC_RESTORE_LIVE="1", TOC_DEPLOY_LOCK=str(lock),
+                                TOC_RESTORE_LOCK_WAIT="1")
+            self.assertEqual(done.returncode, 2, done.stderr)
+            self.assertIn("maintenance lock", done.stderr)
+            self.assertFalse(self.dst.exists(), "nothing written while a deploy holds it")
+        finally:
+            holder.kill()
+            holder.wait()
+        done = self.restore(TOC_RESTORE_LIVE="1", TOC_DEPLOY_LOCK=str(lock))
         self.assertEqual(done.returncode, 0, done.stderr)
 
     def test_a_mirror_on_a_drive_restores_with_github_gone(self) -> None:
@@ -424,11 +494,200 @@ class RestoreStateTests(unittest.TestCase):
     def test_toc_restore_never_merges_state_with_its_code_copy(self) -> None:
         source = (ROOT / "deploy" / "toc-restore").read_text()
         self.assertTrue('RESTORE_STATE="$(dirname "$0")/toc-restore-state"' in source
-                        and 'sh "$RESTORE_STATE" "$BUILD" "$CURRENT"' in source,
+                        and 'sh "$RESTORE_STATE" "$BUILD" "$STAGE"' in source,
                         "toc-restore does not lay state down with toc-restore-state")
         for d in ("player", "gods", "heroes", "log", "corpse"):
             self.assertIn(f"--exclude '/{d}/'", source)
         self.assertNotIn('rsync -a "$BUILD/$d/" "$CURRENT/$d/"', source)
+
+
+
+@unittest.skipIf(shutil.which("flock") is None or shutil.which("rsync") is None
+                 or shutil.which("make") is None, "needs flock, rsync and make (the Linux host)")
+class RestoreSwapTests(unittest.TestCase):
+    """deploy/toc-restore end to end against a synthetic repository (review,
+    2026-11-24): it used to copy the code over the live tree and only then
+    let toc-restore-state refuse or fail, and it held no lock, so the sync's
+    path unit, the recovery timer and auto-deploy could all act mid-restore.
+    Now the new tree is staged whole, then swapped in under the maintenance
+    lock with the game stopped, and every failure puts the old tree back.
+    The live path runs in a scratch prefix (TOC_RESTORE_DRILL=0 with
+    TOC_RESTORE_SKIP_SERVICES=1) with a stand-in systemctl."""
+
+    SCRIPT = ROOT / "deploy" / "toc-restore"
+
+    def setUp(self) -> None:
+        self._tmp = tempfile.TemporaryDirectory()
+        root = self.root = pathlib.Path(self._tmp.name)
+        repo = self.repo = root / "repo"
+        for d in ("player", "gods", "heroes", "log", "corpse/live", "area"):
+            (repo / d).mkdir(parents=True)
+        (repo / "player" / "Znew").write_text("#PLAYER\nName Znew~\n")
+        (repo / "player" / "Zkept").write_text("#PLAYER\nName Zkept~\nrestored\n")
+        (repo / "gods" / "Zgod").write_text("god\n")
+        (repo / "heroes" / "Zkept").write_text("hero\n")
+        (repo / "log" / "note.log").write_text("log\n")
+        (repo / "corpse" / "live" / "c1.corpse").write_text("#CORPSE\n")
+        (repo / "area" / "limbo.are").write_text("#AREA\n")
+        (repo / "area" / "shutdown.txt").write_text("tracked marker\n")
+        (repo / "Makefile").write_text(
+            "merc:\n\tprintf '#!/bin/sh\\necho world ok\\n' > merc && chmod +x merc\n"
+            "clean:\n\trm -f merc\n")
+        (repo / "code.c").write_text("new code\n")
+        git = lambda *a: subprocess.run(["git", "-C", str(repo), *a], check=True, capture_output=True)
+        git("init", "-q", "-b", "main")
+        git("add", "-A")
+        git("-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", "synthetic")
+        self.prefix = root / "srv"
+        self.current = self.prefix / "current"
+        for d in ("player", "backups", "area", "corpse/live"):
+            (self.current / d).mkdir(parents=True)
+        (self.current / "player" / "Zkept").write_text("#PLAYER\nName Zkept~\nolder\n")
+        (self.current / "player" / "Zgone").write_text("#PLAYER\nName Zgone~\n")
+        (self.current / "corpse" / "live" / "c-ended.corpse").write_text("#CORPSE\n")
+        (self.current / "backups" / "Nov.23.tar.gz").write_bytes(b"archive")
+        (self.current / "area" / "pkilldata.txt").write_text("runtime\n")
+        (self.current / "code.c").write_text("old code\n")
+        (self.current / "merc").write_text("#!/bin/sh\necho old\n")
+        self.bin = root / "bin"
+        self.bin.mkdir()
+        self.lock = root / "deploy.lock"
+        self.lock.write_text("")
+        self.calls = root / "systemctl.calls"
+        self.running = root / "running"
+        self.running.write_text("toc-game.service\ntoc-web.service\n")
+        # A systemctl that keeps a list of running units, and notes at every
+        # stop and start whether the maintenance lock was held at the time.
+        (self.bin / "systemctl").write_text(f"""#!/bin/sh
+held=free; flock -n {self.lock} true || held=locked
+case "$1" in
+  is-active) [ "$2" = --quiet ] && shift; grep -qx "$2" {self.running} ;;
+  stop) echo "stop $2 $held" >> {self.calls}; grep -vx "$2" {self.running} > {self.running}.n; mv {self.running}.n {self.running} ;;
+  start) echo "start $2 $held" >> {self.calls}; echo "$2" >> {self.running} ;;
+  *) exit 0 ;;
+esac
+""")
+        (self.bin / "systemctl").chmod(0o755)
+
+    def tearDown(self) -> None:
+        self._tmp.cleanup()
+
+    def restore(self, live: bool = True, **env) -> subprocess.CompletedProcess:
+        e = dict(os.environ, PATH=f"{self.bin}:{os.environ['PATH']}", REPO=str(self.repo),
+                 TOC_PREFIX=str(self.prefix), TOC_DEPLOY_LOCK=str(self.lock), **env)
+        if live:
+            e.update(TOC_RESTORE_DRILL="0", TOC_RESTORE_SKIP_SERVICES="1")
+        return subprocess.run(["sh", str(self.SCRIPT)], env=e, capture_output=True,
+                              text=True, timeout=120)
+
+    def files(self, where: pathlib.Path) -> dict[str, bytes]:
+        return {str(f.relative_to(where)): f.read_bytes() for f in where.rglob("*") if f.is_file()}
+
+    def calls_made(self) -> list[str]:
+        return self.calls.read_text().splitlines() if self.calls.exists() else []
+
+    def stub(self, name: str, body: str) -> None:
+        real = shutil.which(name)
+        (self.bin / name).write_text(f"#!/bin/sh\n{body}\nexec {real} \"$@\"\n")
+        (self.bin / name).chmod(0o755)
+
+    def assert_old_tree_back(self, before: dict[str, bytes], done) -> None:
+        self.assertEqual(done.returncode, 1, done.stdout + done.stderr)
+        self.assertEqual(self.files(self.current), before, "the old installation is exactly as it was")
+        self.assertEqual(sorted(p.name for p in self.prefix.iterdir() if p.name != "build"),
+                         ["current"], "no staging tree or half-made aside left behind")
+        self.assertEqual(sorted(self.running.read_text().split()),
+                         ["toc-game.service", "toc-web.service"], "what was running runs again")
+
+    def test_a_live_restore_swaps_the_whole_tree_under_the_lock(self) -> None:
+        done = self.restore(TOC_RESTORE_REPLACE="1")
+        self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
+        now = self.files(self.current)
+        self.assertEqual(now["code.c"], b"new code\n")
+        self.assertEqual(now["player/Zkept"], b"#PLAYER\nName Zkept~\nrestored\n")
+        self.assertNotIn("player/Zgone", now, "a character the backup lacks")
+        self.assertNotIn("corpse/live/c-ended.corpse", now, "an ended corpse")
+        self.assertNotIn("area/shutdown.txt", now, "the game would not start")
+        self.assertEqual(now["backups/Nov.23.tar.gz"], b"archive", "the game's own archives come across")
+        self.assertEqual(now["area/pkilldata.txt"], b"runtime\n", "host-only runtime files are kept")
+        aside = list(self.prefix.glob("pre-restore-*"))
+        self.assertEqual(len(aside), 1)
+        self.assertEqual((aside[0] / "player" / "Zgone").read_text(), "#PLAYER\nName Zgone~\n",
+                         "the old tree is kept whole")
+        calls = self.calls_made()
+        self.assertIn("stop toc-game.service locked", calls)
+        self.assertIn("stop toc-web.service locked", calls)
+        self.assertTrue(all(c.endswith("locked") for c in calls),
+                        f"every stop and start under the maintenance lock: {calls}")
+        self.assertEqual(sorted(self.running.read_text().split()),
+                         ["toc-game.service", "toc-web.service"])
+
+    def test_a_tree_holding_state_is_refused_before_anything_is_written(self) -> None:
+        before = self.files(self.current)
+        done = self.restore()
+        self.assertEqual(done.returncode, 3, done.stderr)
+        self.assertEqual(self.files(self.current), before)
+        self.assertFalse((self.prefix / "build").exists(), "refused before the clone")
+        self.assertEqual(self.calls_made(), [], "the game was never stopped")
+
+    def test_a_state_copy_that_fails_never_stops_the_game(self) -> None:
+        before = self.files(self.current)
+        self.stub("rsync", 'case "$*" in */gods/*) exit 23 ;; esac')
+        done = self.restore(TOC_RESTORE_REPLACE="1")
+        self.assert_old_tree_back(before, done)
+        self.assertEqual(self.calls_made(), [], "staging fails before anything live is touched")
+
+    def test_a_code_copy_that_fails_never_stops_the_game(self) -> None:
+        before = self.files(self.current)
+        self.stub("rsync", "case \"$*\" in *--exclude*.git/*) exit 23 ;; esac")
+        done = self.restore(TOC_RESTORE_REPLACE="1")
+        self.assertIn("copying the code", done.stderr)
+        self.assert_old_tree_back(before, done)
+        self.assertEqual(self.calls_made(), [])
+
+    def test_carrying_the_runtime_files_fails_and_the_game_comes_back(self) -> None:
+        before = self.files(self.current)
+        self.stub("rsync", 'case "$*" in *--ignore-existing*) exit 23 ;; esac')
+        done = self.restore(TOC_RESTORE_REPLACE="1")
+        self.assert_old_tree_back(before, done)
+        self.assertIn("start toc-game.service locked", self.calls_made())
+
+    def test_moving_the_old_tree_aside_fails_and_the_game_comes_back(self) -> None:
+        before = self.files(self.current)
+        self.stub("mv", 'for a in "$@"; do last="$a"; done\n'
+                        'case "$1:$last" in */current:*/pre-restore-*) exit 1 ;; esac')
+        done = self.restore(TOC_RESTORE_REPLACE="1")
+        self.assertIn("moving the old tree aside failed", done.stderr)
+        self.assert_old_tree_back(before, done)
+
+    def test_moving_the_new_tree_in_fails_and_the_old_one_is_put_back(self) -> None:
+        before = self.files(self.current)
+        self.stub("mv", 'for a in "$@"; do last="$a"; done\n'
+                        'case "$1:$last" in */.restore-stage-*:*/current) exit 1 ;; esac')
+        done = self.restore(TOC_RESTORE_REPLACE="1")
+        self.assertIn("the old one is back", done.stderr)
+        self.assert_old_tree_back(before, done)
+
+    def test_a_held_lock_is_waited_for_then_given_up_with_the_game_running(self) -> None:
+        before = self.files(self.current)
+        holder = subprocess.Popen(["flock", str(self.lock), "sleep", "30"])
+        try:
+            time.sleep(0.3)
+            done = self.restore(TOC_RESTORE_REPLACE="1", TOC_RESTORE_LOCK_WAIT="1")
+        finally:
+            holder.kill()
+            holder.wait()
+        self.assertEqual(done.returncode, 2, done.stdout + done.stderr)
+        self.assertIn("maintenance lock", done.stderr)
+        self.assertEqual(self.files(self.current), before)
+        self.assertFalse((self.prefix / "build").exists(), "the deploy's checkout is left to it")
+        self.assertEqual(self.calls_made(), [], "a deploy holding the lock keeps the game")
+
+    def test_a_rehearsal_takes_no_lock_and_stops_nothing(self) -> None:
+        done = self.restore(live=False, TOC_RESTORE_REPLACE="1")
+        self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
+        self.assertEqual(self.calls_made(), [])
+        self.assertEqual((self.current / "code.c").read_text(), "new code\n")
 
 
 class PlayerHistoryToolTests(unittest.TestCase):

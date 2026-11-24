@@ -26,24 +26,53 @@ TOC_PREFIX="${TOC_PREFIX:-/srv/toc}"
 BUILD="$TOC_PREFIX/build"
 CURRENT="$TOC_PREFIX/current"
 DRILL="${DRILL:-0}"
-[ "$TOC_PREFIX" = "/srv/toc" ] || DRILL=1
+# Anywhere but /srv/toc is a rehearsal, unless TOC_RESTORE_DRILL=0 says
+# otherwise -- the tests' way to run the live path (lock, stop, swap,
+# start) in a scratch prefix, always with TOC_RESTORE_SKIP_SERVICES=1.
+[ "$TOC_PREFIX" = "/srv/toc" ] || DRILL=${TOC_RESTORE_DRILL:-1}
 
 say() { printf '\n== %s\n' "$*"; }
 
 say "restoring from $REPO ($BRANCH) into $TOC_PREFIX"
 [ "$DRILL" = 1 ] && echo "   rehearsal: nothing outside $TOC_PREFIX is touched"
 
-# A restore under a running game is undone by the game's own saves, and a
-# sync mid-restore pushes a half-laid tree (review, 2026-11-23): refuse
-# before anything is written. A bare box has neither running.
-if [ "$DRILL" = 0 ] && command -v systemctl >/dev/null 2>&1; then
-    for unit in toc-game.service toc-state-sync.timer toc-state-sync.service; do
-        if systemctl is-active --quiet "$unit" 2>/dev/null; then
-            echo "   refusing: $unit is running and would write over the restore." >&2
-            echo "   stop it first: systemctl stop toc-game.service toc-state-sync.timer" >&2
-            exit 2
-        fi
-    done
+# Everything that can refuse refuses before anything is written. A restore
+# under a running game is undone by the game's own saves, and a sync
+# mid-restore pushes a half-laid tree (review, 2026-11-23). The game, the
+# dashboard and every timer are dealt with below, under the maintenance
+# lock; what cannot wait is a target that already holds state, which is
+# replaced only on request (TOC_RESTORE_REPLACE=1) and then moved aside
+# whole, never deleted.
+STAMP=$(date -u +%Y%m%d-%H%M%S)
+ASIDE="$TOC_PREFIX/pre-restore-$STAMP"
+STAGE="$TOC_PREFIX/.restore-stage-$STAMP"
+held=""
+for d in player gods heroes log corpse; do
+    if [ -d "$CURRENT/$d" ] && [ -n "$(ls -A "$CURRENT/$d" 2>/dev/null)" ]; then
+        held="$held $d"
+    fi
+done
+if [ -n "$held" ] && [ "${TOC_RESTORE_REPLACE:-0}" != 1 ]; then
+    echo "   refusing: $CURRENT already holds state:$held" >&2
+    echo "   A restore over it would keep files the backup does not have (a" >&2
+    echo "   character deleted since, a corpse that has ended). To replace it," >&2
+    echo "   set TOC_RESTORE_REPLACE=1: the whole tree is moved to $ASIDE," >&2
+    echo "   not deleted." >&2
+    exit 3
+fi
+
+# The maintenance lock, before $BUILD is touched: it is toc-deploy's
+# checkout too, and a deploy running beside this would fetch, reset and
+# build in it at the same time (review, 2026-11-24). Held to the end. While
+# it is held the sync skips -- the state it would push is about to be
+# replaced, and the old tree is kept whole in pre-restore-<stamp>/.
+if [ "$DRILL" = 0 ] && [ -z "${TOC_DEPLOY_LOCKED:-}" ]; then
+    exec 9>"${TOC_DEPLOY_LOCK:-/run/toc-deploy.lock}"
+    if ! flock -w "${TOC_RESTORE_LOCK_WAIT:-300}" 9; then
+        echo "   refusing: the maintenance lock is still held (a deploy?); $CURRENT is as it was" >&2
+        exit 2
+    fi
+    export TOC_DEPLOY_LOCKED=1
 fi
 
 # ---------------------------------------------------------------- clone
@@ -103,35 +132,102 @@ else
 fi
 
 # --------------------------------------------------------------- install
-say "installing to $CURRENT"
-mkdir -p "$CURRENT"
+# Review, 2026-11-24: the install used to rsync the code straight over the
+# live tree and only then ask toc-restore-state about the state, which
+# could still refuse or fail -- leaving new code over old state, or a tree
+# half laid. Now the whole new tree is built beside the live one first,
+# code and state, and checked; nothing live is touched until it is whole.
+# Then, under the maintenance lock every other writer defers to
+# (/run/toc-deploy.lock: toc-state-sync from its timer or its path unit
+# skips, toc-auto-deploy waits, toc-game-recovery neither restarts the game
+# nor turns a timer back on), the game and dashboard are stopped and the
+# two trees swapped by rename: the old one to $ASIDE, whole, the new one
+# into its place. A step that fails puts the old tree back and starts what
+# was running again.
+say "staging the new tree beside $CURRENT"
+rm -rf "$STAGE"
+mkdir -p "$STAGE"
+abandon() { rm -rf "$STAGE"; echo "   $*; $CURRENT is as it was" >&2; exit 1; }
 # The code; the state is laid down on its own below, never merged in here.
 rsync -a --exclude '.git/' --exclude '/player/' --exclude '/gods/' --exclude '/heroes/' \
-      --exclude '/log/' --exclude '/corpse/' "$BUILD/" "$CURRENT/"
+      --exclude '/log/' --exclude '/corpse/' "$BUILD/" "$STAGE/" ||
+    abandon "copying the code into the staging tree failed"
 # These are written by the running game and are not code; they come
-# from the repository on a restore because that is the only copy. Staged
-# (deploy/toc-restore-state): into a tree that already holds state only
-# with TOC_RESTORE_REPLACE=1, which moves that state aside first, and
-# compared with the checkout before it counts as done.
-# The helper beside this script first: restoring an older commit, from
+# from the repository on a restore because that is the only copy. The
+# helper beside this script first: restoring an older commit, from
 # before the helper existed, must still lay its state down this way.
 RESTORE_STATE="$(dirname "$0")/toc-restore-state"
 [ -f "$RESTORE_STATE" ] || RESTORE_STATE="$BUILD/deploy/toc-restore-state"
-TOC_RESTORE_LIVE=$(( 1 - DRILL )) sh "$RESTORE_STATE" "$BUILD" "$CURRENT"
+TOC_RESTORE_LIVE=0 sh "$RESTORE_STATE" "$BUILD" "$STAGE" ||
+    abandon "laying the state into the staging tree failed"
 # corpse/ comes from git too since corpses are written down (corpses.c):
 # the players' corpses lying in the world when the host was lost are made
 # again at boot, and player/recovery/ -- the restore receipts and player
 # identities -- came with player/. backups/ is genuinely empty on a new
-# box; heroes/ is not, and creating it empty here is how a restored game
-# got a blank plaque.
-echo "   $(find "$CURRENT/player" -mindepth 1 -maxdepth 1 -type f | wc -l) characters, $(ls "$CURRENT/heroes" | wc -l) heroes in place"
-
+# box (on an old one it is carried across below); heroes/ is not, and
+# creating it empty here is how a restored game got a blank plaque.
 # area/shutdown.txt is tracked in git but is a runtime marker: when it
 # exists, toc-game.service's ExecCondition skips the start and the game
-# comes up dead. The wholesale rsync above brings it down from the
-# checkout, so a bare-box restore boots to nothing until it is removed.
-# toc-deploy rm's it for the same reason; recovery has to as well.
-rm -f "$CURRENT/area/shutdown.txt" "$CURRENT/area/shutdown"
+# comes up dead. toc-deploy rm's it for the same reason.
+rm -f "$STAGE/area/shutdown.txt" "$STAGE/area/shutdown"
+[ -x "$STAGE/merc" ] || abandon "the staging tree has no game binary"
+
+stopped=""
+if [ "$DRILL" = 0 ]; then
+    if command -v systemctl >/dev/null 2>&1; then
+        for unit in toc-game.service toc-web.service; do
+            if systemctl is-active --quiet "$unit" 2>/dev/null; then
+                systemctl stop "$unit" || {
+                    for u in $stopped; do systemctl start "$u" || true; done
+                    abandon "could not stop $unit"
+                }
+                stopped="$stopped $unit"
+            fi
+        done
+    fi
+fi
+resume() { for u in $stopped; do systemctl start "$u" || true; done; }
+# What the old tree holds that the checkout does not -- the game's runtime
+# files under area/, a build's leftovers -- is kept, as the old rsync over
+# the live tree kept it; taken now, with the game stopped, so it is final.
+if [ -d "$CURRENT" ] &&
+   ! rsync -a --ignore-existing --exclude '/player/' --exclude '/gods/' \
+         --exclude '/heroes/' --exclude '/log/' --exclude '/corpse/' \
+         --exclude '/backups/' --exclude '/.code-revision' \
+         --exclude '/area/shutdown.txt' --exclude '/area/shutdown' \
+         "$CURRENT/" "$STAGE/"; then
+    resume; abandon "carrying the old tree's runtime files across failed"
+fi
+say "swapping it in"
+if [ -e "$CURRENT" ]; then
+    mv "$CURRENT" "$ASIDE" || { resume; abandon "moving the old tree aside failed"; }
+fi
+if ! mv "$STAGE" "$CURRENT"; then
+    [ -e "$ASIDE" ] && mv "$ASIDE" "$CURRENT"
+    resume; abandon "moving the new tree in failed; the old one is back"
+fi
+if [ -d "$ASIDE/backups" ]; then
+    rmdir "$CURRENT/backups" 2>/dev/null || true
+    mv "$ASIDE/backups" "$CURRENT/backups" ||
+        echo "   WARN: the game's own archives stayed at $ASIDE/backups" >&2
+fi
+mkdir -p "$CURRENT/backups"
+[ -e "$ASIDE" ] && echo "   the old tree is at $ASIDE (nothing deleted)"
+echo "   $(find "$CURRENT/player" -mindepth 1 -maxdepth 1 -type f | wc -l | tr -d ' ') characters, $(ls "$CURRENT/heroes" | wc -l | tr -d ' ') heroes in place"
+
+# On a host whose units are already installed and wired -- a restore of
+# the state on the machine that holds it -- TOC_RESTORE_SKIP_SERVICES=1
+# starts again what was stopped and leaves the units alone.
+if [ "$DRILL" = 0 ] && [ "${TOC_RESTORE_SKIP_SERVICES:-0}" = 1 ]; then
+    printf '%s %s\n' "$(git -C "$BUILD" rev-parse HEAD)" \
+        "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > "$CURRENT/log/deployed-commit" 2>/dev/null || true
+    if [ "$(id -u)" = 0 ] && id -u toc >/dev/null 2>&1; then
+        chown -R toc:toc "$CURRENT"      # the game runs as toc and must write it
+    fi
+    resume
+    say "done -- the tree is restored and what was running is started again"
+    exit 0
+fi
 
 if [ "$DRILL" = 1 ]; then
     say "rehearsal complete"
