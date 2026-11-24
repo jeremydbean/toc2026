@@ -338,6 +338,32 @@ class WebAdminApiTests(unittest.TestCase):
             # Newest first here too, which is the reverse of file order.
             self.assertEqual(paged["events"][0]["channel"], "wizinfo")
 
+    def test_archived_players_are_searched_and_marked(self) -> None:
+        """Owner, 2026-11-24: the website's player search finds archived
+        characters too (player/archive/, moved there by the game after two
+        years unseen), and opening one says it is archived. Synthetic."""
+        with self.webadmin_client() as (server, client, temp_root):
+            archive = server.PLAYER_PATH / "archive"
+            archive.mkdir()
+            (archive / "Zoldtimer").write_text(PLAYER_FIXTURE.replace("MiXeD", "Zoldtimer"),
+                                               encoding="latin-1")
+            # Archived and live under one name (a login brought it back and
+            # the old copy stayed): the live file is the one.
+            (archive / "MiXeD").write_text(PLAYER_FIXTURE, encoding="latin-1")
+            headers = {"X-Admin-Token": "secret"}
+            self.assertEqual(client.get("/api/players", headers=headers).json(),
+                             ["MiXeD", "Zoldtimer"])
+            old = client.get("/api/player/zoldtimer", headers=headers)
+            self.assertEqual(old.status_code, 200)
+            self.assertEqual(old.json()["name"], "Zoldtimer")
+            self.assertTrue(old.json()["archived"])
+            live = client.get("/api/player/MiXeD", headers=headers).json()
+            self.assertFalse(live["archived"])
+            self.assertEqual(client.get("/api/player/archive", headers=headers).status_code, 404)
+        app = (Path(__file__).resolve().parents[1] / "webadmin" / "static" / "app.js").read_text(
+            encoding="utf-8")
+        self.assertIn('player.archived ? [["Status", "Archived', app)
+
     def test_player_privacy_case_preservation_and_log_auth(self) -> None:
         with self.webadmin_client() as (server, client, temp_root):
             event_path = temp_root / "webadmin-events.tsv"

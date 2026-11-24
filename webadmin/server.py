@@ -2121,16 +2121,41 @@ def align_str(alig: int) -> str:
     return "Angelic" if alig >= 700 else "Diabolic"
 
 
+# Characters not seen in two years, moved here by the game at boot
+# (src/save.c, PLAYER_ARCHIVE_DIR); a login moves one back. The website's
+# player search finds them too, marked archived (owner, 2026-11-24).
+PLAYER_ARCHIVE_SUBDIR = "archive"
+
+
+def _player_names_in(folder: Path) -> list[str]:
+    try:
+        return [
+            p.name for p in folder.iterdir()
+            if PLAYER_NAME_RE.fullmatch(p.name) and p.is_file() and not p.is_symlink()
+        ]
+    except OSError:
+        return []
+
+
 def resolve_player_path(name: str) -> Path | None:
-    """Resolve a valid player name without changing its filename casing."""
+    """Resolve a valid player name without changing its filename casing:
+    the live file, or else the archived one."""
     if not PLAYER_NAME_RE.fullmatch(name):
         return None
+    for folder in (PLAYER_PATH, PLAYER_PATH / PLAYER_ARCHIVE_SUBDIR):
+        found = _resolve_player_in(folder, name)
+        if found is not None:
+            return found
+    return None
+
+
+def _resolve_player_in(folder: Path, name: str) -> Path | None:
     try:
-        direct = PLAYER_PATH / name
+        direct = folder / name
         if direct.is_file() and not direct.is_symlink():
             return direct
         folded = name.casefold()
-        for candidate in PLAYER_PATH.iterdir():
+        for candidate in folder.iterdir():
             if (
                 candidate.name.casefold() == folded
                 and PLAYER_NAME_RE.fullmatch(candidate.name)
@@ -2152,6 +2177,7 @@ def parse_player_file(name: str) -> dict | None:
 
     data: dict = {
         "name": cname, "race": "human", "sex": 1,
+        "archived": path.parent.name == PLAYER_ARCHIVE_SUBDIR and path.parent.parent == PLAYER_PATH,
         "class_num": 0, "class_name": "mage",
         "guild_num": 11, "guild_name": "none",
         "level": 1,
@@ -4262,17 +4288,13 @@ async def get_area_health(include_issues: bool = True) -> Dict[str, Any]:
 
 @app.get("/api/players")
 async def list_players(_: None = Depends(verify_token)) -> list[str]:
-    """Return sorted list of all player names (extension-less files only)."""
-    try:
-        return sorted(
-            (
-                p.name for p in PLAYER_PATH.iterdir()
-                if PLAYER_NAME_RE.fullmatch(p.name) and p.is_file() and not p.is_symlink()
-            ),
-            key=str.lower,
-        )
-    except OSError:
-        return []
+    """Return sorted list of all player names (extension-less files only),
+    the archived ones too: opening one says it is archived."""
+    live = _player_names_in(PLAYER_PATH)
+    known = {n.casefold() for n in live}
+    archived = [n for n in _player_names_in(PLAYER_PATH / PLAYER_ARCHIVE_SUBDIR)
+                if n.casefold() not in known]
+    return sorted(live + archived, key=str.lower)
 
 
 @app.get("/api/player/{name}")

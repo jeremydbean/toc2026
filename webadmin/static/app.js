@@ -1823,6 +1823,7 @@
         const summary = node("div", { className: "player-summary" });
         [
             ["Name", [player.name, stripMudColor(player.title || "")].filter(Boolean).join(" ")],
+            ...(player.archived ? [["Status", "Archived (not seen in two years; logging in brings them back)"]] : []),
             ["Level", player.level],
             ["Class", player.class_name],
             ["Guild", player.guild_name],
