@@ -346163,3 +346163,4 @@ Tue Nov 24 17:30:52 2026 :: Connection guard: 35.203.211.159 closed without a wo
 Tue Nov 24 17:30:52 2026 :: Connection guard: 35.203.211.159 closed without a word (strike 2 of 6 in 6 hours).
 Tue Nov 24 17:32:24 2026 :: Connection guard: refused 1 connection from 5.161.194.92 (paused; 21 refused in all, pause 4 in 30 days, 561 minutes left).
 Tue Nov 24 17:32:25 2026 :: Connection guard: 5.161.194.92 is checker-ash8.uptimerobot.com, an uptime monitor (the name leads back to it): its checks are not strikes, and its pause is lifted.
+Tue Nov 24 17:35:26 2026 :: Connection guard: last hour 13 closed without a word, 4 refused, 0 new characters refused, 0 newly paused; 5 addresses paused and 0 refused now, 16 active player addresses.
