@@ -55709,3 +55709,10 @@
 1795486781	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	rush qp=2686->2686 offered=33 daily=4->4 coin=+123303312 kill=15412914 streak=4 level=57 target=-1
 1795486781	cmd	Alaric	57	2497	dresden.are	standing	100	23	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Rush contract fulfilled - your double reward is well earned!'	success:-	+
 1795486781	cmd	Alaric	57	2497	dresden.are	standing	100	6	-	aquest	ga no	You safely collect 33 quest points.	-	-
+1795486791	laid	-	0	0	-	898	herb	51	a piece of kelp	7760	ultima.are	scatter
+1795486791	laid	-	0	0	-	899	herb	34	an amaranth plant	7776	ultima.are	scatter
+1795486791	state	Alaric	57	2497	dresden.are	lvl=57 hp=1544/1544 mana=2875/2875 mv=278/983 align=1000 exp=252749 coin=593418618 bank=29471400340 qp=2719 prac=36 train=76 stash=93/350 remorts=3
+1795486791	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	score		| Name:         Alaric | Level:      57 | Class:        Monk | // | Played:    313 hours | Sex:      Male | Guild:        Monk | // | Age:        32 years | Race:    Dwarf | Castle:       None |	-	+
+1795486794	sightings	Alaric	57	2497	dresden.are	mob	201:1/0/0 29809:1/0/0 4450:1/0/0 7005:2/0/0 7006:2/0/0 7002:1/0/0 7000:2/0/0 6517:2/0/0 6516:1/1/0 4202:1/0/0 10:1/0/0 4468:1/0/0 4458:1/0/0 2435:1/0/0 2433:1/0/0 4452:2/0/0 6501:3/0/0 6500:6/4/0 6506:1/0/0 6507:3/0/0 6508:1/0/0 6505:1/1/0 6503:1/0/0
+1795486794	sightings	Alaric	57	2497	dresden.are	item	4444:1/0 4446:1/0 4447:1/0 6507:4/0 15:1/0 6517:1/0 14:1/0
+1795486794	session	Alaric	57	2497	dresden.are	quit	264s	+0 levels	+0 exp	+127600280 copper	6 kills	0 deaths	1 quests	193 commands	1 refused	coin: loot 5p 79g 69s 68c, quests 123p 30g 33s 12c, spent 1p 50g	spent on: heal 1p 50g	exp: none
