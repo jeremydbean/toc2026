@@ -2,7 +2,7 @@
 Name Killuminati~
 Id   30948
 Serial 15065367
-LogO 1795529048
+LogO 1795529109
 Vers 4
 Desc You see something very special about him.
 ~
@@ -21,7 +21,7 @@ Fixes 20261112-quest-serial 20261112-hyrule-crumble 20261114-season-area-ids 202
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6704987
+Plyd 6705048
 ListRemorts ~
 NumRemorts 0
 Note 1794571056
@@ -114,7 +114,7 @@ Achv landmarks-10 1793019785
 Achv stash-ceiling 1793019785
 AchSet psi-disciplines 3 ~
 AchSet map-areas 1807702998 ~
-LastOut  1795529048
+LastOut  1795529109
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1794868418
@@ -425,7 +425,7 @@ Gr 'mage default'
 Gr 'warrior default'
 Gr 'monk default'
 Gr 'warrior guild'
-AffD 'luck'   0   8   1   0          0          0
+AffD 'luck'   0   7   1   0          0          0
 End
 
 #O
