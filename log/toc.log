@@ -345670,3 +345670,12 @@ Tue Nov 24 12:12:22 2026 :: Connection guard: refused 1 connection from 5.161.61
 Tue Nov 24 12:14:24 2026 :: Connection guard: last hour 13 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 10 addresses paused and 0 refused now, 16 active player addresses.
 Tue Nov 24 12:16:04 2026 :: Black market: the dealer vanished from room 7508 (Exploring the Astral Plane, astral.are) (too long in one area).
 Tue Nov 24 12:16:52 2026 :: Black market: the dealer vanished from room 17762 (The Yellow Brick Road, landoz.are) (wandering).
+Tue Nov 24 12:17:26 2026 :: Connection guard: 178.156.189.249 closed without a word (strike 3 of 6 in 6 hours).
+Tue Nov 24 12:17:57 2026 :: Sock.sinaddr:  208.126.22.104
+Tue Nov 24 12:17:57 2026 :: Loading Alaric's playerfile
+Tue Nov 24 12:17:58 2026 :: Loading Alaric's playerfile
+Tue Nov 24 12:17:58 2026 :: Alaric@208.126.22.104 has connected.
+Tue Nov 24 12:17:59 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 0
+Tue Nov 24 12:18:03 2026 :: Log Alaric [2497]: wake
+Tue Nov 24 12:18:05 2026 :: Log Alaric [2497]: aq re
+Tue Nov 24 12:18:05 2026 :: Log Alaric [2497]: quest assigned: kill a caf employee (mob 15023, level 15) in campus.are, 19 minutes, ordinary

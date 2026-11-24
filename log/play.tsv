@@ -55716,3 +55716,7 @@
 1795486794	sightings	Alaric	57	2497	dresden.are	mob	201:1/0/0 29809:1/0/0 4450:1/0/0 7005:2/0/0 7006:2/0/0 7002:1/0/0 7000:2/0/0 6517:2/0/0 6516:1/1/0 4202:1/0/0 10:1/0/0 4468:1/0/0 4458:1/0/0 2435:1/0/0 2433:1/0/0 4452:2/0/0 6501:3/0/0 6500:6/4/0 6506:1/0/0 6507:3/0/0 6508:1/0/0 6505:1/1/0 6503:1/0/0
 1795486794	sightings	Alaric	57	2497	dresden.are	item	4444:1/0 4446:1/0 4447:1/0 6507:4/0 15:1/0 6517:1/0 14:1/0
 1795486794	session	Alaric	57	2497	dresden.are	quit	264s	+0 levels	+0 exp	+127600280 copper	6 kills	0 deaths	1 quests	193 commands	1 refused	coin: loot 5p 79g 69s 68c, quests 123p 30g 33s 12c, spent 1p 50g	spent on: heal 1p 50g	exp: none
+1795522679	area	Alaric	57	2497	dresden.are	-	dresden.are	-1	login
+1795522683	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	wake		You are already standing.	-	-
+1795522685	quest	Alaric	57	2497	dresden.are	ordinary	kill	15023	a caf employee	15	campus.are	19
+1795522685	cmd	Alaric	57	2497	dresden.are	standing	100	24	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Alaric. I have just the task for you.' // Questor Thews tells you 'The criminal known as a caf employee has escaped from prison!'	-	+
