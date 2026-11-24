@@ -345616,3 +345616,7 @@ Tue Nov 24 10:10:16 2026 :: Connection guard: 23.31.96.97 closed without a word 
 Tue Nov 24 10:10:54 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 1 of 6 in 6 hours).
 Tue Nov 24 10:14:08 2026 :: Treasure goblin: vanished from room 9164 (Patio., dylan.are) (too long in one area).
 Tue Nov 24 10:14:24 2026 :: Connection guard: last hour 8 closed without a word, 5 refused, 0 new characters refused, 0 newly paused; 10 addresses paused and 0 refused now, 16 active player addresses.
+Tue Nov 24 10:15:36 2026 :: Automated backup started.
+Tue Nov 24 10:15:36 2026 :: Backups: 1 old archive(s) expired; the newest 6 are always kept.
+Tue Nov 24 10:15:37 2026 :: Automated backup complete.
+Tue Nov 24 10:15:56 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 3 of 6 in 6 hours).
