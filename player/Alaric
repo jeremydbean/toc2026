@@ -2,7 +2,7 @@
 Name Alaric~
 Id   22012
 Serial 1251902
-LogO 1795486535
+LogO 1795486545
 Vers 4
 Prom ~
 Race dwarf~
@@ -18,7 +18,7 @@ ChangesSeen 20261122reports:1 20261121logfixes:1 20261120fixes:1 20261120luck:1 
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble 20261114-season-area-ids 20261116-wrapped-pools 20261123-hyrule-piece-credit~
 Cast none
 Levl 57
-Plyd 1127971
+Plyd 1127981
 ListRemorts 3  3  5  2  2 ~
 NumRemorts 3
 Note 1790386686
@@ -27,14 +27,14 @@ SkillDamage 597 6 57
 MeleeRatio 751 4
 Scro 22
 Room 2497
-HMV  1544 1544 2875 2875 149 983
+HMV  1544 1544 2875 2875 206 983
 NewGold 81
 NewPlat 465
 NewCopp 38
 NewSilv 83
-BankCP 29397905577
-IntTime 1795395484
-IntTotal 1755905577
+BankCP 29471400340
+IntTime 1795481884
+IntTotal 1829400340
 Dcount 0
 SavedOnce 1
 PkRec 0
@@ -183,7 +183,7 @@ AchSet rooms 2 4 10-16 18 21-25 28-43 45-47 51-59 61-64 66 70 300 305-306 309-31
 AchSet daily-kinds 1 ~
 AchSet psi-disciplines 1-2 ~
 AchSet explored-areas 1819706833 ~
-LastOut  1795486535
+LastOut  1795486545
 Rested 46163 0
 Daily 4 20751 3 1 20751
 SesLogin 1795402540
@@ -293,9 +293,9 @@ Sk 100 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
-AffD 'giant strength'   0  11   1   1          0          0
-AffD 'bless'   0  17   1  18          0          0
-AffD 'bless'   0  17  -1  24          0          0
+AffD 'giant strength'   0  10   1   1          0          0
+AffD 'bless'   0  16   1  18          0          0
+AffD 'bless'   0  16  -1  24          0          0
 End
 
 #O

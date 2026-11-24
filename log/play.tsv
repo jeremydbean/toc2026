@@ -55478,3 +55478,5 @@
 1795486533	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	look		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
 1795486535	quest	Alaric	57	2497	dresden.are	rush	kill	6505	the giant lizard	19	dwarves.are	5
 1795486535	cmd	Alaric	57	2497	dresden.are	standing	100	17	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'the giant lizard has been declared an outlaw!'	-	+
+1795486545	coin	Alaric	57	2497	dresden.are	+73494763	bank	interest	bank	29937218678
+1795486545	laid	-	0	0	-	852	herb	44	a sprig of aconite	29324	korzath2.are	scatter
