@@ -346140,3 +346140,4 @@ Tue Nov 24 16:53:30 2026 :: Sock.sinaddr:  172.236.228.115
 Tue Nov 24 16:53:31 2026 :: EOF encountered on read.
 Tue Nov 24 16:53:31 2026 :: Connection guard: 172.236.228.115 closed before a password prompt (strike 1 of 6 in 6 hours).
 Tue Nov 24 16:53:31 2026 :: Connection guard: 172.236.228.115 closed without a word (strike 2 of 6 in 6 hours).
+Tue Nov 24 16:55:35 2026 :: Treasure goblin: vanished from room 1150 (Collapsed Tunnel., shire.are) (too long in one area).
