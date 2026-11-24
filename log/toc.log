@@ -346333,3 +346333,5 @@ Tue Nov 24 21:45:57 2026 :: Backups: 2 old archive(s) expired; the newest 6 are 
 Tue Nov 24 21:45:58 2026 :: Automated backup complete.
 Tue Nov 24 21:45:59 2026 :: Daily backup complete.
 Tue Nov 24 21:56:02 2026 :: Treasure goblin: vanished from room 6313 (Wolf Spider Lair, arac.are) (too long in one area).
+Tue Nov 24 22:01:40 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 63 refused in all, pause 5 in 30 days, 2126 minutes left).
+Tue Nov 24 22:01:41 2026 :: Connection guard: 54.167.223.174 is checker-nvi6.uptimerobot.com, an uptime monitor (the name leads back to it): its checks are not strikes, and its pause is lifted.
