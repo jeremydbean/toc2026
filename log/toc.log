@@ -345045,3 +345045,48 @@ Tue Nov 24 02:16:03 2026 :: Log Alaric [6550]: w
 Tue Nov 24 02:16:03 2026 :: Log Alaric [6552]: arrived (Solved the Maze.) from 6550
 Tue Nov 24 02:16:05 2026 :: Log Alaric [6552]: w
 Tue Nov 24 02:16:05 2026 :: Log Alaric [6553]: arrived (The Mazekeeper's Room) from 6552
+Tue Nov 24 02:16:08 2026 :: Log Alaric [6553]: look ma
+Tue Nov 24 02:16:12 2026 :: Log Alaric [6553]: steel
+Tue Nov 24 02:16:16 2026 :: Log Alaric [6553]: iron
+Tue Nov 24 02:16:16 2026 :: Log Alaric [6553]: fi ma
+Tue Nov 24 02:16:22 2026 :: Log Alaric [6553]: fi
+Tue Nov 24 02:16:28 2026 :: Log Alaric [6553]: killed the mazekeeper
+Tue Nov 24 02:16:28 2026 :: Log Alaric [6553]: coin +1 platinum
+Tue Nov 24 02:16:28 2026 :: Log Alaric [6553]: coin +49 silver
+Tue Nov 24 02:16:28 2026 :: Log Alaric [6553]: coin +44 copper
+Tue Nov 24 02:16:28 2026 :: Log Alaric [6553]: coin +71 gold
+Tue Nov 24 02:16:28 2026 :: Sock.sinaddr:  216.218.206.66
+Tue Nov 24 02:16:28 2026 :: EOF encountered on read.
+Tue Nov 24 02:16:28 2026 :: Connection guard: 216.218.206.66 closed before a password prompt (strike 1 of 6 in 6 hours).
+Tue Nov 24 02:16:30 2026 :: Log Alaric [6553]: l i cor
+Tue Nov 24 02:16:37 2026 :: Log Alaric [6553]: get all cor
+Tue Nov 24 02:16:37 2026 :: Log Alaric [6553]: e
+Tue Nov 24 02:16:37 2026 :: Log Alaric [6552]: arrived (Solved the Maze.) from 6553
+Tue Nov 24 02:16:37 2026 :: Log Alaric [6552]: e
+Tue Nov 24 02:16:37 2026 :: Log Alaric [6550]: arrived (Maze) from 6552
+Tue Nov 24 02:16:38 2026 :: Log Alaric [6550]: s
+Tue Nov 24 02:16:38 2026 :: Log Alaric [6549]: arrived (Maze) from 6550
+Tue Nov 24 02:16:38 2026 :: Log Alaric [6549]: s
+Tue Nov 24 02:16:38 2026 :: Log Alaric [6549]: s
+Tue Nov 24 02:16:39 2026 :: Log Alaric [6549]: s
+Tue Nov 24 02:16:41 2026 :: Log Alaric [6549]: s
+Tue Nov 24 02:16:43 2026 :: Log Alaric [6549]: west
+Tue Nov 24 02:16:43 2026 :: Log Alaric [6548]: arrived (Maze) from 6549
+Tue Nov 24 02:16:44 2026 :: Log Alaric [6548]: south
+Tue Nov 24 02:16:44 2026 :: Log Alaric [6547]: arrived (Maze inscription) from 6548
+Tue Nov 24 02:16:46 2026 :: Log Alaric [6547]: w
+Tue Nov 24 02:16:46 2026 :: Log Alaric [6546]: arrived (Mine Maze) from 6547
+Tue Nov 24 02:16:48 2026 :: Log Alaric [6546]: os
+Tue Nov 24 02:16:48 2026 :: Log Alaric [6546]: s
+Tue Nov 24 02:16:51 2026 :: Log Alaric [6546]: unl south
+Tue Nov 24 02:16:52 2026 :: Log Alaric [6546]: s
+Tue Nov 24 02:16:53 2026 :: Log Alaric [6546]: l
+Tue Nov 24 02:17:00 2026 :: Log Alaric [6546]: recal
+Tue Nov 24 02:17:00 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 6546
+Tue Nov 24 02:17:02 2026 :: Log Alaric [2497]: en do
+Tue Nov 24 02:17:02 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Nov 24 02:17:03 2026 :: Log Alaric [2401]: jump rock
+Tue Nov 24 02:17:03 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Tue Nov 24 02:17:03 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 1607
+Tue Nov 24 02:17:05 2026 :: Log Alaric [4208]: heal ref
+Tue Nov 24 02:17:05 2026 :: Log Alaric [4208]: gold -150

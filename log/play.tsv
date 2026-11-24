@@ -55507,3 +55507,38 @@
 1795486562	cmd	Alaric	57	6550	dwarves.are	standing	100	0	-	north		Maze //   You are in a maze. // [Exits: south west]	-	-
 1795486563	cmd	Alaric	57	6552	dwarves.are	standing	100	0	-	west		Solved the Maze. //   You have solved the maze.  You can tell by the last few moves // that there is no way that a dumb worker could have figured that	-	+
 1795486565	cmd	Alaric	57	6553	dwarves.are	standing	100	0	-	west		The Mazekeeper's Room //   You have entered the Mazekeeper's room.  There are pictures of // the Queen with darts thrown in it.  Spray-painted on the wall are	-	+
+1795486568	cmd	Alaric	57	6553	dwarves.are	standing	100	0	-	look	ma	He looks VERY tough. // The mazekeeper is in excellent condition.	-	-
+1795486572	cmd	Alaric	57	6553	dwarves.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.	-	-
+1795486576	cmd	Alaric	57	6553	dwarves.are	standing	100	0	-	iron		You lost your concentration.	-	-
+1795486576	cmd	Alaric	57	6553	dwarves.are	standing	100	0	-	fists	ma	You attack in an all consuming fury! // Your frost-wreathed fists of fury grazes the mazekeeper. [-5] // Your blazing fists of fury decimates the mazekeeper! [-27]	-	+
+1795486582	cmd	Alaric	57	6553	dwarves.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your frost-wreathed fists of fury grazes the mazekeeper. [-7] // Your blazing fists of fury devastates the mazekeeper! [-29]	-	+
+1795486588	coin	Alaric	57	6553	dwarves.are	+1000000	loot	autogold	corpse of the mazekeeper	29938218678
+1795486588	coin	Alaric	57	6553	dwarves.are	+4900	loot	autogold	corpse of the mazekeeper	29938223578
+1795486588	coin	Alaric	57	6553	dwarves.are	+44	loot	autogold	corpse of the mazekeeper	29938223622
+1795486588	coin	Alaric	57	6553	dwarves.are	+710000	loot	autogold	corpse of the mazekeeper	29938933622
+1795486590	cmd	Alaric	57	6553	dwarves.are	standing	100	0	-	look	i cor	Corpse of the mazekeeper contains: //      a box of birth control pills	-	-
+1795486597	got	Alaric	57	6553	dwarves.are	6519	a box of birth control pills	pill	1	5100	get	corpse of the mazekeeper
+1795486597	cmd	Alaric	57	6553	dwarves.are	standing	100	0	-	get	all cor	You get a box of birth control pills from corpse of the mazekeeper.	-	-
+1795486597	cmd	Alaric	57	6552	dwarves.are	standing	100	0	-	east		Solved the Maze. //   You have solved the maze.  You can tell by the last few moves // that there is no way that a dumb worker could have figured that	-	+
+1795486597	cmd	Alaric	57	6550	dwarves.are	standing	100	0	-	east		Maze //   You are in a maze. // [Exits: south west]	-	-
+1795486598	cmd	Alaric	57	6549	dwarves.are	standing	100	0	-	south		Maze //   You are in a maze. // [Exits: north west]	-	+
+1795486598	cmd	Alaric	57	6549	dwarves.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1795486598	cmd	Alaric	57	6549	dwarves.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1795486599	cmd	Alaric	57	6549	dwarves.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1795486601	cmd	Alaric	57	6549	dwarves.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1795486603	cmd	Alaric	57	6548	dwarves.are	standing	100	0	-	west		Maze //   You are in a maze. // [Exits: north south]	-	+
+1795486604	cmd	Alaric	57	6547	dwarves.are	standing	100	0	-	south		Maze inscription //   You are inside the maze, but not far enough in that you could get lost. // [Exits: north west]	-	-
+1795486606	cmd	Alaric	57	6546	dwarves.are	standing	100	0	-	west		Mine Maze //   You have entered the maze of the mines.  To the east you // can see some inscriptions, and you can exit to the south.	-	+
+1795486608	cmd	Alaric	57	6546	dwarves.are	standing	100	0	-	open		It's locked.	-	-
+1795486608	cmd	Alaric	57	6546	dwarves.are	standing	100	0	-	south		The door is closed.	-	-
+1795486611	cmd	Alaric	57	6546	dwarves.are	standing	100	0	-	unlock	south	You lack the key: it takes a deep green key to unlock it.	-	-
+1795486612	cmd	Alaric	57	6546	dwarves.are	standing	100	0	-	south		The door is closed.	-	-
+1795486613	cmd	Alaric	57	6546	dwarves.are	standing	100	0	-	look		Mine Maze //   You have entered the maze of the mines.  To the east you // can see some inscriptions, and you can exit to the south.	-	+
+1795486620	area	Alaric	57	2497	dresden.are	dwarves.are	dresden.are	64	recall
+1795486620	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795486622	cmd	Alaric	57	2401	dresden.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Center of Oak Tree Square.	-	+
+1795486623	area	Alaric	57	1607	wyvern.are	dresden.are	wyvern.are	3	jump
+1795486623	cmd	Alaric	57	1607	wyvern.are	standing	100	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you	-	+
+1795486623	area	Alaric	57	4208	dresden.are	wyvern.are	dresden.are	0	(room)
+1795486625	coin	Alaric	57	4208	dresden.are	-1500000	spent	heal	-	29937433622
+1795486625	cmd	Alaric	57	4208	dresden.are	standing	100	0	-	heal	ref	The healer utters the words 'candusima'. // You feel fully refreshed! (15 castings, 150 gold.)	-	-
