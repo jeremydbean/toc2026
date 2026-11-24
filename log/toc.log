@@ -345563,3 +345563,31 @@ Tue Nov 24 08:54:42 2026 :: Connection guard: 52.15.147.27 closed without a word
 Tue Nov 24 08:59:46 2026 :: Connection guard: 178.156.185.127 closed without a word (strike 5 of 6 in 6 hours).
 Tue Nov 24 09:03:35 2026 :: Treasure goblin: vanished from room 722 (The Chasm, camelot.are) (too long in one area).
 Tue Nov 24 09:04:52 2026 :: Connection guard: refused 1 connection from 178.156.187.238 (paused; 37 refused in all, pause 4 this week, 1525 minutes left).
+Tue Nov 24 09:09:50 2026 :: Connection guard: 112.97.86.190 refused a connection: 8 already waiting at the login prompt (told again in 10 minutes at most).
+Tue Nov 24 09:09:50 2026 :: Connection guard: refused 1 connection from 112.97.86.190 (too many waiting at the login prompt; 4 refused in all, pause 1 this week, -516 minutes left).
+Tue Nov 24 09:09:50 2026 :: Sock.sinaddr:  112.97.86.190
+Tue Nov 24 09:09:50 2026 :: Sock.sinaddr:  112.97.86.190
+Tue Nov 24 09:09:50 2026 :: Sock.sinaddr:  112.97.86.190
+Tue Nov 24 09:09:50 2026 :: Sock.sinaddr:  112.97.86.190
+Tue Nov 24 09:09:50 2026 :: Sock.sinaddr:  112.97.86.190
+Tue Nov 24 09:09:50 2026 :: Sock.sinaddr:  112.97.86.190
+Tue Nov 24 09:09:50 2026 :: Sock.sinaddr:  112.97.86.190
+Tue Nov 24 09:09:50 2026 :: Sock.sinaddr:  112.97.86.190
+Tue Nov 24 09:09:51 2026 :: EOF encountered on read.
+Tue Nov 24 09:09:51 2026 :: Connection guard: 112.97.86.190 closed before a password prompt (strike 1 of 6 in 6 hours).
+Tue Nov 24 09:09:51 2026 :: EOF encountered on read.
+Tue Nov 24 09:09:51 2026 :: Connection guard: 112.97.86.190 closed before a password prompt (strike 2 of 6 in 6 hours).
+Tue Nov 24 09:09:51 2026 :: EOF encountered on read.
+Tue Nov 24 09:09:51 2026 :: Connection guard: 112.97.86.190 closed before a password prompt (strike 3 of 6 in 6 hours).
+Tue Nov 24 09:09:51 2026 :: EOF encountered on read.
+Tue Nov 24 09:09:51 2026 :: Connection guard: 112.97.86.190 closed before a password prompt (strike 4 of 6 in 6 hours).
+Tue Nov 24 09:09:51 2026 :: EOF encountered on read.
+Tue Nov 24 09:09:51 2026 :: Connection guard: 112.97.86.190 closed before a password prompt (strike 5 of 6 in 6 hours).
+Tue Nov 24 09:09:51 2026 :: EOF encountered on read.
+Tue Nov 24 09:09:51 2026 :: Connection guard: 112.97.86.190 closed before a password prompt (strike 6 of 6 in 6 hours).
+Tue Nov 24 09:09:51 2026 :: Connection guard: 112.97.86.190 paused for 12 hours (pause 2 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 112.97.86.190 lifts it.
+Tue Nov 24 09:09:51 2026 :: EOF encountered on read.
+Tue Nov 24 09:09:51 2026 :: Connection guard: 112.97.86.190 closed before a password prompt (strike 1 of 6 in 6 hours).
+Tue Nov 24 09:09:51 2026 :: EOF encountered on read.
+Tue Nov 24 09:09:51 2026 :: Connection guard: 112.97.86.190 closed before a password prompt (strike 2 of 6 in 6 hours).
+Tue Nov 24 09:09:56 2026 :: Connection guard: 178.156.181.172 closed without a word (strike 1 of 6 in 6 hours).
