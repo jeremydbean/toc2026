@@ -55667,3 +55667,45 @@
 1795486741	cmd	Alaric	57	6542	dwarves.are	standing	100	0	-	down		Inside the mine //   There are holes everywhere from the places that the workers blew // away the rock to get to whatever they were looking for.  A path leads	-	+
 1795486743	cmd	Alaric	57	6554	dwarves.are	standing	100	0	-	down		Bottom of mineshaft //   You are at the bottom of the mineshaft.  The air here is very sooty, and // it is very hard to breathe.  The mineshaft leads up and east.	-	+
 1795486745	cmd	Alaric	57	6543	dwarves.are	standing	100	0	-	east		Path in the mine //   You are deep inside the mine, and you feel very uncomfortable.  The // path continues to the east, and leads to the mineshaft to the west.	-	+
+1795486746	cmd	Alaric	57	6543	dwarves.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1795486746	cmd	Alaric	57	6544	dwarves.are	standing	100	0	-	east		Mine crossroad //   You are at a crossroad in the mine.  There is a door to the north, // and the path continues to the south, east, and west.	-	+
+1795486749	cmd	Alaric	57	6544	dwarves.are	standing	100	0	-	unlock	north	*Click*	-	-
+1795486750	cmd	Alaric	57	6544	dwarves.are	standing	100	0	-	open		Ok.	-	-
+1795486751	cmd	Alaric	57	6544	dwarves.are	standing	100	0	-	scan		the dwarven mine leader            -to the West. // the dwarven miner                  -to the West. // the dwarven miner                  -to the West.	-	-
+1795486752	cmd	Alaric	57	6545	dwarves.are	standing	100	0	-	east		Coal Room //   You are inside the storage area for the raw materials // that are found down here.  The room is very unsturdy as the	-	+
+1795486753	cmd	Alaric	57	6545	dwarves.are	standing	100	0	-	scan		the dwarven mine leader            -to the far West. // the dwarven miner                  -to the far West. // the dwarven miner                  -to the far West.	-	-
+1795486754	cmd	Alaric	57	6544	dwarves.are	standing	100	0	-	west		Mine crossroad //   You are at a crossroad in the mine.  There is a door to the north, // and the path continues to the south, east, and west.	-	+
+1795486754	cmd	Alaric	57	6546	dwarves.are	standing	100	0	-	north		Mine Maze //   You have entered the maze of the mines.  To the east you // can see some inscriptions, and you can exit to the south.	-	+
+1795486755	cmd	Alaric	57	6546	dwarves.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1795486755	cmd	Alaric	57	6547	dwarves.are	standing	100	0	-	east		Maze inscription //   You are inside the maze, but not far enough in that you could get lost. // [Exits: north west]	-	-
+1795486756	cmd	Alaric	57	6548	dwarves.are	standing	100	0	-	north		Maze //   You are in a maze. // [Exits: north south]	-	+
+1795486758	cmd	Alaric	57	6547	dwarves.are	standing	100	0	-	south		Maze inscription //   You are inside the maze, but not far enough in that you could get lost. // [Exits: north west]	-	-
+1795486758	cmd	Alaric	57	6547	dwarves.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1795486758	cmd	Alaric	57	6546	dwarves.are	standing	100	0	-	west		Mine Maze //   You have entered the maze of the mines.  To the east you // can see some inscriptions, and you can exit to the south.	-	+
+1795486759	cmd	Alaric	57	6544	dwarves.are	standing	100	0	-	south		Mine crossroad //   You are at a crossroad in the mine.  There is a door to the north, // and the path continues to the south, east, and west.	-	+
+1795486760	cmd	Alaric	57	6543	dwarves.are	standing	100	0	-	west		Path in the mine //   You are deep inside the mine, and you feel very uncomfortable.  The // path continues to the east, and leads to the mineshaft to the west.	-	+
+1795486760	cmd	Alaric	57	6554	dwarves.are	standing	100	0	-	west		Bottom of mineshaft //   You are at the bottom of the mineshaft.  The air here is very sooty, and // it is very hard to breathe.  The mineshaft leads up and east.	-	+
+1795486760	cmd	Alaric	57	6542	dwarves.are	standing	100	0	-	up		Inside the mine //   There are holes everywhere from the places that the workers blew // away the rock to get to whatever they were looking for.  A path leads	-	+
+1795486761	cmd	Alaric	57	6542	dwarves.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1795486762	cmd	Alaric	57	6541	dwarves.are	standing	100	0	-	up		Mine entrance //   The little path here leads down toward the mines, while the worn path // continues to the west.	-	+
+1795486763	cmd	Alaric	57	6540	dwarves.are	standing	100	0	-	west		Dark path //   This path is very well worn, and there is an entrance to the mines to the // east, while the path continues to the north and west.	-	+
+1795486764	cmd	Alaric	57	6503	dwarves.are	standing	100	0	-	west		Top of mountain //   You are now on the top of the mountain.  To the south you see a path // leading down the mountain.  To the east and west you see entrances to	-	+
+1795486766	cmd	Alaric	57	6505	dwarves.are	standing	100	0	-	west		Entrance to Mountain //   Here is an entrance to the mountain.  The door looks very well built, // and you can hear noise coming from within.	-	+
+1795486767	cmd	Alaric	57	6505	dwarves.are	standing	100	0	-	west		The door is closed.	-	-
+1795486769	cmd	Alaric	57	6505	dwarves.are	standing	100	0	-	unlock	west	*Click*	-	-
+1795486769	cmd	Alaric	57	6505	dwarves.are	standing	100	0	-	open		Ok.	-	-
+1795486770	cmd	Alaric	57	6513	dwarves.are	standing	100	0	-	west		Inside the entrance //   Everything here is covered in soot and very grimy.  The path continues // to the east and north, and there is a door to the west.	-	+
+1795486772	cmd	Alaric	57	6513	dwarves.are	standing	100	0	-	scan		the dwarven guard                  -to the East. // the dwarven guard                  -to the East. // the dwarven worker                 -to the far East.	-	-
+1795486773	cmd	Alaric	57	6514	dwarves.are	standing	100	0	-	north		Path //   You are on a path in the dwarven village which leads north to the shops // and south to the corner of the area.	-	+
+1795486774	cmd	Alaric	57	6514	dwarves.are	standing	100	0	-	scan		You don't see anything near you.	-	-
+1795486774	cmd	Alaric	57	6515	dwarves.are	standing	100	0	-	north		Turn in road //   You are on a path that leads to a Hide & Tooth shop to the west, and the // path continues to the south.	-	+
+1795486775	cmd	Alaric	57	6515	dwarves.are	standing	100	0	-	scan		the giant lizard                   -to the West. // the storekeeper                    -to the West.	-	-
+1795486776	cmd	Alaric	57	6516	dwarves.are	standing	100	0	-	west		Hide & Tooth Shop //   You are in the Hide & Tooth shop.  Here you may buy the finest in Dwarven // weapons and armors. The path continues to the north and east.	-	+
+1795486777	cmd	Alaric	57	6516	dwarves.are	standing	100	15	-	kill	li	Your punch === OBLITERATES === the giant lizard! [-127] // Your punch === OBLITERATES === the giant lizard! [-125] // Your punch <<< ERADICATES >>> the giant lizard! [-171]	-	+
+1795486781	area	Alaric	57	2497	dresden.are	dwarves.are	dresden.are	113	recall
+1795486781	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795486781	achieved	Alaric	57	2497	dresden.are	quest-last-minute	20	2240	aquest
+1795486781	coin	Alaric	57	2497	dresden.are	+123303312	quests	aquest	-	30064818958
+1795486781	outcome	Alaric	57	2497	dresden.are	quest-complete	success	-	-	rush qp=2686->2686 offered=33 daily=4->4 coin=+123303312 kill=15412914 streak=4 level=57 target=-1
+1795486781	cmd	Alaric	57	2497	dresden.are	standing	100	23	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Rush contract fulfilled - your double reward is well earned!'	success:-	+
+1795486781	cmd	Alaric	57	2497	dresden.are	standing	100	6	-	aquest	ga no	You safely collect 33 quest points.	-	-

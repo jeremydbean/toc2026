@@ -345291,3 +345291,66 @@ Tue Nov 24 02:19:03 2026 :: Log Alaric [6542]: d
 Tue Nov 24 02:19:03 2026 :: Log Alaric [6554]: arrived (Bottom of mineshaft) from 6542
 Tue Nov 24 02:19:05 2026 :: Log Alaric [6554]: e
 Tue Nov 24 02:19:05 2026 :: Log Alaric [6543]: arrived (Path in the mine) from 6554
+Tue Nov 24 02:19:06 2026 :: Log Alaric [6543]: scan
+Tue Nov 24 02:19:06 2026 :: Log Alaric [6543]: e
+Tue Nov 24 02:19:06 2026 :: Log Alaric [6544]: arrived (Mine crossroad) from 6543
+Tue Nov 24 02:19:09 2026 :: Log Alaric [6544]: unl north
+Tue Nov 24 02:19:10 2026 :: Log Alaric [6544]: on
+Tue Nov 24 02:19:11 2026 :: Log Alaric [6544]: scan
+Tue Nov 24 02:19:12 2026 :: Log Alaric [6544]: e
+Tue Nov 24 02:19:12 2026 :: Log Alaric [6545]: arrived (Coal Room) from 6544
+Tue Nov 24 02:19:13 2026 :: Log Alaric [6545]: scan
+Tue Nov 24 02:19:14 2026 :: Log Alaric [6545]: w
+Tue Nov 24 02:19:14 2026 :: Log Alaric [6544]: arrived (Mine crossroad) from 6545
+Tue Nov 24 02:19:14 2026 :: Log Alaric [6544]: n
+Tue Nov 24 02:19:14 2026 :: Log Alaric [6546]: arrived (Mine Maze) from 6544
+Tue Nov 24 02:19:15 2026 :: Log Alaric [6546]: scan
+Tue Nov 24 02:19:15 2026 :: Log Alaric [6546]: e
+Tue Nov 24 02:19:15 2026 :: Log Alaric [6547]: arrived (Maze inscription) from 6546
+Tue Nov 24 02:19:16 2026 :: Log Alaric [6547]: n
+Tue Nov 24 02:19:16 2026 :: Log Alaric [6548]: arrived (Maze) from 6547
+Tue Nov 24 02:19:18 2026 :: Log Alaric [6548]: s
+Tue Nov 24 02:19:18 2026 :: Log Alaric [6547]: arrived (Maze inscription) from 6548
+Tue Nov 24 02:19:18 2026 :: Log Alaric [6547]: s
+Tue Nov 24 02:19:18 2026 :: Log Alaric [6547]: w
+Tue Nov 24 02:19:18 2026 :: Log Alaric [6546]: arrived (Mine Maze) from 6547
+Tue Nov 24 02:19:19 2026 :: Log Alaric [6546]: s
+Tue Nov 24 02:19:19 2026 :: Log Alaric [6544]: arrived (Mine crossroad) from 6546
+Tue Nov 24 02:19:20 2026 :: Log Alaric [6544]: w
+Tue Nov 24 02:19:20 2026 :: Log Alaric [6543]: arrived (Path in the mine) from 6544
+Tue Nov 24 02:19:20 2026 :: Log Alaric [6543]: w
+Tue Nov 24 02:19:20 2026 :: Log Alaric [6554]: arrived (Bottom of mineshaft) from 6543
+Tue Nov 24 02:19:20 2026 :: Log Alaric [6554]: u
+Tue Nov 24 02:19:20 2026 :: Log Alaric [6542]: arrived (Inside the mine) from 6554
+Tue Nov 24 02:19:21 2026 :: Log Alaric [6542]: w
+Tue Nov 24 02:19:22 2026 :: Log Alaric [6542]: u
+Tue Nov 24 02:19:22 2026 :: Log Alaric [6541]: arrived (Mine entrance) from 6542
+Tue Nov 24 02:19:23 2026 :: Log Alaric [6541]: w
+Tue Nov 24 02:19:23 2026 :: Log Alaric [6540]: arrived (Dark path) from 6541
+Tue Nov 24 02:19:24 2026 :: Log Alaric [6540]: w
+Tue Nov 24 02:19:24 2026 :: Log Alaric [6503]: arrived (Top of mountain) from 6540
+Tue Nov 24 02:19:26 2026 :: Log Alaric [6503]: w
+Tue Nov 24 02:19:26 2026 :: Log Alaric [6505]: arrived (Entrance to Mountain) from 6503
+Tue Nov 24 02:19:27 2026 :: Log Alaric [6505]: w
+Tue Nov 24 02:19:29 2026 :: Log Alaric [6505]: unl west
+Tue Nov 24 02:19:29 2026 :: Log Alaric [6505]: ow
+Tue Nov 24 02:19:30 2026 :: Log Alaric [6505]: w
+Tue Nov 24 02:19:30 2026 :: Log Alaric [6513]: arrived (Inside the entrance) from 6505
+Tue Nov 24 02:19:32 2026 :: Log Alaric [6513]: scan
+Tue Nov 24 02:19:33 2026 :: Log Alaric [6513]: n
+Tue Nov 24 02:19:33 2026 :: Log Alaric [6514]: arrived (Path) from 6513
+Tue Nov 24 02:19:34 2026 :: Log Alaric [6514]: scan
+Tue Nov 24 02:19:34 2026 :: Log Alaric [6514]: n
+Tue Nov 24 02:19:34 2026 :: Log Alaric [6515]: arrived (Turn in road) from 6514
+Tue Nov 24 02:19:35 2026 :: Log Alaric [6515]: scan
+Tue Nov 24 02:19:36 2026 :: Log Alaric [6515]: w
+Tue Nov 24 02:19:36 2026 :: Log Alaric [6516]: arrived (Hide & Tooth Shop) from 6515
+Tue Nov 24 02:19:37 2026 :: Log Alaric [6516]: kill li
+Tue Nov 24 02:19:37 2026 :: Log Alaric [6516]: killed the giant lizard
+Tue Nov 24 02:19:41 2026 :: Log Alaric [6516]: recal
+Tue Nov 24 02:19:41 2026 :: Log Alaric [2497]: arrived (The Questmaster's Globe, above the Oak) from 6516
+Tue Nov 24 02:19:41 2026 :: Log Alaric [2497]: aq co
+Tue Nov 24 02:19:41 2026 :: Log Alaric [2497]: copper +123303312
+Tue Nov 24 02:19:41 2026 :: Log Alaric [2497]: quest complete: 123p 30g 33s 12c, 33 quest points, rush (streak bonus 40%)
+Tue Nov 24 02:19:41 2026 :: Snapshot of Alaric taken before quest: Alaric.20261124_021941.quest (PRESTORE Alaric to see it).
+Tue Nov 24 02:19:41 2026 :: Log Alaric [2497]: aq ga no

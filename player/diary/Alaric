@@ -242,24 +242,27 @@ List earn 92477484 0 quests
 List spend 600 0 buy
 End
 Day 2026-11-24
-Played 182
+Played 251
 Level 57 57 0
 Exp 0 0
-Kills 3
+Kills 6
 Deaths 0
 Close 0
-Quests 0 0
+Quests 1 33
 Dailies 0 0
+List achv 20 0 Under the Wire
 List area 57 0 City of Dresden
 List area 4 0 Sewer
 List area 2 0 The Underdark
-List area 116 0 Dwarven Kingdom
+List area 185 0 Dwarven Kingdom
 List area 0 0 Wyvern's Tower
 List area 0 0 Miden'nir
 List area 3 0 Thalos
 List area 0 0 Continental Drift
+List item 1 0 a deep green key
 List earn 73494763 0 interest
-List earn 3755956 0 loot
+List earn 5796968 0 loot
+List earn 123303312 0 quests
 List spend 1500000 0 heal
 End
 #END
