@@ -25,6 +25,9 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - *Text boxes wrap by what shows.* A raw colour marker no longer counts two
   columns or gets cut from its slot byte (`tests/test_textbox.c`).
 - *The sync's second round finds itself* when started by a relative path.
+- *UptimeRobot's checks are not logged.* A confirmed monitor's connections
+  write nothing to the log and are not in the hourly count; a new address's
+  first strike line waits for its name and is dropped if it is a monitor's.
 - *Questor Thews's patter is out of the website's chat log.* The game no
   longer journals a questmaster's says (415 of the 416 says there), and the
   website hides the ones already in the file. Other NPCs' says are kept.

@@ -157,6 +157,7 @@ typedef struct guard_entry
     long     refused_total;  /* refused while paused or flooding, all time */
     time_t   name_next;      /* its name not asked again before this */
     time_t   monitor_until;  /* an uptime monitor, its name confirmed, till then */
+    char     strike_unlogged; /* 0, or 1/2: a strike's line held for its name */
     char     text[NET_ADDR_TEXT];   /* the address last seen for this key */
 } GUARD_ENTRY;
 
@@ -648,12 +649,27 @@ static bool guard_is_monitor( uint32_t ip )
    used to wait GUARD_NAME_RECHECK on a question nobody would answer). A
    real answer, a name or the resolver's word that there is none, holds
    for GUARD_NAME_RECHECK. */
-static void guard_ask_name( GUARD_ENTRY *e, const NET_ADDR *a )
+static bool guard_ask_name( GUARD_ENTRY *e, const NET_ADDR *a )
 {
     if ( e->name_next > current_time )
-        return;
-    if ( dns_check_name( a ) )
-        e->name_next = current_time + guard_limit( "TOC_GUARD_NAME_RETRY", GUARD_NAME_RETRY );
+        return false;
+    if ( !dns_check_name( a ) )
+        return false;
+    e->name_next = current_time + guard_limit( "TOC_GUARD_NAME_RETRY", GUARD_NAME_RETRY );
+    return true;
+}
+
+/* A strike's log line: "closed without a word" (1) or "closed before a
+   password prompt" (2). */
+static void guard_log_strike( const GUARD_ENTRY *e, const char *addr, int kind )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    snprintf( buf, sizeof(buf), "Connection guard: %s %s (strike %d of %d in %d hours).",
+              addr, kind == 2 ? "closed before a password prompt" : "closed without a word",
+              e->conns, guard_limit( "TOC_GUARD_STRIKES", GUARD_STRIKES ),
+              GUARD_STRIKE_WINDOW / 3600 );
+    log_string( buf );
 }
 
 /* The address counts for the guard at all: not loopback (bar the tests),
@@ -835,6 +851,17 @@ void conn_guard_closed( DESCRIPTOR_DATA *d )
     if ( d == NULL || d->guard_refused || !guard_applies( d->ip )
     ||   d->guard_named || d->connected == CON_PLAYING )
         return;
+    /* An uptime monitor's check is not logged at all (owner, 2026-11-24):
+       some 240 lines a day, none of them news. Not in the hourly count
+       either. Its name is asked again, quietly, before the hold runs out,
+       so a monitor stays one without a strike between. */
+    if ( guard_is_monitor( d->ip ) )
+    {
+        e = guard_find( d->ip, false );
+        if ( e != NULL && e->monitor_until - current_time < GUARD_MONITOR_HOLD / 2 )
+            guard_ask_name( e, &d->addr );
+        return;
+    }
     if ( !d->first_line_read )
         guard_silent++;
     how = d->first_line_read ? "closed before a password prompt" : "closed without a word";
@@ -846,8 +873,6 @@ void conn_guard_closed( DESCRIPTOR_DATA *d )
         exempt = "an MSSP poll";
     else if ( d->guard_proxied )
         exempt = "the web client";
-    else if ( guard_is_monitor( d->ip ) )
-        exempt = "an uptime monitor";
     else if ( !guard_watches( d->ip, d ) )
         exempt = "a player's address";
     if ( exempt != NULL )
@@ -866,10 +891,19 @@ void conn_guard_closed( DESCRIPTOR_DATA *d )
         e->conns = 0;
     }
     e->conns++;
-    guard_ask_name( e, &d->addr );      /* an uptime monitor's are not strikes */
-    snprintf( buf, sizeof(buf), "Connection guard: %s %s (strike %d of %d in %d hours).",
-              d->addr_text, how, e->conns, strikes, GUARD_STRIKE_WINDOW / 3600 );
-    log_string( buf );
+    /* An uptime monitor's are not strikes. While its name is being asked
+       the line waits for the answer, and is written then only if the
+       address is not a monitor's -- or now, if this strike pauses it
+       (owner, 2026-11-24: no line for UptimeRobot's checks). */
+    if ( ( guard_ask_name( e, &d->addr ) || e->strike_unlogged != 0 ) && e->conns < strikes )
+        e->strike_unlogged = (char) ( d->first_line_read ? 2 : 1 );   /* asked, or still asking */
+    else
+    {
+        e->strike_unlogged = 0;
+        snprintf( buf, sizeof(buf), "Connection guard: %s %s (strike %d of %d in %d hours).",
+                  d->addr_text, how, e->conns, strikes, GUARD_STRIKE_WINDOW / 3600 );
+        log_string( buf );
+    }
     guard_pause_dirty = true;
     if ( e->conns >= strikes && e->blocked_until <= current_time )
         guard_block( e, "kept connecting without logging in" );
@@ -900,6 +934,14 @@ void conn_guard_name_checked( const NET_ADDR *a, const char *host, int outcome )
     if ( !guard_applies( key ) || ( e = guard_find( key, false ) ) == NULL )
         return;
     guard_ip_text( e, addr, sizeof(addr) );
+    /* A strike whose line waited for this answer: written now, unless the
+       answer makes the address an uptime monitor's. */
+    if ( e->strike_unlogged != 0
+    &&   !( outcome == DNS_CHECK_CONFIRMED && host != NULL && guard_monitor_domain( host ) ) )
+    {
+        guard_log_strike( e, addr, e->strike_unlogged );
+        e->strike_unlogged = 0;
+    }
     if ( outcome == DNS_CHECK_RETRY )
     {
         int retry = guard_limit( "TOC_GUARD_NAME_RETRY", GUARD_NAME_RETRY );
@@ -922,6 +964,7 @@ void conn_guard_name_checked( const NET_ADDR *a, const char *host, int outcome )
         log_string( buf );
         return;
     }
+    e->strike_unlogged = 0;
     if ( e->monitor_until > current_time )
     {
         e->monitor_until = current_time + GUARD_MONITOR_HOLD;
@@ -939,10 +982,10 @@ void conn_guard_name_checked( const NET_ADDR *a, const char *host, int outcome )
               "Connection guard: %s is %s, an uptime monitor (the name leads back to it): "
               "its checks are not strikes%s.", addr, host,
               lifted ? ", and its pause is lifted" : "" );
+    /* Only a pause lifted is said (and logged): a monitor found is not news
+       (owner, 2026-11-24: don't log the UptimeRobot connections). */
     if ( lifted )
         guard_say( buf, LEVEL_IMMORTAL );
-    else
-        log_string( buf );
     guard_pause_save();
 }
 

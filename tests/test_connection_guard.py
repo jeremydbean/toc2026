@@ -429,12 +429,22 @@ class GuardMonitorSourceTests(unittest.TestCase):
                       worker)
         self.assertNotIn("job.found && job.check )\n        {", worker)
         guard = (ROOT / "src" / "connguard.c").read_text(encoding="latin-1")
-        ask = guard.split("static void guard_ask_name(", 1)[1].split("\n}\n", 1)[0]
+        ask = guard.split("static bool guard_ask_name(", 1)[1].split("\n}\n", 1)[0]
         self.assertIn('e->name_next = current_time + guard_limit( "TOC_GUARD_NAME_RETRY", '
                       'GUARD_NAME_RETRY );', ask)
         checked = guard.split("void conn_guard_name_checked(", 1)[1].split("\n}\n", 1)[0]
         retry = checked.split("if ( outcome == DNS_CHECK_RETRY )", 1)[1].split("return;", 1)[0]
         self.assertNotIn("GUARD_NAME_RECHECK", retry)
+
+    def test_a_monitors_checks_are_not_logged(self) -> None:
+        """Owner, 2026-11-24: don't log the UptimeRobot connections."""
+        guard = (ROOT / "src" / "connguard.c").read_text(encoding="latin-1")
+        closed = guard.split("void conn_guard_closed( DESCRIPTOR_DATA *d )", 1)[1].split("\n}\n", 1)[0]
+        self.assertNotIn('"an uptime monitor"', closed)
+        self.assertLess(closed.index("if ( guard_is_monitor( d->ip ) )"),
+                        closed.index("guard_silent++"), "not in the hourly count either")
+        checked = guard.split("void conn_guard_name_checked(", 1)[1].split("\n}\n", 1)[0]
+        self.assertNotIn("log_string( buf );\n    guard_pause_save();", checked)
 
     def test_pauses_double_for_a_month(self) -> None:
         guard = (ROOT / "src" / "connguard.c").read_text(encoding="latin-1")
@@ -468,12 +478,15 @@ class GuardMonitorLiveTests(unittest.TestCase):
             self.assertTrue(greets(mud), "the monitor is let in")
             for _ in range(5):
                 silent_close(mud)
-            self.assertTrue(wait_for_log(mud, "closed without a word (an uptime monitor; not counted)"))
-            time.sleep(1)
+            time.sleep(2)
             self.assertTrue(greets(mud), "five more checks pause nothing")
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
         self.assertNotIn("Connection guard: 127.0.0.1 paused for", log)
         self.assertNotIn("(strike 3 of 3", log)
+        # Owner, 2026-11-24: a monitor's checks are not logged at all.
+        self.assertNotIn("an uptime monitor; not counted", log)
+        after = log.split("its pause is lifted.", 1)[1]
+        self.assertNotIn("127.0.0.1 closed", after)
 
     def test_a_cold_start_monitor_is_found_at_its_first_check(self) -> None:
         """No pause and nothing remembered: the first silent check is a
@@ -482,19 +495,18 @@ class GuardMonitorLiveTests(unittest.TestCase):
                "TOC_GUARD_MONITOR_DOMAIN": "localhost"}
         with LiveMud(extra_env=env) as mud:
             self.start_untrusted(mud, paused=False)
-            silent_close(mud)
-            self.assertTrue(wait_for_log(mud, "Connection guard: 127.0.0.1 is localhost, an uptime "
-                                              "monitor (the name leads back to it): its checks are "
-                                              "not strikes."))
-            for _ in range(5):
+            for _ in range(6):
                 silent_close(mud)
                 time.sleep(0.3)
-            self.assertTrue(wait_for_log(mud, "closed without a word (an uptime monitor; not counted)"))
+            time.sleep(2)
             self.assertTrue(greets(mud))
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
-        # The harness's own readiness probe may be the first strike.
         self.assertNotIn("Connection guard: 127.0.0.1 paused for", log)
-        self.assertNotIn("(strike 3 of 3", log)
+        # Owner, 2026-11-24: nothing logged for a monitor -- not its checks,
+        # not its being found, not the strike its first check was before
+        # its name came back (that line waits for the name, then is dropped).
+        self.assertNotIn("127.0.0.1 closed", log)
+        self.assertNotIn("an uptime monitor", log)
 
     def test_a_resolver_failure_is_asked_again_soon(self) -> None:
         """Review, 2026-11-24: the first lookup fails as a resolver timeout
@@ -514,12 +526,17 @@ class GuardMonitorLiveTests(unittest.TestCase):
             for _ in range(5):
                 silent_close(mud)
                 time.sleep(0.6)
-            self.assertTrue(wait_for_log(mud, "Connection guard: 127.0.0.1 is localhost, an uptime "
-                                              "monitor (the name leads back to it)"))
             time.sleep(1)
             self.assertTrue(greets(mud), "the monitor is not paused")
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
         self.assertNotIn("Connection guard: 127.0.0.1 paused for", log)
+        # The strikes before the failed lookup are logged (its name was not
+        # known); none after the retry found the monitor.
+        before, after = log.split("asked again in 1 second at the earliest.", 1)
+        self.assertIn("127.0.0.1 closed without a word (strike", before)
+        self.assertNotIn("(strike 4 of 4", log)
+        self.assertLessEqual(after.count("127.0.0.1 closed"), 1,
+                             "at most the check that asked again is a strike")
 
     def test_a_flooding_monitor_is_asked_and_let_in(self) -> None:
         """Review, 2026-11-24: an address refused for a flood was refused

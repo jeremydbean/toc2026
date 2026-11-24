@@ -8285,6 +8285,13 @@ that fails on the old code:
   (textbox.c, color.c, dstring.c, string_safe.c and four stubs).
 - **The sync's second round used `$0`** after `cd`; started by a relative
   path it could not re-open itself. It now re-runs `$SELF`, resolved at start.
+- Owner request, same day: **UptimeRobot's checks are not logged.** A
+  confirmed monitor's connection writes no line and is left out of the
+  hourly "closed without a word" count; finding one writes nothing (lifting
+  a pause on one still does). A strike's line is held while its address's
+  name is being asked (`strike_unlogged`) and written when the answer comes
+  -- unless the answer is a monitor -- or at once if the strike pauses it.
+  A monitor's name is asked again quietly in the second half of its hold.
 - Owner request, same day: a questmaster's (`ACT_QUESTM`, no descriptor)
   says are not journaled, and `webadmin/server.py` hides `say` lines from
   `QUIET_SPEAKERS` ("questor thews") already in `log/channels.tsv`.
