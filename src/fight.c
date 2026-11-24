@@ -329,6 +329,91 @@ static bool is_hyrule_ganon( CHAR_DATA *victim )
 }
 
 /*
+ * No one fighter overwhelms Ganon (owner, 2026-11-24: "Misery is really
+ * destroying ganon now ... we need to strengthen ganon"). His 12,000 hit
+ * points were measured against median level 59 warriors, Hermie-buffed,
+ * who take about a hundred off him a round each; one of the best-geared
+ * mortals takes several times that, and alone finished him. So in one
+ * round of combat each player -- their pets and servants counted with
+ * them -- takes at most a fiftieth of his maximum (240 of 12,000); the
+ * rest of that round's blows are swallowed by the dark. A median group
+ * is under the line and fights exactly as measured; three or four of
+ * the best win quickly, two at a cost, and one alone is outlasted by the
+ * fireballs. The Silver Arrow's finishing SHOOT is never held back.
+ * Players are told by serial, never by pointer; the table is small
+ * because a fight with Ganon is a party, and a player squeezed out of
+ * it gets a fresh round's share, nothing worse.
+ */
+#define HYRULE_GANON_ROUND_SHARE  50
+#define GANON_SHARE_SLOTS         16
+#define GANON_SHARE_TELL_SECS     30
+
+static long violence_round;
+
+static struct
+{
+    int    serial;
+    long   round;
+    int    dealt;
+    time_t told;
+} ganon_share[GANON_SHARE_SLOTS];
+
+int hyrule_ganon_round_cap( CHAR_DATA *victim )
+{
+    if ( !is_hyrule_ganon( victim ) )
+        return 0;
+    return UMAX( 1, victim->max_hit / HYRULE_GANON_ROUND_SHARE );
+}
+
+static int ganon_round_share( CHAR_DATA *ch, CHAR_DATA *victim, int dam )
+{
+    CHAR_DATA *who = ch;
+    int serial, cap, left, i, slot = -1, oldest = 0;
+
+    if ( IS_NPC( who ) && who->master != NULL && !IS_NPC( who->master ) )
+        who = who->master;
+    if ( IS_NPC( who ) || dam <= 0 )
+        return dam;
+    serial = player_serial( who );
+    cap = hyrule_ganon_round_cap( victim );
+    for ( i = 0; i < GANON_SHARE_SLOTS; i++ )
+    {
+        if ( ganon_share[i].serial == serial )
+        {
+            slot = i;
+            break;
+        }
+        if ( ganon_share[i].round < ganon_share[oldest].round )
+            oldest = i;
+    }
+    if ( slot < 0 )
+    {
+        slot = oldest;
+        ganon_share[slot].serial = serial;
+        ganon_share[slot].round = -1;
+        ganon_share[slot].told = 0;
+    }
+    if ( ganon_share[slot].round != violence_round )
+    {
+        ganon_share[slot].round = violence_round;
+        ganon_share[slot].dealt = 0;
+    }
+    left = UMAX( 0, cap - ganon_share[slot].dealt );
+    if ( dam > left )
+    {
+        dam = left;
+        if ( current_time - ganon_share[slot].told >= GANON_SHARE_TELL_SECS )
+        {
+            ganon_share[slot].told = current_time;
+            act( "{0CThe dark around $N swallows the rest of your onslaught:{00 no one fighter can overwhelm $M. Bring friends.",
+                 who, NULL, victim, TO_CHAR );
+        }
+    }
+    ganon_share[slot].dealt += dam;
+    return dam;
+}
+
+/*
  * Hyrule's people who are not enemies: every old man and old woman, the
  * moblins of the money caves, the merchants, the potion sellers, the
  * door-repair men and gamblers, Princess Zelda and the fountain fairies --
@@ -607,6 +692,8 @@ void violence_update( void )
 /*    CHAR_DATA *ch_next;*/
     CHAR_DATA *victim;
     LIST_ITERATOR iter;
+
+    violence_round++;   /* each player's share of Ganon a round */
 
     FOR_EACH_CHARACTER( iter, ch )
     {
@@ -1957,6 +2044,13 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
        hitter in thirteen blows and the gentlest in eighteen. */
     if ( dam > 0 && is_treasure_goblin( victim ) )
 	dam = treasure_goblin_blow( victim, dam );
+
+    /* One fighter's share of Ganon a round (ganon_round_share, above):
+       a blow past it lands on nothing and says nothing more. */
+    if ( dam > 0 && victim != ch && is_hyrule_ganon( victim )
+    &&   !hyrule_silver_arrow_finish
+    &&   ( dam = ganon_round_share( ch, victim, dam ) ) == 0 )
+	return false;
 
     /* A patra's ring of eyes and an unshrunk digdogger take a landed blow
        on something else, and hyrule.c says what. */

@@ -576,6 +576,22 @@ after it, he had already healed a tenth a pulse, and lost fights read
 | 9,000-12,000, 130-200, 0 or -20 | unbuffed | -- | lost all six (34-46 s; 82-89%) | -- |
 | **12,000, 200-245, -40** | **Hermie** | **lost 2 of 2 (76-90 s; 44-51%)** | **won 1 of 2 (lost at 8%), 116-123 s** | **won 2 of 2, all four standing, 96-113 s** |
 
+**No one fighter overwhelms him** (owner, 2026-11-24: "Misery is really
+destroying ganon now ... we need to strengthen ganon"). The table above is
+median warriors, who take about a hundred off him a round each; one of the
+best-geared mortals takes several times that and finished him alone. So
+in each round of combat (`violence_update`) one player, their pets and
+servants counted with them, takes at most a fiftieth of his maximum (about
+240) -- `ganon_round_share` in `src/fight.c`, keyed by player serial; the
+rest of that round's blows land on nothing, and the player is told so once
+in thirty seconds. Median groups are under the line and fight as measured;
+three or four of the best take him in under a minute, a pair has to outlast
+about seventy seconds of fire, and one alone (two and a half minutes of
+every fireball) does not. The Silver Arrow's finishing SHOOT is never held
+back, and CONSIDER caps each player's side at the same share
+(`hyrule_ganon_round_cap`). Not measured with the best mortals' own
+characters: those numbers are the arithmetic of the share.
+
 So he is **12,000 hit points with four fireballs of 200-245** (about 122
 through sanctuary). Unbuffed median players hardly hurt him at any setting
 tried -- three did 30-40 a second between them and lasted under fifty

@@ -4212,6 +4212,7 @@ void    multi_hit       ( CHAR_DATA *ch, CHAR_DATA *victim, int dt );
 void    one_hit         ( CHAR_DATA *ch, CHAR_DATA *victim, int dt );
 void    raw_kill        ( CHAR_DATA *ch, CHAR_DATA *victim );
 bool    hyrule_defies_instant_death ( CHAR_DATA *victim );
+int     hyrule_ganon_round_cap ( CHAR_DATA *victim );
 bool    damage          ( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int class );
 double  blow_landed_expected ( CHAR_DATA *ch, CHAR_DATA *victim, double blow,
                                int dam_type, double *burn );

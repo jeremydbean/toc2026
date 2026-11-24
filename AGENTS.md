@@ -8345,7 +8345,16 @@ exotic weapon nobody trains still lands) and does its own 4d14 damage.
 SHOOT GANON at the collapsed Ganon passes what he has left, and
 `hyrule_silver_arrow_finish` keeps armour and relics from turning that shot
 to nothing. The thirty-fifth is now only the instant-kill share
-(`HYRULE_GANON_INSTANT_KILL_DIVISOR`). The arrow's description is in both
+(`HYRULE_GANON_INSTANT_KILL_DIVISOR`). **No one fighter overwhelms him** (owner, 2026-11-24,
+after a best-geared mortal finished the 12,000 alone): `ganon_round_share`
+in `damage()` lets each player -- pets and servants counted with their
+master, by `player_serial` -- take at most `max_hit /
+HYRULE_GANON_ROUND_SHARE` (50) a combat round (`violence_round`, counted in
+`violence_update`); a blow past it returns false with no message, and the
+player is told once in thirty seconds. Never for the finishing SHOOT.
+CONSIDER caps each player's side at `hyrule_ganon_round_cap`
+(`gear_consider_fight`). Median groups (about 100 a round each) are under
+it, so the measurements still hold (`tests/test_ganon_party_tuning.py`). The arrow's description is in both
 `area/hyrule.are` and `scripts/build_hyrule_area.py`. Ganon's hit points went
 from 67,500 to 22,500 the same day (owner: "so 3-4 players can still beat
 him"), an estimate; measured later that day with

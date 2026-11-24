@@ -72,6 +72,47 @@ class GanonExploitTests(unittest.TestCase):
                 self.assertIn("hurls a ball of fire straight at you",
                               hero.transcript[mark:])
 
+    def test_one_fighter_takes_at_most_a_fiftieth_a_round(self) -> None:
+        # Owner, 2026-11-24: one of the best-geared mortals finished him
+        # alone. A fighter whose every landed blow is past the share takes
+        # at most 240 of 12,000 off him a round, and is told why.
+        with LiveMud(fixtures=True) as mud:
+            make(mud, "Zganonsmith", Levl=70, Room=4207)
+            make(mud, "Zganonbrute", Levl=59, Room=4207)
+            with mud.connect(timeout=120) as god, mud.connect(timeout=120) as hero:
+                login(god, "Zganonsmith", PW)
+                login(hero, "Zganonbrute", PW)
+                god.must("goto %d" % ROOM, "")
+                god.must("load mob %d" % GANON, "Ganon")
+                god.must("set char zganonbrute hp 60000", "")
+                god.must("set char zganonbrute hitroll 500", "hitroll set")
+                god.must("set char zganonbrute damroll 500", "damroll set")
+                god.sync("restore zganonbrute")
+                god.must("transfer zganonbrute %d" % ROOM, "")
+                hero.sync("look")
+                hp, most = self.ganon_hp(god)
+                self.assertEqual(hp, most)
+                self.assertTrue(11000 < most < 13000, most)   # rolled near 12,000
+                share = most // 50
+                mark = len(hero.transcript)
+                hero.send("kill ganon")
+                hero.drain(7.0)
+                god.sync("peace")
+                hp, most = self.ganon_hp(god)
+                taken = most - hp
+                # 7 seconds is at most three rounds of combat (a round
+                # every 3 s), and the share is a fiftieth a round.
+                self.assertGreater(taken, 0, hero.transcript[mark:])
+                self.assertLessEqual(taken, 3 * share, hero.transcript[mark:])
+                self.assertIn("no one fighter can overwhelm", hero.transcript[mark:])
+
+    @staticmethod
+    def ganon_hp(god) -> tuple[int, int]:
+        said = god.sync("stat mob ganon")
+        found = re.search(r"Hp: (\d+)/(\d+)", said)
+        assert found, said
+        return int(found.group(1)), int(found.group(2))
+
 
 class GanonTuningSourceTests(unittest.TestCase):
     def test_numbers_and_rules(self) -> None:
@@ -79,6 +120,12 @@ class GanonTuningSourceTests(unittest.TestCase):
         self.assertIn("#define HYRULE_GANON_INSTANT_KILL_DIVISOR 35", fight)
         # Owner, 2026-11-24: no Silver Arrow share during the fight.
         self.assertNotIn("HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR", fight)
+        # Owner, 2026-11-24: one fighter's share a round, and the finishing
+        # SHOOT is never held back by it.
+        self.assertIn("#define HYRULE_GANON_ROUND_SHARE  50", fight)
+        share = fight.split("One fighter's share of Ganon a round", 1)[1][:400]
+        self.assertIn("!hyrule_silver_arrow_finish", share)
+        self.assertIn("violence_round++;", fight)
         special = (ROOT / "src" / "special.c").read_text(encoding="latin-1")
         target = special.split("static bool ganon_may_target", 1)[1].split("\n}\n", 1)[0]
         self.assertNotIn("can_see", target)

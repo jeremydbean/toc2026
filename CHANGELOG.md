@@ -8,6 +8,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 
+### 2026-11-24 -- no one fighter overwhelms Ganon
+
+- One of the best-geared mortals finished the 12,000-hit-point Ganon alone.
+  Each player (pets counted with them) now takes at most a fiftieth of his
+  maximum a round of combat (`ganon_round_share` in `fight.c`); the median
+  groups his hit points were measured with deal about half that and fight
+  as before. The finishing SHOOT is never held back, and CONSIDER counts
+  the same ceiling.
+
 ### 2026-11-24 -- turkey durability, backup verdicts, the CMake game
 
 - The turkey's once-a-holiday visit is saved the moment it lands, so a

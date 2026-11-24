@@ -2489,6 +2489,12 @@ void gear_consider_fight( CHAR_DATA *ch, CHAR_DATA *victim,
        left out about a third of what players dealt. */
     mine += consider_learned_skills( ch );
     their += consider_learned_skills( victim );
+    /* Ganon takes at most a share of his health from any one player a
+       round (ganon_round_share in fight.c; 2026-11-24). */
+    if ( !IS_NPC( ch ) && hyrule_ganon_round_cap( victim ) > 0 )
+        mine = UMIN( mine, (double) hyrule_ganon_round_cap( victim ) );
+    if ( !IS_NPC( victim ) && hyrule_ganon_round_cap( ch ) > 0 )
+        their = UMIN( their, (double) hyrule_ganon_round_cap( ch ) );
     /* A shield burns back a share of every blow that lands on it. */
     *yours = mine + their * their_burn;
     *theirs = their + mine * my_burn;
