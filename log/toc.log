@@ -346141,3 +346141,5 @@ Tue Nov 24 16:53:31 2026 :: EOF encountered on read.
 Tue Nov 24 16:53:31 2026 :: Connection guard: 172.236.228.115 closed before a password prompt (strike 1 of 6 in 6 hours).
 Tue Nov 24 16:53:31 2026 :: Connection guard: 172.236.228.115 closed without a word (strike 2 of 6 in 6 hours).
 Tue Nov 24 16:55:35 2026 :: Treasure goblin: vanished from room 1150 (Collapsed Tunnel., shire.are) (too long in one area).
+Tue Nov 24 16:56:50 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 24 16:56:50 2026 :: Connection guard: 52.87.72.16 is checker-nvi4.uptimerobot.com, an uptime monitor (the name leads back to it): its checks are not strikes.
