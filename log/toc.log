@@ -346082,3 +346082,4 @@ Tue Nov 24 15:38:53 2026 :: EOF encountered on read.
 Tue Nov 24 15:38:53 2026 :: Connection guard: 4.249.17.250 closed before a password prompt (strike 1 of 6 in 6 hours).
 Tue Nov 24 15:38:53 2026 :: Sock.sinaddr:  4.249.17.250
 Tue Nov 24 15:38:53 2026 :: Connection guard: 4.249.17.250 closed before a password prompt (strike 2 of 6 in 6 hours).
+Tue Nov 24 15:40:40 2026 :: Connection guard: refused 1 connection from 3.212.128.62 (paused; 38 refused in all, pause 4 this week, 728 minutes left).
