@@ -3490,7 +3490,9 @@ units were never installed by a deploy. Rules now:
   which **moves** it to `pre-restore-<stamp>/` -- never deletes; the backup
   goes into empty directories and is compared with the checkout, file for
   file. `backups/` is never touched. (`tests/test_player_backups.py`
-  `RestoreStateTests`.)
+  `RestoreStateTests`.) *Superseded 2026-11-24:* the restore now stages the
+  whole tree and swaps it in under the maintenance lock, stopping the game
+  itself -- see "Restore, Rename And Sync Lag Review, 2026-11-24".
 - **An archive counts when it is whole, not when it is new** (review,
   2026-11-23). `toc-ops-summary` judged the newest `backups/*.tar.gz` by
   its mtime alone, so one damaged after the game proved it -- or a
@@ -3506,8 +3508,10 @@ units were never installed by a deploy. Rules now:
   `PathChanged=`, which sees a save's rename into the directory (checked on
   the host, systemd 255: one save, one run; ten in half a second, one run; a
   write in a subdirectory, none). The service sleeps three seconds first so
-  a tick's burst goes as one run; a save landing during a run starts none,
-  so `toc-state-sync.timer`, now every minute, catches it -- and
+  a tick's burst goes as one run; a save landing during a run starts none
+  (measured), so the run goes round again itself when anything it watches
+  changed after its copy (2026-11-24), and `toc-state-sync.timer`, every
+  minute, catches the rest -- and
   `player/versions/`, the boards and the logs. When GitHub or the network
   is down the runs fail, their commits are kept and carried
   (`bring_up_to_date`), and the first run that can push sends them all;
@@ -8045,7 +8049,8 @@ There is no encrypted backup and no age key in use; do not add one
 without reading "Backups Say How They Went". What each failure costs, and
 what zero loss would take, is `wiki/disaster-recovery.md` "Recovery
 matrix" and "How near zero loss this gets" -- the honest figure for
-losing the whole host is about a minute of a character's play.
+losing the whole host is one tick of a character's play (40-80 s) plus
+about 40 s to reach GitHub, measured 2026-11-24.
 
 **What watches it.** `toc-ops-summary` every five minutes, served at
 `/api/ops-summary`; a review reads `log/ops-summary.json` first. UptimeRobot,
@@ -8115,6 +8120,62 @@ ledger. And for the workflow:
   `src/`, re-run the failed jobs; do not change code for it.
 - **Read exit codes, not pipelines.** `git push ... | tail` reported success
   for a push GitHub had dropped.
+
+## Restore, Rename And Sync Lag Review, 2026-11-24
+
+A review of main from `40e40712`. Each defect below had a test that failed
+on the old code, run on the Linux host with synthetic data only.
+
+- **A restore holds the maintenance lock.** `toc-restore` and
+  `toc-restore-state` checked only `toc-game`, `toc-state-sync.timer` and
+  `toc-state-sync.service` -- not `toc-state-sync.path`, the recovery timer
+  or auto-deploy. Reproduced: the real sync, started by a stand-in rsync
+  while `player/` was half laid, pushed 11 characters of 12 (under the drop
+  guard) and deleted the twelfth from GitHub
+  (`test_a_sync_mid_restore_never_pushes_a_half_laid_tree`). Now both take
+  `/run/toc-deploy.lock` (waiting up to `TOC_RESTORE_LOCK_WAIT`, 300 s;
+  `TOC_DEPLOY_LOCKED=1` when the caller holds it). Every other writer already
+  defers to that lock: the sync skips, auto-deploy waits, recovery neither
+  starts the game nor turns timers back on. `toc-restore` takes it before
+  it touches `/srv/toc/build` (toc-deploy's checkout too) and stops
+  `toc-game` and `toc-web` itself, under it; nobody stops anything first.
+  Run it from a copy in `/tmp`, since it fetches into the checkout it lives in.
+- **A restore is atomic.** The code was copied into `current/` before the
+  state step could refuse; the helper moved the old state aside, then
+  copied, with no rollback. Now: refusals first (before the clone); the new
+  tree -- code and state -- is built in `/srv/toc/.restore-stage-<stamp>/`
+  and compared; under the lock the old tree's runtime files are carried in,
+  `current/` is renamed to `pre-restore-<stamp>/` whole and the stage
+  renamed into its place, `backups/` moved across. Any failing step puts
+  the old tree back and restarts what was stopped. `RestoreSwapTests`
+  inject a failure at each step; `TOC_RESTORE_DRILL=0` with
+  `TOC_RESTORE_SKIP_SERVICES=1` runs the live path in a scratch prefix
+  (and the latter is also how to restore on a host already wired).
+- **Identity decisions fail closed** (`src/renames.c`). `rename_load()`
+  ignored `rename_remember()` failing and marked the ledger read; an
+  unreadable ledger answered "nobody's old name". Now a record the table
+  cannot hold (fault point `rename-hold`) leaves the ledger unknown, and
+  `rename_ledger_known()` gates the name prompt (`comm.c`, "Names are not
+  available right now"), new-character names (`rename_retired()` is true
+  while unknown) and RENAME (`act_wiz.c`). Notes, IGNORE lists and replies
+  are moved along again at each load and need no gate. Trade-off, chosen:
+  while the ledger cannot be read nobody can log in.
+- **The real recovery point** (measured; `wiki/disaster-recovery.md` "The
+  recovery point, measured"). systemd 255 drops a path change made while
+  the sync runs, so a save just after a copy waited for the next minute's
+  tick (up to ~80 s, a minute more if that tick met the lock). Now the sync
+  goes round again when anything it watches is newer than its copy (at most
+  `TOC_SYNC_MAX_ROUNDS`, 3), waits up to 15 s for a brief lock hold
+  (`TOC_SYNC_LOCK_WAIT`) instead of skipping, gives up on a dead network in
+  15 s (ssh `ConnectTimeout`; it hung 133 s per git command), and the timer
+  fires on the minute (`AccuracySec=1s`). A tick is 40-80 s, not 60, so the
+  worst loss of the whole host is one tick plus ~40 s: about two minutes.
+- **Not verified here, needs the live host:** a real `toc-restore` on
+  `/srv/toc` (only the scratch-prefix live path was run); that the
+  `toc-web` dashboard copes with `current/` being renamed under it (it is
+  stopped first); that the new timer setting and the rounds behave under
+  real load after the deploy; disk space for a staged tree plus the
+  `pre-restore-<stamp>/` each restore leaves behind.
 
 ## Completion Standard
 

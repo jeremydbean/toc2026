@@ -8,6 +8,34 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 
+- **Restore, rename and sync-lag review (2026-11-24), each defect proven by
+  a test that failed on the old code:**
+  - *A restore no longer races the sync, the recovery timer or a deploy.*
+    `toc-state-sync.path` started a sync while `toc-restore-state` was
+    laying `player/` down, and it pushed 11 characters of 12 -- under the
+    drop guard -- deleting the twelfth from GitHub. `toc-restore` and
+    `toc-restore-state` now hold the maintenance lock
+    (`/run/toc-deploy.lock`) that the sync, auto-deploy and recovery all
+    defer to, and the restore stops the game and dashboard itself.
+  - *A restore that fails leaves the old installation as it was.* The code
+    was copied into `current/` before the state step could refuse, and the
+    state helper moved the old state aside before copying, with no way
+    back. Now everything that can refuse refuses before a write; the new
+    tree is staged whole beside the live one and swapped in by rename; any
+    failure puts the old tree back and starts the game again.
+  - *An unknown rename ledger gives no name out.* A record the table could
+    not hold was ignored and the ledger counted as read, so a retired name
+    read as free for the boot; an unreadable ledger let the name prompt
+    and character creation go ahead. Now neither counts as known, and the
+    name prompt, new characters and RENAME refuse until it is.
+  - *A save just after a sync's copy reaches GitHub in seconds, not a
+    minute.* systemd drops a path change made while the sync runs
+    (measured, systemd 255); the run now goes round again when anything it
+    watches changed after its copy, waits up to 15 s for a brief hold of
+    the deploy lock instead of skipping, and gives up on a dead network in
+    15 s instead of ~133 s per git command. The timer fires on the minute
+    (`AccuracySec=1s`).
+
 - **Every save reaches GitHub within seconds** (owner, 2026-11-23: as near
   zero loss as can be had). `toc-state-sync.path` starts the sync when a
   save lands in `player/`, `gods/`, `heroes/` or `corpse/live/`; the run

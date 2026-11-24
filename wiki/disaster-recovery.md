@@ -394,28 +394,48 @@ security list) is still yours to open.
 
 ### Restoring over an install that is still there
 
-`toc-restore` lays the state down with `deploy/toc-restore-state`, which
-is staged rather than merged (review, 2026-11-23: a restore over a
-non-empty `current/` kept every file the backup did not have -- a
-character deleted since, a corpse that had already ended, which is made
-again at boot with its gear):
+`toc-restore` builds the whole new tree beside the live one and swaps it
+in; nothing live is touched until the new tree is whole (reviews,
+2026-11-23 and 2026-11-24):
 
-- On the live tree it **refuses while `toc-game`, `toc-state-sync.timer`
-  or `toc-state-sync` is running** -- the game would save its own
-  characters back over the restore, and the sync would push a half-laid
-  tree. Stop them first:
-  `sudo systemctl stop toc-game.service toc-state-sync.timer`.
-- A tree that already holds state is **refused** unless
-  `TOC_RESTORE_REPLACE=1` is set; then the existing `player gods heroes
-  log corpse` are **moved** to `/srv/toc/pre-restore-<UTC stamp>/`,
-  never deleted, and the backup is laid into empty directories.
-- The result is compared with the checkout file for file before it says
-  done. `backups/` (the game's own archives) is never touched.
+- **Everything that can refuse refuses first.** A `current/` that already
+  holds state is refused, before the clone, unless `TOC_RESTORE_REPLACE=1`
+  is set. Then the maintenance lock (below) is taken, and the clone, the
+  build and the world check run, all outside `current/`.
+- **Staged.** The code and the state (`deploy/toc-restore-state`) are laid
+  into `/srv/toc/.restore-stage-<UTC stamp>/` and the state compared with
+  the checkout file for file. A failure here deletes the stage and leaves
+  the game running, untouched.
+- **Under the maintenance lock** (`/run/toc-deploy.lock`), which every
+  other writer defers to: `toc-state-sync`, from its timer or its path
+  unit, skips; `toc-auto-deploy` waits; `toc-game-recovery` neither
+  restarts the game nor turns a stopped timer back on. Under it the
+  restore stops `toc-game` and `toc-web` itself -- you do not stop
+  anything first -- carries the old tree's runtime files (`area/*.txt`
+  and the like) into the stage, and swaps: the old `current/` is
+  **renamed** to `/srv/toc/pre-restore-<UTC stamp>/`, whole, never
+  deleted, and the stage renamed into its place. The game's own archives
+  (`backups/`) are moved across into the new tree.
+- **A step that fails puts the old tree back** and starts again what it
+  stopped. Each stage's failure is tested (`tests/test_player_backups.py`,
+  `RestoreSwapTests` and `RestoreStateTests`), as is a sync started in
+  the middle of a restore
+  (`test_a_sync_mid_restore_never_pushes_a_half_laid_tree`, which pushed
+  11 characters of 12 before the lock).
 
 ```bash
-sudo systemctl stop toc-game.service toc-state-sync.timer
-sudo TOC_RESTORE_REPLACE=1 sh /srv/toc/build/deploy/toc-restore
+cp /srv/toc/build/deploy/toc-restore /srv/toc/build/deploy/toc-restore-state /tmp/
+sudo TOC_RESTORE_REPLACE=1 sh /tmp/toc-restore
 ```
+
+(Run from a copy: the restore fetches into `/srv/toc/build`, and a script
+`sh` is still reading must not change under it. It takes the lock before
+it touches that checkout, which a deploy also uses.)
+
+On a host whose units are already installed, `TOC_RESTORE_SKIP_SERVICES=1`
+restores the tree, starts again what it stopped and leaves the units
+alone. Each restore leaves a `pre-restore-<stamp>/` -- a whole tree --
+for you to delete once the restored game is known good.
 
 ### When GitHub is unavailable
 
@@ -486,27 +506,49 @@ off GitHub, on a drive, is the one that survives losing the account
 
 ## Recovery matrix
 
-What each failure costs, measured from the code (2026-11-23). "A
-character's save" is every minute online (`AUTOSAVE_CYCLE_TICKS` 1 x a
-60-second tick), and at every level, quest, death, restore, stash change and
-quit; a save counts only once the file, its rename and the directory are
-flushed to the disk. A save reaches GitHub, and then the private mirror,
-within seconds (`toc-state-sync.path`).
+What each failure costs, measured from the code (2026-11-23) and timed on
+the host (2026-11-24). "A character's save" is every tick online
+(`AUTOSAVE_CYCLE_TICKS` 1; a tick is 40 to 80 seconds, at random), and at
+every level, quest, death, restore, stash change and quit; a save counts
+only once the file, its rename and the directory are flushed to the disk.
+A save reaches GitHub, and then the private mirror, in seconds
+(`toc-state-sync.path`; "The recovery point, measured" below).
 
 | Failure | What it is restored from | Data that can be lost |
 | --- | --- | --- |
-| **Game process crash** | each character's last save on the host; `toc-game-recovery` restarts the game within two minutes | that character's play since its last save: at most about a minute |
-| **Power loss / kernel crash** | the same saves: flushed before they count, so the previous file stands, never a torn one | the same as a crash: at most about a minute of a character's play |
+| **Game process crash** | each character's last save on the host; `toc-game-recovery` restarts the game within two minutes | that character's play since its last save: at most one tick, 80 seconds |
+| **Power loss / kernel crash** | the same saves: flushed before they count, so the previous file stands, never a torn one | the same as a crash: at most one tick (80 seconds) of a character's play |
 | **Full disk** | the last good save of each character: a save is written aside and renamed only when whole, so a failed one leaves the old file; the game's archive is skipped and staff told on WIZINFO; `disk` alarms below 4 GB | play after the disk filled, if the game stops before space is freed; nothing already saved |
 | **A corrupt or wrong player file** | `player/versions/` (a snapshot at every save, at most one a minute; milestones before every death, remort, deletion, staff change and restore), git history every 5 minutes, the game's archives | the minute between the last good snapshot and the damage; `PRESTORE <player> <stamp>` |
 | **A failed push** (network, GitHub, the key) | everything is still on the host; each run's commit is kept and carried into the next push (`refs/toc/unpushed/*` and `unpushed-*.bundle`), never reset away | nothing while the host survives; the off-host copy lags by the outage, and `public_sync` goes red after 20 minutes |
-| **The host lost** | the public repository (and the private mirror): the last push, seconds behind the last save | the unsaved play since a character's last save -- at most about a minute -- plus the seconds a save takes to push; the whole of a push outage, if one was running when the host went |
+| **The host lost** | the public repository (and the private mirror): the last push, seconds behind the last save | the unsaved play since a character's last save -- at most one tick, 80 seconds -- plus the time a save takes to reach GitHub: about 7 seconds, at worst about 40 (a minute more if a push races another pusher, or for as long as a deploy holds the lock); the whole of a push outage, if one was running when the host went |
 | **GitHub access lost** (the account, or an outage) | the host, untouched; the drive mirror if it is kept | nothing while the host lives. Host and GitHub both lost: back to the drive mirror's last `remote update` -- everything, without one |
-| **A restore onto a host that still has state** | the backup, laid into emptied directories | nothing: the restore refuses while the game or the sync runs, and moves existing state aside (`pre-restore-<stamp>/`) rather than deleting or merging |
+| **A restore onto a host that still has state** | the backup, staged beside the live tree and swapped in under the maintenance lock | nothing: the restore refuses before writing unless asked to replace, stops the game itself, moves the old tree aside whole (`pre-restore-<stamp>/`), and puts it back if any step fails |
 
-Two windows remain: the play since a character's last save (at most a
-minute) and the seconds a save takes to reach GitHub -- longer during a
-push outage, which the game plays through.
+Two windows remain: the play since a character's last save (at most one
+tick, 80 seconds) and the time a save takes to reach GitHub -- seconds,
+longer during a deploy or a push outage, which the game plays through.
+
+### The recovery point, measured (2026-11-24)
+
+Timed on the host with systemd 255, real units and synthetic data (a
+local remote, a push slowed by 4 s to match GitHub), and from a day of the
+live sync's journal:
+
+| From a save to the off-host copy | Time |
+| --- | --- |
+| a save with no sync running: the 3 s debounce, the copy, the push | 7.3 s (live runs: median 7.1 s, 95th percentile 11.9 s, longest 17.7 s) |
+| a save just after a running sync's copy | 11.4 s, at worst two runs (about 40 s); **before this review** it waited for the next minute's tick -- 26.8 s in the trial, up to about 80 s, and a minute more if that tick met the deploy lock (two in half an hour on the live host) |
+| a sync meeting `toc-game-recovery` (0.6 s every 2 min) or auto-deploy's check (2-3 s every 10 min) on the lock | waits up to 15 s; it used to skip to the next tick |
+| a push that races another pusher | up to five tries, 30 s of waits between |
+| a deploy or a restore holding the lock | skipped until it ends (a deploy: up to 77 s seen), then the next tick |
+| a network outage | the whole outage; each try now gives up in 15 s (it hung 133 s per git command without `ConnectTimeout`) |
+
+Saves that go on through three rounds of one run are left to the timer,
+which now fires on the minute (`AccuracySec=1s`). So losing the whole
+host, with the network up and no deploy running, costs a character at
+most one tick of play (80 s) plus about 40 s -- two minutes at the very
+worst, about 40 s on average.
 
 ## How near zero loss this gets
 
@@ -516,10 +558,13 @@ GitHub mirror as the store; play never held up by an outage):
 - **Every save reaches GitHub within seconds.** `toc-state-sync.path`
   starts the sync when a save is renamed into `player/`, `gods/`, `heroes/`
   or `corpse/live/`; the run pushes the public repository, verifies it, and
-  pushes the same commit to the private mirror. The timer, every minute,
-  catches what the path unit does not see.
-- **Every playing character is saved every minute** (`AUTOSAVE_CYCLE_TICKS`
-  1), besides every level, quest, death, restore, stash change and quit.
+  pushes the same commit to the private mirror. A save made while a run is
+  going starts none -- systemd drops it -- so the run goes round again when
+  anything changed after its copy. The timer, every minute, catches the
+  rest.
+- **Every playing character is saved every tick** -- 40 to 80 seconds
+  (`AUTOSAVE_CYCLE_TICKS` 1) -- besides every level, quest, death,
+  restore, stash change and quit.
 - **Availability first through an outage.** When the network or GitHub is
   down the sync's commits are kept and carried forward, never reset away,
   and the first run that can push sends them all. The game never waits.
@@ -532,7 +577,7 @@ would need are recorded so the next step starts from them.
 ### The last step: a per-change journal
 
 The one window left is the play since a character's last save -- at most
-a minute. Closing it means saving each change that matters as it happens,
+one tick, 80 seconds. Closing it means saving each change that matters as it happens,
 not on a cycle: a write-ahead journal of character changes, appended and
 flushed locally at every change, replayed over the last save at boot, and
 pushed with the saves (the sync already carries everything under
