@@ -55936,3 +55936,5 @@
 1795530565	census	-	0	0	-	herbs=45/150 components=27/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=17 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
 1795530596	laid	-	0	0	-	998	herb	44	a sprig of aconite	20172	prison.are	scatter
 1795530596	laid	-	0	0	-	999	component	66	a strand of hair	5281	oldthalo.are	scatter
+1795530665	laid	-	0	0	-	1000	herb	46	a juniper berry	4503	dresden.are	scatter
+1795530665	laid	-	0	0	-	1001	component	78	a vial of demons blood	9504	newthalo.are	scatter
