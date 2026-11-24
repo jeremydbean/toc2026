@@ -3652,6 +3652,7 @@ bool    recovery_ensure_dir   ( const char *path );
 /* renames.c: RENAME's record; an old name stays its character's. */
 bool    rename_current_name   ( const char *name, char *out, size_t size );
 bool    rename_retired        ( const char *name );
+bool    rename_ledger_known   ( void );
 bool    rename_record         ( const char *old_name, const char *new_name );
 bool    rename_follow_words   ( const char *list, char *out, size_t size );
 void    recovery_boot         ( void );

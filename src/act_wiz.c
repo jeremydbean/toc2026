@@ -9838,6 +9838,13 @@ void do_rename( CHAR_DATA *ch, char *argument )
     {
         char now[MAX_INPUT_LENGTH];
 
+        /* Not known is not free: an unreadable ledger refuses (2026-11-24). */
+        if ( !rename_ledger_known( ) )
+        {
+            send_to_char( "The rename record cannot be read right now, so no name "
+                          "can be checked; try again shortly.\n\r", ch );
+            return;
+        }
         if ( rename_current_name( arg2, now, sizeof(now) )
         &&   str_cmp( now, victim->name ) )
         {

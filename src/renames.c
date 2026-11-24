@@ -114,7 +114,7 @@ static void rename_load( void )
 {
     FILE *fp;
     char line[256];
-    int bad = 0;
+    int bad = 0, unheld = 0;
 
     if ( renames_loaded )
         return;
@@ -159,7 +159,21 @@ static void rename_load( void )
             bad++;
             continue;
         }
-        rename_remember( when, old_name, new_name );
+        /* A line the table cannot hold is a ledger not known: until
+           2026-11-24 the result was ignored, the load counted as whole and
+           a retired name past the failure read as free for the boot. Fault
+           point rename-hold. */
+        if ( recovery_fault( "rename-hold" ) || !rename_remember( when, old_name, new_name ) )
+            unheld++;
+    }
+    if ( unheld > 0 )
+    {
+        if ( !rename_load_warned )
+            bug( "Renames: %d record(s) of " RENAME_FILE " could not be held; "
+                 "names are not given out until it is read whole", unheld );
+        rename_load_warned = true;
+        fclose( fp );
+        return;
     }
     if ( ferror( fp ) )
     {
@@ -229,12 +243,30 @@ bool rename_current_name( const char *name, char *out, size_t size )
     return str_cmp( now, name ) != 0;
 }
 
-/* Given up by a rename: nobody else may take it. */
+/*
+ * Whether the ledger has been read whole (or there is none), reading it if
+ * it has not. Every decision about who a name belongs to -- a new
+ * character's name, a RENAME's target, the name prompt -- asks this first
+ * and refuses while it is false (review, 2026-11-24): an unreadable ledger
+ * used to answer "nobody's old name", so for as long as it could not be
+ * read a retired name could be taken, and a stale file under an old name
+ * loaded at the prompt. Notes, IGNORE lists and replies need no such
+ * check: they are moved along again at every load.
+ */
+bool rename_ledger_known( void )
+{
+    rename_load( );
+    return renames_loaded;
+}
+
+/* Given up by a rename, or not known not to be: nobody else may take it. */
 bool rename_retired( const char *name )
 {
     char now[RENAME_NAME_MAX];
 
-    return rename_current_name( name, now, sizeof(now) );
+    if ( rename_current_name( name, now, sizeof(now) ) )
+        return true;
+    return rename_name_ok( name ) && !renames_loaded;
 }
 
 /*

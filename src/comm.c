@@ -3665,6 +3665,15 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	{
 	    static char renamed_to[MAX_INPUT_LENGTH];
 
+	    /* Whose a name is cannot be told while the ledger cannot be read:
+	       nobody is let in under any name until it can (2026-11-24) --
+	       not a stale file under an old name, not a new character. */
+	    if ( !rename_ledger_known( ) )
+	    {
+		write_to_buffer( d, "Names are not available right now: the name records "
+		    "cannot be read. Please try again in a minute.\n\rName: ", 0 );
+		return;
+	    }
 	    if ( rename_current_name( argument, renamed_to, sizeof(renamed_to) ) )
 	    {
 		if ( player_file_presence( renamed_to ) == PLAYER_FILE_ABSENT

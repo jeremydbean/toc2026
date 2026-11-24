@@ -407,5 +407,37 @@ class RenameDurabilityTests(unittest.TestCase):
                 self.assertIn("password", said[-1],
                               f"the retired name was free after a failed read: {said}")
 
+    def test_a_ledger_not_read_whole_gives_no_name_out(self) -> None:
+        """rename_load() ignored rename_remember() failing, marked the ledger
+        loaded with the line missing, and the retired name read as free for
+        the boot; and a ledger that could not be read at all let the name
+        prompt and character creation go ahead as if no name were retired
+        (review, 2026-11-24). Now neither counts as known, and nothing that
+        decides whose a name is goes ahead until it is: fault point
+        rename-hold fails every record the table would hold."""
+        with LiveMud(extra_env={"TOC_FAULT": "rename-hold"}) as mud:
+            make(mud, "Zholdstaff", Levl=70)
+            make(mud, "Zholdold", Levl=20)
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as victim:
+                login(staff, "Zholdstaff", PW)
+                login(victim, "Zholdold", PW)
+                staff.sync("scroll 0")
+                staff.must("rename zholdold zholdnew", "has been renamed")
+                for client in (victim, staff):
+                    client.send("quit")
+                    client.wait_closed()
+            self.assertIn("\tZholdold\tZholdnew", renames(mud))
+            mud.restart()
+            # Every record now fails to be held: the ledger is never known.
+            for name in ("Zholdold", "Zholdnew", "Zholdfresh"):
+                said = name_prompt(mud, name)
+                self.assertIn("not available", said,
+                              f"{name} was let through with the ledger unknown: {said}")
+                self.assertNotIn("did i get that right", said)
+            self.assertFalse((mud.player_dir / "Zholdold").exists(),
+                             "no character was made under the retired name")
+            self.assertIn(b"could not be held", mud._output_path.read_bytes(),
+                          "the refusal is logged with its reason")
+
 if __name__ == "__main__":
     unittest.main()
