@@ -1279,6 +1279,8 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
         fprintf( fp, "Fate %d %d %d %d %d\n", ch->pcdata->fate_misrecall ? 1 : 0,
                  ch->pcdata->fate_recall_room, ch->pcdata->fate_contract,
                  ch->pcdata->fate_map ? 1 : 0, ch->pcdata->fate_disaster );
+    if ( ch->pcdata->turkey_year != 0 )
+        fprintf( fp, "Turkey %d\n", ch->pcdata->turkey_year );
     fprintf( fp, "PsiSpec %s~\n", ch->pcdata->psionic_grant_spec ? ch->pcdata->psionic_grant_spec : "" );
     fprintf( fp, "PsiKnown %s~\n", ch->pcdata->psionic_known ? ch->pcdata->psionic_known : "" );
     if ( ch->pcdata->black_market_stock != 0 )
@@ -5119,6 +5121,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "TitleSet",	ch->pcdata->title_custom, fread_number( fp ) != 0 );
 	    KEY( "TutSchool",	ch->pcdata->tutorial_school, fread_number( fp ) );
 	    KEY( "TutPending",	ch->pcdata->tutorial_pending, fread_number( fp ) );
+	    KEY( "Turkey",	ch->pcdata->turkey_year, fread_number( fp ) );
 	    if ( !str_cmp( word, "Tutorial" ) )
 	    {
 		int on = fread_number( fp );

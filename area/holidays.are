@@ -183,6 +183,26 @@ BCE ABCDEF 0 0
 8 8 2 0
 0 0 S 0
 
+#29850
+turkey giant gobbler~
+a giant turkey~
+A turkey the size of a barn is here, glaring at you suspiciously.
+~
+It is a turkey.  It is also roughly the size of a barn, with a wattle like a
+red velvet curtain, feet that could carry off a cart, and the wild, rolling
+eye of a bird that has done the arithmetic about the end of November.  Its
+tail fans out behind it in bronze and copper, and somewhere in all those
+feathers something clinks: whatever it has been carrying off, it has been
+keeping.  Pilgrim's Bounty only.
+~
+songbird~
+ABG 0 0 S
+40 10 20d20+1000 1d1+100 3d8+4 24
+-10 -10 -10 -10
+FHIJN 0 0 H
+8 8 1 0
+0 0 H 0
+
 #0
 
 
@@ -758,6 +778,86 @@ E
 turkey roast plate~
 A heaped plate of roast turkey, stuffing and gravy.  A meal like this
 leaves you stronger and ready for the road.
+~
+
+#29851
+drumstick destiny turkey leg club~
+the Drumstick of Destiny~
+An enormous turkey drumstick, polished to a golden shine, lies here.~
+bone~
+5 G AN
+4 7 8 7 0
+40 15 50000 P
+E
+drumstick destiny turkey leg club~
+A giant turkey's drumstick, roasted, glazed and somehow hardened into
+something you could stave in a door with.  It still smells wonderful.  It
+grows with whoever wins it: the giant turkey makes it for the level of the
+one it carried off.  Only the giant turkey of Pilgrim's Bounty has one.
+~
+
+#29852
+gravy boat helm turkey~
+a gravy-boat helm~
+An upturned gravy boat, fitted with a chin strap, sits here.~
+porcelain~
+9 G AE
+8 8 8 5 0
+40 6 30000 P
+E
+gravy boat helm turkey~
+A porcelain gravy boat, turned over and fitted with a leather chin strap.
+There is still a little gravy in the spout, and there always will be.  It
+is made for the level of the one the giant turkey carried off.  Only the
+giant turkey of Pilgrim's Bounty has one.
+~
+
+#29853
+cloak turkey feathers fan tail~
+a cloak of turkey feathers~
+A fan of bronze and copper turkey feathers is spread out here.~
+feathers~
+9 G AK
+8 8 8 5 0
+40 4 30000 P
+E
+cloak turkey feathers fan tail~
+The giant turkey's tail, stitched onto a collar: a magnificent fan of
+bronze, copper and gold.  It rustles when you walk and gobbles, faintly,
+when you run.  It is made for the level of the one the giant turkey carried
+off.  Only the giant turkey of Pilgrim's Bounty has one.
+~
+
+#29854
+wishbone second helpings turkey~
+the Wishbone of Second Helpings~
+A wishbone the length of your arm lies here, unbroken.~
+bone~
+9 AG AO
+8 8 8 5 0
+40 2 30000 P
+E
+wishbone second helpings turkey~
+A wishbone from a turkey far too big to have had one this small, and yet.
+Nobody has pulled it.  Held, it feels like there is always room for more.
+It is made for the level of the one the giant turkey carried off.  Only the
+giant turkey of Pilgrim's Bounty has one.
+~
+
+#29855
+golden wattle turkey~
+the Golden Wattle~
+A wattle of beaten gold on a fine chain glitters here.~
+gold~
+9 G AC
+8 8 8 5 0
+40 2 40000 P
+E
+golden wattle turkey~
+The giant turkey's wattle, somehow turned to gold, hung on a fine chain.  It
+wobbles when you talk and makes you look very distinguished.  It is made
+for the level of the one the giant turkey carried off.  Only the giant
+turkey of Pilgrim's Bounty has one.
 ~
 
 #0

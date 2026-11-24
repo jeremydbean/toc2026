@@ -966,7 +966,10 @@ calls it off and skips that night, and HOLIDAYS RESTART NOW (REBOOT's
 rank) starts the five-minute warning at once.  A game up less than an
 hour does not restart, so one restart a night is the most.
 
-See also: 'HOLIDAY TREATS', TIME, 'BLACK MARKET'
+In Pilgrim's Bounty a giant turkey comes for every hero of level 40 or
+more, once (HELP GIANT TURKEY).
+
+See also: 'HOLIDAY TREATS', TIME, 'BLACK MARKET', 'GIANT TURKEY'
 ~
 
 0 'HOLIDAY TREATS'~
@@ -1054,7 +1057,32 @@ lands beside them.  It does not attack.
   - Or walk away: it leaves about three minutes after landing, or soon
     after you go, never during a fight.
 
-See also: DISASTERS
+In Pilgrim's Bounty the dragon stays home and the giant turkey comes
+instead (HELP GIANT TURKEY).
+
+See also: DISASTERS, 'GIANT TURKEY'
+~
+
+0 'GIANT TURKEY' TURKEY GOBBLER~
+In Pilgrim's Bounty (Thanksgiving week) a turkey the size of a barn comes
+for every hero of level 40 or more -- once that holiday, some time after
+you have been playing a while.  It does not knock: it can find you indoors
+too, though not in a safe room, a fight, a jail, while you are AFK, or
+somewhere you cannot recall from.  It carries you off (badly) to another
+part of the area and lands beside you.
+
+  - KILL TURKEY to fight it: two levels above you, with twice the hit
+    points of a usual foe of your level.  It fights dirty and it fights
+    silly: expect cranberry sauce.
+  - Its feast: coin, a plate of roast turkey, and a piece of the turkey's
+    own gear, made for your level -- the Drumstick of Destiny, a
+    gravy-boat helm, a cloak of turkey feathers, the Wishbone of Second
+    Helpings or the Golden Wattle.  Sometimes two.  Nothing else has them.
+  - Or walk away: it leaves a few minutes after landing, or soon after you
+    go, never during a fight.  Either way it will not come for you again
+    until next year.
+
+See also: 'BLACK DRAGON', HOLIDAYS
 ~
 
 60 DISASTER~

@@ -8,6 +8,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 
+### 2026-11-24 -- the giant turkey of Pilgrim's Bounty
+
+- In Thanksgiving week the black dragon is a giant turkey that comes for
+  every mortal of level 40 or more once, a while into their play, and never
+  twice; scaled to them, silly in the fight, and dropping its own gear made
+  for their level (five pieces, holidays.are 29851-29855). HELP GIANT TURKEY.
+
 ### 2026-11-24 -- the Silver Arrow only finishes Ganon
 
 - A landed Silver Arrow blow no longer takes a thirty-fifth of Ganon's

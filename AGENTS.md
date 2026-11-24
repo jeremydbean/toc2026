@@ -8351,6 +8351,32 @@ from 67,500 to 22,500 the same day (owner: "so 3-4 players can still beat
 him"), in `BOSS_STATS` and `area/hyrule.are` alike -- estimated from the
 2026-11-18 fights (wiki/hyrule-area.md), not measured again.
 
+## The Giant Turkey Of Pilgrim's Bounty, 2026-11-24
+
+Owner: the dragon disaster becomes a giant turkey for Thanksgiving, common
+enough that players see it but never twice for the same player, level 40+,
+scaled to the player with scaled gear, and funny. All in `src/disaster.c`:
+
+- `turkey_season()` is `holiday_key()` == "pilgrim". In it the random
+  disaster roll never starts the dragon; `turkey_update()` visits each
+  mortal of level 40+ once a holiday, after `TURKEY_GRACE` (600 s) online,
+  one in `TURKEY_ODDS` (150) per cycle -- about a quarter of an hour --
+  one turkey at a time, `TURKEY_GAP` (90 s) apart. `pcdata->turkey_year`
+  (saved as `Turkey <year>`) is what makes it once; a staff `DISASTER
+  DRAGON <player>` in season brings the turkey without using it up.
+- It is the dragon's machinery (`dragon_snatch`, `dragon_update`,
+  `disaster_dragon_slain`) with `dragon_is_turkey` set: it can take you
+  from indoors (`turkey_can_snatch`, `dragon_landing(vch, true)`), has twice
+  a mobile's hit points rather than three times, `spec_giant_turkey` for
+  the gags (one pulse in three, `TOC_TURKEY_GAGS` for tests; two cost the
+  target a moment, one some movement), and no dragon achievements.
+- Its drop is `turkey_gear()`: one of mob 29850's five objects
+  (holidays.are 29851-29855), its level, weapon dice or armour and its
+  affects all set from the prey's level, plus a 25% second piece and a
+  plate of roast turkey. Nothing else drops them.
+- Tests: `tests/test_giant_turkey.py` (`TOC_TURKEY=on` runs visits in a test
+  world). HELP 'GIANT TURKEY' in `area/commands.are`.
+
 ## Completion Standard
 
 A task is complete only when the requested behavior or documentation is

@@ -2711,6 +2711,9 @@ struct  pc_data
     int                 fate_contract;
     bool                fate_map;
     int                 fate_disaster;
+    /* The year the giant turkey carried them off in Pilgrim's Bounty
+       (disaster.c): once a holiday, never twice. Saved as `Turkey`. */
+    int                 turkey_year;
     /* A cleric's RESURRECTION offer to this player: who called, the
        corpse it named (looked for again before use) and when it fades
        (resurrect.c). Not saved. */

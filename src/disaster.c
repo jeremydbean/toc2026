@@ -26,6 +26,27 @@
  *
  * Test worlds turn the random strikes off (TOC_NO_DISASTERS, set by
  * tests/live_mud.py); DISASTER still works there.
+ *
+ * The giant turkey (owner, 2026-11-24: "change the dragon disaster to a
+ * giant turkey for thanksgiving and make it more common ... i'd like the
+ * players we have to see it", "only picking up level 40+", "without doing
+ * it multiple times per player ruining their play"). In Pilgrim's Bounty
+ * (holiday.c, "pilgrim") the dragon is the turkey, and it does not wait
+ * on the one-in-a-hundred disaster roll: every mortal of level 40 or more
+ * who has been playing TURKEY_GRACE seconds is visited once that holiday
+ * -- a one in TURKEY_ODDS chance each cycle, about a quarter of an hour on
+ * average -- and never again that year (pcdata->turkey_year, saved). One
+ * turkey at a time, TURKEY_GAP seconds apart. It will take you from
+ * indoors too (it does not knock), but not from shelter, a fight, a jail,
+ * a place you cannot recall from, or while you are AFK. It is the dragon
+ * in every other way -- scaled to you, waiting to be fought, leaving if
+ * you walk off -- with two times a mobile's hit points instead of three,
+ * a sense of humour in the fight (spec_giant_turkey), and a feast for a
+ * hoard: coin, a plate of roast turkey, and a piece of the turkey's own
+ * gear made for your level (turkey_gear) -- found nowhere else.
+ * TOC_TURKEY=on runs its visits in a test world; TOC_TURKEY_ODDS,
+ * TOC_TURKEY_GRACE, TOC_TURKEY_GAP and TOC_TURKEY_GAGS (percent a pulse)
+ * set the numbers.
  ***************************************************************************/
 
 #include <limits.h>
@@ -45,6 +66,17 @@ extern AREA_DATA *area_first;
 #define DRAGON_PREY_GONE     15      /* seconds after its prey leaves */
 #define DRAGON_HOARD_KILLS   40      /* its coin, in kills of the prey's level */
 #define DRAGON_RARE_CHANCE   10      /* a black market rarity besides */
+#define MOB_VNUM_GIANT_TURKEY 29850  /* holidays.are */
+#define OBJ_VNUM_TURKEY_DRUMSTICK 29851
+#define OBJ_VNUM_TURKEY_GRAVY_HELM 29852
+#define OBJ_VNUM_TURKEY_FEATHERS 29853
+#define OBJ_VNUM_TURKEY_WISHBONE 29854
+#define OBJ_VNUM_TURKEY_WATTLE 29855
+#define TURKEY_MIN_LEVEL     40      /* the turkey carries off nobody below this */
+#define TURKEY_GRACE         600     /* seconds a player is on before it comes */
+#define TURKEY_ODDS          150     /* one in this, each cycle, each waiting player */
+#define TURKEY_GAP           90      /* seconds between one turkey and the next */
+#define TURKEY_SECOND_PIECE  25      /* percent: a second piece of its gear */
 
 const char *const disaster_name[DISASTER_COUNT] =
 {
@@ -99,6 +131,30 @@ static int dragon_prey_level = 0;       /* sizes the hoard, even if they quit */
 static bool dragon_prey_struck = false;
 static long dragon_prey_deaths = 0;
 static bool dragon_by_staff = false;
+/* Whether the one about is the giant turkey, and its pop-up timer. */
+static bool dragon_is_turkey = false;
+static bool turkey_timer_popped = false;
+static time_t turkey_next = 0;          /* no turkey before this */
+
+/* Pilgrim's Bounty, when the dragon is the giant turkey. */
+static bool turkey_season( void )
+{
+    const char *key = holiday_key( );
+
+    return key != NULL && !str_cmp( key, "pilgrim" );
+}
+
+/* A number from the environment, for the tests, or the default. */
+static int turkey_number( const char *env, int fallback )
+{
+    const char *value = getenv( env );
+    long n;
+
+    if ( value == NULL || value[0] == '\0' )
+        return fallback;
+    n = strtol( value, NULL, 10 );
+    return n >= 0 && n < 100000 ? (int) n : fallback;
+}
 
 
 /* The disaster type a word names, or 0. */
@@ -473,11 +529,29 @@ static bool dragon_can_snatch( CHAR_DATA *vch )
         && !IS_SET(room->room_flags, ROOM_JAIL);
 }
 
+/* Whether the turkey may carry this character off: a mortal of level 40
+   or more, out of a fight and awake enough, not sheltered, not AFK, and
+   somewhere they may be carried from. Indoors too: it does not knock. */
+static bool turkey_can_snatch( CHAR_DATA *vch )
+{
+    ROOM_INDEX_DATA *room = vch->in_room;
+
+    return !disaster_spares( vch )
+        && vch->level >= TURKEY_MIN_LEVEL
+        && vch->desc != NULL
+        && vch->fighting == NULL
+        && vch->position >= POS_RESTING
+        && !IS_SET(vch->act, PLR_AFK)
+        && room->area != NULL && !disaster_spares_area( room->area )
+        && !IS_SET(room->room_flags, ROOM_NO_RECALL)
+        && !IS_SET(room->room_flags, ROOM_JAIL);
+}
+
 /* Where it lands with them: another outdoor room of the same area --
    whatever lives there suits the level they chose to be at -- empty of
    players, one a mobile may stand in, and one the character could have
    walked to without a guard or a gate turning them away. */
-static ROOM_INDEX_DATA *dragon_landing( CHAR_DATA *vch )
+static ROOM_INDEX_DATA *dragon_landing( CHAR_DATA *vch, bool indoors )
 {
     int attempts;
 
@@ -490,7 +564,7 @@ static ROOM_INDEX_DATA *dragon_landing( CHAR_DATA *vch )
         if ( room == NULL )
             return NULL;
         if ( room == vch->in_room
-          || IS_SET(room->room_flags, ROOM_INDOORS)
+          || ( !indoors && IS_SET(room->room_flags, ROOM_INDOORS) )
           || IS_SET(room->room_flags, ROOM_NO_MOB)
           || IS_SET(room->room_flags, ROOM_SAFE)
           || IS_SET(room->room_flags, ROOM_PRIVATE)
@@ -500,7 +574,7 @@ static ROOM_INDEX_DATA *dragon_landing( CHAR_DATA *vch )
           || IS_SET(room->room_flags, ROOM_JAIL)
           || IS_SET(room->room_flags, ROOM_TELEPORT)
           || IS_SET(room->room_flags, ROOM_RIVER)
-          || room->sector_type == SECT_INSIDE
+          || ( !indoors && room->sector_type == SECT_INSIDE )
           || room->sector_type == SECT_AIR
           || room->sector_type == SECT_WATER_NOSWIM
           || room->sector_type == SECT_UNDER_WATER
@@ -542,10 +616,173 @@ static void dragon_scale( CHAR_DATA *drake, int level )
     drake->alignment = -1000;
 }
 
+/* The turkey in a fight: about one pulse in three, something it should
+   not have done (owner, 2026-11-24: "have the turkey do some funny things
+   during fight"). Two cost the one it fights a moment, one some
+   movement; none hurts, and none ends the fight. */
+static bool spec_giant_turkey( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
+{
+    CHAR_DATA *victim;
+
+    UNUSED_PARAM( ch );
+    UNUSED_PARAM( cmd );
+    UNUSED_PARAM( arg );
+    if ( mob == NULL || mob->in_room == NULL || ( victim = mob->fighting ) == NULL
+    ||   victim->in_room != mob->in_room || mob->position < POS_FIGHTING )
+        return false;
+
+    /* Once, when it is nearly done. */
+    if ( !turkey_timer_popped && mob->hit < mob->max_hit / 4 )
+    {
+        turkey_timer_popped = true;
+        act( "With a loud *PING*, the little pop-up timer in $n's breast pops out. "
+             "$n looks down at it in absolute horror.", mob, NULL, NULL, TO_ROOM );
+        return true;
+    }
+    if ( number_percent() > turkey_number( "TOC_TURKEY_GAGS", 35 ) )
+        return false;
+
+    switch ( number_range( 0, 9 ) )
+    {
+    case 0:
+        act( "$n pelts you with a log of cranberry sauce. It still has the ridges from "
+             "the can. You are sticky, and slower for it.", mob, NULL, victim, TO_VICT );
+        act( "$n pelts $N with a log of cranberry sauce. It still has the ridges from "
+             "the can.", mob, NULL, victim, TO_NOTVICT );
+        victim->move -= UMIN( victim->move, victim->max_move / 20 );
+        break;
+    case 1:
+        act( "$n flaps furiously and fills the air with feathers. You sneeze so hard you "
+             "forget what you were doing.", mob, NULL, victim, TO_VICT );
+        act( "$n flaps furiously and fills the air with feathers. $N sneezes violently.",
+             mob, NULL, victim, TO_NOTVICT );
+        WAIT_STATE( victim, PULSE_VIOLENCE );
+        break;
+    case 2:
+        act( "$n keels over, sticks both feet in the air and plays dead. It opens one eye "
+             "to check whether it worked. It did not. $n gets up, embarrassed.",
+             mob, NULL, NULL, TO_ROOM );
+        break;
+    case 3:
+        act( "$n lets out a mighty GOBBLE, calling for backup. Three chickens wander in, "
+             "look at the situation, look at each other, and wander back out.",
+             mob, NULL, NULL, TO_ROOM );
+        break;
+    case 4:
+        act( "$n puts on a tiny pilgrim hat and a false moustache. 'I'm just a pilgrim,' "
+             "it says. 'Gobble.' Nobody is fooled.", mob, NULL, NULL, TO_ROOM );
+        break;
+    case 5:
+        act( "A gravy boat appears out of nowhere and $n kicks it over. The floor is very "
+             "slippery now.", mob, NULL, NULL, TO_ROOM );
+        if ( number_bits( 1 ) == 0 )
+        {
+            act( "You slip in the gravy and land on your backside!", mob, NULL, victim, TO_VICT );
+            act( "$N slips in the gravy and lands on $S backside!", mob, NULL, victim, TO_NOTVICT );
+            WAIT_STATE( victim, PULSE_VIOLENCE );
+        }
+        break;
+    case 6:
+        act( "$n points behind you and shouts 'LOOK! A HAM!' You look. There is no ham. "
+             "There was never any ham.", mob, NULL, victim, TO_VICT );
+        act( "$n points behind $N and shouts 'LOOK! A HAM!' $N looks. There is no ham.",
+             mob, NULL, victim, TO_NOTVICT );
+        break;
+    case 7:
+        act( "$n gobbles so loudly that birds fall out of trees three areas away.",
+             mob, NULL, NULL, TO_ROOM );
+        break;
+    case 8:
+        act( "$n produces a baster from somewhere and defiantly bastes itself. It smells "
+             "delicious. This is a problem for it.", mob, NULL, NULL, TO_ROOM );
+        break;
+    default:
+        act( "$n tries to flee, trips over its own wattle, and falls flat on its beak.",
+             mob, NULL, NULL, TO_ROOM );
+        break;
+    }
+    return true;
+}
+
+static void turkey_add_affect( OBJ_DATA *obj, int location, int modifier )
+{
+    AFFECT_DATA *paf;
+
+    if ( modifier == 0 )
+        return;
+    paf = new_affect( );
+    paf->type       = -1;
+    paf->level      = obj->level;
+    paf->duration   = -1;
+    paf->location   = (sh_int) location;
+    paf->modifier   = (sh_int) URANGE( -1000, modifier, 1000 );
+    paf->bitvector  = 0;
+    paf->bitvector2 = 0;
+    paf->next       = obj->affected;
+    obj->affected   = paf;
+}
+
+/* A piece of the turkey's own gear, made for this level: its level, its
+   armour or its weapon dice, and what it adds, all grow with it (owner,
+   2026-11-24: "make the gear scale also"). Into the turkey's purse until
+   make_corpse empties it. */
+static const char *turkey_gear( CHAR_DATA *drake, int vnum, int level )
+{
+    OBJ_INDEX_DATA *pObj;
+    OBJ_DATA *obj;
+
+    if ( ( pObj = get_obj_index( vnum ) ) == NULL )
+        return NULL;
+    level = URANGE( TURKEY_MIN_LEVEL, level, LEVEL_IMMORTAL - 1 );
+    obj = create_object( pObj, level );
+    obj->level = (sh_int) level;
+    if ( obj->item_type == ITEM_WEAPON )
+    {
+        obj->value[1] = 2 + level / 8;          /* 7d8 at 40, 9d9 at 59 */
+        obj->value[2] = 5 + level / 12;
+    }
+    else if ( obj->item_type == ITEM_ARMOR )
+    {
+        obj->value[0] = obj->value[1] = obj->value[2] = level / 5;
+        obj->value[3] = level / 7;
+    }
+    switch ( vnum )
+    {
+    case OBJ_VNUM_TURKEY_DRUMSTICK:
+        turkey_add_affect( obj, APPLY_HITROLL, level / 10 );
+        turkey_add_affect( obj, APPLY_DAMROLL, level / 10 );
+        break;
+    case OBJ_VNUM_TURKEY_GRAVY_HELM:
+        turkey_add_affect( obj, APPLY_HIT, level / 2 );
+        turkey_add_affect( obj, APPLY_MANA, level / 2 );
+        break;
+    case OBJ_VNUM_TURKEY_FEATHERS:
+        turkey_add_affect( obj, APPLY_DEX, 1 + level / 30 );
+        turkey_add_affect( obj, APPLY_HIT, level / 3 );
+        turkey_add_affect( obj, APPLY_SAVING_SPELL, -( level / 15 ) );
+        break;
+    case OBJ_VNUM_TURKEY_WISHBONE:
+        turkey_add_affect( obj, APPLY_HITROLL, level / 15 );
+        turkey_add_affect( obj, APPLY_DAMROLL, level / 15 );
+        turkey_add_affect( obj, APPLY_HIT, level / 3 );
+        break;
+    default:                            /* the Golden Wattle */
+        turkey_add_affect( obj, APPLY_DAMROLL, level / 12 );
+        turkey_add_affect( obj, APPLY_MANA, level / 3 );
+        turkey_add_affect( obj, APPLY_SAVING_SPELL, -( level / 12 ) );
+        break;
+    }
+    obj_to_char( obj, drake );
+    return obj->short_descr;
+}
+
 /* Snatch one character in the area, or the one staff named. */
 static bool dragon_snatch( AREA_DATA *area, CHAR_DATA *named, CHAR_DATA *staff )
 {
-    MOB_INDEX_DATA *pDragon = get_mob_index( MOB_VNUM_BLACK_DRAGON );
+    bool turkey = turkey_season( );
+    MOB_INDEX_DATA *pDragon = get_mob_index( turkey ? MOB_VNUM_GIANT_TURKEY
+                                                    : MOB_VNUM_BLACK_DRAGON );
+    bool (*can_snatch)( CHAR_DATA * ) = turkey ? turkey_can_snatch : dragon_can_snatch;
     CHAR_DATA *candidates[64];
     CHAR_DATA *vch;
     CHAR_DATA *prey = named;
@@ -558,53 +795,85 @@ static bool dragon_snatch( AREA_DATA *area, CHAR_DATA *named, CHAR_DATA *staff )
     if ( dragon != NULL || pDragon == NULL )
     {
         if ( staff != NULL )
-            send_to_char( dragon != NULL ? "The dragon is already about.\n\r"
-                                         : "There is no dragon mobile (4474).\n\r", staff );
+            send_to_char( dragon != NULL ? "The dragon (or the turkey) is already about.\n\r"
+                          : turkey ? "There is no giant turkey mobile (29850).\n\r"
+                                   : "There is no dragon mobile (4474).\n\r", staff );
         return false;
     }
     if ( prey == NULL )
     {
         FOR_EACH_CHARACTER( iter, vch )
             if ( count < 64 && vch->in_room != NULL && vch->in_room->area == area
-              && dragon_can_snatch( vch ) )
+              && can_snatch( vch ) )
                 candidates[count++] = vch;
         if ( count == 0 )
             return false;
         prey = candidates[number_range( 0, count - 1 )];
     }
-    else if ( !dragon_can_snatch( prey ) )
+    else if ( !can_snatch( prey ) )
     {
         if ( staff != NULL )
-            send_to_char( "The dragon cannot reach them: they must be a mortal of level 10 or "
-                          "more, outdoors and out of a fight, somewhere they may be carried "
-                          "from.\n\r", staff );
+            send_to_char( turkey
+                ? "The turkey cannot reach them: they must be a mortal of level 40 or more, "
+                  "out of a fight, not AFK, somewhere they may be carried from.\n\r"
+                : "The dragon cannot reach them: they must be a mortal of level 10 or "
+                  "more, outdoors and out of a fight, somewhere they may be carried "
+                  "from.\n\r", staff );
         return false;
     }
-    if ( ( landing = dragon_landing( prey ) ) == NULL )
+    if ( ( landing = dragon_landing( prey, turkey ) ) == NULL )
     {
         if ( staff != NULL )
-            send_to_char( "There is nowhere in that area for the dragon to land.\n\r", staff );
+            send_to_char( "There is nowhere in that area for it to land.\n\r", staff );
         return false;
     }
 
     from = prey->in_room;
-    send_to_char( "\n\rWith a roar like a landslide, the Great Black Dragon swoops out of "
-                  "the sky and snatches you up in its claws!\n\r", prey );
-    act( "With a roar like a landslide, a huge black dragon swoops out of the sky "
-         "and carries $n off in its claws!", prey, NULL, NULL, TO_ROOM );
+    if ( turkey )
+    {
+        send_to_char( "\n\r{0BGOBBLE GOBBLE GOBBLE!{00 A turkey the size of a barn comes "
+                      "thundering out of nowhere, wings windmilling, and scoops you up in its "
+                      "enormous feet!\n\r", prey );
+        act( "A turkey the size of a barn thunders in, wings windmilling, and scoops up $n. "
+             "It tries to take off. It fails. It tries again. With a mighty GOBBLE it lurches "
+             "into the air, $n dangling beneath it.", prey, NULL, NULL, TO_ROOM );
+    }
+    else
+    {
+        send_to_char( "\n\rWith a roar like a landslide, the Great Black Dragon swoops out of "
+                      "the sky and snatches you up in its claws!\n\r", prey );
+        act( "With a roar like a landslide, a huge black dragon swoops out of the sky "
+             "and carries $n off in its claws!", prey, NULL, NULL, TO_ROOM );
+    }
     if ( !IS_NPC(prey) && prey->pcdata->mounted )
         do_dismount( prey, "" );
     char_from_room( prey );
     char_to_room( prey, landing );
-    send_to_char( "The ground races past far below. Then the dragon drops you, and lands "
-                  "beside you with a crash.\n\r\n\r", prey );
+    if ( turkey )
+        send_to_char( "The turkey flies about as well as you would expect a turkey to fly. "
+                      "You skim the treetops, clip a chimney, are chased briefly by an "
+                      "indignant goose, and come down in a tumbling heap of feathers.\n\r\n\r",
+                      prey );
+    else
+        send_to_char( "The ground races past far below. Then the dragon drops you, and lands "
+                      "beside you with a crash.\n\r\n\r", prey );
     do_look( prey, "auto" );
 
     dragon = create_mobile( pDragon );
-    dragon->spec_fun = NULL;
+    dragon->spec_fun = turkey ? spec_giant_turkey : NULL;
     REMOVE_BIT( dragon->act, ACT_AGGRESSIVE );
     SET_BIT( dragon->act, ACT_SENTINEL );
     dragon_scale( dragon, prey->level );
+    if ( turkey )
+    {
+        /* Two times a mobile's hit points, not three: a funny fight, not a
+           siege. */
+        dragon->max_hit = pool_scale( dummy_typical_hp( dragon->level ), 2, 1, POOL_MAX );
+        dragon->hit = dragon->max_hit;
+        dragon->alignment = 0;
+    }
+    dragon_is_turkey = turkey;
+    turkey_timer_popped = false;
     char_to_room( dragon, landing );
     dragon_prey = prey;
     dragon_prey_level = prey->level;
@@ -612,22 +881,44 @@ static bool dragon_snatch( AREA_DATA *area, CHAR_DATA *named, CHAR_DATA *staff )
     dragon_prey_struck = false;
     dragon_prey_deaths = prey->pcdata != NULL ? prey->pcdata->achievement_deaths : 0;
     dragon_by_staff = staff != NULL || ( area != NULL && area->disaster_by_staff );
-    act( "$n folds its wings and regards you, smoke curling from its nostrils.",
-         dragon, NULL, prey, TO_VICT );
-    snprintf( buf, sizeof(buf),
-              "{0BIt has not decided whether you are prey or a meal. KILL DRAGON to "
-              "fight it for its hoard, or walk away -- it will not wait long.{00\n\r" );
-    send_to_char( buf, prey );
+    if ( turkey )
+    {
+        act( "$n shakes out its feathers, fixes you with one beady eye, and mutters "
+             "something that sounds a lot like 'not on the menu.'", dragon, NULL, prey, TO_VICT );
+        act( "With an undignified crash-landing, $n arrives and drops $N in the dirt.",
+             dragon, NULL, prey, TO_NOTVICT );
+        send_to_char( "{0BIt has heard about Thanksgiving, and it has decided you are "
+                      "responsible. KILL TURKEY for the feast it carries, or walk away -- it "
+                      "will not wait long.{00\n\r", prey );
+        /* Once a holiday (a staff demonstration does not use it up). */
+        if ( staff == NULL && prey->pcdata != NULL )
+        {
+            int year, mon, day;
+
+            holiday_date( &year, &mon, &day );
+            prey->pcdata->turkey_year = year;
+        }
+    }
+    else
+    {
+        act( "$n folds its wings and regards you, smoke curling from its nostrils.",
+             dragon, NULL, prey, TO_VICT );
+        snprintf( buf, sizeof(buf),
+                  "{0BIt has not decided whether you are prey or a meal. KILL DRAGON to "
+                  "fight it for its hoard, or walk away -- it will not wait long.{00\n\r" );
+        send_to_char( buf, prey );
+    }
 
     /* The log is published: it says who and from which area, never where
        the dragon is waiting. Staff online hear the room. */
-    snprintf( buf, sizeof(buf), "Black dragon: snatched %s (level %d) from %s; "
-              "the dragon is level %d.", prey->name, prey->level,
+    snprintf( buf, sizeof(buf), "%s: snatched %s (level %d) from %s; "
+              "it is level %d.", turkey ? "Giant turkey" : "Black dragon",
+              prey->name, prey->level,
               from->area != NULL && from->area->file_name != NULL
               ? from->area->file_name : "?", dragon->level );
     log_string( buf );
-    snprintf( buf, sizeof(buf), "The black dragon carried %s from room %d to room %d.",
-              prey->name, from->vnum, landing->vnum );
+    snprintf( buf, sizeof(buf), "The %s carried %s from room %d to room %d.",
+              turkey ? "giant turkey" : "black dragon", prey->name, from->vnum, landing->vnum );
     wizinfo( buf, LEVEL_IMMORTAL );
     if ( staff != NULL )
         send_to_char( "Done.\n\r", staff );
@@ -654,17 +945,24 @@ static void dragon_update( void )
 
     /* Discretion Is an Option: the prey walked away, alive, never having
        raised a hand to it. */
-    if ( dragon_prey != NULL && !dragon_by_staff && !dragon_prey_struck
+    if ( dragon_prey != NULL && !dragon_by_staff && !dragon_prey_struck && !dragon_is_turkey
       && dragon_prey->pcdata != NULL
       && dragon_prey->pcdata->achievement_deaths == dragon_prey_deaths
       && dragon_prey->in_room != dragon->in_room && dragon_prey->hit > 0 )
         achievement_record_event( dragon_prey, ACHIEVEMENT_EVENT_DRAGON_DISCRETION, true );
 
-    act( "$n spreads its vast wings, laughs at you all, and takes to the sky.",
-         dragon, NULL, NULL, TO_ROOM );
-    snprintf( buf, sizeof(buf), "Black dragon: took off unfought%s.",
+    if ( dragon_is_turkey )
+        act( "$n runs in circles, flapping and gobbling in triumph, and eventually gets "
+             "airborne. Mostly. A fence post is never the same again.", dragon, NULL, NULL, TO_ROOM );
+    else
+        act( "$n spreads its vast wings, laughs at you all, and takes to the sky.",
+             dragon, NULL, NULL, TO_ROOM );
+    snprintf( buf, sizeof(buf), "%s: took off unfought%s.",
+              dragon_is_turkey ? "Giant turkey" : "Black dragon",
               dragon->hit < dragon->max_hit ? " (wounded)" : "" );
     log_string( buf );
+    if ( dragon_is_turkey )
+        turkey_next = current_time + turkey_number( "TOC_TURKEY_GAP", TURKEY_GAP );
     extract_char( dragon, true );       /* forgets it */
 }
 
@@ -707,14 +1005,34 @@ void disaster_dragon_slain( CHAR_DATA *ch, CHAR_DATA *drake )
     gain_copper( drake, hoard );
     format_price( hoard, price, sizeof(price) );
 
-    gear = dragon_hoard_item( drake, black_market_gear_for_level( level ) );
-    if ( gear == NULL
-    ||   number_percent() <= DRAGON_RARE_CHANCE + CLOVER_RARE_STEP * clover_luck( ch ) )
-        rare = dragon_hoard_item( drake, black_market_rarity() );
+    if ( drake == dragon && dragon_is_turkey )
+    {
+        /* The feast: its own gear, made for the level of the one it carried
+           off, now and then a second piece, and dinner. */
+        static const int pieces[] = { OBJ_VNUM_TURKEY_DRUMSTICK, OBJ_VNUM_TURKEY_GRAVY_HELM,
+                                      OBJ_VNUM_TURKEY_FEATHERS, OBJ_VNUM_TURKEY_WISHBONE,
+                                      OBJ_VNUM_TURKEY_WATTLE };
+        int first = number_range( 0, 4 );
 
-    act( "$n crashes to the ground, and the hoard it carried spills across the earth!",
-         drake, NULL, NULL, TO_ROOM );
-    snprintf( buf, sizeof(buf), "Black dragon: slain by %s, dropping %s, %s%s%s.",
+        gear = turkey_gear( drake, pieces[first], level );
+        if ( number_percent() <= TURKEY_SECOND_PIECE + CLOVER_RARE_STEP * clover_luck( ch ) )
+            rare = turkey_gear( drake, pieces[( first + number_range( 1, 4 ) ) % 5], level );
+        dragon_hoard_item( drake, OBJ_VNUM_ROAST_TURKEY );
+        act( "$n topples over with one last, mournful GOBBLE, and a feast's worth of loot "
+             "spills out from under its feathers!", drake, NULL, NULL, TO_ROOM );
+        turkey_next = current_time + turkey_number( "TOC_TURKEY_GAP", TURKEY_GAP );
+    }
+    else
+    {
+        gear = dragon_hoard_item( drake, black_market_gear_for_level( level ) );
+        if ( gear == NULL
+        ||   number_percent() <= DRAGON_RARE_CHANCE + CLOVER_RARE_STEP * clover_luck( ch ) )
+            rare = dragon_hoard_item( drake, black_market_rarity() );
+        act( "$n crashes to the ground, and the hoard it carried spills across the earth!",
+             drake, NULL, NULL, TO_ROOM );
+    }
+    snprintf( buf, sizeof(buf), "%s: slain by %s, dropping %s, %s%s%s.",
+              drake == dragon && dragon_is_turkey ? "Giant turkey" : "Black dragon",
               who == NULL ? "nothing" : IS_NPC(who) ? who->short_descr : who->name,
               price, gear != NULL ? gear : "no gear",
               rare != NULL ? " and " : "", rare != NULL ? rare : "" );
@@ -724,7 +1042,8 @@ void disaster_dragon_slain( CHAR_DATA *ch, CHAR_DATA *drake )
     /* Dragon Trouble for everyone in at the kill; You Picked the Wrong
        Passenger for the one it carried off, if they struck it and are
        there for its end. A staff demonstration earns nothing. */
-    if ( drake == dragon && !dragon_by_staff && who != NULL && drake->in_room != NULL )
+    if ( drake == dragon && !dragon_by_staff && !dragon_is_turkey && who != NULL
+      && drake->in_room != NULL )
     {
         achievement_party_count( who, drake->in_room, ACH_CTR_DRAGON_KILLS );
         if ( dragon_prey != NULL && dragon_prey_struck
@@ -835,6 +1154,39 @@ static int disaster_roll( void )
     return DISASTER_DRAGON;
 }
 
+/* Pilgrim's Bounty: the turkey visits each mortal of level 40 or more
+   once, a while into their play. One player a cycle is tried at most, and
+   only while no turkey (or dragon) is about. */
+static void turkey_update( bool random_off )
+{
+    DESCRIPTOR_DATA *d;
+    int year, mon, day;
+    int grace = turkey_number( "TOC_TURKEY_GRACE", TURKEY_GRACE );
+    int odds = UMAX( 1, turkey_number( "TOC_TURKEY_ODDS", TURKEY_ODDS ) );
+    const char *on = getenv( "TOC_TURKEY" );
+
+    if ( !turkey_season( ) || dragon != NULL || current_time < turkey_next )
+        return;
+    if ( random_off && ( on == NULL || str_cmp( on, "on" ) ) )
+        return;
+    holiday_date( &year, &mon, &day );
+    for ( d = descriptor_list; d != NULL; d = d->next )
+    {
+        CHAR_DATA *fch = d->character;
+
+        if ( d->connected != CON_PLAYING || fch == NULL || IS_NPC(fch)
+        ||   fch->pcdata == NULL || fch->pcdata->turkey_year == year
+        ||   fch->pcdata->session_logon <= 0
+        ||   current_time - fch->pcdata->session_logon < grace
+        ||   fch->in_room == NULL || !turkey_can_snatch( fch ) )
+            continue;
+        if ( number_range( 1, odds ) != 1 )
+            continue;
+        if ( dragon_snatch( fch->in_room->area, fch, NULL ) )
+            return;
+    }
+}
+
 /* Every six or seven seconds, from update_handler. */
 void disaster_update( void )
 {
@@ -845,6 +1197,7 @@ void disaster_update( void )
     DESCRIPTOR_DATA *d;
 
     dragon_update();
+    turkey_update( random_off );
 
     /* A disaster the creator fated (FATE <player> DISASTER, or DISASTER at
        somebody offline) strikes the first time they stand where it can:
@@ -891,7 +1244,10 @@ void disaster_update( void )
         {
             if ( random_off || number_range( 1, 10000 ) > DISASTER_CHANCE )
                 continue;
-            if ( ( type = disaster_roll() ) > 0 )
+            /* In Pilgrim's Bounty the turkey comes on its own round
+               (turkey_update), not out of the disaster roll. */
+            if ( ( type = disaster_roll() ) > 0
+              && !( type == DISASTER_DRAGON && turkey_season( ) ) )
                 disaster_begin( pArea, type );
             continue;                   /* warned; it strikes next cycle */
         }
@@ -1138,7 +1494,8 @@ void do_disaster( CHAR_DATA *ch, char *argument )
             send_to_char( "No area is suffering a disaster.\n\r", ch );
         if ( dragon != NULL && dragon->in_room != NULL )
         {
-            snprintf( buf, sizeof(buf), "The black dragon (level %d) waits in room %d with %s.\n\r",
+            snprintf( buf, sizeof(buf), "The %s (level %d) waits in room %d with %s.\n\r",
+                      dragon_is_turkey ? "giant turkey" : "black dragon",
                       dragon->level, dragon->in_room->vnum,
                       dragon_prey != NULL ? dragon_prey->name : "nobody" );
             send_to_char( buf, ch );
