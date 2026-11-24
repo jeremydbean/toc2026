@@ -2583,13 +2583,17 @@ Syntax: dns guard
         dns allow <address>
 
 DNS GUARD lists the connection guard's pauses, floods and wrong-password
-lockouts.  Pauses and floods live in memory: a reboot lifts them.
+lockouts.  Pauses, floods and their history survive a reboot
+(log/guard_pauses.tsv).
 
   - An address no player has logged in from in 90 days, nor plays from
     now, is paused for six hours after six connections in six hours that
     reach no password prompt, or twenty in a minute: doubling each time
-    in a week, to seven days.  A pause refuses new characters only; a
-    player's login lifts it.
+    in 30 days, to 30 days.  A paused address is refused at connect with
+    no reply; DNS ALLOW lifts it.
+  - An uptime monitor (UptimeRobot) is never paused: an address whose
+    name is under uptimerobot.com, and whose name leads back to it, is
+    let in and its checks are not strikes.
   - Sixty connections in a minute is a flood: refused for an hour.
   - At most eight connections from one address may wait at the login
     prompts; while two hundred wait game-wide, untrusted addresses are

@@ -8,6 +8,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 
+- **The connection guard lets UptimeRobot in, and holds repeat scanners
+  for longer (2026-11-24).** UptimeRobot's checkers were 30 of the 34
+  untrusted addresses that kept coming back; each silent port check was a
+  strike, so the guard kept pausing and refusing the owner's own monitor.
+  An address whose name is under `uptimerobot.com` and leads back to it is
+  now never struck or paused, and a pause on it is lifted. Pauses on other
+  addresses now double for each pause in 30 days, to 30 days (were a week
+  and seven days). DNS GUARD help corrected: pauses refuse at connect and
+  survive a reboot.
+
 - **A knocked-down boss no longer heals mid-fight (2026-11-24).** Ganon
   and the Level 7 and 8 Hyrule guardians counted themselves out of the
   fight whenever they were not on their feet, so a boss whose bash missed

@@ -33,6 +33,8 @@ typedef struct dns_job
     socklen_t len;
     char host[DNS_HOST_MAX];
     int found;
+    int check;          /* the guard's: confirm the name leads back */
+    int confirmed;      /* it does */
     time_t queued;
 } DNS_JOB;
 
@@ -42,6 +44,8 @@ static DNS_JOB dns_todo[DNS_QUEUE_MAX];
 static int     dns_todo_count;
 static DNS_JOB dns_done[DNS_QUEUE_MAX];
 static int     dns_done_count;
+static DNS_JOB dns_checked[DNS_QUEUE_MAX];   /* the guard's answers */
+static int     dns_checked_count;
 static int     dns_running;            /* lookups the workers hold */
 static int     dns_started;            /* 1 started, -1 could not start */
 static long    dns_delay_ms;           /* TOC_DNS_DELAY_MS, tests only */
@@ -53,6 +57,34 @@ static long dns_now_ms( void )
 
     clock_gettime( CLOCK_MONOTONIC, &now );
     return (long) now.tv_sec * 1000L + now.tv_nsec / 1000000L;
+}
+
+/* Whether `name` resolves back to the address it was found for: a PTR
+   record is the far end's to write, so a name alone proves nothing until
+   its own forward lookup leads back (forward-confirmed reverse DNS). */
+static int dns_leads_back( const DNS_JOB *job )
+{
+    struct addrinfo hints, *found = NULL, *ai;
+    int back = 0;
+
+    memset( &hints, 0, sizeof(hints) );
+    hints.ai_family = job->addr.ss_family;
+    hints.ai_socktype = SOCK_STREAM;
+    if ( getaddrinfo( job->host, NULL, &hints, &found ) != 0 )
+        return 0;
+    for ( ai = found; ai != NULL && !back; ai = ai->ai_next )
+    {
+        if ( ai->ai_family == AF_INET && job->addr.ss_family == AF_INET )
+            back = memcmp( &( (const struct sockaddr_in *) (const void *) ai->ai_addr )->sin_addr,
+                           &( (const struct sockaddr_in *) (const void *) &job->addr )->sin_addr,
+                           sizeof(struct in_addr) ) == 0;
+        else if ( ai->ai_family == AF_INET6 && job->addr.ss_family == AF_INET6 )
+            back = memcmp( &( (const struct sockaddr_in6 *) (const void *) ai->ai_addr )->sin6_addr,
+                           &( (const struct sockaddr_in6 *) (const void *) &job->addr )->sin6_addr,
+                           sizeof(struct in6_addr) ) == 0;
+    }
+    freeaddrinfo( found );
+    return back;
 }
 
 static void *dns_worker( void *unused )
@@ -90,6 +122,8 @@ static void *dns_worker( void *unused )
         began = dns_now_ms();
         job.found = getnameinfo( (struct sockaddr *) &job.addr, job.len,
                                  job.host, sizeof(job.host), NULL, 0, NI_NAMEREQD ) == 0;
+        if ( job.found && job.check )
+            job.confirmed = dns_leads_back( &job );
         took = dns_now_ms() - began;
 
         pthread_mutex_lock( &dns_lock );
@@ -101,7 +135,12 @@ static void *dns_worker( void *unused )
         dns_stats.total_ms += took;
         if ( took > dns_stats.slowest_ms )
             dns_stats.slowest_ms = took;
-        if ( job.found && dns_done_count < DNS_QUEUE_MAX )
+        if ( job.found && job.check )
+        {
+            if ( dns_checked_count < DNS_QUEUE_MAX )
+                dns_checked[dns_checked_count++] = job;
+        }
+        else if ( job.found && dns_done_count < DNS_QUEUE_MAX )
             dns_done[dns_done_count++] = job;
         pthread_mutex_unlock( &dns_lock );
     }
@@ -138,7 +177,7 @@ static int dns_start( void )
     return dns_started > 0;
 }
 
-int dns_async_submit( long serial, const struct sockaddr *addr, socklen_t len )
+static int dns_queue( long serial, const struct sockaddr *addr, socklen_t len, int check )
 {
     int queued = 0;
 
@@ -154,6 +193,7 @@ int dns_async_submit( long serial, const struct sockaddr *addr, socklen_t len )
         job->serial = serial;
         memcpy( &job->addr, addr, (size_t) len );
         job->len = len;
+        job->check = check;
         job->queued = time( NULL );
         queued = 1;
         dns_stats.submitted++;
@@ -163,6 +203,38 @@ int dns_async_submit( long serial, const struct sockaddr *addr, socklen_t len )
         dns_stats.queue_full++;
     pthread_mutex_unlock( &dns_lock );
     return queued;
+}
+
+int dns_async_submit( long serial, const struct sockaddr *addr, socklen_t len )
+{
+    return dns_queue( serial, addr, len, 0 );
+}
+
+int dns_async_check( const struct sockaddr *addr, socklen_t len )
+{
+    return dns_queue( 0, addr, len, 1 );
+}
+
+int dns_async_take_checked( struct sockaddr_storage *addr, char *host, size_t size, int *confirmed )
+{
+    int taken = 0;
+
+    if ( dns_started <= 0 || addr == NULL || host == NULL || size == 0 || confirmed == NULL )
+        return 0;
+    pthread_mutex_lock( &dns_lock );
+    if ( dns_checked_count > 0 )
+    {
+        *addr = dns_checked[0].addr;
+        strncpy( host, dns_checked[0].host, size - 1 );
+        host[size - 1] = '\0';
+        *confirmed = dns_checked[0].confirmed;
+        memmove( &dns_checked[0], &dns_checked[1],
+                 sizeof(DNS_JOB) * (size_t) ( dns_checked_count - 1 ) );
+        dns_checked_count--;
+        taken = 1;
+    }
+    pthread_mutex_unlock( &dns_lock );
+    return taken;
 }
 
 int dns_async_take( long *serial, char *host, size_t size )

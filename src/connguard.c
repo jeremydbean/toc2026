@@ -38,7 +38,10 @@
  *  - An untrusted address is paused after GUARD_STRIKES connections within
  *    GUARD_STRIKE_WINDOW that went nowhere, or GUARD_BURST connections
  *    within a minute: GUARD_BLOCK_BASE the first time, doubling for each
- *    pause in the last week, to GUARD_BLOCK_MAX. A connection "went
+ *    pause in the last GUARD_HISTORY, to GUARD_BLOCK_MAX -- 30 days and
+ *    30 days since 2026-11-24 (owner: the scanners that keep coming back
+ *    can be shut out for longer; it was a week and a week, so one that
+ *    came back weekly started again at six hours). A connection "went
  *    nowhere" when it closed before reaching a password prompt -- an
  *    existing character's, or a new one's after its name was confirmed.
  *    Never a strike: a connection the login prompt timed out (a client left
@@ -71,6 +74,20 @@
  *    by a login, a new character refused, and an address that hits the
  *    waiting limit -- the last two once an address in GUARD_NOTICE_SECS.
  *
+ * An uptime monitor is never held back (owner, 2026-11-24). Its port check
+ * connects and closes without a word some eight times a day from each of
+ * about thirty addresses, which is a strike each time: the log for
+ * 2026-09-17 to 11-24 had UptimeRobot's own checkers as 30 of the 34
+ * untrusted addresses that came back most, paused up to nine times each
+ * and refused -- so the monitor saw the game as down. Before the guard
+ * counts a strike against an address, or refuses a paused one, it asks
+ * the address's name (dnsasync.c, off the game loop; at most once in
+ * GUARD_NAME_RECHECK), and a name in guard_monitor_domains whose own
+ * forward lookup leads back to the address -- a PTR record alone is the
+ * far end's to write -- exempts it for GUARD_MONITOR_HOLD and lifts any
+ * pause on it. Not kept across a restart: the first strike after one asks
+ * again. TOC_GUARD_MONITOR_DOMAIN adds one domain, for the tests.
+ *
  * Loopback is exempt, as the login throttle exempts it (the web bridge and
  * the health probe); TOC_GUARD_LOOPBACK=1 includes it, for the tests (apart
  * from the throttle's switch, whose tests make many failed connections),
@@ -93,7 +110,7 @@
 #include "merc.h"
 #include "guardstore.h"
 
-#define GUARD_SLOTS           512
+#define GUARD_SLOTS          1024   /* a month's history (GUARD_HISTORY) of repeat addresses */
 #define GUARD_TRUST_MAX      4096
 #define GUARD_TRUST_DAYS       90
 #define GUARD_TRUST_FILE_MAX 20000    /* lines before the file is rewritten */
@@ -101,7 +118,7 @@
 #define GUARD_STRIKE_WINDOW  ( 6 * 3600 )
 #define GUARD_BURST            20
 #define GUARD_BLOCK_BASE     ( 6 * 3600 )
-#define GUARD_BLOCK_MAX      ( 7 * 86400 )
+#define GUARD_BLOCK_MAX      ( 30 * 86400 )
 #define GUARD_FLOOD            60
 #define GUARD_FLOOD_SECS     3600
 #define GUARD_PENDING_MAX       8
@@ -114,7 +131,9 @@
 #define GUARD_PAUSE_FILE     "../log/guard_pauses.tsv"
 #define GUARD_SAVE_SECS        30   /* a strike reaches the file within this */
 #define GUARD_REFUSAL_LOG_SECS 60   /* one refusal line an address this often */
-#define GUARD_HISTORY        ( 7 * 86400 )   /* pauses counted for doubling */
+#define GUARD_HISTORY        ( 30 * 86400 )  /* pauses counted for doubling */
+#define GUARD_NAME_RECHECK   ( 6 * 3600 )    /* an address's name asked at most this often */
+#define GUARD_MONITOR_HOLD   ( 2 * 86400 )   /* a confirmed monitor's name holds this long */
 
 typedef struct guard_entry
 {
@@ -133,8 +152,17 @@ typedef struct guard_entry
     time_t   refusal_logged; /* the last refusal line for it */
     long     refusals_unlogged;  /* refused since that line */
     long     refused_total;  /* refused while paused or flooding, all time */
+    time_t   name_asked;     /* its name last asked of the resolver */
+    time_t   monitor_until;  /* an uptime monitor, its name confirmed, till then */
     char     text[NET_ADDR_TEXT];   /* the address last seen for this key */
 } GUARD_ENTRY;
+
+/* Uptime monitors whose checks are never strikes, by the domain their
+   addresses' names end in (owner, 2026-11-24). */
+static const char *const guard_monitor_domains[] =
+{
+    "uptimerobot.com",
+};
 
 static GUARD_ENTRY guard_table[GUARD_SLOTS];
 
@@ -366,7 +394,7 @@ static void guard_pause_save( void )
         guard_pause_dirty = true;
         return;
     }
-    fprintf( fp, "# address\tpaused until\tpauses this week\tlast pause\tflood until"
+    fprintf( fp, "# address\tpaused until\tpauses in 30 days\tlast pause\tflood until"
                  "\tstrike window\tstrikes\trefused in all: connguard.c\n" );
     for ( i = 0; i < GUARD_SLOTS; i++ )
     {
@@ -520,9 +548,9 @@ static void guard_log_refusal( GUARD_ENTRY *e, const char *why )
         return;
     guard_ip_text( e, addr, sizeof(addr) );
     snprintf( buf, sizeof(buf), "Connection guard: refused %ld connection%s from %s (%s; "
-              "%ld refused in all, pause %d this week, %ld minutes left).",
+              "%ld refused in all, pause %d in %d days, %ld minutes left).",
               e->refusals_unlogged, e->refusals_unlogged == 1 ? "" : "s", addr, why,
-              e->refused_total, e->blocks,
+              e->refused_total, e->blocks, GUARD_HISTORY / 86400,
               (long) ( UMAX( e->blocked_until, e->flood_until ) - current_time + 59 ) / 60 );
     log_string( buf );
     e->refusal_logged = current_time;
@@ -562,10 +590,10 @@ static void guard_block( GUARD_ENTRY *e, const char *why )
     guard_blocks_new++;
     guard_ip_text( e, addr, sizeof(addr) );
     snprintf( buf, sizeof(buf),
-              "Connection guard: %s paused for %ld hours (pause %d this week; %s; no player has "
+              "Connection guard: %s paused for %ld hours (pause %d in %d days; %s; no player has "
               "logged in from it in %d days). Its connections are refused until then. "
               "DNS ALLOW %s lifts it.",
-              addr, length / 3600, e->blocks, why, GUARD_TRUST_DAYS, addr );
+              addr, length / 3600, e->blocks, GUARD_HISTORY / 86400, why, GUARD_TRUST_DAYS, addr );
     guard_say( buf, LEVEL_IMMORTAL );
     guard_pause_save();
 }
@@ -579,8 +607,50 @@ static bool guard_notice_due( GUARD_ENTRY *e )
     return true;
 }
 
+/* Whether `host` is in one of guard_monitor_domains: the domain itself or
+   a name under it, never one that merely ends in the same letters. */
+static bool guard_monitor_domain( const char *host )
+{
+    const char *extra = getenv( "TOC_GUARD_MONITOR_DOMAIN" );
+    size_t n, hl;
+
+    if ( host == NULL || ( hl = strlen( host ) ) == 0 )
+        return false;
+    for ( n = 0; n <= sizeof(guard_monitor_domains) / sizeof(guard_monitor_domains[0]); n++ )
+    {
+        const char *dom = n < sizeof(guard_monitor_domains) / sizeof(guard_monitor_domains[0])
+                        ? guard_monitor_domains[n] : extra;
+        size_t dl;
+
+        if ( dom == NULL || ( dl = strlen( dom ) ) == 0 || dl > hl )
+            continue;
+        if ( !str_cmp( host + ( hl - dl ), dom ) && ( hl == dl || host[hl - dl - 1] == '.' ) )
+            return true;
+    }
+    return false;
+}
+
+/* An uptime monitor whose name was confirmed lately. */
+static bool guard_is_monitor( uint32_t ip )
+{
+    const GUARD_ENTRY *e = guard_find( ip, false );
+
+    return e != NULL && e->monitor_until > current_time;
+}
+
+/* Ask the resolver this address's name, at most once in GUARD_NAME_RECHECK;
+   the answer comes to conn_guard_name_checked. */
+static void guard_ask_name( GUARD_ENTRY *e, const NET_ADDR *a )
+{
+    if ( e->name_asked != 0 && current_time - e->name_asked < GUARD_NAME_RECHECK )
+        return;
+    if ( dns_check_name( a ) )
+        e->name_asked = current_time;
+}
+
 /* The address counts for the guard at all: not loopback (bar the tests),
-   no player logged in from it lately, nobody playing from it now. */
+   no player logged in from it lately, nobody playing from it now, no
+   uptime monitor's. */
 static bool guard_watches( uint32_t ip, DESCRIPTOR_DATA *self )
 {
     DESCRIPTOR_DATA *od;
@@ -593,7 +663,7 @@ static bool guard_watches( uint32_t ip, DESCRIPTOR_DATA *self )
        GUARD_TRUST_DAYS, or one a player is playing from now. An immortal's
        BAN is another list, asked at the name and the password as always,
        and still shuts anybody out. */
-    if ( guard_trusted_has( ip ) )
+    if ( guard_trusted_has( ip ) || guard_is_monitor( ip ) )
         return false;
     for ( od = descriptor_list; od != NULL; od = od->next )
         if ( od != self && od->ip == ip && od->connected == CON_PLAYING )
@@ -678,6 +748,7 @@ const char *conn_guard_admit( DESCRIPTOR_DATA *d, char *buf, size_t size )
         e->refused_total++;
         guard_pause_dirty = true;
         guard_log_refusal( e, "paused" );
+        guard_ask_name( e, &d->addr );   /* an uptime monitor's pause is lifted */
         d->guard_reset = TRUE;
         snprintf( buf, size,
                   "Connections from your address are paused for %ld more minute%s.\n\r",
@@ -765,6 +836,8 @@ void conn_guard_closed( DESCRIPTOR_DATA *d )
         exempt = "an MSSP poll";
     else if ( d->guard_proxied )
         exempt = "the web client";
+    else if ( guard_is_monitor( d->ip ) )
+        exempt = "an uptime monitor";
     else if ( !guard_watches( d->ip, d ) )
         exempt = "a player's address";
     if ( exempt != NULL )
@@ -783,12 +856,66 @@ void conn_guard_closed( DESCRIPTOR_DATA *d )
         e->conns = 0;
     }
     e->conns++;
+    guard_ask_name( e, &d->addr );      /* an uptime monitor's are not strikes */
     snprintf( buf, sizeof(buf), "Connection guard: %s %s (strike %d of %d in %d hours).",
               d->addr_text, how, e->conns, strikes, GUARD_STRIKE_WINDOW / 3600 );
     log_string( buf );
     guard_pause_dirty = true;
     if ( e->conns >= strikes && e->blocked_until <= current_time )
         guard_block( e, "kept connecting without logging in" );
+}
+
+/*
+ * The resolver's answer to guard_ask_name. A name in guard_monitor_domains
+ * that leads back to the address makes it an uptime monitor for
+ * GUARD_MONITOR_HOLD: its checks are not strikes, and a pause on it is
+ * lifted. A name that claims such a domain and does not lead back is
+ * logged and trusted with nothing.
+ */
+void conn_guard_name_checked( const NET_ADDR *a, const char *host, bool confirmed )
+{
+    GUARD_ENTRY *e;
+    char addr[NET_ADDR_TEXT + 16];
+    char buf[MAX_STRING_LENGTH];
+    bool lifted;
+    uint32_t key;
+
+    if ( a == NULL || host == NULL || !guard_monitor_domain( host ) )
+        return;
+    key = net_addr_guard_key( a );
+    if ( !guard_applies( key ) || ( e = guard_find( key, false ) ) == NULL )
+        return;
+    guard_ip_text( e, addr, sizeof(addr) );
+    if ( !confirmed )
+    {
+        snprintf( buf, sizeof(buf),
+                  "Connection guard: %s is named %s, but that name does not lead back to it; "
+                  "it is not taken for an uptime monitor.", addr, host );
+        log_string( buf );
+        return;
+    }
+    if ( e->monitor_until > current_time )
+    {
+        e->monitor_until = current_time + GUARD_MONITOR_HOLD;
+        return;
+    }
+    e->monitor_until = current_time + GUARD_MONITOR_HOLD;
+    lifted = e->blocked_until > current_time || e->flood_until > current_time;
+    e->blocked_until = 0;
+    e->flood_until = 0;
+    e->conns = 0;
+    e->blocks = 0;
+    e->last_block = 0;
+    e->window_start = 0;
+    snprintf( buf, sizeof(buf),
+              "Connection guard: %s is %s, an uptime monitor (the name leads back to it): "
+              "its checks are not strikes%s.", addr, host,
+              lifted ? ", and its pause is lifted" : "" );
+    if ( lifted )
+        guard_say( buf, LEVEL_IMMORTAL );
+    else
+        log_string( buf );
+    guard_pause_save();
 }
 
 /*
@@ -985,8 +1112,9 @@ void conn_guard_report( CHAR_DATA *ch )
             snprintf( buf, sizeof(buf), "  %-16s refused %ld more minutes (a flood)\n\r",
                       addr, (long) ( e->flood_until - current_time + 59 ) / 60 );
         else
-            snprintf( buf, sizeof(buf), "  %-16s paused %ld more minutes (pause %d this week)\n\r",
-                      addr, (long) ( e->blocked_until - current_time + 59 ) / 60, e->blocks );
+            snprintf( buf, sizeof(buf), "  %-16s paused %ld more minutes (pause %d in %d days)\n\r",
+                      addr, (long) ( e->blocked_until - current_time + 59 ) / 60, e->blocks,
+                      GUARD_HISTORY / 86400 );
         send_to_char( buf, ch );
         shown++;
     }

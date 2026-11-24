@@ -8220,6 +8220,34 @@ the boss is up. Ganon's stunned-at-one-hit-point rule is unchanged.
   TOPTEN) hold only names, which are capped at 12 characters, so they were
   left with fixed widths.
 
+## The Connection Guard And UptimeRobot, 2026-11-24
+
+Measured from the live `toc.log` (2026-09-17 to 11-24): of the ~34
+untrusted addresses that connected nearly every day without logging in, 30
+were UptimeRobot's own checkers (`checker-*.uptimerobot.com`, AWS and
+Hetzner ranges). Each port check closes without a word, so each was a
+strike; they were paused up to nine times and refused, which the monitor
+can report as the game being down. The rest were a dozen or so scanners
+(visionheight, Linode, Shodan, Shadowserver, ipip).
+
+- `src/connguard.c` now asks an address's name before counting a strike
+  or refusing a paused address (at most once in 6 hours, on the
+  `dnsasync.c` worker, whatever DNS ON/OFF says). A name under a domain in
+  `guard_monitor_domains` (`uptimerobot.com`) whose forward lookup leads
+  back to the address is an uptime monitor for two days: never struck,
+  never paused, and a pause on it is lifted (WIZINFO says so). A PTR record
+  alone proves nothing; one that does not lead back is logged and ignored.
+  Not persisted: the first strike after a restart asks again.
+- Pauses now double for each pause in the last 30 days, to a 30-day cap
+  (were a week and a week, so a weekly scanner restarted at six hours
+  each time). `GUARD_SLOTS` is 1024 to hold that history. Log lines say
+  "pause N in 30 days" instead of "pause N this week".
+- To add another monitor, add its domain to `guard_monitor_domains`.
+  `TOC_GUARD_MONITOR_DOMAIN` adds one for tests; the live tests use
+  `localhost` and skip where 127.0.0.1 does not resolve to it.
+- Player addresses are untouched: a trusted address (a login in 90 days)
+  is still never paused.
+
 ## Completion Standard
 
 A task is complete only when the requested behavior or documentation is

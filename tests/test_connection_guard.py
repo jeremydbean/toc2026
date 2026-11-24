@@ -379,5 +379,95 @@ class GuardLiveTests(unittest.TestCase):
                 self.assertIn("Nothing typed for a while", idle.transcript)
 
 
+
+def silent_close(mud: LiveMud) -> None:
+    """A port check: connect, say nothing, hang up -- as an uptime monitor does."""
+    with socket.create_connection(("127.0.0.1", mud.port), timeout=10):
+        pass
+
+
+def loopback_is_localhost() -> bool:
+    try:
+        return socket.gethostbyaddr("127.0.0.1")[0].lower() == "localhost"
+    except OSError:
+        return False
+
+
+class GuardMonitorSourceTests(unittest.TestCase):
+    """Owner, 2026-11-24: UptimeRobot's own checkers were 30 of the 34
+    untrusted addresses that kept coming back, paused up to nine times
+    each; and the scanners that keep coming back can be shut out longer."""
+
+    def test_uptimerobot_by_a_name_that_leads_back(self) -> None:
+        guard = (ROOT / "src" / "connguard.c").read_text(encoding="latin-1")
+        domains = guard.split("guard_monitor_domains[] =", 1)[1].split("};", 1)[0]
+        self.assertIn('"uptimerobot.com"', domains)
+        # A PTR record is the far end's to write: only a forward lookup
+        # that leads back makes a monitor.
+        dns = (ROOT / "src" / "dnsasync.c").read_text(encoding="latin-1")
+        worker = dns.split("static void *dns_worker( void *unused )", 1)[1].split("\n}\n", 1)[0]
+        self.assertIn("job.confirmed = dns_leads_back( &job );", worker)
+        checked = guard.split("void conn_guard_name_checked(", 1)[1].split("\n}\n", 1)[0]
+        self.assertLess(checked.index("if ( !confirmed )"), checked.index("e->monitor_until ="))
+        # Asked before a strike and before a paused address is refused.
+        closed = guard.split("void conn_guard_closed( DESCRIPTOR_DATA *d )", 1)[1].split("\n}\n", 1)[0]
+        self.assertIn("guard_ask_name( e, &d->addr );", closed)
+        admit = guard.split("const char *conn_guard_admit(", 1)[1].split("\n}\n", 1)[0]
+        self.assertIn("guard_ask_name( e, &d->addr );", admit)
+
+    def test_pauses_double_for_a_month(self) -> None:
+        guard = (ROOT / "src" / "connguard.c").read_text(encoding="latin-1")
+        self.assertIn("#define GUARD_BLOCK_MAX      ( 30 * 86400 )", guard)
+        self.assertIn("#define GUARD_HISTORY        ( 30 * 86400 )", guard)
+        self.assertNotIn("this week", guard)
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+@unittest.skipUnless(loopback_is_localhost(), "127.0.0.1 does not resolve to localhost here")
+class GuardMonitorLiveTests(unittest.TestCase):
+    def start_untrusted(self, mud: LiveMud, paused: bool) -> None:
+        """127.0.0.1 as no player's address, paused for an hour if asked."""
+        mud._stop()
+        forget_player_addresses(mud)
+        if paused:
+            now = int(time.time())
+            (mud.root / "log" / "guard_pauses.tsv").write_text(
+                f"127.0.0.1\t{now + 3600}\t1\t{now - 60}\t0\t0\t0\t0\n", encoding="latin-1")
+        mud._launch()
+
+    def test_a_confirmed_monitor_is_let_in_and_never_struck(self) -> None:
+        env = {"TOC_GUARD_LOOPBACK": "1", "TOC_GUARD_STRIKES": "3",
+               "TOC_GUARD_MONITOR_DOMAIN": "localhost"}
+        with LiveMud(extra_env=env) as mud:
+            self.start_untrusted(mud, paused=True)
+            self.assertFalse(greets(mud), "paused when it came")
+            self.assertTrue(wait_for_log(mud, "Connection guard: 127.0.0.1 is localhost, an uptime "
+                                              "monitor (the name leads back to it): its checks are "
+                                              "not strikes, and its pause is lifted."))
+            self.assertTrue(greets(mud), "the monitor is let in")
+            for _ in range(5):
+                silent_close(mud)
+            self.assertTrue(wait_for_log(mud, "closed without a word (an uptime monitor; not counted)"))
+            time.sleep(1)
+            self.assertTrue(greets(mud), "five more checks pause nothing")
+            log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
+        self.assertNotIn("Connection guard: 127.0.0.1 paused for", log)
+        self.assertNotIn("(strike 3 of 3", log)
+
+    def test_a_name_that_only_ends_like_the_domain_is_no_monitor(self) -> None:
+        env = {"TOC_GUARD_LOOPBACK": "1", "TOC_GUARD_STRIKES": "3",
+               "TOC_GUARD_MONITOR_DOMAIN": "calhost"}
+        with LiveMud(extra_env=env) as mud:
+            self.start_untrusted(mud, paused=False)
+            for _ in range(3):
+                silent_close(mud)
+                time.sleep(0.6)
+            self.assertTrue(wait_for_log(mud, "Connection guard: 127.0.0.1 paused for 6 hours "
+                                              "(pause 1 in 30 days;"))
+            self.assertFalse(greets(mud), "still paused")
+            log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
+        self.assertNotIn("an uptime monitor", log)
+
+
 if __name__ == "__main__":
     unittest.main()

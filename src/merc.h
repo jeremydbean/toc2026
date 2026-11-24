@@ -4298,6 +4298,7 @@ bool    append_area_to_list ( const char *list, const char *entry,
                               char *why, size_t why_size );
 bool    is_loopback_ip  ( uint32_t ip );
 extern bool dns_lookup_enabled;
+bool  dns_check_name          args( ( const NET_ADDR *a ) );
 /* connguard.c -- what the game does about addresses that connect and never play */
 const char *conn_guard_admit  args( ( DESCRIPTOR_DATA *d, char *buf, size_t size ) );
 void  conn_guard_trust        args( ( const NET_ADDR *addr, const char *who, int notice_level ) );
@@ -4311,6 +4312,7 @@ void  login_lock_success      args( ( DESCRIPTOR_DATA *d, CHAR_DATA *ch ) );
 bool  login_lock_lift         args( ( const NET_ADDR *a ) );
 void  login_lock_report       args( ( CHAR_DATA *ch ) );
 void  conn_guard_closed       args( ( DESCRIPTOR_DATA *d ) );
+void  conn_guard_name_checked args( ( const NET_ADDR *addr, const char *host, bool confirmed ) );
 const char *conn_guard_new_char args( ( DESCRIPTOR_DATA *d, const char *name, char *buf, size_t size ) );
 void  conn_guard_tick         args( ( void ) );
 void  conn_guard_boot         args( ( void ) );

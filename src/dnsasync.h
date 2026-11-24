@@ -26,6 +26,17 @@ int  dns_async_submit( long serial, const struct sockaddr *addr, socklen_t len )
    found no name are not returned. 1 when one was taken, 0 when none. */
 int  dns_async_take( long *serial, char *host, size_t size );
 
+/* The connection guard's lookup (2026-11-24): the name of an address that
+   keeps connecting, and whether that name's own forward lookup leads back
+   to it, so a PTR record claiming a monitor's domain proves nothing alone.
+   Kept apart from the connections' lookups; queued as dns_async_submit
+   is. dns_async_take_checked hands back one answer -- the address, the
+   name and *confirmed -- when there is one: 1, else 0. Lookups that found
+   no name are not returned. */
+int  dns_async_check( const struct sockaddr *addr, socklen_t len );
+int  dns_async_take_checked( struct sockaddr_storage *addr, char *host, size_t size,
+                             int *confirmed );
+
 /* Lookups queued or running, for staff DNS. */
 int  dns_async_pending( void );
 

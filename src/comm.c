@@ -842,6 +842,42 @@ static void save_dropped_player( DESCRIPTOR_DATA *d )
 static long dns_next_serial;
 long        dns_stale_results;   /* names whose connection had gone: DNS */
 
+/* A NET_ADDR as the resolver takes it: its length, or 0 for none. */
+static socklen_t net_addr_sockaddr( const NET_ADDR *a, struct sockaddr_storage *addr )
+{
+    struct sockaddr_in *four = (struct sockaddr_in *) addr;
+    struct sockaddr_in6 *six = (struct sockaddr_in6 *) addr;
+
+    memset( addr, 0, sizeof(*addr) );
+    if ( a->family == 4 )
+    {
+        four->sin_family = AF_INET;
+        memcpy( &four->sin_addr, a->b, 4 );
+        return sizeof(*four);
+    }
+    if ( a->family == 6 )
+    {
+        six->sin6_family = AF_INET6;
+        memcpy( &six->sin6_addr, a->b, 16 );
+        return sizeof(*six);
+    }
+    return 0;
+}
+
+/* The connection guard's question (connguard.c): this address's name, and
+   whether it leads back. Asked whatever DNS ON/OFF says -- that switch is
+   for the names staff see -- and only of an address that keeps connecting,
+   a few times a day at most. False when nothing was queued. */
+bool dns_check_name( const NET_ADDR *a )
+{
+    struct sockaddr_storage addr;
+    socklen_t len;
+
+    if ( a == NULL || ( len = net_addr_sockaddr( a, &addr ) ) == 0 )
+        return FALSE;
+    return dns_async_check( (struct sockaddr *) &addr, len ) != 0;
+}
+
 static void connection_spoke( DESCRIPTOR_DATA *d )
 {
     struct sockaddr_storage addr;
@@ -861,25 +897,7 @@ static void connection_spoke( DESCRIPTOR_DATA *d )
     if ( is_loopback_ip( d->ip ) && ( opt == NULL || opt[0] != '1' ) )
         return;
 
-    memset( &addr, 0, sizeof(addr) );
-    {
-        struct sockaddr_in *four = (struct sockaddr_in *) &addr;
-        struct sockaddr_in6 *six = (struct sockaddr_in6 *) &addr;
-
-        if ( d->addr.family == 4 )
-        {
-            four->sin_family = AF_INET;
-            memcpy( &four->sin_addr, d->addr.b, 4 );
-            len = sizeof(*four);
-        }
-        else if ( d->addr.family == 6 )
-        {
-            six->sin6_family = AF_INET6;
-            memcpy( &six->sin6_addr, d->addr.b, 16 );
-            len = sizeof(*six);
-        }
-    }
-    if ( len == 0 )
+    if ( ( len = net_addr_sockaddr( &d->addr, &addr ) ) == 0 )
         return;
     d->dns_serial = ++dns_next_serial;
     if ( !dns_async_submit( d->dns_serial, (struct sockaddr *) &addr, len ) )
@@ -911,6 +929,28 @@ static void dns_collect( void )
     char host[NI_MAXHOST];
     DESCRIPTOR_DATA *d;
     long serial;
+    struct sockaddr_storage checked;
+    int confirmed;
+
+    /* The guard's answers first: an address, its name, whether it leads back. */
+    while ( dns_async_take_checked( &checked, host, sizeof(host), &confirmed ) )
+    {
+        NET_ADDR a;
+
+        memset( &a, 0, sizeof(a) );
+        if ( checked.ss_family == AF_INET )
+        {
+            a.family = 4;
+            memcpy( a.b, &( (struct sockaddr_in *) &checked )->sin_addr, 4 );
+        }
+        else if ( checked.ss_family == AF_INET6 )
+        {
+            a.family = 6;
+            memcpy( a.b, &( (struct sockaddr_in6 *) &checked )->sin6_addr, 16 );
+        }
+        if ( a.family != 0 && host_name_clean( host ) )
+            conn_guard_name_checked( &a, host, confirmed != 0 );
+    }
 
     while ( dns_async_take( &serial, host, sizeof(host) ) )
     {
