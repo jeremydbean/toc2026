@@ -345463,3 +345463,8 @@ Tue Nov 24 05:21:53 2026 :: Treasure goblin: vanished from room 8795 (Hallway, k
 Tue Nov 24 05:26:31 2026 :: Connection guard: 5.161.215.244 closed without a word (strike 1 of 6 in 6 hours).
 Tue Nov 24 05:31:35 2026 :: Connection guard: 5.161.113.195 closed without a word (strike 1 of 6 in 6 hours).
 Tue Nov 24 05:31:58 2026 :: Treasure goblin: vanished from room 18135 (A trail through the wilderness, icekeep.are) (too long in one area).
+Tue Nov 24 05:34:23 2026 :: Sock.sinaddr:  52.146.11.1
+Tue Nov 24 05:34:24 2026 :: EOF encountered on read.
+Tue Nov 24 05:34:24 2026 :: Connection guard: 52.146.11.1 closed before a password prompt (strike 1 of 6 in 6 hours).
+Tue Nov 24 05:34:24 2026 :: Sock.sinaddr:  52.146.11.1
+Tue Nov 24 05:34:24 2026 :: Connection guard: 52.146.11.1 closed before a password prompt (strike 2 of 6 in 6 hours).
