@@ -346209,3 +346209,28 @@ Tue Nov 24 18:39:02 2026 :: Black market: the dealer vanished from room 15103 (L
 Tue Nov 24 18:41:30 2026 :: Black market: the dealer vanished from room 29101 (Metalurgy Plant, korzath1.are) (wandering).
 Tue Nov 24 18:43:34 2026 :: Connection guard: refused 1 connection from 18.116.205.62 (paused; 11 refused in all, pause 3 in 30 days, 1263 minutes left).
 Tue Nov 24 18:43:34 2026 :: Connection guard: 18.116.205.62 is checker-ohi4.uptimerobot.com, an uptime monitor (the name leads back to it): its checks are not strikes, and its pause is lifted.
+Tue Nov 24 18:44:26 2026 :: Cartographer: appeared.
+Tue Nov 24 18:44:42 2026 :: Black market: the dealer vanished from room 11002 (In The Dragon's Mouth, ancala.are) (wandering).
+Tue Nov 24 18:45:26 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Tue Nov 24 18:45:30 2026 :: Log WebAdmin: fsave
+Tue Nov 24 18:45:36 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Tue Nov 24 18:45:39 2026 :: Received signal 15; saving players and shutting down.
+Tue Nov 24 18:45:39 2026 :: Normal termination of game.
+Tue Nov 24 18:45:39 2026 ::  INIT OK 
+Tue Nov 24 18:45:39 2026 :: walkto_load: 157 destinations.
+Tue Nov 24 18:45:39 2026 :: changes_load: 370 entries.
+Tue Nov 24 18:45:39 2026 :: Hermie: the restart put no mortal off (0 playing, recorded 5 seconds before the boot; a mortal last played over ten minutes before it); she stays away.
+Tue Nov 24 18:45:39 2026 :: Serials: 962 character files read, 7 with a serial.
+Tue Nov 24 18:45:39 2026 :: Connection guard: 50 addresses remembered from before the boot, 3 paused now.
+Tue Nov 24 18:45:39 2026 :: Login lockout: 1 address remembered from before the boot.
+Tue Nov 24 18:45:39 2026 :: Passwords: SHA-512 crypt self-test passed.
+Tue Nov 24 18:45:39 2026 :: Recovery ledger: 510 records (0 from before the check), 8 requests, 10 players.
+Tue Nov 24 18:45:39 2026 :: Corpse keeper: Ravagger's corpse c6b039867021c00 made again in room 24388 with 22 objects.
+Tue Nov 24 18:45:39 2026 :: Corpse keeper: 1 corpse made again, 0 set aside.
+Tue Nov 24 18:45:39 2026 :: ROM is ready to rock on port 9000.
+Tue Nov 24 18:45:39 2026 :: Treasure goblin: appeared.
+Tue Nov 24 18:45:39 2026 :: Automated backup started.
+Tue Nov 24 18:45:39 2026 :: Daily backup started.
+Tue Nov 24 18:45:39 2026 :: Backups: 1 old archive(s) expired; the newest 6 are always kept.
+Tue Nov 24 18:45:40 2026 :: Automated backup complete.
+Tue Nov 24 18:45:41 2026 :: Daily backup complete.
