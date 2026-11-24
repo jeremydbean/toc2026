@@ -8,6 +8,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 
+- **A knocked-down boss no longer heals mid-fight (2026-11-24).** Ganon
+  and the Level 7 and 8 Hyrule guardians counted themselves out of the
+  fight whenever they were not on their feet, so a boss whose bash missed
+  -- "falls flat on its face" -- or who was tripped healed a tenth of its
+  health every pulse it lay there, and Ganon went back to full several
+  times in one live fight. They now heal only when nobody is fighting
+  them. `tests/test_guardian_knockdown_regen.py` failed on the old code.
+
 - **Restore, rename and sync-lag review (2026-11-24), each defect proven by
   a test that failed on the old code:**
   - *A restore no longer races the sync, the recovery timer or a deploy.*

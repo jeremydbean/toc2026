@@ -610,7 +610,12 @@ bool spec_ganon( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	mob->position = POS_STUNNED;
     }
 
-    if ( mob->fighting == NULL || mob->position != POS_FIGHTING )
+    /* Out of the fight only when nobody is in it with him. Knocked down
+       -- his own bash missed, or he was tripped or bashed -- he is still
+       fighting, merely not on his feet: he neither heals nor casts until
+       he is up. Reading "not POS_FIGHTING" as out of the fight healed him
+       a tenth a pulse on the floor, to full mid-fight (2026-11-24). */
+    if ( mob->fighting == NULL )
     {
 	if ( mob->position > POS_STUNNED
 	&&   mob->hyrule_state != HYRULE_GANON_STUNNED
@@ -625,6 +630,9 @@ bool spec_ganon( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	}
 	return false;
     }
+
+    if ( mob->position != POS_FIGHTING )
+	return false;
 
     if ( ( sn = skill_lookup( "fireball" ) ) < 0 )
 	return false;
@@ -808,8 +816,10 @@ bool spec_hyrule_guardian( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	return false;
 
     /* Out of a fight: the later guardians close their wounds, a tenth of
-       their health a pulse, so the fight must be won in one go. */
-    if ( mob->fighting == NULL || mob->position != POS_FIGHTING )
+       their health a pulse, so the fight must be won in one go. Knocked
+       down is still in the fight -- no healing and no volley until it is
+       up again (as spec_ganon, 2026-11-24). */
+    if ( mob->fighting == NULL )
     {
 	if ( mob->position > POS_STUNNED && mob->hit < mob->max_hit
 	&&   hyrule_guardian_heals( mob ) )
@@ -822,6 +832,9 @@ bool spec_hyrule_guardian( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	}
 	return false;
     }
+
+    if ( mob->position != POS_FIGHTING )
+	return false;
 
     volley = hyrule_guardian_volley_of( mob );
     if ( volley == NULL || ( sn = skill_lookup( volley->noun ) ) < 0 )

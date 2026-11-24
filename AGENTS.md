@@ -8177,6 +8177,28 @@ on the old code, run on the Linux host with synthetic data only.
   real load after the deploy; disk space for a staged tree plus the
   `pre-restore-<stamp>/` each restore leaves behind.
 
+## A Knocked-Down Boss Is Still Fighting, 2026-11-24
+
+Ganon and the Level 7 and 8 guardians heal a tenth of their health a
+mobile pulse out of a fight. `spec_ganon` and `spec_hyrule_guardian` in
+`src/special.c` read "out of a fight" as `fighting == NULL || position !=
+POS_FIGHTING`, so a boss whose own bash missed (`fight.c` sets
+`POS_RESTING` and a wait state), or who was tripped or bashed, healed every
+pulse it lay on the floor -- to full, mid-fight, on the live game. Now only
+`fighting == NULL` heals; down but fighting, the special does nothing until
+the boss is up. Ganon's stunned-at-one-hit-point rule is unchanged.
+
+- Anything that asks "is this mob in a fight" should read `fighting`, not
+  `position`. Position below `POS_FIGHTING` is a knockdown as often as it
+  is peace.
+- To hold a mob on the floor in a live test, `set char <mob> timer 500`
+  first: `damage()` stands a downed victim back up only while its timer is
+  4 or less (an NPC's timer counts down a pulse and extracts it at zero,
+  so 500 is about half an hour). `tests/test_guardian_knockdown_regen.py`
+  does this with a staff `bash`.
+- `set char <mob> hp` takes up to 1,000,000,000 now, not 30,000; Ganon has
+  67,501 and a maximum below that leaves him whole.
+
 ## Completion Standard
 
 A task is complete only when the requested behavior or documentation is
