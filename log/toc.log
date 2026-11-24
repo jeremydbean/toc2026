@@ -345370,3 +345370,15 @@ Tue Nov 24 02:49:10 2026 :: Connection guard: 5.161.73.160 closed without a word
 Tue Nov 24 02:54:15 2026 :: Connection guard: 54.87.112.51 closed without a word (strike 1 of 6 in 6 hours).
 Tue Nov 24 02:54:43 2026 :: Treasure goblin: vanished from room 8005 (Mahmount Allesh Megway, mega1.are) (too long in one area).
 Tue Nov 24 02:59:17 2026 :: Connection guard: refused 1 connection from 3.212.128.62 (paused; 27 refused in all, pause 4 this week, 1490 minutes left).
+Tue Nov 24 03:04:21 2026 :: Connection guard: 35.210.101.13 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 24 03:04:22 2026 :: Connection guard: refused 1 connection from 5.161.194.92 (paused; 18 refused in all, pause 4 this week, 1429 minutes left).
+Tue Nov 24 03:04:27 2026 :: Connection guard: 35.210.101.13 closed without a word (strike 2 of 6 in 6 hours).
+Tue Nov 24 03:04:27 2026 :: Sock.sinaddr:  35.210.101.13
+Tue Nov 24 03:04:27 2026 :: EOF encountered on read.
+Tue Nov 24 03:04:27 2026 :: Connection guard: 35.210.101.13 closed before a password prompt (strike 3 of 6 in 6 hours).
+Tue Nov 24 03:04:27 2026 :: Connection guard: 35.210.101.13 closed without a word (strike 4 of 6 in 6 hours).
+Tue Nov 24 03:04:28 2026 :: Connection guard: 35.210.101.13 closed without a word (strike 5 of 6 in 6 hours).
+Tue Nov 24 03:04:28 2026 :: Connection guard: 35.210.101.13 closed without a word (strike 6 of 6 in 6 hours).
+Tue Nov 24 03:04:28 2026 :: Connection guard: 35.210.101.13 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.210.101.13 lifts it.
+Tue Nov 24 03:04:28 2026 :: Connection guard: refused 1 connection from 35.210.101.13 (paused; 1 refused in all, pause 1 this week, 360 minutes left).
+Tue Nov 24 03:04:28 2026 :: Connection guard: 35.210.101.13 closed without a word (strike 1 of 6 in 6 hours).
