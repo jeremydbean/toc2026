@@ -3375,7 +3375,88 @@ async def logins(
     }
 
 
-QUIET_SPEAKERS = {"questor thews"}
+# Questor Thews's patter: what src/quest.c has the questmaster say, as its
+# printf formats (tests/test_webadmin_api.py checks this list against
+# quest.c). The game stopped journaling a questmaster's says on 2026-11-24;
+# the rows from before are hidden here, and only these -- an immortal
+# switched into Questor is journaled by the game and shown (review,
+# 2026-11-24: every "say" under the name was hidden, theirs too). The
+# journal has no column saying which it was, so a switched immortal who
+# typed one of these lines word for word is hidden with the patter.
+QUESTOR_SPEAKER = "questor thews"
+QUESTOR_PATTER_FORMATS = (
+    'Ah, a brave soul! Well met, %s.',
+    "Come back when you're ready. The work won't do itself.",
+    'Excellent work! The realm is in your debt!',
+    'Finish the quest you have first, %s.',
+    'Fortune favors the bold - good luck!',
+    "Here's your %s - well earned!",
+    "I don't have that item, %s.",
+    "I'm afraid we're out of trophies right now, %s.",
+    'Keepsakes are only for legendary heroes, %s.',
+    'May the gods guide your blade!',
+    'May your next quest go better!',
+    'Perhaps fortune will favor you more next time.',
+    'Rush contract fulfilled - your double reward is well earned!',
+    'Sorry %s you need to be level 50 to buy that.',
+    "Sorry, %s, but you don't have enough quest points for that.",
+    "Splendid - you've returned victorious!",
+    'Streak of %d in a row! A +%d%% bonus has been added!',
+    'Thank you for answering the call, brave %s!',
+    'That cache is sealed to all but the greatest heroes, %s.',
+    'That favor is reserved for heroes, %s.',
+    'That reward is temporarily unavailable.',
+    "That's all three for today - day %d of your streak, a point extra!",
+    "That's daily task %d of %d. You have %d minutes.",
+    'The realm is counting on you!',
+    'This cannot wait - it is an EMERGENCY, and I will pay five times over for it!',
+    "This is a RUSH CONTRACT - finish fast and I'll double your reward!",
+    'Very well, %s. Your quest obligation is lifted.',
+    'Welcome, %s. The realm needs someone of your skill.',
+    'Well done! I knew you were right for the job.',
+    'You answered the emergency in time - the realm will not forget this!',
+    'You cannot retain any more practices.',
+    'You cannot retain the practices included in that boon.',
+    'You gave the last one up, %s. Come back in %ld minute%s.',
+    'You had a streak of %d in a row - all gone now!',
+    'You have %d minutes to complete this quest.',
+    'You have %d minutes. Go now!',
+    'You have no active quest, %s. Try AQUEST REQUEST first.',
+    'You have no quest to abandon, %s.',
+    "You have only %d minutes. Don't waste a second!",
+    "You haven't finished the quest, but there is still time!",
+    "You're already on a quest, %s! Finish it first.",
+    "You've done your three for today. Come back tomorrow!",
+    "You've earned a rest, %s. Return in %d minute%s.",
+    'Your daily task is done. Well worked!',
+    'Your purse can hold no more coin - but here are %d daily point%s.',
+    'Your purse can hold no more coin - but the points are yours.',
+    'Your timing is perfect, %s. I have just the task for you.',
+)
+
+
+def _printf_regex(fmt: str) -> "re.Pattern[str]":
+    parts = re.split(r"(%%|%l?d|%s)", fmt)
+    out = []
+    for part in parts:
+        if part == "%%":
+            out.append("%")
+        elif part in ("%d", "%ld"):
+            out.append(r"-?\d+")
+        elif part == "%s":
+            out.append(r".*?")
+        else:
+            out.append(re.escape(part))
+    return re.compile("".join(out) + r"\Z")
+
+
+QUESTOR_PATTER = tuple(_printf_regex(f) for f in QUESTOR_PATTER_FORMATS)
+
+
+def is_questor_patter(speaker: str, said: str) -> bool:
+    """A historical journal row that is the questmaster's own patter."""
+    return speaker.strip().lower() == QUESTOR_SPEAKER and any(
+        p.match(said.strip()) for p in QUESTOR_PATTER)
 
 
 def parse_channel_journal(
@@ -3406,7 +3487,7 @@ def parse_channel_journal(
         chan = parts[1]
         # Questor Thews's quest patter, from before the game stopped
         # journaling a questmaster's says (owner, 2026-11-24).
-        if chan == "say" and name.lower() in QUIET_SPEAKERS:
+        if chan == "say" and is_questor_patter(name, said):
             continue
         channels.add(chan)
         if wanted and chan.lower() != wanted:

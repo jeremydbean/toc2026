@@ -475,6 +475,40 @@ class RestoreStateTests(unittest.TestCase):
         self.assertEqual(sorted(p.name for p in (self.root / "srv").glob("pre-restore-*")),
                          [taken.name], "no half-made aside of its own left")
 
+    def fake_proc(self, cwd: pathlib.Path, name: str = "merc") -> pathlib.Path:
+        """A /proc holding one process: `name`, working in `cwd`."""
+        proc = self.root / "proc"
+        (proc / "4242").mkdir(parents=True)
+        (proc / "4242" / "comm").write_text(name + "\n")
+        (proc / "4242" / "cwd").symlink_to(cwd)
+        (proc / "7").mkdir()
+        (proc / "7" / "comm").write_text("merc\n")             # another tree's game
+        (proc / "7" / "cwd").symlink_to(self.root)
+        return proc
+
+    def test_a_game_started_by_hand_is_seen_and_refused(self) -> None:
+        """Review, 2026-11-24 (third): only toc-game.service was asked; a
+        merc started by hand in the tree saves over the restore the same."""
+        self.stale_install()
+        (self.dst / "area").mkdir()
+        before = self.files(self.dst)
+        proc = self.fake_proc(self.dst / "area")
+        self.stub("systemctl", "exit 3")                       # systemd: nothing running
+        done = self.restore(TOC_RESTORE_LIVE=None, TOC_RESTORE_REPLACE="1", TOC_PROC=str(proc),
+                            TOC_DEPLOY_LOCK=str(self.root / "deploy.lock"), TOC_RESTORE_LOCK_WAIT="1")
+        self.assertEqual(done.returncode, 2, done.stdout + done.stderr)
+        self.assertIn("a game is running from", done.stderr)
+        self.assertIn("pid 4242", done.stderr)
+        self.assertNotIn("7 ", done.stderr.split("pid", 1)[1].split(")")[0], "another tree's game is not this one")
+        self.assertEqual(self.files(self.dst), before)
+
+    def test_another_process_or_another_trees_game_is_not_refused(self) -> None:
+        self.stale_install()
+        (self.dst / "area").mkdir()
+        proc = self.fake_proc(self.dst / "area", name="bash")
+        done = self.restore(TOC_RESTORE_REPLACE="1", TOC_PROC=str(proc))   # staging call
+        self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
+
     def test_too_little_room_for_the_staged_copy_writes_nothing(self) -> None:
         self.stale_install()
         before = self.files(self.dst)
@@ -808,6 +842,19 @@ esac
         self.assertEqual(self.calls_made(), [], "the game was never stopped")
         self.assertEqual(list(self.prefix.glob(".restore-stage-*")), [])
 
+    def test_a_game_started_by_hand_stops_the_swap_and_the_old_tree_stays(self) -> None:
+        """Review, 2026-11-24 (third): systemd stops toc-game, but a merc
+        someone started by hand in current/area/ goes on saving."""
+        (self.current / "area").mkdir(exist_ok=True)
+        proc = self.root / "proc"
+        (proc / "4242").mkdir(parents=True)
+        (proc / "4242" / "comm").write_text("merc\n")
+        (proc / "4242" / "cwd").symlink_to(self.current / "area")
+        before = self.files(self.current)
+        done = self.restore(TOC_RESTORE_REPLACE="1", TOC_PROC=str(proc))
+        self.assertIn("that systemd did not start (merc, pid 4242", done.stderr)
+        self.assert_old_tree_back(before, done)
+
     def test_a_game_that_does_not_come_back_is_not_called_done(self) -> None:
         # A start that does nothing: the unit stays down.
         (self.bin / "systemctl").write_text(
@@ -850,9 +897,22 @@ class RestoreVerifyTests(unittest.TestCase):
 
     SCRIPT = ROOT / "deploy" / "toc-restore-verify"
 
-    def run_with(self, active: list[str], enabled: list[str], *args: str):
+    def run_with(self, active: list[str], enabled: list[str], *args: str,
+                 push_rc: int | None = None):
         with tempfile.TemporaryDirectory() as tmp:
             bin_ = pathlib.Path(tmp)
+            if push_rc is not None:
+                # A git whose push answers as GitHub would: accepted, or
+                # refused as a read-only key is. Everything else is real.
+                real = shutil.which("git")
+                (bin_ / "git").write_text(
+                    "#!/bin/sh\n"
+                    'for a in "$@"; do [ "$a" = push ] && { echo "$GIT_SSH_COMMAND" > '
+                    f'{tmp}/ssh-used; [ {push_rc} = 0 ] || echo "ERROR: The key you are '
+                    'authenticating with has been marked as read only." >&2; '
+                    f'exit {push_rc}; }}; done\n'
+                    f'exec {real} "$@"\n')
+                (bin_ / "git").chmod(0o755)
             (bin_ / "systemctl").write_text(
                 "#!/bin/sh\n"
                 f'ACTIVE="{" ".join(active)}"; ENABLED="{" ".join(enabled)}"\n'
@@ -886,12 +946,53 @@ class RestoreVerifyTests(unittest.TestCase):
         done = self.run_with(self.REQUIRED, [], "--active-only", *self.REQUIRED)
         self.assertEqual(done.returncode, 0, done.stderr)
 
+    # --- remote backups, judged apart (review, 2026-11-24, third) ---------
+
+    def test_a_missing_deploy_key_is_a_running_game_without_backups(self) -> None:
+        """A fresh host has no deploy key: the sync timer runs and every sync
+        fails. That used to verify as success."""
+        done = self.run_with(self.REQUIRED, self.REQUIRED, "--backup-key", "/nonexistent/key",
+                             "--backup-remote", "git@example.invalid:x.git", *self.REQUIRED)
+        self.assertEqual(done.returncode, 3, done.stdout + done.stderr)
+        self.assertIn("GAME: running", done.stdout)
+        self.assertIn("REMOTE BACKUPS: NOT VERIFIED -- no state-sync deploy key at /nonexistent/key",
+                      done.stderr)
+
+    def test_a_key_that_can_push_verifies_backups(self) -> None:
+        with tempfile.NamedTemporaryFile() as key:
+            done = self.run_with(self.REQUIRED, self.REQUIRED, "--backup-key", key.name,
+                                 "--backup-remote", "git@example.invalid:x.git", *self.REQUIRED,
+                                 push_rc=0)
+        self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
+        self.assertIn("REMOTE BACKUPS: verified", done.stdout)
+
+    def test_a_read_only_key_is_not_verified(self) -> None:
+        with tempfile.NamedTemporaryFile() as key:
+            done = self.run_with(self.REQUIRED, self.REQUIRED, "--backup-key", key.name,
+                                 "--backup-remote", "git@example.invalid:x.git", *self.REQUIRED,
+                                 push_rc=1)
+        self.assertEqual(done.returncode, 3, done.stdout + done.stderr)
+        self.assertIn("marked as read only", done.stderr)
+
+    def test_a_stopped_game_is_still_the_first_failure(self) -> None:
+        done = self.run_with(["toc-state-sync.timer"], self.REQUIRED, "--backup-key",
+                             "/nonexistent/key", *self.REQUIRED)
+        self.assertEqual(done.returncode, 1)
+        self.assertIn("GAME: NOT VERIFIED", done.stderr)
+
+    def test_the_restore_says_which_it_is(self) -> None:
+        source = (ROOT / "deploy" / "toc-restore").read_text()
+        self.assertIn('--backup-key "${GIT_SSH_KEY:-$TOC_PREFIX/.ssh/id_ed25519_state_sync}"', source)
+        self.assertIn("GAME RUNNING, BACKUPS NOT VERIFIED", source)
+        tail = source.split('if [ "$verified" = 3 ]; then', 1)[1]
+        self.assertLess(tail.index("exit 6"), tail.index('say "done'))
+
     def test_the_bare_host_restore_uses_it_and_ignores_no_failure(self) -> None:
         source = (ROOT / "deploy" / "toc-restore").read_text()
         services = source.split('say "wiring up the services"', 1)[1]
         self.assertNotRegex(services, r"enable --now[^\n]*\|\| true",
                             "an enable failure is never ignored")
-        self.assertIn('sh "$VERIFY" toc-game.service toc-state-sync.timer toc-state-sync.path', services)
+        self.assertIn("toc-game.service toc-state-sync.timer toc-state-sync.path", services)
         self.assertIn("exit 4", services)
         self.assertLess(services.index('sh "$VERIFY"'), services.index('say "done -- game is up'))
 

@@ -90,6 +90,24 @@ new_dir() {
     printf '%s\n' "$p"
 }
 
+# Games running from a tree that systemd does not know of -- a merc started
+# by hand in its area/ (review, 2026-11-24, third: only toc-game.service was
+# asked, and a hand-started game saves over a restore just the same). Reads
+# /proc (TOC_PROC, for the tests): each process named merc whose working
+# directory is the tree or under it. Prints their pids; nothing where there
+# is no /proc to read, which is a limit: such a host is not checked.
+games_running_in() {
+    proc=${TOC_PROC:-/proc}
+    [ -d "$proc" ] || return 0
+    tree=$(canonical "$1")
+    for p in "$proc"/[0-9]*; do
+        [ "$(cat "$p/comm" 2>/dev/null)" = merc ] || continue
+        cwd=$(readlink "$p/cwd" 2>/dev/null) || continue
+        [ -d "$cwd" ] && cwd=$(cd "$cwd" 2>/dev/null && pwd -P)
+        case "$cwd/" in "$tree"/*) printf '%s ' "$(basename "$p")" ;; esac
+    done
+}
+
 LIVE="${TOC_RESTORE_LIVE:-1}"
 if [ "$(canonical "$DST")" = "$(canonical "$LIVE_TREE")" ] && [ "$LIVE" != 1 ]; then
     echo "   refusing: $DST is the live tree; TOC_RESTORE_LIVE=0 is only for a staging" >&2
@@ -98,6 +116,12 @@ if [ "$(canonical "$DST")" = "$(canonical "$LIVE_TREE")" ] && [ "$LIVE" != 1 ]; 
 fi
 
 if [ "$LIVE" = 1 ]; then
+    running=$(games_running_in "$DST")
+    if [ -n "$running" ]; then
+        echo "   refusing: a game is running from $DST (merc, pid $running), not under" >&2
+        echo "   systemd; it would save over the restore. Stop it first." >&2
+        exit 2
+    fi
     if [ "${TOC_DEPLOY_LOCKED:-0}" != 1 ]; then
         exec 9>"$LOCK"
         if ! flock -w "$LOCK_WAIT" 9; then

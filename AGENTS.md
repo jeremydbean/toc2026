@@ -8307,6 +8307,33 @@ zero-loss guarantee (`wiki/disaster-recovery.md`, "How near zero loss").
 The state-sync round tests (`test_a_save_after_the_copy_goes_round_again`
 and kin) fail on macOS before and after this change; they pass on Linux CI.
 
+## Slow DNS, Held Strikes, Questor History, Backup Verdict, 2026-11-24
+
+Third review (b9035602..74298b64), each with a test that fails on the old code:
+
+- **A pause waits on a name being asked** (`connguard.c`). Checks faster
+  than the resolver paused a real monitor before its name came back. Now,
+  while an address's name is pending (`name_pending`, at most
+  `GUARD_NAME_GRACE` 45 s, `TOC_GUARD_NAME_GRACE`), reaching the strike
+  limit sets `pause_due` instead; the answer takes the pause (or, for a
+  monitor, drops it). Bounds: the grace (`conn_guard_tick` settles expired
+  ones), twice the strike limit (paused at once), and the burst and flood
+  limits in `conn_guard_admit`, untouched.
+- **Every held strike line is kept**: `held`, `held_first`, `held_prompt`
+  (up to `GUARD_HELD_MAX` 32), written in order by `guard_flush_held` when
+  the answer comes, the grace ends, the window resets, or a pause is taken.
+- **The website hides only Questor's patter**: `QUESTOR_PATTER_FORMATS`
+  in `webadmin/server.py` (quest.c's printf formats; `test_channel_speaker`
+  fails when quest.c gains a line the list lacks -- add it). A switched
+  immortal's say under the name is shown unless it is word for word patter.
+- **Restore verdicts are two**: `toc-restore-verify --backup-key K
+  --backup-remote R` prints `GAME:` and `REMOTE BACKUPS:` and exits 3 when
+  only the second fails (no key, or a dry-run push refused); `toc-restore`
+  then exits 6, "GAME RUNNING, BACKUPS NOT VERIFIED".
+- **A hand-started merc is seen**: both restore scripts read `/proc`
+  (`TOC_PROC` in tests) for a `merc` whose cwd is in the tree. No `/proc`,
+  no check: a documented limit.
+
 ## Completion Standard
 
 A task is complete only when the requested behavior or documentation is

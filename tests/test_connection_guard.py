@@ -123,8 +123,13 @@ def ctime(when: float) -> str:
 
 def greets(mud: LiveMud) -> bool:
     """Whether a connection is greeted: True on the greeting, False when the
-    game closes or resets it having said nothing at all."""
-    with socket.create_connection(("127.0.0.1", mud.port), timeout=10) as sock:
+    game closes or resets it having said nothing at all -- a reset can land
+    before connect() returns on a loaded machine, and is the same refusal."""
+    try:
+        sock = socket.create_connection(("127.0.0.1", mud.port), timeout=10)
+    except ConnectionResetError:
+        return False
+    with sock:
         sock.settimeout(10)
         got = b""
         try:
@@ -560,6 +565,95 @@ class GuardMonitorLiveTests(unittest.TestCase):
                                               "monitor (the name leads back to it): its checks are "
                                               "not strikes, and its pause is lifted."))
             self.assertTrue(greets(mud), "the monitor is let in")
+
+    # --- review, 2026-11-24 (third): a slow resolver ---------------------
+
+    def strike_numbers(self, log: str) -> list[int]:
+        return [int(n) for n in re.findall(r"127\.0\.0\.1 closed without a word \(strike (\d+) of", log)]
+
+    def test_a_monitor_is_not_paused_while_its_name_is_slow(self) -> None:
+        """Checks that come faster than the resolver answers used to reach the
+        strike limit and pause the monitor before its name confirmed it --
+        the monitor saw the game as down until the answer lifted it."""
+        env = {"TOC_GUARD_LOOPBACK": "1", "TOC_GUARD_STRIKES": "3",
+               "TOC_GUARD_MONITOR_DOMAIN": "localhost", "TOC_DNS_DELAY_MS": "3000"}
+        with LiveMud(extra_env=env) as mud:
+            self.start_untrusted(mud, paused=False)
+            # Past the strike limit of 3 (the harness's readiness probe may
+            # be one), short of twice it, where the pause is taken anyway.
+            for _ in range(3):
+                silent_close(mud)
+                time.sleep(0.2)
+            self.assertTrue(greets(mud), "let in while its name is still being asked")
+            time.sleep(4)
+            self.assertTrue(greets(mud), "and after: it is a monitor")
+            log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
+        self.assertNotIn("127.0.0.1 paused for", log)
+        self.assertNotIn("its pause is lifted", log)
+        self.assertNotIn("127.0.0.1 closed", log, "a monitor's checks are not logged")
+
+    def test_a_scanner_with_a_slow_name_is_paused_when_it_comes(self) -> None:
+        """The pause waits for the name, never past it: a scanner is paused
+        the moment the answer says it is no monitor, every strike logged."""
+        env = {"TOC_GUARD_LOOPBACK": "1", "TOC_GUARD_STRIKES": "3",
+               "TOC_GUARD_MONITOR_DOMAIN": "calhost", "TOC_DNS_DELAY_MS": "2000"}
+        with LiveMud(extra_env=env) as mud:
+            self.start_untrusted(mud, paused=False)
+            for _ in range(5):
+                silent_close(mud)
+                time.sleep(0.2)
+            self.assertTrue(wait_for_log(mud, "Connection guard: 127.0.0.1 paused for 6 hours"))
+            self.assertFalse(greets(mud), "paused")
+            log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
+        numbers = self.strike_numbers(log)
+        self.assertEqual(numbers, list(range(1, len(numbers) + 1)),
+                         "one line for every strike, in order")
+        self.assertGreaterEqual(len(numbers), 5)
+        self.assertLess(log.index(f"(strike {numbers[-1]} of 3"), log.index("127.0.0.1 paused for"))
+
+    def test_twice_the_strike_limit_pauses_without_waiting_for_the_name(self) -> None:
+        env = {"TOC_GUARD_LOOPBACK": "1", "TOC_GUARD_STRIKES": "3",
+               "TOC_GUARD_MONITOR_DOMAIN": "calhost", "TOC_DNS_DELAY_MS": "20000"}
+        with LiveMud(extra_env=env) as mud:
+            self.start_untrusted(mud, paused=False)
+            for _ in range(6):
+                silent_close(mud)
+                time.sleep(0.2)
+            self.assertTrue(wait_for_log(mud, "Connection guard: 127.0.0.1 paused for 6 hours",
+                                         timeout=4), "paused long before the 20-second answer")
+
+    def test_a_name_that_never_comes_holds_the_pause_no_longer_than_the_grace(self) -> None:
+        """A resolver slower than TOC_GUARD_NAME_GRACE does not buy a scanner
+        more: it is paused when the grace runs out, answer or none."""
+        env = {"TOC_GUARD_LOOPBACK": "1", "TOC_GUARD_STRIKES": "3",
+               "TOC_GUARD_MONITOR_DOMAIN": "calhost", "TOC_DNS_DELAY_MS": "20000",
+               "TOC_GUARD_NAME_GRACE": "2"}
+        with LiveMud(extra_env=env) as mud:
+            self.start_untrusted(mud, paused=False)
+            for _ in range(3):
+                silent_close(mud)
+                time.sleep(0.2)
+            self.assertTrue(wait_for_log(mud, "Connection guard: 127.0.0.1 paused for 6 hours",
+                                         timeout=8))
+            log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
+        numbers = self.strike_numbers(log)
+        self.assertEqual(numbers, list(range(1, len(numbers) + 1)))
+
+    def test_every_strike_held_for_a_name_is_logged(self) -> None:
+        """Several checks before the answer used to keep one pending line,
+        each overwriting the last: the counters were right, the log not."""
+        env = {"TOC_GUARD_LOOPBACK": "1", "TOC_GUARD_STRIKES": "10",
+               "TOC_GUARD_MONITOR_DOMAIN": "calhost", "TOC_DNS_DELAY_MS": "2000"}
+        with LiveMud(extra_env=env) as mud:
+            self.start_untrusted(mud, paused=False)
+            for _ in range(4):
+                silent_close(mud)
+                time.sleep(0.2)
+            time.sleep(4)
+            log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
+        numbers = self.strike_numbers(log)
+        self.assertGreaterEqual(len(numbers), 4, log[-1500:])
+        self.assertEqual(numbers, list(range(1, len(numbers) + 1)))
 
     def test_a_name_that_only_ends_like_the_domain_is_no_monitor(self) -> None:
         env = {"TOC_GUARD_LOOPBACK": "1", "TOC_GUARD_STRIKES": "3",

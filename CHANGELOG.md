@@ -8,6 +8,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 
+### 2026-11-24 -- slow DNS, held strikes, chat history, backup verdict
+
+- *A slow resolver no longer pauses an uptime monitor.* The pause waits on
+  the name being asked -- 45 seconds at most, never past twice the strike
+  limit -- and every strike line held meanwhile is written, in order.
+- *The website hides only Questor's own patter* from before the game
+  stopped journaling it; a switched immortal speaking as Questor is shown.
+- *A restore says whether backups work.* `GAME:` and `REMOTE BACKUPS:` are
+  reported apart; without a deploy key that can push, the restore exits 6.
+- *A hand-started game blocks a restore*, as a systemd one does.
+
 ### 2026-11-24 -- restore, DNS and wrap review
 
 - *Restores fail closed.* `deploy/toc-restore-state` run on its own is live

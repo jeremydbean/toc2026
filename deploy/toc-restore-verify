@@ -3,18 +3,39 @@
 # (review, 2026-11-24: toc-restore enabled every unit with `|| true` and
 # announced a running game whatever had happened).
 #
-#   toc-restore-verify [--active-only] REQUIRED... [-- WANTED...]
+#   toc-restore-verify [--active-only] [--backup-key KEY --backup-remote URL]
+#                      REQUIRED... [-- WANTED...]
 #
 # Each REQUIRED unit must be active -- waited for up to
 # TOC_RESTORE_VERIFY_WAIT seconds (30), as a game takes a moment to boot --
 # and enabled, so it comes back after a reboot (--active-only: active is
 # enough, for units a restore only started again). A WANTED unit that is
-# not is named as a warning. Exit 0 when every required unit is, else 1,
-# each one that is not named on stderr.
+# not is named as a warning.
+#
+# Review, 2026-11-24 (third): a sync timer that is running proves nothing
+# about backups on a fresh host with no deploy key -- every run fails, and
+# this said success. With --backup-key, remote backups are judged apart:
+# the key must be readable, and a dry-run push with it to --backup-remote
+# must be accepted -- GitHub refuses a read-only or unknown key at that
+# point, so write access is proved without writing anything.
+#
+# Exit 0 when every required unit is running and, if asked, remote backups
+# are verified; 1 when a required unit is not (each named on stderr); 3
+# when the units are but remote backups are not verified. The last lines
+# say which, as GAME and REMOTE BACKUPS.
 set -u
 
 active_only=0
-if [ "${1:-}" = --active-only ]; then active_only=1; shift; fi
+backup_key=""
+backup_remote=""
+while :; do
+    case "${1:-}" in
+        --active-only) active_only=1; shift ;;
+        --backup-key) backup_key=${2:-}; shift 2 ;;
+        --backup-remote) backup_remote=${2:-}; shift 2 ;;
+        *) break ;;
+    esac
+done
 required=""
 wanted=""
 while [ $# -gt 0 ]; do
@@ -55,4 +76,37 @@ for u in $wanted; do
         echo "   WARN: $u is not running: $(systemctl is-active "$u" 2>/dev/null || true)" >&2
     fi
 done
+
+if [ "$bad" = 0 ]; then
+    echo "   GAME: running -- every required unit is active"
+else
+    echo "   GAME: NOT VERIFIED -- see the units named above" >&2
+fi
+[ -z "$backup_key" ] && exit $bad
+
+remote_ok=0
+why=""
+if [ ! -r "$backup_key" ]; then
+    why="no state-sync deploy key at $backup_key: every sync will fail until it is there"
+elif [ -z "$backup_remote" ]; then
+    why="no remote to check the key against"
+else
+    probe=$(mktemp -d "${TMPDIR:-/tmp}/toc-backup-probe.XXXXXX")
+    if git -C "$probe" init -q 2>/dev/null &&
+       git -C "$probe" -c user.name=toc-restore -c user.email=toc-restore@localhost \
+           commit -q --allow-empty -m probe 2>/dev/null &&
+       out=$(GIT_SSH_COMMAND="ssh -i $backup_key -o IdentitiesOnly=yes -o BatchMode=yes -o ConnectTimeout=15 -o StrictHostKeyChecking=accept-new" \
+             git -C "$probe" push --dry-run --quiet "$backup_remote" HEAD:refs/heads/toc-restore-probe 2>&1); then
+        remote_ok=1
+    else
+        why="the deploy key could not push to $backup_remote: $(printf '%s' "${out:-git failed}" | tr '\n' ' ' | cut -c1-200)"
+    fi
+    rm -rf "$probe"
+fi
+if [ "$remote_ok" = 1 ]; then
+    echo "   REMOTE BACKUPS: verified -- the deploy key can push to $backup_remote"
+else
+    echo "   REMOTE BACKUPS: NOT VERIFIED -- $why" >&2
+    [ "$bad" = 0 ] && bad=3
+fi
 exit $bad

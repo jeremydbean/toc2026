@@ -73,6 +73,30 @@ room_for() {
         return 1
     fi
 }
+# A path with its directories' symlinks resolved, whether or not it exists.
+canonical() {
+    if [ -d "$1" ]; then (cd "$1" && pwd -P)
+    elif [ -d "$(dirname "$1")" ]; then printf '%s/%s\n' "$(cd "$(dirname "$1")" && pwd -P)" "$(basename "$1")"
+    else printf '%s\n' "$1"
+    fi
+}
+# Games running from a tree that systemd does not know of -- a merc started
+# by hand in its area/ (review, 2026-11-24, third: only toc-game.service was
+# asked, and a hand-started game saves over a restore just the same). Reads
+# /proc (TOC_PROC, for the tests): each process named merc whose working
+# directory is the tree or under it. Prints their pids; nothing where there
+# is no /proc to read, which is a limit: such a host is not checked.
+games_running_in() {
+    proc=${TOC_PROC:-/proc}
+    [ -d "$proc" ] || return 0
+    tree=$(canonical "$1")
+    for p in "$proc"/[0-9]*; do
+        [ "$(cat "$p/comm" 2>/dev/null)" = merc ] || continue
+        cwd=$(readlink "$p/cwd" 2>/dev/null) || continue
+        [ -d "$cwd" ] && cwd=$(cd "$cwd" 2>/dev/null && pwd -P)
+        case "$cwd/" in "$tree"/*) printf '%s ' "$(basename "$p")" ;; esac
+    done
+}
 # A free name for the old tree: $1, else $1-2, $1-3, ... Under the lock (a
 # live restore) nothing else makes these, so the name stays free until the
 # rename; the rename is checked besides.
@@ -235,6 +259,11 @@ resume() {
         systemctl start "$u" || echo "   COULD NOT START $u again -- start it by hand" >&2
     done
 }
+# A game systemd did not start would still be saving into $CURRENT.
+running=$(games_running_in "$CURRENT")
+if [ -n "$running" ]; then
+    resume; abandon "a game is running from $CURRENT that systemd did not start (merc, pid $running); stop it first"
+fi
 # What the old tree holds that the checkout does not -- the game's runtime
 # files under area/, a build's leftovers -- is kept, as the old rsync over
 # the live tree kept it; taken now, with the game stopped, so it is final.
@@ -390,9 +419,17 @@ sh "$BUILD/deploy/windows-vm/toc-install-units" "$BUILD/deploy/windows-vm" ||
 # game nobody can reach, or one whose saves never reach GitHub again, is
 # not done. The rest are wanted, and named if they are not.
 [ -n "$not_enabled" ] && echo "   systemctl enable failed for:$not_enabled" >&2
-if ! sh "$VERIFY" toc-game.service toc-state-sync.timer toc-state-sync.path \
+# Review, 2026-11-24 (third): the game running and backups reaching GitHub
+# are two verdicts. A fresh host has no deploy key, so its sync runs and
+# fails every minute; that is reported, not called done.
+verified=0
+sh "$VERIFY" --backup-key "${GIT_SSH_KEY:-$TOC_PREFIX/.ssh/id_ed25519_state_sync}" \
+        --backup-remote "${TOC_STATE_REMOTE:-git@github.com:jeremydbean/toc2026.git}" \
+        toc-game.service toc-state-sync.timer toc-state-sync.path \
         toc-state-sync-check.timer toc-game-recovery.timer \
-        -- toc-web.service toc-auto-deploy.timer toc-heartbeat.timer toc-host-action.path; then
+        -- toc-web.service toc-auto-deploy.timer toc-heartbeat.timer toc-host-action.path ||
+    verified=$?
+if [ "$verified" != 0 ] && [ "$verified" != 3 ]; then
     say "RESTORE NOT COMPLETE -- the tree is in place, but the units named above are not running"
     echo "   Fix what journalctl -u <unit> says, then: systemctl enable --now <unit>." >&2
     echo "   The old tree, if there was one, is at $ASIDE." >&2
@@ -421,4 +458,11 @@ cat <<'NOTE'
    certificate; see wiki/disaster-recovery.md.)
 NOTE
 
-say "done -- game is up and self-restarting; see the manual steps above"
+if [ "$verified" = 3 ]; then
+    say "GAME RUNNING, BACKUPS NOT VERIFIED -- the game is up and restarts itself, but its"
+    echo "   saves are not reaching GitHub: put the deploy key in place (above), then" >&2
+    echo "   run toc-state-sync-check, or this restore's check again:" >&2
+    echo "     sh $VERIFY --backup-key <key> --backup-remote <remote> toc-game.service" >&2
+    exit 6
+fi
+say "done -- game is up and self-restarting, and backups verified; see the manual steps above"

@@ -467,10 +467,33 @@ Second review, 2026-11-24 -- what else a restore now refuses or proves:
   call does, and which is refused for the live tree itself
   (`TOC_LIVE_TREE`, `/srv/toc/current`, symlinks resolved).
 
-Exit codes: 0 done, 1 failed with the old tree back, 2 the lock is held
-or the game is running (or the live tree was asked for as a stage), 3 the
-target holds state and `TOC_RESTORE_REPLACE=1` was not given, 4 restored
-but a required unit is not running, 5 not enough free space.
+- **A game systemd did not start is seen too** (third review, 2026-11-24).
+  Both scripts read `/proc` for a process named `merc` working in the
+  tree: `toc-restore-state` refuses (exit 2), `toc-restore` puts the old
+  tree back and starts again what it stopped. A host with no `/proc` is not
+  checked this way -- stop any hand-started game yourself.
+- **The game running and backups reaching GitHub are two verdicts.** A
+  fresh host has no state-sync deploy key, so its sync timer runs and every
+  sync fails. The bare-host restore now ends with `GAME:` and
+  `REMOTE BACKUPS:` lines: the second is *verified* only when the key at
+  `/srv/toc/.ssh/id_ed25519_state_sync` is readable and a dry-run push with
+  it is accepted (GitHub refuses a read-only key there, so this proves
+  write access without writing). Otherwise the restore says
+  **GAME RUNNING, BACKUPS NOT VERIFIED** and exits 6. After putting the key
+  in place, check again:
+
+  ```bash
+  sudo sh /srv/toc/build/deploy/toc-restore-verify \
+      --backup-key /srv/toc/.ssh/id_ed25519_state_sync \
+      --backup-remote git@github.com:jeremydbean/toc2026.git toc-game.service
+  ```
+
+Exit codes: 0 done (and, on a bare host, backups verified), 1 failed with
+the old tree back, 2 the lock is held or a game is running (or the live
+tree was asked for as a stage), 3 the target holds state and
+`TOC_RESTORE_REPLACE=1` was not given, 4 restored but a required unit is
+not running, 5 not enough free space, 6 the game is running but remote
+backups are not verified.
 
 ### When GitHub is unavailable
 

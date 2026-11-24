@@ -639,6 +639,11 @@ class WebAdminApiTests(unittest.TestCase):
                     # a questmaster's patter, from before the game stopped
                     # journaling it (owner, 2026-11-24): never shown
                     "1700000130\tsay\tQuestor Thews\tFortune favors the bold - good luck!",
+                    "1700000131\tsay\tQuestor Thews\tHere's your 77p 6g 45s 70c - well earned!",
+                    "1700000132\tsay\tQuestor Thews\tStreak of 6 in a row! A +50% bonus has been added!",
+                    # an immortal switched into Questor: the game journals
+                    # it on purpose, and it is shown (review, 2026-11-24)
+                    "1700000133\tsay\tQuestor Thews\tMeet me at the great oak, all of you.",
                     # a tab inside the text must not split into a column
                     "1700000180\tgossip\tMisery\tone\ttwo",
                     # junk from a read that landed mid-write
@@ -665,17 +670,19 @@ class WebAdminApiTests(unittest.TestCase):
                 ).json()
 
         self.assertTrue(payload["journal_present"])
-        self.assertEqual(payload["channels"], ["auction", "gossip"])
+        self.assertEqual(payload["channels"], ["auction", "gossip", "say"])
 
         # Newest first, and the two unparseable rows are gone.
         texts = [line["text"] for line in payload["lines"]]
         self.assertEqual(texts[0], "one\ttwo")
-        self.assertEqual(len(payload["lines"]), 4)
-        self.assertNotIn("Questor Thews", [line["speaker"] for line in payload["lines"]])
+        self.assertEqual(len(payload["lines"]), 5)
+        questor = [line["text"] for line in payload["lines"] if line["speaker"] == "Questor Thews"]
+        self.assertEqual(questor, ["Meet me at the great oak, all of you."],
+                         "the patter hidden, a switched immortal's say shown")
 
         self.assertEqual([line["speaker"] for line in one["lines"]], ["Eclipse"])
         self.assertEqual(
-            one["channels"], ["auction", "gossip"],
+            one["channels"], ["auction", "gossip", "say"],
             "filtering to a channel must not empty the channel list",
         )
 

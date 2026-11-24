@@ -136,6 +136,8 @@
 #define GUARD_HISTORY        ( 30 * 86400 )  /* pauses counted for doubling */
 #define GUARD_NAME_RECHECK   ( 6 * 3600 )    /* an address's name asked at most this often */
 #define GUARD_NAME_RETRY     ( 5 * 60 )      /* ...or this soon after a lookup failed or was lost */
+#define GUARD_NAME_GRACE       45            /* a pause waits on a name no longer than this */
+#define GUARD_HELD_MAX         32            /* strike lines held for one name, at most */
 #define GUARD_MONITOR_HOLD   ( 2 * 86400 )   /* a confirmed monitor's name holds this long */
 
 typedef struct guard_entry
@@ -157,7 +159,11 @@ typedef struct guard_entry
     long     refused_total;  /* refused while paused or flooding, all time */
     time_t   name_next;      /* its name not asked again before this */
     time_t   monitor_until;  /* an uptime monitor, its name confirmed, till then */
-    char     strike_unlogged; /* 0, or 1/2: a strike's line held for its name */
+    time_t   name_pending;   /* its name asked then, no answer yet; 0 none */
+    int      held;           /* strike lines waiting on that answer */
+    int      held_first;     /* the strike number of the first of them */
+    uint32_t held_prompt;    /* bit i: held line i closed before a password prompt */
+    bool     pause_due;      /* the strike limit came while the name was asked */
     char     text[NET_ADDR_TEXT];   /* the address last seen for this key */
 } GUARD_ENTRY;
 
@@ -656,20 +662,54 @@ static bool guard_ask_name( GUARD_ENTRY *e, const NET_ADDR *a )
     if ( !dns_check_name( a ) )
         return false;
     e->name_next = current_time + guard_limit( "TOC_GUARD_NAME_RETRY", GUARD_NAME_RETRY );
+    e->name_pending = current_time;
     return true;
 }
 
-/* A strike's log line: "closed without a word" (1) or "closed before a
-   password prompt" (2). */
-static void guard_log_strike( const GUARD_ENTRY *e, const char *addr, int kind )
+/* Whether this address's name is being asked and may still come. */
+static bool guard_name_waited_on( const GUARD_ENTRY *e )
 {
+    return e->name_pending != 0
+        && current_time - e->name_pending < guard_limit( "TOC_GUARD_NAME_GRACE", GUARD_NAME_GRACE );
+}
+
+/* A strike's log line: closed without a word, or before a password prompt. */
+static void guard_log_strike( const GUARD_ENTRY *e, int strike, bool prompt )
+{
+    char addr[NET_ADDR_TEXT + 16];
     char buf[MAX_STRING_LENGTH];
 
+    guard_ip_text( e, addr, sizeof(addr) );
     snprintf( buf, sizeof(buf), "Connection guard: %s %s (strike %d of %d in %d hours).",
-              addr, kind == 2 ? "closed before a password prompt" : "closed without a word",
-              e->conns, guard_limit( "TOC_GUARD_STRIKES", GUARD_STRIKES ),
+              addr, prompt ? "closed before a password prompt" : "closed without a word",
+              strike, guard_limit( "TOC_GUARD_STRIKES", GUARD_STRIKES ),
               GUARD_STRIKE_WINDOW / 3600 );
     log_string( buf );
+}
+
+/* The strike lines held for an answer, written in order (review,
+   2026-11-24: one held line was kept, each strike overwriting the last). */
+static void guard_flush_held( GUARD_ENTRY *e )
+{
+    int i;
+
+    for ( i = 0; i < e->held; i++ )
+        guard_log_strike( e, e->held_first + i, ( e->held_prompt >> i ) & 1 );
+    e->held = 0;
+    e->held_prompt = 0;
+}
+
+/* What waited on the name, settled without it: the lines written, and a
+   pause that came due taken now. */
+static void guard_settle_unnamed( GUARD_ENTRY *e )
+{
+    guard_flush_held( e );
+    if ( e->pause_due )
+    {
+        e->pause_due = false;
+        if ( e->blocked_until <= current_time )
+            guard_block( e, "kept connecting without logging in" );
+    }
 }
 
 /* The address counts for the guard at all: not loopback (bar the tests),
@@ -887,24 +927,51 @@ void conn_guard_closed( DESCRIPTOR_DATA *d )
     toc_strlcpy( e->text, d->addr_text, sizeof(e->text) );
     if ( e->window_start == 0 || current_time - e->window_start > GUARD_STRIKE_WINDOW )
     {
+        guard_flush_held( e );           /* numbered in the window they were struck in */
         e->window_start = current_time;
         e->conns = 0;
     }
     e->conns++;
-    /* An uptime monitor's are not strikes. While its name is being asked
-       the line waits for the answer, and is written then only if the
-       address is not a monitor's -- or now, if this strike pauses it
-       (owner, 2026-11-24: no line for UptimeRobot's checks). */
-    if ( ( guard_ask_name( e, &d->addr ) || e->strike_unlogged != 0 ) && e->conns < strikes )
-        e->strike_unlogged = (char) ( d->first_line_read ? 2 : 1 );   /* asked, or still asking */
-    else
-    {
-        e->strike_unlogged = 0;
-        snprintf( buf, sizeof(buf), "Connection guard: %s %s (strike %d of %d in %d hours).",
-                  d->addr_text, how, e->conns, strikes, GUARD_STRIKE_WINDOW / 3600 );
-        log_string( buf );
-    }
+    guard_ask_name( e, &d->addr );
     guard_pause_dirty = true;
+    /*
+     * An uptime monitor's checks are not strikes, and are not logged (owner,
+     * 2026-11-24). Its name comes from the resolver, off the game loop, so
+     * while it is being asked -- for GUARD_NAME_GRACE at most -- this
+     * strike's line waits for the answer, with any before it, and a pause
+     * the strike limit calls for waits too. The answer writes the lines and
+     * takes the pause, or, for a monitor, drops both (review, 2026-11-24:
+     * checks faster than the resolver paused a real monitor, which then saw
+     * the game as down until the answer lifted it). Bounded so a scanner
+     * gains nothing by it: never past the grace (conn_guard_tick settles
+     * it), never past twice the strike limit, and never past the burst and
+     * flood limits, which conn_guard_admit applies as always.
+     */
+    if ( guard_name_waited_on( e ) && e->held < GUARD_HELD_MAX )
+    {
+        if ( e->held == 0 )
+            e->held_first = e->conns;
+        if ( d->first_line_read )
+            e->held_prompt |= (uint32_t) 1 << e->held;
+        e->held++;
+        if ( e->conns >= strikes && e->blocked_until <= current_time )
+        {
+            if ( e->conns < 2 * strikes )
+            {
+                e->pause_due = true;
+                return;
+            }
+            e->pause_due = false;
+            guard_flush_held( e );
+            guard_block( e, "kept connecting without logging in" );
+        }
+        return;
+    }
+    guard_flush_held( e );
+    snprintf( buf, sizeof(buf), "Connection guard: %s %s (strike %d of %d in %d hours).",
+              d->addr_text, how, e->conns, strikes, GUARD_STRIKE_WINDOW / 3600 );
+    log_string( buf );
+    e->pause_due = false;
     if ( e->conns >= strikes && e->blocked_until <= current_time )
         guard_block( e, "kept connecting without logging in" );
 }
@@ -934,14 +1001,11 @@ void conn_guard_name_checked( const NET_ADDR *a, const char *host, int outcome )
     if ( !guard_applies( key ) || ( e = guard_find( key, false ) ) == NULL )
         return;
     guard_ip_text( e, addr, sizeof(addr) );
-    /* A strike whose line waited for this answer: written now, unless the
-       answer makes the address an uptime monitor's. */
-    if ( e->strike_unlogged != 0
-    &&   !( outcome == DNS_CHECK_CONFIRMED && host != NULL && guard_monitor_domain( host ) ) )
-    {
-        guard_log_strike( e, addr, e->strike_unlogged );
-        e->strike_unlogged = 0;
-    }
+    e->name_pending = 0;
+    /* What waited for this answer -- strike lines and a pause come due --
+       is settled now, unless the answer makes it an uptime monitor's. */
+    if ( !( outcome == DNS_CHECK_CONFIRMED && host != NULL && guard_monitor_domain( host ) ) )
+        guard_settle_unnamed( e );
     if ( outcome == DNS_CHECK_RETRY )
     {
         int retry = guard_limit( "TOC_GUARD_NAME_RETRY", GUARD_NAME_RETRY );
@@ -964,7 +1028,9 @@ void conn_guard_name_checked( const NET_ADDR *a, const char *host, int outcome )
         log_string( buf );
         return;
     }
-    e->strike_unlogged = 0;
+    e->held = 0;                  /* a monitor's checks: never written */
+    e->held_prompt = 0;
+    e->pause_due = false;
     if ( e->monitor_until > current_time )
     {
         e->monitor_until = current_time + GUARD_MONITOR_HOLD;
@@ -1108,6 +1174,15 @@ void conn_guard_tick( void )
        the log are written once their address goes quiet. */
     if ( guard_pause_dirty && current_time - guard_pause_saved >= GUARD_SAVE_SECS )
         guard_pause_save();
+    /* A name that did not come within the grace -- a lookup lost or slower
+       than GUARD_NAME_GRACE -- holds nothing longer. */
+    for ( i = 0; i < GUARD_SLOTS; i++ )
+        if ( guard_table[i].used && guard_table[i].name_pending != 0
+        &&   !guard_name_waited_on( &guard_table[i] ) )
+        {
+            guard_table[i].name_pending = 0;
+            guard_settle_unnamed( &guard_table[i] );
+        }
     for ( i = 0; i < GUARD_SLOTS; i++ )
         if ( guard_table[i].used && guard_table[i].refusals_unlogged > 0
         &&   current_time - guard_table[i].refusal_logged >= GUARD_REFUSAL_LOG_SECS )
