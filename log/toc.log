@@ -345509,3 +345509,6 @@ Tue Nov 24 06:35:01 2026 :: EOF encountered on read.
 Tue Nov 24 06:35:01 2026 :: Connection guard: 129.151.245.51 closed before a password prompt (strike 3 of 6 in 6 hours).
 Tue Nov 24 06:37:02 2026 :: Black market: the dealer vanished from room 24592 (Secret Passage, abyss.are) (wandering).
 Tue Nov 24 06:37:34 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 24 06:40:18 2026 :: Sock.sinaddr:  147.185.133.84
+Tue Nov 24 06:40:18 2026 :: EOF encountered on read.
+Tue Nov 24 06:40:18 2026 :: Connection guard: 147.185.133.84 closed before a password prompt (strike 1 of 6 in 6 hours).
