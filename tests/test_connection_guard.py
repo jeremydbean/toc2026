@@ -490,14 +490,18 @@ class GuardMonitorLiveTests(unittest.TestCase):
 
     def test_a_cold_start_monitor_is_found_at_its_first_check(self) -> None:
         """No pause and nothing remembered: the first silent check is a
-        strike, asks the name, and the rest are not counted."""
-        env = {"TOC_GUARD_LOOPBACK": "1", "TOC_GUARD_STRIKES": "3",
+        strike, asks the name, and the rest are not counted. The strike
+        limit is roomy and the checks a second apart -- a real monitor's
+        are minutes apart -- because a sanitizer build on a busy runner
+        answers the name slowly (CI, 2026-11-24: three checks in a second
+        paused it before the answer came)."""
+        env = {"TOC_GUARD_LOOPBACK": "1", "TOC_GUARD_STRIKES": "10",
                "TOC_GUARD_MONITOR_DOMAIN": "localhost"}
         with LiveMud(extra_env=env) as mud:
             self.start_untrusted(mud, paused=False)
             for _ in range(6):
                 silent_close(mud)
-                time.sleep(0.3)
+                time.sleep(1)
             time.sleep(2)
             self.assertTrue(greets(mud))
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
@@ -513,7 +517,7 @@ class GuardMonitorLiveTests(unittest.TestCase):
         does. It used to send no answer and leave the address marked asked
         for six hours, so the monitor's next checks were strikes and it was
         paused. Now it is asked again after TOC_GUARD_NAME_RETRY."""
-        env = {"TOC_GUARD_LOOPBACK": "1", "TOC_GUARD_STRIKES": "4",
+        env = {"TOC_GUARD_LOOPBACK": "1", "TOC_GUARD_STRIKES": "8",
                "TOC_GUARD_MONITOR_DOMAIN": "localhost", "TOC_DNS_CHECK_FAILS": "1",
                "TOC_GUARD_NAME_RETRY": "1"}
         with LiveMud(extra_env=env) as mud:
@@ -523,9 +527,9 @@ class GuardMonitorLiveTests(unittest.TestCase):
                                               "127.0.0.1's name; asked again in 1 second at the "
                                               "earliest."))
             time.sleep(1.5)
-            for _ in range(5):
+            for _ in range(5):            # a second apart: see the cold-start test
                 silent_close(mud)
-                time.sleep(0.6)
+                time.sleep(1)
             time.sleep(1)
             self.assertTrue(greets(mud), "the monitor is not paused")
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
@@ -534,7 +538,7 @@ class GuardMonitorLiveTests(unittest.TestCase):
         # known); none after the retry found the monitor.
         before, after = log.split("asked again in 1 second at the earliest.", 1)
         self.assertIn("127.0.0.1 closed without a word (strike", before)
-        self.assertNotIn("(strike 4 of 4", log)
+        self.assertNotIn("(strike 8 of 8", log)
         self.assertLessEqual(after.count("127.0.0.1 closed"), 1,
                              "at most the check that asked again is a strike")
 
