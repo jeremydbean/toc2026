@@ -344925,3 +344925,4 @@ Tue Nov 24 00:27:00 2026 :: Connection guard: refused 1 connection from 5.161.11
 Tue Nov 24 00:32:05 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 4 of 6 in 6 hours).
 Tue Nov 24 00:34:39 2026 :: Treasure goblin: vanished from room 5685 (High tree, tarin.are) (too long in one area).
 Tue Nov 24 00:36:07 2026 :: Cartographer: appeared.
+Tue Nov 24 00:37:09 2026 :: Connection guard: refused 1 connection from 178.156.187.238 (paused; 30 refused in all, pause 4 this week, 2033 minutes left).
