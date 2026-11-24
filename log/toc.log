@@ -344957,3 +344957,4 @@ Tue Nov 24 01:55:16 2026 :: Treasure goblin: vanished from room 18110 (Inside th
 Tue Nov 24 01:58:24 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 56 refused in all, pause 5 this week, 3329 minutes left).
 Tue Nov 24 02:03:29 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 2 of 6 in 6 hours).
 Tue Nov 24 02:08:32 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 60 refused in all, pause 5 this week, 2384 minutes left).
+Tue Nov 24 02:10:17 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
