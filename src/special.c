@@ -533,17 +533,18 @@ bool spec_dominion_ward( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  * mortals' own characters, buffed by Hermie, were played against him:
  * one thief with the Silver Arrow won alone in under half a minute. The
  * arrow's share went from a tenth to a thirty-fifth and the fireballs to
- * four at 250-305 (at most about 152 through sanctuary). On 2026-11-24
+ * four at 250-305 (at most about 152 through sanctuary); 200-245 (about 122)
+ * since 2026-11-24, measured below. On 2026-11-24
  * (owner) the arrow's share went altogether: it hits as a weapon during
  * the fight and only its SHOOT at the collapsed Ganon is special; his
- * hit points went from 67,500 to 22,500 so three or four still win
- * (estimated from the 11-18 fights, in the wiki). Add fireballs rather
+ * hit points went from 67,500 to 12,000 and the fireballs to 200-245, so
+ * three or four still win (measured, "Measured, 2026-11-24" in the wiki). Add fireballs rather
  * than enlarge them: none may read UNSPEAKABLE through sanctuary. See
  * "Ganon's Fight" in wiki/hyrule-area.md.
  */
 #define GANON_FIREBALLS          4
-#define GANON_FIREBALL_MIN    250
-#define GANON_FIREBALL_MAX    305
+#define GANON_FIREBALL_MIN    200
+#define GANON_FIREBALL_MAX    245
 #define GANON_REGEN_DIVISOR     10
 
 static bool ganon_may_target( CHAR_DATA *mob, CHAR_DATA *victim )

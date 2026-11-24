@@ -386,7 +386,7 @@ Guardian Fights below). Each carries its Heart Guard, a weapon
 | 6 | Gohma | 43 | 2,200 | Gohma eye-lance 7d10, +3/+1 | 40 | 39.5 | 33.5, a two-handed sword |
 | 7 | ancient Aquamentus | 49 | 2,650 | Demon's dragonbone sword 9d9, +4/+4 | 46 | 49.0 | 42.0, A Glaive-Guisarme |
 | 8 | ashen Gleeok | 55 | 9,200 | Lion's four-crowned axe 10d9, +9/+6 | 52 | 56.0 | 49.0, a flaming Light Saber |
-| 9 | Ganon | 64 | 22,500 (67,500 until 2026-11-24) | Trident of Ganon 11d10, +9/+3 | 59 | 63.5 | 54.0, the Power of the world |
+| 9 | Ganon | 64 | 12,000 (67,500 until 2026-11-24) | Trident of Ganon 11d10, +9/+3 | 59 | 63.5 | 54.0, the Power of the world |
 
 "Best existing" is the best weapon a character of that level could otherwise
 carry: every mobile-carried weapon in the world at or below the weapon's level,
@@ -522,7 +522,7 @@ expect to die. Before that (2026-11-13, owner) he was sized for three
 median level 59s without Hermie, and before that for three median players
 with her. The numbers:
 
-- **Level 64, 22,500 hit points (67,500 until 2026-11-24), armour -40 (-400 in game), average blow 100,
+- **Level 64, 12,000 hit points (67,500 until 2026-11-24), armour -40 (-400 in game), average blow 100,
   sanctuary and haste as before; no longer hidden.** The catalog's hide
   (`Q`) is taken off (`GUARDIAN_AFFECTS_REMOVED`): only detect hidden saw
   past it, which Hermie's detects gave everybody, so without her a group of
@@ -532,7 +532,7 @@ with her. The numbers:
   Silver Arrow's among them since 2026-11-24.
 - **`spec_ganon` (`src/special.c`) replaces the necromancer's spell list.**
   Every mobile pulse (four seconds) he blinks to another spot in the dark and
-  throws four fireballs of 250-305 (130-170 from 2026-11-13, 290-385
+  throws four fireballs of 200-245 (250-305 from 2026-11-18, 130-170 from 2026-11-13, 290-385
   before), each at a random player in the fight: anyone fighting him or
   grouped with someone who is, **whether or not he can see them** -- blind,
   in the dark or facing an invisible fighter, he throws all the same (until
@@ -559,15 +559,30 @@ damroll, with full mastery so it lands -- and his hit points are worn down
 by everybody's blows alike. Its one power is the end: SHOOT GANON at the
 collapsed Ganon, which always kills.
 
-**His hit points went from 67,500 to 22,500 with it** (owner, 2026-11-24:
-"lower ganon's hp so 3-4 players can still beat him"). Estimated, not
-measured: in the 2026-11-18 fights a lone arrow-bearer took 40-60% of him
-in about fifty seconds, nearly all of it the share, and the trio's two
-others did about 130 a second each. Without the share three such players
-do about 400 a second and four about 520, so 22,500 keeps the fight near
-the minute the fireballs allowed: about 56 seconds for three, 43 for four,
-nearly 90 for two. The table below was measured with the old share and
-67,500; play will tell whether 22,500 needs moving.
+**Measured, 2026-11-24** (owner: "lower ganon's hp so 3-4 players can
+still beat him", then "maybe ganon shouldn't hit as hard?"). The first
+step, 22,500 hit points, was an estimate; then it was played with
+`tools/hyrule_playtest/ganon_group.py`: synthetic human warriors of level
+59 in the gear `gear_plan.py` picks for dungeon 9 (median world gear plus
+Hyrule's), skills at 75%, 1,642 hit points, the leader with the Silver
+Arrow. The tool now records Ganon's lowest health in a lost fight -- read
+after it, he had already healed a tenth a pulse, and lost fights read
+98-100% that had taken a fifth off.
+
+| Hit points, fireballs, armour | Basis | Two | Three | Four |
+| --- | --- | --- | --- | --- |
+| 22,500, 250-305, -40 | unbuffed | lost 3 of 3 (15-17 s) | lost 4 of 4 (22-27 s; Ganon 96-98%) | lost 2 of 2 (29 s; 93%) |
+| 22,500, 250-305, -40 | Hermie | -- | lost 2 of 2 (65 s; 69-71%) | lost 2 of 2 (94 s; 51-52%) |
+| 9,000-12,000, 130-200, 0 or -20 | unbuffed | -- | lost all six (34-46 s; 82-89%) | -- |
+| **12,000, 200-245, -40** | **Hermie** | **lost 2 of 2 (76-90 s; 44-51%)** | **won 1 of 2 (lost at 8%), 116-123 s** | **won 2 of 2, all four standing, 96-113 s** |
+
+So he is **12,000 hit points with four fireballs of 200-245** (about 122
+through sanctuary). Unbuffed median players hardly hurt him at any setting
+tried -- three did 30-40 a second between them and lasted under fifty
+seconds even with his fire at 130-170 and his armour at 0 -- so the
+basis is the one his 2026-11-18 tuning had: strong players, buffed. Better
+geared players than these median warriors will find him easier; the
+2026-11-18 table below was measured with the arrow's old share.
 
 **CONFUSE does not work on any of Hyrule's guardians** (2026-11-18): it
 stunned one for game hours, in which it threw nothing and barely fought

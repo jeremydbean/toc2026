@@ -574,11 +574,11 @@ class GanonPhaseTests(unittest.TestCase):
                 quit_all(monk, psi, staff)
 
         hit, top, _ = out["start"]
-        self.assertGreater(top, 20000)        # 22,500 since 2026-11-24
+        self.assertGreater(top, 10000)        # 12,000 since 2026-11-24
         self.assertEqual(hit, top, "he starts whole")
         hit, top, pos = out["debuffed"]
         self.assertTrue(out["sleepless"], "the ordinary effect was laid")
-        self.assertGreater(hit, 20000, "an ordinary debuff is not his collapse")
+        self.assertGreater(hit, 10000, "an ordinary debuff is not his collapse")
         self.assertNotEqual(pos, 3, "not stunned")
         self.assertIn("not vulnerable yet", out["early shot"], out["early shot"])
         self.assertIn("flashes bright red", out["beaten"], out["beaten"][-600:])

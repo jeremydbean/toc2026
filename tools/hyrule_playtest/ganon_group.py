@@ -110,16 +110,30 @@ def equip(god, hero, name, arrow):
         run(hero, f"wield {obj_keyword(weapon_vnum)}", 1.0)
 
 
-def fight(heroes, limit=600):
+LOWEST = {"hp": None}
+
+
+def watch_boss(god):
+    """The guardian's health now, kept at its lowest this fight: read after
+    the fight it has already healed, a tenth a pulse once nobody fights it
+    (2026-11-24: lost fights read 98-100% that had taken a fifth off)."""
+    found = re.search(r"Hp: (-?\d+)/(\d+)", run(god, f"at {boss_room} stat mob {BOSS_WORD}", 0.6))
+    if found:
+        hp = [int(found.group(1)), int(found.group(2))]
+        if LOWEST["hp"] is None or hp[0] < LOWEST["hp"][0]:
+            LOWEST["hp"] = hp
+
+
+def fight(heroes, limit=600, god=None):
     """(won, survivors, seconds, hp_left per member)."""
     start = time.time()
+    LOWEST["hp"] = None
     marks = [len(h.transcript) for h in heroes]
     shot = False
     if DUNGEON == 9 and ARROW_FIRST:
-        # Every landed blow of the wielded Silver Arrow takes a thirty-fifth
-        # of his health (HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR): thirty-five
-        # of them beat him down, as "Ganon's Fight" in wiki/hyrule-area.md
-        # has it.
+        # The arrow wielded from the first blow, as a leader would. Since
+        # 2026-11-24 it hits as an ordinary weapon (it took a thirty-fifth of
+        # his health a blow before); only its SHOOT at the end is special.
         heroes[0].send("wield arrow")
         heroes[0].drain(1.0)
         shot = True
@@ -130,6 +144,8 @@ def fight(heroes, limit=600):
     while time.time() - start < limit:
         for h in heroes:
             h.drain(0.7)
+        if god is not None:
+            watch_boss(god)
         for i, h in enumerate(heroes):
             text = h.transcript[marks[i]:]
             # DIVINE PROTECTION (one of Hermie's buffs) saves a buffed
@@ -214,14 +230,18 @@ with LiveMud() as mud:
             for h, name in zip(heroes, NAMES):
                 run(god, f"restore {name.lower()}", 0.6)
                 run(god, f"transfer {name.lower()} {boss_room}", 1.0)
-            won, alive, secs, left = fight(heroes)
+            won, alive, secs, left = fight(heroes, god=god)
             saves = [h.transcript.count("spared from death by the Gods") for h in heroes]
+            # How far a lost fight got: the guardian's lowest health in it.
+            boss = LOWEST["hp"] if won is not True else None
             result = dict(attempt=attempt + 1, won=won, survivors=alive,
-                          secs=round(secs), hp_left=left, saves=saves)
+                          secs=round(secs), hp_left=left, saves=saves, boss_hp=boss)
             results["fights"].append(result)
             note(f"try {attempt + 1}: {'WON' if won else 'LOST' if won is False else 'n/a'}"
                  f", {alive} of {MEMBERS} standing, {secs:.0f}s, hp left {left}"
-                 f", saved from death so far {saves}")
+                 f", saved from death so far {saves}"
+                 + (f", {BOSS_WORD} at {boss[0]}/{boss[1]} ({100 * boss[0] // max(1, boss[1])}%)"
+                    if boss else ""))
             if attempt + 1 < TRIES:
                 # The dead lie in the dark in their corpses' gear: fresh copies.
                 for i, (h, name) in enumerate(zip(heroes, NAMES)):

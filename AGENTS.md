@@ -8348,8 +8348,14 @@ to nothing. The thirty-fifth is now only the instant-kill share
 (`HYRULE_GANON_INSTANT_KILL_DIVISOR`). The arrow's description is in both
 `area/hyrule.are` and `scripts/build_hyrule_area.py`. Ganon's hit points went
 from 67,500 to 22,500 the same day (owner: "so 3-4 players can still beat
-him"), in `BOSS_STATS` and `area/hyrule.are` alike -- estimated from the
-2026-11-18 fights (wiki/hyrule-area.md), not measured again.
+him"), an estimate; measured later that day with
+`tools/hyrule_playtest/ganon_group.py` (which now records his lowest
+health in a lost fight) it was far too many, and with the owner's "maybe
+ganon shouldn't hit as hard?" he is 12,000 with fireballs of 200-245 --
+`BOSS_STATS`, `BOSS_VOLLEYS`, `area/hyrule.are` and `GANON_FIREBALL_*` in
+`src/special.c`, which a test keeps equal. A buffed trio of median level
+59s wins about half, four win; unbuffed median players lose at every
+setting tried (wiki/hyrule-area.md, "Measured, 2026-11-24").
 
 ## The Giant Turkey Of Pilgrim's Bounty, 2026-11-24
 
