@@ -346070,3 +346070,6 @@ Tue Nov 24 15:22:00 2026 :: Log Killuminati [30607]: quit
 Tue Nov 24 15:22:00 2026 :: Killuminati has quit.
 Tue Nov 24 15:22:00 2026 :: [QUIT] Player rejoined the real world.
 Tue Nov 24 15:22:02 2026 :: Sock.sinaddr:  99.62.115.159
+Tue Nov 24 15:22:14 2026 :: EOF encountered on read.
+Tue Nov 24 15:22:14 2026 :: Connection guard: 99.62.115.159 closed before a password prompt (the web client; not counted).
+Tue Nov 24 15:22:56 2026 :: Treasure goblin: vanished from room 24217 (A Spiral Stairway, crypt.are) (too long in one area).
