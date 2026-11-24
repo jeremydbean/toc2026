@@ -345435,3 +345435,4 @@ Tue Nov 24 04:05:16 2026 :: Treasure goblin: vanished from room 9533 (West Ishta
 Tue Nov 24 04:05:16 2026 :: Connection guard: refused 1 connection from 54.167.223.174 (paused; 57 refused in all, pause 5 this week, 3202 minutes left).
 Tue Nov 24 04:10:10 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Tue Nov 24 04:10:21 2026 :: Connection guard: refused 1 connection from 3.212.128.62 (paused; 28 refused in all, pause 4 this week, 1419 minutes left).
+Tue Nov 24 04:14:24 2026 :: Connection guard: last hour 21 closed without a word, 54 refused, 0 new characters refused, 2 newly paused; 13 addresses paused and 0 refused now, 16 active player addresses.

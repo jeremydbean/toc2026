@@ -6171,3 +6171,4 @@
 1795490167	wizinfo	60	Connection guard: 35.210.239.143 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.210.239.143 lifts it.
 1795491670	wizinfo	60	Connection guard: 35.210.93.182 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.210.93.182 lifts it.
 1795493020	wizinfo	60	Cartographer: appeared in room 9601 (Underground, newthalo.are) (level 12).
+1795493664	wizinfo	60	Connection guard: last hour 21 closed without a word, 54 refused, 0 new characters refused, 2 newly paused; 13 addresses paused and 0 refused now, 16 active player addresses.
