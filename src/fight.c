@@ -29,11 +29,14 @@
 #define HYRULE_ANCIENT_AQUAMENTUS_VNUM 30314
 #define HYRULE_BOW_VNUM         30222
 #define HYRULE_SILVER_ARROW_GANON_SKILL 100
-/* Each landed Silver Arrow blow takes a thirty-fifth of Ganon's health
-   (a tenth until 2026-11-18: one hasted thief ended him in three rounds),
-   and so does an instant kill on him. The other guardians that defy an
-   instant kill still lose a tenth to one (HYRULE_INSTANT_KILL_DIVISOR). */
-#define HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR 35
+/* An instant kill on Ganon -- a fatality, Farslay, a death ray -- takes a
+   thirty-fifth of his health instead; the other guardians that defy one
+   lose a tenth (HYRULE_INSTANT_KILL_DIVISOR). Until 2026-11-24 every
+   landed Silver Arrow blow took a thirty-fifth too (a tenth until 11-18).
+   Owner, 2026-11-24: the arrow only kills him at the end -- it hits as the
+   weapon it is during the fight, with full mastery so it lands, and only
+   its SHOOT at the stunned Ganon is special. */
+#define HYRULE_GANON_INSTANT_KILL_DIVISOR 35
 #define HYRULE_INSTANT_KILL_DIVISOR 10
 #define HYRULE_LIKE_LIKE_VNUM   30215
 #define HYRULE_BLUE_LIKE_LIKE_VNUM 30332
@@ -421,8 +424,8 @@ static void reform_hyrule_ganon( CHAR_DATA *ch, CHAR_DATA *victim )
 
 /*
  * An instant kill -- a fatality, Farslay, a death ray -- is one hard blow
- * to Ganon or Gohma, never their death: to Ganon one Silver Arrow blow's
- * share (a thirty-fifth of his health), to the others a tenth. Ganon
+ * to Ganon or Gohma, never their death: to Ganon a thirty-fifth of his
+ * health, to the others a tenth. Ganon
  * brought to one hit point by it is stunned as any blow leaves him, and
  * still wants the Silver Arrow; Gohma still wants an arrow at her eye.
  * Farslay read from anywhere in the world used to stun Ganon outright at
@@ -460,7 +463,7 @@ static bool hyrule_instant_kill_resisted( CHAR_DATA *ch, CHAR_DATA *victim )
     }
 
     share = UMAX( 1, victim->max_hit / ( is_hyrule_ganon(victim)
-                                         ? HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR
+                                         ? HYRULE_GANON_INSTANT_KILL_DIVISOR
                                          : HYRULE_INSTANT_KILL_DIVISOR ) );
     if ( is_hyrule_ganon(victim) )
     {
@@ -1754,7 +1757,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     CHAR_DATA *vch;
     bool immune;
     bool count_swing;
-    bool hyrule_silver_arrow_hit;
+    bool hyrule_silver_arrow_finish;
     int shield = 0;
     LIST_ITERATOR iter;
     /* This blow's, taken at once so it can never carry to another. */
@@ -1788,8 +1791,10 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     if ( ch == victim && is_treasure_goblin( victim ) )
 	return false;
 
-    hyrule_silver_arrow_hit = dam > 0 && is_hyrule_ganon(victim)
-        && is_silver_arrow_attack(ch, dt);
+    /* The Silver Arrow's SHOOT at the collapsed Ganon: the one blow that
+       ends him, so nothing below may turn it to nothing. */
+    hyrule_silver_arrow_finish = is_stunned_hyrule_ganon(victim)
+        && is_silver_arrow_finishing_hit(ch, dt);
 
     /* An aura burns whoever strikes its wearer -- never the wearer. Poison,
        plague, drowning and a brew gone wrong are damage you deal yourself,
@@ -1927,11 +1932,9 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 
     if (dam < 0) dam = 0;
 
-    if ( hyrule_silver_arrow_hit )
-        dam = UMAX(dam, UMAX(1, victim->max_hit
-            / HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR));
-
     dam = apply_hyrule_relic_damage_reduction( victim, dam, dam_type );
+    if ( hyrule_silver_arrow_finish )
+        dam = UMAX( dam, victim->hit );
     if ( exact > 0 && !immune && ch != victim )
         dam = UMAX( dam, exact );
 
@@ -6560,10 +6563,9 @@ void do_shoot( CHAR_DATA *ch, char *argument )
              ch, obj, victim, TO_NOTVICT );
         act( "{0F$n aims $p at you and releases its silver light!{00",
              ch, obj, victim, TO_VICT );
-        damage( ch, victim,
-                UMAX(1, victim->max_hit
-                    / HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR),
-                gsn_archery, DAM_PIERCE );
+        /* What he has left: the one hit point he collapsed at. damage()
+           lets nothing turn this shot to nothing (hyrule_silver_arrow_finish). */
+        damage( ch, victim, UMAX( 1, victim->hit ), gsn_archery, DAM_PIERCE );
         return;
     }
 

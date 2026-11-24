@@ -132,7 +132,7 @@ Arrow and SHOOT GANON to end it.
 ~
 pig~
 ABMRV CDFHJUV -800 S
-64 32 16d10+67412 17d10+840 5d15+60 7
+64 32 16d10+22412 17d10+840 5d15+60 7
 -40 -40 -40 -40
 BCDE B CP Y
 8 8 0 0
@@ -4514,10 +4514,10 @@ silver arrow~
 The silver metal shines with a light that does not fade.  The Silver Arrow
 requires level 54; any character level 54 or higher can wield and use it, and
 immortal status is not required.
-Against Ganon, normal strikes with the wielded Silver Arrow use full weapon
-mastery and tear away at least a thirty-fifth of his full vitality.  Other weapons,
-spells, poison, and lingering effects can wound him, but no normal attack can
-kill him.
+Against Ganon, strikes with the wielded Silver Arrow use full weapon mastery,
+so they land, but wound him as any weapon of its kind would.  Other weapons,
+spells, poison, and lingering effects can wound him too, but no normal attack
+can kill him.
 When Ganon collapses at one hit point and flashes bright red, keep the Silver
 Arrow wielded and type SHOOT GANON.  That final shot always finds him, does not
 require the ARCHERY skill, and does not consume the Silver Arrow.

@@ -76,7 +76,9 @@ class GanonExploitTests(unittest.TestCase):
 class GanonTuningSourceTests(unittest.TestCase):
     def test_numbers_and_rules(self) -> None:
         fight = (ROOT / "src" / "fight.c").read_text(encoding="latin-1")
-        self.assertIn("#define HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR 35", fight)
+        self.assertIn("#define HYRULE_GANON_INSTANT_KILL_DIVISOR 35", fight)
+        # Owner, 2026-11-24: no Silver Arrow share during the fight.
+        self.assertNotIn("HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR", fight)
         special = (ROOT / "src" / "special.c").read_text(encoding="latin-1")
         target = special.split("static bool ganon_may_target", 1)[1].split("\n}\n", 1)[0]
         self.assertNotIn("can_see", target)

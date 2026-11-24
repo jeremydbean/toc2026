@@ -8,6 +8,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 
+### 2026-11-24 -- the Silver Arrow only finishes Ganon
+
+- A landed Silver Arrow blow no longer takes a thirty-fifth of Ganon's
+  health; it strikes as the weapon it is (still landing as if mastered).
+  SHOOT GANON at the collapsed Ganon finishes him as before, and cannot be
+  turned to nothing. Instant kills on him keep their thirty-fifth.
+- Ganon's hit points are 22,500 (from 67,500), so three or four players
+  can still win without the arrow's share.
+
 ### 2026-11-24 -- slow DNS, held strikes, chat history, backup verdict
 
 - *A slow resolver no longer pauses an uptime monitor.* The pause waits on

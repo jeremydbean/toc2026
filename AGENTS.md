@@ -8334,6 +8334,23 @@ Third review (b9035602..74298b64), each with a test that fails on the old code:
   (`TOC_PROC` in tests) for a `merc` whose cwd is in the tree. No `/proc`,
   no check: a documented limit.
 
+## The Silver Arrow Only Finishes Ganon, 2026-11-24
+
+Owner: "the silver arrow should only kill ganon at the end of the fight -
+not do any abnormally high damage during the fight". `damage()` no longer
+floors a landed Silver Arrow blow at a thirty-fifth of his health (about
+1,928 of 67,500; a live test measured 9,512 taken in two rounds before).
+The arrow keeps `HYRULE_SILVER_ARROW_GANON_SKILL` (full mastery, so an
+exotic weapon nobody trains still lands) and does its own 4d14 damage.
+SHOOT GANON at the collapsed Ganon passes what he has left, and
+`hyrule_silver_arrow_finish` keeps armour and relics from turning that shot
+to nothing. The thirty-fifth is now only the instant-kill share
+(`HYRULE_GANON_INSTANT_KILL_DIVISOR`). The arrow's description is in both
+`area/hyrule.are` and `scripts/build_hyrule_area.py`. Ganon's hit points went
+from 67,500 to 22,500 the same day (owner: "so 3-4 players can still beat
+him"), in `BOSS_STATS` and `area/hyrule.are` alike -- estimated from the
+2026-11-18 fights (wiki/hyrule-area.md), not measured again.
+
 ## Completion Standard
 
 A task is complete only when the requested behavior or documentation is

@@ -512,9 +512,8 @@ bool spec_dominion_ward( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  *     is ordinary, and a level 59 with every defence learned turns
  *     aside most of it: the fireballs are the fight.
  *
- *   - Out of a fight he heals a tenth of his health each pulse, so the
- *     Silver Arrow's thirty-fifths cannot be banked by running out to rest and
- *     coming back. Not once he has collapsed: a stunned Ganon (one hit
+ *   - Out of a fight he heals a tenth of his health each pulse, so wounds
+ *     cannot be banked by running out to rest and coming back. Not once he has collapsed: a stunned Ganon (one hit
  *     point and HYRULE_GANON_STUNNED in his hyrule_state -- never a bare
  *     AFF2_NO_RECOVER, which NERVE DAMAGE and NIGHTMARE lay too) stays down
  *     for the finishing shot.
@@ -534,7 +533,11 @@ bool spec_dominion_ward( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  * mortals' own characters, buffed by Hermie, were played against him:
  * one thief with the Silver Arrow won alone in under half a minute. The
  * arrow's share went from a tenth to a thirty-fifth and the fireballs to
- * four at 250-305 (at most about 152 through sanctuary). Add fireballs rather
+ * four at 250-305 (at most about 152 through sanctuary). On 2026-11-24
+ * (owner) the arrow's share went altogether: it hits as a weapon during
+ * the fight and only its SHOOT at the collapsed Ganon is special; his
+ * hit points went from 67,500 to 22,500 so three or four still win
+ * (estimated from the 11-18 fights, in the wiki). Add fireballs rather
  * than enlarge them: none may read UNSPEAKABLE through sanctuary. See
  * "Ganon's Fight" in wiki/hyrule-area.md.
  */

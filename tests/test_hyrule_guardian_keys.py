@@ -486,6 +486,42 @@ class CreatureLaunderingTests(unittest.TestCase):
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
+class SilverArrowFightTests(unittest.TestCase):
+    def test_the_arrow_strikes_as_a_weapon_until_the_end(self) -> None:
+        """Owner, 2026-11-24: "the silver arrow should only kill ganon at the
+        end of the fight - not do any abnormally high damage during the
+        fight". Each landed blow took a thirty-fifth of his hit points (about
+        1,928 of the 67,500 he had then); now it is the weapon's own damage."""
+        with LiveMud() as mud:
+            make(mud, "Zarrowstaff", Levl=70, Room=TEMPLE, AfBy=0)
+            make(mud, "Zarrowmonk", Levl=59, Room=TEMPLE, Cla=4, Gui=4,
+                 objects=obj(SILVER, 54))
+            staff, monk = connect(mud, "Zarrowstaff", "Zarrowmonk")
+            monk.name = "Zarrowmonk"
+            try:
+                staff.sync("holylight")
+                top = hp_of(mob_stat(staff, GANON_LAIR, "ganon"))[1]
+                staff.must(f"transfer zarrowmonk {GANON_LAIR}", "")
+                monk.sync("wield arrow", timeout=60)
+                # Every blow lands; none is made heavier than the weapon's own.
+                staff.must("set char zarrowmonk hitroll 300", "")
+                said = monk.sync("kill ganon", timeout=60)
+                said += monk.drain(5.0)
+                staff.sync(f"at {GANON_LAIR} peace")
+                hit, top_after, _ = hp_of(mob_stat(staff, GANON_LAIR, "ganon"))
+            finally:
+                quit_all(monk, staff)
+        self.assertEqual(top_after, top)
+        lost = top - hit
+        share = top // 35
+        self.assertRegex(said, r"(?i)\byour [a-z' ]+ganon\b", "a blow landed: " + said[-800:])
+        self.assertLess(lost, share,
+                        f"two rounds of arrow blows took {lost} of {top}: a blow's thirty-fifth "
+                        f"is {share}")
+        self.assertNotIn("is DEAD", said)
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
 class GanonPhaseTests(unittest.TestCase):
     def test_ordinary_debuffs_never_finish_him_and_real_combat_does(self) -> None:
         with LiveMud() as mud:
@@ -538,11 +574,11 @@ class GanonPhaseTests(unittest.TestCase):
                 quit_all(monk, psi, staff)
 
         hit, top, _ = out["start"]
-        self.assertGreater(top, 60000)
+        self.assertGreater(top, 20000)        # 22,500 since 2026-11-24
         self.assertEqual(hit, top, "he starts whole")
         hit, top, pos = out["debuffed"]
         self.assertTrue(out["sleepless"], "the ordinary effect was laid")
-        self.assertGreater(hit, 60000, "an ordinary debuff is not his collapse")
+        self.assertGreater(hit, 20000, "an ordinary debuff is not his collapse")
         self.assertNotEqual(pos, 3, "not stunned")
         self.assertIn("not vulnerable yet", out["early shot"], out["early shot"])
         self.assertIn("flashes bright red", out["beaten"], out["beaten"][-600:])

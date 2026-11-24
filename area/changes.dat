@@ -5,6 +5,14 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261124silverarrow 2026-11-24
+The Silver Arrow no longer tears a large share of Ganon's health with every
+blow.  During the fight it strikes as an ordinary weapon (it still lands as
+if fully mastered); its power is the end: when Ganon collapses flashing red,
+SHOOT GANON with it wielded finishes him, as before.  To make up for it,
+Ganon has a third of the health he had: three or four heroes can still
+beat him.
+
 @ 20261123renameidentity 2026-11-23 staff
 RENAME now keeps the old name for the renamed character.  Typing the old
 name at the login prompt leads to them (with their own password), nobody

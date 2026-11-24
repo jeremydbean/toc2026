@@ -1043,7 +1043,10 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertEqual(ganon.level, level)
         # The file's armour; load_mobiles multiplies it by ten.
         self.assertEqual(ganon.ac, [GANON_ARMOR] * 4)
-        self.assertGreaterEqual(hit_points, 30000)
+        # 22,500 since 2026-11-24 (owner): the Silver Arrow no longer takes
+        # a thirty-fifth a blow, so his pool is what three or four wear down.
+        self.assertGreaterEqual(hit_points, 20000)
+        self.assertGreater(hit_points, 2 * BOSS_STATS[8][1], "still far past any other guardian")
         # The heaviest blow of any guardian, but -- the owner's call, once
         # he could finally be fought -- neither it nor a fireball reaches
         # UNSPEAKABLE (over 250) through sanctuary, which halves both.
@@ -1698,7 +1701,9 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertIn("immortal status is not required", guidance)
         self.assertIn("spells, poison, and lingering effects can wound", guidance)
         self.assertIn("full weapon mastery", guidance)
-        self.assertIn("a thirty-fifth", guidance)
+        # Owner, 2026-11-24: no share of his health during the fight.
+        self.assertNotIn("thirty-fifth", guidance)
+        self.assertIn("as any weapon of its kind would", guidance)
         self.assertIn("shoot ganon", guidance)
         self.assertIn("does not require the archery skill", guidance)
         self.assertIn("does not consume the silver arrow", guidance)
@@ -1722,8 +1727,10 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertIn("raw_kill_internal( ch, victim, true )", fight_source)
         self.assertIn("hyrule_silver_arrow_ganon_skill 100", fight_source)
         self.assertIn("skill = umax(skill, hyrule_silver_arrow_ganon_skill)", fight_source)
-        self.assertIn("hyrule_silver_arrow_ganon_damage_divisor 35", fight_source)
-        self.assertIn("hyrule_silver_arrow_hit = dam > 0", fight_source)
+        self.assertIn("hyrule_ganon_instant_kill_divisor 35", fight_source)
+        self.assertNotIn("hyrule_silver_arrow_hit", fight_source)
+        self.assertIn("hyrule_silver_arrow_finish = is_stunned_hyrule_ganon(victim)", fight_source)
+        self.assertIn("dam = umax( dam, victim->hit );", fight_source)
         self.assertIn("victim->max_hit", fight_source)
         self.assertIn("set_bit( victim->affected_by2, aff2_no_recover )", fight_source)
         self.assertIn("is_stunned_hyrule_ganon(victim)", fight_source)

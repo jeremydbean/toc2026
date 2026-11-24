@@ -386,7 +386,7 @@ Guardian Fights below). Each carries its Heart Guard, a weapon
 | 6 | Gohma | 43 | 2,200 | Gohma eye-lance 7d10, +3/+1 | 40 | 39.5 | 33.5, a two-handed sword |
 | 7 | ancient Aquamentus | 49 | 2,650 | Demon's dragonbone sword 9d9, +4/+4 | 46 | 49.0 | 42.0, A Glaive-Guisarme |
 | 8 | ashen Gleeok | 55 | 9,200 | Lion's four-crowned axe 10d9, +9/+6 | 52 | 56.0 | 49.0, a flaming Light Saber |
-| 9 | Ganon | 64 | 67,500 | Trident of Ganon 11d10, +9/+3 | 59 | 63.5 | 54.0, the Power of the world |
+| 9 | Ganon | 64 | 22,500 (67,500 until 2026-11-24) | Trident of Ganon 11d10, +9/+3 | 59 | 63.5 | 54.0, the Power of the world |
 
 "Best existing" is the best weapon a character of that level could otherwise
 carry: every mobile-carried weapon in the world at or below the weapon's level,
@@ -522,15 +522,14 @@ expect to die. Before that (2026-11-13, owner) he was sized for three
 median level 59s without Hermie, and before that for three median players
 with her. The numbers:
 
-- **Level 64, 67,500 hit points, armour -40 (-400 in game), average blow 100,
+- **Level 64, 22,500 hit points (67,500 until 2026-11-24), armour -40 (-400 in game), average blow 100,
   sanctuary and haste as before; no longer hidden.** The catalog's hide
   (`Q`) is taken off (`GUARDIAN_AFFECTS_REMOVED`): only detect hidden saw
   past it, which Hermie's detects gave everybody, so without her a group of
   fighters could not even attack him. Level 64 parries and dodges a
   level 59 35% of the time each (`min(30, level) + level - 59`), so about four
-  in ten blows land. The armour shaves about 80 off each ordinary blow; the
-  Silver Arrow's thirty-fifth of his health is taken after armour, so it is
-  untouched.
+  in ten blows land. The armour shaves about 80 off each ordinary blow, the
+  Silver Arrow's among them since 2026-11-24.
 - **`spec_ganon` (`src/special.c`) replaces the necromancer's spell list.**
   Every mobile pulse (four seconds) he blinks to another spot in the dark and
   throws four fireballs of 250-305 (130-170 from 2026-11-13, 290-385
@@ -546,16 +545,29 @@ with her. The numbers:
   the fireballs are the fight.
 - **Left alone, he heals** -- and since 2026-11-03 so do the guardians of
   Levels 7 and 8. Out of a fight he recovers a tenth of his health
-  every pulse, as the NES Ganon is whole again when you come back, so the
-  Silver Arrow's thirty-fifths cannot be banked by running out to rest. A collapsed
+  every pulse, as the NES Ganon is whole again when you come back, so
+  wounds cannot be banked by running out to rest. A collapsed
   Ganon (one hit point, `AFF2_NO_RECOVER`) does not heal: the finishing shot
   still waits.
 
-The silver-arrow rule is what fixes the length of the fight: thirty-five
-landed Silver Arrow blows bring him to one hit point whatever his hit points
-are (ten until 2026-11-18, when one hasted thief landing several a round
-ended him in three rounds). Everybody else's blows weigh on his hit points
-and shorten it.
+**The Silver Arrow only finishes him** (owner, 2026-11-24). Until then
+each landed Silver Arrow blow took a thirty-fifth of his health (a tenth
+until 2026-11-18, when one hasted thief landing several a round ended him in
+three rounds), so thirty-five of them fixed the length of the fight. Now it
+strikes during the fight as the weapon it is -- 4d14 with the wielder's
+damroll, with full mastery so it lands -- and his hit points are worn down
+by everybody's blows alike. Its one power is the end: SHOOT GANON at the
+collapsed Ganon, which always kills.
+
+**His hit points went from 67,500 to 22,500 with it** (owner, 2026-11-24:
+"lower ganon's hp so 3-4 players can still beat him"). Estimated, not
+measured: in the 2026-11-18 fights a lone arrow-bearer took 40-60% of him
+in about fifty seconds, nearly all of it the share, and the trio's two
+others did about 130 a second each. Without the share three such players
+do about 400 a second and four about 520, so 22,500 keeps the fight near
+the minute the fireballs allowed: about 56 seconds for three, 43 for four,
+nearly 90 for two. The table below was measured with the old share and
+67,500; play will tell whether 22,500 needs moving.
 
 **CONFUSE does not work on any of Hyrule's guardians** (2026-11-18): it
 stunned one for game hours, in which it threw nothing and barely fought
@@ -1281,8 +1293,7 @@ Runtime rules add the behaviors the area format cannot express alone:
 - Manhandla's heads decide its volley: as many fireballs as heads, half
   again harder for each head lost, and the last head twice a round.
 - An instant kill -- Farslay, a death ray, a fatality -- is one hard blow
-  (a tenth of the health; to Ganon a thirty-fifth, one Silver Arrow
-  blow's share) to Ganon and Gohma, never their death. Gohma
+  (a tenth of the health; to Ganon a thirty-fifth) to Ganon and Gohma, never their death. Gohma
   dies only to an arrow (SHOOT with the bow), Ganon only to the Silver
   Arrow; staff SLAY is the override.
 - An arrow at a pols voice and a boomerang at a keese or a gel kill

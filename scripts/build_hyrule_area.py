@@ -682,7 +682,7 @@ BOSS_STATS = {
     6: (43, 2200, 34),     # Gohma: haste; her sanctuary is taken off (GUARDIAN_AFFECTS_REMOVED)
     7: (49, 2450, 38),     # Aquamentus again, older and harder
     8: (55, 9200, 45),     # Gleeok, four heads: a fight for two
-    9: (64, 67500, 100),   # Ganon -- see above, and spec_ganon: a fight for three
+    9: (64, 22500, 100),   # Ganon -- see above, and spec_ganon: a fight for three or four
 }
 # dungeon: (projectiles a pulse, least, most) -- spec_hyrule_guardian and
 # spec_ganon; src/special.c's tables must say the same.
@@ -1903,10 +1903,10 @@ silver arrow~
 The silver metal shines with a light that does not fade.  The Silver Arrow
 requires level 54; any character level 54 or higher can wield and use it, and
 immortal status is not required.
-Against Ganon, normal strikes with the wielded Silver Arrow use full weapon
-mastery and tear away at least a thirty-fifth of his full vitality.  Other weapons,
-spells, poison, and lingering effects can wound him, but no normal attack can
-kill him.
+Against Ganon, strikes with the wielded Silver Arrow use full weapon mastery,
+so they land, but wound him as any weapon of its kind would.  Other weapons,
+spells, poison, and lingering effects can wound him too, but no normal attack
+can kill him.
 When Ganon collapses at one hit point and flashes bright red, keep the Silver
 Arrow wielded and type SHOOT GANON.  That final shot always finds him, does not
 require the ARCHERY skill, and does not consume the Silver Arrow.
