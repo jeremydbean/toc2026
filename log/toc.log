@@ -346261,3 +346261,6 @@ Tue Nov 24 19:16:09 2026 :: Automated backup started.
 Tue Nov 24 19:16:09 2026 :: Daily backup started.
 Tue Nov 24 19:16:10 2026 :: Automated backup complete.
 Tue Nov 24 19:16:11 2026 :: Daily backup complete.
+Tue Nov 24 19:17:25 2026 :: Sock.sinaddr:  198.235.24.156
+Tue Nov 24 19:17:25 2026 :: EOF encountered on read.
+Tue Nov 24 19:17:26 2026 :: Connection guard: 198.235.24.156 closed before a password prompt (strike 1 of 6 in 6 hours).
