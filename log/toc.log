@@ -346344,3 +346344,25 @@ Tue Nov 24 22:36:20 2026 :: Treasure goblin: vanished from room 9351 (On a Mount
 Tue Nov 24 22:41:45 2026 :: Cartographer: left room 10149 (A closet., glitter.are) (his visit is over).
 Tue Nov 24 22:45:57 2026 :: Connection guard: last hour 7 closed without a word, 1 refused, 0 new characters refused, 0 newly paused; 0 addresses paused and 0 refused now, 16 active player addresses.
 Tue Nov 24 22:46:25 2026 :: Treasure goblin: vanished from room 5314 (A side street, mirror.are) (too long in one area).
+Tue Nov 24 22:55:52 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Tue Nov 24 22:55:56 2026 :: Log WebAdmin: fsave
+Tue Nov 24 22:56:02 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Tue Nov 24 22:56:05 2026 :: Received signal 15; saving players and shutting down.
+Tue Nov 24 22:56:05 2026 :: Normal termination of game.
+Tue Nov 24 22:56:05 2026 ::  INIT OK 
+Tue Nov 24 22:56:05 2026 :: walkto_load: 157 destinations.
+Tue Nov 24 22:56:05 2026 :: changes_load: 372 entries.
+Tue Nov 24 22:56:05 2026 :: Hermie: the restart put no mortal off (0 playing, recorded 3 seconds before the boot; a mortal last played over ten minutes before it); she stays away.
+Tue Nov 24 22:56:05 2026 :: Serials: 962 character files read, 7 with a serial.
+Tue Nov 24 22:56:05 2026 :: Connection guard: 40 addresses remembered from before the boot, 0 paused now.
+Tue Nov 24 22:56:05 2026 :: Login lockout: 1 address remembered from before the boot.
+Tue Nov 24 22:56:05 2026 :: Passwords: SHA-512 crypt self-test passed.
+Tue Nov 24 22:56:05 2026 :: Recovery ledger: 510 records (0 from before the check), 8 requests, 10 players.
+Tue Nov 24 22:56:05 2026 :: Corpse keeper: Ravagger's corpse c6b039867021c00 made again in room 24388 with 22 objects.
+Tue Nov 24 22:56:05 2026 :: Corpse keeper: 1 corpse made again, 0 set aside.
+Tue Nov 24 22:56:05 2026 :: ROM is ready to rock on port 9000.
+Tue Nov 24 22:56:06 2026 :: Treasure goblin: appeared.
+Tue Nov 24 22:56:06 2026 :: Automated backup started.
+Tue Nov 24 22:56:06 2026 :: Daily backup started.
+Tue Nov 24 22:56:07 2026 :: Automated backup complete.
+Tue Nov 24 22:56:08 2026 :: Daily backup complete.
