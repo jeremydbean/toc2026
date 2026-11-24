@@ -55907,3 +55907,6 @@
 1795529165	laid	-	0	0	-	974	herb	34	an amaranth plant	15154	campus.are	scatter
 1795529247	laid	-	0	0	-	975	herb	36	a belladonna plant	9686	newthalo.are	scatter
 1795529247	laid	-	0	0	-	976	component	80	a glass encased wing of a fairy	4620	dresden.are	scatter
+1795529303	cmd	Killuminati	70	30607	hyrule.are	fighting	100	0	fight	wizinvis		You slowly fade back into existence.	-	-
+1795529313	cmd	Killuminati	70	30607	hyrule.are	fighting	100	0	fight	invuln		Invulnerability off. You can be hurt again.	-	-
+1795529323	cmd	Killuminati	70	30607	hyrule.are	fighting	99	0	fight	who		[70 Elf     IMP   ] [*Valh] Killuminati, the Don. // Players found: 1	-	-
