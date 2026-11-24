@@ -346238,3 +346238,26 @@ Tue Nov 24 18:55:44 2026 :: Treasure goblin: vanished from room 13025 (Mountain 
 Tue Nov 24 18:58:06 2026 :: Connection guard: 195.178.110.204 closed without a word (strike 1 of 6 in 6 hours).
 Tue Nov 24 19:05:48 2026 :: Treasure goblin: vanished from room 15043 (The Kitchen, campus.are) (too long in one area).
 Tue Nov 24 19:10:26 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Tue Nov 24 19:15:53 2026 :: Treasure goblin: vanished from room 8911 (The hallway, grove.are) (too long in one area).
+Tue Nov 24 19:15:55 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Tue Nov 24 19:15:59 2026 :: Log WebAdmin: fsave
+Tue Nov 24 19:16:05 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Tue Nov 24 19:16:08 2026 :: Received signal 15; saving players and shutting down.
+Tue Nov 24 19:16:08 2026 :: Normal termination of game.
+Tue Nov 24 19:16:08 2026 ::  INIT OK 
+Tue Nov 24 19:16:08 2026 :: walkto_load: 157 destinations.
+Tue Nov 24 19:16:08 2026 :: changes_load: 370 entries.
+Tue Nov 24 19:16:08 2026 :: Hermie: the restart put no mortal off (0 playing, recorded 27 seconds before the boot; a mortal last played over ten minutes before it); she stays away.
+Tue Nov 24 19:16:08 2026 :: Serials: 962 character files read, 7 with a serial.
+Tue Nov 24 19:16:08 2026 :: Connection guard: 51 addresses remembered from before the boot, 3 paused now.
+Tue Nov 24 19:16:08 2026 :: Login lockout: 1 address remembered from before the boot.
+Tue Nov 24 19:16:08 2026 :: Passwords: SHA-512 crypt self-test passed.
+Tue Nov 24 19:16:08 2026 :: Recovery ledger: 510 records (0 from before the check), 8 requests, 10 players.
+Tue Nov 24 19:16:08 2026 :: Corpse keeper: Ravagger's corpse c6b039867021c00 made again in room 24388 with 22 objects.
+Tue Nov 24 19:16:08 2026 :: Corpse keeper: 1 corpse made again, 0 set aside.
+Tue Nov 24 19:16:08 2026 :: ROM is ready to rock on port 9000.
+Tue Nov 24 19:16:09 2026 :: Treasure goblin: appeared.
+Tue Nov 24 19:16:09 2026 :: Automated backup started.
+Tue Nov 24 19:16:09 2026 :: Daily backup started.
+Tue Nov 24 19:16:10 2026 :: Automated backup complete.
+Tue Nov 24 19:16:11 2026 :: Daily backup complete.
