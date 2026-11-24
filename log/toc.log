@@ -345382,3 +345382,4 @@ Tue Nov 24 03:04:28 2026 :: Connection guard: 35.210.101.13 closed without a wor
 Tue Nov 24 03:04:28 2026 :: Connection guard: 35.210.101.13 paused for 6 hours (pause 1 this week; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.210.101.13 lifts it.
 Tue Nov 24 03:04:28 2026 :: Connection guard: refused 1 connection from 35.210.101.13 (paused; 1 refused in all, pause 1 this week, 360 minutes left).
 Tue Nov 24 03:04:28 2026 :: Connection guard: 35.210.101.13 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 24 03:04:48 2026 :: Treasure goblin: vanished from room 2038 (The burial grounds, catacomb.are) (too long in one area).
