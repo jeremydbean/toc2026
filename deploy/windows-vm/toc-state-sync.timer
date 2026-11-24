@@ -5,7 +5,7 @@ Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/disaster-rec
 [Timer]
 # Every minute: the backstop. A save reaches GitHub within seconds on its
 # own (toc-state-sync.path, owner 2026-11-23); this catches what that does
-# not see -- a save landing while a run is already going, a snapshot in
+# not see -- saves that went on through three rounds of a run, a snapshot in
 # player/versions/, a board or report file -- within a minute.
 #
 # It was every five minutes until 2026-11-23, so a character who signed
@@ -23,10 +23,16 @@ Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/disaster-rec
 # monotonic timer -- it applies only to OnCalendar=. A calendar timer fires
 # every minute whatever the last run did, and Persistent=true then
 # really runs one missed while the machine was down, at boot.
+#
+# Measured, 2026-11-24 (systemd 255): a save made while a run is going is
+# NOT picked up by the path unit -- the change is dropped -- so before the
+# sync went round again itself (toc-state-sync, COPY_MARK) such a save
+# waited for this tick. AccuracySec=30s let systemd fire it anywhere in
+# the first half-minute; 1s keeps the backstop at the minute.
 OnCalendar=*-*-* *:*:00
 OnBootSec=3min
 Persistent=true
-AccuracySec=30s
+AccuracySec=1s
 
 [Install]
 WantedBy=timers.target

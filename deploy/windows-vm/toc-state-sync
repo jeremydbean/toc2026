@@ -55,7 +55,10 @@ CORPSE_MAX_DROP_PCT="${TOC_SYNC_CORPSE_MAX_DROP_PCT:-90}"
 CORPSE_GUARD_MIN="${TOC_SYNC_CORPSE_GUARD_MIN:-50}"
 ALLOW_DROP_MAX_AGE="${TOC_SYNC_ALLOW_DROP_MAX_AGE:-86400}"
 
-export GIT_SSH_COMMAND="ssh -i $GIT_SSH_KEY -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new -o BatchMode=yes"
+# A network that drops packets left ssh waiting out the kernel's SYN
+# retries -- about two minutes per git command -- with the unit held and
+# the timer's ticks merged into it (review, 2026-11-24).
+export GIT_SSH_COMMAND="ssh -i $GIT_SSH_KEY -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new -o BatchMode=yes -o ConnectTimeout=15 -o ServerAliveInterval=15 -o ServerAliveCountMax=4"
 
 # What counts as state. Everything here is in .gitignore, so every add
 # needs -f; that is the point, not an accident.
@@ -128,8 +131,39 @@ on_exit() {
     if [ "$RESULT" = failed ]; then
         logger -t toc-state-sync -p daemon.err "state sync failed: $REASON" 2>/dev/null || true
     fi
+    # A save that landed after this run's copy (review, 2026-11-24). The
+    # path unit does not start a sync for a change made while one is
+    # running (measured on systemd 255: the change is dropped), so a save
+    # in the seconds after the copy waited for the next timer tick -- a
+    # minute and more -- however quiet the game was after it. Anything in
+    # the watched directories newer than the copy goes round again here,
+    # after the same debounce, at most TOC_SYNC_MAX_ROUNDS runs in all; a
+    # game saving without pause is left to the timer.
+    again=""
+    if { [ "$RESULT" = ok ] || [ "$RESULT" = nochange ]; } &&
+       [ -n "${COPY_MARK:-}" ] && [ -n "${WATCHED:-}" ] &&
+       [ "${SYNC_ROUND:-1}" -lt "${SYNC_MAX_ROUNDS:-3}" ]; then
+        again=$(find $WATCHED -maxdepth 1 -newer "$COPY_MARK" -print 2>/dev/null | head -1)
+    fi
+    [ -n "${COPY_MARK:-}" ] && rm -f "$COPY_MARK"
+    if [ -n "$again" ]; then
+        echo "saved again since the copy; going round again"
+        TOC_SYNC_ROUND=$((${SYNC_ROUND:-1} + 1))
+        export TOC_SYNC_ROUND
+        sleep "${SYNC_DEBOUNCE:-3}"
+        exec sh "$0"
+    fi
 }
 trap on_exit EXIT
+SYNC_ROUND=${TOC_SYNC_ROUND:-1}
+SYNC_MAX_ROUNDS=${TOC_SYNC_MAX_ROUNDS:-3}
+SYNC_DEBOUNCE=${TOC_SYNC_DEBOUNCE:-3}
+COPY_MARK=""
+# What toc-state-sync.path watches: the top of each, not below.
+WATCHED=""
+for w in player gods heroes corpse/live; do
+    [ -d "$TOC_ROOT/$w" ] && WATCHED="$WATCHED $TOC_ROOT/$w"
+done
 
 fail() { RESULT=failed; REASON="$1"; echo "$1" >&2; exit 1; }
 skip() { RESULT=skipped; REASON="$1"; echo "$1"; exit 0; }
@@ -171,7 +205,7 @@ mirror_push() {
     if [ ! -r "$MIRROR_SSH_KEY" ]; then
         m_result=failed
         m_reason="mirror key not readable: $MIRROR_SSH_KEY"
-    elif m_out=$(GIT_SSH_COMMAND="ssh -i $MIRROR_SSH_KEY -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new -o BatchMode=yes" \
+    elif m_out=$(GIT_SSH_COMMAND="ssh -i $MIRROR_SSH_KEY -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new -o BatchMode=yes -o ConnectTimeout=15 -o ServerAliveInterval=15 -o ServerAliveCountMax=4" \
                  git push --quiet "$MIRROR_REMOTE" "$m_commit:refs/heads/$BRANCH" 2>&1); then
         m_result=ok
         m_reason="mirror holds $(printf '%.12s' "$m_commit")"
@@ -340,7 +374,12 @@ fi
 DEPLOY_LOCK="${TOC_DEPLOY_LOCK:-/run/toc-deploy.lock}"
 if [ -r "$DEPLOY_LOCK" ]; then
     exec 8<"$DEPLOY_LOCK"
-    flock -n -s 8 || skip "a deploy is running; skipping this sync"
+    # Waited for, briefly (review, 2026-11-24): toc-game-recovery holds it
+    # for half a second every two minutes and auto-deploy's check for two or
+    # three every ten, and a path-started sync that met either was skipped
+    # outright -- its save left for the next timer tick. A deploy or a
+    # restore holds it far longer than this, and is still skipped.
+    flock -w "${TOC_SYNC_LOCK_WAIT:-15}" -s 8 || skip "a deploy is running; skipping this sync"
 elif [ -e "$DEPLOY_LOCK" ]; then
     # A lock that exists but cannot be read cannot be asked: fail closed
     # rather than copy past a deploy that may hold it (review, 2026-10-22).
@@ -473,6 +512,9 @@ if [ -n "$dropped" ]; then
 fi
 
 STEP=copy
+# Before the first file is read: a save after this is newer than it.
+COPY_MARK="$SYNC_STATE_DIR/copy-mark"
+touch "$COPY_MARK" 2>/dev/null || COPY_MARK=""
 for d in $STATE_DIRS; do
     [ -d "$TOC_ROOT/$d" ] || continue
     mkdir -p "$STATE_REPO/$d"

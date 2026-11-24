@@ -31,6 +31,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SYNC = ROOT / "deploy" / "windows-vm" / "toc-state-sync"
 CHECK = ROOT / "deploy" / "windows-vm" / "toc-state-sync-check"
+RESTORE_STATE = ROOT / "deploy" / "toc-restore-state"
 UNITS = ROOT / "deploy" / "windows-vm"
 REAL_GIT = shutil.which("git")
 
@@ -76,6 +77,7 @@ class StateSyncReceiptTests(unittest.TestCase):
                         LOCK_FILE=str(root / "sync.lock"), TOC_DEPLOY_LOCK=str(root / "d.lock"),
                         TOC_HOST_ACTION_RESULTS=str(root / "results"),
                         TOC_SYNC_STATE_DIR=str(self.state),
+                        TOC_SYNC_LOCK_WAIT="1", TOC_SYNC_DEBOUNCE="0",
                         PATH=f"{self.stubs}:{os.environ['PATH']}")
 
     def tearDown(self) -> None:
@@ -261,6 +263,127 @@ class StateSyncReceiptTests(unittest.TestCase):
         done = self.sync()
         self.assertEqual(done.returncode, 0, done.stderr)
         self.assertIn("player/archive/Zacta", self.remote_files())
+
+    # --- a live restore against the writers that race it (review, 2026-11-24) --
+
+    def test_a_sync_mid_restore_never_pushes_a_half_laid_tree(self) -> None:
+        """toc-state-sync.path starts a sync whenever player/ changes, and a
+        restore moves player/ aside and lays a new one down. A sync landing
+        part way used to copy the half-laid tree -- 11 of 12 characters is
+        under the drop guard's 20% -- and push it, deleting the twelfth from
+        GitHub's tree. Reproduced with a stand-in rsync that runs the real
+        sync, as the path unit would, after all but one character is laid.
+        Now the copy goes to a staging directory and the restore holds the
+        maintenance lock throughout, so the sync skips (review, 2026-11-24)."""
+        self.assertEqual(self.sync().returncode, 0)
+        before = set(self.remote_files())
+        checkout = self.root / "checkout"                  # what is restored
+        shutil.copytree(self.live / "player", checkout / "player")
+        (self.root / "d.lock").write_text("")
+        real_rsync = shutil.which("rsync")
+        stub = self.stubs / "rsync"
+        marker = self.root / "raced"
+        sync_cmd = f"sh {SYNC}"
+        race_out = self.root / "race.out"
+        stub.write_text(f"""#!/bin/sh
+# The restore's copy of player/: lay all but the last character, then let the
+# path unit's sync run -- once -- then finish.
+last=""; for a in "$@"; do last="$a"; done
+case "$last" in
+  */player/)
+    if [ ! -e {marker} ]; then
+      touch {marker}
+      src=""; for a in "$@"; do case "$a" in */player/) [ -z "$src" ] && src="$a";; esac; done
+      mkdir -p "$last"
+      for f in "$src"*; do [ "$f" = "${{src}}Zfixl" ] || cp -p "$f" "$last" 2>/dev/null; done
+      env -u TOC_DEPLOY_LOCKED {sync_cmd} >{race_out} 2>&1
+    fi ;;
+esac
+exec {real_rsync} "$@"
+""")
+        stub.chmod(0o755)
+        env = dict(self.env, TOC_RESTORE_REPLACE="1", TOC_RESTORE_LIVE="1")
+        env["PATH"] = f"{self.stubs}:{os.environ['PATH']}"
+        (self.stubs / "systemctl").write_text("#!/bin/sh\nexit 3\n")    # nothing running
+        (self.stubs / "systemctl").chmod(0o755)
+        done = subprocess.run(["sh", str(RESTORE_STATE), str(checkout), str(self.live)],
+                              env=env, capture_output=True, text=True, timeout=120)
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertTrue(marker.exists(), "the race was never run")
+        self.assertIn("player/Zfixl", self.remote_files(),
+                      "a sync mid-restore pushed a half-laid tree: GitHub lost a character")
+        self.assertEqual(set(self.remote_files()), before)
+        self.assertIn("a deploy is running", race_out.read_text(),
+                      "the restore held the maintenance lock and the sync deferred to it")
+
+    # --- a save after the copy is not left for the timer (2026-11-24) -------
+
+    def save_during_copy(self, every: bool) -> Path:
+        """A stand-in rsync that, after the copy of player/, saves a new
+        character into the live tree -- once, or at every copy."""
+        real_rsync = shutil.which("rsync")
+        count = self.root / "copies"
+        (self.stubs / "rsync").write_text(f"""#!/bin/sh
+{real_rsync} "$@"; rc=$?
+for a in "$@"; do last="$a"; done
+case "$last" in
+  {self.root}/state/player/)
+    echo x >> {count}
+    n=$(wc -l < {count})
+    if [ {1 if every else 0} = 1 ] || [ "$n" = 1 ]; then
+      printf '#PLAYER\\nName Zlate$n~\\nEnd\\n' > {self.live}/player/.t
+      mv {self.live}/player/.t {self.live}/player/Zlate$n
+    fi ;;
+esac
+exit $rc
+""")
+        (self.stubs / "rsync").chmod(0o755)
+        return count
+
+    def test_a_save_after_the_copy_goes_round_again(self) -> None:
+        """systemd drops a path change made while the sync is running
+        (measured on 255), so a save just after the copy waited a minute or
+        more for the timer. The run now goes round again itself."""
+        copies = self.save_during_copy(every=False)
+        done = self.sync()
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertIn("going round again", done.stdout)
+        self.assertIn("player/Zlate1", self.remote_files(),
+                      "the save after the copy waited for the next timer tick")
+        self.assertEqual(copies.read_text().count("x"), 2, "one more round, no more")
+        self.assertIn(self.attempt()["result"], ("ok", "nochange"))
+
+    def test_a_game_saving_without_pause_is_left_to_the_timer(self) -> None:
+        copies = self.save_during_copy(every=True)
+        done = self.sync()
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertEqual(copies.read_text().count("x"), 3, "TOC_SYNC_MAX_ROUNDS bounds it")
+        self.assertIn("player/Zlate2", self.remote_files())
+
+    def test_a_quiet_run_goes_round_once(self) -> None:
+        copies = self.save_during_copy(every=False)
+        copies.write_text("x\n")            # the stub's one save is spent
+        done = self.sync()
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertNotIn("going round again", done.stdout)
+        self.assertEqual(copies.read_text().count("x"), 2)
+
+    def test_a_brief_hold_of_the_deploy_lock_is_waited_for(self) -> None:
+        """toc-game-recovery holds the lock for half a second every two
+        minutes; a sync that met it was skipped and its save left for the
+        timer."""
+        (self.root / "d.lock").write_text("")
+        holder = self.hold(["flock", "-x", str(self.root / "d.lock"), "sleep", "2"])
+        try:
+            time.sleep(0.3)
+            self.player("Zwaited", 3)
+            self.env["TOC_SYNC_LOCK_WAIT"] = "10"
+            done = self.sync()
+        finally:
+            self.release(holder)
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertNotIn("deploy is running", done.stdout)
+        self.assertIn("player/Zwaited", self.remote_files())
 
     # --- an incomplete run is not a whole one (review, 2026-11-23) ----------
 
