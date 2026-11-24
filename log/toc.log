@@ -346186,3 +346186,4 @@ Tue Nov 24 18:02:55 2026 :: Connection guard: 3.149.57.90 is checker-ohi2.uptime
 Tue Nov 24 18:06:08 2026 :: Treasure goblin: vanished from room 18039 (A turn in the hallway, icekeep.are) (too long in one area).
 Tue Nov 24 18:08:00 2026 :: Connection guard: refused 1 connection from 3.133.226.214 (paused; 83 refused in all, pause 5 in 30 days, 2070 minutes left).
 Tue Nov 24 18:08:00 2026 :: Connection guard: 3.133.226.214 is checker-ohi5.uptimerobot.com, an uptime monitor (the name leads back to it): its checks are not strikes, and its pause is lifted.
+Tue Nov 24 18:10:14 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
