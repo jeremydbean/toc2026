@@ -345645,3 +345645,6 @@ Tue Nov 24 11:21:39 2026 :: Connection guard: 3.20.63.178 closed without a word 
 Tue Nov 24 11:24:41 2026 :: Treasure goblin: vanished from room 14039 (Private Room, whouse.are) (too long in one area).
 Tue Nov 24 11:26:44 2026 :: Connection guard: 52.87.72.16 closed without a word (strike 2 of 6 in 6 hours).
 Tue Nov 24 11:31:47 2026 :: Connection guard: 34.198.201.66 closed without a word (strike 4 of 6 in 6 hours).
+Tue Nov 24 11:33:27 2026 :: Connection guard: 20.46.243.5 closed without a word (strike 1 of 6 in 6 hours).
+Tue Nov 24 11:33:27 2026 :: Sock.sinaddr:  20.46.243.5
+Tue Nov 24 11:33:27 2026 :: Connection guard: 20.46.243.5 closed before a password prompt (strike 2 of 6 in 6 hours).
