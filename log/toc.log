@@ -346374,3 +346374,9 @@ Tue Nov 24 23:36:02 2026 :: Sock.sinaddr:  108.81.26.245
 Tue Nov 24 23:36:02 2026 :: Loading Misery's playerfile
 Tue Nov 24 23:36:03 2026 :: Loading Misery's playerfile
 Tue Nov 24 23:36:03 2026 :: Misery@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Tue Nov 24 23:36:06 2026 :: Log Misery [17109]: arrived (The Bog) from 0
+Tue Nov 24 23:36:09 2026 :: Log Misery [17109]: (refused) misery
+Tue Nov 24 23:36:12 2026 :: Log Misery [17109]: /
+Tue Nov 24 23:36:15 2026 :: Log Misery [17109]: goto ganon
+Tue Nov 24 23:36:15 2026 :: Log Misery [30607]: arrived (Level 9: Ganon's Dark Chamber) from 17109
+Tue Nov 24 23:36:17 2026 :: Log Misery [30607]: restore self

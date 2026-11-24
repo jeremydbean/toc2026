@@ -1,7 +1,8 @@
 #PLAYER
 Name Misery~
 Id   59089
-LogO 1794087417
+Serial 133148
+LogO 1795563366
 Vers 4
 Desc .                       //:::::::::::::::::::::::::::::::::::::::::::::\\
 
@@ -98,7 +99,7 @@ Desc .                       //:::::::::::::::::::::::::::::::::::::::::::::\\
 
 ~
 Prom ~
-Ignoring rech~
+Ignore Rech~
 Race dwarf~
 Sex  2
 Cla  2
@@ -108,11 +109,11 @@ PsiGrant 0
 PsiSpec ~
 PsiKnown clairvoyance,confuse,ego whip,mindbar~
 ChangesSeen ~
-Fixes ~
+Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble 20261114-season-area-ids 20261116-wrapped-pools 20261123-hyrule-piece-credit~
 Cast Fors
 Levl 54
 Tru  70
-Plyd 1677839
+Plyd 1677842
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
@@ -128,7 +129,6 @@ IntTime 1792515089
 IntTotal 44095711393
 Dcount 0
 SavedOnce 1
-Corpses	0
 PkRec 0
 PkGiv 24
 AchKills 4
@@ -174,7 +174,19 @@ Achv bank-thousand-platinum 1790711500
 Achv carry-ten-platinum 1790711500
 Achv carry-thousand-platinum 1790711500
 Achv benchmark-champion 1790837597
-LastOut  1794087417
+Achv mastered-1 1795563366
+Achv mastered-5 1795563366
+Achv mastered-15 1795563366
+Achv weapons-1 1795563366
+Achv weapons-3 1795563366
+Achv weapons-5 1795563366
+Achv relic-clover-large 1795563366
+Achv relic-moonray 1795563366
+Achv relic-celestial-dagger 1795563366
+Achv crystalline-cloak 1795563366
+AchSet areas 1257795624 ~
+AchSet rooms 17109 ~
+LastOut  1795563366
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1794087383
@@ -217,7 +229,10 @@ Color 13 3
 Color 14 11
 Color 15 6
 Color 16 6
+Color 17 10
+Color 18 12
 Pos  8
+Tutorial 0 0
 Save  -5
 Alig  -1000
 Hit   58
@@ -461,8 +476,8 @@ Lev  51
 Cost 5000000
 Cond 100
 Repd 0
-Affect -1 51 -1 -8 17 0 0
 Affect -1 51 -1 4 24 0 0
+Affect -1 51 -1 -8 17 0 0
 End
 
 #O
