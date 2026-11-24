@@ -345667,3 +345667,4 @@ Tue Nov 24 12:05:59 2026 :: Black market: the dealer vanished from room 7049 (Th
 Tue Nov 24 12:07:17 2026 :: Connection guard: 178.156.185.231 closed without a word (strike 2 of 6 in 6 hours).
 Tue Nov 24 12:10:22 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Tue Nov 24 12:12:22 2026 :: Connection guard: refused 1 connection from 5.161.61.238 (paused; 20 refused in all, pause 4 this week, 1703 minutes left).
+Tue Nov 24 12:14:24 2026 :: Connection guard: last hour 13 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 10 addresses paused and 0 refused now, 16 active player addresses.
