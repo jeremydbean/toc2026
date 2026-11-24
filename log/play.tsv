@@ -55822,3 +55822,10 @@
 1795522824	cmd	Alaric	57	15193	campus.are	standing	100	0	-	north		Classroom //   This seems to be the only classroom in Dunning Hall.  Strange, the building // looked larger on the outside.  Obviously some sort of principle related to	-	+
 1795522826	cmd	Alaric	57	15192	campus.are	standing	100	0	-	south		A Completely Empty Hallway //   This hallway is not completely empty but looks like it is.  Must be // something related to the Infinite Improbability Principle.	-	+
 1795522826	cmd	Alaric	57	15192	campus.are	standing	100	0	-	south		Alas, you cannot go that way.	-	-
+1795522861	cmd	Alaric	57	15035	campus.are	standing	100	0	-	east		Dunning Hall Lobby //   This is the nerve center of the Commerce Department at UNN (University // of North Nedserd).  There are two exits.  One to the north which seems	-	+
+1795522861	cmd	Alaric	57	15011	campus.are	standing	100	0	-	east		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1795522861	cmd	Alaric	57	15010	campus.are	standing	100	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1795522862	cmd	Alaric	57	15004	campus.are	standing	100	0	-	south		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1795522862	cmd	Alaric	57	15008	campus.are	standing	100	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  An awful fog drifts in from the west.	-	+
+1795522862	cmd	Alaric	57	15028	campus.are	standing	100	0	-	west		Mary Rotte Cafeteria Entrance //   As you walk through the entrance of the cafeteria, your appetite // suddenly disappears.  In this entrance, you'll normally find long	-	+
+1795522864	cmd	Alaric	57	15028	campus.are	standing	100	11	-	kill	em	Your punch <<< ERADICATES >>> a caf employee! [-183] // Your punch <<< ERADICATES >>> a caf employee! [-178] // A caf employee is DEAD!!	-	+

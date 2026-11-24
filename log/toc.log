@@ -345852,3 +345852,17 @@ Tue Nov 24 12:20:26 2026 :: Log Alaric [15193]: s
 Tue Nov 24 12:20:26 2026 :: Log Alaric [15192]: arrived (A Completely Empty Hallway) from 15193
 Tue Nov 24 12:20:26 2026 :: Log Alaric [15192]: s
 Tue Nov 24 12:20:38 2026 :: Log Alaric [15192]: affects off: steel fist
+Tue Nov 24 12:21:01 2026 :: Log Alaric [15192]: east
+Tue Nov 24 12:21:01 2026 :: Log Alaric [15035]: arrived (Dunning Hall Lobby) from 15192
+Tue Nov 24 12:21:01 2026 :: Log Alaric [15035]: east
+Tue Nov 24 12:21:01 2026 :: Log Alaric [15011]: arrived (University Avenue) from 15035
+Tue Nov 24 12:21:01 2026 :: Log Alaric [15011]: south
+Tue Nov 24 12:21:01 2026 :: Log Alaric [15010]: arrived (University Avenue) from 15011
+Tue Nov 24 12:21:02 2026 :: Log Alaric [15010]: south
+Tue Nov 24 12:21:02 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15010
+Tue Nov 24 12:21:02 2026 :: Log Alaric [15004]: south
+Tue Nov 24 12:21:02 2026 :: Log Alaric [15008]: arrived (University Avenue) from 15004
+Tue Nov 24 12:21:02 2026 :: Log Alaric [15008]: west
+Tue Nov 24 12:21:02 2026 :: Log Alaric [15028]: arrived (Mary Rotte Cafeteria Entrance) from 15008
+Tue Nov 24 12:21:04 2026 :: Log Alaric [15028]: kill em
+Tue Nov 24 12:21:04 2026 :: Log Alaric [15028]: killed a caf employee
