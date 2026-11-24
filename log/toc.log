@@ -345706,3 +345706,41 @@ Tue Nov 24 12:18:19 2026 :: Log Alaric [15001]: east
 Tue Nov 24 12:18:19 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15001
 Tue Nov 24 12:18:19 2026 :: Log Alaric [15002]: east
 Tue Nov 24 12:18:19 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15002
+Tue Nov 24 12:18:19 2026 :: Log Alaric [15003]: east
+Tue Nov 24 12:18:19 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15003
+Tue Nov 24 12:18:20 2026 :: Log Alaric [15004]: north
+Tue Nov 24 12:18:20 2026 :: Log Alaric [15010]: arrived (University Avenue) from 15004
+Tue Nov 24 12:18:20 2026 :: Log Alaric [15010]: north
+Tue Nov 24 12:18:20 2026 :: Log Alaric [15011]: arrived (University Avenue) from 15010
+Tue Nov 24 12:18:21 2026 :: Log Alaric [15011]: e
+Tue Nov 24 12:18:21 2026 :: Log Alaric [15036]: arrived (Frosty Annex Entrance Hall) from 15011
+Tue Nov 24 12:18:22 2026 :: Log Alaric [15036]: e
+Tue Nov 24 12:18:22 2026 :: Log Alaric [15166]: arrived (Hallway) from 15036
+Tue Nov 24 12:18:23 2026 :: Log Alaric [15166]: w
+Tue Nov 24 12:18:23 2026 :: Log Alaric [15036]: arrived (Frosty Annex Entrance Hall) from 15166
+Tue Nov 24 12:18:25 2026 :: Log Alaric [15036]: e
+Tue Nov 24 12:18:25 2026 :: Log Alaric [15166]: arrived (Hallway) from 15036
+Tue Nov 24 12:18:26 2026 :: Log Alaric [15166]: ex
+Tue Nov 24 12:18:36 2026 :: Log Alaric [15166]: west
+Tue Nov 24 12:18:36 2026 :: Log Alaric [15036]: arrived (Frosty Annex Entrance Hall) from 15166
+Tue Nov 24 12:18:37 2026 :: Log Alaric [15036]: west
+Tue Nov 24 12:18:37 2026 :: Log Alaric [15011]: arrived (University Avenue) from 15036
+Tue Nov 24 12:18:37 2026 :: Log Alaric [15011]: south
+Tue Nov 24 12:18:37 2026 :: Log Alaric [15010]: arrived (University Avenue) from 15011
+Tue Nov 24 12:18:37 2026 :: Log Alaric [15010]: south
+Tue Nov 24 12:18:37 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15010
+Tue Nov 24 12:18:37 2026 :: Log Alaric [15004]: west
+Tue Nov 24 12:18:37 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15004
+Tue Nov 24 12:18:38 2026 :: Log Alaric [15003]: west
+Tue Nov 24 12:18:38 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15003
+Tue Nov 24 12:18:41 2026 :: Log Alaric [15002]: on
+Tue Nov 24 12:18:42 2026 :: Log Alaric [15002]: ex
+Tue Nov 24 12:18:44 2026 :: Log Alaric [15002]: s
+Tue Nov 24 12:18:44 2026 :: Log Alaric [15026]: arrived (Leonard Hall Lobby) from 15002
+Tue Nov 24 12:18:45 2026 :: Log Alaric [15026]: ow
+Tue Nov 24 12:18:46 2026 :: Log Alaric [15026]: oe
+Tue Nov 24 12:18:46 2026 :: Log Alaric [15026]: ex
+Tue Nov 24 12:18:50 2026 :: Log Alaric [15026]: n
+Tue Nov 24 12:18:50 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15026
+Tue Nov 24 12:18:52 2026 :: Log Alaric [15002]: e
+Tue Nov 24 12:18:52 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15002

@@ -55737,3 +55737,25 @@
 1795522699	cmd	Alaric	57	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
 1795522699	cmd	Alaric	57	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
 1795522699	cmd	Alaric	57	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1795522699	cmd	Alaric	57	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1795522700	cmd	Alaric	57	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1795522700	cmd	Alaric	57	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1795522701	cmd	Alaric	57	15036	campus.are	standing	100	0	-	east		Frosty Annex Entrance Hall //   As you walk off the street, you begin to notice how old and decrepit // this building is.  If perchance you are passing through this room on	-	+
+1795522702	cmd	Alaric	57	15166	campus.are	standing	100	0	-	east		Hallway //   This hallway leads through the older building called Frosty Annex. // Unfortunately, the building seems to be living up to its name.  The	-	+
+1795522703	cmd	Alaric	57	15036	campus.are	standing	100	0	-	west		Frosty Annex Entrance Hall //   As you walk off the street, you begin to notice how old and decrepit // this building is.  If perchance you are passing through this room on	-	+
+1795522705	cmd	Alaric	57	15166	campus.are	standing	100	0	-	east		Hallway //   This hallway leads through the older building called Frosty Annex. // Unfortunately, the building seems to be living up to its name.  The	-	+
+1795522706	cmd	Alaric	57	15166	campus.are	standing	100	0	-	exits		Obvious exits: // North - A Classroom // East  - Hallway	-	+
+1795522716	cmd	Alaric	57	15036	campus.are	standing	100	0	-	west		Frosty Annex Entrance Hall //   As you walk off the street, you begin to notice how old and decrepit // this building is.  If perchance you are passing through this room on	-	+
+1795522717	cmd	Alaric	57	15011	campus.are	standing	100	0	-	west		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1795522717	cmd	Alaric	57	15010	campus.are	standing	100	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.	-	+
+1795522717	cmd	Alaric	57	15004	campus.are	standing	100	0	-	south		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst	-	+
+1795522717	cmd	Alaric	57	15003	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1795522718	cmd	Alaric	57	15002	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1795522721	cmd	Alaric	57	15002	campus.are	standing	100	0	-	open		It's locked.	-	-
+1795522722	cmd	Alaric	57	15002	campus.are	standing	100	0	-	exits		Obvious exits: // North - Closed door // East  - Campus Crescent	-	+
+1795522724	cmd	Alaric	57	15026	campus.are	standing	100	0	-	south		Leonard Hall Lobby //   This is the lobby of the all-males residence.  To the north you can see // Campus Crescent.  To both the east and west you can see locked doors.	-	+
+1795522725	cmd	Alaric	57	15026	campus.are	standing	100	0	-	open		It's locked.	-	-
+1795522726	cmd	Alaric	57	15026	campus.are	standing	100	0	-	open		It's locked.	-	-
+1795522726	cmd	Alaric	57	15026	campus.are	standing	100	0	-	exits		Obvious exits: // North - Campus Crescent // East  - Closed door	-	+
+1795522730	cmd	Alaric	57	15002	campus.are	standing	100	0	-	north		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
+1795522732	cmd	Alaric	57	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they	-	+
