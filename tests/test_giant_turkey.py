@@ -129,7 +129,8 @@ class TurkeyLiveTests(unittest.TestCase):
                 imm.sync("get all corpse")
                 stat = imm.sync(f"stat obj {dropped[0]}")
                 self.assertIn("Level: 45", stat)
-                self.assertRegex(stat, r"Affects \w+ by -?\d+")
+                # "Affects hit roll by 4, level 45." -- made for the level.
+                self.assertRegex(stat, r"Affects [a-z ]+ by -?\d+, level 45\.")
 
                 # Never twice in a holiday; never below level 40.
                 mark = len(prey.transcript)
@@ -139,8 +140,10 @@ class TurkeyLiveTests(unittest.TestCase):
                 self.assertNotIn("GOBBLE GOBBLE GOBBLE", prey.transcript[mark:])
                 self.assertNotIn("GOBBLE GOBBLE GOBBLE", young.transcript)
                 self.assertIn("cannot reach them", imm.sync("disaster dragon zpoult"))
-                prey.send("save")
-                prey.drain(1.0)
+                # QUIT saves, for certain: SAVE can be refused as too soon
+                # (CI, 2026-11-24: the file read was the login's save).
+                prey.send("quit")
+                self.assertTrue(prey.wait_closed())
             saved = (mud.player_dir / "Zgobble").read_text(encoding="latin-1")
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
         self.assertRegex(saved, r"\nTurkey 20\d\d\n")

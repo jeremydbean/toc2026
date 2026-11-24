@@ -715,7 +715,7 @@ static void turkey_add_affect( OBJ_DATA *obj, int location, int modifier )
     paf->level      = obj->level;
     paf->duration   = -1;
     paf->location   = (sh_int) location;
-    paf->modifier   = (sh_int) URANGE( -1000, modifier, 1000 );
+    paf->modifier   = URANGE( -1000, modifier, 1000 );
     paf->bitvector  = 0;
     paf->bitvector2 = 0;
     paf->next       = obj->affected;
