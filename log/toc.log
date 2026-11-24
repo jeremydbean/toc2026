@@ -346092,3 +346092,4 @@ Tue Nov 24 15:55:55 2026 :: Connection guard: refused 1 connection from 5.161.61
 Tue Nov 24 16:01:00 2026 :: Connection guard: 5.161.75.7 closed without a word (strike 2 of 6 in 6 hours).
 Tue Nov 24 16:03:15 2026 :: Treasure goblin: vanished from room 7836 (A Trail in the Valley, valley.are) (too long in one area).
 Tue Nov 24 16:06:04 2026 :: Connection guard: refused 1 connection from 5.161.177.47 (paused; 64 refused in all, pause 5 this week, 1547 minutes left).
+Tue Nov 24 16:10:24 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
