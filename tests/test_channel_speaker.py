@@ -28,6 +28,13 @@ class ChannelSpeakerTests(unittest.TestCase):
         self.assertNotRegex(self.comm, r"gmcp_send_channel\([^;]*, ch->name, argument \);")
         self.assertIn('channel_journal_record( "say", channel_speaker( ch ), argument );',
                       self.comm)
+
+    def test_a_questmasters_patter_is_not_journaled(self) -> None:
+        """Owner, 2026-11-24: Questor Thews was 415 of 416 says on the
+        website's chat log."""
+        guard = 'if ( !IS_NPC( ch ) || ch->desc != NULL || !IS_SET( ch->act, ACT_QUESTM ) )\n' \
+                '        channel_journal_record( "say", channel_speaker( ch ), argument );'
+        self.assertIn(guard, self.comm)
         self.assertIn("line->name = str_dup( channel_speaker( ch ) );", self.comm)
 
 

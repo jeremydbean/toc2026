@@ -636,6 +636,9 @@ class WebAdminApiTests(unittest.TestCase):
                     "1700000000\tgossip\tAlaric\tanyone selling a shield",
                     "1700000060\tauction\tEclipse\tselling a tower shield",
                     "1700000120\tgossip\tAlaric\tI will take it",
+                    # a questmaster's patter, from before the game stopped
+                    # journaling it (owner, 2026-11-24): never shown
+                    "1700000130\tsay\tQuestor Thews\tFortune favors the bold - good luck!",
                     # a tab inside the text must not split into a column
                     "1700000180\tgossip\tMisery\tone\ttwo",
                     # junk from a read that landed mid-write
@@ -668,6 +671,7 @@ class WebAdminApiTests(unittest.TestCase):
         texts = [line["text"] for line in payload["lines"]]
         self.assertEqual(texts[0], "one\ttwo")
         self.assertEqual(len(payload["lines"]), 4)
+        self.assertNotIn("Questor Thews", [line["speaker"] for line in payload["lines"]])
 
         self.assertEqual([line["speaker"] for line in one["lines"]], ["Eclipse"])
         self.assertEqual(

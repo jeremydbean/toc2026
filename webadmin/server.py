@@ -3375,6 +3375,9 @@ async def logins(
     }
 
 
+QUIET_SPEAKERS = {"questor thews"}
+
+
 def parse_channel_journal(
     path: Path, limit: int = 500, channel: str = "", search: str = ""
 ) -> tuple[list[Dict[str, Any]], list[str]]:
@@ -3401,6 +3404,10 @@ def parse_channel_journal(
             continue
         when, name, said = parts[0], parts[2], "\t".join(parts[3:])
         chan = parts[1]
+        # Questor Thews's quest patter, from before the game stopped
+        # journaling a questmaster's says (owner, 2026-11-24).
+        if chan == "say" and name.lower() in QUIET_SPEAKERS:
+            continue
         channels.add(chan)
         if wanted and chan.lower() != wanted:
             continue

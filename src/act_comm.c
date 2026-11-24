@@ -2915,7 +2915,13 @@ void do_say( CHAR_DATA *ch, char *argument )
      * honestly be replayed to somebody who was there, and nothing
      * remembers who that was.
      */
-    channel_journal_record( "say", channel_speaker( ch ), argument );
+    /* Not a questmaster's (owner, 2026-11-24): Questor Thews's quest patter
+       -- "Fortune favors the bold", the reward -- was 415 of the 416 says
+       in the journal, and buried the players' talk in the website's chat
+       log. A shopkeeper's say is still recorded; so is a switched
+       immortal's, who has a connection. */
+    if ( !IS_NPC( ch ) || ch->desc != NULL || !IS_SET( ch->act, ACT_QUESTM ) )
+        channel_journal_record( "say", channel_speaker( ch ), argument );
 
     if ( ch->in_room != NULL )
     {
