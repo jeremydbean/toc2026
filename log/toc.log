@@ -346146,3 +346146,5 @@ Tue Nov 24 16:56:50 2026 :: Connection guard: 52.87.72.16 is checker-nvi4.uptime
 Tue Nov 24 17:01:56 2026 :: Connection guard: 3.20.63.178 closed without a word (strike 4 of 6 in 6 hours).
 Tue Nov 24 17:01:56 2026 :: Connection guard: 3.20.63.178 is checker-ohi3.uptimerobot.com, an uptime monitor (the name leads back to it): its checks are not strikes.
 Tue Nov 24 17:05:40 2026 :: Treasure goblin: vanished from room 13506 (Blackened Hall, hell.are) (too long in one area).
+Tue Nov 24 17:07:00 2026 :: Connection guard: refused 1 connection from 178.156.187.238 (paused; 41 refused in all, pause 4 in 30 days, 1043 minutes left).
+Tue Nov 24 17:07:00 2026 :: Connection guard: 178.156.187.238 is checker-ash5.uptimerobot.com, an uptime monitor (the name leads back to it): its checks are not strikes, and its pause is lifted.
