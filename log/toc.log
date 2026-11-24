@@ -346157,3 +346157,5 @@ Tue Nov 24 17:17:09 2026 :: Connection guard: 5.161.61.238 is checker-ash1.uptim
 Tue Nov 24 17:21:54 2026 :: Connection guard: 151.245.151.136 closed without a word (strike 1 of 6 in 6 hours).
 Tue Nov 24 17:22:14 2026 :: Connection guard: 5.161.177.47 closed without a word (an uptime monitor; not counted).
 Tue Nov 24 17:25:49 2026 :: Treasure goblin: vanished from room 7694 (The Dungeon, ultima.are) (too long in one area).
+Tue Nov 24 17:27:19 2026 :: Connection guard: 5.161.117.52 closed without a word (strike 4 of 6 in 6 hours).
+Tue Nov 24 17:27:20 2026 :: Connection guard: 5.161.117.52 is checker-ash12.uptimerobot.com, an uptime monitor (the name leads back to it): its checks are not strikes.
