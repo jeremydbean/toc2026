@@ -346104,3 +346104,27 @@ Tue Nov 24 16:25:52 2026 :: Black market: the dealer appeared with 5 items (stoc
 Tue Nov 24 16:26:23 2026 :: Connection guard: 52.22.236.30 closed without a word (strike 1 of 6 in 6 hours).
 Tue Nov 24 16:31:27 2026 :: Connection guard: 3.12.251.153 closed without a word (strike 3 of 6 in 6 hours).
 Tue Nov 24 16:33:29 2026 :: Treasure goblin: vanished from room 9242 (The Burning Gardens, canyon.are) (too long in one area).
+Tue Nov 24 16:34:57 2026 :: Black market: the dealer vanished from room 16042 (Main Deck, pirate.are) (wandering).
+Tue Nov 24 16:35:12 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Tue Nov 24 16:35:16 2026 :: Log WebAdmin: fsave
+Tue Nov 24 16:35:22 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Tue Nov 24 16:35:25 2026 :: Received signal 15; saving players and shutting down.
+Tue Nov 24 16:35:25 2026 :: Normal termination of game.
+Tue Nov 24 16:35:26 2026 ::  INIT OK 
+Tue Nov 24 16:35:26 2026 :: walkto_load: 157 destinations.
+Tue Nov 24 16:35:26 2026 :: changes_load: 370 entries.
+Tue Nov 24 16:35:26 2026 :: Hermie: the restart put no mortal off (0 playing, recorded 45 seconds before the boot; a mortal last played over ten minutes before it); she stays away.
+Tue Nov 24 16:35:26 2026 :: Serials: 962 character files read, 7 with a serial.
+Tue Nov 24 16:35:26 2026 :: Connection guard: 64 addresses remembered from before the boot, 9 paused now.
+Tue Nov 24 16:35:26 2026 :: Login lockout: 1 address remembered from before the boot.
+Tue Nov 24 16:35:26 2026 :: Passwords: SHA-512 crypt self-test passed.
+Tue Nov 24 16:35:26 2026 :: Recovery ledger: 510 records (0 from before the check), 8 requests, 10 players.
+Tue Nov 24 16:35:26 2026 :: Corpse keeper: Ravagger's corpse c6b039867021c00 made again in room 24388 with 22 objects.
+Tue Nov 24 16:35:26 2026 :: Corpse keeper: 1 corpse made again, 0 set aside.
+Tue Nov 24 16:35:26 2026 :: ROM is ready to rock on port 9000.
+Tue Nov 24 16:35:26 2026 :: Treasure goblin: appeared.
+Tue Nov 24 16:35:26 2026 :: Automated backup started.
+Tue Nov 24 16:35:26 2026 :: Daily backup started.
+Tue Nov 24 16:35:26 2026 :: Backups: 1 old archive(s) expired; the newest 6 are always kept.
+Tue Nov 24 16:35:27 2026 :: Automated backup complete.
+Tue Nov 24 16:35:28 2026 :: Daily backup complete.
