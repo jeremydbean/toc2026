@@ -345811,3 +345811,44 @@ Tue Nov 24 12:19:58 2026 :: Log Alaric [15024]: south
 Tue Nov 24 12:19:58 2026 :: Log Alaric [15013]: arrived (University Avenue) from 15024
 Tue Nov 24 12:19:58 2026 :: Log Alaric [15013]: east
 Tue Nov 24 12:19:58 2026 :: Log Alaric [15038]: arrived (The Back Hall) from 15013
+Tue Nov 24 12:19:59 2026 :: Log Alaric [15038]: ex
+Tue Nov 24 12:20:01 2026 :: Log Alaric [15038]: n
+Tue Nov 24 12:20:01 2026 :: Log Alaric [15070]: arrived (The Post Office) from 15038
+Tue Nov 24 12:20:04 2026 :: Log Alaric [15070]: s
+Tue Nov 24 12:20:04 2026 :: Log Alaric [15038]: arrived (The Back Hall) from 15070
+Tue Nov 24 12:20:05 2026 :: Log Alaric [15038]: s
+Tue Nov 24 12:20:05 2026 :: Log Alaric [15037]: arrived (The Central Annex) from 15038
+Tue Nov 24 12:20:06 2026 :: Log Alaric [15037]: w
+Tue Nov 24 12:20:06 2026 :: Log Alaric [15069]: arrived (The Tuck Shoppe) from 15037
+Tue Nov 24 12:20:07 2026 :: Log Alaric [15069]: w
+Tue Nov 24 12:20:11 2026 :: Log Alaric [15069]: east
+Tue Nov 24 12:20:11 2026 :: Log Alaric [15037]: arrived (The Central Annex) from 15069
+Tue Nov 24 12:20:11 2026 :: Log Alaric [15037]: north
+Tue Nov 24 12:20:11 2026 :: Log Alaric [15038]: arrived (The Back Hall) from 15037
+Tue Nov 24 12:20:11 2026 :: Log Alaric [15038]: west
+Tue Nov 24 12:20:11 2026 :: Log Alaric [15013]: arrived (University Avenue) from 15038
+Tue Nov 24 12:20:12 2026 :: Log Alaric [15013]: south
+Tue Nov 24 12:20:12 2026 :: Log Alaric [15012]: arrived (University Avenue) from 15013
+Tue Nov 24 12:20:14 2026 :: Log Alaric [15012]: e
+Tue Nov 24 12:20:14 2026 :: Log Alaric [15014]: arrived (Union Street) from 15012
+Tue Nov 24 12:20:15 2026 :: Log Alaric [15014]: ex
+Tue Nov 24 12:20:16 2026 :: Log Alaric [15014]: w
+Tue Nov 24 12:20:16 2026 :: Log Alaric [15012]: arrived (University Avenue) from 15014
+Tue Nov 24 12:20:17 2026 :: Log Alaric [15012]: s
+Tue Nov 24 12:20:17 2026 :: Log Alaric [15011]: arrived (University Avenue) from 15012
+Tue Nov 24 12:20:18 2026 :: Log Alaric [15011]: w
+Tue Nov 24 12:20:18 2026 :: Log Alaric [15035]: arrived (Dunning Hall Lobby) from 15011
+Tue Nov 24 12:20:19 2026 :: Log Alaric [15035]: ex
+Tue Nov 24 12:20:21 2026 :: Log Alaric [15035]: w
+Tue Nov 24 12:20:21 2026 :: Log Alaric [15191]: arrived (Dunning Auditorium) from 15035
+Tue Nov 24 12:20:22 2026 :: Log Alaric [15191]: ex
+Tue Nov 24 12:20:22 2026 :: Log Alaric [15191]: e
+Tue Nov 24 12:20:22 2026 :: Log Alaric [15035]: arrived (Dunning Hall Lobby) from 15191
+Tue Nov 24 12:20:23 2026 :: Log Alaric [15035]: n
+Tue Nov 24 12:20:23 2026 :: Log Alaric [15192]: arrived (A Completely Empty Hallway) from 15035
+Tue Nov 24 12:20:24 2026 :: Log Alaric [15192]: n
+Tue Nov 24 12:20:24 2026 :: Log Alaric [15193]: arrived (Classroom) from 15192
+Tue Nov 24 12:20:26 2026 :: Log Alaric [15193]: s
+Tue Nov 24 12:20:26 2026 :: Log Alaric [15192]: arrived (A Completely Empty Hallway) from 15193
+Tue Nov 24 12:20:26 2026 :: Log Alaric [15192]: s
+Tue Nov 24 12:20:38 2026 :: Log Alaric [15192]: affects off: steel fist
