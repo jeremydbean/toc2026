@@ -25,8 +25,10 @@
  * old 62 columns); narrower rows are spread to fill it. A text row is
  * free text, wrapped at spaces once it passes TBOX_WRAP_INNER.
  *
- * Widths are what shows: colour tokens ("{0C") count for nothing
- * (color_strlen), so a coloured value lines up with a plain one.
+ * Widths are what shows: colour tokens ("{0C") and raw "\x02" markers with
+ * their slot byte count for nothing (color_strlen), so a coloured value
+ * lines up with a plain one, and a wrap neither comes early for colour nor
+ * cuts a marker from its slot (tests/test_textbox.c).
  */
 #include <stdarg.h>
 #include <stdio.h>
@@ -156,6 +158,13 @@ static size_t tbox_bytes_for( const char *str, size_t width )
 
     while ( str[i] != '\0' )
     {
+        /* A raw marker and its slot byte, as color_strlen skips them: never
+           counted, never cut apart (review, 2026-11-24). */
+        if ( str[i] == '\x02' )
+        {
+            i += str[i + 1] != '\0' ? 2 : 1;
+            continue;
+        }
         if ( color_token_prefix( str[i] ) && color_parse_slot( str + i + 1, &slot ) )
         {
             i += 3;

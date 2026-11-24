@@ -930,10 +930,10 @@ static void dns_collect( void )
     DESCRIPTOR_DATA *d;
     long serial;
     struct sockaddr_storage checked;
-    int confirmed;
+    int outcome;
 
     /* The guard's answers first: an address, its name, whether it leads back. */
-    while ( dns_async_take_checked( &checked, host, sizeof(host), &confirmed ) )
+    while ( dns_async_take_checked( &checked, host, sizeof(host), &outcome ) )
     {
         NET_ADDR a;
 
@@ -948,8 +948,9 @@ static void dns_collect( void )
             a.family = 6;
             memcpy( a.b, &( (struct sockaddr_in6 *) &checked )->sin6_addr, 16 );
         }
-        if ( a.family != 0 && host_name_clean( host ) )
-            conn_guard_name_checked( &a, host, confirmed != 0 );
+        if ( a.family != 0 )
+            conn_guard_name_checked( &a, host[0] != '\0' && host_name_clean( host ) ? host : NULL,
+                                     outcome );
     }
 
     while ( dns_async_take( &serial, host, sizeof(host) ) )

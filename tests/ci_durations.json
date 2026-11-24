@@ -104,6 +104,7 @@
   "test_dps_board_classes": 37.0,
   "test_drain_and_reflection": 154.0,
   "test_dstring": 6.0,
+  "test_textbox": 2.0,
   "test_duplicate_ownership": 115.0,
   "test_edge_cases_oct4": 17.0,
   "test_encounter_log": 134.0,

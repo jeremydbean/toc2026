@@ -82,9 +82,10 @@
  * and refused -- so the monitor saw the game as down. Before the guard
  * counts a strike against an address, or refuses a paused one, it asks
  * the address's name (dnsasync.c, off the game loop; at most once in
- * GUARD_NAME_RECHECK), and a name in guard_monitor_domains whose own
- * forward lookup leads back to the address -- a PTR record alone is the
- * far end's to write -- exempts it for GUARD_MONITOR_HOLD and lifts any
+ * GUARD_NAME_RECHECK, or GUARD_NAME_RETRY after a lookup the resolver
+ * failed or that was never answered), and a name in guard_monitor_domains
+ * whose own forward lookup leads back to the address -- a PTR record alone
+ * is the far end's to write -- exempts it for GUARD_MONITOR_HOLD and lifts any
  * pause on it. Not kept across a restart: the first strike after one asks
  * again. TOC_GUARD_MONITOR_DOMAIN adds one domain, for the tests.
  *
@@ -109,6 +110,7 @@
 #include <time.h>
 #include "merc.h"
 #include "guardstore.h"
+#include "dnsasync.h"
 
 #define GUARD_SLOTS          1024   /* a month's history (GUARD_HISTORY) of repeat addresses */
 #define GUARD_TRUST_MAX      4096
@@ -133,6 +135,7 @@
 #define GUARD_REFUSAL_LOG_SECS 60   /* one refusal line an address this often */
 #define GUARD_HISTORY        ( 30 * 86400 )  /* pauses counted for doubling */
 #define GUARD_NAME_RECHECK   ( 6 * 3600 )    /* an address's name asked at most this often */
+#define GUARD_NAME_RETRY     ( 5 * 60 )      /* ...or this soon after a lookup failed or was lost */
 #define GUARD_MONITOR_HOLD   ( 2 * 86400 )   /* a confirmed monitor's name holds this long */
 
 typedef struct guard_entry
@@ -152,7 +155,7 @@ typedef struct guard_entry
     time_t   refusal_logged; /* the last refusal line for it */
     long     refusals_unlogged;  /* refused since that line */
     long     refused_total;  /* refused while paused or flooding, all time */
-    time_t   name_asked;     /* its name last asked of the resolver */
+    time_t   name_next;      /* its name not asked again before this */
     time_t   monitor_until;  /* an uptime monitor, its name confirmed, till then */
     char     text[NET_ADDR_TEXT];   /* the address last seen for this key */
 } GUARD_ENTRY;
@@ -638,14 +641,19 @@ static bool guard_is_monitor( uint32_t ip )
     return e != NULL && e->monitor_until > current_time;
 }
 
-/* Ask the resolver this address's name, at most once in GUARD_NAME_RECHECK;
-   the answer comes to conn_guard_name_checked. */
+/* Ask the resolver this address's name; the answer comes to
+   conn_guard_name_checked. Until it comes, not again for GUARD_NAME_RETRY:
+   a lookup that is lost -- expired in the queue, or its answer dropped --
+   is asked again then rather than never (review, 2026-11-24: the guard
+   used to wait GUARD_NAME_RECHECK on a question nobody would answer). A
+   real answer, a name or the resolver's word that there is none, holds
+   for GUARD_NAME_RECHECK. */
 static void guard_ask_name( GUARD_ENTRY *e, const NET_ADDR *a )
 {
-    if ( e->name_asked != 0 && current_time - e->name_asked < GUARD_NAME_RECHECK )
+    if ( e->name_next > current_time )
         return;
     if ( dns_check_name( a ) )
-        e->name_asked = current_time;
+        e->name_next = current_time + guard_limit( "TOC_GUARD_NAME_RETRY", GUARD_NAME_RETRY );
 }
 
 /* The address counts for the guard at all: not loopback (bar the tests),
@@ -699,6 +707,7 @@ const char *conn_guard_admit( DESCRIPTOR_DATA *d, char *buf, size_t size )
         e->refused_total++;
         guard_pause_dirty = true;
         guard_log_refusal( e, "a flood" );
+        guard_ask_name( e, &d->addr );   /* an uptime monitor's flood is lifted too */
         /* No reply: reset, as a closed port is (owner, 2026-11-13: "i'm
            not sure paused should get any notification"; make scanners
            give up). */
@@ -729,6 +738,7 @@ const char *conn_guard_admit( DESCRIPTOR_DATA *d, char *buf, size_t size )
                   GUARD_TRUST_DAYS, addr );
         guard_say( note, LEVEL_IMMORTAL );
         guard_pause_save();
+        guard_ask_name( e, &d->addr );
         d->guard_reset = TRUE;
         snprintf( buf, size, "Connections from your address are paused for a while.\n\r" );
         return buf;
@@ -866,13 +876,17 @@ void conn_guard_closed( DESCRIPTOR_DATA *d )
 }
 
 /*
- * The resolver's answer to guard_ask_name. A name in guard_monitor_domains
+ * The resolver's answer to guard_ask_name: `outcome` is dnsasync.h's
+ * DNS_CHECK_*, `host` the name or NULL. A name in guard_monitor_domains
  * that leads back to the address makes it an uptime monitor for
  * GUARD_MONITOR_HOLD: its checks are not strikes, and a pause on it is
  * lifted. A name that claims such a domain and does not lead back is
- * logged and trusted with nothing.
+ * logged and trusted with nothing. A lookup the resolver failed -- a
+ * timeout, a server failure -- is asked again after GUARD_NAME_RETRY, not
+ * GUARD_NAME_RECHECK, so one bad minute at the resolver does not cost a
+ * real monitor six hours of strikes (review, 2026-11-24).
  */
-void conn_guard_name_checked( const NET_ADDR *a, const char *host, bool confirmed )
+void conn_guard_name_checked( const NET_ADDR *a, const char *host, int outcome )
 {
     GUARD_ENTRY *e;
     char addr[NET_ADDR_TEXT + 16];
@@ -880,13 +894,27 @@ void conn_guard_name_checked( const NET_ADDR *a, const char *host, bool confirme
     bool lifted;
     uint32_t key;
 
-    if ( a == NULL || host == NULL || !guard_monitor_domain( host ) )
+    if ( a == NULL )
         return;
     key = net_addr_guard_key( a );
     if ( !guard_applies( key ) || ( e = guard_find( key, false ) ) == NULL )
         return;
     guard_ip_text( e, addr, sizeof(addr) );
-    if ( !confirmed )
+    if ( outcome == DNS_CHECK_RETRY )
+    {
+        int retry = guard_limit( "TOC_GUARD_NAME_RETRY", GUARD_NAME_RETRY );
+
+        e->name_next = current_time + retry;
+        snprintf( buf, sizeof(buf),
+                  "Connection guard: the resolver could not look up %s's name; asked again "
+                  "in %d second%s at the earliest.", addr, retry, retry == 1 ? "" : "s" );
+        log_string( buf );
+        return;
+    }
+    e->name_next = current_time + GUARD_NAME_RECHECK;
+    if ( host == NULL || !guard_monitor_domain( host ) )
+        return;
+    if ( outcome != DNS_CHECK_CONFIRMED )
     {
         snprintf( buf, sizeof(buf),
                   "Connection guard: %s is named %s, but that name does not lead back to it; "

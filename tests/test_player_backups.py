@@ -324,9 +324,21 @@ class RestoreStateTests(unittest.TestCase):
         self._tmp.cleanup()
 
     def restore(self, **env) -> subprocess.CompletedProcess:
+        # Not live unless a test says so: since 2026-11-24 a standalone run
+        # is live by default, and TOC_RESTORE_LIVE=0 is toc-restore's own
+        # staging call -- what most of these tests stand in for.
+        env.setdefault("TOC_RESTORE_LIVE", "0")
+        env = {k: v for k, v in env.items() if v is not None}
+        base = {k: v for k, v in os.environ.items() if k != "TOC_RESTORE_LIVE"}
         return subprocess.run(["sh", str(self.SCRIPT), str(self.src), str(self.dst)],
-                              env=dict(os.environ, PATH=f"{self.bin}:{os.environ['PATH']}", **env),
+                              env=dict(base, PATH=f"{self.bin}:{os.environ['PATH']}", **env),
                               capture_output=True, text=True, timeout=60)
+
+    STAMP = "20260101-000000"
+
+    def fixed_stamp(self) -> None:
+        """Every `date` the script asks for its stamp says STAMP."""
+        self.stub("date", f'case "$*" in *%Y%m%d-%H%M%S*) echo {self.STAMP}; exit 0 ;; esac')
 
     def files(self, where: pathlib.Path) -> set[str]:
         return {str(f.relative_to(where)) for f in where.rglob("*") if f.is_file()}
@@ -399,6 +411,83 @@ class RestoreStateTests(unittest.TestCase):
 
     def snapshot(self) -> dict[str, str]:
         return {f: (self.dst / f).read_bytes().decode("latin-1") for f in self.files(self.dst)}
+
+    # --- review, 2026-11-24 (second) -------------------------------------
+
+    def test_a_standalone_run_is_live_unless_told_otherwise(self) -> None:
+        """TOC_RESTORE_LIVE defaulted to 0: run by hand against the live tree,
+        it swapped state under a running game and sync, no lock held."""
+        self.stale_install()
+        before = self.files(self.dst)
+        self.stub("systemctl", 'case "$*" in *is-active*toc-game*) exit 0 ;; esac')
+        done = self.restore(TOC_RESTORE_LIVE=None, TOC_RESTORE_REPLACE="1",
+                            TOC_DEPLOY_LOCK=str(self.root / "deploy.lock"),
+                            TOC_RESTORE_LOCK_WAIT="1")
+        self.assertEqual(done.returncode, 2, done.stdout + done.stderr)
+        self.assertTrue("toc-game.service is running" in done.stderr
+                        or "maintenance lock" in done.stderr, done.stderr)
+        self.assertEqual(self.files(self.dst), before, "nothing touched")
+
+    def test_the_live_tree_is_never_restored_as_a_staging_directory(self) -> None:
+        self.stale_install()
+        before = self.files(self.dst)
+        done = self.restore(TOC_LIVE_TREE=str(self.dst), TOC_RESTORE_REPLACE="1")
+        self.assertEqual(done.returncode, 2, done.stdout + done.stderr)
+        self.assertIn("is the live tree", done.stderr)
+        self.assertEqual(self.files(self.dst), before)
+        # Reached through a symlink, it is still the live tree.
+        link = self.root / "via-link"
+        link.symlink_to(self.dst.parent)
+        done = self.restore(TOC_LIVE_TREE=str(link / "current"), TOC_RESTORE_REPLACE="1")
+        self.assertEqual(done.returncode, 2, done.stdout + done.stderr)
+
+    def test_an_aside_that_exists_is_never_moved_into(self) -> None:
+        """A pre-restore-<stamp> already there (two restores in a second)
+        took player/ inside its own player/."""
+        self.stale_install()
+        self.fixed_stamp()
+        taken = self.root / "srv" / f"pre-restore-{self.STAMP}"
+        (taken / "player").mkdir(parents=True)
+        (taken / "player" / "Zearlier").write_text("the first restore's\n")
+        done = self.restore(TOC_RESTORE_REPLACE="1")
+        self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
+        self.assertEqual(self.files(taken), {"player/Zearlier"}, "the earlier aside is untouched")
+        mine = self.root / "srv" / f"pre-restore-{self.STAMP}-2"
+        self.assertEqual((mine / "player" / "Zgone").read_text(), "#PLAYER\nName Zgone~\n")
+        self.assertIn(str(mine), done.stdout)
+
+    def test_a_rollback_beside_an_existing_aside_puts_back_the_right_state(self) -> None:
+        self.stale_install()
+        (self.dst / "heroes").mkdir()
+        (self.dst / "heroes" / "Zold").write_text("an old plaque\n")
+        self.fixed_stamp()
+        taken = self.root / "srv" / f"pre-restore-{self.STAMP}"
+        (taken / "player").mkdir(parents=True)
+        (taken / "player" / "Zearlier").write_text("the first restore's\n")
+        before = self.snapshot()
+        self.stub("mv", 'for a in "$@"; do last="$a"; done\n'
+                        'case "$1:$last" in *stage*/heroes:*/current/heroes) exit 1 ;; esac')
+        done = self.restore(TOC_RESTORE_REPLACE="1")
+        self.assertEqual(done.returncode, 1, done.stdout + done.stderr)
+        self.assertIn("putting back what was swapped", done.stderr)
+        self.assertEqual(self.snapshot(), before, "the live state is exactly as it was")
+        self.assertEqual(self.files(taken), {"player/Zearlier"}, "the earlier aside is untouched")
+        self.assertEqual(sorted(p.name for p in (self.root / "srv").glob("pre-restore-*")),
+                         [taken.name], "no half-made aside of its own left")
+
+    def test_too_little_room_for_the_staged_copy_writes_nothing(self) -> None:
+        self.stale_install()
+        before = self.files(self.dst)
+        self.stub("df", 'printf "Filesystem 1024-blocks Used Available Capacity Mounted on\\n"\n'
+                        'printf "/dev/x 1000000 990000 10000 99%% /\\n"; exit 0')
+        done = self.restore(TOC_RESTORE_REPLACE="1")
+        self.assertEqual(done.returncode, 5, done.stdout + done.stderr)
+        self.assertIn("kept free", done.stderr)
+        self.assertEqual(self.files(self.dst), before)
+        self.assertEqual(list((self.root / "srv").glob(".*stage*")), [])
+        # A smaller reserve fits the same disk, and the restore goes ahead.
+        done = self.restore(TOC_RESTORE_REPLACE="1", TOC_RESTORE_RESERVE_MB="1")
+        self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
 
     def test_a_copy_that_fails_leaves_the_tree_as_it_was(self) -> None:
         self.stale_install()
@@ -668,6 +757,70 @@ esac
         self.assertIn("the old one is back", done.stderr)
         self.assert_old_tree_back(before, done)
 
+    # --- review, 2026-11-24 (second) -------------------------------------
+
+    STAMP = "20260101-000000"
+
+    def fixed_stamp(self) -> None:
+        self.stub("date", f'case "$*" in *%Y%m%d-%H%M%S*) echo {self.STAMP}; exit 0 ;; esac')
+
+    def taken_aside(self) -> pathlib.Path:
+        taken = self.prefix / f"pre-restore-{self.STAMP}"
+        (taken / "player").mkdir(parents=True)
+        (taken / "player" / "Zearlier").write_text("the first restore's\n")
+        return taken
+
+    def test_an_existing_aside_is_never_moved_into(self) -> None:
+        """`mv current pre-restore-<stamp>` into a name already there put the
+        live tree inside it, and a rollback then put back the wrong tree."""
+        self.fixed_stamp()
+        taken = self.taken_aside()
+        done = self.restore(TOC_RESTORE_REPLACE="1")
+        self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
+        self.assertEqual(set(self.files(taken)), {"player/Zearlier"}, "the earlier aside is untouched")
+        mine = self.prefix / f"pre-restore-{self.STAMP}-2"
+        self.assertEqual((mine / "code.c").read_text(), "old code\n", "the old tree, whole")
+        self.assertEqual((self.current / "code.c").read_text(), "new code\n")
+
+    def test_a_rollback_beside_an_existing_aside_puts_back_the_old_tree(self) -> None:
+        self.fixed_stamp()
+        taken = self.taken_aside()
+        before = self.files(self.current)
+        self.stub("mv", 'for a in "$@"; do last="$a"; done\n'
+                        'case "$1:$last" in */.restore-stage-*:*/current) exit 1 ;; esac')
+        done = self.restore(TOC_RESTORE_REPLACE="1")
+        self.assertEqual(done.returncode, 1, done.stdout + done.stderr)
+        self.assertIn("the old one is back", done.stderr)
+        self.assertEqual(self.files(self.current), before, "the old installation is exactly as it was")
+        self.assertEqual(set(self.files(taken)), {"player/Zearlier"}, "the earlier aside is untouched")
+        self.assertEqual(sorted(p.name for p in self.prefix.glob("pre-restore-*")), [taken.name])
+        self.assertEqual(sorted(self.running.read_text().split()),
+                         ["toc-game.service", "toc-web.service"])
+
+    def test_too_little_room_stops_it_before_the_game_is_touched(self) -> None:
+        before = self.files(self.current)
+        self.stub("df", 'printf "Filesystem 1024-blocks Used Available Capacity Mounted on\\n"\n'
+                        'printf "/dev/x 1000000 990000 10000 99%% /\\n"; exit 0')
+        done = self.restore(TOC_RESTORE_REPLACE="1")
+        self.assertEqual(done.returncode, 5, done.stdout + done.stderr)
+        self.assertIn("kept free for the game's saves", done.stderr)
+        self.assertEqual(self.files(self.current), before)
+        self.assertEqual(self.calls_made(), [], "the game was never stopped")
+        self.assertEqual(list(self.prefix.glob(".restore-stage-*")), [])
+
+    def test_a_game_that_does_not_come_back_is_not_called_done(self) -> None:
+        # A start that does nothing: the unit stays down.
+        (self.bin / "systemctl").write_text(
+            (self.bin / "systemctl").read_text().replace(
+                'start) echo "start $2 $held" >> ' + str(self.calls) + '; echo "$2" >> '
+                + str(self.running) + ' ;;',
+                'start) echo "start $2 $held" >> ' + str(self.calls) + '; exit 1 ;;'))
+        done = self.restore(TOC_RESTORE_REPLACE="1", TOC_RESTORE_VERIFY_WAIT="1")
+        self.assertEqual(done.returncode, 4, done.stdout + done.stderr)
+        self.assertIn("RESTORE NOT COMPLETE", done.stdout)
+        self.assertIn("NOT RUNNING toc-game.service", done.stderr)
+        self.assertNotIn("== done", done.stdout)
+
     def test_a_held_lock_is_waited_for_then_given_up_with_the_game_running(self) -> None:
         before = self.files(self.current)
         holder = subprocess.Popen(["flock", str(self.lock), "sleep", "30"])
@@ -688,6 +841,59 @@ esac
         self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
         self.assertEqual(self.calls_made(), [])
         self.assertEqual((self.current / "code.c").read_text(), "new code\n")
+
+
+class RestoreVerifyTests(unittest.TestCase):
+    """deploy/toc-restore-verify (review, 2026-11-24): the bare-host restore
+    enabled every unit with `|| true` and said the game was up regardless.
+    Now the game and the backup units must be active and enabled."""
+
+    SCRIPT = ROOT / "deploy" / "toc-restore-verify"
+
+    def run_with(self, active: list[str], enabled: list[str], *args: str):
+        with tempfile.TemporaryDirectory() as tmp:
+            bin_ = pathlib.Path(tmp)
+            (bin_ / "systemctl").write_text(
+                "#!/bin/sh\n"
+                f'ACTIVE="{" ".join(active)}"; ENABLED="{" ".join(enabled)}"\n'
+                'verb=$1; shift; [ "$1" = --quiet ] && shift\n'
+                'case "$verb" in\n'
+                '  is-active) case " $ACTIVE " in *" $1 "*) echo active; exit 0;; esac; echo failed; exit 3;;\n'
+                '  is-enabled) case " $ENABLED " in *" $1 "*) echo enabled; exit 0;; esac; echo disabled; exit 1;;\n'
+                'esac\n')
+            (bin_ / "systemctl").chmod(0o755)
+            return subprocess.run(["sh", str(self.SCRIPT), *args],
+                                  env=dict(os.environ, PATH=f"{bin_}:{os.environ['PATH']}",
+                                           TOC_RESTORE_VERIFY_WAIT="1"),
+                                  capture_output=True, text=True, timeout=30)
+
+    REQUIRED = ["toc-game.service", "toc-state-sync.timer"]
+
+    def test_all_running_and_enabled_passes(self) -> None:
+        done = self.run_with(self.REQUIRED, self.REQUIRED, *self.REQUIRED, "--", "toc-web.service")
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertIn("WARN: toc-web.service is not running", done.stderr, "wanted is only a warning")
+
+    def test_a_required_unit_down_fails(self) -> None:
+        done = self.run_with(["toc-game.service"], self.REQUIRED, *self.REQUIRED)
+        self.assertEqual(done.returncode, 1)
+        self.assertIn("NOT RUNNING toc-state-sync.timer", done.stderr)
+
+    def test_running_but_not_enabled_fails_unless_active_only(self) -> None:
+        done = self.run_with(self.REQUIRED, ["toc-game.service"], *self.REQUIRED)
+        self.assertEqual(done.returncode, 1)
+        self.assertIn("NOT ENABLED toc-state-sync.timer", done.stderr)
+        done = self.run_with(self.REQUIRED, [], "--active-only", *self.REQUIRED)
+        self.assertEqual(done.returncode, 0, done.stderr)
+
+    def test_the_bare_host_restore_uses_it_and_ignores_no_failure(self) -> None:
+        source = (ROOT / "deploy" / "toc-restore").read_text()
+        services = source.split('say "wiring up the services"', 1)[1]
+        self.assertNotRegex(services, r"enable --now[^\n]*\|\| true",
+                            "an enable failure is never ignored")
+        self.assertIn('sh "$VERIFY" toc-game.service toc-state-sync.timer toc-state-sync.path', services)
+        self.assertIn("exit 4", services)
+        self.assertLess(services.index('sh "$VERIFY"'), services.index('say "done -- game is up'))
 
 
 class PlayerHistoryToolTests(unittest.TestCase):

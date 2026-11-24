@@ -31,11 +31,16 @@ int  dns_async_take( long *serial, char *host, size_t size );
    to it, so a PTR record claiming a monitor's domain proves nothing alone.
    Kept apart from the connections' lookups; queued as dns_async_submit
    is. dns_async_take_checked hands back one answer -- the address, the
-   name and *confirmed -- when there is one: 1, else 0. Lookups that found
-   no name are not returned. */
+   name ("" for none) and *outcome -- when there is one: 1, else 0. Every
+   check is answered, a failed one too (review, 2026-11-24: a resolver
+   that timed out once used to leave the guard waiting six hours). */
+#define DNS_CHECK_CONFIRMED     1   /* a name that leads back */
+#define DNS_CHECK_UNCONFIRMED   0   /* a name that does not */
+#define DNS_CHECK_NO_NAME     ( -1 )  /* the resolver said there is none */
+#define DNS_CHECK_RETRY       ( -2 )  /* the resolver failed: ask again soon */
 int  dns_async_check( const struct sockaddr *addr, socklen_t len );
 int  dns_async_take_checked( struct sockaddr_storage *addr, char *host, size_t size,
-                             int *confirmed );
+                             int *outcome );
 
 /* Lookups queued or running, for staff DNS. */
 int  dns_async_pending( void );

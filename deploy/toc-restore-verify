@@ -1,0 +1,58 @@
+#!/bin/sh
+# Prove units are running after a restore, or say which are not
+# (review, 2026-11-24: toc-restore enabled every unit with `|| true` and
+# announced a running game whatever had happened).
+#
+#   toc-restore-verify [--active-only] REQUIRED... [-- WANTED...]
+#
+# Each REQUIRED unit must be active -- waited for up to
+# TOC_RESTORE_VERIFY_WAIT seconds (30), as a game takes a moment to boot --
+# and enabled, so it comes back after a reboot (--active-only: active is
+# enough, for units a restore only started again). A WANTED unit that is
+# not is named as a warning. Exit 0 when every required unit is, else 1,
+# each one that is not named on stderr.
+set -u
+
+active_only=0
+if [ "${1:-}" = --active-only ]; then active_only=1; shift; fi
+required=""
+wanted=""
+while [ $# -gt 0 ]; do
+    if [ "$1" = -- ]; then shift; wanted="$*"; break; fi
+    required="$required $1"; shift
+done
+
+wait_for=${TOC_RESTORE_VERIFY_WAIT:-30}
+waited=0
+pending=$required
+while :; do
+    still=""
+    for u in $pending; do
+        systemctl is-active --quiet "$u" 2>/dev/null || still="$still $u"
+    done
+    pending=$still
+    [ -z "$pending" ] && break
+    [ "$waited" -ge "$wait_for" ] && break
+    sleep 1; waited=$((waited + 1))
+done
+
+bad=0
+for u in $required; do
+    case " $pending " in
+        *" $u "*) echo "   NOT RUNNING $u: $(systemctl is-active "$u" 2>/dev/null || true)" >&2; bad=1; continue ;;
+    esac
+    if [ "$active_only" = 0 ] && ! systemctl is-enabled --quiet "$u" 2>/dev/null; then
+        echo "   NOT ENABLED $u: it will not come back after a reboot" >&2
+        bad=1
+        continue
+    fi
+    echo "   running $u"
+done
+for u in $wanted; do
+    if systemctl is-active --quiet "$u" 2>/dev/null; then
+        echo "   running $u"
+    else
+        echo "   WARN: $u is not running: $(systemctl is-active "$u" 2>/dev/null || true)" >&2
+    fi
+done
+exit $bad

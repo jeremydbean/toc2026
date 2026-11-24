@@ -437,6 +437,41 @@ restores the tree, starts again what it stopped and leaves the units
 alone. Each restore leaves a `pre-restore-<stamp>/` -- a whole tree --
 for you to delete once the restored game is known good.
 
+Second review, 2026-11-24 -- what else a restore now refuses or proves:
+
+- **Never into a name that is taken.** A `pre-restore-<stamp>/` already
+  there (two restores in one second) used to take the live tree *inside*
+  it, and a rollback then put back the wrong tree. The old tree now goes to
+  the first free `pre-restore-<stamp>`, `-2`, `-3`, ...; the earlier one is
+  never touched, and a failed swap puts back the right tree.
+- **Room first.** The stage is a second copy of the tree on the disk the
+  game saves to. Before the clone, and again before staging, the restore
+  checks `df` for what it is about to write plus `TOC_RESTORE_RESERVE_MB`
+  (512) kept free for the game's own saves, and exits 5 -- nothing
+  stopped, nothing written -- when there is not. `TOC_RESTORE_SPACE_CHECK=0`
+  skips it, at your own risk.
+- **Running, not just started.** A bare-host restore used to enable every
+  unit with `|| true` and say "game is up" regardless. Now
+  `deploy/toc-restore-verify` must find `toc-game`, `toc-state-sync.timer`,
+  `toc-state-sync.path`, `toc-state-sync-check.timer` and
+  `toc-game-recovery.timer` active and enabled (waiting up to 30 seconds for
+  the game to boot), or the restore says **RESTORE NOT COMPLETE**, names
+  each unit, and exits 4. `toc-web`, auto-deploy, the heartbeat and the
+  host-action path are named as warnings. With
+  `TOC_RESTORE_SKIP_SERVICES=1`, what it stopped must be active again.
+- **`toc-restore-state` on its own is live.** It used to default to
+  `TOC_RESTORE_LIVE=0`, so run by hand into `/srv/toc/current` it swapped
+  state under a running game and sync with no lock. Every run now takes the
+  maintenance lock and refuses while `toc-game` runs, unless
+  `TOC_RESTORE_LIVE=0` is given -- which only `toc-restore`'s own staging
+  call does, and which is refused for the live tree itself
+  (`TOC_LIVE_TREE`, `/srv/toc/current`, symlinks resolved).
+
+Exit codes: 0 done, 1 failed with the old tree back, 2 the lock is held
+or the game is running (or the live tree was asked for as a stage), 3 the
+target holds state and `TOC_RESTORE_REPLACE=1` was not given, 4 restored
+but a required unit is not running, 5 not enough free space.
+
 ### When GitHub is unavailable
 
 Both GitHub copies -- the public repository and the private mirror -- live
@@ -570,7 +605,24 @@ GitHub mirror as the store; play never held up by an outage):
   and the first run that can push sends them all. The game never waits.
   A save is lost only if the host itself dies during the outage.
 
-What is not built, and would close the last window -- the play since a
+What this does not give, and cannot on its own: **zero data loss.** A
+sync that pushes after the save is a copy taken *after* the fact, so the
+recovery point is never zero:
+
+- play since a character's last save (at most one tick, about 80 seconds)
+  is only in the game's memory;
+- a save made while the host is cut off from GitHub is on the host's disk
+  alone until the first push that succeeds -- lose the disk then and it is
+  gone, however long the outage ran;
+- a save in the seconds before a host dies may not have been pushed yet
+  (a run takes seconds; three rounds at most, then the minute timer);
+- what the sync never carries -- `backups/`, the game's own archives, and
+  anything outside `player/ gods/ heroes/ log/ corpse/` -- is not
+  recovered from GitHub at all.
+
+Zero loss would need the game to wait for a remote acknowledgement before
+it calls a change made, which this design chose against (availability
+first). What is not built, and would close the last window -- the play since a
 character's last save -- is described below. The design choices it
 would need are recorded so the next step starts from them.
 

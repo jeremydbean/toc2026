@@ -37,9 +37,28 @@
 #     <DST>/../pre-restore-<UTC stamp>/, never deleted; a rename that fails
 #     puts back everything already swapped.
 #
+# Review, 2026-11-24 (second): TOC_RESTORE_LIVE defaulted to 0, so the
+# standalone use this header advertises swapped state into /srv/toc/current
+# with the game and the sync running and no lock held. Now it fails closed:
+#
+#   - every run is a live one -- the lock taken, the game proved stopped --
+#     unless the caller says TOC_RESTORE_LIVE=0, which only toc-restore's
+#     staging call does (into a fresh staging directory). The live tree
+#     itself (TOC_LIVE_TREE, /srv/toc/current) is always live: asking for
+#     TOC_RESTORE_LIVE=0 there is refused;
+#   - the aside directory is a new one, never one that exists: a second
+#     restore in the same second used to move player/ *into* the first's
+#     pre-restore-<stamp>/player/ (and roll back from the wrong place). It
+#     is made with mkdir, which fails when the name is taken, and the next
+#     name (-2, -3, ...) is tried;
+#   - the staging copy is a second copy of the state on the same disk the
+#     game saves to: it is not begun unless that disk has room for it and
+#     TOC_RESTORE_RESERVE_MB (512) besides, kept for the game's own saves.
+#
 # backups/ (the game's own archives) is never touched: it is not in git.
 # Exit 0 done, 1 failed (the target as it was), 2 something is running or
-# the lock is held, 3 the target holds state and replacing was not asked.
+# the lock is held, or the live tree was asked for without the lock, 3 the
+# target holds state and replacing was not asked, 5 not enough free space.
 set -eu
 
 SRC=${1:?usage: toc-restore-state SRC DST}
@@ -49,8 +68,36 @@ STAMP=$(date -u +%Y%m%d-%H%M%S)
 PARENT=$(dirname "$DST")
 LOCK="${TOC_DEPLOY_LOCK:-/run/toc-deploy.lock}"
 LOCK_WAIT="${TOC_RESTORE_LOCK_WAIT:-300}"
+LIVE_TREE="${TOC_LIVE_TREE:-/srv/toc/current}"
+RESERVE_MB="${TOC_RESTORE_RESERVE_MB:-512}"
 
-if [ "${TOC_RESTORE_LIVE:-0}" = 1 ]; then
+# A path with its directories' symlinks resolved, whether or not it exists.
+canonical() {
+    if [ -d "$1" ]; then (cd "$1" && pwd -P)
+    elif [ -d "$(dirname "$1")" ]; then printf '%s/%s\n' "$(cd "$(dirname "$1")" && pwd -P)" "$(basename "$1")"
+    else printf '%s\n' "$1"
+    fi
+}
+# A directory made new, named $1 or the first free $1-2, $1-3, ...: mkdir
+# without -p fails on a name that is taken, so two restores never share one.
+new_dir() {
+    n=1; p=$1
+    while ! mkdir "$p" 2>/dev/null; do
+        [ -e "$p" ] || return 1          # not taken: mkdir failed for itself
+        n=$((n + 1)); p="$1-$n"
+        [ "$n" -le 1000 ] || return 1
+    done
+    printf '%s\n' "$p"
+}
+
+LIVE="${TOC_RESTORE_LIVE:-1}"
+if [ "$(canonical "$DST")" = "$(canonical "$LIVE_TREE")" ] && [ "$LIVE" != 1 ]; then
+    echo "   refusing: $DST is the live tree; TOC_RESTORE_LIVE=0 is only for a staging" >&2
+    echo "   directory. Run it without, under the lock, with the game stopped." >&2
+    exit 2
+fi
+
+if [ "$LIVE" = 1 ]; then
     if [ "${TOC_DEPLOY_LOCKED:-0}" != 1 ]; then
         exec 9>"$LOCK"
         if ! flock -w "$LOCK_WAIT" 9; then
@@ -72,7 +119,7 @@ for d in $DIRS; do
         present="$present $d"
     fi
 done
-aside="$PARENT/pre-restore-$STAMP"
+aside="$PARENT/pre-restore-$STAMP"      # the name it will have if it is free
 if [ -n "$present" ] && [ "${TOC_RESTORE_REPLACE:-0}" != 1 ]; then
     echo "   refusing: $DST already holds state:$present" >&2
     echo "   A restore over it would keep files the backup does not have (a" >&2
@@ -81,8 +128,32 @@ if [ -n "$present" ] && [ "${TOC_RESTORE_REPLACE:-0}" != 1 ]; then
     exit 3
 fi
 
-# --- stage: the whole new state, copied and proven, beside the target ---
+# --- room: the staged copy and the reserve, or nothing is begun ---
 mkdir -p "$PARENT"
+if [ "${TOC_RESTORE_SPACE_CHECK:-1}" != 0 ]; then
+    need=0
+    for d in $DIRS; do
+        [ -d "$SRC/$d" ] || continue
+        k=$(du -sk "$SRC/$d" 2>/dev/null | awk '{print $1}')
+        need=$((need + ${k:-0}))
+    done
+    free=$(df -Pk "$PARENT" 2>/dev/null | awk 'NR == 2 {print $4}')
+    case "$free" in
+        ''|*[!0-9]*)
+            echo "   refusing: cannot tell the free space at $PARENT; nothing was written" >&2
+            echo "   (TOC_RESTORE_SPACE_CHECK=0 skips the check, at your own risk)" >&2
+            exit 5 ;;
+        *)
+            want=$((need + RESERVE_MB * 1024))
+            if [ "$free" -lt "$want" ]; then
+                echo "   refusing: the staged state needs ${need}K and ${RESERVE_MB}M is kept free" >&2
+                echo "   for the game's own saves; $PARENT has ${free}K free. Nothing was written." >&2
+                exit 5
+            fi ;;
+    esac
+fi
+
+# --- stage: the whole new state, copied and proven, beside the target ---
 stage="$PARENT/.$(basename "$DST").state-stage-$STAMP-$$"
 rm -rf "$stage"
 mkdir -p "$stage"
@@ -115,12 +186,19 @@ undo() {
         mv "$aside/$d" "$DST/$d" || echo "   could not put $d back: it is at $aside/$d" >&2
     done
     discard
-    rmdir "$aside" 2>/dev/null || true
+    [ -n "$made_aside" ] && rmdir "$aside" 2>/dev/null || true
 }
+made_aside=""
 for d in $DIRS; do
     if [ -e "$DST/$d" ]; then
-        mkdir -p "$aside"
-        if ! mv "$DST/$d" "$aside/$d"; then
+        if [ -z "$made_aside" ]; then
+            if ! aside=$(new_dir "$PARENT/pre-restore-$STAMP"); then
+                echo "   could not make a directory to move the old state aside into" >&2
+                undo; exit 1
+            fi
+            made_aside=1
+        fi
+        if [ -e "$aside/$d" ] || ! mv "$DST/$d" "$aside/$d"; then
             echo "   moving the old $d aside failed; putting back what was swapped" >&2
             undo; exit 1
         fi

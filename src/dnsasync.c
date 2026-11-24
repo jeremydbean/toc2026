@@ -35,6 +35,7 @@ typedef struct dns_job
     int found;
     int check;          /* the guard's: confirm the name leads back */
     int confirmed;      /* it does */
+    int transient;      /* the resolver failed, rather than said no */
     time_t queued;
 } DNS_JOB;
 
@@ -49,6 +50,7 @@ static int     dns_checked_count;
 static int     dns_running;            /* lookups the workers hold */
 static int     dns_started;            /* 1 started, -1 could not start */
 static long    dns_delay_ms;           /* TOC_DNS_DELAY_MS, tests only */
+static long    dns_check_fails;        /* TOC_DNS_CHECK_FAILS, tests only */
 static DNS_ASYNC_STATS dns_stats;      /* under dns_lock */
 
 static long dns_now_ms( void )
@@ -59,19 +61,37 @@ static long dns_now_ms( void )
     return (long) now.tv_sec * 1000L + now.tv_nsec / 1000000L;
 }
 
+/* A resolver error that is the resolver's, not an answer: a timeout, a
+   server failure, no memory. Asked again soon, not in six hours (review,
+   2026-11-24). */
+static int dns_transient( int rc )
+{
+    if ( rc == EAI_AGAIN || rc == EAI_MEMORY )
+        return 1;
+#ifdef EAI_SYSTEM
+    if ( rc == EAI_SYSTEM )
+        return 1;
+#endif
+    return 0;
+}
+
 /* Whether `name` resolves back to the address it was found for: a PTR
    record is the far end's to write, so a name alone proves nothing until
-   its own forward lookup leads back (forward-confirmed reverse DNS). */
-static int dns_leads_back( const DNS_JOB *job )
+   its own forward lookup leads back (forward-confirmed reverse DNS). A
+   forward lookup that failed for the resolver's sake sets *transient. */
+static int dns_leads_back( const DNS_JOB *job, int *transient )
 {
     struct addrinfo hints, *found = NULL, *ai;
-    int back = 0;
+    int back = 0, rc;
 
     memset( &hints, 0, sizeof(hints) );
     hints.ai_family = job->addr.ss_family;
     hints.ai_socktype = SOCK_STREAM;
-    if ( getaddrinfo( job->host, NULL, &hints, &found ) != 0 )
+    if ( ( rc = getaddrinfo( job->host, NULL, &hints, &found ) ) != 0 )
+    {
+        *transient = dns_transient( rc );
         return 0;
+    }
     for ( ai = found; ai != NULL && !back; ai = ai->ai_next )
     {
         if ( ai->ai_family == AF_INET && job->addr.ss_family == AF_INET )
@@ -94,6 +114,7 @@ static void *dns_worker( void *unused )
     {
         DNS_JOB job;
         long began, took;
+        int fake_failure = 0, rc;
 
         pthread_mutex_lock( &dns_lock );
         for ( ;; )
@@ -106,6 +127,11 @@ static void *dns_worker( void *unused )
             if ( time( NULL ) - job.queued <= DNS_JOB_MAX_AGE )
                 break;
             dns_stats.expired++;
+        }
+        if ( job.check && dns_check_fails > 0 )
+        {
+            dns_check_fails--;
+            fake_failure = 1;
         }
         dns_running++;
         pthread_mutex_unlock( &dns_lock );
@@ -120,10 +146,24 @@ static void *dns_worker( void *unused )
         }
         /* NI_NAMEREQD: no name is no answer, and the address stays. */
         began = dns_now_ms();
-        job.found = getnameinfo( (struct sockaddr *) &job.addr, job.len,
-                                 job.host, sizeof(job.host), NULL, 0, NI_NAMEREQD ) == 0;
-        if ( job.found && job.check )
-            job.confirmed = dns_leads_back( &job );
+        if ( fake_failure )
+        {
+            /* The tests' resolver outage: a lookup that failed for the
+               resolver's sake, as a timeout or SERVFAIL does. */
+            job.found = 0;
+            job.transient = 1;
+        }
+        else
+        {
+            rc = getnameinfo( (struct sockaddr *) &job.addr, job.len,
+                              job.host, sizeof(job.host), NULL, 0, NI_NAMEREQD );
+            job.found = rc == 0;
+            job.transient = !job.found && dns_transient( rc );
+            if ( job.found && job.check )
+                job.confirmed = dns_leads_back( &job, &job.transient );
+        }
+        if ( !job.found )
+            job.host[0] = '\0';
         took = dns_now_ms() - began;
 
         pthread_mutex_lock( &dns_lock );
@@ -135,7 +175,10 @@ static void *dns_worker( void *unused )
         dns_stats.total_ms += took;
         if ( took > dns_stats.slowest_ms )
             dns_stats.slowest_ms = took;
-        if ( job.found && job.check )
+        /* The guard's lookups are answered whatever came of them: a lookup
+           that found nothing, or failed, says so -- or the guard would wait
+           on it for six hours (review, 2026-11-24). */
+        if ( job.check )
         {
             if ( dns_checked_count < DNS_QUEUE_MAX )
                 dns_checked[dns_checked_count++] = job;
@@ -161,6 +204,11 @@ static int dns_start( void )
         dns_delay_ms = strtol( delay, NULL, 10 );
     if ( dns_delay_ms < 0 || dns_delay_ms > 60000 )
         dns_delay_ms = 0;
+    delay = getenv( "TOC_DNS_CHECK_FAILS" );
+    if ( delay != NULL )
+        dns_check_fails = strtol( delay, NULL, 10 );
+    if ( dns_check_fails < 0 || dns_check_fails > 1000 )
+        dns_check_fails = 0;
     dns_started = -1;
     if ( pthread_attr_init( &attr ) != 0 )
         return 0;
@@ -215,11 +263,11 @@ int dns_async_check( const struct sockaddr *addr, socklen_t len )
     return dns_queue( 0, addr, len, 1 );
 }
 
-int dns_async_take_checked( struct sockaddr_storage *addr, char *host, size_t size, int *confirmed )
+int dns_async_take_checked( struct sockaddr_storage *addr, char *host, size_t size, int *outcome )
 {
     int taken = 0;
 
-    if ( dns_started <= 0 || addr == NULL || host == NULL || size == 0 || confirmed == NULL )
+    if ( dns_started <= 0 || addr == NULL || host == NULL || size == 0 || outcome == NULL )
         return 0;
     pthread_mutex_lock( &dns_lock );
     if ( dns_checked_count > 0 )
@@ -227,7 +275,10 @@ int dns_async_take_checked( struct sockaddr_storage *addr, char *host, size_t si
         *addr = dns_checked[0].addr;
         strncpy( host, dns_checked[0].host, size - 1 );
         host[size - 1] = '\0';
-        *confirmed = dns_checked[0].confirmed;
+        *outcome = dns_checked[0].transient ? DNS_CHECK_RETRY
+                 : !dns_checked[0].found     ? DNS_CHECK_NO_NAME
+                 : dns_checked[0].confirmed  ? DNS_CHECK_CONFIRMED
+                 : DNS_CHECK_UNCONFIRMED;
         memmove( &dns_checked[0], &dns_checked[1],
                  sizeof(DNS_JOB) * (size_t) ( dns_checked_count - 1 ) );
         dns_checked_count--;

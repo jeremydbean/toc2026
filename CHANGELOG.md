@@ -8,6 +8,27 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 
+### 2026-11-24 -- restore, DNS and wrap review
+
+- *Restores fail closed.* `deploy/toc-restore-state` run on its own is live
+  (lock, game stopped) unless `TOC_RESTORE_LIVE=0`, which is refused for the
+  live tree; the old tree is moved to a pre-restore name that is free, never
+  into one that exists; both scripts check free space for what they stage
+  plus a 512M reserve (exit 5); a bare-host restore proves the game and the
+  backup units running and enabled (`deploy/toc-restore-verify`) or exits 4
+  saying so.
+- *A resolver hiccup no longer costs an uptime monitor six hours.* Every
+  name check the connection guard asks is answered, a failed one too; a
+  lookup the resolver failed or that was lost is asked again after five
+  minutes, a real answer after six hours; an address refused for a flood
+  is asked as a paused one is. Forward confirmation is unchanged.
+- *Text boxes wrap by what shows.* A raw colour marker no longer counts two
+  columns or gets cut from its slot byte (`tests/test_textbox.c`).
+- *The sync's second round finds itself* when started by a relative path.
+- *Questor Thews's patter is out of the website's chat log.* The game no
+  longer journals a questmaster's says (415 of the 416 says there), and the
+  website hides the ones already in the file. Other NPCs' says are kept.
+
 - **The connection guard lets UptimeRobot in, and holds repeat scanners
   for longer (2026-11-24).** UptimeRobot's checkers were 30 of the 34
   untrusted addresses that kept coming back; each silent port check was a

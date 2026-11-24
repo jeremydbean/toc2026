@@ -8248,6 +8248,58 @@ can report as the game being down. The rest were a dozen or so scanners
 - Player addresses are untouched: a trusted address (a login in 90 days)
   is still never paused.
 
+## Restore, Guard DNS And Wrap Review, 2026-11-24
+
+Second review of 40e40712..b9035602. Confirmed and fixed, each with a test
+that fails on the old code:
+
+- **`deploy/toc-restore-state` defaulted to not live.** Run by hand into
+  `/srv/toc/current` it swapped state with the game and sync running and no
+  lock. Now `TOC_RESTORE_LIVE` defaults to 1; `TOC_RESTORE_LIVE=0` is only
+  for `toc-restore`'s staging call and is refused when the target resolves
+  to `TOC_LIVE_TREE` (`/srv/toc/current`). Tests that stand in for the
+  staging call pass `TOC_RESTORE_LIVE=0` explicitly (`RestoreStateTests.restore`).
+- **Pre-restore names collided.** Both scripts named the aside by the second;
+  an existing one took the moved tree inside it. `toc-restore-state` makes
+  its aside with `mkdir` (no `-p`) and tries `-2`, `-3`...; `toc-restore`
+  picks a free name under the lock and checks the rename did not nest. A
+  rollback only moves back an aside this run made (`aside_made`).
+- **No free-space check.** Both now check `df -Pk` for what they will write
+  plus `TOC_RESTORE_RESERVE_MB` (512) and exit 5 before stopping anything.
+- **Bare-host restore ignored enable failures.** `deploy/toc-restore-verify`
+  now proves the game and backup units active and enabled (exit 4,
+  "RESTORE NOT COMPLETE" otherwise). Keep the literal
+  `systemctl enable --now toc-auto-deploy.timer` line: `test_auto_deploy`
+  reads it.
+- **Guard DNS never retried.** `dnsasync.c` returned no answer for a check
+  that found no name, and `connguard.c` marked the address asked for six
+  hours on queueing. Now every check is answered with a `DNS_CHECK_*`
+  outcome (`dnsasync.h`); queueing holds `GUARD_NAME_RETRY` (5 min,
+  `TOC_GUARD_NAME_RETRY`), a real answer `GUARD_NAME_RECHECK` (6 h), and
+  `EAI_AGAIN`/`EAI_MEMORY`/`EAI_SYSTEM` count as transient. The flood paths
+  ask too. `TOC_DNS_CHECK_FAILS=N` makes the first N checks fail as a
+  timeout, for tests. Forward confirmation is unchanged.
+- **`tbox_bytes_for` counted raw `\x02` markers.** Text rows wrapped early
+  and could split a marker from its slot byte. Now it skips them as
+  `color_strlen` does; `tests/test_textbox.c` is a standalone harness
+  (textbox.c, color.c, dstring.c, string_safe.c and four stubs).
+- **The sync's second round used `$0`** after `cd`; started by a relative
+  path it could not re-open itself. It now re-runs `$SELF`, resolved at start.
+- Owner request, same day: a questmaster's (`ACT_QUESTM`, no descriptor)
+  says are not journaled, and `webadmin/server.py` hides `say` lines from
+  `QUIET_SPEAKERS` ("questor thews") already in `log/channels.tsv`.
+
+Reviewed, no bug found: the Hyrule knockdown change (a downed boss with a
+fighter set neither heals nor casts; out of the fight it heals as before),
+SCORE/COMPARE colour and widths (a box wider than 80 columns is possible
+with very long values: by design). Risks left, not bugs: `toc-restore-state`
+proves the game stopped through systemd only (a `merc` started by hand is
+not seen); the sync's round-two flock can lose to a child process still
+holding fd 9 (the save then waits for the timer); a periodic sync gives no
+zero-loss guarantee (`wiki/disaster-recovery.md`, "How near zero loss").
+The state-sync round tests (`test_a_save_after_the_copy_goes_round_again`
+and kin) fail on macOS before and after this change; they pass on Linux CI.
+
 ## Completion Standard
 
 A task is complete only when the requested behavior or documentation is

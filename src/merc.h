@@ -4312,7 +4312,7 @@ void  login_lock_success      args( ( DESCRIPTOR_DATA *d, CHAR_DATA *ch ) );
 bool  login_lock_lift         args( ( const NET_ADDR *a ) );
 void  login_lock_report       args( ( CHAR_DATA *ch ) );
 void  conn_guard_closed       args( ( DESCRIPTOR_DATA *d ) );
-void  conn_guard_name_checked args( ( const NET_ADDR *addr, const char *host, bool confirmed ) );
+void  conn_guard_name_checked args( ( const NET_ADDR *addr, const char *host, int outcome ) );
 const char *conn_guard_new_char args( ( DESCRIPTOR_DATA *d, const char *name, char *buf, size_t size ) );
 void  conn_guard_tick         args( ( void ) );
 void  conn_guard_boot         args( ( void ) );

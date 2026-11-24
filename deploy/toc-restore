@@ -44,9 +44,46 @@ say "restoring from $REPO ($BRANCH) into $TOC_PREFIX"
 # replaced only on request (TOC_RESTORE_REPLACE=1) and then moved aside
 # whole, never deleted.
 STAMP=$(date -u +%Y%m%d-%H%M%S)
+# The name the old tree will have, if it is free; the one it gets is chosen
+# at the swap (review, 2026-11-24: a pre-restore-<stamp> already there --
+# two restores in one second -- took the live tree *inside* it, and the
+# rollback then put back the wrong one).
 ASIDE="$TOC_PREFIX/pre-restore-$STAMP"
-STAGE="$TOC_PREFIX/.restore-stage-$STAMP"
+STAGE="$TOC_PREFIX/.restore-stage-$STAMP-$$"
+RESERVE_MB="${TOC_RESTORE_RESERVE_MB:-512}"
 held=""
+
+# Free space on the disk the game saves to, in K, against what is about to
+# be written there and TOC_RESTORE_RESERVE_MB kept for the game's own saves
+# (review, 2026-11-24: the restore built a second whole tree beside a game
+# still saving, and a disk it filled would have failed those saves).
+room_for() {
+    [ "${TOC_RESTORE_SPACE_CHECK:-1}" = 0 ] && return 0
+    free=$(df -Pk "$TOC_PREFIX" 2>/dev/null | awk 'NR == 2 {print $4}')
+    case "$free" in
+        ''|*[!0-9]*)
+            echo "   refusing: cannot tell the free space at $TOC_PREFIX ($2); $CURRENT is as it was" >&2
+            echo "   (TOC_RESTORE_SPACE_CHECK=0 skips the check, at your own risk)" >&2
+            return 1 ;;
+    esac
+    want=$(( $1 + RESERVE_MB * 1024 ))
+    if [ "$free" -lt "$want" ]; then
+        echo "   refusing: $2 needs ${1}K, and ${RESERVE_MB}M is kept free for the game's saves;" >&2
+        echo "   $TOC_PREFIX has ${free}K free. $CURRENT is as it was." >&2
+        return 1
+    fi
+}
+# A free name for the old tree: $1, else $1-2, $1-3, ... Under the lock (a
+# live restore) nothing else makes these, so the name stays free until the
+# rename; the rename is checked besides.
+free_name() {
+    n=1; p=$1
+    while [ -e "$p" ] || [ -L "$p" ]; do
+        n=$((n + 1)); p="$1-$n"
+        [ "$n" -le 1000 ] || return 1
+    done
+    printf '%s\n' "$p"
+}
 for d in player gods heroes log corpse; do
     if [ -d "$CURRENT/$d" ] && [ -n "$(ls -A "$CURRENT/$d" 2>/dev/null)" ]; then
         held="$held $d"
@@ -78,6 +115,7 @@ fi
 # ---------------------------------------------------------------- clone
 say "fetching the repository"
 mkdir -p "$TOC_PREFIX"
+room_for 0 "fetching" || exit 5
 if [ -d "$BUILD/.git" ]; then
     git -C "$BUILD" fetch --quiet origin "$BRANCH"
     git -C "$BUILD" reset --quiet --hard "origin/$BRANCH"
@@ -145,6 +183,10 @@ fi
 # into its place. A step that fails puts the old tree back and starts what
 # was running again.
 say "staging the new tree beside $CURRENT"
+# The staged tree is the checkout without .git: code and state, once each.
+whole=$(du -sk "$BUILD" 2>/dev/null | awk '{print $1}')
+dotgit=$(du -sk "$BUILD/.git" 2>/dev/null | awk '{print $1}')
+room_for $(( ${whole:-0} - ${dotgit:-0} )) "staging the new tree" || exit 5
 rm -rf "$STAGE"
 mkdir -p "$STAGE"
 abandon() { rm -rf "$STAGE"; echo "   $*; $CURRENT is as it was" >&2; exit 1; }
@@ -158,6 +200,8 @@ rsync -a --exclude '.git/' --exclude '/player/' --exclude '/gods/' --exclude '/h
 # before the helper existed, must still lay its state down this way.
 RESTORE_STATE="$(dirname "$0")/toc-restore-state"
 [ -f "$RESTORE_STATE" ] || RESTORE_STATE="$BUILD/deploy/toc-restore-state"
+VERIFY="$(dirname "$0")/toc-restore-verify"
+[ -f "$VERIFY" ] || VERIFY="$BUILD/deploy/toc-restore-verify"
 TOC_RESTORE_LIVE=0 sh "$RESTORE_STATE" "$BUILD" "$STAGE" ||
     abandon "laying the state into the staging tree failed"
 # corpse/ comes from git too since corpses are written down (corpses.c):
@@ -186,7 +230,11 @@ if [ "$DRILL" = 0 ]; then
         done
     fi
 fi
-resume() { for u in $stopped; do systemctl start "$u" || true; done; }
+resume() {
+    for u in $stopped; do
+        systemctl start "$u" || echo "   COULD NOT START $u again -- start it by hand" >&2
+    done
+}
 # What the old tree holds that the checkout does not -- the game's runtime
 # files under area/, a build's leftovers -- is kept, as the old rsync over
 # the live tree kept it; taken now, with the game stopped, so it is final.
@@ -199,20 +247,29 @@ if [ -d "$CURRENT" ] &&
     resume; abandon "carrying the old tree's runtime files across failed"
 fi
 say "swapping it in"
+aside_made=""
 if [ -e "$CURRENT" ]; then
+    ASIDE=$(free_name "$ASIDE") || { resume; abandon "no free name to move the old tree aside to"; }
     mv "$CURRENT" "$ASIDE" || { resume; abandon "moving the old tree aside failed"; }
+    # A name taken between the choice and the rename would have taken the
+    # tree inside it: then $CURRENT is still gone and $ASIDE/current holds it.
+    if [ -e "$CURRENT" ] || [ -e "$ASIDE/$(basename "$CURRENT")/player" ]; then
+        [ -e "$CURRENT" ] || mv "$ASIDE/$(basename "$CURRENT")" "$CURRENT"
+        resume; abandon "the old tree did not move aside to a name of its own"
+    fi
+    aside_made=1
 fi
 if ! mv "$STAGE" "$CURRENT"; then
-    [ -e "$ASIDE" ] && mv "$ASIDE" "$CURRENT"
+    [ -n "$aside_made" ] && mv "$ASIDE" "$CURRENT"
     resume; abandon "moving the new tree in failed; the old one is back"
 fi
-if [ -d "$ASIDE/backups" ]; then
+if [ -n "$aside_made" ] && [ -d "$ASIDE/backups" ]; then
     rmdir "$CURRENT/backups" 2>/dev/null || true
     mv "$ASIDE/backups" "$CURRENT/backups" ||
         echo "   WARN: the game's own archives stayed at $ASIDE/backups" >&2
 fi
 mkdir -p "$CURRENT/backups"
-[ -e "$ASIDE" ] && echo "   the old tree is at $ASIDE (nothing deleted)"
+[ -n "$aside_made" ] && echo "   the old tree is at $ASIDE (nothing deleted)"
 echo "   $(find "$CURRENT/player" -mindepth 1 -maxdepth 1 -type f | wc -l | tr -d ' ') characters, $(ls "$CURRENT/heroes" | wc -l | tr -d ' ') heroes in place"
 
 # On a host whose units are already installed and wired -- a restore of
@@ -225,6 +282,12 @@ if [ "$DRILL" = 0 ] && [ "${TOC_RESTORE_SKIP_SERVICES:-0}" = 1 ]; then
         chown -R toc:toc "$CURRENT"      # the game runs as toc and must write it
     fi
     resume
+    # Started is not running: prove it, or say so (review, 2026-11-24).
+    if [ -n "$stopped" ] && ! sh "$VERIFY" --active-only $stopped; then
+        say "RESTORE NOT COMPLETE -- the tree is restored, but what was running is not running again"
+        echo "   see above; the old tree is at $ASIDE" >&2
+        exit 4
+    fi
     say "done -- the tree is restored and what was running is started again"
     exit 0
 fi
@@ -290,16 +353,22 @@ fi
 
 chown -R toc:toc "$TOC_PREFIX" /var/log/toc /var/backups/toc
 
-systemctl daemon-reload || true
+# Review, 2026-11-24: every enable here ended `|| true` and the script said
+# the game was up whatever happened. A failure is now kept, and the game and
+# the backup units are proved active at the end, or the restore says it is
+# not complete and exits 4.
+not_enabled=""
+systemctl daemon-reload || not_enabled="$not_enabled (daemon-reload)"
 # Enabled, not just started: the game has to come back on its own after a
 # crash (Restart=always) and after a reboot (enabled). The recovery timer
 # is the backstop if it ever crash-loops past systemd's start limit.
-systemctl enable --now toc-game.service toc-web.service 2>/dev/null || true
-systemctl enable --now toc-state-sync.timer toc-state-sync.path toc-state-sync-check.timer toc-game-recovery.timer 2>/dev/null || true
+systemctl enable --now toc-game.service toc-web.service || not_enabled="$not_enabled toc-game.service/toc-web.service"
+systemctl enable --now toc-state-sync.timer toc-state-sync.path toc-state-sync-check.timer toc-game-recovery.timer ||
+    not_enabled="$not_enabled the-backup-units"
 # The admin website's maintenance actions (deploy/windows-vm/toc-host-action):
 # results in root's directory, readable by the dashboard's group.
 install -d -m 0750 -o root -g toc /var/lib/toc-host-actions 2>/dev/null || true
-systemctl enable --now toc-host-action.path 2>/dev/null || true
+systemctl enable --now toc-host-action.path || not_enabled="$not_enabled toc-host-action.path"
 # The restore is the first deploy: record it, so toc-auto-deploy has a
 # live commit to compare main against, then let it take over.
 printf '%s %s\n' "$(git -C "$BUILD" rev-parse HEAD)" \
@@ -310,12 +379,25 @@ printf '%s %s\n' "$(git -C "$BUILD" rev-parse HEAD)" \
 printf '%s %s\n' "$(git -C "$BUILD" rev-parse HEAD)" \
     "$(sha256sum "$TOC_PREFIX/current/merc" 2>/dev/null | cut -d' ' -f1)" \
     > "$TOC_PREFIX/current/.code-revision" 2>/dev/null || true
-systemctl enable --now toc-auto-deploy.timer 2>/dev/null || true
+systemctl enable --now toc-auto-deploy.timer || not_enabled="$not_enabled toc-auto-deploy.timer"
 # The operations summary and heartbeat.
-systemctl enable --now toc-heartbeat.timer 2>/dev/null || true
+systemctl enable --now toc-heartbeat.timer || not_enabled="$not_enabled toc-heartbeat.timer"
 # Every support unit, proved loaded from what was just installed.
 sh "$BUILD/deploy/windows-vm/toc-install-units" "$BUILD/deploy/windows-vm" ||
     echo "   WARN: support units not verified; run toc-ops-summary" >&2
+
+# The game and the backups must be running: a restore that brings back a
+# game nobody can reach, or one whose saves never reach GitHub again, is
+# not done. The rest are wanted, and named if they are not.
+[ -n "$not_enabled" ] && echo "   systemctl enable failed for:$not_enabled" >&2
+if ! sh "$VERIFY" toc-game.service toc-state-sync.timer toc-state-sync.path \
+        toc-state-sync-check.timer toc-game-recovery.timer \
+        -- toc-web.service toc-auto-deploy.timer toc-heartbeat.timer toc-host-action.path; then
+    say "RESTORE NOT COMPLETE -- the tree is in place, but the units named above are not running"
+    echo "   Fix what journalctl -u <unit> says, then: systemctl enable --now <unit>." >&2
+    echo "   The old tree, if there was one, is at $ASIDE." >&2
+    exit 4
+fi
 
 cat <<'NOTE'
 

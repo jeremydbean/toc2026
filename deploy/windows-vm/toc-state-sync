@@ -151,10 +151,14 @@ on_exit() {
         TOC_SYNC_ROUND=$((${SYNC_ROUND:-1} + 1))
         export TOC_SYNC_ROUND
         sleep "${SYNC_DEBOUNCE:-3}"
-        exec sh "$0"
+        exec sh "$SELF"
     fi
 }
 trap on_exit EXIT
+# This script by an absolute path, for the next round: it cd's into its
+# clone before it ends, so a relative "$0" -- `sh windows-vm/toc-state-sync`
+# -- no longer named it there (review, 2026-11-24).
+SELF=$(cd "$(dirname "$0")" && pwd -P)/$(basename "$0")
 SYNC_ROUND=${TOC_SYNC_ROUND:-1}
 SYNC_MAX_ROUNDS=${TOC_SYNC_MAX_ROUNDS:-3}
 SYNC_DEBOUNCE=${TOC_SYNC_DEBOUNCE:-3}

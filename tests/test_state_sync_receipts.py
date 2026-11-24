@@ -353,6 +353,19 @@ exit $rc
         self.assertEqual(copies.read_text().count("x"), 2, "one more round, no more")
         self.assertIn(self.attempt()["result"], ("ok", "nochange"))
 
+    def test_a_run_started_by_a_relative_path_still_goes_round_again(self) -> None:
+        """Review, 2026-11-24: the second round was `exec sh "$0"` after the
+        script had cd'd into its clone, so a run started as
+        `sh windows-vm/toc-state-sync` could not find itself again and the
+        late save was left for the timer, the run failing."""
+        self.save_during_copy(every=False)
+        done = subprocess.run(["sh", str(SYNC.relative_to(SYNC.parent.parent))],
+                              cwd=str(SYNC.parent.parent), env=self.env,
+                              capture_output=True, text=True, timeout=120)
+        self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
+        self.assertIn("going round again", done.stdout)
+        self.assertIn("player/Zlate1", self.remote_files())
+
     def test_a_game_saving_without_pause_is_left_to_the_timer(self) -> None:
         copies = self.save_during_copy(every=True)
         done = self.sync()
