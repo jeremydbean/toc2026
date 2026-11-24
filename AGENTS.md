@@ -8377,6 +8377,31 @@ scaled to the player with scaled gear, and funny. All in `src/disaster.c`:
 - Tests: `tests/test_giant_turkey.py` (`TOC_TURKEY=on` runs visits in a test
   world). HELP 'GIANT TURKEY' in `area/commands.are`.
 
+## Turkey Durability, Backups As toc, The CMake Game, 2026-11-24
+
+Fourth review (74298b64..85f7731e), each reproduced with synthetic state
+first, with a test that fails on the old code:
+
+- **The turkey's visit is saved when it lands** (`dragon_snatch` calls
+  `save_char_obj`): a SIGKILL a second after the visit used to lose
+  `turkey_year` and give a second visit. `save_char_obj` writes a temp
+  file, `durable_close`s it and renames it, so a failed save leaves the old
+  file; the failure is logged and the next autosave records it.
+- **A staff turkey is a show**: `DISASTER DRAGON <player>` in season uses up
+  nobody's visit, so its kill now gives only the plate of roast turkey --
+  no hoard, no purse, no gear (`show` in `disaster_dragon_slain`). The
+  dragon's own staff path still pays its hoard, as before.
+- **Backups are verified as the sync is run**: `toc-restore-verify --as
+  toc --home DIR` (root asks through `runuser`, with the sync's own ssh
+  options), and `--sync-receipts DIR --since EPOCH` verifies only by a
+  `last-success` receipt written since the restore began; push access
+  alone is reported as push access. `toc-restore` runs one sync
+  (`sync_once`) before judging, on the bare-host path and the
+  `TOC_RESTORE_SKIP_SERVICES=1` path alike (exit 6 when not verified).
+  Its swap tests opt out with `TOC_RESTORE_BACKUP_CHECK=0`.
+- **A hand-started game is `merc` or `rom`** (the CMake build's `bin/rom`)
+  in both restore scripts' `/proc` check.
+
 ## Completion Standard
 
 A task is complete only when the requested behavior or documentation is

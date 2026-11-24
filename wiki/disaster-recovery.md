@@ -468,8 +468,8 @@ Second review, 2026-11-24 -- what else a restore now refuses or proves:
   (`TOC_LIVE_TREE`, `/srv/toc/current`, symlinks resolved).
 
 - **A game systemd did not start is seen too** (third review, 2026-11-24).
-  Both scripts read `/proc` for a process named `merc` working in the
-  tree: `toc-restore-state` refuses (exit 2), `toc-restore` puts the old
+  Both scripts read `/proc` for a process named `merc` -- or `rom`, the
+  CMake build's `bin/rom` (fourth review) -- working in the tree: `toc-restore-state` refuses (exit 2), `toc-restore` puts the old
   tree back and starts again what it stopped. A host with no `/proc` is not
   checked this way -- stop any hand-started game yourself.
 - **The game running and backups reaching GitHub are two verdicts.** A
@@ -478,14 +478,24 @@ Second review, 2026-11-24 -- what else a restore now refuses or proves:
   `REMOTE BACKUPS:` lines: the second is *verified* only when the key at
   `/srv/toc/.ssh/id_ed25519_state_sync` is readable and a dry-run push with
   it is accepted (GitHub refuses a read-only key there, so this proves
-  write access without writing). Otherwise the restore says
+  write access without writing) -- both as `toc`, with `HOME=/srv/toc`
+  and the sync's own ssh options, as `toc-state-sync.service` runs (fourth
+  review: as root, a key or `known_hosts` only root had passed) -- **and**
+  a sync has reached GitHub since the restore began: the restore runs one
+  and reads its `last-success` receipt in `/var/lib/toc-state-sync`. Push
+  access without that is reported as push access, not as a backup. A
+  restore on a running host (`TOC_RESTORE_SKIP_SERVICES=1`) is judged the
+  same way. Otherwise the restore says
   **GAME RUNNING, BACKUPS NOT VERIFIED** and exits 6. After putting the key
   in place, check again:
 
   ```bash
+  sudo systemctl start toc-state-sync.service
   sudo sh /srv/toc/build/deploy/toc-restore-verify \
       --backup-key /srv/toc/.ssh/id_ed25519_state_sync \
-      --backup-remote git@github.com:jeremydbean/toc2026.git toc-game.service
+      --backup-remote git@github.com:jeremydbean/toc2026.git \
+      --as toc --home /srv/toc --sync-receipts /var/lib/toc-state-sync \
+      --since "$(date -d '10 minutes ago' +%s)" toc-game.service
   ```
 
 Exit codes: 0 done (and, on a bare host, backups verified), 1 failed with

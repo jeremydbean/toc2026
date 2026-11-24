@@ -44,6 +44,7 @@ say "restoring from $REPO ($BRANCH) into $TOC_PREFIX"
 # replaced only on request (TOC_RESTORE_REPLACE=1) and then moved aside
 # whole, never deleted.
 STAMP=$(date -u +%Y%m%d-%H%M%S)
+RESTORE_BEGAN=$(date +%s)
 # The name the old tree will have, if it is free; the one it gets is chosen
 # at the swap (review, 2026-11-24: a pre-restore-<stamp> already there --
 # two restores in one second -- took the live tree *inside* it, and the
@@ -83,15 +84,18 @@ canonical() {
 # Games running from a tree that systemd does not know of -- a merc started
 # by hand in its area/ (review, 2026-11-24, third: only toc-game.service was
 # asked, and a hand-started game saves over a restore just the same). Reads
-# /proc (TOC_PROC, for the tests): each process named merc whose working
-# directory is the tree or under it. Prints their pids; nothing where there
+# /proc (TOC_PROC, for the tests): each process named merc or rom (the
+# CMake build) whose working directory is the tree or under it. Prints their pids; nothing where there
 # is no /proc to read, which is a limit: such a host is not checked.
 games_running_in() {
     proc=${TOC_PROC:-/proc}
     [ -d "$proc" ] || return 0
     tree=$(canonical "$1")
     for p in "$proc"/[0-9]*; do
-        [ "$(cat "$p/comm" 2>/dev/null)" = merc ] || continue
+        # merc from the Makefile, rom from the CMake build (bin/rom): both
+        # save into the tree they run in (review, 2026-11-24).
+        name=$(cat "$p/comm" 2>/dev/null) || continue
+        case "$name" in merc|rom) ;; *) continue ;; esac
         cwd=$(readlink "$p/cwd" 2>/dev/null) || continue
         [ -d "$cwd" ] && cwd=$(cd "$cwd" 2>/dev/null && pwd -P)
         case "$cwd/" in "$tree"/*) printf '%s ' "$(basename "$p")" ;; esac
@@ -226,6 +230,27 @@ RESTORE_STATE="$(dirname "$0")/toc-restore-state"
 [ -f "$RESTORE_STATE" ] || RESTORE_STATE="$BUILD/deploy/toc-restore-state"
 VERIFY="$(dirname "$0")/toc-restore-verify"
 [ -f "$VERIFY" ] || VERIFY="$BUILD/deploy/toc-restore-verify"
+# The verdict on the units and on the backups (review, 2026-11-24, fourth):
+# the backups judged as toc-state-sync.service runs -- user toc, HOME the
+# prefix -- by a sync that has reached GitHub since this restore began,
+# not by push access alone. sync_once runs one, as the timer would.
+# TOC_RESTORE_BACKUP_CHECK=0 leaves the backups out (tests of other things).
+verify_all() {
+    if [ "${TOC_RESTORE_BACKUP_CHECK:-1}" = 0 ]; then
+        sh "$VERIFY" "$@"
+    else
+        sh "$VERIFY" --backup-key "${GIT_SSH_KEY:-$TOC_PREFIX/.ssh/id_ed25519_state_sync}" \
+            --backup-remote "${TOC_STATE_REMOTE:-git@github.com:jeremydbean/toc2026.git}" \
+            --as toc --home "$TOC_PREFIX" \
+            --sync-receipts "${TOC_SYNC_STATE_DIR:-/var/lib/toc-state-sync}" \
+            --since "$RESTORE_BEGAN" "$@"
+    fi
+}
+sync_once() {
+    [ "${TOC_RESTORE_BACKUP_CHECK:-1}" = 0 ] && return 0
+    echo "   running one state sync, to prove the backups reach GitHub..."
+    systemctl start toc-state-sync.service >/dev/null 2>&1 || true
+}
 TOC_RESTORE_LIVE=0 sh "$RESTORE_STATE" "$BUILD" "$STAGE" ||
     abandon "laying the state into the staging tree failed"
 # corpse/ comes from git too since corpses are written down (corpses.c):
@@ -262,7 +287,7 @@ resume() {
 # A game systemd did not start would still be saving into $CURRENT.
 running=$(games_running_in "$CURRENT")
 if [ -n "$running" ]; then
-    resume; abandon "a game is running from $CURRENT that systemd did not start (merc, pid $running); stop it first"
+    resume; abandon "a game is running from $CURRENT that systemd did not start (merc or rom, pid $running); stop it first"
 fi
 # What the old tree holds that the checkout does not -- the game's runtime
 # files under area/, a build's leftovers -- is kept, as the old rsync over
@@ -311,13 +336,23 @@ if [ "$DRILL" = 0 ] && [ "${TOC_RESTORE_SKIP_SERVICES:-0}" = 1 ]; then
         chown -R toc:toc "$CURRENT"      # the game runs as toc and must write it
     fi
     resume
-    # Started is not running: prove it, or say so (review, 2026-11-24).
-    if [ -n "$stopped" ] && ! sh "$VERIFY" --active-only $stopped; then
+    # Started is not running: prove it, or say so (review, 2026-11-24) --
+    # and the backups too: the restored state is only safe once a sync has
+    # carried it to GitHub (review, 2026-11-24, fourth).
+    sync_once
+    verified=0
+    verify_all --active-only $stopped || verified=$?
+    if [ "$verified" != 0 ] && [ "$verified" != 3 ]; then
         say "RESTORE NOT COMPLETE -- the tree is restored, but what was running is not running again"
         echo "   see above; the old tree is at $ASIDE" >&2
         exit 4
     fi
-    say "done -- the tree is restored and what was running is started again"
+    if [ "$verified" = 3 ]; then
+        say "GAME RUNNING, BACKUPS NOT VERIFIED -- the tree is restored and running, but no"
+        echo "   state sync has reached GitHub since; see above. The old tree is at $ASIDE." >&2
+        exit 6
+    fi
+    say "done -- the tree is restored, what was running is started again, and backups verified"
     exit 0
 fi
 
@@ -423,9 +458,8 @@ sh "$BUILD/deploy/windows-vm/toc-install-units" "$BUILD/deploy/windows-vm" ||
 # are two verdicts. A fresh host has no deploy key, so its sync runs and
 # fails every minute; that is reported, not called done.
 verified=0
-sh "$VERIFY" --backup-key "${GIT_SSH_KEY:-$TOC_PREFIX/.ssh/id_ed25519_state_sync}" \
-        --backup-remote "${TOC_STATE_REMOTE:-git@github.com:jeremydbean/toc2026.git}" \
-        toc-game.service toc-state-sync.timer toc-state-sync.path \
+sync_once
+verify_all toc-game.service toc-state-sync.timer toc-state-sync.path \
         toc-state-sync-check.timer toc-game-recovery.timer \
         -- toc-web.service toc-auto-deploy.timer toc-heartbeat.timer toc-host-action.path ||
     verified=$?
@@ -460,9 +494,10 @@ NOTE
 
 if [ "$verified" = 3 ]; then
     say "GAME RUNNING, BACKUPS NOT VERIFIED -- the game is up and restarts itself, but its"
-    echo "   saves are not reaching GitHub: put the deploy key in place (above), then" >&2
-    echo "   run toc-state-sync-check, or this restore's check again:" >&2
-    echo "     sh $VERIFY --backup-key <key> --backup-remote <remote> toc-game.service" >&2
+    echo "   saves have not reached GitHub since the restore: put the deploy key in place" >&2
+    echo "   (above), run a sync (systemctl start toc-state-sync.service), then check:" >&2
+    echo "     sh $VERIFY --backup-key <key> --backup-remote <remote> --as toc --home $TOC_PREFIX \\" >&2
+    echo "        --sync-receipts /var/lib/toc-state-sync --since $RESTORE_BEGAN toc-game.service" >&2
     exit 6
 fi
 say "done -- game is up and self-restarting, and backups verified; see the manual steps above"

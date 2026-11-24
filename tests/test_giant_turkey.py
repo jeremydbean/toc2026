@@ -14,8 +14,10 @@ piece of its own gear made for their level. Synthetic characters only.
 """
 from __future__ import annotations
 
+import os
 import pathlib
 import re
+import signal
 import time
 import unittest
 
@@ -151,6 +153,60 @@ class TurkeyLiveTests(unittest.TestCase):
         self.assertEqual(log.count("Giant turkey: snatched"), 1)
         self.assertRegex(log, r"Giant turkey: slain by Zcarver, dropping [^\n]*(Drumstick|gravy|"
                               r"turkey feathers|Wishbone|Wattle)")
+
+    def test_a_crash_right_after_the_visit_does_not_bring_a_second(self) -> None:
+        """Review, 2026-11-24: turkey_year was set when the turkey came but
+        not saved until the next autosave, up to a minute or more later; a
+        crash in that window, and the restored character was visited again
+        that holiday. It is saved at once -- save_char_obj writes a temp
+        file, flushes it and renames it, so a failed save leaves the old
+        file as it was."""
+        with LiveMud(extra_env=self.ENV) as mud:
+            make(mud, "Zgobble", Levl=45, Room=SQUARE)
+            with mud.connect(timeout=120) as prey:
+                login(prey, "Zgobble", PW)
+                self.assertTrue(wait_for(prey, "GOBBLE GOBBLE GOBBLE", 40), prey.transcript[-1500:])
+                # At once: well inside any autosave's tick.
+                os.kill(mud.proc.pid, signal.SIGKILL)
+                mud.proc.wait(timeout=15)
+            saved = (mud.player_dir / "Zgobble").read_text(encoding="latin-1")
+            self.assertRegex(saved, r"\nTurkey 20\d\d\n", "the visit was on the disk before the crash")
+            mud.restart()
+            with mud.connect(timeout=120) as prey:
+                login(prey, "Zgobble", PW)
+                prey.drain(25.0)
+                self.assertNotIn("GOBBLE GOBBLE GOBBLE", prey.transcript, "no second visit")
+
+    def test_a_staff_turkey_is_a_show_with_no_feast(self) -> None:
+        """Review, 2026-11-24: DISASTER DRAGON <player> does not use up the
+        player's visit -- it is staff showing it off -- but its kill still
+        paid coin and scaled gear, so it could be called again and again
+        for loot. A staff turkey is a show: dinner, and nothing else."""
+        env = dict(self.ENV, TOC_TURKEY="off")
+        with LiveMud(extra_env=env, fixtures=True) as mud:
+            make(mud, "Zcarver", Levl=70, Room=TEMPLE)
+            make(mud, "Zgobble", Levl=45, Room=SQUARE)
+            with mud.connect(timeout=120) as imm, mud.connect(timeout=120) as prey:
+                login(imm, "Zcarver", PW)
+                login(prey, "Zgobble", PW)
+                imm.sync("holylight")
+                for _ in range(2):
+                    self.assertIn("Done.", imm.sync("disaster dragon zgobble"))
+                    self.assertTrue(wait_for(prey, "GOBBLE GOBBLE GOBBLE", 5))
+                    imm.sync("goto zgobble")
+                    imm.must(f"transfer turkey {QUIET_ROOM}", "Ok.")
+                    imm.must(f"goto {QUIET_ROOM}", "Sparring Floor")
+                    slain = imm.sync("slay turkey")
+                    corpse = imm.sync("look in corpse")
+                    self.assertIn("plate of roast turkey", corpse)
+                    self.assertFalse([s for s in GEAR if s in corpse], corpse)
+                    self.assertNotRegex(corpse.lower(), r"coins?\b|platinum|gold coin")
+                    self.assertIn("only dinner", slain)
+                    imm.sync("purge")
+                    imm.must(f"transfer zgobble {SQUARE}", "Ok.")
+                    prey.transcript = ""
+            log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
+        self.assertEqual(log.count("a staff demonstration: no feast"), 2)
 
     def test_out_of_the_holiday_it_is_the_dragon(self) -> None:
         env = dict(self.ENV, TOC_SEASON="none")

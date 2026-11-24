@@ -8,6 +8,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 
+### 2026-11-24 -- turkey durability, backup verdicts, the CMake game
+
+- The turkey's once-a-holiday visit is saved the moment it lands, so a
+  crash cannot give a second; a staff-called turkey drops only dinner.
+- A restore verifies backups as the sync runs them (user toc, its HOME) and
+  by a sync that has reached GitHub since the restore began -- on a running
+  host too -- rather than by push access alone.
+- The restore scripts' check for a hand-started game knows `bin/rom`.
+- The website's player search finds archived characters, marked archived.
+
 ### 2026-11-24 -- the giant turkey of Pilgrim's Bounty
 
 - In Thanksgiving week the black dragon is a giant turkey that comes for

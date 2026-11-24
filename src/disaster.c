@@ -897,6 +897,18 @@ static bool dragon_snatch( AREA_DATA *area, CHAR_DATA *named, CHAR_DATA *staff )
 
             holiday_date( &year, &mon, &day );
             prey->pcdata->turkey_year = year;
+            /* On the disk now, not at the next autosave a minute or more
+               away: a crash in between gave the restored character a
+               second visit (review, 2026-11-24). save_char_obj writes a
+               temp file, flushes it and renames it over the old one, so a
+               save that fails leaves the old file as it was -- and the
+               autosave tries again. */
+            if ( !save_char_obj( prey ) )
+            {
+                snprintf( buf, sizeof(buf), "Giant turkey: %s's visit could not be saved yet; "
+                          "the next save records it.", prey->name );
+                log_string( buf );
+            }
         }
     }
     else
@@ -994,9 +1006,25 @@ void disaster_dragon_slain( CHAR_DATA *ch, CHAR_DATA *drake )
     const char *gear, *rare = NULL;
     long per_kill, hoard;
     int level = dragon_prey_level > 0 ? dragon_prey_level : drake->level - 2;
+    /* A turkey staff called up (DISASTER DRAGON <player>) uses up nobody's
+       visit, so it carries nothing worth having: it could be called again
+       and again for its gear (review, 2026-11-24). Dinner only. */
+    bool show = drake == dragon && dragon_is_turkey && dragon_by_staff;
 
     if ( who != NULL && IS_NPC(who) && who->master != NULL )
         who = who->master;
+    if ( show )
+    {
+        drake->new_platinum = drake->new_gold = drake->new_silver = drake->new_copper = 0;
+        dragon_hoard_item( drake, OBJ_VNUM_ROAST_TURKEY );
+        act( "$n topples over with one last, mournful GOBBLE. It was only a show: it was "
+             "carrying only dinner.", drake, NULL, NULL, TO_ROOM );
+        snprintf( buf, sizeof(buf), "Giant turkey: slain by %s (a staff demonstration: no feast).",
+                  who == NULL ? "nothing" : IS_NPC(who) ? who->short_descr : who->name );
+        log_string( buf );
+        turkey_next = current_time + turkey_number( "TOC_TURKEY_GAP", TURKEY_GAP );
+        return;
+    }
     per_kill = black_market_kill_value( level );
     hoard = per_kill > LONG_MAX / ( 2 * DRAGON_HOARD_KILLS )
           ? LONG_MAX / 2 : DRAGON_HOARD_KILLS * per_kill;

@@ -3,7 +3,8 @@
 # (review, 2026-11-24: toc-restore enabled every unit with `|| true` and
 # announced a running game whatever had happened).
 #
-#   toc-restore-verify [--active-only] [--backup-key KEY --backup-remote URL]
+#   toc-restore-verify [--active-only] [--backup-key KEY --backup-remote URL
+#                       [--as USER] [--home DIR] [--sync-receipts DIR --since EPOCH]]
 #                      REQUIRED... [-- WANTED...]
 #
 # Each REQUIRED unit must be active -- waited for up to
@@ -19,6 +20,17 @@
 # must be accepted -- GitHub refuses a read-only or unknown key at that
 # point, so write access is proved without writing anything.
 #
+# Review, 2026-11-24 (fourth): that check ran as the restore -- root -- and
+# toc-state-sync.service runs as toc, with HOME=/srv/toc: a key only root
+# could read, or a known_hosts only root had, passed here and failed every
+# real sync. Run as root, the key is read and the push tried as --as (toc
+# when that user exists) with --home as HOME and the sync's own ssh
+# options. And push access is not a backup: with --sync-receipts (the
+# sync's TOC_SYNC_STATE_DIR) remote backups are verified only by a
+# last-success receipt written at or after --since -- a sync that really
+# reached GitHub since the restore began. Without it the verdict says push
+# access only.
+#
 # Exit 0 when every required unit is running and, if asked, remote backups
 # are verified; 1 when a required unit is not (each named on stderr); 3
 # when the units are but remote backups are not verified. The last lines
@@ -28,11 +40,19 @@ set -u
 active_only=0
 backup_key=""
 backup_remote=""
+as_user=""
+as_home=""
+receipts=""
+since=0
 while :; do
     case "${1:-}" in
         --active-only) active_only=1; shift ;;
         --backup-key) backup_key=${2:-}; shift 2 ;;
         --backup-remote) backup_remote=${2:-}; shift 2 ;;
+        --as) as_user=${2:-}; shift 2 ;;
+        --home) as_home=${2:-}; shift 2 ;;
+        --sync-receipts) receipts=${2:-}; shift 2 ;;
+        --since) since=${2:-0}; shift 2 ;;
         *) break ;;
     esac
 done
@@ -84,27 +104,61 @@ else
 fi
 [ -z "$backup_key" ] && exit $bad
 
+# Who the sync runs as. Root asks as that user; anyone else is asking as
+# themselves already (the tests, a drill).
+who=$(id -un 2>/dev/null || echo "uid $(id -u)")
+if [ "$(id -u)" = 0 ] && [ -z "$as_user" ] && id -u toc >/dev/null 2>&1; then
+    as_user=toc
+fi
+[ -n "$as_home" ] || as_home=${HOME:-/}
+as_service() {
+    if [ "$(id -u)" = 0 ] && [ -n "$as_user" ] && [ "$as_user" != root ]; then
+        command -v runuser >/dev/null 2>&1 || return 127
+        runuser -u "$as_user" -- env HOME="$as_home" "$@"
+    else
+        env HOME="$as_home" "$@"
+    fi
+}
+[ "$(id -u)" = 0 ] && [ -n "$as_user" ] && who=$as_user
+
 remote_ok=0
 why=""
-if [ ! -r "$backup_key" ]; then
-    why="no state-sync deploy key at $backup_key: every sync will fail until it is there"
+if ! as_service test -r "$backup_key" 2>/dev/null; then
+    why="no state-sync deploy key $who can read at $backup_key: every sync will fail until it is there"
 elif [ -z "$backup_remote" ]; then
     why="no remote to check the key against"
+elif ! probe=$(as_service mktemp -d "${TMPDIR:-/tmp}/toc-backup-probe.XXXXXX" 2>/dev/null); then
+    why="could not make a scratch repository as $who"
 else
-    probe=$(mktemp -d "${TMPDIR:-/tmp}/toc-backup-probe.XXXXXX")
-    if git -C "$probe" init -q 2>/dev/null &&
-       git -C "$probe" -c user.name=toc-restore -c user.email=toc-restore@localhost \
+    # The sync's own ssh options (toc-state-sync, GIT_SSH_COMMAND).
+    ssh_cmd="ssh -i $backup_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new -o BatchMode=yes -o ConnectTimeout=15 -o ServerAliveInterval=15 -o ServerAliveCountMax=4"
+    if as_service git -C "$probe" init -q 2>/dev/null &&
+       as_service git -C "$probe" -c user.name=toc-restore -c user.email=toc-restore@localhost \
            commit -q --allow-empty -m probe 2>/dev/null &&
-       out=$(GIT_SSH_COMMAND="ssh -i $backup_key -o IdentitiesOnly=yes -o BatchMode=yes -o ConnectTimeout=15 -o StrictHostKeyChecking=accept-new" \
+       out=$(as_service GIT_SSH_COMMAND="$ssh_cmd" \
              git -C "$probe" push --dry-run --quiet "$backup_remote" HEAD:refs/heads/toc-restore-probe 2>&1); then
         remote_ok=1
     else
-        why="the deploy key could not push to $backup_remote: $(printf '%s' "${out:-git failed}" | tr '\n' ' ' | cut -c1-200)"
+        why="the deploy key could not push to $backup_remote as $who: $(printf '%s' "${out:-git failed}" | tr '\n' ' ' | cut -c1-200)"
     fi
-    rm -rf "$probe"
+    as_service rm -rf "$probe" 2>/dev/null || rm -rf "$probe"
 fi
-if [ "$remote_ok" = 1 ]; then
-    echo "   REMOTE BACKUPS: verified -- the deploy key can push to $backup_remote"
+
+# A completed sync since the restore began, by its own receipt.
+receipt_value() { sed -n "s/^$1=//p" "$2" 2>/dev/null | head -1; }
+if [ "$remote_ok" = 1 ] && [ -n "$receipts" ]; then
+    done_at=$(receipt_value time "$receipts/last-success")
+    case "$done_at" in ''|*[!0-9]*) done_at=0 ;; esac
+    if [ "$done_at" -ge "$since" ] && [ "$done_at" -gt 0 ]; then
+        echo "   REMOTE BACKUPS: verified -- push access as $who, and a state sync reached GitHub at $(receipt_value time_utc "$receipts/last-success") ($(receipt_value remote_commit "$receipts/last-success" | cut -c1-12))"
+    else
+        attempt="$(receipt_value result "$receipts/last-attempt")"
+        [ -n "$attempt" ] && attempt="; the last attempt: $attempt, $(receipt_value reason "$receipts/last-attempt")"
+        echo "   REMOTE BACKUPS: NOT VERIFIED -- push access works as $who, but no state sync has reached GitHub since the restore began${attempt}" >&2
+        [ "$bad" = 0 ] && bad=3
+    fi
+elif [ "$remote_ok" = 1 ]; then
+    echo "   REMOTE BACKUPS: push access verified as $who -- no completed sync was checked"
 else
     echo "   REMOTE BACKUPS: NOT VERIFIED -- $why" >&2
     [ "$bad" = 0 ] && bad=3

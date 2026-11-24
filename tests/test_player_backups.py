@@ -502,6 +502,21 @@ class RestoreStateTests(unittest.TestCase):
         self.assertNotIn("7 ", done.stderr.split("pid", 1)[1].split(")")[0], "another tree's game is not this one")
         self.assertEqual(self.files(self.dst), before)
 
+    def test_the_cmake_build_is_a_game_too(self) -> None:
+        """Review, 2026-11-24: only a process named merc was looked for, and
+        the documented CMake build runs bin/rom, which saves to the same
+        tree."""
+        self.stale_install()
+        (self.dst / "area").mkdir()
+        before = self.files(self.dst)
+        proc = self.fake_proc(self.dst / "area", name="rom")
+        self.stub("systemctl", "exit 3")
+        done = self.restore(TOC_RESTORE_LIVE=None, TOC_RESTORE_REPLACE="1", TOC_PROC=str(proc),
+                            TOC_DEPLOY_LOCK=str(self.root / "deploy.lock"), TOC_RESTORE_LOCK_WAIT="1")
+        self.assertEqual(done.returncode, 2, done.stdout + done.stderr)
+        self.assertIn("pid 4242", done.stderr)
+        self.assertEqual(self.files(self.dst), before)
+
     def test_another_process_or_another_trees_game_is_not_refused(self) -> None:
         self.stale_install()
         (self.dst / "area").mkdir()
@@ -700,6 +715,8 @@ esac
                  TOC_PREFIX=str(self.prefix), TOC_DEPLOY_LOCK=str(self.lock), **env)
         if live:
             e.update(TOC_RESTORE_DRILL="0", TOC_RESTORE_SKIP_SERVICES="1")
+        # The backups' verdict has tests of its own below.
+        e.setdefault("TOC_RESTORE_BACKUP_CHECK", "0")
         return subprocess.run(["sh", str(self.SCRIPT)], env=e, capture_output=True,
                               text=True, timeout=120)
 
@@ -852,8 +869,62 @@ esac
         (proc / "4242" / "cwd").symlink_to(self.current / "area")
         before = self.files(self.current)
         done = self.restore(TOC_RESTORE_REPLACE="1", TOC_PROC=str(proc))
-        self.assertIn("that systemd did not start (merc, pid 4242", done.stderr)
+        self.assertIn("that systemd did not start (merc or rom, pid 4242", done.stderr)
         self.assert_old_tree_back(before, done)
+
+    def test_a_cmake_game_started_by_hand_stops_the_swap_too(self) -> None:
+        (self.current / "area").mkdir(exist_ok=True)
+        proc = self.root / "proc"
+        (proc / "4243").mkdir(parents=True)
+        (proc / "4243" / "comm").write_text("rom\n")
+        (proc / "4243" / "cwd").symlink_to(self.current / "area")
+        before = self.files(self.current)
+        done = self.restore(TOC_RESTORE_REPLACE="1", TOC_PROC=str(proc))
+        self.assertIn("that systemd did not start (merc or rom, pid 4243", done.stderr)
+        self.assert_old_tree_back(before, done)
+
+    def backup_setup(self, sync_writes_receipt: bool) -> dict:
+        """A key, a git whose push is accepted, and a systemctl whose start of
+        toc-state-sync.service writes (or does not) a last-success receipt."""
+        key = self.root / "key"
+        key.write_text("synthetic key\n")
+        receipts = self.root / "receipts"
+        receipts.mkdir()
+        (receipts / "last-success").write_text("time=1000\ntime_utc=1970-01-01T00:16:40Z\n")
+        (receipts / "last-attempt").write_text("result=failed\nreason=Permission denied (publickey)\n")
+        real_git = shutil.which("git")
+        (self.bin / "git").write_text(
+            '#!/bin/sh\nfor a in "$@"; do [ "$a" = push ] && exit 0; done\n'
+            f'exec {real_git} "$@"\n')
+        (self.bin / "git").chmod(0o755)
+        text = (self.bin / "systemctl").read_text()
+        if sync_writes_receipt:
+            text = text.replace(
+                "  start) ",
+                f'  start) [ "$2" = toc-state-sync.service ] && printf "time=%s\\ntime_utc=now\\n'
+                f'remote_commit=abcdef123456\\n" "$(date +%s)" > {receipts}/last-success && exit 0; ', 1)
+        (self.bin / "systemctl").write_text(text)
+        return dict(TOC_RESTORE_BACKUP_CHECK="1", GIT_SSH_KEY=str(key),
+                    TOC_STATE_REMOTE="git@example.invalid:x.git", TOC_SYNC_STATE_DIR=str(receipts))
+
+    def test_a_restore_on_a_running_host_judges_the_backups_too(self) -> None:
+        """Review, 2026-11-24 (fourth): TOC_RESTORE_SKIP_SERVICES=1 said done
+        with no word on the backups. The restored state is only safe once a
+        sync has carried it to GitHub: it runs one, and judges by its
+        receipt."""
+        done = self.restore(TOC_RESTORE_REPLACE="1", **self.backup_setup(sync_writes_receipt=True))
+        self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
+        self.assertIn("a state sync reached GitHub at now (abcdef123456)", done.stdout)
+
+    def test_push_access_without_a_sync_since_is_not_called_backed_up(self) -> None:
+        done = self.restore(TOC_RESTORE_REPLACE="1", **self.backup_setup(sync_writes_receipt=False))
+        self.assertEqual(done.returncode, 6, done.stdout + done.stderr)
+        self.assertIn("push access works", done.stderr)
+        self.assertIn("no state sync has reached GitHub since the restore began", done.stderr)
+        self.assertIn("Permission denied (publickey)", done.stderr, "the last attempt is named")
+        self.assertIn("GAME RUNNING, BACKUPS NOT VERIFIED", done.stdout)
+        self.assertTrue({"toc-game.service", "toc-web.service"} <= set(self.running.read_text().split()),
+                        "the game is up regardless")
 
     def test_a_game_that_does_not_come_back_is_not_called_done(self) -> None:
         # A start that does nothing: the unit stays down.
@@ -955,8 +1026,8 @@ class RestoreVerifyTests(unittest.TestCase):
                              "--backup-remote", "git@example.invalid:x.git", *self.REQUIRED)
         self.assertEqual(done.returncode, 3, done.stdout + done.stderr)
         self.assertIn("GAME: running", done.stdout)
-        self.assertIn("REMOTE BACKUPS: NOT VERIFIED -- no state-sync deploy key at /nonexistent/key",
-                      done.stderr)
+        self.assertRegex(done.stderr, r"REMOTE BACKUPS: NOT VERIFIED -- no state-sync deploy key "
+                                      r"\S+ can read at /nonexistent/key")
 
     def test_a_key_that_can_push_verifies_backups(self) -> None:
         with tempfile.NamedTemporaryFile() as key:
@@ -964,7 +1035,8 @@ class RestoreVerifyTests(unittest.TestCase):
                                  "--backup-remote", "git@example.invalid:x.git", *self.REQUIRED,
                                  push_rc=0)
         self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
-        self.assertIn("REMOTE BACKUPS: verified", done.stdout)
+        self.assertIn("REMOTE BACKUPS: push access verified", done.stdout)
+        self.assertIn("no completed sync was checked", done.stdout)
 
     def test_a_read_only_key_is_not_verified(self) -> None:
         with tempfile.NamedTemporaryFile() as key:
@@ -973,6 +1045,55 @@ class RestoreVerifyTests(unittest.TestCase):
                                  push_rc=1)
         self.assertEqual(done.returncode, 3, done.stdout + done.stderr)
         self.assertIn("marked as read only", done.stderr)
+
+    def test_run_as_root_it_asks_as_the_service_user(self) -> None:
+        """Review, 2026-11-24 (fourth): the probe ran as the restore, root,
+        and toc-state-sync.service runs as toc with HOME=/srv/toc. A key
+        that works for root and not for toc passed. Run as root, it now
+        reads the key and pushes through runuser as toc, with that HOME."""
+        with tempfile.TemporaryDirectory() as tmp, tempfile.NamedTemporaryFile() as key:
+            bin_ = pathlib.Path(tmp)
+            calls = bin_ / "runuser.calls"
+            # Root, a toc user, and a runuser that runs the rest as "toc".
+            (bin_ / "id").write_text('#!/bin/sh\ncase "$1" in -u) [ -n "$2" ] && exit 0; echo 0;; '
+                                     '-un) echo root;; esac\n')
+            (bin_ / "runuser").write_text(f'#!/bin/sh\necho "$*" >> {calls}\nshift 3\n'
+                                          'SIMULATED_USER=toc exec "$@"\n')
+            real_git = shutil.which("git")
+            # GitHub takes the key from root, not from toc (no known_hosts,
+            # say, or a key only root can read).
+            (bin_ / "git").write_text(
+                '#!/bin/sh\nfor a in "$@"; do if [ "$a" = push ]; then\n'
+                '  [ "$SIMULATED_USER" = toc ] && { echo "Host key verification failed." >&2; exit 128; }\n'
+                '  exit 0; fi; done\n'
+                f'exec {real_git} "$@"\n')
+            (bin_ / "systemctl").write_text("#!/bin/sh\nexit 0\n")
+            for f in bin_.iterdir():
+                f.chmod(0o755)
+            done = subprocess.run(
+                ["sh", str(self.SCRIPT), "--backup-key", key.name, "--backup-remote",
+                 "git@example.invalid:x.git", "--home", "/srv/toc", "toc-game.service"],
+                env=dict(os.environ, PATH=f"{bin_}:{os.environ['PATH']}", TOC_RESTORE_VERIFY_WAIT="1"),
+                capture_output=True, text=True, timeout=30)
+            ran = calls.read_text() if calls.exists() else ""
+        self.assertEqual(done.returncode, 3, done.stdout + done.stderr)
+        self.assertIn("could not push to git@example.invalid:x.git as toc", done.stderr)
+        self.assertIn("Host key verification failed", done.stderr)
+        self.assertIn("-u toc -- env HOME=/srv/toc", ran)
+
+    def test_a_stale_receipt_is_not_a_sync_since(self) -> None:
+        with tempfile.TemporaryDirectory() as receipts, tempfile.NamedTemporaryFile() as key:
+            pathlib.Path(receipts, "last-success").write_text("time=1000\ntime_utc=long ago\n")
+            args = ("--backup-key", key.name, "--backup-remote", "git@example.invalid:x.git",
+                    "--sync-receipts", receipts)
+            stale = self.run_with(self.REQUIRED, self.REQUIRED, *args, "--since", "2000",
+                                  *self.REQUIRED, push_rc=0)
+            fresh = self.run_with(self.REQUIRED, self.REQUIRED, *args, "--since", "999",
+                                  *self.REQUIRED, push_rc=0)
+        self.assertEqual(stale.returncode, 3, stale.stdout + stale.stderr)
+        self.assertIn("no state sync has reached GitHub since the restore began", stale.stderr)
+        self.assertEqual(fresh.returncode, 0, fresh.stdout + fresh.stderr)
+        self.assertIn("a state sync reached GitHub at long ago", fresh.stdout)
 
     def test_a_stopped_game_is_still_the_first_failure(self) -> None:
         done = self.run_with(["toc-state-sync.timer"], self.REQUIRED, "--backup-key",
@@ -992,9 +1113,10 @@ class RestoreVerifyTests(unittest.TestCase):
         services = source.split('say "wiring up the services"', 1)[1]
         self.assertNotRegex(services, r"enable --now[^\n]*\|\| true",
                             "an enable failure is never ignored")
-        self.assertIn("toc-game.service toc-state-sync.timer toc-state-sync.path", services)
+        self.assertIn("verify_all toc-game.service toc-state-sync.timer toc-state-sync.path", services)
         self.assertIn("exit 4", services)
-        self.assertLess(services.index('sh "$VERIFY"'), services.index('say "done -- game is up'))
+        self.assertLess(services.index("sync_once"), services.index("verify_all toc-game.service"))
+        self.assertLess(services.index("verify_all"), services.index('say "done -- game is up'))
 
 
 class PlayerHistoryToolTests(unittest.TestCase):

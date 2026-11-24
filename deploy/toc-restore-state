@@ -93,15 +93,18 @@ new_dir() {
 # Games running from a tree that systemd does not know of -- a merc started
 # by hand in its area/ (review, 2026-11-24, third: only toc-game.service was
 # asked, and a hand-started game saves over a restore just the same). Reads
-# /proc (TOC_PROC, for the tests): each process named merc whose working
-# directory is the tree or under it. Prints their pids; nothing where there
+# /proc (TOC_PROC, for the tests): each process named merc or rom (the
+# CMake build) whose working directory is the tree or under it. Prints their pids; nothing where there
 # is no /proc to read, which is a limit: such a host is not checked.
 games_running_in() {
     proc=${TOC_PROC:-/proc}
     [ -d "$proc" ] || return 0
     tree=$(canonical "$1")
     for p in "$proc"/[0-9]*; do
-        [ "$(cat "$p/comm" 2>/dev/null)" = merc ] || continue
+        # merc from the Makefile, rom from the CMake build (bin/rom): both
+        # save into the tree they run in (review, 2026-11-24).
+        name=$(cat "$p/comm" 2>/dev/null) || continue
+        case "$name" in merc|rom) ;; *) continue ;; esac
         cwd=$(readlink "$p/cwd" 2>/dev/null) || continue
         [ -d "$cwd" ] && cwd=$(cd "$cwd" 2>/dev/null && pwd -P)
         case "$cwd/" in "$tree"/*) printf '%s ' "$(basename "$p")" ;; esac
@@ -118,7 +121,7 @@ fi
 if [ "$LIVE" = 1 ]; then
     running=$(games_running_in "$DST")
     if [ -n "$running" ]; then
-        echo "   refusing: a game is running from $DST (merc, pid $running), not under" >&2
+        echo "   refusing: a game is running from $DST (merc or rom, pid $running), not under" >&2
         echo "   systemd; it would save over the restore. Stop it first." >&2
         exit 2
     fi
