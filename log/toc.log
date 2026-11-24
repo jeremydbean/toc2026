@@ -344922,3 +344922,4 @@ Tue Nov 24 00:21:56 2026 :: Connection guard: 3.149.57.90 closed without a word 
 Tue Nov 24 00:24:06 2026 :: Connection guard: last hour 14 closed without a word, 2 refused, 0 new characters refused, 1 newly paused; 15 addresses paused and 0 refused now, 16 active player addresses.
 Tue Nov 24 00:24:35 2026 :: Treasure goblin: vanished from room 1552 (A Damp Hallway, gnome.are) (too long in one area).
 Tue Nov 24 00:27:00 2026 :: Connection guard: refused 1 connection from 5.161.117.52 (paused; 8 refused in all, pause 2 this week, 710 minutes left).
+Tue Nov 24 00:32:05 2026 :: Connection guard: 5.161.73.160 closed without a word (strike 4 of 6 in 6 hours).
