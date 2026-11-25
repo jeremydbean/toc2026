@@ -346546,3 +346546,18 @@ Wed Nov 25 01:03:05 2026 :: Log Misery [4201]: w
 Wed Nov 25 01:03:05 2026 :: Log Misery [4202]: arrived (Halls of Healing.) from 4201
 Wed Nov 25 01:03:05 2026 :: Log Misery [4202]: w
 Wed Nov 25 01:03:05 2026 :: Log Misery [4207]: arrived (Before the Altar.) from 4202
+Wed Nov 25 01:03:07 2026 :: Log Misery [4207]: w
+Wed Nov 25 01:03:07 2026 :: Log Misery [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Wed Nov 25 01:03:09 2026 :: Log Misery [4208]: e
+Wed Nov 25 01:03:09 2026 :: Log Misery [4207]: arrived (Before the Altar.) from 4208
+Wed Nov 25 01:03:09 2026 :: Log Misery [4207]: e
+Wed Nov 25 01:03:09 2026 :: Log Misery [4202]: arrived (Halls of Healing.) from 4207
+Wed Nov 25 01:03:09 2026 :: Log Misery [4202]: e
+Wed Nov 25 01:03:09 2026 :: Log Misery [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Wed Nov 25 01:03:10 2026 :: Log Misery [4201]: e
+Wed Nov 25 01:03:10 2026 :: Log Misery [2427]: arrived (Main Processional.) from 4201
+Wed Nov 25 01:03:11 2026 :: Log Misery [2427]: n
+Wed Nov 25 01:03:11 2026 :: Log Misery [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Nov 25 01:03:12 2026 :: Log Misery [2404]: n
+Wed Nov 25 01:03:12 2026 :: Log Misery [2401]: arrived (Center of Oak Tree Square.) from 2404
+Wed Nov 25 01:03:15 2026 :: Log Misery [2401]: look tab

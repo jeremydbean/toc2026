@@ -2,7 +2,7 @@
 Name Misery~
 Id   59089
 Serial 133148
-LogO 1795568515
+LogO 1795568589
 Vers 4
 Desc .                       //:::::::::::::::::::::::::::::::::::::::::::::\\
 
@@ -113,13 +113,13 @@ Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-
 Cast Fors
 Levl 54
 Tru  70
-Plyd 1678536
+Plyd 1678610
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
 Scro 22
-Room 2494
-HMV  2043 2318 1035 1035 368 368
+Room 4202
+HMV  2053 2368 985 985 57 368
 NewGold 58
 NewPlat 7481
 NewCopp 66
@@ -187,10 +187,10 @@ Achv relic-celestial-dagger 1795563366
 Achv crystalline-cloak 1795563366
 Achv repairs-1 1795568476
 AchCount repairs 18
-AchSet areas 1257795624 1368665472 1674073230 1924732122 ~
-AchSet rooms 2494 10176 17109 30607 ~
+AchSet areas 197071549 1257795624 1368665472 1674073230 1924732122 ~
+AchSet rooms 1047 2401 2403-2404 2420-2423 2427 2494 4201-4202 4207-4208 10176 17109 30607 ~
 AchSet psi-disciplines 3 ~
-LastOut  1795568515
+LastOut  1795568589
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1795563366
@@ -207,7 +207,7 @@ QuestPnts 347
 QuestStrk 3
 Exp  177312
 Act  33976520
-AfBy 2097664
+AfBy 2097792
 Comm 24576
 Invi 70
 Mounted 0
@@ -237,13 +237,13 @@ Color 17 10
 Color 18 12
 Pos  8
 Tutorial 0 32776
-Save  -5
+Save  -8
 Alig  -1000
-Hit   63
+Hit   53
 Dam   32
-ACs -101 -104 -110 -32
+ACs -99 -102 -108 -30
 Attr 20 16 18 18 19
-AMod 11 -3 2 15 2
+AMod 11 -3 2 15 4
 Pass $6$.8p1Nq8Pjy.VJkh0$J2y7eWvH56QuwSxLoFuPmjyP3SxgTVJYdm2usAn.a6p2ygAO0YFkssP.TPCMqrK.IGGEt1QSQKHZgzo64G.pH0~
 Ariv $n lets an arrow fly to $T.~
 Dprt $n lets an arrow fly to $T.~
@@ -1473,7 +1473,7 @@ End
 #O
 Vnum 24581
 Nest 0
-Wear 1
+Wear -1
 Lev  51
 Cost 15000000
 Cond 100
@@ -1637,8 +1637,8 @@ End
 #O
 Vnum 30579
 Nest 0
-Wear -1
-Lev  58
+Wear 1
+Lev  54
 Cost 240000000
 Cond 100
 Repd 0
