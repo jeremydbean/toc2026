@@ -346503,3 +346503,46 @@ Wed Nov 25 01:01:43 2026 :: Log Misery [2494]: eq
 Wed Nov 25 01:01:50 2026 :: Log Misery [2494]: vnum red ring
 Wed Nov 25 01:01:54 2026 :: Log Misery [2494]: load obj 30579
 Wed Nov 25 01:01:56 2026 :: Log Misery [2494]: wear red
+Wed Nov 25 01:02:06 2026 :: Log Misery [2494]: set red level 54
+Wed Nov 25 01:02:10 2026 :: Log Misery [2494]: set obj red level 54
+Wed Nov 25 01:02:11 2026 :: Log Misery [2494]: wear red
+Wed Nov 25 01:02:12 2026 :: Log Misery [2494]: lo
+Wed Nov 25 01:02:14 2026 :: Log Misery [2494]: goto gan
+Wed Nov 25 01:02:14 2026 :: Log Misery [30607]: arrived (Level 9: Ganon's Dark Chamber) from 2494
+Wed Nov 25 01:02:17 2026 :: Log Misery [30607]: af
+Wed Nov 25 01:02:23 2026 :: Log Misery [30607]: eq
+Wed Nov 25 01:02:34 2026 :: Log Misery [30607]: vnum triforce
+Wed Nov 25 01:02:39 2026 :: Log Misery [30607]: lo
+Wed Nov 25 01:02:41 2026 :: Log Misery [30607]: ]
+Wed Nov 25 01:02:43 2026 :: Log Misery [30607]: goto 1
+Wed Nov 25 01:02:43 2026 :: Log Misery [1]: arrived (The Void) from 30607
+Wed Nov 25 01:02:45 2026 :: Log Misery [1]: ]
+Wed Nov 25 01:02:45 2026 :: Log Misery [1047]: arrived (A bushy clearing) from 1
+Wed Nov 25 01:02:48 2026 :: Log Misery [1047]: ]\
+Wed Nov 25 01:02:48 2026 :: Log Misery [2401]: arrived (Center of Oak Tree Square.) from 1047
+Wed Nov 25 01:02:54 2026 :: Log Misery [2401]: e
+Wed Nov 25 01:02:54 2026 :: Log Misery [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Wed Nov 25 01:02:56 2026 :: Log Misery [2403]: e
+Wed Nov 25 01:02:56 2026 :: Log Misery [2420]: arrived (Battle Road) from 2403
+Wed Nov 25 01:02:56 2026 :: Log Misery [2420]: n
+Wed Nov 25 01:02:57 2026 :: Log Misery [2420]: e
+Wed Nov 25 01:02:57 2026 :: Log Misery [2421]: arrived (Battle Road) from 2420
+Wed Nov 25 01:02:57 2026 :: Log Misery [2421]: n
+Wed Nov 25 01:02:58 2026 :: Log Misery [2421]: n
+Wed Nov 25 01:02:58 2026 :: Log Misery [2421]: e
+Wed Nov 25 01:02:58 2026 :: Log Misery [2422]: arrived (Battle Road) from 2421
+Wed Nov 25 01:02:59 2026 :: Log Misery [2422]: n
+Wed Nov 25 01:03:00 2026 :: Log Misery [2422]: e
+Wed Nov 25 01:03:00 2026 :: Log Misery [2423]: arrived (Battle Road) from 2422
+Wed Nov 25 01:03:01 2026 :: Log Misery [2423]: ]
+Wed Nov 25 01:03:01 2026 :: Log Misery [2401]: arrived (Center of Oak Tree Square.) from 2423
+Wed Nov 25 01:03:03 2026 :: Log Misery [2401]: s
+Wed Nov 25 01:03:03 2026 :: Log Misery [2404]: arrived (Southern Oak Tree Square.) from 2401
+Wed Nov 25 01:03:04 2026 :: Log Misery [2404]: s
+Wed Nov 25 01:03:04 2026 :: Log Misery [2427]: arrived (Main Processional.) from 2404
+Wed Nov 25 01:03:04 2026 :: Log Misery [2427]: w
+Wed Nov 25 01:03:04 2026 :: Log Misery [4201]: arrived (Entrance to the Temple of Devota.) from 2427
+Wed Nov 25 01:03:05 2026 :: Log Misery [4201]: w
+Wed Nov 25 01:03:05 2026 :: Log Misery [4202]: arrived (Halls of Healing.) from 4201
+Wed Nov 25 01:03:05 2026 :: Log Misery [4202]: w
+Wed Nov 25 01:03:05 2026 :: Log Misery [4207]: arrived (Before the Altar.) from 4202
