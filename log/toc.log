@@ -346623,3 +346623,4 @@ Wed Nov 25 01:57:27 2026 :: Sock.sinaddr:  159.203.98.194
 Wed Nov 25 01:57:29 2026 :: EOF encountered on read.
 Wed Nov 25 01:57:29 2026 :: Connection guard: 159.203.98.194 closed before a password prompt (strike 2 of 6 in 6 hours).
 Wed Nov 25 02:06:15 2026 :: Treasure goblin: vanished from room 29090 (Intersection, korzath1.are) (too long in one area).
+Wed Nov 25 02:10:35 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
