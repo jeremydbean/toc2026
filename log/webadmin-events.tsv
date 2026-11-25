@@ -6257,3 +6257,4 @@
 1795589629	wizinfo	60	Connection guard: 35.210.218.50 paused for 6 hours (pause 1 in 30 days; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.210.218.50 lifts it.
 1795589770	wizinfo	60	Connection guard: last hour 11 closed without a word, 26 refused, 0 new characters refused, 1 newly paused; 2 addresses paused and 0 refused now, 16 active player addresses.
 1795591688	wizinfo	60	Connection guard: 35.210.75.3 paused for 6 hours (pause 1 in 30 days; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.210.75.3 lifts it.
+1795593370	wizinfo	60	Connection guard: last hour 8 closed without a word, 57 refused, 0 new characters refused, 1 newly paused; 3 addresses paused and 0 refused now, 16 active player addresses.
