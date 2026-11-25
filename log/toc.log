@@ -346699,3 +346699,14 @@ Wed Nov 25 06:26:12 2026 :: Connection guard: 74.82.47.5 closed without a word (
 Wed Nov 25 06:28:16 2026 :: Treasure goblin: vanished from room 15224 (Hallway, campus.are) (too long in one area).
 Wed Nov 25 06:38:21 2026 :: Treasure goblin: vanished from room 923 (Stairway, olympus.are) (too long in one area).
 Wed Nov 25 06:48:26 2026 :: Treasure goblin: vanished from room 17292 (The Lady's bedroom, highland.are) (too long in one area).
+Wed Nov 25 06:53:43 2026 :: Connection guard: 35.210.218.50 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 25 06:53:48 2026 :: Connection guard: 35.210.218.50 closed without a word (strike 2 of 6 in 6 hours).
+Wed Nov 25 06:53:48 2026 :: Sock.sinaddr:  35.210.218.50
+Wed Nov 25 06:53:49 2026 :: EOF encountered on read.
+Wed Nov 25 06:53:49 2026 :: Connection guard: 35.210.218.50 closed before a password prompt (strike 3 of 6 in 6 hours).
+Wed Nov 25 06:53:49 2026 :: Connection guard: 35.210.218.50 closed without a word (strike 4 of 6 in 6 hours).
+Wed Nov 25 06:53:49 2026 :: Connection guard: 35.210.218.50 closed without a word (strike 5 of 6 in 6 hours).
+Wed Nov 25 06:53:49 2026 :: Connection guard: 35.210.218.50 closed without a word (strike 6 of 6 in 6 hours).
+Wed Nov 25 06:53:49 2026 :: Connection guard: 35.210.218.50 paused for 6 hours (pause 1 in 30 days; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.210.218.50 lifts it.
+Wed Nov 25 06:53:50 2026 :: Connection guard: refused 1 connection from 35.210.218.50 (paused; 1 refused in all, pause 1 in 30 days, 360 minutes left).
+Wed Nov 25 06:53:50 2026 :: Connection guard: 35.210.218.50 closed without a word (strike 1 of 6 in 6 hours).
