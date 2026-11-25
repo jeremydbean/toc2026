@@ -346678,3 +346678,4 @@ Wed Nov 25 04:42:30 2026 :: Cartographer: left room 17227 (In a secret gangway, 
 Wed Nov 25 04:42:53 2026 :: Connection guard: refused 1 connection from 161.153.119.93 (paused; 18 refused in all, pause 1 in 30 days, 294 minutes left).
 Wed Nov 25 04:43:53 2026 :: Connection guard: refused 1 connection from 161.153.119.93 (since the last line; 19 refused in all, pause 1 in 30 days, 293 minutes left).
 Wed Nov 25 04:47:30 2026 :: Treasure goblin: vanished from room 13067 (Underwater, lakes.are) (too long in one area).
+Wed Nov 25 04:56:10 2026 :: Connection guard: last hour 5 closed without a word, 18 refused, 0 new characters refused, 0 newly paused; 1 addresses paused and 0 refused now, 16 active player addresses.
