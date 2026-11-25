@@ -1043,11 +1043,11 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertEqual(ganon.level, level)
         # The file's armour; load_mobiles multiplies it by ten.
         self.assertEqual(ganon.ac, [GANON_ARMOR] * 4)
-        # 12,000 since 2026-11-24 (owner, and measured: a buffed trio of
-        # median level 59s won one fight in two, four won both): the Silver
-        # Arrow no longer takes a thirty-fifth a blow.
-        self.assertGreaterEqual(hit_points, 10000)
-        self.assertGreater(hit_points, BOSS_STATS[8][1], "still past any other guardian")
+        # 24,000 since 2026-11-25 (owner: a top-geared player tore through
+        # the 12,000 measured on 2026-11-24 for median groups; each
+        # player's share a round is held in fight.c as well).
+        self.assertGreaterEqual(hit_points, 20000)
+        self.assertGreater(hit_points, 2 * BOSS_STATS[8][1], "still far past any other guardian")
         # The heaviest blow of any guardian, but -- the owner's call, once
         # he could finally be fought -- neither it nor a fireball reaches
         # UNSPEAKABLE (over 250) through sanctuary, which halves both.

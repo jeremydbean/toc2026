@@ -20,6 +20,7 @@ Synthetic characters in a throwaway world.
 from __future__ import annotations
 
 import re
+import time
 import unittest
 from pathlib import Path
 
@@ -75,7 +76,11 @@ class GanonExploitTests(unittest.TestCase):
     def test_one_fighter_takes_at_most_a_fiftieth_a_round(self) -> None:
         # Owner, 2026-11-24: one of the best-geared mortals finished him
         # alone. A fighter whose every landed blow is past the share takes
-        # at most 240 of 12,000 off him a round, and is told why.
+        # at most a fiftieth of his maximum off him a round (never under
+        # 100), and is told why. His pool is set to 5,000 here, so the
+        # share is 100 and every blow that lands at +500 damage is past it
+        # (CI, 2026-11-25: at his full size and seven seconds his dodges
+        # and parries sometimes left no blow past the share).
         with LiveMud(fixtures=True) as mud:
             make(mud, "Zganonsmith", Levl=70, Room=4207)
             make(mud, "Zganonbrute", Levl=59, Room=4207)
@@ -84,26 +89,38 @@ class GanonExploitTests(unittest.TestCase):
                 login(hero, "Zganonbrute", PW)
                 god.must("goto %d" % ROOM, "")
                 god.must("load mob %d" % GANON, "Ganon")
+                hp, most = self.ganon_hp(god)
+                self.assertEqual(hp, most)
+                self.assertTrue(23000 < most < 25000, most)   # rolled near 24,000
+                god.must("set char ganon hp 5000", "")
+                god.sync("restore ganon")
+                hp, most = self.ganon_hp(god)
+                self.assertEqual((hp, most), (5000, 5000))
+                share = 100
                 god.must("set char zganonbrute hp 60000", "")
                 god.must("set char zganonbrute hitroll 500", "hitroll set")
                 god.must("set char zganonbrute damroll 500", "damroll set")
                 god.sync("restore zganonbrute")
                 god.must("transfer zganonbrute %d" % ROOM, "")
                 hero.sync("look")
-                hp, most = self.ganon_hp(god)
-                self.assertEqual(hp, most)
-                self.assertTrue(11000 < most < 13000, most)   # rolled near 12,000
-                share = most // 50
                 mark = len(hero.transcript)
+                began = time.monotonic()
                 hero.send("kill ganon")
-                hero.drain(7.0)
-                god.sync("peace")
+                for _ in range(30):
+                    hero.drain(1.0)
+                    if "no one fighter can overwhelm" in hero.transcript[mark:]:
+                        break
+                # Read him while the fight lasts: out of it he heals a
+                # tenth a pulse.
                 hp, most = self.ganon_hp(god)
+                elapsed = time.monotonic() - began
+                god.sync("peace")
                 taken = most - hp
-                # 7 seconds is at most three rounds of combat (a round
-                # every 3 s), and the share is a fiftieth a round.
+                # A round every 3 s, and one more for the round already
+                # under way when the fight began and the one PEACE met.
+                rounds = int(elapsed // 3) + 2
                 self.assertGreater(taken, 0, hero.transcript[mark:])
-                self.assertLessEqual(taken, 3 * share, hero.transcript[mark:])
+                self.assertLessEqual(taken, rounds * share, hero.transcript[mark:])
                 self.assertIn("no one fighter can overwhelm", hero.transcript[mark:])
 
     @staticmethod

@@ -538,7 +538,9 @@ bool spec_dominion_ward( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  * (owner) the arrow's share went altogether: it hits as a weapon during
  * the fight and only its SHOOT at the collapsed Ganon is special; his
  * hit points went from 67,500 to 12,000 and the fireballs to 200-245, so
- * three or four still win (measured, "Measured, 2026-11-24" in the wiki). Add fireballs rather
+ * three or four still win (measured, "Measured, 2026-11-24" in the wiki);
+ * 24,000 since 2026-11-25 (owner: a top-geared player still tore through
+ * him), with each player's share a round held in fight.c. Add fireballs rather
  * than enlarge them: none may read UNSPEAKABLE through sanctuary. See
  * "Ganon's Fight" in wiki/hyrule-area.md.
  */

@@ -335,7 +335,8 @@ static bool is_hyrule_ganon( CHAR_DATA *victim )
  * who take about a hundred off him a round each; one of the best-geared
  * mortals takes several times that, and alone finished him. So in one
  * round of combat each player -- their pets and servants counted with
- * them -- takes at most a fiftieth of his maximum (240 of 12,000); the
+ * them -- takes at most a fiftieth of his maximum (480 of 24,000, never
+ * under 100); the
  * rest of that round's blows are swallowed by the dark. A median group
  * is under the line and fights exactly as measured; three or four of
  * the best win quickly, two at a cost, and one alone is outlasted by the
@@ -345,6 +346,7 @@ static bool is_hyrule_ganon( CHAR_DATA *victim )
  * it gets a fresh round's share, nothing worse.
  */
 #define HYRULE_GANON_ROUND_SHARE  50
+#define HYRULE_GANON_ROUND_FLOOR  100   /* a Ganon SET to a few hit points still dies */
 #define GANON_SHARE_SLOTS         16
 #define GANON_SHARE_TELL_SECS     30
 
@@ -362,7 +364,8 @@ int hyrule_ganon_round_cap( CHAR_DATA *victim )
 {
     if ( !is_hyrule_ganon( victim ) )
         return 0;
-    return UMAX( 1, victim->max_hit / HYRULE_GANON_ROUND_SHARE );
+    return UMAX( HYRULE_GANON_ROUND_FLOOR,
+                 victim->max_hit / HYRULE_GANON_ROUND_SHARE );
 }
 
 static int ganon_round_share( CHAR_DATA *ch, CHAR_DATA *victim, int dam )
