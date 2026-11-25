@@ -346628,3 +346628,7 @@ Wed Nov 25 02:16:20 2026 :: Treasure goblin: vanished from room 13460 (Fire Pits
 Wed Nov 25 02:18:00 2026 :: Black market: stock 1795573080: obsidian leggings (13203, level 29, 18p); a shark tooth belt (6420, level 40, 37p); an iron barbed flail (7511, level 33, 600p); Sentri's girth (7656, level 35, 32p); lucky clover (9944, level 20, 61p).
 Wed Nov 25 02:18:00 2026 :: Black market: the dealer appeared with 5 items (stock 1795573080), for 37 minutes.
 Wed Nov 25 02:20:00 2026 :: Black market: the dealer vanished from room 24135 (The Stables of Dunkeldorf, coven.are) (wandering).
+Wed Nov 25 02:21:43 2026 :: Sock.sinaddr:  161.153.119.93
+Wed Nov 25 02:21:44 2026 :: EOF encountered on read.
+Wed Nov 25 02:21:44 2026 :: Connection guard: 161.153.119.93 closed before a password prompt (strike 1 of 6 in 6 hours).
+Wed Nov 25 02:21:44 2026 :: Connection guard: 161.153.119.93 closed without a word (strike 2 of 6 in 6 hours).
