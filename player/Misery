@@ -2,7 +2,7 @@
 Name Misery~
 Id   59089
 Serial 133148
-LogO 1795607219
+LogO 1795607234
 Vers 4
 Desc .                       //:::::::::::::::::::::::::::::::::::::::::::::\\
 
@@ -113,7 +113,7 @@ Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-
 Cast Fors
 Levl 54
 Tru  70
-Plyd 1679073
+Plyd 1679088
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
@@ -191,14 +191,14 @@ AchCount repairs 18
 AchSet areas 197071549 1257795624 1368665472 1674073230 1924732122 ~
 AchSet rooms 1047 2401 2403-2404 2420-2423 2427 2494 2507 4201-4202 4207-4208 10176 17109 30607 ~
 AchSet psi-disciplines 3 ~
-LastOut  1795607219
+LastOut  1795607234
 Rested 0 0
 Daily 0 0 0 0 0
-SesLogin 1795567957
-SesDur   794
+SesLogin 1795606918
+SesDur   316
 SesExpG  0
 SesLvlG  0
-SesKill  1
+SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
