@@ -2,7 +2,7 @@
 Name Misery~
 Id   59089
 Serial 133148
-LogO 1795568332
+LogO 1795568374
 Vers 4
 Desc .                       //:::::::::::::::::::::::::::::::::::::::::::::\\
 
@@ -113,13 +113,13 @@ Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-
 Cast Fors
 Levl 54
 Tru  70
-Plyd 1678353
+Plyd 1678395
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
 Scro 22
 Room 30607
-HMV  715 2318 1035 1035 368 368
+HMV  671 2318 1035 1035 368 368
 NewGold 182
 NewPlat 7584
 NewCopp 64
@@ -188,7 +188,7 @@ Achv crystalline-cloak 1795563366
 AchSet areas 1257795624 1368665472 1924732122 ~
 AchSet rooms 10176 17109 30607 ~
 AchSet psi-disciplines 3 ~
-LastOut  1795568332
+LastOut  1795568374
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1795563366
@@ -1471,7 +1471,7 @@ Nest 0
 Wear 2
 Lev  51
 Cost 15000000
-Cond 100
+Cond 92
 Repd 0
 End
 
@@ -1636,7 +1636,7 @@ Nest 0
 Wear 16
 Lev  54
 Cost 500000000
-Cond 100
+Cond 91
 Repd 0
 End
 
