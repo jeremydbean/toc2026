@@ -346719,3 +346719,14 @@ Wed Nov 25 07:08:35 2026 :: Treasure goblin: vanished from room 8306 (An Oozing 
 Wed Nov 25 07:10:23 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Wed Nov 25 07:18:40 2026 :: Treasure goblin: vanished from room 8815 (Second Trial, kerofk.are) (too long in one area).
 Wed Nov 25 07:27:57 2026 :: Connection guard: 35.210.75.3 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 25 07:28:07 2026 :: Connection guard: 35.210.75.3 closed without a word (strike 2 of 6 in 6 hours).
+Wed Nov 25 07:28:07 2026 :: Sock.sinaddr:  35.210.75.3
+Wed Nov 25 07:28:07 2026 :: EOF encountered on read.
+Wed Nov 25 07:28:07 2026 :: Connection guard: 35.210.75.3 closed before a password prompt (strike 3 of 6 in 6 hours).
+Wed Nov 25 07:28:08 2026 :: Connection guard: 35.210.75.3 closed without a word (strike 4 of 6 in 6 hours).
+Wed Nov 25 07:28:08 2026 :: Connection guard: 35.210.75.3 closed without a word (strike 5 of 6 in 6 hours).
+Wed Nov 25 07:28:08 2026 :: Connection guard: 35.210.75.3 closed without a word (strike 6 of 6 in 6 hours).
+Wed Nov 25 07:28:08 2026 :: Connection guard: 35.210.75.3 paused for 6 hours (pause 1 in 30 days; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.210.75.3 lifts it.
+Wed Nov 25 07:28:09 2026 :: Connection guard: refused 1 connection from 35.210.75.3 (paused; 1 refused in all, pause 1 in 30 days, 360 minutes left).
+Wed Nov 25 07:28:09 2026 :: Connection guard: 35.210.75.3 closed without a word (strike 1 of 6 in 6 hours).
+Wed Nov 25 07:28:44 2026 :: Treasure goblin: vanished from room 17161 (Path along lake, highland.are) (too long in one area).
