@@ -346953,3 +346953,5 @@ Wed Nov 25 20:49:10 2026 :: EOF encountered on read.
 Wed Nov 25 20:49:10 2026 :: Connection guard: 3.130.168.2 closed before a password prompt (strike 1 of 6 in 6 hours).
 Wed Nov 25 20:50:54 2026 :: Treasure goblin: vanished from room 4156 (The long tunnel, moria.are) (too long in one area).
 Wed Nov 25 21:00:58 2026 :: Treasure goblin: vanished from room 13465 (Construction Area, hell.are) (too long in one area).
+Wed Nov 25 21:10:14 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Wed Nov 25 21:11:03 2026 :: Treasure goblin: vanished from room 29477 (Desert, world.are) (too long in one area).
