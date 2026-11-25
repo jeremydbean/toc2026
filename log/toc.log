@@ -346773,3 +346773,6 @@ Wed Nov 25 09:38:07 2026 :: Connection guard: 205.210.31.104 closed before a pas
 Wed Nov 25 09:43:09 2026 :: Treasure goblin: vanished from room 25170 (The end of the sloping passage., underdrk.are) (too long in one area).
 Wed Nov 25 09:53:14 2026 :: Treasure goblin: vanished from room 5262 (The dwarf forest, oldthalo.are) (too long in one area).
 Wed Nov 25 09:56:10 2026 :: Connection guard: last hour 2 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 2 addresses paused and 0 refused now, 16 active player addresses.
+Wed Nov 25 09:56:38 2026 :: Automated backup started.
+Wed Nov 25 09:56:38 2026 :: Backups: 1 old archive(s) expired; the newest 6 are always kept.
+Wed Nov 25 09:56:39 2026 :: Automated backup complete.
