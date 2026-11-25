@@ -56022,3 +56022,6 @@
 1795568154	laid	-	0	0	-	862	herb	39	a chervil leaf	1479	htower.are	scatter
 1795568154	laid	-	0	0	-	863	herb	38	a foxglove flower	1349	htower.are	scatter
 1795568166	census	-	0	0	-	herbs=7/150 components=2/100 eggs=0 coin_piles=10	herbs_held=0 components_held=0 players=1	laid=5 spotted=0 picked=0 passed=0 cleared=0 rare=0 mobs_seen=0 mobs_fought=0 secs=900
+1795568228	laid	-	0	0	-	864	herb	34	an amaranth plant	25180	underdrk.are	scatter
+1795568228	laid	-	0	0	-	865	herb	38	a foxglove flower	25143	underdrk.are	scatter
+1795568228	laid	-	0	0	-	866	component	70	a dragon tooth	3817	ratslair.are	scatter

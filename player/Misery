@@ -2,7 +2,7 @@
 Name Misery~
 Id   59089
 Serial 133148
-LogO 1795568154
+LogO 1795568228
 Vers 4
 Desc .                       //:::::::::::::::::::::::::::::::::::::::::::::\\
 
@@ -113,7 +113,7 @@ Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-
 Cast Fors
 Levl 54
 Tru  70
-Plyd 1678175
+Plyd 1678249
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
@@ -167,6 +167,7 @@ Achv week-interest 1789577491
 Achv carry-one-platinum 1789577474
 Achv carry-hundred-platinum 1789577474
 Achv four-denominations 1789577474
+Achv master-sword 1795568227
 Achv silver-arrow 1787938835
 Achv level-35 1790711500
 Achv level-45 1790711500
@@ -184,9 +185,10 @@ Achv relic-clover-large 1795563366
 Achv relic-moonray 1795563366
 Achv relic-celestial-dagger 1795563366
 Achv crystalline-cloak 1795563366
-AchSet areas 1257795624 1368665472 ~
-AchSet rooms 17109 30607 ~
-LastOut  1795568154
+AchSet areas 1257795624 1368665472 1924732122 ~
+AchSet rooms 10176 17109 30607 ~
+AchSet psi-disciplines 3 ~
+LastOut  1795568228
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1795563366
@@ -1624,6 +1626,16 @@ Nest 0
 Wear 16
 Lev  50
 Cost 90000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30200
+Nest 0
+Wear -1
+Lev  58
+Cost 500000000
 Cond 100
 Repd 0
 End
