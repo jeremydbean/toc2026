@@ -1,7 +1,7 @@
 {
  "checks": {
   "disk": {
-   "free_mb": 42896,
+   "free_mb": 42889,
    "inodes_free_pct": 96,
    "ok": true
   },
@@ -13,17 +13,17 @@
   "game_archives": {
    "characters": 37,
    "count": 274,
-   "newest_min": 111,
+   "newest_min": 116,
    "ok": true,
    "total_mb": 497,
    "verified": true
   },
   "mirror": {
-   "commit": "5f4a4acfca99",
+   "commit": "aa572c59e3b7",
    "configured": true,
    "last_min": 0,
    "ok": true,
-   "reason": "mirror holds 5f4a4acfca99",
+   "reason": "mirror holds aa572c59e3b7",
    "status": "ok"
   },
   "public_sync": {
@@ -32,13 +32,13 @@
    "last_attempt_min": 0,
    "last_success_min": 0,
    "ok": true,
-   "reason": "pushed 2 files (0 characters)",
-   "remote_commit": "5f4a4acfca99"
+   "reason": "pushed 1 files (0 characters)",
+   "remote_commit": "aa572c59e3b7"
   },
   "recovery": {
    "exit": "0",
    "failed_restarts": 0,
-   "last_run_min": 1,
+   "last_run_min": 0,
    "ok": true,
    "said": "started"
   },
@@ -156,8 +156,8 @@
    "ok": true
   }
  },
- "generated": 1795615680,
- "generated_utc": "2026-11-25T14:08:00Z",
+ "generated": 1795615980,
+ "generated_utc": "2026-11-25T14:13:00Z",
  "heartbeat": {
   "heartbeat": "not-configured"
  },
