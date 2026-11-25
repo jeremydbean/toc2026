@@ -13,17 +13,17 @@
   "game_archives": {
    "characters": 37,
    "count": 274,
-   "newest_min": 21,
+   "newest_min": 26,
    "ok": true,
    "total_mb": 496,
    "verified": true
   },
   "mirror": {
-   "commit": "c83503160368",
+   "commit": "4fd519f07f90",
    "configured": true,
    "last_min": 0,
    "ok": true,
-   "reason": "mirror holds c83503160368",
+   "reason": "mirror holds 4fd519f07f90",
    "status": "ok"
   },
   "public_sync": {
@@ -33,12 +33,12 @@
    "last_success_min": 0,
    "ok": true,
    "reason": "pushed 1 files (0 characters)",
-   "remote_commit": "c83503160368"
+   "remote_commit": "4fd519f07f90"
   },
   "recovery": {
    "exit": "0",
    "failed_restarts": 0,
-   "last_run_min": 1,
+   "last_run_min": 0,
    "ok": true,
    "said": "started"
   },
@@ -156,8 +156,8 @@
    "ok": true
   }
  },
- "generated": 1795601880,
- "generated_utc": "2026-11-25T10:18:00Z",
+ "generated": 1795602180,
+ "generated_utc": "2026-11-25T10:23:00Z",
  "heartbeat": {
   "heartbeat": "not-configured"
  },
