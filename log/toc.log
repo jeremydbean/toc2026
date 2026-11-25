@@ -346731,3 +346731,8 @@ Wed Nov 25 07:28:09 2026 :: Connection guard: refused 1 connection from 35.210.7
 Wed Nov 25 07:28:09 2026 :: Connection guard: 35.210.75.3 closed without a word (strike 1 of 6 in 6 hours).
 Wed Nov 25 07:28:44 2026 :: Treasure goblin: vanished from room 17161 (Path along lake, highland.are) (too long in one area).
 Wed Nov 25 07:29:09 2026 :: Connection guard: refused 24 connections from 35.210.75.3 (since the last line; 25 refused in all, pause 1 in 30 days, 359 minutes left).
+Wed Nov 25 07:31:08 2026 :: Sock.sinaddr:  9.234.42.226
+Wed Nov 25 07:31:08 2026 :: EOF encountered on read.
+Wed Nov 25 07:31:08 2026 :: Connection guard: 9.234.42.226 closed before a password prompt (strike 1 of 6 in 6 hours).
+Wed Nov 25 07:31:08 2026 :: Sock.sinaddr:  9.234.42.226
+Wed Nov 25 07:31:08 2026 :: Connection guard: 9.234.42.226 closed before a password prompt (strike 2 of 6 in 6 hours).
