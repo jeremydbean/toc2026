@@ -346645,3 +346645,4 @@ Wed Nov 25 02:54:42 2026 :: Sock.sinaddr:  161.153.119.93
 Wed Nov 25 02:54:42 2026 :: EOF encountered on read.
 Wed Nov 25 02:54:42 2026 :: Connection guard: 161.153.119.93 closed before a password prompt (strike 4 of 6 in 6 hours).
 Wed Nov 25 02:55:39 2026 :: Black market: the dealer left the world from room 29462 (Trail up the mountains, world.are).
+Wed Nov 25 02:56:10 2026 :: Connection guard: last hour 12 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 0 addresses paused and 0 refused now, 16 active player addresses.
