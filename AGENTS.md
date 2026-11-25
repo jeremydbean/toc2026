@@ -8346,8 +8346,8 @@ SHOOT GANON at the collapsed Ganon passes what he has left, and
 `hyrule_silver_arrow_finish` keeps armour and relics from turning that shot
 to nothing. The thirty-fifth is now only the instant-kill share
 (`HYRULE_GANON_INSTANT_KILL_DIVISOR`). **No one fighter overwhelms him** (owner, 2026-11-24,
-after a best-geared mortal finished the 12,000 alone; doubled to 24,000 on
-11-25, "about twice his hp or time to kill"): `ganon_round_share`
+after a best-geared mortal finished the 12,000 alone; 15,000 on 11-25,
+owner: "maybe 25%"): `ganon_round_share`
 in `damage()` lets each player -- pets and servants counted with their
 master, by `player_serial` -- take at most `max_hit /
 HYRULE_GANON_ROUND_SHARE` (50), never under `HYRULE_GANON_ROUND_FLOOR`
@@ -8362,7 +8362,7 @@ from 67,500 to 22,500 the same day (owner: "so 3-4 players can still beat
 him"), an estimate; measured later that day with
 `tools/hyrule_playtest/ganon_group.py` (which now records his lowest
 health in a lost fight) it was far too many, and with the owner's "maybe
-ganon shouldn't hit as hard?" he was 12,000 with fireballs of 200-245 (24,000 since 2026-11-25) --
+ganon shouldn't hit as hard?" he was 12,000 with fireballs of 200-245 (15,000 since 2026-11-25) --
 `BOSS_STATS`, `BOSS_VOLLEYS`, `area/hyrule.are` and `GANON_FIREBALL_*` in
 `src/special.c`, which a test keeps equal. A buffed trio of median level
 59s wins about half, four win; unbuffed median players lose at every

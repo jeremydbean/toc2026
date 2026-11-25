@@ -8,16 +8,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 
-### 2026-11-25 -- Ganon doubled, and no one fighter overwhelms him
+### 2026-11-25 -- Ganon a quarter stronger, and no one fighter overwhelms him
 
 - One of the best-geared mortals still tore through the 12,000-hit-point
-  Ganon alone. He has 24,000 now (owner: "about twice his hp or time to
-  kill"), and each player (pets counted with them) takes at most a
+  Ganon alone. He has 15,000 now (owner: a quarter more, after "about
+  twice his hp or time to kill" was first set at 24,000), and each player (pets counted with them) takes at most a
   fiftieth of his maximum, never under 100, a round of combat
   (`ganon_round_share` in `fight.c`). The finishing SHOOT is never held
   back, and CONSIDER counts the same ceiling. The median groups measured
-  on 2026-11-24 deal under the share, but now face twice the health: not
-  measured again.
+  on 2026-11-24 deal under the share, but now face a quarter more health:
+  not measured again.
 
 ### 2026-11-24 -- turkey durability, backup verdicts, the CMake game
 

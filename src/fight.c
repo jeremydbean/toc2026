@@ -335,7 +335,7 @@ static bool is_hyrule_ganon( CHAR_DATA *victim )
  * who take about a hundred off him a round each; one of the best-geared
  * mortals takes several times that, and alone finished him. So in one
  * round of combat each player -- their pets and servants counted with
- * them -- takes at most a fiftieth of his maximum (480 of 24,000, never
+ * them -- takes at most a fiftieth of his maximum (300 of 15,000, never
  * under 100); the
  * rest of that round's blows are swallowed by the dark. A median group
  * is under the line and fights exactly as measured; three or four of

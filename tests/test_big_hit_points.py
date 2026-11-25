@@ -49,10 +49,10 @@ class HitPointWidthTests(unittest.TestCase):
                 login(client, "Zbighp", PW)
                 # Ganon is hidden and translucent: staff need holylight to stat him.
                 client.command("holylight", 1.0)
-                # The floors are each mobile's lowest roll: 16d10+23912 for
-                # Ganon (24,000 since 2026-11-25: under 32,767 now) and
+                # The floors are each mobile's lowest roll: 16d10+14912 for
+                # Ganon (15,000 since 2026-11-25: under 32,767 now) and
                 # 50d10+44500, past 32,767, which keeps the overflow case.
-                for vnum, floor in ((GANON, 23928), (UNDEAD_CLERIC, 44550)):
+                for vnum, floor in ((GANON, 14928), (UNDEAD_CLERIC, 44550)):
                     client.command("load mob %d" % vnum, 1.0)
                     keyword = "ganon" if vnum == GANON else "cleric"
                     said = client.command("stat mob %s" % keyword, 1.5)

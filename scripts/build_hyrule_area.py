@@ -682,7 +682,7 @@ BOSS_STATS = {
     6: (43, 2200, 34),     # Gohma: haste; her sanctuary is taken off (GUARDIAN_AFFECTS_REMOVED)
     7: (49, 2450, 38),     # Aquamentus again, older and harder
     8: (55, 9200, 45),     # Gleeok, four heads: a fight for two
-    9: (64, 24000, 100),   # Ganon -- see above, and spec_ganon; doubled 2026-11-25 (owner: a top player tore through 12,000)
+    9: (64, 15000, 100),   # Ganon -- see above, and spec_ganon; 12,000 + 25% on 2026-11-25 (owner: a top player tore through him)
 }
 # dungeon: (projectiles a pulse, least, most) -- spec_hyrule_guardian and
 # spec_ganon; src/special.c's tables must say the same.

@@ -522,7 +522,7 @@ expect to die. Before that (2026-11-13, owner) he was sized for three
 median level 59s without Hermie, and before that for three median players
 with her. The numbers:
 
-- **Level 64, 24,000 hit points (67,500 until 2026-11-24, 12,000 until 11-25), armour -40 (-400 in game), average blow 100,
+- **Level 64, 15,000 hit points (67,500 until 2026-11-24, 12,000 until 11-25), armour -40 (-400 in game), average blow 100,
   sanctuary and haste as before; no longer hidden.** The catalog's hide
   (`Q`) is taken off (`GUARDIAN_AFFECTS_REMOVED`): only detect hidden saw
   past it, which Hermie's detects gave everybody, so without her a group of
@@ -576,25 +576,25 @@ after it, he had already healed a tenth a pulse, and lost fights read
 | 9,000-12,000, 130-200, 0 or -20 | unbuffed | -- | lost all six (34-46 s; 82-89%) | -- |
 | **12,000, 200-245, -40** | **Hermie** | **lost 2 of 2 (76-90 s; 44-51%)** | **won 1 of 2 (lost at 8%), 116-123 s** | **won 2 of 2, all four standing, 96-113 s** |
 
-**No one fighter overwhelms him, and he has twice the health** (owner,
+**No one fighter overwhelms him, and he has a quarter more health** (owner,
 2026-11-24: "Misery is really destroying ganon now ... we need to
 strengthen ganon"; 2026-11-25: "increase Ganon to about twice his hp or
-time to kill"). The table above is median warriors, who take about a
+time to kill", then "maybe 25%"). The table above is median warriors, who take about a
 hundred off him a round each; one of the best-geared mortals takes several
-times that and finished him alone. So he has **24,000 hit points**, and in
+times that and finished him alone. So he has **15,000 hit points**, and in
 each round of combat (`violence_update`) one player, their pets and
-servants counted with them, takes at most a fiftieth of his maximum (480,
+servants counted with them, takes at most a fiftieth of his maximum (300,
 never under 100) -- `ganon_round_share` in `src/fight.c`, keyed by player
 serial; the rest of that round's blows land on nothing, and the player is
 told so once in thirty seconds. By the arithmetic, four of the best need
 at least about forty seconds, a pair a minute and a half of fire, and one
 alone over two and a half minutes of every fireball. Median groups are
-under the share but now face twice the health the table measured, so a
-median trio or four will lose more often than it shows; not played again.
+under the share but now face a quarter more health than the table
+measured, so a median trio will lose somewhat more often; not played again.
 The Silver Arrow's finishing SHOOT is never held back, and CONSIDER caps
 each player's side at the same share (`hyrule_ganon_round_cap`).
 
-So he was **12,000 hit points with four fireballs of 200-245** (24,000
+So he was **12,000 hit points with four fireballs of 200-245** (15,000
 since 2026-11-25) (about 122
 through sanctuary). Unbuffed median players hardly hurt him at any setting
 tried -- three did 30-40 a second between them and lasted under fifty

@@ -91,7 +91,7 @@ class GanonExploitTests(unittest.TestCase):
                 god.must("load mob %d" % GANON, "Ganon")
                 hp, most = self.ganon_hp(god)
                 self.assertEqual(hp, most)
-                self.assertTrue(23000 < most < 25000, most)   # rolled near 24,000
+                self.assertTrue(14000 < most < 16000, most)   # rolled near 15,000
                 god.must("set char ganon hp 5000", "")
                 god.sync("restore ganon")
                 hp, most = self.ganon_hp(god)

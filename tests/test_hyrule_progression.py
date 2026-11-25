@@ -1043,11 +1043,11 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertEqual(ganon.level, level)
         # The file's armour; load_mobiles multiplies it by ten.
         self.assertEqual(ganon.ac, [GANON_ARMOR] * 4)
-        # 24,000 since 2026-11-25 (owner: a top-geared player tore through
-        # the 12,000 measured on 2026-11-24 for median groups; each
-        # player's share a round is held in fight.c as well).
-        self.assertGreaterEqual(hit_points, 20000)
-        self.assertGreater(hit_points, 2 * BOSS_STATS[8][1], "still far past any other guardian")
+        # 15,000 since 2026-11-25 (owner: a top-geared player tore through
+        # the 12,000 measured on 2026-11-24 for median groups; a quarter
+        # more, and each player's share a round is held in fight.c).
+        self.assertGreaterEqual(hit_points, 14000)
+        self.assertGreater(hit_points, BOSS_STATS[8][1], "still past any other guardian")
         # The heaviest blow of any guardian, but -- the owner's call, once
         # he could finally be fought -- neither it nor a fireball reaches
         # UNSPEAKABLE (over 250) through sanctuary, which halves both.
