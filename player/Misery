@@ -2,7 +2,7 @@
 Name Misery~
 Id   59089
 Serial 133148
-LogO 1795607024
+LogO 1795607097
 Vers 4
 Desc .                       //:::::::::::::::::::::::::::::::::::::::::::::\\
 
@@ -113,14 +113,14 @@ Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-
 Cast Fors
 Levl 54
 Tru  70
-Plyd 1678878
+Plyd 1678951
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
 SkillDamage 1223 1 54
 Scro 22
 Room 30607
-HMV  1494 2368 794 985 154 368
+HMV  888 2368 797 985 181 368
 NewGold 58
 NewPlat 7481
 NewCopp 66
@@ -191,7 +191,7 @@ AchCount repairs 18
 AchSet areas 197071549 1257795624 1368665472 1674073230 1924732122 ~
 AchSet rooms 1047 2401 2403-2404 2420-2423 2427 2494 2507 4201-4202 4207-4208 10176 17109 30607 ~
 AchSet psi-disciplines 3 ~
-LastOut  1795607024
+LastOut  1795607097
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1795567957
@@ -208,7 +208,7 @@ QuestPnts 347
 QuestStrk 3
 Exp  177312
 Act  33976520
-AfBy 640
+AfBy 2097792
 Comm 24576
 Invi 70
 Mounted 0
@@ -240,8 +240,8 @@ Pos  8
 Tutorial 0 32776
 Save  -8
 Alig  -1000
-Hit   48
-Dam   27
+Hit   53
+Dam   32
 ACs -99 -102 -108 -30
 Attr 20 16 18 18 19
 AMod 12 -3 2 15 4
@@ -317,7 +317,7 @@ Gr 'monk basics'
 Gr 'thief default'
 Gr 'monk default'
 Gr 'thief guild'
-AffD 'giant strength'   0  12   1   1          0          0
+AffD 'giant strength'   0  11   1   1          0          0
 End
 
 #O
@@ -1639,7 +1639,7 @@ End
 #O
 Vnum 30200
 Nest 0
-Wear -1
+Wear 16
 Lev  54
 Cost 500000000
 Cond 100
