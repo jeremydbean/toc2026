@@ -346767,3 +346767,6 @@ Wed Nov 25 09:09:31 2026 :: Treasure goblin: vanished from room 3619 (Firm groun
 Wed Nov 25 09:10:28 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Wed Nov 25 09:19:36 2026 :: Treasure goblin: vanished from room 29350 (Dock before the Sea, voyage.are) (too long in one area).
 Wed Nov 25 09:29:40 2026 :: Treasure goblin: vanished from room 9573 (Alley, newthalo.are) (too long in one area).
+Wed Nov 25 09:38:06 2026 :: Sock.sinaddr:  205.210.31.104
+Wed Nov 25 09:38:06 2026 :: EOF encountered on read.
+Wed Nov 25 09:38:07 2026 :: Connection guard: 205.210.31.104 closed before a password prompt (strike 1 of 6 in 6 hours).
