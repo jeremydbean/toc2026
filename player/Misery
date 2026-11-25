@@ -2,7 +2,7 @@
 Name Misery~
 Id   59089
 Serial 133148
-LogO 1795568643
+LogO 1795568712
 Vers 4
 Desc .                       //:::::::::::::::::::::::::::::::::::::::::::::\\
 
@@ -113,13 +113,14 @@ Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-
 Cast Fors
 Levl 54
 Tru  70
-Plyd 1678664
+Plyd 1678733
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
+SkillDamage 1223 1 54
 Scro 22
-Room 2507
-HMV  2078 2368 884 985 77 368
+Room 2401
+HMV  2368 2368 785 985 73 368
 NewGold 58
 NewPlat 7481
 NewCopp 66
@@ -131,7 +132,7 @@ Dcount 0
 SavedOnce 1
 PkRec 0
 PkGiv 24
-AchKills 4
+AchKills 5
 AchQuests 3
 AchDeaths 0
 AchExplore 0
@@ -190,7 +191,7 @@ AchCount repairs 18
 AchSet areas 197071549 1257795624 1368665472 1674073230 1924732122 ~
 AchSet rooms 1047 2401 2403-2404 2420-2423 2427 2494 2507 4201-4202 4207-4208 10176 17109 30607 ~
 AchSet psi-disciplines 3 ~
-LastOut  1795568643
+LastOut  1795568712
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1795563366
@@ -243,7 +244,7 @@ Hit   53
 Dam   32
 ACs -99 -102 -108 -30
 Attr 20 16 18 18 19
-AMod 11 -3 2 15 4
+AMod 12 -3 2 15 4
 Pass $6$.8p1Nq8Pjy.VJkh0$J2y7eWvH56QuwSxLoFuPmjyP3SxgTVJYdm2usAn.a6p2ygAO0YFkssP.TPCMqrK.IGGEt1QSQKHZgzo64G.pH0~
 Ariv $n lets an arrow fly to $T.~
 Dprt $n lets an arrow fly to $T.~
@@ -316,6 +317,7 @@ Gr 'monk basics'
 Gr 'thief default'
 Gr 'monk default'
 Gr 'thief guild'
+AffD 'giant strength'   0  14   1   1          0          0
 End
 
 #O
