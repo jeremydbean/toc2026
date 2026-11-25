@@ -346711,3 +346711,4 @@ Wed Nov 25 06:53:49 2026 :: Connection guard: 35.210.218.50 paused for 6 hours (
 Wed Nov 25 06:53:50 2026 :: Connection guard: refused 1 connection from 35.210.218.50 (paused; 1 refused in all, pause 1 in 30 days, 360 minutes left).
 Wed Nov 25 06:53:50 2026 :: Connection guard: 35.210.218.50 closed without a word (strike 1 of 6 in 6 hours).
 Wed Nov 25 06:54:50 2026 :: Connection guard: refused 24 connections from 35.210.218.50 (since the last line; 25 refused in all, pause 1 in 30 days, 359 minutes left).
+Wed Nov 25 06:56:10 2026 :: Connection guard: last hour 11 closed without a word, 26 refused, 0 new characters refused, 1 newly paused; 2 addresses paused and 0 refused now, 16 active player addresses.
