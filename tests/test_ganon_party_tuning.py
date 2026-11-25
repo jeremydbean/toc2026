@@ -77,7 +77,7 @@ class GanonExploitTests(unittest.TestCase):
         # Owner, 2026-11-24: one of the best-geared mortals finished him
         # alone. A fighter whose every landed blow is past the share takes
         # at most a fiftieth of his maximum off him a round (never under
-        # 100), and is told why. His pool is set to 5,000 here, so the
+        # 100), and is not told about it (owner, 2026-11-25). His pool is set to 5,000 here, so the
         # share is 100 and every blow that lands at +500 damage is past it
         # (CI, 2026-11-25: at his full size and seven seconds his dodges
         # and parries sometimes left no blow past the share).
@@ -106,10 +106,7 @@ class GanonExploitTests(unittest.TestCase):
                 mark = len(hero.transcript)
                 began = time.monotonic()
                 hero.send("kill ganon")
-                for _ in range(30):
-                    hero.drain(1.0)
-                    if "no one fighter can overwhelm" in hero.transcript[mark:]:
-                        break
+                hero.drain(10.0)
                 # Read him while the fight lasts: out of it he heals a
                 # tenth a pulse.
                 hp, most = self.ganon_hp(god)
@@ -121,7 +118,7 @@ class GanonExploitTests(unittest.TestCase):
                 rounds = int(elapsed // 3) + 2
                 self.assertGreater(taken, 0, hero.transcript[mark:])
                 self.assertLessEqual(taken, rounds * share, hero.transcript[mark:])
-                self.assertIn("no one fighter can overwhelm", hero.transcript[mark:])
+                self.assertNotIn("overwhelm", hero.transcript[mark:])
 
     @staticmethod
     def ganon_hp(god) -> tuple[int, int]:

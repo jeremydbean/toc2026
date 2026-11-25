@@ -337,7 +337,8 @@ static bool is_hyrule_ganon( CHAR_DATA *victim )
  * round of combat each player -- their pets and servants counted with
  * them -- takes at most a fiftieth of his maximum (300 of 15,000, never
  * under 100); the
- * rest of that round's blows are swallowed by the dark. A median group
+ * rest of that round's blows do nothing, silently (owner, 2026-11-25: no
+ * line about it in the fight). A median group
  * is under the line and fights exactly as measured; three or four of
  * the best win quickly, two at a cost, and one alone is outlasted by the
  * fireballs. The Silver Arrow's finishing SHOOT is never held back.
@@ -348,7 +349,6 @@ static bool is_hyrule_ganon( CHAR_DATA *victim )
 #define HYRULE_GANON_ROUND_SHARE  50
 #define HYRULE_GANON_ROUND_FLOOR  100   /* a Ganon SET to a few hit points still dies */
 #define GANON_SHARE_SLOTS         16
-#define GANON_SHARE_TELL_SECS     30
 
 static long violence_round;
 
@@ -357,7 +357,6 @@ static struct
     int    serial;
     long   round;
     int    dealt;
-    time_t told;
 } ganon_share[GANON_SHARE_SLOTS];
 
 int hyrule_ganon_round_cap( CHAR_DATA *victim )
@@ -394,7 +393,6 @@ static int ganon_round_share( CHAR_DATA *ch, CHAR_DATA *victim, int dam )
         slot = oldest;
         ganon_share[slot].serial = serial;
         ganon_share[slot].round = -1;
-        ganon_share[slot].told = 0;
     }
     if ( ganon_share[slot].round != violence_round )
     {
@@ -403,15 +401,7 @@ static int ganon_round_share( CHAR_DATA *ch, CHAR_DATA *victim, int dam )
     }
     left = UMAX( 0, cap - ganon_share[slot].dealt );
     if ( dam > left )
-    {
         dam = left;
-        if ( current_time - ganon_share[slot].told >= GANON_SHARE_TELL_SECS )
-        {
-            ganon_share[slot].told = current_time;
-            act( "{0CThe dark around $N swallows the rest of your onslaught:{00 no one fighter can overwhelm $M. Bring friends.",
-                 who, NULL, victim, TO_CHAR );
-        }
-    }
     ganon_share[slot].dealt += dam;
     return dam;
 }

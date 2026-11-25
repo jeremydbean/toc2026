@@ -8352,8 +8352,8 @@ in `damage()` lets each player -- pets and servants counted with their
 master, by `player_serial` -- take at most `max_hit /
 HYRULE_GANON_ROUND_SHARE` (50), never under `HYRULE_GANON_ROUND_FLOOR`
 (100, so a Ganon SET to a few hit points still dies), a combat round (`violence_round`, counted in
-`violence_update`); a blow past it returns false with no message, and the
-player is told once in thirty seconds. Never for the finishing SHOOT.
+`violence_update`); a blow past it returns false with no message, and
+nothing tells the player (owner, 2026-11-25: no line about it). Never for the finishing SHOOT.
 CONSIDER caps each player's side at `hyrule_ganon_round_cap`
 (`gear_consider_fight`). Median groups (about 100 a round each) are under
 it, so the measurements still hold (`tests/test_ganon_party_tuning.py`). The arrow's description is in both

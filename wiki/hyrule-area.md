@@ -585,8 +585,8 @@ times that and finished him alone. So he has **15,000 hit points**, and in
 each round of combat (`violence_update`) one player, their pets and
 servants counted with them, takes at most a fiftieth of his maximum (300,
 never under 100) -- `ganon_round_share` in `src/fight.c`, keyed by player
-serial; the rest of that round's blows land on nothing, and the player is
-told so once in thirty seconds. By the arithmetic, four of the best need
+serial; the rest of that round's blows land on nothing, with no message
+(owner, 2026-11-25: no line about it in the fight). By the arithmetic, four of the best need
 at least about forty seconds, a pair a minute and a half of fire, and one
 alone over two and a half minutes of every fireball. Median groups are
 under the share but now face a quarter more health than the table
