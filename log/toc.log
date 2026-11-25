@@ -346863,3 +346863,6 @@ Wed Nov 25 14:30:57 2026 :: Cartographer: appeared.
 Wed Nov 25 14:38:02 2026 :: Treasure goblin: vanished from room 2109 (An over-grown lot, hood.are) (too long in one area).
 Wed Nov 25 14:48:06 2026 :: Treasure goblin: vanished from room 668 (Dirt Road, ofcol.are) (too long in one area).
 Wed Nov 25 14:52:31 2026 :: Sock.sinaddr:  192.178.6.196
+Wed Nov 25 14:54:00 2026 :: EOF encountered on read.
+Wed Nov 25 14:54:01 2026 :: Connection guard: 192.178.6.196 closed before a password prompt (strike 1 of 6 in 6 hours).
+Wed Nov 25 14:54:01 2026 :: Sock.sinaddr:  192.178.6.195
