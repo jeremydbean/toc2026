@@ -346868,3 +346868,4 @@ Wed Nov 25 14:54:01 2026 :: Connection guard: 192.178.6.196 closed before a pass
 Wed Nov 25 14:54:01 2026 :: Sock.sinaddr:  192.178.6.195
 Wed Nov 25 14:55:30 2026 :: EOF encountered on read.
 Wed Nov 25 14:55:31 2026 :: Connection guard: 192.178.6.195 closed before a password prompt (strike 1 of 6 in 6 hours).
+Wed Nov 25 14:58:11 2026 :: Treasure goblin: vanished from room 104 (Entrance to Smurf Village, smurf.are) (too long in one area).
