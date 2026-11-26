@@ -347209,3 +347209,14 @@ Thu Nov 26 15:25:23 2026 :: Connection guard: refused 24 connections from 35.210
 Thu Nov 26 15:28:27 2026 :: Black market: stock 1795706907: a pair of elven bracers (5602, level 52, 844p); a large dragon kite (1010, level 33, 30p); lucky clover (9943, level 5, 15g); a slice of Winter Veil yule log (29927, level 0, 2704p); a pumpkin-lantern charm (29924, level 0, 750p).
 Thu Nov 26 15:28:27 2026 :: Black market: the dealer appeared with 5 items (stock 1795706907), for 20 minutes.
 Thu Nov 26 15:33:55 2026 :: Treasure goblin: vanished from room 9512 (The Southern Bridge, newthalo.are) (too long in one area).
+Thu Nov 26 15:36:46 2026 :: Connection guard: 35.206.155.5 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 26 15:36:56 2026 :: Connection guard: 35.206.155.5 closed without a word (strike 2 of 6 in 6 hours).
+Thu Nov 26 15:36:56 2026 :: Sock.sinaddr:  35.206.155.5
+Thu Nov 26 15:36:57 2026 :: EOF encountered on read.
+Thu Nov 26 15:36:57 2026 :: Connection guard: 35.206.155.5 closed before a password prompt (strike 3 of 6 in 6 hours).
+Thu Nov 26 15:36:57 2026 :: Connection guard: 35.206.155.5 closed without a word (strike 4 of 6 in 6 hours).
+Thu Nov 26 15:36:57 2026 :: Connection guard: 35.206.155.5 closed without a word (strike 5 of 6 in 6 hours).
+Thu Nov 26 15:36:57 2026 :: Connection guard: 35.206.155.5 closed without a word (strike 6 of 6 in 6 hours).
+Thu Nov 26 15:36:57 2026 :: Connection guard: 35.206.155.5 paused for 6 hours (pause 1 in 30 days; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.206.155.5 lifts it.
+Thu Nov 26 15:36:58 2026 :: Connection guard: refused 1 connection from 35.206.155.5 (paused; 1 refused in all, pause 1 in 30 days, 360 minutes left).
+Thu Nov 26 15:36:58 2026 :: Connection guard: 35.206.155.5 closed without a word (strike 1 of 6 in 6 hours).
