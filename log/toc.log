@@ -347100,3 +347100,6 @@ Thu Nov 26 08:19:07 2026 :: Automated backup started.
 Thu Nov 26 08:19:08 2026 :: Backups: 1 old archive(s) expired; the newest 6 are always kept.
 Thu Nov 26 08:19:08 2026 :: Automated backup complete.
 Thu Nov 26 08:20:15 2026 :: Treasure goblin: vanished from room 25021 (Outside the lair, mountain.are) (too long in one area).
+Thu Nov 26 08:24:59 2026 :: Connection guard: 147.185.133.137 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 26 08:24:59 2026 :: Connection guard: 147.185.133.137 closed without a word (strike 2 of 6 in 6 hours).
+Thu Nov 26 08:24:59 2026 :: Connection guard: the resolver could not look up 147.185.133.137's name; asked again in 300 seconds at the earliest.
