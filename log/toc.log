@@ -347069,3 +347069,6 @@ Thu Nov 26 05:04:42 2026 :: Treasure goblin: vanished from room 20116 (A broom c
 Thu Nov 26 05:10:31 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Thu Nov 26 05:16:56 2026 :: Connection guard: last hour 4 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 0 addresses paused and 0 refused now, 16 active player addresses.
 Thu Nov 26 05:21:07 2026 :: Cartographer: appeared.
+Thu Nov 26 05:29:22 2026 :: Sock.sinaddr:  205.210.31.152
+Thu Nov 26 05:29:22 2026 :: EOF encountered on read.
+Thu Nov 26 05:29:23 2026 :: Connection guard: 205.210.31.152 closed before a password prompt (strike 1 of 6 in 6 hours).
