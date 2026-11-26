@@ -347280,3 +347280,4 @@ Thu Nov 26 17:37:54 2026 :: Connection guard: 164.52.24.184 paused for 6 hours (
 Thu Nov 26 17:37:55 2026 :: Connection guard: 164.52.24.184 closed without a word (strike 1 of 6 in 6 hours).
 Thu Nov 26 17:37:55 2026 :: Connection guard: refused 1 connection from 164.52.24.184 (paused; 1 refused in all, pause 1 in 30 days, 360 minutes left).
 Thu Nov 26 17:38:55 2026 :: Connection guard: refused 9 connections from 164.52.24.184 (since the last line; 10 refused in all, pause 1 in 30 days, 359 minutes left).
+Thu Nov 26 17:44:56 2026 :: Treasure goblin: vanished from room 2241 (A cave opening, draconia.are) (too long in one area).
