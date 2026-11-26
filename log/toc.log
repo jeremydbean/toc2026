@@ -347159,3 +347159,4 @@ Thu Nov 26 12:02:17 2026 :: Treasure goblin: vanished from room 13231 (Marketpla
 Thu Nov 26 12:09:13 2026 :: Sock.sinaddr:  103.203.57.26
 Thu Nov 26 12:09:13 2026 :: Connection guard: 103.203.57.26 closed before a password prompt (strike 1 of 6 in 6 hours).
 Thu Nov 26 12:09:13 2026 :: Connection guard: 103.203.57.26 closed without a word (strike 2 of 6 in 6 hours).
+Thu Nov 26 12:10:38 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
