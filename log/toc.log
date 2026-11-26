@@ -347238,3 +347238,4 @@ Thu Nov 26 16:00:01 2026 :: Connection guard: 35.210.43.95 paused for 6 hours (p
 Thu Nov 26 16:00:02 2026 :: Connection guard: refused 1 connection from 35.210.43.95 (paused; 1 refused in all, pause 1 in 30 days, 360 minutes left).
 Thu Nov 26 16:00:02 2026 :: Connection guard: 35.210.43.95 closed without a word (strike 1 of 6 in 6 hours).
 Thu Nov 26 16:01:02 2026 :: Connection guard: refused 24 connections from 35.210.43.95 (since the last line; 25 refused in all, pause 1 in 30 days, 359 minutes left).
+Thu Nov 26 16:04:09 2026 :: Treasure goblin: vanished from room 25059 (Dead End, mountain.are) (too long in one area).
