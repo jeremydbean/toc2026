@@ -347023,3 +347023,4 @@ Thu Nov 26 02:22:54 2026 :: Sock.sinaddr:  147.185.133.156
 Thu Nov 26 02:22:55 2026 :: EOF encountered on read.
 Thu Nov 26 02:22:55 2026 :: Connection guard: 147.185.133.156 closed before a password prompt (strike 1 of 6 in 6 hours).
 Thu Nov 26 02:22:55 2026 :: Connection guard: the resolver could not look up 147.185.133.156's name; asked again in 300 seconds at the earliest.
+Thu Nov 26 02:23:27 2026 :: Treasure goblin: vanished from room 741 (Victory Road and Knights Way, camelot.are) (too long in one area).
