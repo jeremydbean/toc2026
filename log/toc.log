@@ -347161,3 +347161,4 @@ Thu Nov 26 12:09:13 2026 :: Connection guard: 103.203.57.26 closed before a pass
 Thu Nov 26 12:09:13 2026 :: Connection guard: 103.203.57.26 closed without a word (strike 2 of 6 in 6 hours).
 Thu Nov 26 12:10:38 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Thu Nov 26 12:12:22 2026 :: Treasure goblin: vanished from room 914 (Kitchen, olympus.are) (too long in one area).
+Thu Nov 26 12:16:56 2026 :: Connection guard: last hour 3 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 0 addresses paused and 0 refused now, 16 active player addresses.
