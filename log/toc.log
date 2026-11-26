@@ -347258,3 +347258,6 @@ Thu Nov 26 17:24:47 2026 :: Treasure goblin: vanished from room 17730 (The Haunt
 Thu Nov 26 17:25:01 2026 :: Connection guard: 8.211.41.180 closed without a word (strike 1 of 6 in 6 hours).
 Thu Nov 26 17:25:01 2026 :: Connection guard: 8.211.41.180 closed without a word (strike 2 of 6 in 6 hours).
 Thu Nov 26 17:25:54 2026 :: Sock.sinaddr:  192.178.6.196
+Thu Nov 26 17:27:24 2026 :: EOF encountered on read.
+Thu Nov 26 17:27:24 2026 :: Connection guard: 192.178.6.196 closed before a password prompt (strike 1 of 6 in 6 hours).
+Thu Nov 26 17:27:24 2026 :: Sock.sinaddr:  192.178.6.195
