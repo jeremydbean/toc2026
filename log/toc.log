@@ -347264,3 +347264,18 @@ Thu Nov 26 17:27:24 2026 :: Sock.sinaddr:  192.178.6.195
 Thu Nov 26 17:28:54 2026 :: EOF encountered on read.
 Thu Nov 26 17:28:54 2026 :: Connection guard: 192.178.6.195 closed before a password prompt (strike 1 of 6 in 6 hours).
 Thu Nov 26 17:34:51 2026 :: Treasure goblin: vanished from room 24223 (The Abbott's Room, crypt.are) (too long in one area).
+Thu Nov 26 17:37:32 2026 :: Sock.sinaddr:  164.52.24.184
+Thu Nov 26 17:37:40 2026 :: Sock.sinaddr:  164.52.24.184
+Thu Nov 26 17:37:41 2026 :: Connection guard: 164.52.24.184 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 26 17:37:41 2026 :: Connection guard: 164.52.24.184 closed before a password prompt (strike 2 of 6 in 6 hours).
+Thu Nov 26 17:37:41 2026 :: Connection guard: 164.52.24.184 closed without a word (strike 3 of 6 in 6 hours).
+Thu Nov 26 17:37:41 2026 :: Connection guard: the resolver could not look up 164.52.24.184's name; asked again in 300 seconds at the earliest.
+Thu Nov 26 17:37:47 2026 :: EOF encountered on read.
+Thu Nov 26 17:37:47 2026 :: Connection guard: 164.52.24.184 closed before a password prompt (strike 4 of 6 in 6 hours).
+Thu Nov 26 17:37:47 2026 :: Connection guard: 164.52.24.184 closed without a word (strike 5 of 6 in 6 hours).
+Thu Nov 26 17:37:48 2026 :: Sock.sinaddr:  164.52.24.184
+Thu Nov 26 17:37:54 2026 :: EOF encountered on read.
+Thu Nov 26 17:37:54 2026 :: Connection guard: 164.52.24.184 closed before a password prompt (strike 6 of 6 in 6 hours).
+Thu Nov 26 17:37:54 2026 :: Connection guard: 164.52.24.184 paused for 6 hours (pause 1 in 30 days; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 164.52.24.184 lifts it.
+Thu Nov 26 17:37:55 2026 :: Connection guard: 164.52.24.184 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 26 17:37:55 2026 :: Connection guard: refused 1 connection from 164.52.24.184 (paused; 1 refused in all, pause 1 in 30 days, 360 minutes left).
