@@ -347019,3 +347019,7 @@ Thu Nov 26 02:07:54 2026 :: Cartographer: appeared.
 Thu Nov 26 02:10:25 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Thu Nov 26 02:13:23 2026 :: Treasure goblin: vanished from room 10033 (A grand hallway., glitter.are) (too long in one area).
 Thu Nov 26 02:16:56 2026 :: Connection guard: last hour 1 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 0 addresses paused and 0 refused now, 16 active player addresses.
+Thu Nov 26 02:22:54 2026 :: Sock.sinaddr:  147.185.133.156
+Thu Nov 26 02:22:55 2026 :: EOF encountered on read.
+Thu Nov 26 02:22:55 2026 :: Connection guard: 147.185.133.156 closed before a password prompt (strike 1 of 6 in 6 hours).
+Thu Nov 26 02:22:55 2026 :: Connection guard: the resolver could not look up 147.185.133.156's name; asked again in 300 seconds at the earliest.
