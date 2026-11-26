@@ -347118,3 +347118,8 @@ Thu Nov 26 09:31:08 2026 :: Treasure goblin: vanished from room 17019 (Archers p
 Thu Nov 26 09:31:48 2026 :: Black market: the dealer vanished from room 5705 (The Old Temple Square, mid_ruin.are) (wandering).
 Thu Nov 26 09:41:12 2026 :: Treasure goblin: vanished from room 2339 (The solid path, mahntor.are) (too long in one area).
 Thu Nov 26 09:41:52 2026 :: Black market: the dealer vanished from room 3766 (Entrance to a dark cavern, school.are) (too long in one area).
+Thu Nov 26 09:44:12 2026 :: Sock.sinaddr:  20.118.219.95
+Thu Nov 26 09:44:12 2026 :: EOF encountered on read.
+Thu Nov 26 09:44:13 2026 :: Connection guard: 20.118.219.95 closed before a password prompt (strike 1 of 6 in 6 hours).
+Thu Nov 26 09:44:13 2026 :: Sock.sinaddr:  20.118.219.95
+Thu Nov 26 09:44:13 2026 :: Connection guard: 20.118.219.95 closed before a password prompt (strike 2 of 6 in 6 hours).
