@@ -347226,3 +347226,14 @@ Thu Nov 26 15:44:00 2026 :: Treasure goblin: vanished from room 2010 (N/S hallwa
 Thu Nov 26 15:46:56 2026 :: Black market: the dealer vanished from room 7875 (The Small Valley, valley.are) (wandering).
 Thu Nov 26 15:49:24 2026 :: Black market: the dealer left the world from room 1037 (A clearing, uargo.are).
 Thu Nov 26 15:54:05 2026 :: Treasure goblin: vanished from room 24594 (A Small Alcove, abyss.are) (too long in one area).
+Thu Nov 26 15:59:50 2026 :: Connection guard: 35.210.43.95 closed without a word (strike 1 of 6 in 6 hours).
+Thu Nov 26 16:00:00 2026 :: Connection guard: 35.210.43.95 closed without a word (strike 2 of 6 in 6 hours).
+Thu Nov 26 16:00:00 2026 :: Sock.sinaddr:  35.210.43.95
+Thu Nov 26 16:00:01 2026 :: EOF encountered on read.
+Thu Nov 26 16:00:01 2026 :: Connection guard: 35.210.43.95 closed before a password prompt (strike 3 of 6 in 6 hours).
+Thu Nov 26 16:00:01 2026 :: Connection guard: 35.210.43.95 closed without a word (strike 4 of 6 in 6 hours).
+Thu Nov 26 16:00:01 2026 :: Connection guard: 35.210.43.95 closed without a word (strike 5 of 6 in 6 hours).
+Thu Nov 26 16:00:01 2026 :: Connection guard: 35.210.43.95 closed without a word (strike 6 of 6 in 6 hours).
+Thu Nov 26 16:00:01 2026 :: Connection guard: 35.210.43.95 paused for 6 hours (pause 1 in 30 days; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.210.43.95 lifts it.
+Thu Nov 26 16:00:02 2026 :: Connection guard: refused 1 connection from 35.210.43.95 (paused; 1 refused in all, pause 1 in 30 days, 360 minutes left).
+Thu Nov 26 16:00:02 2026 :: Connection guard: 35.210.43.95 closed without a word (strike 1 of 6 in 6 hours).
