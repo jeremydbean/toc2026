@@ -347261,3 +347261,5 @@ Thu Nov 26 17:25:54 2026 :: Sock.sinaddr:  192.178.6.196
 Thu Nov 26 17:27:24 2026 :: EOF encountered on read.
 Thu Nov 26 17:27:24 2026 :: Connection guard: 192.178.6.196 closed before a password prompt (strike 1 of 6 in 6 hours).
 Thu Nov 26 17:27:24 2026 :: Sock.sinaddr:  192.178.6.195
+Thu Nov 26 17:28:54 2026 :: EOF encountered on read.
+Thu Nov 26 17:28:54 2026 :: Connection guard: 192.178.6.195 closed before a password prompt (strike 1 of 6 in 6 hours).
