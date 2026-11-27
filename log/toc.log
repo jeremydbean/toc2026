@@ -347598,3 +347598,7 @@ Fri Nov 27 14:16:56 2026 :: Connection guard: last hour 2 closed without a word,
 Fri Nov 27 14:24:37 2026 :: Treasure goblin: vanished from room 6017 (A small path in the dense forest, haon.are) (too long in one area).
 Fri Nov 27 14:27:37 2026 :: Connection guard: 195.178.110.204 closed without a word (strike 1 of 6 in 6 hours).
 Fri Nov 27 14:35:10 2026 :: Treasure goblin: vanished from room 1301 (The Shadow Grove, htower.are) (too long in one area).
+Fri Nov 27 14:44:16 2026 :: Sock.sinaddr:  176.65.149.236
+Fri Nov 27 14:44:16 2026 :: EOF encountered on read.
+Fri Nov 27 14:44:16 2026 :: Connection guard: 176.65.149.236 closed before a password prompt (strike 1 of 6 in 6 hours).
+Fri Nov 27 14:44:17 2026 :: Connection guard: 176.65.149.236 closed without a word (strike 2 of 6 in 6 hours).
