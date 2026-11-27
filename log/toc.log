@@ -347582,3 +347582,7 @@ Fri Nov 27 13:51:23 2026 :: Black market: stock 1795787483: some dented plate ma
 Fri Nov 27 13:51:23 2026 :: Black market: the dealer appeared with 5 items (stock 1795787483), for 24 minutes.
 Fri Nov 27 13:52:15 2026 :: Black market: the dealer vanished from room 10163 (the closet., glitter.are) (wandering).
 Fri Nov 27 13:53:19 2026 :: Black market: the dealer vanished from room 24527 (The Smouldering Trail, abyss.are) (wandering).
+Fri Nov 27 13:54:23 2026 :: Treasure goblin: vanished from room 18119 (A small field, icekeep.are) (too long in one area).
+Fri Nov 27 13:54:54 2026 :: Connection guard: 20.65.144.53 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 27 13:54:54 2026 :: Sock.sinaddr:  20.65.144.53
+Fri Nov 27 13:54:54 2026 :: Connection guard: 20.65.144.53 closed before a password prompt (strike 2 of 6 in 6 hours).
