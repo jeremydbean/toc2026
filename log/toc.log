@@ -348511,3 +348511,5 @@ Fri Nov 27 23:37:17 2026 :: Connection guard: 123.253.54.53 closed before a pass
 Fri Nov 27 23:37:53 2026 :: Cartographer: left room 2387 (The Guard Post, mahntor.are) (his visit is over).
 Fri Nov 27 23:38:22 2026 :: Connection guard: 8.209.127.129 closed without a word (strike 1 of 6 in 6 hours).
 Fri Nov 27 23:38:23 2026 :: Connection guard: 8.209.127.129 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 27 23:40:21 2026 :: Connection guard: 23.31.96.97 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 27 23:40:22 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
