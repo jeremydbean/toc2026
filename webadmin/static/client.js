@@ -235,8 +235,14 @@
         const protocol = location.protocol === "https:" ? "wss:" : "ws:";
         const socket = new WebSocket(`${protocol}//${location.host}/ws`);
         state.socket = socket;
+        // Only the current socket speaks for the connection (review,
+        // 2026-11-27): a socket still closing is replaced above, and its
+        // late close cleared the shared state, unmasked the password field
+        // and scheduled a reconnect while its replacement was connected.
+        const current = () => state.socket === socket;
 
         socket.addEventListener("message", (event) => {
+            if (!current()) return;
             const message = String(event.data);
             if (message === "\0TOC_CONNECTED") {
                 state.connected = true;
@@ -259,8 +265,9 @@
         });
 
         socket.addEventListener("close", () => {
+            if (!current()) return;
             const wasConnected = state.connected;
-            if (state.socket === socket) state.socket = null;
+            state.socket = null;
             state.connected = false;
             state.connectedAt = null;
             setSecretInput(false);
@@ -270,6 +277,7 @@
         });
 
         socket.addEventListener("error", () => {
+            if (!current()) return;
             if (!state.connected) setConnectionState("offline", "Connection error");
         });
     }
@@ -1175,7 +1183,10 @@
         socket.addEventListener("open", () => {
             socket.send(JSON.stringify({ type: "auth", token: state.token }));
         });
+        // As the game socket: only the current one speaks (review, 2026-11-27).
+        const currentEvents = () => state.eventSocket === socket;
         socket.addEventListener("message", (message) => {
+            if (!currentEvents()) return;
             let payload;
             try {
                 payload = JSON.parse(String(message.data));
@@ -1187,7 +1198,8 @@
             byId("event-status").textContent = "Live";
         });
         socket.addEventListener("close", (event) => {
-            if (state.eventSocket === socket) state.eventSocket = null;
+            if (!currentEvents()) return;
+            state.eventSocket = null;
             if (event.code === 4003) {
                 setAdminAuthenticated(false, true);
                 return;
@@ -1198,7 +1210,7 @@
             }
         });
         socket.addEventListener("error", () => {
-            byId("event-status").textContent = "Error";
+            if (currentEvents()) byId("event-status").textContent = "Error";
         });
     }
 
@@ -1255,17 +1267,22 @@
         byId("log-status").textContent = "Connecting";
         byId("log-connect").textContent = "Disconnect";
         socket.addEventListener("open", () => socket.send(JSON.stringify({ type: "auth", token: state.token })));
+        // A stopped socket's handlers stay attached (stopLogs clears only
+        // onclose): only the current one speaks (review, 2026-11-27).
+        const currentLog = () => state.logSocket === socket;
         socket.addEventListener("message", (event) => {
+            if (!currentLog()) return;
             byId("log-status").textContent = "Live";
             appendLog(String(event.data));
         });
         socket.addEventListener("close", (event) => {
-            if (state.logSocket === socket) state.logSocket = null;
+            if (!currentLog()) return;
+            state.logSocket = null;
             byId("log-connect").textContent = "Connect";
             byId("log-status").textContent = event.code === 4003 ? "Forbidden" : "Disconnected";
             if (event.code === 4003) setAdminAuthenticated(false, true);
         });
-        socket.addEventListener("error", () => { byId("log-status").textContent = "Error"; });
+        socket.addEventListener("error", () => { if (currentLog()) byId("log-status").textContent = "Error"; });
     }
 
     async function snapshotLogs() {

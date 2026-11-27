@@ -64,6 +64,14 @@ class CommandSequenceUnitTests(unittest.TestCase):
             cwd=ROOT, capture_output=True, text=True, timeout=30)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
+    def test_only_the_current_socket_speaks_for_the_connection(self) -> None:
+        """Review, 2026-11-27: a replaced socket's late close reset its
+        replacement's connection state (tests/test_socket_handover.js)."""
+        result = subprocess.run(
+            [NODE, "--test", str(ROOT / "tests" / "test_socket_handover.js")],
+            cwd=ROOT, capture_output=True, text=True, timeout=30)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
     def test_both_consoles_send_the_line_whole(self) -> None:
         client = (ROOT / "webadmin" / "static" / "client.js").read_text()
         app = (ROOT / "webadmin" / "static" / "app.js").read_text()

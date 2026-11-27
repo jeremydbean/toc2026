@@ -2057,10 +2057,15 @@
         const protocol = location.protocol === "https:" ? "wss:" : "ws:";
         const socket = new WebSocket(`${protocol}//${location.host}/ws`);
         state.terminal.socket = socket;
+        // Only the current socket speaks for the console: one still closing
+        // is replaced above, and its late close reset the state of the one
+        // that replaced it (review, 2026-11-27).
+        const current = () => state.terminal.socket === socket;
         socket.addEventListener("open", () => {
-            byId("console-status").textContent = "Connecting to game";
+            if (current()) byId("console-status").textContent = "Connecting to game";
         });
         socket.addEventListener("message", (event) => {
+            if (!current()) return;
             const message = String(event.data);
             if (message === "\0TOC_CONNECTED") {
                 setConsoleConnected(true);
@@ -2076,12 +2081,13 @@
             consoleOutput.write(message);
         });
         socket.addEventListener("close", () => {
-            if (state.terminal.socket === socket) state.terminal.socket = null;
+            if (!current()) return;
+            state.terminal.socket = null;
             setConsoleSecret(false);
             setConsoleConnected(false, state.terminal.failed ? "Game unavailable" : "Disconnected");
             appendTerminal(byId("game-terminal"), "\n[Disconnected]\n");
         });
-        socket.addEventListener("error", () => setConsoleConnected(false, "Connection error"));
+        socket.addEventListener("error", () => { if (current()) setConsoleConnected(false, "Connection error"); });
     }
 
     function disconnectConsole() {
@@ -2149,12 +2155,16 @@
         socket.addEventListener("open", () => {
             socket.send(JSON.stringify({ type: "auth", token: state.token }));
         });
+        // stopLogs clears only onclose; these stay attached (review, 2026-11-27).
+        const currentLog = () => state.logs.socket === socket;
         socket.addEventListener("message", (event) => {
+            if (!currentLog()) return;
             byId("log-status").textContent = "Live";
             appendTerminal(byId("log-terminal"), String(event.data));
         });
         socket.addEventListener("close", (event) => {
-            if (state.logs.socket === socket) state.logs.socket = null;
+            if (!currentLog()) return;
+            state.logs.socket = null;
             if (event.code === 4003) {
                 state.logs.shouldReconnect = false;
                 setAuthenticated(false);
@@ -2168,7 +2178,7 @@
             }
         });
         socket.addEventListener("error", () => {
-            byId("log-status").textContent = "Connection error";
+            if (currentLog()) byId("log-status").textContent = "Connection error";
         });
     }
 
