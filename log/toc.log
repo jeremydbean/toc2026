@@ -347367,3 +347367,6 @@ Fri Nov 27 00:10:29 2026 :: Connection guard: 23.31.96.97 closed without a word 
 Fri Nov 27 00:12:13 2026 :: Treasure goblin: vanished from room 125 (Papa Smurf's Home, smurf.are) (too long in one area).
 Fri Nov 27 00:16:56 2026 :: Connection guard: last hour 4 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 0 addresses paused and 0 refused now, 16 active player addresses.
 Fri Nov 27 00:21:02 2026 :: Cartographer: appeared.
+Fri Nov 27 00:21:37 2026 :: Automated backup started.
+Fri Nov 27 00:21:37 2026 :: Backups: 1 old archive(s) expired; the newest 6 are always kept.
+Fri Nov 27 00:21:38 2026 :: Automated backup complete.
