@@ -347482,3 +347482,8 @@ Fri Nov 27 06:17:57 2026 :: Black market: the dealer vanished from room 8027 (St
 Fri Nov 27 06:21:25 2026 :: Treasure goblin: vanished from room 19146 (Clay Avenue, rome.are) (too long in one area).
 Fri Nov 27 06:28:02 2026 :: Black market: the dealer vanished from room 1578 (The Jail Cell, gnome.are) (too long in one area).
 Fri Nov 27 06:32:22 2026 :: Black market: the dealer left the world from room 25119 (A turn in the corridor., underdrk.are).
+Fri Nov 27 06:34:30 2026 :: Sock.sinaddr:  40.124.117.31
+Fri Nov 27 06:34:31 2026 :: EOF encountered on read.
+Fri Nov 27 06:34:31 2026 :: Connection guard: 40.124.117.31 closed before a password prompt (strike 1 of 6 in 6 hours).
+Fri Nov 27 06:34:31 2026 :: Sock.sinaddr:  40.124.117.31
+Fri Nov 27 06:34:31 2026 :: Connection guard: 40.124.117.31 closed before a password prompt (strike 2 of 6 in 6 hours).
