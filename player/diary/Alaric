@@ -268,7 +268,7 @@ List earn 200367882 0 quests
 List spend 1500000 0 heal
 End
 Day 2026-11-27
-Played 105
+Played 154
 Level 57 57 0
 Exp 0 0
 Kills 0
@@ -276,12 +276,13 @@ Deaths 0
 Close 0
 Quests 0 0
 Dailies 0 0
-List area 13 0 City of Dresden
-List area 8 0 Haon Dor
-List area 1 0 New Thalos
+List area 22 0 City of Dresden
+List area 12 0 Haon Dor
+List area 2 0 New Thalos
 List area 0 0 Continental Drift
-List area 81 0 High Tower of Sorcery
+List area 113 0 High Tower of Sorcery
 List area 2 0 Dragon Tower
+List area 3 0 Dylan's Area
 List earn 221035500 0 interest
 End
 #END
