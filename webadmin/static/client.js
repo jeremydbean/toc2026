@@ -211,6 +211,10 @@
         state.secretInput = secret;
         input.type = secret ? "password" : "text";
         input.placeholder = secret ? "Password" : "Command";
+        // Its spoken name follows (2026-11-27): a screen reader said "Game
+        // command" over a masked password field.
+        input.setAttribute("aria-label", secret ? "Password" : "Game command");
+        input.autocomplete = secret ? "current-password" : "off";
     }
 
 
@@ -1375,6 +1379,18 @@
         byId("timestamps").addEventListener("change", (event) => { state.settings.timestamps = event.target.checked; saveSettings(); });
         byId("local-echo").addEventListener("change", (event) => { state.settings.localEcho = event.target.checked; saveSettings(); });
         byId("auto-reconnect").addEventListener("change", (event) => { state.settings.autoReconnect = event.target.checked; saveSettings(); });
+        // SCREENREADER COMBAT, on the character (2026-11-27). Never into a
+        // name or password prompt: only once a command would be a command.
+        byId("combat-lines").addEventListener("change", (event) => {
+            const level = event.target.value;
+            if (!level) return;
+            if (state.secretInput || !state.connected) {
+                toast("Log in first, then choose combat lines.", "error");
+            } else {
+                sendCommand(`screenreader combat ${level}`);
+            }
+            event.target.value = "";
+        });
 
         byId("add-alias").addEventListener("click", () => openAliasDialog());
         byId("alias-form").addEventListener("submit", saveAlias);

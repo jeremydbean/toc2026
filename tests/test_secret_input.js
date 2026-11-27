@@ -24,7 +24,10 @@ function cut(file, signature) {
 }
 
 function harness(file, signature, name, stateShape) {
-    const input = { value: "", type: "text", placeholder: "" };
+    const input = {
+        value: "", type: "text", placeholder: "", attrs: {},
+        setAttribute(key, val) { this.attrs[key] = val; },
+    };
     const state = stateShape();
     const fn = new Function("state", "byId", cut(file, signature) + "\nreturn " + name + ";")(
         state, () => input);
@@ -46,6 +49,17 @@ for (const [file, signature, name, secretOf] of [
         assert.equal(input.value, "", "never shown unmasked");
         assert.equal(secretOf(state), false);
     });
+
+    if (file === "client.js") {
+        test(`${file}: a screen reader hears which field it is`, () => {
+            const { input, fn } = harness(file, signature, name,
+                () => ({ secretInput: false, terminal: { secretInput: false } }));
+            fn(true);
+            assert.equal(input.attrs["aria-label"], "Password");
+            fn(false);
+            assert.equal(input.attrs["aria-label"], "Game command");
+        });
+    }
 
     test(`${file}: an ordinary draft survives a reconnect`, () => {
         const { input, fn } = harness(file, signature, name,

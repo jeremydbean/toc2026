@@ -4495,6 +4495,9 @@ void dam_message( CHAR_DATA *ch, CHAR_DATA *victim,int dam,int dt,bool immune )
 	}
     }
 
+    /* Routine blow lines: each recipient's SCREENREADER COMBAT setting
+       decides whether they get one (comm.c act_new). */
+    act_blow_dam = UMAX( 0, old_dam );
     if (ch == victim)
     {
 	act(buf1,ch,NULL,NULL,TO_ROOM);
@@ -4506,6 +4509,7 @@ void dam_message( CHAR_DATA *ch, CHAR_DATA *victim,int dam,int dt,bool immune )
 	act( buf2, ch, NULL, victim, TO_CHAR );
 	act( buf3, ch, NULL, victim, TO_VICT );
     }
+    act_blow_dam = -1;
     dam = old_dam;
     return;
 }

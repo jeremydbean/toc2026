@@ -1491,6 +1491,8 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 	fprintf( fp, "Helper 1\n" );
     if ( ch->pcdata != NULL && ch->pcdata->screenreader )
 	fprintf( fp, "ScreenReader 1\n" );
+    if ( ch->pcdata != NULL && ch->pcdata->combat_verbosity > 0 )
+        fprintf( fp, "CombatVerb %d\n", ch->pcdata->combat_verbosity );
     if ( ch->pcdata != NULL && ch->pcdata->guild_switched )
 	fprintf( fp, "GuildSwitched 1\n" );
     /* The starter errands and the expedition (errand.c), when any. */
@@ -4622,6 +4624,12 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    break;
 
 	case 'C':
+	    if ( !str_cmp( word, "CombatVerb" ) )
+	    {
+		ch->pcdata->combat_verbosity = URANGE( 0, fread_number( fp ), 2 );
+		fMatch = true;
+		break;
+	    }
 	    KEY( "Cast",	ch->pcdata->castle,
 					(sh_int)(castle_lookup(fread_word( fp ) )) );
 	    KEY( "CasinoWon",	ch->pcdata->casino_winnings,	fread_long( fp ) );

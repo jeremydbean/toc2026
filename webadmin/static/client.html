@@ -146,6 +146,15 @@
                         <label class="toggle-row"><span>Timestamps</span><input id="timestamps" type="checkbox"></label>
                         <label class="toggle-row"><span>Local echo</span><input id="local-echo" type="checkbox" checked></label>
                         <label class="toggle-row"><span>Reconnect</span><input id="auto-reconnect" type="checkbox" checked></label>
+                        <label class="toggle-row" for="combat-lines"><span>Combat lines</span>
+                            <select id="combat-lines" aria-describedby="combat-lines-note">
+                                <option value="">Leave as is</option>
+                                <option value="full">Full: every blow</option>
+                                <option value="brief">Brief: yours and those at you that land</option>
+                                <option value="quiet">Quiet: only big blows at you</option>
+                            </select>
+                        </label>
+                        <p class="setting-note" id="combat-lines-note">Sets SCREENREADER COMBAT on your character, for every client. Deaths, warnings, prompts and speech always come.</p>
                     </section>
 
                     <section class="utility-section session-actions">

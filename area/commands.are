@@ -6711,6 +6711,7 @@ See also: GROUP, FOLLOW, WHO, IGNORE, QUESTION, ADVENTURE
 0 SCREENREADER 'SCREEN READER' ACCESSIBILITY~
 Syntax: screenreader            turn it on, or off
         screenreader on|off
+        screenreader combat full|brief|quiet
 
 SCREENREADER makes what the game sends read well aloud.  While it is on:
 
@@ -6725,6 +6726,11 @@ character.  Also worth setting: BRIEF (shorter room descriptions), SCROLL 0
 (no "Hit Return" pages), PROMPT (a shorter prompt), and SOUND OFF.  In
 Mudlet, TOCGUI READER ON hides the package's panes and map window too.  The
 browser client at timesofchaos.com labels its controls for screen readers.
+
+SCREENREADER COMBAT sets how many blow lines you get, in any client and
+with screen reader mode on or off: FULL every one, BRIEF only your own and
+those at you that land, QUIET none but a blow that takes a tenth of your
+health.  Deaths, fleeing, warnings, prompts and speech always come.
 
 See also: COLOR, BRIEF, SCROLL, PROMPT, SOUND, MUDLET
 ~

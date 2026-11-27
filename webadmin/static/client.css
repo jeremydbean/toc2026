@@ -1677,3 +1677,10 @@ textarea {
     .play-info-links { width: 100%; }
     .play-info-mudlet, .play-info-link { width: 100%; justify-content: center; }
 }
+
+/* A setting's one-line explanation, read with it (aria-describedby). */
+.setting-note {
+    margin: -0.25rem 0 0.5rem;
+    font-size: 0.8rem;
+    color: var(--muted, #6b7280);
+}

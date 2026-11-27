@@ -297,7 +297,10 @@ rooms; `tocMudlet.unfog` sets a room's note again when it comes back. `tocgui
 reader on|off` (saved in `toc-settings.lua` as `reader`) leaves only Mudlet's
 main window for a screen reader, and a profile in reader mode builds no
 interface at start; the game's `SCREENREADER` (GMCP `Char.Status` carries
-`"reader"`) suggests it once a session. Both are played in
+`"reader"`) suggests it once a session. The game's `SCREENREADER COMBAT
+full|brief|quiet` (2026-11-27) thins the blow lines server-side, so it works
+in Mudlet with no package change; no trigger in the package reads blow
+lines. Both are played in
 `tests/mudlet_fog_spec.lua` and `tests/mudlet_ui_spec.lua`.
 
 ### The fog

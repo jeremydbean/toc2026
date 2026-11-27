@@ -905,6 +905,65 @@ void do_brief(CHAR_DATA *ch, char *argument)
  * box borders taken out of what commands send (reader_simplify, color.c);
  * COLOR's own setting is kept for when it is turned off. Saved.
  */
+/*
+ * SCREENREADER COMBAT (2026-11-27): how many routine blow lines -- "Your
+ * slash hits the goblin", "The goblin misses you" -- a player is sent.
+ * FULL every one; BRIEF only their own blows and those at them, and only
+ * those that land; QUIET none, but a blow at them that takes a tenth of
+ * their health or more always comes. Nothing else is touched: deaths,
+ * kills, fleeing, disarms, bleeding and dying warnings, prompts, tells,
+ * says and channels come at every setting. Works with or without
+ * SCREENREADER ON, and in any client (Mudlet, telnet, the website).
+ */
+bool combat_blow_wanted( CHAR_DATA *to, bool victim, bool attacker, int dam )
+{
+    int level;
+
+    if ( to == NULL || IS_NPC(to) || to->pcdata == NULL )
+        return true;
+    level = to->pcdata->combat_verbosity;
+    if ( level <= 0 )
+        return true;
+    if ( victim && dam > 0 && to->max_hit > 0 && (long) dam * 10 >= (long) to->max_hit )
+        return true;
+    if ( level >= 2 )
+        return false;
+    return ( victim || attacker ) && dam > 0;
+}
+
+static const char *const combat_verbosity_name[3] = { "full", "brief", "quiet" };
+
+static void screenreader_combat( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    int level;
+
+    one_argument( argument, arg );
+    if ( arg[0] == '\0' )
+    {
+        char buf[MAX_STRING_LENGTH];
+
+        snprintf( buf, sizeof(buf), "Combat lines: %s.  SCREENREADER COMBAT FULL, BRIEF or QUIET.\n\r",
+                  combat_verbosity_name[URANGE( 0, ch->pcdata->combat_verbosity, 2 )] );
+        send_to_char( buf, ch );
+        return;
+    }
+    for ( level = 0; level < 3; level++ )
+        if ( !str_prefix( arg, combat_verbosity_name[level] ) )
+            break;
+    if ( level >= 3 )
+    {
+        send_to_char( "Syntax: screenreader combat [full|brief|quiet]\n\r", ch );
+        return;
+    }
+    ch->pcdata->combat_verbosity = level;
+    save_char_obj( ch );
+    send_to_char( level == 0 ? "Combat lines: full -- every blow.\n\r"
+                : level == 1 ? "Combat lines: brief -- your blows and those at you that land.\n\r"
+                : "Combat lines: quiet -- none, but a big blow at you.  Deaths, warnings,\n\r"
+                  "prompts and speech always come.\n\r", ch );
+}
+
 void do_screenreader( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
@@ -912,7 +971,12 @@ void do_screenreader( CHAR_DATA *ch, char *argument )
 
     if ( IS_NPC(ch) || ch->pcdata == NULL )
         return;
-    one_argument( argument, arg );
+    argument = one_argument( argument, arg );
+    if ( !str_cmp( arg, "combat" ) )
+    {
+        screenreader_combat( ch, argument );
+        return;
+    }
     if ( arg[0] == '\0' )
         on = !ch->pcdata->screenreader;
     else if ( !str_cmp( arg, "on" ) )
@@ -921,7 +985,8 @@ void do_screenreader( CHAR_DATA *ch, char *argument )
         on = false;
     else
     {
-        send_to_char( "Syntax: screenreader [on|off]\n\r", ch );
+        send_to_char( "Syntax: screenreader [on|off]\n\r"
+                      "        screenreader combat [full|brief|quiet]\n\r", ch );
         return;
     }
     ch->pcdata->screenreader = on;

@@ -5011,6 +5011,9 @@ static void act_log_missing_arg( const char *code_desc, char code_char,
  * speech: a blow, an arrival or a spell still reaches everybody.
  */
 static bool act_is_speech = false;
+/* fight.c's dam_message, around the acts of one routine blow: the damage
+   it did, else -1 (SCREENREADER COMBAT, combat_blow_wanted). */
+int act_blow_dam = -1;
 
 /*
  * What to call an exit in "The $d is closed.": the noun among its
@@ -5118,6 +5121,11 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
             continue;
         /* SAY, EMOTE and POSE: not to anyone who IGNOREs the speaker. */
         if ( act_is_speech && to != ch && is_ignoring( to, ch ) )
+            continue;
+        /* A routine blow's line, past whoever asked for fewer of them
+           (SCREENREADER COMBAT; dam_message sets act_blow_dam). */
+        if ( act_blow_dam >= 0
+          && !combat_blow_wanted( to, type == TO_VICT, type == TO_CHAR, act_blow_dam ) )
             continue;
  
         dstring_clear( &buf );

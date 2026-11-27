@@ -88,3 +88,54 @@ class ScreenReaderSourceTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+DUMMY_ROOM = 2419        # the training dummy's arena (area/dummy.are)
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class CombatLinesTests(unittest.TestCase):
+    """SCREENREADER COMBAT (2026-11-27): how many routine blow lines come.
+    FULL every one; BRIEF your own and those at you that land; QUIET none
+    but a big one at you. Deaths, fleeing, warnings, prompts and speech
+    come at every setting."""
+
+    def test_brief_and_quiet_leave_out_blows_and_nothing_else(self) -> None:
+        pw = "Zcombatpw1"
+        blow = re.compile(r"(?i)\b(hits|misses|grazes|scratches|wounds|mauls|decimates|devastates|"
+                          r"maims|mutilates|disembowels|dismembers|massacres|mangles|demolishes|"
+                          r"annihilates|obliterates|eradicates|destroys|injures)\b.*dummy")
+        with LiveMud() as mud:
+            for name, level in (("Zfighter", 30), ("Zwatcher", 30)):
+                with mud.connect(timeout=120) as c:
+                    create_character(c, name, pw)
+                    c.send("quit")
+                    c.wait_closed()
+                patch_player_file(mud, name, Levl=level, Room=DUMMY_ROOM,
+                                  HMV="3000 3000 1000 1000 1000 1000", HMVP="3000 1000 1000")
+            with mud.connect(timeout=120) as fighter, mud.connect(timeout=120) as watcher:
+                login(fighter, "Zfighter", pw)
+                login(watcher, "Zwatcher", pw)
+                for c in (fighter, watcher):
+                    c.sync("scroll 0")
+                # Full: the watcher sees the fight.
+                fighter.send("kill dummy")
+                watcher.drain(6.0)
+                self.assertRegex(watcher.transcript, r"Zfighter's .*dummy", "full shows bystanders' blows")
+                # Brief: not other people's blows.
+                self.assertIn("brief", watcher.sync("screenreader combat brief"))
+                mark = len(watcher.transcript)
+                watcher.drain(6.0)
+                self.assertNotRegex(watcher.transcript[mark:], r"Zfighter's .*dummy")
+                # Quiet: not even your own; FLEE and the prompt still come.
+                self.assertIn("quiet", fighter.sync("screenreader combat quiet"))
+                mark = len(fighter.transcript)
+                fighter.drain(6.0)
+                self.assertNotRegex(fighter.transcript[mark:], blow)
+                fled = fighter.sync("flee", timeout=30)
+                self.assertRegex(fled, r"(?i)flee|escape|panic", fled)
+                self.assertIn("hp", fighter.sync("look"))
+                self.assertIn("Combat lines: quiet", fighter.sync("screenreader combat"))
+                fighter.sync("save")
+            saved = (mud.player_dir / "Zfighter").read_text(encoding="latin-1")
+        self.assertIn("\nCombatVerb 2\n", saved)

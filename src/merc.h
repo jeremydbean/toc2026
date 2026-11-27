@@ -1137,6 +1137,8 @@ int   tutorial_diploma_state args( ( CHAR_DATA *ch ) );
 bool  quest_ready_phrase     args( ( CHAR_DATA *ch, bool daily, char *buf, size_t size ) );
 int   tutorial_earned        args( ( CHAR_DATA *ch, char *buf, size_t size ) );
 bool  tutorial_in_progress   args( ( CHAR_DATA *ch ) );
+extern int act_blow_dam;
+bool  combat_blow_wanted     args( ( CHAR_DATA *to, bool victim, bool attacker, int dam ) );
 /* playlog.c, for encounter.c */
 void  playlog_row            args( ( const char *kind, CHAR_DATA *ch, const char *fields ) );
 void  playlog_row_unplaced   args( ( const char *kind, CHAR_DATA *ch, const char *fields ) );
@@ -2825,6 +2827,11 @@ struct  pc_data
        with when the helpers were last told of it (memory only). */
     bool                helper;
     bool                screenreader;         /* SCREENREADER (ScreenReader 1, case 'S') */
+    /* SCREENREADER COMBAT: 0 every blow, 1 brief (yours and those at you
+       that land), 2 quiet (none but a big one at you). Only routine blow
+       lines (fight.c dam_message): deaths, fleeing, warnings, prompts and
+       speech always come. Saved as CombatVerb (case 'C'). */
+    int                 combat_verbosity;
     bool                guild_switched;       /* JOIN SWITCH used (GuildSwitched 1, case 'G') */
     time_t              lfg_until;
     time_t              lfg_noticed;
