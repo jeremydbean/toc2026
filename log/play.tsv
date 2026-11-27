@@ -56484,3 +56484,13 @@
 1795801683	cmd	Alaric	57	1483	htower.are	standing	100	0	-	west		In the light //   You seem to be floating in a magical energy field, though you cannot see // the source of the energy, you can feel its power pushing at you from all	-	+
 1795801684	cmd	Alaric	57	1483	htower.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
 1795801685	cmd	Alaric	57	1483	htower.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795801686	cmd	Alaric	57	1483	htower.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795801687	cmd	Alaric	57	1483	htower.are	standing	100	0	-	west		Alas, you cannot go that way.	-	-
+1795801687	area	Alaric	57	4207	dresden.are	htower.are	dresden.are	215	up
+1795801687	cmd	Alaric	57	4207	dresden.are	standing	100	0	-	up		Before the Altar. //   Before you are three steps up to the white marble altar dedicated to Devota, // Goddess of Peace and Healing.	-	+
+1795801688	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	recall		The Questmaster's Globe, above the Oak //   A sudden wind blows you from the top branch!  You reach out for a nearby // branch, but to no avail!  You feel the sensation of free-fall before you	-	+
+1795801689	outcome	Alaric	57	2497	dresden.are	quest-failed	failure	abandoned	-	ordinary target=obj:25042 level=59 alive=1 area=htower.are there=0 streak=6
+1795801689	cmd	Alaric	57	2497	dresden.are	standing	100	11	-	aquest	ab	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Alaric. Your quest obligation is lifted.' // Questor Thews says 'You had a streak of 6 in a row - all gone now!'	failure:abandoned	+
+1795801689	laid	-	0	0	-	944	herb	44	a sprig of aconite	778	camelot.are	scatter
+1795801689	laid	-	0	0	-	945	herb	38	a foxglove flower	737	camelot.are	scatter
+1795801689	laid	-	0	0	-	946	component	68	a gorgon's horn	3513	midennir.are	scatter
