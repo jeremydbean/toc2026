@@ -56336,3 +56336,79 @@
 1795801560	cmd	Alaric	57	1393	htower.are	standing	100	0	-	north		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.	-	+
 1795801560	cmd	Alaric	57	1393	htower.are	standing	100	0	-	open		It's already open.	-	-
 1795801561	cmd	Alaric	57	1395	htower.are	standing	100	0	-	east		The charm master's chamber //   You are in the chambers of the tower's master of charm. Some straw and // dirt litters the floor here, it looks to have been recently used by wild	-	+
+1795801563	cmd	Alaric	57	1395	htower.are	standing	100	0	-	open		Ok.	-	-
+1795801564	cmd	Alaric	57	1395	htower.are	standing	100	0	-	open		Ok.	-	-
+1795801564	cmd	Alaric	57	1395	htower.are	standing	100	0	-	exits		Obvious exits: // North - The animal pens // West  - A hallway	-	-
+1795801566	cmd	Alaric	57	1397	htower.are	standing	100	0	-	north		The animal pens //   You are in the animal pens. Many caged animals are here looking unhappy. // Obviously they are destined to be enslaved, or used in some cruel magical	-	+
+1795801567	cmd	Alaric	57	1395	htower.are	standing	100	0	-	south		The charm master's chamber //   You are in the chambers of the tower's master of charm. Some straw and // dirt litters the floor here, it looks to have been recently used by wild	-	+
+1795801568	cmd	Alaric	57	1393	htower.are	standing	100	0	-	west		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801569	cmd	Alaric	57	1396	htower.are	standing	100	0	-	north		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801570	cmd	Alaric	57	1398	htower.are	standing	100	0	-	north		The end of the hallway //   You are at the end of a long north-south hallway. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801571	cmd	Alaric	57	1399	htower.are	standing	100	0	-	up		Atop the stairway //   You are atop the stairway to the upper levels of the high tower. The walls // emit a faint magical glow which provides enough light to see by.	-	+
+1795801572	cmd	Alaric	57	1400	htower.are	standing	100	0	-	west		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801572	cmd	Alaric	57	1400	htower.are	standing	100	0	-	open		Ok.	-	-
+1795801573	cmd	Alaric	57	1400	htower.are	standing	100	0	-	exits		Obvious exits: // North - A store room // East  - Atop the stairway	-	+
+1795801574	cmd	Alaric	57	1401	htower.are	standing	100	0	-	north		A store room //   You are in a large store room. Raw materials are neatly bundled and piled // here and here. Many freshly cut staves rods and wands of different sizes	-	+
+1795801574	cmd	Alaric	57	1400	htower.are	standing	100	0	-	south		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801575	cmd	Alaric	57	1404	htower.are	standing	100	0	-	west		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801575	cmd	Alaric	57	1405	htower.are	standing	100	0	-	west		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801576	cmd	Alaric	57	1405	htower.are	standing	100	0	-	open		Ok.	-	-
+1795801577	cmd	Alaric	57	1405	htower.are	standing	100	0	-	exits		Obvious exits: // North - The spellbinder's cache // East  - A hallway	-	+
+1795801577	cmd	Alaric	57	1403	htower.are	standing	100	0	-	north		The spellbinder's cache //   You have discovered the cache of the master spell binder. There are two // very large silver chased cabinets here, other than that, the room is bare.	-	+
+1795801579	cmd	Alaric	57	1403	htower.are	standing	100	0	-	open		Ok.	-	-
+1795801579	cmd	Alaric	57	1403	htower.are	standing	100	0	-	exits		Obvious exits: // East  - The master spellbinder's chamber // South - A hallway	-	-
+1795801581	cmd	Alaric	57	1402	htower.are	standing	100	0	-	east		The master spellbinder's chamber //   You are in the chambers of the master spell binder. Unlike other work // shops of similar nature, this one is without furnishings or tools. The	-	+
+1795801583	cmd	Alaric	57	1402	htower.are	standing	100	0	-	open		Ok.	-	-
+1795801583	cmd	Alaric	57	1401	htower.are	standing	100	0	-	east		A store room //   You are in a large store room. Raw materials are neatly bundled and piled // here and here. Many freshly cut staves rods and wands of different sizes	-	+
+1795801584	cmd	Alaric	57	1400	htower.are	standing	100	0	-	south		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801585	cmd	Alaric	57	1404	htower.are	standing	100	0	-	west		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801585	cmd	Alaric	57	1405	htower.are	standing	100	0	-	west		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801585	cmd	Alaric	57	1406	htower.are	standing	100	0	-	west		A bend in the hallway //   You are at a bend in the long hallway. The walls emit a faint magical // glow which provides enough light to see by.	-	+
+1795801586	cmd	Alaric	57	1407	htower.are	standing	100	0	-	south		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801586	cmd	Alaric	57	1408	htower.are	standing	100	0	-	south		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801587	cmd	Alaric	57	1408	htower.are	standing	100	0	-	open		Ok.	-	-
+1795801587	cmd	Alaric	57	1408	htower.are	standing	100	0	-	exits		Obvious exits: // North - A hallway // South - A hallway	-	+
+1795801589	cmd	Alaric	57	1409	htower.are	standing	100	0	-	west		The golem master's workshop //   You are in the golem master's workshop. A few unfinished looking humanoid // forms of different make are here, some moving, some not. The animated forms	-	+
+1795801591	cmd	Alaric	57	1409	htower.are	standing	100	0	-	open		There is no door to the north, just open passage.	-	-
+1795801593	cmd	Alaric	57	1409	htower.are	standing	100	0	-	exits		Obvious exits: // North - A store room // East  - A hallway	-	+
+1795801594	cmd	Alaric	57	1408	htower.are	standing	100	0	-	east		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801594	cmd	Alaric	57	1413	htower.are	standing	100	0	-	south		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801595	cmd	Alaric	57	1414	htower.are	standing	100	0	-	south		A bend in the hallway //   You are at a bend in the long hallway. The walls emit a faint magical // glow which provides enough light to see by.	-	+
+1795801595	cmd	Alaric	57	1415	htower.are	standing	100	0	-	east		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801596	cmd	Alaric	57	1416	htower.are	standing	100	0	-	east		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801596	cmd	Alaric	57	1416	htower.are	standing	100	0	-	open		Ok.	-	-
+1795801597	cmd	Alaric	57	1416	htower.are	standing	100	0	-	exits		Obvious exits: // East  - A hallway // South - The master of illusion's chamber	-	+
+1795801598	cmd	Alaric	57	1417	htower.are	standing	100	0	-	south		The master of illusion's chamber //   You are in the chamber of the master of illusions. The walls here are // every changing in color and texture, as if they were reforming before your	-	+
+1795801600	cmd	Alaric	57	1417	htower.are	standing	100	0	-	exits		Obvious exits: // North - A hallway // West  - A bedroom	-	-
+1795801600	cmd	Alaric	57	1418	htower.are	standing	100	2	-	west		A bedroom //   You are in the bedroom of the master of illusions. Strange looking items // and artifacts float here and there in the air. The ripples of strong magic	-	+
+1795801601	cmd	Alaric	57	1417	htower.are	standing	100	0	-	east		The master of illusion's chamber //   You are in the chamber of the master of illusions. The walls here are // every changing in color and texture, as if they were reforming before your	-	+
+1795801601	cmd	Alaric	57	1416	htower.are	standing	100	0	-	north		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801602	cmd	Alaric	57	1419	htower.are	standing	100	0	-	east		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801603	cmd	Alaric	57	1419	htower.are	standing	100	0	-	open		Ok.	-	-
+1795801603	cmd	Alaric	57	1419	htower.are	standing	100	0	-	exits		Obvious exits: // East  - A bend in the hallway // South - The meditation chamber	-	+
+1795801604	cmd	Alaric	57	1420	htower.are	standing	100	0	-	south		The meditation chamber //   You are in a meditation chamber. It is very silent here, in fact you // can not even hear your own footsteps.	-	+
+1795801605	cmd	Alaric	57	1419	htower.are	standing	100	0	-	north		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801605	cmd	Alaric	57	1421	htower.are	standing	100	0	-	east		A bend in the hallway //   You are at a bend in the long hallway. The walls emit a faint magical // glow which provides enough light to see by.	-	+
+1795801606	cmd	Alaric	57	1422	htower.are	standing	100	0	-	north		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801606	cmd	Alaric	57	1422	htower.are	standing	100	0	-	open		Ok.	-	-
+1795801607	cmd	Alaric	57	1422	htower.are	standing	100	0	-	exits		Obvious exits: // North - A hallway // East  - A dark room	-	+
+1795801608	cmd	Alaric	57	1423	htower.are	standing	100	0	-	east		A dark room //   You are in a large dark room. The air here seems quite stale, and a sense // of extreme dread comes over you. The stench of rotten flesh seems to be	-	+
+1795801610	cmd	Alaric	57	1423	htower.are	standing	100	0	-	exits		Obvious exits: // North - A dark room // West  - A hallway	-	-
+1795801611	cmd	Alaric	57	1422	htower.are	standing	100	0	-	west		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801611	cmd	Alaric	57	1426	htower.are	standing	100	0	-	north		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801612	cmd	Alaric	57	1427	htower.are	standing	100	0	-	north		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.	-	+
+1795801613	cmd	Alaric	57	1427	htower.are	standing	100	0	-	up		Alas, you cannot go that way.	-	-
+1795801613	cmd	Alaric	57	1428	htower.are	standing	100	0	-	north		The end of the hallway //   You are at the end of a long hallway. The walls here glow with a faint // magical energy which provides plenty of light.	-	+
+1795801613	cmd	Alaric	57	1429	htower.are	standing	100	0	-	up		A corridor //   You are at the east end of a long corridor. Obsidian walls engraved with // ancient runes of power stretch out before you. Magical energies seem to	-	+
+1795801615	cmd	Alaric	57	1430	htower.are	standing	100	0	-	west		A corridor //   You are in a long corridor. Obsidian walls engraved with ancient runes // of power stretch out before you. Magical energies seem to crackle with	-	+
+1795801615	cmd	Alaric	57	1431	htower.are	standing	100	0	-	west		A bend in the corridor //   You are at a bend in the long corridor. Obsidian walls engraved with // ancient runes of power stretch out before you. Magical energies seem to	-	+
+1795801616	cmd	Alaric	57	1432	htower.are	standing	100	0	-	south		A corridor //   You are in a long corridor leading north and south. Obsidian walls // engraved with ancient runes of power stretch out before you. Magical	-	+
+1795801616	cmd	Alaric	57	1433	htower.are	standing	100	0	-	south		An intersection //   You are at an intersection in the corridor. The obsidian walled halls // lead off in every direction from here, pulsing with the power of their	-	+
+1795801617	cmd	Alaric	57	1433	htower.are	standing	100	0	-	exits		Obvious exits: // North - A corridor // East  - A corridor	-	+
+1795801618	cmd	Alaric	57	1433	htower.are	standing	100	0	-	open		There is no door to the west, just open passage.	-	-
+1795801619	cmd	Alaric	57	1433	htower.are	standing	100	0	-	exits		Obvious exits: // North - A corridor // East  - A corridor	-	+
+1795801622	cmd	Alaric	57	1433	htower.are	standing	100	0	-	look		An intersection //   You are at an intersection in the corridor. The obsidian walled halls // lead off in every direction from here, pulsing with the power of their	-	+
+1795801622	cmd	Alaric	57	1436	htower.are	standing	100	0	-	west		A corridor //   You have reached an end in the long corridor. Obsidian walls engraved // with ancient runes of power stretch out before you. The sound of snoring^?{	-	+
+1795801623	cmd	Alaric	57	1436	htower.are	standing	100	0	-	exits		Obvious exits: // East  - An intersection // West  - The entrance to the library	-	-
+1795801625	cmd	Alaric	57	1437	htower.are	standing	100	0	-	west		The entrance to the library //   You are in the entrance to the great library of magic. A giant desk is // here, covered with books parchments and scrolls. Long shelves loaded with	-	+
+1795801625	cmd	Alaric	57	1437	htower.are	standing	100	0	-	exits		Obvious exits: // North - In the library // East  - A corridor	-	+
