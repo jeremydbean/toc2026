@@ -347555,3 +347555,6 @@ Fri Nov 27 12:03:32 2026 :: Treasure goblin: vanished from room 24140 (Inside th
 Fri Nov 27 12:10:21 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Fri Nov 27 12:13:36 2026 :: Treasure goblin: vanished from room 17210 (On the first floor, highland.are) (too long in one area).
 Fri Nov 27 12:16:56 2026 :: Connection guard: last hour 1 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 0 addresses paused and 0 refused now, 16 active player addresses.
+Fri Nov 27 12:17:59 2026 :: Daily backup started.
+Fri Nov 27 12:17:59 2026 :: Backups: 1 old archive(s) expired; the newest 6 are always kept.
+Fri Nov 27 12:18:00 2026 :: Daily backup complete.
