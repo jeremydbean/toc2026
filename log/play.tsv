@@ -56047,3 +56047,7 @@
 1795607219	laid	-	0	0	-	857	herb	40	a clove	7694	ultima.are	scatter
 1795607219	laid	-	0	0	-	858	component	71	a goblin's finger	15476	forsaken.are	scatter
 1795673216	stall	-	0	0	-	417ms	slowest corpse_registry_update 417ms	command - 0ms	0 players	0 more since
+1795801349	area	Alaric	57	2497	dresden.are	-	dresden.are	-1	login
+1795801351	cmd	Alaric	57	2497	dresden.are	standing	100	0	-	who		[57 Dwarf   Emper ] Alaric. // Players found: 1	-	-
+1795801354	quest	Alaric	57	2497	dresden.are	ordinary	recover	25042	The Heart of Tifarah	59	htower.are	16
+1795801354	cmd	Alaric	57	2497	dresden.are	standing	100	25	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Alaric!' // Questor Thews tells you 'Raiders stole The Heart of Tifarah from the realm!'	-	+

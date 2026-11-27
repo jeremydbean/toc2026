@@ -2,7 +2,7 @@
 Name Alaric~
 Id   22012
 Serial 1251902
-LogO 1795522884
+LogO 1795801354
 Vers 4
 Prom ~
 Race dwarf~
@@ -18,7 +18,7 @@ ChangesSeen 20261122reports:1 20261121logfixes:1 20261120fixes:1 20261120luck:1 
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble 20261114-season-area-ids 20261116-wrapped-pools 20261123-hyrule-piece-credit~
 Cast none
 Levl 57
-Plyd 1128436
+Plyd 1128442
 ListRemorts 3  3  5  2  2 ~
 NumRemorts 3
 Note 1790386686
@@ -184,8 +184,8 @@ AchSet rooms 2 4 10-16 18 21-25 28-43 45-47 51-59 61-64 66 70 300 305-306 309-31
 AchSet daily-kinds 1 ~
 AchSet psi-disciplines 1-2 ~
 AchSet explored-areas 1819706833 ~
-LastOut  1795522884
-Rested 46163 1
+LastOut  1795801354
+Rested 46163 0
 Daily 4 20751 3 1 20751
 SesLogin 1795522679
 SesDur   205
@@ -201,7 +201,7 @@ QuestPnts 2771
 QuestStrk 6
 CasinoWon  51
 CasinoLost 304
-QuestNext 5
+QuestNext 30
 Exp  252749
 Act  4261068
 AfBy 512
@@ -229,6 +229,8 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
+Color 17 10
+Color 18 12
 Pos  8
 Prac 36
 Trai 76
@@ -294,9 +296,9 @@ Sk 100 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
-AffD 'bless'   0   8  -1  24          0          0
-AffD 'bless'   0   8   1  18          0          0
 AffD 'giant strength'   0   2   1   1          0          0
+AffD 'bless'   0   8   1  18          0          0
+AffD 'bless'   0   8  -1  24          0          0
 End
 
 #O
@@ -876,8 +878,8 @@ Lev  52
 Cost 0
 Cond 100
 Repd 0
-Affect -1 52 -1 1 17 0 0
 Affect -1 52 -1 4 22 0 0
+Affect -1 52 -1 1 17 0 0
 End
 
 #O
@@ -899,8 +901,8 @@ Lev  54
 Cost 25000000
 Cond 100
 Repd 0
-Affect -1 54 -1 -13 14 0 0
 Affect -1 54 -1 17 12 0 0
+Affect -1 54 -1 -13 14 0 0
 End
 
 #O
@@ -1017,8 +1019,8 @@ Lev  51
 Cost 50000000
 Cond 99
 Repd 0
-Affect -1 51 -1 20 14 0 0
 Affect -1 51 -1 4 23 0 0
+Affect -1 51 -1 20 14 0 0
 End
 
 #O
@@ -1072,9 +1074,9 @@ Lev  29
 Cost 30000000
 Cond 100
 Repd 0
-Affect -1 29 -1 -4 1 0 0
-Affect -1 29 -1 -1 1 0 0
 Affect -1 29 -1 -4 2 0 0
+Affect -1 29 -1 -1 1 0 0
+Affect -1 29 -1 -4 1 0 0
 End
 
 #O
@@ -1086,8 +1088,8 @@ Lev  52
 Cost 50000000
 Cond 100
 Repd 0
-Affect -1 52 -1 2 24 0 0
 Affect -1 52 -1 5 17 0 0
+Affect -1 52 -1 2 24 0 0
 End
 
 #O
@@ -1159,8 +1161,8 @@ Lev  52
 Cost 23680000
 Cond 100
 Repd 0
-Affect -1 52 -1 2 24 0 0
 Affect -1 52 -1 3 22 0 0
+Affect -1 52 -1 2 24 0 0
 End
 
 #O
@@ -1171,9 +1173,9 @@ Lev  23
 Cost 13000000
 Cond 100
 Repd 0
-Affect -1 23 -1 31 14 0 0
-Affect -1 23 -1 -4 1 0 0
 Affect -1 23 -1 -9 12 0 0
+Affect -1 23 -1 -4 1 0 0
+Affect -1 23 -1 31 14 0 0
 End
 
 #O
@@ -1301,8 +1303,8 @@ Lev  53
 Cost 15000000
 Cond 99
 Repd 0
-Affect -1 53 -1 -1 2 0 0
 Affect -1 53 -1 1 4 0 0
+Affect -1 53 -1 -1 2 0 0
 End
 
 #O
@@ -1346,8 +1348,8 @@ Lev  23
 Cost 13000000
 Cond 88
 Repd 0
-Affect -1 23 -1 1 17 0 0
 Affect -1 23 -1 -5 12 0 0
+Affect -1 23 -1 1 17 0 0
 End
 
 #O
@@ -1402,8 +1404,8 @@ Cost 23000000
 Cond 98
 Repd 0
 Affect -1 32 -1 -4 4 0 0
-Affect -1 32 -1 3 22 0 0
 Affect -1 32 -1 2 24 0 0
+Affect -1 32 -1 3 22 0 0
 Affect -1 32 -1 -4 4 0 0
 End
 
@@ -1415,8 +1417,8 @@ Lev  31
 Cost 20000000
 Cond 98
 Repd 0
-Affect -1 31 -1 -2 22 0 0
 Affect -1 31 -1 1 17 0 0
+Affect -1 31 -1 -2 22 0 0
 End
 
 #O
@@ -1887,9 +1889,9 @@ Lev  49
 Cost 40000000
 Cond 100
 Repd 0
-Affect -1 49 -1 -1 13 0 0
-Affect -1 49 -1 -1 12 0 0
 Affect -1 49 -1 3 24 0 0
+Affect -1 49 -1 -1 12 0 0
+Affect -1 49 -1 -1 13 0 0
 End
 
 #O
@@ -2096,8 +2098,8 @@ Lev  51
 Cost 20000000
 Cond 100
 Repd 0
-Affect -1 51 -1 4 24 0 0
 Affect -1 51 -1 -3 4 0 0
+Affect -1 51 -1 4 24 0 0
 End
 
 #O
@@ -2233,8 +2235,8 @@ Lev  41
 Cost 14980000
 Cond 100
 Repd 0
-Affect -1 41 -1 -2 4 0 0
 Affect -1 41 -1 -2 1 0 0
+Affect -1 41 -1 -2 4 0 0
 End
 
 #O
