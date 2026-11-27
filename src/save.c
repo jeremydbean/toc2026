@@ -4267,11 +4267,12 @@ int corpse_file_write( const char *path, const CORPSE_RECORD *rec,
         }
         if ( delay_ms > 0 )
         {
-            struct timespec pause;
+            /* A wait on the game's own clock: nanosleep is POSIX, and the
+               strict C17 CMake build declares none here (CI, 2026-11-27). */
+            long until = monotonic_ms( ) + delay_ms;
 
-            pause.tv_sec = delay_ms / 1000;
-            pause.tv_nsec = ( delay_ms % 1000 ) * 1000000L;
-            nanosleep( &pause, NULL );
+            while ( monotonic_ms( ) < until )
+                ;
         }
     }
 
