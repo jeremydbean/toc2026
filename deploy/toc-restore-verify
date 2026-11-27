@@ -4,7 +4,8 @@
 # announced a running game whatever had happened).
 #
 #   toc-restore-verify [--active-only] [--backup-key KEY --backup-remote URL
-#                       [--as USER] [--home DIR] [--sync-receipts DIR --since EPOCH]]
+#                       [--as USER] [--home DIR] [--sync-receipts DIR --since EPOCH
+#                       [--state-repo DIR --tree DIR]]]
 #                      REQUIRED... [-- WANTED...]
 #
 # Each REQUIRED unit must be active -- waited for up to
@@ -31,6 +32,12 @@
 # reached GitHub since the restore began. Without it the verdict says push
 # access only.
 #
+# Review, 2026-11-27: a receipt proves a sync finished, not that it carried
+# the restored state. With --state-repo (the sync's clone) and --tree (the
+# restored game tree), the receipt's remote commit must be the clone's
+# HEAD, the remote's branch must stand at it, and the clone's player,
+# gods, heroes and corpse/live must be the tree's, file for file.
+#
 # Exit 0 when every required unit is running and, if asked, remote backups
 # are verified; 1 when a required unit is not (each named on stderr); 3
 # when the units are but remote backups are not verified. The last lines
@@ -44,6 +51,8 @@ as_user=""
 as_home=""
 receipts=""
 since=0
+state_repo=""
+tree=""
 while :; do
     case "${1:-}" in
         --active-only) active_only=1; shift ;;
@@ -53,6 +62,8 @@ while :; do
         --home) as_home=${2:-}; shift 2 ;;
         --sync-receipts) receipts=${2:-}; shift 2 ;;
         --since) since=${2:-0}; shift 2 ;;
+        --state-repo) state_repo=${2:-}; shift 2 ;;
+        --tree) tree=${2:-}; shift 2 ;;
         *) break ;;
     esac
 done
@@ -149,8 +160,40 @@ receipt_value() { sed -n "s/^$1=//p" "$2" 2>/dev/null | head -1; }
 if [ "$remote_ok" = 1 ] && [ -n "$receipts" ]; then
     done_at=$(receipt_value time "$receipts/last-success")
     case "$done_at" in ''|*[!0-9]*) done_at=0 ;; esac
-    if [ "$done_at" -ge "$since" ] && [ "$done_at" -gt 0 ]; then
-        echo "   REMOTE BACKUPS: verified -- push access as $who, and a state sync reached GitHub at $(receipt_value time_utc "$receipts/last-success") ($(receipt_value remote_commit "$receipts/last-success" | cut -c1-12))"
+    pushed=$(receipt_value remote_commit "$receipts/last-success")
+    mismatch=""
+    if [ "$done_at" -ge "$since" ] && [ "$done_at" -gt 0 ] && [ -n "$state_repo" ] && [ -n "$tree" ]; then
+        head=$(as_service git -C "$state_repo" rev-parse HEAD 2>/dev/null)
+        branch=$(as_service git -C "$state_repo" rev-parse --abbrev-ref HEAD 2>/dev/null)
+        there=$(as_service git -C "$state_repo" ls-remote origin "refs/heads/$branch" 2>/dev/null | cut -f1)
+        if [ -z "$pushed" ] || [ "$pushed" != "$head" ]; then
+            mismatch="the receipt's commit (${pushed:-none}) is not the sync's clone (${head:-unreadable})"
+        elif [ "$there" != "$pushed" ]; then
+            mismatch="the remote's $branch is at ${there:-nothing readable}, not the pushed ${pushed}"
+        else
+            for d in player gods heroes corpse/live; do
+                # git keeps no empty directory: missing on one side is the
+                # same as empty on the other.
+                files_in() { [ -d "$1" ] && find "$1" -type f ! -path '*/versions/*' | head -1; }
+                if [ ! -d "$state_repo/$d" ] || [ ! -d "$tree/$d" ]; then
+                    [ -z "$(files_in "$tree/$d")" ] && [ -z "$(files_in "$state_repo/$d")" ] && continue
+                    mismatch="the remote's $d is not the restored tree's"
+                    break
+                fi
+                if ! diff -rq -x versions "$tree/$d" "$state_repo/$d" >/dev/null 2>&1; then
+                    mismatch="the remote's $d is not the restored tree's"
+                    break
+                fi
+            done
+        fi
+    fi
+    if [ "$done_at" -ge "$since" ] && [ "$done_at" -gt 0 ] && [ -n "$mismatch" ]; then
+        echo "   REMOTE BACKUPS: NOT VERIFIED -- a sync finished after the restore, but $mismatch" >&2
+        [ "$bad" = 0 ] && bad=3
+    elif [ "$done_at" -ge "$since" ] && [ "$done_at" -gt 0 ]; then
+        proved=""
+        [ -n "$state_repo" ] && [ -n "$tree" ] && proved=", holding the restored state"
+        echo "   REMOTE BACKUPS: verified -- push access as $who, and a state sync reached GitHub at $(receipt_value time_utc "$receipts/last-success") ($(printf '%s' "$pushed" | cut -c1-12))$proved"
     else
         attempt="$(receipt_value result "$receipts/last-attempt")"
         [ -n "$attempt" ] && attempt="; the last attempt: $attempt, $(receipt_value reason "$receipts/last-attempt")"

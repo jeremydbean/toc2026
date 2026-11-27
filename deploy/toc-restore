@@ -131,6 +131,7 @@ fi
 # build in it at the same time (review, 2026-11-24). Held to the end. While
 # it is held the sync skips -- the state it would push is about to be
 # replaced, and the old tree is kept whole in pre-restore-<stamp>/.
+OWN_LOCK=""
 if [ "$DRILL" = 0 ] && [ -z "${TOC_DEPLOY_LOCKED:-}" ]; then
     exec 9>"${TOC_DEPLOY_LOCK:-/run/toc-deploy.lock}"
     if ! flock -w "${TOC_RESTORE_LOCK_WAIT:-300}" 9; then
@@ -138,6 +139,7 @@ if [ "$DRILL" = 0 ] && [ -z "${TOC_DEPLOY_LOCKED:-}" ]; then
         exit 2
     fi
     export TOC_DEPLOY_LOCKED=1
+    OWN_LOCK=1
 fi
 
 # ---------------------------------------------------------------- clone
@@ -243,12 +245,29 @@ verify_all() {
             --backup-remote "${TOC_STATE_REMOTE:-git@github.com:jeremydbean/toc2026.git}" \
             --as toc --home "$TOC_PREFIX" \
             --sync-receipts "${TOC_SYNC_STATE_DIR:-/var/lib/toc-state-sync}" \
-            --since "$RESTORE_BEGAN" "$@"
+            --since "${SWAPPED_AT:-$RESTORE_BEGAN}" \
+            --state-repo "${STATE_REPO:-$TOC_PREFIX/state-repo}" --tree "$CURRENT" "$@"
     fi
 }
+# Review, 2026-11-27: this started the sync while still holding the
+# maintenance lock -- which the sync takes shared, and skips without -- so
+# the sync never ran and the verdict could not be met; and a receipt
+# written after the restore began but before the swap would have been
+# taken for one of the restored state. The restore is done by now, so its
+# own hold on the lock is let go first, and the receipt must be from after
+# the swap (SWAPPED_AT) and match the restored tree (toc-restore-verify).
 sync_once() {
     [ "${TOC_RESTORE_BACKUP_CHECK:-1}" = 0 ] && return 0
-    echo "   running one state sync, to prove the backups reach GitHub..."
+    if [ -n "$OWN_LOCK" ]; then
+        flock -u 9 2>/dev/null || true
+        exec 9>&-
+        OWN_LOCK=""
+        unset TOC_DEPLOY_LOCKED
+        echo "   the restore is done: the maintenance lock is let go for the sync"
+    elif [ -n "${TOC_DEPLOY_LOCKED:-}" ]; then
+        echo "   WARN: the caller holds the maintenance lock, so the sync skips until it is let go" >&2
+    fi
+    echo "   running one state sync, to prove the restored state reaches GitHub..."
     systemctl start toc-state-sync.service >/dev/null 2>&1 || true
 }
 TOC_RESTORE_LIVE=0 sh "$RESTORE_STATE" "$BUILD" "$STAGE" ||
@@ -317,6 +336,7 @@ if ! mv "$STAGE" "$CURRENT"; then
     [ -n "$aside_made" ] && mv "$ASIDE" "$CURRENT"
     resume; abandon "moving the new tree in failed; the old one is back"
 fi
+SWAPPED_AT=$(date +%s)      # a sync's receipt counts only from here
 if [ -n "$aside_made" ] && [ -d "$ASIDE/backups" ]; then
     rmdir "$CURRENT/backups" 2>/dev/null || true
     mv "$ASIDE/backups" "$CURRENT/backups" ||
@@ -497,7 +517,8 @@ if [ "$verified" = 3 ]; then
     echo "   saves have not reached GitHub since the restore: put the deploy key in place" >&2
     echo "   (above), run a sync (systemctl start toc-state-sync.service), then check:" >&2
     echo "     sh $VERIFY --backup-key <key> --backup-remote <remote> --as toc --home $TOC_PREFIX \\" >&2
-    echo "        --sync-receipts /var/lib/toc-state-sync --since $RESTORE_BEGAN toc-game.service" >&2
+    echo "        --sync-receipts /var/lib/toc-state-sync --since ${SWAPPED_AT:-$RESTORE_BEGAN} \\" >&2
+    echo "        --state-repo $TOC_PREFIX/state-repo --tree $CURRENT toc-game.service" >&2
     exit 6
 fi
 say "done -- game is up and self-restarting, and backups verified; see the manual steps above"

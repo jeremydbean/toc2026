@@ -907,14 +907,14 @@ esac
         return dict(TOC_RESTORE_BACKUP_CHECK="1", GIT_SSH_KEY=str(key),
                     TOC_STATE_REMOTE="git@example.invalid:x.git", TOC_SYNC_STATE_DIR=str(receipts))
 
-    def test_a_restore_on_a_running_host_judges_the_backups_too(self) -> None:
-        """Review, 2026-11-24 (fourth): TOC_RESTORE_SKIP_SERVICES=1 said done
-        with no word on the backups. The restored state is only safe once a
-        sync has carried it to GitHub: it runs one, and judges by its
-        receipt."""
+    def test_a_receipt_that_does_not_match_the_clone_is_not_proof(self) -> None:
+        """Review, 2026-11-27: a receipt proves a sync finished, not that it
+        carried the restored state. One naming a commit that is not the
+        sync's clone's is turned down (the real drill is RestoreSyncDrillTests)."""
         done = self.restore(TOC_RESTORE_REPLACE="1", **self.backup_setup(sync_writes_receipt=True))
-        self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
-        self.assertIn("a state sync reached GitHub at now (abcdef123456)", done.stdout)
+        self.assertEqual(done.returncode, 6, done.stdout + done.stderr)
+        self.assertIn("a sync finished after the restore, but the receipt's commit (abcdef123456) "
+                      "is not the sync's clone", done.stderr)
 
     def test_push_access_without_a_sync_since_is_not_called_backed_up(self) -> None:
         done = self.restore(TOC_RESTORE_REPLACE="1", **self.backup_setup(sync_writes_receipt=False))
@@ -959,6 +959,104 @@ esac
         self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
         self.assertEqual(self.calls_made(), [])
         self.assertEqual((self.current / "code.c").read_text(), "new code\n")
+
+
+@unittest.skipIf(shutil.which("flock") is None or shutil.which("rsync") is None
+                 or shutil.which("make") is None, "needs flock, rsync and make (the Linux host)")
+class RestoreSyncDrillTests(unittest.TestCase):
+    """The whole of it in a scratch tree (review, 2026-11-27): the real
+    toc-restore, the real toc-state-sync started as systemctl would start it,
+    one maintenance lock between them, and a bare repository for GitHub.
+    toc-restore used to start the sync while still holding the lock the
+    sync takes shared, so the sync skipped and nothing reached the remote;
+    and a receipt from before the swap would have passed."""
+
+    SCRIPT = ROOT / "deploy" / "toc-restore"
+    SYNC = ROOT / "deploy" / "windows-vm" / "toc-state-sync"
+
+    def setUp(self) -> None:
+        self._tmp = tempfile.TemporaryDirectory()
+        root = self.root = pathlib.Path(self._tmp.name)
+        git = lambda *a, cwd=None: subprocess.run(["git", *a], cwd=cwd, check=True, capture_output=True)
+        seed = root / "seed"
+        for d in ("player", "gods", "heroes", "log", "corpse/live", "area"):
+            (seed / d).mkdir(parents=True)
+        for n in range(12):
+            (seed / "player" / f"Zrestored{chr(97 + n)}").write_text(
+                f"#PLAYER\nName Zrestored{chr(97 + n)}~\nEnd\n#END\n")
+        (seed / "gods" / "Zgod").write_text("god\n")
+        (seed / "area" / "limbo.are").write_text("#AREA\n")
+        (seed / "Makefile").write_text(
+            "merc:\n\tprintf '#!/bin/sh\\necho world ok\\n' > merc && chmod +x merc\n"
+            "clean:\n\trm -f merc\n")
+        git("init", "-q", "-b", "main", cwd=seed)
+        git("add", "-A", cwd=seed)
+        git("-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", "synthetic", cwd=seed)
+        self.remote = root / "remote.git"
+        git("clone", "-q", "--bare", str(seed), str(self.remote))
+        self.prefix = root / "srv"
+        self.current = self.prefix / "current"
+        (self.current / "player").mkdir(parents=True)
+        (self.current / "player" / "Zold").write_text("#PLAYER\nName Zold~\nEnd\n#END\n")
+        self.lock = root / "deploy.lock"
+        self.lock.write_text("")
+        self.key = root / "key"
+        self.key.write_text("synthetic\n")
+        self.receipts = root / "receipts"
+        self.receipts.mkdir()
+        self.bin = root / "bin"
+        self.bin.mkdir()
+        sync_env = " ".join([
+            f"TOC_ROOT={self.current}", f"STATE_REPO={self.prefix / 'state-repo'}",
+            f"REMOTE=file://{self.remote}", "BRANCH=main", f"GIT_SSH_KEY={self.key}",
+            f"LOCK_FILE={root / 'sync.lock'}", f"TOC_DEPLOY_LOCK={self.lock}",
+            f"TOC_SYNC_STATE_DIR={self.receipts}", f"TOC_HOST_ACTION_RESULTS={root / 'results'}",
+            "TOC_SYNC_LOCK_WAIT=2", "TOC_SYNC_DEBOUNCE=0",
+            "GIT_AUTHOR_NAME=t GIT_AUTHOR_EMAIL=t@t GIT_COMMITTER_NAME=t GIT_COMMITTER_EMAIL=t@t"])
+        # A systemctl that starts the real sync, as the unit would; the rest
+        # is the running list RestoreSwapTests keeps.
+        self.running = root / "running"
+        self.running.write_text("toc-game.service\n")
+        (self.bin / "systemctl").write_text(f"""#!/bin/sh
+case "$1" in
+  is-active) [ "$2" = --quiet ] && shift; grep -qx "$2" {self.running} ;;
+  stop) grep -vx "$2" {self.running} > {self.running}.n; mv {self.running}.n {self.running} ;;
+  start) if [ "$2" = toc-state-sync.service ]; then env {sync_env} sh {self.SYNC} > {root}/sync.out 2>&1;
+         else echo "$2" >> {self.running}; fi ;;
+  *) exit 0 ;;
+esac
+""")
+        (self.bin / "systemctl").chmod(0o755)
+        (self.bin / "logger").write_text("#!/bin/sh\nexit 0\n")
+        (self.bin / "logger").chmod(0o755)
+
+    def tearDown(self) -> None:
+        self._tmp.cleanup()
+
+    def remote_players(self) -> set[str]:
+        listed = subprocess.run(["git", "--git-dir", str(self.remote), "ls-tree", "--name-only",
+                                 "main", "player/"], capture_output=True, text=True, check=True)
+        return {pathlib.Path(p).name for p in listed.stdout.split()}
+
+    def test_the_restored_state_reaches_the_remote_under_the_real_lock(self) -> None:
+        env = dict(os.environ, PATH=f"{self.bin}:{os.environ['PATH']}", REPO=str(self.remote),
+                   TOC_PREFIX=str(self.prefix), TOC_DEPLOY_LOCK=str(self.lock),
+                   TOC_RESTORE_DRILL="0", TOC_RESTORE_SKIP_SERVICES="1", TOC_RESTORE_REPLACE="1",
+                   TOC_RESTORE_BACKUP_CHECK="1", GIT_SSH_KEY=str(self.key),
+                   TOC_STATE_REMOTE=f"file://{self.remote}", TOC_SYNC_STATE_DIR=str(self.receipts),
+                   STATE_REPO=str(self.prefix / "state-repo"), TOC_RESTORE_VERIFY_WAIT="1",
+                   GIT_AUTHOR_NAME="t", GIT_AUTHOR_EMAIL="t@t", GIT_COMMITTER_NAME="t",
+                   GIT_COMMITTER_EMAIL="t@t")
+        done = subprocess.run(["sh", str(self.SCRIPT)], env=env, capture_output=True, text=True,
+                              timeout=300)
+        sync_out = (self.root / "sync.out").read_text() if (self.root / "sync.out").exists() else ""
+        self.assertNotIn("a deploy is running", sync_out, "the sync was shut out by the restore's lock")
+        self.assertEqual(done.returncode, 0, done.stdout + done.stderr + sync_out)
+        self.assertIn("holding the restored state", done.stdout)
+        self.assertIn("Zrestoreda", self.remote_players())
+        self.assertNotIn("Zold", self.remote_players())
+        self.assertEqual({p.name for p in (self.current / "player").iterdir() if p.is_file()},
+                         self.remote_players())
 
 
 class RestoreVerifyTests(unittest.TestCase):
