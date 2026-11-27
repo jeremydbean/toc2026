@@ -56433,3 +56433,54 @@
 1795801641	cmd	Alaric	57	1437	htower.are	standing	100	0	-	south		The entrance to the library //   You are in the entrance to the great library of magic. A giant desk is // here, covered with books parchments and scrolls. Long shelves loaded with	-	+
 1795801641	cmd	Alaric	57	1440	htower.are	standing	100	0	-	south		In the library //   You are in the great library of magic. A strong musty smell permeates the // entire area. Upon shelves which float just out of reach are hundreds of	-	+
 1795801642	cmd	Alaric	57	1441	htower.are	standing	100	0	-	east		In the library //   You are in the great library of magic. A strong musty smell permeates the // entire area. Upon shelves which float just out of reach are hundreds of	-	+
+1795801643	cmd	Alaric	57	1439	htower.are	standing	100	0	-	east		In the library //   You are in the great library of magic. A strong musty smell permeates the // entire area. Upon shelves which float just out of reach are hundreds of	-	+
+1795801643	cmd	Alaric	57	1442	htower.are	standing	100	0	-	east		In the library //   You are in the great library of magic. A strong musty smell permeates the // entire area. Upon shelves which float just out of reach are hundreds of	-	+
+1795801644	cmd	Alaric	57	1440	htower.are	standing	100	0	-	east		In the library //   You are in the great library of magic. A strong musty smell permeates the // entire area. Upon shelves which float just out of reach are hundreds of	-	+
+1795801644	cmd	Alaric	57	1441	htower.are	standing	100	0	-	east		In the library //   You are in the great library of magic. A strong musty smell permeates the // entire area. Upon shelves which float just out of reach are hundreds of	-	+
+1795801645	cmd	Alaric	57	1438	htower.are	standing	100	0	-	south		In the library //   You are in the great library of magic. A strong musty smell permeates the // entire area. Upon shelves which float just out of reach are hundreds of	-	+
+1795801646	cmd	Alaric	57	1437	htower.are	standing	100	0	-	east		The entrance to the library //   You are in the entrance to the great library of magic. A giant desk is // here, covered with books parchments and scrolls. Long shelves loaded with	-	+
+1795801648	cmd	Alaric	57	1436	htower.are	standing	100	0	-	east		A corridor //   You have reached an end in the long corridor. Obsidian walls engraved // with ancient runes of power stretch out before you. The sound of snoring^?{	-	+
+1795801648	cmd	Alaric	57	1433	htower.are	standing	100	0	-	east		An intersection //   You are at an intersection in the corridor. The obsidian walled halls // lead off in every direction from here, pulsing with the power of their	-	+
+1795801649	cmd	Alaric	57	1434	htower.are	standing	100	0	-	east		A corridor //   You are at the end of a long corridor. Obsidian walls engraved with // ancient runes of power stretch out before you. A darkened door is to the	-	+
+1795801650	cmd	Alaric	57	1434	htower.are	standing	100	0	-	exits		Obvious exits: // East  - Closed door // West  - An intersection	-	-
+1795801650	cmd	Alaric	57	1434	htower.are	standing	100	0	-	open		Ok.	-	-
+1795801651	cmd	Alaric	57	1434	htower.are	standing	100	0	-	exits		Obvious exits: // East  - The scrying chamber // West  - An intersection	-	-
+1795801652	cmd	Alaric	57	1435	htower.are	standing	100	0	-	east		The scrying chamber //   You are in the scrying chamber of the high tower of sorcerery. It is here // that arcane rituals are performed to enable those of the art to look in	-	+
+1795801653	cmd	Alaric	57	1435	htower.are	standing	100	0	-	exits		Obvious exits: // West  - A corridor	-	-
+1795801653	cmd	Alaric	57	1434	htower.are	standing	100	0	-	west		A corridor //   You are at the end of a long corridor. Obsidian walls engraved with // ancient runes of power stretch out before you. A darkened door is to the	-	+
+1795801654	cmd	Alaric	57	1433	htower.are	standing	100	0	-	west		An intersection //   You are at an intersection in the corridor. The obsidian walled halls // lead off in every direction from here, pulsing with the power of their	-	+
+1795801654	cmd	Alaric	57	1446	htower.are	standing	100	0	-	south		A corridor //   You are in a long corridor leading north and south. Obsidian walls // engraved with ancient runes of power stretch out before you. Magical	-	+
+1795801655	cmd	Alaric	57	1447	htower.are	standing	100	0	-	south		The end of the corridor //   You are at the end of a long corridor. The obsidian walls come to an // abrupt halt at the edge of a golden archway here. The hum of power is so	-	+
+1795801655	cmd	Alaric	57	1448	htower.are	standing	100	0	-	south		The arched entrance //   You feel a slight tingle as you pass through the archway, as if the living // magical energies here had infused your body, found it wanting and left. The	-	+
+1795801656	cmd	Alaric	57	1449	htower.are	standing	100	0	-	up		The landing //   You are on a small landing in the middle of a long stairway leading up. // Your senses seem dulled here, no sound or smell can be detected at all, and	-	+
+1795801657	cmd	Alaric	57	1450	htower.are	standing	100	0	-	up		An intersection //   You are at an intersection of several hallways. You feel as if strange // mystical forces are pushing and pulling at each other from all around you.	-	+
+1795801659	cmd	Alaric	57	1458	htower.are	standing	100	0	-	east		A dark hallway //   You are in a long dark hallway leading east and west. Not much can be // seen in the unnatural darkness here, but you get a deep sense of dread	-	+
+1795801660	cmd	Alaric	57	1450	htower.are	standing	100	0	-	west		An intersection //   You are at an intersection of several hallways. You feel as if strange // mystical forces are pushing and pulling at each other from all around you.	-	+
+1795801661	cmd	Alaric	57	1450	htower.are	standing	100	0	-	exits		Obvious exits: // North - A wide hallway // East  - A dark hallway	-	+
+1795801662	cmd	Alaric	57	1473	htower.are	standing	100	0	-	north		A wide hallway //   You are in a large hallway, wide enough to accommodate several people // standing abreast. The floor here is a swirl of multicolored patterns, in	-	+
+1795801662	cmd	Alaric	57	1473	htower.are	standing	100	0	-	exits		Obvious exits: // North - Closed door // South - An intersection	-	-
+1795801663	cmd	Alaric	57	1473	htower.are	standing	100	0	-	open		Ok.	-	-
+1795801664	cmd	Alaric	57	1473	htower.are	standing	100	0	-	exits		Obvious exits: // North - A wide hallway // South - An intersection	-	-
+1795801665	cmd	Alaric	57	1474	htower.are	standing	100	0	-	north		A wide hallway //   You are in a large hallway, wide enough to accommodate several people // standing abreast. The floor here is a swirl of multicolored patterns, in	-	+
+1795801665	cmd	Alaric	57	1474	htower.are	standing	100	0	-	exits		Obvious exits: // North - Closed door // South - A wide hallway	-	-
+1795801666	cmd	Alaric	57	1474	htower.are	standing	100	0	-	open		Ok.	-	-
+1795801666	cmd	Alaric	57	1474	htower.are	standing	100	0	-	exits		Obvious exits: // North - A wide hallway // South - A wide hallway	-	-
+1795801667	cmd	Alaric	57	1475	htower.are	standing	100	0	-	north		A wide hallway //   You are in a large hallway, wide enough to accommodate several people // standing abreast. The floor here is a swirl of multicolored patterns, in	-	+
+1795801668	cmd	Alaric	57	1475	htower.are	standing	100	0	-	open		Ok.	-	-
+1795801668	cmd	Alaric	57	1476	htower.are	standing	100	0	-	north		The entranceway //   You are at the entrance to the audience chamber of the grand master of // magic. Beautiful tapestries displaying the ancient masters of lore are on	-	+
+1795801669	cmd	Alaric	57	1477	htower.are	standing	100	0	-	north		The audience chamber //   You are in a large chamber. Small bolts of energy leap from wall to wall, // crackling with power. The floor is a swirl of indeterminable colors and	-	+
+1795801672	cmd	Alaric	57	1477	htower.are	standing	100	0	-	exits		Obvious exits: // North - The altar // East  - A dressing room	-	+
+1795801673	cmd	Alaric	57	1479	htower.are	standing	100	0	-	west		The library //   You are in a small cozy looking library. A few well made books sit atop // shelves which span every wall. A large oaken writing table is in the center	-	+
+1795801674	cmd	Alaric	57	1477	htower.are	standing	100	0	-	east		The audience chamber //   You are in a large chamber. Small bolts of energy leap from wall to wall, // crackling with power. The floor is a swirl of indeterminable colors and	-	+
+1795801675	cmd	Alaric	57	1478	htower.are	standing	100	0	-	east		A dressing room //   You are in a plush dressing room. Fine garments of many styles and some // outlandish colors hang from a rack suspended in mid air at eye level. The	-	+
+1795801675	cmd	Alaric	57	1477	htower.are	standing	100	0	-	west		The audience chamber //   You are in a large chamber. Small bolts of energy leap from wall to wall, // crackling with power. The floor is a swirl of indeterminable colors and	-	+
+1795801676	cmd	Alaric	57	1480	htower.are	standing	100	0	-	north		The altar //   You are in a small chapel designed around a beautifully crafted golden // altar. Many icons to lesser deities line the room, but it is obvious by one	-	+
+1795801679	cmd	Alaric	57	1480	htower.are	standing	100	0	-	open		Ok.	-	-
+1795801679	cmd	Alaric	57	1480	htower.are	standing	100	0	-	open		Ok.	-	-
+1795801679	cmd	Alaric	57	1480	htower.are	standing	100	0	-	exits		Obvious exits: // East  - The treasury // South - The audience chamber	-	+
+1795801681	cmd	Alaric	57	1482	htower.are	standing	100	0	-	west		A passage //   You are in a small dark passage, which would be unremarkable if not for // the fact that it ends in a blinding blue light to the west. On hooks set	-	+
+1795801681	cmd	Alaric	57	1482	htower.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795801682	cmd	Alaric	57	1482	htower.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795801683	cmd	Alaric	57	1483	htower.are	standing	100	0	-	west		In the light //   You seem to be floating in a magical energy field, though you cannot see // the source of the energy, you can feel its power pushing at you from all	-	+
+1795801684	cmd	Alaric	57	1483	htower.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-
+1795801685	cmd	Alaric	57	1483	htower.are	standing	100	0	-	east		Alas, you cannot go that way.	-	-

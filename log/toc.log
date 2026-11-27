@@ -348291,3 +348291,85 @@ Fri Nov 27 17:47:21 2026 :: Log Alaric [1437]: s
 Fri Nov 27 17:47:21 2026 :: Log Alaric [1440]: arrived (In the library) from 1437
 Fri Nov 27 17:47:22 2026 :: Log Alaric [1440]: e
 Fri Nov 27 17:47:22 2026 :: Log Alaric [1441]: arrived (In the library) from 1440
+Fri Nov 27 17:47:23 2026 :: Log Alaric [1441]: e
+Fri Nov 27 17:47:23 2026 :: Log Alaric [1439]: arrived (In the library) from 1441
+Fri Nov 27 17:47:23 2026 :: Log Alaric [1439]: e
+Fri Nov 27 17:47:23 2026 :: Log Alaric [1442]: arrived (In the library) from 1439
+Fri Nov 27 17:47:24 2026 :: Log Alaric [1442]: e
+Fri Nov 27 17:47:24 2026 :: Log Alaric [1440]: arrived (In the library) from 1442
+Fri Nov 27 17:47:24 2026 :: Log Alaric [1440]: e
+Fri Nov 27 17:47:24 2026 :: Log Alaric [1441]: arrived (In the library) from 1440
+Fri Nov 27 17:47:25 2026 :: Log Alaric [1441]: s
+Fri Nov 27 17:47:25 2026 :: Log Alaric [1438]: arrived (In the library) from 1441
+Fri Nov 27 17:47:26 2026 :: Log Alaric [1438]: e
+Fri Nov 27 17:47:26 2026 :: Log Alaric [1437]: arrived (The entrance to the library) from 1438
+Fri Nov 27 17:47:28 2026 :: Log Alaric [1437]: e
+Fri Nov 27 17:47:28 2026 :: Log Alaric [1436]: arrived (A corridor) from 1437
+Fri Nov 27 17:47:28 2026 :: Log Alaric [1436]: e
+Fri Nov 27 17:47:28 2026 :: Log Alaric [1433]: arrived (An intersection) from 1436
+Fri Nov 27 17:47:29 2026 :: Log Alaric [1433]: e
+Fri Nov 27 17:47:29 2026 :: Log Alaric [1434]: arrived (A corridor) from 1433
+Fri Nov 27 17:47:30 2026 :: Log Alaric [1434]: ex
+Fri Nov 27 17:47:30 2026 :: Log Alaric [1434]: oe
+Fri Nov 27 17:47:31 2026 :: Log Alaric [1434]: ex
+Fri Nov 27 17:47:32 2026 :: Log Alaric [1434]: e
+Fri Nov 27 17:47:32 2026 :: Log Alaric [1435]: arrived (The scrying chamber) from 1434
+Fri Nov 27 17:47:33 2026 :: Log Alaric [1435]: ex
+Fri Nov 27 17:47:33 2026 :: Log Alaric [1435]: w
+Fri Nov 27 17:47:33 2026 :: Log Alaric [1434]: arrived (A corridor) from 1435
+Fri Nov 27 17:47:34 2026 :: Log Alaric [1434]: w
+Fri Nov 27 17:47:34 2026 :: Log Alaric [1433]: arrived (An intersection) from 1434
+Fri Nov 27 17:47:34 2026 :: Log Alaric [1433]: s
+Fri Nov 27 17:47:34 2026 :: Log Alaric [1446]: arrived (A corridor) from 1433
+Fri Nov 27 17:47:35 2026 :: Log Alaric [1446]: s
+Fri Nov 27 17:47:35 2026 :: Log Alaric [1447]: arrived (The end of the corridor) from 1446
+Fri Nov 27 17:47:35 2026 :: Log Alaric [1447]: s
+Fri Nov 27 17:47:35 2026 :: Log Alaric [1448]: arrived (The arched entrance) from 1447
+Fri Nov 27 17:47:36 2026 :: Log Alaric [1448]: u
+Fri Nov 27 17:47:36 2026 :: Log Alaric [1449]: arrived (The landing) from 1448
+Fri Nov 27 17:47:37 2026 :: Log Alaric [1449]: u
+Fri Nov 27 17:47:37 2026 :: Log Alaric [1450]: arrived (An intersection) from 1449
+Fri Nov 27 17:47:39 2026 :: Log Alaric [1450]: e
+Fri Nov 27 17:47:39 2026 :: Log Alaric [1458]: arrived (A dark hallway) from 1450
+Fri Nov 27 17:47:40 2026 :: Log Alaric [1458]: w
+Fri Nov 27 17:47:40 2026 :: Log Alaric [1450]: arrived (An intersection) from 1458
+Fri Nov 27 17:47:41 2026 :: Log Alaric [1450]: ex
+Fri Nov 27 17:47:42 2026 :: Log Alaric [1450]: n
+Fri Nov 27 17:47:42 2026 :: Log Alaric [1473]: arrived (A wide hallway) from 1450
+Fri Nov 27 17:47:42 2026 :: Log Alaric [1473]: ex
+Fri Nov 27 17:47:43 2026 :: Log Alaric [1473]: on
+Fri Nov 27 17:47:44 2026 :: Log Alaric [1473]: ex
+Fri Nov 27 17:47:45 2026 :: Log Alaric [1473]: n
+Fri Nov 27 17:47:45 2026 :: Log Alaric [1474]: arrived (A wide hallway) from 1473
+Fri Nov 27 17:47:45 2026 :: Log Alaric [1474]: ex
+Fri Nov 27 17:47:46 2026 :: Log Alaric [1474]: on
+Fri Nov 27 17:47:46 2026 :: Log Alaric [1474]: ex
+Fri Nov 27 17:47:47 2026 :: Log Alaric [1474]: n
+Fri Nov 27 17:47:47 2026 :: Log Alaric [1475]: arrived (A wide hallway) from 1474
+Fri Nov 27 17:47:48 2026 :: Log Alaric [1475]: on
+Fri Nov 27 17:47:48 2026 :: Log Alaric [1475]: n
+Fri Nov 27 17:47:48 2026 :: Log Alaric [1476]: arrived (The entranceway) from 1475
+Fri Nov 27 17:47:49 2026 :: Log Alaric [1476]: n
+Fri Nov 27 17:47:49 2026 :: Log Alaric [1477]: arrived (The audience chamber) from 1476
+Fri Nov 27 17:47:52 2026 :: Log Alaric [1477]: ex
+Fri Nov 27 17:47:53 2026 :: Log Alaric [1477]: w
+Fri Nov 27 17:47:53 2026 :: Log Alaric [1479]: arrived (The library) from 1477
+Fri Nov 27 17:47:54 2026 :: Log Alaric [1479]: e
+Fri Nov 27 17:47:54 2026 :: Log Alaric [1477]: arrived (The audience chamber) from 1479
+Fri Nov 27 17:47:55 2026 :: Log Alaric [1477]: e
+Fri Nov 27 17:47:55 2026 :: Log Alaric [1478]: arrived (A dressing room) from 1477
+Fri Nov 27 17:47:55 2026 :: Log Alaric [1478]: w
+Fri Nov 27 17:47:55 2026 :: Log Alaric [1477]: arrived (The audience chamber) from 1478
+Fri Nov 27 17:47:56 2026 :: Log Alaric [1477]: n
+Fri Nov 27 17:47:56 2026 :: Log Alaric [1480]: arrived (The altar) from 1477
+Fri Nov 27 17:47:59 2026 :: Log Alaric [1480]: oe
+Fri Nov 27 17:47:59 2026 :: Log Alaric [1480]: ow
+Fri Nov 27 17:47:59 2026 :: Log Alaric [1480]: ex
+Fri Nov 27 17:48:01 2026 :: Log Alaric [1480]: w
+Fri Nov 27 17:48:01 2026 :: Log Alaric [1482]: arrived (A passage) from 1480
+Fri Nov 27 17:48:01 2026 :: Log Alaric [1482]: e
+Fri Nov 27 17:48:02 2026 :: Log Alaric [1482]: e
+Fri Nov 27 17:48:03 2026 :: Log Alaric [1482]: w
+Fri Nov 27 17:48:03 2026 :: Log Alaric [1483]: arrived (In the light) from 1482
+Fri Nov 27 17:48:04 2026 :: Log Alaric [1483]: e
+Fri Nov 27 17:48:05 2026 :: Log Alaric [1483]: e
