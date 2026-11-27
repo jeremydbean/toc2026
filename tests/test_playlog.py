@@ -103,7 +103,11 @@ class PlaylogSourceTests(unittest.TestCase):
         self.assertIn('playlog_session( ch, "quit" );', source("act_comm.c"))
         self.assertIn("playlog_session( ch, shutting_down", source("comm.c"))
         for kind in ("bug", "typo", "idea"):
-            self.assertIn('playlog_report( ch, "%s", argument );' % kind, source("act_comm.c"))
+            # One door for all three since 2026-11-27 (report_command): the
+            # journal copy only once the report is stored.
+            self.assertIn('report_command( ch, argument, %s_FILE, "%s",' % (kind.upper(), kind),
+                          source("act_comm.c"))
+        self.assertIn("playlog_report( ch, kind, argument );", source("act_comm.c"))
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
