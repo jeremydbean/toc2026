@@ -4793,6 +4793,13 @@ void room_affect(CHAR_DATA *ch, ROOM_INDEX_DATA *pRoom, int door)
 
 }
 
+/*
+ * A pocket room (ROPE TRICK, HAVEN: magic2.c pocket_room_new) leaves the
+ * world, and only one does: room_aff_update has moved out whoever and
+ * whatever was in it. It owns its name, its description and its exits --
+ * the exits were only cleared before (review, 2026-11-27), leaking one a
+ * cast -- whose keyword and description are empty literals.
+ */
 void extract_room( ROOM_INDEX_DATA *pRoom )
 {
     ROOM_INDEX_DATA *pRoomIndex, *pPrev, *pNext;
@@ -4801,7 +4808,11 @@ void extract_room( ROOM_INDEX_DATA *pRoom )
     free_string( pRoom->name);
     free_string( pRoom->description);
     for ( door = 0; door <= 9; door++ )
+    {
+	if ( pRoom->exit[door] != NULL )
+	    free_mem( pRoom->exit[door], sizeof(*pRoom->exit[door]) );
 	pRoom->exit[door] = NULL;
+    }
 
     iHash		     = pRoom->vnum % MAX_KEY_HASH;
     for( pRoomIndex = room_index_hash[iHash], pPrev = NULL;

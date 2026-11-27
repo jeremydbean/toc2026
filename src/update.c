@@ -3559,6 +3559,23 @@ void update_handler( void )
     if ( --pulse_point    <= 0 )
     {
 	pulse_point     = number_range( 2*PULSE_TICK/3, 4*PULSE_TICK/3 );
+	{
+	    /* Tests only: a tick of this many pulses, so what counts in
+	       ticks -- a pocket room's life, an idle player's -- can be
+	       played through in seconds (tests/test_pocket_rooms.py). */
+	    static int tick_pulses = -1;
+
+	    if ( tick_pulses < 0 )
+	    {
+		const char *env = getenv( "TOC_TICK_PULSES" );
+
+		tick_pulses = env != NULL ? atoi( env ) : 0;
+		if ( tick_pulses < 0 || tick_pulses > PULSE_TICK )
+		    tick_pulses = 0;
+	    }
+	    if ( tick_pulses > 0 )
+		pulse_point = tick_pulses;
+	}
 	playlog_phase_enter( "weather_update" );
 	weather_update	( );
 	playlog_phase_enter( "char_update" );
@@ -3979,10 +3996,16 @@ void room_aff_update( void )
 	      char_to_room(gch, way_out);
 	    }
 
+	    /* What lies on the floor goes out with them, to the same room
+	       (review, 2026-11-27): it was destroyed -- a player's dropped
+	       gear, and a tracked player corpse with everything it held.
+	       obj_to_room tells the corpse registry where a corpse is now,
+	       so one is not made again at boot in a room that is gone. */
 	    for( obj = expiring_room->contents; obj != NULL; obj = obj_next)
 	    {
 		obj_next = obj->next_content;
-		extract_obj(obj);
+		obj_from_room( obj );
+		obj_to_room( obj, way_out );
 	    }
 
 	    remove_room_affect(expiring_room,raf);

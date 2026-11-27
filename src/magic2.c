@@ -5289,84 +5289,121 @@ void spell_stinking_cloud( int sn, int level, CHAR_DATA *ch, void *vo )
     return;
 }
 
-void spell_rope_trick( int sn, int level, CHAR_DATA *ch, void *vo )
+/*
+ * A pocket room for ROPE TRICK and HAVEN (review, 2026-11-27). Both used to
+ * allocate the room before looking for a free vnum -- a failed search
+ * leaked it -- and hang the way back on ch->in_room, which for HAVEN is the
+ * room the group left when the caster was not pulled in with them. Now the
+ * vnum is found first, and the room owns its one exit, down to `origin`:
+ * extract_room (handler.c), which only pocket rooms reach, frees it with
+ * the room. The exit's keyword and description are empty literals, never
+ * freed. NULL, and nothing made, when no vnum is free.
+ */
+static ROOM_INDEX_DATA *pocket_room_new( ROOM_INDEX_DATA *origin )
 {
-    UNUSED_PARAM(sn);
-    UNUSED_PARAM(level);
-    UNUSED_PARAM(vo);
-    ROOM_AFF_DATA *raf;
+    ROOM_INDEX_DATA *pRoomIndex;
     EXIT_DATA *pexit;
-    ROOM_INDEX_DATA *pRoomIndex, *pHolder, *origin;
-    char *defaultRoomName = "In a pocket dimension.\n\r";
-    char *defaultRoomDesc = "You stand in a misty room out of phase with the world.\n\r";
-    size_t name_len, desc_len;
-    int iHash, door, vnum;
+    int attempts, vnum = 0, iHash;
 
-
-    if(ch->in_room->affected != NULL && ch->in_room->affected->type == EXTRA_DIMENSIONAL)
+    for ( attempts = 0; attempts < 1000; attempts++ )
     {
-      send_to_char("You failed.\n\r",ch);
-      return;
+        vnum = number_range( 1, 30000 );
+        if ( get_room_index( vnum ) == NULL )
+            break;
+        vnum = 0;
     }
+    if ( vnum == 0 )
+        return NULL;
 
+    pRoomIndex = alloc_mem( sizeof(*pRoomIndex) );
+    memset( pRoomIndex, 0, sizeof(*pRoomIndex) );
+    pRoomIndex->area        = new_area;
+    pRoomIndex->vnum        = vnum;
+    pRoomIndex->name        = str_dup( "In a pocket dimension.\n\r" );
+    pRoomIndex->description = str_dup( "You stand in a misty room out of phase with the world.\n\r" );
+
+    pexit = alloc_mem( sizeof(*pexit) );
+    memset( pexit, 0, sizeof(*pexit) );
+    pexit->description = "";
+    pexit->keyword     = "";
+    pexit->u1.to_room  = origin;
+    pRoomIndex->exit[DIR_DOWN] = pexit;
+
+    iHash                  = vnum % MAX_KEY_HASH;
+    pRoomIndex->next       = room_index_hash[iHash];
+    room_index_hash[iHash] = pRoomIndex;
+    return pRoomIndex;
+}
+
+static void pocket_room_affect( ROOM_INDEX_DATA *pRoomIndex, CHAR_DATA *ch, int timer,
+                                char *name )
+{
+    ROOM_AFF_DATA *raf = alloc_mem( sizeof(*raf) );
+
+    memset( raf, 0, sizeof(*raf) );
+    {
+        /* Tests only: how many ticks a pocket lasts. */
+        const char *env = getenv( "TOC_POCKET_TICKS" );
+
+        if ( env != NULL && atoi( env ) > 0 && atoi( env ) < 1000 )
+            timer = atoi( env );
+    }
+    raf->room       = pRoomIndex;
+    raf->timer      = (sh_int) timer;
+    raf->type       = EXTRA_DIMENSIONAL;
+    raf->level      = ch->level;
+    raf->name       = name;
+    raf->aff_exit   = 10;
+    pRoomIndex->affected = raf;
+    affect_to_room( pRoomIndex, raf );
+    SET_BIT(pRoomIndex->room_flags, ROOM_MANA_REGEN);
+    SET_BIT(pRoomIndex->room_flags, ROOM_SAFE);
+    SET_BIT(pRoomIndex->room_flags, ROOM_NO_RECALL);
+}
+
+/* Whether a pocket may be made from here: not from a pocket, a jail or a
+   room that holds you (quitting in the pocket loads you in Limbo, which
+   allows recall). */
+static bool pocket_room_allowed( CHAR_DATA *ch )
+{
+    if ( ch->in_room->affected != NULL && ch->in_room->affected->type == EXTRA_DIMENSIONAL )
+    {
+      send_to_char( "You failed.\n\r", ch );
+      return false;
+    }
     /* A pocket room is a room outside the cell: refused before one is
        made, never abandoned by the sentence (jail.c). */
     if ( jail_refuses( ch ) )
-      return;
-
-    /* Quitting in the pocket room loads the character in Limbo, which
-       allows recall: a way out of a jail cell or a no-recall dungeon. */
+      return false;
     if ( IS_SET(ch->in_room->room_flags, ROOM_JAIL)
     ||   IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) )
     {
-      send_to_char("The walls here hold too tight to fold.\n\r",ch);
+      send_to_char( "The walls here hold too tight to fold.\n\r", ch );
+      return false;
+    }
+    return true;
+}
+
+void spell_rope_trick( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+    ROOM_INDEX_DATA *pRoomIndex, *origin;
+
+    UNUSED_PARAM(sn);
+    UNUSED_PARAM(level);
+    UNUSED_PARAM(vo);
+    if ( !pocket_room_allowed( ch ) )
+      return;
+    origin = ch->in_room;
+    if ( ( pRoomIndex = pocket_room_new( origin ) ) == NULL )
+    {
+      send_to_char( "The magic fails to find a suitable dimension.\n\r", ch );
       return;
     }
-
-    pRoomIndex                  = alloc_mem( sizeof(*pRoomIndex) );
-    pRoomIndex->people          = NULL;
-    pRoomIndex->contents        = NULL;
-    pRoomIndex->extra_descr     = NULL;
-    pRoomIndex->area            = new_area;
-    {
-      int attempts;
-      for (attempts = 0; attempts < 1000; attempts++)
-      {
-         vnum = number_range( 1, 30000);
-         pHolder = get_room_index( vnum );
-         if ( pHolder == NULL )
-            break;
-      }
-      if ( pHolder != NULL ) /* no free vnum found */
-      {
-         send_to_char("The magic fails to find a suitable dimension.\n\r",ch);
-         return;
-      }
-    }
-    pRoomIndex->vnum            = vnum;
-    name_len                    = strlen(defaultRoomName) + 1;
-    pRoomIndex->name            = alloc_mem( (int)name_len );
-    toc_strlcpy(pRoomIndex->name, defaultRoomName, name_len);
-    desc_len                    = strlen(defaultRoomDesc) + 1;
-    pRoomIndex->description     = alloc_mem( (int)desc_len );
-    toc_strlcpy(pRoomIndex->description, defaultRoomDesc, desc_len);
-    pRoomIndex->room_flags      = 0;
-    pRoomIndex->room_flags2     = 0;
-    pRoomIndex->sector_type     = 0;
-    pRoomIndex->light           = 0;
-    pRoomIndex->affected        = NULL;
-    for ( door = 0; door <= 9; door++ )
-       pRoomIndex->exit[door] = NULL;
-
-    iHash                      = vnum % MAX_KEY_HASH;
-    pRoomIndex->next           = room_index_hash[iHash];
-    room_index_hash[iHash]     = pRoomIndex;
 
     /* The way back is the pocket's down exit and nothing else. It was
        kept in was_in_room, the idle void's return pointer, which nothing
        cleared: the caster was never sent to the void again that session,
        and a reconnect was greeted as a return from it. */
-    origin = ch->in_room;
     char_from_room(ch);
     char_to_room(ch,pRoomIndex);
 
@@ -5379,121 +5416,34 @@ void spell_rope_trick( int sn, int level, CHAR_DATA *ch, void *vo )
       char_to_room( ch->pet, pRoomIndex );
     }
 
-    pexit                   = alloc_mem( sizeof(*pexit) );
-    pexit->description      = "";
-    pexit->keyword          = "";
-    pexit->exit_info        = 0;
-    pexit->lock             = 0;
-    pexit->key              = 0;
-    pexit->trap             = 0;
-    pexit->u1.to_room    = origin;
-    ch->in_room->exit[5] = pexit;
-
-    raf             = alloc_mem(sizeof(*raf) );
-    raf->room       = pRoomIndex;
-    raf->timer      = (sh_int)(1 + dice(2,2));
-    raf->type       = 2;
-    raf->level      = ch->level;
-    raf->name       = "rope trick";
-    raf->bitvector  = 0;
-    raf->bitvector2 = 0;
-    raf->modifier   = 0;
-    raf->location   = 0;
-    raf->duration   = 0;
-    raf->aff_exit   = 10;
-    raf->dam_dice   = 0;
-    raf->dam_number = 0;
-    pRoomIndex->affected = raf;
-    affect_to_room(pRoomIndex, pRoomIndex->affected);
-    SET_BIT(pRoomIndex->room_flags, ROOM_MANA_REGEN);
-    SET_BIT(pRoomIndex->room_flags, ROOM_SAFE);
-    SET_BIT(pRoomIndex->room_flags, ROOM_NO_RECALL);
+    pocket_room_affect( pRoomIndex, ch, 1 + dice(2,2), "rope trick" );
 
     send_to_char("You throw a rope into the air and climb up it.\n\r",ch);
-    act("$n throw's a rope in the air, climbs up it, and is gone!",ch,NULL,NULL,TO_ROOM);
+    act("$n throws a rope in the air, climbs up it, and is gone!",ch,NULL,NULL,TO_ROOM);
     do_look(ch,"auto");
-    return;
-
 }
+
 void spell_haven( int sn, int level, CHAR_DATA *ch, void *vo )
 {
+    CHAR_DATA *gch, *gch_next;
+    ROOM_INDEX_DATA *pRoomIndex, *in_room;
+
     UNUSED_PARAM(sn);
     UNUSED_PARAM(level);
     UNUSED_PARAM(vo);
-    ROOM_AFF_DATA *raf;
-    CHAR_DATA *gch, *gch_next;
-    EXIT_DATA *pexit;
-    ROOM_INDEX_DATA *pRoomIndex, *pHolder, *in_room;
-    char *defaultRoomName = "In a pocket dimension.\n\r";
-    char *defaultRoomDesc = "You stand in a misty room out of phase with the world.\n\r";
-    size_t name_len, desc_len;
-    int iHash, door, vnum;
-
-
-    if(ch->in_room->affected != NULL && ch->in_room->affected->type == EXTRA_DIMENSIONAL)
+    if ( !pocket_room_allowed( ch ) )
+      return;
+    in_room = ch->in_room;
+    if ( ( pRoomIndex = pocket_room_new( in_room ) ) == NULL )
     {
-      send_to_char("You failed.\n\r",ch);
+      send_to_char( "The magic fails to find a suitable haven.\n\r", ch );
       return;
     }
-
-    /* A pocket room is a room outside the cell: refused before one is
-       made, never abandoned by the sentence (jail.c). */
-    if ( jail_refuses( ch ) )
-      return;
-
-    /* Quitting in the pocket room loads the character in Limbo, which
-       allows recall: a way out of a jail cell or a no-recall dungeon. */
-    if ( IS_SET(ch->in_room->room_flags, ROOM_JAIL)
-    ||   IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) )
-    {
-      send_to_char("The walls here hold too tight to fold.\n\r",ch);
-      return;
-    }
-
-    pRoomIndex                  = alloc_mem( sizeof(*pRoomIndex) );
-    pRoomIndex->people          = NULL;
-    pRoomIndex->contents        = NULL;
-    pRoomIndex->extra_descr     = NULL;
-    pRoomIndex->area            = new_area;
-    {
-        int attempts;
-        for (attempts = 0; attempts < 1000; attempts++)
-        {
-            vnum = number_range( 1, 30000);
-            pHolder = get_room_index( vnum );
-            if ( pHolder == NULL )
-                break;
-        }
-        if ( pHolder != NULL ) /* no free vnum found */
-        {
-            send_to_char("The magic fails to find a suitable haven.\n\r",ch);
-            return;
-        }
-    }
-    pRoomIndex->vnum            = vnum;
-    name_len                    = strlen(defaultRoomName) + 1;
-    pRoomIndex->name            = alloc_mem( (int)name_len );
-    toc_strlcpy(pRoomIndex->name, defaultRoomName, name_len);
-    desc_len                    = strlen(defaultRoomDesc) + 1;
-    pRoomIndex->description     = alloc_mem( (int)desc_len );
-    toc_strlcpy(pRoomIndex->description, defaultRoomDesc, desc_len);
-    pRoomIndex->room_flags      = 0;
-    pRoomIndex->room_flags2     = 0;
-    pRoomIndex->sector_type     = 0;
-    pRoomIndex->light           = 0;
-    pRoomIndex->affected        = 0;
-    for ( door = 0; door <= 9; door++ )
-	pRoomIndex->exit[door] = NULL;
-
-    iHash			= vnum % MAX_KEY_HASH;
-    pRoomIndex->next    	= room_index_hash[iHash];
-    room_index_hash[iHash]	= pRoomIndex;
 
     act("$n says, 'Rulers of the elemental planes, hear my plea!'",ch,NULL,NULL,TO_ROOM);
     act("'My companions and I are weary, and would seek a safe haven.'",ch,NULL,NULL,TO_ROOM);
     act("'Lend us but a small part of your vast holdings so we may rest.'",ch,NULL,NULL,TO_ROOM);
 
-    in_room = ch->in_room;
     for(gch = in_room->people; gch != NULL; gch = gch_next)
     {
       gch_next = gch->next_in_room;
@@ -5507,15 +5457,6 @@ void spell_haven( int sn, int level, CHAR_DATA *ch, void *vo )
       }
     }
 
-    pexit                   = alloc_mem( sizeof(*pexit) );
-    pexit->description      = "";
-    pexit->keyword          = "";
-    pexit->exit_info        = 0;
-    pexit->lock             = 0;
-    pexit->key              = 0;
-    pexit->trap             = 0;
-    pexit->u1.to_room    = in_room;
-
     /* Riders bring their mounts, which the group pull can leave behind. */
     for ( gch = pRoomIndex->people; gch != NULL; gch = gch->next_in_room )
       if ( !IS_NPC(gch) && gch->pcdata->mounted && gch->pet != NULL
@@ -5524,30 +5465,9 @@ void spell_haven( int sn, int level, CHAR_DATA *ch, void *vo )
         char_from_room( gch->pet );
         char_to_room( gch->pet, pRoomIndex );
       }
-    ch->in_room->exit[5] = pexit;
 
-    raf             = alloc_mem(sizeof(*raf) );
-    raf->room       = pRoomIndex;
-    raf->timer      = (sh_int)(2 + dice(3,2));;
-    raf->type       = 2;
-    raf->level      = ch->level;
-    raf->name       = "haven";
-    raf->bitvector  = 0;
-    raf->bitvector2 = 0;
-    raf->modifier   = 0;
-    raf->location   = 0;
-    raf->duration   = 0;
-    raf->aff_exit   = 10;
-    raf->dam_dice   = 0;
-    raf->dam_number = 0;
-    pRoomIndex->affected = raf;
-    affect_to_room(pRoomIndex, pRoomIndex->affected);
-    SET_BIT(pRoomIndex->room_flags, ROOM_MANA_REGEN);
+    pocket_room_affect( pRoomIndex, ch, 2 + dice(3,2), "haven" );
     SET_BIT(pRoomIndex->room_flags, ROOM_HP_REGEN);
-    SET_BIT(pRoomIndex->room_flags, ROOM_SAFE);
-    SET_BIT(pRoomIndex->room_flags, ROOM_NO_RECALL);
-
-    return;
 }
 
 void spell_butcher( int sn, int level, CHAR_DATA *ch, void *vo )
