@@ -347402,3 +347402,5 @@ Fri Nov 27 02:16:56 2026 :: Connection guard: last hour 1 closed without a word,
 Fri Nov 27 02:20:01 2026 :: Treasure goblin: vanished from room 6309 (A Split in the Path, arac.are) (too long in one area).
 Fri Nov 27 02:30:06 2026 :: Treasure goblin: vanished from room 3756 (The South East Corner of the Dungeon, school.are) (too long in one area).
 Fri Nov 27 02:40:11 2026 :: Treasure goblin: vanished from room 1516 (A Gnome Shop, gnome.are) (too long in one area).
+Fri Nov 27 02:45:34 2026 :: Connection guard: 77.67.26.192 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 27 02:45:34 2026 :: Connection guard: the resolver could not look up 77.67.26.192's name; asked again in 300 seconds at the earliest.
