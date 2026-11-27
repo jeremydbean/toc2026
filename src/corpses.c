@@ -45,12 +45,15 @@
 #define CORPSE_HISTORY_DIR   CORPSE_DIR "history/"
 #define CORPSE_LEGACY        CORPSE_DIR "registry.tsv"
 #define CORPSE_REFRESH_SECS  600          /* the timer, written this often */
+#define CORPSE_REFRESH_PER_PASS 1        /* timer refreshes written in one pass, at most */
+#define CORPSE_SLOW_MS       100          /* a pass this long says where its time went */
 
 typedef struct corpse_track
 {
     CORPSE_RECORD rec;
     OBJ_DATA     *corpse;
-    bool          dirty;
+    bool          dirty;        /* changed: written at the next pass, every one */
+    bool          refresh;      /* only its timer is due: written a few a pass */
     bool          held;         /* a transfer under way: not written */
     int           pending;      /* PEND_*: whose receipt is still open */
     char          op[64];       /* that receipt: death:<id>, resurrect:<id> */
@@ -223,6 +226,7 @@ static bool track_write( CORPSE_TRACK *t )
         return false;
     }
     t->dirty = false;
+    t->refresh = false;
     return true;
 }
 
@@ -1204,30 +1208,62 @@ static void pend_retry( void )
 
 /* Every pulse: what changed, written within a second; the timers every
    ten minutes; a corpse that has ended up carried by somebody, archived. */
+/*
+ * Every pass (at most once a second): settle what is pending, write what
+ * changed, archive what has ended up carried, and every CORPSE_REFRESH_SECS
+ * write each corpse's timer down.
+ *
+ * Review, 2026-11-27: a 417 ms pass on Nov 26, with nobody online. The ten-
+ * minute refresh marked every corpse dirty at once and one pass wrote them
+ * all, each a durable write (flushed, the directory synced). Now a refresh
+ * only marks a corpse `refresh`, and a pass writes at most
+ * CORPSE_REFRESH_PER_PASS of those; a real change -- something taken out or
+ * put in, a death, a resurrection -- is `dirty` and is written that pass, in
+ * order and durably, as before. A pass past CORPSE_SLOW_MS logs where its
+ * time went: archive retries, pending deaths and resurrections, changes,
+ * refreshes, carried corpses archived. TOC_CORPSE_REFRESH_SECS (tests)
+ * shortens the refresh.
+ */
 void corpse_registry_update( void )
 {
-    int i;
+    static int refresh_secs = -1;
+    long began, mark, retry_ms = 0, pend_ms = 0, change_ms = 0, refresh_ms = 0, carried_ms = 0;
+    int i, changes = 0, refreshes = 0, carried = 0, budget = CORPSE_REFRESH_PER_PASS;
 
+    if ( refresh_secs < 0 )
+    {
+        const char *env = getenv( "TOC_CORPSE_REFRESH_SECS" );
+
+        refresh_secs = env != NULL && atoi( env ) > 0 ? atoi( env ) : CORPSE_REFRESH_SECS;
+    }
+    began = monotonic_ms( );
     if ( corpse_pending_endings > 0 && track_count == 0 && current_time % 60 == 0
     &&   current_time != corpse_last_flush )
     {
         corpse_last_flush = current_time;
         corpse_retry_endings();
+        retry_ms = monotonic_ms( ) - began;
     }
     if ( track_count == 0 || corpse_registry_rebuilding || merc_down )
-        return;
-    if ( current_time - corpse_last_refresh >= CORPSE_REFRESH_SECS )
+        goto said;
+    if ( current_time - corpse_last_refresh >= refresh_secs )
     {
         corpse_last_refresh = current_time;
         for ( i = 0; i < track_count; i++ )
-            tracks[i].dirty = true;
+            tracks[i].refresh = true;
     }
     if ( current_time == corpse_last_flush )
-        return;
+        goto said;
     corpse_last_flush = current_time;
     if ( corpse_pending_endings > 0 && current_time % 60 == 0 )
+    {
+        mark = monotonic_ms( );
         corpse_retry_endings();
+        retry_ms += monotonic_ms( ) - mark;
+    }
+    mark = monotonic_ms( );
     pend_retry();
+    pend_ms = monotonic_ms( ) - mark;
     for ( i = track_count - 1; i >= 0; i-- )
     {
         CHAR_DATA *carrier;
@@ -1242,11 +1278,38 @@ void corpse_registry_update( void )
 
             snprintf( why, sizeof(why), "carried by %s",
                       carrier != NULL && carrier->name != NULL ? carrier->name : "nobody" );
+            mark = monotonic_ms( );
             track_archive( i, "carried", why );
+            carried_ms += monotonic_ms( ) - mark;
+            carried++;
             continue;
         }
         if ( tracks[i].dirty )
+        {
+            mark = monotonic_ms( );
             track_write( &tracks[i] );
+            change_ms += monotonic_ms( ) - mark;
+            changes++;
+        }
+        else if ( tracks[i].refresh && budget > 0 )
+        {
+            budget--;
+            mark = monotonic_ms( );
+            track_write( &tracks[i] );
+            refresh_ms += monotonic_ms( ) - mark;
+            refreshes++;
+        }
+    }
+said:
+    if ( monotonic_ms( ) - began >= CORPSE_SLOW_MS )
+    {
+        char buf[MAX_STRING_LENGTH];
+
+        snprintf( buf, sizeof(buf), "Corpse registry: a %ld ms pass -- archive retries %ld ms, "
+                  "pending %ld ms, %d changed %ld ms, %d refreshed %ld ms, %d carried %ld ms; "
+                  "%d tracked.", monotonic_ms( ) - began, retry_ms, pend_ms, changes, change_ms,
+                  refreshes, refresh_ms, carried, carried_ms, track_count );
+        log_string( buf );
     }
 }
 

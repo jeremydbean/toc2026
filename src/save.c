@@ -4240,6 +4240,28 @@ int corpse_file_write( const char *path, const CORPSE_RECORD *rec,
     char temp[MAX_STRING_LENGTH];
     FILE *fp;
 
+    {
+        /* Tests only: slow storage, a corpse write taking this long. */
+        static long delay_ms = -1;
+
+        if ( delay_ms < 0 )
+        {
+            const char *env = getenv( "TOC_CORPSE_WRITE_DELAY_MS" );
+
+            delay_ms = env != NULL ? atol( env ) : 0;
+            if ( delay_ms < 0 || delay_ms > 5000 )
+                delay_ms = 0;
+        }
+        if ( delay_ms > 0 )
+        {
+            struct timespec pause;
+
+            pause.tv_sec = delay_ms / 1000;
+            pause.tv_nsec = ( delay_ms % 1000 ) * 1000000L;
+            nanosleep( &pause, NULL );
+        }
+    }
+
     if ( (size_t) snprintf( temp, sizeof(temp), "%s.tmp", path ) >= sizeof(temp) )
         return DURABLE_FAILED;
     if ( ( fp = fopen( temp, "w" ) ) == NULL )
