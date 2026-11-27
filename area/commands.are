@@ -4073,11 +4073,16 @@ See also: RUN, EXITS, AUTOEXIT
 
 0 SACRIFICE~
 Syntax: sacrifice <object>      (also JUNK)
+        sacrifice <object> all
 
 Offers an object lying on the ground here to the gods, who destroy it and
 pay you twice its level in copper: no more than it is worth, except for a
-corpse.  With AUTOSPLIT on, the coin is shared with your group.  A
-player's corpse that still holds anything is refused.
+corpse.  Only what lies on the floor: DROP a thing you carry first.  With
+AUTOSPLIT on, the coin is shared with your group.
+
+A corpse or container that still holds anything is refused unless you add
+ALL, which gives the gods its contents too (AUTOSAC never does).  A
+player's corpse that holds anything is always refused.
 
 See also: JUNK, AUTOSAC, DONATE
 ~

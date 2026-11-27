@@ -4541,6 +4541,7 @@ void do_remove( CHAR_DATA *ch, char *argument )
 void do_sacrifice( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
     OBJ_DATA *obj;
     int copper;
@@ -4549,7 +4550,7 @@ void do_sacrifice( CHAR_DATA *ch, char *argument )
     int members;
     char buffer[100];
 
-    one_argument( argument, arg );
+    one_argument( one_argument( argument, arg ), arg2 );
 
     if ( corpse_registry_refuses_trade( ch, NULL ) )
 	return;
@@ -4562,9 +4563,19 @@ void do_sacrifice( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* Only what lies on the floor (review, 2026-11-27: fifteen tries at one
+       target, six "You can't find it" -- it was in the pack). Said so, and
+       what to do when the thing is carried. */
     obj = get_obj_list( ch, arg, ch->in_room->contents );
     if(!obj) {
-	send_to_char( "You can't find it.\n\r", ch );
+	OBJ_DATA *carried = get_obj_carry( ch, arg );
+
+	if ( carried != NULL )
+	    act( "SACRIFICE takes only what lies on the floor, and you are carrying $p: "
+	         "DROP it first.", ch, carried, NULL, TO_CHAR );
+	else
+	    send_to_char( "There is nothing like that on the floor here.  (SACRIFICE takes only "
+	                  "what lies on the floor.)\n\r", ch );
 	return;
     }
 
@@ -4588,6 +4599,23 @@ void do_sacrifice( CHAR_DATA *ch, char *argument )
 
     if(!CAN_WEAR(obj,ITEM_TAKE)) {
 	act( "$p is not an acceptable sacrifice.", ch, obj, 0, TO_CHAR );
+	return;
+    }
+
+    /* A corpse or container that still holds things goes with all of it.
+       AUTOSAC leaves such a corpse; by hand it is only done on purpose:
+       SACRIFICE <it> ALL (review, 2026-11-27). */
+    if ( obj->contains != NULL && str_cmp( arg2, "all" ) )
+    {
+	int held = 0;
+	OBJ_DATA *in;
+
+	for ( in = obj->contains; in != NULL; in = in->next_content )
+	    held++;
+	snprintf( buf, sizeof(buf), "$p still holds %d thing%s, which would go with it.  "
+	          "GET ALL from it first, or SACRIFICE %s ALL to give the Gods the lot.",
+	          held, held == 1 ? "" : "s", arg );
+	act( buf, ch, obj, NULL, TO_CHAR );
 	return;
     }
 
