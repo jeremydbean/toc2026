@@ -347602,3 +347602,4 @@ Fri Nov 27 14:44:16 2026 :: Sock.sinaddr:  176.65.149.236
 Fri Nov 27 14:44:16 2026 :: EOF encountered on read.
 Fri Nov 27 14:44:16 2026 :: Connection guard: 176.65.149.236 closed before a password prompt (strike 1 of 6 in 6 hours).
 Fri Nov 27 14:44:17 2026 :: Connection guard: 176.65.149.236 closed without a word (strike 2 of 6 in 6 hours).
+Fri Nov 27 14:45:14 2026 :: Treasure goblin: vanished from room 9331 (The Entrance of the Ancient Temple, galaxy.are) (too long in one area).
