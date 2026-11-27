@@ -2,7 +2,7 @@
 Name Alaric~
 Id   22012
 Serial 1251902
-LogO 1795802184
+LogO 1795802246
 Vers 4
 Prom ~
 Race dwarf~
@@ -18,7 +18,7 @@ ChangesSeen 20261122reports:1 20261121logfixes:1 20261120fixes:1 20261120luck:1 
 Fixes 20261021-mage-groups 20261021-mage-weapons 20261029-spare-shards 20261030-spare-shards-again 20261112-quest-serial 20261112-hyrule-crumble 20261114-season-area-ids 20261116-wrapped-pools 20261123-hyrule-piece-credit~
 Cast none
 Levl 57
-Plyd 1129272
+Plyd 1129334
 ListRemorts 3  3  5  2  2 ~
 NumRemorts 3
 Note 1790386686
@@ -27,7 +27,7 @@ SkillDamage 592 7 57
 MeleeRatio 797 5
 Scro 22
 Room 2497
-HMV  1544 1544 2875 2875 568 983
+HMV  1544 1544 2875 2875 625 983
 NewGold 48
 NewPlat 670
 NewCopp 88
@@ -184,7 +184,7 @@ AchSet rooms 2 4 10-16 18 21-25 28-43 45-47 51-59 61-64 66 70 300 305-306 309-31
 AchSet daily-kinds 1 ~
 AchSet psi-disciplines 1-2 ~
 AchSet explored-areas 1819706833 ~
-LastOut  1795802184
+LastOut  1795802246
 Rested 46163 0
 Daily 4 20751 3 1 20751
 SesLogin 1795522679
