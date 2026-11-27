@@ -98,7 +98,12 @@ class SourceTests(unittest.TestCase):
         guild = guild[:guild.index("}\n    },")]
         self.assertIn('"resurrection"', guild)
         body = source("resurrect.c")
-        self.assertIn("ch->pcdata->guild != GUILD_CLERIC", body)
+        # Every cleric's, by class or by guild (owner, 2026-11-27).
+        self.assertIn("ch->pcdata->guild != GUILD_CLERIC && ch->class != CLASS_CLERIC", body)
+        self.assertNotIn("72, 72", row, "monks and necromancers in the guild may learn it")
+        cleric_trainer = const[const.index("/* 34 cleric */"):]
+        cleric_trainer = cleric_trainer[:cleric_trainer.index("    },")]
+        self.assertIn('"resurrection"', cleric_trainer, "a cleric of any guild can be taught it")
         # The offer's corpse is looked for again before it is trusted.
         accept = body[body.index("void do_accept"):body.index("void do_decline")]
         self.assertLess(accept.index("resurrect_corpse_still( ch )"),
@@ -163,6 +168,35 @@ class LiveTests(unittest.TestCase):
                 self.assertLessEqual(int(first.group(1)), 1 + 100, rose)
                 self.assertIn("answers your call", run(cleric, "look", 1.4))
                 self.assertNotIn("corpse", run(cleric, "look", 1.4))
+
+    def test_any_cleric_by_class_or_guild_may_call_a_soul_back(self) -> None:
+        """Owner, 2026-11-27: "all cleric types should get resurrection, not
+        just C/C. any C/? or ?/C". A cleric in the mage guild and a mage in
+        the cleric guild both may; a mage in the thief guild may not."""
+        with LiveMud() as mud:
+            make(mud, "Zrisestaff", Levl=70, Room=TEMPLE)
+            for name, cla, gui in (("Zriseclm", 1, 0), ("Zrisemcl", 0, 1), ("Zrisemth", 0, 2)):
+                make(mud, name, Levl=50, Room=TEMPLE, Cla=cla, Gui=gui,
+                     HMV="900 900 2000 2000 500 500", HMVP="900 2000 500")
+                add_lines(mud, name, player_lines=["Sk 100 'resurrection'"])
+            make(mud, "Zrisefallen", Levl=20, Room=TEMPLE)
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as fallen:
+                login(staff, "Zrisestaff", PW)
+                login(fallen, "Zrisefallen", PW)
+                run(staff, "slay zrisefallen", 2.0)
+                for name, allowed in (("Zriseclm", True), ("Zrisemcl", True), ("Zrisemth", False)):
+                    with mud.connect(timeout=120) as caster:
+                        login(caster, name, PW)
+                        run(caster, "scroll 0", 0.6)
+                        said = run(caster, "cast resurrection corpse", 2.0)
+                        if allowed:
+                            self.assertIn("call its soul home", said, (name, said))
+                            fallen.drain(1.0)
+                            run(fallen, "decline", 1.2)
+                        else:
+                            self.assertNotIn("call its soul home", said, (name, said))
+                        caster.send("quit")
+                        caster.wait_closed()
 
     def test_titanic_and_empower_come_from_a_potion_and_a_scroll(self) -> None:
         with LiveMud() as mud:

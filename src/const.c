@@ -1004,7 +1004,7 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	  "cause light",     "cure serious",     "bless",
           "refresh",	     "armor",            "scrolls",
           "staves", 	     "spiritual hammer", "flamestrike",
-	  "locate object",   "infravision"
+	  "locate object",   "infravision",      "resurrection"
 	   },
 	   {
 	    "night vision"
@@ -2768,9 +2768,12 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
     },
 
     {
-	/* The cleric guild's, for any class sworn to it (resurrect.c). */
+	/* Every cleric's: a cleric by class, in any guild, or any class sworn
+	   to the cleric guild (owner, 2026-11-27: "all cleric types should get
+	   resurrection, not just C/C"; resurrect.c). Monks and necromancers
+	   could not before, at 72. */
 	"resurrection",
-	{  45, 40, 50, 50, 72, 72 },     { 2, 1, 2, 2, 0, 0},
+	{  45, 40, 50, 50, 50, 50 },     { 2, 1, 2, 2, 2, 2},
 	spell_resurrection,     TAR_IGNORE,       POS_STANDING,
 	NULL,                   SLOT( 0),       100,     24,
 	"",                     "!Resurrection!"

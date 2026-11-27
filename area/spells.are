@@ -1082,14 +1082,15 @@ answer.  ACCEPT brings them to the corpse at one hit point with
 everything it held, coin into the purse.  DECLINE, or two minutes'
 silence, lets the call fade.
 
-  - Members of the cleric guild only, whatever their class (it comes with
-    the guild).  Qualo the healer trains it.
+  - Clerics only: a cleric by class in any guild, or any class in the
+    cleric guild.  Qualo the healer trains the guild; the missionary of
+    Devota trains clerics of any guild.
   - The dead cannot accept from a jail, a fight, or a room they could not
     RECALL out of, nor rise where they may not go; the call waits.
   - The corpse is used up.  Coin the purse cannot take falls beside it.
 
 The minimum level depends on your primary class and is:
-Mage:45  Cleric:40  Thief:50  Warrior:50  Monk:N/A  Necromancer:N/A
+Mage:45  Cleric:40  Thief:50  Warrior:50  Monk:50  Necromancer:50
 
 See also: RAISE DEAD, DEATH, HEALING
 ~

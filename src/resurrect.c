@@ -169,9 +169,11 @@ void spell_resurrection( int sn, int level, CHAR_DATA *ch, void *vo )
 
     if ( IS_NPC(ch) || ch->pcdata == NULL || ch->in_room == NULL )
         return;
-    if ( ch->pcdata->guild != GUILD_CLERIC && !is_staff( ch ) )
+    /* A cleric by class or by guild (owner, 2026-11-27): C/C, C/anything
+       and anything/C. */
+    if ( ch->pcdata->guild != GUILD_CLERIC && ch->class != CLASS_CLERIC && !is_staff( ch ) )
     {
-        send_to_char( "Only those sworn to the cleric guild may call a soul back.\n\r", ch );
+        send_to_char( "Only a cleric, by class or by guild, may call a soul back.\n\r", ch );
         return;
     }
     if ( target_name == NULL || target_name[0] == '\0' )
