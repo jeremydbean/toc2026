@@ -56100,3 +56100,24 @@
 1795801383	cmd	Alaric	57	1307	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
 1795801384	cmd	Alaric	57	1304	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
 1795801385	cmd	Alaric	57	1304	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Tower Gates	-	+
+1795801388	area	Alaric	57	2201	draconia.are	htower.are	draconia.are	17	east
+1795801388	cmd	Alaric	57	2201	draconia.are	standing	100	0	-	east		The Tower Gates //   You are at the entrance to a tall tower.  Lightning flashes periodically and // it is raining.  You think it might be a good idea to turn back into the grove.	-	+
+1795801390	area	Alaric	57	1304	htower.are	draconia.are	htower.are	2	east
+1795801390	cmd	Alaric	57	1304	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1795801390	cmd	Alaric	57	1304	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Tower Gates	-	+
+1795801392	cmd	Alaric	57	1301	htower.are	standing	100	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1795801393	cmd	Alaric	57	1301	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1795801393	cmd	Alaric	57	1304	htower.are	standing	100	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1795801394	cmd	Alaric	57	1304	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Tower Gates	-	+
+1795801395	cmd	Alaric	57	1305	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1795801396	cmd	Alaric	57	1305	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1795801397	cmd	Alaric	57	1306	htower.are	standing	100	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1795801397	cmd	Alaric	57	1306	htower.are	standing	100	0	-	exits		Obvious exits: // North - Inside a Tavern // East  - The Shadow Grove	-	+
+1795801398	coin	Alaric	57	1306	htower.are	+221035500	bank	interest	bank	30362919028
+1795801398	laid	-	0	0	-	873	herb	34	an amaranth plant	8831	kerofk.are	scatter
+1795801398	cmd	Alaric	57	1303	htower.are	standing	100	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem the glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1795801399	cmd	Alaric	57	1303	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1795801401	cmd	Alaric	57	1301	htower.are	standing	100	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1795801401	cmd	Alaric	57	1301	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
+1795801402	cmd	Alaric	57	1302	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange	-	+
+1795801402	cmd	Alaric	57	1302	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove	-	+
