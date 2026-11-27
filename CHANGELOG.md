@@ -8,6 +8,23 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 
+### 2026-11-27 -- stability, player logs, accessibility
+
+- QUIT saves before anything about leaving happens; a save that fails keeps
+  you in the game with your quest. The web client's reconnect no longer
+  shows "Disconnected" over a live connection. HAVEN and ROPE TRICK free
+  what they make and no longer destroy what is left on their floor. A
+  restore's sync is no longer shut out by its own lock, and its backup
+  verdict proves the remote holds the restored state.
+- BUG, TYPO and IDEA say "logged" only when stored. The corpse registry's
+  refresh no longer writes every corpse in one pulse. SACRIFICE says it
+  takes only what is on the floor and asks before taking contents.
+  log_report's repeats are per sitting and say refused or succeeded.
+- SCREENREADER COMBAT FULL|BRIEF|QUIET, offered in the web client's
+  settings too; the password field's spoken name follows its mode.
+  ADVENTURE RETURN for returning players; TUTORIAL <topic> repeats a hint.
+  RESURRECTION for every cleric, by class or by guild.
+
 ### 2026-11-25 -- Ganon a quarter stronger, and no one fighter overwhelms him
 
 - One of the best-geared mortals still tore through the 12,000-hit-point

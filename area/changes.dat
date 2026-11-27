@@ -5,6 +5,15 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261127qol 2026-11-27
+New: ADVENTURE RETURN shows what you left under way when you come back, and
+TUTORIAL <topic> repeats a hint you have had.  SCREENREADER COMBAT FULL,
+BRIEF or QUIET sets how many blow lines you get, in any client.  Every
+cleric, by class or by guild, can learn RESURRECTION.  SACRIFICE now says
+it takes only what lies on the floor, and asks before taking what a
+corpse or container holds.  BUG, TYPO and IDEA tell you if a report could
+not be saved.
+
 @ 20261124ganonshare 2026-11-24
 Ganon is harder to bring down: he has a quarter more health, and no one
 hero can overwhelm him.  In each round of combat a player, pets and

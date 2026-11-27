@@ -8419,6 +8419,44 @@ first, with a test that fails on the old code:
 - **A hand-started game is `merc` or `rom`** (the CMake build's `bin/rom`)
   in both restore scripts' `/proc` check.
 
+## Stability And Player-Log Fixes, 2026-11-27
+
+Each reproduced with synthetic state, each with a test that fails on the
+old code:
+
+- **QUIT saves first** (`quit_save_first`, act_comm.c): not saved, the
+  player stays -- nothing announced, the quest kept -- and is told; in
+  place but unconfirmed, they go and staff hear. A save refused on purpose
+  (`save_char_obj_was_held()`: an unreadable file never written over, a
+  death's file waiting for its corpse) still lets QUIT go on; every other
+  caller still sees those as DURABLE_FAILED. Do not add a DURABLE_* value
+  for it: stash, GRANTPSI and PRESTORE test `== DURABLE_FAILED`.
+- **Only the current socket speaks** (client.js, app.js): every handler of
+  the game, events and log sockets returns unless its socket is current.
+- **Pocket rooms** (`pocket_room_new`, magic2.c): vnum found first, the
+  room owns its down exit, `extract_room` frees it after
+  `room_index_forget`; expiry moves floor objects out with the people.
+  `TOC_TICK_PULSES`, `TOC_POCKET_TICKS` are test-only.
+- **Restore** lets go of its own maintenance lock before `sync_once`, judges
+  a receipt only from after the swap, and `toc-restore-verify --state-repo
+  --tree` proves the remote holds the restored state (RestoreSyncDrillTests
+  runs the real sync against a scratch bare remote).
+- **Reports**: `append_file` returns whether the line is stored and says
+  nothing; BUG/TYPO/IDEA and the Oracle's WRONG say so. Journal copies past
+  the field are marked as excerpts.
+- **Corpse registry**: the ten-minute refresh marks `refresh`, written one
+  a pass; changes are `dirty` and written that pass. Slow passes log a
+  breakdown. `TOC_CORPSE_REFRESH_SECS`, `TOC_CORPSE_WRITE_DELAY_MS` are
+  test-only. The strict C17 CMake build has no POSIX: no `nanosleep`
+  outside files that define `_POSIX_C_SOURCE`.
+- **SACRIFICE** says floor-only; a nonempty corpse or container needs ALL.
+- **log_report.py** repeat runs end at a session row or 15 minutes, and are
+  labelled refused/succeeded/mixed.
+- **SCREENREADER COMBAT full|brief|quiet** (`act_blow_dam`,
+  `combat_blow_wanted`): only dam_message's blow lines are thinned.
+- **ADVENTURE RETURN** and **TUTORIAL <topic>**; **RESURRECTION** for a
+  cleric by class or by guild.
+
 ## Completion Standard
 
 A task is complete only when the requested behavior or documentation is
