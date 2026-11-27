@@ -348256,3 +348256,38 @@ Fri Nov 27 17:47:03 2026 :: Log Alaric [1436]: ex
 Fri Nov 27 17:47:05 2026 :: Log Alaric [1436]: w
 Fri Nov 27 17:47:05 2026 :: Log Alaric [1437]: arrived (The entrance to the library) from 1436
 Fri Nov 27 17:47:05 2026 :: Log Alaric [1437]: ex
+Fri Nov 27 17:47:06 2026 :: Log Alaric [1437]: w
+Fri Nov 27 17:47:06 2026 :: Log Alaric [1438]: arrived (In the library) from 1437
+Fri Nov 27 17:47:07 2026 :: Log Alaric [1438]: ex
+Fri Nov 27 17:47:08 2026 :: Log Alaric [1438]: w
+Fri Nov 27 17:47:08 2026 :: Log Alaric [1443]: arrived (In the library) from 1438
+Fri Nov 27 17:47:09 2026 :: Log Alaric [1443]: ex
+Fri Nov 27 17:47:10 2026 :: Log Alaric [1443]: w
+Fri Nov 27 17:47:10 2026 :: Log Alaric [1444]: arrived (Between the shelves) from 1443
+Fri Nov 27 17:47:11 2026 :: Log Alaric [1444]: ex
+Fri Nov 27 17:47:12 2026 :: Log Alaric [1444]: n
+Fri Nov 27 17:47:12 2026 :: Log Alaric [1445]: arrived (The reading room) from 1444
+Fri Nov 27 17:47:13 2026 :: Log Alaric [1445]: ex
+Fri Nov 27 17:47:14 2026 :: Log Alaric [1445]: s
+Fri Nov 27 17:47:14 2026 :: Log Alaric [1444]: arrived (Between the shelves) from 1445
+Fri Nov 27 17:47:14 2026 :: Log Alaric [1444]: e
+Fri Nov 27 17:47:14 2026 :: Log Alaric [1443]: arrived (In the library) from 1444
+Fri Nov 27 17:47:14 2026 :: Log Alaric [1443]: e
+Fri Nov 27 17:47:14 2026 :: Log Alaric [1438]: arrived (In the library) from 1443
+Fri Nov 27 17:47:15 2026 :: Log Alaric [1438]: n
+Fri Nov 27 17:47:15 2026 :: Log Alaric [1441]: arrived (In the library) from 1438
+Fri Nov 27 17:47:16 2026 :: Log Alaric [1441]: ex
+Fri Nov 27 17:47:17 2026 :: Log Alaric [1441]: w
+Fri Nov 27 17:47:17 2026 :: Log Alaric [1440]: arrived (In the library) from 1441
+Fri Nov 27 17:47:18 2026 :: Log Alaric [1440]: e
+Fri Nov 27 17:47:18 2026 :: Log Alaric [1441]: arrived (In the library) from 1440
+Fri Nov 27 17:47:19 2026 :: Log Alaric [1441]: n
+Fri Nov 27 17:47:19 2026 :: Log Alaric [1442]: arrived (In the library) from 1441
+Fri Nov 27 17:47:20 2026 :: Log Alaric [1442]: w
+Fri Nov 27 17:47:20 2026 :: Log Alaric [1439]: arrived (In the library) from 1442
+Fri Nov 27 17:47:21 2026 :: Log Alaric [1439]: s
+Fri Nov 27 17:47:21 2026 :: Log Alaric [1437]: arrived (The entrance to the library) from 1439
+Fri Nov 27 17:47:21 2026 :: Log Alaric [1437]: s
+Fri Nov 27 17:47:21 2026 :: Log Alaric [1440]: arrived (In the library) from 1437
+Fri Nov 27 17:47:22 2026 :: Log Alaric [1440]: e
+Fri Nov 27 17:47:22 2026 :: Log Alaric [1441]: arrived (In the library) from 1440

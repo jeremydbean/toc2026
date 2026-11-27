@@ -56412,3 +56412,24 @@
 1795801623	cmd	Alaric	57	1436	htower.are	standing	100	0	-	exits		Obvious exits: // East  - An intersection // West  - The entrance to the library	-	-
 1795801625	cmd	Alaric	57	1437	htower.are	standing	100	0	-	west		The entrance to the library //   You are in the entrance to the great library of magic. A giant desk is // here, covered with books parchments and scrolls. Long shelves loaded with	-	+
 1795801625	cmd	Alaric	57	1437	htower.are	standing	100	0	-	exits		Obvious exits: // North - In the library // East  - A corridor	-	+
+1795801626	cmd	Alaric	57	1438	htower.are	standing	100	0	-	west		In the library //   You are in the great library of magic. A strong musty smell permeates the // entire area. Upon shelves which float just out of reach are hundreds of	-	+
+1795801627	cmd	Alaric	57	1438	htower.are	standing	100	0	-	exits		Obvious exits: // North - In the library // East  - The entrance to the library	-	+
+1795801628	cmd	Alaric	57	1443	htower.are	standing	100	0	-	west		In the library //   You are in the great library of magic. A strong musty smell permeates the // entire area. Upon shelves which float just out of reach are hundreds of	-	+
+1795801629	cmd	Alaric	57	1443	htower.are	standing	100	0	-	exits		Obvious exits: // East  - In the library // West  - Between the shelves	-	-
+1795801630	cmd	Alaric	57	1444	htower.are	standing	100	0	-	west		Between the shelves //   You are in the great library of magic. The shelves seem uncomfortably // close here, you can barely maneuver between them. The musty smell is still	-	+
+1795801631	cmd	Alaric	57	1444	htower.are	standing	100	0	-	exits		Obvious exits: // North - The reading room // East  - In the library	-	-
+1795801632	cmd	Alaric	57	1445	htower.are	standing	100	0	-	north		The reading room //   You are in a small room completely devoid of furnishings. The only thing // here is an enormous tome, lying face open on the floor. The great book looks	-	+
+1795801633	cmd	Alaric	57	1445	htower.are	standing	100	0	-	exits		Obvious exits: // South - Between the shelves	-	-
+1795801634	cmd	Alaric	57	1444	htower.are	standing	100	0	-	south		Between the shelves //   You are in the great library of magic. The shelves seem uncomfortably // close here, you can barely maneuver between them. The musty smell is still	-	+
+1795801634	cmd	Alaric	57	1443	htower.are	standing	100	0	-	east		In the library //   You are in the great library of magic. A strong musty smell permeates the // entire area. Upon shelves which float just out of reach are hundreds of	-	+
+1795801634	cmd	Alaric	57	1438	htower.are	standing	100	0	-	east		In the library //   You are in the great library of magic. A strong musty smell permeates the // entire area. Upon shelves which float just out of reach are hundreds of	-	+
+1795801635	cmd	Alaric	57	1441	htower.are	standing	100	0	-	north		In the library //   You are in the great library of magic. A strong musty smell permeates the // entire area. Upon shelves which float just out of reach are hundreds of	-	+
+1795801636	cmd	Alaric	57	1441	htower.are	standing	100	0	-	exits		Obvious exits: // North - In the library // East  - In the library	-	+
+1795801637	laid	-	0	0	-	937	herb	49	a pomegranate	17159	highland.are	scatter
+1795801637	cmd	Alaric	57	1440	htower.are	standing	100	0	-	west		In the library //   You are in the great library of magic. A strong musty smell permeates the // entire area. Upon shelves which float just out of reach are hundreds of	-	+
+1795801638	cmd	Alaric	57	1441	htower.are	standing	100	0	-	east		In the library //   You are in the great library of magic. A strong musty smell permeates the // entire area. Upon shelves which float just out of reach are hundreds of	-	+
+1795801639	cmd	Alaric	57	1442	htower.are	standing	100	0	-	north		In the library //   You are in the great library of magic. A strong musty smell permeates the // entire area. Upon shelves which float just out of reach are hundreds of	-	+
+1795801640	cmd	Alaric	57	1439	htower.are	standing	100	0	-	west		In the library //   You are in the great library of magic. A strong musty smell permeates the // entire area. Upon shelves which float just out of reach are hundreds of	-	+
+1795801641	cmd	Alaric	57	1437	htower.are	standing	100	0	-	south		The entrance to the library //   You are in the entrance to the great library of magic. A giant desk is // here, covered with books parchments and scrolls. Long shelves loaded with	-	+
+1795801641	cmd	Alaric	57	1440	htower.are	standing	100	0	-	south		In the library //   You are in the great library of magic. A strong musty smell permeates the // entire area. Upon shelves which float just out of reach are hundreds of	-	+
+1795801642	cmd	Alaric	57	1441	htower.are	standing	100	0	-	east		In the library //   You are in the great library of magic. A strong musty smell permeates the // entire area. Upon shelves which float just out of reach are hundreds of	-	+
