@@ -348504,3 +348504,8 @@ Fri Nov 27 23:23:00 2026 :: Connection guard: refused 2 connections from 176.53.
 Fri Nov 27 23:24:00 2026 :: Connection guard: refused 1 connection from 176.53.159.164 (since the last line; 9 refused in all, pause 1 in 30 days, 354 minutes left).
 Fri Nov 27 23:25:00 2026 :: Connection guard: refused 2 connections from 176.53.159.164 (since the last line; 11 refused in all, pause 1 in 30 days, 353 minutes left).
 Fri Nov 27 23:36:33 2026 :: Treasure goblin: vanished from room 2553 (Guards Room., limbo.are) (too long in one area).
+Fri Nov 27 23:37:16 2026 :: Connection guard: 123.253.54.53 closed without a word (strike 3 of 6 in 6 hours).
+Fri Nov 27 23:37:17 2026 :: Sock.sinaddr:  123.253.54.53
+Fri Nov 27 23:37:17 2026 :: EOF encountered on read.
+Fri Nov 27 23:37:17 2026 :: Connection guard: 123.253.54.53 closed before a password prompt (strike 4 of 6 in 6 hours).
+Fri Nov 27 23:37:53 2026 :: Cartographer: left room 2387 (The Guard Post, mahntor.are) (his visit is over).
