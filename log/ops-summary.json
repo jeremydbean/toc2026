@@ -1,7 +1,7 @@
 {
  "checks": {
   "disk": {
-   "free_mb": 42915,
+   "free_mb": 42909,
    "inodes_free_pct": 96,
    "ok": true
   },
@@ -13,17 +13,17 @@
   "game_archives": {
    "characters": 37,
    "count": 270,
-   "newest_min": 229,
+   "newest_min": 234,
    "ok": true,
    "total_mb": 506,
    "verified": true
   },
   "mirror": {
-   "commit": "df89527e5ce3",
+   "commit": "8a0da18327d9",
    "configured": true,
    "last_min": 0,
    "ok": true,
-   "reason": "mirror holds df89527e5ce3",
+   "reason": "mirror holds 8a0da18327d9",
    "status": "ok"
   },
   "public_sync": {
@@ -32,13 +32,13 @@
    "last_attempt_min": 0,
    "last_success_min": 0,
    "ok": true,
-   "reason": "pushed 1 files (0 characters)",
-   "remote_commit": "df89527e5ce3"
+   "reason": "pushed 3 files (0 characters)",
+   "remote_commit": "8a0da18327d9"
   },
   "recovery": {
    "exit": "0",
    "failed_restarts": 0,
-   "last_run_min": 1,
+   "last_run_min": 2,
    "ok": true,
    "said": "started"
   },
@@ -60,7 +60,7 @@
      "needs_daemon_reload": false
     },
     "toc-game-recovery.service": {
-     "active": "inactive",
+     "active": "activating",
      "enabled": "static",
      "from_shipped_file": true,
      "load": "loaded",
@@ -156,8 +156,8 @@
    "ok": true
   }
  },
- "generated": 1795795980,
- "generated_utc": "2026-11-27T16:13:00Z",
+ "generated": 1795796280,
+ "generated_utc": "2026-11-27T16:18:00Z",
  "heartbeat": {
   "heartbeat": "not-configured"
  },
