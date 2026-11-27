@@ -348411,3 +348411,4 @@ Fri Nov 27 19:11:35 2026 :: Connection guard: 18.116.101.220 closed before a pas
 Fri Nov 27 19:13:30 2026 :: Sock.sinaddr:  18.116.101.220
 Fri Nov 27 19:13:30 2026 :: EOF encountered on read.
 Fri Nov 27 19:13:30 2026 :: Connection guard: 18.116.101.220 closed before a password prompt (strike 3 of 6 in 6 hours).
+Fri Nov 27 19:14:40 2026 :: Connection guard: 18.116.101.220 closed without a word (strike 4 of 6 in 6 hours).
