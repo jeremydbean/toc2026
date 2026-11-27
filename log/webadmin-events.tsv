@@ -6329,3 +6329,4 @@
 1795815137	wizinfo	60	Black market: the dealer appeared in room 29365 (Across the Sea, voyage.are) with 5 items (stock 1795815137), for 34 minutes.
 1795819746	wizinfo	60	New dart trap on the magnetically shielded safe [object 8004] in Throt & Gleep's Vault [room 8028], [ 5 35] Glop    Mega-City One .
 1795821404	wizinfo	60	Cartographer: appeared in room 2389 (The guarded hall, mahntor.are) (level 18).
+1795821438	wizinfo	60	Connection guard: 176.53.159.164 paused for 6 hours (pause 1 in 30 days; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 176.53.159.164 lifts it.
