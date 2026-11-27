@@ -347520,3 +347520,7 @@ Fri Nov 27 09:16:56 2026 :: Connection guard: last hour 3 closed without a word,
 Fri Nov 27 09:19:49 2026 :: Treasure goblin: vanished from room 17191 (On a hill, highland.are) (too long in one area).
 Fri Nov 27 09:29:54 2026 :: Treasure goblin: vanished from room 9173 (Lawn northeast of house., dylan.are) (too long in one area).
 Fri Nov 27 09:42:26 2026 :: Treasure goblin: vanished from room 6301 (Webbed Entrance, arac.are) (too long in one area).
+Fri Nov 27 09:47:48 2026 :: Sock.sinaddr:  71.6.146.130
+Fri Nov 27 09:47:54 2026 :: EOF encountered on read.
+Fri Nov 27 09:47:55 2026 :: Connection guard: 71.6.146.130 closed before a password prompt (strike 1 of 6 in 6 hours).
+Fri Nov 27 09:47:55 2026 :: Connection guard: 71.6.146.130 closed without a word (strike 2 of 6 in 6 hours).
