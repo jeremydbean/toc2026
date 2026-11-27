@@ -219,6 +219,43 @@ class AdventureTests(unittest.TestCase):
                     self.assertNotIn("a quest ready now", said)
 
 
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class AdventureReturnTests(unittest.TestCase):
+    """ADVENTURE RETURN (2026-11-27): for a player coming back -- time away,
+    what is under way and its time, the next command, and the hints they
+    have had. Opt-in, and spoiler-free: no hint not yet had."""
+
+    def test_a_returning_player_sees_what_they_left(self) -> None:
+        import time as _time
+        away = int(_time.time()) - 3 * 86400 - 600
+        with LiveMud() as mud:
+            make(mud, "Zadvstaff", Levl=70, Room=TEMPLE)
+            # Two hints had: move (bit 0) and consider (bit 2).
+            make(mud, "Zadvback", Levl=20, Room=TEMPLE, LastOut=away,
+                 Rested="5000 1", Tutorial="1 5")
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as back:
+                login(staff, "Zadvstaff", PW)
+                login(back, "Zadvback", PW)
+                said = back.sync("adventure return", timeout=30)
+                self.assertIn("Welcome back, Zadvback -- away 3 days.", said)
+                self.assertRegex(said, r"Rested: \d+ bonus experience")
+                self.assertIn("Hints you have had: move, consider.", said)
+                self.assertIn("Next: TUTORIAL NEXT", said)
+                self.assertNotIn("Hit Return", said)
+                # A hint had, again; one not had, not shown.
+                self.assertIn("CONSIDER", back.sync("tutorial consider"))
+                self.assertIn("You have not had that hint yet", back.sync("tutorial wear"))
+                # The plain view is unchanged, and points here.
+                self.assertIn("ADVENTURE RETURN", adventure(back))
+
+                staff.must(f"transfer zadvback {QUESTMASTER_ROOM}", "")
+                asked = back.sync("aquest request", timeout=30)
+                self.assertNotIn("no quest", asked.lower(), asked)
+                said = back.sync("adventure back", timeout=30)
+                self.assertRegex(said, r"\* An? (rush |emergency |daily )?quest: \d+ minutes? left\.")
+                self.assertIn("Next: AQUEST INFO", said)
+
+
 class AdventureSourceTests(unittest.TestCase):
     """It reads, and changes nothing: no save, no award, no tutorial step,
     no quest or reward touched."""

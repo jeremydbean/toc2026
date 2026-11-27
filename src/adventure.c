@@ -234,15 +234,112 @@ static void adventure_group( CHAR_DATA *ch, DString *out, int *shown )
     }
 }
 
+/*
+ * ADVENTURE RETURN (2026-11-27): for a player coming back to the game. How
+ * long they were away, what they left under way -- a quest and its time,
+ * errands, the next Triforce piece, rested experience -- the one command
+ * to type next, and the tutorial hints they have had (TUTORIAL <topic>
+ * repeats one). Opt-in, short, and spoiler-free: it names no quest target,
+ * no place they have not been told of, and no hint not yet had.
+ */
+static void adventure_return( CHAR_DATA *ch )
+{
+    DString out;
+    char buf[MAX_STRING_LENGTH];
+    char earned[MAX_STRING_LENGTH];
+    const char *next = "ADVENTURE";
+    bool chosen = false;
+    long away = 0;
+    int taken, under = 0, piece;
+    bool expedition, offered;
+
+    dstring_init_limit( &out, DSTRING_OUTPUT_MAX );
+    if ( ch->pcdata->last_logout > 0 && ch->pcdata->session_logon > ch->pcdata->last_logout )
+        away = (long) ( ch->pcdata->session_logon - ch->pcdata->last_logout );
+    if ( away >= 2 * 86400 )
+        snprintf( buf, sizeof(buf), " -- away %ld days", away / 86400 );
+    else if ( away >= 3600 )
+        snprintf( buf, sizeof(buf), " -- away %ld hour%s", away / 3600, away / 3600 == 1 ? "" : "s" );
+    else
+        buf[0] = '\0';
+    dstring_printf( &out, "Welcome back, %s%s.\n\rUnder way:\n\r", ch->name, buf );
+
+    if ( IS_SET(ch->act, PLR_QUESTOR) )
+    {
+        dstring_printf( &out, "  * A%s quest: %d minute%s left.  AQUEST INFO says what for.\n\r",
+                        ch->questemergency ? "n emergency" : ch->questrush ? " rush"
+                        : ch->questdaily ? " daily" : "",
+                        ch->countdown, ch->countdown == 1 ? "" : "s" );
+        under++;
+        next = "AQUEST INFO";
+        chosen = true;
+    }
+    errand_jobs( ch, &taken, &expedition, &offered );
+    if ( expedition || taken > 0 )
+    {
+        if ( expedition && taken > 0 )
+            snprintf( buf, sizeof(buf), "your expedition and %d errand%s", taken, taken == 1 ? "" : "s" );
+        else if ( expedition )
+            toc_strlcpy( buf, "your expedition", sizeof(buf) );
+        else
+            snprintf( buf, sizeof(buf), "%d errand%s", taken, taken == 1 ? "" : "s" );
+        dstring_printf( &out, "  * %c%s.  ERRAND shows them.\n\r", UPPER( buf[0] ), buf + 1 );
+        under++;
+        if ( !chosen )
+            next = "ERRAND";
+        chosen = true;
+    }
+    /* Only for someone who has begun: a piece already carried. */
+    piece = hyrule_next_level( ch );
+    if ( piece != 1 )
+    {
+        if ( piece == 0 )
+            dstring_append_cstr( &out, "  * Hyrule: all nine Triforce pieces are yours.\n\r" );
+        else
+            dstring_printf( &out, "  * Hyrule: %d of nine Triforce pieces; Level %d's is next.\n\r",
+                            piece - 1, piece );
+        under++;
+    }
+    if ( ch->pcdata->rest_xp > 0 )
+    {
+        dstring_printf( &out, "  * Rested: %ld bonus experience, spent as you kill.\n\r",
+                        ch->pcdata->rest_xp );
+        under++;
+    }
+    if ( under == 0 )
+        dstring_append_cstr( &out, "  Nothing.\n\r" );
+    if ( !IS_SET(ch->act, PLR_QUESTOR) && ch->level >= 3 )
+    {
+        char phrase[160];
+
+        quest_ready_phrase( ch, false, phrase, sizeof(phrase) );
+        dstring_printf( &out, "Quests: a quest %s.\n\r", phrase );
+    }
+    if ( !chosen && tutorial_in_progress( ch ) )
+        next = "TUTORIAL NEXT";
+    dstring_printf( &out, "Next: %s\n\r", next );
+    if ( tutorial_earned( ch, earned, sizeof(earned) ) > 0 )
+        dstring_printf( &out, "Hints you have had: %s.\n\r  TUTORIAL <topic> shows one again.\n\r",
+                        earned );
+    page_to_char( dstring_cstr( &out ), ch );
+    dstring_free( &out );
+}
+
 void do_adventure( CHAR_DATA *ch, char *argument )
 {
     DString out;
+    char arg[MAX_INPUT_LENGTH];
     int shown = 0;
 
-    UNUSED_PARAM(argument);
     if ( IS_NPC(ch) || ch->pcdata == NULL )
     {
         send_to_char( "Only players have adventures to plan.\n\r", ch );
+        return;
+    }
+    one_argument( argument, arg );
+    if ( arg[0] != '\0' && ( !str_prefix( arg, "return" ) || !str_prefix( arg, "back" ) ) )
+    {
+        adventure_return( ch );
         return;
     }
     dstring_init_limit( &out, DSTRING_OUTPUT_MAX );
@@ -260,7 +357,7 @@ void do_adventure( CHAR_DATA *ch, char *argument )
             "* Nothing in particular calls just now.  AQUEST, ACHIEVEMENTS and MAPS are\n\r"
             "  always there, and PRAY asks the Oracle anything about the game.\n\r" );
     dstring_append_cstr( &out,
-        "(Only a list: it changes nothing.  HUNTING suggests creatures to fight.)\n\r" );
+        "(Only a list: it changes nothing.  ADVENTURE RETURN: what you left under way.)\n\r" );
     /* At most 20 lines with every section shown, so it never pages under
        the default PAGELEN (22): a paged view eats the next command. */
     page_to_char( dstring_cstr( &out ), ch );

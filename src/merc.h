@@ -1135,6 +1135,8 @@ bool  tutorial_guild_choice_open args( ( CHAR_DATA *ch ) );
 int   tutorial_diploma_state args( ( CHAR_DATA *ch ) );
 /* quest.c: the panels' phrase for whether a quest may be asked for */
 bool  quest_ready_phrase     args( ( CHAR_DATA *ch, bool daily, char *buf, size_t size ) );
+int   tutorial_earned        args( ( CHAR_DATA *ch, char *buf, size_t size ) );
+bool  tutorial_in_progress   args( ( CHAR_DATA *ch ) );
 /* playlog.c, for encounter.c */
 void  playlog_row            args( ( const char *kind, CHAR_DATA *ch, const char *fields ) );
 void  playlog_row_unplaced   args( ( const char *kind, CHAR_DATA *ch, const char *fields ) );

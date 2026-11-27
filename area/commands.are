@@ -4265,6 +4265,8 @@ Syntax: tutorial            (or TUTORIAL STATUS)
         tutorial on
         tutorial off
         tutorial next
+        tutorial <topic>    a hint you have had, again
+                            (ADVENTURE RETURN lists yours)
 
 The tutorial walks you through Mud School room by room to its end, where
 the educated goblin holds the Mud School diploma: held, it adds 10 to
@@ -6585,6 +6587,13 @@ See also: RACES, AFFECTS, 'IRON SKIN', DAMAGE
 
 0 ADVENTURE 'WHAT NEXT'~
 Syntax: adventure
+        adventure return       (or ADVENTURE BACK)
+
+ADVENTURE RETURN is for coming back: how long you were away, what you
+left under way (a quest and its minutes left, errands, the next Triforce
+piece, rested experience), the one command to type next, and the
+tutorial hints you have had.  It names no quest target and no hint you
+have not had yet.
 
 ADVENTURE lists a few things you might do next, each with the command to
 type or a WALKTO that gets you there.  It shows only what applies to you

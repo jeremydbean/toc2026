@@ -1134,5 +1134,50 @@ void do_tutorial( CHAR_DATA *ch, char *argument )
         tut_show( ch, step, true );
         return;
     }
-    send_to_char( "Syntax: tutorial [on|off|status|next]\n\r", ch );
+    /* TUTORIAL <topic>: a hint already had, again (2026-11-27, for
+       ADVENTURE RETURN). One not yet had stays unsaid: no spoilers. */
+    for ( step = 0; step < TUT_MAX; step++ )
+        if ( !str_cmp( arg, tut_steps[step].key ) )
+        {
+            char text[MAX_STRING_LENGTH];
+
+            if ( !tut_done( ch, step ) )
+            {
+                send_to_char( "You have not had that hint yet.  TUTORIAL NEXT shows the next one.\n\r", ch );
+                return;
+            }
+            tut_text( ch, step, text, sizeof(text) );
+            send_to_char( text, ch );
+            return;
+        }
+    send_to_char( "Syntax: tutorial [on|off|status|next|<topic>]\n\r", ch );
+}
+
+/* The tutorial is on and not yet finished. */
+bool tutorial_in_progress( CHAR_DATA *ch )
+{
+    return ch != NULL && !IS_NPC(ch) && ch->pcdata != NULL && ch->pcdata->tutorial_on
+        && !( ch->pcdata->tutorial_done & TUT_FINISHED_BIT );
+}
+
+/* The hints this character has had, by the word TUTORIAL <topic> takes,
+   for ADVENTURE RETURN: how many, and "move, consider, ..." in buf. The
+   guild reminders are the guild step's, not hints of their own. */
+int tutorial_earned( CHAR_DATA *ch, char *buf, size_t size )
+{
+    int step, n = 0;
+
+    if ( size > 0 )
+        buf[0] = '\0';
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return 0;
+    for ( step = 0; step < TUT_MAX; step++ )
+    {
+        if ( step == TUT_GUILD_REMIND || step == TUT_GUILD_AUTO || !tut_done( ch, step ) )
+            continue;
+        if ( n++ > 0 )
+            toc_strlcat( buf, ", ", size );
+        toc_strlcat( buf, tut_steps[step].key, size );
+    }
+    return n;
 }
