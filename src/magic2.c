@@ -17,6 +17,7 @@
 #include <strings.h> /* for bzero() */
 #include <time.h>
 #include "merc.h"
+#include "numparse.h"
 #include "interp.h"
 #include "magic.h"
 
@@ -5344,9 +5345,10 @@ static void pocket_room_affect( ROOM_INDEX_DATA *pRoomIndex, CHAR_DATA *ch, int 
     {
         /* Tests only: how many ticks a pocket lasts. */
         const char *env = getenv( "TOC_POCKET_TICKS" );
+        int ticks;
 
-        if ( env != NULL && atoi( env ) > 0 && atoi( env ) < 1000 )
-            timer = atoi( env );
+        if ( env != NULL && parse_int( env, 1, 999, &ticks ) )
+            timer = ticks;
     }
     raf->room       = pRoomIndex;
     raf->timer      = (sh_int) timer;

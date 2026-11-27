@@ -81,10 +81,13 @@ class NecroReviewTests(unittest.TestCase):
 
     def test_pocket_rooms_are_no_way_out(self) -> None:
         magic2 = code(read("src", "magic2.c"))
+        # Both ask pocket_room_allowed first (2026-11-27), which holds the rule.
+        allowed = body(magic2, "static bool pocket_room_allowed(")
+        self.assertIn("ROOM_JAIL", allowed)
+        self.assertIn("ROOM_NO_RECALL", allowed)
         for name in ("void spell_rope_trick(", "void spell_haven("):
             spell = body(magic2, name)
-            self.assertIn("ROOM_JAIL", spell, name)
-            self.assertIn("ROOM_NO_RECALL", spell, name)
+            self.assertIn("pocket_room_allowed( ch )", spell, name)
 
     def test_raise_dead_keeps_summon_rules(self) -> None:
         raise_dead = code(body(read("src", "magic2.c"), "void spell_raise_dead("))

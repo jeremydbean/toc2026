@@ -4803,16 +4803,15 @@ void room_affect(CHAR_DATA *ch, ROOM_INDEX_DATA *pRoom, int door)
 void extract_room( ROOM_INDEX_DATA *pRoom )
 {
     ROOM_INDEX_DATA *pRoomIndex, *pPrev, *pNext;
+    EXIT_DATA *exits[10];
     int iHash, door;
 
+    for ( door = 0; door <= 9; door++ )
+	exits[door] = pRoom->exit[door];
     free_string( pRoom->name);
     free_string( pRoom->description);
     for ( door = 0; door <= 9; door++ )
-    {
-	if ( pRoom->exit[door] != NULL )
-	    free_mem( pRoom->exit[door], sizeof(*pRoom->exit[door]) );
 	pRoom->exit[door] = NULL;
-    }
 
     iHash		     = pRoom->vnum % MAX_KEY_HASH;
     for( pRoomIndex = room_index_hash[iHash], pPrev = NULL;
@@ -4836,6 +4835,10 @@ void extract_room( ROOM_INDEX_DATA *pRoom )
       pPrev->next = pRoomIndex->next;
     room_index_forget( pRoom );
 
+    /* The exits the pocket owns, once it is out of every list. */
+    for ( door = 0; door <= 9; door++ )
+	if ( exits[door] != NULL )
+	    free_mem( exits[door], sizeof(*exits[door]) );
     free_mem( pRoom, sizeof(*pRoom) );
 
     return;

@@ -4647,6 +4647,7 @@ void save_wizlist      ( void );
 /* save.c */
 bool    save_char_obj   ( CHAR_DATA *ch );
 int     save_char_obj_status ( void );
+bool    save_char_obj_was_held ( void );
 bool    load_char_obj   ( DESCRIPTOR_DATA *d, char *name );
 void    player_snapshot ( const char *name );  /* versioned snapshot of player file */
 void    player_snapshot_force ( const char *name ); /* unthrottled pre-restore snapshot */

@@ -43,7 +43,9 @@ def run(client, command: str, settle: float = 1.6) -> str:
 class RestedSourceTests(unittest.TestCase):
     def test_where_they_lie_down_is_judged_before_the_save(self) -> None:
         quit_ = body("src/act_comm.c", "void do_quit(")
-        self.assertLess(quit_.index("rest_xp_on_quit( ch );"), quit_.index("save_char_obj( ch );"))
+        # Before the save that carries what leaving changed (the first,
+        # quit_save_first, is before anything about leaving: 2026-11-27).
+        self.assertLess(quit_.index("rest_xp_on_quit( ch );"), quit_.index("!save_char_obj( ch )"))
         self.assertIn("rest_xp_on_login( ch );", (ROOT / "src" / "comm.c").read_text(encoding="latin-1"))
         ok = body("src/rested.c", "bool rest_room_ok(")
         for term in ("ROOM_SAFE", "ROOM_HP_REGEN", "ROOM_MANA_REGEN", "ROOM_VNUM_TEMPLE",

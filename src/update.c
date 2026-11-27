@@ -35,6 +35,7 @@
 #include <sys/file.h>
 #include <fcntl.h>
 #include "merc.h"
+#include "numparse.h"
 #include "interp.h"
 #pragma GCC diagnostic ignored "-Wmissing-braces"
 #pragma GCC diagnostic ignored "-Wmisleading-indentation"
@@ -3478,6 +3479,23 @@ void hunting_update( void )
  * Random times to defeat tick-timing clients and players.
  */
 
+/* Tests only: a tick of TOC_TICK_PULSES pulses, so what counts in ticks --
+   a pocket room's life, an idle player's -- can be played through in
+   seconds (tests/test_pocket_rooms.py). The normal length otherwise. */
+static int test_tick_pulses( int normal )
+{
+    static int tick_pulses = -1;
+
+    if ( tick_pulses < 0 )
+    {
+        const char *env = getenv( "TOC_TICK_PULSES" );
+
+        if ( env == NULL || !parse_int( env, 1, PULSE_TICK, &tick_pulses ) )
+            tick_pulses = 0;
+    }
+    return tick_pulses > 0 ? tick_pulses : normal;
+}
+
 void update_handler( void )
 {
 
@@ -3559,23 +3577,7 @@ void update_handler( void )
     if ( --pulse_point    <= 0 )
     {
 	pulse_point     = number_range( 2*PULSE_TICK/3, 4*PULSE_TICK/3 );
-	{
-	    /* Tests only: a tick of this many pulses, so what counts in
-	       ticks -- a pocket room's life, an idle player's -- can be
-	       played through in seconds (tests/test_pocket_rooms.py). */
-	    static int tick_pulses = -1;
-
-	    if ( tick_pulses < 0 )
-	    {
-		const char *env = getenv( "TOC_TICK_PULSES" );
-
-		tick_pulses = env != NULL ? atoi( env ) : 0;
-		if ( tick_pulses < 0 || tick_pulses > PULSE_TICK )
-		    tick_pulses = 0;
-	    }
-	    if ( tick_pulses > 0 )
-		pulse_point = tick_pulses;
-	}
+	pulse_point     = test_tick_pulses( pulse_point );
 	playlog_phase_enter( "weather_update" );
 	weather_update	( );
 	playlog_phase_enter( "char_update" );

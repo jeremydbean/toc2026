@@ -23,6 +23,7 @@
 #include <strings.h> /* for bzero() */
 #include <time.h>
 #include "merc.h"
+#include "numparse.h"
 #if defined(unix) && defined(CHGRP_TO)
 #include <grp.h>
 #endif
@@ -1015,10 +1016,20 @@ bool player_milestone_required( CHAR_DATA *asker, CHAR_DATA *ch, const char *tag
 /* What the last save_char_obj came to (DURABLE_*), for callers that must
    tell "not saved" from "saved, not confirmed on the disk". */
 static int save_last_status = DURABLE_FAILED;
+/* The last save was refused on purpose -- a file that could not be read is
+   never written over, a death's file waits for its corpse -- rather than
+   failed: still DURABLE_FAILED to every caller that asks whether it was
+   written (it was not), but QUIT may go on (act_comm.c quit_save_first). */
+static bool save_last_held = false;
 
 int save_char_obj_status( void )
 {
     return save_last_status;
+}
+
+bool save_char_obj_was_held( void )
+{
+    return save_last_held;
 }
 
 bool save_char_obj( CHAR_DATA *ch )
@@ -1030,6 +1041,7 @@ bool save_char_obj( CHAR_DATA *ch )
     bool save_succeeded = false;
 
     save_last_status = DURABLE_FAILED;
+    save_last_held = false;
     if ( IS_NPC(ch) )
 	return false;
     /* A copy from a file that could not be read is never written: the
@@ -1037,6 +1049,7 @@ bool save_char_obj( CHAR_DATA *ch )
     if ( ch->pcdata != NULL && ch->pcdata->load_failed )
     {
         bug( "Save_char_obj: refused, the character's file could not be read.", 0 );
+        save_last_held = true;
         return false;
     }
     {
@@ -1062,6 +1075,7 @@ bool save_char_obj( CHAR_DATA *ch )
     if ( !corpse_registry_may_save( ch ) )
     {
         bug( "save_char_obj: held back -- a death's corpse is not yet on the disk", 0 );
+        save_last_held = true;
         return false;
     }
 
@@ -4248,8 +4262,7 @@ int corpse_file_write( const char *path, const CORPSE_RECORD *rec,
         {
             const char *env = getenv( "TOC_CORPSE_WRITE_DELAY_MS" );
 
-            delay_ms = env != NULL ? atol( env ) : 0;
-            if ( delay_ms < 0 || delay_ms > 5000 )
+            if ( env == NULL || !parse_long( env, 0, 5000, &delay_ms ) )
                 delay_ms = 0;
         }
         if ( delay_ms > 0 )

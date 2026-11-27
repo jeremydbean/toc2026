@@ -4255,6 +4255,10 @@ void do_unalias( CHAR_DATA *ch, char *argument )
  *   - in place but not confirmed on the disk (the rename happened, the
  *     directory sync did not answer): go on, said to staff -- the file is
  *     the new one, and staying would not make it any surer;
+ *   - held back on purpose (save_char_obj_was_held: a file that could not be read is
+ *     never written over, and a death's file waits for its corpse): go on,
+ *     as QUIT always did -- the file on the disk is the record, and staying
+ *     would not change that;
  *   - not saved: stay. Nothing has been announced or abandoned; the player
  *     is told to try again, and staff are told. FORCE, the idle and limbo
  *     sweeps and link loss all quit through here, and simply try again on
@@ -4265,6 +4269,8 @@ static bool quit_save_first( CHAR_DATA *ch )
     char buf[MAX_STRING_LENGTH];
 
     if ( save_char_obj( ch ) )
+        return true;
+    if ( save_char_obj_was_held( ) )
         return true;
     if ( save_char_obj_status( ) == DURABLE_UNCERTAIN )
     {

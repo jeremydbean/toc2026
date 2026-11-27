@@ -147,8 +147,11 @@ class PocketRoomSourceTests(unittest.TestCase):
             self.assertIn("pocket_room_new(", body, spell)
         handler = (ROOT / "src" / "handler.c").read_text(encoding="latin-1")
         extract = handler[handler.index("void extract_room( ROOM_INDEX_DATA *pRoom )"):]
-        self.assertIn("free_mem( pRoom->exit[door], sizeof(*pRoom->exit[door]) );",
-                      extract[:extract.index("\n}\n")])
+        extract = extract[:extract.index("\n}\n")]
+        self.assertIn("free_mem( exits[door], sizeof(*exits[door]) );", extract)
+        # Once the room is out of every list (test_sparse_room_draw).
+        self.assertLess(extract.index("room_index_forget( pRoom );"),
+                        extract.index("free_mem( exits[door]"))
         update = (ROOT / "src" / "update.c").read_text(encoding="latin-1")
         expiry = update[update.index("void room_aff_update( void )"):]
         expiry = expiry[:expiry.index("\n}\n")]

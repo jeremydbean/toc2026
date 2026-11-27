@@ -40,6 +40,7 @@
 #include <sys/stat.h>
 #include <time.h>
 #include "merc.h"
+#include "numparse.h"
 
 #define CORPSE_LIVE_DIR      CORPSE_DIR "live/"
 #define CORPSE_HISTORY_DIR   CORPSE_DIR "history/"
@@ -1234,7 +1235,8 @@ void corpse_registry_update( void )
     {
         const char *env = getenv( "TOC_CORPSE_REFRESH_SECS" );
 
-        refresh_secs = env != NULL && atoi( env ) > 0 ? atoi( env ) : CORPSE_REFRESH_SECS;
+        if ( env == NULL || !parse_int( env, 1, CORPSE_REFRESH_SECS, &refresh_secs ) )
+            refresh_secs = CORPSE_REFRESH_SECS;
     }
     began = monotonic_ms( );
     if ( corpse_pending_endings > 0 && track_count == 0 && current_time % 60 == 0
