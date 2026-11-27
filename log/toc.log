@@ -348499,3 +348499,5 @@ Fri Nov 27 23:20:00 2026 :: Connection guard: refused 1 connection from 176.53.1
 Fri Nov 27 23:20:08 2026 :: Connection guard: last hour 8 closed without a word, 4 refused, 0 new characters refused, 1 newly paused; 2 addresses paused and 0 refused now, 16 active player addresses.
 Fri Nov 27 23:21:00 2026 :: Connection guard: refused 2 connections from 176.53.159.164 (since the last line; 5 refused in all, pause 1 in 30 days, 357 minutes left).
 Fri Nov 27 23:22:00 2026 :: Connection guard: refused 1 connection from 176.53.159.164 (since the last line; 6 refused in all, pause 1 in 30 days, 356 minutes left).
+Fri Nov 27 23:22:56 2026 :: Treasure goblin: vanished from room 601 (The Big Intersection, ofcol.are) (too long in one area).
+Fri Nov 27 23:23:00 2026 :: Connection guard: refused 2 connections from 176.53.159.164 (since the last line; 8 refused in all, pause 1 in 30 days, 355 minutes left).
