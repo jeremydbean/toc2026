@@ -4217,6 +4217,45 @@ void do_unalias( CHAR_DATA *ch, char *argument )
 }
 
 
+/*
+ * QUIT's first save, before anything about leaving has happened (review,
+ * 2026-11-27): it announced the departure, abandoned the quest -- whose
+ * items are extracted, so that cannot be taken back -- and only then saved,
+ * ignoring the result, and closed the connection; a save that failed lost
+ * whatever had changed since the last one. Now:
+ *
+ *   - saved: go on;
+ *   - in place but not confirmed on the disk (the rename happened, the
+ *     directory sync did not answer): go on, said to staff -- the file is
+ *     the new one, and staying would not make it any surer;
+ *   - not saved: stay. Nothing has been announced or abandoned; the player
+ *     is told to try again, and staff are told. FORCE, the idle and limbo
+ *     sweeps and link loss all quit through here, and simply try again on
+ *     a later tick.
+ */
+static bool quit_save_first( CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    if ( save_char_obj( ch ) )
+        return true;
+    if ( save_char_obj_status( ) == DURABLE_UNCERTAIN )
+    {
+        snprintf( buf, sizeof(buf), "%s's save on quitting is in place but the disk did not "
+                  "confirm it; quitting anyway.", ch->name );
+        log_string( buf );
+        wizinfo( buf, LEVEL_IMMORTAL );
+        return true;
+    }
+    send_to_char( "{0BYour character could not be saved, so you have not left the game -- "
+                  "nothing is lost while you stay. Try QUIT again in a moment.{00\n\r", ch );
+    snprintf( buf, sizeof(buf), "%s tried to quit, but could not be saved: still in the game.",
+              ch->name );
+    log_string( buf );
+    wizinfo( buf, LEVEL_IMMORTAL );
+    return false;
+}
+
 void do_quit( CHAR_DATA *ch, char *argument )
 {
     DESCRIPTOR_DATA *d,*d_next;
@@ -4288,6 +4327,11 @@ void do_quit( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* Saved before anything about leaving happens (quit_save_first). A
+       self-delete has removed the file on purpose and writes none. */
+    if ( !quit_discards_file && !quit_save_first( ch ) )
+	return;
+
     send_to_char( 
 	"Alas, all good things must come to an end.\n\r",ch);
     act( "$n has left the game.", ch, NULL, NULL, TO_ROOM );
@@ -4350,8 +4394,17 @@ void do_quit( CHAR_DATA *ch, char *argument )
     /* save_char_obj now takes a post-mv snapshot internally, so the final
        quit state (with session stats) is always captured without a separate
        call here. */
-    if ( !quit_discards_file )
-        save_char_obj( ch );
+    /* Again, with what leaving changed: the quest given up, the session's
+       numbers, where they lay down. If this one fails the file is the save
+       just above -- every bit of progress, the quest still theirs. */
+    if ( !quit_discards_file && !save_char_obj( ch ) )
+    {
+        snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s quit; the last save, with the session's "
+                  "numbers, %s.", ch->name, save_char_obj_status( ) == DURABLE_UNCERTAIN
+                  ? "is in place but not confirmed on the disk"
+                  : "failed (the file holds the save from a moment before)" );
+        log_string( log_buf );
+    }
     /* extract_char frees ch, so take the name while it is still there. */
     toc_strlcpy( quitter_name, ch->name != NULL ? ch->name : "",
                  sizeof(quitter_name) );
