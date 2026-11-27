@@ -348509,3 +348509,5 @@ Fri Nov 27 23:37:17 2026 :: Sock.sinaddr:  123.253.54.53
 Fri Nov 27 23:37:17 2026 :: EOF encountered on read.
 Fri Nov 27 23:37:17 2026 :: Connection guard: 123.253.54.53 closed before a password prompt (strike 4 of 6 in 6 hours).
 Fri Nov 27 23:37:53 2026 :: Cartographer: left room 2387 (The Guard Post, mahntor.are) (his visit is over).
+Fri Nov 27 23:38:22 2026 :: Connection guard: 8.209.127.129 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 27 23:38:23 2026 :: Connection guard: 8.209.127.129 closed without a word (strike 2 of 6 in 6 hours).
