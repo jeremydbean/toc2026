@@ -4201,7 +4201,7 @@ bool    str_infix       ( const char *astr, const char *bstr );
 int     str_counter     ( const char *astr, const char *bstr );
 bool    str_suffix      ( const char *astr, const char *bstr );
 char * capitalize      ( const char *str );
-void    append_file     ( CHAR_DATA *ch, char *file, char *str );
+bool    append_file     ( CHAR_DATA *ch, char *file, char *str );
 void    bug             ( const char *str, int param );
 void    log_string      ( const char *str );
 int     calc_modifier   (int apply_stats, int item_type, int nr_rolls);

@@ -6304,28 +6304,39 @@ char *capitalize( const char *str )
 /*
  * Append a string to a file.
  */
-void append_file( CHAR_DATA *ch, char *file, char *str )
+/*
+ * A player's report (BUG, TYPO, IDEA, the Oracle's WRONG) onto its file.
+ * True only when the line is stored: written, flushed and closed without
+ * an error (review, 2026-11-27: an empty line was skipped and a file that
+ * would not open was reported only as "Could not open the file!", and the
+ * callers said "logged" either way; write and close errors were ignored).
+ * Callers say what happened; this says nothing to the player.
+ * "report-file" is the tests' fault point (recovery.c).
+ */
+bool append_file( CHAR_DATA *ch, char *file, char *str )
 {
     FILE *fp;
- 
-    if ( IS_NPC(ch) || str[0] == '\0' )
-	return;
- 
+    bool stored = false;
+
+    if ( ch == NULL || IS_NPC(ch) || str == NULL || str[0] == '\0' )
+	return false;
+
     reserve_release();
-    if ( ( fp = fopen( file, "a" ) ) == NULL )
-    {
+    if ( recovery_fault( "report-file" ) || ( fp = fopen( file, "a" ) ) == NULL )
         perror( file );
-        send_to_char( "Could not open the file!\n\r", ch );
-    }
     else
     {
-        fprintf( fp, "[%5d] %s: %s\n",
-            ch->in_room ? ch->in_room->vnum : 0, ch->name, str );
-        fclose( fp );
+        bool wrote = fprintf( fp, "[%5d] %s: %s\n",
+                              ch->in_room ? ch->in_room->vnum : 0, ch->name, str ) > 0
+                  && fflush( fp ) == 0 && !ferror( fp );
+
+        stored = fclose( fp ) == 0 && wrote;
+        if ( !stored )
+            perror( file );
     }
- 
+
     fpReserve = fopen( NULL_FILE, "r" );
-    return;
+    return stored;
 }
  
  

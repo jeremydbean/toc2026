@@ -1219,6 +1219,17 @@ void playlog_report( CHAR_DATA *ch, const char *kind, const char *text )
         toc_strlcat( recent, line, sizeof(recent) );
     }
     play_clean( said, sizeof(said), text );
+    /* A report longer than the journal's field is an excerpt there, and
+       says where the whole of it is (review, 2026-11-27: one reached 199
+       characters and read as complete). The report's own file has it all:
+       REPORTS shows it to staff. */
+    if ( strlen( text ) >= sizeof(said) - 1 )
+    {
+        static const char more[] = " [excerpt: REPORTS has it whole]";
+
+        said[sizeof(said) - sizeof(more)] = '\0';
+        toc_strlcat( said, more, sizeof(said) );
+    }
     snprintf( fields, sizeof(fields), "%s\t%s\t%d/%d hp\t%s", kind, said,
               ch->hit, ch->max_hit, recent );
     journal_write( "report", ch, fields );

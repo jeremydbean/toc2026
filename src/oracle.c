@@ -870,7 +870,14 @@ static void oracle_dispute( CHAR_DATA *ch, CHAR_DATA *mob )
     snprintf( report, sizeof(report), "[Oracle] disputed answer.  Q: %s  A: %s",
               oracle_last_question[0] != '\0' ? oracle_last_question : "?",
               oracle_last_answer );
-    append_file( ch, BUG_FILE, report );
+    /* Said only if it is on the file (append_file, review 2026-11-27). */
+    if ( !append_file( ch, BUG_FILE, report ) )
+    {
+        send_to_char( "(Your dispute could not be saved just now; please try WRONG again in a\n\r"
+                      "moment, or tell staff on the QUESTION channel.)\n\r", ch );
+        log_string( "Oracle: a WRONG could not be written to the bug file." );
+        return;
+    }
     oracle_journal( "WRONG", ch->name,
                     ch->in_room != NULL ? ch->in_room->vnum : 0,
                     oracle_last_answer );

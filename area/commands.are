@@ -4383,7 +4383,8 @@ These record a bug, an idea or a typo for the staff, and they are read.
 Type them where the trouble is: the room you are in, your level and your
 last few commands are kept with the report, so "bug the fountain will not
 fill my waterskin" right after trying is all it takes.  Longer reports can
-go on the bug and idea note boards (see NOTE).
+go on the bug and idea note boards (see NOTE).  "Logged" means it was
+saved; if it could not be, you are told, and can try again.
 
 What you type and what the game answers is recorded to help find bugs.
 The words of tells, replies, group tells and notes are left out, and

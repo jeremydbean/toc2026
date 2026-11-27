@@ -3986,31 +3986,58 @@ void do_reports( CHAR_DATA *ch, char *argument )
     }
 }
 
+/*
+ * BUG, TYPO and IDEA (review, 2026-11-27): each said "logged" whether or
+ * not anything was -- an empty one was skipped without a word (one reached
+ * the journal anyway), and a file that would not take the line was not
+ * noticed. A blank report is refused with the syntax; "logged" is said
+ * only when the line is on the file (append_file), and a report that
+ * could not be stored says so and asks for another try.
+ */
+static void report_command( CHAR_DATA *ch, char *argument, char *file, const char *kind,
+                            const char *what, const char *example )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    while ( isspace( (unsigned char) *argument ) )
+        argument++;
+    if ( argument[0] == '\0' )
+    {
+        snprintf( buf, sizeof(buf), "Syntax: %s <%s>\n\r  e.g. %s %s\n\r", kind, what, kind,
+                  example );
+        send_to_char( buf, ch );
+        return;
+    }
+    if ( !append_file( ch, file, argument ) )
+    {
+        send_to_char( "Your report could not be saved just now.  Please try again in a\n\r"
+                      "moment, or ask on the QUESTION channel.\n\r", ch );
+        snprintf( buf, sizeof(buf), "%s's %s report could not be written to %s.",
+                  ch->name, kind, file );
+        log_string( buf );
+        return;
+    }
+    playlog_report( ch, kind, argument );   /* with the last few commands */
+    snprintf( buf, sizeof(buf), "%c%s logged -- thank you.\n\r", UPPER( kind[0] ), kind + 1 );
+    send_to_char( buf, ch );
+}
+
 void do_bug( CHAR_DATA *ch, char *argument )
 {
-    /* Code Safety: Secure file append using safe fprintf format */
-    append_file( ch, BUG_FILE, argument );
-    playlog_report( ch, "bug", argument );   /* with the last few commands */
-    send_to_char( "Bug logged.\n\r", ch );
-    return;
+    report_command( ch, argument, BUG_FILE, "bug", "what went wrong",
+                    "the shopkeeper in Dresden takes my coins but gives no sword" );
 }
 
 void do_typo( CHAR_DATA *ch, char *argument )
 {
-    /* Code Safety: Secure file append */
-    append_file( ch, TYPO_FILE, argument );
-    playlog_report( ch, "typo", argument );   /* with the last few commands */
-    send_to_char( "Typo logged.\n\r", ch );
-    return;
+    report_command( ch, argument, TYPO_FILE, "typo", "the misspelling and where",
+                    "'recieve' in the bank's description" );
 }
 
 void do_idea( CHAR_DATA *ch, char *argument )
 {
-    /* Code Safety: Secure file append */
-    append_file( ch, IDEA_FILE, argument );
-    playlog_report( ch, "idea", argument );   /* with the last few commands */
-    send_to_char( "Idea logged.\n\r", ch );
-    return;
+    report_command( ch, argument, IDEA_FILE, "idea", "your idea",
+                    "a WHO option that shows only my group" );
 }
 
 /*
