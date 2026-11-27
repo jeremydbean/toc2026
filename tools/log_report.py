@@ -284,15 +284,37 @@ def help_misses(rows):
     return misses
 
 
-def journal_repeats(rows, least: int = 5):
-    """Runs of one command typed `least` or more times, outside a fight.
+# A run of one command ends at a gap this long between a player's commands
+# -- a different sitting, in all but name -- or at a session row for them
+# (review, 2026-11-27: five BUYs on five separate days were "5+ in a row").
+REPEAT_GAP = 15 * 60
+
+
+def journal_repeats(rows, least: int = 5, gap: int = REPEAT_GAP):
+    """Runs of one command typed `least` or more times, outside a fight,
+    each as (player, command, count, first epoch, outcome).
 
     Typing SMITE thirteen times in a fight is fighting; typing MINDBAR
     twenty times standing is a player whose reply did not say enough. Rows
-    in a fight neither extend nor break a run."""
+    in a fight neither extend nor break a run. A run is within one sitting:
+    a session row for the player, or `gap` seconds without a command from
+    them, ends it. The outcome tells repeated refusals -- the game saying
+    no, again -- from repeated successes (BUY, PRACTICE): "refused" when
+    every row was refused, "succeeded" when none was, else "mixed"."""
     runs = []
-    state = {}
+    state = {}      # player -> [command, count, first, last, refused, ok]
+
+    def close(player, current):
+        if current[1] >= least and current[0].split(" ")[0].lower() not in NOISY:
+            outcome = ("refused" if current[5] == 0 else
+                       "succeeded" if current[4] == 0 else "mixed")
+            runs.append((player, current[0], current[1], current[2], outcome))
+
     for r in rows:
+        if r[1] == "session" and len(r) > 2:
+            if r[2] in state:
+                close(r[2], state.pop(r[2]))
+            continue
         if r[1] not in ("cmd", "refused") or len(r) < 13:
             continue
         if r[9] == "fight" or r[6] == "fighting":
@@ -301,17 +323,21 @@ def journal_repeats(rows, least: int = 5):
             continue    # the journal never writes the word, so two typos look alike
         player = r[2]
         command = f"{r[10]} {r[11]}".strip()
+        when = int(r[0])
+        refused = r[1] == "refused"
         current = state.get(player)
-        if current and current[0] == command:
-            state[player] = (command, current[1] + 1, current[2])
+        if current and current[0] == command and when - current[3] <= gap:
+            current[1] += 1
+            current[3] = when
+            current[4 if refused else 5] += 1
             continue
-        if current and current[1] >= least and current[0].split(" ")[0].lower() not in NOISY:
-            runs.append((player, current[0], current[1], current[2]))
-        state[player] = (command, 1, int(r[0]))
+        if current:
+            close(player, current)
+        state[player] = [command, 1, when, when, 1 if refused else 0, 0 if refused else 1]
     for player, current in state.items():
-        if current[1] >= least and current[0].split(" ")[0].lower() not in NOISY:
-            runs.append((player, current[0], current[1], current[2]))
-    return sorted(runs, key=lambda run: -run[2])
+        close(player, current)
+    order = {"refused": 0, "mixed": 1, "succeeded": 2}
+    return sorted(runs, key=lambda run: (order[run[4]], -run[2]))
 
 
 def parse_time(stamp: str) -> datetime:
@@ -649,11 +675,12 @@ def journal_report(args, since, buffs=None) -> None:
     if not misses:
         print("    (none)")
 
-    print("  repeats (5+ in a row, outside a fight):")
-    runs = journal_repeats(commands)
-    for player, command, count, start in runs[:20]:
+    print("  repeats (5+ in a row in one sitting, outside a fight; refusals first):")
+    runs = journal_repeats([r for r in rows if r[1] in ("cmd", "refused", "session")])
+    for player, command, count, start, outcome in runs[:20]:
         when = datetime.fromtimestamp(start, timezone.utc)
-        print(f"    {player:<12} x{count:<3} {clean(command)[:60]}  ({when:%m-%d %H:%M})")
+        print(f"    {player:<12} x{count:<3} {clean(command)[:50]:<50} {outcome:<9}"
+              f" ({when:%m-%d %H:%M})")
     if not runs:
         print("    (none)")
 

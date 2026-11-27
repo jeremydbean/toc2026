@@ -261,6 +261,32 @@ class LogReportTests(unittest.TestCase):
         runs = self.report.journal_repeats(rows)
         self.assertEqual([(r[1], r[2]) for r in runs], [("mindbar", 6)])
 
+    def test_a_run_is_one_sitting_and_says_how_it_went(self) -> None:
+        """Review, 2026-11-27: five BUYs on five separate days read as
+        "5+ in a row". A run ends at a session row or a REPEAT_GAP without a
+        command, and says whether the game refused it each time or not."""
+        day = 86400
+
+        def row(epoch, command, args="", kind="cmd", reply="ok"):
+            return [str(epoch), kind, "Zed", "50", "1", "a.are", "standing", "100", "0", "-",
+                    command, args, reply]
+        days_apart = [row(i * day, "buy", "bread") for i in range(5)]
+        self.assertEqual(self.report.journal_repeats(days_apart), [], "five days, five sittings")
+
+        refused = [row(10 * day + i, "buy", "sword", kind="refused",
+                       reply="You can't afford it.") for i in range(5)]
+        practiced = [row(20 * day + i, "practice", "dodge") for i in range(5)]
+        runs = self.report.journal_repeats(refused + practiced)
+        self.assertEqual([(r[1], r[2], r[4]) for r in runs],
+                         [("buy sword", 5, "refused"), ("practice dodge", 5, "succeeded")],
+                         "refusals first, and told from successes")
+
+        # A session row ends a run, however close the commands.
+        split = [row(30 * day + i, "buy", "torch") for i in range(3)]
+        split.append([str(30 * day + 3), "session", "Zed", "quit"])
+        split += [row(30 * day + 4 + i, "buy", "torch") for i in range(3)]
+        self.assertEqual(self.report.journal_repeats(split), [])
+
 
 if __name__ == "__main__":
     unittest.main()
