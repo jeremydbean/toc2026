@@ -347418,3 +347418,6 @@ Fri Nov 27 04:10:25 2026 :: Treasure goblin: vanished from room 3509 (The Miden'
 Fri Nov 27 04:10:35 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Fri Nov 27 04:16:56 2026 :: Connection guard: last hour 1 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 0 addresses paused and 0 refused now, 16 active player addresses.
 Fri Nov 27 04:20:29 2026 :: Treasure goblin: vanished from room 9223 (Darker Caves, canyon.are) (too long in one area).
+Fri Nov 27 04:21:59 2026 :: Automated backup started.
+Fri Nov 27 04:22:00 2026 :: Backups: 3 old archive(s) expired; the newest 6 are always kept.
+Fri Nov 27 04:22:00 2026 :: Automated backup complete.
