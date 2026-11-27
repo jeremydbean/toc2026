@@ -347432,3 +347432,4 @@ Fri Nov 27 04:25:26 2026 :: Connection guard: 35.210.226.150 closed without a wo
 Fri Nov 27 04:25:26 2026 :: Connection guard: 35.210.226.150 paused for 6 hours (pause 1 in 30 days; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.210.226.150 lifts it.
 Fri Nov 27 04:25:26 2026 :: Connection guard: refused 1 connection from 35.210.226.150 (paused; 1 refused in all, pause 1 in 30 days, 360 minutes left).
 Fri Nov 27 04:25:26 2026 :: Connection guard: 35.210.226.150 closed without a word (strike 1 of 6 in 6 hours).
+Fri Nov 27 04:26:26 2026 :: Connection guard: refused 24 connections from 35.210.226.150 (since the last line; 25 refused in all, pause 1 in 30 days, 359 minutes left).
