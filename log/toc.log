@@ -347614,3 +347614,7 @@ Fri Nov 27 15:45:42 2026 :: Treasure goblin: vanished from room 20512 (A Seclude
 Fri Nov 27 15:55:47 2026 :: Treasure goblin: vanished from room 7747 (The Desert Moongate, ultima.are) (too long in one area).
 Fri Nov 27 16:05:51 2026 :: Treasure goblin: vanished from room 8837 (Turn in the Road, kerofk.are) (too long in one area).
 Fri Nov 27 16:10:25 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Fri Nov 27 16:15:12 2026 :: Sock.sinaddr:  54.193.14.208
+Fri Nov 27 16:15:24 2026 :: EOF encountered on read.
+Fri Nov 27 16:15:24 2026 :: Connection guard: 54.193.14.208 closed before a password prompt (strike 1 of 6 in 6 hours).
+Fri Nov 27 16:15:56 2026 :: Treasure goblin: vanished from room 5020 (Fungus path, eastern.are) (too long in one area).
