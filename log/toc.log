@@ -347433,3 +347433,4 @@ Fri Nov 27 04:25:26 2026 :: Connection guard: 35.210.226.150 paused for 6 hours 
 Fri Nov 27 04:25:26 2026 :: Connection guard: refused 1 connection from 35.210.226.150 (paused; 1 refused in all, pause 1 in 30 days, 360 minutes left).
 Fri Nov 27 04:25:26 2026 :: Connection guard: 35.210.226.150 closed without a word (strike 1 of 6 in 6 hours).
 Fri Nov 27 04:26:26 2026 :: Connection guard: refused 24 connections from 35.210.226.150 (since the last line; 25 refused in all, pause 1 in 30 days, 359 minutes left).
+Fri Nov 27 04:30:34 2026 :: Treasure goblin: vanished from room 7546 (Deep Within the Astral Plane, astral.are) (too long in one area).
