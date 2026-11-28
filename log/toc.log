@@ -348630,3 +348630,4 @@ Sat Nov 28 05:02:03 2026 :: Connection guard: refused 1 connection from 123.253.
 Sat Nov 28 05:03:03 2026 :: Connection guard: refused 1 connection from 123.253.54.53 (since the last line; 2 refused in all, pause 1 in 30 days, 189 minutes left).
 Sat Nov 28 05:10:30 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Sat Nov 28 05:11:59 2026 :: Treasure goblin: vanished from room 14018 (Main Room, whouse.are) (too long in one area).
+Sat Nov 28 05:20:08 2026 :: Connection guard: last hour 1 closed without a word, 2 refused, 0 new characters refused, 0 newly paused; 4 addresses paused and 0 refused now, 16 active player addresses.
