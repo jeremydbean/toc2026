@@ -348681,3 +348681,6 @@ Sat Nov 28 09:02:14 2026 :: Treasure goblin: vanished from room 13434 (Stone Hal
 Sat Nov 28 09:10:15 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Sat Nov 28 09:12:19 2026 :: Treasure goblin: vanished from room 9590 (Dark Passage, newthalo.are) (too long in one area).
 Sat Nov 28 09:20:08 2026 :: Connection guard: last hour 2 closed without a word, 0 refused, 0 new characters refused, 0 newly paused; 1 addresses paused and 0 refused now, 16 active player addresses.
+Sat Nov 28 09:21:35 2026 :: Automated backup started.
+Sat Nov 28 09:21:35 2026 :: Backups: 1 old archive(s) expired; the newest 6 are always kept.
+Sat Nov 28 09:21:36 2026 :: Automated backup complete.
