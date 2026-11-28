@@ -6334,3 +6334,4 @@
 1795825208	wizinfo	60	Connection guard: last hour 7 closed without a word, 7 refused, 0 new characters refused, 0 newly paused; 2 addresses paused and 0 refused now, 16 active player addresses.
 1795831002	wizinfo	60	Black market: the dealer appeared in room 8003 (Intersection of Junket Way and Megway, mega1.are) with 5 items (stock 1795831002), for 26 minutes.
 1795831907	wizinfo	60	Connection guard: 123.253.54.53 paused for 6 hours (pause 1 in 30 days; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 123.253.54.53 lifts it.
+1795832408	wizinfo	60	Connection guard: last hour 4 closed without a word, 0 refused, 0 new characters refused, 1 newly paused; 2 addresses paused and 0 refused now, 16 active player addresses.
