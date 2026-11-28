@@ -348533,3 +348533,4 @@ Sat Nov 28 00:42:18 2026 :: Sock.sinaddr:  20.15.133.191
 Sat Nov 28 00:42:18 2026 :: EOF encountered on read.
 Sat Nov 28 00:42:18 2026 :: Connection guard: 20.15.133.191 closed before a password prompt (strike 1 of 6 in 6 hours).
 Sat Nov 28 00:45:12 2026 :: Connection guard: 193.56.117.53 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 28 00:47:06 2026 :: Treasure goblin: vanished from room 9220 (Dark Cave, canyon.are) (too long in one area).
