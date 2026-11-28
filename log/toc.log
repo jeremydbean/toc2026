@@ -348556,3 +348556,8 @@ Sat Nov 28 02:07:43 2026 :: Treasure goblin: vanished from room 1467 (An antecha
 Sat Nov 28 02:07:55 2026 :: Black market: the dealer vanished from room 7613 (Humility Lane, ultima.are) (wandering).
 Sat Nov 28 02:10:07 2026 :: Black market: the dealer vanished from room 2142 (Hector Street at Bakery, hood.are) (wandering).
 Sat Nov 28 02:10:23 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
+Sat Nov 28 02:11:46 2026 :: Connection guard: 123.253.54.53 closed without a word (strike 5 of 6 in 6 hours).
+Sat Nov 28 02:11:46 2026 :: Sock.sinaddr:  123.253.54.53
+Sat Nov 28 02:11:47 2026 :: EOF encountered on read.
+Sat Nov 28 02:11:47 2026 :: Connection guard: 123.253.54.53 closed before a password prompt (strike 6 of 6 in 6 hours).
+Sat Nov 28 02:11:47 2026 :: Connection guard: 123.253.54.53 paused for 6 hours (pause 1 in 30 days; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 123.253.54.53 lifts it.
