@@ -348521,3 +348521,4 @@ Sat Nov 28 00:07:07 2026 :: EOF encountered on read.
 Sat Nov 28 00:07:07 2026 :: Connection guard: 20.163.11.72 closed before a password prompt (strike 1 of 6 in 6 hours).
 Sat Nov 28 00:07:07 2026 :: Sock.sinaddr:  20.163.11.72
 Sat Nov 28 00:07:07 2026 :: Connection guard: 20.163.11.72 closed before a password prompt (strike 2 of 6 in 6 hours).
+Sat Nov 28 00:10:24 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
