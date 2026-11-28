@@ -348581,3 +348581,15 @@ Sat Nov 28 02:57:10 2026 :: Connection guard: refused 1 connection from 35.206.1
 Sat Nov 28 02:57:10 2026 :: Connection guard: 35.206.155.116 closed without a word (strike 1 of 6 in 6 hours).
 Sat Nov 28 02:58:06 2026 :: Treasure goblin: vanished from room 17192 (In the southeastern tower, highland.are) (too long in one area).
 Sat Nov 28 02:58:10 2026 :: Connection guard: refused 24 connections from 35.206.155.116 (since the last line; 25 refused in all, pause 1 in 30 days, 359 minutes left).
+Sat Nov 28 03:08:11 2026 :: Treasure goblin: vanished from room 744 (Knights Way at the Armory, camelot.are) (too long in one area).
+Sat Nov 28 03:08:52 2026 :: Connection guard: 35.210.173.124 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 28 03:09:02 2026 :: Connection guard: 35.210.173.124 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 28 03:09:02 2026 :: Sock.sinaddr:  35.210.173.124
+Sat Nov 28 03:09:03 2026 :: EOF encountered on read.
+Sat Nov 28 03:09:03 2026 :: Connection guard: 35.210.173.124 closed before a password prompt (strike 3 of 6 in 6 hours).
+Sat Nov 28 03:09:03 2026 :: Connection guard: 35.210.173.124 closed without a word (strike 4 of 6 in 6 hours).
+Sat Nov 28 03:09:03 2026 :: Connection guard: 35.210.173.124 closed without a word (strike 5 of 6 in 6 hours).
+Sat Nov 28 03:09:03 2026 :: Connection guard: 35.210.173.124 closed without a word (strike 6 of 6 in 6 hours).
+Sat Nov 28 03:09:03 2026 :: Connection guard: 35.210.173.124 paused for 6 hours (pause 1 in 30 days; kept connecting without logging in; no player has logged in from it in 90 days). Its connections are refused until then. DNS ALLOW 35.210.173.124 lifts it.
+Sat Nov 28 03:09:04 2026 :: Connection guard: refused 1 connection from 35.210.173.124 (paused; 1 refused in all, pause 1 in 30 days, 360 minutes left).
+Sat Nov 28 03:09:04 2026 :: Connection guard: 35.210.173.124 closed without a word (strike 1 of 6 in 6 hours).
