@@ -348692,3 +348692,7 @@ Sat Nov 28 10:02:12 2026 :: Connection guard: 123.253.54.53 closed without a wor
 Sat Nov 28 10:02:12 2026 :: Sock.sinaddr:  123.253.54.53
 Sat Nov 28 10:02:13 2026 :: EOF encountered on read.
 Sat Nov 28 10:02:13 2026 :: Connection guard: 123.253.54.53 closed before a password prompt (strike 2 of 6 in 6 hours).
+Sat Nov 28 10:08:06 2026 :: Connection guard: 66.132.186.185 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 28 10:08:23 2026 :: Treasure goblin: vanished from room 20568 (The Honey Bun, emerald.are) (too long in one area).
+Sat Nov 28 10:08:38 2026 :: Connection guard: 66.132.186.185 closed without a word (strike 2 of 6 in 6 hours).
+Sat Nov 28 10:08:41 2026 :: Connection guard: 66.132.186.185 closed without a word (strike 3 of 6 in 6 hours).
