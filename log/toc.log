@@ -348594,3 +348594,4 @@ Sat Nov 28 03:09:03 2026 :: Connection guard: 35.210.173.124 paused for 6 hours 
 Sat Nov 28 03:09:04 2026 :: Connection guard: refused 1 connection from 35.210.173.124 (paused; 1 refused in all, pause 1 in 30 days, 360 minutes left).
 Sat Nov 28 03:09:04 2026 :: Connection guard: 35.210.173.124 closed without a word (strike 1 of 6 in 6 hours).
 Sat Nov 28 03:10:04 2026 :: Connection guard: refused 24 connections from 35.210.173.124 (since the last line; 25 refused in all, pause 1 in 30 days, 359 minutes left).
+Sat Nov 28 03:10:23 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
