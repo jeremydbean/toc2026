@@ -348516,3 +348516,8 @@ Fri Nov 27 23:40:22 2026 :: Connection guard: 23.31.96.97 closed without a word 
 Fri Nov 27 23:46:38 2026 :: Treasure goblin: vanished from room 25131 (The corridor., underdrk.are) (too long in one area).
 Fri Nov 27 23:56:43 2026 :: Treasure goblin: vanished from room 19156 (A Mountain Path, rome.are) (too long in one area).
 Sat Nov 28 00:06:47 2026 :: Treasure goblin: vanished from room 2115 (Bronze Dragon Street at wizard's back door, hood.are) (too long in one area).
+Sat Nov 28 00:07:07 2026 :: Sock.sinaddr:  20.163.11.72
+Sat Nov 28 00:07:07 2026 :: EOF encountered on read.
+Sat Nov 28 00:07:07 2026 :: Connection guard: 20.163.11.72 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sat Nov 28 00:07:07 2026 :: Sock.sinaddr:  20.163.11.72
+Sat Nov 28 00:07:07 2026 :: Connection guard: 20.163.11.72 closed before a password prompt (strike 2 of 6 in 6 hours).
