@@ -348688,3 +348688,7 @@ Sat Nov 28 09:22:24 2026 :: Treasure goblin: vanished from room 333 (The ancient
 Sat Nov 28 09:32:28 2026 :: Treasure goblin: vanished from room 15054 (Equipment Room, campus.are) (too long in one area).
 Sat Nov 28 09:42:33 2026 :: Treasure goblin: vanished from room 7834 (The Elf Home, valley.are) (too long in one area).
 Sat Nov 28 09:58:18 2026 :: Treasure goblin: vanished from room 29001 (Entrance to the Fortress, korzath1.are) (too long in one area).
+Sat Nov 28 10:02:12 2026 :: Connection guard: 123.253.54.53 closed without a word (strike 1 of 6 in 6 hours).
+Sat Nov 28 10:02:12 2026 :: Sock.sinaddr:  123.253.54.53
+Sat Nov 28 10:02:13 2026 :: EOF encountered on read.
+Sat Nov 28 10:02:13 2026 :: Connection guard: 123.253.54.53 closed before a password prompt (strike 2 of 6 in 6 hours).
