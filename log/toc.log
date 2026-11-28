@@ -348666,3 +348666,8 @@ Sat Nov 28 07:51:42 2026 :: Treasure goblin: vanished from room 717 (Forest Blac
 Sat Nov 28 08:01:46 2026 :: Treasure goblin: vanished from room 25259 (The pathway south., mushroom.are) (too long in one area).
 Sat Nov 28 08:10:07 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
 Sat Nov 28 08:11:51 2026 :: Treasure goblin: vanished from room 24329 (The White Square, chess.are) (too long in one area).
+Sat Nov 28 08:16:13 2026 :: Sock.sinaddr:  20.106.172.110
+Sat Nov 28 08:16:13 2026 :: EOF encountered on read.
+Sat Nov 28 08:16:13 2026 :: Connection guard: 20.106.172.110 closed before a password prompt (strike 1 of 6 in 6 hours).
+Sat Nov 28 08:16:13 2026 :: Sock.sinaddr:  20.106.172.110
+Sat Nov 28 08:16:13 2026 :: Connection guard: 20.106.172.110 closed before a password prompt (strike 2 of 6 in 6 hours).
