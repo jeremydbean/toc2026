@@ -348628,3 +348628,4 @@ Sat Nov 28 04:51:50 2026 :: Treasure goblin: vanished from room 3582 (On the Tra
 Sat Nov 28 05:01:55 2026 :: Treasure goblin: vanished from room 3902 (Northwest corner of dusty trail., dresden.are) (too long in one area).
 Sat Nov 28 05:02:03 2026 :: Connection guard: refused 1 connection from 123.253.54.53 (paused; 1 refused in all, pause 1 in 30 days, 190 minutes left).
 Sat Nov 28 05:03:03 2026 :: Connection guard: refused 1 connection from 123.253.54.53 (since the last line; 2 refused in all, pause 1 in 30 days, 189 minutes left).
+Sat Nov 28 05:10:30 2026 :: Connection guard: 23.31.96.97 closed without a word (an MSSP poll; not counted).
